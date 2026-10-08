@@ -31,7 +31,7 @@ import { applyErrorMatchers } from "@distilled.cloud/core/trait";
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Fly.io error — returned when a failure matches no status-mapped
+ * Unknown Fly.io error -- returned when a failure matches no status-mapped
  * error class. Carries the raw body for later cataloging.
  */
 export class UnknownFlyIoError extends Schema.TaggedError<UnknownFlyIoError>()(
@@ -54,7 +54,7 @@ export class FlyIoParseError extends Schema.TaggedError<FlyIoParseError>()("FlyI
  *
  * Returned by `POST /v1/organizations/{org}/tokens` as HTTP 401 with a
  * message matching `sprites not enabled`. Sprite CRUD never sees a
- * `SPRITES_TOKEN` — this is the mint-time entitlement signal.
+ * `SPRITES_TOKEN` -- this is the mint-time entitlement signal.
  */
 export class SpritesNotEnabled extends Schema.TaggedError<SpritesNotEnabled>()(
   "SpritesNotEnabled",

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Datadog credentials — hand-written.
+ * Datadog credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 Neon credentials module, adapted
  * for Datadog's dual-header auth (`DD-API-KEY` + optional
@@ -16,10 +16,10 @@ import * as Redacted from "effect/Redacted";
 /** Default Datadog site (US1). */
 export const DEFAULT_SITE = "datadoghq.com";
 
-/** US1 REST API root — `https://api.${DEFAULT_SITE}`. */
+/** US1 REST API root -- `https://api.${DEFAULT_SITE}`. */
 export const DEFAULT_API_BASE_URL = "https://api.datadoghq.com";
 
-/** Map a Datadog site (`datadoghq.eu`, `us3.datadoghq.com`, …) to its API origin. */
+/** Map a Datadog site (`datadoghq.eu`, `us3.datadoghq.com`, ...) to its API origin. */
 export const apiBaseUrlForSite = (site: string): string => `https://api.${site}`;
 
 export interface Config {

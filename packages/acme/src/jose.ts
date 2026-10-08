@@ -1,5 +1,5 @@
 /**
- * JOSE helpers for ACME — hand-written, WebCrypto only (no native code).
+ * JOSE helpers for ACME -- hand-written, WebCrypto only (no native code).
  *
  * - account keys (ES256 P-256 by default, RS256 accepted)
  * - JWS in the flattened JSON serialization every ACME POST carries
@@ -101,7 +101,7 @@ export const publicJwk = (jwk: Jwk): Jwk =>
 export const thumbprint = (jwk: Jwk): Effect.Effect<string> =>
   sha256(JSON.stringify(publicJwk(jwk))).pipe(Effect.map(base64url));
 
-/** `<token>.<thumbprint>` — what a challenge proves the client holds. */
+/** `<token>.<thumbprint>` -- what a challenge proves the client holds. */
 export const keyAuthorization = (token: string, jwk: Jwk): Effect.Effect<string> =>
   thumbprint(jwk).pipe(Effect.map((print) => `${token}.${print}`));
 

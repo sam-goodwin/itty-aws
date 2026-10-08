@@ -1,5 +1,5 @@
 /**
- * Turso credentials — hand-written.
+ * Turso credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's turso credentials module: the
  * `Credentials` service holds an *effect* that resolves the current

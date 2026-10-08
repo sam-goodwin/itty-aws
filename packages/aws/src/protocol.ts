@@ -1,21 +1,21 @@
 import * as API from "@distilled.cloud/core/api";
 /**
- * AwsProtocol — AWS's implementation of `@distilled.cloud/core`'s Protocol
+ * AwsProtocol -- AWS's implementation of `@distilled.cloud/core`'s Protocol
  * seam.
  *
  * Generated operations are plain `API.make(() => ({ input, output, errors,
  * protocol: AwsProtocol, retry: Retry.Retry, operationName }))` calls; this
  * layer supplies everything AWS-specific per request:
  *
- *   encode:  idempotency-token fill → wire-family serializer (awsJson 1.0/1.1,
- *            awsQuery, ec2Query, restJson1, restXml — discovered from the
- *            input schema's protocol trait) → annotation middleware
- *            (checksums, streaming bodies) → endpoint resolution (custom
+ *   encode:  idempotency-token fill -> wire-family serializer (awsJson 1.0/1.1,
+ *            awsQuery, ec2Query, restJson1, restXml -- discovered from the
+ *            input schema's protocol trait) -> annotation middleware
+ *            (checksums, streaming bodies) -> endpoint resolution (custom
  *            Endpoint service, compiled Smithy endpoint rules, or the
- *            `https://{service}.{region}.amazonaws.com` fallback) → SigV4
+ *            `https://{service}.{region}.amazonaws.com` fallback) -> SigV4
  *            signing with per-request lazy Credentials/Region.
  *
- *   decode:  wire-family deserializer → event-stream parsing → output schema
+ *   decode:  wire-family deserializer -> event-stream parsing -> output schema
  *            decode; error responses map wire codes onto the operation's
  *            typed error classes (plus the shared COMMON_ERRORS), stamping
  *            server `retryAfterSeconds` hints as the `retryAfter` Duration
@@ -23,7 +23,7 @@ import * as API from "@distilled.cloud/core/api";
  *
  * Per-operation preprocessing (serializer construction, error maps, endpoint
  * rules) is keyed off the operation config's identity, which `API.make`
- * memoizes — so it runs once per operation per process.
+ * memoizes -- so it runs once per operation per process.
  */
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
@@ -67,14 +67,14 @@ interface Prepared {
     body: string | ReadableStream<Uint8Array>;
   }) => Effect.Effect<any, any, any>;
   readonly sigv4: { name: string } | undefined;
-  /** Legacy SigV2 (SimpleDB only) — signs via body parameters, no header. */
+  /** Legacy SigV2 (SimpleDB only) -- signs via body parameters, no header. */
   readonly sigv2: unknown;
   readonly serviceSdkId: string | undefined;
   readonly resolveEndpoint: ReturnType<typeof makeEndpointResolver>;
 }
 
 // Keyed by the operation config object, which API.make memoizes per
-// operation — one entry per operation per process.
+// operation -- one entry per operation per process.
 const preparedOps = new WeakMap<API.ProtocolOperationConfig, Prepared>();
 
 const prepare = (config: API.ProtocolOperationConfig): Prepared => {
@@ -113,7 +113,7 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
 };
 
 // The protocol layer is memoized per process by `API.make` (see
-// `OperationConfig.protocol`), so the build must not capture credentials —
+// `OperationConfig.protocol`), so the build must not capture credentials --
 // `encode` resolves Credentials/Region/Endpoint from the calling fiber's
 // context on every request instead (credentials are lazy: the service holds
 // an effect, so refreshes are picked up per call). The requirements and
@@ -145,8 +145,8 @@ const encode = ({
 
     const credentials = yield* yield* Credentials.Credentials;
     // The region the credentials authenticated against, unless this scope
-    // provides a `Region` override. `Region` is optional — it isn't in any
-    // operation's requirements — so it's read with `serviceOption`.
+    // provides a `Region` override. `Region` is optional -- it isn't in any
+    // operation's requirements -- so it's read with `serviceOption`.
     const regionOverride = yield* Effect.serviceOption(Region.Region);
     const region = Option.isSome(regionOverride) ? yield* regionOverride.value : credentials.region;
     const serviceName = sigv4?.name ?? "s3";
@@ -231,7 +231,7 @@ const encode = ({
 
     // Legacy Signature Version 2 (SimpleDB is the sole remaining SigV2-only
     // service). The signature is an HMAC-SHA256 over the sorted,
-    // RFC3986-encoded form parameters and travels IN the form-encoded body —
+    // RFC3986-encoded form parameters and travels IN the form-encoded body --
     // there is no Authorization header. The classic endpoint rejects SigV4
     // with `AuthFailure: access credentials are missing`.
     if (sigv2) {
@@ -313,7 +313,7 @@ const encode = ({
     const hasBody = resolvedRequest.body !== undefined;
     // Operations with a streaming input payload (smithy `@streaming` blob)
     // sign as UNSIGNED-PAYLOAD even when the caller supplied a buffered
-    // value — except for services that reject it and require the real
+    // value -- except for services that reject it and require the real
     // payload hash (they reconstruct the canonical request from the body):
     // Glacier, SageMaker Runtime, AppConfig, API Gateway Management,
     // Bedrock Runtime, IoT Data Plane, IoT Wireless, and Lambda.
@@ -345,7 +345,7 @@ const encode = ({
     // as "s3" when the header is absent, so pre-compute the real payload
     // SHA-256 here (matching the official SDK's applyChecksum behavior).
     // Glacier likewise REQUIRES the x-amz-content-sha256 header on
-    // payload-bearing requests (UploadArchive / UploadMultipartPart) — the
+    // payload-bearing requests (UploadArchive / UploadMultipartPart) -- the
     // service reconstructs the canonical request from that header, so
     // omitting it fails with InvalidSignatureException (the official SDK's
     // addChecksumHeaders middleware always sets it).
@@ -466,7 +466,7 @@ const decode = ({
     const responseHeaders = response.headers as Record<string, string>;
 
     // Create response body stream. HEAD requests never have a body, and some
-    // responses have no body (204, etc.) — Effect's HttpClientResponse.stream
+    // responses have no body (204, etc.) -- Effect's HttpClientResponse.stream
     // raises on empty bodies, so detect those up front.
     const contentLength = responseHeaders["content-length"];
     const isEmptyBody =
@@ -475,8 +475,8 @@ const decode = ({
       ? new ReadableStream<Uint8Array>({ start: (c) => c.close() })
       : yield* Stream.toReadableStreamEffect(response.stream);
 
-    // Parse the response: success → protocol deserialization + schema
-    // decoding (+ event streams); error → typed error matching.
+    // Parse the response: success -> protocol deserialization + schema
+    // decoding (+ event streams); error -> typed error matching.
     const parsed = yield* parseResponse({
       status: response.status,
       statusText: "OK",

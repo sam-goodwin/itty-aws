@@ -1,10 +1,10 @@
 /**
- * Typesense credentials — hand-written.
+ * Typesense credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's typesense credentials module:
  * a static API key sent as the `X-TYPESENSE-API-KEY` header plus a
  * caller-supplied base URL. The `Credentials` service holds an *effect* so
- * layers may resolve the key lazily (env, vaults, …).
+ * layers may resolve the key lazily (env, vaults, ...).
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
@@ -14,7 +14,7 @@ import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 
 /**
- * Typesense has no fixed default base URL — users run their own server
+ * Typesense has no fixed default base URL -- users run their own server
  * (e.g. http://localhost:8108) or use Typesense Cloud (per-cluster URLs
  * like https://xxx.a1.typesense.net). Users must supply TYPESENSE_API_URL.
  */

@@ -1,6 +1,6 @@
 import * as Retries from "@distilled.cloud/core/retry";
 /**
- * Hetzner retry surface — a veneer over `@distilled.cloud/core/retry`.
+ * Hetzner retry surface -- a veneer over `@distilled.cloud/core/retry`.
  *
  * The `Retry` service tag is threaded into every generated operation via
  * `API.make({ retry: Retry })`, so a caller-installed policy applies to all
@@ -9,7 +9,7 @@ import * as Retries from "@distilled.cloud/core/retry";
  *
  * Hetzner answers a tripped rate limit with `429 rate_limit_exceeded` and no
  * `Retry-After`, so `TooManyRequests` arrives without a server hint and the
- * default policy's own capped backoff drives the wait — which is what you
+ * default policy's own capped backoff drives the wait -- which is what you
  * want here, since the `RateLimit-Reset` header Hetzner does send points at
  * the FULL quota refill rather than at the next available request (see
  * protocol.ts).

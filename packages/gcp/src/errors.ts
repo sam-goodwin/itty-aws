@@ -38,7 +38,7 @@ export class GCPParseError extends Schema.TaggedError<GCPParseError>()("GCPParse
 }).pipe(Category.withParseError) {}
 
 /**
- * Resolving credentials failed — e.g. the workload identity token exchange
+ * Resolving credentials failed -- e.g. the workload identity token exchange
  * was rejected. Never carries the tokens themselves.
  */
 export class GCPCredentialsError extends Schema.TaggedError<GCPCredentialsError>()(

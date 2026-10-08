@@ -244,7 +244,7 @@ export const isThrottling = (error: unknown): boolean => {
 /**
  * Check if an error is an Effect `HttpClientError` caused by a wire-level
  * transport failure (undici `ConnectTimeoutError`, socket reset, DNS
- * failure, premature stream close, …). The request never reached the
+ * failure, premature stream close, ...). The request never reached the
  * server (or the response never finished) so retrying is safe.
  *
  * Status-code retries are intentionally left to the per-SDK API client,

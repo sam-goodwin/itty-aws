@@ -1,16 +1,16 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Okta credentials — hand-written.
+ * Okta credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request
  * on the calling fiber). Dual-mode auth:
  *
- *   SSWS API token → `Authorization: SSWS <apiToken>`
- *   OAuth access token → `Authorization: Bearer <apiToken>`
+ *   SSWS API token -> `Authorization: SSWS <apiToken>`
+ *   OAuth access token -> `Authorization: Bearer <apiToken>`
  *
- * There is no global Okta host — every org has its own domain
- * (`https://dev-123456.okta.com`, a custom domain, …), so `apiBaseUrl` is
+ * There is no global Okta host -- every org has its own domain
+ * (`https://dev-123456.okta.com`, a custom domain, ...), so `apiBaseUrl` is
  * required.
  */
 import * as Context from "effect/Context";

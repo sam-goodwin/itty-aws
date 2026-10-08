@@ -7,8 +7,8 @@
  *
  * Whop answers every failure with a single `error` object carrying a
  * machine-readable `type` (`invalid_parameters`, `parameter_missing`,
- * `not_found`, …) beside the human-readable `message`. The status is what
- * the SDK dispatches on — that is what the specs declare per operation — and
+ * `not_found`, ...) beside the human-readable `message`. The status is what
+ * the SDK dispatches on -- that is what the specs declare per operation -- and
  * the finer-grained `type` rides through on `code`, both on the typed
  * per-operation classes and on {@link UnknownWhopError}.
  *
@@ -37,7 +37,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * HTTP 402 — the call is well-formed but the money isn't there: an ad
+ * HTTP 402 -- the call is well-formed but the money isn't there: an ad
  * campaign whose payment failed, media generation billed against a balance
  * that can't cover it. Retrying unchanged keeps failing until the balance is
  * topped up, so it is NOT marked retryable.
@@ -51,7 +51,7 @@ export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()("Paym
 }).pipe(Category.withBadRequestError) {}
 
 /**
- * Unknown Whop error — returned when a failed response's HTTP status has no
+ * Unknown Whop error -- returned when a failed response's HTTP status has no
  * mapped error class. `code` carries the envelope's `error.type` (the
  * machine-parsable half of Whop's error object) and `body` the raw payload,
  * so an unmapped status is still actionable.

@@ -1,11 +1,11 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Vercel credentials — hand-written.
+ * Vercel credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl }` per request; the
  * protocol layer formats the `Authorization: Bearer <token>` header from it.
- * The token is a Vercel access token — personal, team, or an OAuth
- * integration's — the REST API accepts all of them as bearer tokens.
+ * The token is a Vercel access token -- personal, team, or an OAuth
+ * integration's -- the REST API accepts all of them as bearer tokens.
  *
  * Vercel scopes most requests to a team via the `teamId`/`slug` QUERY
  * parameters, which the spec declares per operation; they stay ordinary input

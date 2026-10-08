@@ -7,7 +7,7 @@ import {
 import { getAnn, getProps, hasPropAnn, mapKeys } from "@distilled.cloud/core/protocol-http";
 import { unwrapRedactedDeep } from "@distilled.cloud/core/protocol-rest";
 /**
- * AcmeProtocol — hand-written.
+ * AcmeProtocol -- hand-written.
  *
  * ACME (RFC 8555) is JSON over HTTPS with two twists the generic REST
  * protocol cannot express:

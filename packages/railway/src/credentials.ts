@@ -1,11 +1,11 @@
 /**
- * Railway credentials — hand-written.
+ * Railway credentials -- hand-written.
  *
  * Railway's public API is a single GraphQL endpoint. It accepts two kinds of
  * token, and they go in *different headers*:
  *
- *   • account / team tokens → `Authorization: Bearer <token>`
- *   • project tokens        → `Project-Access-Token: <token>`
+ *   * account / team tokens -> `Authorization: Bearer <token>`
+ *   * project tokens        -> `Project-Access-Token: <token>`
  *
  * A project token is scoped to one environment of one project and is what CI
  * usually gets; sending it as a Bearer token fails to authenticate, so the
@@ -26,9 +26,9 @@ export const DEFAULT_API_BASE_URL = "https://backboard.railway.com";
 /**
  * Which header carries the token.
  *
- * - `"account"` — `Authorization: Bearer <token>`; personal, team, and
+ * - `"account"` -- `Authorization: Bearer <token>`; personal, team, and
  *   workspace tokens from https://railway.com/account/tokens
- * - `"project"` — `Project-Access-Token: <token>`; a token scoped to a single
+ * - `"project"` -- `Project-Access-Token: <token>`; a token scoped to a single
  *   project environment
  */
 export type TokenKind = "account" | "project";
@@ -81,12 +81,12 @@ const MISSING_TOKEN =
 /**
  * Build {@link Credentials} from environment variables.
  *
- * - `RAILWAY_API_TOKEN` or `RAILWAY_TOKEN` — an account/team token, sent as
+ * - `RAILWAY_API_TOKEN` or `RAILWAY_TOKEN` -- an account/team token, sent as
  *   `Authorization: Bearer`. (`RAILWAY_TOKEN` is the name the Railway CLI
  *   uses.)
- * - `RAILWAY_PROJECT_TOKEN` — a project-scoped token, sent as
+ * - `RAILWAY_PROJECT_TOKEN` -- a project-scoped token, sent as
  *   `Project-Access-Token`.
- * - `RAILWAY_API_URL` (optional) — override the host. Defaults to
+ * - `RAILWAY_API_URL` (optional) -- override the host. Defaults to
  *   `https://backboard.railway.com`.
  *
  * An account token wins when both kinds are set: it is the broader

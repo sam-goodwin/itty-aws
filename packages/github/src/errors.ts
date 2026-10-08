@@ -27,7 +27,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * HTTP 410 — the resource existed and no longer serves: issues disabled on a
+ * HTTP 410 -- the resource existed and no longer serves: issues disabled on a
  * repository, a migration archive that has been deleted, a gist that was
  * removed. Core's shared status map has no entry for it (410 is rare outside
  * GitHub), so the package adds one; generated operations that declare a 410
@@ -39,7 +39,7 @@ export class Gone extends Schema.TaggedError<Gone>()("Gone", {
 }).pipe(Category.withNotFoundError) {}
 
 /**
- * Unknown GitHub error — returned when a failed response's HTTP status has no
+ * Unknown GitHub error -- returned when a failed response's HTTP status has no
  * mapped error class. Carries the raw body for later cataloging.
  */
 export class UnknownGithubError extends Schema.TaggedError<UnknownGithubError>()(

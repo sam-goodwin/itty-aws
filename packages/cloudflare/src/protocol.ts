@@ -28,7 +28,7 @@ import {
   responseCodeSymbol,
 } from "@distilled.cloud/core/trait";
 /**
- * CloudflareProtocol — hand-written.
+ * CloudflareProtocol -- hand-written.
  *
  * Speaks Cloudflare's client-v4 JSON protocol. The generic request/response
  * machinery (trait-driven request building, recursive wire-name mapping,
@@ -36,19 +36,19 @@ import {
  * `@distilled.cloud/core/protocol-http`; this module supplies what is
  * Cloudflare's own:
  *
- *   request:  credentials → auth headers + API base URL, the Bearer-prefix
+ *   request:  credentials -> auth headers + API base URL, the Bearer-prefix
  *             quirk for member-supplied Authorization headers, snake_case
  *             wire names for unknown input keys
  *
  *   response: { success, errors, messages, result, result_info }
- *             • success:false / non-2xx → typed error, matched like the
+ *             * success:false / non-2xx -> typed error, matched like the
  *               distilled cloudflare client (per-op matchers, global error
  *               codes, throttling, HTTP status, unknown fallback)
- *             • result (the payload) → mapped onto the output schema:
- *                 EnvelopePayload()  → receives the whole `result`
- *                 Header(name?)      → read from a response header
- *                 ResponseCode()     → the HTTP status code
- *                 (otherwise)        → result.<field>
+ *             * result (the payload) -> mapped onto the output schema:
+ *                 EnvelopePayload()  -> receives the whole `result`
+ *                 Header(name?)      -> read from a response header
+ *                 ResponseCode()     -> the HTTP status code
+ *                 (otherwise)        -> result.<field>
  */
 import * as Effect from "effect/Effect";
 import type * as HttpClient from "effect/http/HttpClient";
@@ -92,7 +92,7 @@ export type CloudflareOpError =
   | OAuthRefreshError
   // Injected into every generated operation's `errors: [...]` list by the
   // codegen (`operationDecl.commonErrorClasses`), so they belong in the
-  // declared union too — otherwise each operation's type claims it can't
+  // declared union too -- otherwise each operation's type claims it can't
   // fail the two ways every operation can.
   | CloudflareError
   | CloudflareRateLimited
@@ -108,7 +108,7 @@ export type CloudflareOpContext = Credentials | HttpClient.HttpClient;
 const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
 
 /**
- * Mark an error instance retryable regardless of its class categories —
+ * Mark an error instance retryable regardless of its class categories --
  * used for dual-use Cloudflare codes whose transient variant is only
  * identifiable from the message.
  */
@@ -121,21 +121,21 @@ const GLOBAL_RATE_LIMIT_MESSAGE = /\b(rate ?limit(ed|ing)?|throttl(ed|ing) your 
 
 /**
  * Cloudflare error codes that map to global/default errors regardless of
- * operation — infrastructure-level errors that can occur on any endpoint.
+ * operation -- infrastructure-level errors that can occur on any endpoint.
  * Transcribed from the distilled cloudflare client.
  */
 const GLOBAL_ERROR_CODE_MAP: Record<
   number,
   (message: string, headers?: Record<string, string | undefined>) => unknown
 > = {
-  // "Please wait and consider throttling your request speed" — returned
+  // "Please wait and consider throttling your request speed" -- returned
   // inside envelopes with arbitrary HTTP status (often 200).
   971: (message, headers) =>
     new TooManyRequests({
       message,
       retryAfter: parseServerRetryHint(headers),
     }),
-  // Authentication-related codes — Cloudflare frequently returns these
+  // Authentication-related codes -- Cloudflare frequently returns these
   // inside a 400/403 envelope rather than 401.
   6003: (message) => new Unauthorized({ message }),
   9103: (message) => new Unauthorized({ message }),
@@ -144,7 +144,7 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   // "Authentication error" is tagged retryable: under high request
   // concurrency Cloudflare intermittently rejects valid, long-lived tokens
   // with this message (the same call against the same zone succeeds in
-  // isolation — verified in alchemy's provider suite, which previously
+  // isolation -- verified in alchemy's provider suite, which previously
   // carried this as a custom retry predicate). A genuinely invalid token
   // produces the same message persistently, but the default retry policy is
   // bounded, so it still fails within seconds of backoff instead of looping;
@@ -157,14 +157,14 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   // (NOT retryable); "internal error" is a CF hiccup mistagged as 403, and
   // "Unable to authenticate request" is a transient auth/edge blip against
   // otherwise-valid credentials (real credential problems surface as code
-  // 10000 instead) — those two variants are tagged retryable.
+  // 10000 instead) -- those two variants are tagged retryable.
   10001: (message) => {
     const error = new Forbidden({ message });
     return /internal error|unable to authenticate request/i.test(message)
       ? tagRetryable(error)
       : error;
   },
-  // "Invalid request: invalid route" — a path component (typically
+  // "Invalid request: invalid route" -- a path component (typically
   // accountId/zoneId) doesn't resolve to a real resource.
   7003: (message) => new InvalidRoute({ code: 7003, message }),
   // Dual-use code 1000: several unrelated conditions, each unambiguous from
@@ -218,7 +218,7 @@ const camelToSnake = (key: string): string =>
 
 /**
  * A member-supplied Authorization header (e.g. the asset-upload session JWT)
- * is a raw token — Bearer-prefix it like distilled's request transform does.
+ * is a raw token -- Bearer-prefix it like distilled's request transform does.
  */
 const bearerPrefixAuthorization = (name: string, value: string): string =>
   name === "authorization" && !/^Bearer\s/i.test(value) ? `Bearer ${value}` : value;
@@ -242,7 +242,7 @@ const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
     host = host.replace(`{${nameOf(prop, labelSymbol)}}`, () => encodeURIComponent(String(value)));
   }
   if (/\{[^}]+\}/.test(host)) {
-    // A required label left unset — the same codegen/caller bug a missing
+    // A required label left unset -- the same codegen/caller bug a missing
     // path label is, surfaced as a defect by the calling Effect.
     throw new Error(`operation input is missing a host label for ${template}`);
   }
@@ -250,7 +250,7 @@ const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
 };
 
 // The protocol layer is memoized per process by `API.make` (see
-// `OperationConfig.protocol`), so the build must not capture credentials —
+// `OperationConfig.protocol`), so the build must not capture credentials --
 // `encode` resolves Credentials from the calling fiber's context on
 // every request instead. Like the error channel above, the requirement is
 // erased at this boundary (Protocol effects are typed with no requirements)
@@ -258,7 +258,7 @@ const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
 // annotations.
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
   Effect.gen(function* () {
-    // The Credentials service holds an effect — resolving it here (per
+    // The Credentials service holds an effect -- resolving it here (per
     // request) picks up token refreshes. Its ConfigError/OAuthRefreshError
     // channel is erased at this boundary like the rest of encode's
     // requirements; CloudflareOpError reintroduces it for callers.
@@ -286,7 +286,7 @@ const camelizeKeys = (v: unknown): unknown => {
 };
 
 /**
- * Whether an output member's AST expects a number — used to convert
+ * Whether an output member's AST expects a number -- used to convert
  * header-projected values (headers arrive as strings; e.g.
  * `content-length`).
  */
@@ -314,7 +314,7 @@ const makeDecode =
     Effect.gen(function* () {
       // Raw binary response: when an output member carries
       // `BinaryResponseBody()`, a successful response is decoded from the
-      // response headers plus the body as a lazy byte stream — the body is
+      // response headers plus the body as a lazy byte stream -- the body is
       // never consumed as text. Error statuses (JSON envelopes) fall
       // through to the normal path below.
       if (response.status < 400) {
@@ -339,7 +339,7 @@ const makeDecode =
         }
       }
 
-      // Read as text and parse tolerantly — Cloudflare answers some errors
+      // Read as text and parse tolerantly -- Cloudflare answers some errors
       // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
       const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
       if (process.env.DISTILLED_DEBUG_HTTP) {
@@ -362,7 +362,7 @@ const makeDecode =
       const status = response.status;
       const headers = response.headers as Record<string, string | undefined>;
 
-      // Error envelope or non-2xx → typed error, matched like the distilled
+      // Error envelope or non-2xx -> typed error, matched like the distilled
       // cloudflare client: per-operation matchers, then global error codes,
       // then throttling, then HTTP-status classes, then the unknown fallback.
       const failed = status >= 400 || (!nonJson && json.success === false);
@@ -383,7 +383,7 @@ const makeDecode =
         const errorMessage = nonJson ? text : (first?.message ?? `HTTP ${status}`);
 
         // Transient auth blips must be tagged retryable on EVERY error path,
-        // including per-operation typed errors — an op-declared class with a
+        // including per-operation typed errors -- an op-declared class with a
         // status/code matcher (e.g. a plain Forbidden) otherwise intercepts
         // the blip before the global map's tagging and the retry policy never
         // sees it. Message evidence (see GLOBAL_ERROR_CODE_MAP for the field
@@ -411,7 +411,7 @@ const makeDecode =
           return yield* fail(tagBlip(GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers)));
         }
 
-        // 3. Throttling — 429 or the global rate-limit message (Cloudflare
+        // 3. Throttling -- 429 or the global rate-limit message (Cloudflare
         // returns it inside envelopes with arbitrary HTTP status, often 200).
         if (status === 429 || GLOBAL_RATE_LIMIT_MESSAGE.test(errorMessage)) {
           return yield* fail(
@@ -463,7 +463,7 @@ const makeDecode =
 
       // Unwrap the envelope: the payload is `result` (fall back to the whole
       // body for the handful of endpoints that don't use the envelope). A
-      // successful non-JSON body is the payload verbatim — e.g. the
+      // successful non-JSON body is the payload verbatim -- e.g. the
       // security.txt GET answers an unconfigured zone with a bare non-JSON
       // sentinel that callers detect by `typeof === "string"`.
       const payload = (nonJson ? text : "result" in json ? json.result : json) as
@@ -498,7 +498,7 @@ const makeDecode =
           result[key] = response.status;
         } else {
           // The schema's own wire name first; fall back to the service key
-          // dictionary (mined from the distilled SDK) — the docs sometimes
+          // dictionary (mined from the distilled SDK) -- the docs sometimes
           // document a field under a name the live wire doesn't use (e.g. R2
           // event notifications document `queueId` but the wire sends
           // `queue`), and the dictionary carries the real mapping.

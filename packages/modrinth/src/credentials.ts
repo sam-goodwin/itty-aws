@@ -1,12 +1,12 @@
 /**
- * Modrinth credentials — hand-written.
+ * Modrinth credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request
  * on the calling fiber).
  *
  * Most Labrinth endpoints are public. Authenticated calls send the token as
- * `Authorization: {token}` (no Bearer prefix) — personal access tokens and
+ * `Authorization: {token}` (no Bearer prefix) -- personal access tokens and
  * OAuth access tokens are both accepted. Requests without a uniquely
  * identifying User-Agent are rejected.
  */

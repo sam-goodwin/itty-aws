@@ -1,5 +1,5 @@
 /**
- * Endpoint override for every GCP request — emulators (Pub/Sub,
+ * Endpoint override for every GCP request -- emulators (Pub/Sub,
  * Firestore, Storage) and private or proxied hosts. When set, it replaces
  * the scheme and host of the request URL; the path is kept.
  */

@@ -72,7 +72,7 @@ const CoinbaseErrorFields = {
 // --- Payment / Billing ---
 
 /**
- * Payment method required — a valid payment method is required (HTTP 402).
+ * Payment method required -- a valid payment method is required (HTTP 402).
  * errorType: "payment_method_required" | "payment_required"
  */
 export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()(
@@ -83,7 +83,7 @@ export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()(
 // --- Idempotency ---
 
 /**
- * Idempotency key conflict — the same key was used with different request params (HTTP 422).
+ * Idempotency key conflict -- the same key was used with different request params (HTTP 422).
  * errorType: "idempotency_error"
  */
 export class IdempotencyError extends Schema.TaggedError<IdempotencyError>()(
@@ -94,7 +94,7 @@ export class IdempotencyError extends Schema.TaggedError<IdempotencyError>()(
 // --- Resource Conflicts ---
 
 /**
- * Resource already exists — trying to create a duplicate resource (HTTP 409).
+ * Resource already exists -- trying to create a duplicate resource (HTTP 409).
  * errorType: "already_exists"
  */
 export class AlreadyExists extends Schema.TaggedError<AlreadyExists>()(
@@ -105,7 +105,7 @@ export class AlreadyExists extends Schema.TaggedError<AlreadyExists>()(
 // --- Faucet ---
 
 /**
- * Faucet limit exceeded — too many faucet requests.
+ * Faucet limit exceeded -- too many faucet requests.
  * errorType: "faucet_limit_exceeded"
  */
 export class FaucetLimitExceeded extends Schema.TaggedError<FaucetLimitExceeded>()(
@@ -116,7 +116,7 @@ export class FaucetLimitExceeded extends Schema.TaggedError<FaucetLimitExceeded>
 // --- Query ---
 
 /**
- * Invalid SQL query — the underlying SQL string is invalid.
+ * Invalid SQL query -- the underlying SQL string is invalid.
  * errorType: "invalid_sql_query"
  */
 export class InvalidSqlQuery extends Schema.TaggedError<InvalidSqlQuery>()(
@@ -127,7 +127,7 @@ export class InvalidSqlQuery extends Schema.TaggedError<InvalidSqlQuery>()(
 // --- Signing / Transaction ---
 
 /**
- * Invalid signature — the transaction or message signature is invalid.
+ * Invalid signature -- the transaction or message signature is invalid.
  * errorType: "invalid_signature"
  */
 export class InvalidSignature extends Schema.TaggedError<InvalidSignature>()(
@@ -136,7 +136,7 @@ export class InvalidSignature extends Schema.TaggedError<InvalidSignature>()(
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Malformed transaction — the transaction data is malformed.
+ * Malformed transaction -- the transaction data is malformed.
  * errorType: "malformed_transaction"
  */
 export class MalformedTransaction extends Schema.TaggedError<MalformedTransaction>()(
@@ -145,7 +145,7 @@ export class MalformedTransaction extends Schema.TaggedError<MalformedTransactio
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Settlement failed — payment settlement could not be completed.
+ * Settlement failed -- payment settlement could not be completed.
  * errorType: "settlement_failed"
  */
 export class SettlementFailed extends Schema.TaggedError<SettlementFailed>()(
@@ -156,7 +156,7 @@ export class SettlementFailed extends Schema.TaggedError<SettlementFailed>()(
 // --- Timeout / Abort ---
 
 /**
- * Request timed out — the server did not respond in time.
+ * Request timed out -- the server did not respond in time.
  * errorType: "timed_out"
  */
 export class TimedOut extends Schema.TaggedError<TimedOut>()("TimedOut", CoinbaseErrorFields).pipe(
@@ -165,7 +165,7 @@ export class TimedOut extends Schema.TaggedError<TimedOut>()("TimedOut", Coinbas
 ) {}
 
 /**
- * Client closed request — the client disconnected before the response.
+ * Client closed request -- the client disconnected before the response.
  * errorType: "client_closed_request"
  */
 export class ClientClosedRequest extends Schema.TaggedError<ClientClosedRequest>()(
@@ -174,7 +174,7 @@ export class ClientClosedRequest extends Schema.TaggedError<ClientClosedRequest>
 ).pipe(Category.withAbortedError) {}
 
 /**
- * Request canceled — the request was canceled.
+ * Request canceled -- the request was canceled.
  * errorType: "request_canceled"
  */
 export class RequestCanceled extends Schema.TaggedError<RequestCanceled>()(
@@ -185,7 +185,7 @@ export class RequestCanceled extends Schema.TaggedError<RequestCanceled>()(
 // --- Policy ---
 
 /**
- * Policy violation — the request violated an account or project policy.
+ * Policy violation -- the request violated an account or project policy.
  * errorType: "policy_violation"
  */
 export class PolicyViolation extends Schema.TaggedError<PolicyViolation>()(
@@ -194,7 +194,7 @@ export class PolicyViolation extends Schema.TaggedError<PolicyViolation>()(
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Policy in use — the policy cannot be deleted because it's in use.
+ * Policy in use -- the policy cannot be deleted because it's in use.
  * errorType: "policy_in_use"
  */
 export class PolicyInUse extends Schema.TaggedError<PolicyInUse>()(
@@ -205,7 +205,7 @@ export class PolicyInUse extends Schema.TaggedError<PolicyInUse>()(
 // --- Account Limits / State ---
 
 /**
- * Account limit exceeded — too many accounts created.
+ * Account limit exceeded -- too many accounts created.
  * errorType: "account_limit_exceeded"
  */
 export class AccountLimitExceeded extends Schema.TaggedError<AccountLimitExceeded>()(
@@ -214,7 +214,7 @@ export class AccountLimitExceeded extends Schema.TaggedError<AccountLimitExceede
 ).pipe(Category.withQuotaError) {}
 
 /**
- * Insufficient balance — the account does not have enough funds.
+ * Insufficient balance -- the account does not have enough funds.
  * errorType: "insufficient_balance"
  */
 export class InsufficientBalance extends Schema.TaggedError<InsufficientBalance>()(
@@ -223,7 +223,7 @@ export class InsufficientBalance extends Schema.TaggedError<InsufficientBalance>
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Account not ready — the account is not in a ready state for the operation.
+ * Account not ready -- the account is not in a ready state for the operation.
  * errorType: "account_not_ready"
  */
 export class AccountNotReady extends Schema.TaggedError<AccountNotReady>()(
@@ -234,7 +234,7 @@ export class AccountNotReady extends Schema.TaggedError<AccountNotReady>()(
 // --- MFA ---
 
 /**
- * MFA required — multi-factor authentication is required.
+ * MFA required -- multi-factor authentication is required.
  * errorType: "mfa_required"
  */
 export class MfaRequired extends Schema.TaggedError<MfaRequired>()(
@@ -243,7 +243,7 @@ export class MfaRequired extends Schema.TaggedError<MfaRequired>()(
 ).pipe(Category.withAuthError) {}
 
 /**
- * MFA already enrolled — the user already has MFA set up.
+ * MFA already enrolled -- the user already has MFA set up.
  * errorType: "mfa_already_enrolled"
  */
 export class MfaAlreadyEnrolled extends Schema.TaggedError<MfaAlreadyEnrolled>()(
@@ -252,7 +252,7 @@ export class MfaAlreadyEnrolled extends Schema.TaggedError<MfaAlreadyEnrolled>()
 ).pipe(Category.withConflictError) {}
 
 /**
- * MFA invalid code — the provided MFA code is incorrect.
+ * MFA invalid code -- the provided MFA code is incorrect.
  * errorType: "mfa_invalid_code"
  */
 export class MfaInvalidCode extends Schema.TaggedError<MfaInvalidCode>()(
@@ -261,7 +261,7 @@ export class MfaInvalidCode extends Schema.TaggedError<MfaInvalidCode>()(
 ).pipe(Category.withAuthError) {}
 
 /**
- * MFA flow expired — the MFA verification flow has expired.
+ * MFA flow expired -- the MFA verification flow has expired.
  * errorType: "mfa_flow_expired"
  */
 export class MfaFlowExpired extends Schema.TaggedError<MfaFlowExpired>()(
@@ -270,7 +270,7 @@ export class MfaFlowExpired extends Schema.TaggedError<MfaFlowExpired>()(
 ).pipe(Category.withAuthError) {}
 
 /**
- * MFA not enrolled — the user has not set up MFA.
+ * MFA not enrolled -- the user has not set up MFA.
  * errorType: "mfa_not_enrolled"
  */
 export class MfaNotEnrolled extends Schema.TaggedError<MfaNotEnrolled>()(
@@ -281,7 +281,7 @@ export class MfaNotEnrolled extends Schema.TaggedError<MfaNotEnrolled>()(
 // --- Network / Swap ---
 
 /**
- * Network not tradable — the specified network does not support trading.
+ * Network not tradable -- the specified network does not support trading.
  * errorType: "network_not_tradable"
  */
 export class NetworkNotTradable extends Schema.TaggedError<NetworkNotTradable>()(
@@ -292,7 +292,7 @@ export class NetworkNotTradable extends Schema.TaggedError<NetworkNotTradable>()
 // --- Guest (Onramp) ---
 
 /**
- * Guest permission denied — the guest user does not have permission for this action.
+ * Guest permission denied -- the guest user does not have permission for this action.
  * errorType: "guest_permission_denied"
  */
 export class GuestPermissionDenied extends Schema.TaggedError<GuestPermissionDenied>()(
@@ -301,7 +301,7 @@ export class GuestPermissionDenied extends Schema.TaggedError<GuestPermissionDen
 ).pipe(Category.withAuthError) {}
 
 /**
- * Guest region forbidden — the guest user's region is not supported.
+ * Guest region forbidden -- the guest user's region is not supported.
  * errorType: "guest_region_forbidden"
  */
 export class GuestRegionForbidden extends Schema.TaggedError<GuestRegionForbidden>()(
@@ -310,7 +310,7 @@ export class GuestRegionForbidden extends Schema.TaggedError<GuestRegionForbidde
 ).pipe(Category.withAuthError) {}
 
 /**
- * Guest transaction limit — the guest user has exceeded their transaction amount limit.
+ * Guest transaction limit -- the guest user has exceeded their transaction amount limit.
  * errorType: "guest_transaction_limit"
  */
 export class GuestTransactionLimit extends Schema.TaggedError<GuestTransactionLimit>()(
@@ -319,7 +319,7 @@ export class GuestTransactionLimit extends Schema.TaggedError<GuestTransactionLi
 ).pipe(Category.withQuotaError) {}
 
 /**
- * Guest transaction count — the guest user has exceeded their transaction count limit.
+ * Guest transaction count -- the guest user has exceeded their transaction count limit.
  * errorType: "guest_transaction_count"
  */
 export class GuestTransactionCount extends Schema.TaggedError<GuestTransactionCount>()(
@@ -330,7 +330,7 @@ export class GuestTransactionCount extends Schema.TaggedError<GuestTransactionCo
 // --- Verification ---
 
 /**
- * Phone number verification expired — the phone number verification has expired.
+ * Phone number verification expired -- the phone number verification has expired.
  * errorType: "phone_number_verification_expired"
  */
 export class PhoneNumberVerificationExpired extends Schema.TaggedError<PhoneNumberVerificationExpired>()(
@@ -339,7 +339,7 @@ export class PhoneNumberVerificationExpired extends Schema.TaggedError<PhoneNumb
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Document verification failed — the document verification check failed.
+ * Document verification failed -- the document verification check failed.
  * errorType: "document_verification_failed"
  */
 export class DocumentVerificationFailed extends Schema.TaggedError<DocumentVerificationFailed>()(
@@ -350,7 +350,7 @@ export class DocumentVerificationFailed extends Schema.TaggedError<DocumentVerif
 // --- Recipient Allowlist ---
 
 /**
- * Recipient allowlist violation — the recipient address is not on the allowlist.
+ * Recipient allowlist violation -- the recipient address is not on the allowlist.
  * errorType: "recipient_allowlist_violation"
  */
 export class RecipientAllowlistViolation extends Schema.TaggedError<RecipientAllowlistViolation>()(
@@ -359,7 +359,7 @@ export class RecipientAllowlistViolation extends Schema.TaggedError<RecipientAll
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Recipient allowlist pending — the recipient address is pending allowlist approval.
+ * Recipient allowlist pending -- the recipient address is pending allowlist approval.
  * errorType: "recipient_allowlist_pending"
  */
 export class RecipientAllowlistPending extends Schema.TaggedError<RecipientAllowlistPending>()(
@@ -370,7 +370,7 @@ export class RecipientAllowlistPending extends Schema.TaggedError<RecipientAllow
 // --- Travel Rules ---
 
 /**
- * Travel rules recipient violation — the recipient violates travel rule requirements.
+ * Travel rules recipient violation -- the recipient violates travel rule requirements.
  * errorType: "travel_rules_recipient_violation"
  */
 export class TravelRulesRecipientViolation extends Schema.TaggedError<TravelRulesRecipientViolation>()(
@@ -379,7 +379,7 @@ export class TravelRulesRecipientViolation extends Schema.TaggedError<TravelRule
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Travel rules field missing — a required travel rules field is missing.
+ * Travel rules field missing -- a required travel rules field is missing.
  * errorType: "travel_rules_field_missing"
  */
 export class TravelRulesFieldMissing extends Schema.TaggedError<TravelRulesFieldMissing>()(
@@ -390,7 +390,7 @@ export class TravelRulesFieldMissing extends Schema.TaggedError<TravelRulesField
 // --- Account Validation ---
 
 /**
- * Source account invalid — the source account is not valid for this operation.
+ * Source account invalid -- the source account is not valid for this operation.
  * errorType: "source_account_invalid"
  */
 export class SourceAccountInvalid extends Schema.TaggedError<SourceAccountInvalid>()(
@@ -399,7 +399,7 @@ export class SourceAccountInvalid extends Schema.TaggedError<SourceAccountInvali
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Target account invalid — the target account is not valid for this operation.
+ * Target account invalid -- the target account is not valid for this operation.
  * errorType: "target_account_invalid"
  */
 export class TargetAccountInvalid extends Schema.TaggedError<TargetAccountInvalid>()(
@@ -408,7 +408,7 @@ export class TargetAccountInvalid extends Schema.TaggedError<TargetAccountInvali
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Source account not found — the source account does not exist.
+ * Source account not found -- the source account does not exist.
  * errorType: "source_account_not_found"
  */
 export class SourceAccountNotFound extends Schema.TaggedError<SourceAccountNotFound>()(
@@ -417,7 +417,7 @@ export class SourceAccountNotFound extends Schema.TaggedError<SourceAccountNotFo
 ).pipe(Category.withNotFoundError) {}
 
 /**
- * Target account not found — the target account does not exist.
+ * Target account not found -- the target account does not exist.
  * errorType: "target_account_not_found"
  */
 export class TargetAccountNotFound extends Schema.TaggedError<TargetAccountNotFound>()(
@@ -428,7 +428,7 @@ export class TargetAccountNotFound extends Schema.TaggedError<TargetAccountNotFo
 // --- Asset Support ---
 
 /**
- * Source asset not supported — the source asset is not supported for this operation.
+ * Source asset not supported -- the source asset is not supported for this operation.
  * errorType: "source_asset_not_supported"
  */
 export class SourceAssetNotSupported extends Schema.TaggedError<SourceAssetNotSupported>()(
@@ -437,7 +437,7 @@ export class SourceAssetNotSupported extends Schema.TaggedError<SourceAssetNotSu
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Target asset not supported — the target asset is not supported for this operation.
+ * Target asset not supported -- the target asset is not supported for this operation.
  * errorType: "target_asset_not_supported"
  */
 export class TargetAssetNotSupported extends Schema.TaggedError<TargetAssetNotSupported>()(
@@ -446,7 +446,7 @@ export class TargetAssetNotSupported extends Schema.TaggedError<TargetAssetNotSu
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Transfer asset not supported — the asset is not supported for transfers.
+ * Transfer asset not supported -- the asset is not supported for transfers.
  * errorType: "transfer_asset_not_supported"
  */
 export class TransferAssetNotSupported extends Schema.TaggedError<TransferAssetNotSupported>()(
@@ -455,7 +455,7 @@ export class TransferAssetNotSupported extends Schema.TaggedError<TransferAssetN
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Asset mismatch — the source and target assets do not match as expected.
+ * Asset mismatch -- the source and target assets do not match as expected.
  * errorType: "asset_mismatch"
  */
 export class AssetMismatch extends Schema.TaggedError<AssetMismatch>()(
@@ -466,7 +466,7 @@ export class AssetMismatch extends Schema.TaggedError<AssetMismatch>()(
 // --- Transfer Validation ---
 
 /**
- * Target email invalid — the target email address is not valid.
+ * Target email invalid -- the target email address is not valid.
  * errorType: "target_email_invalid"
  */
 export class TargetEmailInvalid extends Schema.TaggedError<TargetEmailInvalid>()(
@@ -475,7 +475,7 @@ export class TargetEmailInvalid extends Schema.TaggedError<TargetEmailInvalid>()
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Target onchain address invalid — the target onchain address is not valid.
+ * Target onchain address invalid -- the target onchain address is not valid.
  * errorType: "target_onchain_address_invalid"
  */
 export class TargetOnchainAddressInvalid extends Schema.TaggedError<TargetOnchainAddressInvalid>()(
@@ -484,7 +484,7 @@ export class TargetOnchainAddressInvalid extends Schema.TaggedError<TargetOnchai
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Transfer amount invalid — the transfer amount is not valid.
+ * Transfer amount invalid -- the transfer amount is not valid.
  * errorType: "transfer_amount_invalid"
  */
 export class TransferAmountInvalid extends Schema.TaggedError<TransferAmountInvalid>()(
@@ -495,7 +495,7 @@ export class TransferAmountInvalid extends Schema.TaggedError<TransferAmountInva
 // --- Metadata ---
 
 /**
- * Metadata too many entries — too many metadata entries were provided.
+ * Metadata too many entries -- too many metadata entries were provided.
  * errorType: "metadata_too_many_entries"
  */
 export class MetadataTooManyEntries extends Schema.TaggedError<MetadataTooManyEntries>()(
@@ -504,7 +504,7 @@ export class MetadataTooManyEntries extends Schema.TaggedError<MetadataTooManyEn
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Metadata key too long — a metadata key exceeds the maximum length.
+ * Metadata key too long -- a metadata key exceeds the maximum length.
  * errorType: "metadata_key_too_long"
  */
 export class MetadataKeyTooLong extends Schema.TaggedError<MetadataKeyTooLong>()(
@@ -513,7 +513,7 @@ export class MetadataKeyTooLong extends Schema.TaggedError<MetadataKeyTooLong>()
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Metadata value too long — a metadata value exceeds the maximum length.
+ * Metadata value too long -- a metadata value exceeds the maximum length.
  * errorType: "metadata_value_too_long"
  */
 export class MetadataValueTooLong extends Schema.TaggedError<MetadataValueTooLong>()(
@@ -524,7 +524,7 @@ export class MetadataValueTooLong extends Schema.TaggedError<MetadataValueTooLon
 // --- Order ---
 
 /**
- * Order quote expired — the order quote has expired and must be refreshed.
+ * Order quote expired -- the order quote has expired and must be refreshed.
  * errorType: "order_quote_expired"
  */
 export class OrderQuoteExpired extends Schema.TaggedError<OrderQuoteExpired>()(
@@ -533,7 +533,7 @@ export class OrderQuoteExpired extends Schema.TaggedError<OrderQuoteExpired>()(
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Order already filled — the order has already been filled.
+ * Order already filled -- the order has already been filled.
  * errorType: "order_already_filled"
  */
 export class OrderAlreadyFilled extends Schema.TaggedError<OrderAlreadyFilled>()(
@@ -542,7 +542,7 @@ export class OrderAlreadyFilled extends Schema.TaggedError<OrderAlreadyFilled>()
 ).pipe(Category.withConflictError) {}
 
 /**
- * Order already canceled — the order has already been canceled.
+ * Order already canceled -- the order has already been canceled.
  * errorType: "order_already_canceled"
  */
 export class OrderAlreadyCanceled extends Schema.TaggedError<OrderAlreadyCanceled>()(
@@ -676,7 +676,7 @@ export const ERROR_TYPE_MAP: Record<string, new (props: any) => unknown> = {
 // ============================================================================
 
 /**
- * Unknown Coinbase error — returned when an errorType is not recognized.
+ * Unknown Coinbase error -- returned when an errorType is not recognized.
  */
 export class UnknownCoinbaseError extends Schema.TaggedError<UnknownCoinbaseError>()(
   "UnknownCoinbaseError",
@@ -687,7 +687,7 @@ export class UnknownCoinbaseError extends Schema.TaggedError<UnknownCoinbaseErro
 ).pipe(Category.withServerError) {}
 
 /**
- * Schema parse error wrapper — returned when the response body fails schema decoding.
+ * Schema parse error wrapper -- returned when the response body fails schema decoding.
  */
 export class CoinbaseParseError extends Schema.TaggedError<CoinbaseParseError>()(
   "CoinbaseParseError",

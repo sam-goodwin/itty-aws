@@ -12,7 +12,7 @@ import type * as SigV4 from "./sigv4.ts";
  * The canonical message member every error class carries.
  *
  * Tagged with `T.ErrorMessage` so the response parser can find the message
- * without guessing at spelling — see the trait's docs and distilled #160.
+ * without guessing at spelling -- see the trait's docs and distilled #160.
  */
 const ErrorMessage = /*@__PURE__*/ S.optional(S.String).pipe(T.ErrorMessage());
 
@@ -20,7 +20,7 @@ const ErrorMessage = /*@__PURE__*/ S.optional(S.String).pipe(T.ErrorMessage());
 export class AccessDeniedException extends S.TaggedError<AccessDeniedException>()(
   "AccessDeniedException",
   {
-    // AWS explains WHICH action/resource was denied in the message — keep it
+    // AWS explains WHICH action/resource was denied in the message -- keep it
     // so callers (and test logs) can see the actual authorization failure.
     message: ErrorMessage,
   },
@@ -223,7 +223,7 @@ export type CommonAwsError =
  *
  * `HttpClientError` belongs here because `API.make` puts it in every
  * operation's error channel (the request can fail before any AWS response
- * exists — DNS, TLS, connection reset). Leaving it out made each generated
+ * exists -- DNS, TLS, connection reset). Leaving it out made each generated
  * operation's declared type narrower than what it can actually fail with.
  */
 export type CommonErrors =

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Archil credentials — hand-written.
+ * Archil credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request

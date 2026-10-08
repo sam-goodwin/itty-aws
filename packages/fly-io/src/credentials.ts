@@ -1,5 +1,5 @@
 /**
- * Fly.io credentials — hand-written.
+ * Fly.io credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request. The protocol layer resolves it per request
@@ -30,13 +30,13 @@ export const DEFAULT_API_BASE_URL = "https://api.machines.dev";
 /** UI-EX REST + GraphQL host (MPG, Tigris, Redis). Not overridable via an invented env var. */
 export const DEFAULT_FLY_API_BASE_URL = "https://api.fly.io";
 
-/** Sprites REST root. Auth is a bearer minted from `FLY_API_TOKEN` — never `SPRITES_TOKEN`. */
+/** Sprites REST root. Auth is a bearer minted from `FLY_API_TOKEN` -- never `SPRITES_TOKEN`. */
 export const DEFAULT_SPRITES_API_BASE_URL = "https://api.sprites.dev/v1";
 
 /**
  * Normalize a Fly API hostname into the Machines API base URL.
  *
- * - unset / empty → `https://api.machines.dev`
+ * - unset / empty -> `https://api.machines.dev`
  * - trailing slashes stripped
  * - a trailing `/v1` is dropped: `flyctl` and older consumers set
  *   `FLY_API_HOSTNAME` to the `/v1` root, and the routes already carry it

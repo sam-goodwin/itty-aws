@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Remote credentials — hand-written.
+ * Remote credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request

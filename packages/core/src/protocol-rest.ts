@@ -1,29 +1,29 @@
 /**
  * Generic REST protocol factory for simple bearer/header-auth JSON APIs
- * (Neon, Fly.io, PlanetScale, Supabase, Turso, …).
+ * (Neon, Fly.io, PlanetScale, Supabase, Turso, ...).
  *
  * `makeRestProtocol(options)` builds a core {@link API.Protocol} layer:
  *
  *   request:  credentials resolved from the CALLING fiber's context on every
- *             request (the layer itself is memoized per process — see
+ *             request (the layer itself is memoized per process -- see
  *             `core/api`), auth headers + base URL from the provider's
  *             options, request built by `buildRequest` from
  *             `core/protocol-http` (deep-unwrapping any `Redacted` input
  *             values first)
  *
- *   response: 2xx JSON → optional `transformResponse` → recursive wire→TS
- *             key mapping (`mapKeys`) → in strict mode, a schema check
+ *   response: 2xx JSON -> optional `transformResponse` -> recursive wire->TS
+ *             key mapping (`mapKeys`) -> in strict mode, a schema check
  *             failing with the provider's `parseError` (see
- *             `core/response-validation`) → `Redacted` wrapping of members
- *             marked with {@link SensitiveValue}; non-2xx → typed error:
+ *             `core/response-validation`) -> `Redacted` wrapping of members
+ *             marked with {@link SensitiveValue}; non-2xx -> typed error:
  *             per-op matcher classes (`matchTypedError`), then the status
  *             map (default `HTTP_STATUS_MAP`), then an `InternalServerError`
  *             for unmapped 5xx, then the provider's `unknownError` fallback
- *             — with `retryAfter` durations stamped from the standard hint
+ *             -- with `retryAfter` durations stamped from the standard hint
  *             headers on retryable statuses.
  *
  * Anything provider-specific (envelope quirks, bespoke error codes) belongs
- * in the provider package — via these options or a hand-written protocol.
+ * in the provider package -- via these options or a hand-written protocol.
  */
 import * as Effect from "effect/Effect";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
@@ -94,7 +94,7 @@ const isPlainObject = (v: unknown): v is Record<string, unknown> =>
   (Object.getPrototypeOf(v) === Object.prototype || Object.getPrototypeOf(v) === null);
 
 /**
- * Deep-unwrap `Redacted` values in an input (plain objects/arrays only —
+ * Deep-unwrap `Redacted` values in an input (plain objects/arrays only --
  * class instances, files, and binary payloads pass through untouched).
  * Sensitive input members accept `string | Redacted<string>`; the wire wants
  * the raw string.
@@ -181,7 +181,7 @@ export interface RestErrorEnvelope {
 
 export interface RestProtocolOptions<C> {
   /**
-   * Resolve credentials ON THE CALLING FIBER — evaluated per request, never
+   * Resolve credentials ON THE CALLING FIBER -- evaluated per request, never
    * at layer build time, so context-provided credentials and token refreshes
    * are picked up. Typically `Effect.gen(function* () { const resolve =
    * yield* Credentials; return yield* resolve; })` for the distilled
@@ -212,7 +212,7 @@ export interface RestProtocolOptions<C> {
    */
   readonly errorEnvelope?: (body: unknown) => RestErrorEnvelope | undefined;
   /**
-   * HTTP status → error class constructed as `new Cls({ message, retryAfter
+   * HTTP status -> error class constructed as `new Cls({ message, retryAfter
    * })`. Default: core `HTTP_STATUS_MAP`. Consulted after per-op typed error
    * matching; unmapped 5xx fall back to `InternalServerError`, everything
    * else to {@link unknownError}.
@@ -252,7 +252,7 @@ const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effe
 
 /**
  * Build a `Layer<Protocol>` for a simple REST JSON API. Assign the result to
- * a module-level const in the provider's `protocol.ts` — `API.make` memoizes
+ * a module-level const in the provider's `protocol.ts` -- `API.make` memoizes
  * protocol layers by value identity.
  */
 export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Layer<API.Protocol> => {
@@ -304,7 +304,7 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
         const bytes = yield* response.arrayBuffer.pipe(Effect.orDie);
         return new Uint8Array(bytes);
       }
-      // Read as text and parse tolerantly — error pages are often non-JSON.
+      // Read as text and parse tolerantly -- error pages are often non-JSON.
       const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
       if (process.env.DISTILLED_DEBUG_HTTP) {
         console.error(`[distilled] <- ${response.status}`);
@@ -340,7 +340,7 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
         if (typed !== undefined) return yield* fail(typed);
 
         // 2. Status-mapped class (retryAfter only stamps on retryable
-        //    statuses — parseRetryAfterForStatus gates on that).
+        //    statuses -- parseRetryAfterForStatus gates on that).
         const StatusErrorClass = statusMap[status];
         if (StatusErrorClass) {
           return yield* fail(
@@ -351,7 +351,7 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
           );
         }
 
-        // 3. Unmapped 5xx (e.g. proxy-specific statuses) → retryable server
+        // 3. Unmapped 5xx (e.g. proxy-specific statuses) -> retryable server
         //    error rather than the unknown fallback.
         if (status >= 500) {
           return yield* fail(
@@ -374,11 +374,11 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
         );
       }
 
-      // 2xx: the response body IS the payload (no envelope). Wire→TS key
+      // 2xx: the response body IS the payload (no envelope). Wire->TS key
       // mapping is schema-driven; `RawResponseRoot` responses are the body
       // verbatim (mapKeys handles arrays/scalars structurally either way).
       // Strict mode (core/response-validation) checks the mapped body against
-      // the output schema — a non-JSON body reaches it as a string and fails
+      // the output schema -- a non-JSON body reaches it as a string and fails
       // there unless the operation's output is itself a string.
       let body: unknown = nonJson ? text : (json ?? {});
       if (options.transformResponse) body = options.transformResponse(body);

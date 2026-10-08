@@ -57,7 +57,7 @@ export class Protocol extends Context.Service<
     readonly encode: (args: {
       readonly input: unknown;
       readonly inputAst: AST.AST;
-      /** The operation's config (memoized per operation — see {@link ProtocolOperationConfig}). */
+      /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
       readonly config: ProtocolOperationConfig;
     }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
     readonly decode: (args: {
@@ -66,10 +66,10 @@ export class Protocol extends Context.Service<
       /**
        * The operation's declared error classes (from `OperationConfig.errors`).
        * Protocols use these to surface wire failures as the operation's typed
-       * errors — e.g. by consulting matcher metadata stamped on the class.
+       * errors -- e.g. by consulting matcher metadata stamped on the class.
        */
       readonly errors: ReadonlyArray<ApiErrorClass>;
-      /** The operation's config (memoized per operation — see {@link ProtocolOperationConfig}). */
+      /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
       readonly config: ProtocolOperationConfig;
     }) => Effect.Effect<unknown>;
   }
@@ -87,11 +87,11 @@ export type ApiErrorClass = {
 };
 
 /**
- * The shape of a generated SDK operation — usable two ways (mirrors the
+ * The shape of a generated SDK operation -- usable two ways (mirrors the
  * distilled repo's OperationMethod):
  *
- * 1. Direct call: `yield* operation(input)` — an Effect with requirements.
- * 2. Yield first: `const fn = yield* operation` — captures the current
+ * 1. Direct call: `yield* operation(input)` -- an Effect with requirements.
+ * 2. Yield first: `const fn = yield* operation` -- captures the current
  *    context and returns a requirement-free call function.
  *
  * Generated service files annotate every exported operation with this type
@@ -107,7 +107,7 @@ export type OperationMethod<I, O, E, R> = Effect.Effect<
 
 // NOTE: request/response ASTs are handed to the protocol RAW (Suspend nodes
 // included). Pre-resolving Suspends here would drop annotations that sit on
-// intermediate nodes — e.g. a bare-payload response whose payload type is
+// intermediate nodes -- e.g. a bare-payload response whose payload type is
 // itself a suspended schema carries its EnvelopePayloadRoot marker on the
 // inner Suspend, and unwrapping it silently degrades decode to the struct
 // path. The protocol helpers (core/protocol-http getAnn/getProps) descend
@@ -116,14 +116,14 @@ export type OperationMethod<I, O, E, R> = Effect.Effect<
 
 /**
  * Protocol layers are built once per process and shared by every operation
- * call (keyed by layer value identity — generated operations all reference the
+ * call (keyed by layer value identity -- generated operations all reference the
  * same module-level layer const). The build runs against a process-lifetime
  * scope, and concurrent first calls are deduplicated through a private
  * MemoMap.
  *
  * Contract for protocol implementations: the layer build must not capture
- * per-call context. Anything call-dependent — credentials, per-request
- * options — must be resolved inside `encode`/`decode`, which execute on the
+ * per-call context. Anything call-dependent -- credentials, per-request
+ * options -- must be resolved inside `encode`/`decode`, which execute on the
  * calling fiber and therefore see the caller's services on every request.
  */
 const protocolMemoMap = Layer.makeMemoMapUnsafe();
@@ -154,7 +154,7 @@ export interface OperationConfig<
   /**
    * The protocol layer that knows how to encode/decode this operation's wire
    * format. Built once per process and shared across all operations that
-   * reference the same layer value — it must resolve call-dependent services
+   * reference the same layer value -- it must resolve call-dependent services
    * (credentials etc.) inside encode/decode, not at build time.
    */
   protocol: Layer.Layer<Protocol, PE, PR>;
@@ -189,7 +189,7 @@ const applyRetry = (
     : Effect.flatMap(Effect.serviceOption(retryKey), (opt) =>
         Effect.gen(function* () {
           const lastError = yield* Ref.make<unknown>(undefined);
-          // No policy in context → makeDefault (transient/throttling/server
+          // No policy in context -> makeDefault (transient/throttling/server
           // errors, capped exponential backoff + jitter, honors server
           // retryAfter hints). Mirrors the distilled client.
           const policy = Option.isSome(opt) ? opt.value : makeDefault;
@@ -268,8 +268,8 @@ const callOperation = (state: OperationState, input: unknown): Effect.Effect<any
  * `const fn = yield* operation`: a requirement-free call function over the
  * current context. The captured context is a FALLBACK, not a snapshot:
  * entries present on the calling fiber at call time win, so per-call
- * overrides — e.g. providing `Endpoint` with a discovered data-plane address
- * around one invocation — take effect instead of being shadowed by the
+ * overrides -- e.g. providing `Endpoint` with a discovered data-plane address
+ * around one invocation -- take effect instead of being shadowed by the
  * context captured at yield time.
  */
 const bindContext = (op: (input: unknown) => Effect.Effect<any, any, any>) =>
@@ -277,7 +277,7 @@ const bindContext = (op: (input: unknown) => Effect.Effect<any, any, any>) =>
     Effect.context(),
     (context) => (input: unknown) =>
       // `Context` is contravariant, so `Context<never>` is not assignable
-      // to the `Context<any>` updateContext expects — the widening cast is
+      // to the `Context<any>` updateContext expects -- the widening cast is
       // sound (the merge only ever adds entries).
       Effect.updateContext(op(input), (current): Context.Context<any> =>
         Context.merge(context, current),
@@ -287,8 +287,8 @@ const bindContext = (op: (input: unknown) => Effect.Effect<any, any, any>) =>
 /**
  * Shared by every operation function (its prototype; it inherits from
  * `Function.prototype`, so operations stay ordinary callables). Makes the
- * operation yieldable — `yield* operation` returns a requirement-free call
- * function, mirroring the distilled repo's OperationMethod — and carries the
+ * operation yieldable -- `yield* operation` returns a requirement-free call
+ * function, mirroring the distilled repo's OperationMethod -- and carries the
  * debug/introspection surface (`op.input` / `.output` / `.errors` /
  * `.operationName` / `.pagination`) as lazy getters, so importing a service
  * module doesn't force its suspended schemas.
@@ -356,7 +356,7 @@ export function make<
  * element of the page response itself, or of its `result` member.
  *
  * It can only see shapes it was taught, so any other envelope
- * (`{ branches: […] }`, `{ data: […] }`, …) lands on `unknown` — which is
+ * (`{ branches: [...] }`, `{ data: [...] }`, ...) lands on `unknown` -- which is
  * why generators pass the item type EXPLICITLY as
  * {@link PaginatedOperationMethod}'s `Item` argument, resolved from the
  * pagination trait's `items` path against the response shape. This default
@@ -376,7 +376,7 @@ export type PaginatedItem<A> =
  * `.pages(input)` streaming every page response and `.items(input)` streaming
  * the individual items across pages.
  *
- * Used twice in {@link PaginatedOperationMethod} — once with the operation's
+ * Used twice in {@link PaginatedOperationMethod} -- once with the operation's
  * requirements (`R`) for the direct-call style, once with `R = never` for the
  * value `yield* operation` hands back, which has the caller's context baked in.
  */
@@ -388,7 +388,7 @@ export interface PaginatedCall<I, O, E, R, Item> {
 
 /**
  * A paginated operation: usable both ways an {@link OperationMethod} is, with
- * `.pages` / `.items` on BOTH — the operation object for
+ * `.pages` / `.items` on BOTH -- the operation object for
  * `yield* op.items(input)`, and the requirement-free call function for
  * `const op = yield* operation; yield* op.items(input)` (distilled #145).
  */

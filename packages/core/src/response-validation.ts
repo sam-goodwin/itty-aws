@@ -13,8 +13,8 @@
  *                      `<Sdk>ParseError` (AWS: `ParseError`).
  *
  * The mode is one {@link ResponseValidation} reference keyed by a string, so
- * a single `Layer` switches every distilled SDK in a program — AWS,
- * Cloudflare, Neon, … — at once, and nests like any other Effect service:
+ * a single `Layer` switches every distilled SDK in a program -- AWS,
+ * Cloudflare, Neon, ... -- at once, and nests like any other Effect service:
  *
  * ```ts
  * import { ResponseValidation } from "@distilled.cloud/core";
@@ -87,13 +87,13 @@ const decoderFor = (ast: AST.AST) => {
  * Check a 2xx response value against the operation's output schema.
  *
  * Lenient mode returns `value` untouched. Strict mode decodes it and, on a
- * mismatch, fails with `onError(schemaError)` — protocols pass their SDK's
+ * mismatch, fails with `onError(schemaError)` -- protocols pass their SDK's
  * `<Sdk>ParseError` constructor. On success the ORIGINAL value is returned
  * (members the schema does not model are kept), so switching modes never
  * changes what a successful call returns.
  *
  * `value` must already be in the schema's shape (TS member names), i.e.
- * after any wire→TS key mapping and before `Redacted` wrapping.
+ * after any wire->TS key mapping and before `Redacted` wrapping.
  */
 export const validateResponse = <E>(
   outputAst: AST.AST,

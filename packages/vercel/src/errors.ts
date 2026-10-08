@@ -28,7 +28,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * HTTP 402 — the account cannot be billed for the request: a missing payment
+ * HTTP 402 -- the account cannot be billed for the request: a missing payment
  * method, an unpaid invoice, or a spend cap the team has already hit (Vercel
  * pauses the account at the cap until an owner disables it). Declared on the
  * ~95 operations that provision billable resources; the rest reach it through
@@ -39,10 +39,10 @@ export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()("Paym
 }).pipe(Category.withQuotaError) {}
 
 /**
- * HTTP 410 — Vercel's "Invalid API version": the versioned path segment
+ * HTTP 410 -- Vercel's "Invalid API version": the versioned path segment
  * (`/v5/domains`, `/v9/projects`) is no longer served. The spec declares it on
  * nearly every operation as boilerplate, so it rides the common error channel
- * instead of every generated operation's error list — a 410 means the SDK's
+ * instead of every generated operation's error list -- a 410 means the SDK's
  * pinned path version was retired and needs a regeneration, not something a
  * caller can branch on per operation.
  */
@@ -51,7 +51,7 @@ export class Gone extends Schema.TaggedError<Gone>()("Gone", {
 }).pipe(Category.withNotFoundError) {}
 
 /**
- * Unknown Vercel error — returned when a failed response's HTTP status has no
+ * Unknown Vercel error -- returned when a failed response's HTTP status has no
  * mapped error class. Carries the raw body for later cataloging.
  */
 export class UnknownVercelError extends Schema.TaggedError<UnknownVercelError>()(

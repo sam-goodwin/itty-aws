@@ -61,7 +61,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
     // Prefer the explicit operation name emitted by the generator; fall back
     // to extracting it from the input schema's identifier by removing the
     // "Request", "Input", or "Message" suffix. RDS-family query services
-    // (RDS, ElastiCache, Redshift, …) name their input shapes "XxxMessage"
+    // (RDS, ElastiCache, Redshift, ...) name their input shapes "XxxMessage"
     // rather than "XxxRequest".
     const identifier = getIdentifier(inputAst) ?? "";
     const operationName =
@@ -135,7 +135,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
         // Read body as text
         const bodyText = yield* readStreamAsText(response.body);
 
-        // Parse JSON body (reviver converts null → undefined since AWS returns null for absent fields)
+        // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
         if (bodyText) {
           try {
             const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
@@ -160,7 +160,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
         // Read body as text
         const bodyText = yield* readStreamAsText(response.body);
 
-        // Parse JSON body (reviver converts null → undefined)
+        // Parse JSON body (reviver converts null -> undefined)
         let body: Record<string, unknown> = {};
         if (bodyText) {
           try {

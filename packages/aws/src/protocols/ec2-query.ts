@@ -55,7 +55,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
   return {
     serializeRequest: Effect.fn(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
-      // (TimestampFormat → ISO 8601 strings, etc.)
+      // (TimestampFormat -> ISO 8601 strings, etc.)
       const encoded = yield* encodeInput(input).pipe(
         Effect.mapError((err) => new ParseError({ message: err.message })),
       );

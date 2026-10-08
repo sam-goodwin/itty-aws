@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Porkbun credentials — hand-written.
+ * Porkbun credentials -- hand-written.
  *
  * Porkbun authenticates with a public API key and a secret API key, sent as
  * `X-API-Key` / `X-Secret-API-Key` (header auth; the JSON-body form is

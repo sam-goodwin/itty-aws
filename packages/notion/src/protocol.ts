@@ -3,7 +3,7 @@ import type { ConfigError } from "@distilled.cloud/core/errors";
 import { HTTP_STATUS_MAP, ServiceUnavailable } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * NotionProtocol — the shared bearer-REST protocol instantiated for Notion.
+ * NotionProtocol -- the shared bearer-REST protocol instantiated for Notion.
  *
  * Notion speaks plain JSON with no success envelope. Every request carries
  * `Authorization: Bearer <token>` and the required `Notion-Version` header.

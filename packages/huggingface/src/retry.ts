@@ -1,6 +1,6 @@
 import * as Retries from "@distilled.cloud/core/retry";
 /**
- * Hugging Face retry surface — a veneer over `@distilled.cloud/core/retry`.
+ * Hugging Face retry surface -- a veneer over `@distilled.cloud/core/retry`.
  *
  * The `Retry` service tag is threaded into every generated operation via
  * `API.make({ retry: Retry })`, so a caller-installed policy applies to all

@@ -4,14 +4,14 @@ import { getAnn } from "@distilled.cloud/core/protocol-http";
 import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
- * ExpoGraphqlProtocol — hand-written.
+ * ExpoGraphqlProtocol -- hand-written.
  *
  * Speaks the EAS GraphQL protocol: every operation is
  * `POST ${apiBaseUrl}/graphql` with a `{ query, operationName, variables }`
  * envelope (api.expo.dev or staging-api.expo.dev), answered by a
  * `{ data, errors }` envelope.
  *
- *   request:  credentials → `Authorization: Bearer <EXPO_TOKEN>` + base URL;
+ *   request:  credentials -> `Authorization: Bearer <EXPO_TOKEN>` + base URL;
  *             the operation's input IS the GraphQL variables object; the
  *             baked document travels on the input schema via `T.GraphQLOp`.
  *
@@ -19,10 +19,10 @@ import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
  *             `matchError`):
  *             1. HTTP 200 with `{ errors: [...] }` (GraphQL validation /
  *                business errors). Each error carries `message` and
- *                `extensions.errorCode` — matched against the typed
+ *                `extensions.errorCode` -- matched against the typed
  *                `EAS_ERROR_CODE_MAP`, then the HTTP status map, then
  *                `UnknownEasError`.
- *             2. HTTP status >= 400 (network/auth/proxy errors) — body
+ *             2. HTTP status >= 400 (network/auth/proxy errors) -- body
  *                usually `{ message }`, a plain `{ errors: [...] }`
  *                envelope, or non-JSON text (proxy HTML, plain-text 429);
  *                mapped via the status map with retry-after parsing.
@@ -128,7 +128,7 @@ const matchError = (
   errorBody: unknown,
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never> => {
-  // Try the GraphQL envelope first — works for both HTTP 200 with errors[]
+  // Try the GraphQL envelope first -- works for both HTTP 200 with errors[]
   // and HTTP 400 responses returned by the GraphQL gateway.
   const envelope = decodeEnvelope(errorBody);
   if (envelope._tag === "Some" && envelope.value.errors?.length) {
@@ -206,26 +206,26 @@ const matchError = (
 // ============================================================================
 
 // The protocol layer is memoized per process by `API.make`, so the build must
-// not capture credentials — `encode` resolves Credentials from the calling
+// not capture credentials -- `encode` resolves Credentials from the calling
 // fiber's context on every request instead. The requirement is erased at this
 // boundary (Protocol effects are typed with no requirements) and reintroduced
 // for callers by the generated `ExpoEasOpContext` annotations.
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
   Effect.gen(function* () {
-    // The Credentials service holds an effect — resolving it here (per
+    // The Credentials service holds an effect -- resolving it here (per
     // request) picks up rotations.
     const resolveCredentials = yield* Credentials;
     const creds = yield* resolveCredentials as Effect.Effect<Config>;
 
     const op = getAnn(inputAst, graphqlOpSymbol) as GraphQLOpTrait | undefined;
     if (!op) {
-      // A codegen bug — surfaced as a defect by the calling Effect context.
+      // A codegen bug -- surfaced as a defect by the calling Effect context.
       throw new Error("operation input is missing the GraphQLOp() trait");
     }
     const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
 
     // The operation's input IS the GraphQL variables object (variable names
-    // are emitted verbatim — no wire renames).
+    // are emitted verbatim -- no wire renames).
     const variables: Record<string, unknown> = {};
     for (const [k, v] of Object.entries((input ?? {}) as Record<string, unknown>)) {
       if (v !== undefined) variables[k] = v;
@@ -293,7 +293,7 @@ const decode = ({
       ).pipe(Effect.catch(fail));
     }
 
-    // GraphQL errors[] (even on HTTP 200) or HTTP-level failure → typed
+    // GraphQL errors[] (even on HTTP 200) or HTTP-level failure -> typed
     // error via the ported v0 matcher.
     const envelope = json as { data?: unknown; errors?: unknown[] } | null;
     const hasGraphQLErrors =
@@ -306,7 +306,7 @@ const decode = ({
     }
 
     // Success: unwrap `data.<responsePath>` and return it verbatim (member
-    // names are GraphQL field names — no wire renames). Strict mode
+    // names are GraphQL field names -- no wire renames). Strict mode
     // (core/response-validation) checks it against the output schema.
     const path = getAnn(outputAst, responsePathSymbol) as string | undefined;
     let payload: unknown =

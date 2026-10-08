@@ -2,7 +2,7 @@ import type * as API from "@distilled.cloud/core/api";
 import type { ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * ModalProtocol — proto3 JSON at gRPC method paths.
+ * ModalProtocol -- proto3 JSON at gRPC method paths.
  *
  * Each generated operation is `POST /<package>.<Service>/<Method>` with a
  * proto3 JSON body (camelCase fields, 64-bit ints as strings, bytes as

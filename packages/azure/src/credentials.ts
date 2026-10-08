@@ -1,12 +1,12 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Azure credentials — hand-written.
+ * Azure credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 Azure credentials module: the
  * `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request
  * on the calling fiber). The user supplies a pre-acquired OAuth2 bearer
- * token — there is no token-acquisition flow (v0 parity).
+ * token -- there is no token-acquisition flow (v0 parity).
  */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
@@ -47,10 +47,10 @@ const envConfig = EffectConfig.all({
 /**
  * Reads Azure credentials from environment variables:
  *
- * - `AZURE_BEARER_TOKEN` — OAuth2 bearer token (required)
- * - `AZURE_SUBSCRIPTION_ID` — Azure subscription ID (required)
- * - `AZURE_TENANT_ID` — Azure tenant/directory ID (optional)
- * - `AZURE_API_BASE_URL` — Optional override for the API base URL
+ * - `AZURE_BEARER_TOKEN` -- OAuth2 bearer token (required)
+ * - `AZURE_SUBSCRIPTION_ID` -- Azure subscription ID (required)
+ * - `AZURE_TENANT_ID` -- Azure tenant/directory ID (optional)
+ * - `AZURE_API_BASE_URL` -- Optional override for the API base URL
  */
 export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
   Credentials,

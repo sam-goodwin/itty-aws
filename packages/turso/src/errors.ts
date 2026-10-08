@@ -37,7 +37,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Turso error — returned when an error response cannot be mapped to
+ * Unknown Turso error -- returned when an error response cannot be mapped to
  * a shared HTTP status class. Carries the raw `code` string Turso sometimes
  * includes in its error body.
  */
@@ -51,7 +51,7 @@ export class UnknownTursoError extends Schema.TaggedError<UnknownTursoError>()(
 ).pipe(Category.withServerError) {}
 
 /**
- * Schema parse error wrapper — kept for parity with the distilled turso SDK's
+ * Schema parse error wrapper -- kept for parity with the distilled turso SDK's
  * error surface.
  */
 export class TursoParseError extends Schema.TaggedError<TursoParseError>()("TursoParseError", {

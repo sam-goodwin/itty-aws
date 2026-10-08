@@ -5,12 +5,12 @@
  * provider package via `@distilled.cloud/core/schema`. Do not copy it into
  * individual packages.
  *
- * Every real TYPE (`Schema`, `Codec`, `Top`, …) is re-exported untouched, so
+ * Every real TYPE (`Schema`, `Codec`, `Top`, ...) is re-exported untouched, so
  * the `Schema.Schema<Foo>` annotations on generated consts (and the public
  * `.d.ts`) stay precise. The schema *construction surface* (`Struct`,
- * `optional`, `suspend`, …) and the leaf scalar schemas are retyped to `any`,
+ * `optional`, `suspend`, ...) and the leaf scalar schemas are retyped to `any`,
  * so the compiler instantiates none of the heavy Schema generics while
- * building a service file — the explicit annotations carry the real types.
+ * building a service file -- the explicit annotations carry the real types.
  *
  * Overriding a *value* export never affects the same-named *type* export (they
  * live in separate namespaces and continue to flow through `export *`), so
@@ -26,7 +26,7 @@ import * as S from "effect/Schema";
 
 export type AnyFn = (...args: any[]) => any;
 
-// Construction surface — collapse to `any` so generics are never instantiated.
+// Construction surface -- collapse to `any` so generics are never instantiated.
 export const optional: AnyFn = S.optional as AnyFn;
 export const Struct: AnyFn = S.Struct as AnyFn;
 export const suspend: AnyFn = (f: () => S.Top) => lazySuspend(f);
@@ -39,7 +39,7 @@ export const NullOr: AnyFn = S.NullOr as AnyFn;
 export const Tuple: AnyFn = S.Tuple as AnyFn;
 export const encodeKeys: AnyFn = S.encodeKeys as AnyFn;
 
-// Leaf schemas — collapse to `any` so `.pipe(...)` on them is free.
+// Leaf schemas -- collapse to `any` so `.pipe(...)` on them is free.
 export const String: any = S.String;
 export const Number: any = S.Number;
 export const Boolean: any = S.Boolean;
@@ -50,7 +50,7 @@ export const Void: any = S.Void;
 export const Any: any = S.Any;
 
 // NOTE: `Schema` / `Codec` (types) and `TaggedError` are intentionally NOT
-// overridden — they flow through `export *` with real types so cast targets and
+// overridden -- they flow through `export *` with real types so cast targets and
 // typed error classes stay precise.
 
 //#region Lazy schemas
@@ -60,8 +60,8 @@ export const Any: any = S.Any;
  * import.
  *
  * A service module declares every schema as a top-level const, and
- * importing it constructs all of them: EC2 has 2,575 `S.suspend(…)` and
- * 784 `S.Array(…)` consts, Elasticsearch 3,272 and 2,265. An Effect schema
+ * importing it constructs all of them: EC2 has 2,575 `S.suspend(...)` and
+ * 784 `S.Array(...)` consts, Elasticsearch 3,272 and 2,265. An Effect schema
  * is a function object plus an AST node (a `suspend` also a wrapper
  * closure), and `.annotate` copies both: about 550 bytes per suspend, more
  * for an array whose item it forces. A lazy schema is one small object
@@ -70,8 +70,8 @@ export const Any: any = S.Any;
  *
  * It inherits Effect's own schema prototype, so `pipe`, `annotate`, `make`,
  * `isSchema` and every combinator see a schema. On first use of `.ast` (or
- * of an own member such as an array's `value`) it builds the real schema —
- * `build().annotate(annotations)`, exactly what eager code would have made —
+ * of an own member such as an array's `value`) it builds the real schema --
+ * `build().annotate(annotations)`, exactly what eager code would have made --
  * and copies the real schema's own properties onto itself, so from then on
  * it IS that schema: same AST (memoized, stable identity), same rebuild
  * options for later `.annotate` / `.check` calls.

@@ -2,12 +2,12 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * DatadogProtocol — hand-written.
+ * DatadogProtocol -- hand-written.
  *
  * Datadog speaks plain JSON REST (no response envelope), so the whole
  * protocol is one `makeRestProtocol` call from `core/protocol-rest`:
  *
- *   request:  credentials → `DD-API-KEY` + optional `DD-APPLICATION-KEY` +
+ *   request:  credentials -> `DD-API-KEY` + optional `DD-APPLICATION-KEY` +
  *             base URL (default https://api.datadoghq.com), resolved from
  *             the calling fiber on every request
  *
@@ -72,7 +72,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 };
 
 export const DatadogProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;

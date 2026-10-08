@@ -29,7 +29,7 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /**
- * Payment error — returned when a payment request fails (HTTP 402).
+ * Payment error -- returned when a payment request fails (HTTP 402).
  * The parameters were valid but the request failed (e.g., card declined).
  */
 export class PaymentError extends Schema.TaggedError<PaymentError>()("PaymentError", {
@@ -43,7 +43,7 @@ export class PaymentError extends Schema.TaggedError<PaymentError>()("PaymentErr
 }).pipe(Category.withBadRequestError) {}
 
 /**
- * Card error — returned when a card cannot be charged.
+ * Card error -- returned when a card cannot be charged.
  * Stripe error type: "card_error"
  */
 export class CardError extends Schema.TaggedError<CardError>()("CardError", {
@@ -61,7 +61,7 @@ export class CardError extends Schema.TaggedError<CardError>()("CardError", {
 }).pipe(Category.withBadRequestError) {}
 
 /**
- * Idempotency error — returned when an Idempotency-Key is re-used
+ * Idempotency error -- returned when an Idempotency-Key is re-used
  * on a request that does not match the first request's API endpoint and parameters.
  * Stripe error type: "idempotency_error"
  */
@@ -73,7 +73,7 @@ export class IdempotencyError extends Schema.TaggedError<IdempotencyError>()("Id
 }).pipe(Category.withConflictError) {}
 
 /**
- * Invalid request error — returned when the request has invalid parameters.
+ * Invalid request error -- returned when the request has invalid parameters.
  * Stripe error type: "invalid_request_error"
  */
 export class InvalidRequestError extends Schema.TaggedError<InvalidRequestError>()(
@@ -88,7 +88,7 @@ export class InvalidRequestError extends Schema.TaggedError<InvalidRequestError>
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * API error — returned when something goes wrong on Stripe's end (HTTP 500+).
+ * API error -- returned when something goes wrong on Stripe's end (HTTP 500+).
  * Stripe error type: "api_error"
  */
 export class ApiError extends Schema.TaggedError<ApiError>()("ApiError", {
@@ -100,7 +100,7 @@ export class ApiError extends Schema.TaggedError<ApiError>()("ApiError", {
 }).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
- * External dependency failed — returned when an external dependency fails (HTTP 424).
+ * External dependency failed -- returned when an external dependency fails (HTTP 424).
  */
 export class ExternalDependencyFailed extends Schema.TaggedError<ExternalDependencyFailed>()(
   "ExternalDependencyFailed",
@@ -120,7 +120,7 @@ export const STRIPE_HTTP_STATUS_MAP = {
   424: ExternalDependencyFailed,
 } as const;
 
-// Unknown Stripe error — returned when an error type is not recognized
+// Unknown Stripe error -- returned when an error type is not recognized
 export class UnknownStripeError extends Schema.TaggedError<UnknownStripeError>()(
   "UnknownStripeError",
   {

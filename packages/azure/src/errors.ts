@@ -1,5 +1,5 @@
 /**
- * Azure-specific error types — hand-written (ported verbatim from
+ * Azure-specific error types -- hand-written (ported verbatim from
  * distilled v0's `packages/azure/src/errors.ts`).
  *
  * Re-exports common HTTP errors from core and adds Azure-specific
@@ -469,7 +469,7 @@ export class StorageAccountAlreadyTaken extends Schema.TaggedError<StorageAccoun
 
 /**
  * Returned when a storage account still has a background geo-replication
- * change in flight (e.g. right after a `Standard_LRS` → `Standard_GRS` SKU
+ * change in flight (e.g. right after a `Standard_LRS` -> `Standard_GRS` SKU
  * change) and cannot be updated or deleted until it finishes.
  * Azure error code: `PendingTransactionAlreadyExists`
  */
@@ -847,7 +847,7 @@ export class AvdServicePrincipalAccessDenied extends Schema.TaggedError<AvdServi
 
 /**
  * Returned by Microsoft.Automation when the subscription already holds its
- * one Automation account in the region — free-trial subscriptions allow one
+ * one Automation account in the region -- free-trial subscriptions allow one
  * per region and count soft-deleted accounts for 30 days. HTTP 400
  * `BadRequest` "Only one account is allowed for your subscription per
  * Region" (matched by message).
@@ -1159,7 +1159,7 @@ export class BotConnectionDeleteInProgress extends Schema.TaggedError<BotConnect
 ).pipe(Category.withConflictError) {}
 
 // ---------------------------------------------------------------------------
-// Azure error code → typed error class mapping
+// Azure error code -> typed error class mapping
 // ---------------------------------------------------------------------------
 
 /**
@@ -1179,7 +1179,7 @@ export class DevCenterNetworkConnectionQuotaExceeded extends Schema.TaggedError<
 
 /**
  * Microsoft.DevCenter: the dev center's managed identity cannot (yet) read
- * the Azure Compute Gallery being attached — missing role assignment or
+ * the Azure Compute Gallery being attached -- missing role assignment or
  * RBAC propagation delay. HTTP 400 `ValidationError` whose `details[].code`
  * is `DevCenterIsNotAuthorizedToGallery`.
  */
@@ -1295,7 +1295,7 @@ export class PowerBITenantNotSignedUp extends Schema.TaggedError<PowerBITenantNo
 
 /**
  * Microsoft.Fabric rejects a capacity whose administrators are not (yet)
- * visible Entra users or service principals — e.g. a managed identity
+ * visible Entra users or service principals -- e.g. a managed identity
  * created moments ago that has not replicated (matched by message).
  */
 export class FabricCapacityPrincipalNotFound extends Schema.TaggedError<FabricCapacityPrincipalNotFound>()(
@@ -1517,7 +1517,7 @@ export class ServerFarmCreateNotAllowed extends Schema.TaggedError<ServerFarmCre
 
 /**
  * Returned by Microsoft.OperationalInsights when a linked storage account is
- * rejected as "faulted" — right after the account is created, before the
+ * rejected as "faulted" -- right after the account is created, before the
  * service can see it, or when its region differs from the workspace's.
  * Error code: `InvalidParameter` with "might be considered faulted"
  * (matched by message).
@@ -2021,7 +2021,7 @@ export class SenderUsernameLastRemaining extends Schema.TaggedError<SenderUserna
 
 /**
  * Returned by Microsoft.Cache when a subscription may no longer create
- * Azure Cache for Redis (Basic/Standard/Premium) caches — new customers, or
+ * Azure Cache for Redis (Basic/Standard/Premium) caches -- new customers, or
  * regions where the subscription never had a cache, since the 2028
  * retirement was announced. HTTP 400 `BadRequest` "Azure Cache for Redis is
  * retiring, create Azure Managed Redis instance instead" (matched by
@@ -2250,7 +2250,7 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
     error: DevHubGitHubNotAuthorized,
   },
   // Microsoft.Web: "Operation cannot be completed without additional quota.
-  // Current Limit (F1 VMs): 0" — the plan SKU has no quota in the region.
+  // Current Limit (F1 VMs): 0" -- the plan SKU has no quota in the region.
   {
     code: "Unauthorized",
     includes: "without additional quota",
@@ -2709,7 +2709,7 @@ export const matchAzureErrorMessage = (arm: {
 // Catch-all error classes
 // ---------------------------------------------------------------------------
 
-/** Unknown Azure error — returned when an error code is not recognized. */
+/** Unknown Azure error -- returned when an error code is not recognized. */
 export class UnknownAzureError extends Schema.TaggedError<UnknownAzureError>()(
   "UnknownAzureError",
   {

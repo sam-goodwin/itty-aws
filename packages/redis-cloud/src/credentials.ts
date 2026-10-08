@@ -1,13 +1,13 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Redis Cloud credentials — hand-written.
+ * Redis Cloud credentials -- hand-written.
  *
  * Every REST request authenticates with two API keys (and optionally an SSO
  * token), sent as headers:
  *
- *   x-api-key         — account key (identifies the Redis Cloud account)
- *   x-api-secret-key  — user key (identifies the caller)
- *   x-auth-token      — optional SSO token
+ *   x-api-key         -- account key (identifies the Redis Cloud account)
+ *   x-api-secret-key  -- user key (identifies the caller)
+ *   x-auth-token      -- optional SSO token
  *
  * See https://redis.io/docs/latest/operate/rc/api/get-started/manage-api-keys/
  *
@@ -21,7 +21,7 @@ import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 
 /**
- * Redis Cloud API root. Operation paths already include `/v1/…`, so the
+ * Redis Cloud API root. Operation paths already include `/v1/...`, so the
  * version is not part of the base URL.
  */
 export const DEFAULT_API_BASE_URL = "https://api.redislabs.com";

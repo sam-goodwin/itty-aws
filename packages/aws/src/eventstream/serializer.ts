@@ -194,7 +194,7 @@ const PAYLOAD_CONTENT_TYPE: Record<EventPayloadKind, string> = {
  * base64 and sensitive values unwrapped), following Smithy's event stream
  * binding rules:
  * - `eventHeader` members become typed frame headers;
- * - an `eventPayload` member IS the frame payload — raw bytes for a blob,
+ * - an `eventPayload` member IS the frame payload -- raw bytes for a blob,
  *   UTF-8 for a string, JSON for a structure;
  * - otherwise the remaining members are the JSON payload.
  */
@@ -248,13 +248,13 @@ const buildInputEventMessage = (
  * Each event is encoded through `eventSchema` (so blob members inside JSON
  * payloads become base64 strings, as the service expects) and framed per the
  * `eventPayload` / `eventHeader` bindings derived from the event structs'
- * member annotations. An explicit `eventPayloadMap` (event type → payload
+ * member annotations. An explicit `eventPayloadMap` (event type -> payload
  * member) overrides the derived payload member.
  *
  * @param events - Stream of events, in Smithy union (`{ EventName: {...} }`)
  *   or tagged (`{ _tag: "EventName", ... }`) form
  * @param eventSchema - The stream's event union schema
- * @param eventPayloadMap - Optional explicit event type → payload member map
+ * @param eventPayloadMap - Optional explicit event type -> payload member map
  */
 export const serializeInputEventStreamWithSchema = <E extends InputEvent>(
   events: Stream.Stream<E, unknown>,

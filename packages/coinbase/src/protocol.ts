@@ -6,7 +6,7 @@ import { unwrapRedactedDeep, wrapSensitive } from "@distilled.cloud/core/protoco
 import { validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
- * CoinbaseProtocol — hand-written.
+ * CoinbaseProtocol -- hand-written.
  *
  * Speaks the Coinbase CDP JSON protocol. The generic request/response
  * machinery (trait-driven request building, recursive wire-name mapping)
@@ -101,7 +101,7 @@ const randomNonce = (): string => crypto.randomBytes(16).toString("hex");
 const resolveSigningKey = (
   apiKeySecret: string,
 ): { algorithm: string; jwsAlg: string; key: crypto.KeyObject } => {
-  // Try EC (ES256) first — PEM format
+  // Try EC (ES256) first -- PEM format
   if (apiKeySecret.includes("-----BEGIN")) {
     return {
       algorithm: "ES256",
@@ -110,7 +110,7 @@ const resolveSigningKey = (
     };
   }
 
-  // Ed25519 — base64 encoded 64-byte key (32 seed + 32 public)
+  // Ed25519 -- base64 encoded 64-byte key (32 seed + 32 public)
   const keyBytes = Buffer.from(apiKeySecret, "base64");
   if (keyBytes.length === 64) {
     // Extract the 32-byte seed (private key)
@@ -236,13 +236,13 @@ const CoinbaseErrorResponse = Schema.Struct({
  *
  * Dispatches errors by:
  * 1. The `errorType` field for Coinbase-specific errors (e.g., "already_exists", "policy_violation")
- * 2. The `errorType` field for standard errors mapped to core classes (e.g., "not_found" → NotFound)
+ * 2. The `errorType` field for standard errors mapped to core classes (e.g., "not_found" -> NotFound)
  * 3. Standard HTTP status codes mapped from core (400, 401, 403, 404, etc.)
  * 4. Coinbase-specific HTTP status codes (402)
  * 5. Falls back to UnknownCoinbaseError for unrecognized errors
  *
  * Error bodies carrying `isValid`/`success` keys are policy-validation
- * results delivered with an error status — treated as success values
+ * results delivered with an error status -- treated as success values
  * (`Effect.succeed`) like the v0 client did.
  */
 const matchError = (
@@ -321,14 +321,14 @@ const matchError = (
 // ============================================================================
 
 // The protocol layer is memoized per process by `API.make`, so the build must
-// not capture credentials — `encode` resolves Credentials from the calling
+// not capture credentials -- `encode` resolves Credentials from the calling
 // fiber's context on every request instead. Like the error channel above,
 // the requirement is erased at this boundary (Protocol effects are typed with
 // no requirements) and reintroduced for callers by the generated
 // `CoinbaseOpContext` annotations.
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
   Effect.gen(function* () {
-    // The Credentials service holds an effect — resolving it here (per
+    // The Credentials service holds an effect -- resolving it here (per
     // request) picks up rotations. Its error channel is erased at this
     // boundary; CoinbaseOpError reintroduces it for callers.
     const resolveCredentials = yield* Credentials;
@@ -342,7 +342,7 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
       baseUrl: creds.apiBaseUrl,
     });
 
-    // JWT `uri` claim: "METHOD host/path" — label-substituted path, no query
+    // JWT `uri` claim: "METHOD host/path" -- label-substituted path, no query
     // string (matches the v0 client: baseUrl.host + baseUrl.pathname +
     // parts.path).
     const url = new URL(request.url);
@@ -382,12 +382,12 @@ const decode = ({
     if (status >= 400) {
       const result = yield* matchError(status, json, headers);
       // isValid/success bodies are success values delivered with an error
-      // status — map them onto the output schema like a normal response.
+      // status -- map them onto the output schema like a normal response.
       return wrapSensitive(outputAst, mapKeys(outputAst, result, "decode"));
     }
 
     // No envelope: the response body IS the payload, mapped onto the output
-    // schema (wire names → TS names), with members marked T.SensitiveValue
+    // schema (wire names -> TS names), with members marked T.SensitiveValue
     // delivered as Redacted. Strict mode (core/response-validation) checks
     // the mapped body against the output schema first.
     const body = json === undefined ? {} : json;

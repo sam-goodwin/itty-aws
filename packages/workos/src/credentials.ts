@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * WorkOS credentials — hand-written.
+ * WorkOS credentials -- hand-written.
  *
  * Port of the distilled v0 workos credentials module: the `Credentials`
  * service resolves `{ apiKey, apiBaseUrl }` per request; the protocol layer
@@ -15,7 +15,7 @@ import * as Redacted from "effect/Redacted";
 /**
  * WorkOS production API base URL.
  *
- * The staging environment is reachable at https://api.workos-test.com — set
+ * The staging environment is reachable at https://api.workos-test.com -- set
  * the `WORKOS_API_URL` environment variable to override the default.
  */
 export const DEFAULT_API_BASE_URL = "https://api.workos.com";

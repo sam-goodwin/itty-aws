@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Axiom credentials — hand-written.
+ * Axiom credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 axiom credentials module: the
  * `Credentials` service holds an *effect* that resolves the current
@@ -57,10 +57,10 @@ const envConfig = EffectConfig.all({
 /**
  * Build {@link Credentials} from environment variables.
  *
- * - `AXIOM_TOKEN` or `AXIOM_API_KEY` (required) — Axiom API token or PAT.
- * - `AXIOM_URL` (optional) — override the API base URL (for self-hosted or
+ * - `AXIOM_TOKEN` or `AXIOM_API_KEY` (required) -- Axiom API token or PAT.
+ * - `AXIOM_URL` (optional) -- override the API base URL (for self-hosted or
  *   regional edge deployments). Defaults to `https://api.axiom.co`.
- * - `AXIOM_ORG_ID` (optional) — organization ID, required for PATs.
+ * - `AXIOM_ORG_ID` (optional) -- organization ID, required for PATs.
  */
 export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
   Credentials,

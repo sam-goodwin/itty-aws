@@ -2,7 +2,7 @@ import type * as API from "@distilled.cloud/core/api";
 import { ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * DaytonaProtocol — the shared bearer-REST protocol instantiated for Daytona.
+ * DaytonaProtocol -- the shared bearer-REST protocol instantiated for Daytona.
  *
  * Daytona speaks plain JSON with no success envelope. FAILURES carry a
  * `{ message }` body (toolbox `ErrorResponse`) or an untyped NestJS
@@ -11,10 +11,10 @@ import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
  *
  * Daytona serves THREE endpoints, and the route picks between them:
  *
- *   • `/organization/…` → analytics (`analyticsBaseUrl`)
- *   • toolbox roots (`/files`, `/process`, `/git`, `/computeruse`, …) →
+ *   * `/organization/...` -> analytics (`analyticsBaseUrl`)
+ *   * toolbox roots (`/files`, `/process`, `/git`, `/computeruse`, ...) ->
  *     `toolboxBaseUrl` with `{sandboxId}` substituted
- *   • everything else → platform (`apiBaseUrl`)
+ *   * everything else -> platform (`apiBaseUrl`)
  *
  * A toolbox call without a configured sandbox (when the toolbox URL still
  * contains `{sandboxId}`) fails with `ConfigError`.
@@ -58,7 +58,7 @@ const baseUrlFor = (creds: Config, uri: string): string => {
   if (creds.sandboxId === undefined || creds.sandboxId === "") {
     throw new ConfigError({
       message:
-        `Daytona operation on ${uri} is toolbox-scoped (${creds.toolboxBaseUrl}) — ` +
+        `Daytona operation on ${uri} is toolbox-scoped (${creds.toolboxBaseUrl}) \u2014 ` +
         `configure a sandbox (DAYTONA_SANDBOX_ID or credentials({ sandboxId })) to call it`,
     });
   }

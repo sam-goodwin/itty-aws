@@ -530,8 +530,8 @@ function deserializeValue(ast: AST.AST, value: unknown): unknown {
 
 /**
  * Extract text content from the compact XML representation.
- * Handles: { "#text": "value", "@_xmlns": "..." } → "value"
- * Or: { "@_xmlns": "..." } (empty element) → undefined
+ * Handles: { "#text": "value", "@_xmlns": "..." } -> "value"
+ * Or: { "@_xmlns": "..." } (empty element) -> undefined
  */
 function extractTextContent(value: unknown): unknown {
   if (value == null) return undefined;

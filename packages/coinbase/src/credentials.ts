@@ -1,5 +1,5 @@
 /**
- * Coinbase CDP credentials — hand-written.
+ * Coinbase CDP credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's coinbase credentials module:
  * the `Credentials` service holds an *effect* that resolves the current

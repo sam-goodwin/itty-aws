@@ -2,13 +2,13 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * Auth0Protocol — hand-written.
+ * Auth0Protocol -- hand-written.
  *
  * Auth0's Management API speaks plain bearer-authenticated JSON REST (no
  * response envelope), so the whole protocol is one `makeRestProtocol` call
  * from `core/protocol-rest`:
  *
- *   request:  credentials → `Authorization: Bearer <token>` + base URL
+ *   request:  credentials -> `Authorization: Bearer <token>` + base URL
  *             (`https://{domain}/api/v2`), resolved from the calling fiber
  *             on every request
  *
@@ -43,7 +43,7 @@ export type Auth0OpError =
 export type Auth0OpContext = Credentials | HttpClient.HttpClient;
 
 export const Auth0Protocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;
@@ -53,7 +53,7 @@ export const Auth0Protocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>
   headers: (creds) => ({
     Authorization: `Bearer ${Redacted.value(creds.token)}`,
   }),
-  // Auth0's error body is `{ statusCode?, error?, errorCode?, message }` —
+  // Auth0's error body is `{ statusCode?, error?, errorCode?, message }` --
   // the factory's default lenient envelope covers it.
   unknownError: ({ code, message, body }) =>
     new UnknownAuth0Error({

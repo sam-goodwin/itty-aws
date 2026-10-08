@@ -4,14 +4,14 @@
  * Re-exports the common HTTP errors from core and adds the Forgejo-specific
  * unknown-error and parse-error wrappers.
  *
- * Forgejo's failure envelope is `{ message, url }` — a human-readable message
+ * Forgejo's failure envelope is `{ message, url }` -- a human-readable message
  * and a link to the API documentation. There is no machine-readable code, so
  * the SDK dispatches on the HTTP status: the per-operation classes generated
  * from each operation's declared responses (`NotFound`, `Forbidden`,
- * `Conflict`, `UnprocessableEntity`, `Locked`, …) first, then core's shared
+ * `Conflict`, `UnprocessableEntity`, `Locked`, ...) first, then core's shared
  * status map, then {@link UnknownForgejoError}. The handful of failures
- * Forgejo reports under a misleading status — an organization delete refused
- * because it still owns repositories answers `500` — are typed per operation
+ * Forgejo reports under a misleading status -- an organization delete refused
+ * because it still owns repositories answers `500` -- are typed per operation
  * by message under `patches/`.
  */
 export {
@@ -37,7 +37,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Forgejo error — returned when a failed response's HTTP status has
+ * Unknown Forgejo error -- returned when a failed response's HTTP status has
  * no mapped error class. Carries the raw body for later cataloging.
  */
 export class UnknownForgejoError extends Schema.TaggedError<UnknownForgejoError>()(

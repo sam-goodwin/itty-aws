@@ -44,7 +44,7 @@ export class UnknownCloudflareError extends Schema.TaggedError<UnknownCloudflare
 ) {}
 
 /**
- * Cloudflare error code 7003 — "invalid request: invalid route". Returned when
+ * Cloudflare error code 7003 -- "invalid request: invalid route". Returned when
  * a path component (typically accountId / zoneId) doesn't match a real
  * Cloudflare resource. Mapped globally so every operation surfaces it as
  * InvalidRoute rather than UnknownCloudflareError.
@@ -119,7 +119,7 @@ export class CloudflareError extends S.TaggedError<CloudflareError>()("Cloudflar
   ),
 }) {}
 
-/** Legacy rate-limit error — see {@link CloudflareError}'s note. */
+/** Legacy rate-limit error -- see {@link CloudflareError}'s note. */
 export class CloudflareRateLimited extends S.TaggedError<CloudflareRateLimited>()(
   "CloudflareRateLimited",
   {

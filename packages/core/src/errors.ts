@@ -18,7 +18,7 @@ import * as Category from "./category.ts";
  *
  * Used on retryable errors to carry a server-provided wait hint (e.g. parsed
  * from `Retry-After` or the IETF `Ratelimit` header). Core does not encode/decode
- * this field over the wire — it is constructed at runtime by `matchError` from
+ * this field over the wire -- it is constructed at runtime by `matchError` from
  * whatever the service actually returns (delay-seconds, HTTP-date, epoch, etc.)
  * and consumed at runtime by the retry policy.
  */

@@ -56,7 +56,7 @@ export const awsQueryProtocol: Protocol = (operation: Operation): ProtocolHandle
   // Pre-compute operation name and version from annotations.
   // Prefer the explicit operation name emitted by the generator; fall back to
   // deriving it from the input shape identifier. RDS-family query services
-  // (RDS, ElastiCache, Redshift, Neptune, DocDB, …) name their input shapes
+  // (RDS, ElastiCache, Redshift, Neptune, DocDB, ...) name their input shapes
   // "XxxMessage" (e.g. DescribeDBInstancesMessage), so we must strip "Message"
   // in addition to "Request"/"Input" to recover the Action name. Note the
   // fallback is wrong for services whose input shapes aren't named after the
@@ -68,7 +68,7 @@ export const awsQueryProtocol: Protocol = (operation: Operation): ProtocolHandle
   return {
     serializeRequest: Effect.fn(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
-      // (TimestampFormat → ISO 8601 strings, etc.)
+      // (TimestampFormat -> ISO 8601 strings, etc.)
       const encoded = yield* encodeInput(input).pipe(
         Effect.mapError((err) => new ParseError({ message: err.message })),
       );

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Squarespace credentials — hand-written.
+ * Squarespace credentials -- hand-written.
  *
  * API-compatible port of the distilled v0-style credentials module: the
  * `Credentials` service holds an *effect* that resolves the current
@@ -8,7 +8,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * on the calling fiber).
  *
  * Commerce APIs accept an API key or OAuth access token as
- * `Authorization: Bearer …`. Requests without a User-Agent are rejected.
+ * `Authorization: Bearer ...`. Requests without a User-Agent are rejected.
  */
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";

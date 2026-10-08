@@ -9,7 +9,7 @@
  *
  * Note the generated service modules additionally define their own
  * per-status matcher classes (NotFound/Conflict/UnprocessableEntity) for the
- * statuses each operation declares — those share `_tag`s with the core
+ * statuses each operation declares -- those share `_tag`s with the core
  * classes here, so `catchTag` works against either.
  */
 export {

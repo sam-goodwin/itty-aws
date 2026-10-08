@@ -1,5 +1,5 @@
 /**
- * Cloudflare SDK trait surface — hand-written.
+ * Cloudflare SDK trait surface -- hand-written.
  *
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place) and adds the Cloudflare-specific traits
@@ -57,7 +57,7 @@ export const envelopePayloadRootSymbol = Symbol.for(
 
 /**
  * Marks a response schema whose ENTIRE value is the envelope's `result`
- * payload (used when `result` is an array or scalar — e.g. worker script
+ * payload (used when `result` is an array or scalar -- e.g. worker script
  * search returns a bare array). The protocol returns `result` directly
  * instead of wrapping it in `{ result: ... }`, matching how distilled types
  * these responses.
@@ -69,7 +69,7 @@ export const resultInfoSymbol = Symbol.for("@distilled.cloud/cloudflare/result-i
 /**
  * Marks the output member that receives the envelope's top-level
  * `result_info` block (camelCased). Only honored by
- * `CloudflarePaginatedProtocol` — pagination-specific by design.
+ * `CloudflarePaginatedProtocol` -- pagination-specific by design.
  */
 export const ResultInfo = () => makeAnnotation(resultInfoSymbol, true);
 
@@ -94,7 +94,7 @@ export const binaryResponseBodySymbol = Symbol.for(
 
 /**
  * Marks the output member that receives the raw HTTP response body as a
- * lazy byte stream (raw object GETs — no envelope, no JSON). A response
+ * lazy byte stream (raw object GETs -- no envelope, no JSON). A response
  * with a member carrying this trait is decoded from the response's
  * headers and stream without consuming the body as text; error statuses
  * still take the normal envelope/error path. This mirrors
@@ -113,7 +113,7 @@ export const hostSymbol = Symbol.for("@distilled.cloud/cloudflare/host");
 
 /**
  * Marks an operation input whose requests go to their own origin instead of
- * the credentials' API base URL — K2's data plane is served from
+ * the credentials' API base URL -- K2's data plane is served from
  * `https://{stream_id}.k2.cloudflarestorage.com`, one host per stream.
  * `{name}` placeholders are filled from the input's `Label(name)` members,
  * exactly like the route's own labels. This mirrors

@@ -2,13 +2,13 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * CustomerioProtocol — hand-written.
+ * CustomerioProtocol -- hand-written.
  *
  * Customer.io's Journeys App API speaks bearer-authenticated JSON REST (no
  * response envelope), so the protocol is one `makeRestProtocol` call from
  * `core/protocol-rest`:
  *
- *   request:  credentials → `Authorization: Bearer <apiKey>` + base URL
+ *   request:  credentials -> `Authorization: Bearer <apiKey>` + base URL
  *             (default https://api.customer.io; EU is
  *             https://api-eu.customer.io), resolved from the calling fiber
  *             on every request
@@ -84,7 +84,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 };
 
 export const CustomerioProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;

@@ -2,7 +2,7 @@ import type * as API from "@distilled.cloud/core/api";
 import type { ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * PrismaProtocol — hand-written.
+ * PrismaProtocol -- hand-written.
  *
  * The Prisma Management API (api.prisma.io) is a plain bearer-auth
  * JSON REST API with no response envelope, so this is a thin
@@ -14,7 +14,7 @@ import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/
  *             request)
  *
  *   response: non-2xx errors arrive as `{ error: { code, message, hint? } }`
- *             — matched per-op typed errors first, then the core HTTP status
+ *             -- matched per-op typed errors first, then the core HTTP status
  *             map (message only, mirroring distilled v0: the envelope's
  *             string `code` is swallowed for status-mapped classes), with
  *             {@link UnknownPrismaError} carrying code/message/hint/
@@ -60,7 +60,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 };
 
 export const PrismaProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // Resolved per request on the calling fiber — the Credentials service
+  // Resolved per request on the calling fiber -- the Credentials service
   // holds an effect, so rotated tokens are picked up. Its ConfigError
   // channel is erased at this boundary (Protocol effects carry none) and
   // reintroduced for callers by `PrismaOpError`.

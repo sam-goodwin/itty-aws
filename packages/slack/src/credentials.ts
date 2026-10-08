@@ -1,20 +1,20 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Slack credentials — hand-written.
+ * Slack credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl }` per request; the
  * protocol layer formats the `Authorization: Bearer <token>` header from it.
  *
  * Slack authorizes Web API calls with one bearer token, and the token's
  * PREFIX carries its kind (https://docs.slack.dev/authentication/tokens):
- *   • `xoxb-…` — a bot token (what almost every integration uses)
- *   • `xoxp-…` — a user token, for calls made on behalf of a user
- *   • `xoxe.xoxb-…` / `xoxe.xoxp-…` — rotating (expiring) variants
- *   • `xapp-…` — an app-level token (Socket Mode / `apps.connections.open`)
+ *   * `xoxb-...` -- a bot token (what almost every integration uses)
+ *   * `xoxp-...` -- a user token, for calls made on behalf of a user
+ *   * `xoxe.xoxb-...` / `xoxe.xoxp-...` -- rotating (expiring) variants
+ *   * `xapp-...` -- an app-level token (Socket Mode / `apps.connections.open`)
  * The header is the same for all of them, so there is no token-type knob.
  *
- * The OAuth exchange methods (`oauth.v2.access`, `openid.connect.token`, …)
- * authenticate with `client_id`/`client_secret` args instead of a token — for
+ * The OAuth exchange methods (`oauth.v2.access`, `openid.connect.token`, ...)
+ * authenticate with `client_id`/`client_secret` args instead of a token -- for
  * those, an empty-string token is allowed and the protocol simply omits the
  * Authorization header.
  */

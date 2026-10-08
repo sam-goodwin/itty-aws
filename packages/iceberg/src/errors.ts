@@ -1,9 +1,9 @@
 /**
  * Iceberg REST Catalog error types.
  *
- * Every failure carries one envelope — `{ "error": { "message", "type",
- * "code" } }` — where `type` names the exception (`NoSuchTableException`,
- * `CommitFailedException`, …). The exceptions an operation documents are
+ * Every failure carries one envelope -- `{ "error": { "message", "type",
+ * "code" } }` -- where `type` names the exception (`NoSuchTableException`,
+ * `CommitFailedException`, ...). The exceptions an operation documents are
  * generated per operation in `services/catalog.ts` and matched on status
  * plus `error.type`; this module holds what every route shares: core's
  * HTTP status errors, the 419 the spec adds, and the unknown-error and
@@ -39,7 +39,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * HTTP 419 — `AuthenticationTimeoutException`: the token expired. The spec
+ * HTTP 419 -- `AuthenticationTimeoutException`: the token expired. The spec
  * lets a catalog send this instead of 401; refresh the token and retry.
  */
 export class AuthenticationTimeout extends Schema.TaggedError<AuthenticationTimeout>()(
@@ -50,7 +50,7 @@ export class AuthenticationTimeout extends Schema.TaggedError<AuthenticationTime
 ).pipe(Category.withAuthError) {}
 
 /**
- * Unknown Iceberg error — a failed response nothing else matched. `code` is
+ * Unknown Iceberg error -- a failed response nothing else matched. `code` is
  * the envelope's `error.code` (the HTTP status the server reported).
  */
 export class UnknownIcebergError extends Schema.TaggedError<UnknownIcebergError>()(

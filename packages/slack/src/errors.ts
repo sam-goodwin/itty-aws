@@ -1,8 +1,8 @@
 /**
  * Slack-specific error types.
  *
- * Slack reports failures as `{ "ok": false, "error": "<slug>" }` — usually
- * with HTTP 200 — so the interesting field is the machine-readable `error`
+ * Slack reports failures as `{ "ok": false, "error": "<slug>" }` -- usually
+ * with HTTP 200 -- so the interesting field is the machine-readable `error`
  * slug, not the status. The protocol maps the well-known infrastructure
  * slugs (auth, throttling, server hiccups) onto core's shared HTTP error
  * classes and surfaces everything else as {@link SlackError} with the slug
@@ -34,7 +34,7 @@ import * as Schema from "effect/Schema";
 
 /**
  * A Slack API error envelope: `ok: false` with a machine-readable slug.
- * `code` is the slug (`channel_not_found`, `invalid_blocks`, …) — the field
+ * `code` is the slug (`channel_not_found`, `invalid_blocks`, ...) -- the field
  * to branch on; the per-method slugs are listed in each operation's doc
  * comment. `needed`/`provided` carry scope detail on `missing_scope`;
  * `messages` carries the envelope's `response_metadata.messages` (per-field
@@ -49,7 +49,7 @@ export class SlackError extends Schema.TaggedError<SlackError>()("SlackError", {
 }) {}
 
 /**
- * Slack rate limit — a 429 or the `rate_limited`/`ratelimited` slug. Slack
+ * Slack rate limit -- a 429 or the `rate_limited`/`ratelimited` slug. Slack
  * answers with a `Retry-After` header the default retry policy honors.
  */
 export class SlackRateLimited extends Schema.TaggedError<SlackRateLimited>()("SlackRateLimited", {
@@ -59,7 +59,7 @@ export class SlackRateLimited extends Schema.TaggedError<SlackRateLimited>()("Sl
 }).pipe(withCategory(RETRYABLE), Category.withThrottlingError) {}
 
 /**
- * HTTP error — a non-2xx response without a parseable Slack error envelope
+ * HTTP error -- a non-2xx response without a parseable Slack error envelope
  * (proxy pages, HTML 5xx bodies).
  */
 export class SlackHttpError extends Schema.TaggedError<SlackHttpError>()("SlackHttpError", {

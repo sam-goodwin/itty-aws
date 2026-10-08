@@ -2,9 +2,9 @@
  * Notion-specific error types.
  *
  * Re-exports the common HTTP errors from core and adds the unknown-error and
- * parse-error wrappers. Every Notion failure carries the same envelope —
+ * parse-error wrappers. Every Notion failure carries the same envelope --
  * `{ "object": "error", "status": number, "code": string, "message": string }`
- * — and the spec types no failure per operation beyond the status list, so
+ * -- and the spec types no failure per operation beyond the status list, so
  * the SDK dispatches on the status and carries `code` through on
  * {@link UnknownNotionError} for statuses nothing else maps (406
  * `row_limit_exceeded`).
@@ -40,7 +40,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Notion error — returned when a failed response's HTTP status has
+ * Unknown Notion error -- returned when a failed response's HTTP status has
  * no mapped error class.
  */
 export class UnknownNotionError extends Schema.TaggedError<UnknownNotionError>()(

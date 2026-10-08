@@ -8,7 +8,7 @@ import {
 import { buildRequest, mapKeys, matchTypedError } from "@distilled.cloud/core/protocol-http";
 import { unwrapRedactedDeep, wrapSensitive } from "@distilled.cloud/core/protocol-rest";
 /**
- * ZeroSslProtocol — hand-written.
+ * ZeroSslProtocol -- hand-written.
  *
  * ZeroSSL's REST API is JSON at `https://api.zerossl.com` authenticated by
  * the account's access key in the `Authorization: ApiKey` header. Failures

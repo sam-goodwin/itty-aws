@@ -1,13 +1,13 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Forgejo credentials — hand-written.
+ * Forgejo credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl }` per request; the
  * protocol layer formats the `Authorization: token <token>` header from it.
  *
- * Forgejo is self-hosted, so — unlike a single-tenant SaaS — there is no
+ * Forgejo is self-hosted, so -- unlike a single-tenant SaaS -- there is no
  * default API root: the instance URL is part of the credential. The token is
- * an access token generated under Settings → Applications → Access Tokens on
+ * an access token generated under Settings -> Applications -> Access Tokens on
  * the instance (a `write:admin`-scoped one for the `/admin` endpoints).
  */
 import * as EffectConfig from "effect/Config";

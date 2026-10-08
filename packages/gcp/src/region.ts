@@ -8,7 +8,7 @@
  * resources; it never changes which host a request goes to.
  *
  * Credentials carry a region (`Credentials` `region`, e.g. from a
- * profile) and {@link Region} is the OVERRIDE on top — an
+ * profile) and {@link Region} is the OVERRIDE on top -- an
  * optional service generated operations do not list in their
  * requirements. {@link current} reads the override, then the
  * credentials' region.
@@ -19,7 +19,7 @@
  *   location in its resource name only where the global host rejects
  *   regional resources (Vertex AI, Secret Manager, Parameter Manager).
  * - `"prefer"`: send every request whose resource name has a location
- *   to that location's regional host whenever Google publishes one — the
+ *   to that location's regional host whenever Google publishes one -- the
  *   data-residency mode (TLS terminates in the region).
  * - `"never"`: always use the global host.
  */
@@ -76,7 +76,7 @@ export const regionalEndpoints = (mode: RegionalEndpointMode) =>
 
 /**
  * Services whose global host rejects regional resources, so a request for
- * `projects/p/locations/{region}/…` must go to the regional host.
+ * `projects/p/locations/{region}/...` must go to the regional host.
  */
 const REGION_REQUIRED = new Set([
   "https://aiplatform.googleapis.com/",

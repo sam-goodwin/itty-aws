@@ -18,7 +18,7 @@ import {
 import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
- * Fly.io protocols — Machines REST, UI-EX REST (MPG), GraphQL add-ons, and
+ * Fly.io protocols -- Machines REST, UI-EX REST (MPG), GraphQL add-ons, and
  * Sprites REST.
  *
  * Machines (`FlyIoProtocol`) is a plain bearer-token JSON API at
@@ -579,7 +579,7 @@ export const SpritesProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
 );
 
 // =============================================================================
-// GraphQL add-ons (Tigris, Redis) — POST https://api.fly.io/graphql
+// GraphQL add-ons (Tigris, Redis) -- POST https://api.fly.io/graphql
 // =============================================================================
 
 const GraphQLError = Schema.Struct({

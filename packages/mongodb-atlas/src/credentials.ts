@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * MongoDB Atlas credentials — hand-written.
+ * MongoDB Atlas credentials -- hand-written.
  *
  * Port of the distilled v0 Atlas credentials module: an OAuth2
  * client_credentials service-account flow. `MONGODB_ATLAS_CLIENT_ID` +

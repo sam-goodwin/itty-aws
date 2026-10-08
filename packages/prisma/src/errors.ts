@@ -3,7 +3,7 @@
  *
  * Re-exports the common HTTP errors from core and adds the Prisma
  * Postgres-specific fallback/decode error types. The API's error envelope is
- * `{ error: { code, message, hint? } }` — status-mapped failures surface as
+ * `{ error: { code, message, hint? } }` -- status-mapped failures surface as
  * the shared core classes (message only, like distilled v0); the envelope's
  * `code`/`hint` only surface on {@link UnknownPrismaError}.
  */
@@ -30,7 +30,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Prisma error — returned when a failure matches no
+ * Unknown Prisma error -- returned when a failure matches no
  * per-operation error class and no HTTP status class. Carries the envelope's
  * `code`/`message`/`hint` and the raw body for later cataloging.
  */

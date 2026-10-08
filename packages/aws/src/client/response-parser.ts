@@ -61,7 +61,7 @@ const wireCodeMatches = (from: string, errorCode: string): boolean =>
  * Evaluate a synthetic error's message predicate. A plain string is an exact
  * match; the object form supports substring (`includes`) and regex
  * (`matches`) predicates. An empty object predicate would match every error
- * — reject it.
+ * -- reject it.
  */
 const matchesMessage = (matcher: SyntheticErrorTrait["message"], message: string): boolean => {
   if (typeof matcher === "string") return matcher === message;
@@ -202,7 +202,7 @@ export const makeResponseParser = <A>(
     // Fold the XML-style `Message` wire key onto `message`. AWS XML protocols
     // send <Message> while JS expects .message, and the generator names every
     // error class's canonical message member `message` regardless of which
-    // spelling the service model used — so this is what lets a `Message` wire
+    // spelling the service model used -- so this is what lets a `Message` wire
     // key reach the renamed member during decode.
     if (
       data &&
@@ -234,7 +234,7 @@ export const makeResponseParser = <A>(
 
     // Status-based fallback: rest-json returns an empty error code when the
     // response carries none (no X-Amzn-Errortype header, no __type/code body
-    // field — e.g. IoT Managed Integrations). Match the operation's declared
+    // field -- e.g. IoT Managed Integrations). Match the operation's declared
     // errors by their smithy.api#httpError status, but only when exactly one
     // declared error carries the response status.
     if (errorSchema === undefined && errorCode === "") {
@@ -266,7 +266,7 @@ export const makeResponseParser = <A>(
         if (headerName) {
           const headerValue = response.headers[headerName.toLowerCase()];
           if (headerValue !== undefined) {
-            // Coerce string header values to the member's declared type —
+            // Coerce string header values to the member's declared type --
             // e.g. ThrottlingException.retryAfterSeconds (S.Number) bound to
             // the Retry-After header. Without coercion the decode fails and
             // the error degrades to a plain object, losing its error class

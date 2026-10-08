@@ -24,15 +24,15 @@ import { unwrapRedactedDeep, wrapSensitive } from "@distilled.cloud/core/protoco
 import { validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
- * StripeProtocol — hand-written.
+ * StripeProtocol -- hand-written.
  *
  * Speaks Stripe's REST protocol. The generic trait helpers live in
  * `@distilled.cloud/core/protocol-http`; this module supplies what is
  * Stripe's own (ported from the distilled v0 stripe client):
  *
- *   request:  credentials → `Authorization: Bearer <apiKey>` + API base URL;
+ *   request:  credentials -> `Authorization: Bearer <apiKey>` + API base URL;
  *             per-call {@link StripeRequestOptions} (resolved from the
- *             calling fiber via {@link RequestOptions}) → Idempotency-Key /
+ *             calling fiber via {@link RequestOptions}) -> Idempotency-Key /
  *             Stripe-Account / Stripe-Context / Stripe-Version headers;
  *             GET inputs flatten body-bound members into the query string
  *             with Stripe bracket notation (`created[gte]`, `expand[]`);
@@ -43,14 +43,14 @@ import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
  *             as JSON otherwise (the /v2 ops), and as multipart form-data
  *             for `contentType: "multipart"` (POST /v1/files)
  *
- *   response: 2xx JSON is the payload (no envelope) → wire→TS key mapping →
+ *   response: 2xx JSON is the payload (no envelope) -> wire->TS key mapping ->
  *             Redacted wrapping of sensitive members; failures parse the
- *             `{ error: { type, code, message, … } }` envelope and dispatch
+ *             `{ error: { type, code, message, ... } }` envelope and dispatch
  *             by per-op matcher classes first (`matchTypedError`, e.g.
- *             ProductHasPrices), then `error.type` (card_error → CardError,
- *             idempotency_error → IdempotencyError, invalid_request_error →
- *             InvalidRequestError, api_error → ApiError), then the
- *             Stripe-specific status map (402 → PaymentError, 424 →
+ *             ProductHasPrices), then `error.type` (card_error -> CardError,
+ *             idempotency_error -> IdempotencyError, invalid_request_error ->
+ *             InvalidRequestError, api_error -> ApiError), then the
+ *             Stripe-specific status map (402 -> PaymentError, 424 ->
  *             ExternalDependencyFailed), then core's HTTP status map (with
  *             retryAfter hints), then UnknownStripeError.
  */
@@ -108,7 +108,7 @@ export type StripeRequestOptions = {
 /**
  * Per-call request options service. distilled v0 passed these as a second
  * call argument; v1 operations take only their input, so options travel on
- * the calling fiber's context instead — see {@link withRequestOptions}.
+ * the calling fiber's context instead -- see {@link withRequestOptions}.
  */
 export class RequestOptions extends Context.Service<RequestOptions, StripeRequestOptions>()(
   "StripeRequestOptions",
@@ -275,7 +275,7 @@ const buildFormUrlEncoded = (body: Record<string, unknown>): string => {
 // =============================================================================
 
 // The protocol layer is memoized per process by `API.make`, so the build
-// must not capture credentials — `encode` resolves Credentials (and the
+// must not capture credentials -- `encode` resolves Credentials (and the
 // per-call RequestOptions) from the calling fiber's context on every
 // request. The requirement is erased at this boundary and reintroduced for
 // callers by the generated `StripeOpContext` annotations.
@@ -297,7 +297,7 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
     };
 
     // Multipart (POST /v1/files): core's buildRequest speaks multipart
-    // form-data (file parts + JSON-encoded object parts) — same behavior as
+    // form-data (file parts + JSON-encoded object parts) -- same behavior as
     // v0's buildFormData.
     if (http.contentType === "multipart") {
       return buildRequest({
@@ -334,7 +334,7 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
       }
     }
 
-    // Input keys the schema doesn't know pass through as body fields — the
+    // Input keys the schema doesn't know pass through as body fields -- the
     // generated schemas can lag the real API, and silently dropping them
     // would break working callers.
     for (const [key, value] of Object.entries(inputObj)) {
@@ -342,7 +342,7 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
       body[key] = value;
     }
 
-    // v0's normalizeStripeGetQuery: GET inputs carry no body — flatten the
+    // v0's normalizeStripeGetQuery: GET inputs carry no body -- flatten the
     // body-bound members into the query string with bracket notation.
     if (BODYLESS.has(http.method)) {
       for (const [key, value] of Object.entries(body)) {
@@ -391,7 +391,7 @@ const stripeStatusMap: Readonly<Record<number, (new (args: any) => unknown) | un
 const coreStatusMap: Readonly<Record<number, (new (args: any) => unknown) | undefined>> =
   HTTP_STATUS_MAP;
 
-/** Stripe's `{ error: { type, message, … } }` object, when present. */
+/** Stripe's `{ error: { type, message, ... } }` object, when present. */
 const stripeErrorEnvelope = (errorBody: unknown): Record<string, unknown> | undefined => {
   const envelope =
     errorBody !== null && typeof errorBody === "object"
@@ -411,7 +411,7 @@ const stripeErrorMessage = (errorBody: unknown): string | undefined => {
  * Match a Stripe API error response to the appropriate error class.
  *
  * Stripe dispatches errors by:
- * 1. Per-operation matcher classes (`matchTypedError`) — see decode
+ * 1. Per-operation matcher classes (`matchTypedError`) -- see decode
  * 2. The `error.type` field (card_error, idempotency_error,
  *    invalid_request_error, api_error)
  * 3. HTTP status code (402/424 Stripe-specific, then the core status map)
@@ -470,7 +470,7 @@ const matchStripeError = (
     });
   }
 
-  // Fall back to standard HTTP status errors (400, 401, 403, 404, …).
+  // Fall back to standard HTTP status errors (400, 401, 403, 404, ...).
   const CoreErrorClass = coreStatusMap[status];
   if (CoreErrorClass) {
     return new CoreErrorClass({
@@ -479,7 +479,7 @@ const matchStripeError = (
     } as any);
   }
 
-  // Unmapped 5xx (e.g. proxy statuses) → retryable server error (v1
+  // Unmapped 5xx (e.g. proxy statuses) -> retryable server error (v1
   // convention; v0 fell through to UnknownStripeError here).
   if (status >= 500) {
     return new InternalServerError({
@@ -507,7 +507,7 @@ const decode = ({
   readonly errors: ReadonlyArray<unknown>;
 }) =>
   Effect.gen(function* () {
-    // Read as text and parse tolerantly — error pages can be non-JSON.
+    // Read as text and parse tolerantly -- error pages can be non-JSON.
     const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
     if (process.env.DISTILLED_DEBUG_HTTP) {
       console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
@@ -536,7 +536,7 @@ const decode = ({
       return yield* fail(matchStripeError(status, errorBody, headers));
     }
 
-    // 2xx: the response body IS the payload (no envelope). Wire→TS key
+    // 2xx: the response body IS the payload (no envelope). Wire->TS key
     // mapping is schema-driven; sensitive members come back Redacted.
     // Strict mode checks the mapped body against the output schema first.
     const body: unknown = nonJson ? text : (json ?? {});

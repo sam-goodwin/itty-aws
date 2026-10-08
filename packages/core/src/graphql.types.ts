@@ -26,7 +26,7 @@ type _Projects = Assert<
 >;
 type _Flag = Assert<Equal<Unwrapped["flag"], boolean>>;
 
-// ── Errors ──────────────────────────────────────────────────────────────────
+// U+2500U+2500 Errors U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500
 declare class NotFound {
   readonly _tag: "NotFound";
   readonly message: string;
@@ -64,7 +64,7 @@ type _QueryError = Assert<
   >
 >;
 
-// ── Pagination ──────────────────────────────────────────────────────────────
+// U+2500U+2500 Pagination U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500
 declare const services: Query<ReadonlyArray<{ name: string }>, NotFound>;
 type PagedItems = ReturnType<typeof itemsQuery<{ name: string }, NotFound>>;
 type _ItemsValue = Assert<Equal<Stream.Success<PagedItems>, { name: string }>>;
@@ -76,13 +76,13 @@ type _ItemsError = Assert<
 >;
 export type _Services = typeof services;
 
-// ── Nullability ─────────────────────────────────────────────────────────────
+// U+2500U+2500 Nullability U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500
 declare const nullable: Query<{
   owner: { name: string; tags: ReadonlyArray<string> | null } | null;
 }>;
 type _NullParent = Assert<Equal<UnwrapPlan<typeof nullable.owner.name>, string | null>>;
 
-// ── Query.map on objects ────────────────────────────────────────────────────
+// U+2500U+2500 Query.map on objects U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500U+2500
 declare const service: Query<{
   name: string;
   stars: number;

@@ -1,5 +1,5 @@
 /**
- * Stripe credentials — hand-written.
+ * Stripe credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 stripe credentials module: the
  * `Credentials` service holds an *effect* that resolves the current

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Cloudflare credentials — hand-written.
+ * Cloudflare credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's cloudflare credentials module:
  * the `Credentials` service holds an *effect* that resolves the current

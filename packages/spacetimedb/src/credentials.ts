@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * SpacetimeDB credentials — hand-written.
+ * SpacetimeDB credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol layer resolves it per request
@@ -44,7 +44,7 @@ export const fromAnonymous = (config?: {
   fromApiKey({ apiKey: Redacted.make(""), apiBaseUrl: config?.apiBaseUrl });
 
 /**
- * Reads SPACETIMEDB_TOKEN or SPACETIME_TOKEN (optional — empty is anonymous)
+ * Reads SPACETIMEDB_TOKEN or SPACETIME_TOKEN (optional -- empty is anonymous)
  * and SPACETIMEDB_API_BASE_URL or SPACETIMEDB_HOST (optional).
  */
 export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(

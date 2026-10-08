@@ -2,7 +2,7 @@
  * PostHog-specific error types.
  *
  * Re-exports common HTTP errors from core and adds PostHog-specific error
- * types. Per-operation typed errors (BadRequest / Forbidden / NotFound / …)
+ * types. Per-operation typed errors (BadRequest / Forbidden / NotFound / ...)
  * are generated into each service module with status matchers; the classes
  * here cover everything the protocol can emit beyond those.
  */
@@ -29,7 +29,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown PostHog error — returned when a failure matches neither a
+ * Unknown PostHog error -- returned when a failure matches neither a
  * per-operation typed error nor an HTTP-status class. Carries the raw body
  * (PostHog's DRF error envelope) for later cataloging.
  */

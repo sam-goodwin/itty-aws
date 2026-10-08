@@ -16,7 +16,7 @@ import { fromEnvironment as regionFromEnvironment } from "./region.ts";
 import type { RegionName } from "./region.ts";
 
 /**
- * AWS credentials as a credential source returns them — the same shape as
+ * AWS credentials as a credential source returns them -- the same shape as
  * `AwsCredentialIdentity` in `@smithy/types`, so identities from the AWS SDK
  * are accepted as they are.
  */
@@ -39,8 +39,8 @@ export interface AwsCredentials {
 /**
  * Resolved credential values ready for request signing.
  *
- * `region` is not optional. Authenticating always establishes one — from the
- * environment, the profile, or the SSO session — and carrying it here is what
+ * `region` is not optional. Authenticating always establishes one -- from the
+ * environment, the profile, or the SSO session -- and carrying it here is what
  * lets operations drop `Region` from their requirements: the region an
  * operation uses is the one its credentials came with, unless a `Region`
  * override says otherwise.
@@ -91,7 +91,7 @@ export const mock = Layer.succeed(
 /**
  * Create resolved credentials from an AWS credential identity.
  *
- * The identity carries no region — `AwsCredentialIdentity` never has one —
+ * The identity carries no region -- `AwsCredentialIdentity` never has one --
  * so the provider that resolved it supplies the region it authenticated
  * against.
  */
@@ -111,7 +111,7 @@ export const fromAwsCredentialIdentity = (
  * which region they belong to.
  *
  * A credential-resolution failure like any other, rather than a defect: the
- * caller's fix is the same shape as for a missing key — configure the
+ * caller's fix is the same shape as for a missing key -- configure the
  * environment, the profile, or pass it explicitly.
  */
 export class MissingRegion extends Data.TaggedError("Alchemy::AWS::MissingRegion")<{

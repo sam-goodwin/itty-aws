@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Kubernetes credentials — hand-written.
+ * Kubernetes credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 Kubernetes credentials module: the
  * `Credentials` service holds an *effect* that resolves the current
@@ -24,7 +24,7 @@ export interface Config {
   /**
    * Base URL of the Kubernetes API server.
    *
-   * There is no default — the URL must always be provided explicitly
+   * There is no default -- the URL must always be provided explicitly
    * because it varies per cluster (e.g. EKS endpoint, GKE endpoint,
    * `https://localhost:6443`, etc.).
    */

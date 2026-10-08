@@ -1,10 +1,10 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Hugging Face credentials — hand-written.
+ * Hugging Face credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl }` per request; the
  * protocol layer formats the `Authorization: Bearer <token>` header from it.
- * The token is a Hub access token (`hf_…` — fine-grained, read, or write) or
+ * The token is a Hub access token (`hf_...` -- fine-grained, read, or write) or
  * an OAuth access token; the API accepts all of them as bearer tokens.
  *
  * Many read endpoints (public models, datasets, papers) work without a token
@@ -17,7 +17,7 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 
-/** The Hub's API root — API paths live under `/api` on the main host. */
+/** The Hub's API root -- API paths live under `/api` on the main host. */
 export const DEFAULT_API_BASE_URL = "https://huggingface.co";
 
 export interface Config {

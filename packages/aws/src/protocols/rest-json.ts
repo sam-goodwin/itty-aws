@@ -89,7 +89,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
     isBlob: boolean;
     isEventStream: boolean;
     eventSchema?: Schema.Schema<unknown>;
-    /** event type → `eventPayload` member name (raw-bytes events). */
+    /** event type -> `eventPayload` member name (raw-bytes events). */
     eventPayloadMap?: Record<string, string>;
   };
 
@@ -150,7 +150,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
 
   // restJson1 sends an explicit empty JSON document (`{}`) whenever the
   // input shape has at least one member bound to the body but none were
-  // set (matching the AWS SDK v3 / botocore behavior — see
+  // set (matching the AWS SDK v3 / botocore behavior -- see
   // AwsRestJsonProtocol.serializeRequest + ProtocolLib.resolveRestContentType
   // in aws-sdk-js-v3). Several services reject an absent body outright:
   // resource-explorer-2's ListIndexes/ListViews return
@@ -213,7 +213,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
         } else if (isStreamingType(payloadAst)) {
           request.body = convertStreamingInput(payloadValue as StreamingInputBody);
           // Streaming-input operations are signed UNSIGNED-PAYLOAD (see
-          // Request.hasStreamingInput) — some services (Lex Runtime V2)
+          // Request.hasStreamingInput) -- some services (Lex Runtime V2)
           // reject payload-hash signatures on these routes.
           request.hasStreamingInput = true;
           // Default to octet-stream for streaming payloads, unless user set explicitly
@@ -332,7 +332,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
         return result;
       }
 
-      // Parse JSON body (reviver converts null → undefined since AWS returns null for absent fields)
+      // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
       if (bodyText) {
         try {
           const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
@@ -357,7 +357,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
       // Read body as text
       const bodyText = yield* readStreamAsText(response.body);
 
-      // Parse JSON body (reviver converts null → undefined)
+      // Parse JSON body (reviver converts null -> undefined)
       let body: Record<string, unknown> = {};
       if (bodyText) {
         try {
@@ -386,7 +386,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
 
       if (!rawErrorCode) {
         // Some services (API Gateway-fronted, e.g. IoT Managed Integrations)
-        // return error responses with no error code at all — no
+        // return error responses with no error code at all -- no
         // X-Amzn-Errortype header and no __type/code body field. Return an
         // empty error code so the response parser can fall back to matching
         // the operation's declared errors by smithy.api#httpError status.
@@ -415,7 +415,7 @@ function isRawPayload(ast: AST.AST): boolean {
 }
 
 /**
- * Check if AST represents a non-streaming blob payload (T.Blob — decoded
+ * Check if AST represents a non-streaming blob payload (T.Blob -- decoded
  * Uint8Array with a base64-string wire form). For httpPayload bindings the
  * HTTP body carries the raw bytes directly, so the deserializer must read
  * bytes instead of JSON-parsing the body.

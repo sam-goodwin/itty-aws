@@ -3,13 +3,13 @@ import type { ConfigError } from "@distilled.cloud/core/errors";
 import { HTTP_STATUS_MAP } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * IcebergProtocol — the shared bearer-REST protocol instantiated for the
+ * IcebergProtocol -- the shared bearer-REST protocol instantiated for the
  * Apache Iceberg REST Catalog API.
  *
  * request:  `<uri>/v1/<prefix><route>`. The generated routes carry neither
  *           the `/v1` version nor the per-warehouse `{prefix}` (see
  *           scripts/convert.ts); both come from the credentials. `/config`
- *           is the one route without a prefix — it is how a client learns
+ *           is the one route without a prefix -- it is how a client learns
  *           the prefix. Auth is an optional `Authorization: Bearer` token.
  *
  * response: plain JSON, no success envelope. Failures are

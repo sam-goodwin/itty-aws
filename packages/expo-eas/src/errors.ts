@@ -1,5 +1,5 @@
 /**
- * EAS-specific error types — hand-written.
+ * EAS-specific error types -- hand-written.
  *
  * Re-exports common HTTP errors from core and adds typed wrappers for the
  * GraphQL error envelope returned by api.expo.dev. EAS GraphQL errors carry a
@@ -154,7 +154,7 @@ export class EasChannelAlreadyExists extends Schema.TaggedError<EasChannelAlread
 
 /**
  * The authenticated actor does not have permission to perform this operation
- * (errorCode `UNAUTHORIZED_ERROR`). Distinct from a missing/invalid token —
+ * (errorCode `UNAUTHORIZED_ERROR`). Distinct from a missing/invalid token --
  * the token is valid but lacks the privacy/role grant required for the request.
  */
 export class EasUnauthorizedOperation extends Schema.TaggedError<EasUnauthorizedOperation>()(
@@ -178,7 +178,7 @@ export class EasExperienceNotFound extends Schema.TaggedError<EasExperienceNotFo
 /**
  * The app does not yet have a `*.expo.app` dev domain name assigned
  * (errorCode `APP_NO_DEV_DOMAIN_NAME`). Required before creating
- * a hosting deployment URL — call `assignDevDomainName` first.
+ * a hosting deployment URL -- call `assignDevDomainName` first.
  */
 export class EasAppNoDevDomainName extends Schema.TaggedError<EasAppNoDevDomainName>()(
   "EasAppNoDevDomainName",
@@ -199,7 +199,7 @@ export class EasDevDomainNameTaken extends Schema.TaggedError<EasDevDomainNameTa
 ).pipe(Category.withCategory(Category.ConflictError, Category.AlreadyExistsError)) {}
 
 /**
- * Map from EAS GraphQL `extensions.errorCode` → typed error class.
+ * Map from EAS GraphQL `extensions.errorCode` -> typed error class.
  * Used by the protocol to surface known errors with a dedicated tag.
  */
 // oxlint-disable-next-line no-explicit-any -- heterogeneous error class map

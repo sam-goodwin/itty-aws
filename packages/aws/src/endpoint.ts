@@ -9,7 +9,7 @@ export class Endpoint extends Context.Service<Endpoint, Effect.Effect<string | u
 ) {}
 
 /**
- * `AWS_ENDPOINT_URL` — the LocalStack-standard endpoint override that local
+ * `AWS_ENDPOINT_URL` -- the LocalStack-standard endpoint override that local
  * emulators (floci, LocalStack) inject into runtime environments (e.g.
  * Lambda containers). Resolves `undefined` when unset, so the SDK's
  * default endpoint resolver runs.

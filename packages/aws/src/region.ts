@@ -1,8 +1,8 @@
 /**
  * The region an operation is dispatched to.
  *
- * Every credentials layer resolves a region as part of authenticating — the
- * environment variables, the profile, the SSO session all carry one — so
+ * Every credentials layer resolves a region as part of authenticating -- the
+ * environment variables, the profile, the SSO session all carry one -- so
  * {@link ResolvedCredentials.region} is where the region normally comes from
  * and it is never absent.
  *
@@ -21,7 +21,7 @@ import * as Layer from "effect/Layer";
 export class Region extends Context.Service<Region, Effect.Effect<RegionName>>()("AWS::Region") {}
 
 /**
- * `AWS_REGION`, then `AWS_DEFAULT_REGION` — the variables every AWS tool
+ * `AWS_REGION`, then `AWS_DEFAULT_REGION` -- the variables every AWS tool
  * reads. Credentials providers use this as their region source; it fails
  * (rather than dying) so a provider can turn it into a typed
  * `MissingRegion` alongside its other credential-resolution failures.

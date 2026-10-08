@@ -4,7 +4,7 @@
  * Re-exports the common HTTP errors from core and adds the unknown-error and
  * parse-error wrappers. The Hub types its failures with the plain HTTP
  * vocabulary core already covers (400/404/409/422 per operation,
- * 401/429/5xx via the protocol's status map) — no provider-specific
+ * 401/429/5xx via the protocol's status map) -- no provider-specific
  * statuses to add.
  */
 export {
@@ -30,7 +30,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Hugging Face error — returned when a failed response's HTTP status
+ * Unknown Hugging Face error -- returned when a failed response's HTTP status
  * has no mapped error class. Carries the raw body for later cataloging.
  */
 export class UnknownHuggingFaceError extends Schema.TaggedError<UnknownHuggingFaceError>()(

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Hostinger credentials — hand-written.
+ * Hostinger credentials -- hand-written.
  *
  * API tokens are created on the Account page of the Hostinger Panel
  * (https://hpanel.hostinger.com/profile/api) and sent as

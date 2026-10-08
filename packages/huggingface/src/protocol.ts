@@ -3,16 +3,16 @@ import type { ConfigError } from "@distilled.cloud/core/errors";
 import { HTTP_STATUS_MAP } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * HuggingFaceProtocol — the shared bearer-REST protocol instantiated for the
+ * HuggingFaceProtocol -- the shared bearer-REST protocol instantiated for the
  * Hugging Face Hub.
  *
  * The Hub speaks plain JSON with no success envelope: a list endpoint returns
  * its array, a single resource returns the object itself. Failures usually
- * carry `{ "error": "<message>" }` — a bare string — though a few surfaces
+ * carry `{ "error": "<message>" }` -- a bare string -- though a few surfaces
  * (Spaces control plane, SCIM) answer with `{ "error": { "code", "message" } }`
  * objects instead; both forms are unwrapped below.
  *
- * There is no API version anywhere on the wire — no versioned path segment,
+ * There is no API version anywhere on the wire -- no versioned path segment,
  * no version header. The document at
  * https://huggingface.co/.well-known/openapi.json is the moving target the
  * SDK regenerates against.

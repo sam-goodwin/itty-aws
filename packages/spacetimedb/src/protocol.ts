@@ -2,12 +2,12 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * SpacetimeDBProtocol — hand-written.
+ * SpacetimeDBProtocol -- hand-written.
  *
  * SpacetimeDB speaks bearer-authenticated JSON REST (no response envelope),
  * with optional anonymous access when no token is configured:
  *
- *   request:  credentials → `Authorization: Bearer <token>` when the token
+ *   request:  credentials -> `Authorization: Bearer <token>` when the token
  *             is non-empty + base URL (default
  *             https://maincloud.spacetimedb.com), resolved from the calling
  *             fiber on every request

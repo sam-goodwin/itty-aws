@@ -1,11 +1,11 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Hetzner Cloud credentials — hand-written.
+ * Hetzner Cloud credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl }` per request; the
  * protocol layer formats the `Authorization: Bearer <token>` header from it.
  * The token is a Hetzner Cloud API token, created per PROJECT in the Cloud
- * Console — there is no account-wide token, so a token IS the project scope
+ * Console -- there is no account-wide token, so a token IS the project scope
  * and no project/tenant field rides on the requests.
  *
  * A token is issued read-write or read-only; a read-only token answers any

@@ -27,7 +27,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Discord error — returned when a failed response's HTTP status has
+ * Unknown Discord error -- returned when a failed response's HTTP status has
  * no mapped error class. `code` is Discord's own JSON error code (e.g. 50001
  * "Missing Access"), which is far more specific than the HTTP status and is
  * the field worth branching on; `errors` carries the per-field validation

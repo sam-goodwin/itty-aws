@@ -1,6 +1,6 @@
 import * as Pagination from "@distilled.cloud/core/pagination";
 /**
- * Cloudflare pagination — hand-written.
+ * Cloudflare pagination -- hand-written.
  *
  * Paginated operations use `CloudflarePaginatedProtocol` (see ./protocol.ts),
  * which keeps the envelope's `result_info` on the response as `resultInfo`
@@ -12,7 +12,7 @@ import * as S from "effect/Schema";
 import * as Stream from "effect/Stream";
 
 // =============================================================================
-// ResultInfo — the envelope's `result_info`, shared by every paginated op
+// ResultInfo -- the envelope's `result_info`, shared by every paginated op
 // =============================================================================
 
 export interface ResultInfoCursors {
@@ -22,9 +22,9 @@ export interface ResultInfoCursors {
 
 /**
  * The v4 envelope's `result_info` block (camelCased by the paginated
- * protocol). Cloudflare varies the exact fields per endpoint — page-mode
+ * protocol). Cloudflare varies the exact fields per endpoint -- page-mode
  * endpoints report `page`/`perPage`/`totalCount`, cursor-mode endpoints
- * report `cursor` or `cursors` — so all fields are optional here.
+ * report `cursor` or `cursors` -- so all fields are optional here.
  */
 export interface ResultInfo {
   readonly count?: number | null;

@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Modal credentials — hand-written.
+ * Modal credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ tokenId, tokenSecret, apiBaseUrl }`
  * per request; the protocol layer sends them as `x-modal-token-id` /

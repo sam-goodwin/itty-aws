@@ -1,5 +1,5 @@
 /**
- * ACME credentials — hand-written.
+ * ACME credentials -- hand-written.
  *
  * An ACME "credential" is the **account key**: a private JWK that signs
  * every request. The CA is addressed by its **directory URL** (Let's
@@ -60,9 +60,9 @@ export class Credentials extends Context.Service<Credentials, Effect.Effect<Conf
  * Credentials from the environment:
  *
  * - `ACME_DIRECTORY_URL` (default: Let's Encrypt production)
- * - `ACME_ACCOUNT_KEY` — the private JWK as JSON
- * - `ACME_ACCOUNT_URL` — optional, once the account exists
- * - `ACME_EAB_KID` / `ACME_EAB_HMAC_KEY` — optional EAB pair
+ * - `ACME_ACCOUNT_KEY` -- the private JWK as JSON
+ * - `ACME_ACCOUNT_URL` -- optional, once the account exists
+ * - `ACME_EAB_KID` / `ACME_EAB_HMAC_KEY` -- optional EAB pair
  */
 export const CredentialsFromEnv = Layer.succeed(
   Credentials,

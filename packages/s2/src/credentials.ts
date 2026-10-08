@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * S2 (s2.dev) credentials — hand-written.
+ * S2 (s2.dev) credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, accountBaseUrl, basin,
  * basinBaseUrl }` per request; the protocol layer formats the

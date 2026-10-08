@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Prisma credentials — hand-written.
+ * Prisma credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's prisma credentials
  * module: the `Credentials` service holds an *effect* that resolves the

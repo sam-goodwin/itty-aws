@@ -2,13 +2,13 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * InngestProtocol — hand-written.
+ * InngestProtocol -- hand-written.
  *
  * Inngest speaks bearer-authenticated JSON REST. Success bodies keep the
  * `{ data, metadata, page? }` envelope the OpenAPI document describes.
  * Failures nest under `{ errors: [{ code, message }] }`.
  *
- *   request:  credentials → `Authorization: Bearer <apiKey>` + base URL
+ *   request:  credentials -> `Authorization: Bearer <apiKey>` + base URL
  *             (default https://api.inngest.com/v2), resolved from the
  *             calling fiber on every request
  *
@@ -74,7 +74,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 };
 
 export const InngestProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;

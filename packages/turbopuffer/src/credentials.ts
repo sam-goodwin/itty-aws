@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * turbopuffer credentials — hand-written.
+ * turbopuffer credentials -- hand-written.
  *
  * API-compatible port of the distilled Neon credentials module: the
  * `Credentials` service holds an *effect* that resolves the current

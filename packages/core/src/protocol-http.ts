@@ -4,7 +4,7 @@ import * as HttpClientRequest from "effect/http/HttpClientRequest";
  * Generic REST protocol machinery, shared by SDK protocol layers.
  *
  * Everything here is driven purely by the trait annotations in
- * `core/trait.ts` — nothing is provider-specific. An SDK protocol (e.g.
+ * `core/trait.ts` -- nothing is provider-specific. An SDK protocol (e.g.
  * cloudflare's) supplies credentials/base-URL, calls {@link buildRequest} to
  * encode, and layers its own response-envelope handling on top of the
  * decode-side helpers ({@link getProps}/{@link mapKeys}/
@@ -46,7 +46,7 @@ export const getAnn = (ast: AST.AST, symbol: symbol): unknown => {
   if (direct !== undefined) return direct;
   if (ast._tag === "Suspend") return getAnn(ast.thunk(), symbol);
   if (ast.encoding && ast.encoding.length > 0) return getAnn(ast.encoding[0]!.to, symbol);
-  // S.optional → Union[self, Undefined]; descend into the single real member.
+  // S.optional -> Union[self, Undefined]; descend into the single real member.
   if (ast._tag === "Union") {
     const real = (ast as AST.Union).types.filter(
       (t) => t._tag !== "Undefined" && !(t._tag === "Literal" && (t as any).literal === null),
@@ -132,7 +132,7 @@ export const mapKeysByDictionary = (
 /**
  * Recursively rename keys between TS names and wire names, per the schema.
  *
- * `fallback` is the nearest ancestor `T.KeyDictionary` — schema-known members
+ * `fallback` is the nearest ancestor `T.KeyDictionary` -- schema-known members
  * always map via their own annotations, but opaque values (Document members,
  * keys the schema doesn't know) deep-rename via the dictionary so nested
  * TS-cased content still reaches the wire in wire case. Content with no
@@ -140,7 +140,7 @@ export const mapKeysByDictionary = (
  */
 /**
  * Value form for a `StringEncoded()` member: the string spelling of the
- * value, element-wise for lists. `null` stays `null` — an API that models a
+ * value, element-wise for lists. `null` stays `null` -- an API that models a
  * flag as `"true" | "false"` still means "unset" by null, not `"null"`.
  */
 const stringEncode = (value: unknown): unknown =>
@@ -160,10 +160,10 @@ export const mapKeys = (
   // Discriminated union whose cases the API returns merged (every case's
   // keys present, `null` for the inactive ones). Map wire names, then keep
   // only the active case's keys. The case is read off the union's
-  // discriminator when it has one — cases that share a key set (every
+  // discriminator when it has one -- cases that share a key set (every
   // resource kind of `resource_tagging`, every page-rule action) are
   // indistinguishable by keys alone. Without one, a case does NOT need every
-  // key present — arms carry optional members the wire may omit — so the
+  // key present -- arms carry optional members the wire may omit -- so the
   // active case is the one that best EXPLAINS the value: most present,
   // non-null keys covered, minus present keys the case cannot explain (ties
   // break by coverage, then declaration order).
@@ -214,12 +214,12 @@ export const mapKeys = (
   const node = resolveNode(ast);
 
   // Schema-level union member (a merged response struct whose arms disagree
-  // on a member's type — see the codegen's response-union merge): pick the
+  // on a member's type -- see the codegen's response-union merge): pick the
   // arm that explains the value best and map with it. Object values score
   // arms by how many of their declared keys are present; array values take
   // the first array arm. Anything unmatched deep-renames via the dictionary
-  // fallback, like other opaque content. (Single-real-member unions —
-  // optional/null wrappers — were already collapsed by resolveNode; the
+  // fallback, like other opaque content. (Single-real-member unions --
+  // optional/null wrappers -- were already collapsed by resolveNode; the
   // opaque `T.UnionCases` mechanism never produces a Union node and is
   // handled above.)
   if (node._tag === "Union") {
@@ -261,7 +261,7 @@ export const mapKeys = (
     const props = (node as any).propertySignatures as readonly AST.PropertySignature[];
     const isigs = (node as any).indexSignatures as readonly { type: AST.AST }[] | undefined;
     if (props.length === 0 && !(isigs && isigs.length)) {
-      // opaque object — dictionary fallback or verbatim
+      // opaque object -- dictionary fallback or verbatim
       return dict ? mapKeysByDictionary(dict, value, direction) : value;
     }
     const out: Record<string, unknown> = {};
@@ -275,7 +275,7 @@ export const mapKeys = (
       const v = (value as Record<string, unknown>)[from];
       if (v === undefined) continue;
       // A `StringEncoded()` member nested in a body struct (e.g. Azure's
-      // `hardwareProfile.dynamicMemoryEnabled`) stringifies here — the
+      // `hardwareProfile.dynamicMemoryEnabled`) stringifies here -- the
       // top-level pass in `buildRequest` only sees the outermost member.
       out[to] =
         direction === "encode" && hasPropAnn(p, stringEncodedSymbol)
@@ -300,7 +300,7 @@ export const mapKeys = (
     return out;
   }
 
-  // Scalar-typed schema node holding object content (spec drift) —
+  // Scalar-typed schema node holding object content (spec drift) --
   // dictionary fallback or verbatim.
   return dict ? mapKeysByDictionary(dict, value, direction) : value;
 };
@@ -312,12 +312,12 @@ const BODYLESS = new Set(["GET", "HEAD"]);
 
 /**
  * Serialize one query member. Scalars go as `k=v`, arrays as repeated `k=v`
- * pairs, and nested plain objects recurse as DOTTED params — several list
+ * pairs, and nested plain objects recurse as DOTTED params -- several list
  * endpoints model their filters as structs (e.g. Cloudflare DNS listRecords
  * takes `name: { exact, contains, ... }`) that must go over the wire as
  * `name.exact=value`. Without this they fell through to `String(value)` and
  * were sent as `name=[object Object]`, which servers happily treat as a
- * filter matching nothing — the call "succeeds" with zero results and the
+ * filter matching nothing -- the call "succeeds" with zero results and the
  * bug is invisible to the caller.
  */
 const appendQuery = (query: URLSearchParams, name: string, value: unknown): void => {
@@ -345,7 +345,7 @@ export interface BuildRequestOptions {
    */
   readonly mapMemberHeader?: (name: string, value: string) => string;
   /**
-   * Wire name for input keys the schema doesn't declare (spec drift —
+   * Wire name for input keys the schema doesn't declare (spec drift --
    * unknown keys pass through as body fields rather than being dropped).
    * Defaults to the key verbatim.
    */
@@ -361,7 +361,7 @@ export interface BuildRequestOptions {
  * `FormDataFile()` members become multipart file parts, and everything else
  * is a JSON body field (wire-named via `Body()` / `KeyDictionary`).
  *
- * Throws when the input schema is missing the `Http()` trait — a codegen
+ * Throws when the input schema is missing the `Http()` trait -- a codegen
  * bug, surfaced as a defect by the calling protocol's Effect context.
  */
 /**
@@ -421,7 +421,7 @@ export const buildRequest = ({
 
   const headers: Record<string, string> = { ...baseHeaders };
   const body: Record<string, unknown> = {};
-  let rawBody: unknown; // whole-body member (T.HttpBody) — sent as-is
+  let rawBody: unknown; // whole-body member (T.HttpBody) -- sent as-is
   const files: Array<Blob | File> = [];
   const query = new URLSearchParams();
   let uri = http.uri;
@@ -466,7 +466,7 @@ export const buildRequest = ({
       appendQuery(query, nameOf(prop, querySymbol), value);
     } else if (hasPropAnn(prop, deepQuerySymbol)) {
       // Deep-object query member (T.DeepQuery): a nested struct expands into
-      // dotted query keys (`account.id=…`) under the member's wire name.
+      // dotted query keys (`account.id=...`) under the member's wire name.
       // Wire-name the nested content via the schema first, skip null/
       // undefined entries; deeper nesting recurses through appendQuery.
       const base = nameOf(prop, deepQuerySymbol);
@@ -486,7 +486,7 @@ export const buildRequest = ({
       rawBody = mapKeys(prop.type, value, "encode", rootDict);
     } else {
       // T.StringEncoded(): the API takes this member's value only as its
-      // string spelling (`true` → `"true"`), while the TS surface keeps the
+      // string spelling (`true` -> `"true"`), while the TS surface keeps the
       // natural type. Explicit here so a JSON body carries the string too,
       // rather than relying on the multipart encoder's own `String()`.
       body[nameOf(prop, bodySymbol)] = hasPropAnn(prop, stringEncodedSymbol)
@@ -495,7 +495,7 @@ export const buildRequest = ({
     }
   }
 
-  // Input keys the schema doesn't know pass through as body fields — the
+  // Input keys the schema doesn't know pass through as body fields -- the
   // generated schemas can lag the real API, and silently dropping them
   // would break working callers. The key dictionary maps them when it knows
   // the key, otherwise `unknownKeyToWire` decides the wire name.
@@ -559,8 +559,8 @@ export const buildRequest = ({
     request = request.pipe(HttpClientRequest.bodyFormData(form));
   } else if (http.contentType === "form-urlencoded" && !BODYLESS.has(http.method)) {
     // application/x-www-form-urlencoded with Stripe-style deepObject bracket
-    // notation: { shipping: { address: { city } } } → shipping[address][city],
-    // arrays indexed ({ expand: ["a"] } → expand[0]=a).
+    // notation: { shipping: { address: { city } } } -> shipping[address][city],
+    // arrays indexed ({ expand: ["a"] } -> expand[0]=a).
     const source =
       rawBody !== undefined && typeof rawBody === "object"
         ? (rawBody as Record<string, unknown>)
@@ -573,7 +573,7 @@ export const buildRequest = ({
       ),
     );
   } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
-    // Whole-body member (raw arrays/scalars) — sent as the body itself.
+    // Whole-body member (raw arrays/scalars) -- sent as the body itself.
     // Binary payloads (Blob / ArrayBuffer / Uint8Array) send verbatim
     // (raw object uploads). With a bodyMediaType, the member is a
     // preserialized payload (string / bytes) sent verbatim; otherwise it's
@@ -605,9 +605,9 @@ export const buildRequest = ({
   } else if (
     // A GET/HEAD sends a body only when body members actually carry values.
     // Some APIs really do document GET-with-body: MongoDB Atlas's
-    // `…/lineItems:search` declares a `requestBody` on `get`, and AWS EFS's
+    // `.../lineItems:search` declares a `requestBody` on `get`, and AWS EFS's
     // DescribeAccountPreferences takes `{ MaxResults, NextToken }` on a GET.
-    // Suppressing it outright dropped those members silently — the request
+    // Suppressing it outright dropped those members silently -- the request
     // succeeded, unfiltered, with nothing on the wire to show why.
     //
     // The `{}`-when-empty rule below stays limited to methods that expect a
@@ -615,7 +615,7 @@ export const buildRequest = ({
     Object.keys(body).length > 0 ||
     (hasBodyMembers && !BODYLESS.has(http.method) && http.method !== "DELETE")
   ) {
-    // Send `{}` rather than no body when the schema declares body members —
+    // Send `{}` rather than no body when the schema declares body members --
     // some endpoints reject a missing JSON body outright.
     request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
   }

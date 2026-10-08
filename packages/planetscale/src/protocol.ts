@@ -2,17 +2,17 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * PlanetScaleProtocol — hand-written.
+ * PlanetScaleProtocol -- hand-written.
  *
  * PlanetScale speaks plain JSON REST (no response envelope), so the whole
  * protocol is one `makeRestProtocol` call from `core/protocol-rest`. What is
  * PlanetScale's own is the dual-mode `Authorization` header:
  *
- *   service token → `Authorization: <tokenId>:<token>` (non-standard scheme)
- *   OAuth         → `Authorization: Bearer <accessToken>`
+ *   service token -> `Authorization: <tokenId>:<token>` (non-standard scheme)
+ *   OAuth         -> `Authorization: Bearer <accessToken>`
  *
  * built by {@link formatHeaders} from the credentials resolved on the
- * calling fiber for every request (rotations/refreshes Just Work — refresh
+ * calling fiber for every request (rotations/refreshes Just Work -- refresh
  * itself is the caller's job, see `credentials.ts`).
  *
  * response: 2xx JSON is the payload (sensitive members like a password's
@@ -44,7 +44,7 @@ export type PlanetScaleOpError =
 export type PlanetScaleOpContext = Credentials | HttpClient.HttpClient;
 
 export const PlanetScaleProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;
@@ -52,7 +52,7 @@ export const PlanetScaleProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<C
   }),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => formatHeaders(creds),
-  // PlanetScale's error body is `{ code: string, message?: string }` — the
+  // PlanetScale's error body is `{ code: string, message?: string }` -- the
   // factory's default lenient envelope covers it.
   unknownError: ({ code, message, body }) =>
     new UnknownPlanetScaleError({

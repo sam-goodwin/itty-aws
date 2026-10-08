@@ -34,7 +34,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown ZeroSSL error — an error envelope whose `type` matches no typed
+ * Unknown ZeroSSL error -- an error envelope whose `type` matches no typed
  * class on the operation. Carries a redacted body for diagnostics; add
  * newly observed errors to the authored model.
  */

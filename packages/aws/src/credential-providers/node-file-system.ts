@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 /**
- * A minimal Node `FileSystem` — just what the Node providers and `Auth`
+ * A minimal Node `FileSystem` -- just what the Node providers and `Auth`
  * read and write under `~/.aws`.
  */
 import * as Effect from "effect/Effect";

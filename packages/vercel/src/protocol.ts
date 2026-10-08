@@ -3,12 +3,12 @@ import type { ConfigError } from "@distilled.cloud/core/errors";
 import { HTTP_STATUS_MAP } from "@distilled.cloud/core/errors";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * VercelProtocol — the shared bearer-REST protocol instantiated for Vercel.
+ * VercelProtocol -- the shared bearer-REST protocol instantiated for Vercel.
  *
  * Vercel speaks plain JSON with no success envelope: a list endpoint returns
  * its collection object (`{ projects: [...], pagination: {...} }`), a single
  * resource returns the object itself. FAILURES are enveloped, and uniformly
- * so — `{ "error": { "code": "forbidden", "message": "Not authorized" } }` —
+ * so -- `{ "error": { "code": "forbidden", "message": "Not authorized" } }` --
  * with `code` a machine-readable string that error matchers can key on.
  *
  * The API version is part of the PATH (`/v9/projects`, `/v5/domains`), not a
@@ -43,7 +43,7 @@ export type VercelOpContext = Credentials | HttpClient.HttpClient;
 /**
  * Vercel error bodies nest under `error`: `{ error: { code, message } }`.
  * A handful of edge paths (proxy 502s, HTML error pages) answer without that
- * envelope — those fall through to the protocol's `HTTP <status>` default.
+ * envelope -- those fall through to the protocol's `HTTP <status>` default.
  */
 const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   if (body === null || typeof body !== "object") return undefined;

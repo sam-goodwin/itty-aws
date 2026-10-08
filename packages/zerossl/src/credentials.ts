@@ -1,5 +1,5 @@
 /**
- * ZeroSSL credentials — hand-written.
+ * ZeroSSL credentials -- hand-written.
  *
  * ZeroSSL's REST API authenticates with the account's access key, sent as
  * the `Authorization: ApiKey` header on every request. The `Credentials`

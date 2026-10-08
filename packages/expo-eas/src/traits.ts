@@ -1,5 +1,5 @@
 /**
- * Expo EAS SDK trait surface — hand-written.
+ * Expo EAS SDK trait surface -- hand-written.
  *
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place) and adds the GraphQL-specific traits
@@ -76,7 +76,7 @@ export const graphqlPayloadRootSymbol = Symbol.for(
 
 /**
  * Marks a response schema whose ENTIRE value is `data.<responsePath>` (used
- * when the GraphQL leaf returns a list/scalar rather than an object — e.g.
+ * when the GraphQL leaf returns a list/scalar rather than an object -- e.g.
  * `runtimes` returns a bare connection-less array). Documentation-only at
  * runtime: the protocol always returns `data.<responsePath>` verbatim.
  */

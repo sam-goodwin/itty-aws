@@ -3,8 +3,8 @@
  *
  * Re-exports the common HTTP errors from core and adds the unknown-error
  * and parse-error wrappers. Daytona declares failures as HTTP statuses
- * against a shared `{ message }` (toolbox) or untyped (platform) body —
- * no operation narrows which codes it can produce — so the SDK dispatches
+ * against a shared `{ message }` (toolbox) or untyped (platform) body --
+ * no operation narrows which codes it can produce -- so the SDK dispatches
  * on the status (the classes here) and carries any machine-readable `code`
  * through on {@link UnknownDaytonaError}.
  */
@@ -39,7 +39,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown Daytona error — returned when a failed response's HTTP status has
+ * Unknown Daytona error -- returned when a failed response's HTTP status has
  * no mapped error class.
  */
 export class UnknownDaytonaError extends Schema.TaggedError<UnknownDaytonaError>()(

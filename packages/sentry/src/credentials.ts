@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Sentry credentials — hand-written.
+ * Sentry credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 Neon credentials module: the
  * `Credentials` service holds an *effect* that resolves the current

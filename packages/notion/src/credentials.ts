@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Notion credentials — hand-written.
+ * Notion credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl, notionVersion }`
  * per request; the protocol layer formats the `Authorization: Bearer

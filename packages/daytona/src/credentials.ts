@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Daytona credentials — hand-written.
+ * Daytona credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ apiKey, apiBaseUrl, analyticsBaseUrl,
  * toolboxBaseUrl, sandboxId?, organizationId? }` per request; the protocol
@@ -9,9 +9,9 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  *
  * Daytona speaks from THREE endpoints:
  *
- *   • Platform  (`https://app.daytona.io/api`) — sandboxes, orgs, snapshots
- *   • Analytics (`https://analytics.app.daytona.io`) — telemetry and usage
- *   • Toolbox   (`https://proxy.app.daytona.io/toolbox/{sandboxId}`) —
+ *   * Platform  (`https://app.daytona.io/api`) -- sandboxes, orgs, snapshots
+ *   * Analytics (`https://analytics.app.daytona.io`) -- telemetry and usage
+ *   * Toolbox   (`https://proxy.app.daytona.io/toolbox/{sandboxId}`) --
  *     in-sandbox fs/git/process/computer-use. The sandbox id is part of
  *     the CLIENT configuration, not of any operation input: set `sandboxId`
  *     (or a fully-resolved `toolboxBaseUrl`) to call those services.
@@ -35,7 +35,7 @@ export const DEFAULT_ANALYTICS_BASE_URL = "https://analytics.app.daytona.io";
 /**
  * Toolbox endpoint template. `{sandboxId}` is replaced with the configured
  * sandbox (the docs' `{toolboxProxyUrl}/{sandboxId}` form). Pass a fully
- * resolved URL — e.g. a sandbox's `toolboxProxyUrl` — to skip substitution.
+ * resolved URL -- e.g. a sandbox's `toolboxProxyUrl` -- to skip substitution.
  */
 export const DEFAULT_TOOLBOX_BASE_URL = "https://proxy.app.daytona.io/toolbox/{sandboxId}";
 

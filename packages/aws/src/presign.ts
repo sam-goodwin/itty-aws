@@ -57,7 +57,7 @@ export interface PresignUrlOptions {
 /**
  * SigV4 query-string presigning for an arbitrary AWS URL.
  *
- * Pure client-side computation — no AWS API call is made. Credentials are
+ * Pure client-side computation -- no AWS API call is made. Credentials are
  * resolved from the {@link Credentials.Credentials} service (the presigned
  * URL inherits that identity's IAM permissions) and the signing region
  * defaults to the {@link Region.Region} service.
@@ -86,9 +86,9 @@ export const presignUrl: (
     datetime: options.datetime,
     // The signer excludes `content-type` (among others) from the signature by
     // default (UNSIGNABLE_HEADERS). Callers passing headers here explicitly
-    // want them pinned into the signature — e.g. the AWS SDK's getSignedUrl
+    // want them pinned into the signature -- e.g. the AWS SDK's getSignedUrl
     // signs `content-type` when a ContentType is given, which is what pins an
-    // uploader to the declared type — so opt back in.
+    // uploader to the declared type -- so opt back in.
     allHeaders: options.headers !== undefined,
   });
   return signed.url;
@@ -133,7 +133,7 @@ export interface PresignS3UrlOptions {
    */
   readonly contentType?: string;
   /**
-   * `response-content-type` override for GET URLs — S3 responds with this
+   * `response-content-type` override for GET URLs -- S3 responds with this
    * `Content-Type` regardless of the stored object's metadata.
    */
   readonly responseContentType?: string;
@@ -151,7 +151,7 @@ export interface PresignS3UrlOptions {
  * under the custom {@link Endpoint.Endpoint} when one is provided (e.g.
  * LocalStack or S3-compatible stores).
  *
- * Pure client-side computation — no AWS API call is made. The URL inherits
+ * Pure client-side computation -- no AWS API call is made. The URL inherits
  * the IAM permissions of the identity resolved from the
  * {@link Credentials.Credentials} service.
  */

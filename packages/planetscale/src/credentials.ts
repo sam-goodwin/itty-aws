@@ -1,12 +1,12 @@
 /**
- * PlanetScale credentials — hand-written.
+ * PlanetScale credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's planetscale credentials module.
  * Dual-mode: service tokens (PlanetScale's non-standard
  * `Authorization: <tokenId>:<token>` scheme) and OAuth access tokens
  * (`Authorization: Bearer <accessToken>`). The `Credentials` service holds an
  * *effect* that resolves the current credentials, so callers that rotate or
- * refresh tokens (e.g. alchemy's AuthProvider) Just Work — the protocol
+ * refresh tokens (e.g. alchemy's AuthProvider) Just Work -- the protocol
  * resolves it per request.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
@@ -38,7 +38,7 @@ export interface ServiceTokenConfig {
  *
  * PlanetScale OAuth has no PKCE flow and refreshes require the app's
  * client_secret, so refresh is handled by the caller (e.g. Alchemy's
- * AuthProvider) rather than here — this config only carries the resolved
+ * AuthProvider) rather than here -- this config only carries the resolved
  * access token used to authenticate API requests.
  */
 export interface OAuthConfig {

@@ -27,7 +27,7 @@ import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/e
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown WorkOS error — returned when a failed response's HTTP status has no
+ * Unknown WorkOS error -- returned when a failed response's HTTP status has no
  * mapped error class. Carries the raw body for later cataloging.
  */
 export class UnknownWorkosError extends Schema.TaggedError<UnknownWorkosError>()(

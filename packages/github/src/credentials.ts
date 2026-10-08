@@ -1,6 +1,6 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * GitHub credentials — hand-written.
+ * GitHub credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, apiBaseUrl, userAgent }` per
  * request; the protocol layer formats the `Authorization: Bearer <token>`
@@ -8,7 +8,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  *
  * The token may be a personal access token (classic or fine-grained), a
  * GitHub App installation token, or the `GITHUB_TOKEN` an Actions run is
- * handed — the REST API accepts all of them as bearer tokens.
+ * handed -- the REST API accepts all of them as bearer tokens.
  */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";

@@ -1,5 +1,5 @@
 /**
- * `@distilled.cloud/core` — the runtime shared by every distilled SDK.
+ * `@distilled.cloud/core` -- the runtime shared by every distilled SDK.
  *
  * ```ts
  * import { ResponseValidation, Retry } from "@distilled.cloud/core";
@@ -8,7 +8,7 @@
  * ```
  *
  * Each namespace is also importable on its own subpath
- * (`@distilled.cloud/core/response-validation`, …); generated SDKs use the
+ * (`@distilled.cloud/core/response-validation`, ...); generated SDKs use the
  * subpaths. Code generation (`codegen/*`) and test helpers (`testing`) stay
  * subpath-only.
  */

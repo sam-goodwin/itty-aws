@@ -59,7 +59,7 @@ export interface SignOptions {
   readonly datetime?: string;
   /** Sign into the query string (presigned URL) instead of headers. */
   readonly signQuery?: boolean;
-  /** Include the normally unsignable headers (content-type, range, …). */
+  /** Include the normally unsignable headers (content-type, range, ...). */
   readonly allHeaders?: boolean;
 }
 

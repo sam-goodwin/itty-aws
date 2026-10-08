@@ -3,8 +3,8 @@
  *
  * Re-exports the common HTTP errors from core and adds the Boat fallback
  * errors. Note the generated service module additionally defines its own
- * per-status matcher classes (BadRequest/NotFound/…) for the statuses each
- * operation declares — those share `_tag`s with the core classes here, so
+ * per-status matcher classes (BadRequest/NotFound/...) for the statuses each
+ * operation declares -- those share `_tag`s with the core classes here, so
  * `catchTag` works against either.
  */
 export {
@@ -30,7 +30,7 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
-/** Unknown Boat error — returned when nothing else matches the failure. */
+/** Unknown Boat error -- returned when nothing else matches the failure. */
 export class UnknownBoatError extends Schema.TaggedError<UnknownBoatError>()("UnknownBoatError", {
   code: Schema.optional(Schema.String),
   message: Schema.optional(Schema.String),

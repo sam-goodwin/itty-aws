@@ -3,7 +3,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
 import { HTTP_STATUS_MAP } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * S2Protocol — the shared bearer-REST protocol instantiated for S2 (s2.dev).
+ * S2Protocol -- the shared bearer-REST protocol instantiated for S2 (s2.dev).
  *
  * S2 speaks plain JSON with no success envelope. FAILURES are enveloped,
  * and uniformly so: `{ "code": "...", "message": "..." }`, where `code` is
@@ -14,9 +14,9 @@ import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
  * S2 serves TWO endpoints, and the route picks between them: account-level
  * operations (`/basins`, `/access-tokens`, `/locations`, `/metrics`) go to
  * `accountBaseUrl` (`https://a.s2.dev/v1`), while stream and record
- * operations (`/streams`, `/streams/{stream}`, `/streams/{stream}/records…`)
- * go to the basin's own host — `https://{basin}.b.s2.dev/v1` in the spec's
- * per-path `servers` — with the configured `basin` substituted. A
+ * operations (`/streams`, `/streams/{stream}`, `/streams/{stream}/records...`)
+ * go to the basin's own host -- `https://{basin}.b.s2.dev/v1` in the spec's
+ * per-path `servers` -- with the configured `basin` substituted. A
  * basin-scoped call without a configured basin fails with `ConfigError`.
  */
 import * as Effect from "effect/Effect";
@@ -58,7 +58,7 @@ const baseUrlFor = (creds: Config, uri: string): string => {
   if (creds.basin === undefined || creds.basin === "") {
     throw new ConfigError({
       message:
-        `S2 operation on ${uri} is basin-scoped (${creds.basinBaseUrl}) — ` +
+        `S2 operation on ${uri} is basin-scoped (${creds.basinBaseUrl}) \u2014 ` +
         `configure a basin (S2_BASIN or credentials({ basin })) to call it`,
     });
   }

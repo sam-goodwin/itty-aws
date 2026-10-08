@@ -1,6 +1,6 @@
 import * as Retries from "@distilled.cloud/core/retry";
 /**
- * Whop retry surface — a veneer over `@distilled.cloud/core/retry`.
+ * Whop retry surface -- a veneer over `@distilled.cloud/core/retry`.
  *
  * The `Retry` service tag is threaded into every generated operation via
  * `API.make({ retry: Retry })`, so a caller-installed policy applies to all
@@ -11,13 +11,13 @@ import * as Retries from "@distilled.cloud/core/retry";
  * default) and answers a tripped limit with `429` and
  * `{ "error": { "type": "rate_limit_exceeded", "message": "Try again in 12
  * seconds." } }`. The delay is PROSE IN THE MESSAGE, not a `Retry-After`
- * header — so there is nothing for the protocol to stamp onto the error, and
+ * header -- so there is nothing for the protocol to stamp onto the error, and
  * the default policy falls back to its own capped exponential backoff with
  * jitter. That is the documented advice ("retry with exponential backoff")
  * for idempotent requests.
  *
  * A `POST` is only safe to retry if you sent an `Idempotency-Key` with it
- * (every generated create/mutate input takes one) — otherwise a retry after
+ * (every generated create/mutate input takes one) -- otherwise a retry after
  * a timeout risks a duplicate charge, transfer, or resource. Whop replays
  * the stored response for 24 hours, failures included.
  *

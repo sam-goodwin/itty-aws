@@ -32,7 +32,7 @@ import type { RuleSetObject } from "./rules-engine/expression.ts";
 export { all, type Annotation };
 
 // The canonical-message trait is defined in a leaf module so `errors.ts` can
-// reach it without importing this one — see its header for the cycle.
+// reach it without importing this one -- see its header for the cycle.
 export { ErrorMessage, errorMessageSymbol };
 
 /**
@@ -48,7 +48,7 @@ export type Annotatable = {
 // =============================================================================
 
 // The generic HTTP binding traits are keyed to core's shared symbols
-// (`@distilled.cloud/core/trait`) — the same annotations the cloudflare
+// (`@distilled.cloud/core/trait`) -- the same annotations the cloudflare
 // SDK stamps. The builders keep their smithy-flavored names because the
 // generator emits them; only the underlying keys are shared.
 
@@ -147,7 +147,7 @@ export const Ec2QueryName = (name: string) => makeAnnotation(ec2QueryNameSymbol,
 // =============================================================================
 
 /**
- * DateFromString - String ↔ Date transformation via ISO 8601.
+ * DateFromString - String <-> Date transformation via ISO 8601.
  * Use this instead of bare S.Date when the wire format is a string.
  */
 export const DateFromString = S.Date.pipe(
@@ -168,9 +168,9 @@ export type TimestampFormatType = "date-time" | "http-date" | "epoch-seconds";
  * TimestampFormat trait - applies both annotation and transform.
  * When piped to S.Date, transforms to the appropriate wire format.
  *
- * - "epoch-seconds": Date ↔ number (Unix timestamp)
- * - "http-date": Date ↔ string (RFC 7231)
- * - "date-time": Date ↔ string (ISO 8601)
+ * - "epoch-seconds": Date <-> number (Unix timestamp)
+ * - "http-date": Date <-> string (RFC 7231)
+ * - "date-time": Date <-> string (ISO 8601)
  */
 export const TimestampFormat = (format: TimestampFormatType) => {
   return <A extends S.Top>(schema: A): A => {
@@ -183,7 +183,7 @@ export const TimestampFormat = (format: TimestampFormatType) => {
               SchemaTransformation.transform({
                 decode: (n) => new Date(n * 1000),
                 // Truncate to whole seconds: some services parse
-                // epoch-seconds strictly and reject fractional values —
+                // epoch-seconds strictly and reject fractional values --
                 // e.g. IoT SiteWise's GetAssetPropertyAggregates fails
                 // with "The date can only be in seconds."
                 encode: (d) => Math.floor(d.getTime() / 1000),
@@ -834,7 +834,7 @@ export const getEventMemberBindings = (
 };
 
 /**
- * Derive the event-type → payload-member map for an OUTPUT event stream from
+ * Derive the event-type -> payload-member map for an OUTPUT event stream from
  * its event union schema (`T.EventStream(S.Union([...]))`), so the parser
  * binds the raw payload to that member (e.g. Lambda
  * `InvokeWithResponseStream`'s `PayloadChunk.Payload`) instead of

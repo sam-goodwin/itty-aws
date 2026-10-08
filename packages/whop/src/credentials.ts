@@ -1,16 +1,16 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * Whop credentials — hand-written.
+ * Whop credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ apiKey, apiBaseUrl, apiVersionDate }`
  * per request; the protocol layer formats the `Authorization: Bearer
  * <apiKey>` and `Api-Version-Date` headers from it.
  *
  * `apiKey` is whatever Whop's bearer scheme accepts:
- *   • an **Account API key** — acts on one account and the accounts connected
+ *   * an **Account API key** -- acts on one account and the accounts connected
  *     to it;
- *   • an **App API key** — acts on the accounts that installed your app;
- *   • a **user OAuth access token** — acts as that user, scoped to what they
+ *   * an **App API key** -- acts on the accounts that installed your app;
+ *   * a **user OAuth access token** -- acts as that user, scoped to what they
  *     granted.
  *
  * All three go in the same header, so the SDK does not distinguish them. Keep
@@ -43,7 +43,7 @@ export interface Config {
   readonly apiBaseUrl: string;
   /**
    * The dated API version to pin requests to. Defaults to
-   * {@link API_VERSION_DATE} — the version these services were generated
+   * {@link API_VERSION_DATE} -- the version these services were generated
    * from, and the only one whose shapes match the generated schemas.
    *
    * Override it only to reproduce an older account's behavior; a different

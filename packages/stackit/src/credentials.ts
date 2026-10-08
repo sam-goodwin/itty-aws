@@ -1,21 +1,21 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 /**
- * STACKIT credentials — hand-written.
+ * STACKIT credentials -- hand-written.
  *
  * The `Credentials` service resolves `{ token, region }` per request; the
  * protocol layer formats the `Authorization: Bearer <token>` header from it
  * and rewrites each operation's spec `servers` URL for the region. The token
- * is a STACKIT service-account access token — the same value the official
+ * is a STACKIT service-account access token -- the same value the official
  * Go SDK, CLI and Terraform provider read from
  * `STACKIT_SERVICE_ACCOUNT_TOKEN`. Key-file exchange
  * (`STACKIT_SERVICE_ACCOUNT_KEY_PATH`) is not modelled: mint the token
  * outside the SDK.
  *
  * Each STACKIT product has its own host (`iaas.api.eu01.stackit.cloud`,
- * `ske.api.eu01.stackit.cloud`, …). The per-operation host is baked into
+ * `ske.api.eu01.stackit.cloud`, ...). The per-operation host is baked into
  * the generated `T.Http` trait from the OpenAPI `servers` entry; `region`
  * (default `eu01`) is substituted at request time. An explicit `apiBaseUrl`
- * overrides that host for every call — a proxy, not a per-product map.
+ * overrides that host for every call -- a proxy, not a per-product map.
  */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
@@ -29,7 +29,7 @@ export const DEFAULT_REGION = "eu01";
 export interface Config {
   readonly token: Redacted.Redacted<string>;
   /**
-   * Region inserted into product hosts (`eu01` →
+   * Region inserted into product hosts (`eu01` ->
    * `https://iaas.api.eu01.stackit.cloud`). `"global"` leaves the spec URL
    * unchanged.
    */

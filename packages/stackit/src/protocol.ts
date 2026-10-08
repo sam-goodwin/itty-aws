@@ -19,7 +19,7 @@ import { validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { httpSymbol } from "@distilled.cloud/core/trait";
 /**
- * StackitProtocol — the shared bearer-REST protocol instantiated for STACKIT.
+ * StackitProtocol -- the shared bearer-REST protocol instantiated for STACKIT.
  *
  * STACKIT speaks plain JSON with no success envelope. FAILURES are
  * `{ "message": "...", "error": "..." }` (the `ErrorMessage` schema most
@@ -29,7 +29,7 @@ import { httpSymbol } from "@distilled.cloud/core/trait";
  * region (`eu01` by default).
  *
  * Auth is `Authorization: Bearer <token>`. The API version is a PATH
- * segment (`/v1`, `/v2`, …), so the generated operations carry versioned
+ * segment (`/v1`, `/v2`, ...), so the generated operations carry versioned
  * routes against a version-less host.
  */
 import * as Effect from "effect/Effect";
@@ -64,13 +64,13 @@ export type StackitOpContext = Credentials | HttpClient.HttpClient;
 /**
  * Rewrite a spec `servers` URL for the configured region.
  *
- *   • `{region}` still in the template (IaaS v1:
+ *   * `{region}` still in the template (IaaS v1:
  *     `https://iaas.api.{region}stackit.cloud`, default `eu01.`) is
  *     substituted. A glued `{region}stackit` means the spec's default
  *     includes the trailing dot.
- *   • `https://<svc>.api.stackit.cloud` becomes
+ *   * `https://<svc>.api.stackit.cloud` becomes
  *     `https://<svc>.api.<region>.stackit.cloud`.
- *   • `region === "global"` leaves the URL alone (after dropping any
+ *   * `region === "global"` leaves the URL alone (after dropping any
  *     leftover `{region}`).
  */
 export const applyRegion = (specUrl: string, region: string): string => {
@@ -110,7 +110,9 @@ const baseUrlFor = (creds: Config, inputAst: AST.AST): string => {
   const http = getAnn(inputAst, httpSymbol) as StackitHttpTrait | undefined;
   const specUrl = http?.baseUrl;
   if (typeof specUrl !== "string" || specUrl === "") {
-    throw new Error("STACKIT operation is missing T.Http({ baseUrl }) — regenerate from convert");
+    throw new Error(
+      "STACKIT operation is missing T.Http({ baseUrl }) \u2014 regenerate from convert",
+    );
   }
   return applyRegion(specUrl, creds.region);
 };

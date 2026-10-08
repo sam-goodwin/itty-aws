@@ -174,9 +174,9 @@ export const jsonPayloadParser: PayloadParser = (payload: Uint8Array) => {
  * Transform a stream of StreamEvents into typed union members.
  *
  * Converts internal event types to the Smithy union format:
- * - MessageEvent → { eventType: parsedPayload }
- * - ExceptionEvent → { exceptionType: parsedPayload }
- * - ErrorEvent → { UnmodeledError: { errorCode, errorMessage } }
+ * - MessageEvent -> { eventType: parsedPayload }
+ * - ExceptionEvent -> { exceptionType: parsedPayload }
+ * - ErrorEvent -> { UnmodeledError: { errorCode, errorMessage } }
  *
  * @param eventStream - Stream of raw StreamEvents from parseEventStream
  * @param payloadParser - Function to parse the payload bytes (default: JSON)
@@ -225,7 +225,7 @@ export const transformEventStreamToUnion = (
 /**
  * Decode each parsed union event through the operation's event schema (the
  * Smithy union of event types). The payload parser alone only produces plain
- * JSON/XML values — member transformations declared on the schema never run,
+ * JSON/XML values -- member transformations declared on the schema never run,
  * so blob members stay base64 strings (instead of `Uint8Array` /
  * `Redacted<Uint8Array>` for sensitive blobs) and timestamps stay numbers.
  * Running the schema decode makes the runtime values match the generated
@@ -261,7 +261,7 @@ export const decodeEventStreamUnion = (
  * 1. parseEventStream - decode wire format to StreamEvents
  * 2. transformEventStreamToUnion - convert to typed union members
  * 3. decodeEventStreamUnion - run the event schema so runtime values match
- *    the generated types (blobs → Uint8Array, sensitive blobs → Redacted)
+ *    the generated types (blobs -> Uint8Array, sensitive blobs -> Redacted)
  *
  * @param input - ReadableStream of event stream bytes
  * @param payloadParser - Function to parse event payloads (default: JSON)

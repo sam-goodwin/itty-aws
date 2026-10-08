@@ -2,13 +2,13 @@ import type * as API from "@distilled.cloud/core/api";
 import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 /**
- * TurbopufferProtocol — hand-written.
+ * TurbopufferProtocol -- hand-written.
  *
  * turbopuffer speaks plain bearer-authenticated JSON REST (no response
  * envelope), so the whole protocol is one `makeRestProtocol` call from
  * `core/protocol-rest`:
  *
- *   request:  credentials → `Authorization: Bearer <apiKey>` + base URL
+ *   request:  credentials -> `Authorization: Bearer <apiKey>` + base URL
  *             (default https://gcp-us-central1.turbopuffer.com), resolved
  *             from the calling fiber on every request
  *
@@ -42,7 +42,7 @@ export type TurbopufferOpError =
 export type TurbopufferOpContext = Credentials | HttpClient.HttpClient;
 
 export const TurbopufferProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect — resolving it here (per
+  // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
   credentials: Effect.gen(function* () {
     const resolve = yield* Credentials;
@@ -52,8 +52,8 @@ export const TurbopufferProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<C
   headers: (creds) => ({
     Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
   }),
-  // turbopuffer's error body is `{ status: "error", error: string }` — the
-  // factory's default lenient envelope maps `error` → `message`.
+  // turbopuffer's error body is `{ status: "error", error: string }` -- the
+  // factory's default lenient envelope maps `error` -> `message`.
   unknownError: ({ code, message, body }) =>
     new UnknownTurbopufferError({
       code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,

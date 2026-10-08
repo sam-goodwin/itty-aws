@@ -1,5 +1,5 @@
 /**
- * PostHog credentials — hand-written.
+ * PostHog credentials -- hand-written.
  *
  * API-compatible port of the distilled repo's posthog credentials module:
  * the `Credentials` service holds an *effect* that resolves the current

@@ -1,5 +1,5 @@
 /**
- * EAS (Expo Application Services) credentials — hand-written.
+ * EAS (Expo Application Services) credentials -- hand-written.
  *
  * API-compatible port of the distilled v0 expo-eas credentials module. The
  * EAS backend is a single GraphQL endpoint. Authentication is via a
@@ -36,9 +36,9 @@ const envConfig = EffectConfig.all({
 /**
  * Build credentials from environment variables.
  *
- * - `EXPO_TOKEN` — Personal/Organization access token from
+ * - `EXPO_TOKEN` -- Personal/Organization access token from
  *   https://expo.dev/settings/access-tokens (required)
- * - `EXPO_API_URL` — override the API host (optional, defaults to
+ * - `EXPO_API_URL` -- override the API host (optional, defaults to
  *   https://api.expo.dev). Set to `https://staging-api.expo.dev` to target
  *   staging, mirroring eas-cli's `EXPO_STAGING=1` flag.
  */

@@ -37,7 +37,7 @@ import type {
 import * as Schema from "effect/Schema";
 
 /**
- * Unknown ACME error — a problem document whose `type` matches no typed
+ * Unknown ACME error -- a problem document whose `type` matches no typed
  * class on the operation. Carries structured problem fields and a redacted
  * body. Add newly observed URNs to the authored model.
  */

@@ -4,7 +4,7 @@
  * Re-exports the common HTTP errors from core and adds the Atlas-specific
  * classes (ported from distilled v0). Note the generated service module
  * additionally defines its own per-status matcher classes
- * (BadRequest/PaymentRequired/…) for the statuses each operation declares —
+ * (BadRequest/PaymentRequired/...) for the statuses each operation declares --
  * those share `_tag`s with the classes here, so `catchTag` works against
  * either.
  */
@@ -31,13 +31,13 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
-/** Payment Required — billing/quota limit (402). */
+/** Payment Required -- billing/quota limit (402). */
 export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()("PaymentRequired", {
   message: Schema.String,
 }).pipe(Category.withBadRequestError) {}
 
 /**
- * Unknown MongoDB Atlas error — returned when nothing else matches the
+ * Unknown MongoDB Atlas error -- returned when nothing else matches the
  * failure. Carries the Atlas error envelope fields
  * (`{ error, errorCode, reason?, detail? }`) for later cataloging.
  */
