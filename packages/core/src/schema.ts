@@ -77,7 +77,7 @@ export const Any: any = S.Any;
  * it IS that schema: same AST (memoized, stable identity), same rebuild
  * options for later `.annotate` / `.check` calls.
  */
-const SchemaProto: object = Object.getPrototypeOf(S.String);
+const SchemaProto: object = /*@__PURE__*/ Object.getPrototypeOf(S.String);
 const buildKey = Symbol.for("@distilled.cloud/core/schema/build");
 const annotationsKey = Symbol.for("@distilled.cloud/core/schema/annotations");
 
@@ -175,8 +175,12 @@ interface LazyErrorState {
 
 const SchemaTypeId = "~effect/Schema/Schema";
 
-// The base every Effect error class extends (`core.Error`, a yieldable Error).
-const ErrorBase: Function = Object.getPrototypeOf(S.TaggedError()("Probe", {}));
+// The base every Effect error class extends (`core.Error`, a yieldable
+// Error). Found on first use, so bundles without error classes do not keep
+// Effect's class machinery.
+let errorBase: Function | undefined;
+const ErrorBase = (): Function =>
+  (errorBase ??= Object.getPrototypeOf(S.TaggedError()("Probe", {})) as Function);
 
 const realErrorClass = (cls: Function): Function => {
   const state = (cls as unknown as Record<symbol, LazyErrorState>)[lazyErrorKey];
@@ -203,43 +207,45 @@ const FORWARDED_STATICS = [
   "mapFields",
 ];
 
-const LazyErrorStatics: object = Object.create(ErrorBase, {
-  [SchemaTypeId]: { value: SchemaTypeId, configurable: true },
-  identifier: {
-    configurable: true,
-    get(this: Record<symbol, LazyErrorState>) {
-      const state = this[lazyErrorKey];
-      return state.identifier ?? state.args[0];
-    },
-  },
-  pipe: {
-    configurable: true,
-    writable: true,
-    value(this: unknown) {
-      return pipeArguments(this, arguments);
-    },
-  },
-  ...Object.fromEntries(
-    FORWARDED_STATICS.map((name) => [
-      name,
-      {
-        configurable: true,
-        get(this: Function) {
-          let owner: object | null = realErrorClass(this);
-          let descriptor: PropertyDescriptor | undefined;
-          while (owner && !(descriptor = Object.getOwnPropertyDescriptor(owner, name))) {
-            owner = Object.getPrototypeOf(owner);
-          }
-          if (!descriptor) return undefined;
-          if (descriptor.get) return descriptor.get.call(this);
-          return typeof descriptor.value === "function"
-            ? descriptor.value.bind(this)
-            : descriptor.value;
-        },
+let lazyErrorStatics: object | undefined;
+const LazyErrorStatics = (): object =>
+  (lazyErrorStatics ??= Object.create(ErrorBase(), {
+    [SchemaTypeId]: { value: SchemaTypeId, configurable: true },
+    identifier: {
+      configurable: true,
+      get(this: Record<symbol, LazyErrorState>) {
+        const state = this[lazyErrorKey];
+        return state.identifier ?? state.args[0];
       },
-    ]),
-  ),
-});
+    },
+    pipe: {
+      configurable: true,
+      writable: true,
+      value(this: unknown) {
+        return pipeArguments(this, arguments);
+      },
+    },
+    ...Object.fromEntries(
+      FORWARDED_STATICS.map((name) => [
+        name,
+        {
+          configurable: true,
+          get(this: Function) {
+            let owner: object | null = realErrorClass(this);
+            let descriptor: PropertyDescriptor | undefined;
+            while (owner && !(descriptor = Object.getOwnPropertyDescriptor(owner, name))) {
+              owner = Object.getPrototypeOf(owner);
+            }
+            if (!descriptor) return undefined;
+            if (descriptor.get) return descriptor.get.call(this);
+            return typeof descriptor.value === "function"
+              ? descriptor.value.bind(this)
+              : descriptor.value;
+          },
+        },
+      ]),
+    ),
+  }));
 
 const lazyTaggedError =
   (identifier?: string) =>
@@ -248,8 +254,8 @@ const lazyTaggedError =
       if (!new.target) throw new TypeError("Class constructor cannot be invoked without 'new'");
       return Reflect.construct(realErrorClass(new.target), [input, options], new.target);
     }
-    Object.setPrototypeOf(LazyTaggedError, LazyErrorStatics);
-    LazyTaggedError.prototype = Object.create(ErrorBase.prototype, {
+    Object.setPrototypeOf(LazyTaggedError, LazyErrorStatics());
+    LazyTaggedError.prototype = Object.create(ErrorBase().prototype, {
       constructor: { value: LazyTaggedError, writable: true, configurable: true },
     });
     const state: LazyErrorState = { identifier, args, lazy: LazyTaggedError };
@@ -257,8 +263,6 @@ const lazyTaggedError =
     return LazyTaggedError;
   };
 
-export const TaggedError: typeof S.TaggedError = (
-  typeof ErrorBase === "function" ? lazyTaggedError : S.TaggedError
-) as typeof S.TaggedError;
+export const TaggedError: typeof S.TaggedError = lazyTaggedError as typeof S.TaggedError;
 
 //#endregion
