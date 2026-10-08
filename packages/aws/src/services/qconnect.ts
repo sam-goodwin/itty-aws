@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "QConnect", serviceShapeName: "WisdomService" });
-const auth = T.AwsAuthSigv4({ name: "wisdom" });
-const ver = T.ServiceVersion("2020-10-19");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "QConnect", serviceShapeName: "WisdomService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wisdom" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-10-19");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,74 +73,80 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailedException
   extends /*@__PURE__*/ S.TaggedError<DependencyFailedException>()(
     "DependencyFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class RequestTimeoutException
   extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(408), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(408), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(400), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(400), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnprocessableContentException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableContentException>()(
     "UnprocessableContentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(422),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type UuidOrArn = string;
 export type UuidOrArnOrEitherWithQualifier = string;
@@ -203,8 +209,8 @@ export type OrCondition =
   | { andConditions: TagCondition[]; tagCondition?: never }
   | { andConditions?: never; tagCondition: TagCondition };
 export const OrCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ andConditions: AndConditions }),
-  S.Struct({ tagCondition: TagCondition }),
+  /*@__PURE__*/ S.Struct({ andConditions: AndConditions }),
+  /*@__PURE__*/ S.Struct({ tagCondition: TagCondition }),
 ]);
 export type OrConditions = OrCondition[];
 export const OrConditions = /*@__PURE__*/ S.Array(OrCondition);
@@ -213,9 +219,9 @@ export type TagFilter =
   | { tagCondition?: never; andConditions: TagCondition[]; orConditions?: never }
   | { tagCondition?: never; andConditions?: never; orConditions: OrCondition[] };
 export const TagFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ tagCondition: TagCondition }),
-  S.Struct({ andConditions: AndConditions }),
-  S.Struct({ orConditions: OrConditions }),
+  /*@__PURE__*/ S.Struct({ tagCondition: TagCondition }),
+  /*@__PURE__*/ S.Struct({ andConditions: AndConditions }),
+  /*@__PURE__*/ S.Struct({ orConditions: OrConditions }),
 ]);
 export type MaxResults = number;
 export type KnowledgeBaseSearchType = string;
@@ -237,7 +243,7 @@ export type AssociationConfigurationData = {
   knowledgeBaseAssociationConfigurationData: KnowledgeBaseAssociationConfigurationData;
 };
 export const AssociationConfigurationData = /*@__PURE__*/ S.Union([
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
     knowledgeBaseAssociationConfigurationData: KnowledgeBaseAssociationConfigurationData,
   }),
 ]);
@@ -376,7 +382,7 @@ export const ToolOverrideConstantInputValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToolOverrideConstantInputValue>;
 export type ToolOverrideInputValueConfiguration = { constant: ToolOverrideConstantInputValue };
 export const ToolOverrideInputValueConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ constant: ToolOverrideConstantInputValue }),
+  /*@__PURE__*/ S.Struct({ constant: ToolOverrideConstantInputValue }),
 ]);
 export interface ToolOverrideInputValue {
   jsonPath: string;
@@ -458,8 +464,8 @@ export type AgentTarget =
   | { aiAgentId: string; applicationId?: never }
   | { aiAgentId?: never; applicationId: string };
 export const AgentTarget = /*@__PURE__*/ S.Union([
-  S.Struct({ aiAgentId: S.String }),
-  S.Struct({ applicationId: S.String }),
+  /*@__PURE__*/ S.Struct({ aiAgentId: S.String }),
+  /*@__PURE__*/ S.Struct({ applicationId: S.String }),
 ]);
 export type MultiAgentExampleList = string[];
 export const MultiAgentExampleList = /*@__PURE__*/ S.Array(S.String);
@@ -499,8 +505,8 @@ export type MultiAgentConfiguration =
   | { delegateAgentConfiguration: DelegateAgentConfiguration; handoffAgentConfiguration?: never }
   | { delegateAgentConfiguration?: never; handoffAgentConfiguration: HandoffAgentConfiguration };
 export const MultiAgentConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ delegateAgentConfiguration: DelegateAgentConfiguration }),
-  S.Struct({ handoffAgentConfiguration: HandoffAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ delegateAgentConfiguration: DelegateAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ handoffAgentConfiguration: HandoffAgentConfiguration }),
 ]);
 export type MultiAgentConfigurationList = MultiAgentConfiguration[];
 export const MultiAgentConfigurationList = /*@__PURE__*/ S.Array(MultiAgentConfiguration);
@@ -660,21 +666,25 @@ export type AIAgentConfiguration =
       caseSummarizationAIAgentConfiguration: CaseSummarizationAIAgentConfiguration;
     };
 export const AIAgentConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ manualSearchAIAgentConfiguration: ManualSearchAIAgentConfiguration }),
-  S.Struct({ answerRecommendationAIAgentConfiguration: AnswerRecommendationAIAgentConfiguration }),
-  S.Struct({ selfServiceAIAgentConfiguration: SelfServiceAIAgentConfiguration }),
-  S.Struct({ emailResponseAIAgentConfiguration: EmailResponseAIAgentConfiguration }),
-  S.Struct({ emailOverviewAIAgentConfiguration: EmailOverviewAIAgentConfiguration }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({ manualSearchAIAgentConfiguration: ManualSearchAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    answerRecommendationAIAgentConfiguration: AnswerRecommendationAIAgentConfiguration,
+  }),
+  /*@__PURE__*/ S.Struct({ selfServiceAIAgentConfiguration: SelfServiceAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ emailResponseAIAgentConfiguration: EmailResponseAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ emailOverviewAIAgentConfiguration: EmailOverviewAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({
     emailGenerativeAnswerAIAgentConfiguration: EmailGenerativeAnswerAIAgentConfiguration,
   }),
-  S.Struct({ orchestrationAIAgentConfiguration: OrchestrationAIAgentConfiguration }),
-  S.Struct({ noteTakingAIAgentConfiguration: NoteTakingAIAgentConfiguration }),
-  S.Struct({ caseSummarizationAIAgentConfiguration: CaseSummarizationAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ orchestrationAIAgentConfiguration: OrchestrationAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ noteTakingAIAgentConfiguration: NoteTakingAIAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    caseSummarizationAIAgentConfiguration: CaseSummarizationAIAgentConfiguration,
+  }),
 ]);
 export type VisibilityStatus = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Description = string;
 export interface CreateAIAgentRequest {
   clientToken?: string;
@@ -1077,7 +1087,7 @@ export type AIPromptTemplateConfiguration = {
   textFullAIPromptEditTemplateConfiguration: TextFullAIPromptEditTemplateConfiguration;
 };
 export const AIPromptTemplateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
     textFullAIPromptEditTemplateConfiguration: TextFullAIPromptEditTemplateConfiguration,
   }),
 ]);
@@ -1277,7 +1287,7 @@ export const AIAgentConfigurationData = /*@__PURE__*/ S.suspend(() =>
 export type AIAgentConfigurationMap = { [key: string]: AIAgentConfigurationData | undefined };
 export const AIAgentConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  AIAgentConfigurationData.pipe(S.optional),
+  /*@__PURE__*/ AIAgentConfigurationData.pipe(S.optional),
 );
 export interface OrchestratorConfigurationEntry {
   aiAgentId?: string;
@@ -1345,8 +1355,10 @@ export type AssistantAssociationInputData =
       externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig;
     };
 export const AssistantAssociationInputData = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBaseId: S.String }),
-  S.Struct({ externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig }),
+  /*@__PURE__*/ S.Struct({ knowledgeBaseId: S.String }),
+  /*@__PURE__*/ S.Struct({
+    externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig,
+  }),
 ]);
 export interface CreateAssistantAssociationRequest {
   assistantId: string;
@@ -1394,8 +1406,10 @@ export type AssistantAssociationOutputData =
       externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig;
     };
 export const AssistantAssociationOutputData = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBaseAssociation: KnowledgeBaseAssociationData }),
-  S.Struct({ externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig }),
+  /*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: KnowledgeBaseAssociationData }),
+  /*@__PURE__*/ S.Struct({
+    externalBedrockKnowledgeBaseConfig: ExternalBedrockKnowledgeBaseConfig,
+  }),
 ]);
 export interface AssistantAssociationData {
   assistantAssociationId: string;
@@ -1428,7 +1442,10 @@ export const CreateAssistantAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 export type ContentTitle = string;
 export type Uri = string;
 export type ContentMetadata = { [key: string]: string | undefined };
-export const ContentMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContentMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type UploadId = string;
 export interface CreateContentRequest {
   knowledgeBaseId: string;
@@ -1517,7 +1534,7 @@ export type ContentAssociationContents = {
   amazonConnectGuideAssociation: AmazonConnectGuideAssociationData;
 };
 export const ContentAssociationContents = /*@__PURE__*/ S.Union([
-  S.Struct({ amazonConnectGuideAssociation: AmazonConnectGuideAssociationData }),
+  /*@__PURE__*/ S.Struct({ amazonConnectGuideAssociation: AmazonConnectGuideAssociationData }),
 ]);
 export interface CreateContentAssociationRequest {
   clientToken?: string;
@@ -1638,14 +1655,14 @@ export const WebCrawlerConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebCrawlerConfiguration" }) as any as S.Schema<WebCrawlerConfiguration>;
 export type ManagedSourceConfiguration = { webCrawlerConfiguration: WebCrawlerConfiguration };
 export const ManagedSourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ webCrawlerConfiguration: WebCrawlerConfiguration }),
+  /*@__PURE__*/ S.Struct({ webCrawlerConfiguration: WebCrawlerConfiguration }),
 ]);
 export type SourceConfiguration =
   | { appIntegrations: AppIntegrationsConfiguration; managedSourceConfiguration?: never }
   | { appIntegrations?: never; managedSourceConfiguration: ManagedSourceConfiguration };
 export const SourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ appIntegrations: AppIntegrationsConfiguration }),
-  S.Struct({ managedSourceConfiguration: ManagedSourceConfiguration }),
+  /*@__PURE__*/ S.Struct({ appIntegrations: AppIntegrationsConfiguration }),
+  /*@__PURE__*/ S.Struct({ managedSourceConfiguration: ManagedSourceConfiguration }),
 ]);
 export interface RenderingConfiguration {
   templateUri?: string;
@@ -1826,7 +1843,7 @@ export const CreateKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
 export type NonEmptyUnlimitedString = string | redacted.Redacted<string>;
 export type MessageTemplateBodyContentProvider = { content: string | redacted.Redacted<string> };
 export const MessageTemplateBodyContentProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ content: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
 ]);
 export interface EmailMessageTemplateContentBody {
   plainText?: MessageTemplateBodyContentProvider;
@@ -2013,10 +2030,10 @@ export type MessageTemplateContentProvider =
   | { email?: never; sms?: never; whatsApp: WhatsAppMessageTemplateContent; push?: never }
   | { email?: never; sms?: never; whatsApp?: never; push: PushMessageTemplateContent };
 export const MessageTemplateContentProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ email: EmailMessageTemplateContent }),
-  S.Struct({ sms: SMSMessageTemplateContent }),
-  S.Struct({ whatsApp: WhatsAppMessageTemplateContent }),
-  S.Struct({ push: PushMessageTemplateContent }),
+  /*@__PURE__*/ S.Struct({ email: EmailMessageTemplateContent }),
+  /*@__PURE__*/ S.Struct({ sms: SMSMessageTemplateContent }),
+  /*@__PURE__*/ S.Struct({ whatsApp: WhatsAppMessageTemplateContent }),
+  /*@__PURE__*/ S.Struct({ push: PushMessageTemplateContent }),
 ]);
 export type ChannelSubtype = string;
 export type LanguageCode = string;
@@ -2043,7 +2060,7 @@ export type MessageTemplateSourceConfiguration = {
   whatsApp: WhatsAppMessageTemplateSourceConfiguration;
 };
 export const MessageTemplateSourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ whatsApp: WhatsAppMessageTemplateSourceConfiguration }),
+  /*@__PURE__*/ S.Struct({ whatsApp: WhatsAppMessageTemplateSourceConfiguration }),
 ]);
 export type MessageTemplateAttributeValue = string | redacted.Redacted<string>;
 export interface SystemEndpointAttributes {
@@ -2073,7 +2090,10 @@ export const AgentAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentAttributes" }) as any as S.Schema<AgentAttributes>;
 export type MessageTemplateAttributeKey = string;
 export type CustomAttributes = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const CustomAttributes = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const CustomAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface CustomerProfileAttributes {
   profileId?: string | redacted.Redacted<string>;
   profileARN?: string | redacted.Redacted<string>;
@@ -2294,7 +2314,7 @@ export type MessageTemplateSourceConfigurationSummary = {
   whatsApp: WhatsAppMessageTemplateSourceConfigurationSummary;
 };
 export const MessageTemplateSourceConfigurationSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ whatsApp: WhatsAppMessageTemplateSourceConfigurationSummary }),
+  /*@__PURE__*/ S.Struct({ whatsApp: WhatsAppMessageTemplateSourceConfigurationSummary }),
 ]);
 export type MessageTemplateAttributeType = string;
 export type MessageTemplateAttributeTypeList = string[];
@@ -2506,7 +2526,7 @@ export type QuickResponseName = string;
 export type QuickResponseContent = string | redacted.Redacted<string>;
 export type QuickResponseDataProvider = { content: string | redacted.Redacted<string> };
 export const QuickResponseDataProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ content: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
 ]);
 export type QuickResponseType = string;
 export type QuickResponseDescription = string;
@@ -2557,7 +2577,7 @@ export const CreateQuickResponseRequest = /*@__PURE__*/ S.suspend(() =>
 export type QuickResponseStatus = string;
 export type QuickResponseContentProvider = { content: string | redacted.Redacted<string> };
 export const QuickResponseContentProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ content: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
 ]);
 export interface QuickResponseContents {
   plainText?: QuickResponseContentProvider;
@@ -3408,7 +3428,7 @@ export const ConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectConfiguration" }) as any as S.Schema<ConnectConfiguration>;
 export type Configuration = { connectConfiguration: ConnectConfiguration };
 export const Configuration = /*@__PURE__*/ S.Union([
-  S.Struct({ connectConfiguration: ConnectConfiguration }),
+  /*@__PURE__*/ S.Struct({ connectConfiguration: ConnectConfiguration }),
 ]);
 export interface ExternalSourceConfiguration {
   source: string;
@@ -3606,9 +3626,9 @@ export type MessageData =
   | { text?: never; toolUseResult: ToolUseResultData; data?: never }
   | { text?: never; toolUseResult?: never; data: any };
 export const MessageData = /*@__PURE__*/ S.Union([
-  S.Struct({ text: TextMessage }),
-  S.Struct({ toolUseResult: ToolUseResultData }),
-  S.Struct({ data: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: TextMessage }),
+  /*@__PURE__*/ S.Struct({ toolUseResult: ToolUseResultData }),
+  /*@__PURE__*/ S.Struct({ data: S.Any }),
 ]);
 export type Participant = string;
 export interface MessageOutput {
@@ -3636,7 +3656,7 @@ export const ConversationState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversationState" }) as any as S.Schema<ConversationState>;
 export type RuntimeSessionDataValue = { stringValue: string | redacted.Redacted<string> };
 export const RuntimeSessionDataValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ stringValue: SensitiveString }),
 ]);
 export interface RuntimeSessionData {
   key: string | redacted.Redacted<string>;
@@ -3816,9 +3836,9 @@ export type DataReference =
       suggestedMessageReference: SuggestedMessageReference;
     };
 export const DataReference = /*@__PURE__*/ S.Union([
-  S.Struct({ contentReference: ContentReference }),
-  S.Struct({ generativeReference: GenerativeReference }),
-  S.Struct({ suggestedMessageReference: SuggestedMessageReference }),
+  /*@__PURE__*/ S.Struct({ contentReference: ContentReference }),
+  /*@__PURE__*/ S.Struct({ generativeReference: GenerativeReference }),
+  /*@__PURE__*/ S.Struct({ suggestedMessageReference: SuggestedMessageReference }),
 ]);
 export interface TextData {
   title?: DocumentText;
@@ -3843,7 +3863,9 @@ export const ContentDataDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentDataDetails" }) as any as S.Schema<ContentDataDetails>;
 export type DataSummaryList = DataSummary[];
 export const DataSummaryList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<DataSummary> => DataSummary).annotate({ identifier: "DataSummary" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<DataSummary> => DataSummary).annotate({
+    identifier: "DataSummary",
+  }),
 ) as any as S.Schema<DataSummaryList>;
 export interface GenerativeDataDetails {
   completion: string | redacted.Redacted<string>;
@@ -4169,31 +4191,31 @@ export type DataDetails =
       proactiveRecommendationData: ProactiveRecommendationDataDetails;
     };
 export const DataDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ contentData: ContentDataDetails }),
-  S.Struct({
-    generativeData: S.suspend(
+  /*@__PURE__*/ S.Struct({ contentData: ContentDataDetails }),
+  /*@__PURE__*/ S.Struct({
+    generativeData: /*@__PURE__*/ S.suspend(
       (): S.Schema<GenerativeDataDetails> => GenerativeDataDetails,
     ).annotate({ identifier: "GenerativeDataDetails" }),
   }),
-  S.Struct({ intentDetectedData: IntentDetectedDataDetails }),
-  S.Struct({ sourceContentData: SourceContentDataDetails }),
-  S.Struct({
-    generativeChunkData: S.suspend(
+  /*@__PURE__*/ S.Struct({ intentDetectedData: IntentDetectedDataDetails }),
+  /*@__PURE__*/ S.Struct({ sourceContentData: SourceContentDataDetails }),
+  /*@__PURE__*/ S.Struct({
+    generativeChunkData: /*@__PURE__*/ S.suspend(
       (): S.Schema<GenerativeChunkDataDetails> => GenerativeChunkDataDetails,
     ).annotate({ identifier: "GenerativeChunkDataDetails" }),
   }),
-  S.Struct({ emailResponseChunkData: EmailResponseChunkDataDetails }),
-  S.Struct({ emailOverviewChunkData: EmailOverviewChunkDataDetails }),
-  S.Struct({
-    emailGenerativeAnswerChunkData: S.suspend(
+  /*@__PURE__*/ S.Struct({ emailResponseChunkData: EmailResponseChunkDataDetails }),
+  /*@__PURE__*/ S.Struct({ emailOverviewChunkData: EmailOverviewChunkDataDetails }),
+  /*@__PURE__*/ S.Struct({
+    emailGenerativeAnswerChunkData: /*@__PURE__*/ S.suspend(
       (): S.Schema<EmailGenerativeAnswerChunkDataDetails> => EmailGenerativeAnswerChunkDataDetails,
     ).annotate({ identifier: "EmailGenerativeAnswerChunkDataDetails" }),
   }),
-  S.Struct({ caseSummarizationChunkData: CaseSummarizationChunkDataDetails }),
-  S.Struct({ suggestedMessageData: SuggestedMessageDataDetails }),
-  S.Struct({ notesData: NotesDataDetails }),
-  S.Struct({ notesChunkData: NotesChunkDataDetails }),
-  S.Struct({ proactiveRecommendationData: ProactiveRecommendationDataDetails }),
+  /*@__PURE__*/ S.Struct({ caseSummarizationChunkData: CaseSummarizationChunkDataDetails }),
+  /*@__PURE__*/ S.Struct({ suggestedMessageData: SuggestedMessageDataDetails }),
+  /*@__PURE__*/ S.Struct({ notesData: NotesDataDetails }),
+  /*@__PURE__*/ S.Struct({ notesChunkData: NotesChunkDataDetails }),
+  /*@__PURE__*/ S.Struct({ proactiveRecommendationData: ProactiveRecommendationDataDetails }),
 ]) as any as S.Schema<DataDetails>;
 export interface DataSummary {
   reference: DataReference;
@@ -4238,7 +4260,7 @@ export const QueryRecommendationTriggerData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryRecommendationTriggerData>;
 export type RecommendationTriggerData = { query: QueryRecommendationTriggerData };
 export const RecommendationTriggerData = /*@__PURE__*/ S.Union([
-  S.Struct({ query: QueryRecommendationTriggerData }),
+  /*@__PURE__*/ S.Struct({ query: QueryRecommendationTriggerData }),
 ]);
 export type RecommendationIdList = string[];
 export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
@@ -5343,18 +5365,20 @@ export type SpanMessageValue =
   | { text?: never; toolUse?: never; toolResult: SpanToolResultValue; reasoning?: never }
   | { text?: never; toolUse?: never; toolResult?: never; reasoning: SpanReasoningValue };
 export const SpanMessageValue = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SpanTextValue }),
-  S.Struct({ toolUse: SpanToolUseValue }),
-  S.Struct({
-    toolResult: S.suspend((): S.Schema<SpanToolResultValue> => SpanToolResultValue).annotate({
+  /*@__PURE__*/ S.Struct({ text: SpanTextValue }),
+  /*@__PURE__*/ S.Struct({ toolUse: SpanToolUseValue }),
+  /*@__PURE__*/ S.Struct({
+    toolResult: /*@__PURE__*/ S.suspend(
+      (): S.Schema<SpanToolResultValue> => SpanToolResultValue,
+    ).annotate({
       identifier: "SpanToolResultValue",
     }),
   }),
-  S.Struct({ reasoning: SpanReasoningValue }),
+  /*@__PURE__*/ S.Struct({ reasoning: SpanReasoningValue }),
 ]) as any as S.Schema<SpanMessageValue>;
 export type SpanMessageValueList = SpanMessageValue[];
 export const SpanMessageValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SpanMessageValue).annotate({ identifier: "SpanMessageValue" }),
+  /*@__PURE__*/ S.suspend(() => SpanMessageValue).annotate({ identifier: "SpanMessageValue" }),
 ) as any as S.Schema<SpanMessageValueList>;
 export interface SpanMessage {
   messageId: string;
@@ -5610,7 +5634,7 @@ export const GenerativeContentFeedbackData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerativeContentFeedbackData>;
 export type ContentFeedbackData = { generativeContentFeedbackData: GenerativeContentFeedbackData };
 export const ContentFeedbackData = /*@__PURE__*/ S.Union([
-  S.Struct({ generativeContentFeedbackData: GenerativeContentFeedbackData }),
+  /*@__PURE__*/ S.Struct({ generativeContentFeedbackData: GenerativeContentFeedbackData }),
 ]);
 export interface PutFeedbackRequest {
   assistantId: string;
@@ -5662,7 +5686,9 @@ export const QueryConditionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ field: S.String, comparator: S.String, value: S.String }),
 ).annotate({ identifier: "QueryConditionItem" }) as any as S.Schema<QueryConditionItem>;
 export type QueryCondition = { single: QueryConditionItem };
-export const QueryCondition = /*@__PURE__*/ S.Union([S.Struct({ single: QueryConditionItem })]);
+export const QueryCondition = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ single: QueryConditionItem }),
+]);
 export type QueryConditionExpression = QueryCondition[];
 export const QueryConditionExpression = /*@__PURE__*/ S.Array(QueryCondition);
 export interface QueryTextInputData {
@@ -5703,9 +5729,9 @@ export type QueryInputData =
       caseSummarizationInputData: CaseSummarizationInputData;
     };
 export const QueryInputData = /*@__PURE__*/ S.Union([
-  S.Struct({ queryTextInputData: QueryTextInputData }),
-  S.Struct({ intentInputData: IntentInputData }),
-  S.Struct({ caseSummarizationInputData: CaseSummarizationInputData }),
+  /*@__PURE__*/ S.Struct({ queryTextInputData: QueryTextInputData }),
+  /*@__PURE__*/ S.Struct({ intentInputData: IntentInputData }),
+  /*@__PURE__*/ S.Struct({ caseSummarizationInputData: CaseSummarizationInputData }),
 ]);
 export interface QueryAssistantRequest {
   assistantId: string;
@@ -5862,11 +5888,11 @@ export type AssistantAssociationIdList = string[];
 export const AssistantAssociationIdList = /*@__PURE__*/ S.Array(S.String);
 export type KnowledgeSource = { assistantAssociationIds: string[] };
 export const KnowledgeSource = /*@__PURE__*/ S.Union([
-  S.Struct({ assistantAssociationIds: AssistantAssociationIdList }),
+  /*@__PURE__*/ S.Struct({ assistantAssociationIds: AssistantAssociationIdList }),
 ]);
 export type RetrievalFilterList = RetrievalFilterConfiguration[];
 export const RetrievalFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RetrievalFilterConfiguration).annotate({
+  /*@__PURE__*/ S.suspend(() => RetrievalFilterConfiguration).annotate({
     identifier: "RetrievalFilterConfiguration",
   }),
 ) as any as S.Schema<RetrievalFilterList>;
@@ -6075,23 +6101,27 @@ export type RetrievalFilterConfiguration =
       stringContains: FilterAttribute;
     };
 export const RetrievalFilterConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({
-    andAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
-  S.Struct({ equals: FilterAttribute }),
-  S.Struct({ greaterThan: FilterAttribute }),
-  S.Struct({ greaterThanOrEquals: FilterAttribute }),
-  S.Struct({ in: FilterAttribute }),
-  S.Struct({ lessThan: FilterAttribute }),
-  S.Struct({ lessThanOrEquals: FilterAttribute }),
-  S.Struct({ listContains: FilterAttribute }),
-  S.Struct({ notEquals: FilterAttribute }),
-  S.Struct({ notIn: FilterAttribute }),
-  S.Struct({
-    orAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({ equals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ in: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ listContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notIn: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
-  S.Struct({ startsWith: FilterAttribute }),
-  S.Struct({ stringContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ startsWith: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ stringContains: FilterAttribute }),
 ]) as any as S.Schema<RetrievalFilterConfiguration>;
 export interface RetrievalConfiguration {
   knowledgeSource: KnowledgeSource;
@@ -6427,7 +6457,10 @@ export const QuickResponseSearchExpression = /*@__PURE__*/ S.suspend(() =>
 export type ContactAttributeKey = string;
 export type ContactAttributeValue = string;
 export type ContactAttributes = { [key: string]: string | undefined };
-export const ContactAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContactAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SearchQuickResponsesRequest {
   knowledgeBaseId: string;
   searchExpression: QuickResponseSearchExpression;
@@ -6605,7 +6638,10 @@ export const MessageConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MessageConfiguration" }) as any as S.Schema<MessageConfiguration>;
 export type MessageMetadata = { [key: string]: string | undefined };
-export const MessageMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MessageMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SendMessageRequest {
   assistantId: string;
   sessionId: string;
@@ -6680,7 +6716,7 @@ export const StartContentUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartContentUploadRequest",
 }) as any as S.Schema<StartContentUploadRequest>;
 export type Headers = { [key: string]: string | undefined };
-export const Headers = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Headers = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface StartContentUploadResponse {
   uploadId: string;
   url: string | redacted.Redacted<string>;

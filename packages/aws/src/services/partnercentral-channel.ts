@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "PartnerCentral Channel",
   serviceShapeName: "PartnerCentralChannel",
 });
-const auth = T.AwsAuthSigv4({ name: "partnercentral-channel" });
-const ver = T.ServiceVersion("2024-03-18");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "partnercentral-channel" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-03-18");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -85,67 +85,77 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()), reason: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       quotaCode: S.String,
     },
-    T.all(T.HttpError(402), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(402), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withQuotaError, C.withRetryableError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Catalog = string;
 export type ChannelHandshakeIdentifier = string;
@@ -271,8 +281,8 @@ export type ChannelHandshakePayload =
   | { startServicePeriodPayload: StartServicePeriodPayload; revokeServicePeriodPayload?: never }
   | { startServicePeriodPayload?: never; revokeServicePeriodPayload: RevokeServicePeriodPayload };
 export const ChannelHandshakePayload = /*@__PURE__*/ S.Union([
-  S.Struct({ startServicePeriodPayload: StartServicePeriodPayload }),
-  S.Struct({ revokeServicePeriodPayload: RevokeServicePeriodPayload }),
+  /*@__PURE__*/ S.Struct({ startServicePeriodPayload: StartServicePeriodPayload }),
+  /*@__PURE__*/ S.Struct({ revokeServicePeriodPayload: RevokeServicePeriodPayload }),
 ]);
 export type ClientToken = string;
 export type TagKey = string;
@@ -438,9 +448,9 @@ export type SupportPlan =
       resoldUnifiedOperations: ResoldUnifiedOperations;
     };
 export const SupportPlan = /*@__PURE__*/ S.Union([
-  S.Struct({ resoldEnterprise: ResoldEnterprise }),
-  S.Struct({ partnerLedSupport: PartnerLedSupport }),
-  S.Struct({ resoldUnifiedOperations: ResoldUnifiedOperations }),
+  /*@__PURE__*/ S.Struct({ resoldEnterprise: ResoldEnterprise }),
+  /*@__PURE__*/ S.Struct({ partnerLedSupport: PartnerLedSupport }),
+  /*@__PURE__*/ S.Struct({ resoldUnifiedOperations: ResoldUnifiedOperations }),
 ]);
 export interface CreateRelationshipRequest {
   catalog: string;
@@ -643,9 +653,11 @@ export type ListChannelHandshakesTypeFilters =
       programManagementAccountTypeFilters: ProgramManagementAccountTypeFilters;
     };
 export const ListChannelHandshakesTypeFilters = /*@__PURE__*/ S.Union([
-  S.Struct({ startServicePeriodTypeFilters: StartServicePeriodTypeFilters }),
-  S.Struct({ revokeServicePeriodTypeFilters: RevokeServicePeriodTypeFilters }),
-  S.Struct({ programManagementAccountTypeFilters: ProgramManagementAccountTypeFilters }),
+  /*@__PURE__*/ S.Struct({ startServicePeriodTypeFilters: StartServicePeriodTypeFilters }),
+  /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeFilters: RevokeServicePeriodTypeFilters }),
+  /*@__PURE__*/ S.Struct({
+    programManagementAccountTypeFilters: ProgramManagementAccountTypeFilters,
+  }),
 ]);
 export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = S.String;
@@ -703,9 +715,9 @@ export type ListChannelHandshakesTypeSort =
       programManagementAccountTypeSort: ProgramManagementAccountTypeSort;
     };
 export const ListChannelHandshakesTypeSort = /*@__PURE__*/ S.Union([
-  S.Struct({ startServicePeriodTypeSort: StartServicePeriodTypeSort }),
-  S.Struct({ revokeServicePeriodTypeSort: RevokeServicePeriodTypeSort }),
-  S.Struct({ programManagementAccountTypeSort: ProgramManagementAccountTypeSort }),
+  /*@__PURE__*/ S.Struct({ startServicePeriodTypeSort: StartServicePeriodTypeSort }),
+  /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeSort: RevokeServicePeriodTypeSort }),
+  /*@__PURE__*/ S.Struct({ programManagementAccountTypeSort: ProgramManagementAccountTypeSort }),
 ]);
 export type NextToken = string;
 export interface ListChannelHandshakesRequest {
@@ -799,9 +811,13 @@ export type HandshakeDetail =
       programManagementAccountHandshakeDetail: ProgramManagementAccountHandshakeDetail;
     };
 export const HandshakeDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ startServicePeriodHandshakeDetail: StartServicePeriodHandshakeDetail }),
-  S.Struct({ revokeServicePeriodHandshakeDetail: RevokeServicePeriodHandshakeDetail }),
-  S.Struct({ programManagementAccountHandshakeDetail: ProgramManagementAccountHandshakeDetail }),
+  /*@__PURE__*/ S.Struct({ startServicePeriodHandshakeDetail: StartServicePeriodHandshakeDetail }),
+  /*@__PURE__*/ S.Struct({
+    revokeServicePeriodHandshakeDetail: RevokeServicePeriodHandshakeDetail,
+  }),
+  /*@__PURE__*/ S.Struct({
+    programManagementAccountHandshakeDetail: ProgramManagementAccountHandshakeDetail,
+  }),
 ]);
 export interface ChannelHandshakeSummary {
   id?: string;

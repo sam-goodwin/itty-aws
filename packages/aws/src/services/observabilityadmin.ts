@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ObservabilityAdmin",
   serviceShapeName: "ObservabilityAdmin",
 });
-const auth = T.AwsAuthSigv4({ name: "observabilityadmin" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "observabilityadmin" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,76 +77,86 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      amznErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      amznErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
-      ServiceCode: S.optional(S.String),
-      QuotaCode: S.optional(S.String),
-      amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
+      amznErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Errors: S.optional(
-        S.suspend(() => ValidationErrors).annotate({ identifier: "ValidationErrors" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Errors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationErrors).annotate({
+          identifier: "ValidationErrors",
+        }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type RuleName = string;
 export type Region = string;
@@ -319,7 +329,10 @@ export const CentralizationRule = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMapInput = { [key: string]: string | undefined };
-export const TagMapInput = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMapInput = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateCentralizationRuleForOrganizationInput {
   RuleName: string;
   Rule: CentralizationRule;
@@ -1207,7 +1220,10 @@ export const TelemetryPipelineStatusReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "TelemetryPipelineStatusReason",
 }) as any as S.Schema<TelemetryPipelineStatusReason>;
 export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMapOutput = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface TelemetryPipeline {
   CreatedTimeStamp?: number;
   LastUpdateTimeStamp?: number;
@@ -1443,7 +1459,7 @@ export const TelemetryState = S.String;
 export type TelemetryConfigurationState = { [key in TelemetryType]?: TelemetryState };
 export const TelemetryConfigurationState = /*@__PURE__*/ S.Record(
   TelemetryType,
-  TelemetryState.pipe(S.optional),
+  /*@__PURE__*/ TelemetryState.pipe(S.optional),
 );
 export type ListResourceTelemetryMaxResults = number;
 export interface ListResourceTelemetryInput {
@@ -2141,7 +2157,7 @@ export const ValidateTelemetryPipelineConfigurationInput = /*@__PURE__*/ S.suspe
   identifier: "ValidateTelemetryPipelineConfigurationInput",
 }) as any as S.Schema<ValidateTelemetryPipelineConfigurationInput>;
 export type FieldMap = { [key: string]: string | undefined };
-export const FieldMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FieldMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ValidationError {
   Message?: string;
   Reason?: string;

@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ApiGatewayManagementApi",
   serviceShapeName: "ApiGatewayManagementApi",
 });
-const auth = T.AwsAuthSigv4({ name: "execute-api" });
-const ver = T.ServiceVersion("2018-11-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "execute-api" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,26 +76,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
   extends /*@__PURE__*/ S.TaggedError<GoneException>()(
     "GoneException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class PayloadTooLargeException
   extends /*@__PURE__*/ S.TaggedError<PayloadTooLargeException>()(
     "PayloadTooLargeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export interface DeleteConnectionRequest {
   ConnectionId: string;

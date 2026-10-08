@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "resiliencehub", serviceShapeName: "AwsResilienceHub" });
-const auth = T.AwsAuthSigv4({ name: "resiliencehub" });
-const ver = T.ServiceVersion("2020-04-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "resiliencehub",
+  serviceShapeName: "AwsResilienceHub",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "resiliencehub" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-04-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,55 +76,55 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type String255 = string;
@@ -384,7 +387,7 @@ export type EntityDescription = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ClientToken = string;
 export type AppAssessmentScheduleType = "Disabled" | "Daily" | (string & {});
 export const AppAssessmentScheduleType = S.String;
@@ -518,7 +521,7 @@ export const AdditionalInfoValueList = /*@__PURE__*/ S.Array(S.String);
 export type AdditionalInfoMap = { [key: string]: string[] | undefined };
 export const AdditionalInfoMap = /*@__PURE__*/ S.Record(
   S.String,
-  AdditionalInfoValueList.pipe(S.optional),
+  /*@__PURE__*/ AdditionalInfoValueList.pipe(S.optional),
 );
 export interface CreateAppVersionAppComponentRequest {
   appArn: string;
@@ -804,7 +807,7 @@ export const FailurePolicy = /*@__PURE__*/ S.suspend(() =>
 export type DisruptionPolicy = { [key in DisruptionType]?: FailurePolicy };
 export const DisruptionPolicy = /*@__PURE__*/ S.Record(
   DisruptionType,
-  FailurePolicy.pipe(S.optional),
+  /*@__PURE__*/ FailurePolicy.pipe(S.optional),
 );
 export interface CreateResiliencyPolicyRequest {
   policyName: string;
@@ -1173,7 +1176,7 @@ export const Cost = /*@__PURE__*/ S.suspend(() =>
 export type DisruptionResiliencyScore = { [key in DisruptionType]?: number };
 export const DisruptionResiliencyScore = /*@__PURE__*/ S.Record(
   DisruptionType,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export type ResiliencyScoreType = "Compliance" | "Test" | "Alarm" | "Sop" | (string & {});
 export const ResiliencyScoreType = S.String;
@@ -1199,7 +1202,7 @@ export type ScoringComponentResiliencyScores = {
 };
 export const ScoringComponentResiliencyScores = /*@__PURE__*/ S.Record(
   ResiliencyScoreType,
-  ScoringComponentResiliencyScore.pipe(S.optional),
+  /*@__PURE__*/ ScoringComponentResiliencyScore.pipe(S.optional),
 );
 export interface ResiliencyScore {
   score: number;
@@ -1250,7 +1253,7 @@ export const DisruptionCompliance = /*@__PURE__*/ S.suspend(() =>
 export type AssessmentCompliance = { [key in DisruptionType]?: DisruptionCompliance };
 export const AssessmentCompliance = /*@__PURE__*/ S.Record(
   DisruptionType,
-  DisruptionCompliance.pipe(S.optional),
+  /*@__PURE__*/ DisruptionCompliance.pipe(S.optional),
 );
 export interface ResourceError {
   logicalResourceId?: string;
@@ -2171,7 +2174,7 @@ export type RecommendationCompliance = {
 };
 export const RecommendationCompliance = /*@__PURE__*/ S.Record(
   DisruptionType,
-  RecommendationDisruptionCompliance.pipe(S.optional),
+  /*@__PURE__*/ RecommendationDisruptionCompliance.pipe(S.optional),
 );
 export type ConfigRecommendationOptimizationType =
   | "LeastCost"

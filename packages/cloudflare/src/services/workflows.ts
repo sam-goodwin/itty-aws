@@ -118,11 +118,11 @@ export class WorkflowNotFound
 
 export type InstancesBulkRequestBodyItemInstanceRetentionErrorRetention = string | number;
 export const InstancesBulkRequestBodyItemInstanceRetentionErrorRetention =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention = string | number;
 export const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface InstancesBulkRequestBodyItemInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
@@ -262,12 +262,12 @@ export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesCreateRequestInstanceRetentionErrorRetention = string | number;
 export const InstancesCreateRequestInstanceRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesCreateRequestInstanceRetentionSuccessRetention = string | number;
 export const InstancesCreateRequestInstanceRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface InstancesCreateRequestInstanceRetention {
@@ -487,7 +487,9 @@ export const InstancesGetResponseError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesGetResponseError>;
 
 export type InstancesGetResponseOutput = string | number;
-export const InstancesGetResponseOutput = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const InstancesGetResponseOutput = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type InstancesGetResponseRollbackError = InstancesGetResponseError;
 export const InstancesGetResponseRollbackError = InstancesGetResponseError;
@@ -548,7 +550,7 @@ export const InstancesGetResponseStepsItemCase0AttemptsList = /*@__PURE__*/ S.Ar
 
 export type InstancesGetResponseStepsItemCase0ConfigRetriesDelay = string | number;
 export const InstancesGetResponseStepsItemCase0ConfigRetriesDelay = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesGetResponseStepsItemCase0ConfigRetriesBackoff =
@@ -575,7 +577,7 @@ export const InstancesGetResponseStepsItemCase0ConfigRetries = /*@__PURE__*/ S.s
 
 export type InstancesGetResponseStepsItemCase0ConfigTimeout = string | number;
 export const InstancesGetResponseStepsItemCase0ConfigTimeout = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesGetResponseStepsItemCase0ConfigSensitive = "output";
@@ -717,7 +719,7 @@ export type InstancesGetResponseStepsItem =
   | InstancesGetResponseStepsItemCase2
   | InstancesGetResponseStepsItemCase3;
 export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attempts", "config", "end", "name", "output", "start", "success", "type"],
     ["end", "error", "finished", "name", "start", "type"],
     ["trigger", "type"],
@@ -1007,7 +1009,7 @@ export const VersionsGraphResponseGraphWorkflowFunctionsMap = /*@__PURE__*/ S.Re
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase0Duration = string | number;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase0Duration =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase0Type = "step_sleep";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase0Type = S.String;
@@ -1040,7 +1042,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackof
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay = string | number;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries {
   /** Backoff strategy for step retries. */
@@ -1062,7 +1064,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries =
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout = string | number;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase1Config {
   /** Retry policy for a step. */
@@ -1112,7 +1114,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1 = /*@__PURE__*/ S.
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout = string | number;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2Options {
   eventType: string;
@@ -1177,7 +1179,10 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase2Payload =
   | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType
   | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2Payload = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["fields", "type"]], { key: "type", values: ["unknown", "object"] }),
+  /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
+    key: "type",
+    values: ["unknown", "object"],
+  }),
 );
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2 {
@@ -1575,7 +1580,10 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
   | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["type"], ["fields", "type"]], { key: "type", values: ["unknown", "object"] }),
+    /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
+      key: "type",
+      values: ["unknown", "object"],
+    }),
   );
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10 {
@@ -1679,7 +1687,7 @@ export type VersionsGraphResponseGraphWorkflowNodesItem =
   | VersionsGraphResponseGraphWorkflowNodesItemCase12
   | VersionsGraphResponseGraphWorkflowNodesItemCase13;
 export const VersionsGraphResponseGraphWorkflowNodesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["duration", "name", "type", "resolves", "starts"],
       ["config", "name", "nodes", "type", "resolves", "starts"],
@@ -1767,7 +1775,10 @@ export type VersionsGraphResponseGraphWorkflowPayload =
   | VersionsGraphResponseGraphWorkflowPayloadType
   | VersionsGraphResponseGraphWorkflowPayloadCase1;
 export const VersionsGraphResponseGraphWorkflowPayload = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["fields", "type"]], { key: "type", values: ["unknown", "object"] }),
+  /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
+    key: "type",
+    values: ["unknown", "object"],
+  }),
 );
 
 export interface VersionsGraphResponseGraphWorkflow {
@@ -2189,12 +2200,12 @@ export const UpdateRequestConcurrency = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateRequestDefaultRetentionErrorRetention = string | number;
 export const UpdateRequestDefaultRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UpdateRequestDefaultRetentionSuccessRetention = string | number;
 export const UpdateRequestDefaultRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface UpdateRequestDefaultRetention {

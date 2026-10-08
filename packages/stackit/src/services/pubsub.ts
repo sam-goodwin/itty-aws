@@ -61,7 +61,7 @@ export const CreateSubscriptionRequestRegionId = S.String;
 export type Labels = { [key: string]: string | null | undefined };
 export const Labels = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
 
 /** Configuration settings for the subscription. */

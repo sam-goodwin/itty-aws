@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Sustainability",
   serviceShapeName: "AwsSustainabilityApiService",
 });
-const auth = T.AwsAuthSigv4({ name: "sustainability" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sustainability" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -97,26 +97,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface TimePeriod {
   Start: Date;
@@ -139,7 +139,7 @@ export const DimensionValueList = /*@__PURE__*/ S.Array(S.String);
 export type DimensionListMap = { [key in Dimension]?: string[] };
 export const DimensionListMap = /*@__PURE__*/ S.Record(
   Dimension,
-  DimensionValueList.pipe(S.optional),
+  /*@__PURE__*/ DimensionValueList.pipe(S.optional),
 );
 export interface FilterExpression {
   Dimensions?: { [key: string]: string[] | undefined };
@@ -212,7 +212,10 @@ export const GetEstimatedCarbonEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEstimatedCarbonEmissionsRequest",
 }) as any as S.Schema<GetEstimatedCarbonEmissionsRequest>;
 export type DimensionsMap = { [key in Dimension]?: string };
-export const DimensionsMap = /*@__PURE__*/ S.Record(Dimension, S.String.pipe(S.optional));
+export const DimensionsMap = /*@__PURE__*/ S.Record(
+  Dimension,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ModelVersion = string;
 export type EmissionsUnit = "MTCO2e" | (string & {});
 export const EmissionsUnit = S.String;
@@ -225,7 +228,10 @@ export const Emissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.Number, Unit: EmissionsUnit }),
 ).annotate({ identifier: "Emissions" }) as any as S.Schema<Emissions>;
 export type EmissionsMap = { [key in EmissionsType]?: Emissions };
-export const EmissionsMap = /*@__PURE__*/ S.Record(EmissionsType, Emissions.pipe(S.optional));
+export const EmissionsMap = /*@__PURE__*/ S.Record(
+  EmissionsType,
+  /*@__PURE__*/ Emissions.pipe(S.optional),
+);
 export interface EstimatedCarbonEmissions {
   TimePeriod: TimePeriod;
   DimensionsValues: { [key: string]: string | undefined };
@@ -343,7 +349,7 @@ export const WaterAllocation = /*@__PURE__*/ S.suspend(() =>
 export type WaterAllocationMap = { [key in WaterAllocationType]?: WaterAllocation };
 export const WaterAllocationMap = /*@__PURE__*/ S.Record(
   WaterAllocationType,
-  WaterAllocation.pipe(S.optional),
+  /*@__PURE__*/ WaterAllocation.pipe(S.optional),
 );
 export interface EstimatedWaterAllocation {
   TimePeriod: TimePeriod;

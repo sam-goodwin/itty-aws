@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Lambda Microvms", serviceShapeName: "LambdaMicrovms" });
-const auth = T.AwsAuthSigv4({ name: "lambda" });
-const ver = T.ServiceVersion("2025-09-09");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Lambda Microvms",
+  serviceShapeName: "LambdaMicrovms",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lambda" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-09-09");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,96 +76,115 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceType: S.optional(S.String),
-      resourceId: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type MicrovmIdentifier = string;
 export type PositiveInteger = number;
@@ -179,9 +201,9 @@ export type PortSpecification =
   | { port?: never; range: PortRange; allPorts?: never }
   | { port?: never; range?: never; allPorts: Record<string, never> };
 export const PortSpecification = /*@__PURE__*/ S.Union([
-  S.Struct({ port: S.Number }),
-  S.Struct({ range: PortRange }),
-  S.Struct({ allPorts: S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ port: S.Number }),
+  /*@__PURE__*/ S.Struct({ range: PortRange }),
+  /*@__PURE__*/ S.Struct({ allPorts: /*@__PURE__*/ S.Struct({}) }),
 ]);
 export type ListOfPortSpecification = PortSpecification[];
 export const ListOfPortSpecification = /*@__PURE__*/ S.Array(PortSpecification);
@@ -211,7 +233,10 @@ export const CreateMicrovmAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export type AuthTokenKey = string;
 export type AuthTokenValue = string | redacted.Redacted<string>;
 export type TokenParts = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const TokenParts = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const TokenParts = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface CreateMicrovmAuthTokenResponse {
   authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
@@ -224,7 +249,7 @@ export type NonBlankString = string;
 export type Version = string;
 export type RoleArn = string;
 export type CodeArtifact = { uri: string };
-export const CodeArtifact = /*@__PURE__*/ S.Union([S.Struct({ uri: S.String })]);
+export const CodeArtifact = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ uri: S.String })]);
 export interface LoggingDisabled {}
 export const LoggingDisabled = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "LoggingDisabled",
@@ -240,8 +265,8 @@ export type Logging =
   | { disabled: LoggingDisabled; cloudWatch?: never }
   | { disabled?: never; cloudWatch: CloudWatchLogging };
 export const Logging = /*@__PURE__*/ S.Union([
-  S.Struct({ disabled: LoggingDisabled }),
-  S.Struct({ cloudWatch: CloudWatchLogging }),
+  /*@__PURE__*/ S.Struct({ disabled: LoggingDisabled }),
+  /*@__PURE__*/ S.Struct({ cloudWatch: CloudWatchLogging }),
 ]);
 export type NetworkConnector = string;
 export type NetworkConnectorList = string[];
@@ -328,13 +353,13 @@ export type EnvironmentVariableMap = {
 };
 export const EnvironmentVariableMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type ImageName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateMicrovmImageRequest {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -1303,7 +1328,9 @@ export const TerminateMicrovmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({
   identifier: "TerminateMicrovmResponse",
 }) as any as S.Schema<TerminateMicrovmResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Key")));
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
+);
 export interface UntagResourceRequest {
   Resource: string;
   TagKeys: string[];

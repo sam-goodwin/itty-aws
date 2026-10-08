@@ -337,12 +337,12 @@ export const GetInstallationResourceExperimentationGlobalConfigRequest = /*@__PU
 export type GlobalConfigItemValueCase2Map = { [key: string]: GlobalConfigItemValue | undefined };
 export const GlobalConfigItemValueCase2Map = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => GlobalConfigItemValue),
+  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
 ) as any as S.Schema<GlobalConfigItemValueCase2Map>;
 
 export type GlobalConfigItemValueCase3List = Array<GlobalConfigItemValue>;
 export const GlobalConfigItemValueCase3List = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalConfigItemValue),
+  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
 ) as any as S.Schema<GlobalConfigItemValueCase3List>;
 
 export type GlobalConfigItemValue =
@@ -359,7 +359,7 @@ export type GetInstallationResourceExperimentationGlobalConfigResponseItemsMap =
 export const GetInstallationResourceExperimentationGlobalConfigResponseItemsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(GlobalConfigItemValue),
+    /*@__PURE__*/ S.NullOr(GlobalConfigItemValue),
   ) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponseItemsMap>;
 
 export type GetInstallationResourceExperimentationGlobalConfigResponsePurpose =
@@ -422,7 +422,7 @@ export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = 
 export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue),
+    /*@__PURE__*/ S.NullOr(GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue),
   ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap>;
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
@@ -1323,7 +1323,7 @@ export type ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
 };
 export const ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue),
+  /*@__PURE__*/ S.NullOr(ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue),
 ) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
 
 export interface ImportResourceRequestCustomClaimsClaimRulesItem {
@@ -1449,7 +1449,7 @@ export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceI
 export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(GlobalConfigItemValue),
+    /*@__PURE__*/ S.NullOr(GlobalConfigItemValue),
   ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap>;
 
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
@@ -2367,7 +2367,7 @@ export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
 };
 export const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue),
+  /*@__PURE__*/ S.NullOr(UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue),
 ) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
 
 export interface UpdateResourceRequestCustomClaimsClaimRulesItem {

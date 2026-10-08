@@ -6,14 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Network Firewall",
   serviceShapeName: "NetworkFirewall_20201112",
 });
-const auth = T.AwsAuthSigv4({ name: "network-firewall" });
-const ver = T.ServiceVersion("2020-11-12");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "network-firewall" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-11-12");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,55 +75,55 @@ const rules = T.EndpointResolver((p, _) => {
 export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()("InvalidOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidResourcePolicyException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourcePolicyException>()(
     "InvalidResourcePolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidTokenException>()("InvalidTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LogDestinationPermissionException
   extends /*@__PURE__*/ S.TaggedError<LogDestinationPermissionException>()(
     "LogDestinationPermissionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceOwnerCheckException
   extends /*@__PURE__*/ S.TaggedError<ResourceOwnerCheckException>()(
     "ResourceOwnerCheckException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()("ThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type TransitGatewayAttachmentId = string;
 export interface AcceptNetworkFirewallTransitGatewayAttachmentRequest {
@@ -666,7 +666,10 @@ export const PerObjectStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SyncStatus: S.optional(PerObjectSyncStatus), UpdateToken: S.optional(S.String) }),
 ).annotate({ identifier: "PerObjectStatus" }) as any as S.Schema<PerObjectStatus>;
 export type SyncStateConfig = { [key: string]: PerObjectStatus | undefined };
-export const SyncStateConfig = /*@__PURE__*/ S.Record(S.String, PerObjectStatus.pipe(S.optional));
+export const SyncStateConfig = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ PerObjectStatus.pipe(S.optional),
+);
 export type NatGatewayAttachmentStatus =
   | "CREATING"
   | "READY"
@@ -706,7 +709,10 @@ export const SyncState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SyncState" }) as any as S.Schema<SyncState>;
 export type SyncStates = { [key: string]: SyncState | undefined };
-export const SyncStates = /*@__PURE__*/ S.Record(S.String, SyncState.pipe(S.optional));
+export const SyncStates = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SyncState.pipe(S.optional),
+);
 export type CIDRCount = number;
 export type IPSetArn = string;
 export interface IPSetMetadata {
@@ -716,7 +722,10 @@ export const IPSetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResolvedCIDRCount: S.optional(S.Number) }),
 ).annotate({ identifier: "IPSetMetadata" }) as any as S.Schema<IPSetMetadata>;
 export type IPSetMetadataMap = { [key: string]: IPSetMetadata | undefined };
-export const IPSetMetadataMap = /*@__PURE__*/ S.Record(S.String, IPSetMetadata.pipe(S.optional));
+export const IPSetMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ IPSetMetadata.pipe(S.optional),
+);
 export interface CIDRSummary {
   AvailableCIDRCount?: number;
   UtilizedCIDRCount?: number;
@@ -887,7 +896,7 @@ export const IPSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Definition: VariableDefinitionList }),
 ).annotate({ identifier: "IPSet" }) as any as S.Schema<IPSet>;
 export type IPSets = { [key: string]: IPSet | undefined };
-export const IPSets = /*@__PURE__*/ S.Record(S.String, IPSet.pipe(S.optional));
+export const IPSets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ IPSet.pipe(S.optional));
 export interface PolicyVariables {
   RuleVariables?: { [key: string]: IPSet | undefined };
 }
@@ -1278,7 +1287,7 @@ export const PortSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Definition: S.optional(VariableDefinitionList) }),
 ).annotate({ identifier: "PortSet" }) as any as S.Schema<PortSet>;
 export type PortSets = { [key: string]: PortSet | undefined };
-export const PortSets = /*@__PURE__*/ S.Record(S.String, PortSet.pipe(S.optional));
+export const PortSets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ PortSet.pipe(S.optional));
 export interface RuleVariables {
   IPSets?: { [key: string]: IPSet | undefined };
   PortSets?: { [key: string]: PortSet | undefined };
@@ -1294,7 +1303,10 @@ export const IPSetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReferenceArn: S.optional(S.String) }),
 ).annotate({ identifier: "IPSetReference" }) as any as S.Schema<IPSetReference>;
 export type IPSetReferenceMap = { [key: string]: IPSetReference | undefined };
-export const IPSetReferenceMap = /*@__PURE__*/ S.Record(S.String, IPSetReference.pipe(S.optional));
+export const IPSetReferenceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ IPSetReference.pipe(S.optional),
+);
 export interface ReferenceSets {
   IPSetReferences?: { [key: string]: IPSetReference | undefined };
 }
@@ -1825,7 +1837,10 @@ export const AZSyncState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attachment: S.optional(Attachment) }),
 ).annotate({ identifier: "AZSyncState" }) as any as S.Schema<AZSyncState>;
 export type AssociationSyncState = { [key: string]: AZSyncState | undefined };
-export const AssociationSyncState = /*@__PURE__*/ S.Record(S.String, AZSyncState.pipe(S.optional));
+export const AssociationSyncState = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AZSyncState.pipe(S.optional),
+);
 export interface VpcEndpointAssociationStatus {
   Status: FirewallStatusValue;
   AssociationSyncState?: { [key: string]: AZSyncState | undefined };
@@ -2173,7 +2188,7 @@ export const AvailabilityZoneMetadata = /*@__PURE__*/ S.suspend(() =>
 export type SupportedAvailabilityZones = { [key: string]: AvailabilityZoneMetadata | undefined };
 export const SupportedAvailabilityZones = /*@__PURE__*/ S.Record(
   S.String,
-  AvailabilityZoneMetadata.pipe(S.optional),
+  /*@__PURE__*/ AvailabilityZoneMetadata.pipe(S.optional),
 );
 export interface DescribeFirewallMetadataResponse {
   FirewallArn?: string;
@@ -2330,7 +2345,10 @@ export const LogDestinationType = S.String;
 export type HashMapKey = string;
 export type HashMapValue = string;
 export type LogDestinationMap = { [key: string]: string | undefined };
-export const LogDestinationMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LogDestinationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface LogDestinationConfig {
   LogType: LogType;
   LogDestinationType: LogDestinationType;

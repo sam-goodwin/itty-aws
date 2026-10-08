@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SQS", serviceShapeName: "AmazonSQS" });
-const auth = T.AwsAuthSigv4({ name: "sqs" });
-const ver = T.ServiceVersion("2012-11-05");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SQS", serviceShapeName: "AmazonSQS" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sqs" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2012-11-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,258 +72,288 @@ const rules = T.EndpointResolver((p, _) => {
 export class BatchEntryIdsNotDistinct
   extends /*@__PURE__*/ S.TaggedError<BatchEntryIdsNotDistinct>()(
     "BatchEntryIdsNotDistinct",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.BatchEntryIdsNotDistinct",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class BatchRequestTooLong
   extends /*@__PURE__*/ S.TaggedError<BatchRequestTooLong>()(
     "BatchRequestTooLong",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.BatchRequestTooLong",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CommonServiceException
   extends /*@__PURE__*/ S.TaggedError<CommonServiceException>()("CommonServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class EmptyBatchRequest
   extends /*@__PURE__*/ S.TaggedError<EmptyBatchRequest>()(
     "EmptyBatchRequest",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AWS.SimpleQueueService.EmptyBatchRequest", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "AWS.SimpleQueueService.EmptyBatchRequest",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAddress
   extends /*@__PURE__*/ S.TaggedError<InvalidAddress>()(
     "InvalidAddress",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidAddress", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidAddress", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAttributeName
   extends /*@__PURE__*/ S.TaggedError<InvalidAttributeName>()("InvalidAttributeName", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidAttributeValue
   extends /*@__PURE__*/ S.TaggedError<InvalidAttributeValue>()("InvalidAttributeValue", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidBatchEntryId
   extends /*@__PURE__*/ S.TaggedError<InvalidBatchEntryId>()(
     "InvalidBatchEntryId",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.InvalidBatchEntryId",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIdFormat
   extends /*@__PURE__*/ S.TaggedError<InvalidIdFormat>()("InvalidIdFormat", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidMessageContents
   extends /*@__PURE__*/ S.TaggedError<InvalidMessageContents>()("InvalidMessageContents", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecurity
   extends /*@__PURE__*/ S.TaggedError<InvalidSecurity>()(
     "InvalidSecurity",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidSecurity", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidSecurity", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class KmsAccessDenied
   extends /*@__PURE__*/ S.TaggedError<KmsAccessDenied>()(
     "KmsAccessDenied",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.AccessDeniedException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.AccessDeniedException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class KmsDisabled
   extends /*@__PURE__*/ S.TaggedError<KmsDisabled>()(
     "KmsDisabled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.DisabledException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.DisabledException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidKeyUsage
   extends /*@__PURE__*/ S.TaggedError<KmsInvalidKeyUsage>()(
     "KmsInvalidKeyUsage",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.InvalidKeyUsageException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "KMS.InvalidKeyUsageException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidState
   extends /*@__PURE__*/ S.TaggedError<KmsInvalidState>()(
     "KmsInvalidState",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.InvalidStateException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.InvalidStateException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsNotFound
   extends /*@__PURE__*/ S.TaggedError<KmsNotFound>()(
     "KmsNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.NotFoundException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.NotFoundException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsOptInRequired
   extends /*@__PURE__*/ S.TaggedError<KmsOptInRequired>()(
     "KmsOptInRequired",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "KMS.OptInRequired", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.OptInRequired", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class KmsThrottled
   extends /*@__PURE__*/ S.TaggedError<KmsThrottled>()(
     "KmsThrottled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "KMS.ThrottlingException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KMS.ThrottlingException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class MessageNotInflight
   extends /*@__PURE__*/ S.TaggedError<MessageNotInflight>()(
     "MessageNotInflight",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AWS.SimpleQueueService.MessageNotInflight", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "AWS.SimpleQueueService.MessageNotInflight",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException
   extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class OverLimit
   extends /*@__PURE__*/ S.TaggedError<OverLimit>()(
     "OverLimit",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "OverLimit", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "OverLimit", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError, C.withQuotaError) {}
 export class ParseError
   extends /*@__PURE__*/ S.TaggedError<ParseError>()("ParseError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PurgeQueueInProgress
   extends /*@__PURE__*/ S.TaggedError<PurgeQueueInProgress>()(
     "PurgeQueueInProgress",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.PurgeQueueInProgress",
         httpResponseCode: 403,
       }),
-      T.HttpError(403),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError, C.withConflictError, C.withRetryableError) {}
 export class QueueDeletedRecently
   extends /*@__PURE__*/ S.TaggedError<QueueDeletedRecently>()(
     "QueueDeletedRecently",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.QueueDeletedRecently",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class QueueDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<QueueDoesNotExist>()(
     "QueueDoesNotExist",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AWS.SimpleQueueService.NonExistentQueue", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "AWS.SimpleQueueService.NonExistentQueue",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class QueueNameExists
   extends /*@__PURE__*/ S.TaggedError<QueueNameExists>()(
     "QueueNameExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "QueueAlreadyExists", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "QueueAlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ReceiptHandleIsInvalid
   extends /*@__PURE__*/ S.TaggedError<ReceiptHandleIsInvalid>()(
     "ReceiptHandleIsInvalid",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReceiptHandleIsInvalid", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ReceiptHandleIsInvalid", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class RequestThrottled
   extends /*@__PURE__*/ S.TaggedError<RequestThrottled>()(
     "RequestThrottled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "RequestThrottled", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RequestThrottled", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError, C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyEntriesInBatchRequest
   extends /*@__PURE__*/ S.TaggedError<TooManyEntriesInBatchRequest>()(
     "TooManyEntriesInBatchRequest",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.TooManyEntriesInBatchRequest",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()(
     "UnsupportedOperation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "AWS.SimpleQueueService.UnsupportedOperation",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export type AWSAccountIdList = string[];
@@ -481,15 +511,15 @@ export const QueueAttributeName = S.String;
 
 export type QueueAttributeMap = { [key in QueueAttributeName]?: string };
 export const QueueAttributeMap = /*@__PURE__*/ S.Record(
-  QueueAttributeName.pipe(T.XmlName("Name")),
-  S.String.pipe(T.XmlName("Value")).pipe(S.optional),
+  /*@__PURE__*/ QueueAttributeName.pipe(/*@__PURE__*/ T.XmlName("Name")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
 );
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
-  S.String.pipe(T.XmlName("Key")),
-  S.String.pipe(T.XmlName("Value")).pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
 );
 export interface CreateQueueRequest {
   QueueName: string;
@@ -814,14 +844,18 @@ export const ReceiveMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceiveMessageRequest" }) as any as S.Schema<ReceiveMessageRequest>;
 export type MessageSystemAttributeMap = { [key in MessageSystemAttributeName]?: string };
 export const MessageSystemAttributeMap = /*@__PURE__*/ S.Record(
-  MessageSystemAttributeName.pipe(T.XmlName("Name")),
-  S.String.pipe(T.XmlName("Value")).pipe(S.optional),
+  /*@__PURE__*/ MessageSystemAttributeName.pipe(/*@__PURE__*/ T.XmlName("Name")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
 );
 export type Binary = Uint8Array;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("StringListValue")));
+export const StringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("StringListValue")),
+);
 export type BinaryList = Uint8Array[];
-export const BinaryList = /*@__PURE__*/ S.Array(T.Blob.pipe(T.XmlName("BinaryListValue")));
+export const BinaryList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ T.Blob.pipe(/*@__PURE__*/ T.XmlName("BinaryListValue")),
+);
 export interface MessageAttributeValue {
   StringValue?: string;
   BinaryValue?: Uint8Array;
@@ -840,8 +874,8 @@ export const MessageAttributeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageAttributeValue" }) as any as S.Schema<MessageAttributeValue>;
 export type MessageBodyAttributeMap = { [key: string]: MessageAttributeValue | undefined };
 export const MessageBodyAttributeMap = /*@__PURE__*/ S.Record(
-  S.String.pipe(T.XmlName("Name")),
-  MessageAttributeValue.pipe(T.XmlName("Value"))
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+  /*@__PURE__*/ MessageAttributeValue.pipe(/*@__PURE__*/ T.XmlName("Value"))
     .annotate({ identifier: "MessageAttributeValue" })
     .pipe(S.optional),
 );
@@ -917,8 +951,8 @@ export type MessageBodySystemAttributeMap = {
   [key in MessageSystemAttributeNameForSends]?: MessageSystemAttributeValue;
 };
 export const MessageBodySystemAttributeMap = /*@__PURE__*/ S.Record(
-  MessageSystemAttributeNameForSends.pipe(T.XmlName("Name")),
-  MessageSystemAttributeValue.pipe(T.XmlName("Value"))
+  /*@__PURE__*/ MessageSystemAttributeNameForSends.pipe(/*@__PURE__*/ T.XmlName("Name")),
+  /*@__PURE__*/ MessageSystemAttributeValue.pipe(/*@__PURE__*/ T.XmlName("Value"))
     .annotate({ identifier: "MessageSystemAttributeValue" })
     .pipe(S.optional),
 );

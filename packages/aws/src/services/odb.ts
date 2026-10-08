@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "odb", serviceShapeName: "Odb" });
-const auth = T.AwsAuthSigv4({ name: "odb" });
-const ver = T.ServiceVersion("2024-08-20");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "odb", serviceShapeName: "Odb" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "odb" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-08-20");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,65 +71,77 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AcceptMarketplaceRegistrationInput {
   marketplaceRegistrationToken: string;
@@ -471,12 +483,12 @@ export type SourceConfiguration =
       cloneToRefreshable: CloneToRefreshableConfiguration;
     };
 export const SourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ databaseClone: DatabaseCloneConfiguration }),
-  S.Struct({ restoreFromBackup: RestoreFromBackupConfiguration }),
-  S.Struct({ pointInTimeRestore: PointInTimeRestoreConfiguration }),
-  S.Struct({ crossRegionDataGuard: CrossRegionDataGuardConfiguration }),
-  S.Struct({ crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration }),
-  S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
+  /*@__PURE__*/ S.Struct({ databaseClone: DatabaseCloneConfiguration }),
+  /*@__PURE__*/ S.Struct({ restoreFromBackup: RestoreFromBackupConfiguration }),
+  /*@__PURE__*/ S.Struct({ pointInTimeRestore: PointInTimeRestoreConfiguration }),
+  /*@__PURE__*/ S.Struct({ crossRegionDataGuard: CrossRegionDataGuardConfiguration }),
+  /*@__PURE__*/ S.Struct({ crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration }),
+  /*@__PURE__*/ S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
 ]);
 export type EncryptionKeyProviderInput = "ORACLE_MANAGED" | "AWS_KMS" | (string & {});
 export const EncryptionKeyProviderInput = S.String;
@@ -503,7 +515,7 @@ export type EncryptionKeyConfigurationInput = {
   awsEncryptionKey: AwsEncryptionKeyConfigurationInput;
 };
 export const EncryptionKeyConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfigurationInput }),
 ]);
 export type AdminPasswordSource =
   | "CUSTOMER_MANAGED_AWS_SECRET"
@@ -530,13 +542,16 @@ export type AdminPasswordSourceConfigurationInput = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput;
 };
 export const AdminPasswordSourceConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput }),
 ]);
 export type GeneralInputString = string;
 export type TagKey = string;
 export type TagValue = string;
 export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RequestTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateAutonomousDatabaseInput {
   odbNetworkId?: string;
   displayName?: string;
@@ -716,7 +731,7 @@ export type WalletPasswordSourceConfigurationInput = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput;
 };
 export const WalletPasswordSourceConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput }),
 ]);
 export interface CreateAutonomousDatabaseWalletInput {
   autonomousDatabaseId: string;
@@ -1448,7 +1463,7 @@ export const NetServicesArchitecture = S.String;
 export type DatabaseConnectionStringMap = { [key: string]: string | undefined };
 export const DatabaseConnectionStringMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface DatabaseConnectionStringProfile {
   consumerGroup?: string;
@@ -1699,9 +1714,9 @@ export type EncryptionKeyConfiguration =
       okvEncryptionKey: OkvEncryptionKeyConfiguration;
     };
 export const EncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfiguration }),
-  S.Struct({ ociEncryptionKey: OciEncryptionKeyConfiguration }),
-  S.Struct({ okvEncryptionKey: OkvEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ ociEncryptionKey: OciEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ okvEncryptionKey: OkvEncryptionKeyConfiguration }),
 ]);
 export interface EncryptionSummary {
   encryptionKeyProvider?: EncryptionKeyProvider;
@@ -1731,7 +1746,7 @@ export type AdminPasswordSourceConfiguration = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration;
 };
 export const AdminPasswordSourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
+  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
 ]);
 export interface AdminPasswordSourceSummary {
   adminPasswordSource?: AdminPasswordSource;
@@ -2065,7 +2080,7 @@ export type WalletPasswordSourceConfiguration = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration;
 };
 export const WalletPasswordSourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
+  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
 ]);
 export interface WalletPasswordSourceSummary {
   passwordSource?: WalletPasswordSource;
@@ -4920,7 +4935,10 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResponseTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }

@@ -551,7 +551,7 @@ export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthChec
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
   | "reply"
@@ -779,7 +779,7 @@ export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget 
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType = "reply" | "request";
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType = S.String;
@@ -1015,7 +1015,7 @@ export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTar
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
   | "reply"
@@ -2053,7 +2053,7 @@ export type GreTunnelsCreateRequestHealthCheckTarget =
   | string
   | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type GreTunnelsCreateRequestHealthCheckType = "reply" | "request";
@@ -2202,7 +2202,7 @@ export type GreTunnelsCreateResponseHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsCreateResponseHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type GreTunnelsCreateResponseHealthCheckType = "reply" | "request";
@@ -2344,7 +2344,7 @@ export type IpsecTunnelsCreateRequestHealthCheckTarget =
   | string
   | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type IpsecTunnelsCreateRequestHealthCheckType = "reply" | "request";
@@ -2502,7 +2502,7 @@ export type IpsecTunnelsCreateResponseHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsCreateResponseHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type IpsecTunnelsCreateResponseHealthCheckType = "reply" | "request";
@@ -2821,7 +2821,7 @@ export type PcapsCreateResult =
   | PcapsCreateResultPCAP
   | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull;
 export const PcapsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "filterV1", "offsetTime", "status", "submitted", "system", "timeLimit", "type"],
     [
       "id",
@@ -3914,7 +3914,7 @@ export type CreateSitesAppConfigurationResult =
   | CreateSitesAppConfigurationResultAccountApp
   | CreateSitesAppConfigurationResultManagedApp;
 export const CreateSitesAppConfigurationResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
     ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
   ]),
@@ -4526,7 +4526,7 @@ export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType = "reply" | "request";
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType = S.String;
@@ -4736,7 +4736,7 @@ export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType = "reply" | "request";
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType = S.String;
@@ -5499,7 +5499,7 @@ export type DeleteSitesAppConfigurationResult =
   | DeleteSitesAppConfigurationResultAccountApp
   | DeleteSitesAppConfigurationResultManagedApp;
 export const DeleteSitesAppConfigurationResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
     ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
   ]),
@@ -5702,7 +5702,7 @@ export type EditSitesAppConfigurationResult =
   | EditSitesAppConfigurationResultAccountApp
   | EditSitesAppConfigurationResultManagedApp;
 export const EditSitesAppConfigurationResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
     ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
   ]),
@@ -6092,7 +6092,7 @@ export type CfInterconnectsGetResponseInterconnectHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsGetResponseInterconnectHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type CfInterconnectsGetResponseInterconnectHealthCheckType = "reply" | "request";
@@ -7490,7 +7490,7 @@ export type GreTunnelsGetResponseGreTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsGetResponseGreTunnelHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type GreTunnelsGetResponseGreTunnelHealthCheckType = "reply" | "request";
@@ -7696,7 +7696,7 @@ export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckType = "reply" | "request";
@@ -7953,7 +7953,7 @@ export type PcapsGetResult =
   | PcapsGetResultPCAP
   | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull;
 export const PcapsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "filterV1", "offsetTime", "status", "submitted", "system", "timeLimit", "type"],
     [
       "id",
@@ -8724,7 +8724,7 @@ export type AppsListResultItem =
   | AppsListResultItemMagicAccountApp
   | AppsListResultItemMagicManagedApp;
 export const AppsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
     ["managedAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
   ]),
@@ -9032,7 +9032,7 @@ export type CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type CfInterconnectsListResponseInterconnectsItemHealthCheckType = "reply" | "request";
 export const CfInterconnectsListResponseInterconnectsItemHealthCheckType = S.String;
@@ -10416,7 +10416,7 @@ export type GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckType = "reply" | "request";
@@ -10620,7 +10620,7 @@ export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType = "reply" | "request";
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType = S.String;
@@ -10880,7 +10880,7 @@ export type PcapsListResultItem =
   | PcapsListResultItemPCAP
   | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull;
 export const PcapsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "filterV1", "offsetTime", "status", "submitted", "system", "timeLimit", "type"],
     [
       "id",
@@ -11559,7 +11559,7 @@ export type ListSitesAppConfigurationResultItem =
   | ListSitesAppConfigurationResultItemAccountApp
   | ListSitesAppConfigurationResultItemManagedApp;
 export const ListSitesAppConfigurationResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
     ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
   ]),
@@ -12967,7 +12967,7 @@ export type CfInterconnectsUpdateRequestHealthCheckTarget =
   | string
   | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type CfInterconnectsUpdateRequestHealthCheckType = "reply" | "request";
@@ -13116,7 +13116,7 @@ export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType = "reply" | "request";
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType = S.String;
@@ -13589,7 +13589,7 @@ export type GreTunnelsUpdateRequestHealthCheckTarget =
   | string
   | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type GreTunnelsUpdateRequestHealthCheckType = "reply" | "request";
@@ -13752,7 +13752,7 @@ export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType = "reply" | "request";
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType = S.String;
@@ -13903,7 +13903,7 @@ export type IpsecTunnelsUpdateRequestHealthCheckTarget =
   | string
   | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["effective", "saved"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]),
 );
 
 export type IpsecTunnelsUpdateRequestHealthCheckType = "reply" | "request";
@@ -14078,7 +14078,7 @@ export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
   | string
   | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType = "reply" | "request";
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType = S.String;
@@ -15166,7 +15166,7 @@ export type UpdateSitesAppConfigurationResult =
   | UpdateSitesAppConfigurationResultAccountApp
   | UpdateSitesAppConfigurationResultManagedApp;
 export const UpdateSitesAppConfigurationResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
     ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
   ]),

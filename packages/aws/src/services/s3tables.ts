@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "S3Tables", serviceShapeName: "S3TableBuckets" });
-const auth = T.AwsAuthSigv4({ name: "s3tables" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "S3Tables",
+  serviceShapeName: "S3TableBuckets",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "s3tables" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,50 +74,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MethodNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<MethodNotAllowedException>()(
     "MethodNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(405),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type TableBucketARN = string;
 export type NamespaceName = string;
@@ -266,7 +269,10 @@ export const IcebergSortOrder = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "IcebergSortOrder" }) as any as S.Schema<IcebergSortOrder>;
 export type TableProperties = { [key: string]: string | undefined };
-export const TableProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TableProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface IcebergMetadata {
   schema?: IcebergSchema;
   schemaV2?: IcebergSchemaV2;
@@ -284,7 +290,9 @@ export const IcebergMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IcebergMetadata" }) as any as S.Schema<IcebergMetadata>;
 export type TableMetadata = { iceberg: IcebergMetadata };
-export const TableMetadata = /*@__PURE__*/ S.Union([S.Struct({ iceberg: IcebergMetadata })]);
+export const TableMetadata = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ iceberg: IcebergMetadata }),
+]);
 export type SSEAlgorithm = "AES256" | "aws:kms" | (string & {});
 export const SSEAlgorithm = S.String;
 
@@ -309,7 +317,7 @@ export const StorageClassConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateTableRequest {
   tableBucketARN: string;
   namespace: string;
@@ -788,7 +796,9 @@ export type TableBucketMaintenanceSettings = {
   icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings;
 };
 export const TableBucketMaintenanceSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings }),
+  /*@__PURE__*/ S.Struct({
+    icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings,
+  }),
 ]);
 export interface TableBucketMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
@@ -807,7 +817,7 @@ export type TableBucketMaintenanceConfiguration = {
 };
 export const TableBucketMaintenanceConfiguration = /*@__PURE__*/ S.Record(
   TableBucketMaintenanceType,
-  TableBucketMaintenanceConfigurationValue.pipe(S.optional),
+  /*@__PURE__*/ TableBucketMaintenanceConfigurationValue.pipe(S.optional),
 );
 export interface GetTableBucketMaintenanceConfigurationResponse {
   tableBucketARN: string;
@@ -1037,8 +1047,8 @@ export type TableMaintenanceSettings =
   | { icebergCompaction: IcebergCompactionSettings; icebergSnapshotManagement?: never }
   | { icebergCompaction?: never; icebergSnapshotManagement: IcebergSnapshotManagementSettings };
 export const TableMaintenanceSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ icebergCompaction: IcebergCompactionSettings }),
-  S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
+  /*@__PURE__*/ S.Struct({ icebergCompaction: IcebergCompactionSettings }),
+  /*@__PURE__*/ S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
 ]);
 export interface TableMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
@@ -1057,7 +1067,7 @@ export type TableMaintenanceConfiguration = {
 };
 export const TableMaintenanceConfiguration = /*@__PURE__*/ S.Record(
   TableMaintenanceType,
-  TableMaintenanceConfigurationValue.pipe(S.optional),
+  /*@__PURE__*/ TableMaintenanceConfigurationValue.pipe(S.optional),
 );
 export interface GetTableMaintenanceConfigurationResponse {
   tableARN: string;
@@ -1123,7 +1133,7 @@ export type TableMaintenanceJobStatus = {
 };
 export const TableMaintenanceJobStatus = /*@__PURE__*/ S.Record(
   TableMaintenanceJobType,
-  TableMaintenanceJobStatusValue.pipe(S.optional),
+  /*@__PURE__*/ TableMaintenanceJobStatusValue.pipe(S.optional),
 );
 export interface GetTableMaintenanceJobStatusResponse {
   tableARN: string;

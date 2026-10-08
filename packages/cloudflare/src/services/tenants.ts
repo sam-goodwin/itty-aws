@@ -174,7 +174,7 @@ export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
 export const EntitlementsGetResponseCustomEntitlementsItemAllocation = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
       ["type", "value"],

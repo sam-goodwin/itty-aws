@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Braket", serviceShapeName: "Braket" });
-const auth = T.AwsAuthSigv4({ name: "braket" });
-const ver = T.ServiceVersion("2019-09-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Braket", serviceShapeName: "Braket" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "braket" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-09-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,64 +71,64 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DeviceOfflineException
   extends /*@__PURE__*/ S.TaggedError<DeviceOfflineException>()(
     "DeviceOfflineException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class DeviceRetiredException
   extends /*@__PURE__*/ S.TaggedError<DeviceRetiredException>()(
     "DeviceRetiredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      reason: S.optional(S.String),
-      programSetValidationFailures: S.optional(
-        S.suspend(() => ProgramSetValidationFailuresList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      programSetValidationFailures: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ProgramSetValidationFailuresList).annotate({
           identifier: "ProgramSetValidationFailuresList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type JobArn = string;
 export interface CancelJobRequest {
@@ -264,7 +264,10 @@ export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 export type HyperParameters = { [key: string]: string | undefined };
-export const HyperParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HyperParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DeviceConfig {
   device: string;
 }
@@ -272,7 +275,7 @@ export const DeviceConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ device: S.S
   identifier: "DeviceConfig",
 }) as any as S.Schema<DeviceConfig>;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type BraketResourceArn = string;
 export type AssociationType = string;
 export interface Association {
@@ -327,7 +330,9 @@ export type JsonValue = string;
 export type JobToken = string;
 export type ExperimentalCapabilitiesEnablementType = string;
 export type ExperimentalCapabilities = { enabled: string };
-export const ExperimentalCapabilities = /*@__PURE__*/ S.Union([S.Struct({ enabled: S.String })]);
+export const ExperimentalCapabilities = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ enabled: S.String }),
+]);
 export interface CreateQuantumTaskRequest {
   clientToken: string;
   deviceArn: string;

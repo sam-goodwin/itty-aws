@@ -1382,7 +1382,7 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -1418,7 +1418,7 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -1714,7 +1714,7 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -1750,7 +1750,7 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -2548,7 +2548,7 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -2583,7 +2583,7 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -2878,7 +2878,7 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -2913,7 +2913,7 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue 
   | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -4490,7 +4490,7 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -4526,7 +4526,7 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -4822,7 +4822,7 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -4858,7 +4858,7 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -5640,7 +5640,7 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnLi
   | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -5675,7 +5675,7 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -5968,7 +5968,7 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnL
   | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -6003,7 +6003,7 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -6640,7 +6640,7 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListI
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -6674,7 +6674,7 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValue =
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem;
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
     ["itemType", "yamlDiff"],
@@ -6965,7 +6965,7 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemList
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -6999,7 +6999,7 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValue =
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem;
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
     ["itemType", "yamlDiff"],
@@ -7211,7 +7211,7 @@ export type CloudIntegrationsInitialSetupResult =
   | CloudIntegrationsInitialSetupResultMcnAzureSetup
   | CloudIntegrationsInitialSetupResultMcnGcpSetup;
 export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["awsTrustPolicy", "itemType"],
     ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
     ["integrationIdentityTag", "itemType", "tagCliCommand"],
@@ -8396,7 +8396,7 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -8432,7 +8432,7 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -8728,7 +8728,7 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -8764,7 +8764,7 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -9552,7 +9552,7 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -9587,7 +9587,7 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -9882,7 +9882,7 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -9917,7 +9917,7 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue 
   | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -10669,7 +10669,7 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemLi
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -10703,7 +10703,7 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValue =
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem;
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
     ["itemType", "yamlDiff"],
@@ -10994,7 +10994,7 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemL
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -11029,7 +11029,7 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem;
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -12256,7 +12256,7 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -12292,7 +12292,7 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -12588,7 +12588,7 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -12624,7 +12624,7 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -13408,7 +13408,7 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
   | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -13443,7 +13443,7 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -13736,7 +13736,7 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -13771,7 +13771,7 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -15269,7 +15269,7 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -15305,7 +15305,7 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -15601,7 +15601,7 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -15637,7 +15637,7 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -16425,7 +16425,7 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -16460,7 +16460,7 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],
@@ -16755,7 +16755,7 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "resourcePreview"],
     ]),
@@ -16790,7 +16790,7 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue 
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
       ["itemType", "yaml"],
       ["itemType", "yamlDiff"],

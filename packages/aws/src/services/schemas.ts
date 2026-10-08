@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "schemas", serviceShapeName: "schemas" });
-const auth = T.AwsAuthSigv4({ name: "schemas" });
-const ver = T.ServiceVersion("2019-12-02");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "schemas", serviceShapeName: "schemas" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "schemas" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-12-02");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,67 +71,97 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
   extends /*@__PURE__*/ S.TaggedError<GoneException>()(
     "GoneException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type __stringMin0Max256 = string;
 export type __stringMin20Max1600 = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDiscovererRequest {
   Description?: string;
   SourceArn?: string;

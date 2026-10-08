@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Payment Cryptography",
   serviceShapeName: "PaymentCryptographyControlPlane",
 });
-const auth = T.AwsAuthSigv4({ name: "payment-cryptography" });
-const ver = T.ServiceVersion("2021-09-14");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "payment-cryptography" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-09-14");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,56 +80,59 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class PublicPolicyException
   extends /*@__PURE__*/ S.TaggedError<PublicPolicyException>()(
     "PublicPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { ResourceId: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type KeyArnOrKeyAliasType = string;
 export type Region = string;
@@ -205,7 +208,7 @@ export const ReplicationStatusType = /*@__PURE__*/ S.suspend(() =>
 export type ReplicationStatus = { [key: string]: ReplicationStatusType | undefined };
 export const ReplicationStatus = /*@__PURE__*/ S.Record(
   S.String,
-  ReplicationStatusType.pipe(S.optional),
+  /*@__PURE__*/ ReplicationStatusType.pipe(S.optional),
 );
 export type MpaSessionArn = string;
 export type SessionStatus = string;
@@ -472,7 +475,10 @@ export type KeyVersion = string;
 export type OptionalBlockId = string | redacted.Redacted<string>;
 export type OptionalBlockValue = string | redacted.Redacted<string>;
 export type OptionalBlocks = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const OptionalBlocks = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const OptionalBlocks = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface KeyBlockHeaders {
   KeyModesOfUse?: KeyModesOfUse;
   KeyExportability?: string;
@@ -555,7 +561,7 @@ export const KeyDerivationHashAlgorithm = S.String;
 export type SharedInformation = string;
 export type DiffieHellmanDerivationData = { SharedInformation: string };
 export const DiffieHellmanDerivationData = /*@__PURE__*/ S.Union([
-  S.Struct({ SharedInformation: S.String }),
+  /*@__PURE__*/ S.Struct({ SharedInformation: S.String }),
 ]);
 export interface ExportDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
@@ -635,11 +641,11 @@ export type ExportKeyMaterial =
       As2805KeyCryptogram: ExportAs2805KeyCryptogram;
     };
 export const ExportKeyMaterial = /*@__PURE__*/ S.Union([
-  S.Struct({ Tr31KeyBlock: ExportTr31KeyBlock }),
-  S.Struct({ Tr34KeyBlock: ExportTr34KeyBlock }),
-  S.Struct({ KeyCryptogram: ExportKeyCryptogram }),
-  S.Struct({ DiffieHellmanTr31KeyBlock: ExportDiffieHellmanTr31KeyBlock }),
-  S.Struct({ As2805KeyCryptogram: ExportAs2805KeyCryptogram }),
+  /*@__PURE__*/ S.Struct({ Tr31KeyBlock: ExportTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ Tr34KeyBlock: ExportTr34KeyBlock }),
+  /*@__PURE__*/ S.Struct({ KeyCryptogram: ExportKeyCryptogram }),
+  /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: ExportDiffieHellmanTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: ExportAs2805KeyCryptogram }),
 ]);
 export type HexLength20Or24 = string;
 export interface ExportDukptInitialKey {
@@ -1077,13 +1083,13 @@ export type ImportKeyMaterial =
       As2805KeyCryptogram: ImportAs2805KeyCryptogram;
     };
 export const ImportKeyMaterial = /*@__PURE__*/ S.Union([
-  S.Struct({ RootCertificatePublicKey: RootCertificatePublicKey }),
-  S.Struct({ TrustedCertificatePublicKey: TrustedCertificatePublicKey }),
-  S.Struct({ Tr31KeyBlock: ImportTr31KeyBlock }),
-  S.Struct({ Tr34KeyBlock: ImportTr34KeyBlock }),
-  S.Struct({ KeyCryptogram: ImportKeyCryptogram }),
-  S.Struct({ DiffieHellmanTr31KeyBlock: ImportDiffieHellmanTr31KeyBlock }),
-  S.Struct({ As2805KeyCryptogram: ImportAs2805KeyCryptogram }),
+  /*@__PURE__*/ S.Struct({ RootCertificatePublicKey: RootCertificatePublicKey }),
+  /*@__PURE__*/ S.Struct({ TrustedCertificatePublicKey: TrustedCertificatePublicKey }),
+  /*@__PURE__*/ S.Struct({ Tr31KeyBlock: ImportTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ Tr34KeyBlock: ImportTr34KeyBlock }),
+  /*@__PURE__*/ S.Struct({ KeyCryptogram: ImportKeyCryptogram }),
+  /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: ImportDiffieHellmanTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: ImportAs2805KeyCryptogram }),
 ]);
 export interface ImportKeyInput {
   KeyMaterial: ImportKeyMaterial;

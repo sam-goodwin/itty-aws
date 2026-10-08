@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "BCM Pricing Calculator",
   serviceShapeName: "AWSBCMPricingCalculator",
 });
-const auth = T.AwsAuthSigv4({ name: "bcm-pricing-calculator" });
-const ver = T.ServiceVersion("2024-06-19");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bcm-pricing-calculator" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-06-19");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -58,35 +58,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.all(T.AwsQueryError({ code: "ConflictCode", httpResponseCode: 409 }), T.HttpError(409)),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConflictCode", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class DataUnavailableException
   extends /*@__PURE__*/ S.TaggedError<DataUnavailableException>()(
     "DataUnavailableException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.all(
-      T.AwsQueryError({ code: "ResourceNotFoundCode", httpResponseCode: 404 }),
-      T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFoundCode", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.all(T.AwsQueryError({ code: "ServiceQuotaCode", httpResponseCode: 402 }), T.HttpError(402)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceQuotaCode", httpResponseCode: 402 }),
+      /*@__PURE__*/ T.HttpError(402),
+    ),
   ).pipe(C.withQuotaError) {}
 export type ResourceId = string;
 export type Key = string;
@@ -154,10 +168,10 @@ export type BillScenarioCommitmentModificationAction =
       negateSavingsPlanAction: NegateSavingsPlanAction;
     };
 export const BillScenarioCommitmentModificationAction = /*@__PURE__*/ S.Union([
-  S.Struct({ addReservedInstanceAction: AddReservedInstanceAction }),
-  S.Struct({ addSavingsPlanAction: AddSavingsPlanAction }),
-  S.Struct({ negateReservedInstanceAction: NegateReservedInstanceAction }),
-  S.Struct({ negateSavingsPlanAction: NegateSavingsPlanAction }),
+  /*@__PURE__*/ S.Struct({ addReservedInstanceAction: AddReservedInstanceAction }),
+  /*@__PURE__*/ S.Struct({ addSavingsPlanAction: AddSavingsPlanAction }),
+  /*@__PURE__*/ S.Struct({ negateReservedInstanceAction: NegateReservedInstanceAction }),
+  /*@__PURE__*/ S.Struct({ negateSavingsPlanAction: NegateSavingsPlanAction }),
 ]);
 export interface BatchCreateBillScenarioCommitmentModificationEntry {
   key: string;
@@ -284,7 +298,9 @@ export const BillInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillInterval" }) as any as S.Schema<BillInterval>;
 export type ExpressionList = Expression[];
 export const ExpressionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<ExpressionList>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
@@ -1030,7 +1046,7 @@ export type BillEstimateName = string;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateBillEstimateRequest {
   billScenarioId: string;
   name: string;
@@ -1070,7 +1086,7 @@ export const CostDifference = /*@__PURE__*/ S.suspend(() =>
 export type ServiceCostDifferenceMap = { [key: string]: CostDifference | undefined };
 export const ServiceCostDifferenceMap = /*@__PURE__*/ S.Record(
   S.String,
-  CostDifference.pipe(S.optional),
+  /*@__PURE__*/ CostDifference.pipe(S.optional),
 );
 export interface BillEstimateCostSummary {
   totalCostDifference?: CostDifference;

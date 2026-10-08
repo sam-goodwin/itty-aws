@@ -442,7 +442,7 @@ export const ParameterType = S.String;
 
 export type GenericPayloadTypeList = Array<GenericPayloadType>;
 export const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GenericPayloadType),
+  /*@__PURE__*/ S.suspend(() => GenericPayloadType),
 ) as any as S.Schema<GenericPayloadTypeList>;
 
 export interface GenericPayloadType {
@@ -1031,7 +1031,7 @@ export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export type FunctionHandleMetadataMap = { [key: string]: FunctionHandleMetadata | undefined };
 export const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => FunctionHandleMetadata),
+  /*@__PURE__*/ S.suspend(() => FunctionHandleMetadata),
 ) as any as S.Schema<FunctionHandleMetadataMap>;
 
 export interface FunctionHandleMetadata {

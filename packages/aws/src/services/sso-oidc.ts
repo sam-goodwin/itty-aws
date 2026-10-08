@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SSO OIDC", serviceShapeName: "AWSSSOOIDCService" });
-const auth = T.AwsAuthSigv4({ name: "sso-oauth" });
-const ver = T.ServiceVersion("2019-06-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SSO OIDC",
+  serviceShapeName: "AWSSSOOIDCService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sso-oauth" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-06-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,153 +78,153 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      error: S.optional(S.String),
-      reason: S.optional(
-        S.suspend(() => AccessDeniedExceptionReason).annotate({
+      error: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => AccessDeniedExceptionReason).annotate({
           identifier: "AccessDeniedExceptionReason",
         }),
       ),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class AuthorizationPendingException
   extends /*@__PURE__*/ S.TaggedError<AuthorizationPendingException>()(
     "AuthorizationPendingException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExpiredTokenException
   extends /*@__PURE__*/ S.TaggedError<ExpiredTokenException>()(
     "ExpiredTokenException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidClientException
   extends /*@__PURE__*/ S.TaggedError<InvalidClientException>()(
     "InvalidClientException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(401),
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class InvalidClientMetadataException
   extends /*@__PURE__*/ S.TaggedError<InvalidClientMetadataException>()(
     "InvalidClientMetadataException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGrantException
   extends /*@__PURE__*/ S.TaggedError<InvalidGrantException>()(
     "InvalidGrantException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRedirectUriException
   extends /*@__PURE__*/ S.TaggedError<InvalidRedirectUriException>()(
     "InvalidRedirectUriException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
-      error: S.optional(S.String),
-      reason: S.optional(
-        S.suspend(() => InvalidRequestExceptionReason).annotate({
+      error: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => InvalidRequestExceptionReason).annotate({
           identifier: "InvalidRequestExceptionReason",
         }),
       ),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestRegionException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestRegionException>()(
     "InvalidRequestRegionException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      endpoint: S.optional(S.String),
-      region: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      endpoint: /*@__PURE__*/ S.optional(S.String),
+      region: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidScopeException
   extends /*@__PURE__*/ S.TaggedError<InvalidScopeException>()(
     "InvalidScopeException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SlowDownException
   extends /*@__PURE__*/ S.TaggedError<SlowDownException>()(
     "SlowDownException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedClientException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedClientException>()(
     "UnauthorizedClientException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class UnsupportedGrantTypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedGrantTypeException>()(
     "UnsupportedGrantTypeException",
     {
-      error: S.optional(S.String),
-      error_description: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(S.String),
+      error_description: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type ClientSecret = string | redacted.Redacted<string>;

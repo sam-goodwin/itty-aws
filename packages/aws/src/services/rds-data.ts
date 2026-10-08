@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "RDS Data", serviceShapeName: "RdsDataService" });
-const auth = T.AwsAuthSigv4({ name: "rds-data" });
-const ver = T.ServiceVersion("2018-08-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "RDS Data",
+  serviceShapeName: "RdsDataService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "rds-data" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-08-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,104 +74,107 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseErrorException
   extends /*@__PURE__*/ S.TaggedError<DatabaseErrorException>()(
     "DatabaseErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseNotFoundException
   extends /*@__PURE__*/ S.TaggedError<DatabaseNotFoundException>()(
     "DatabaseNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseResumingException
   extends /*@__PURE__*/ S.TaggedError<DatabaseResumingException>()(
     "DatabaseResumingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseUnavailableException
   extends /*@__PURE__*/ S.TaggedError<DatabaseUnavailableException>()(
     "DatabaseUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(504),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class HttpEndpointNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<HttpEndpointNotEnabledException>()(
     "HttpEndpointNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidResourceStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecretException
   extends /*@__PURE__*/ S.TaggedError<InvalidSecretException>()(
     "InvalidSecretException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class SecretsErrorException
   extends /*@__PURE__*/ S.TaggedError<SecretsErrorException>()(
     "SecretsErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableError
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableError>()(
     "ServiceUnavailableError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class StatementTimeoutException
   extends /*@__PURE__*/ S.TaggedError<StatementTimeoutException>()(
     "StatementTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), dbConnectionId: S.optional(S.Number) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      dbConnectionId: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TransactionNotFoundException>()(
     "TransactionNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedResultException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedResultException>()(
     "UnsupportedResultException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type SqlStatement = string;
@@ -178,17 +184,17 @@ export type BoxedBoolean = boolean;
 export type BoxedLong = number;
 export type BoxedDouble = number;
 export type BooleanArray = boolean[];
-export const BooleanArray = /*@__PURE__*/ S.Array(S.Boolean).pipe(T.Sparse());
+export const BooleanArray = /*@__PURE__*/ S.Array(S.Boolean).pipe(/*@__PURE__*/ T.Sparse());
 export type LongArray = number[];
-export const LongArray = /*@__PURE__*/ S.Array(S.Number).pipe(T.Sparse());
+export const LongArray = /*@__PURE__*/ S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
 export type DoubleArray = number[];
-export const DoubleArray = /*@__PURE__*/ S.Array(S.Number).pipe(T.Sparse());
+export const DoubleArray = /*@__PURE__*/ S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
 export type StringArray = string[];
-export const StringArray = /*@__PURE__*/ S.Array(S.String).pipe(T.Sparse());
+export const StringArray = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
 export type ArrayOfArray = ArrayValue[];
 export const ArrayOfArray = /*@__PURE__*/ S.Array(
-  S.suspend(() => ArrayValue).annotate({ identifier: "ArrayValue" }),
-).pipe(T.Sparse()) as any as S.Schema<ArrayOfArray>;
+  /*@__PURE__*/ S.suspend(() => ArrayValue).annotate({ identifier: "ArrayValue" }),
+).pipe(/*@__PURE__*/ T.Sparse()) as any as S.Schema<ArrayOfArray>;
 export type ArrayValue =
   | {
       booleanValues: boolean[];
@@ -226,11 +232,15 @@ export type ArrayValue =
       arrayValues: ArrayValue[];
     };
 export const ArrayValue = /*@__PURE__*/ S.Union([
-  S.Struct({ booleanValues: BooleanArray }),
-  S.Struct({ longValues: LongArray }),
-  S.Struct({ doubleValues: DoubleArray }),
-  S.Struct({ stringValues: StringArray }),
-  S.Struct({ arrayValues: S.suspend(() => ArrayOfArray).annotate({ identifier: "ArrayOfArray" }) }),
+  /*@__PURE__*/ S.Struct({ booleanValues: BooleanArray }),
+  /*@__PURE__*/ S.Struct({ longValues: LongArray }),
+  /*@__PURE__*/ S.Struct({ doubleValues: DoubleArray }),
+  /*@__PURE__*/ S.Struct({ stringValues: StringArray }),
+  /*@__PURE__*/ S.Struct({
+    arrayValues: /*@__PURE__*/ S.suspend(() => ArrayOfArray).annotate({
+      identifier: "ArrayOfArray",
+    }),
+  }),
 ]) as any as S.Schema<ArrayValue>;
 export type Field =
   | {
@@ -297,13 +307,13 @@ export type Field =
       arrayValue: ArrayValue;
     };
 export const Field = /*@__PURE__*/ S.Union([
-  S.Struct({ isNull: S.Boolean }),
-  S.Struct({ booleanValue: S.Boolean }),
-  S.Struct({ longValue: S.Number }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ blobValue: T.Blob }),
-  S.Struct({ arrayValue: ArrayValue }),
+  /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
+  /*@__PURE__*/ S.Struct({ arrayValue: ArrayValue }),
 ]);
 export type TypeHint = "JSON" | "UUID" | "TIMESTAMP" | "DATE" | "TIME" | "DECIMAL" | (string & {});
 export const TypeHint = S.String;
@@ -469,7 +479,7 @@ export type BoxedInteger = number;
 export type BoxedFloat = number;
 export type ArrayValueList = Value[];
 export const ArrayValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Value).annotate({ identifier: "Value" }),
+  /*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }),
 ) as any as S.Schema<ArrayValueList>;
 export interface StructValue {
   attributes?: Value[];
@@ -603,25 +613,29 @@ export type Value =
       structValue: StructValue;
     };
 export const Value = /*@__PURE__*/ S.Union([
-  S.Struct({ isNull: S.Boolean }),
-  S.Struct({ bitValue: S.Boolean }),
-  S.Struct({ bigIntValue: S.Number }),
-  S.Struct({ intValue: S.Number }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ realValue: S.Number }),
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ blobValue: T.Blob }),
-  S.Struct({
-    arrayValues: S.suspend(() => ArrayValueList).annotate({ identifier: "ArrayValueList" }),
+  /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ bitValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ bigIntValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ intValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ realValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
+  /*@__PURE__*/ S.Struct({
+    arrayValues: /*@__PURE__*/ S.suspend(() => ArrayValueList).annotate({
+      identifier: "ArrayValueList",
+    }),
   }),
-  S.Struct({
-    structValue: S.suspend((): S.Schema<StructValue> => StructValue).annotate({
+  /*@__PURE__*/ S.Struct({
+    structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> => StructValue).annotate({
       identifier: "StructValue",
     }),
   }),
 ]) as any as S.Schema<Value>;
 export type Row = Value[];
-export const Row = /*@__PURE__*/ S.Array(S.suspend(() => Value).annotate({ identifier: "Value" }));
+export const Row = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }),
+);
 export interface Record {
   values?: Value[];
 }

@@ -86,7 +86,9 @@ export const SettingsTlsDeleteResponseValueCase1List = /*@__PURE__*/ S.Array(
 export type SettingsTlsDeleteResponseValue =
   | SettingsTlsDeleteResponseValueCase0
   | SettingsTlsDeleteResponseValueCase1List;
-export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingTlsResponse {
@@ -149,7 +151,9 @@ export const SettingsTlsGetResponseValueCase1List = /*@__PURE__*/ S.Array(
 export type SettingsTlsGetResponseValue =
   | SettingsTlsGetResponseValueCase0
   | SettingsTlsGetResponseValueCase1List;
-export const SettingsTlsGetResponseValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SettingsTlsGetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingTlsResponse {
@@ -205,7 +209,9 @@ export const ListSettingsTlsResultItemValueCase1List = /*@__PURE__*/ S.Array(
 export type ListSettingsTlsResultItemValue =
   | ListSettingsTlsResultItemValueCase0
   | ListSettingsTlsResultItemValueCase1List;
-export const ListSettingsTlsResultItemValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const ListSettingsTlsResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface ListSettingsTlsResultItem {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -256,7 +262,9 @@ export type SettingsTlsUpdateRequestValue =
   | SettingsTlsUpdateRequestValueCase0
   | (string & {})
   | SettingsTlsUpdateRequestValueCase1List;
-export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface PutSettingTlsRequest {
   /** Identifier. */
@@ -296,7 +304,9 @@ export const SettingsTlsUpdateResponseValueCase1List = /*@__PURE__*/ S.Array(
 export type SettingsTlsUpdateResponseValue =
   | SettingsTlsUpdateResponseValueCase0
   | SettingsTlsUpdateResponseValueCase1List;
-export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingTlsResponse {

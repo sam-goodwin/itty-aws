@@ -1029,7 +1029,7 @@ export const OrderItemDetailsManagementRpDetailsListList = /*@__PURE__*/ S.Array
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -2443,7 +2443,7 @@ export const ChildConfigurationPropertiesChildConfigurationTypesList = /*@__PURE
 export type ChildConfigurationPropertiesGroupedChildConfigurationsList =
   Array<GroupedChildConfigurations>;
 export const ChildConfigurationPropertiesGroupedChildConfigurationsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GroupedChildConfigurations),
+  /*@__PURE__*/ S.suspend(() => GroupedChildConfigurations),
 ) as any as S.Schema<ChildConfigurationPropertiesGroupedChildConfigurationsList>;
 
 /** The Term Commitment Durations that are supported for a configuration. */

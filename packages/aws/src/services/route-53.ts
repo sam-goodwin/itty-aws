@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://route53.amazonaws.com/doc/2013-04-01/");
-const svc = T.AwsApiService({ sdkId: "Route 53", serviceShapeName: "AWSDnsV20130401" });
-const auth = T.AwsAuthSigv4({ name: "route53" });
-const ver = T.ServiceVersion("2013-04-01");
-const proto = T.AwsProtocolsRestXml();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("https://route53.amazonaws.com/doc/2013-04-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Route 53",
+  serviceShapeName: "AWSDnsV20130401",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "route53" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-04-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestXml();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -219,382 +222,384 @@ const rules = T.EndpointResolver((p, _) => {
 export class CidrBlockInUseException
   extends /*@__PURE__*/ S.TaggedError<CidrBlockInUseException>()(
     "CidrBlockInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CidrCollectionAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<CidrCollectionAlreadyExistsException>()(
     "CidrCollectionAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class CidrCollectionInUseException
   extends /*@__PURE__*/ S.TaggedError<CidrCollectionInUseException>()(
     "CidrCollectionInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CidrCollectionVersionMismatchException
   extends /*@__PURE__*/ S.TaggedError<CidrCollectionVersionMismatchException>()(
     "CidrCollectionVersionMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConcurrentModification
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModification>()(
     "ConcurrentModification",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictingDomainExists
   extends /*@__PURE__*/ S.TaggedError<ConflictingDomainExists>()("ConflictingDomainExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ConflictingTypes
   extends /*@__PURE__*/ S.TaggedError<ConflictingTypes>()(
     "ConflictingTypes",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DelegationSetAlreadyCreated
   extends /*@__PURE__*/ S.TaggedError<DelegationSetAlreadyCreated>()(
     "DelegationSetAlreadyCreated",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class DelegationSetAlreadyReusable
   extends /*@__PURE__*/ S.TaggedError<DelegationSetAlreadyReusable>()(
     "DelegationSetAlreadyReusable",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class DelegationSetInUse
   extends /*@__PURE__*/ S.TaggedError<DelegationSetInUse>()("DelegationSetInUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class DelegationSetNotAvailable
   extends /*@__PURE__*/ S.TaggedError<DelegationSetNotAvailable>()("DelegationSetNotAvailable", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DelegationSetNotReusable
   extends /*@__PURE__*/ S.TaggedError<DelegationSetNotReusable>()("DelegationSetNotReusable", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DNSSECNotFound
   extends /*@__PURE__*/ S.TaggedError<DNSSECNotFound>()(
     "DNSSECNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class HealthCheckAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<HealthCheckAlreadyExists>()(
     "HealthCheckAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class HealthCheckInUse
   extends /*@__PURE__*/ S.TaggedError<HealthCheckInUse>()(
     "HealthCheckInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class HealthCheckVersionMismatch
   extends /*@__PURE__*/ S.TaggedError<HealthCheckVersionMismatch>()(
     "HealthCheckVersionMismatch",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class HostedZoneAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<HostedZoneAlreadyExists>()(
     "HostedZoneAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class HostedZoneNotEmpty
   extends /*@__PURE__*/ S.TaggedError<HostedZoneNotEmpty>()(
     "HostedZoneNotEmpty",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class HostedZoneNotFound
   extends /*@__PURE__*/ S.TaggedError<HostedZoneNotFound>()("HostedZoneNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class HostedZoneNotPrivate
   extends /*@__PURE__*/ S.TaggedError<HostedZoneNotPrivate>()("HostedZoneNotPrivate", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class HostedZonePartiallyDelegated
   extends /*@__PURE__*/ S.TaggedError<HostedZonePartiallyDelegated>()(
     "HostedZonePartiallyDelegated",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IncompatibleVersion
   extends /*@__PURE__*/ S.TaggedError<IncompatibleVersion>()(
     "IncompatibleVersion",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCloudWatchLogsResourcePolicy
   extends /*@__PURE__*/ S.TaggedError<InsufficientCloudWatchLogsResourcePolicy>()(
     "InsufficientCloudWatchLogsResourcePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgument
   extends /*@__PURE__*/ S.TaggedError<InvalidArgument>()("InvalidArgument", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidChangeBatch
   extends /*@__PURE__*/ S.TaggedError<InvalidChangeBatch>()("InvalidChangeBatch", {
-    messages: S.optional(S.suspend(() => ErrorMessages).annotate({ identifier: "ErrorMessages" })),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    messages: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ErrorMessages).annotate({ identifier: "ErrorMessages" }),
+    ),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidDomainName
   extends /*@__PURE__*/ S.TaggedError<InvalidDomainName>()(
     "InvalidDomainName",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
   extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKeySigningKeyName
   extends /*@__PURE__*/ S.TaggedError<InvalidKeySigningKeyName>()(
     "InvalidKeySigningKeyName",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKeySigningKeyStatus
   extends /*@__PURE__*/ S.TaggedError<InvalidKeySigningKeyStatus>()(
     "InvalidKeySigningKeyStatus",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKMSArn
   extends /*@__PURE__*/ S.TaggedError<InvalidKMSArn>()("InvalidKMSArn", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPaginationToken
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationToken>()(
     "InvalidPaginationToken",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSigningStatus
   extends /*@__PURE__*/ S.TaggedError<InvalidSigningStatus>()("InvalidSigningStatus", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTrafficPolicyDocument
   extends /*@__PURE__*/ S.TaggedError<InvalidTrafficPolicyDocument>()(
     "InvalidTrafficPolicyDocument",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVPCId
   extends /*@__PURE__*/ S.TaggedError<InvalidVPCId>()(
     "InvalidVPCId",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeySigningKeyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<KeySigningKeyAlreadyExists>()(
     "KeySigningKeyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class KeySigningKeyInParentDSRecord
   extends /*@__PURE__*/ S.TaggedError<KeySigningKeyInParentDSRecord>()(
     "KeySigningKeyInParentDSRecord",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeySigningKeyInUse
   extends /*@__PURE__*/ S.TaggedError<KeySigningKeyInUse>()("KeySigningKeyInUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class KeySigningKeyWithActiveStatusNotFound
   extends /*@__PURE__*/ S.TaggedError<KeySigningKeyWithActiveStatusNotFound>()(
     "KeySigningKeyWithActiveStatusNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class LastVPCAssociation
   extends /*@__PURE__*/ S.TaggedError<LastVPCAssociation>()(
     "LastVPCAssociation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitsExceeded
   extends /*@__PURE__*/ S.TaggedError<LimitsExceeded>()("LimitsExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NoSuchChange
   extends /*@__PURE__*/ S.TaggedError<NoSuchChange>()(
     "NoSuchChange",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCidrCollectionException
   extends /*@__PURE__*/ S.TaggedError<NoSuchCidrCollectionException>()(
     "NoSuchCidrCollectionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCidrLocationException
   extends /*@__PURE__*/ S.TaggedError<NoSuchCidrLocationException>()(
     "NoSuchCidrLocationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCloudWatchLogsLogGroup
   extends /*@__PURE__*/ S.TaggedError<NoSuchCloudWatchLogsLogGroup>()(
     "NoSuchCloudWatchLogsLogGroup",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDelegationSet
   extends /*@__PURE__*/ S.TaggedError<NoSuchDelegationSet>()("NoSuchDelegationSet", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NoSuchGeoLocation
   extends /*@__PURE__*/ S.TaggedError<NoSuchGeoLocation>()(
     "NoSuchGeoLocation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchHealthCheck
   extends /*@__PURE__*/ S.TaggedError<NoSuchHealthCheck>()(
     "NoSuchHealthCheck",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchHostedZone
   extends /*@__PURE__*/ S.TaggedError<NoSuchHostedZone>()(
     "NoSuchHostedZone",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchKeySigningKey
   extends /*@__PURE__*/ S.TaggedError<NoSuchKeySigningKey>()(
     "NoSuchKeySigningKey",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchQueryLoggingConfig
   extends /*@__PURE__*/ S.TaggedError<NoSuchQueryLoggingConfig>()(
     "NoSuchQueryLoggingConfig",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchTrafficPolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchTrafficPolicy>()(
     "NoSuchTrafficPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchTrafficPolicyInstance
   extends /*@__PURE__*/ S.TaggedError<NoSuchTrafficPolicyInstance>()(
     "NoSuchTrafficPolicyInstance",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class PriorRequestNotComplete
   extends /*@__PURE__*/ S.TaggedError<PriorRequestNotComplete>()(
     "PriorRequestNotComplete",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
 export class PublicZoneVPCAssociation
   extends /*@__PURE__*/ S.TaggedError<PublicZoneVPCAssociation>()(
     "PublicZoneVPCAssociation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryLoggingConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<QueryLoggingConfigAlreadyExists>()(
     "QueryLoggingConfigAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class TooManyHealthChecks
   extends /*@__PURE__*/ S.TaggedError<TooManyHealthChecks>()("TooManyHealthChecks", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyHostedZones
   extends /*@__PURE__*/ S.TaggedError<TooManyHostedZones>()(
     "TooManyHostedZones",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeySigningKeys
   extends /*@__PURE__*/ S.TaggedError<TooManyKeySigningKeys>()("TooManyKeySigningKeys", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyTrafficPolicies
   extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicies>()(
     "TooManyTrafficPolicies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrafficPolicyInstances
   extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicyInstances>()(
     "TooManyTrafficPolicyInstances",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrafficPolicyVersionsForCurrentPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicyVersionsForCurrentPolicy>()(
     "TooManyTrafficPolicyVersionsForCurrentPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyVPCAssociationAuthorizations
   extends /*@__PURE__*/ S.TaggedError<TooManyVPCAssociationAuthorizations>()(
     "TooManyVPCAssociationAuthorizations",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrafficPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<TrafficPolicyAlreadyExists>()(
     "TrafficPolicyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TrafficPolicyInstanceAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<TrafficPolicyInstanceAlreadyExists>()(
     "TrafficPolicyInstanceAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TrafficPolicyInUse
   extends /*@__PURE__*/ S.TaggedError<TrafficPolicyInUse>()(
     "TrafficPolicyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class VPCAssociationAuthorizationNotFound
   extends /*@__PURE__*/ S.TaggedError<VPCAssociationAuthorizationNotFound>()(
     "VPCAssociationAuthorizationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class VPCAssociationNotFound
   extends /*@__PURE__*/ S.TaggedError<VPCAssociationNotFound>()(
     "VPCAssociationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type ResourceId = string;
 export type SigningKeyName = string;
@@ -745,7 +750,9 @@ export const CidrCollectionChangeAction = S.String;
 
 export type Cidr = string;
 export type CidrList = string[];
-export const CidrList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Cidr")));
+export const CidrList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Cidr")),
+);
 export interface CidrCollectionChange {
   LocationName: string;
   Action: CidrCollectionChangeAction;
@@ -888,7 +895,9 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() => S.Struct({ Value: S.
 ) as any as S.Schema<ResourceRecord>;
 export type ResourceRecords = ResourceRecord[];
 export const ResourceRecords = /*@__PURE__*/ S.Array(
-  ResourceRecord.pipe(T.XmlName("ResourceRecord")).annotate({ identifier: "ResourceRecord" }),
+  /*@__PURE__*/ ResourceRecord.pipe(/*@__PURE__*/ T.XmlName("ResourceRecord")).annotate({
+    identifier: "ResourceRecord",
+  }),
 );
 export type AliasHealthEnabled = boolean;
 export interface AliasTarget {
@@ -980,7 +989,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 export type Changes = Change[];
 export const Changes = /*@__PURE__*/ S.Array(
-  Change.pipe(T.XmlName("Change")).annotate({ identifier: "Change" }),
+  /*@__PURE__*/ Change.pipe(/*@__PURE__*/ T.XmlName("Change")).annotate({ identifier: "Change" }),
 );
 export interface ChangeBatch {
   Comment?: string;
@@ -1034,10 +1043,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Key")));
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
+);
 export interface ChangeTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
@@ -1145,7 +1156,7 @@ export type Disabled = boolean;
 export type HealthThreshold = number;
 export type ChildHealthCheckList = string[];
 export const ChildHealthCheckList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ChildHealthCheck")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ChildHealthCheck")),
 );
 export type EnableSNI = boolean;
 export type HealthCheckRegion =
@@ -1162,7 +1173,7 @@ export const HealthCheckRegion = S.String;
 
 export type HealthCheckRegionList = HealthCheckRegion[];
 export const HealthCheckRegionList = /*@__PURE__*/ S.Array(
-  HealthCheckRegion.pipe(T.XmlName("Region")),
+  /*@__PURE__*/ HealthCheckRegion.pipe(/*@__PURE__*/ T.XmlName("Region")),
 );
 export type CloudWatchRegion =
   | "us-east-1"
@@ -1324,7 +1335,9 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type DimensionList = Dimension[];
 export const DimensionList = /*@__PURE__*/ S.Array(
-  Dimension.pipe(T.XmlName("Dimension")).annotate({ identifier: "Dimension" }),
+  /*@__PURE__*/ Dimension.pipe(/*@__PURE__*/ T.XmlName("Dimension")).annotate({
+    identifier: "Dimension",
+  }),
 );
 export interface CloudWatchAlarmConfiguration {
   EvaluationPeriods: number;
@@ -1466,7 +1479,7 @@ export const HostedZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostedZone" }) as any as S.Schema<HostedZone>;
 export type DelegationSetNameServers = string[];
 export const DelegationSetNameServers = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("NameServer")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NameServer")),
 );
 export interface DelegationSet {
   Id?: string;
@@ -2441,7 +2454,9 @@ export const HealthCheckObservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthCheckObservation" }) as any as S.Schema<HealthCheckObservation>;
 export type HealthCheckObservations = HealthCheckObservation[];
 export const HealthCheckObservations = /*@__PURE__*/ S.Array(
-  HealthCheckObservation.pipe(T.XmlName("HealthCheckObservation")).annotate({
+  /*@__PURE__*/ HealthCheckObservation.pipe(
+    /*@__PURE__*/ T.XmlName("HealthCheckObservation"),
+  ).annotate({
     identifier: "HealthCheckObservation",
   }),
 );
@@ -2497,7 +2512,7 @@ export const GetHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetHostedZoneRequest" }) as any as S.Schema<GetHostedZoneRequest>;
 export type VPCs = VPC[];
 export const VPCs = /*@__PURE__*/ S.Array(
-  VPC.pipe(T.XmlName("VPC")).annotate({ identifier: "VPC" }),
+  /*@__PURE__*/ VPC.pipe(/*@__PURE__*/ T.XmlName("VPC")).annotate({ identifier: "VPC" }),
 );
 export interface GetHostedZoneResponse {
   HostedZone: HostedZone;
@@ -2915,7 +2930,7 @@ export const ListGeoLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGeoLocationsRequest" }) as any as S.Schema<ListGeoLocationsRequest>;
 export type GeoLocationDetailsList = GeoLocationDetails[];
 export const GeoLocationDetailsList = /*@__PURE__*/ S.Array(
-  GeoLocationDetails.pipe(T.XmlName("GeoLocationDetails")).annotate({
+  /*@__PURE__*/ GeoLocationDetails.pipe(/*@__PURE__*/ T.XmlName("GeoLocationDetails")).annotate({
     identifier: "GeoLocationDetails",
   }),
 );
@@ -2961,7 +2976,9 @@ export const ListHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListHealthChecksRequest" }) as any as S.Schema<ListHealthChecksRequest>;
 export type HealthChecks = HealthCheck[];
 export const HealthChecks = /*@__PURE__*/ S.Array(
-  HealthCheck.pipe(T.XmlName("HealthCheck")).annotate({ identifier: "HealthCheck" }),
+  /*@__PURE__*/ HealthCheck.pipe(/*@__PURE__*/ T.XmlName("HealthCheck")).annotate({
+    identifier: "HealthCheck",
+  }),
 );
 export interface ListHealthChecksResponse {
   HealthChecks?: HealthCheck[];
@@ -3008,7 +3025,9 @@ export const ListHostedZonesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListHostedZonesRequest" }) as any as S.Schema<ListHostedZonesRequest>;
 export type HostedZones = HostedZone[];
 export const HostedZones = /*@__PURE__*/ S.Array(
-  HostedZone.pipe(T.XmlName("HostedZone")).annotate({ identifier: "HostedZone" }),
+  /*@__PURE__*/ HostedZone.pipe(/*@__PURE__*/ T.XmlName("HostedZone")).annotate({
+    identifier: "HostedZone",
+  }),
 );
 export interface ListHostedZonesResponse {
   HostedZones?: HostedZone[];
@@ -3117,7 +3136,7 @@ export const HostedZoneSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostedZoneSummary" }) as any as S.Schema<HostedZoneSummary>;
 export type HostedZoneSummaries = HostedZoneSummary[];
 export const HostedZoneSummaries = /*@__PURE__*/ S.Array(
-  HostedZoneSummary.pipe(T.XmlName("HostedZoneSummary")).annotate({
+  /*@__PURE__*/ HostedZoneSummary.pipe(/*@__PURE__*/ T.XmlName("HostedZoneSummary")).annotate({
     identifier: "HostedZoneSummary",
   }),
 );
@@ -3161,7 +3180,7 @@ export const ListQueryLoggingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQueryLoggingConfigsRequest>;
 export type QueryLoggingConfigs = QueryLoggingConfig[];
 export const QueryLoggingConfigs = /*@__PURE__*/ S.Array(
-  QueryLoggingConfig.pipe(T.XmlName("QueryLoggingConfig")).annotate({
+  /*@__PURE__*/ QueryLoggingConfig.pipe(/*@__PURE__*/ T.XmlName("QueryLoggingConfig")).annotate({
     identifier: "QueryLoggingConfig",
   }),
 );
@@ -3207,7 +3226,7 @@ export const ListResourceRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceRecordSetsRequest>;
 export type ResourceRecordSets = ResourceRecordSet[];
 export const ResourceRecordSets = /*@__PURE__*/ S.Array(
-  ResourceRecordSet.pipe(T.XmlName("ResourceRecordSet")).annotate({
+  /*@__PURE__*/ ResourceRecordSet.pipe(/*@__PURE__*/ T.XmlName("ResourceRecordSet")).annotate({
     identifier: "ResourceRecordSet",
   }),
 );
@@ -3255,7 +3274,9 @@ export const ListReusableDelegationSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReusableDelegationSetsRequest>;
 export type DelegationSets = DelegationSet[];
 export const DelegationSets = /*@__PURE__*/ S.Array(
-  DelegationSet.pipe(T.XmlName("DelegationSet")).annotate({ identifier: "DelegationSet" }),
+  /*@__PURE__*/ DelegationSet.pipe(/*@__PURE__*/ T.XmlName("DelegationSet")).annotate({
+    identifier: "DelegationSet",
+  }),
 );
 export interface ListReusableDelegationSetsResponse {
   DelegationSets: DelegationSet[];
@@ -3318,7 +3339,9 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type TagResourceIdList = string[];
-export const TagResourceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ResourceId")));
+export const TagResourceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ResourceId")),
+);
 export interface ListTagsForResourcesRequest {
   ResourceType: TagResourceType;
   ResourceIds: string[];
@@ -3343,7 +3366,9 @@ export const ListTagsForResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourcesRequest>;
 export type ResourceTagSetList = ResourceTagSet[];
 export const ResourceTagSetList = /*@__PURE__*/ S.Array(
-  ResourceTagSet.pipe(T.XmlName("ResourceTagSet")).annotate({ identifier: "ResourceTagSet" }),
+  /*@__PURE__*/ ResourceTagSet.pipe(/*@__PURE__*/ T.XmlName("ResourceTagSet")).annotate({
+    identifier: "ResourceTagSet",
+  }),
 );
 export interface ListTagsForResourcesResponse {
   ResourceTagSets: ResourceTagSet[];
@@ -3393,9 +3418,11 @@ export const TrafficPolicySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficPolicySummary" }) as any as S.Schema<TrafficPolicySummary>;
 export type TrafficPolicySummaries = TrafficPolicySummary[];
 export const TrafficPolicySummaries = /*@__PURE__*/ S.Array(
-  TrafficPolicySummary.pipe(T.XmlName("TrafficPolicySummary")).annotate({
-    identifier: "TrafficPolicySummary",
-  }),
+  /*@__PURE__*/ TrafficPolicySummary.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicySummary")).annotate(
+    {
+      identifier: "TrafficPolicySummary",
+    },
+  ),
 );
 export interface ListTrafficPoliciesResponse {
   TrafficPolicySummaries: TrafficPolicySummary[];
@@ -3445,7 +3472,9 @@ export const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
 export type TrafficPolicyInstances = TrafficPolicyInstance[];
 export const TrafficPolicyInstances = /*@__PURE__*/ S.Array(
-  TrafficPolicyInstance.pipe(T.XmlName("TrafficPolicyInstance")).annotate({
+  /*@__PURE__*/ TrafficPolicyInstance.pipe(
+    /*@__PURE__*/ T.XmlName("TrafficPolicyInstance"),
+  ).annotate({
     identifier: "TrafficPolicyInstance",
   }),
 );
@@ -3598,7 +3627,9 @@ export const ListTrafficPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
 export type TrafficPolicies = TrafficPolicy[];
 export const TrafficPolicies = /*@__PURE__*/ S.Array(
-  TrafficPolicy.pipe(T.XmlName("TrafficPolicy")).annotate({ identifier: "TrafficPolicy" }),
+  /*@__PURE__*/ TrafficPolicy.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicy")).annotate({
+    identifier: "TrafficPolicy",
+  }),
 );
 export interface ListTrafficPolicyVersionsResponse {
   TrafficPolicies: TrafficPolicy[];
@@ -3689,7 +3720,9 @@ export const TestDNSAnswerRequest = /*@__PURE__*/ S.suspend(() =>
 export type Nameserver = string;
 export type RecordDataEntry = string;
 export type RecordData = string[];
-export const RecordData = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("RecordDataEntry")));
+export const RecordData = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("RecordDataEntry")),
+);
 export type DNSRCode = string;
 export type TransportProtocol = string;
 export interface TestDNSAnswerResponse {
@@ -3720,7 +3753,7 @@ export const ResettableElementName = S.String;
 
 export type ResettableElementNameList = ResettableElementName[];
 export const ResettableElementNameList = /*@__PURE__*/ S.Array(
-  ResettableElementName.pipe(T.XmlName("ResettableElementName")),
+  /*@__PURE__*/ ResettableElementName.pipe(/*@__PURE__*/ T.XmlName("ResettableElementName")),
 );
 export interface UpdateHealthCheckRequest {
   HealthCheckId: string;
@@ -3904,7 +3937,9 @@ export const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
 export type ErrorMessage = string;
 export type ErrorMessages = string[];
-export const ErrorMessages = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Message")));
+export const ErrorMessages = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Message")),
+);
 export type ActivateKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput

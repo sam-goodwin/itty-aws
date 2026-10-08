@@ -385,7 +385,7 @@ export const BillingUsageGetResultItemChargeClass = S.String;
 
 export type BillingUsageGetResultItemTagsValue = string | boolean;
 export const BillingUsageGetResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type BillingUsageGetResultItemTagsMap = {

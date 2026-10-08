@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Account", serviceShapeName: "Account" });
-const auth = T.AwsAuthSigv4({ name: "account" });
-const ver = T.ServiceVersion("2021-02-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Account", serviceShapeName: "Account" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "account" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-02-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -89,69 +89,84 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(424),
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: SensitiveString.pipe(T.ErrorMessage()),
-      reason: S.optional(S.String),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type PrimaryEmailAddress = string | redacted.Redacted<string>;

@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://iam.amazonaws.com/doc/2010-05-08/");
-const svc = T.AwsApiService({ sdkId: "IAM", serviceShapeName: "AWSIdentityManagementV20100508" });
-const auth = T.AwsAuthSigv4({ name: "iam" });
-const ver = T.ServiceVersion("2010-05-08");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("https://iam.amazonaws.com/doc/2010-05-08/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "IAM",
+  serviceShapeName: "AWSIdentityManagementV20100508",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iam" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2010-05-08");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -321,282 +324,345 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccountNotManagementOrDelegatedAdministratorException
   extends /*@__PURE__*/ S.TaggedError<AccountNotManagementOrDelegatedAdministratorException>()(
     "AccountNotManagementOrDelegatedAdministratorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CallerIsNotManagementAccountException
   extends /*@__PURE__*/ S.TaggedError<CallerIsNotManagementAccountException>()(
     "CallerIsNotManagementAccountException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class CredentialReportExpiredException
   extends /*@__PURE__*/ S.TaggedError<CredentialReportExpiredException>()(
     "CredentialReportExpiredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }), T.HttpError(410)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }),
+      /*@__PURE__*/ T.HttpError(410),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class CredentialReportNotPresentException
   extends /*@__PURE__*/ S.TaggedError<CredentialReportNotPresentException>()(
     "CredentialReportNotPresentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }), T.HttpError(410)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }),
+      /*@__PURE__*/ T.HttpError(410),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class CredentialReportNotReadyException
   extends /*@__PURE__*/ S.TaggedError<CredentialReportNotReadyException>()(
     "CredentialReportNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class DeleteConflictException
   extends /*@__PURE__*/ S.TaggedError<DeleteConflictException>()(
     "DeleteConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class DuplicateCertificateException
   extends /*@__PURE__*/ S.TaggedError<DuplicateCertificateException>()(
     "DuplicateCertificateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class DuplicateSSHPublicKeyException
   extends /*@__PURE__*/ S.TaggedError<DuplicateSSHPublicKeyException>()(
     "DuplicateSSHPublicKeyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class EntityAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityTemporarilyUnmodifiableException
   extends /*@__PURE__*/ S.TaggedError<EntityTemporarilyUnmodifiableException>()(
     "EntityTemporarilyUnmodifiableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "EntityTemporarilyUnmodifiable", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "EntityTemporarilyUnmodifiable",
+        httpResponseCode: 409,
+      }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class FeatureDisabledException
   extends /*@__PURE__*/ S.TaggedError<FeatureDisabledException>()(
     "FeatureDisabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class FeatureEnabledException
   extends /*@__PURE__*/ S.TaggedError<FeatureEnabledException>()(
     "FeatureEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class InvalidAuthenticationCodeException
   extends /*@__PURE__*/ S.TaggedError<InvalidAuthenticationCodeException>()(
     "InvalidAuthenticationCodeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidAuthenticationCode", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidAuthenticationCode", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidCertificateException
   extends /*@__PURE__*/ S.TaggedError<InvalidCertificateException>()(
     "InvalidCertificateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
   extends /*@__PURE__*/ S.TaggedError<InvalidInput>()("InvalidInput", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPublicKeyException
   extends /*@__PURE__*/ S.TaggedError<InvalidPublicKeyException>()(
     "InvalidPublicKeyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidUserTypeException
   extends /*@__PURE__*/ S.TaggedError<InvalidUserTypeException>()(
     "InvalidUserTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class KeyPairMismatchException
   extends /*@__PURE__*/ S.TaggedError<KeyPairMismatchException>()(
     "KeyPairMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError, C.withQuotaError) {}
 export class MalformedCertificateException
   extends /*@__PURE__*/ S.TaggedError<MalformedCertificateException>()(
     "MalformedCertificateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NameConflictException
   extends /*@__PURE__*/ S.TaggedError<NameConflictException>()(
     "NameConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "NameConflict", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NameConflict", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class NoSuchEntityException
   extends /*@__PURE__*/ S.TaggedError<NoSuchEntityException>()(
     "NoSuchEntityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class OpenIdIdpCommunicationErrorException
   extends /*@__PURE__*/ S.TaggedError<OpenIdIdpCommunicationErrorException>()(
     "OpenIdIdpCommunicationErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OpenIdIdpCommunicationError", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "OpenIdIdpCommunicationError", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<OrganizationNotFoundException>()(
     "OrganizationNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotInAllFeaturesModeException
   extends /*@__PURE__*/ S.TaggedError<OrganizationNotInAllFeaturesModeException>()(
     "OrganizationNotInAllFeaturesModeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PasswordPolicyViolationException
   extends /*@__PURE__*/ S.TaggedError<PasswordPolicyViolationException>()(
     "PasswordPolicyViolationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "PasswordPolicyViolation", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "PasswordPolicyViolation", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class PolicyEvaluationException
   extends /*@__PURE__*/ S.TaggedError<PolicyEvaluationException>()(
     "PolicyEvaluationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class PolicyNotAttachableException
   extends /*@__PURE__*/ S.TaggedError<PolicyNotAttachableException>()(
     "PolicyNotAttachableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReportGenerationLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ReportGenerationLimitExceededException>()(
     "ReportGenerationLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReportGenerationLimitExceeded", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReportGenerationLimitExceeded",
+        httpResponseCode: 409,
+      }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class RoleModifiedException
   extends /*@__PURE__*/ S.TaggedError<RoleModifiedException>()(
     "RoleModifiedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "RoleModified", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RoleModified", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class RoleTemplateDisabledException
   extends /*@__PURE__*/ S.TaggedError<RoleTemplateDisabledException>()(
     "RoleTemplateDisabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "RoleTemplateDisabled", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RoleTemplateDisabled", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceAccessNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<ServiceAccessNotEnabledException>()(
     "ServiceAccessNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
   extends /*@__PURE__*/ S.TaggedError<ServiceFailureException>()(
     "ServiceFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<ServiceNotSupportedException>()(
     "ServiceNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnmodifiableEntityException
   extends /*@__PURE__*/ S.TaggedError<UnmodifiableEntityException>()(
     "UnmodifiableEntityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class UnrecognizedPublicKeyEncodingException
   extends /*@__PURE__*/ S.TaggedError<UnrecognizedPublicKeyEncodingException>()(
     "UnrecognizedPublicKeyEncodingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "UnrecognizedPublicKeyEncoding", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "UnrecognizedPublicKeyEncoding",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export type DelegationRequestIdType = string;
@@ -630,7 +696,7 @@ export const ReplacementValueEntry = /*@__PURE__*/ S.suspend(() =>
 export type MapStringReplacementValueEntry = { [key: string]: ReplacementValueEntry | undefined };
 export const MapStringReplacementValueEntry = /*@__PURE__*/ S.Record(
   S.String,
-  ReplacementValueEntry.pipe(S.optional),
+  /*@__PURE__*/ ReplacementValueEntry.pipe(S.optional),
 );
 export interface AcquireRoleRequest {
   TemplateArn: string;
@@ -2305,7 +2371,10 @@ export const GetAccountPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertyKeyType = string;
 export type AccountPropertyValueType = string;
 export type AccountPropertiesMapType = { [key: string]: string | undefined };
-export const AccountPropertiesMapType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AccountPropertiesMapType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetAccountPropertiesResponse {
   Properties?: { [key: string]: string | undefined };
 }
@@ -2358,7 +2427,10 @@ export const SummaryKeyType = S.String;
 
 export type SummaryValueType = number;
 export type SummaryMapType = { [key in SummaryKeyType]?: number };
-export const SummaryMapType = /*@__PURE__*/ S.Record(SummaryKeyType, S.Number.pipe(S.optional));
+export const SummaryMapType = /*@__PURE__*/ S.Record(
+  SummaryKeyType,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface GetAccountSummaryResponse {
   SummaryMap?: { [key: string]: number | undefined };
 }
@@ -2645,7 +2717,10 @@ export const GetMFADeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export type CertificationKeyType = string;
 export type CertificationValueType = string;
 export type CertificationMapType = { [key: string]: string | undefined };
-export const CertificationMapType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CertificationMapType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetMFADeviceResponse {
   UserName?: string;
   SerialNumber: string;
@@ -4896,7 +4971,7 @@ export type EvalDecisionSourceType = string;
 export type EvalDecisionDetailsType = { [key: string]: PolicyEvaluationDecisionType | undefined };
 export const EvalDecisionDetailsType = /*@__PURE__*/ S.Record(
   S.String,
-  PolicyEvaluationDecisionType.pipe(S.optional),
+  /*@__PURE__*/ PolicyEvaluationDecisionType.pipe(S.optional),
 );
 export interface ResourceSpecificResult {
   EvalResourceName: string;
@@ -4985,9 +5060,9 @@ export type PolicyIdentifier =
   | { PolicyType?: never; PolicyArn: string; InlinePolicyIdentifier?: never }
   | { PolicyType?: never; PolicyArn?: never; InlinePolicyIdentifier: InlinePolicyIdentifierType };
 export const PolicyIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ PolicyType: PolicyIdentifierPolicyType }),
-  S.Struct({ PolicyArn: S.String }),
-  S.Struct({ InlinePolicyIdentifier: InlinePolicyIdentifierType }),
+  /*@__PURE__*/ S.Struct({ PolicyType: PolicyIdentifierPolicyType }),
+  /*@__PURE__*/ S.Struct({ PolicyArn: S.String }),
+  /*@__PURE__*/ S.Struct({ InlinePolicyIdentifier: InlinePolicyIdentifierType }),
 ]);
 export type PolicyExclusionsListType = PolicyIdentifier[];
 export const PolicyExclusionsListType = /*@__PURE__*/ S.Array(PolicyIdentifier);

@@ -3936,7 +3936,7 @@ export const ListRemediationDeploymentsAtManagementGroupRequest = /*@__PURE__*/ 
 /** Internal error details. */
 export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
 export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDefinition),
+  /*@__PURE__*/ S.suspend(() => ErrorDefinition),
 ) as any as S.Schema<ErrorDefinitionDetailsList>;
 
 /** Scenario specific error details. */

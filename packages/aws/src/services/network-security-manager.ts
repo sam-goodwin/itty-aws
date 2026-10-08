@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Network Security Manager",
   serviceShapeName: "PiccoloCustomerAPIService",
 });
-const auth = T.AwsAuthSigv4({ name: "network-security-manager" });
-const ver = T.ServiceVersion("2025-10-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "network-security-manager" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-10-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -53,82 +53,91 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      quotaCode: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String.pipe(T.ErrorMessage()), retryAfterSeconds: S.optional(S.Number) },
-    T.all(T.HttpError(503), T.Retryable()),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(503), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TagPolicyViolationException
   extends /*@__PURE__*/ S.TaggedError<TagPolicyViolationException>()(
     "TagPolicyViolationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()), retryAfterSeconds: S.optional(S.Number) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type IdempotencyToken = string;
 export type DeploymentName = string;
@@ -162,7 +171,7 @@ export type IsPublished = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDeploymentInput {
   clientToken?: string;
   deploymentName: string;
@@ -354,8 +363,8 @@ export type TemplateOrRuleReference =
   | { templateIdentifier: string; ruleIdentifier?: never }
   | { templateIdentifier?: never; ruleIdentifier: string };
 export const TemplateOrRuleReference = /*@__PURE__*/ S.Union([
-  S.Struct({ templateIdentifier: S.String }),
-  S.Struct({ ruleIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ templateIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ ruleIdentifier: S.String }),
 ]);
 export type TemplateAndRuleReferenceList = TemplateOrRuleReference[];
 export const TemplateAndRuleReferenceList = /*@__PURE__*/ S.Array(TemplateOrRuleReference);
@@ -424,8 +433,8 @@ export type AssociatedTemplateOrRule =
   | { templateArn: string; ruleArn?: never }
   | { templateArn?: never; ruleArn: string };
 export const AssociatedTemplateOrRule = /*@__PURE__*/ S.Union([
-  S.Struct({ templateArn: S.String }),
-  S.Struct({ ruleArn: S.String }),
+  /*@__PURE__*/ S.Struct({ templateArn: S.String }),
+  /*@__PURE__*/ S.Struct({ ruleArn: S.String }),
 ]);
 export type AssociatedTemplateAndRuleList = AssociatedTemplateOrRule[];
 export const AssociatedTemplateAndRuleList = /*@__PURE__*/ S.Array(AssociatedTemplateOrRule);
@@ -660,15 +669,15 @@ export type AccountFilter =
   | { includeAll?: never; include: AccountSet; exclude?: never }
   | { includeAll?: never; include?: never; exclude: AccountSet };
 export const AccountFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ includeAll: S.Struct({}) }),
-  S.Struct({ include: AccountSet }),
-  S.Struct({ exclude: AccountSet }),
+  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ include: AccountSet }),
+  /*@__PURE__*/ S.Struct({ exclude: AccountSet }),
 ]);
 export type Arn = string;
 export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Scheme = "internet-facing" | "internal" | (string & {});
 export const Scheme = S.String;
 
@@ -686,12 +695,14 @@ export type ResourceCriteria =
   | { tags: { [key: string]: string | undefined }; albConfig?: never }
   | { tags?: never; albConfig: AlbConfiguration };
 export const ResourceCriteria = /*@__PURE__*/ S.Union([
-  S.Struct({ tags: StringMap }),
-  S.Struct({ albConfig: AlbConfiguration }),
+  /*@__PURE__*/ S.Struct({ tags: StringMap }),
+  /*@__PURE__*/ S.Struct({ albConfig: AlbConfiguration }),
 ]);
 export type ResourceLogicalExpressionList = ResourceLogicalExpression[];
 export const ResourceLogicalExpressionList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ResourceLogicalExpression).annotate({ identifier: "ResourceLogicalExpression" }),
+  /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
+    identifier: "ResourceLogicalExpression",
+  }),
 ) as any as S.Schema<ResourceLogicalExpressionList>;
 export type ResourceLogicalExpression =
   | { criteria: ResourceCriteria; and?: never; or?: never; not?: never }
@@ -699,19 +710,19 @@ export type ResourceLogicalExpression =
   | { criteria?: never; and?: never; or: ResourceLogicalExpression[]; not?: never }
   | { criteria?: never; and?: never; or?: never; not: ResourceLogicalExpression };
 export const ResourceLogicalExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ criteria: ResourceCriteria }),
-  S.Struct({
-    and: S.suspend(() => ResourceLogicalExpressionList).annotate({
+  /*@__PURE__*/ S.Struct({ criteria: ResourceCriteria }),
+  /*@__PURE__*/ S.Struct({
+    and: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
       identifier: "ResourceLogicalExpressionList",
     }),
   }),
-  S.Struct({
-    or: S.suspend(() => ResourceLogicalExpressionList).annotate({
+  /*@__PURE__*/ S.Struct({
+    or: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
       identifier: "ResourceLogicalExpressionList",
     }),
   }),
-  S.Struct({
-    not: S.suspend(() => ResourceLogicalExpression).annotate({
+  /*@__PURE__*/ S.Struct({
+    not: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
       identifier: "ResourceLogicalExpression",
     }),
   }),
@@ -741,7 +752,7 @@ export const ResourceScope = /*@__PURE__*/ S.suspend(() =>
 export type ResourceScopeMap = { [key in ScopeResourceType]?: ResourceScope };
 export const ResourceScopeMap = /*@__PURE__*/ S.Record(
   ScopeResourceType,
-  ResourceScope.pipe(S.optional),
+  /*@__PURE__*/ ResourceScope.pipe(S.optional),
 );
 export interface ScopeConfiguration {
   accountFilter?: AccountFilter;
@@ -1202,9 +1213,9 @@ export type AdminScopeFilter =
   | { includeAll?: never; includeOnly: AdminScopeSelection; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelection };
 export const AdminScopeFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ includeAll: S.Struct({}) }),
-  S.Struct({ includeOnly: AdminScopeSelection }),
-  S.Struct({ excludeOnly: AdminScopeSelection }),
+  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelection }),
+  /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelection }),
 ]);
 export type FirewallTypeList = PolicyFirewallType[];
 export const FirewallTypeList = /*@__PURE__*/ S.Array(PolicyFirewallType);
@@ -1587,13 +1598,13 @@ export type FirewallSyncReason =
   | { missingFirewall: string; invalidFirewall?: never }
   | { missingFirewall?: never; invalidFirewall: InvalidFirewallReasons };
 export const FirewallSyncReason = /*@__PURE__*/ S.Union([
-  S.Struct({ missingFirewall: S.String }),
-  S.Struct({ invalidFirewall: InvalidFirewallReasons }),
+  /*@__PURE__*/ S.Struct({ missingFirewall: S.String }),
+  /*@__PURE__*/ S.Struct({ invalidFirewall: InvalidFirewallReasons }),
 ]);
 export type OutOfSyncReasons = { [key in PolicyFirewallType]?: FirewallSyncReason };
 export const OutOfSyncReasons = /*@__PURE__*/ S.Record(
   PolicyFirewallType,
-  FirewallSyncReason.pipe(S.optional),
+  /*@__PURE__*/ FirewallSyncReason.pipe(S.optional),
 );
 export interface NotVisibleMarker {
   reason: string;
@@ -1605,8 +1616,8 @@ export type OutOfSyncReasonsView =
   | { reasons: { [key: string]: FirewallSyncReason | undefined }; notVisible?: never }
   | { reasons?: never; notVisible: NotVisibleMarker };
 export const OutOfSyncReasonsView = /*@__PURE__*/ S.Union([
-  S.Struct({ reasons: OutOfSyncReasons }),
-  S.Struct({ notVisible: NotVisibleMarker }),
+  /*@__PURE__*/ S.Struct({ reasons: OutOfSyncReasons }),
+  /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
 ]);
 export interface RemediationIssueDetails {
   issueType?: string;
@@ -1623,14 +1634,14 @@ export const RemediationIssueDetails = /*@__PURE__*/ S.suspend(() =>
 export type RemediationIssues = { [key in PolicyFirewallType]?: RemediationIssueDetails };
 export const RemediationIssues = /*@__PURE__*/ S.Record(
   PolicyFirewallType,
-  RemediationIssueDetails.pipe(S.optional),
+  /*@__PURE__*/ RemediationIssueDetails.pipe(S.optional),
 );
 export type RemediationIssuesView =
   | { issues: { [key: string]: RemediationIssueDetails | undefined }; notVisible?: never }
   | { issues?: never; notVisible: NotVisibleMarker };
 export const RemediationIssuesView = /*@__PURE__*/ S.Union([
-  S.Struct({ issues: RemediationIssues }),
-  S.Struct({ notVisible: NotVisibleMarker }),
+  /*@__PURE__*/ S.Struct({ issues: RemediationIssues }),
+  /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
 ]);
 export interface ResourceSynchronizationStatusSummary {
   synchronizationStatus: SynchronizationStatus;
@@ -2153,9 +2164,9 @@ export type AdminScopeFilterInput =
   | { includeAll?: never; includeOnly: AdminScopeSelectionInput; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelectionInput };
 export const AdminScopeFilterInput = /*@__PURE__*/ S.Union([
-  S.Struct({ includeAll: S.Struct({}) }),
-  S.Struct({ includeOnly: AdminScopeSelectionInput }),
-  S.Struct({ excludeOnly: AdminScopeSelectionInput }),
+  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelectionInput }),
+  /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelectionInput }),
 ]);
 export interface AdminScopeInput {
   scopeFilter?: AdminScopeFilterInput;

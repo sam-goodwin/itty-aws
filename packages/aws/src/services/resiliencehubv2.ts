@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "resiliencehubv2", serviceShapeName: "NGRHServiceCore" });
-const auth = T.AwsAuthSigv4({ name: "resiliencehub" });
-const ver = T.ServiceVersion("2026-02-17");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "resiliencehubv2",
+  serviceShapeName: "NGRHServiceCore",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "resiliencehub" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2026-02-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,60 +76,63 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()), retryAfterSeconds: S.optional(S.Number) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type AssertionText = string;
@@ -193,7 +199,10 @@ export const EksNamespaceList = /*@__PURE__*/ S.Array(S.String);
 export type EksLabelKey = string;
 export type EksLabelValue = string;
 export type EksLabelMap = { [key: string]: string | undefined };
-export const EksLabelMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EksLabelMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EksLabelSelectorOperator =
   | "IN"
   | "NOT_IN"
@@ -279,11 +288,11 @@ export type ResourceConfiguration =
       designFileS3Url: string;
     };
 export const ResourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ resourceTags: ResourceTagList }),
-  S.Struct({ cfnStackArn: S.String }),
-  S.Struct({ tfStateFileUrl: S.String }),
-  S.Struct({ eks: EksSource }),
-  S.Struct({ designFileS3Url: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceTags: ResourceTagList }),
+  /*@__PURE__*/ S.Struct({ cfnStackArn: S.String }),
+  /*@__PURE__*/ S.Struct({ tfStateFileUrl: S.String }),
+  /*@__PURE__*/ S.Struct({ eks: EksSource }),
+  /*@__PURE__*/ S.Struct({ designFileS3Url: S.String }),
 ]);
 export interface CreateInputSourceRequest {
   serviceArn: string;
@@ -367,7 +376,7 @@ export const DataRecoveryTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataRecoveryTargets" }) as any as S.Schema<DataRecoveryTargets>;
 export type KmsKeyId = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreatePolicyRequest {
   name: string;
   description?: string;
@@ -483,8 +492,8 @@ export type ReportOutput =
   | { s3ReportOutput: S3ReportOutput; failedReportOutput?: never }
   | { s3ReportOutput?: never; failedReportOutput: FailedReportOutput };
 export const ReportOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ s3ReportOutput: S3ReportOutput }),
-  S.Struct({ failedReportOutput: FailedReportOutput }),
+  /*@__PURE__*/ S.Struct({ s3ReportOutput: S3ReportOutput }),
+  /*@__PURE__*/ S.Struct({ failedReportOutput: FailedReportOutput }),
 ]);
 export interface ReportGenerationResult {
   reportType: ReportType;
@@ -568,7 +577,7 @@ export const S3ReportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3ReportOutputConfiguration>;
 export type ReportOutputConfiguration = { s3: S3ReportOutputConfiguration };
 export const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3ReportOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3: S3ReportOutputConfiguration }),
 ]);
 export type ReportOutputConfigurationList = ReportOutputConfiguration[];
 export const ReportOutputConfigurationList = /*@__PURE__*/ S.Array(ReportOutputConfiguration);
@@ -1009,7 +1018,10 @@ export type ParameterValue = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type TestParameters = { [key: string]: string[] | undefined };
-export const TestParameters = /*@__PURE__*/ S.Record(S.String, StringList.pipe(S.optional));
+export const TestParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ StringList.pipe(S.optional),
+);
 export interface CreateTestRequest {
   serviceArn: string;
   testTemplateArn: string;
@@ -1280,8 +1292,8 @@ export type TestSourceInput =
   | { successCriteriaAlarm: SuccessCriteriaAlarmInput; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: ObservabilityAlarmInput };
 export const TestSourceInput = /*@__PURE__*/ S.Union([
-  S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmInput }),
-  S.Struct({ observabilityAlarm: ObservabilityAlarmInput }),
+  /*@__PURE__*/ S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmInput }),
+  /*@__PURE__*/ S.Struct({ observabilityAlarm: ObservabilityAlarmInput }),
 ]);
 export type TestSourceInputList = TestSourceInput[];
 export const TestSourceInputList = /*@__PURE__*/ S.Array(TestSourceInput);
@@ -2304,10 +2316,10 @@ export type PolicyEventMetadata =
       policyDeleted: PolicyDeletedMetadata;
     };
 export const PolicyEventMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ policyAttachedToService: PolicyAttachedToServiceMetadata }),
-  S.Struct({ policyDetachedFromService: PolicyDetachedFromServiceMetadata }),
-  S.Struct({ policySharingRevoked: PolicySharingRevokedMetadata }),
-  S.Struct({ policyDeleted: PolicyDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ policyAttachedToService: PolicyAttachedToServiceMetadata }),
+  /*@__PURE__*/ S.Struct({ policyDetachedFromService: PolicyDetachedFromServiceMetadata }),
+  /*@__PURE__*/ S.Struct({ policySharingRevoked: PolicySharingRevokedMetadata }),
+  /*@__PURE__*/ S.Struct({ policyDeleted: PolicyDeletedMetadata }),
 ]);
 export interface PolicyEventDetails {
   title: string;
@@ -2406,7 +2418,7 @@ export type ResolvedTargetInformationValue = string;
 export type ResolvedTargetInformation = { [key: string]: string | undefined };
 export const ResolvedTargetInformation = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ResolvedTargetResource {
   resourceType: string;
@@ -3164,25 +3176,27 @@ export type ServiceEventMetadata =
       assertionDeleted: AssertionDeletedMetadata;
     };
 export const ServiceEventMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ serviceCreated: ServiceCreatedMetadata }),
-  S.Struct({ serviceDeleted: ServiceDeletedMetadata }),
-  S.Struct({ serviceSystemAssociated: ServiceSystemAssociatedMetadata }),
-  S.Struct({ serviceSystemDisassociated: ServiceSystemDisassociatedMetadata }),
-  S.Struct({ serviceResourcesAssociated: ServiceResourcesAssociatedMetadata }),
-  S.Struct({ serviceResourcesDisassociated: ServiceResourcesDisassociatedMetadata }),
-  S.Struct({ serviceWorkflowUpdated: ServiceWorkflowUpdatedMetadata }),
-  S.Struct({ serviceInputSourcesUpdated: ServiceInputSourcesUpdatedMetadata }),
-  S.Struct({ servicePolicyAssociated: ServicePolicyAssociatedMetadata }),
-  S.Struct({ servicePolicyDisassociated: ServicePolicyDisassociatedMetadata }),
-  S.Struct({ serviceFunctionCreated: ServiceFunctionCreatedMetadata }),
-  S.Struct({ serviceFunctionUpdated: ServiceFunctionUpdatedMetadata }),
-  S.Struct({ serviceFunctionDeleted: ServiceFunctionDeletedMetadata }),
-  S.Struct({ serviceFunctionResourcesAdded: ServiceFunctionResourcesAddedMetadata }),
-  S.Struct({ serviceFunctionResourcesRemoved: ServiceFunctionResourcesRemovedMetadata }),
-  S.Struct({ serviceAchievabilityUpdated: ServiceAchievabilityUpdatedMetadata }),
-  S.Struct({ assertionCreated: AssertionCreatedMetadata }),
-  S.Struct({ assertionUpdated: AssertionUpdatedMetadata }),
-  S.Struct({ assertionDeleted: AssertionDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceCreated: ServiceCreatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceDeleted: ServiceDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceSystemAssociated: ServiceSystemAssociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceSystemDisassociated: ServiceSystemDisassociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceResourcesAssociated: ServiceResourcesAssociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceResourcesDisassociated: ServiceResourcesDisassociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceWorkflowUpdated: ServiceWorkflowUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceInputSourcesUpdated: ServiceInputSourcesUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ servicePolicyAssociated: ServicePolicyAssociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ servicePolicyDisassociated: ServicePolicyDisassociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceFunctionCreated: ServiceFunctionCreatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceFunctionUpdated: ServiceFunctionUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceFunctionDeleted: ServiceFunctionDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ serviceFunctionResourcesAdded: ServiceFunctionResourcesAddedMetadata }),
+  /*@__PURE__*/ S.Struct({
+    serviceFunctionResourcesRemoved: ServiceFunctionResourcesRemovedMetadata,
+  }),
+  /*@__PURE__*/ S.Struct({ serviceAchievabilityUpdated: ServiceAchievabilityUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ assertionCreated: AssertionCreatedMetadata }),
+  /*@__PURE__*/ S.Struct({ assertionUpdated: AssertionUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ assertionDeleted: AssertionDeletedMetadata }),
 ]);
 export interface ServiceEventDetails {
   title: string;
@@ -3659,15 +3673,15 @@ export type SystemEventMetadata =
       systemPolicyDisassociated: SystemPolicyDisassociatedMetadata;
     };
 export const SystemEventMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ systemCreated: SystemCreatedMetadata }),
-  S.Struct({ systemDeleted: SystemDeletedMetadata }),
-  S.Struct({ systemUserJourneyCreated: SystemUserJourneyCreatedMetadata }),
-  S.Struct({ systemUserJourneyUpdated: SystemUserJourneyUpdatedMetadata }),
-  S.Struct({ systemUserJourneyDeleted: SystemUserJourneyDeletedMetadata }),
-  S.Struct({ systemServiceAssociated: SystemServiceAssociatedMetadata }),
-  S.Struct({ systemServiceDisassociated: SystemServiceDisassociatedMetadata }),
-  S.Struct({ systemPolicyAssociated: SystemPolicyAssociatedMetadata }),
-  S.Struct({ systemPolicyDisassociated: SystemPolicyDisassociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemCreated: SystemCreatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemDeleted: SystemDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemUserJourneyCreated: SystemUserJourneyCreatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemUserJourneyUpdated: SystemUserJourneyUpdatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemUserJourneyDeleted: SystemUserJourneyDeletedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemServiceAssociated: SystemServiceAssociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemServiceDisassociated: SystemServiceDisassociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemPolicyAssociated: SystemPolicyAssociatedMetadata }),
+  /*@__PURE__*/ S.Struct({ systemPolicyDisassociated: SystemPolicyDisassociatedMetadata }),
 ]);
 export interface SystemEventDetails {
   title: string;
@@ -3866,7 +3880,10 @@ export const ListTestRunEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TestRunEventAttributeKey = string;
 export type TestRunEventAttributeValue = string;
 export type TestRunEventAttributes = { [key: string]: string | undefined };
-export const TestRunEventAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TestRunEventAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface TestRunEvent {
   eventId: string;
   eventType: string;
@@ -4001,8 +4018,8 @@ export type TestRunSourceEventDetail =
   | { alarmStateChange: AlarmStateChangeDetail; error?: never }
   | { alarmStateChange?: never; error: TestRunSourceEventError };
 export const TestRunSourceEventDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ alarmStateChange: AlarmStateChangeDetail }),
-  S.Struct({ error: TestRunSourceEventError }),
+  /*@__PURE__*/ S.Struct({ alarmStateChange: AlarmStateChangeDetail }),
+  /*@__PURE__*/ S.Struct({ error: TestRunSourceEventError }),
 ]);
 export interface TestRunSourceEvent {
   timestamp: Date;
@@ -4097,8 +4114,8 @@ export type TestRunSourceSummary =
   | { successCriteriaAlarm: TestRunSuccessCriteriaAlarmSummary; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: TestRunObservabilityAlarmSummary };
 export const TestRunSourceSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ successCriteriaAlarm: TestRunSuccessCriteriaAlarmSummary }),
-  S.Struct({ observabilityAlarm: TestRunObservabilityAlarmSummary }),
+  /*@__PURE__*/ S.Struct({ successCriteriaAlarm: TestRunSuccessCriteriaAlarmSummary }),
+  /*@__PURE__*/ S.Struct({ observabilityAlarm: TestRunObservabilityAlarmSummary }),
 ]);
 export type TestRunSourceSummaryList = TestRunSourceSummary[];
 export const TestRunSourceSummaryList = /*@__PURE__*/ S.Array(TestRunSourceSummary);
@@ -4218,8 +4235,8 @@ export type TestSourceSummary =
   | { successCriteriaAlarm: SuccessCriteriaAlarmSummary; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: ObservabilityAlarmSummary };
 export const TestSourceSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmSummary }),
-  S.Struct({ observabilityAlarm: ObservabilityAlarmSummary }),
+  /*@__PURE__*/ S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmSummary }),
+  /*@__PURE__*/ S.Struct({ observabilityAlarm: ObservabilityAlarmSummary }),
 ]);
 export type TestSourceSummaryList = TestSourceSummary[];
 export const TestSourceSummaryList = /*@__PURE__*/ S.Array(TestSourceSummary);

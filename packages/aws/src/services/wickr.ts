@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Wickr", serviceShapeName: "WickrAdminApi" });
-const auth = T.AwsAuthSigv4({ name: "wickr" });
-const ver = T.ServiceVersion("2024-02-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Wickr", serviceShapeName: "WickrAdminApi" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wickr" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-02-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,49 +75,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestError
   extends /*@__PURE__*/ S.TaggedError<BadRequestError>()(
     "BadRequestError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ForbiddenError
   extends /*@__PURE__*/ S.TaggedError<ForbiddenError>()(
     "ForbiddenError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class RateLimitError
   extends /*@__PURE__*/ S.TaggedError<RateLimitError>()(
     "RateLimitError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundError
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundError>()(
     "ResourceNotFoundError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedError
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedError>()(
     "UnauthorizedError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationError
   extends /*@__PURE__*/ S.TaggedError<ValidationError>()(
     "ValidationError",
     {
-      reasons: S.optional(
-        S.suspend(() => ErrorDetailList).annotate({ identifier: "ErrorDetailList" }),
+      reasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorDetailList).annotate({ identifier: "ErrorDetailList" }),
       ),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(422),
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;

@@ -370,7 +370,7 @@ export const UpgradeFormatVersionUpdate = /*@__PURE__*/ S.suspend(() =>
 
 export type StructTypeFieldsList = Array<StructField>;
 export const StructTypeFieldsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => StructField),
+  /*@__PURE__*/ S.suspend(() => StructField),
 ) as any as S.Schema<StructTypeFieldsList>;
 
 export interface StructType {

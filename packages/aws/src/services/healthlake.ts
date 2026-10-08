@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "HealthLake", serviceShapeName: "HealthLake" });
-const auth = T.AwsAuthSigv4({ name: "healthlake" });
-const ver = T.ServiceVersion("2017-07-01");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "HealthLake", serviceShapeName: "HealthLake" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "healthlake" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-07-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,79 +75,79 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AgentMessageOutOfContextException
   extends /*@__PURE__*/ S.TaggedError<AgentMessageOutOfContextException>()(
     "AgentMessageOutOfContextException",
-    { message: S.String.pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConversationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ConversationNotFoundException>()(
     "ConversationNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException
   extends /*@__PURE__*/ S.TaggedError<FailedDependencyException>()(
     "FailedDependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotImplementedOperationException
   extends /*@__PURE__*/ S.TaggedError<NotImplementedOperationException>()(
     "NotImplementedOperationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(501),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(501),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnsupportedMIMETypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedMIMETypeException>()(
     "UnsupportedMIMETypeException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(415),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(415),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type SourceFormat = "CCDA" | "CSV" | (string & {});
 export const SourceFormat = S.String;
@@ -168,7 +168,7 @@ export const ExistingVersionedProfileSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExistingVersionedProfileSource",
 }) as any as S.Schema<ExistingVersionedProfileSource>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ProfileMappingSource {
   ProfileMapping: { [key: string]: string | undefined };
 }
@@ -208,10 +208,10 @@ export type CreateDataTransformationProfileSource =
       SampleData: SampleDataSource;
     };
 export const CreateDataTransformationProfileSource = /*@__PURE__*/ S.Union([
-  S.Struct({ StarterProfile: StarterProfileSource }),
-  S.Struct({ ExistingVersionedProfileId: ExistingVersionedProfileSource }),
-  S.Struct({ ProfileMapping: ProfileMappingSource }),
-  S.Struct({ SampleData: SampleDataSource }),
+  /*@__PURE__*/ S.Struct({ StarterProfile: StarterProfileSource }),
+  /*@__PURE__*/ S.Struct({ ExistingVersionedProfileId: ExistingVersionedProfileSource }),
+  /*@__PURE__*/ S.Struct({ ProfileMapping: ProfileMappingSource }),
+  /*@__PURE__*/ S.Struct({ SampleData: SampleDataSource }),
 ]);
 export type KmsKeyId = string;
 export type ProfileDescription = string;
@@ -219,7 +219,7 @@ export type ProfileNameString = string;
 export type DataTransformationTagKey = string;
 export type DataTransformationTagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ClientToken = string;
 export interface CreateDataTransformationProfileRequest {
   SourceFormat: SourceFormat;
@@ -756,7 +756,7 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Configuration" }) as any as S.Schema<S3Configuration>;
 export type OutputDataConfig = { S3Configuration: S3Configuration };
 export const OutputDataConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ S3Configuration: S3Configuration }),
+  /*@__PURE__*/ S.Struct({ S3Configuration: S3Configuration }),
 ]);
 export type IamRoleArn = string;
 export type Message = string;
@@ -804,7 +804,7 @@ export const DescribeFHIRImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFHIRImportJobRequest",
 }) as any as S.Schema<DescribeFHIRImportJobRequest>;
 export type InputDataConfig = { S3Uri: string };
-export const InputDataConfig = /*@__PURE__*/ S.Union([S.Struct({ S3Uri: S.String })]);
+export const InputDataConfig = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ S3Uri: S.String })]);
 export interface JobProgressReport {
   TotalNumberOfScannedFiles?: number;
   TotalSizeOfScannedFilesInMB?: number;
@@ -910,7 +910,10 @@ export const GetDataTransformationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProfileMappingKey = string;
 export type ProfileMappingValue = string;
 export type ProfileMapping = { [key: string]: string | undefined };
-export const ProfileMapping = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProfileMapping = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ChangeDescription = string;
 export interface GetDataTransformationProfileResponse {
   ProfileId: string;
@@ -1301,7 +1304,9 @@ export type RestoreConfiguration = {
   ContinuousBackupRestoreConfiguration: ContinuousBackupRestoreConfiguration;
 };
 export const RestoreConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ ContinuousBackupRestoreConfiguration: ContinuousBackupRestoreConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    ContinuousBackupRestoreConfiguration: ContinuousBackupRestoreConfiguration,
+  }),
 ]);
 export interface RestoreFHIRDatastoreRequest {
   SourceDatastoreId: string;

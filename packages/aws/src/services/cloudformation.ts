@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cloudformation.amazonaws.com/doc/2010-05-15/");
-const svc = T.AwsApiService({ sdkId: "CloudFormation", serviceShapeName: "CloudFormation" });
-const auth = T.AwsAuthSigv4({ name: "cloudformation" });
-const ver = T.ServiceVersion("2010-05-15");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudformation.amazonaws.com/doc/2010-05-15/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudFormation",
+  serviceShapeName: "CloudFormation",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudformation" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2010-05-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,119 +80,131 @@ const rules = T.EndpointResolver((p, _) => {
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CFNRegistryException
   extends /*@__PURE__*/ S.TaggedError<CFNRegistryException>()(
     "CFNRegistryException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CFNRegistryException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CFNRegistryException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChangeSetNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ChangeSetNotFoundException>()(
     "ChangeSetNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ChangeSetNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ChangeSetNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentResourcesLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentResourcesLimitExceededException>()(
     "ConcurrentResourcesLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ConcurrentResourcesLimitExceeded", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ConcurrentResourcesLimitExceeded",
+        httpResponseCode: 429,
+      }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class CreatedButModifiedException
   extends /*@__PURE__*/ S.TaggedError<CreatedButModifiedException>()(
     "CreatedButModifiedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CreatedButModifiedException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CreatedButModifiedException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class GeneratedTemplateNotFoundException
   extends /*@__PURE__*/ S.TaggedError<GeneratedTemplateNotFoundException>()(
     "GeneratedTemplateNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "GeneratedTemplateNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "GeneratedTemplateNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class HookResultNotFoundException
   extends /*@__PURE__*/ S.TaggedError<HookResultNotFoundException>()(
     "HookResultNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "HookResultNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "HookResultNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCapabilitiesException
   extends /*@__PURE__*/ S.TaggedError<InsufficientCapabilitiesException>()(
     "InsufficientCapabilitiesException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InsufficientCapabilitiesException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InsufficientCapabilitiesException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidChangeSetStatusException
   extends /*@__PURE__*/ S.TaggedError<InvalidChangeSetStatusException>()(
     "InvalidChangeSetStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidChangeSetStatus", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidChangeSetStatus", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidOperationException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidOperationException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateTransitionException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateTransitionException>()(
     "InvalidStateTransitionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidStateTransition", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidStateTransition", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NameAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<NameAlreadyExistsException>()(
     "NameAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "NameAlreadyExistsException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NameAlreadyExistsException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class NoUpdateToPerform
   extends /*@__PURE__*/ S.TaggedError<NoUpdateToPerform>()(
     "NoUpdateToPerform",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationError",
       message: { includes: "No updates are to be performed" },
     }),
@@ -197,151 +212,169 @@ export class NoUpdateToPerform
 export class OperationIdAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<OperationIdAlreadyExistsException>()(
     "OperationIdAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OperationIdAlreadyExistsException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "OperationIdAlreadyExistsException",
+        httpResponseCode: 409,
+      }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OperationInProgressException
   extends /*@__PURE__*/ S.TaggedError<OperationInProgressException>()(
     "OperationInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OperationInProgressException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "OperationInProgressException",
+        httpResponseCode: 409,
+      }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class OperationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<OperationNotFoundException>()(
     "OperationNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OperationNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "OperationNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationStatusCheckFailedException
   extends /*@__PURE__*/ S.TaggedError<OperationStatusCheckFailedException>()(
     "OperationStatusCheckFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ConditionalCheckFailed", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConditionalCheckFailed", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanInProgressException
   extends /*@__PURE__*/ S.TaggedError<ResourceScanInProgressException>()(
     "ResourceScanInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceScanInProgress", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceScanInProgress", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceScanLimitExceededException>()(
     "ResourceScanLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceScanLimitExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceScanLimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceScanNotFoundException>()(
     "ResourceScanNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceScanNotFound", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceScanNotFound", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackInstanceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<StackInstanceNotFoundException>()(
     "StackInstanceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StackInstanceNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "StackInstanceNotFoundException",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackNotFound
   extends /*@__PURE__*/ S.TaggedError<StackNotFound>()(
     "StackNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "ValidationError", message: { includes: "does not exist" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ValidationError",
+      message: { includes: "does not exist" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class StackNotFoundException
   extends /*@__PURE__*/ S.TaggedError<StackNotFoundException>()(
     "StackNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StackNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "StackNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackRefactorNotFoundException
   extends /*@__PURE__*/ S.TaggedError<StackRefactorNotFoundException>()(
     "StackRefactorNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StackRefactorNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "StackRefactorNotFoundException",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackSetNotEmptyException
   extends /*@__PURE__*/ S.TaggedError<StackSetNotEmptyException>()(
     "StackSetNotEmptyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StackSetNotEmptyException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "StackSetNotEmptyException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class StackSetNotFoundException
   extends /*@__PURE__*/ S.TaggedError<StackSetNotFoundException>()(
     "StackSetNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StackSetNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "StackSetNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class StaleRequestException
   extends /*@__PURE__*/ S.TaggedError<StaleRequestException>()(
     "StaleRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "StaleRequestException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "StaleRequestException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError) {}
 export class TokenAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<TokenAlreadyExistsException>()(
     "TokenAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TokenAlreadyExistsException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TokenAlreadyExistsException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TypeConfigurationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TypeConfigurationNotFoundException>()(
     "TypeConfigurationNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TypeConfigurationNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "TypeConfigurationNotFoundException",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TypeNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TypeNotFoundException>()(
     "TypeNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export interface ActivateOrganizationsAccessInput {}
@@ -628,7 +661,7 @@ export type ResourceIdentifierPropertyValue = string;
 export type ResourceIdentifierProperties = { [key: string]: string | undefined };
 export const ResourceIdentifierProperties = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ResourceToImport {
   ResourceType?: string;
@@ -3717,7 +3750,7 @@ export type JazzResourceIdentifierPropertyValue = string;
 export type JazzResourceIdentifierProperties = { [key: string]: string | undefined };
 export const JazzResourceIdentifierProperties = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ScannedResourceIdentifier {
   ResourceType?: string;

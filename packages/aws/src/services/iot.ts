@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "IoT", serviceShapeName: "AWSIotService" });
-const auth = T.AwsAuthSigv4({ name: "iot" });
-const ver = T.ServiceVersion("2015-05-28");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "IoT", serviceShapeName: "AWSIotService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iot" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-05-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,174 +80,177 @@ const rules = T.EndpointResolver((p, _) => {
 export class CertificateConflictException
   extends /*@__PURE__*/ S.TaggedError<CertificateConflictException>()(
     "CertificateConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CertificateStateException
   extends /*@__PURE__*/ S.TaggedError<CertificateStateException>()(
     "CertificateStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(406),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(406),
   ).pipe(C.withBadRequestError) {}
 export class CertificateValidationException
   extends /*@__PURE__*/ S.TaggedError<CertificateValidationException>()(
     "CertificateValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceId: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictingResourceUpdateException
   extends /*@__PURE__*/ S.TaggedError<ConflictingResourceUpdateException>()(
     "ConflictingResourceUpdateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DeleteConflictException
   extends /*@__PURE__*/ S.TaggedError<DeleteConflictException>()(
     "DeleteConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IndexNotReadyException
   extends /*@__PURE__*/ S.TaggedError<IndexNotReadyException>()(
     "IndexNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidAggregationException
   extends /*@__PURE__*/ S.TaggedError<InvalidAggregationException>()(
     "InvalidAggregationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryException
   extends /*@__PURE__*/ S.TaggedError<InvalidQueryException>()(
     "InvalidQueryException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResponseException
   extends /*@__PURE__*/ S.TaggedError<InvalidResponseException>()(
     "InvalidResponseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateTransitionException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateTransitionException>()(
     "InvalidStateTransitionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyException
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicyException>()(
     "MalformedPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotConfiguredException
   extends /*@__PURE__*/ S.TaggedError<NotConfiguredException>()(
     "NotConfiguredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RegistrationCodeValidationException
   extends /*@__PURE__*/ S.TaggedError<RegistrationCodeValidationException>()(
     "RegistrationCodeValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceArn: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceArn: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceRegistrationFailureException
   extends /*@__PURE__*/ S.TaggedError<ResourceRegistrationFailureException>()(
     "ResourceRegistrationFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class SqlParseException
   extends /*@__PURE__*/ S.TaggedError<SqlParseException>()(
     "SqlParseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TaskAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<TaskAlreadyExistsException>()(
     "TaskAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TopicRuleNotFound
   extends /*@__PURE__*/ S.TaggedError<TopicRuleNotFound>()(
     "TopicRuleNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "UnauthorizedException",
       message: { includes: "Access to topic rule" },
     }),
@@ -255,38 +258,38 @@ export class TopicRuleNotFound
 export class TransferAlreadyCompletedException
   extends /*@__PURE__*/ S.TaggedError<TransferAlreadyCompletedException>()(
     "TransferAlreadyCompletedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class TransferConflictException
   extends /*@__PURE__*/ S.TaggedError<TransferConflictException>()(
     "TransferConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class VersionConflictException
   extends /*@__PURE__*/ S.TaggedError<VersionConflictException>()(
     "VersionConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class VersionsLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<VersionsLimitExceededException>()(
     "VersionsLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export type CertificateId = string;
 export type SetAsActive = boolean;
@@ -721,7 +724,7 @@ export type ExpectedVersion = number;
 export type DetailsKey = string;
 export type DetailsValue = string;
 export type DetailsMap = { [key: string]: string | undefined };
-export const DetailsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DetailsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CancelJobExecutionRequest {
   jobId: string;
   thingName: string;
@@ -889,7 +892,10 @@ export type TokenKeyName = string;
 export type KeyName = string;
 export type KeyValue = string;
 export type PublicKeyMap = { [key: string]: string | undefined };
-export const PublicKeyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PublicKeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AuthorizerStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const AuthorizerStatus = S.String;
 
@@ -1452,7 +1458,7 @@ export type ThingGroupDescription = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Flag = boolean;
 export interface AttributePayload {
   attributes?: { [key: string]: string | undefined };
@@ -1728,7 +1734,10 @@ export const JobExecutionsRetryConfig = /*@__PURE__*/ S.suspend(() =>
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type StringDateTime = string;
 export type JobEndBehavior = "STOP_ROLLOUT" | "CANCEL" | "FORCE_CANCEL" | (string & {});
 export const JobEndBehavior = S.String;
@@ -2228,7 +2237,10 @@ export const CodeSigning = /*@__PURE__*/ S.suspend(() =>
 export type AttributeKey = string;
 export type Value = string;
 export type AttributesMap = { [key: string]: string | undefined };
-export const AttributesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface OTAUpdateFile {
   fileName?: string;
   fileType?: number;
@@ -2250,7 +2262,10 @@ export const OTAUpdateFile = /*@__PURE__*/ S.suspend(() =>
 export type OTAUpdateFiles = OTAUpdateFile[];
 export const OTAUpdateFiles = /*@__PURE__*/ S.Array(OTAUpdateFile);
 export type AdditionalParameterMap = { [key: string]: string | undefined };
-export const AdditionalParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateOTAUpdateRequest {
   otaUpdateId: string;
   description?: string;
@@ -2323,7 +2338,7 @@ export const CreateOTAUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOTAUpdateResponse" }) as any as S.Schema<CreateOTAUpdateResponse>;
 export type ResourceDescription = string | redacted.Redacted<string>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreatePackageRequest {
   packageName: string;
   description?: string | redacted.Redacted<string>;
@@ -2356,7 +2371,10 @@ export const CreatePackageResponse = /*@__PURE__*/ S.suspend(() =>
 export type ResourceAttributeKey = string;
 export type ResourceAttributeValue = string;
 export type ResourceAttributes = { [key: string]: string | undefined };
-export const ResourceAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface PackageVersionArtifact {
   s3Location?: S3Location;
 }
@@ -2835,7 +2853,10 @@ export const AlertTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alertTargetArn: S.String, roleArn: S.String }),
 ).annotate({ identifier: "AlertTarget" }) as any as S.Schema<AlertTarget>;
 export type AlertTargets = { [key in AlertTargetType]?: AlertTarget };
-export const AlertTargets = /*@__PURE__*/ S.Record(AlertTargetType, AlertTarget.pipe(S.optional));
+export const AlertTargets = /*@__PURE__*/ S.Record(
+  AlertTargetType,
+  /*@__PURE__*/ AlertTarget.pipe(S.optional),
+);
 export type AdditionalMetricsToRetainList = string[];
 export const AdditionalMetricsToRetainList = /*@__PURE__*/ S.Array(S.String);
 export interface MetricToRetain {
@@ -3383,10 +3404,10 @@ export type AssetPropertyVariant =
   | { stringValue?: never; integerValue?: never; doubleValue: string; booleanValue?: never }
   | { stringValue?: never; integerValue?: never; doubleValue?: never; booleanValue: string };
 export const AssetPropertyVariant = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ integerValue: S.String }),
-  S.Struct({ doubleValue: S.String }),
-  S.Struct({ booleanValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ integerValue: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.String }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.String }),
 ]);
 export type AssetPropertyTimeInSeconds = string;
 export type AssetPropertyOffsetInNanos = string;
@@ -3557,7 +3578,10 @@ export const HttpAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpAction" }) as any as S.Schema<HttpAction>;
 export type ClientProperties = { [key: string]: string | undefined };
-export const ClientProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ClientProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type KafkaHeaderKey = string;
 export type KafkaHeaderValue = string;
 export interface KafkaActionHeader {
@@ -3634,7 +3658,10 @@ export type InfluxDBOrganization = string;
 export type InfluxDBTagName = string;
 export type InfluxDBTagValue = string;
 export type InfluxDBTagMap = { [key: string]: string | undefined };
-export const InfluxDBTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const InfluxDBTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type InfluxDBTimestampUnit = "s" | "ms" | "us" | "ns" | (string & {});
 export const InfluxDBTimestampUnit = S.String;
 
@@ -4758,7 +4785,7 @@ export type AuditNotificationTargetConfigurations = {
 };
 export const AuditNotificationTargetConfigurations = /*@__PURE__*/ S.Record(
   AuditNotificationType,
-  AuditNotificationTarget.pipe(S.optional),
+  /*@__PURE__*/ AuditNotificationTarget.pipe(S.optional),
 );
 export type ConfigName =
   | "CERT_AGE_THRESHOLD_IN_DAYS"
@@ -4770,7 +4797,7 @@ export type ConfigValue = string;
 export type CheckCustomConfiguration = { [key in ConfigName]?: string };
 export const CheckCustomConfiguration = /*@__PURE__*/ S.Record(
   ConfigName,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface AuditCheckConfiguration {
   enabled?: boolean;
@@ -4782,7 +4809,7 @@ export const AuditCheckConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type AuditCheckConfigurations = { [key: string]: AuditCheckConfiguration | undefined };
 export const AuditCheckConfigurations = /*@__PURE__*/ S.Record(
   S.String,
-  AuditCheckConfiguration.pipe(S.optional),
+  /*@__PURE__*/ AuditCheckConfiguration.pipe(S.optional),
 );
 export interface DescribeAccountAuditConfigurationResponse {
   roleArn?: string;
@@ -4833,7 +4860,7 @@ export type ResourceType =
 export const ResourceType = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface NonCompliantResource {
   resourceType?: ResourceType;
   resourceIdentifier?: ResourceIdentifier;
@@ -4952,7 +4979,7 @@ export type AuditMitigationActionsTaskStatistics = {
 };
 export const AuditMitigationActionsTaskStatistics = /*@__PURE__*/ S.Record(
   S.String,
-  TaskStatisticsForAuditCheck.pipe(S.optional),
+  /*@__PURE__*/ TaskStatisticsForAuditCheck.pipe(S.optional),
 );
 export type FindingIds = string[];
 export const FindingIds = /*@__PURE__*/ S.Array(S.String);
@@ -4961,7 +4988,7 @@ export const ReasonForNonComplianceCodes = /*@__PURE__*/ S.Array(S.String);
 export type AuditCheckToReasonCodeFilter = { [key: string]: string[] | undefined };
 export const AuditCheckToReasonCodeFilter = /*@__PURE__*/ S.Record(
   S.String,
-  ReasonForNonComplianceCodes.pipe(S.optional),
+  /*@__PURE__*/ ReasonForNonComplianceCodes.pipe(S.optional),
 );
 export interface AuditMitigationActionsTaskTarget {
   auditTaskId?: string;
@@ -4982,7 +5009,7 @@ export const MitigationActionNameList = /*@__PURE__*/ S.Array(S.String);
 export type AuditCheckToActionsMapping = { [key: string]: string[] | undefined };
 export const AuditCheckToActionsMapping = /*@__PURE__*/ S.Record(
   S.String,
-  MitigationActionNameList.pipe(S.optional),
+  /*@__PURE__*/ MitigationActionNameList.pipe(S.optional),
 );
 export interface MitigationAction {
   name?: string;
@@ -5136,7 +5163,10 @@ export const AuditCheckDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditCheckDetails" }) as any as S.Schema<AuditCheckDetails>;
 export type AuditDetails = { [key: string]: AuditCheckDetails | undefined };
-export const AuditDetails = /*@__PURE__*/ S.Record(S.String, AuditCheckDetails.pipe(S.optional));
+export const AuditDetails = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AuditCheckDetails.pipe(S.optional),
+);
 export interface DescribeAuditTaskResponse {
   taskStatus?: AuditTaskStatus;
   taskType?: AuditTaskType;
@@ -5834,7 +5864,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 export type EventConfigurations = { [key in EventType]?: Configuration };
 export const EventConfigurations = /*@__PURE__*/ S.Record(
   EventType,
-  Configuration.pipe(S.optional),
+  /*@__PURE__*/ Configuration.pipe(S.optional),
 );
 export type LastModifiedDate = Date;
 export interface DescribeEventConfigurationsResponse {
@@ -7158,12 +7188,12 @@ export const CommandExecutionResult = /*@__PURE__*/ S.suspend(() =>
 export type CommandExecutionResultMap = { [key: string]: CommandExecutionResult | undefined };
 export const CommandExecutionResultMap = /*@__PURE__*/ S.Record(
   S.String,
-  CommandExecutionResult.pipe(S.optional),
+  /*@__PURE__*/ CommandExecutionResult.pipe(S.optional),
 );
 export type CommandExecutionParameterMap = { [key: string]: CommandParameterValue | undefined };
 export const CommandExecutionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  CommandParameterValue.pipe(S.optional),
+  /*@__PURE__*/ CommandParameterValue.pipe(S.optional),
 );
 export type CommandExecutionTimeoutInSeconds = number;
 export interface GetCommandExecutionResponse {
@@ -10812,7 +10842,7 @@ export const RegisterCertificateWithoutCAResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RegisterCertificateWithoutCAResponse>;
 export type Parameter = string;
 export type Parameters = { [key: string]: string | undefined };
-export const Parameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Parameters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface RegisterThingRequest {
   templateBody: string;
   parameters?: { [key: string]: string | undefined };
@@ -10824,7 +10854,10 @@ export const RegisterThingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisterThingRequest" }) as any as S.Schema<RegisterThingRequest>;
 export type ResourceLogicalId = string;
 export type ResourceArns = { [key: string]: string | undefined };
-export const ResourceArns = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceArns = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RegisterThingResponse {
   certificatePem?: string;
   resourceArns?: { [key: string]: string | undefined };
@@ -11395,7 +11428,10 @@ export type TokenSignature = string;
 export type HttpHeaderName = string;
 export type HttpHeaderValue = string;
 export type HttpHeaders = { [key: string]: string | undefined };
-export const HttpHeaders = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HttpHeaders = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type HttpQueryString = string;
 export interface HttpContext {
   headers?: { [key: string]: string | undefined };

@@ -123,7 +123,7 @@ export type ConfigsCreateRequestCaching =
   | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCreateDisabled
   | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCreateEnabled;
 export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["disabled", "maxAge", "staleWhileRevalidate"],
     ["disabled", "maxAge", "staleWhileRevalidate"],
   ]),
@@ -287,7 +287,7 @@ export type ConfigsCreateResponseOrigin =
   | ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsCreateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
     ["database", "scheme", "serviceId", "user"],
@@ -526,7 +526,7 @@ export type ConfigsGetResponseOrigin =
   | ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsGetResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
     ["database", "scheme", "serviceId", "user"],
@@ -722,7 +722,7 @@ export type ConfigsListResultItemOrigin =
   | ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsListResultItemOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
     ["database", "scheme", "serviceId", "user"],
@@ -855,7 +855,7 @@ export type ConfigsEditRequestCaching =
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled;
 export const ConfigsEditRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+  /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
 );
 
 export type ConfigsEditRequestMtls = ConfigsCreateRequestMtls;
@@ -939,7 +939,7 @@ export type ConfigsEditRequestOrigin =
   | ConfigsEditRequestOriginHyperdriveOverAccessOrigin
   | ConfigsEditRequestOriginHyperdriveVPCServiceOrigin;
 export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "password", "scheme", "user"],
     ["host", "port"],
     ["accessClientId", "accessClientSecret", "host"],
@@ -1080,7 +1080,7 @@ export type ConfigsEditResponseOrigin =
   | ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsEditResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
     ["database", "scheme", "serviceId", "user"],
@@ -1288,7 +1288,7 @@ export type RestartConfigResponseOrigin =
   | RestartConfigResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | RestartConfigResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const RestartConfigResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "password", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "password", "scheme", "user"],
     ["database", "password", "scheme", "serviceId", "user"],
@@ -1474,7 +1474,7 @@ export type ConfigsUpdateRequestOrigin =
   | ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "password", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "password", "scheme", "user"],
     ["database", "password", "scheme", "serviceId", "user"],
@@ -1495,7 +1495,7 @@ export type ConfigsUpdateRequestCaching =
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled;
 export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+  /*@__PURE__*/ T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
 );
 
 export type ConfigsUpdateRequestMtls = ConfigsCreateRequestMtls;
@@ -1634,7 +1634,7 @@ export type ConfigsUpdateResponseOrigin =
   | ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC;
 export const ConfigsUpdateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["database", "host", "port", "scheme", "user"],
     ["accessClientId", "accessClientSecret", "database", "host", "scheme", "user"],
     ["database", "scheme", "serviceId", "user"],

@@ -246,7 +246,7 @@ export type CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(HealthModelPropertiesInput),
+  /*@__PURE__*/ S.NullOr(HealthModelPropertiesInput),
 ) as any as S.Schema<CreateHealthModelRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -337,7 +337,7 @@ export type CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateHealthModelResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2470,7 +2470,7 @@ export type GetHealthModelResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetHealthModelResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2954,7 +2954,7 @@ export type HealthModelIdentityUserAssignedIdentitiesMap = {
 };
 export const HealthModelIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<HealthModelIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3464,7 +3464,7 @@ export type UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(HealthModelPropertiesInput),
+  /*@__PURE__*/ S.NullOr(HealthModelPropertiesInput),
 ) as any as S.Schema<UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3531,7 +3531,7 @@ export type UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

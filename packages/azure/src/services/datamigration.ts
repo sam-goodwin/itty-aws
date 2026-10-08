@@ -225,7 +225,7 @@ export const ProjectTaskPropertiesTaskType = S.String;
 /** Inner errors that caused this error */
 export type ODataErrorDetailsList = Array<ODataError>;
 export const ODataErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ODataError),
+  /*@__PURE__*/ S.suspend(() => ODataError),
 ) as any as S.Schema<ODataErrorDetailsList>;
 
 /** Error information in OData format. */
@@ -1328,7 +1328,7 @@ export type AzureBlobInputIdentityUserAssignedIdentitiesMap = {
 };
 export const AzureBlobInputIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<AzureBlobInputIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1681,7 +1681,7 @@ export type AzureBlobIdentityUserAssignedIdentitiesMap = {
 };
 export const AzureBlobIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<AzureBlobIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

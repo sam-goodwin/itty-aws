@@ -344,7 +344,7 @@ export type RulesBulkEditRequestBodyItemPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
 export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["index"], ["before"], ["after"]]),
+  /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
@@ -752,7 +752,7 @@ export type ConfigurationCreateRequestCredentialsKeysItem =
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest;
 export const ConfigurationCreateRequestCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -973,7 +973,7 @@ export type ConfigurationCreateResponseCredentialsKeysItem =
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
 export const ConfigurationCreateResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1452,7 +1452,7 @@ export type EditConfigurationCredentialsRequestKeysItem =
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest;
 export const EditConfigurationCredentialsRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1651,7 +1651,7 @@ export type EditConfigurationCredentialsResponseKeysItem =
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
 export const EditConfigurationCredentialsResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1856,7 +1856,7 @@ export type ConfigurationGetResponseCredentialsKeysItem =
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
 export const ConfigurationGetResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -2213,7 +2213,7 @@ export type ConfigurationListResultItemCredentialsKeysItem =
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
 export const ConfigurationListResultItemCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -2542,7 +2542,7 @@ export type RulesEditRequestPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
 export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["index"], ["before"], ["after"]]),
+  /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
 export type RulesEditRequestSelectorExcludeItemOperationIdsList = Array<string>;
@@ -2912,7 +2912,7 @@ export type ConfigurationCredentialsUpdateRequestKeysItem =
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest;
 export const ConfigurationCredentialsUpdateRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -3114,7 +3114,7 @@ export type ConfigurationCredentialsUpdateResponseKeysItem =
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
 export const ConfigurationCredentialsUpdateResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
     ["alg", "crv", "kid", "kty", "x", "y"],

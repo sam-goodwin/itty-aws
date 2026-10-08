@@ -209,7 +209,7 @@ export type CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
 export const CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -588,7 +588,7 @@ export type CancelCreditResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CancelCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CancelCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1056,7 +1056,7 @@ export type CancelMaccResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CancelMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CancelMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1186,7 +1186,7 @@ export type ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitie
 export const ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1269,7 +1269,7 @@ export type ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentiti
 export const ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1412,7 +1412,7 @@ export type CreateCreditRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateCreditRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateCreditRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1490,7 +1490,7 @@ export type CreateCreditResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1776,7 +1776,7 @@ export type CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1898,7 +1898,7 @@ export type CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2054,7 +2054,7 @@ export type CreateMaccRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateMaccRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateMaccRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2132,7 +2132,7 @@ export type CreateMaccResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2660,7 +2660,7 @@ export type CreateSourceRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateSourceRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateSourceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2761,7 +2761,7 @@ export type CreateSourceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3248,7 +3248,7 @@ export type GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3724,7 +3724,7 @@ export type GetCreditResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3958,7 +3958,7 @@ export type GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4064,7 +4064,7 @@ export type GetMaccResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4716,7 +4716,7 @@ export type GetSourceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5019,7 +5019,7 @@ export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
 };
 export const ConditionalCreditIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5437,7 +5437,7 @@ export type CreditIdentityUserAssignedIdentitiesMap = {
 };
 export const CreditIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreditIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5785,7 +5785,7 @@ export type FreeServicesIdentityUserAssignedIdentitiesMap = {
 };
 export const FreeServicesIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<FreeServicesIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5928,7 +5928,7 @@ export type MaccIdentityUserAssignedIdentitiesMap = {
 };
 export const MaccIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6498,7 +6498,7 @@ export type CreditSourceIdentityUserAssignedIdentitiesMap = {
 };
 export const CreditSourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6650,7 +6650,7 @@ export type MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6760,7 +6760,7 @@ export type MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7163,7 +7163,7 @@ export type UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
 export const UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7309,7 +7309,7 @@ export type UpdateCreditResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7546,7 +7546,7 @@ export type UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7713,7 +7713,7 @@ export type UpdateMaccResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateMaccResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7882,7 +7882,7 @@ export type UpdateSourceResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateSourceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateSourceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

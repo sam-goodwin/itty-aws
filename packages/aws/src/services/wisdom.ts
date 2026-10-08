@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Wisdom", serviceShapeName: "WisdomService" });
-const auth = T.AwsAuthSigv4({ name: "wisdom" });
-const ver = T.ServiceVersion("2020-10-19");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Wisdom", serviceShapeName: "WisdomService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wisdom" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-10-19");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,50 +73,56 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class RequestTimeoutException
   extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(408), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(408), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
 export type Name = string;
@@ -125,7 +131,7 @@ export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type NonEmptyString = string;
 export interface ServerSideEncryptionConfiguration {
   kmsKeyId?: string;
@@ -199,7 +205,7 @@ export type UuidOrArn = string;
 export type AssociationType = string;
 export type AssistantAssociationInputData = { knowledgeBaseId: string };
 export const AssistantAssociationInputData = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBaseId: S.String }),
+  /*@__PURE__*/ S.Struct({ knowledgeBaseId: S.String }),
 ]);
 export interface CreateAssistantAssociationRequest {
   assistantId: string;
@@ -241,7 +247,7 @@ export type AssistantAssociationOutputData = {
   knowledgeBaseAssociation: KnowledgeBaseAssociationData;
 };
 export const AssistantAssociationOutputData = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBaseAssociation: KnowledgeBaseAssociationData }),
+  /*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: KnowledgeBaseAssociationData }),
 ]);
 export interface AssistantAssociationData {
   assistantAssociationId: string;
@@ -274,7 +280,10 @@ export const CreateAssistantAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 export type ContentTitle = string;
 export type Uri = string;
 export type ContentMetadata = { [key: string]: string | undefined };
-export const ContentMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContentMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type UploadId = string;
 export interface CreateContentRequest {
   knowledgeBaseId: string;
@@ -364,7 +373,7 @@ export const AppIntegrationsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppIntegrationsConfiguration>;
 export type SourceConfiguration = { appIntegrations: AppIntegrationsConfiguration };
 export const SourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ appIntegrations: AppIntegrationsConfiguration }),
+  /*@__PURE__*/ S.Struct({ appIntegrations: AppIntegrationsConfiguration }),
 ]);
 export interface RenderingConfiguration {
   templateUri?: string;
@@ -437,7 +446,7 @@ export type QuickResponseName = string;
 export type QuickResponseContent = string | redacted.Redacted<string>;
 export type QuickResponseDataProvider = { content: string | redacted.Redacted<string> };
 export const QuickResponseDataProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ content: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
 ]);
 export type QuickResponseType = string;
 export type GroupingCriteria = string | redacted.Redacted<string>;
@@ -501,7 +510,7 @@ export const CreateQuickResponseRequest = /*@__PURE__*/ S.suspend(() =>
 export type QuickResponseStatus = string;
 export type QuickResponseContentProvider = { content: string | redacted.Redacted<string> };
 export const QuickResponseContentProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ content: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ content: SensitiveString }),
 ]);
 export interface QuickResponseContents {
   plainText?: QuickResponseContentProvider;
@@ -933,7 +942,7 @@ export const ConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectConfiguration" }) as any as S.Schema<ConnectConfiguration>;
 export type Configuration = { connectConfiguration: ConnectConfiguration };
 export const Configuration = /*@__PURE__*/ S.Union([
-  S.Struct({ connectConfiguration: ConnectConfiguration }),
+  /*@__PURE__*/ S.Struct({ connectConfiguration: ConnectConfiguration }),
 ]);
 export interface ExternalSourceConfiguration {
   source: string;
@@ -1142,7 +1151,7 @@ export const QueryRecommendationTriggerData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryRecommendationTriggerData>;
 export type RecommendationTriggerData = { query: QueryRecommendationTriggerData };
 export const RecommendationTriggerData = /*@__PURE__*/ S.Union([
-  S.Struct({ query: QueryRecommendationTriggerData }),
+  /*@__PURE__*/ S.Struct({ query: QueryRecommendationTriggerData }),
 ]);
 export type RecommendationIdList = string[];
 export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
@@ -1756,7 +1765,10 @@ export const QuickResponseSearchExpression = /*@__PURE__*/ S.suspend(() =>
 export type ContactAttributeKey = string;
 export type ContactAttributeValue = string;
 export type ContactAttributes = { [key: string]: string | undefined };
-export const ContactAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContactAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SearchQuickResponsesRequest {
   knowledgeBaseId: string;
   searchExpression: QuickResponseSearchExpression;
@@ -1916,7 +1928,7 @@ export const StartContentUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartContentUploadRequest",
 }) as any as S.Schema<StartContentUploadRequest>;
 export type Headers = { [key: string]: string | undefined };
-export const Headers = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Headers = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface StartContentUploadResponse {
   uploadId: string;
   url: string | redacted.Redacted<string>;

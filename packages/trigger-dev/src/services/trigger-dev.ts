@@ -1982,7 +1982,7 @@ export const SpanDetailedSummaryData = /*@__PURE__*/ S.suspend(() =>
 /** Nested child spans. Each child has the same structure as the parent span. */
 export type SpanDetailedSummaryChildrenList = Array<SpanDetailedSummary>;
 export const SpanDetailedSummaryChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SpanDetailedSummary),
+  /*@__PURE__*/ S.suspend(() => SpanDetailedSummary),
 ) as any as S.Schema<SpanDetailedSummaryChildrenList>;
 
 export interface SpanDetailedSummary {

@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MailManager", serviceShapeName: "MailManagerSvc" });
-const auth = T.AwsAuthSigv4({ name: "ses" });
-const ver = T.ServiceVersion("2023-10-17");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MailManager",
+  serviceShapeName: "MailManagerSvc",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ses" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-10-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,38 +78,38 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type IdempotencyToken = string;
 export type AddonSubscriptionId = string;
@@ -249,7 +252,7 @@ export const RetentionPeriod = S.String;
 
 export type ArchiveRetention = { RetentionPeriod: RetentionPeriod };
 export const ArchiveRetention = /*@__PURE__*/ S.Union([
-  S.Struct({ RetentionPeriod: RetentionPeriod }),
+  /*@__PURE__*/ S.Struct({ RetentionPeriod: RetentionPeriod }),
 ]);
 export type KmsKeyArn = string;
 export interface CreateArchiveRequest {
@@ -312,9 +315,9 @@ export type IngressPointConfiguration =
   | { SmtpPassword?: never; SecretArn: string; TlsAuthConfiguration?: never }
   | { SmtpPassword?: never; SecretArn?: never; TlsAuthConfiguration: TlsAuthConfiguration };
 export const IngressPointConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ SmtpPassword: SensitiveString }),
-  S.Struct({ SecretArn: S.String }),
-  S.Struct({ TlsAuthConfiguration: TlsAuthConfiguration }),
+  /*@__PURE__*/ S.Struct({ SmtpPassword: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
+  /*@__PURE__*/ S.Struct({ TlsAuthConfiguration: TlsAuthConfiguration }),
 ]);
 export type IpType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpType = S.String;
@@ -343,8 +346,8 @@ export type NetworkConfiguration =
       PrivateNetworkConfiguration: PrivateNetworkConfiguration;
     };
 export const NetworkConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ PublicNetworkConfiguration: PublicNetworkConfiguration }),
-  S.Struct({ PrivateNetworkConfiguration: PrivateNetworkConfiguration }),
+  /*@__PURE__*/ S.Struct({ PublicNetworkConfiguration: PublicNetworkConfiguration }),
+  /*@__PURE__*/ S.Struct({ PrivateNetworkConfiguration: PrivateNetworkConfiguration }),
 ]);
 export type TlsPolicy = "REQUIRED" | "OPTIONAL" | "FIPS" | (string & {});
 export const TlsPolicy = S.String;
@@ -395,8 +398,8 @@ export type RelayAuthentication =
   | { SecretArn: string; NoAuthentication?: never }
   | { SecretArn?: never; NoAuthentication: NoAuthentication };
 export const RelayAuthentication = /*@__PURE__*/ S.Union([
-  S.Struct({ SecretArn: S.String }),
-  S.Struct({ NoAuthentication: NoAuthentication }),
+  /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
+  /*@__PURE__*/ S.Struct({ NoAuthentication: NoAuthentication }),
 ]);
 export interface CreateRelayRequest {
   ClientToken?: string;
@@ -466,9 +469,9 @@ export type RuleBooleanToEvaluate =
   | { Attribute?: never; Analysis: Analysis; IsInAddressList?: never }
   | { Attribute?: never; Analysis?: never; IsInAddressList: RuleIsInAddressList };
 export const RuleBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: RuleBooleanEmailAttribute }),
-  S.Struct({ Analysis: Analysis }),
-  S.Struct({ IsInAddressList: RuleIsInAddressList }),
+  /*@__PURE__*/ S.Struct({ Attribute: RuleBooleanEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
+  /*@__PURE__*/ S.Struct({ IsInAddressList: RuleIsInAddressList }),
 ]);
 export type RuleBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 export const RuleBooleanOperator = S.String;
@@ -531,10 +534,10 @@ export type RuleStringToEvaluate =
       ClientCertificateAttribute: RuleClientCertificateAttribute;
     };
 export const RuleStringToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: RuleStringEmailAttribute }),
-  S.Struct({ MimeHeaderAttribute: S.String }),
-  S.Struct({ Analysis: Analysis }),
-  S.Struct({ ClientCertificateAttribute: RuleClientCertificateAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: RuleStringEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ MimeHeaderAttribute: S.String }),
+  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
+  /*@__PURE__*/ S.Struct({ ClientCertificateAttribute: RuleClientCertificateAttribute }),
 ]);
 export type RuleStringOperator =
   | "EQUALS"
@@ -565,7 +568,7 @@ export const RuleNumberEmailAttribute = S.String;
 
 export type RuleNumberToEvaluate = { Attribute: RuleNumberEmailAttribute };
 export const RuleNumberToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: RuleNumberEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: RuleNumberEmailAttribute }),
 ]);
 export type RuleNumberOperator =
   | "EQUALS"
@@ -590,7 +593,7 @@ export const RuleIpEmailAttribute = S.String;
 
 export type RuleIpToEvaluate = { Attribute: RuleIpEmailAttribute };
 export const RuleIpToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: RuleIpEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: RuleIpEmailAttribute }),
 ]);
 export type RuleIpOperator = "CIDR_MATCHES" | "NOT_CIDR_MATCHES" | (string & {});
 export const RuleIpOperator = S.String;
@@ -613,8 +616,8 @@ export type RuleVerdictToEvaluate =
   | { Attribute: RuleVerdictAttribute; Analysis?: never }
   | { Attribute?: never; Analysis: Analysis };
 export const RuleVerdictToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: RuleVerdictAttribute }),
-  S.Struct({ Analysis: Analysis }),
+  /*@__PURE__*/ S.Struct({ Attribute: RuleVerdictAttribute }),
+  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
 ]);
 export type RuleVerdictOperator = "EQUALS" | "NOT_EQUALS" | (string & {});
 export const RuleVerdictOperator = S.String;
@@ -701,12 +704,12 @@ export type RuleCondition =
       DmarcExpression: RuleDmarcExpression;
     };
 export const RuleCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ BooleanExpression: RuleBooleanExpression }),
-  S.Struct({ StringExpression: RuleStringExpression }),
-  S.Struct({ NumberExpression: RuleNumberExpression }),
-  S.Struct({ IpExpression: RuleIpExpression }),
-  S.Struct({ VerdictExpression: RuleVerdictExpression }),
-  S.Struct({ DmarcExpression: RuleDmarcExpression }),
+  /*@__PURE__*/ S.Struct({ BooleanExpression: RuleBooleanExpression }),
+  /*@__PURE__*/ S.Struct({ StringExpression: RuleStringExpression }),
+  /*@__PURE__*/ S.Struct({ NumberExpression: RuleNumberExpression }),
+  /*@__PURE__*/ S.Struct({ IpExpression: RuleIpExpression }),
+  /*@__PURE__*/ S.Struct({ VerdictExpression: RuleVerdictExpression }),
+  /*@__PURE__*/ S.Struct({ DmarcExpression: RuleDmarcExpression }),
 ]);
 export type RuleConditions = RuleCondition[];
 export const RuleConditions = /*@__PURE__*/ S.Array(RuleCondition);
@@ -1052,18 +1055,18 @@ export type RuleAction =
       InvokeLambda: InvokeLambdaAction;
     };
 export const RuleAction = /*@__PURE__*/ S.Union([
-  S.Struct({ Drop: DropAction }),
-  S.Struct({ Relay: RelayAction }),
-  S.Struct({ Archive: ArchiveAction }),
-  S.Struct({ WriteToS3: S3Action }),
-  S.Struct({ Send: SendAction }),
-  S.Struct({ AddHeader: AddHeaderAction }),
-  S.Struct({ ReplaceRecipient: ReplaceRecipientAction }),
-  S.Struct({ DeliverToMailbox: DeliverToMailboxAction }),
-  S.Struct({ DeliverToQBusiness: DeliverToQBusinessAction }),
-  S.Struct({ PublishToSns: SnsAction }),
-  S.Struct({ Bounce: BounceAction }),
-  S.Struct({ InvokeLambda: InvokeLambdaAction }),
+  /*@__PURE__*/ S.Struct({ Drop: DropAction }),
+  /*@__PURE__*/ S.Struct({ Relay: RelayAction }),
+  /*@__PURE__*/ S.Struct({ Archive: ArchiveAction }),
+  /*@__PURE__*/ S.Struct({ WriteToS3: S3Action }),
+  /*@__PURE__*/ S.Struct({ Send: SendAction }),
+  /*@__PURE__*/ S.Struct({ AddHeader: AddHeaderAction }),
+  /*@__PURE__*/ S.Struct({ ReplaceRecipient: ReplaceRecipientAction }),
+  /*@__PURE__*/ S.Struct({ DeliverToMailbox: DeliverToMailboxAction }),
+  /*@__PURE__*/ S.Struct({ DeliverToQBusiness: DeliverToQBusinessAction }),
+  /*@__PURE__*/ S.Struct({ PublishToSns: SnsAction }),
+  /*@__PURE__*/ S.Struct({ Bounce: BounceAction }),
+  /*@__PURE__*/ S.Struct({ InvokeLambda: InvokeLambdaAction }),
 ]);
 export type RuleActions = RuleAction[];
 export const RuleActions = /*@__PURE__*/ S.Array(RuleAction);
@@ -1118,8 +1121,8 @@ export type IngressStringToEvaluate =
   | { Attribute: IngressStringEmailAttribute; Analysis?: never }
   | { Attribute?: never; Analysis: IngressAnalysis };
 export const IngressStringToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: IngressStringEmailAttribute }),
-  S.Struct({ Analysis: IngressAnalysis }),
+  /*@__PURE__*/ S.Struct({ Attribute: IngressStringEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
 ]);
 export type IngressStringOperator =
   | "EQUALS"
@@ -1149,7 +1152,7 @@ export const IngressIpv4Attribute = S.String;
 
 export type IngressIpToEvaluate = { Attribute: IngressIpv4Attribute };
 export const IngressIpToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: IngressIpv4Attribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: IngressIpv4Attribute }),
 ]);
 export type IngressIpOperator = "CIDR_MATCHES" | "NOT_CIDR_MATCHES" | (string & {});
 export const IngressIpOperator = S.String;
@@ -1170,7 +1173,7 @@ export const IngressIpv6Attribute = S.String;
 
 export type IngressIpv6ToEvaluate = { Attribute: IngressIpv6Attribute };
 export const IngressIpv6ToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: IngressIpv6Attribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: IngressIpv6Attribute }),
 ]);
 export type Ipv6Cidr = string;
 export type Ipv6Cidrs = string[];
@@ -1188,7 +1191,7 @@ export const IngressTlsAttribute = S.String;
 
 export type IngressTlsProtocolToEvaluate = { Attribute: IngressTlsAttribute };
 export const IngressTlsProtocolToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: IngressTlsAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: IngressTlsAttribute }),
 ]);
 export type IngressTlsProtocolOperator = "MINIMUM_TLS_VERSION" | "IS" | (string & {});
 export const IngressTlsProtocolOperator = S.String;
@@ -1229,8 +1232,8 @@ export type IngressBooleanToEvaluate =
   | { Analysis: IngressAnalysis; IsInAddressList?: never }
   | { Analysis?: never; IsInAddressList: IngressIsInAddressList };
 export const IngressBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Analysis: IngressAnalysis }),
-  S.Struct({ IsInAddressList: IngressIsInAddressList }),
+  /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
+  /*@__PURE__*/ S.Struct({ IsInAddressList: IngressIsInAddressList }),
 ]);
 export type IngressBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 export const IngressBooleanOperator = S.String;
@@ -1279,11 +1282,11 @@ export type PolicyCondition =
       BooleanExpression: IngressBooleanExpression;
     };
 export const PolicyCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ StringExpression: IngressStringExpression }),
-  S.Struct({ IpExpression: IngressIpv4Expression }),
-  S.Struct({ Ipv6Expression: IngressIpv6Expression }),
-  S.Struct({ TlsExpression: IngressTlsProtocolExpression }),
-  S.Struct({ BooleanExpression: IngressBooleanExpression }),
+  /*@__PURE__*/ S.Struct({ StringExpression: IngressStringExpression }),
+  /*@__PURE__*/ S.Struct({ IpExpression: IngressIpv4Expression }),
+  /*@__PURE__*/ S.Struct({ Ipv6Expression: IngressIpv6Expression }),
+  /*@__PURE__*/ S.Struct({ TlsExpression: IngressTlsProtocolExpression }),
+  /*@__PURE__*/ S.Struct({ BooleanExpression: IngressBooleanExpression }),
 ]);
 export type PolicyConditions = PolicyCondition[];
 export const PolicyConditions = /*@__PURE__*/ S.Array(PolicyCondition);
@@ -1631,7 +1634,7 @@ export const ArchiveStringEmailAttribute = S.String;
 
 export type ArchiveStringToEvaluate = { Attribute: ArchiveStringEmailAttribute };
 export const ArchiveStringToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: ArchiveStringEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: ArchiveStringEmailAttribute }),
 ]);
 export type ArchiveStringOperator = "CONTAINS" | (string & {});
 export const ArchiveStringOperator = S.String;
@@ -1656,7 +1659,7 @@ export const ArchiveBooleanEmailAttribute = S.String;
 
 export type ArchiveBooleanToEvaluate = { Attribute: ArchiveBooleanEmailAttribute };
 export const ArchiveBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  S.Struct({ Attribute: ArchiveBooleanEmailAttribute }),
+  /*@__PURE__*/ S.Struct({ Attribute: ArchiveBooleanEmailAttribute }),
 ]);
 export type ArchiveBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 export const ArchiveBooleanOperator = S.String;
@@ -1672,8 +1675,8 @@ export type ArchiveFilterCondition =
   | { StringExpression: ArchiveStringExpression; BooleanExpression?: never }
   | { StringExpression?: never; BooleanExpression: ArchiveBooleanExpression };
 export const ArchiveFilterCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ StringExpression: ArchiveStringExpression }),
-  S.Struct({ BooleanExpression: ArchiveBooleanExpression }),
+  /*@__PURE__*/ S.Struct({ StringExpression: ArchiveStringExpression }),
+  /*@__PURE__*/ S.Struct({ BooleanExpression: ArchiveBooleanExpression }),
 ]);
 export type ArchiveFilterConditions = ArchiveFilterCondition[];
 export const ArchiveFilterConditions = /*@__PURE__*/ S.Array(ArchiveFilterCondition);
@@ -1699,7 +1702,7 @@ export const S3ExportDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3ExportDestinationConfiguration>;
 export type ExportDestinationConfiguration = { S3: S3ExportDestinationConfiguration };
 export const ExportDestinationConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ S3: S3ExportDestinationConfiguration }),
+  /*@__PURE__*/ S.Struct({ S3: S3ExportDestinationConfiguration }),
 ]);
 export type ExportState =
   | "QUEUED"

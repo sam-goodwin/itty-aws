@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "ACM", serviceShapeName: "CertificateManager" });
-const auth = T.AwsAuthSigv4({ name: "acm" });
-const ver = T.ServiceVersion("2015-12-08");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "ACM", serviceShapeName: "CertificateManager" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "acm" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-12-08");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, Endpoint, UseFIPS = false, UseDualStack = false, ServiceType } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -64,89 +64,100 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.Retryable(),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.Retryable(),
   ).pipe(C.withRetryableError) {}
 export class InvalidArgsException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgsException>()("InvalidArgsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidArnException
   extends /*@__PURE__*/ S.TaggedError<InvalidArnException>()("InvalidArnException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidDomainValidationOptionsException
   extends /*@__PURE__*/ S.TaggedError<InvalidDomainValidationOptionsException>()(
     "InvalidDomainValidationOptionsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()("InvalidStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTagException
   extends /*@__PURE__*/ S.TaggedError<InvalidTagException>()("InvalidTagException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError) {}
 export class RequestInProgressException
   extends /*@__PURE__*/ S.TaggedError<RequestInProgressException>()("RequestInProgressException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class TagPolicyException
   extends /*@__PURE__*/ S.TaggedError<TagPolicyException>()("TagPolicyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      throttlingReasons: S.optional(
-        S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      throttlingReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
       ),
     },
-    T.all(T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }), T.HttpError(400)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()("TooManyTagsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type TagKey = string;
@@ -210,7 +221,7 @@ export const DnsPrevalidationOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsPrevalidationOptions" }) as any as S.Schema<DnsPrevalidationOptions>;
 export type PrevalidationOptions = { DnsPrevalidation: DnsPrevalidationOptions };
 export const PrevalidationOptions = /*@__PURE__*/ S.Union([
-  S.Struct({ DnsPrevalidation: DnsPrevalidationOptions }),
+  /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationOptions }),
 ]);
 export interface CreateAcmeDomainValidationRequest {
   IdempotencyToken?: string;
@@ -270,7 +281,7 @@ export const PublicCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicCertificateAuthority>;
 export type CertificateAuthority = { PublicCertificateAuthority: PublicCertificateAuthority };
 export const CertificateAuthority = /*@__PURE__*/ S.Union([
-  S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
+  /*@__PURE__*/ S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
 ]);
 export interface CreateAcmeEndpointRequest {
   IdempotencyToken?: string;
@@ -568,7 +579,7 @@ export const DnsPrevalidationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsPrevalidationDetails" }) as any as S.Schema<DnsPrevalidationDetails>;
 export type PrevalidationDetails = { DnsPrevalidation: DnsPrevalidationDetails };
 export const PrevalidationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ DnsPrevalidation: DnsPrevalidationDetails }),
+  /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationDetails }),
 ]);
 export type AcmeDomainValidationStatus =
   | "VALIDATING"
@@ -1474,8 +1485,8 @@ export type ValidationChallenge =
   | { EmailValidationChallenge: EmailValidationChallenge; DnsValidationChallenge?: never }
   | { EmailValidationChallenge?: never; DnsValidationChallenge: DnsValidationChallenge };
 export const ValidationChallenge = /*@__PURE__*/ S.Union([
-  S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
-  S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
+  /*@__PURE__*/ S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
+  /*@__PURE__*/ S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
 ]);
 export interface ValidationConfiguration {
   ValidationMethod?: ValidationMethod;
@@ -1917,7 +1928,7 @@ export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeCertificateResponse>;
 export type CertificateFilterStatementList = CertificateFilterStatement[];
 export const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
-  S.suspend(() => CertificateFilterStatement).annotate({
+  /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
     identifier: "CertificateFilterStatement",
   }),
 ) as any as S.Schema<CertificateFilterStatementList>;
@@ -1933,7 +1944,9 @@ export const CommonNameFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
 ).annotate({ identifier: "CommonNameFilter" }) as any as S.Schema<CommonNameFilter>;
 export type SubjectFilter = { CommonName: CommonNameFilter };
-export const SubjectFilter = /*@__PURE__*/ S.Union([S.Struct({ CommonName: CommonNameFilter })]);
+export const SubjectFilter = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ CommonName: CommonNameFilter }),
+]);
 export interface DnsNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
@@ -1943,7 +1956,7 @@ export const DnsNameFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsNameFilter" }) as any as S.Schema<DnsNameFilter>;
 export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
 export const SubjectAlternativeNameFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ DnsName: DnsNameFilter }),
+  /*@__PURE__*/ S.Struct({ DnsName: DnsNameFilter }),
 ]);
 export type SerialNumber = string;
 export interface TimestampRange {
@@ -2038,14 +2051,14 @@ export type X509AttributeFilter =
       NotBefore: TimestampRange;
     };
 export const X509AttributeFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ Subject: SubjectFilter }),
-  S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
-  S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
-  S.Struct({ KeyUsage: KeyUsageName }),
-  S.Struct({ KeyAlgorithm: KeyAlgorithm }),
-  S.Struct({ SerialNumber: S.String }),
-  S.Struct({ NotAfter: TimestampRange }),
-  S.Struct({ NotBefore: TimestampRange }),
+  /*@__PURE__*/ S.Struct({ Subject: SubjectFilter }),
+  /*@__PURE__*/ S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
+  /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
+  /*@__PURE__*/ S.Struct({ KeyUsage: KeyUsageName }),
+  /*@__PURE__*/ S.Struct({ KeyAlgorithm: KeyAlgorithm }),
+  /*@__PURE__*/ S.Struct({ SerialNumber: S.String }),
+  /*@__PURE__*/ S.Struct({ NotAfter: TimestampRange }),
+  /*@__PURE__*/ S.Struct({ NotBefore: TimestampRange }),
 ]);
 export type AcmCertificateMetadataFilter =
   | {
@@ -2192,17 +2205,17 @@ export type AcmCertificateMetadataFilter =
       AcmeAccountId: string;
     };
 export const AcmCertificateMetadataFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ Status: CertificateStatus }),
-  S.Struct({ RenewalStatus: RenewalStatus }),
-  S.Struct({ Type: CertificateType }),
-  S.Struct({ InUse: S.Boolean }),
-  S.Struct({ Exported: S.Boolean }),
-  S.Struct({ ExportOption: CertificateExport }),
-  S.Struct({ ManagedBy: CertificateManagedBy }),
-  S.Struct({ ValidationMethod: ValidationMethod }),
-  S.Struct({ CertificateKeyPairOrigin: CertificateKeyPairOrigin }),
-  S.Struct({ AcmeEndpointArn: S.String }),
-  S.Struct({ AcmeAccountId: S.String }),
+  /*@__PURE__*/ S.Struct({ Status: CertificateStatus }),
+  /*@__PURE__*/ S.Struct({ RenewalStatus: RenewalStatus }),
+  /*@__PURE__*/ S.Struct({ Type: CertificateType }),
+  /*@__PURE__*/ S.Struct({ InUse: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ Exported: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ ExportOption: CertificateExport }),
+  /*@__PURE__*/ S.Struct({ ManagedBy: CertificateManagedBy }),
+  /*@__PURE__*/ S.Struct({ ValidationMethod: ValidationMethod }),
+  /*@__PURE__*/ S.Struct({ CertificateKeyPairOrigin: CertificateKeyPairOrigin }),
+  /*@__PURE__*/ S.Struct({ AcmeEndpointArn: S.String }),
+  /*@__PURE__*/ S.Struct({ AcmeAccountId: S.String }),
 ]);
 export type CertificateFilter =
   | { CertificateArn: string; X509AttributeFilter?: never; AcmCertificateMetadataFilter?: never }
@@ -2217,9 +2230,9 @@ export type CertificateFilter =
       AcmCertificateMetadataFilter: AcmCertificateMetadataFilter;
     };
 export const CertificateFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ CertificateArn: S.String }),
-  S.Struct({ X509AttributeFilter: X509AttributeFilter }),
-  S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
+  /*@__PURE__*/ S.Struct({ CertificateArn: S.String }),
+  /*@__PURE__*/ S.Struct({ X509AttributeFilter: X509AttributeFilter }),
+  /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
 ]);
 export type CertificateFilterStatement =
   | { And: CertificateFilterStatement[]; Or?: never; Not?: never; Filter?: never }
@@ -2227,22 +2240,22 @@ export type CertificateFilterStatement =
   | { And?: never; Or?: never; Not: CertificateFilterStatement; Filter?: never }
   | { And?: never; Or?: never; Not?: never; Filter: CertificateFilter };
 export const CertificateFilterStatement = /*@__PURE__*/ S.Union([
-  S.Struct({
-    And: S.suspend(() => CertificateFilterStatementList).annotate({
+  /*@__PURE__*/ S.Struct({
+    And: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
       identifier: "CertificateFilterStatementList",
     }),
   }),
-  S.Struct({
-    Or: S.suspend(() => CertificateFilterStatementList).annotate({
+  /*@__PURE__*/ S.Struct({
+    Or: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
       identifier: "CertificateFilterStatementList",
     }),
   }),
-  S.Struct({
-    Not: S.suspend(() => CertificateFilterStatement).annotate({
+  /*@__PURE__*/ S.Struct({
+    Not: /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
       identifier: "CertificateFilterStatement",
     }),
   }),
-  S.Struct({ Filter: CertificateFilter }),
+  /*@__PURE__*/ S.Struct({ Filter: CertificateFilter }),
 ]) as any as S.Schema<CertificateFilterStatement>;
 export type SearchMaxResults = number;
 export type SearchCertificatesSortBy =
@@ -2422,13 +2435,13 @@ export type GeneralName =
       UniformResourceIdentifier: string;
     };
 export const GeneralName = /*@__PURE__*/ S.Union([
-  S.Struct({ DirectoryName: DistinguishedName }),
-  S.Struct({ DnsName: S.String }),
-  S.Struct({ IpAddress: S.String }),
-  S.Struct({ OtherName: OtherName }),
-  S.Struct({ RegisteredId: S.String }),
-  S.Struct({ Rfc822Name: S.String }),
-  S.Struct({ UniformResourceIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ DirectoryName: DistinguishedName }),
+  /*@__PURE__*/ S.Struct({ DnsName: S.String }),
+  /*@__PURE__*/ S.Struct({ IpAddress: S.String }),
+  /*@__PURE__*/ S.Struct({ OtherName: OtherName }),
+  /*@__PURE__*/ S.Struct({ RegisteredId: S.String }),
+  /*@__PURE__*/ S.Struct({ Rfc822Name: S.String }),
+  /*@__PURE__*/ S.Struct({ UniformResourceIdentifier: S.String }),
 ]);
 export type GeneralNameList = GeneralName[];
 export const GeneralNameList = /*@__PURE__*/ S.Array(GeneralName);
@@ -2496,7 +2509,7 @@ export const AcmCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AcmCertificateMetadata" }) as any as S.Schema<AcmCertificateMetadata>;
 export type CertificateMetadata = { AcmCertificateMetadata: AcmCertificateMetadata };
 export const CertificateMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata }),
+  /*@__PURE__*/ S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata }),
 ]);
 export interface CertificateSearchResult {
   CertificateArn?: string;

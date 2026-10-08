@@ -1033,7 +1033,7 @@ export const ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusLi
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -5204,7 +5204,7 @@ export const ManagedClusterPodIdentityProvisioningState = S.String;
 export type ManagedClusterPodIdentityProvisioningErrorBodyDetailsList =
   Array<ManagedClusterPodIdentityProvisioningErrorBody>;
 export const ManagedClusterPodIdentityProvisioningErrorBodyDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ManagedClusterPodIdentityProvisioningErrorBody),
+  /*@__PURE__*/ S.suspend(() => ManagedClusterPodIdentityProvisioningErrorBody),
 ) as any as S.Schema<ManagedClusterPodIdentityProvisioningErrorBodyDetailsList>;
 
 /** An error response from the pod identity provisioning. */

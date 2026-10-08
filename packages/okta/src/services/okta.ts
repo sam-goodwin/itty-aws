@@ -1066,7 +1066,7 @@ export const EventHookChannelConfigHeader = /*@__PURE__*/ S.suspend(() =>
 /** Optional list of key/value pairs for headers that can be sent with the request to the external service. For example, `X-Other-Header` is an example of an optional header, with a value of `my-header-value`, that you want Okta to pass to your external service. */
 export type EventHookChannelConfigOutputHeadersList = Array<EventHookChannelConfigHeader | null>;
 export const EventHookChannelConfigOutputHeadersList = /*@__PURE__*/ S.Array(
-  S.NullOr(EventHookChannelConfigHeader),
+  /*@__PURE__*/ S.NullOr(EventHookChannelConfigHeader),
 ) as any as S.Schema<EventHookChannelConfigOutputHeadersList>;
 
 export interface EventHookChannelConfigOutput {
@@ -8314,7 +8314,7 @@ export const EventHookChannelConfigAuthScheme = /*@__PURE__*/ S.suspend(() =>
 /** Optional list of key/value pairs for headers that can be sent with the request to the external service. For example, `X-Other-Header` is an example of an optional header, with a value of `my-header-value`, that you want Okta to pass to your external service. */
 export type EventHookChannelConfigInputHeadersList = Array<EventHookChannelConfigHeader | null>;
 export const EventHookChannelConfigInputHeadersList = /*@__PURE__*/ S.Array(
-  S.NullOr(EventHookChannelConfigHeader),
+  /*@__PURE__*/ S.NullOr(EventHookChannelConfigHeader),
 ) as any as S.Schema<EventHookChannelConfigInputHeadersList>;
 
 export interface EventHookChannelConfigInput {
@@ -34976,7 +34976,7 @@ export const UserFactorVerifyResponseProfileMap = /*@__PURE__*/ S.Record(
 export type UserFactorVerifyResponseEmbeddedMap = { [key: string]: unknown | null | undefined };
 export const UserFactorVerifyResponseEmbeddedMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<UserFactorVerifyResponseEmbeddedMap>;
 
 export interface UserFactorVerifyResponse {

@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "amp", serviceShapeName: "AmazonPrometheusService" });
-const auth = T.AwsAuthSigv4({ name: "aps" });
-const ver = T.ServiceVersion("2020-08-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "amp",
+  serviceShapeName: "AmazonPrometheusService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aps" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-08-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,66 +72,78 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type WorkspaceId = string;
 export type AlertManagerDefinitionData = Uint8Array;
@@ -180,16 +195,16 @@ export type AnomalyDetectorMissingDataAction =
   | { markAsAnomaly: boolean; skip?: never }
   | { markAsAnomaly?: never; skip: boolean };
 export const AnomalyDetectorMissingDataAction = /*@__PURE__*/ S.Union([
-  S.Struct({ markAsAnomaly: S.Boolean }),
-  S.Struct({ skip: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ markAsAnomaly: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ skip: S.Boolean }),
 ]);
 export type RandomCutForestQuery = string;
 export type IgnoreNearExpected =
   | { amount: number; ratio?: never }
   | { amount?: never; ratio: number };
 export const IgnoreNearExpected = /*@__PURE__*/ S.Union([
-  S.Struct({ amount: S.Number }),
-  S.Struct({ ratio: S.Number }),
+  /*@__PURE__*/ S.Struct({ amount: S.Number }),
+  /*@__PURE__*/ S.Struct({ ratio: S.Number }),
 ]);
 export interface RandomCutForestConfiguration {
   query: string;
@@ -211,16 +226,19 @@ export const RandomCutForestConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RandomCutForestConfiguration>;
 export type AnomalyDetectorConfiguration = { randomCutForest: RandomCutForestConfiguration };
 export const AnomalyDetectorConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ randomCutForest: RandomCutForestConfiguration }),
+  /*@__PURE__*/ S.Struct({ randomCutForest: RandomCutForestConfiguration }),
 ]);
 export type PrometheusMetricLabelKey = string;
 export type PrometheusMetricLabelValue = string;
 export type PrometheusMetricLabelMap = { [key: string]: string | undefined };
-export const PrometheusMetricLabelMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PrometheusMetricLabelMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAnomalyDetectorRequest {
   workspaceId: string;
   alias: string;
@@ -452,7 +470,9 @@ export const CreateRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRuleGroupsNamespaceResponse>;
 export type ScraperAlias = string;
 export type ScrapeConfiguration = { configurationBlob: Uint8Array };
-export const ScrapeConfiguration = /*@__PURE__*/ S.Union([S.Struct({ configurationBlob: T.Blob })]);
+export const ScrapeConfiguration = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ configurationBlob: T.Blob }),
+]);
 export type ClusterArn = string;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
@@ -483,8 +503,8 @@ export type Source =
   | { eksConfiguration: EksConfiguration; vpcConfiguration?: never }
   | { eksConfiguration?: never; vpcConfiguration: VpcConfiguration };
 export const Source = /*@__PURE__*/ S.Union([
-  S.Struct({ eksConfiguration: EksConfiguration }),
-  S.Struct({ vpcConfiguration: VpcConfiguration }),
+  /*@__PURE__*/ S.Struct({ eksConfiguration: EksConfiguration }),
+  /*@__PURE__*/ S.Struct({ vpcConfiguration: VpcConfiguration }),
 ]);
 export type WorkspaceArn = string;
 export interface AmpConfiguration {
@@ -504,8 +524,8 @@ export type Destination =
   | { ampConfiguration: AmpConfiguration; cloudWatchConfiguration?: never }
   | { ampConfiguration?: never; cloudWatchConfiguration: CloudWatchConfiguration };
 export const Destination = /*@__PURE__*/ S.Union([
-  S.Struct({ ampConfiguration: AmpConfiguration }),
-  S.Struct({ cloudWatchConfiguration: CloudWatchConfiguration }),
+  /*@__PURE__*/ S.Struct({ ampConfiguration: AmpConfiguration }),
+  /*@__PURE__*/ S.Struct({ cloudWatchConfiguration: CloudWatchConfiguration }),
 ]);
 export type IamRoleArn = string;
 export interface RoleConfiguration {
@@ -526,7 +546,7 @@ export const OpenSearchExporterConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenSearchExporterConfiguration>;
 export type ExporterConfiguration = { openSearchConfiguration: OpenSearchExporterConfiguration };
 export const ExporterConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ openSearchConfiguration: OpenSearchExporterConfiguration }),
+  /*@__PURE__*/ S.Struct({ openSearchConfiguration: OpenSearchExporterConfiguration }),
 ]);
 export type ExporterList = ExporterConfiguration[];
 export const ExporterList = /*@__PURE__*/ S.Array(ExporterConfiguration);
@@ -1191,11 +1211,11 @@ export const ScraperLoggingConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScraperLoggingConfigurationStatus>;
 export type ScraperLoggingDestination = { cloudWatchLogs: CloudWatchLogDestination };
 export const ScraperLoggingDestination = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudWatchLogs: CloudWatchLogDestination }),
+  /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogDestination }),
 ]);
 export type ScraperComponentType = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ComponentConfig {
   options?: { [key: string]: string | undefined };
 }
@@ -1311,7 +1331,7 @@ export const LimitsPerLabelSetEntry = /*@__PURE__*/ S.suspend(() =>
 export type LabelName = string;
 export type LabelValue = string;
 export type LabelSet = { [key: string]: string | undefined };
-export const LabelSet = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LabelSet = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface LimitsPerLabelSet {
   limits: LimitsPerLabelSetEntry;
   labelSet: { [key: string]: string | undefined };
@@ -1484,7 +1504,10 @@ export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export type ScraperFilters = { [key: string]: string[] | undefined };
-export const ScraperFilters = /*@__PURE__*/ S.Record(S.String, FilterValues.pipe(S.optional));
+export const ScraperFilters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FilterValues.pipe(S.optional),
+);
 export interface ListScrapersRequest {
   filters?: { [key: string]: string[] | undefined };
   nextToken?: string;

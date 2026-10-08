@@ -695,7 +695,7 @@ export const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
 
 export type AccountsTableQueryResponseMetricsResultsList = Array<number | null>;
 export const AccountsTableQueryResponseMetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<AccountsTableQueryResponseMetricsResultsList>;
 
 export type QueryStatusLabelsList = Array<string>;
@@ -882,7 +882,7 @@ export const ResolvedDateRangeResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccountsTableRowAccountFieldsMap = { [key: string]: string | null | undefined };
 export const AccountsTableRowAccountFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<AccountsTableRowAccountFieldsMap>;
 
 export type AccountsTableRowCustomPropertiesValue = string | number | boolean;
@@ -895,7 +895,7 @@ export type AccountsTableRowCustomPropertiesMap = {
 };
 export const AccountsTableRowCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AccountsTableRowCustomPropertiesValue),
+  /*@__PURE__*/ S.NullOr(AccountsTableRowCustomPropertiesValue),
 ) as any as S.Schema<AccountsTableRowCustomPropertiesMap>;
 
 export interface AccountsTableCustomPropertyHistoryPoint {

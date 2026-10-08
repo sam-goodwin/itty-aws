@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Agent Registry Control",
   serviceShapeName: "AgentRegistryControl",
 });
-const auth = T.AwsAuthSigv4({ name: "agent-registry" });
-const ver = T.ServiceVersion("2025-12-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "agent-registry" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-12-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p) => {
   const { Region, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -40,54 +40,54 @@ const rules = T.EndpointResolver((p) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type RegistryName = string;
 export type Description = string | redacted.Redacted<string>;
@@ -119,8 +119,8 @@ export type ClaimMatchValueType =
   | { matchValueString: string; matchValueStringList?: never }
   | { matchValueString?: never; matchValueStringList: string[] };
 export const ClaimMatchValueType = /*@__PURE__*/ S.Union([
-  S.Struct({ matchValueString: S.String }),
-  S.Struct({ matchValueStringList: MatchValueStringList }),
+  /*@__PURE__*/ S.Struct({ matchValueString: S.String }),
+  /*@__PURE__*/ S.Struct({ matchValueStringList: MatchValueStringList }),
 ]);
 export type ClaimMatchOperatorType = "EQUALS" | "CONTAINS" | "CONTAINS_ANY" | (string & {});
 export const ClaimMatchOperatorType = S.String;
@@ -153,7 +153,7 @@ export const CustomClaimValidationsType = /*@__PURE__*/ S.Array(CustomClaimValid
 export type ResourceConfigurationIdentifier = string;
 export type SelfManagedLatticeResource = { resourceConfigurationIdentifier: string };
 export const SelfManagedLatticeResource = /*@__PURE__*/ S.Union([
-  S.Struct({ resourceConfigurationIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceConfigurationIdentifier: S.String }),
 ]);
 export type VpcIdentifier = string;
 export type SubnetId = string;
@@ -168,7 +168,7 @@ export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type RoutingDomain = string;
 export interface ManagedVpcResource {
   vpcIdentifier: string;
@@ -192,8 +192,8 @@ export type PrivateEndpoint =
   | { selfManagedLatticeResource: SelfManagedLatticeResource; managedVpcResource?: never }
   | { selfManagedLatticeResource?: never; managedVpcResource: ManagedVpcResource };
 export const PrivateEndpoint = /*@__PURE__*/ S.Union([
-  S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
-  S.Struct({ managedVpcResource: ManagedVpcResource }),
+  /*@__PURE__*/ S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
+  /*@__PURE__*/ S.Struct({ managedVpcResource: ManagedVpcResource }),
 ]);
 export type PrivateEndpointOverrideDomain = string;
 export interface PrivateEndpointOverride {
@@ -229,7 +229,7 @@ export const CustomJWTAuthorizerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomJWTAuthorizerConfiguration>;
 export type AuthorizerConfiguration = { customJWTAuthorizer: CustomJWTAuthorizerConfiguration };
 export const AuthorizerConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customJWTAuthorizer: CustomJWTAuthorizerConfiguration }),
+  /*@__PURE__*/ S.Struct({ customJWTAuthorizer: CustomJWTAuthorizerConfiguration }),
 ]);
 export type RegistryAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
 export const RegistryAuthorizerType = S.String;
@@ -353,7 +353,10 @@ export const RegistryRecordOAuthGrantType = S.String;
 export type ScopeList = string[];
 export const ScopeList = /*@__PURE__*/ S.Array(S.String);
 export type CustomParameterMap = { [key: string]: string | undefined };
-export const CustomParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RegistryRecordOAuthCredentialProvider {
   providerArn: string;
   grantType?: RegistryRecordOAuthGrantType;
@@ -394,8 +397,8 @@ export type RegistryRecordCredentialProviderUnion =
     }
   | { oauthCredentialProvider?: never; iamCredentialProvider: RegistryRecordIamCredentialProvider };
 export const RegistryRecordCredentialProviderUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
-  S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
 ]);
 export interface RegistryRecordCredentialProviderConfiguration {
   credentialProviderType: RegistryRecordCredentialProviderType;
@@ -591,8 +594,8 @@ export type SourceDetails =
   | { agentcoreRuntime: AgentCoreRuntimeSourceDetails; agentcoreGateway?: never }
   | { agentcoreRuntime?: never; agentcoreGateway: AgentCoreGatewaySourceDetails };
 export const SourceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ agentcoreRuntime: AgentCoreRuntimeSourceDetails }),
-  S.Struct({ agentcoreGateway: AgentCoreGatewaySourceDetails }),
+  /*@__PURE__*/ S.Struct({ agentcoreRuntime: AgentCoreRuntimeSourceDetails }),
+  /*@__PURE__*/ S.Struct({ agentcoreGateway: AgentCoreGatewaySourceDetails }),
 ]);
 export interface Provenance {
   relation: ProvenanceRelation;
@@ -1029,7 +1032,10 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResourceTagsMap = { [key: string]: string | undefined };
-export const ResourceTagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }

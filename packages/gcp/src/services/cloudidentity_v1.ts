@@ -12,12 +12,12 @@ export type { GcpOpError, GcpOpContext };
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -25,12 +25,12 @@ export class BadRequest
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -38,12 +38,12 @@ export class Conflict
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -52,12 +52,12 @@ export class Forbidden
 export class InsufficientScopes
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<InsufficientScopes>()("InsufficientScopes", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403, message: { includes: "insufficient authentication scopes" } }],
   ) {}
@@ -65,12 +65,12 @@ export class InsufficientScopes
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -79,12 +79,12 @@ export class NotFound
 export class ServiceDisabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceDisabled>()("ServiceDisabled", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403, message: { includes: "has not been used in project" } }],
   ) {}

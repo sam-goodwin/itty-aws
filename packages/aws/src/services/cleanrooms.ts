@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CleanRooms",
   serviceShapeName: "AWSBastionControlPlaneServiceLambda",
 });
-const auth = T.AwsAuthSigv4({ name: "cleanrooms" });
-const ver = T.ServiceVersion("2022-02-17");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cleanrooms" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-02-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,57 +78,68 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), reason: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      reason: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), quotaName: S.String, quotaValue: S.Number },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaName: S.String,
+      quotaValue: S.Number,
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      reason: S.optional(S.String),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type CollaborationIdentifier = string;
 export type AnalysisTemplateArn = string;
@@ -211,8 +222,8 @@ export type AnalysisSource =
   | { text: string | redacted.Redacted<string>; artifacts?: never }
   | { text?: never; artifacts: AnalysisTemplateArtifacts };
 export const AnalysisSource = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ artifacts: AnalysisTemplateArtifacts }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ artifacts: AnalysisTemplateArtifacts }),
 ]);
 export interface Hash {
   sha256?: string;
@@ -233,7 +244,7 @@ export const AnalysisTemplateArtifactMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisTemplateArtifactMetadata>;
 export type AnalysisSourceMetadata = { artifacts: AnalysisTemplateArtifactMetadata };
 export const AnalysisSourceMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ artifacts: AnalysisTemplateArtifactMetadata }),
+  /*@__PURE__*/ S.Struct({ artifacts: AnalysisTemplateArtifactMetadata }),
 ]);
 export type ParameterName = string;
 export type ParameterType =
@@ -375,7 +386,7 @@ export const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MLSyntheticDataParameters>;
 export type SyntheticDataParameters = { mlSyntheticDataParameters: MLSyntheticDataParameters };
 export const SyntheticDataParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ mlSyntheticDataParameters: MLSyntheticDataParameters }),
+  /*@__PURE__*/ S.Struct({ mlSyntheticDataParameters: MLSyntheticDataParameters }),
 ]);
 export interface CollaborationAnalysisTemplate {
   id: string;
@@ -623,9 +634,11 @@ export type SchemaTypeProperties =
       configuredTableAssociation: ConfiguredTableAssociationSchemaTypeProperties;
     };
 export const SchemaTypeProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ idMappingTable: IdMappingTableSchemaTypeProperties }),
-  S.Struct({ intermediateTable: IntermediateTableSchemaTypeProperties }),
-  S.Struct({ configuredTableAssociation: ConfiguredTableAssociationSchemaTypeProperties }),
+  /*@__PURE__*/ S.Struct({ idMappingTable: IdMappingTableSchemaTypeProperties }),
+  /*@__PURE__*/ S.Struct({ intermediateTable: IntermediateTableSchemaTypeProperties }),
+  /*@__PURE__*/ S.Struct({
+    configuredTableAssociation: ConfiguredTableAssociationSchemaTypeProperties,
+  }),
 ]);
 export interface Schema {
   columns: Column[];
@@ -896,7 +909,7 @@ export const QueryConstraintRequireOverlap = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryConstraintRequireOverlap>;
 export type QueryConstraint = { requireOverlap: QueryConstraintRequireOverlap };
 export const QueryConstraint = /*@__PURE__*/ S.Union([
-  S.Struct({ requireOverlap: QueryConstraintRequireOverlap }),
+  /*@__PURE__*/ S.Struct({ requireOverlap: QueryConstraintRequireOverlap }),
 ]);
 export type QueryConstraintList = QueryConstraint[];
 export const QueryConstraintList = /*@__PURE__*/ S.Array(QueryConstraint);
@@ -925,13 +938,15 @@ export type AnalysisRulePolicyV1 =
       idMappingTable: AnalysisRuleIdMappingTable;
     };
 export const AnalysisRulePolicyV1 = /*@__PURE__*/ S.Union([
-  S.Struct({ list: AnalysisRuleList }),
-  S.Struct({ aggregation: AnalysisRuleAggregation }),
-  S.Struct({ custom: AnalysisRuleCustom }),
-  S.Struct({ idMappingTable: AnalysisRuleIdMappingTable }),
+  /*@__PURE__*/ S.Struct({ list: AnalysisRuleList }),
+  /*@__PURE__*/ S.Struct({ aggregation: AnalysisRuleAggregation }),
+  /*@__PURE__*/ S.Struct({ custom: AnalysisRuleCustom }),
+  /*@__PURE__*/ S.Struct({ idMappingTable: AnalysisRuleIdMappingTable }),
 ]);
 export type AnalysisRulePolicy = { v1: AnalysisRulePolicyV1 };
-export const AnalysisRulePolicy = /*@__PURE__*/ S.Union([S.Struct({ v1: AnalysisRulePolicyV1 })]);
+export const AnalysisRulePolicy = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ v1: AnalysisRulePolicyV1 }),
+]);
 export interface ConfiguredTableAssociationAnalysisRuleList {
   allowedResultReceivers?: string[];
   allowedAdditionalAnalyses?: string[];
@@ -973,15 +988,15 @@ export type ConfiguredTableAssociationAnalysisRulePolicyV1 =
   | { list?: never; aggregation: ConfiguredTableAssociationAnalysisRuleAggregation; custom?: never }
   | { list?: never; aggregation?: never; custom: ConfiguredTableAssociationAnalysisRuleCustom };
 export const ConfiguredTableAssociationAnalysisRulePolicyV1 = /*@__PURE__*/ S.Union([
-  S.Struct({ list: ConfiguredTableAssociationAnalysisRuleList }),
-  S.Struct({ aggregation: ConfiguredTableAssociationAnalysisRuleAggregation }),
-  S.Struct({ custom: ConfiguredTableAssociationAnalysisRuleCustom }),
+  /*@__PURE__*/ S.Struct({ list: ConfiguredTableAssociationAnalysisRuleList }),
+  /*@__PURE__*/ S.Struct({ aggregation: ConfiguredTableAssociationAnalysisRuleAggregation }),
+  /*@__PURE__*/ S.Struct({ custom: ConfiguredTableAssociationAnalysisRuleCustom }),
 ]);
 export type ConfiguredTableAssociationAnalysisRulePolicy = {
   v1: ConfiguredTableAssociationAnalysisRulePolicyV1;
 };
 export const ConfiguredTableAssociationAnalysisRulePolicy = /*@__PURE__*/ S.Union([
-  S.Struct({ v1: ConfiguredTableAssociationAnalysisRulePolicyV1 }),
+  /*@__PURE__*/ S.Struct({ v1: ConfiguredTableAssociationAnalysisRulePolicyV1 }),
 ]);
 export interface ConsolidatedPolicyList {
   joinColumns: string[];
@@ -1058,12 +1073,14 @@ export type ConsolidatedPolicyV1 =
   | { list?: never; aggregation: ConsolidatedPolicyAggregation; custom?: never }
   | { list?: never; aggregation?: never; custom: ConsolidatedPolicyCustom };
 export const ConsolidatedPolicyV1 = /*@__PURE__*/ S.Union([
-  S.Struct({ list: ConsolidatedPolicyList }),
-  S.Struct({ aggregation: ConsolidatedPolicyAggregation }),
-  S.Struct({ custom: ConsolidatedPolicyCustom }),
+  /*@__PURE__*/ S.Struct({ list: ConsolidatedPolicyList }),
+  /*@__PURE__*/ S.Struct({ aggregation: ConsolidatedPolicyAggregation }),
+  /*@__PURE__*/ S.Struct({ custom: ConsolidatedPolicyCustom }),
 ]);
 export type ConsolidatedPolicy = { v1: ConsolidatedPolicyV1 };
-export const ConsolidatedPolicy = /*@__PURE__*/ S.Union([S.Struct({ v1: ConsolidatedPolicyV1 })]);
+export const ConsolidatedPolicy = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ v1: ConsolidatedPolicyV1 }),
+]);
 export interface AnalysisRule {
   collaborationId: string;
   type: AnalysisRuleType;
@@ -1116,7 +1133,7 @@ export type MembershipIdentifier = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAnalysisTemplateInput {
   description?: string;
   membershipIdentifier: string;
@@ -1505,8 +1522,8 @@ export type ChangeSpecification =
   | { member: MemberChangeSpecification; collaboration?: never }
   | { member?: never; collaboration: CollaborationChangeSpecification };
 export const ChangeSpecification = /*@__PURE__*/ S.Union([
-  S.Struct({ member: MemberChangeSpecification }),
-  S.Struct({ collaboration: CollaborationChangeSpecification }),
+  /*@__PURE__*/ S.Struct({ member: MemberChangeSpecification }),
+  /*@__PURE__*/ S.Struct({ collaboration: CollaborationChangeSpecification }),
 ]);
 export interface ChangeInput {
   specificationType: ChangeSpecificationType;
@@ -1591,7 +1608,7 @@ export const ApprovalStatusDetails = /*@__PURE__*/ S.suspend(() =>
 export type ApprovalStatuses = { [key: string]: ApprovalStatusDetails | undefined };
 export const ApprovalStatuses = /*@__PURE__*/ S.Record(
   S.String,
-  ApprovalStatusDetails.pipe(S.optional),
+  /*@__PURE__*/ ApprovalStatusDetails.pipe(S.optional),
 );
 export interface CollaborationChangeRequest {
   id: string;
@@ -1764,7 +1781,7 @@ export type SnowflakeTableSchemaList = SnowflakeTableSchemaV1[];
 export const SnowflakeTableSchemaList = /*@__PURE__*/ S.Array(SnowflakeTableSchemaV1);
 export type SnowflakeTableSchema = { v1: SnowflakeTableSchemaV1[] };
 export const SnowflakeTableSchema = /*@__PURE__*/ S.Union([
-  S.Struct({ v1: SnowflakeTableSchemaList }),
+  /*@__PURE__*/ S.Struct({ v1: SnowflakeTableSchemaList }),
 ]);
 export interface SnowflakeTableReference {
   secretArn: string;
@@ -1812,9 +1829,9 @@ export type TableReference =
   | { glue?: never; snowflake: SnowflakeTableReference; athena?: never }
   | { glue?: never; snowflake?: never; athena: AthenaTableReference };
 export const TableReference = /*@__PURE__*/ S.Union([
-  S.Struct({ glue: GlueTableReference }),
-  S.Struct({ snowflake: SnowflakeTableReference }),
-  S.Struct({ athena: AthenaTableReference }),
+  /*@__PURE__*/ S.Struct({ glue: GlueTableReference }),
+  /*@__PURE__*/ S.Struct({ snowflake: SnowflakeTableReference }),
+  /*@__PURE__*/ S.Struct({ athena: AthenaTableReference }),
 ]);
 export type AllowedColumnList = string[];
 export const AllowedColumnList = /*@__PURE__*/ S.Array(S.String);
@@ -1892,13 +1909,13 @@ export type ConfiguredTableAnalysisRulePolicyV1 =
   | { list?: never; aggregation: AnalysisRuleAggregation; custom?: never }
   | { list?: never; aggregation?: never; custom: AnalysisRuleCustom };
 export const ConfiguredTableAnalysisRulePolicyV1 = /*@__PURE__*/ S.Union([
-  S.Struct({ list: AnalysisRuleList }),
-  S.Struct({ aggregation: AnalysisRuleAggregation }),
-  S.Struct({ custom: AnalysisRuleCustom }),
+  /*@__PURE__*/ S.Struct({ list: AnalysisRuleList }),
+  /*@__PURE__*/ S.Struct({ aggregation: AnalysisRuleAggregation }),
+  /*@__PURE__*/ S.Struct({ custom: AnalysisRuleCustom }),
 ]);
 export type ConfiguredTableAnalysisRulePolicy = { v1: ConfiguredTableAnalysisRulePolicyV1 };
 export const ConfiguredTableAnalysisRulePolicy = /*@__PURE__*/ S.Union([
-  S.Struct({ v1: ConfiguredTableAnalysisRulePolicyV1 }),
+  /*@__PURE__*/ S.Struct({ v1: ConfiguredTableAnalysisRulePolicyV1 }),
 ]);
 export interface CreateConfiguredTableAnalysisRuleInput {
   configuredTableIdentifier: string;
@@ -2338,7 +2355,7 @@ export const PopulationAnalysisSqlParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PopulationAnalysisSqlParameters>;
 export type PopulationAnalysisConfiguration = { sqlParameters: PopulationAnalysisSqlParameters };
 export const PopulationAnalysisConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ sqlParameters: PopulationAnalysisSqlParameters }),
+  /*@__PURE__*/ S.Struct({ sqlParameters: PopulationAnalysisSqlParameters }),
 ]);
 export interface CreateIntermediateTableInput {
   membershipIdentifier: string;
@@ -2418,7 +2435,10 @@ export type PopulateIntermediateTableAnalysisType = "QUERY" | (string & {});
 export const PopulateIntermediateTableAnalysisType = S.String;
 
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface InheritedAdditionalAnalysesSource {
   name: string;
   id: string;
@@ -2681,11 +2701,11 @@ export const IntermediateTableAnalysisRuleCustom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntermediateTableAnalysisRuleCustom>;
 export type IntermediateTableAnalysisRulePolicyV1 = { custom: IntermediateTableAnalysisRuleCustom };
 export const IntermediateTableAnalysisRulePolicyV1 = /*@__PURE__*/ S.Union([
-  S.Struct({ custom: IntermediateTableAnalysisRuleCustom }),
+  /*@__PURE__*/ S.Struct({ custom: IntermediateTableAnalysisRuleCustom }),
 ]);
 export type IntermediateTableAnalysisRulePolicy = { v1: IntermediateTableAnalysisRulePolicyV1 };
 export const IntermediateTableAnalysisRulePolicy = /*@__PURE__*/ S.Union([
-  S.Struct({ v1: IntermediateTableAnalysisRulePolicyV1 }),
+  /*@__PURE__*/ S.Struct({ v1: IntermediateTableAnalysisRulePolicyV1 }),
 ]);
 export interface CreateIntermediateTableAnalysisRuleInput {
   membershipIdentifier: string;
@@ -2773,7 +2793,7 @@ export type MembershipProtectedQueryOutputConfiguration = {
   s3: ProtectedQueryS3OutputConfiguration;
 };
 export const MembershipProtectedQueryOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
 ]);
 export interface MembershipProtectedQueryResultConfiguration {
   outputConfiguration: MembershipProtectedQueryOutputConfiguration;
@@ -2800,7 +2820,7 @@ export type MembershipProtectedJobOutputConfiguration = {
   s3: ProtectedJobS3OutputConfigurationInput;
 };
 export const MembershipProtectedJobOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedJobS3OutputConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedJobS3OutputConfigurationInput }),
 ]);
 export interface MembershipProtectedJobResultConfiguration {
   outputConfiguration: MembershipProtectedJobOutputConfiguration;
@@ -3003,8 +3023,8 @@ export type PrivacyBudgetTemplateParametersInput =
   | { differentialPrivacy: DifferentialPrivacyTemplateParametersInput; accessBudget?: never }
   | { differentialPrivacy?: never; accessBudget: AccessBudgetsPrivacyTemplateParametersInput };
 export const PrivacyBudgetTemplateParametersInput = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateParametersInput }),
-  S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateParametersInput }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateParametersInput }),
+  /*@__PURE__*/ S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateParametersInput }),
 ]);
 export interface CreatePrivacyBudgetTemplateInput {
   membershipIdentifier: string;
@@ -3057,8 +3077,8 @@ export type PrivacyBudgetTemplateParametersOutput =
   | { differentialPrivacy: DifferentialPrivacyTemplateParametersOutput; accessBudget?: never }
   | { differentialPrivacy?: never; accessBudget: AccessBudgetsPrivacyTemplateParametersOutput };
 export const PrivacyBudgetTemplateParametersOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateParametersOutput }),
-  S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateParametersOutput }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateParametersOutput }),
+  /*@__PURE__*/ S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateParametersOutput }),
 ]);
 export interface PrivacyBudgetTemplate {
   id: string;
@@ -4292,7 +4312,10 @@ export const GetProtectedJobInput = /*@__PURE__*/ S.suspend(() =>
 export type JobParameterName = string;
 export type JobParameterValue = string;
 export type JobParameterMap = { [key: string]: string | undefined };
-export const JobParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const JobParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ProtectedJobParameters {
   analysisTemplateArn: string;
   parameters?: { [key: string]: string | undefined };
@@ -4331,8 +4354,8 @@ export type ProtectedJobOutputConfigurationOutput =
   | { s3: ProtectedJobS3OutputConfigurationOutput; member?: never }
   | { s3?: never; member: ProtectedJobMemberOutputConfigurationOutput };
 export const ProtectedJobOutputConfigurationOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedJobS3OutputConfigurationOutput }),
-  S.Struct({ member: ProtectedJobMemberOutputConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedJobS3OutputConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ member: ProtectedJobMemberOutputConfigurationOutput }),
 ]);
 export interface ProtectedJobResultConfigurationOutput {
   outputConfiguration: ProtectedJobOutputConfigurationOutput;
@@ -4380,8 +4403,8 @@ export type ProtectedJobOutput =
   | { s3: ProtectedJobS3Output; memberList?: never }
   | { s3?: never; memberList: ProtectedJobSingleMemberOutput[] };
 export const ProtectedJobOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedJobS3Output }),
-  S.Struct({ memberList: ProtectedJobMemberOutputList }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedJobS3Output }),
+  /*@__PURE__*/ S.Struct({ memberList: ProtectedJobMemberOutputList }),
 ]);
 export interface ProtectedJobResult {
   output: ProtectedJobOutput;
@@ -4402,10 +4425,13 @@ export const ProtectedJobWorkerComputeType = S.String;
 export type SparkPropertyKey = string;
 export type SparkPropertyValue = string;
 export type SparkProperties = { [key: string]: string | undefined };
-export const SparkProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SparkProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type WorkerComputeConfigurationProperties = { spark: { [key: string]: string | undefined } };
 export const WorkerComputeConfigurationProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ spark: SparkProperties }),
+  /*@__PURE__*/ S.Struct({ spark: SparkProperties }),
 ]);
 export interface ProtectedJobWorkerComputeConfiguration {
   type: ProtectedJobWorkerComputeType;
@@ -4423,7 +4449,7 @@ export const ProtectedJobWorkerComputeConfiguration = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProtectedJobWorkerComputeConfiguration>;
 export type ProtectedJobComputeConfiguration = { worker: ProtectedJobWorkerComputeConfiguration };
 export const ProtectedJobComputeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ worker: ProtectedJobWorkerComputeConfiguration }),
+  /*@__PURE__*/ S.Struct({ worker: ProtectedJobWorkerComputeConfiguration }),
 ]);
 export interface ProtectedJob {
   id: string;
@@ -4511,8 +4537,8 @@ export type ProtectedQueryDistributeOutputConfigurationLocation =
   | { s3: ProtectedQueryS3OutputConfiguration; member?: never }
   | { s3?: never; member: ProtectedQueryMemberOutputConfiguration };
 export const ProtectedQueryDistributeOutputConfigurationLocation = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
-  S.Struct({ member: ProtectedQueryMemberOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ member: ProtectedQueryMemberOutputConfiguration }),
 ]);
 export type ProtectedQueryDistributeOutputConfigurationLocations =
   ProtectedQueryDistributeOutputConfigurationLocation[];
@@ -4563,10 +4589,10 @@ export type ProtectedQueryOutputConfiguration =
       intermediateTable: IntermediateTableOutputConfiguration;
     };
 export const ProtectedQueryOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
-  S.Struct({ member: ProtectedQueryMemberOutputConfiguration }),
-  S.Struct({ distribute: ProtectedQueryDistributeOutputConfiguration }),
-  S.Struct({ intermediateTable: IntermediateTableOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedQueryS3OutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ member: ProtectedQueryMemberOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ distribute: ProtectedQueryDistributeOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ intermediateTable: IntermediateTableOutputConfiguration }),
 ]);
 export interface ProtectedQueryResultConfiguration {
   outputConfiguration: ProtectedQueryOutputConfiguration;
@@ -4629,9 +4655,9 @@ export type ProtectedQueryOutput =
   | { s3?: never; memberList: ProtectedQuerySingleMemberOutput[]; distribute?: never }
   | { s3?: never; memberList?: never; distribute: ProtectedQueryDistributeOutput };
 export const ProtectedQueryOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: ProtectedQueryS3Output }),
-  S.Struct({ memberList: ProtectedQueryMemberOutputList }),
-  S.Struct({ distribute: ProtectedQueryDistributeOutput }),
+  /*@__PURE__*/ S.Struct({ s3: ProtectedQueryS3Output }),
+  /*@__PURE__*/ S.Struct({ memberList: ProtectedQueryMemberOutputList }),
+  /*@__PURE__*/ S.Struct({ distribute: ProtectedQueryDistributeOutput }),
 ]);
 export interface ProtectedQueryResult {
   output: ProtectedQueryOutput;
@@ -4706,7 +4732,7 @@ export const WorkerComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkerComputeConfiguration>;
 export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
 export const ComputeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ worker: WorkerComputeConfiguration }),
+  /*@__PURE__*/ S.Struct({ worker: WorkerComputeConfiguration }),
 ]);
 export interface ProtectedQuery {
   id: string;
@@ -5303,8 +5329,8 @@ export type PrivacyBudget =
   | { differentialPrivacy: DifferentialPrivacyPrivacyBudget; accessBudget?: never }
   | { differentialPrivacy?: never; accessBudget: AccessBudget };
 export const PrivacyBudget = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyPrivacyBudget }),
-  S.Struct({ accessBudget: AccessBudget }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyPrivacyBudget }),
+  /*@__PURE__*/ S.Struct({ accessBudget: AccessBudget }),
 ]);
 export interface CollaborationPrivacyBudgetSummary {
   id: string;
@@ -6206,7 +6232,9 @@ export type ProtectedJobConfigurationDetails = {
   directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails;
 };
 export const ProtectedJobConfigurationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails }),
+  /*@__PURE__*/ S.Struct({
+    directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails,
+  }),
 ]);
 export interface ProtectedJobReceiverConfiguration {
   analysisType: ProtectedJobAnalysisType;
@@ -6292,7 +6320,9 @@ export type ConfigurationDetails = {
   directAnalysisConfigurationDetails: DirectAnalysisConfigurationDetails;
 };
 export const ConfigurationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ directAnalysisConfigurationDetails: DirectAnalysisConfigurationDetails }),
+  /*@__PURE__*/ S.Struct({
+    directAnalysisConfigurationDetails: DirectAnalysisConfigurationDetails,
+  }),
 ]);
 export interface ReceiverConfiguration {
   analysisType: AnalysisType;
@@ -6454,7 +6484,7 @@ export type IntermediateTableComputeConfiguration = {
   queryComputeConfiguration: WorkerComputeConfiguration;
 };
 export const IntermediateTableComputeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ queryComputeConfiguration: WorkerComputeConfiguration }),
+  /*@__PURE__*/ S.Struct({ queryComputeConfiguration: WorkerComputeConfiguration }),
 ]);
 export interface PopulateIntermediateTableInput {
   intermediateTableIdentifier: string;
@@ -6513,7 +6543,7 @@ export type PreviewPrivacyImpactParametersInput = {
   differentialPrivacy: DifferentialPrivacyPreviewParametersInput;
 };
 export const PreviewPrivacyImpactParametersInput = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyPreviewParametersInput }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyPreviewParametersInput }),
 ]);
 export interface PreviewPrivacyImpactInput {
   membershipIdentifier: string;
@@ -6559,7 +6589,7 @@ export const DifferentialPrivacyPrivacyImpact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DifferentialPrivacyPrivacyImpact>;
 export type PrivacyImpact = { differentialPrivacy: DifferentialPrivacyPrivacyImpact };
 export const PrivacyImpact = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyPrivacyImpact }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyPrivacyImpact }),
 ]);
 export interface PreviewPrivacyImpactOutput {
   privacyImpact: PrivacyImpact;
@@ -6617,7 +6647,7 @@ export type ProtectedJobOutputConfigurationInput = {
   member: ProtectedJobMemberOutputConfigurationInput;
 };
 export const ProtectedJobOutputConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ member: ProtectedJobMemberOutputConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ member: ProtectedJobMemberOutputConfigurationInput }),
 ]);
 export interface ProtectedJobResultConfigurationInput {
   outputConfiguration: ProtectedJobOutputConfigurationInput;
@@ -7246,8 +7276,8 @@ export type PrivacyBudgetTemplateUpdateParameters =
   | { differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters; accessBudget?: never }
   | { differentialPrivacy?: never; accessBudget: AccessBudgetsPrivacyTemplateUpdateParameters };
 export const PrivacyBudgetTemplateUpdateParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters }),
-  S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateUpdateParameters }),
+  /*@__PURE__*/ S.Struct({ differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters }),
+  /*@__PURE__*/ S.Struct({ accessBudget: AccessBudgetsPrivacyTemplateUpdateParameters }),
 ]);
 export interface UpdatePrivacyBudgetTemplateInput {
   membershipIdentifier: string;

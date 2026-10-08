@@ -3109,7 +3109,7 @@ export const ViewPropertySortsRequest = /*@__PURE__*/ S.Array(
 export type UpdateViewRequestQuickFiltersMap = { [key: string]: unknown | null | undefined };
 export const UpdateViewRequestQuickFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<UpdateViewRequestQuickFiltersMap>;
 
 export interface UpdateViewRequest {

@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Account Access", serviceShapeName: "AWSAccountAccess" });
-const auth = T.AwsAuthSigv4({ name: "account-access" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Account Access",
+  serviceShapeName: "AWSAccountAccess",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "account-access" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -48,48 +51,48 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AlreadyCreatedException
   extends /*@__PURE__*/ S.TaggedError<AlreadyCreatedException>()("AlreadyCreatedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type IdentityCenterInstanceArn = string;
 export interface IdentityCenter {
@@ -99,9 +102,11 @@ export const IdentityCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceArn: S.String }),
 ).annotate({ identifier: "IdentityCenter" }) as any as S.Schema<IdentityCenter>;
 export type IdentitySource = { identityCenter: IdentityCenter };
-export const IdentitySource = /*@__PURE__*/ S.Union([S.Struct({ identityCenter: IdentityCenter })]);
+export const IdentitySource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenter }),
+]);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateApplicationRequest {
   identitySource: IdentitySource;
   tags?: { [key: string]: string | undefined };
@@ -126,12 +131,12 @@ export type IdentityCenterPrincipal =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
 export const IdentityCenterPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ userId: S.String }),
-  S.Struct({ groupId: S.String }),
+  /*@__PURE__*/ S.Struct({ userId: S.String }),
+  /*@__PURE__*/ S.Struct({ groupId: S.String }),
 ]);
 export type Principal = { identityCenter: IdentityCenterPrincipal };
 export const Principal = /*@__PURE__*/ S.Union([
-  S.Struct({ identityCenter: IdentityCenterPrincipal }),
+  /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterPrincipal }),
 ]);
 export type RoleArn = string;
 export interface PrincipalRoleEntitlement {
@@ -143,7 +148,7 @@ export const PrincipalRoleEntitlement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrincipalRoleEntitlement" }) as any as S.Schema<PrincipalRoleEntitlement>;
 export type Entitlement = { principalRole: PrincipalRoleEntitlement };
 export const Entitlement = /*@__PURE__*/ S.Union([
-  S.Struct({ principalRole: PrincipalRoleEntitlement }),
+  /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlement }),
 ]);
 export interface CreateEntitlementRequest {
   applicationArn: string;
@@ -229,7 +234,7 @@ export const IdentityCenterDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityCenterDetails" }) as any as S.Schema<IdentityCenterDetails>;
 export type IdentitySourceDetails = { identityCenter: IdentityCenterDetails };
 export const IdentitySourceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ identityCenter: IdentityCenterDetails }),
+  /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterDetails }),
 ]);
 export type Status =
   | "CREATE_IN_PROGRESS"
@@ -313,7 +318,7 @@ export const PrincipalRoleEntitlementDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrincipalRoleEntitlementDetails>;
 export type EntitlementDetails = { principalRole: PrincipalRoleEntitlementDetails };
 export const EntitlementDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ principalRole: PrincipalRoleEntitlementDetails }),
+  /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlementDetails }),
 ]);
 export interface GetEntitlementResponse {
   applicationArn: string;
@@ -365,12 +370,12 @@ export type IdentityCenterPrincipalFilter =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
 export const IdentityCenterPrincipalFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ userId: S.String }),
-  S.Struct({ groupId: S.String }),
+  /*@__PURE__*/ S.Struct({ userId: S.String }),
+  /*@__PURE__*/ S.Struct({ groupId: S.String }),
 ]);
 export type PrincipalFilter = { identityCenter: IdentityCenterPrincipalFilter };
 export const PrincipalFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ identityCenter: IdentityCenterPrincipalFilter }),
+  /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterPrincipalFilter }),
 ]);
 export interface PrincipalRoleEntitlementFilter {
   principal?: PrincipalFilter;
@@ -426,7 +431,7 @@ export const PrincipalRoleEntitlementSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrincipalRoleEntitlementSummary>;
 export type EntitlementSummary = { principalRole: PrincipalRoleEntitlementSummary };
 export const EntitlementSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ principalRole: PrincipalRoleEntitlementSummary }),
+  /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlementSummary }),
 ]);
 export interface EntitlementsListMember {
   entitlementId: string;

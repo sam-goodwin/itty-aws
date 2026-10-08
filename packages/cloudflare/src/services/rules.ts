@@ -240,7 +240,7 @@ export type ListsItemsCreateRequestBodyItem =
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
 export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ip", "comment"],
     ["redirect", "comment"],
     ["hostname", "comment"],
@@ -511,7 +511,7 @@ export type ListsBulkOperationsGetResult =
   | ListsBulkOperationsGetResultListsBulkOperationCompleted
   | ListsBulkOperationsGetResultListsBulkOperationFailed;
 export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "status"],
     ["id", "completed", "status"],
     ["id", "completed", "error", "status"],
@@ -695,7 +695,7 @@ export type ListsItemsGetResult =
   | ListsItemsGetResultListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
 export const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "ip", "modifiedOn", "comment"],
     ["id", "createdOn", "hostname", "modifiedOn", "comment"],
     ["id", "createdOn", "modifiedOn", "redirect", "comment"],
@@ -819,7 +819,7 @@ export type ListsItemsListResultItem =
   | ListsItemsListResultItemListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
 export const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "ip", "modifiedOn", "comment"],
     ["id", "createdOn", "hostname", "modifiedOn", "comment"],
     ["id", "createdOn", "modifiedOn", "redirect", "comment"],
@@ -1042,7 +1042,7 @@ export type ListsItemsUpdateRequestBodyItem =
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
 export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ip", "comment"],
     ["redirect", "comment"],
     ["hostname", "comment"],

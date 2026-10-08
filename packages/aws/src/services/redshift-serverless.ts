@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Redshift Serverless",
   serviceShapeName: "RedshiftServerless",
 });
-const auth = T.AwsAuthSigv4({ name: "redshift-serverless" });
-const ver = T.ServiceVersion("2021-04-21");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "redshift-serverless" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-04-21");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,74 +80,86 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    {
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DryRunException
   extends /*@__PURE__*/ S.TaggedError<DryRunException>()(
     "DryRunException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(400), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(400), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidPaginationException
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationException>()(
     "InvalidPaginationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class Ipv6CidrBlockNotFoundException
   extends /*@__PURE__*/ S.TaggedError<Ipv6CidrBlockNotFoundException>()(
     "Ipv6CidrBlockNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    {
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type TagKey = string;
 export type TagValue = string;
@@ -421,7 +433,7 @@ export type S3TableGranularity = string;
 export type S3TableLastIngestionTimeMap = { [key: string]: string | undefined };
 export const S3TableLastIngestionTimeMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface S3TablePublishStatus {
   s3Tables?: string[];
@@ -570,12 +582,14 @@ export const CreateSnapshotScheduleActionParameters = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateSnapshotScheduleActionParameters>;
 export type TargetAction = { createSnapshot: CreateSnapshotScheduleActionParameters };
 export const TargetAction = /*@__PURE__*/ S.Union([
-  S.Struct({ createSnapshot: CreateSnapshotScheduleActionParameters }),
+  /*@__PURE__*/ S.Struct({ createSnapshot: CreateSnapshotScheduleActionParameters }),
 ]);
 export type Schedule = { at: Date; cron?: never } | { at?: never; cron: string };
 export const Schedule = /*@__PURE__*/ S.Union([
-  S.Struct({ at: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-  S.Struct({ cron: S.String }),
+  /*@__PURE__*/ S.Struct({
+    at: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
+  /*@__PURE__*/ S.Struct({ cron: S.String }),
 ]);
 export interface CreateScheduledActionRequest {
   scheduledActionName: string;
@@ -605,7 +619,7 @@ export const CreateScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScheduledActionRequest>;
 export type NextInvocationsList = Date[];
 export const NextInvocationsList = /*@__PURE__*/ S.Array(
-  S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
 );
 export type State = string;
 export interface ScheduledActionResponse {

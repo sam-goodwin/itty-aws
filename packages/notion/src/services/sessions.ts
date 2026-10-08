@@ -186,7 +186,7 @@ export const GetSessionResponseModelsCase0 = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSessionResponseModelsCase1IdsList = Array<string | null>;
 export const GetSessionResponseModelsCase1IdsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetSessionResponseModelsCase1IdsList>;
 
 export interface GetSessionResponseModelsCase1 {
@@ -4445,7 +4445,7 @@ export const QuerySessionsResponseResultsItemModelsCase0 = GetSessionResponseMod
 
 export type QuerySessionsResponseResultsItemModelsCase1IdsList = Array<string | null>;
 export const QuerySessionsResponseResultsItemModelsCase1IdsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<QuerySessionsResponseResultsItemModelsCase1IdsList>;
 
 export interface QuerySessionsResponseResultsItemModelsCase1 {

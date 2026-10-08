@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Customer Profiles",
   serviceShapeName: "CustomerProfiles_20200815",
 });
-const auth = T.AwsAuthSigv4({ name: "profile" });
-const ver = T.ServiceVersion("2020-08-15");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "profile" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-08-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,32 +76,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type Uuid = string;
 export type Name = string;
@@ -336,7 +336,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface FoundByKeyValue {
   KeyName?: string;
   Values?: string[];
@@ -639,7 +639,7 @@ export const FilterAttributeDimension = /*@__PURE__*/ S.suspend(() =>
 export type AttributeMap = { [key: string]: FilterAttributeDimension | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  FilterAttributeDimension.pipe(S.optional),
+  /*@__PURE__*/ FilterAttributeDimension.pipe(S.optional),
 );
 export interface FilterDimension {
   Attributes: { [key: string]: FilterAttributeDimension | undefined };
@@ -682,7 +682,7 @@ export type OptionalBoolean = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateCalculatedAttributeDefinitionRequest {
   DomainName: string;
   CalculatedAttributeName: string;
@@ -1511,7 +1511,7 @@ export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type TaskType =
   | "Arithmetic"
@@ -1784,7 +1784,10 @@ export const InferenceConfig = /*@__PURE__*/ S.suspend(() =>
 export type ColumnNamesList = string[];
 export const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
 export type IncludedColumns = { [key: string]: string[] | undefined };
-export const IncludedColumns = /*@__PURE__*/ S.Record(S.String, ColumnNamesList.pipe(S.optional));
+export const IncludedColumns = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
+);
 export type DiversityCapType = "PERCENTAGE" | "VALUE" | (string & {});
 export const DiversityCapType = S.String;
 
@@ -1928,7 +1931,7 @@ export const RecommenderSchemaFieldList = /*@__PURE__*/ S.Array(RecommenderSchem
 export type RecommenderSchemaFields = { [key: string]: RecommenderSchemaField[] | undefined };
 export const RecommenderSchemaFields = /*@__PURE__*/ S.Record(
   S.String,
-  RecommenderSchemaFieldList.pipe(S.optional),
+  /*@__PURE__*/ RecommenderSchemaFieldList.pipe(S.optional),
 );
 export interface CreateRecommenderSchemaRequest {
   DomainName: string;
@@ -2078,7 +2081,7 @@ export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
 export type CustomAttributes = { [key: string]: AttributeDimension | undefined };
 export const CustomAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  AttributeDimension.pipe(S.optional),
+  /*@__PURE__*/ AttributeDimension.pipe(S.optional),
 );
 export type ProfileTypeDimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 export const ProfileTypeDimensionType = S.String;
@@ -2161,7 +2164,7 @@ export type CalculatedCustomAttributes = {
 };
 export const CalculatedCustomAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  CalculatedAttributeDimension.pipe(S.optional),
+  /*@__PURE__*/ CalculatedAttributeDimension.pipe(S.optional),
 );
 export type Dimension =
   | { ProfileAttributes: ProfileAttributes; CalculatedAttributes?: never }
@@ -2170,8 +2173,8 @@ export type Dimension =
       CalculatedAttributes: { [key: string]: CalculatedAttributeDimension | undefined };
     };
 export const Dimension = /*@__PURE__*/ S.Union([
-  S.Struct({ ProfileAttributes: ProfileAttributes }),
-  S.Struct({ CalculatedAttributes: CalculatedCustomAttributes }),
+  /*@__PURE__*/ S.Struct({ ProfileAttributes: ProfileAttributes }),
+  /*@__PURE__*/ S.Struct({ CalculatedAttributes: CalculatedCustomAttributes }),
 ]);
 export type DimensionList = Dimension[];
 export const DimensionList = /*@__PURE__*/ S.Array(Dimension);
@@ -2408,7 +2411,10 @@ export const ObjectTypeField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ObjectTypeField" }) as any as S.Schema<ObjectTypeField>;
 export type FieldMap = { [key: string]: ObjectTypeField | undefined };
-export const FieldMap = /*@__PURE__*/ S.Record(S.String, ObjectTypeField.pipe(S.optional));
+export const FieldMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ObjectTypeField.pipe(S.optional),
+);
 export interface CreateUploadJobRequest {
   DomainName: string;
   DisplayName: string;
@@ -2962,7 +2968,10 @@ export const ObjectTypeKey = /*@__PURE__*/ S.suspend(() =>
 export type ObjectTypeKeyList = ObjectTypeKey[];
 export const ObjectTypeKeyList = /*@__PURE__*/ S.Array(ObjectTypeKey);
 export type KeyMap = { [key: string]: ObjectTypeKey[] | undefined };
-export const KeyMap = /*@__PURE__*/ S.Record(S.String, ObjectTypeKeyList.pipe(S.optional));
+export const KeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ObjectTypeKeyList.pipe(S.optional),
+);
 export interface DetectedProfileObjectType {
   SourceLastUpdatedTimestampFormat?: string;
   Fields?: { [key: string]: ObjectTypeField | undefined };
@@ -3293,7 +3302,7 @@ export const DomainObjectTypeField = /*@__PURE__*/ S.suspend(() =>
 export type DomainObjectTypeFields = { [key: string]: DomainObjectTypeField | undefined };
 export const DomainObjectTypeFields = /*@__PURE__*/ S.Record(
   S.String,
-  DomainObjectTypeField.pipe(S.optional),
+  /*@__PURE__*/ DomainObjectTypeField.pipe(S.optional),
 );
 export interface GetDomainObjectTypeResponse {
   ObjectTypeName: string;
@@ -3526,7 +3535,10 @@ export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetIntegrationRequest" }) as any as S.Schema<GetIntegrationRequest>;
 export type ObjectTypeNames = { [key: string]: string | undefined };
-export const ObjectTypeNames = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ObjectTypeNames = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EventTriggerNames = string[];
 export const EventTriggerNames = /*@__PURE__*/ S.Array(S.String);
 export type Scope = "PROFILE" | "DOMAIN" | (string & {});
@@ -3842,7 +3854,10 @@ export const GetProfileObjectTypeTemplateResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetProfileObjectTypeTemplateResponse>;
 export type ContextKey = string;
 export type RecommenderContext = { [key: string]: string | undefined };
-export const RecommenderContext = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RecommenderContext = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type RecommenderFilterAttributeName = string;
 export type RecommenderFilterAttributeValue = string | redacted.Redacted<string>;
 export type RecommenderFilterValues = {
@@ -3850,7 +3865,7 @@ export type RecommenderFilterValues = {
 };
 export const RecommenderFilterValues = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface RecommenderFilter {
   Name?: string;
@@ -3895,7 +3910,10 @@ export const MetadataConfig = /*@__PURE__*/ S.suspend(() =>
 export type DiversityPlaceholderName = string;
 export type DiversityCapValue = number;
 export type DiversityValuesMap = { [key: string]: number | undefined };
-export const DiversityValuesMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const DiversityValuesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface RecommendationDiversityConfig {
   Enabled: boolean;
   Values?: { [key: string]: number | undefined };
@@ -4062,7 +4080,10 @@ export type TrainingMetricName =
 export const TrainingMetricName = S.String;
 
 export type Metrics = { [key in TrainingMetricName]?: number };
-export const Metrics = /*@__PURE__*/ S.Record(TrainingMetricName, S.Number.pipe(S.optional));
+export const Metrics = /*@__PURE__*/ S.Record(
+  TrainingMetricName,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface TrainingMetrics {
   Time?: Date;
   Metrics?: { [key: string]: number | undefined };
@@ -6256,7 +6277,10 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ProfileIdToBeMergedList = string[];
 export const ProfileIdToBeMergedList = /*@__PURE__*/ S.Array(S.String);
 export type AttributeSourceIdMap = { [key: string]: string | undefined };
-export const AttributeSourceIdMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributeSourceIdMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface FieldSourceProfileIds {
   AccountNumber?: string;
   AdditionalInformation?: string;
@@ -7093,7 +7117,10 @@ export const UpdateAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateAddress" }) as any as S.Schema<UpdateAddress>;
 export type UpdateAttributes = { [key: string]: string | undefined };
-export const UpdateAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const UpdateAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface UpdateProfileRequest {
   DomainName: string;
   ProfileId: string;

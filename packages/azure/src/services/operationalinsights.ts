@@ -121,7 +121,7 @@ export type UserAssignedIdentitiesInput = {
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AssociatedWorkspaceInput),
+  /*@__PURE__*/ S.NullOr(AssociatedWorkspaceInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -390,7 +390,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
 export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1579,7 +1579,7 @@ export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */

@@ -1719,7 +1719,7 @@ export type AccountTagsGetResult =
   | AccountTagsGetResultZone
   | AccountTagsGetResultZoneRuleset;
 export const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
       ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
@@ -3440,7 +3440,7 @@ export type ZoneTagsGetResult =
   | ZoneTagsGetResultZone
   | ZoneTagsGetResultZoneRuleset;
 export const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
       ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
@@ -5196,7 +5196,7 @@ export type ListResultItem =
   | ListResultItemZone
   | ListResultItemZoneRuleset;
 export const ListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
       ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
@@ -7025,7 +7025,7 @@ export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultZone
   | AccountTagsUpdateResultZoneRuleset;
 export const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
       ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
@@ -8728,7 +8728,7 @@ export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultZone
   | ZoneTagsUpdateResultZoneRuleset;
 export const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
       ["id", "accessApplicationId", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],

@@ -10,14 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker Runtime",
   serviceShapeName: "AmazonSageMakerRuntime",
 });
-const auth = T.AwsAuthSigv4({ name: "sagemaker" });
-const ver = T.ServiceVersion("2017-05-13");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sagemaker" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-05-13");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -85,55 +85,55 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalDependencyException
   extends /*@__PURE__*/ S.TaggedError<InternalDependencyException>()(
     "InternalDependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(530),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(530),
   ).pipe(C.withServerError) {}
 export class InternalFailure
   extends /*@__PURE__*/ S.TaggedError<InternalFailure>()(
     "InternalFailure",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalStreamFailure
   extends /*@__PURE__*/ S.TaggedError<InternalStreamFailure>()("InternalStreamFailure", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ModelError
   extends /*@__PURE__*/ S.TaggedError<ModelError>()(
     "ModelError",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      OriginalStatusCode: S.optional(S.Number),
-      OriginalMessage: S.optional(S.String),
-      LogStreamArn: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      OriginalStatusCode: /*@__PURE__*/ S.optional(S.Number),
+      OriginalMessage: /*@__PURE__*/ S.optional(S.String),
+      LogStreamArn: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(424),
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ModelNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ModelNotReadyException>()(
     "ModelNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class ModelStreamError
   extends /*@__PURE__*/ S.TaggedError<ModelStreamError>()("ModelStreamError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    ErrorCode: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    ErrorCode: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ServiceUnavailable
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailable>()(
     "ServiceUnavailable",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ValidationError
   extends /*@__PURE__*/ S.TaggedError<ValidationError>()(
     "ValidationError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type EndpointName = string;
 export type Header = string;
@@ -342,15 +342,15 @@ export type ResponseStream =
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
 export const ResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ PayloadPart: PayloadPart }),
-    S.Struct({
-      ModelStreamError: S.suspend(() => ModelStreamError).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ PayloadPart: PayloadPart }),
+    /*@__PURE__*/ S.Struct({
+      ModelStreamError: /*@__PURE__*/ S.suspend(() => ModelStreamError).annotate({
         identifier: "ModelStreamError",
       }),
     }),
-    S.Struct({
-      InternalStreamFailure: S.suspend(() => InternalStreamFailure).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalStreamFailure: /*@__PURE__*/ S.suspend(() => InternalStreamFailure).annotate({
         identifier: "InternalStreamFailure",
       }),
     }),

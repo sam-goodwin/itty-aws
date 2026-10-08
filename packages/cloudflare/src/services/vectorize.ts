@@ -138,7 +138,7 @@ export type IndexesCreateRequestConfig =
   | IndexesCreateRequestConfigIndexDimensionConfiguration
   | IndexesCreateRequestConfigVectorizeIndexPresetConfiguration;
 export const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["dimensions", "metric"], ["preset"]]),
+  /*@__PURE__*/ T.UnionCases([["dimensions", "metric"], ["preset"]]),
 );
 
 export interface CreateIndexRequest {

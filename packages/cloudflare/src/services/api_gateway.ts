@@ -794,7 +794,7 @@ export type OperationsBulkCreateResultItemFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["thresholds"],
     ["parameterSchemas"],
     ["apiRouting"],
@@ -1568,7 +1568,7 @@ export type OperationsCreateResponseFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["thresholds"],
     ["parameterSchemas"],
     ["apiRouting"],
@@ -2179,7 +2179,7 @@ export type ConfigurationsGetResponseAuthIdCharacteristicsItem =
   | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
 export const ConfigurationsGetResponseAuthIdCharacteristicsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name", "type"],
     ["name", "type"],
   ]),
@@ -2564,7 +2564,7 @@ export type OperationsGetResponseFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["thresholds"],
     ["parameterSchemas"],
     ["apiRouting"],
@@ -3346,7 +3346,7 @@ export type OperationsListResultItemFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const OperationsListResultItemFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["thresholds"],
     ["parameterSchemas"],
     ["apiRouting"],
@@ -3795,7 +3795,7 @@ export type UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
   | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["thresholds"],
       ["parameterSchemas"],
       ["apiRouting"],
@@ -3864,7 +3864,7 @@ export type UserSchemasOperationsListResultItem =
   | UserSchemasOperationsListResultItemAPIShieldOperation
   | UserSchemasOperationsListResultItemAPIShieldBasicOperation;
 export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["endpoint", "host", "lastUpdated", "method", "operationId", "features"],
     ["endpoint", "host", "method"],
   ]),
@@ -4243,7 +4243,7 @@ export type ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
   | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name", "type"],
     ["name", "type"],
   ]),
@@ -4323,7 +4323,7 @@ export type ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
   | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
   | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name", "type"],
     ["name", "type"],
   ]),

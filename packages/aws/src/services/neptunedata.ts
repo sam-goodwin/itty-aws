@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "neptunedata", serviceShapeName: "AmazonNeptuneDataplane" });
-const auth = T.AwsAuthSigv4({ name: "neptune-db" });
-const ver = T.ServiceVersion("2023-08-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "neptunedata",
+  serviceShapeName: "AmazonNeptuneDataplane",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "neptune-db" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-08-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,9 +80,9 @@ export class AccessDeniedException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
@@ -88,9 +91,9 @@ export class BadRequestException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BulkLoadIdNotFoundException
   extends /*@__PURE__*/ S.TaggedError<BulkLoadIdNotFoundException>()(
@@ -99,9 +102,9 @@ export class BulkLoadIdNotFoundException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(404), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(404), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class CancelledByUserException
   extends /*@__PURE__*/ S.TaggedError<CancelledByUserException>()(
@@ -110,9 +113,9 @@ export class CancelledByUserException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ClientTimeoutException
   extends /*@__PURE__*/ S.TaggedError<ClientTimeoutException>()(
@@ -121,9 +124,9 @@ export class ClientTimeoutException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(408), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(408), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
@@ -132,9 +135,9 @@ export class ConcurrentModificationException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ConstraintViolationException
   extends /*@__PURE__*/ S.TaggedError<ConstraintViolationException>()(
@@ -143,9 +146,9 @@ export class ConstraintViolationException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(400), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(400), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ExpiredStreamException
   extends /*@__PURE__*/ S.TaggedError<ExpiredStreamException>()(
@@ -154,9 +157,9 @@ export class ExpiredStreamException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FailureByQueryException
   extends /*@__PURE__*/ S.TaggedError<FailureByQueryException>()(
@@ -165,9 +168,9 @@ export class FailureByQueryException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class IllegalArgumentException
   extends /*@__PURE__*/ S.TaggedError<IllegalArgumentException>()(
@@ -176,9 +179,9 @@ export class IllegalArgumentException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
@@ -187,9 +190,9 @@ export class InternalFailureException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
@@ -198,9 +201,9 @@ export class InvalidArgumentException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumericDataException
   extends /*@__PURE__*/ S.TaggedError<InvalidNumericDataException>()(
@@ -209,9 +212,9 @@ export class InvalidNumericDataException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
@@ -220,9 +223,9 @@ export class InvalidParameterException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LoadUrlAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<LoadUrlAccessDeniedException>()(
@@ -231,9 +234,9 @@ export class LoadUrlAccessDeniedException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class MalformedQueryException
   extends /*@__PURE__*/ S.TaggedError<MalformedQueryException>()(
@@ -242,9 +245,9 @@ export class MalformedQueryException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MemoryLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<MemoryLimitExceededException>()(
@@ -253,9 +256,9 @@ export class MemoryLimitExceededException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class MethodNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<MethodNotAllowedException>()(
@@ -264,9 +267,9 @@ export class MethodNotAllowedException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(405),
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameterException
   extends /*@__PURE__*/ S.TaggedError<MissingParameterException>()(
@@ -275,9 +278,9 @@ export class MissingParameterException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MLResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<MLResourceNotFoundException>()(
@@ -286,9 +289,9 @@ export class MLResourceNotFoundException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ParsingException
   extends /*@__PURE__*/ S.TaggedError<ParsingException>()(
@@ -297,9 +300,9 @@ export class ParsingException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionsFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionsFailedException>()(
@@ -308,9 +311,9 @@ export class PreconditionsFailedException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<QueryLimitExceededException>()(
@@ -319,9 +322,9 @@ export class QueryLimitExceededException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class QueryLimitException
   extends /*@__PURE__*/ S.TaggedError<QueryLimitException>()(
@@ -330,9 +333,9 @@ export class QueryLimitException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryTooLargeException
   extends /*@__PURE__*/ S.TaggedError<QueryTooLargeException>()(
@@ -341,9 +344,9 @@ export class QueryTooLargeException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ReadOnlyViolationException
   extends /*@__PURE__*/ S.TaggedError<ReadOnlyViolationException>()(
@@ -352,9 +355,9 @@ export class ReadOnlyViolationException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class S3Exception
   extends /*@__PURE__*/ S.TaggedError<S3Exception>()(
@@ -363,9 +366,9 @@ export class S3Exception
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(400), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(400), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ServerShutdownException
   extends /*@__PURE__*/ S.TaggedError<ServerShutdownException>()(
@@ -374,9 +377,9 @@ export class ServerShutdownException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class StatisticsNotAvailableException
   extends /*@__PURE__*/ S.TaggedError<StatisticsNotAvailableException>()(
@@ -385,9 +388,9 @@ export class StatisticsNotAvailableException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class StreamRecordsNotFoundException
   extends /*@__PURE__*/ S.TaggedError<StreamRecordsNotFoundException>()(
@@ -396,9 +399,9 @@ export class StreamRecordsNotFoundException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
@@ -407,9 +410,9 @@ export class ThrottlingException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TimeLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<TimeLimitExceededException>()(
@@ -418,9 +421,9 @@ export class TimeLimitExceededException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
@@ -429,9 +432,9 @@ export class TooManyRequestsException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(T.HttpError(429), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
@@ -440,9 +443,9 @@ export class UnsupportedOperationException
       detailedMessage: S.String,
       requestId: S.String,
       code: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface CancelGremlinQueryInput {
   queryId: string;
@@ -896,9 +899,15 @@ export const QueryLanguageVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ version: S.String }),
 ).annotate({ identifier: "QueryLanguageVersion" }) as any as S.Schema<QueryLanguageVersion>;
 export type StringValuedMap = { [key: string]: string | undefined };
-export const StringValuedMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringValuedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DocumentValuedMap = { [key: string]: any | undefined };
-export const DocumentValuedMap = /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export const DocumentValuedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Any.pipe(S.optional),
+);
 export interface GetEngineStatusOutput {
   status?: string;
   startTime?: string;
@@ -1344,7 +1353,10 @@ export const NodeLabels = /*@__PURE__*/ S.Array(S.String);
 export type EdgeLabels = string[];
 export const EdgeLabels = /*@__PURE__*/ S.Array(S.String);
 export type LongValuedMap = { [key: string]: number | undefined };
-export const LongValuedMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const LongValuedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type LongValuedMapList = { [key: string]: number | undefined }[];
 export const LongValuedMapList = /*@__PURE__*/ S.Array(LongValuedMap);
 export type NodeProperties = string[];

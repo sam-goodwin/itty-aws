@@ -6,14 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Resource Groups Tagging API",
   serviceShapeName: "ResourceGroupsTaggingAPI_20170126",
 });
-const auth = T.AwsAuthSigv4({ name: "tagging" });
-const ver = T.ServiceVersion("2017-01-26");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "tagging" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-01-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,29 +73,29 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConstraintViolationException
   extends /*@__PURE__*/ S.TaggedError<ConstraintViolationException>()(
     "ConstraintViolationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()("InternalServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PaginationTokenExpiredException
   extends /*@__PURE__*/ S.TaggedError<PaginationTokenExpiredException>()(
     "PaginationTokenExpiredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()("ThrottledException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export interface DescribeReportCreationInput {}
 export const DescribeReportCreationInput = /*@__PURE__*/ S.suspend(() =>
@@ -382,7 +382,7 @@ export const StartReportCreationOutput = /*@__PURE__*/ S.suspend(() => S.Struct(
 export type ResourceARNListForTagUntag = string[];
 export const ResourceARNListForTagUntag = /*@__PURE__*/ S.Array(S.String);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface TagResourcesInput {
   ResourceARNList: string[];
   Tags: { [key: string]: string | undefined };
@@ -409,7 +409,10 @@ export const FailureInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FailureInfo" }) as any as S.Schema<FailureInfo>;
 export type FailedResourcesMap = { [key: string]: FailureInfo | undefined };
-export const FailedResourcesMap = /*@__PURE__*/ S.Record(S.String, FailureInfo.pipe(S.optional));
+export const FailedResourcesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FailureInfo.pipe(S.optional),
+);
 export interface TagResourcesOutput {
   FailedResourcesMap?: { [key: string]: FailureInfo | undefined };
 }

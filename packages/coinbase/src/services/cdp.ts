@@ -3386,7 +3386,7 @@ export const AbiFunctionType = S.String;
 /** Used for tuple types. */
 export type AbiParameterComponentsList = Array<AbiParameter>;
 export const AbiParameterComponentsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AbiParameter),
+  /*@__PURE__*/ S.suspend(() => AbiParameter),
 ) as any as S.Schema<AbiParameterComponentsList>;
 
 /** Parameter definition for ABI functions, errors, and constructors. */

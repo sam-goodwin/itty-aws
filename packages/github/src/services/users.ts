@@ -1275,7 +1275,7 @@ export type ListAttestationsBulkResponseAttestationsSubjectDigestsMap = {
 };
 export const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
+  /*@__PURE__*/ S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
 ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsMap>;
 
 /** Information about the current page. */

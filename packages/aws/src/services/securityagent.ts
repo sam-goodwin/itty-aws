@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SecurityAgent", serviceShapeName: "SecurityAgent" });
-const auth = T.AwsAuthSigv4({ name: "securityagent" });
-const ver = T.ServiceVersion("2025-09-06");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SecurityAgent",
+  serviceShapeName: "SecurityAgent",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "securityagent" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-09-06");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -50,48 +53,48 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    fieldList: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    fieldList: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -361,9 +364,9 @@ export type CaCertificateSource =
   | { inlinePem?: never; artifactId: string; s3Location?: never }
   | { inlinePem?: never; artifactId?: never; s3Location: string };
 export const CaCertificateSource = /*@__PURE__*/ S.Union([
-  S.Struct({ inlinePem: SensitiveString }),
-  S.Struct({ artifactId: S.String }),
-  S.Struct({ s3Location: S.String }),
+  /*@__PURE__*/ S.Struct({ inlinePem: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ artifactId: S.String }),
+  /*@__PURE__*/ S.Struct({ s3Location: S.String }),
 ]);
 export interface TrustedCaCertificate {
   source: CaCertificateSource;
@@ -1989,7 +1992,7 @@ export type AgentName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAgentSpaceInput {
   name: string;
   description?: string;
@@ -2266,12 +2269,12 @@ export type ProviderInput =
       bitbucketDataCenter: BitbucketDataCenterIntegrationInput;
     };
 export const ProviderInput = /*@__PURE__*/ S.Union([
-  S.Struct({ github: GitHubIntegrationInput }),
-  S.Struct({ gitlab: GitLabIntegrationInput }),
-  S.Struct({ bitbucket: BitbucketIntegrationInput }),
-  S.Struct({ confluence: ConfluenceIntegrationInput }),
-  S.Struct({ azureDevOps: AzureDevOpsIntegrationInput }),
-  S.Struct({ bitbucketDataCenter: BitbucketDataCenterIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ github: GitHubIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ gitlab: GitLabIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ bitbucket: BitbucketIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ confluence: ConfluenceIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ azureDevOps: AzureDevOpsIntegrationInput }),
+  /*@__PURE__*/ S.Struct({ bitbucketDataCenter: BitbucketDataCenterIntegrationInput }),
 ]);
 export type PrivateConnectionName = string;
 export interface CreateIntegrationInput {
@@ -2315,7 +2318,9 @@ export const UserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ role: S.optional(UserRole) }),
 ).annotate({ identifier: "UserConfig" }) as any as S.Schema<UserConfig>;
 export type MembershipConfig = { user: UserConfig };
-export const MembershipConfig = /*@__PURE__*/ S.Union([S.Struct({ user: UserConfig })]);
+export const MembershipConfig = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ user: UserConfig }),
+]);
 export interface CreateMembershipRequest {
   applicationId: string;
   agentSpaceId: string;
@@ -2457,8 +2462,8 @@ export type PrivateConnectionMode =
   | { serviceManaged: ServiceManagedInput; selfManaged?: never }
   | { serviceManaged?: never; selfManaged: SelfManagedInput };
 export const PrivateConnectionMode = /*@__PURE__*/ S.Union([
-  S.Struct({ serviceManaged: ServiceManagedInput }),
-  S.Struct({ selfManaged: SelfManagedInput }),
+  /*@__PURE__*/ S.Struct({ serviceManaged: ServiceManagedInput }),
+  /*@__PURE__*/ S.Struct({ selfManaged: SelfManagedInput }),
 ]);
 export interface CreatePrivateConnectionInput {
   privateConnectionName: string;
@@ -3128,7 +3133,7 @@ export type SecurityRequirementArtifactList = SecurityRequirementArtifact[];
 export const SecurityRequirementArtifactList = /*@__PURE__*/ S.Array(SecurityRequirementArtifact);
 export type ImportSource = { documents: SecurityRequirementArtifact[] };
 export const ImportSource = /*@__PURE__*/ S.Union([
-  S.Struct({ documents: SecurityRequirementArtifactList }),
+  /*@__PURE__*/ S.Struct({ documents: SecurityRequirementArtifactList }),
 ]);
 export interface ImportSecurityRequirementsInput {
   packId: string;
@@ -3784,11 +3789,11 @@ export type IntegratedResourceMetadata =
       azureDevOpsRepository: AzureDevOpsRepositoryMetadata;
     };
 export const IntegratedResourceMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ githubRepository: GitHubRepositoryMetadata }),
-  S.Struct({ gitlabRepository: GitLabRepositoryMetadata }),
-  S.Struct({ bitbucketRepository: BitbucketRepositoryMetadata }),
-  S.Struct({ confluenceDocument: ConfluenceDocumentMetadata }),
-  S.Struct({ azureDevOpsRepository: AzureDevOpsRepositoryMetadata }),
+  /*@__PURE__*/ S.Struct({ githubRepository: GitHubRepositoryMetadata }),
+  /*@__PURE__*/ S.Struct({ gitlabRepository: GitLabRepositoryMetadata }),
+  /*@__PURE__*/ S.Struct({ bitbucketRepository: BitbucketRepositoryMetadata }),
+  /*@__PURE__*/ S.Struct({ confluenceDocument: ConfluenceDocumentMetadata }),
+  /*@__PURE__*/ S.Struct({ azureDevOpsRepository: AzureDevOpsRepositoryMetadata }),
 ]);
 export type TriggerEvent =
   | "PULL_REQUEST_READY_FOR_REVIEW"
@@ -3938,11 +3943,11 @@ export type ProviderResourceCapabilities =
       azureDevOps: AzureDevOpsResourceCapabilities;
     };
 export const ProviderResourceCapabilities = /*@__PURE__*/ S.Union([
-  S.Struct({ github: GitHubResourceCapabilities }),
-  S.Struct({ gitlab: GitLabResourceCapabilities }),
-  S.Struct({ bitbucket: BitbucketResourceCapabilities }),
-  S.Struct({ confluence: ConfluenceResourceCapabilities }),
-  S.Struct({ azureDevOps: AzureDevOpsResourceCapabilities }),
+  /*@__PURE__*/ S.Struct({ github: GitHubResourceCapabilities }),
+  /*@__PURE__*/ S.Struct({ gitlab: GitLabResourceCapabilities }),
+  /*@__PURE__*/ S.Struct({ bitbucket: BitbucketResourceCapabilities }),
+  /*@__PURE__*/ S.Struct({ confluence: ConfluenceResourceCapabilities }),
+  /*@__PURE__*/ S.Struct({ azureDevOps: AzureDevOpsResourceCapabilities }),
 ]);
 export interface IntegratedResourceSummary {
   integrationId: string;
@@ -3976,8 +3981,8 @@ export type IntegrationFilter =
   | { provider: Provider; providerType?: never }
   | { provider?: never; providerType: ProviderType };
 export const IntegrationFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ provider: Provider }),
-  S.Struct({ providerType: ProviderType }),
+  /*@__PURE__*/ S.Struct({ provider: Provider }),
+  /*@__PURE__*/ S.Struct({ providerType: ProviderType }),
 ]);
 export interface ListIntegrationsInput {
   filter?: IntegrationFilter;
@@ -4052,7 +4057,9 @@ export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ username: S.String, email: S.String }),
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 export type MemberMetadata = { user: UserMetadata };
-export const MemberMetadata = /*@__PURE__*/ S.Union([S.Struct({ user: UserMetadata })]);
+export const MemberMetadata = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ user: UserMetadata }),
+]);
 export interface MembershipSummary {
   membershipId: string;
   applicationId: string;
@@ -4704,7 +4711,7 @@ export const StartCodeRemediationOutput = /*@__PURE__*/ S.suspend(() => S.Struct
   identifier: "StartCodeRemediationOutput",
 }) as any as S.Schema<StartCodeRemediationOutput>;
 export type DiffSource = { s3Uri: string };
-export const DiffSource = /*@__PURE__*/ S.Union([S.Struct({ s3Uri: S.String })]);
+export const DiffSource = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3Uri: S.String })]);
 export interface StartCodeReviewJobInput {
   agentSpaceId: string;
   codeReviewId: string;
@@ -5122,11 +5129,11 @@ export type IntegratedResource =
       azureDevOpsRepository: AzureDevOpsRepositoryResource;
     };
 export const IntegratedResource = /*@__PURE__*/ S.Union([
-  S.Struct({ githubRepository: GitHubRepositoryResource }),
-  S.Struct({ gitlabRepository: GitLabRepositoryResource }),
-  S.Struct({ bitbucketRepository: BitbucketRepositoryResource }),
-  S.Struct({ confluenceDocument: ConfluenceDocumentResource }),
-  S.Struct({ azureDevOpsRepository: AzureDevOpsRepositoryResource }),
+  /*@__PURE__*/ S.Struct({ githubRepository: GitHubRepositoryResource }),
+  /*@__PURE__*/ S.Struct({ gitlabRepository: GitLabRepositoryResource }),
+  /*@__PURE__*/ S.Struct({ bitbucketRepository: BitbucketRepositoryResource }),
+  /*@__PURE__*/ S.Struct({ confluenceDocument: ConfluenceDocumentResource }),
+  /*@__PURE__*/ S.Struct({ azureDevOpsRepository: AzureDevOpsRepositoryResource }),
 ]);
 export interface IntegratedResourceInputItem {
   resource: IntegratedResource;

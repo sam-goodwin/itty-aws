@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "b2bi", serviceShapeName: "B2BI" });
-const auth = T.AwsAuthSigv4({ name: "b2bi" });
-const ver = T.ServiceVersion("2022-06-23");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "b2bi", serviceShapeName: "B2BI" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "b2bi" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-06-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,56 +71,60 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type CapabilityName = string;
 export type CapabilityType = "edi" | (string & {});
@@ -493,7 +497,7 @@ export const X12Details = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ transactionSet: S.optional(X12TransactionSet), version: S.optional(X12Version) }),
 ).annotate({ identifier: "X12Details" }) as any as S.Schema<X12Details>;
 export type EdiType = { x12Details: X12Details };
-export const EdiType = /*@__PURE__*/ S.Union([S.Struct({ x12Details: X12Details })]);
+export const EdiType = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ x12Details: X12Details })]);
 export type BucketName = string;
 export type S3Key = string;
 export interface S3Location {
@@ -521,7 +525,9 @@ export const EdiConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EdiConfiguration" }) as any as S.Schema<EdiConfiguration>;
 export type CapabilityConfiguration = { edi: EdiConfiguration };
-export const CapabilityConfiguration = /*@__PURE__*/ S.Union([S.Struct({ edi: EdiConfiguration })]);
+export const CapabilityConfiguration = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ edi: EdiConfiguration }),
+]);
 export type InstructionsDocuments = S3Location[];
 export const InstructionsDocuments = /*@__PURE__*/ S.Array(S3Location);
 export type TagKey = string;
@@ -706,7 +712,9 @@ export const X12Envelope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ common: S.optional(X12OutboundEdiHeaders), wrapOptions: S.optional(WrapOptions) }),
 ).annotate({ identifier: "X12Envelope" }) as any as S.Schema<X12Envelope>;
 export type OutboundEdiOptions = { x12: X12Envelope };
-export const OutboundEdiOptions = /*@__PURE__*/ S.Union([S.Struct({ x12: X12Envelope })]);
+export const OutboundEdiOptions = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ x12: X12Envelope }),
+]);
 export type X12FunctionalAcknowledgment =
   | "DO_NOT_GENERATE"
   | "GENERATE_ALL_SEGMENTS"
@@ -858,7 +866,7 @@ export type MappingType = "JSONATA" | "XSLT" | (string & {});
 export const MappingType = S.String;
 
 export type TemplateDetails = { x12: X12Details };
-export const TemplateDetails = /*@__PURE__*/ S.Union([S.Struct({ x12: X12Details })]);
+export const TemplateDetails = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ x12: X12Details })]);
 export interface CreateStarterMappingTemplateRequest {
   outputSampleLocation?: S3Location;
   mappingType: MappingType;
@@ -900,7 +908,7 @@ export type FromFormat = "X12" | (string & {});
 export const FromFormat = S.String;
 
 export type FormatOptions = { x12: X12Details };
-export const FormatOptions = /*@__PURE__*/ S.Union([S.Struct({ x12: X12Details })]);
+export const FormatOptions = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ x12: X12Details })]);
 export type X12SplitBy = "NONE" | "TRANSACTION" | (string & {});
 export const X12SplitBy = S.String;
 
@@ -967,9 +975,9 @@ export type X12ValidationRule =
       elementRequirementValidationRule: X12ElementRequirementValidationRule;
     };
 export const X12ValidationRule = /*@__PURE__*/ S.Union([
-  S.Struct({ codeListValidationRule: X12CodeListValidationRule }),
-  S.Struct({ elementLengthValidationRule: X12ElementLengthValidationRule }),
-  S.Struct({ elementRequirementValidationRule: X12ElementRequirementValidationRule }),
+  /*@__PURE__*/ S.Struct({ codeListValidationRule: X12CodeListValidationRule }),
+  /*@__PURE__*/ S.Struct({ elementLengthValidationRule: X12ElementLengthValidationRule }),
+  /*@__PURE__*/ S.Struct({ elementRequirementValidationRule: X12ElementRequirementValidationRule }),
 ]);
 export type X12ValidationRules = X12ValidationRule[];
 export const X12ValidationRules = /*@__PURE__*/ S.Array(X12ValidationRule);
@@ -1640,7 +1648,9 @@ export type ConversionSourceFormat = "JSON" | "XML" | (string & {});
 export const ConversionSourceFormat = S.String;
 
 export type InputFileSource = { fileContent: string };
-export const InputFileSource = /*@__PURE__*/ S.Union([S.Struct({ fileContent: S.String })]);
+export const InputFileSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ fileContent: S.String }),
+]);
 export interface ConversionSource {
   fileFormat: ConversionSourceFormat;
   inputFile: InputFileSource;
@@ -1652,10 +1662,12 @@ export type ConversionTargetFormat = "X12" | (string & {});
 export const ConversionTargetFormat = S.String;
 
 export type ConversionTargetFormatDetails = { x12: X12Details };
-export const ConversionTargetFormatDetails = /*@__PURE__*/ S.Union([S.Struct({ x12: X12Details })]);
+export const ConversionTargetFormatDetails = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ x12: X12Details }),
+]);
 export type OutputSampleFileSource = { fileLocation: S3Location };
 export const OutputSampleFileSource = /*@__PURE__*/ S.Union([
-  S.Struct({ fileLocation: S3Location }),
+  /*@__PURE__*/ S.Struct({ fileLocation: S3Location }),
 ]);
 export interface ConversionTarget {
   fileFormat: ConversionTargetFormat;

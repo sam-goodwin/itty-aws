@@ -735,13 +735,13 @@ export const CancelDeploymentResponseEnvList = /*@__PURE__*/ S.Array(
 /** TODO: The following types will eventually be exported by a more relevant package. */
 export type FlagJSONValueCase2List = Array<FlagJSONValue>;
 export const FlagJSONValueCase2List = /*@__PURE__*/ S.Array(
-  S.suspend(() => FlagJSONValue),
+  /*@__PURE__*/ S.suspend(() => FlagJSONValue),
 ) as any as S.Schema<FlagJSONValueCase2List>;
 
 export type FlagJSONValueCase3Map = { [key: string]: FlagJSONValue | undefined };
 export const FlagJSONValueCase3Map = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => FlagJSONValue),
+  /*@__PURE__*/ S.suspend(() => FlagJSONValue),
 ) as any as S.Schema<FlagJSONValueCase3Map>;
 
 export type FlagJSONValue =
@@ -22285,7 +22285,7 @@ export const GetDeploymentEventsResponseBodyItem =
 
 export type GetDeploymentEventsResponseBodyList = Array<GetDeploymentEventsResponseBodyItem | null>;
 export const GetDeploymentEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.NullOr(GetDeploymentEventsResponseBodyItem),
+  /*@__PURE__*/ S.NullOr(GetDeploymentEventsResponseBodyItem),
 ) as any as S.Schema<GetDeploymentEventsResponseBodyList>;
 
 export type GetDeploymentEventsResponse = GetDeploymentEventsResponseBodyList;
@@ -23108,7 +23108,7 @@ export const ListDeploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of children files of the directory (only valid for the `directory` type) */
 export type FileTreeChildrenList = Array<FileTree>;
 export const FileTreeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => FileTree),
+  /*@__PURE__*/ S.suspend(() => FileTree),
 ) as any as S.Schema<FileTreeChildrenList>;
 
 /** String indicating the type of file tree entry. */
@@ -23244,7 +23244,9 @@ export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesI
 export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue),
+    /*@__PURE__*/ S.NullOr(
+      UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue,
+    ),
   ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap>;
 
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem {

@@ -3470,7 +3470,7 @@ export type SettingsGetResult =
   | SettingsGetResultWebP
   | SettingsGetResultWebsocket;
 export const SettingsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "value", "editable", "modifiedOn"],
       ["id", "value", "editable", "modifiedOn"],
@@ -4000,7 +4000,7 @@ export type ListEntitlementsResultItemAllocationValue =
   | ListEntitlementsResultItemAllocationValueCase3List
   | ListEntitlementsResultItemAllocationValueCase4;
 export const ListEntitlementsResultItemAllocationValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], ["max", "min"]]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], ["max", "min"]]),
 );
 
 export interface ListEntitlementsResultItemAllocation {
@@ -6095,7 +6095,7 @@ export type ListSettingsResultItem =
   | ListSettingsResultItemWebP
   | ListSettingsResultItemWebsocket;
 export const ListSettingsResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "value", "editable", "modifiedOn"],
       ["id", "value", "editable", "modifiedOn"],
@@ -8519,7 +8519,7 @@ export type SettingsEditResult =
   | SettingsEditResultWebP
   | SettingsEditResultWebsocket;
 export const SettingsEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "value", "editable", "modifiedOn"],
       ["id", "value", "editable", "modifiedOn"],
@@ -10834,7 +10834,7 @@ export type SettingsBulkEditRequestBodyItem =
   | SettingsBulkEditRequestBodyItemWebP
   | SettingsBulkEditRequestBodyItemWebsocket;
 export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "value", "editable", "modifiedOn"],
       ["id", "value", "editable", "modifiedOn"],
@@ -12902,7 +12902,7 @@ export type SettingsBulkEditResultItem =
   | SettingsBulkEditResultItemWebP
   | SettingsBulkEditResultItemWebsocket;
 export const SettingsBulkEditResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "value", "editable", "modifiedOn"],
       ["id", "value", "editable", "modifiedOn"],

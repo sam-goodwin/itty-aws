@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://firehose.amazonaws.com/doc/2015-08-04");
-const svc = T.AwsApiService({ sdkId: "Firehose", serviceShapeName: "Firehose_20150804" });
-const auth = T.AwsAuthSigv4({ name: "firehose" });
-const ver = T.ServiceVersion("2015-08-04");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://firehose.amazonaws.com/doc/2015-08-04");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Firehose",
+  serviceShapeName: "Firehose_20150804",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "firehose" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-08-04");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,39 +77,42 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()("InvalidArgumentException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidKMSResourceException
   extends /*@__PURE__*/ S.TaggedError<InvalidKMSResourceException>()(
     "InvalidKMSResourceException",
-    { code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    {
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
   ) {}
 export class InvalidSourceException
   extends /*@__PURE__*/ S.TaggedError<InvalidSourceException>()("InvalidSourceException", {
-    code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export type DeliveryStreamName = string;
 export type DeliveryStreamType =
@@ -304,7 +310,10 @@ export const SchemaConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaConfiguration" }) as any as S.Schema<SchemaConfiguration>;
 export type NonEmptyString = string;
 export type ColumnToJsonKeyMappings = { [key: string]: string | undefined };
-export const ColumnToJsonKeyMappings = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ColumnToJsonKeyMappings = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface OpenXJsonSerDe {
   ConvertDotsInJsonKeysToUnderscores?: boolean;
   CaseInsensitive?: boolean;

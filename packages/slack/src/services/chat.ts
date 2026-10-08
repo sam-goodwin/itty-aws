@@ -306,7 +306,9 @@ export const PostEphemeralRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostEphemeralRequestAttachments = string | PostEphemeralRequestAttachmentsCase1List;
-export const PostEphemeralRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PostEphemeralRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type PostEphemeralRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export const PostEphemeralRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
@@ -321,7 +323,9 @@ export const PostEphemeralRequestBlocksCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostEphemeralRequestBlocks = string | PostEphemeralRequestBlocksCase1List;
-export const PostEphemeralRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PostEphemeralRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type PostEphemeralRequestParse = "" | "none" | "full" | "mrkdwn" | "false";
 export const PostEphemeralRequestParse = S.String;
@@ -401,7 +405,9 @@ export const PostMessageRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostMessageRequestAttachments = string | PostMessageRequestAttachmentsCase1List;
-export const PostMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PostMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type PostMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export const PostMessageRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
@@ -416,7 +422,9 @@ export const PostMessageRequestBlocksCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostMessageRequestBlocks = string | PostMessageRequestBlocksCase1List;
-export const PostMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PostMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface PostMessageRequest {
   /** (Legacy) Pass true to post the message as the authed user instead of as a bot. Defaults to false. Can only be used by classic apps. See [legacy `as_user` parameter](#legacy_as_user) below. */
@@ -516,7 +524,7 @@ export const ScheduleMessageRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type ScheduleMessageRequestAttachments = string | ScheduleMessageRequestAttachmentsCase1List;
 export const ScheduleMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type ScheduleMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
@@ -532,7 +540,9 @@ export const ScheduleMessageRequestBlocksCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type ScheduleMessageRequestBlocks = string | ScheduleMessageRequestBlocksCase1List;
-export const ScheduleMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const ScheduleMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Change how messages are treated. See [chat.postMessage](chat.postMessage#formatting). */
 export type ScheduleMessageRequestParse = "none" | "full";
@@ -723,7 +733,9 @@ export const StopStreamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Pass true to update the message as the authed user. Bot users in this context are considered authed users. */
 export type UpdateChatRequestAsUser = boolean | string;
-export const UpdateChatRequestAsUser = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const UpdateChatRequestAsUser = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type UpdateChatRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
 export const UpdateChatRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
@@ -738,7 +750,9 @@ export const UpdateChatRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type UpdateChatRequestAttachments = string | UpdateChatRequestAttachmentsCase1List;
-export const UpdateChatRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const UpdateChatRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type UpdateChatRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export const UpdateChatRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
@@ -753,11 +767,15 @@ export const UpdateChatRequestBlocksCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type UpdateChatRequestBlocks = string | UpdateChatRequestBlocksCase1List;
-export const UpdateChatRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const UpdateChatRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Find and link channel names and usernames. Defaults to `none`. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, `none`. */
 export type UpdateChatRequestLinkNames = boolean | string;
-export const UpdateChatRequestLinkNames = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const UpdateChatRequestLinkNames = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 /** Array of new file ids that will be sent with this message. */
 export type UpdateChatRequestFileIdsList = Array<string>;

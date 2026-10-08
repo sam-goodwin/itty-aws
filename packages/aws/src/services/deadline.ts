@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "deadline", serviceShapeName: "Deadline" });
-const auth = T.AwsAuthSigv4({ name: "deadline" });
-const ver = T.ServiceVersion("2023-10-12");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "deadline", serviceShapeName: "Deadline" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "deadline" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-10-12");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,105 +74,124 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ConflictExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ConflictExceptionReason).annotate({
         identifier: "ConflictExceptionReason",
       }),
       resourceId: S.String,
       resourceType: S.String,
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()("InternalServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
         identifier: "ServiceQuotaExceededExceptionReason",
       }),
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
-      resourceId: S.optional(S.String),
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
-      context: S.optional(
-        S.suspend(() => ExceptionContext).annotate({ identifier: "ExceptionContext" }),
+      context: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionContext).annotate({
+          identifier: "ExceptionContext",
+        }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type FarmId = string;
 export type DeadlinePrincipalType = "USER" | "GROUP" | (string & {});
@@ -584,7 +603,10 @@ export type JobTargetTaskRunStatus =
 export const JobTargetTaskRunStatus = S.String;
 
 export type TaskRunStatusCounts = { [key in TaskRunStatus]?: number };
-export const TaskRunStatusCounts = /*@__PURE__*/ S.Record(TaskRunStatus, S.Number.pipe(S.optional));
+export const TaskRunStatusCounts = /*@__PURE__*/ S.Record(
+  TaskRunStatus,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type TaskFailureRetryCount = number;
 export type StorageProfileId = string;
 export type MaxFailedTasksCount = number;
@@ -779,21 +801,24 @@ export type JobParameter =
       intListList: string[][];
     };
 export const JobParameter = /*@__PURE__*/ S.Union([
-  S.Struct({ int: S.String }),
-  S.Struct({ float: S.String }),
-  S.Struct({ string: S.String }),
-  S.Struct({ path: S.String }),
-  S.Struct({ bool: S.String }),
-  S.Struct({ rangeExpr: S.String }),
-  S.Struct({ stringList: ParameterStringList }),
-  S.Struct({ pathList: PathStringList }),
-  S.Struct({ intList: IntStringList }),
-  S.Struct({ floatList: FloatStringList }),
-  S.Struct({ boolList: BooleanStringList }),
-  S.Struct({ intListList: IntStringListList }),
+  /*@__PURE__*/ S.Struct({ int: S.String }),
+  /*@__PURE__*/ S.Struct({ float: S.String }),
+  /*@__PURE__*/ S.Struct({ string: S.String }),
+  /*@__PURE__*/ S.Struct({ path: S.String }),
+  /*@__PURE__*/ S.Struct({ bool: S.String }),
+  /*@__PURE__*/ S.Struct({ rangeExpr: S.String }),
+  /*@__PURE__*/ S.Struct({ stringList: ParameterStringList }),
+  /*@__PURE__*/ S.Struct({ pathList: PathStringList }),
+  /*@__PURE__*/ S.Struct({ intList: IntStringList }),
+  /*@__PURE__*/ S.Struct({ floatList: FloatStringList }),
+  /*@__PURE__*/ S.Struct({ boolList: BooleanStringList }),
+  /*@__PURE__*/ S.Struct({ intListList: IntStringListList }),
 ]);
 export type JobParameters = { [key: string]: JobParameter | undefined };
-export const JobParameters = /*@__PURE__*/ S.Record(S.String, JobParameter.pipe(S.optional));
+export const JobParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ JobParameter.pipe(S.optional),
+);
 export type FileSystemLocationName = string;
 export type PathFormat = "windows" | "posix" | (string & {});
 export const PathFormat = S.String;
@@ -982,10 +1007,10 @@ export type JobEntityIdentifiersUnion =
       environmentDetails: EnvironmentDetailsIdentifiers;
     };
 export const JobEntityIdentifiersUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ jobDetails: JobDetailsIdentifiers }),
-  S.Struct({ jobAttachmentDetails: JobAttachmentDetailsIdentifiers }),
-  S.Struct({ stepDetails: StepDetailsIdentifiers }),
-  S.Struct({ environmentDetails: EnvironmentDetailsIdentifiers }),
+  /*@__PURE__*/ S.Struct({ jobDetails: JobDetailsIdentifiers }),
+  /*@__PURE__*/ S.Struct({ jobAttachmentDetails: JobAttachmentDetailsIdentifiers }),
+  /*@__PURE__*/ S.Struct({ stepDetails: StepDetailsIdentifiers }),
+  /*@__PURE__*/ S.Struct({ environmentDetails: EnvironmentDetailsIdentifiers }),
 ]);
 export type JobEntityIdentifiers = JobEntityIdentifiersUnion[];
 export const JobEntityIdentifiers = /*@__PURE__*/ S.Array(JobEntityIdentifiersUnion);
@@ -1166,10 +1191,10 @@ export type JobEntity =
       environmentDetails: EnvironmentDetailsEntity;
     };
 export const JobEntity = /*@__PURE__*/ S.Union([
-  S.Struct({ jobDetails: JobDetailsEntity }),
-  S.Struct({ jobAttachmentDetails: JobAttachmentDetailsEntity }),
-  S.Struct({ stepDetails: StepDetailsEntity }),
-  S.Struct({ environmentDetails: EnvironmentDetailsEntity }),
+  /*@__PURE__*/ S.Struct({ jobDetails: JobDetailsEntity }),
+  /*@__PURE__*/ S.Struct({ jobAttachmentDetails: JobAttachmentDetailsEntity }),
+  /*@__PURE__*/ S.Struct({ stepDetails: StepDetailsEntity }),
+  /*@__PURE__*/ S.Struct({ environmentDetails: EnvironmentDetailsEntity }),
 ]);
 export type BatchGetJobEntityList = JobEntity[];
 export const BatchGetJobEntityList = /*@__PURE__*/ S.Array(JobEntity);
@@ -1250,10 +1275,10 @@ export type GetJobEntityError =
       environmentDetails: EnvironmentDetailsError;
     };
 export const GetJobEntityError = /*@__PURE__*/ S.Union([
-  S.Struct({ jobDetails: JobDetailsError }),
-  S.Struct({ jobAttachmentDetails: JobAttachmentDetailsError }),
-  S.Struct({ stepDetails: StepDetailsError }),
-  S.Struct({ environmentDetails: EnvironmentDetailsError }),
+  /*@__PURE__*/ S.Struct({ jobDetails: JobDetailsError }),
+  /*@__PURE__*/ S.Struct({ jobAttachmentDetails: JobAttachmentDetailsError }),
+  /*@__PURE__*/ S.Struct({ stepDetails: StepDetailsError }),
+  /*@__PURE__*/ S.Struct({ environmentDetails: EnvironmentDetailsError }),
 ]);
 export type BatchGetJobEntityErrors = GetJobEntityError[];
 export const BatchGetJobEntityErrors = /*@__PURE__*/ S.Array(GetJobEntityError);
@@ -1309,9 +1334,12 @@ export const SessionLifecycleTargetStatus = S.String;
 
 export type LogDriver = string;
 export type LogOptions = { [key: string]: string | undefined };
-export const LogOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LogOptions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type LogParameters = { [key: string]: string | undefined };
-export const LogParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LogParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type LogError = string;
 export interface LogConfiguration {
   logDriver: string;
@@ -1527,14 +1555,17 @@ export type TaskParameterValue =
   | { int?: never; float?: never; string?: never; path: string; chunkInt?: never }
   | { int?: never; float?: never; string?: never; path?: never; chunkInt: string };
 export const TaskParameterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ int: S.String }),
-  S.Struct({ float: S.String }),
-  S.Struct({ string: S.String }),
-  S.Struct({ path: S.String }),
-  S.Struct({ chunkInt: S.String }),
+  /*@__PURE__*/ S.Struct({ int: S.String }),
+  /*@__PURE__*/ S.Struct({ float: S.String }),
+  /*@__PURE__*/ S.Struct({ string: S.String }),
+  /*@__PURE__*/ S.Struct({ path: S.String }),
+  /*@__PURE__*/ S.Struct({ chunkInt: S.String }),
 ]);
 export type TaskParameters = { [key: string]: TaskParameterValue | undefined };
-export const TaskParameters = /*@__PURE__*/ S.Record(S.String, TaskParameterValue.pipe(S.optional));
+export const TaskParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TaskParameterValue.pipe(S.optional),
+);
 export interface TaskRunSessionActionDefinition {
   taskId?: string;
   stepId: string;
@@ -1579,10 +1610,12 @@ export type SessionActionDefinition =
       syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinition;
     };
 export const SessionActionDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ envEnter: EnvironmentEnterSessionActionDefinition }),
-  S.Struct({ envExit: EnvironmentExitSessionActionDefinition }),
-  S.Struct({ taskRun: TaskRunSessionActionDefinition }),
-  S.Struct({ syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ envEnter: EnvironmentEnterSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ envExit: EnvironmentExitSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ taskRun: TaskRunSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({
+    syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinition,
+  }),
 ]);
 export interface BatchGetSessionActionItem {
   farmId: string;
@@ -2325,7 +2358,9 @@ export const CopyJobTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export type ResourceName = string;
 export type Description = string | redacted.Redacted<string>;
 export type UsageTrackingResource = { queueId: string };
-export const UsageTrackingResource = /*@__PURE__*/ S.Union([S.Struct({ queueId: S.String })]);
+export const UsageTrackingResource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ queueId: S.String }),
+]);
 export type ConsumedUsageLimit = number;
 export type BudgetActionType =
   | "STOP_SCHEDULING_AND_COMPLETE_TASKS"
@@ -2361,9 +2396,11 @@ export const FixedBudgetSchedule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FixedBudgetSchedule" }) as any as S.Schema<FixedBudgetSchedule>;
 export type BudgetSchedule = { fixed: FixedBudgetSchedule };
-export const BudgetSchedule = /*@__PURE__*/ S.Union([S.Struct({ fixed: FixedBudgetSchedule })]);
+export const BudgetSchedule = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ fixed: FixedBudgetSchedule }),
+]);
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateBudgetRequest {
   farmId: string;
   displayName: string;
@@ -2736,8 +2773,8 @@ export type FleetConfiguration =
   | { customerManaged: CustomerManagedFleetConfiguration; serviceManagedEc2?: never }
   | { customerManaged?: never; serviceManagedEc2: ServiceManagedEc2FleetConfiguration };
 export const FleetConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customerManaged: CustomerManagedFleetConfiguration }),
-  S.Struct({ serviceManagedEc2: ServiceManagedEc2FleetConfiguration }),
+  /*@__PURE__*/ S.Struct({ customerManaged: CustomerManagedFleetConfiguration }),
+  /*@__PURE__*/ S.Struct({ serviceManagedEc2: ServiceManagedEc2FleetConfiguration }),
 ]);
 export type HostConfigurationScript = string | redacted.Redacted<string>;
 export type HostConfigurationScriptTimeoutSeconds = number;
@@ -3021,7 +3058,7 @@ export type SchedulingMaxPriorityOverride = {
   alwaysScheduleFirst: SchedulingMaxPriorityOverrideAlwaysScheduleFirst;
 };
 export const SchedulingMaxPriorityOverride = /*@__PURE__*/ S.Union([
-  S.Struct({ alwaysScheduleFirst: SchedulingMaxPriorityOverrideAlwaysScheduleFirst }),
+  /*@__PURE__*/ S.Struct({ alwaysScheduleFirst: SchedulingMaxPriorityOverrideAlwaysScheduleFirst }),
 ]);
 export interface SchedulingMinPriorityOverrideAlwaysScheduleLast {}
 export const SchedulingMinPriorityOverrideAlwaysScheduleLast = /*@__PURE__*/ S.suspend(() =>
@@ -3033,7 +3070,7 @@ export type SchedulingMinPriorityOverride = {
   alwaysScheduleLast: SchedulingMinPriorityOverrideAlwaysScheduleLast;
 };
 export const SchedulingMinPriorityOverride = /*@__PURE__*/ S.Union([
-  S.Struct({ alwaysScheduleLast: SchedulingMinPriorityOverrideAlwaysScheduleLast }),
+  /*@__PURE__*/ S.Struct({ alwaysScheduleLast: SchedulingMinPriorityOverrideAlwaysScheduleLast }),
 ]);
 export interface WeightedBalancedSchedulingConfiguration {
   priorityWeight?: number;
@@ -3074,9 +3111,9 @@ export type SchedulingConfiguration =
       weightedBalanced: WeightedBalancedSchedulingConfiguration;
     };
 export const SchedulingConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ priorityFifo: PriorityFifoSchedulingConfiguration }),
-  S.Struct({ priorityBalanced: PriorityBalancedSchedulingConfiguration }),
-  S.Struct({ weightedBalanced: WeightedBalancedSchedulingConfiguration }),
+  /*@__PURE__*/ S.Struct({ priorityFifo: PriorityFifoSchedulingConfiguration }),
+  /*@__PURE__*/ S.Struct({ priorityBalanced: PriorityBalancedSchedulingConfiguration }),
+  /*@__PURE__*/ S.Struct({ weightedBalanced: WeightedBalancedSchedulingConfiguration }),
 ]);
 export interface CreateQueueRequest {
   farmId: string;
@@ -4254,7 +4291,10 @@ export const GetMonitorSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingKey = string;
 export type SettingValue = string;
 export type SettingsMap = { [key: string]: string | undefined };
-export const SettingsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetMonitorSettingsResponse {
   settings: { [key: string]: string | undefined };
 }
@@ -6102,10 +6142,12 @@ export type SessionActionDefinitionSummary =
       syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinitionSummary;
     };
 export const SessionActionDefinitionSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ envEnter: EnvironmentEnterSessionActionDefinitionSummary }),
-  S.Struct({ envExit: EnvironmentExitSessionActionDefinitionSummary }),
-  S.Struct({ taskRun: TaskRunSessionActionDefinitionSummary }),
-  S.Struct({ syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinitionSummary }),
+  /*@__PURE__*/ S.Struct({ envEnter: EnvironmentEnterSessionActionDefinitionSummary }),
+  /*@__PURE__*/ S.Struct({ envExit: EnvironmentExitSessionActionDefinitionSummary }),
+  /*@__PURE__*/ S.Struct({ taskRun: TaskRunSessionActionDefinitionSummary }),
+  /*@__PURE__*/ S.Struct({
+    syncInputJobAttachments: SyncInputJobAttachmentsSessionActionDefinitionSummary,
+  }),
 ]);
 export interface SessionActionSummary {
   sessionActionId: string;
@@ -6868,20 +6910,22 @@ export type SearchFilterExpression =
       groupFilter: SearchGroupedFilterExpressions;
     };
 export const SearchFilterExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ dateTimeFilter: DateTimeFilterExpression }),
-  S.Struct({ parameterFilter: ParameterFilterExpression }),
-  S.Struct({ searchTermFilter: SearchTermFilterExpression }),
-  S.Struct({ stringFilter: StringFilterExpression }),
-  S.Struct({ stringListFilter: StringListFilterExpression }),
-  S.Struct({
-    groupFilter: S.suspend(
+  /*@__PURE__*/ S.Struct({ dateTimeFilter: DateTimeFilterExpression }),
+  /*@__PURE__*/ S.Struct({ parameterFilter: ParameterFilterExpression }),
+  /*@__PURE__*/ S.Struct({ searchTermFilter: SearchTermFilterExpression }),
+  /*@__PURE__*/ S.Struct({ stringFilter: StringFilterExpression }),
+  /*@__PURE__*/ S.Struct({ stringListFilter: StringListFilterExpression }),
+  /*@__PURE__*/ S.Struct({
+    groupFilter: /*@__PURE__*/ S.suspend(
       (): S.Schema<SearchGroupedFilterExpressions> => SearchGroupedFilterExpressions,
     ).annotate({ identifier: "SearchGroupedFilterExpressions" }),
   }),
 ]) as any as S.Schema<SearchFilterExpression>;
 export type SearchFilterExpressions = SearchFilterExpression[];
 export const SearchFilterExpressions = /*@__PURE__*/ S.Array(
-  S.suspend(() => SearchFilterExpression).annotate({ identifier: "SearchFilterExpression" }),
+  /*@__PURE__*/ S.suspend(() => SearchFilterExpression).annotate({
+    identifier: "SearchFilterExpression",
+  }),
 ) as any as S.Schema<SearchFilterExpressions>;
 export type LogicalOperator = "AND" | "OR" | (string & {});
 export const LogicalOperator = S.String;
@@ -6928,9 +6972,9 @@ export type SearchSortExpression =
   | { userJobsFirst?: never; fieldSort: FieldSortExpression; parameterSort?: never }
   | { userJobsFirst?: never; fieldSort?: never; parameterSort: ParameterSortExpression };
 export const SearchSortExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ userJobsFirst: UserJobsFirst }),
-  S.Struct({ fieldSort: FieldSortExpression }),
-  S.Struct({ parameterSort: ParameterSortExpression }),
+  /*@__PURE__*/ S.Struct({ userJobsFirst: UserJobsFirst }),
+  /*@__PURE__*/ S.Struct({ fieldSort: FieldSortExpression }),
+  /*@__PURE__*/ S.Struct({ parameterSort: ParameterSortExpression }),
 ]);
 export type SearchSortExpressions = SearchSortExpression[];
 export const SearchSortExpressions = /*@__PURE__*/ S.Array(SearchSortExpression);
@@ -7254,8 +7298,8 @@ export type SessionsStatisticsResources =
   | { queueIds: string[]; fleetIds?: never }
   | { queueIds?: never; fleetIds: string[] };
 export const SessionsStatisticsResources = /*@__PURE__*/ S.Union([
-  S.Struct({ queueIds: QueueIds }),
-  S.Struct({ fleetIds: FleetIds }),
+  /*@__PURE__*/ S.Struct({ queueIds: QueueIds }),
+  /*@__PURE__*/ S.Struct({ fleetIds: FleetIds }),
 ]);
 export type Timezone = string;
 export type Period = "HOURLY" | "DAILY" | "WEEKLY" | "MONTHLY" | (string & {});
@@ -8050,7 +8094,7 @@ export const UpdatedSessionActionInfo = /*@__PURE__*/ S.suspend(() =>
 export type UpdatedSessionActions = { [key: string]: UpdatedSessionActionInfo | undefined };
 export const UpdatedSessionActions = /*@__PURE__*/ S.Record(
   S.String,
-  UpdatedSessionActionInfo.pipe(S.optional),
+  /*@__PURE__*/ UpdatedSessionActionInfo.pipe(S.optional),
 );
 export interface UpdateWorkerScheduleRequest {
   farmId: string;
@@ -8140,10 +8184,12 @@ export type AssignedSessionActionDefinition =
       syncInputJobAttachments: AssignedSyncInputJobAttachmentsSessionActionDefinition;
     };
 export const AssignedSessionActionDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ envEnter: AssignedEnvironmentEnterSessionActionDefinition }),
-  S.Struct({ envExit: AssignedEnvironmentExitSessionActionDefinition }),
-  S.Struct({ taskRun: AssignedTaskRunSessionActionDefinition }),
-  S.Struct({ syncInputJobAttachments: AssignedSyncInputJobAttachmentsSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ envEnter: AssignedEnvironmentEnterSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ envExit: AssignedEnvironmentExitSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({ taskRun: AssignedTaskRunSessionActionDefinition }),
+  /*@__PURE__*/ S.Struct({
+    syncInputJobAttachments: AssignedSyncInputJobAttachmentsSessionActionDefinition,
+  }),
 ]);
 export interface AssignedSessionAction {
   sessionActionId: string;
@@ -8157,7 +8203,10 @@ export const AssignedSessionActions = /*@__PURE__*/ S.Array(AssignedSessionActio
 export type SessionMetadataKey = string;
 export type SessionMetadataValue = string;
 export type SessionMetadata = { [key: string]: string | undefined };
-export const SessionMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SessionMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AssignedSession {
   queueId: string;
   jobId: string;
@@ -8175,13 +8224,16 @@ export const AssignedSession = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssignedSession" }) as any as S.Schema<AssignedSession>;
 export type AssignedSessions = { [key: string]: AssignedSession | undefined };
-export const AssignedSessions = /*@__PURE__*/ S.Record(S.String, AssignedSession.pipe(S.optional));
+export const AssignedSessions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AssignedSession.pipe(S.optional),
+);
 export type SessionActionIdList = string[];
 export const SessionActionIdList = /*@__PURE__*/ S.Array(S.String);
 export type CancelSessionActions = { [key: string]: string[] | undefined };
 export const CancelSessionActions = /*@__PURE__*/ S.Record(
   S.String,
-  SessionActionIdList.pipe(S.optional),
+  /*@__PURE__*/ SessionActionIdList.pipe(S.optional),
 );
 export type DesiredWorkerStatus = "STOPPED" | (string & {});
 export const DesiredWorkerStatus = S.String;
@@ -8204,7 +8256,10 @@ export const UpdateWorkerScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkerScheduleResponse",
 }) as any as S.Schema<UpdateWorkerScheduleResponse>;
 export type ExceptionContext = { [key: string]: string | undefined };
-export const ExceptionContext = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExceptionContext = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ServiceQuotaExceededExceptionReason =
   | "SERVICE_QUOTA_EXCEEDED_EXCEPTION"
   | "KMS_KEY_LIMIT_EXCEEDED"

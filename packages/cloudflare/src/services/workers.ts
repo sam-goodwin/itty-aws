@@ -597,7 +597,7 @@ export type ScriptsSecretsBulkUpdateRequestSecretsValue =
   | ScriptsSecretsBulkUpdateRequestSecretsValueSecretText
   | ScriptsSecretsBulkUpdateRequestSecretsValueSecretKey;
 export const ScriptsSecretsBulkUpdateRequestSecretsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -729,7 +729,7 @@ export type ScriptsSecretsBulkUpdateResultValue =
   | ScriptsSecretsBulkUpdateResultValueSecretText
   | ScriptsSecretsBulkUpdateResultValueSecretKey;
 export const ScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -1217,7 +1217,7 @@ export type BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItem>;
@@ -1252,7 +1252,7 @@ export type BetaWorkersCreateRequestPreviewsBaseConfigPlacement =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7;
 export const BetaWorkersCreateRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -1961,7 +1961,7 @@ export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7TargetItem 
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7TargetItem>;
@@ -1996,7 +1996,7 @@ export type BetaWorkersCreateResponsePreviewsBaseConfigPlacement =
   | BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7;
 export const BetaWorkersCreateResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -2144,7 +2144,7 @@ export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List;
 export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface BetaWorkersVersionsCreateRequestAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
@@ -3226,7 +3226,7 @@ export type BetaWorkersVersionsCreateRequestBindingsItem =
   | BetaWorkersVersionsCreateRequestBindingsItemVPCService
   | BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork;
 export const BetaWorkersVersionsCreateRequestBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -3586,7 +3586,7 @@ export type BetaWorkersVersionsCreateRequestExportsValue =
   | BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectExpectingTransferExport;
 export const BetaWorkersVersionsCreateRequestExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -3858,7 +3858,7 @@ export type BetaWorkersVersionsCreateRequestMigrations =
   | BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration
   | BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsCreateRequestMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -4027,7 +4027,7 @@ export type BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
   Array<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
@@ -4060,7 +4060,7 @@ export type BetaWorkersVersionsCreateRequestPlacement =
   | BetaWorkersVersionsCreateRequestPlacementCase6
   | BetaWorkersVersionsCreateRequestPlacementCase7;
 export const BetaWorkersVersionsCreateRequestPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -4198,7 +4198,7 @@ export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List;
 export const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface BetaWorkersVersionsCreateResponseAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
@@ -5280,7 +5280,7 @@ export type BetaWorkersVersionsCreateResponseBindingsItem =
   | BetaWorkersVersionsCreateResponseBindingsItemVPCService
   | BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork;
 export const BetaWorkersVersionsCreateResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -5625,7 +5625,7 @@ export type BetaWorkersVersionsCreateResponseExportsValue =
   | BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const BetaWorkersVersionsCreateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -6182,7 +6182,7 @@ export type BetaWorkersVersionsCreateResponseMigrations =
   | BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration
   | BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsCreateResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -6325,7 +6325,7 @@ export type BetaWorkersVersionsCreateResponsePlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsCreateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersVersionsCreateResponsePlacementCase7TargetList =
   Array<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
@@ -6358,7 +6358,7 @@ export type BetaWorkersVersionsCreateResponsePlacement =
   | BetaWorkersVersionsCreateResponsePlacementCase6
   | BetaWorkersVersionsCreateResponsePlacementCase7;
 export const BetaWorkersVersionsCreateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -6691,7 +6691,7 @@ export type ObservabilityQueriesCreateRequestParametersCalculationsItem =
   | ObservabilityQueriesCreateRequestParametersCalculationsItemCase1;
 export const ObservabilityQueriesCreateRequestParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -6802,7 +6802,7 @@ export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObserva
   | number
   | boolean;
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -6845,7 +6845,7 @@ export type ObservabilityQueriesCreateRequestParametersFiltersItem =
   | ObservabilityQueriesCreateRequestParametersFiltersItemCase0
   | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesCreateRequestParametersFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -6917,7 +6917,7 @@ export const ObservabilityQueriesCreateRequestParametersHavingsList = /*@__PURE_
 
 export type ObservabilityQueriesCreateRequestParametersNeedleValue = string | number | boolean;
 export const ObservabilityQueriesCreateRequestParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityQueriesCreateRequestParametersNeedle {
@@ -7116,7 +7116,7 @@ export type ObservabilityQueriesCreateResponseParametersCalculationsItem =
   | ObservabilityQueriesCreateResponseParametersCalculationsItemCase1;
 export const ObservabilityQueriesCreateResponseParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -7226,7 +7226,7 @@ export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObserv
   | number
   | boolean;
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -7267,7 +7267,7 @@ export type ObservabilityQueriesCreateResponseParametersFiltersItem =
   | ObservabilityQueriesCreateResponseParametersFiltersItemCase0
   | ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesCreateResponseParametersFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -7340,7 +7340,7 @@ export const ObservabilityQueriesCreateResponseParametersHavingsList = /*@__PURE
 
 export type ObservabilityQueriesCreateResponseParametersNeedleValue = string | number | boolean;
 export const ObservabilityQueriesCreateResponseParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityQueriesCreateResponseParametersNeedle {
@@ -7592,7 +7592,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
   | ObservabilitySharedQueriesCreateRequestParametersCalculationsItemCase1;
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -7716,7 +7716,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fil
   | number
   | boolean;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -7760,7 +7760,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fil
   | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -7849,7 +7849,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersO
   | number
   | boolean;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -7893,7 +7893,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
   | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -7975,7 +7975,7 @@ export type ObservabilitySharedQueriesCreateRequestParametersNeedleValue =
   | number
   | boolean;
 export const ObservabilitySharedQueriesCreateRequestParametersNeedleValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesCreateRequestParametersNeedle {
   /** The text or pattern to search for. */
@@ -8624,7 +8624,7 @@ export type CreateScriptEdgePreviewWranglerSessionConfig =
   | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
   | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
 export const CreateScriptEdgePreviewWranglerSessionConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["workersDev", "minimalMode"],
     ["routes", "minimalMode"],
   ]),
@@ -9482,7 +9482,7 @@ export type CreateScriptEdgePreviewMetadataBinding =
   | CreateScriptEdgePreviewMetadataBindingVpcNetwork
   | CreateScriptEdgePreviewMetadataBindingInherit;
 export const CreateScriptEdgePreviewMetadataBinding = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "name", "text"],
       ["type", "name", "text"],
@@ -9693,7 +9693,7 @@ export type CreateScriptEdgePreviewMetadataPlacement =
   | CreateScriptEdgePreviewMetadataPlacementHost
   | CreateScriptEdgePreviewMetadataPlacementHostname;
 export const CreateScriptEdgePreviewMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["mode", "hint"], ["region"], ["host"], ["hostname"]]),
+  /*@__PURE__*/ T.UnionCases([["mode", "hint"], ["region"], ["host"], ["hostname"]]),
 );
 
 export interface CreateScriptEdgePreviewMetadataTailConsumer {
@@ -9745,7 +9745,7 @@ export type CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst =
   | boolean
   | CreateScriptEdgePreviewMetadataStringList;
 export const CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface CreateScriptEdgePreviewMetadataAssetsConfig {
   htmlHandling?: CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling | (string & {});
@@ -10099,7 +10099,7 @@ export const PutScriptMetadataStringList = /*@__PURE__*/ S.Array(
 
 export type PutScriptAssetsConfigRunWorkerFirst = PutScriptMetadataStringList | boolean;
 export const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface PutScriptAssetsConfig {
@@ -10951,7 +10951,7 @@ export type PutScriptBinding =
   | PutScriptBindingStream
   | PutScriptBindingK2;
 export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "namespace", "type"],
@@ -11164,7 +11164,7 @@ export type PutScriptMetadataMigrations =
   | PutScriptSingleStepMigration
   | PutScriptMultipleStepMigrations;
 export const PutScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -11331,7 +11331,7 @@ export type PutScriptPlacementTarget =
   | CreateScriptEdgePreviewMetadataPlacementHostname
   | CreateScriptEdgePreviewMetadataPlacementHost;
 export const PutScriptPlacementTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type PutScriptPlacementTargetsList = Array<PutScriptPlacementTarget>;
@@ -11362,7 +11362,7 @@ export type PutScriptMetadataPlacement =
   | PutScriptPlacementTargetedHost
   | PutScriptPlacementTargetedList;
 export const PutScriptMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -11934,7 +11934,7 @@ export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -13359,7 +13359,7 @@ export type BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7TargetItem>;
@@ -13393,7 +13393,7 @@ export type BetaWorkersGetResponsePreviewsBaseConfigPlacement =
   | BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7;
 export const BetaWorkersGetResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -13565,7 +13565,7 @@ export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List;
 export const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface BetaWorkersVersionsGetResponseAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
@@ -14615,7 +14615,7 @@ export type BetaWorkersVersionsGetResponseBindingsItem =
   | BetaWorkersVersionsGetResponseBindingsItemVPCService
   | BetaWorkersVersionsGetResponseBindingsItemVPCNetwork;
 export const BetaWorkersVersionsGetResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -14944,7 +14944,7 @@ export type BetaWorkersVersionsGetResponseExportsValue =
   | BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const BetaWorkersVersionsGetResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -15439,7 +15439,7 @@ export type BetaWorkersVersionsGetResponseMigrations =
   | BetaWorkersVersionsGetResponseMigrationsSingleStepMigration
   | BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsGetResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -15581,7 +15581,7 @@ export type BetaWorkersVersionsGetResponsePlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsGetResponsePlacementCase7TargetItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type BetaWorkersVersionsGetResponsePlacementCase7TargetList =
@@ -15615,7 +15615,7 @@ export type BetaWorkersVersionsGetResponsePlacement =
   | BetaWorkersVersionsGetResponsePlacementCase6
   | BetaWorkersVersionsGetResponsePlacementCase7;
 export const BetaWorkersVersionsGetResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -15925,7 +15925,7 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsI
   | ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemCase1;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -16037,7 +16037,7 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWo
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -16079,7 +16079,7 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
   | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -16435,7 +16435,7 @@ export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemG
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
@@ -16496,7 +16496,7 @@ export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataI
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
@@ -16605,7 +16605,7 @@ export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroups
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem {
   key: string;
@@ -16665,7 +16665,7 @@ export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGr
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
@@ -16951,7 +16951,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemSource =
   | string
   | ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map;
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemSource =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
@@ -17193,7 +17193,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1;
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "eventType",
         "scriptName",
@@ -17322,7 +17322,7 @@ export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsV
   | number
   | boolean;
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap = {
   [key: string]:
@@ -17427,7 +17427,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSource =
   | string
   | ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemSource =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap = {
   [key: string]: unknown | undefined;
@@ -17641,7 +17641,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
   | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "eventType",
         "scriptName",
@@ -19248,7 +19248,7 @@ export type ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
   | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService
   | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -19583,7 +19583,7 @@ export type ScriptsScriptAndVersionSettingsGetResponseExportsValue =
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -20099,7 +20099,7 @@ export type ScriptsScriptAndVersionSettingsGetResponseMigrations =
   | ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration
   | ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -20333,7 +20333,7 @@ export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList =
   Array<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
@@ -20368,7 +20368,7 @@ export type ScriptsScriptAndVersionSettingsGetResponsePlacement =
   | ScriptsScriptAndVersionSettingsGetResponsePlacementCase6
   | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -20594,7 +20594,7 @@ export type ScriptsSecretsGetResult =
   | ScriptsSecretsGetResultSecretText
   | ScriptsSecretsGetResultSecretKey;
 export const ScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -21151,7 +21151,7 @@ export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -21417,7 +21417,7 @@ export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersO
   | number
   | boolean;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -21461,7 +21461,7 @@ export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
   | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -21547,7 +21547,7 @@ export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilt
   | number
   | boolean;
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -21589,7 +21589,7 @@ export type ObservabilityTelemetryKeysRequestFiltersItem =
   | ObservabilityTelemetryKeysRequestFiltersItemCase0
   | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryKeysRequestFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -21606,7 +21606,7 @@ export const ObservabilityTelemetryKeysRequestFiltersList = /*@__PURE__*/ S.Arra
 
 export type ObservabilityTelemetryKeysRequestKeyNeedleValue = string | number | boolean;
 export const ObservabilityTelemetryKeysRequestKeyNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityTelemetryKeysRequestKeyNeedle {
@@ -21629,7 +21629,7 @@ export const ObservabilityTelemetryKeysRequestKeyNeedle = /*@__PURE__*/ S.suspen
 
 export type ObservabilityTelemetryKeysRequestNeedleValue = string | number | boolean;
 export const ObservabilityTelemetryKeysRequestNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityTelemetryKeysRequestNeedle {
@@ -22206,7 +22206,7 @@ export type BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7TargetItem 
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7TargetItem>;
@@ -22241,7 +22241,7 @@ export type BetaWorkersListResultItemPreviewsBaseConfigPlacement =
   | BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6
   | BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7;
 export const BetaWorkersListResultItemPreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -22429,7 +22429,7 @@ export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List;
 export const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface BetaWorkersVersionsListResultItemAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
@@ -23483,7 +23483,7 @@ export type BetaWorkersVersionsListResultItemBindingsItem =
   | BetaWorkersVersionsListResultItemBindingsItemVPCService
   | BetaWorkersVersionsListResultItemBindingsItemVPCNetwork;
 export const BetaWorkersVersionsListResultItemBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -23817,7 +23817,7 @@ export type BetaWorkersVersionsListResultItemExportsValue =
   | BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport;
 export const BetaWorkersVersionsListResultItemExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -24319,7 +24319,7 @@ export type BetaWorkersVersionsListResultItemMigrations =
   | BetaWorkersVersionsListResultItemMigrationsSingleStepMigration
   | BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations;
 export const BetaWorkersVersionsListResultItemMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -24462,7 +24462,7 @@ export type BetaWorkersVersionsListResultItemPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersVersionsListResultItemPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersVersionsListResultItemPlacementCase7TargetList =
   Array<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
@@ -24495,7 +24495,7 @@ export type BetaWorkersVersionsListResultItemPlacement =
   | BetaWorkersVersionsListResultItemPlacementCase6
   | BetaWorkersVersionsListResultItemPlacementCase7;
 export const BetaWorkersVersionsListResultItemPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -24975,7 +24975,7 @@ export type ObservabilityQueriesListResultItemParametersCalculationsItem =
   | ObservabilityQueriesListResultItemParametersCalculationsItemCase1;
 export const ObservabilityQueriesListResultItemParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -25085,7 +25085,7 @@ export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObserv
   | number
   | boolean;
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -25126,7 +25126,7 @@ export type ObservabilityQueriesListResultItemParametersFiltersItem =
   | ObservabilityQueriesListResultItemParametersFiltersItemCase0
   | ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityQueriesListResultItemParametersFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -25199,7 +25199,7 @@ export const ObservabilityQueriesListResultItemParametersHavingsList = /*@__PURE
 
 export type ObservabilityQueriesListResultItemParametersNeedleValue = string | number | boolean;
 export const ObservabilityQueriesListResultItemParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityQueriesListResultItemParametersNeedle {
@@ -25678,7 +25678,7 @@ export type ScriptsListResultItemExportsValue =
   | ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport
   | ScriptsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsListResultItemExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -26034,7 +26034,7 @@ export type ScriptsListResultItemPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const ScriptsListResultItemPlacementCase7TargetItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type ScriptsListResultItemPlacementCase7TargetList =
@@ -26080,7 +26080,7 @@ export type ScriptsListResultItemPlacement =
   | ScriptsListResultItemPlacementCase6
   | ScriptsListResultItemPlacementCase7;
 export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -26336,7 +26336,7 @@ export type ScriptsSecretsListResultItem =
   | ScriptsSecretsListResultItemSecretText
   | ScriptsSecretsListResultItemSecretKey;
 export const ScriptsSecretsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -26598,7 +26598,7 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWork
   | number
   | boolean;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -26642,7 +26642,7 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
   | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -26729,7 +26729,7 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservability
   | number
   | boolean;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -26771,7 +26771,7 @@ export type ObservabilityTelemetryLiveTailRequestFiltersItem =
   | ObservabilityTelemetryLiveTailRequestFiltersItemCase0
   | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryLiveTailRequestFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -27181,7 +27181,7 @@ export type BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7TargetItem>;
@@ -27215,7 +27215,7 @@ export type BetaWorkersEditRequestPreviewsBaseConfigPlacement =
   | BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7;
 export const BetaWorkersEditRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -27759,7 +27759,7 @@ export type BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7TargetItem>;
@@ -27793,7 +27793,7 @@ export type BetaWorkersEditResponsePreviewsBaseConfigPlacement =
   | BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7;
 export const BetaWorkersEditResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -29082,7 +29082,7 @@ export type ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -29417,7 +29417,7 @@ export type ScriptsScriptAndVersionSettingsEditResponseExportsValue =
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -29935,7 +29935,7 @@ export type ScriptsScriptAndVersionSettingsEditResponseMigrations =
   | ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration
   | ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -30171,7 +30171,7 @@ export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem 
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList =
   Array<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
@@ -30206,7 +30206,7 @@ export type ScriptsScriptAndVersionSettingsEditResponsePlacement =
   | ScriptsScriptAndVersionSettingsEditResponsePlacementCase6
   | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -31052,7 +31052,7 @@ export type ScriptsUpdateResponseExportsValue =
   | ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -31408,7 +31408,7 @@ export type ScriptsUpdateResponsePlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const ScriptsUpdateResponsePlacementCase7TargetItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type ScriptsUpdateResponsePlacementCase7TargetList =
@@ -31467,7 +31467,7 @@ export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementCase7
   | ScriptsUpdateResponsePlacementCase8;
 export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -31864,7 +31864,7 @@ export type ScriptsContentUpdateResponseExportsValue =
   | ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const ScriptsContentUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -32229,7 +32229,7 @@ export type ScriptsContentUpdateResponsePlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const ScriptsContentUpdateResponsePlacementCase7TargetItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type ScriptsContentUpdateResponsePlacementCase7TargetList =
@@ -32275,7 +32275,7 @@ export type ScriptsContentUpdateResponsePlacement =
   | ScriptsContentUpdateResponsePlacementCase6
   | ScriptsContentUpdateResponsePlacementCase7;
 export const ScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -32649,7 +32649,7 @@ export type ScriptsSecretsUpdateResult =
   | ScriptsSecretsUpdateResultSecretText
   | ScriptsSecretsUpdateResultSecretKey;
 export const ScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -32815,7 +32815,7 @@ export type ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   | ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1;
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -32938,7 +32938,7 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersI
   | number
   | boolean;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -32982,7 +32982,7 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersI
   | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -33071,7 +33071,7 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObserv
   | number
   | boolean;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -33114,7 +33114,7 @@ export type ObservabilityTelemetryQueryRequestParametersFiltersItem =
   | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0
   | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -33192,7 +33192,7 @@ export const ObservabilityTelemetryQueryRequestParametersHavingsList = /*@__PURE
 
 export type ObservabilityTelemetryQueryRequestParametersNeedleValue = string | number | boolean;
 export const ObservabilityTelemetryQueryRequestParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityTelemetryQueryRequestParametersNeedle {
@@ -33445,7 +33445,7 @@ export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsIte
   | ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operator", "alias", "key", "keyType"],
       ["key", "operator", "alias", "keyType"],
     ]),
@@ -33557,7 +33557,7 @@ export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWork
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -33599,7 +33599,7 @@ export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
   | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -33924,7 +33924,7 @@ export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGro
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
@@ -33985,7 +33985,7 @@ export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataIte
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
@@ -34093,7 +34093,7 @@ export type ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsIt
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem {
   key: string;
@@ -34153,7 +34153,7 @@ export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGrou
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
@@ -34328,7 +34328,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemSource =
   | string
   | ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemSource =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
@@ -34536,7 +34536,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "eventType",
         "scriptName",
@@ -34636,7 +34636,7 @@ export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsVal
   | number
   | boolean;
 export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap = {
   [key: string]: ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue | undefined;
@@ -34739,7 +34739,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemSource =
   | string
   | ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map;
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemSource =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap = {
   [key: string]: unknown | undefined;
@@ -34949,7 +34949,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
   | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1;
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "eventType",
         "scriptName",
@@ -35541,7 +35541,7 @@ export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7TargetItem =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7TargetItem>;
@@ -35576,7 +35576,7 @@ export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacement =
   | BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7;
 export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -36148,7 +36148,7 @@ export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7TargetItem 
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementHostname
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7TargetItemHost;
 export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7TargetList =
   Array<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7TargetItem>;
@@ -36183,7 +36183,7 @@ export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacement =
   | BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7;
 export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -36444,7 +36444,7 @@ export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorker
   | number
   | boolean;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -36488,7 +36488,7 @@ export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
   | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["filterCombination", "filters", "kind"],
         ["key", "operation", "type", "kind", "value"],
@@ -36574,7 +36574,7 @@ export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFi
   | number
   | boolean;
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf {
   /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
@@ -36616,7 +36616,7 @@ export type ObservabilityTelemetryValuesRequestFiltersItem =
   | ObservabilityTelemetryValuesRequestFiltersItemCase0
   | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryValuesRequestFiltersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["filterCombination", "filters", "kind"],
       ["key", "operation", "type", "kind", "value"],
@@ -36633,7 +36633,7 @@ export const ObservabilityTelemetryValuesRequestFiltersList = /*@__PURE__*/ S.Ar
 
 export type ObservabilityTelemetryValuesRequestNeedleValue = string | number | boolean;
 export const ObservabilityTelemetryValuesRequestNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityTelemetryValuesRequestNeedle {
@@ -36695,7 +36695,7 @@ export const ObservabilityTelemetryValuesResultItemType = S.String;
 
 export type ObservabilityTelemetryValuesResultItemValue = string | number | boolean;
 export const ObservabilityTelemetryValuesResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface ObservabilityTelemetryValuesResultItem {

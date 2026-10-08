@@ -10,14 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Lex Runtime V2",
   serviceShapeName: "AWSDeepSenseRunTimeServiceApi2_0",
 });
-const auth = T.AwsAuthSigv4({ name: "lex" });
-const ver = T.ServiceVersion("2020-08-07");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lex" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-08-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,50 +79,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadGatewayException
   extends /*@__PURE__*/ S.TaggedError<BadGatewayException>()(
     "BadGatewayException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailedException
   extends /*@__PURE__*/ S.TaggedError<DependencyFailedException>()(
     "DependencyFailedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type BotIdentifier = string;
 export type BotAliasIdentifier = string;
@@ -294,7 +294,7 @@ export const Shape = S.String;
 
 export type Values = Slot[];
 export const Values = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Slot> => Slot).annotate({ identifier: "Slot" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Slot> => Slot).annotate({ identifier: "Slot" }),
 ) as any as S.Schema<Values>;
 export interface Slot {
   value?: Value;
@@ -313,7 +313,7 @@ export const Slot = /*@__PURE__*/ S.suspend(() =>
 export type Slots = { [key: string]: Slot | undefined };
 export const Slots = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<Slot> => Slot)
+  /*@__PURE__*/ S.suspend((): S.Schema<Slot> => Slot)
     .annotate({ identifier: "Slot" })
     .pipe(S.optional),
 ) as any as S.Schema<Slots>;
@@ -420,7 +420,7 @@ export type ActiveContextParametersMap = {
 };
 export const ActiveContextParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface ActiveContext {
   name: string;
@@ -437,7 +437,7 @@ export const ActiveContext = /*@__PURE__*/ S.suspend(() =>
 export type ActiveContextsList = ActiveContext[];
 export const ActiveContextsList = /*@__PURE__*/ S.Array(ActiveContext);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Name = string;
 export type RuntimeHintPhrase = string;
 export interface RuntimeHintValue {
@@ -463,7 +463,7 @@ export const RuntimeHintDetails = /*@__PURE__*/ S.suspend(() =>
 export type SlotHintsSlotMap = { [key: string]: RuntimeHintDetails | undefined };
 export const SlotHintsSlotMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<RuntimeHintDetails> => RuntimeHintDetails)
+  /*@__PURE__*/ S.suspend((): S.Schema<RuntimeHintDetails> => RuntimeHintDetails)
     .annotate({ identifier: "RuntimeHintDetails" })
     .pipe(S.optional),
 ) as any as S.Schema<SlotHintsSlotMap>;
@@ -472,7 +472,7 @@ export type SlotHintsIntentMap = {
 };
 export const SlotHintsIntentMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => SlotHintsSlotMap)
+  /*@__PURE__*/ S.suspend(() => SlotHintsSlotMap)
     .annotate({ identifier: "SlotHintsSlotMap" })
     .pipe(S.optional),
 );
@@ -821,13 +821,13 @@ export type StartConversationRequestEventStream =
       DisconnectionEvent: DisconnectionEvent;
     };
 export const StartConversationRequestEventStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([
-    S.Struct({ ConfigurationEvent: ConfigurationEvent }),
-    S.Struct({ AudioInputEvent: AudioInputEvent }),
-    S.Struct({ DTMFInputEvent: DTMFInputEvent }),
-    S.Struct({ TextInputEvent: TextInputEvent }),
-    S.Struct({ PlaybackCompletionEvent: PlaybackCompletionEvent }),
-    S.Struct({ DisconnectionEvent: DisconnectionEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ ConfigurationEvent: ConfigurationEvent }),
+    /*@__PURE__*/ S.Struct({ AudioInputEvent: AudioInputEvent }),
+    /*@__PURE__*/ S.Struct({ DTMFInputEvent: DTMFInputEvent }),
+    /*@__PURE__*/ S.Struct({ TextInputEvent: TextInputEvent }),
+    /*@__PURE__*/ S.Struct({ PlaybackCompletionEvent: PlaybackCompletionEvent }),
+    /*@__PURE__*/ S.Struct({ DisconnectionEvent: DisconnectionEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<StartConversationRequestEventStream, Error, never>>;
 export interface StartConversationRequest {
@@ -1164,50 +1164,50 @@ export type StartConversationResponseEventStream =
       BadGatewayException: BadGatewayException;
     };
 export const StartConversationResponseEventStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ PlaybackInterruptionEvent: PlaybackInterruptionEvent }),
-    S.Struct({ TranscriptEvent: TranscriptEvent }),
-    S.Struct({ IntentResultEvent: IntentResultEvent }),
-    S.Struct({ TextResponseEvent: TextResponseEvent }),
-    S.Struct({ AudioResponseEvent: AudioResponseEvent }),
-    S.Struct({ HeartbeatEvent: HeartbeatEvent }),
-    S.Struct({
-      AccessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ PlaybackInterruptionEvent: PlaybackInterruptionEvent }),
+    /*@__PURE__*/ S.Struct({ TranscriptEvent: TranscriptEvent }),
+    /*@__PURE__*/ S.Struct({ IntentResultEvent: IntentResultEvent }),
+    /*@__PURE__*/ S.Struct({ TextResponseEvent: TextResponseEvent }),
+    /*@__PURE__*/ S.Struct({ AudioResponseEvent: AudioResponseEvent }),
+    /*@__PURE__*/ S.Struct({ HeartbeatEvent: HeartbeatEvent }),
+    /*@__PURE__*/ S.Struct({
+      AccessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      ResourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ResourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      ValidationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ValidationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      ThrottlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ThrottlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      InternalServerException: S.suspend(() => InternalServerException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      ConflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      DependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      DependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      BadGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      BadGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),

@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Appflow",
   serviceShapeName: "SandstoneConfigurationServiceLambda",
 });
-const auth = T.AwsAuthSigv4({ name: "appflow" });
-const ver = T.ServiceVersion("2020-08-23");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "appflow" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-08-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,62 +76,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConnectorAuthenticationException
   extends /*@__PURE__*/ S.TaggedError<ConnectorAuthenticationException>()(
     "ConnectorAuthenticationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ConnectorServerException
   extends /*@__PURE__*/ S.TaggedError<ConnectorServerException>()(
     "ConnectorServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type FlowName = string;
 export type ExecutionId = string;
@@ -405,7 +405,10 @@ export const SAPODataConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 export type ProfilePropertyKey = string;
 export type ProfilePropertyValue = string;
 export type ProfilePropertiesMap = { [key: string]: string | undefined };
-export const ProfilePropertiesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProfilePropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type OAuth2GrantType =
   | "CLIENT_CREDENTIALS"
   | "AUTHORIZATION_CODE"
@@ -416,7 +419,10 @@ export const OAuth2GrantType = S.String;
 export type CustomPropertyKey = string;
 export type CustomPropertyValue = string;
 export type TokenUrlCustomProperties = { [key: string]: string | undefined };
-export const TokenUrlCustomProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TokenUrlCustomProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface OAuth2Properties {
   tokenUrl: string;
   oAuth2GrantType: OAuth2GrantType;
@@ -802,7 +808,10 @@ export type CustomAuthenticationType = string;
 export type CredentialsMapKey = string | redacted.Redacted<string>;
 export type CredentialsMapValue = string | redacted.Redacted<string>;
 export type CredentialsMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const CredentialsMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const CredentialsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface CustomAuthCredentials {
   customAuthenticationType: string;
   credentialsMap?: { [key: string]: string | redacted.Redacted<string> | undefined };
@@ -1155,7 +1164,10 @@ export const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SAPODataSourceProperties" }) as any as S.Schema<SAPODataSourceProperties>;
 export type EntityName = string;
 export type CustomProperties = { [key: string]: string | undefined };
-export const CustomProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DataTransferApiTypeName = string;
 export type DataTransferApiType = "SYNC" | "ASYNC" | "AUTOMATIC" | (string & {});
 export const DataTransferApiType = S.String;
@@ -1976,7 +1988,7 @@ export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface Task {
   sourceFields: string[];
@@ -1999,7 +2011,7 @@ export const Tasks = /*@__PURE__*/ S.Array(Task);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type GlueDataCatalogIAMRole = string;
 export type GlueDataCatalogDatabaseName = string;
 export type GlueDataCatalogTablePrefix = string;
@@ -2801,7 +2813,7 @@ export const DescribeConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorConfigurationsMap = { [key in ConnectorType]?: ConnectorConfiguration };
 export const ConnectorConfigurationsMap = /*@__PURE__*/ S.Record(
   ConnectorType,
-  ConnectorConfiguration.pipe(S.optional),
+  /*@__PURE__*/ ConnectorConfiguration.pipe(S.optional),
 );
 export type ApplicationType = string;
 export interface ConnectorDetail {
@@ -3089,7 +3101,7 @@ export const ConnectorEntityList = /*@__PURE__*/ S.Array(ConnectorEntity);
 export type ConnectorEntityMap = { [key: string]: ConnectorEntity[] | undefined };
 export const ConnectorEntityMap = /*@__PURE__*/ S.Record(
   S.String,
-  ConnectorEntityList.pipe(S.optional),
+  /*@__PURE__*/ ConnectorEntityList.pipe(S.optional),
 );
 export interface ListConnectorEntitiesResponse {
   connectorEntityMap: { [key: string]: ConnectorEntity[] | undefined };

@@ -2539,13 +2539,13 @@ export const ForecastDatasetAggregationMap = /*@__PURE__*/ S.Record(
 /** The logical "AND" expression. Must have at least 2 items. */
 export type ForecastFilterAndList = Array<ForecastFilter>;
 export const ForecastFilterAndList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ForecastFilter),
+  /*@__PURE__*/ S.suspend(() => ForecastFilter),
 ) as any as S.Schema<ForecastFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ForecastFilterOrList = Array<ForecastFilter>;
 export const ForecastFilterOrList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ForecastFilter),
+  /*@__PURE__*/ S.suspend(() => ForecastFilter),
 ) as any as S.Schema<ForecastFilterOrList>;
 
 /** The operator to use for comparison. */
@@ -4119,13 +4119,13 @@ export const ReportConfigDatasetSortingList = /*@__PURE__*/ S.Array(
 /** The logical "AND" expression. Must have at least 2 items. */
 export type ReportConfigFilterAndList = Array<ReportConfigFilter>;
 export const ReportConfigFilterAndList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ReportConfigFilter),
+  /*@__PURE__*/ S.suspend(() => ReportConfigFilter),
 ) as any as S.Schema<ReportConfigFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
 export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ReportConfigFilter),
+  /*@__PURE__*/ S.suspend(() => ReportConfigFilter),
 ) as any as S.Schema<ReportConfigFilterOrList>;
 
 /** The operator to use for comparison. */
@@ -5616,13 +5616,13 @@ export const QueryDatasetGroupingList = /*@__PURE__*/ S.Array(
 /** The logical "AND" expression. Must have at least 2 items. */
 export type QueryFilterAndList = Array<QueryFilter>;
 export const QueryFilterAndList = /*@__PURE__*/ S.Array(
-  S.suspend(() => QueryFilter),
+  /*@__PURE__*/ S.suspend(() => QueryFilter),
 ) as any as S.Schema<QueryFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type QueryFilterOrList = Array<QueryFilter>;
 export const QueryFilterOrList = /*@__PURE__*/ S.Array(
-  S.suspend(() => QueryFilter),
+  /*@__PURE__*/ S.suspend(() => QueryFilter),
 ) as any as S.Schema<QueryFilterOrList>;
 
 /** The operator to use for comparison. */

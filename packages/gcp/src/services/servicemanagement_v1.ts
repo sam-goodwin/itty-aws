@@ -12,12 +12,12 @@ export type { GcpOpError, GcpOpContext };
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -25,12 +25,12 @@ export class BadRequest
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -38,12 +38,12 @@ export class Conflict
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -51,12 +51,12 @@ export class Forbidden
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -65,12 +65,12 @@ export class NotFound
 export class ServiceAlreadyActive
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceAlreadyActive>()("ServiceAlreadyActive", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "already exists and is active" } }],
   ) {}
@@ -79,12 +79,12 @@ export class ServiceAlreadyActive
 export class ServiceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceNotFound>()("ServiceNotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403, message: { includes: "not found or permission denied" } }],
   ) {}
@@ -93,12 +93,12 @@ export class ServiceNotFound
 export class ServiceSoftDeleted
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceSoftDeleted>()("ServiceSoftDeleted", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "has been deleted and will be purged" } }],
   ) {}
@@ -1482,7 +1482,7 @@ export const Http = /*@__PURE__*/ S.suspend(() =>
 export type BackendRuleMap = { [key: string]: BackendRule | undefined };
 export const BackendRuleMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => BackendRule),
+  /*@__PURE__*/ S.suspend(() => BackendRule),
 ) as any as S.Schema<BackendRuleMap>;
 
 export type BackendRulePathTranslationEnum =

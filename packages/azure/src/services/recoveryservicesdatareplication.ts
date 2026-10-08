@@ -1043,7 +1043,7 @@ export type CreateVaultRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateVaultRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateVaultRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1243,7 +1243,7 @@ export type CreateVaultResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateVaultResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateVaultResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2562,7 +2562,7 @@ export type GetVaultResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetVaultResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetVaultResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3499,7 +3499,7 @@ export type VaultModelIdentityUserAssignedIdentitiesMap = {
 };
 export const VaultModelIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<VaultModelIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4060,7 +4060,7 @@ export type UpdateVaultResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateVaultResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateVaultResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

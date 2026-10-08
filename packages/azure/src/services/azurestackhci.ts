@@ -537,7 +537,7 @@ export const JobStatus = S.String;
 /** List of nested steps of AzureStackHCI Cluster Deployment. */
 export type DeploymentStepStepsList = Array<DeploymentStep>;
 export const DeploymentStepStepsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DeploymentStep),
+  /*@__PURE__*/ S.suspend(() => DeploymentStep),
 ) as any as S.Schema<DeploymentStepStepsList>;
 
 /** List of exceptions in AzureStackHCI Cluster Deployment. */
@@ -549,7 +549,7 @@ export const DeploymentStepExceptionList = /*@__PURE__*/ S.Array(
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -1511,7 +1511,7 @@ export type ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentities
 export const ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1803,7 +1803,7 @@ export type CreateClusterRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateClusterRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(LogCollectionPropertiesInput),
+  /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
 ) as any as S.Schema<CreateClusterRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1872,7 +1872,7 @@ export type CreateClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const CreateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4869,7 +4869,7 @@ export const EdgeMachineDiskJobPropertiesError = /*@__PURE__*/ S.suspend(() =>
 /** List of nested steps. */
 export type DiskDeploymentStepStepsList = Array<DiskDeploymentStep>;
 export const DiskDeploymentStepStepsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DiskDeploymentStep),
+  /*@__PURE__*/ S.suspend(() => DiskDeploymentStep),
 ) as any as S.Schema<DiskDeploymentStepStepsList>;
 
 /** List of exceptions. */
@@ -5653,7 +5653,7 @@ export const EdgeMachineNetworkAdapterJobPropertiesError = /*@__PURE__*/ S.suspe
 /** List of nested steps. */
 export type NetworkAdapterDeploymentStepStepsList = Array<NetworkAdapterDeploymentStep>;
 export const NetworkAdapterDeploymentStepStepsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkAdapterDeploymentStep),
+  /*@__PURE__*/ S.suspend(() => NetworkAdapterDeploymentStep),
 ) as any as S.Schema<NetworkAdapterDeploymentStepStepsList>;
 
 /** List of exceptions. */
@@ -6119,7 +6119,7 @@ export type EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
 export const EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(LogCollectionPropertiesInput),
+    /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
   ) as any as S.Schema<EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6268,7 +6268,7 @@ export const LifecycleStageError = /*@__PURE__*/ S.suspend(() =>
 /** Sub-stages for this stage. */
 export type LifecycleStageSubStagesList = Array<LifecycleStage>;
 export const LifecycleStageSubStagesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => LifecycleStage),
+  /*@__PURE__*/ S.suspend(() => LifecycleStage),
 ) as any as S.Schema<LifecycleStageSubStagesList>;
 
 /** Lifecycle stage details for a resource. */
@@ -7160,7 +7160,7 @@ export type EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap 
 export const EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7519,7 +7519,7 @@ export type ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIde
 export const ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8118,7 +8118,7 @@ export type GetClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8402,7 +8402,7 @@ export type GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11055,7 +11055,7 @@ export const UpdateRunPropertiesState = S.String;
 /** Recursive model for child steps of this step. */
 export type StepStepsList = Array<Step>;
 export const StepStepsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Step),
+  /*@__PURE__*/ S.suspend(() => Step),
 ) as any as S.Schema<StepStepsList>;
 
 /** Progress representation of the update run steps. */
@@ -12448,7 +12448,7 @@ export type ClusterIdentityUserAssignedIdentitiesMap = {
 };
 export const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12843,7 +12843,7 @@ export type EdgeMachineIdentityUserAssignedIdentitiesMap = {
 };
 export const EdgeMachineIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<EdgeMachineIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -16614,7 +16614,7 @@ export type TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap
 export const TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -16765,7 +16765,7 @@ export type UpdateClusterRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(LogCollectionPropertiesInput),
+  /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
 ) as any as S.Schema<UpdateClusterRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -16848,7 +16848,7 @@ export type UpdateClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -16954,7 +16954,7 @@ export type UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesM
 export const UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -17029,7 +17029,7 @@ export type UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(LogCollectionPropertiesInput),
+  /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
 ) as any as S.Schema<UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -17089,7 +17089,7 @@ export type UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

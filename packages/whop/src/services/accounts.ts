@@ -3632,7 +3632,7 @@ export type UpdateAccountFeesRequestChildMarkupsDepositsMap = {
 };
 export const UpdateAccountFeesRequestChildMarkupsDepositsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
+  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
 ) as any as S.Schema<UpdateAccountFeesRequestChildMarkupsDepositsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
@@ -3653,7 +3653,7 @@ export type UpdateAccountFeesRequestChildMarkupsPayoutsMap = {
 };
 export const UpdateAccountFeesRequestChildMarkupsPayoutsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
+  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
 ) as any as S.Schema<UpdateAccountFeesRequestChildMarkupsPayoutsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
@@ -4099,7 +4099,7 @@ export type UpdateAccountFeesRequestMarkupsDepositsMap = {
 };
 export const UpdateAccountFeesRequestMarkupsDepositsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
+  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
 ) as any as S.Schema<UpdateAccountFeesRequestMarkupsDepositsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
@@ -4119,7 +4119,7 @@ export type UpdateAccountFeesRequestMarkupsPayoutsMap = {
 };
 export const UpdateAccountFeesRequestMarkupsPayoutsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
+  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
 ) as any as S.Schema<UpdateAccountFeesRequestMarkupsPayoutsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */

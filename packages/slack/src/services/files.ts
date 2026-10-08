@@ -177,7 +177,7 @@ export type CompleteUploadExternalRequestBlocks =
   | string
   | CompleteUploadExternalRequestBlocksCase1List;
 export const CompleteUploadExternalRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CompleteUploadExternalRequest {
@@ -438,10 +438,14 @@ export const GetUploadURLExternalResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUploadURLExternalResponse>;
 
 export type ListFilesRequestCount = number | string;
-export const ListFilesRequestCount = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const ListFilesRequestCount = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type ListFilesRequestPage = number | string;
-export const ListFilesRequestPage = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const ListFilesRequestPage = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface ListFilesRequest {
   /** Filter files appearing in a specific channel, indicated by its ID. */

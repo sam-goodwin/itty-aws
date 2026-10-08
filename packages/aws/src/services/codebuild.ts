@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "CodeBuild", serviceShapeName: "CodeBuild_20161006" });
-const auth = T.AwsAuthSigv4({ name: "codebuild" });
-const ver = T.ServiceVersion("2016-10-06");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CodeBuild",
+  serviceShapeName: "CodeBuild_20161006",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "codebuild" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-10-06");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,28 +76,28 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccountLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<AccountLimitExceededException>()(
     "AccountLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class AccountSuspendedException
   extends /*@__PURE__*/ S.TaggedError<AccountSuspendedException>()("AccountSuspendedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()("InvalidInputException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OAuthProviderException
   extends /*@__PURE__*/ S.TaggedError<OAuthProviderException>()("OAuthProviderException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type NonEmptyString = string;
 export type BuildIds = string[];
@@ -1490,7 +1493,10 @@ export type ReportStatusType =
 export const ReportStatusType = S.String;
 
 export type ReportStatusCounts = { [key: string]: number | undefined };
-export const ReportStatusCounts = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const ReportStatusCounts = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface TestReportSummary {
   total: number;
   statusCounts: { [key: string]: number | undefined };

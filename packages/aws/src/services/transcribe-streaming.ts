@@ -8,11 +8,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Transcribe Streaming", serviceShapeName: "Transcribe" });
-const auth = T.AwsAuthSigv4({ name: "transcribe" });
-const ver = T.ServiceVersion("2017-10-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Transcribe Streaming",
+  serviceShapeName: "Transcribe",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "transcribe" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,38 +79,38 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export type SessionId = string;
 export interface GetMedicalScribeStreamRequest {
@@ -159,7 +162,10 @@ export const MedicalScribeChannelDefinitions = /*@__PURE__*/ S.Array(
 );
 export type NonEmptyString = string;
 export type KMSEncryptionContextMap = { [key: string]: string | undefined };
-export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type KMSKeyId = string;
 export interface MedicalScribeEncryptionSettings {
   KmsEncryptionContext?: { [key: string]: string | undefined };
@@ -360,9 +366,9 @@ export type AudioStream =
   | { AudioEvent: AudioEvent; ConfigurationEvent?: never }
   | { AudioEvent?: never; ConfigurationEvent: ConfigurationEvent };
 export const AudioStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([
-    S.Struct({ AudioEvent: AudioEvent }),
-    S.Struct({ ConfigurationEvent: ConfigurationEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ AudioEvent: AudioEvent }),
+    /*@__PURE__*/ S.Struct({ ConfigurationEvent: ConfigurationEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<AudioStream, Error, never>>;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
@@ -588,7 +594,7 @@ export const PointsOfInterest = /*@__PURE__*/ S.suspend(() =>
 export type MatchedCategoryDetails = { [key: string]: PointsOfInterest | undefined };
 export const MatchedCategoryDetails = /*@__PURE__*/ S.Record(
   S.String,
-  PointsOfInterest.pipe(S.optional),
+  /*@__PURE__*/ PointsOfInterest.pipe(S.optional),
 );
 export interface CategoryEvent {
   MatchedCategories?: string[];
@@ -665,31 +671,33 @@ export type CallAnalyticsTranscriptResultStream =
       ServiceUnavailableException: ServiceUnavailableException;
     };
 export const CallAnalyticsTranscriptResultStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ UtteranceEvent: UtteranceEvent }),
-    S.Struct({ CategoryEvent: CategoryEvent }),
-    S.Struct({
-      BadRequestException: S.suspend(() => BadRequestException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ UtteranceEvent: UtteranceEvent }),
+    /*@__PURE__*/ S.Struct({ CategoryEvent: CategoryEvent }),
+    /*@__PURE__*/ S.Struct({
+      BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
         identifier: "BadRequestException",
       }),
     }),
-    S.Struct({
-      LimitExceededException: S.suspend(() => LimitExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      LimitExceededException: /*@__PURE__*/ S.suspend(() => LimitExceededException).annotate({
         identifier: "LimitExceededException",
       }),
     }),
-    S.Struct({
-      InternalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),
-    S.Struct({
-      ConflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      ServiceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),
@@ -842,10 +850,10 @@ export type MedicalScribeInputStream =
       ConfigurationEvent: MedicalScribeConfigurationEvent;
     };
 export const MedicalScribeInputStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([
-    S.Struct({ AudioEvent: MedicalScribeAudioEvent }),
-    S.Struct({ SessionControlEvent: MedicalScribeSessionControlEvent }),
-    S.Struct({ ConfigurationEvent: MedicalScribeConfigurationEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ AudioEvent: MedicalScribeAudioEvent }),
+    /*@__PURE__*/ S.Struct({ SessionControlEvent: MedicalScribeSessionControlEvent }),
+    /*@__PURE__*/ S.Struct({ ConfigurationEvent: MedicalScribeConfigurationEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<MedicalScribeInputStream, Error, never>>;
 export interface StartMedicalScribeStreamRequest {
@@ -975,30 +983,32 @@ export type MedicalScribeResultStream =
       ServiceUnavailableException: ServiceUnavailableException;
     };
 export const MedicalScribeResultStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ TranscriptEvent: MedicalScribeTranscriptEvent }),
-    S.Struct({
-      BadRequestException: S.suspend(() => BadRequestException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ TranscriptEvent: MedicalScribeTranscriptEvent }),
+    /*@__PURE__*/ S.Struct({
+      BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
         identifier: "BadRequestException",
       }),
     }),
-    S.Struct({
-      LimitExceededException: S.suspend(() => LimitExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      LimitExceededException: /*@__PURE__*/ S.suspend(() => LimitExceededException).annotate({
         identifier: "LimitExceededException",
       }),
     }),
-    S.Struct({
-      InternalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),
-    S.Struct({
-      ConflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      ServiceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),
@@ -1331,30 +1341,32 @@ export type MedicalTranscriptResultStream =
       ServiceUnavailableException: ServiceUnavailableException;
     };
 export const MedicalTranscriptResultStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ TranscriptEvent: MedicalTranscriptEvent }),
-    S.Struct({
-      BadRequestException: S.suspend(() => BadRequestException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ TranscriptEvent: MedicalTranscriptEvent }),
+    /*@__PURE__*/ S.Struct({
+      BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
         identifier: "BadRequestException",
       }),
     }),
-    S.Struct({
-      LimitExceededException: S.suspend(() => LimitExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      LimitExceededException: /*@__PURE__*/ S.suspend(() => LimitExceededException).annotate({
         identifier: "LimitExceededException",
       }),
     }),
-    S.Struct({
-      InternalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),
-    S.Struct({
-      ConflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      ServiceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),
@@ -1651,30 +1663,32 @@ export type TranscriptResultStream =
       ServiceUnavailableException: ServiceUnavailableException;
     };
 export const TranscriptResultStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ TranscriptEvent: TranscriptEvent }),
-    S.Struct({
-      BadRequestException: S.suspend(() => BadRequestException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ TranscriptEvent: TranscriptEvent }),
+    /*@__PURE__*/ S.Struct({
+      BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
         identifier: "BadRequestException",
       }),
     }),
-    S.Struct({
-      LimitExceededException: S.suspend(() => LimitExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      LimitExceededException: /*@__PURE__*/ S.suspend(() => LimitExceededException).annotate({
         identifier: "LimitExceededException",
       }),
     }),
-    S.Struct({
-      InternalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),
-    S.Struct({
-      ConflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      ServiceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),

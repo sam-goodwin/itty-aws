@@ -78,7 +78,7 @@ export const GetAsyncTaskResponseBodyCase1Operation = /*@__PURE__*/ S.suspend(()
 export type PublicApiAsyncTaskStatusResultJsonValueCase3List =
   Array<PublicApiAsyncTaskStatusResultJsonValue>;
 export const PublicApiAsyncTaskStatusResultJsonValueCase3List = /*@__PURE__*/ S.Array(
-  S.suspend(() => PublicApiAsyncTaskStatusResultJsonValue),
+  /*@__PURE__*/ S.suspend(() => PublicApiAsyncTaskStatusResultJsonValue),
 ) as any as S.Schema<PublicApiAsyncTaskStatusResultJsonValueCase3List>;
 
 export type PublicApiAsyncTaskStatusResultJsonValueCase4Map = {
@@ -86,7 +86,7 @@ export type PublicApiAsyncTaskStatusResultJsonValueCase4Map = {
 };
 export const PublicApiAsyncTaskStatusResultJsonValueCase4Map = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => PublicApiAsyncTaskStatusResultJsonValue),
+  /*@__PURE__*/ S.suspend(() => PublicApiAsyncTaskStatusResultJsonValue),
 ) as any as S.Schema<PublicApiAsyncTaskStatusResultJsonValueCase4Map>;
 
 export type PublicApiAsyncTaskStatusResultJsonValue =
@@ -103,7 +103,7 @@ export type GetAsyncTaskResponseBodyCase1ResultMap = {
 };
 export const GetAsyncTaskResponseBodyCase1ResultMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(PublicApiAsyncTaskStatusResultJsonValue),
+  /*@__PURE__*/ S.NullOr(PublicApiAsyncTaskStatusResultJsonValue),
 ) as any as S.Schema<GetAsyncTaskResponseBodyCase1ResultMap>;
 
 export interface GetAsyncTaskResponseBodyCase1 {

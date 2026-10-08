@@ -408,7 +408,9 @@ export const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunRequestTextTextEmbeddingsCase1List>;
 
 export type RunRequestTextTextEmbeddings = string | RunRequestTextTextEmbeddingsCase1List;
-export const RunRequestTextTextEmbeddings = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const RunRequestTextTextEmbeddings = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type RunRequestTextMultimodalEmbeddingsList = Array<string>;
 export const RunRequestTextMultimodalEmbeddingsList = /*@__PURE__*/ S.Array(
@@ -419,7 +421,9 @@ export type RunRequestText =
   | string
   | RunRequestTextTextEmbeddings
   | RunRequestTextMultimodalEmbeddingsList;
-export const RunRequestText = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+export const RunRequestText = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
+);
 
 export type RunRequestImageTextToImageList = Array<number>;
 export const RunRequestImageTextToImageList = /*@__PURE__*/ S.Array(
@@ -427,7 +431,7 @@ export const RunRequestImageTextToImageList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunRequestImageTextToImageList>;
 
 export type RunRequestImage = string | RunRequestImageTextToImageList;
-export const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type RunRequestMaskList = Array<number>;
 export const RunRequestMaskList = /*@__PURE__*/ S.Array(
@@ -478,7 +482,7 @@ export type RunRequestMessagesTextGenerationItemContent =
   | string
   | RunRequestMessagesTextGenerationItemContentCase1List;
 export const RunRequestMessagesTextGenerationItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface RunRequestMessagesTextGenerationItem {
@@ -544,7 +548,7 @@ export type RunRequestMessagesImageTextToTextItemContent =
   | string
   | RunRequestMessagesImageTextToTextItemContentCase1List;
 export const RunRequestMessagesImageTextToTextItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface RunRequestMessagesImageTextToTextItem {
@@ -570,7 +574,9 @@ export const RunRequestMessagesImageTextToTextList = /*@__PURE__*/ S.Array(
 export type RunRequestMessages =
   | RunRequestMessagesTextGenerationList
   | RunRequestMessagesImageTextToTextList;
-export const RunRequestMessages = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const RunRequestMessages = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface RunRequestFunctionsItem {
   code: string;
@@ -721,7 +727,7 @@ export const RunRequestToolsItemFunction = /*@__PURE__*/ S.suspend(() =>
 
 export type RunRequestToolsItem = RunRequestToolsItemCase0 | RunRequestToolsItemFunction;
 export const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["description", "name", "parameters"],
     ["function", "type"],
   ]),
@@ -1134,7 +1140,7 @@ export type RunResult =
   | RunResultImageToText
   | RunResultMultimodalEmbeddings;
 export const RunResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [],
     [],
     ["audio"],

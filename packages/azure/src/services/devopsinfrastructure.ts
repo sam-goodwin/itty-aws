@@ -515,7 +515,7 @@ export type GetPoolResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetPoolResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetPoolResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -764,7 +764,7 @@ export type PoolIdentityUserAssignedIdentitiesMap = {
 };
 export const PoolIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<PoolIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1230,7 +1230,7 @@ export type PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1298,7 +1298,7 @@ export type PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1442,7 +1442,7 @@ export type UpdatePoolRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdatePoolRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdatePoolRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1541,7 +1541,7 @@ export type UpdatePoolResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdatePoolResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdatePoolResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

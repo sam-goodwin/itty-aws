@@ -6,15 +6,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DynamoDB Streams",
   serviceShapeName: "DynamoDBStreams_20120810",
 });
-const auth = T.AwsAuthSigv4({ name: "dynamodb" });
-const ver = T.ServiceVersion("2012-08-10");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "dynamodb" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2012-08-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -136,23 +136,23 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ExpiredIteratorException
   extends /*@__PURE__*/ S.TaggedError<ExpiredIteratorException>()("ExpiredIteratorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TrimmedDataAccessException
   extends /*@__PURE__*/ S.TaggedError<TrimmedDataAccessException>()("TrimmedDataAccessException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type StreamArn = string;
 export type PositiveIntegerObject = number;
@@ -287,13 +287,13 @@ export const BinarySetAttributeValue = /*@__PURE__*/ S.Array(T.Blob);
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };
 export const MapAttributeValue = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 ) as any as S.Schema<MapAttributeValue>;
 export type ListAttributeValue = AttributeValue[];
 export const ListAttributeValue = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 ) as any as S.Schema<ListAttributeValue>;
 export type NullAttributeValue = boolean;
 export type BooleanAttributeValue = boolean;
@@ -419,23 +419,29 @@ export type AttributeValue =
       BOOL: boolean;
     };
 export const AttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ S: S.String }),
-  S.Struct({ N: S.String }),
-  S.Struct({ B: T.Blob }),
-  S.Struct({ SS: StringSetAttributeValue }),
-  S.Struct({ NS: NumberSetAttributeValue }),
-  S.Struct({ BS: BinarySetAttributeValue }),
-  S.Struct({ M: S.suspend(() => MapAttributeValue).annotate({ identifier: "MapAttributeValue" }) }),
-  S.Struct({
-    L: S.suspend(() => ListAttributeValue).annotate({ identifier: "ListAttributeValue" }),
+  /*@__PURE__*/ S.Struct({ S: S.String }),
+  /*@__PURE__*/ S.Struct({ N: S.String }),
+  /*@__PURE__*/ S.Struct({ B: T.Blob }),
+  /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
+  /*@__PURE__*/ S.Struct({ NS: NumberSetAttributeValue }),
+  /*@__PURE__*/ S.Struct({ BS: BinarySetAttributeValue }),
+  /*@__PURE__*/ S.Struct({
+    M: /*@__PURE__*/ S.suspend(() => MapAttributeValue).annotate({
+      identifier: "MapAttributeValue",
+    }),
   }),
-  S.Struct({ NULL: S.Boolean }),
-  S.Struct({ BOOL: S.Boolean }),
+  /*@__PURE__*/ S.Struct({
+    L: /*@__PURE__*/ S.suspend(() => ListAttributeValue).annotate({
+      identifier: "ListAttributeValue",
+    }),
+  }),
+  /*@__PURE__*/ S.Struct({ NULL: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
 ]) as any as S.Schema<AttributeValue>;
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );

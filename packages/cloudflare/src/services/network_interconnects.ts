@@ -630,7 +630,7 @@ export type InterconnectsListResponseItemsItem =
   | InterconnectsListResponseItemsItemNscInterconnectPhysicalBody
   | InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody;
 export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "account",
       "facility",

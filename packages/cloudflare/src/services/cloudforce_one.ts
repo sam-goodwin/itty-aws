@@ -1438,7 +1438,7 @@ export type ThreatEventsTagsCreateRequestActiveDuration =
   | string
   | ThreatEventsTagsCreateRequestActiveDurationCase1;
 export const ThreatEventsTagsCreateRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestActorCategoryCase1Tlp =
@@ -1470,7 +1470,7 @@ export type ThreatEventsTagsCreateRequestActorCategory =
   | string
   | ThreatEventsTagsCreateRequestActorCategoryCase1;
 export const ThreatEventsTagsCreateRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestAliasesItemTlp =
@@ -1544,7 +1544,7 @@ export type ThreatEventsTagsCreateRequestAttributionOrganization =
   | string
   | ThreatEventsTagsCreateRequestAttributionOrganizationCase1;
 export const ThreatEventsTagsCreateRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestExternalReferenceLinksList = Array<string>;
@@ -1629,7 +1629,7 @@ export const ThreatEventsTagsCreateRequestMotiveCase1 = /*@__PURE__*/ S.suspend(
 
 export type ThreatEventsTagsCreateRequestMotive = string | ThreatEventsTagsCreateRequestMotiveCase1;
 export const ThreatEventsTagsCreateRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp =
@@ -1661,7 +1661,7 @@ export type ThreatEventsTagsCreateRequestOpsecLevel =
   | string
   | ThreatEventsTagsCreateRequestOpsecLevelCase1;
 export const ThreatEventsTagsCreateRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp =
@@ -1693,7 +1693,7 @@ export type ThreatEventsTagsCreateRequestOriginCountryISO =
   | string
   | ThreatEventsTagsCreateRequestOriginCountryISOCase1;
 export const ThreatEventsTagsCreateRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestPriorityCase1Tlp =
@@ -1725,7 +1725,7 @@ export type ThreatEventsTagsCreateRequestPriority =
   | number
   | ThreatEventsTagsCreateRequestPriorityCase1;
 export const ThreatEventsTagsCreateRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestPropertiesMap = { [key: string]: unknown | undefined };
@@ -1763,7 +1763,7 @@ export type ThreatEventsTagsCreateRequestSophisticationLevel =
   | string
   | ThreatEventsTagsCreateRequestSophisticationLevelCase1;
 export const ThreatEventsTagsCreateRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestTlp =
@@ -3194,7 +3194,7 @@ export type EditThreatEventsTagRequestActiveDuration =
   | string
   | EditThreatEventsTagRequestActiveDurationCase1;
 export const EditThreatEventsTagRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestActorCategoryCase1Tlp =
@@ -3226,7 +3226,7 @@ export type EditThreatEventsTagRequestActorCategory =
   | string
   | EditThreatEventsTagRequestActorCategoryCase1;
 export const EditThreatEventsTagRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestAliasesItemTlp =
@@ -3298,7 +3298,7 @@ export type EditThreatEventsTagRequestAttributionOrganization =
   | string
   | EditThreatEventsTagRequestAttributionOrganizationCase1;
 export const EditThreatEventsTagRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestExternalReferenceLinksList = Array<string>;
@@ -3375,7 +3375,7 @@ export const EditThreatEventsTagRequestMotiveCase1 = /*@__PURE__*/ S.suspend(() 
 
 export type EditThreatEventsTagRequestMotive = string | EditThreatEventsTagRequestMotiveCase1;
 export const EditThreatEventsTagRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestOpsecLevelCase1Tlp =
@@ -3407,7 +3407,7 @@ export type EditThreatEventsTagRequestOpsecLevel =
   | string
   | EditThreatEventsTagRequestOpsecLevelCase1;
 export const EditThreatEventsTagRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestOriginCountryISOCase1Tlp =
@@ -3439,7 +3439,7 @@ export type EditThreatEventsTagRequestOriginCountryISO =
   | string
   | EditThreatEventsTagRequestOriginCountryISOCase1;
 export const EditThreatEventsTagRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestPriorityCase1Tlp =
@@ -3469,7 +3469,7 @@ export const EditThreatEventsTagRequestPriorityCase1 = /*@__PURE__*/ S.suspend((
 
 export type EditThreatEventsTagRequestPriority = number | EditThreatEventsTagRequestPriorityCase1;
 export const EditThreatEventsTagRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestPropertiesMap = { [key: string]: unknown | undefined };
@@ -3507,7 +3507,7 @@ export type EditThreatEventsTagRequestSophisticationLevel =
   | string
   | EditThreatEventsTagRequestSophisticationLevelCase1;
 export const EditThreatEventsTagRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["value", "confidence", "tlp"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestTlp =

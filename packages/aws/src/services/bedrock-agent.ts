@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock Agent",
   serviceShapeName: "AmazonBedrockAgentBuildTimeLambda",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock" });
-const ver = T.ServiceVersion("2023-06-05");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-06-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,51 +78,51 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Id = string;
 export type DraftVersion = string;
@@ -277,7 +277,9 @@ export const OrchestrationType = S.String;
 
 export type LambdaArn = string;
 export type OrchestrationExecutor = { lambda: string };
-export const OrchestrationExecutor = /*@__PURE__*/ S.Union([S.Struct({ lambda: S.String })]);
+export const OrchestrationExecutor = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ lambda: S.String }),
+]);
 export interface CustomOrchestration {
   executor?: OrchestrationExecutor;
 }
@@ -290,7 +292,7 @@ export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type PromptType =
   | "PRE_PROCESSING"
   | "ORCHESTRATION"
@@ -526,7 +528,7 @@ export const ActionGroupSignature = S.String;
 export type ActionGroupSignatureParams = { [key: string]: string | undefined };
 export const ActionGroupSignatureParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type CustomControlMethod = "RETURN_CONTROL" | (string & {});
 export const CustomControlMethod = S.String;
@@ -535,8 +537,8 @@ export type ActionGroupExecutor =
   | { lambda: string; customControl?: never }
   | { lambda?: never; customControl: CustomControlMethod };
 export const ActionGroupExecutor = /*@__PURE__*/ S.Union([
-  S.Struct({ lambda: S.String }),
-  S.Struct({ customControl: CustomControlMethod }),
+  /*@__PURE__*/ S.Struct({ lambda: S.String }),
+  /*@__PURE__*/ S.Struct({ customControl: CustomControlMethod }),
 ]);
 export type S3BucketName = string;
 export type S3ObjectKey = string;
@@ -552,8 +554,8 @@ export type APISchema =
   | { s3: S3Identifier; payload?: never }
   | { s3?: never; payload: string | redacted.Redacted<string> };
 export const APISchema = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3Identifier }),
-  S.Struct({ payload: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ s3: S3Identifier }),
+  /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
 ]);
 export type ActionGroupState = "ENABLED" | "DISABLED" | (string & {});
 export const ActionGroupState = S.String;
@@ -572,7 +574,10 @@ export const ParameterDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.optional(S.String), type: Type, required: S.optional(S.Boolean) }),
 ).annotate({ identifier: "ParameterDetail" }) as any as S.Schema<ParameterDetail>;
 export type ParameterMap = { [key: string]: ParameterDetail | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, ParameterDetail.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ParameterDetail.pipe(S.optional),
+);
 export type RequireConfirmation = "ENABLED" | "DISABLED" | (string & {});
 export const RequireConfirmation = S.String;
 
@@ -593,7 +598,9 @@ export const Function = /*@__PURE__*/ S.suspend(() =>
 export type Functions = Function[];
 export const Functions = /*@__PURE__*/ S.Array(Function);
 export type FunctionSchema = { functions: Function[] };
-export const FunctionSchema = /*@__PURE__*/ S.Union([S.Struct({ functions: Functions })]);
+export const FunctionSchema = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ functions: Functions }),
+]);
 export interface CreateAgentActionGroupRequest {
   agentId: string;
   agentVersion: string;
@@ -880,8 +887,8 @@ export type DayOfMonth =
   | { dayNumber: number; lastDayOfMonth?: never }
   | { dayNumber?: never; lastDayOfMonth: LastDayOfMonth };
 export const DayOfMonth = /*@__PURE__*/ S.Union([
-  S.Struct({ dayNumber: S.Number }),
-  S.Struct({ lastDayOfMonth: LastDayOfMonth }),
+  /*@__PURE__*/ S.Struct({ dayNumber: S.Number }),
+  /*@__PURE__*/ S.Struct({ lastDayOfMonth: LastDayOfMonth }),
 ]);
 export interface MonthlySchedule {
   dayOfMonth: DayOfMonth;
@@ -894,9 +901,9 @@ export type SyncSchedule =
   | { daily?: never; weekly: WeeklySchedule; monthly?: never }
   | { daily?: never; weekly?: never; monthly: MonthlySchedule };
 export const SyncSchedule = /*@__PURE__*/ S.Union([
-  S.Struct({ daily: DailySchedule }),
-  S.Struct({ weekly: WeeklySchedule }),
-  S.Struct({ monthly: MonthlySchedule }),
+  /*@__PURE__*/ S.Struct({ daily: DailySchedule }),
+  /*@__PURE__*/ S.Struct({ weekly: WeeklySchedule }),
+  /*@__PURE__*/ S.Struct({ monthly: MonthlySchedule }),
 ]);
 export interface ManagedKnowledgeBaseConnectorConfiguration {
   deletionProtectionConfiguration?: DeletionProtectionConfiguration;
@@ -1553,7 +1560,7 @@ export const PromptModelInferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PromptModelInferenceConfiguration>;
 export type PromptInferenceConfiguration = { text: PromptModelInferenceConfiguration };
 export const PromptInferenceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ text: PromptModelInferenceConfiguration }),
+  /*@__PURE__*/ S.Struct({ text: PromptModelInferenceConfiguration }),
 ]);
 export type VectorSearchRerankingConfigurationType = "BEDROCK_RERANKING_MODEL" | (string & {});
 export const VectorSearchRerankingConfigurationType = S.String;
@@ -1564,7 +1571,7 @@ export type AdditionalModelRequestFieldsValue = unknown;
 export type AdditionalModelRequestFields = { [key: string]: any | undefined };
 export const AdditionalModelRequestFields = /*@__PURE__*/ S.Record(
   S.String,
-  S.Any.pipe(S.optional),
+  /*@__PURE__*/ S.Any.pipe(S.optional),
 );
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
@@ -1593,8 +1600,8 @@ export type RerankingMetadataSelectiveModeConfiguration =
   | { fieldsToInclude: FieldForReranking[]; fieldsToExclude?: never }
   | { fieldsToInclude?: never; fieldsToExclude: FieldForReranking[] };
 export const RerankingMetadataSelectiveModeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ fieldsToInclude: FieldsForReranking }),
-  S.Struct({ fieldsToExclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToInclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToExclude: FieldsForReranking }),
 ]);
 export interface MetadataConfigurationForReranking {
   selectionMode: RerankingMetadataSelectionMode;
@@ -1763,8 +1770,8 @@ export type ContentBlock =
   | { text: string; cachePoint?: never }
   | { text?: never; cachePoint: CachePointBlock };
 export const ContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
 ]);
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
@@ -1782,14 +1789,14 @@ export type SystemContentBlock =
   | { text: string; cachePoint?: never }
   | { text?: never; cachePoint: CachePointBlock };
 export const SystemContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
 ]);
 export type SystemContentBlocks = SystemContentBlock[];
 export const SystemContentBlocks = /*@__PURE__*/ S.Array(SystemContentBlock);
 export type ToolName = string;
 export type ToolInputSchema = { json: any };
-export const ToolInputSchema = /*@__PURE__*/ S.Union([S.Struct({ json: S.Any })]);
+export const ToolInputSchema = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
 export interface ToolSpecification {
   name: string;
   description?: string;
@@ -1808,8 +1815,8 @@ export type Tool =
   | { toolSpec: ToolSpecification; cachePoint?: never }
   | { toolSpec?: never; cachePoint: CachePointBlock };
 export const Tool = /*@__PURE__*/ S.Union([
-  S.Struct({ toolSpec: ToolSpecification }),
-  S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ toolSpec: ToolSpecification }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
 ]);
 export type Tools = Tool[];
 export const Tools = /*@__PURE__*/ S.Array(Tool);
@@ -1832,9 +1839,9 @@ export type ToolChoice =
   | { auto?: never; any: AnyToolChoice; tool?: never }
   | { auto?: never; any?: never; tool: SpecificToolChoice };
 export const ToolChoice = /*@__PURE__*/ S.Union([
-  S.Struct({ auto: AutoToolChoice }),
-  S.Struct({ any: AnyToolChoice }),
-  S.Struct({ tool: SpecificToolChoice }),
+  /*@__PURE__*/ S.Struct({ auto: AutoToolChoice }),
+  /*@__PURE__*/ S.Struct({ any: AnyToolChoice }),
+  /*@__PURE__*/ S.Struct({ tool: SpecificToolChoice }),
 ]);
 export interface ToolConfiguration {
   tools: Tool[];
@@ -1863,8 +1870,8 @@ export type PromptTemplateConfiguration =
   | { text: TextPromptTemplateConfiguration; chat?: never }
   | { text?: never; chat: ChatPromptTemplateConfiguration };
 export const PromptTemplateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ text: TextPromptTemplateConfiguration }),
-  S.Struct({ chat: ChatPromptTemplateConfiguration }),
+  /*@__PURE__*/ S.Struct({ text: TextPromptTemplateConfiguration }),
+  /*@__PURE__*/ S.Struct({ chat: ChatPromptTemplateConfiguration }),
 ]);
 export type FlowPromptModelIdentifier = string;
 export interface PromptFlowNodeInlineConfiguration {
@@ -1889,8 +1896,8 @@ export type PromptFlowNodeSourceConfiguration =
   | { resource: PromptFlowNodeResourceConfiguration; inline?: never }
   | { resource?: never; inline: PromptFlowNodeInlineConfiguration };
 export const PromptFlowNodeSourceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ resource: PromptFlowNodeResourceConfiguration }),
-  S.Struct({ inline: PromptFlowNodeInlineConfiguration }),
+  /*@__PURE__*/ S.Struct({ resource: PromptFlowNodeResourceConfiguration }),
+  /*@__PURE__*/ S.Struct({ inline: PromptFlowNodeInlineConfiguration }),
 ]);
 export interface PromptFlowNodeConfiguration {
   sourceConfiguration: PromptFlowNodeSourceConfiguration;
@@ -1924,7 +1931,7 @@ export const StorageFlowNodeS3Configuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageFlowNodeS3Configuration>;
 export type StorageFlowNodeServiceConfiguration = { s3: StorageFlowNodeS3Configuration };
 export const StorageFlowNodeServiceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: StorageFlowNodeS3Configuration }),
+  /*@__PURE__*/ S.Struct({ s3: StorageFlowNodeS3Configuration }),
 ]);
 export interface StorageFlowNodeConfiguration {
   serviceConfiguration: StorageFlowNodeServiceConfiguration;
@@ -1953,7 +1960,7 @@ export const RetrievalFlowNodeS3Configuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrievalFlowNodeS3Configuration>;
 export type RetrievalFlowNodeServiceConfiguration = { s3: RetrievalFlowNodeS3Configuration };
 export const RetrievalFlowNodeServiceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: RetrievalFlowNodeS3Configuration }),
+  /*@__PURE__*/ S.Struct({ s3: RetrievalFlowNodeS3Configuration }),
 ]);
 export interface RetrievalFlowNodeConfiguration {
   serviceConfiguration: RetrievalFlowNodeServiceConfiguration;
@@ -2299,26 +2306,28 @@ export type FlowNodeConfiguration =
       loopController: LoopControllerFlowNodeConfiguration;
     };
 export const FlowNodeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ input: InputFlowNodeConfiguration }),
-  S.Struct({ output: OutputFlowNodeConfiguration }),
-  S.Struct({ knowledgeBase: KnowledgeBaseFlowNodeConfiguration }),
-  S.Struct({ condition: ConditionFlowNodeConfiguration }),
-  S.Struct({ lex: LexFlowNodeConfiguration }),
-  S.Struct({ prompt: PromptFlowNodeConfiguration }),
-  S.Struct({ lambdaFunction: LambdaFunctionFlowNodeConfiguration }),
-  S.Struct({ storage: StorageFlowNodeConfiguration }),
-  S.Struct({ agent: AgentFlowNodeConfiguration }),
-  S.Struct({ retrieval: RetrievalFlowNodeConfiguration }),
-  S.Struct({ iterator: IteratorFlowNodeConfiguration }),
-  S.Struct({ collector: CollectorFlowNodeConfiguration }),
-  S.Struct({ inlineCode: InlineCodeFlowNodeConfiguration }),
-  S.Struct({
-    loop: S.suspend((): S.Schema<LoopFlowNodeConfiguration> => LoopFlowNodeConfiguration).annotate({
+  /*@__PURE__*/ S.Struct({ input: InputFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ output: OutputFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ knowledgeBase: KnowledgeBaseFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ condition: ConditionFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ lex: LexFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ prompt: PromptFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ lambdaFunction: LambdaFunctionFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ storage: StorageFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ agent: AgentFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ retrieval: RetrievalFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ iterator: IteratorFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ collector: CollectorFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ inlineCode: InlineCodeFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    loop: /*@__PURE__*/ S.suspend(
+      (): S.Schema<LoopFlowNodeConfiguration> => LoopFlowNodeConfiguration,
+    ).annotate({
       identifier: "LoopFlowNodeConfiguration",
     }),
   }),
-  S.Struct({ loopInput: LoopInputFlowNodeConfiguration }),
-  S.Struct({ loopController: LoopControllerFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ loopInput: LoopInputFlowNodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ loopController: LoopControllerFlowNodeConfiguration }),
 ]) as any as S.Schema<FlowNodeConfiguration>;
 export type FlowNodeInputName = string;
 export type FlowNodeIODataType =
@@ -2384,7 +2393,7 @@ export const FlowNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlowNode" }) as any as S.Schema<FlowNode>;
 export type FlowNodes = FlowNode[];
 export const FlowNodes = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<FlowNode> => FlowNode).annotate({ identifier: "FlowNode" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<FlowNode> => FlowNode).annotate({ identifier: "FlowNode" }),
 ) as any as S.Schema<FlowNodes>;
 export type FlowConnectionType = "Data" | "Conditional" | (string & {});
 export const FlowConnectionType = S.String;
@@ -2411,8 +2420,8 @@ export type FlowConnectionConfiguration =
   | { data: FlowDataConnectionConfiguration; conditional?: never }
   | { data?: never; conditional: FlowConditionalConnectionConfiguration };
 export const FlowConnectionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ data: FlowDataConnectionConfiguration }),
-  S.Struct({ conditional: FlowConditionalConnectionConfiguration }),
+  /*@__PURE__*/ S.Struct({ data: FlowDataConnectionConfiguration }),
+  /*@__PURE__*/ S.Struct({ conditional: FlowConditionalConnectionConfiguration }),
 ]);
 export interface FlowConnection {
   type: FlowConnectionType;
@@ -3325,7 +3334,7 @@ export const PromptAgentResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromptAgentResource" }) as any as S.Schema<PromptAgentResource>;
 export type PromptGenAiResource = { agent: PromptAgentResource };
 export const PromptGenAiResource = /*@__PURE__*/ S.Union([
-  S.Struct({ agent: PromptAgentResource }),
+  /*@__PURE__*/ S.Struct({ agent: PromptAgentResource }),
 ]);
 export interface PromptVariant {
   name: string;
@@ -5735,41 +5744,69 @@ export type FlowValidationDetails =
       invalidLoopBoundary: InvalidLoopBoundaryFlowValidationDetails;
     };
 export const FlowValidationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ cyclicConnection: CyclicConnectionFlowValidationDetails }),
-  S.Struct({ duplicateConnections: DuplicateConnectionsFlowValidationDetails }),
-  S.Struct({ duplicateConditionExpression: DuplicateConditionExpressionFlowValidationDetails }),
-  S.Struct({ unreachableNode: UnreachableNodeFlowValidationDetails }),
-  S.Struct({ unknownConnectionSource: UnknownConnectionSourceFlowValidationDetails }),
-  S.Struct({ unknownConnectionSourceOutput: UnknownConnectionSourceOutputFlowValidationDetails }),
-  S.Struct({ unknownConnectionTarget: UnknownConnectionTargetFlowValidationDetails }),
-  S.Struct({ unknownConnectionTargetInput: UnknownConnectionTargetInputFlowValidationDetails }),
-  S.Struct({ unknownConnectionCondition: UnknownConnectionConditionFlowValidationDetails }),
-  S.Struct({ malformedConditionExpression: MalformedConditionExpressionFlowValidationDetails }),
-  S.Struct({ malformedNodeInputExpression: MalformedNodeInputExpressionFlowValidationDetails }),
-  S.Struct({ mismatchedNodeInputType: MismatchedNodeInputTypeFlowValidationDetails }),
-  S.Struct({ mismatchedNodeOutputType: MismatchedNodeOutputTypeFlowValidationDetails }),
-  S.Struct({ incompatibleConnectionDataType: IncompatibleConnectionDataTypeFlowValidationDetails }),
-  S.Struct({ missingConnectionConfiguration: MissingConnectionConfigurationFlowValidationDetails }),
-  S.Struct({ missingDefaultCondition: MissingDefaultConditionFlowValidationDetails }),
-  S.Struct({ missingEndingNodes: MissingEndingNodesFlowValidationDetails }),
-  S.Struct({ missingNodeConfiguration: MissingNodeConfigurationFlowValidationDetails }),
-  S.Struct({ missingNodeInput: MissingNodeInputFlowValidationDetails }),
-  S.Struct({ missingNodeOutput: MissingNodeOutputFlowValidationDetails }),
-  S.Struct({ missingStartingNodes: MissingStartingNodesFlowValidationDetails }),
-  S.Struct({ multipleNodeInputConnections: MultipleNodeInputConnectionsFlowValidationDetails }),
-  S.Struct({ unfulfilledNodeInput: UnfulfilledNodeInputFlowValidationDetails }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({ cyclicConnection: CyclicConnectionFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ duplicateConnections: DuplicateConnectionsFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    duplicateConditionExpression: DuplicateConditionExpressionFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ unreachableNode: UnreachableNodeFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ unknownConnectionSource: UnknownConnectionSourceFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    unknownConnectionSourceOutput: UnknownConnectionSourceOutputFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ unknownConnectionTarget: UnknownConnectionTargetFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    unknownConnectionTargetInput: UnknownConnectionTargetInputFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    unknownConnectionCondition: UnknownConnectionConditionFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    malformedConditionExpression: MalformedConditionExpressionFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    malformedNodeInputExpression: MalformedNodeInputExpressionFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ mismatchedNodeInputType: MismatchedNodeInputTypeFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    mismatchedNodeOutputType: MismatchedNodeOutputTypeFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    incompatibleConnectionDataType: IncompatibleConnectionDataTypeFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    missingConnectionConfiguration: MissingConnectionConfigurationFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ missingDefaultCondition: MissingDefaultConditionFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ missingEndingNodes: MissingEndingNodesFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    missingNodeConfiguration: MissingNodeConfigurationFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ missingNodeInput: MissingNodeInputFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ missingNodeOutput: MissingNodeOutputFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ missingStartingNodes: MissingStartingNodesFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    multipleNodeInputConnections: MultipleNodeInputConnectionsFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ unfulfilledNodeInput: UnfulfilledNodeInputFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
     unsatisfiedConnectionConditions: UnsatisfiedConnectionConditionsFlowValidationDetails,
   }),
-  S.Struct({ unspecified: UnspecifiedFlowValidationDetails }),
-  S.Struct({ unknownNodeInput: UnknownNodeInputFlowValidationDetails }),
-  S.Struct({ unknownNodeOutput: UnknownNodeOutputFlowValidationDetails }),
-  S.Struct({ missingLoopInputNode: MissingLoopInputNodeFlowValidationDetails }),
-  S.Struct({ missingLoopControllerNode: MissingLoopControllerNodeFlowValidationDetails }),
-  S.Struct({ multipleLoopInputNodes: MultipleLoopInputNodesFlowValidationDetails }),
-  S.Struct({ multipleLoopControllerNodes: MultipleLoopControllerNodesFlowValidationDetails }),
-  S.Struct({ loopIncompatibleNodeType: LoopIncompatibleNodeTypeFlowValidationDetails }),
-  S.Struct({ invalidLoopBoundary: InvalidLoopBoundaryFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ unspecified: UnspecifiedFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ unknownNodeInput: UnknownNodeInputFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ unknownNodeOutput: UnknownNodeOutputFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({ missingLoopInputNode: MissingLoopInputNodeFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    missingLoopControllerNode: MissingLoopControllerNodeFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ multipleLoopInputNodes: MultipleLoopInputNodesFlowValidationDetails }),
+  /*@__PURE__*/ S.Struct({
+    multipleLoopControllerNodes: MultipleLoopControllerNodesFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({
+    loopIncompatibleNodeType: LoopIncompatibleNodeTypeFlowValidationDetails,
+  }),
+  /*@__PURE__*/ S.Struct({ invalidLoopBoundary: InvalidLoopBoundaryFlowValidationDetails }),
 ]);
 export type FlowValidationType =
   | "CyclicConnection"

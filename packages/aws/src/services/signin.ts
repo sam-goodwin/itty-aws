@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Signin", serviceShapeName: "Signin" });
-const auth = T.AwsAuthSigv4({ name: "signin" });
-const ver = T.ServiceVersion("2023-01-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Signin", serviceShapeName: "Signin" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "signin" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const {
     UseDualStack = false,
     UseFIPS = false,
@@ -292,62 +292,76 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-    message: S.String.pipe(T.ErrorMessage()),
+    error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyRequestsError
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsError>()(
     "TooManyRequestsError",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      error: S.suspend(() => OAuth2ErrorCode).annotate({ identifier: "OAuth2ErrorCode" }),
-      message: S.String.pipe(T.ErrorMessage()),
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
+        identifier: "OAuth2ErrorCode",
+      }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type GrantType = string;
@@ -575,16 +589,22 @@ export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetResourcePolicyInput" }) as any as S.Schema<GetResourcePolicyInput>;
 export type Principal = { [key: string]: string | undefined };
-export const Principal = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Principal = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type PolicyActions = string[];
 export const PolicyActions = /*@__PURE__*/ S.Array(S.String);
 export type ConditionType = string;
 export type ConditionValues = string[];
 export const ConditionValues = /*@__PURE__*/ S.Array(S.String);
 export type Condition = { [key: string]: string[] | undefined };
-export const Condition = /*@__PURE__*/ S.Record(S.String, ConditionValues.pipe(S.optional));
+export const Condition = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ConditionValues.pipe(S.optional),
+);
 export type ConditionBlock = { [key: string]: { [key: string]: string[] | undefined } | undefined };
-export const ConditionBlock = /*@__PURE__*/ S.Record(S.String, Condition.pipe(S.optional));
+export const ConditionBlock = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Condition.pipe(S.optional),
+);
 export interface PolicyStatement {
   effect?: string;
   principal?: { [key: string]: string | undefined };

@@ -724,7 +724,7 @@ export type MeetingsCreateRequestRecordingConfigStorageConfig =
   | MeetingsCreateRequestRecordingConfigStorageConfigCase2
   | MeetingsCreateRequestRecordingConfigStorageConfigCase3;
 export const MeetingsCreateRequestRecordingConfigStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -1318,7 +1318,7 @@ export type MeetingsCreateResponseDataRecordingConfigStorageConfig =
   | MeetingsCreateResponseDataRecordingConfigStorageConfigCase2
   | MeetingsCreateResponseDataRecordingConfigStorageConfigCase3;
 export const MeetingsCreateResponseDataRecordingConfigStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -4759,7 +4759,7 @@ export type MeetingsGetResponseDataItemRecordingConfigStorageConfig =
   | MeetingsGetResponseDataItemRecordingConfigStorageConfigCase2
   | MeetingsGetResponseDataItemRecordingConfigStorageConfigCase3;
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -5504,7 +5504,7 @@ export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -6224,7 +6224,7 @@ export type RecordingsGetOneRecordingResponseDataStorageConfig =
   | RecordingsGetOneRecordingResponseDataStorageConfigCase2
   | RecordingsGetOneRecordingResponseDataStorageConfigCase3;
 export const RecordingsGetOneRecordingResponseDataStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -6872,7 +6872,7 @@ export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepor
   | number
   | boolean;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
   {
@@ -9225,7 +9225,7 @@ export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorage
   | RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigCase3;
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -9699,7 +9699,7 @@ export type RecordingsGetRecordingsResponseDataItemStorageConfig =
   | RecordingsGetRecordingsResponseDataItemStorageConfigCase2
   | RecordingsGetRecordingsResponseDataItemStorageConfigCase3;
 export const RecordingsGetRecordingsResponseDataItemStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -12429,7 +12429,7 @@ export type RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
   | RecordingsPauseResumeStopRecordingResponseDataStorageConfigCase3;
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -13036,7 +13036,7 @@ export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
   | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigCase3;
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -13659,7 +13659,7 @@ export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -15298,7 +15298,7 @@ export type RecordingsStartRecordingsRequestStorageConfig =
   | RecordingsStartRecordingsRequestStorageConfigCase2
   | RecordingsStartRecordingsRequestStorageConfigCase3;
 export const RecordingsStartRecordingsRequestStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -15802,7 +15802,7 @@ export type RecordingsStartRecordingsResponseDataStorageConfig =
   | RecordingsStartRecordingsResponseDataStorageConfigCase2
   | RecordingsStartRecordingsResponseDataStorageConfigCase3;
 export const RecordingsStartRecordingsResponseDataStorageConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accessKey",
       "authMethod",
@@ -16500,7 +16500,7 @@ export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
   | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigCase3;
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",
@@ -17124,7 +17124,7 @@ export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   | MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigCase3;
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "accessKey",
         "authMethod",

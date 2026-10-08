@@ -38,7 +38,7 @@ export type UserAssignedIdentitiesInput = {
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AccessConnectorPropertiesInput),
+  /*@__PURE__*/ S.NullOr(AccessConnectorPropertiesInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -153,7 +153,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
 export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

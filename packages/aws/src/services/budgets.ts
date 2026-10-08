@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Budgets", serviceShapeName: "AWSBudgetServiceGateway" });
-const auth = T.AwsAuthSigv4({ name: "budgets" });
-const ver = T.ServiceVersion("2016-10-20");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Budgets",
+  serviceShapeName: "AWSBudgetServiceGateway",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "budgets" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-10-20");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -147,74 +150,74 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BillingViewHealthStatusException
   extends /*@__PURE__*/ S.TaggedError<BillingViewHealthStatusException>()(
     "BillingViewHealthStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CreationLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CreationLimitExceededException>()(
     "CreationLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(405),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRecordException
   extends /*@__PURE__*/ S.TaggedError<DuplicateRecordException>()(
     "DuplicateRecordException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExpiredNextTokenException
   extends /*@__PURE__*/ S.TaggedError<ExpiredNextTokenException>()(
     "ExpiredNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceLockedException
   extends /*@__PURE__*/ S.TaggedError<ResourceLockedException>()(
     "ResourceLockedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(423),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(423),
   ) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type BudgetName = string;
@@ -228,12 +231,18 @@ export const Spend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Amount: S.String, Unit: S.String }),
 ).annotate({ identifier: "Spend" }) as any as S.Schema<Spend>;
 export type PlannedBudgetLimits = { [key: string]: Spend | undefined };
-export const PlannedBudgetLimits = /*@__PURE__*/ S.Record(S.String, Spend.pipe(S.optional));
+export const PlannedBudgetLimits = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Spend.pipe(S.optional),
+);
 export type DimensionValue = string;
 export type DimensionValues = string[];
 export const DimensionValues = /*@__PURE__*/ S.Array(S.String);
 export type CostFilters = { [key: string]: string[] | undefined };
-export const CostFilters = /*@__PURE__*/ S.Record(S.String, DimensionValues.pipe(S.optional));
+export const CostFilters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ DimensionValues.pipe(S.optional),
+);
 export interface CostTypes {
   IncludeTax?: boolean;
   IncludeSubscription?: boolean;
@@ -317,7 +326,9 @@ export const AutoAdjustData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoAdjustData" }) as any as S.Schema<AutoAdjustData>;
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"

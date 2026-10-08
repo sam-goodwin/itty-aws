@@ -1384,7 +1384,7 @@ export const GetV2FunctionTraceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type V2TraceSpanChildrenList = Array<V2TraceSpan>;
 export const V2TraceSpanChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => V2TraceSpan),
+  /*@__PURE__*/ S.suspend(() => V2TraceSpan),
 ) as any as S.Schema<V2TraceSpanChildrenList>;
 
 export type V2TraceSpanMetadataValuesMap = { [key: string]: string | undefined };

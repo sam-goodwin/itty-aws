@@ -488,7 +488,7 @@ export const ListTokenResp = /*@__PURE__*/ S.suspend(() =>
 export type LabelPatch = { [key: string]: string | null | undefined };
 export const LabelPatch = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<LabelPatch>;
 
 export interface PartialUpdateTokenRequest {

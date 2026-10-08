@@ -340,7 +340,7 @@ export type InstancesChatCompletionsRequestMessagesItemContentCase1Item =
   | InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2;
 export const InstancesChatCompletionsRequestMessagesItemContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -360,7 +360,7 @@ export type InstancesChatCompletionsRequestMessagesItemContent =
   | string
   | InstancesChatCompletionsRequestMessagesItemContentCase1List;
 export const InstancesChatCompletionsRequestMessagesItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesChatCompletionsRequestMessagesItemRole =
@@ -421,7 +421,7 @@ export type InstancesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
   | number
   | boolean;
 export const InstancesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type InstancesChatCompletionsRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]: InstancesChatCompletionsRequestAiSearchOptionsCustomMetadataValue | undefined;
@@ -708,7 +708,7 @@ export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2;
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -729,7 +729,7 @@ export type InstancesChatCompletionsResponseChoicesItemMessageContent =
   | string
   | InstancesChatCompletionsResponseChoicesItemMessageContentCase1List;
 export const InstancesChatCompletionsResponseChoicesItemMessageContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type InstancesChatCompletionsResponseChoicesItemMessageRole =
   | "system"
@@ -910,7 +910,7 @@ export type NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
   | number
   | boolean;
 export const NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]: NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataValue | undefined;
@@ -1138,7 +1138,7 @@ export type NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
   | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2;
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -1158,7 +1158,7 @@ export type NamespacesChatCompletionsRequestMessagesItemContent =
   | string
   | NamespacesChatCompletionsRequestMessagesItemContentCase1List;
 export const NamespacesChatCompletionsRequestMessagesItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type NamespacesChatCompletionsRequestMessagesItemRole =
@@ -1293,7 +1293,7 @@ export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item 
   | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -1314,7 +1314,7 @@ export type NamespacesChatCompletionsResponseChoicesItemMessageContent =
   | string
   | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1List;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageRole =
   | "system"
@@ -1534,7 +1534,7 @@ export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Ite
   | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -1555,7 +1555,7 @@ export type NamespacesInstancesChatCompletionsRequestMessagesItemContent =
   | string
   | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1List;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemRole =
   | "system"
@@ -1616,7 +1616,7 @@ export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsCustomMetada
   | number
   | boolean;
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]:
@@ -1893,7 +1893,7 @@ export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentC
   | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -1914,7 +1914,7 @@ export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent 
   | string
   | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole =
   | "system"
@@ -4693,7 +4693,7 @@ export const CreateOrUpdateNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspen
 
 export type NamespacesInstancesItemsCreateOrUpdateResponseMetadataValue = string | number | boolean;
 export const NamespacesInstancesItemsCreateOrUpdateResponseMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type NamespacesInstancesItemsCreateOrUpdateResponseMetadataMap = {
   [key: string]: NamespacesInstancesItemsCreateOrUpdateResponseMetadataValue | undefined;
@@ -6086,7 +6086,7 @@ export const GetNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsGetResponseMetadataValue = string | number | boolean;
 export const NamespacesInstancesItemsGetResponseMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type NamespacesInstancesItemsGetResponseMetadataMap = {
@@ -6909,7 +6909,7 @@ export const ListNamespaceInstanceItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsListResultItemMetadataValue = string | number | boolean;
 export const NamespacesInstancesItemsListResultItemMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type NamespacesInstancesItemsListResultItemMetadataMap = {
@@ -9393,7 +9393,7 @@ export const InstancesSearchRequestAiSearchOptionsCache = /*@__PURE__*/ S.suspen
 
 export type InstancesSearchRequestAiSearchOptionsCustomMetadataValue = string | number | boolean;
 export const InstancesSearchRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type InstancesSearchRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]: InstancesSearchRequestAiSearchOptionsCustomMetadataValue | undefined;
@@ -9590,7 +9590,7 @@ export type InstancesSearchRequestMessagesItemContentCase1Item =
   | InstancesSearchRequestMessagesItemContentCase1ItemCase1
   | InstancesSearchRequestMessagesItemContentCase1ItemCase2;
 export const InstancesSearchRequestMessagesItemContentCase1Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["text", "type"],
       ["imageUrl", "type"],
@@ -9610,7 +9610,7 @@ export type InstancesSearchRequestMessagesItemContent =
   | string
   | InstancesSearchRequestMessagesItemContentCase1List;
 export const InstancesSearchRequestMessagesItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesSearchRequestMessagesItemRole =
@@ -9794,7 +9794,7 @@ export const NamespacesSearchRequestAiSearchOptionsCache = /*@__PURE__*/ S.suspe
 
 export type NamespacesSearchRequestAiSearchOptionsCustomMetadataValue = string | number | boolean;
 export const NamespacesSearchRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type NamespacesSearchRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]: NamespacesSearchRequestAiSearchOptionsCustomMetadataValue | undefined;
@@ -9998,7 +9998,7 @@ export type NamespacesSearchRequestMessagesItemContentCase1Item =
   | NamespacesSearchRequestMessagesItemContentCase1ItemCase1
   | NamespacesSearchRequestMessagesItemContentCase1ItemCase2;
 export const NamespacesSearchRequestMessagesItemContentCase1Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["text", "type"],
       ["imageUrl", "type"],
@@ -10018,7 +10018,7 @@ export type NamespacesSearchRequestMessagesItemContent =
   | string
   | NamespacesSearchRequestMessagesItemContentCase1List;
 export const NamespacesSearchRequestMessagesItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type NamespacesSearchRequestMessagesItemRole =
@@ -10223,7 +10223,7 @@ export type NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataValue =
   | number
   | boolean;
 export const NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataMap = {
   [key: string]: NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataValue | undefined;
@@ -10447,7 +10447,7 @@ export type NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
   | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2;
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["text", "type"],
         ["imageUrl", "type"],
@@ -10467,7 +10467,7 @@ export type NamespacesInstancesSearchRequestMessagesItemContent =
   | string
   | NamespacesInstancesSearchRequestMessagesItemContentCase1List;
 export const NamespacesInstancesSearchRequestMessagesItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type NamespacesInstancesSearchRequestMessagesItemRole =
@@ -10872,7 +10872,7 @@ export const SyncNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsSyncResponseMetadataValue = string | number | boolean;
 export const NamespacesInstancesItemsSyncResponseMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type NamespacesInstancesItemsSyncResponseMetadataMap = {
@@ -13324,7 +13324,7 @@ export const UploadNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsUploadResponseMetadataValue = string | number | boolean;
 export const NamespacesInstancesItemsUploadResponseMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type NamespacesInstancesItemsUploadResponseMetadataMap = {
@@ -13396,7 +13396,7 @@ export type NamespacesInstancesItemsUploadResponseWarningsItem =
   | NamespacesInstancesItemsUploadResponseWarningsItemCase0
   | NamespacesInstancesItemsUploadResponseWarningsItemCase1;
 export const NamespacesInstancesItemsUploadResponseWarningsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["code", "expectedType", "field"],
       ["code", "field"],

@@ -10,14 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock AgentCore",
   serviceShapeName: "AmazonBedrockAgentCore",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock-agentcore" });
-const ver = T.ServiceVersion("2024-02-28");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock-agentcore" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-02-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,106 +79,106 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicateIdException
   extends /*@__PURE__*/ S.TaggedError<DuplicateIdException>()(
     "DuplicateIdException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RetryableConflictException
   extends /*@__PURE__*/ S.TaggedError<RetryableConflictException>()(
     "RetryableConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(409), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(409), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class RuntimeClientError
   extends /*@__PURE__*/ S.TaggedError<RuntimeClientError>()(
     "RuntimeClientError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class SubscriptionRequiredException
   extends /*@__PURE__*/ S.TaggedError<SubscriptionRequiredException>()(
     "SubscriptionRequiredException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      subscriptionUrl: S.optional(S.String),
-      productName: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      subscriptionUrl: /*@__PURE__*/ S.optional(S.String),
+      productName: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type MemoryId = string;
 export type RequestIdentifier = string;
@@ -187,7 +187,9 @@ export type NamespacesList = string[];
 export const NamespacesList = /*@__PURE__*/ S.Array(S.String);
 export type SensitiveString = string | redacted.Redacted<string>;
 export type MemoryContent = { text: string | redacted.Redacted<string> };
-export const MemoryContent = /*@__PURE__*/ S.Union([S.Struct({ text: SensitiveString })]);
+export const MemoryContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+]);
 export type MemoryStrategyId = string;
 export type MetadataKey = string;
 export type StringValue = string;
@@ -200,15 +202,17 @@ export type MemoryRecordMetadataValue =
   | { stringValue?: never; stringListValue?: never; numberValue: number; dateTimeValue?: never }
   | { stringValue?: never; stringListValue?: never; numberValue?: never; dateTimeValue: Date };
 export const MemoryRecordMetadataValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ stringListValue: StringValueList }),
-  S.Struct({ numberValue: S.Number }),
-  S.Struct({ dateTimeValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringListValue: StringValueList }),
+  /*@__PURE__*/ S.Struct({ numberValue: S.Number }),
+  /*@__PURE__*/ S.Struct({
+    dateTimeValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
 ]);
 export type MemoryRecordMetadataMap = { [key: string]: MemoryRecordMetadataValue | undefined };
 export const MemoryRecordMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  MemoryRecordMetadataValue.pipe(S.optional),
+  /*@__PURE__*/ MemoryRecordMetadataValue.pipe(S.optional),
 );
 export interface MemoryRecordCreateInput {
   requestIdentifier: string;
@@ -381,8 +385,8 @@ export type UserIdentifier =
   | { userToken: string | redacted.Redacted<string>; userId?: never }
   | { userToken?: never; userId: string };
 export const UserIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ userToken: SensitiveString }),
-  S.Struct({ userId: S.String }),
+  /*@__PURE__*/ S.Struct({ userToken: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ userId: S.String }),
 ]);
 export type RequestUri = string;
 export interface CompleteResourceTokenAuthRequest {
@@ -479,15 +483,17 @@ export type ABTestEvaluationConfig =
       perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfig[];
     };
 export const ABTestEvaluationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ onlineEvaluationConfigArn: S.String }),
-  S.Struct({ perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfigList }),
+  /*@__PURE__*/ S.Struct({ onlineEvaluationConfigArn: S.String }),
+  /*@__PURE__*/ S.Struct({
+    perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfigList,
+  }),
 ]);
 export type RoleArn = string;
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateABTestRequest {
   name: string;
   description?: string;
@@ -557,7 +563,7 @@ export const CreateABTestResponse = /*@__PURE__*/ S.suspend(() =>
 export type ActorId = string;
 export type SessionId = string;
 export type Content = { text: string | redacted.Redacted<string> };
-export const Content = /*@__PURE__*/ S.Union([S.Struct({ text: SensitiveString })]);
+export const Content = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
 export type Role = "ASSISTANT" | "USER" | "TOOL" | "OTHER" | (string & {});
 export const Role = S.String;
 
@@ -581,9 +587,9 @@ export type PayloadType =
   | { conversational?: never; blob: any; json?: never }
   | { conversational?: never; blob?: never; json: MemoryJsonData };
 export const PayloadType = /*@__PURE__*/ S.Union([
-  S.Struct({ conversational: Conversational }),
-  S.Struct({ blob: S.Any }),
-  S.Struct({ json: MemoryJsonData }),
+  /*@__PURE__*/ S.Struct({ conversational: Conversational }),
+  /*@__PURE__*/ S.Struct({ blob: S.Any }),
+  /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
 ]);
 export type PayloadTypeList = PayloadType[];
 export const PayloadTypeList = /*@__PURE__*/ S.Array(PayloadType);
@@ -597,16 +603,24 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rootEventId: S.optional(S.String), name: S.String }),
 ).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
 export type MetadataValue = { stringValue: string };
-export const MetadataValue = /*@__PURE__*/ S.Union([S.Struct({ stringValue: S.String })]);
+export const MetadataValue = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+]);
 export type MetadataMap = { [key: string]: MetadataValue | undefined };
-export const MetadataMap = /*@__PURE__*/ S.Record(S.String, MetadataValue.pipe(S.optional));
+export const MetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MetadataValue.pipe(S.optional),
+);
 export type ExtractionMode = "SKIP" | (string & {});
 export const ExtractionMode = S.String;
 
 export type NamespaceVariableName = string;
 export type NamespaceVariableValue = string;
 export type NamespaceVariablesMap = { [key: string]: string | undefined };
-export const NamespaceVariablesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const NamespaceVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ExtractionConfig {
   namespaceVariables?: { [key: string]: string | undefined };
 }
@@ -731,11 +745,11 @@ export type LinkedAccountOAuth2 =
   | { google?: never; apple?: never; x?: never; telegram: OAuth2Authentication; github?: never }
   | { google?: never; apple?: never; x?: never; telegram?: never; github: OAuth2Authentication };
 export const LinkedAccountOAuth2 = /*@__PURE__*/ S.Union([
-  S.Struct({ google: OAuth2Authentication }),
-  S.Struct({ apple: OAuth2Authentication }),
-  S.Struct({ x: OAuth2Authentication }),
-  S.Struct({ telegram: OAuth2Authentication }),
-  S.Struct({ github: OAuth2Authentication }),
+  /*@__PURE__*/ S.Struct({ google: OAuth2Authentication }),
+  /*@__PURE__*/ S.Struct({ apple: OAuth2Authentication }),
+  /*@__PURE__*/ S.Struct({ x: OAuth2Authentication }),
+  /*@__PURE__*/ S.Struct({ telegram: OAuth2Authentication }),
+  /*@__PURE__*/ S.Struct({ github: OAuth2Authentication }),
 ]);
 export type LinkedAccount =
   | { email: LinkedAccountEmail; sms?: never; developerJwt?: never; oAuth2?: never }
@@ -743,10 +757,10 @@ export type LinkedAccount =
   | { email?: never; sms?: never; developerJwt: LinkedAccountDeveloperJwt; oAuth2?: never }
   | { email?: never; sms?: never; developerJwt?: never; oAuth2: LinkedAccountOAuth2 };
 export const LinkedAccount = /*@__PURE__*/ S.Union([
-  S.Struct({ email: LinkedAccountEmail }),
-  S.Struct({ sms: LinkedAccountSms }),
-  S.Struct({ developerJwt: LinkedAccountDeveloperJwt }),
-  S.Struct({ oAuth2: LinkedAccountOAuth2 }),
+  /*@__PURE__*/ S.Struct({ email: LinkedAccountEmail }),
+  /*@__PURE__*/ S.Struct({ sms: LinkedAccountSms }),
+  /*@__PURE__*/ S.Struct({ developerJwt: LinkedAccountDeveloperJwt }),
+  /*@__PURE__*/ S.Struct({ oAuth2: LinkedAccountOAuth2 }),
 ]);
 export type LinkedAccountList = LinkedAccount[];
 export const LinkedAccountList = /*@__PURE__*/ S.Array(LinkedAccount);
@@ -766,7 +780,7 @@ export const EmbeddedCryptoWallet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmbeddedCryptoWallet" }) as any as S.Schema<EmbeddedCryptoWallet>;
 export type PaymentInstrumentDetails = { embeddedCryptoWallet: EmbeddedCryptoWallet };
 export const PaymentInstrumentDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ embeddedCryptoWallet: EmbeddedCryptoWallet }),
+  /*@__PURE__*/ S.Struct({ embeddedCryptoWallet: EmbeddedCryptoWallet }),
 ]);
 export interface CreatePaymentInstrumentRequest {
   userId?: string;
@@ -1209,7 +1223,9 @@ export type Span = unknown;
 export type Spans = any[];
 export const Spans = /*@__PURE__*/ S.Array(S.Any);
 export type EvaluationInput = { sessionSpans: any[] };
-export const EvaluationInput = /*@__PURE__*/ S.Union([S.Struct({ sessionSpans: Spans })]);
+export const EvaluationInput = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ sessionSpans: Spans }),
+]);
 export type SpanId = string;
 export type SpanIds = string[];
 export const SpanIds = /*@__PURE__*/ S.Array(S.String);
@@ -1220,8 +1236,8 @@ export type EvaluationTarget =
   | { spanIds: string[]; traceIds?: never }
   | { spanIds?: never; traceIds: string[] };
 export const EvaluationTarget = /*@__PURE__*/ S.Union([
-  S.Struct({ spanIds: SpanIds }),
-  S.Struct({ traceIds: TraceIds }),
+  /*@__PURE__*/ S.Struct({ spanIds: SpanIds }),
+  /*@__PURE__*/ S.Struct({ traceIds: TraceIds }),
 ]);
 export interface SpanContext {
   sessionId: string;
@@ -1232,9 +1248,13 @@ export const SpanContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sessionId: S.String, traceId: S.optional(S.String), spanId: S.optional(S.String) }),
 ).annotate({ identifier: "SpanContext" }) as any as S.Schema<SpanContext>;
 export type Context = { spanContext: SpanContext };
-export const Context = /*@__PURE__*/ S.Union([S.Struct({ spanContext: SpanContext })]);
+export const Context = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ spanContext: SpanContext }),
+]);
 export type EvaluationContent = { text: string };
-export const EvaluationContent = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const EvaluationContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+]);
 export type EvaluationContentList = EvaluationContent[];
 export const EvaluationContentList = /*@__PURE__*/ S.Array(EvaluationContent);
 export type EvaluationToolName = string;
@@ -1607,8 +1627,8 @@ export type DataSourceConfig =
   | { cloudWatchLogs: CloudWatchLogsSource; onlineEvaluationConfigSource?: never }
   | { cloudWatchLogs?: never; onlineEvaluationConfigSource: OnlineEvaluationConfigSource };
 export const DataSourceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudWatchLogs: CloudWatchLogsSource }),
-  S.Struct({ onlineEvaluationConfigSource: OnlineEvaluationConfigSource }),
+  /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsSource }),
+  /*@__PURE__*/ S.Struct({ onlineEvaluationConfigSource: OnlineEvaluationConfigSource }),
 ]);
 export type OptionalLogGroupName = string;
 export type LogStreamName = string;
@@ -1632,7 +1652,7 @@ export const CloudWatchOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudWatchOutputConfig" }) as any as S.Schema<CloudWatchOutputConfig>;
 export type OutputConfig = { cloudWatchConfig: CloudWatchOutputConfig };
 export const OutputConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
+  /*@__PURE__*/ S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
 ]);
 export interface EvaluatorStatistics {
   averageScore?: number;
@@ -1978,7 +1998,7 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, prefix: S.String, versionId: S.optional(S.String) }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export type ResourceLocation = { s3: S3Location };
-export const ResourceLocation = /*@__PURE__*/ S.Union([S.Struct({ s3: S3Location })]);
+export const ResourceLocation = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Location })]);
 export interface BrowserExtension {
   location: ResourceLocation;
 }
@@ -2048,7 +2068,9 @@ export const BasicAuth = /*@__PURE__*/ S.suspend(() => S.Struct({ secretArn: S.S
   identifier: "BasicAuth",
 }) as any as S.Schema<BasicAuth>;
 export type ProxyCredentials = { basicAuth: BasicAuth };
-export const ProxyCredentials = /*@__PURE__*/ S.Union([S.Struct({ basicAuth: BasicAuth })]);
+export const ProxyCredentials = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ basicAuth: BasicAuth }),
+]);
 export interface ExternalProxy {
   server: string;
   port: number;
@@ -2064,7 +2086,9 @@ export const ExternalProxy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExternalProxy" }) as any as S.Schema<ExternalProxy>;
 export type Proxy = { externalProxy: ExternalProxy };
-export const Proxy = /*@__PURE__*/ S.Union([S.Struct({ externalProxy: ExternalProxy })]);
+export const Proxy = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ externalProxy: ExternalProxy }),
+]);
 export type Proxies = Proxy[];
 export const Proxies = /*@__PURE__*/ S.Array(Proxy);
 export interface ProxyBypass {
@@ -2088,7 +2112,7 @@ export const SecretsManagerLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretsManagerLocation" }) as any as S.Schema<SecretsManagerLocation>;
 export type CertificateLocation = { secretsManager: SecretsManagerLocation };
 export const CertificateLocation = /*@__PURE__*/ S.Union([
-  S.Struct({ secretsManager: SecretsManagerLocation }),
+  /*@__PURE__*/ S.Struct({ secretsManager: SecretsManagerLocation }),
 ]);
 export interface Certificate {
   location: CertificateLocation;
@@ -2123,8 +2147,8 @@ export type ToolsFileSystemConfiguration =
   | { s3FilesConfiguration: S3FilesConfiguration; efsConfiguration?: never }
   | { s3FilesConfiguration?: never; efsConfiguration: EfsConfiguration };
 export const ToolsFileSystemConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
-  S.Struct({ efsConfiguration: EfsConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
+  /*@__PURE__*/ S.Struct({ efsConfiguration: EfsConfiguration }),
 ]);
 export type ToolsFileSystemConfigurations = ToolsFileSystemConfiguration[];
 export const ToolsFileSystemConfigurations = /*@__PURE__*/ S.Array(ToolsFileSystemConfiguration);
@@ -2475,8 +2499,8 @@ export type SystemPromptConfig =
   | { text: string | redacted.Redacted<string>; configurationBundle?: never }
   | { text?: never; configurationBundle: SystemPromptConfigurationBundle };
 export const SystemPromptConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ configurationBundle: SystemPromptConfigurationBundle }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ configurationBundle: SystemPromptConfigurationBundle }),
 ]);
 export type LogGroupArnList = string[];
 export const LogGroupArnList = /*@__PURE__*/ S.Array(S.String);
@@ -2501,9 +2525,9 @@ export type FilterValue =
   | { stringValue?: never; doubleValue: number; booleanValue?: never }
   | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
 export const FilterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
 ]);
 export interface CloudWatchLogsFilter {
   key: string;
@@ -2587,10 +2611,10 @@ export type AgentTracesConfig =
       onlineEvaluation: OnlineEvaluationTraceConfig;
     };
 export const AgentTracesConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ sessionSpans: Spans }),
-  S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
-  S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
-  S.Struct({ onlineEvaluation: OnlineEvaluationTraceConfig }),
+  /*@__PURE__*/ S.Struct({ sessionSpans: Spans }),
+  /*@__PURE__*/ S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
+  /*@__PURE__*/ S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
+  /*@__PURE__*/ S.Struct({ onlineEvaluation: OnlineEvaluationTraceConfig }),
 ]);
 export interface RecommendationEvaluatorReference {
   evaluatorArn: string;
@@ -2627,7 +2651,9 @@ export const SystemPromptRecommendationConfig = /*@__PURE__*/ S.suspend(() =>
 export type RecommendationToolName = string;
 export type ToolDescriptionText = string | redacted.Redacted<string>;
 export type ToolDescriptionConfig = { text: string | redacted.Redacted<string> };
-export const ToolDescriptionConfig = /*@__PURE__*/ S.Union([S.Struct({ text: SensitiveString })]);
+export const ToolDescriptionConfig = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+]);
 export interface ToolDescriptionInput {
   toolName: string;
   toolDescription: ToolDescriptionConfig;
@@ -2668,8 +2694,8 @@ export type ToolDescriptionSource =
   | { toolDescriptionText: ToolDescriptionTextInput; configurationBundle?: never }
   | { toolDescriptionText?: never; configurationBundle: ToolDescriptionConfigurationBundle };
 export const ToolDescriptionSource = /*@__PURE__*/ S.Union([
-  S.Struct({ toolDescriptionText: ToolDescriptionTextInput }),
-  S.Struct({ configurationBundle: ToolDescriptionConfigurationBundle }),
+  /*@__PURE__*/ S.Struct({ toolDescriptionText: ToolDescriptionTextInput }),
+  /*@__PURE__*/ S.Struct({ configurationBundle: ToolDescriptionConfigurationBundle }),
 ]);
 export interface ToolDescriptionRecommendationConfig {
   toolDescription: ToolDescriptionSource;
@@ -2690,8 +2716,10 @@ export type RecommendationConfig =
       toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig;
     };
 export const RecommendationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ systemPromptRecommendationConfig: SystemPromptRecommendationConfig }),
-  S.Struct({ toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig }),
+  /*@__PURE__*/ S.Struct({ systemPromptRecommendationConfig: SystemPromptRecommendationConfig }),
+  /*@__PURE__*/ S.Struct({
+    toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig,
+  }),
 ]);
 export interface RecommendationResultConfigurationBundle {
   bundleArn: string;
@@ -2763,8 +2791,10 @@ export type RecommendationResult =
       toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult;
     };
 export const RecommendationResult = /*@__PURE__*/ S.Union([
-  S.Struct({ systemPromptRecommendationResult: SystemPromptRecommendationResult }),
-  S.Struct({ toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult }),
+  /*@__PURE__*/ S.Struct({ systemPromptRecommendationResult: SystemPromptRecommendationResult }),
+  /*@__PURE__*/ S.Struct({
+    toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult,
+  }),
 ]);
 export interface GetRecommendationResponse {
   recommendationId: string;
@@ -2837,7 +2867,7 @@ export type CustomRequestParametersType = {
 };
 export const CustomRequestParametersType = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type State = string | redacted.Redacted<string>;
 export type ResourceType = string;
@@ -2953,8 +2983,8 @@ export type PaymentTokenRequestInput =
   | { coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput; stripePrivyTokenRequest?: never }
   | { coinbaseCdpTokenRequest?: never; stripePrivyTokenRequest: StripePrivyTokenRequestInput };
 export const PaymentTokenRequestInput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput }),
-  S.Struct({ stripePrivyTokenRequest: StripePrivyTokenRequestInput }),
+  /*@__PURE__*/ S.Struct({ coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput }),
+  /*@__PURE__*/ S.Struct({ stripePrivyTokenRequest: StripePrivyTokenRequestInput }),
 ]);
 export interface GetResourcePaymentTokenRequest {
   workloadIdentityToken: string | redacted.Redacted<string>;
@@ -3012,8 +3042,8 @@ export type PaymentTokenResponseOutput =
   | { coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput; stripePrivyTokenResponse?: never }
   | { coinbaseCdpTokenResponse?: never; stripePrivyTokenResponse: StripePrivyTokenResponseOutput };
 export const PaymentTokenResponseOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput }),
-  S.Struct({ stripePrivyTokenResponse: StripePrivyTokenResponseOutput }),
+  /*@__PURE__*/ S.Struct({ coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput }),
+  /*@__PURE__*/ S.Struct({ stripePrivyTokenResponse: StripePrivyTokenResponseOutput }),
 ]);
 export interface GetResourcePaymentTokenResponse {
   paymentTokenResponse: PaymentTokenResponseOutput;
@@ -3105,8 +3135,8 @@ export type IngestPayloadType =
   | { conversational: Conversational; json?: never }
   | { conversational?: never; json: MemoryJsonData };
 export const IngestPayloadType = /*@__PURE__*/ S.Union([
-  S.Struct({ conversational: Conversational }),
-  S.Struct({ json: MemoryJsonData }),
+  /*@__PURE__*/ S.Struct({ conversational: Conversational }),
+  /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
 ]);
 export type IngestPayloadList = IngestPayloadType[];
 export const IngestPayloadList = /*@__PURE__*/ S.Array(IngestPayloadType);
@@ -3117,7 +3147,9 @@ export const InlineMemoryContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ payload: IngestPayloadList }),
 ).annotate({ identifier: "InlineMemoryContent" }) as any as S.Schema<InlineMemoryContent>;
 export type ContentSource = { inline: InlineMemoryContent };
-export const ContentSource = /*@__PURE__*/ S.Union([S.Struct({ inline: InlineMemoryContent })]);
+export const ContentSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ inline: InlineMemoryContent }),
+]);
 export interface IngestDataInput {
   memoryId: string;
   source: ContentSource;
@@ -3429,40 +3461,42 @@ export type InvokeAgentRuntimeCommandStreamOutput =
       runtimeClientError: RuntimeClientError;
     };
 export const InvokeAgentRuntimeCommandStreamOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ chunk: ResponseChunk }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ chunk: ResponseChunk }),
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      runtimeClientError: S.suspend(() => RuntimeClientError).annotate({
+    /*@__PURE__*/ S.Struct({
+      runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
         identifier: "RuntimeClientError",
       }),
     }),
@@ -3660,14 +3694,14 @@ export type BrowserAction =
       screenshot: ScreenshotArguments;
     };
 export const BrowserAction = /*@__PURE__*/ S.Union([
-  S.Struct({ mouseClick: MouseClickArguments }),
-  S.Struct({ mouseMove: MouseMoveArguments }),
-  S.Struct({ mouseDrag: MouseDragArguments }),
-  S.Struct({ mouseScroll: MouseScrollArguments }),
-  S.Struct({ keyType: KeyTypeArguments }),
-  S.Struct({ keyPress: KeyPressArguments }),
-  S.Struct({ keyShortcut: KeyShortcutArguments }),
-  S.Struct({ screenshot: ScreenshotArguments }),
+  /*@__PURE__*/ S.Struct({ mouseClick: MouseClickArguments }),
+  /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveArguments }),
+  /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragArguments }),
+  /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollArguments }),
+  /*@__PURE__*/ S.Struct({ keyType: KeyTypeArguments }),
+  /*@__PURE__*/ S.Struct({ keyPress: KeyPressArguments }),
+  /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutArguments }),
+  /*@__PURE__*/ S.Struct({ screenshot: ScreenshotArguments }),
 ]);
 export interface InvokeBrowserRequest {
   browserIdentifier: string;
@@ -3832,14 +3866,14 @@ export type BrowserActionResult =
       screenshot: ScreenshotResult;
     };
 export const BrowserActionResult = /*@__PURE__*/ S.Union([
-  S.Struct({ mouseClick: MouseClickResult }),
-  S.Struct({ mouseMove: MouseMoveResult }),
-  S.Struct({ mouseDrag: MouseDragResult }),
-  S.Struct({ mouseScroll: MouseScrollResult }),
-  S.Struct({ keyType: KeyTypeResult }),
-  S.Struct({ keyPress: KeyPressResult }),
-  S.Struct({ keyShortcut: KeyShortcutResult }),
-  S.Struct({ screenshot: ScreenshotResult }),
+  /*@__PURE__*/ S.Struct({ mouseClick: MouseClickResult }),
+  /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveResult }),
+  /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragResult }),
+  /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollResult }),
+  /*@__PURE__*/ S.Struct({ keyType: KeyTypeResult }),
+  /*@__PURE__*/ S.Struct({ keyPress: KeyPressResult }),
+  /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutResult }),
+  /*@__PURE__*/ S.Struct({ screenshot: ScreenshotResult }),
 ]);
 export interface InvokeBrowserResponse {
   result: BrowserActionResult;
@@ -4112,40 +4146,42 @@ export type CodeInterpreterStreamOutput =
       validationException: ValidationException;
     };
 export const CodeInterpreterStreamOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ result: CodeInterpreterResult }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ result: CodeInterpreterResult }),
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
@@ -4195,8 +4231,8 @@ export type HarnessToolResultContentBlock =
   | { text: string | redacted.Redacted<string>; json?: never }
   | { text?: never; json: any };
 export const HarnessToolResultContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ json: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ json: S.Any }),
 ]);
 export type HarnessToolResultContentBlocks = HarnessToolResultContentBlock[];
 export const HarnessToolResultContentBlocks = /*@__PURE__*/ S.Array(HarnessToolResultContentBlock);
@@ -4230,8 +4266,8 @@ export type HarnessReasoningContentBlock =
   | { reasoningText: HarnessReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
 export const HarnessReasoningContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ reasoningText: HarnessReasoningTextBlock }),
-  S.Struct({ redactedContent: T.Blob }),
+  /*@__PURE__*/ S.Struct({ reasoningText: HarnessReasoningTextBlock }),
+  /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
 ]);
 export type HarnessContentBlock =
   | {
@@ -4249,10 +4285,10 @@ export type HarnessContentBlock =
       reasoningContent: HarnessReasoningContentBlock;
     };
 export const HarnessContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ toolUse: HarnessToolUseBlock }),
-  S.Struct({ toolResult: HarnessToolResultBlock }),
-  S.Struct({ reasoningContent: HarnessReasoningContentBlock }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlock }),
+  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlock }),
+  /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlock }),
 ]);
 export type HarnessContentBlocks = HarnessContentBlock[];
 export const HarnessContentBlocks = /*@__PURE__*/ S.Array(HarnessContentBlock);
@@ -4393,14 +4429,14 @@ export type HarnessModelConfiguration =
       liteLlmModelConfig: HarnessLiteLlmModelConfig;
     };
 export const HarnessModelConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
-  S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
-  S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
-  S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
+  /*@__PURE__*/ S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
+  /*@__PURE__*/ S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
+  /*@__PURE__*/ S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
+  /*@__PURE__*/ S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
 ]);
 export type HarnessSystemContentBlock = { text: string | redacted.Redacted<string> };
 export const HarnessSystemContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
 ]);
 export type HarnessSystemPrompt = HarnessSystemContentBlock[];
 export const HarnessSystemPrompt = /*@__PURE__*/ S.Array(HarnessSystemContentBlock);
@@ -4417,7 +4453,10 @@ export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
 export type HttpHeaderKey = string;
 export type HttpHeaderValue = string;
 export type HttpHeadersMap = { [key: string]: string | undefined };
-export const HttpHeadersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HttpHeadersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface HarnessRemoteMcpConfig {
   url: string | redacted.Redacted<string>;
   headers?: { [key: string]: string | undefined };
@@ -4445,7 +4484,7 @@ export type OAuthCustomParameters = {
 };
 export const OAuthCustomParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type OAuthGrantType =
   | "CLIENT_CREDENTIALS"
@@ -4476,9 +4515,9 @@ export type HarnessGatewayOutboundAuth =
   | { awsIam?: never; none: Record<string, never>; oauth?: never }
   | { awsIam?: never; none?: never; oauth: OAuthCredentialProvider };
 export const HarnessGatewayOutboundAuth = /*@__PURE__*/ S.Union([
-  S.Struct({ awsIam: S.Struct({}) }),
-  S.Struct({ none: S.Struct({}) }),
-  S.Struct({ oauth: OAuthCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ awsIam: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ none: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ oauth: OAuthCredentialProvider }),
 ]);
 export interface HarnessAgentCoreGatewayConfig {
   gatewayArn: string;
@@ -4545,11 +4584,11 @@ export type HarnessToolConfiguration =
       agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig;
     };
 export const HarnessToolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
-  S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
-  S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
-  S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
-  S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
+  /*@__PURE__*/ S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
+  /*@__PURE__*/ S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
 ]);
 export interface HarnessTool {
   type: HarnessToolType;
@@ -4606,10 +4645,10 @@ export type HarnessSkill =
   | { path?: never; s3?: never; git: HarnessSkillGitSource; awsSkills?: never }
   | { path?: never; s3?: never; git?: never; awsSkills: HarnessSkillAwsSkillsSource };
 export const HarnessSkill = /*@__PURE__*/ S.Union([
-  S.Struct({ path: S.String }),
-  S.Struct({ s3: HarnessSkillS3Source }),
-  S.Struct({ git: HarnessSkillGitSource }),
-  S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
+  /*@__PURE__*/ S.Struct({ path: S.String }),
+  /*@__PURE__*/ S.Struct({ s3: HarnessSkillS3Source }),
+  /*@__PURE__*/ S.Struct({ git: HarnessSkillGitSource }),
+  /*@__PURE__*/ S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
 ]);
 export type HarnessSkills = HarnessSkill[];
 export const HarnessSkills = /*@__PURE__*/ S.Array(HarnessSkill);
@@ -4695,8 +4734,8 @@ export type HarnessContentBlockStart =
   | { toolUse: HarnessToolUseBlockStart; toolResult?: never }
   | { toolUse?: never; toolResult: HarnessToolResultBlockStart };
 export const HarnessContentBlockStart = /*@__PURE__*/ S.Union([
-  S.Struct({ toolUse: HarnessToolUseBlockStart }),
-  S.Struct({ toolResult: HarnessToolResultBlockStart }),
+  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockStart }),
+  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlockStart }),
 ]);
 export interface HarnessContentBlockStartEvent {
   contentBlockIndex: number;
@@ -4717,8 +4756,8 @@ export type HarnessToolResultBlockDelta =
   | { text: string | redacted.Redacted<string>; json?: never }
   | { text?: never; json: any };
 export const HarnessToolResultBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ json: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ json: S.Any }),
 ]);
 export type HarnessToolResultBlocksDelta = HarnessToolResultBlockDelta[];
 export const HarnessToolResultBlocksDelta = /*@__PURE__*/ S.Array(HarnessToolResultBlockDelta);
@@ -4727,9 +4766,9 @@ export type HarnessReasoningContentBlockDelta =
   | { text?: never; redactedContent: Uint8Array | redacted.Redacted<Uint8Array>; signature?: never }
   | { text?: never; redactedContent?: never; signature: string };
 export const HarnessReasoningContentBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ redactedContent: SensitiveBlob }),
-  S.Struct({ signature: S.String }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ redactedContent: SensitiveBlob }),
+  /*@__PURE__*/ S.Struct({ signature: S.String }),
 ]);
 export interface HarnessToolResultMetadataBlockDelta {
   metadata: string | redacted.Redacted<string>;
@@ -4776,11 +4815,11 @@ export type HarnessContentBlockDelta =
       toolResultMetadata: HarnessToolResultMetadataBlockDelta;
     };
 export const HarnessContentBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-  S.Struct({ toolUse: HarnessToolUseBlockDelta }),
-  S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
-  S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
-  S.Struct({ toolResultMetadata: HarnessToolResultMetadataBlockDelta }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockDelta }),
+  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
+  /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
+  /*@__PURE__*/ S.Struct({ toolResultMetadata: HarnessToolResultMetadataBlockDelta }),
 ]);
 export interface HarnessContentBlockDeltaEvent {
   contentBlockIndex: number;
@@ -5004,29 +5043,29 @@ export type InvokeHarnessStreamOutput =
       hookEvent: HarnessHookEvent;
     };
 export const InvokeHarnessStreamOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ messageStart: HarnessMessageStartEvent }),
-    S.Struct({ contentBlockStart: HarnessContentBlockStartEvent }),
-    S.Struct({ contentBlockDelta: HarnessContentBlockDeltaEvent }),
-    S.Struct({ contentBlockStop: HarnessContentBlockStopEvent }),
-    S.Struct({ messageStop: HarnessMessageStopEvent }),
-    S.Struct({ metadata: HarnessMetadataEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ messageStart: HarnessMessageStartEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStart: HarnessContentBlockStartEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockDelta: HarnessContentBlockDeltaEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStop: HarnessContentBlockStopEvent }),
+    /*@__PURE__*/ S.Struct({ messageStop: HarnessMessageStopEvent }),
+    /*@__PURE__*/ S.Struct({ metadata: HarnessMetadataEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      runtimeClientError: S.suspend(() => RuntimeClientError).annotate({
+    /*@__PURE__*/ S.Struct({
+      runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
         identifier: "RuntimeClientError",
       }),
     }),
-    S.Struct({ hookEvent: HarnessHookEvent }),
+    /*@__PURE__*/ S.Struct({ hookEvent: HarnessHookEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<InvokeHarnessStreamOutput, Error, never>>;
 export interface InvokeHarnessResponse {
@@ -5300,12 +5339,16 @@ export const BranchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, includeParentBranches: S.optional(S.Boolean) }),
 ).annotate({ identifier: "BranchFilter" }) as any as S.Schema<BranchFilter>;
 export type LeftExpression = { metadataKey: string };
-export const LeftExpression = /*@__PURE__*/ S.Union([S.Struct({ metadataKey: S.String })]);
+export const LeftExpression = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ metadataKey: S.String }),
+]);
 export type OperatorType = "EQUALS_TO" | "EXISTS" | "NOT_EXISTS" | (string & {});
 export const OperatorType = S.String;
 
 export type RightExpression = { metadataValue: MetadataValue };
-export const RightExpression = /*@__PURE__*/ S.Union([S.Struct({ metadataValue: MetadataValue })]);
+export const RightExpression = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ metadataValue: MetadataValue }),
+]);
 export interface EventMetadataFilterExpression {
   left: LeftExpression;
   operator: OperatorType;
@@ -5419,7 +5462,7 @@ export type MessagesList = MessageMetadata[];
 export const MessagesList = /*@__PURE__*/ S.Array(MessageMetadata);
 export type ExtractionJobMessages = { messagesList: MessageMetadata[] };
 export const ExtractionJobMessages = /*@__PURE__*/ S.Union([
-  S.Struct({ messagesList: MessagesList }),
+  /*@__PURE__*/ S.Struct({ messagesList: MessagesList }),
 ]);
 export interface ExtractionJobMetadata {
   jobID: string;
@@ -5454,7 +5497,7 @@ export const ListMemoryExtractionJobsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMemoryExtractionJobsOutput>;
 export type MemoryRecordLeftExpression = { metadataKey: string };
 export const MemoryRecordLeftExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ metadataKey: S.String }),
+  /*@__PURE__*/ S.Struct({ metadataKey: S.String }),
 ]);
 export type MemoryRecordOperatorType =
   | "EQUALS_TO"
@@ -5472,7 +5515,7 @@ export const MemoryRecordOperatorType = S.String;
 
 export type MemoryRecordRightExpression = { metadataValue: MemoryRecordMetadataValue };
 export const MemoryRecordRightExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ metadataValue: MemoryRecordMetadataValue }),
+  /*@__PURE__*/ S.Struct({ metadataValue: MemoryRecordMetadataValue }),
 ]);
 export interface MemoryMetadataFilterExpression {
   left: MemoryRecordLeftExpression;
@@ -5805,8 +5848,8 @@ export type PaymentInput =
   | { cryptoX402: CryptoX402PaymentInput; mpp?: never }
   | { cryptoX402?: never; mpp: MppPaymentInput };
 export const PaymentInput = /*@__PURE__*/ S.Union([
-  S.Struct({ cryptoX402: CryptoX402PaymentInput }),
-  S.Struct({ mpp: MppPaymentInput }),
+  /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentInput }),
+  /*@__PURE__*/ S.Struct({ mpp: MppPaymentInput }),
 ]);
 export interface ProcessPaymentRequest {
   userId?: string;
@@ -5865,8 +5908,8 @@ export type PaymentOutput =
   | { cryptoX402: CryptoX402PaymentOutput; mpp?: never }
   | { cryptoX402?: never; mpp: MppPaymentOutput };
 export const PaymentOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
-  S.Struct({ mpp: MppPaymentOutput }),
+  /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
+  /*@__PURE__*/ S.Struct({ mpp: MppPaymentOutput }),
 ]);
 export interface ProcessPaymentResponse {
   processPaymentId: string;
@@ -6151,7 +6194,9 @@ export const SearchRegistryRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRegistryRecordsResponse",
 }) as any as S.Schema<SearchRegistryRecordsResponse>;
 export type GroundTruthTurnInput = { prompt: string };
-export const GroundTruthTurnInput = /*@__PURE__*/ S.Union([S.Struct({ prompt: S.String })]);
+export const GroundTruthTurnInput = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ prompt: S.String }),
+]);
 export interface GroundTruthTurn {
   input?: GroundTruthTurnInput;
   expectedResponse?: EvaluationContent;
@@ -6177,9 +6222,11 @@ export const InlineGroundTruth = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InlineGroundTruth" }) as any as S.Schema<InlineGroundTruth>;
 export type GroundTruthSource = { inline: InlineGroundTruth };
-export const GroundTruthSource = /*@__PURE__*/ S.Union([S.Struct({ inline: InlineGroundTruth })]);
+export const GroundTruthSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ inline: InlineGroundTruth }),
+]);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface SessionMetadataShape {
   sessionId: string;
   testScenarioId?: string;
@@ -6198,7 +6245,7 @@ export type SessionMetadataList = SessionMetadataShape[];
 export const SessionMetadataList = /*@__PURE__*/ S.Array(SessionMetadataShape);
 export type EvaluationMetadata = { sessionMetadata: SessionMetadataShape[] };
 export const EvaluationMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ sessionMetadata: SessionMetadataList }),
+  /*@__PURE__*/ S.Struct({ sessionMetadata: SessionMetadataList }),
 ]);
 export interface StartBatchEvaluationRequest {
   batchEvaluationName: string;
@@ -6668,7 +6715,7 @@ export const AutomationStreamUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutomationStreamUpdate" }) as any as S.Schema<AutomationStreamUpdate>;
 export type StreamUpdate = { automationStreamUpdate: AutomationStreamUpdate };
 export const StreamUpdate = /*@__PURE__*/ S.Union([
-  S.Struct({ automationStreamUpdate: AutomationStreamUpdate }),
+  /*@__PURE__*/ S.Struct({ automationStreamUpdate: AutomationStreamUpdate }),
 ]);
 export interface UpdateBrowserStreamRequest {
   browserIdentifier: string;

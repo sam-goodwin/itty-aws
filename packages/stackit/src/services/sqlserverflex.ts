@@ -115,7 +115,7 @@ export const InstanceEncryption = /*@__PURE__*/ S.suspend(() =>
 export type Labels = { [key: string]: string | null | undefined };
 export const Labels = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
 
 /** The network access scope of the instance ⚠️ **Note:** This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */

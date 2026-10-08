@@ -7,15 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudSearch",
   serviceShapeName: "A9SearchCloudConfigService2013",
 });
-const auth = T.AwsAuthSigv4({ name: "cloudsearch" });
-const ver = T.ServiceVersion("2013-01-01");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudsearch" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,53 +76,89 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class BaseException
   extends /*@__PURE__*/ S.TaggedError<BaseException>()("BaseException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DisabledOperationException
   extends /*@__PURE__*/ S.TaggedError<DisabledOperationException>()(
     "DisabledOperationException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }), T.HttpError(409)),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }), T.HttpError(500)),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class InvalidTypeException
   extends /*@__PURE__*/ S.TaggedError<InvalidTypeException>()(
     "InvalidTypeException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }), T.HttpError(409)),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }), T.HttpError(409)),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
-      T.HttpError(409),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }), T.HttpError(409)),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { Code: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export interface BuildSuggestersRequest {
@@ -1041,7 +1077,10 @@ export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainNamesRequest" }) as any as S.Schema<ListDomainNamesRequest>;
 export type APIVersion = string;
 export type DomainNameMap = { [key: string]: string | undefined };
-export const DomainNameMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DomainNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ListDomainNamesResponse {
   DomainNames?: { [key: string]: string | undefined };
 }

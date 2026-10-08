@@ -281,12 +281,12 @@ export const GetEdgeConfigBackupRequest = /*@__PURE__*/ S.suspend(() =>
 export type GlobalConfigItemValueCase2Map = { [key: string]: GlobalConfigItemValue | undefined };
 export const GlobalConfigItemValueCase2Map = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => GlobalConfigItemValue),
+  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
 ) as any as S.Schema<GlobalConfigItemValueCase2Map>;
 
 export type GlobalConfigItemValueCase3List = Array<GlobalConfigItemValue>;
 export const GlobalConfigItemValueCase3List = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalConfigItemValue),
+  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
 ) as any as S.Schema<GlobalConfigItemValueCase3List>;
 
 export type GlobalConfigItemValue =

@@ -12,12 +12,12 @@ export type { GcpOpError, GcpOpContext };
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -25,12 +25,12 @@ export class BadRequest
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -38,12 +38,12 @@ export class Conflict
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -51,12 +51,12 @@ export class Forbidden
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -65,12 +65,12 @@ export class NotFound
 export class RetailDataUseTermsNotAccepted
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<RetailDataUseTermsNotAccepted>()("RetailDataUseTermsNotAccepted", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "Retail data use terms" } }],
   ) {}
@@ -1637,7 +1637,7 @@ export const GoogleCloudRetailV2ImageList = /*@__PURE__*/ S.Array(
 
 export type GoogleCloudRetailV2ProductList = Array<GoogleCloudRetailV2Product>;
 export const GoogleCloudRetailV2ProductList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudRetailV2Product),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudRetailV2Product),
 ) as any as S.Schema<GoogleCloudRetailV2ProductList>;
 
 /** Product captures all metadata information of items to be recommended or searched. */

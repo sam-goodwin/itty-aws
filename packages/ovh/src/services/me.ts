@@ -10144,7 +10144,7 @@ export const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ S.suspend((
 /** Options to migrate linked to the original service */
 export type MeIncidentServiceMigrationAddonsList = Array<MeIncidentServiceMigration>;
 export const MeIncidentServiceMigrationAddonsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MeIncidentServiceMigration),
+  /*@__PURE__*/ S.suspend(() => MeIncidentServiceMigration),
 ) as any as S.Schema<MeIncidentServiceMigrationAddonsList>;
 
 /** Config */
@@ -12353,7 +12353,7 @@ export const ListMeRepricingFall22Request = /*@__PURE__*/ S.suspend(() =>
 /** Addons of the Service */
 export type MeRepricingServiceAddonsList = Array<MeRepricingService>;
 export const MeRepricingServiceAddonsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MeRepricingService),
+  /*@__PURE__*/ S.suspend(() => MeRepricingService),
 ) as any as S.Schema<MeRepricingServiceAddonsList>;
 
 /** Variables to use in the path */

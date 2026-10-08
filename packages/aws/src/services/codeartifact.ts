@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "codeartifact",
   serviceShapeName: "CodeArtifactControlPlaneService",
 });
-const auth = T.AwsAuthSigv4({ name: "codeartifact" });
-const ver = T.ServiceVersion("2018-09-22");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "codeartifact" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-09-22");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,72 +78,74 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export type AccountId = string;
@@ -258,7 +260,7 @@ export type PackageVersionRevision = string;
 export type PackageVersionRevisionMap = { [key: string]: string | undefined };
 export const PackageVersionRevisionMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface CopyPackageVersionsRequest {
   domain: string;
@@ -323,7 +325,7 @@ export type SuccessfulPackageVersionInfoMap = {
 };
 export const SuccessfulPackageVersionInfoMap = /*@__PURE__*/ S.Record(
   S.String,
-  SuccessfulPackageVersionInfo.pipe(S.optional),
+  /*@__PURE__*/ SuccessfulPackageVersionInfo.pipe(S.optional),
 );
 export type PackageVersionErrorCode =
   | "ALREADY_EXISTS"
@@ -346,7 +348,7 @@ export const PackageVersionError = /*@__PURE__*/ S.suspend(() =>
 export type PackageVersionErrorMap = { [key: string]: PackageVersionError | undefined };
 export const PackageVersionErrorMap = /*@__PURE__*/ S.Record(
   S.String,
-  PackageVersionError.pipe(S.optional),
+  /*@__PURE__*/ PackageVersionError.pipe(S.optional),
 );
 export interface CopyPackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
@@ -483,7 +485,7 @@ export type PackageGroupOriginRestrictions = {
 };
 export const PackageGroupOriginRestrictions = /*@__PURE__*/ S.Record(
   PackageGroupOriginRestrictionType,
-  PackageGroupOriginRestriction.pipe(S.optional),
+  /*@__PURE__*/ PackageGroupOriginRestriction.pipe(S.optional),
 );
 export interface PackageGroupOriginConfiguration {
   restrictions?: { [key: string]: PackageGroupOriginRestriction | undefined };
@@ -1600,7 +1602,10 @@ export const HashAlgorithm = S.String;
 
 export type HashValue = string;
 export type AssetHashes = { [key in HashAlgorithm]?: string };
-export const AssetHashes = /*@__PURE__*/ S.Record(HashAlgorithm, S.String.pipe(S.optional));
+export const AssetHashes = /*@__PURE__*/ S.Record(
+  HashAlgorithm,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AssetSummary {
   name: string;
   size?: number;
@@ -2121,7 +2126,7 @@ export type OriginRestrictions = {
 };
 export const OriginRestrictions = /*@__PURE__*/ S.Record(
   PackageGroupOriginRestrictionType,
-  PackageGroupOriginRestrictionMode.pipe(S.optional),
+  /*@__PURE__*/ PackageGroupOriginRestrictionMode.pipe(S.optional),
 );
 export interface PackageGroupAllowedRepository {
   repositoryName?: string;
@@ -2176,14 +2181,14 @@ export type PackageGroupAllowedRepositoryUpdate = {
 };
 export const PackageGroupAllowedRepositoryUpdate = /*@__PURE__*/ S.Record(
   PackageGroupAllowedRepositoryUpdateType,
-  RepositoryNameList.pipe(S.optional),
+  /*@__PURE__*/ RepositoryNameList.pipe(S.optional),
 );
 export type PackageGroupAllowedRepositoryUpdates = {
   [key in PackageGroupOriginRestrictionType]?: { [key: string]: string[] | undefined };
 };
 export const PackageGroupAllowedRepositoryUpdates = /*@__PURE__*/ S.Record(
   PackageGroupOriginRestrictionType,
-  PackageGroupAllowedRepositoryUpdate.pipe(S.optional),
+  /*@__PURE__*/ PackageGroupAllowedRepositoryUpdate.pipe(S.optional),
 );
 export interface UpdatePackageGroupOriginConfigurationResult {
   packageGroup?: PackageGroupDescription;

@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "XRay", serviceShapeName: "AWSXRay" });
-const auth = T.AwsAuthSigv4({ name: "xray" });
-const ver = T.ServiceVersion("2016-04-12");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "XRay", serviceShapeName: "AWSXRay" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "xray" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-04-12");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,82 +69,97 @@ const rules = T.EndpointResolver((p, _) => {
 export class GroupAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<GroupAlreadyExists>()(
     "GroupAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidRequestException", message: { matches: " already exists$" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: " already exists$" },
+    }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class GroupNotFound
   extends /*@__PURE__*/ S.TaggedError<GroupNotFound>()(
     "GroupNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidRequestException", message: "Group not found" }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({ from: "InvalidRequestException", message: "Group not found" }),
   ).pipe(C.withNotFoundError) {}
 export class InvalidPolicyRevisionIdException
   extends /*@__PURE__*/ S.TaggedError<InvalidPolicyRevisionIdException>()(
     "InvalidPolicyRevisionIdException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LockoutPreventionException
   extends /*@__PURE__*/ S.TaggedError<LockoutPreventionException>()(
     "LockoutPreventionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicyCountLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<PolicyCountLimitExceededException>()(
     "PolicyCountLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicySizeLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<PolicySizeLimitExceededException>()(
     "PolicySizeLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RuleLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<RuleLimitExceededException>()("RuleLimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SamplingRuleAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<SamplingRuleAlreadyExists>()(
     "SamplingRuleAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidRequestException", message: "Sampling rule already exists" }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidRequestException",
+      message: "Sampling rule already exists",
+    }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class SamplingRuleNotFound
   extends /*@__PURE__*/ S.TaggedError<SamplingRuleNotFound>()(
     "SamplingRuleNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidRequestException", message: "Sampling rule does not exist" }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidRequestException",
+      message: "Sampling rule does not exist",
+    }),
   ).pipe(C.withNotFoundError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type TraceId = string;
 export type TraceIdList = string[];
@@ -282,7 +297,10 @@ export type Version = number;
 export type AttributeKey = string;
 export type AttributeValue = string;
 export type AttributeMap = { [key: string]: string | undefined };
-export const AttributeMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type MaxRate = number;
 export type CooldownWindowMinutes = number;
 export interface SamplingRateBoost {
@@ -501,7 +519,7 @@ export const ProbabilisticRuleValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProbabilisticRuleValue" }) as any as S.Schema<ProbabilisticRuleValue>;
 export type IndexingRuleValue = { Probabilistic: ProbabilisticRuleValue };
 export const IndexingRuleValue = /*@__PURE__*/ S.Union([
-  S.Struct({ Probabilistic: ProbabilisticRuleValue }),
+  /*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValue }),
 ]);
 export interface IndexingRule {
   Name?: string;
@@ -1391,9 +1409,9 @@ export type AnnotationValue =
   | { NumberValue?: never; BooleanValue: boolean; StringValue?: never }
   | { NumberValue?: never; BooleanValue?: never; StringValue: string };
 export const AnnotationValue = /*@__PURE__*/ S.Union([
-  S.Struct({ NumberValue: S.Number }),
-  S.Struct({ BooleanValue: S.Boolean }),
-  S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ NumberValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ BooleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
 ]);
 export type ServiceIds = ServiceId[];
 export const ServiceIds = /*@__PURE__*/ S.Array(ServiceId);
@@ -1407,7 +1425,10 @@ export const ValueWithServiceIds = /*@__PURE__*/ S.suspend(() =>
 export type ValuesWithServiceIds = ValueWithServiceIds[];
 export const ValuesWithServiceIds = /*@__PURE__*/ S.Array(ValueWithServiceIds);
 export type Annotations = { [key: string]: ValueWithServiceIds[] | undefined };
-export const Annotations = /*@__PURE__*/ S.Record(S.String, ValuesWithServiceIds.pipe(S.optional));
+export const Annotations = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ValuesWithServiceIds.pipe(S.optional),
+);
 export interface TraceUser {
   UserName?: string;
   ServiceIds?: ServiceId[];
@@ -1993,7 +2014,7 @@ export const ProbabilisticRuleValueUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProbabilisticRuleValueUpdate>;
 export type IndexingRuleValueUpdate = { Probabilistic: ProbabilisticRuleValueUpdate };
 export const IndexingRuleValueUpdate = /*@__PURE__*/ S.Union([
-  S.Struct({ Probabilistic: ProbabilisticRuleValueUpdate }),
+  /*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValueUpdate }),
 ]);
 export interface UpdateIndexingRuleRequest {
   Name: string;

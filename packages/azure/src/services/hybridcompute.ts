@@ -961,7 +961,7 @@ export const LicenseProfileProductType = S.String;
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -2173,7 +2173,7 @@ export type GetMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4477,7 +4477,7 @@ export type MachineIdentityUserAssignedIdentitiesMap = {
 };
 export const MachineIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<MachineIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5717,7 +5717,7 @@ export type MachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
 export const MachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(LicenseProfileArmProductProfilePropertiesInputError),
+    /*@__PURE__*/ S.NullOr(LicenseProfileArmProductProfilePropertiesInputError),
   ) as any as S.Schema<MachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5800,7 +5800,7 @@ export type MachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
 export const MachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<MachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6593,7 +6593,7 @@ export type UpdateMachineRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateMachineRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(LicenseProfileArmProductProfilePropertiesInputError),
+  /*@__PURE__*/ S.NullOr(LicenseProfileArmProductProfilePropertiesInputError),
 ) as any as S.Schema<UpdateMachineRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6703,7 +6703,7 @@ export type UpdateMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

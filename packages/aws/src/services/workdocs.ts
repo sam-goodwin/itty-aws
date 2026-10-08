@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://aws.amazon.com/api/v1/");
-const svc = T.AwsApiService({ sdkId: "WorkDocs", serviceShapeName: "AWSGorillaBoyService" });
-const auth = T.AwsAuthSigv4({ name: "workdocs" });
-const ver = T.ServiceVersion("2016-05-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("https://aws.amazon.com/api/v1/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "WorkDocs",
+  serviceShapeName: "AWSGorillaBoyService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "workdocs" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-05-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,155 +77,163 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictingOperationException
   extends /*@__PURE__*/ S.TaggedError<ConflictingOperationException>()(
     "ConflictingOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CustomMetadataLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CustomMetadataLimitExceededException>()(
     "CustomMetadataLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class DeactivatingLastSystemUserException
   extends /*@__PURE__*/ S.TaggedError<DeactivatingLastSystemUserException>()(
     "DeactivatingLastSystemUserException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DocumentLockedForCommentsException
   extends /*@__PURE__*/ S.TaggedError<DocumentLockedForCommentsException>()(
     "DocumentLockedForCommentsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DraftUploadOutOfSyncException
   extends /*@__PURE__*/ S.TaggedError<DraftUploadOutOfSyncException>()(
     "DraftUploadOutOfSyncException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EntityAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityNotExistsException
   extends /*@__PURE__*/ S.TaggedError<EntityNotExistsException>()(
     "EntityNotExistsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      EntityIds: S.optional(S.suspend(() => EntityIdList).annotate({ identifier: "EntityIdList" })),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      EntityIds: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => EntityIdList).annotate({ identifier: "EntityIdList" }),
+      ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException
   extends /*@__PURE__*/ S.TaggedError<FailedDependencyException>()(
     "FailedDependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class IllegalUserStateException
   extends /*@__PURE__*/ S.TaggedError<IllegalUserStateException>()(
     "IllegalUserStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCommentOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidCommentOperationException>()(
     "InvalidCommentOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(405),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPasswordException
   extends /*@__PURE__*/ S.TaggedError<InvalidPasswordException>()(
     "InvalidPasswordException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ProhibitedStateException
   extends /*@__PURE__*/ S.TaggedError<ProhibitedStateException>()(
     "ProhibitedStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class RequestedEntityTooLargeException
   extends /*@__PURE__*/ S.TaggedError<RequestedEntityTooLargeException>()(
     "RequestedEntityTooLargeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyCheckedOutException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyCheckedOutException>()(
     "ResourceAlreadyCheckedOutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class StorageLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<StorageLimitExceededException>()(
     "StorageLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class StorageLimitWillExceedException
   extends /*@__PURE__*/ S.TaggedError<StorageLimitWillExceedException>()(
     "StorageLimitWillExceedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class TooManyLabelsException
   extends /*@__PURE__*/ S.TaggedError<TooManyLabelsException>()(
     "TooManyLabelsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManySubscriptionsException
   extends /*@__PURE__*/ S.TaggedError<TooManySubscriptionsException>()(
     "TooManySubscriptionsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedOperationException>()(
     "UnauthorizedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class UnauthorizedResourceAccessException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedResourceAccessException>()(
     "UnauthorizedResourceAccessException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export type AuthenticationHeaderType = string | redacted.Redacted<string>;
 export type ResourceIdType = string;
@@ -536,7 +547,10 @@ export const CreateCommentResponse = /*@__PURE__*/ S.suspend(() =>
 export type CustomMetadataKeyType = string;
 export type CustomMetadataValueType = string;
 export type CustomMetadataMap = { [key: string]: string | undefined };
-export const CustomMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateCustomMetadataRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
@@ -1291,7 +1305,7 @@ export type DocumentThumbnailUrlMap = {
 };
 export const DocumentThumbnailUrlMap = /*@__PURE__*/ S.Record(
   DocumentThumbnailType,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type DocumentSourceType = "ORIGINAL" | "WITH_COMMENTS" | (string & {});
 export const DocumentSourceType = S.String;
@@ -1301,7 +1315,7 @@ export type DocumentSourceUrlMap = {
 };
 export const DocumentSourceUrlMap = /*@__PURE__*/ S.Record(
   DocumentSourceType,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface DocumentVersionMetadata {
   Id?: string;
@@ -1894,7 +1908,10 @@ export const InitiateDocumentVersionUploadRequest = /*@__PURE__*/ S.suspend(() =
 export type HeaderNameType = string;
 export type HeaderValueType = string;
 export type SignedHeaderMap = { [key: string]: string | undefined };
-export const SignedHeaderMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SignedHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface UploadMetadata {
   UploadUrl?: string | redacted.Redacted<string>;
   SignedHeaders?: { [key: string]: string | undefined };

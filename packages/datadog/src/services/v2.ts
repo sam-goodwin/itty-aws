@@ -11920,7 +11920,7 @@ export const ComponentEventsList = /*@__PURE__*/ S.Array(
 /** The child components of the UI component. */
 export type ComponentPropertiesChildrenList = Array<Component>;
 export const ComponentPropertiesChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Component),
+  /*@__PURE__*/ S.suspend(() => Component),
 ) as any as S.Schema<ComponentPropertiesChildrenList>;
 
 /** Whether the UI component is visible. If this is a string, it must be a valid JavaScript expression that evaluates to a boolean. */
@@ -58724,7 +58724,7 @@ export const CreateStaticAnalysisAstRequest = /*@__PURE__*/ S.suspend(() =>
 /** The child nodes of this AST node, or null for a leaf node. */
 export type AstNodeChildrenList = Array<AstNode>;
 export const AstNodeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AstNode),
+  /*@__PURE__*/ S.suspend(() => AstNode),
 ) as any as S.Schema<AstNodeChildrenList>;
 
 /** A position in source code, identified by line and column numbers. */
@@ -91888,7 +91888,7 @@ export const GetPrunedTraceRequest = /*@__PURE__*/ S.suspend(() =>
 /** The child spans of this node in the pruned tree. */
 export type SummarizedSpanChildrenList = Array<SummarizedSpan>;
 export const SummarizedSpanChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SummarizedSpan),
+  /*@__PURE__*/ S.suspend(() => SummarizedSpan),
 ) as any as S.Schema<SummarizedSpanChildrenList>;
 
 /** Error flag for a span. `1` when the span is in error, `0` otherwise. */
@@ -98246,7 +98246,7 @@ export const SyntheticsTestResultStepHttpResultsList = /*@__PURE__*/ S.Array(
 /** Retry results for the step. */
 export type SyntheticsTestResultStepRetriesList = Array<SyntheticsTestResultStep>;
 export const SyntheticsTestResultStepRetriesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SyntheticsTestResultStep),
+  /*@__PURE__*/ S.suspend(() => SyntheticsTestResultStep),
 ) as any as S.Schema<SyntheticsTestResultStepRetriesList>;
 
 /** RUM application context associated with a step or sub-test. */
@@ -130749,7 +130749,7 @@ export const ProductAnalyticsTimeseriesResponseAttributesTimesList = /*@__PURE__
 /** Array of numeric values for a single series across all time points. */
 export type ProductAnalyticsTimeseriesResponseAttributesValuesItemList = Array<number | null>;
 export const ProductAnalyticsTimeseriesResponseAttributesValuesItemList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<ProductAnalyticsTimeseriesResponseAttributesValuesItemList>;
 
 /** Values for each series at each time point. */
@@ -132410,7 +132410,7 @@ export const Unit = /*@__PURE__*/ S.suspend(() =>
 /** Detailed information about the unit. First element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
 export type ScalarMetaUnitList = Array<Unit | null>;
 export const ScalarMetaUnitList = /*@__PURE__*/ S.Array(
-  S.NullOr(Unit),
+  /*@__PURE__*/ S.NullOr(Unit),
 ) as any as S.Schema<ScalarMetaUnitList>;
 
 /** Metadata for the resulting numerical values. */
@@ -132431,7 +132431,7 @@ export const ScalarColumnTypeNumber = S.String;
 /** The array of numerical values for one formula or query. */
 export type DataScalarColumnValuesList = Array<number | null>;
 export const DataScalarColumnValuesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<DataScalarColumnValuesList>;
 
 /** A column containing the numerical results for a formula or query. */
@@ -132712,7 +132712,7 @@ export const GroupTags = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Grou
 /** Detailed information about the unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
 export type TimeseriesResponseSeriesUnitList = Array<Unit | null>;
 export const TimeseriesResponseSeriesUnitList = /*@__PURE__*/ S.Array(
-  S.NullOr(Unit),
+  /*@__PURE__*/ S.NullOr(Unit),
 ) as any as S.Schema<TimeseriesResponseSeriesUnitList>;
 
 /** A single series in a timeseries query response, containing the query index, unit information, and group tags. */
@@ -132746,7 +132746,7 @@ export const TimeseriesResponseTimes = /*@__PURE__*/ S.Array(
 /** Array of values for an individual formula or query. */
 export type TimeseriesResponseValues = Array<number | null>;
 export const TimeseriesResponseValues = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<TimeseriesResponseValues>;
 
 /** Array of value-arrays. The index here corresponds to the index in the `formulas` or `queries` array from the request. */

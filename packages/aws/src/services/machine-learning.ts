@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://machinelearning.amazonaws.com/doc/2014-12-12/");
-const svc = T.AwsApiService({ sdkId: "Machine Learning", serviceShapeName: "AmazonML_20141212" });
-const auth = T.AwsAuthSigv4({ name: "machinelearning" });
-const ver = T.ServiceVersion("2014-12-12");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://machinelearning.amazonaws.com/doc/2014-12-12/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Machine Learning",
+  serviceShapeName: "AmazonML_20141212",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "machinelearning" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-12-12");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,46 +79,61 @@ const rules = T.EndpointResolver((p, _) => {
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.Number) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.Number) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.Number) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagException
   extends /*@__PURE__*/ S.TaggedError<InvalidTagException>()("InvalidTagException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.Number) },
-    T.HttpError(417),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(417),
   ) {}
 export class PredictorNotMountedException
   extends /*@__PURE__*/ S.TaggedError<PredictorNotMountedException>()(
     "PredictorNotMountedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.Number) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.Number),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TagLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()("TagLimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type TagKey = string;
 export type TagValue = string;
@@ -398,7 +416,10 @@ export const MLModelType = S.String;
 
 export type StringType = string;
 export type TrainingParameters = { [key: string]: string | undefined };
-export const TrainingParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TrainingParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type Recipe = string;
 export interface CreateMLModelInput {
   MLModelId: string;
@@ -847,7 +868,7 @@ export type PerformanceMetricsPropertyValue = string;
 export type PerformanceMetricsProperties = { [key: string]: string | undefined };
 export const PerformanceMetricsProperties = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface PerformanceMetrics {
   Properties?: { [key: string]: string | undefined };
@@ -1230,7 +1251,7 @@ export const GetMLModelOutput = /*@__PURE__*/ S.suspend(() =>
 export type VariableName = string;
 export type VariableValue = string;
 export type Record = { [key: string]: string | undefined };
-export const Record = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Record = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface PredictInput {
   MLModelId: string;
   Record: { [key: string]: string | undefined };
@@ -1245,13 +1266,19 @@ export type Label = string;
 export type FloatLabel = number;
 export type ScoreValue = number;
 export type ScoreValuePerLabelMap = { [key: string]: number | undefined };
-export const ScoreValuePerLabelMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const ScoreValuePerLabelMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type DetailsAttributes = "PredictiveModelType" | "Algorithm" | (string & {});
 export const DetailsAttributes = S.String;
 
 export type DetailsValue = string;
 export type DetailsMap = { [key in DetailsAttributes]?: string };
-export const DetailsMap = /*@__PURE__*/ S.Record(DetailsAttributes, S.String.pipe(S.optional));
+export const DetailsMap = /*@__PURE__*/ S.Record(
+  DetailsAttributes,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Prediction {
   predictedLabel?: string;
   predictedValue?: number;

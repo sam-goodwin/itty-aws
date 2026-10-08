@@ -21,7 +21,9 @@ export const ValidateBlockRequestBlocksCase1List = /*@__PURE__*/ S.Array(
 
 /** A JSON-encoded array of [structured blocks](/reference/block-kit/blocks). Provide exactly one of `blocks`, `view`, or `message`. */
 export type ValidateBlockRequestBlocks = string | ValidateBlockRequestBlocksCase1List;
-export const ValidateBlockRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const ValidateBlockRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface ValidateBlockRequest {
   /** A JSON-encoded array of [structured blocks](/reference/block-kit/blocks). Provide exactly one of `blocks`, `view`, or `message`. */

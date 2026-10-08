@@ -1055,7 +1055,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Nested details of the error model */
 export type DataShareErrorInfoDetailsList = Array<DataShareErrorInfo>;
 export const DataShareErrorInfoDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DataShareErrorInfo),
+  /*@__PURE__*/ S.suspend(() => DataShareErrorInfo),
 ) as any as S.Schema<DataShareErrorInfoDetailsList>;
 
 /** The data share error body model. */

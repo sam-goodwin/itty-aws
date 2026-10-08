@@ -3186,7 +3186,7 @@ export const AvailabilityEntityRemediationsList = /*@__PURE__*/ S.Array(
 /** Plan availabilities */
 export type AvailabilityEntityPlanAvailabilitiesList = Array<AvailabilityEntity>;
 export const AvailabilityEntityPlanAvailabilitiesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AvailabilityEntity),
+  /*@__PURE__*/ S.suspend(() => AvailabilityEntity),
 ) as any as S.Schema<AvailabilityEntityPlanAvailabilitiesList>;
 
 export interface AvailabilityEntity {

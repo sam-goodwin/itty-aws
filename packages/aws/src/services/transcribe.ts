@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Transcribe", serviceShapeName: "Transcribe" });
-const auth = T.AwsAuthSigv4({ name: "transcribe" });
-const ver = T.ServiceVersion("2017-10-26");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Transcribe", serviceShapeName: "Transcribe" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "transcribe" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -85,32 +85,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type CategoryName = string;
 export type TimestampMilliseconds = number;
@@ -247,10 +247,10 @@ export type Rule =
       SentimentFilter: SentimentFilter;
     };
 export const Rule = /*@__PURE__*/ S.Union([
-  S.Struct({ NonTalkTimeFilter: NonTalkTimeFilter }),
-  S.Struct({ InterruptionFilter: InterruptionFilter }),
-  S.Struct({ TranscriptFilter: TranscriptFilter }),
-  S.Struct({ SentimentFilter: SentimentFilter }),
+  /*@__PURE__*/ S.Struct({ NonTalkTimeFilter: NonTalkTimeFilter }),
+  /*@__PURE__*/ S.Struct({ InterruptionFilter: InterruptionFilter }),
+  /*@__PURE__*/ S.Struct({ TranscriptFilter: TranscriptFilter }),
+  /*@__PURE__*/ S.Struct({ SentimentFilter: SentimentFilter }),
 ]);
 export type RuleList = Rule[];
 export const RuleList = /*@__PURE__*/ S.Array(Rule);
@@ -346,7 +346,10 @@ export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputDataConfig" }) as any as S.Schema<InputDataConfig>;
 export type PrintableNonEmptyString = string;
 export type KMSEncryptionContextMap = { [key: string]: string | undefined };
-export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type KMSKeyId = string;
 export interface EncryptionConfiguration {
   KMSEncryptionContext?: { [key: string]: string | undefined };
@@ -1103,7 +1106,7 @@ export const LanguageIdSettings = /*@__PURE__*/ S.suspend(() =>
 export type LanguageIdSettingsMap = { [key in LanguageCode]?: LanguageIdSettings };
 export const LanguageIdSettingsMap = /*@__PURE__*/ S.Record(
   LanguageCode,
-  LanguageIdSettings.pipe(S.optional),
+  /*@__PURE__*/ LanguageIdSettings.pipe(S.optional),
 );
 export interface Summarization {
   GenerateAbstractiveSummary: boolean;

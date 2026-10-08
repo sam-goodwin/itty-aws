@@ -396,7 +396,7 @@ export type AgentsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const AgentsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<AgentsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -551,7 +551,7 @@ export type AgentsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const AgentsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<AgentsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3639,7 +3639,7 @@ export type UserAssignedIdentitiesInput = {
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4108,7 +4108,7 @@ export const ContainerAppProperties = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
 export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6154,7 +6154,7 @@ export type GetAgentResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetAgentResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetAgentResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -9135,13 +9135,13 @@ export const ErrorEntityParametersList = /*@__PURE__*/ S.Array(
 /** Inner errors. */
 export type ErrorEntityInnerErrorsList = Array<ErrorEntity>;
 export const ErrorEntityInnerErrorsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorEntity),
+  /*@__PURE__*/ S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityInnerErrorsList>;
 
 /** Error Details. */
 export type ErrorEntityDetailsList = Array<ErrorEntity>;
 export const ErrorEntityDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorEntity),
+  /*@__PURE__*/ S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityDetailsList>;
 
 /** Body of the error response returned from the API. */
@@ -11102,7 +11102,7 @@ export type AgentIdentityUserAssignedIdentitiesMap = {
 };
 export const AgentIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<AgentIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -15288,7 +15288,7 @@ export type StartAgentResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const StartAgentResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<StartAgentResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -15556,7 +15556,7 @@ export type StopAgentResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const StopAgentResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<StopAgentResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -15819,7 +15819,7 @@ export type UpdateAgentRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateAgentRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdateAgentRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -15922,7 +15922,7 @@ export type UpdateAgentResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateAgentResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateAgentResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MediaConvert", serviceShapeName: "MediaConvert" });
-const auth = T.AwsAuthSigv4({ name: "mediaconvert" });
-const ver = T.ServiceVersion("2017-08-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MediaConvert",
+  serviceShapeName: "MediaConvert",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mediaconvert" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-08-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,50 +84,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(422),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export interface AssociateCertificateRequest {
   Arn?: string;
@@ -333,7 +336,7 @@ export const AudioSelectorGroup = /*@__PURE__*/ S.suspend(() =>
 export type __mapOfAudioSelectorGroup = { [key: string]: AudioSelectorGroup | undefined };
 export const __mapOfAudioSelectorGroup = /*@__PURE__*/ S.Record(
   S.String,
-  AudioSelectorGroup.pipe(S.optional),
+  /*@__PURE__*/ AudioSelectorGroup.pipe(S.optional),
 );
 export type AudioDurationCorrection =
   | "DISABLED"
@@ -693,7 +696,7 @@ export const AudioSelector = /*@__PURE__*/ S.suspend(() =>
 export type __mapOfAudioSelector = { [key: string]: AudioSelector | undefined };
 export const __mapOfAudioSelector = /*@__PURE__*/ S.Record(
   S.String,
-  AudioSelector.pipe(S.optional),
+  /*@__PURE__*/ AudioSelector.pipe(S.optional),
 );
 export type AncillaryConvert608To708 = "UPCONVERT" | "DISABLED" | (string & {});
 export const AncillaryConvert608To708 = S.String;
@@ -928,7 +931,7 @@ export const CaptionSelector = /*@__PURE__*/ S.suspend(() =>
 export type __mapOfCaptionSelector = { [key: string]: CaptionSelector | undefined };
 export const __mapOfCaptionSelector = /*@__PURE__*/ S.Record(
   S.String,
-  CaptionSelector.pipe(S.optional),
+  /*@__PURE__*/ CaptionSelector.pipe(S.optional),
 );
 export type __integerMin2Max2147483647 = number;
 export interface Rectangle {
@@ -1009,7 +1012,7 @@ export const DynamicAudioSelector = /*@__PURE__*/ S.suspend(() =>
 export type __mapOfDynamicAudioSelector = { [key: string]: DynamicAudioSelector | undefined };
 export const __mapOfDynamicAudioSelector = /*@__PURE__*/ S.Record(
   S.String,
-  DynamicAudioSelector.pipe(S.optional),
+  /*@__PURE__*/ DynamicAudioSelector.pipe(S.optional),
 );
 export type __stringMax2048PatternS3Https = string;
 export type InputFilterEnable = "AUTO" | "DISABLE" | "FORCE" | (string & {});
@@ -7769,7 +7772,10 @@ export type StatusUpdateInterval =
 export const StatusUpdateInterval = S.String;
 
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateJobRequest {
   AccelerationSettings?: AccelerationSettings;
   BillingTagsSource?: BillingTagsSource;

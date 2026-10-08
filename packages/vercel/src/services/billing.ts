@@ -453,7 +453,7 @@ export type BuyCreditsResponseBodyCase1PurchaseIntentConfigurationCase4OptionsMe
 export const BuyCreditsResponseBodyCase1PurchaseIntentConfigurationCase4OptionsMetadataMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<BuyCreditsResponseBodyCase1PurchaseIntentConfigurationCase4OptionsMetadataMap>;
 
 /** The prices to remove in the subscription */

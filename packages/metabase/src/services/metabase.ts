@@ -5624,7 +5624,7 @@ export type MetabaseEnterpriseTransformsInspectorSchemaLensParams = {
 };
 export const MetabaseEnterpriseTransformsInspectorSchemaLensParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue),
+  /*@__PURE__*/ S.NullOr(MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue),
 ) as any as S.Schema<MetabaseEnterpriseTransformsInspectorSchemaLensParams>;
 
 export interface CreateEeTransformInspectQueryRequest {

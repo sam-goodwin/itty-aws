@@ -177,7 +177,7 @@ export type DirectoryServicesCreateRequestHost =
   | DirectoryServicesCreateRequestHostInfraDualStackHost
   | DirectoryServicesCreateRequestHostInfraHostnameHost;
 export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4", "network"],
     ["ipv6", "network"],
     ["ipv4", "ipv6", "network"],
@@ -325,7 +325,7 @@ export type DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
   | DirectoryServicesCreateRequestHostInfraDualStackHost
   | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesCreateResultInfraHTTPServiceConfigHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4", "network"],
     ["ipv6", "network"],
     ["ipv4", "ipv6", "network"],
@@ -517,7 +517,7 @@ export type DirectoryServicesGetResultInfraHTTPServiceConfigHost =
   | DirectoryServicesCreateRequestHostInfraDualStackHost
   | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesGetResultInfraHTTPServiceConfigHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4", "network"],
     ["ipv6", "network"],
     ["ipv4", "ipv6", "network"],
@@ -692,7 +692,7 @@ export type DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
   | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["ipv4", "network"],
       ["ipv6", "network"],
       ["ipv4", "ipv6", "network"],
@@ -847,7 +847,7 @@ export type DirectoryServicesUpdateRequestHost =
   | DirectoryServicesCreateRequestHostInfraDualStackHost
   | DirectoryServicesUpdateRequestHostInfraHostnameHost;
 export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4", "network"],
     ["ipv6", "network"],
     ["ipv4", "ipv6", "network"],
@@ -985,7 +985,7 @@ export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
   | DirectoryServicesCreateRequestHostInfraDualStackHost
   | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4", "network"],
     ["ipv6", "network"],
     ["ipv4", "ipv6", "network"],

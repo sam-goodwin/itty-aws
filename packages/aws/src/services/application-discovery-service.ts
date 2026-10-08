@@ -7,15 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ec2.amazon.com/awsposiedon/V2015_11_01/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ec2.amazon.com/awsposiedon/V2015_11_01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Application Discovery Service",
   serviceShapeName: "AWSPoseidonService_V2015_11_01",
 });
-const auth = T.AwsAuthSigv4({ name: "discovery" });
-const ver = T.ServiceVersion("2015-11-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "discovery" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-11-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,62 +75,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class AuthorizationErrorException
   extends /*@__PURE__*/ S.TaggedError<AuthorizationErrorException>()(
     "AuthorizationErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictErrorException
   extends /*@__PURE__*/ S.TaggedError<ConflictErrorException>()(
     "ConflictErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class HomeRegionNotSetException
   extends /*@__PURE__*/ S.TaggedError<HomeRegionNotSetException>()(
     "HomeRegionNotSetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
   extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServerInternalErrorException
   extends /*@__PURE__*/ S.TaggedError<ServerInternalErrorException>()(
     "ServerInternalErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export type ApplicationId = string;
 export type ConfigurationId = string;
@@ -274,7 +274,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagSet = Tag[];
 export const TagSet = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("item")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Tag" }),
 );
 export interface CreateTagsRequest {
   configurationIds: string[];
@@ -324,7 +324,9 @@ export type AgentIds = string[];
 export const AgentIds = /*@__PURE__*/ S.Array(S.String);
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FilterValues = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type Condition = string;
 export interface Filter {
   name: string;
@@ -507,7 +509,7 @@ export const DescribeConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DescribeConfigurationsAttribute = { [key: string]: string | undefined };
 export const DescribeConfigurationsAttribute = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type DescribeConfigurationsAttributes = { [key: string]: string | undefined }[];
 export const DescribeConfigurationsAttributes = /*@__PURE__*/ S.Array(
@@ -557,7 +559,10 @@ export const DataSource = S.String;
 
 export type DatabaseName = string;
 export type SchemaStorageConfig = { [key: string]: string | undefined };
-export const SchemaStorageConfig = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SchemaStorageConfig = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ContinuousExportDescription {
   exportId?: string;
   status?: ContinuousExportStatus;
@@ -845,7 +850,9 @@ export const ConfigurationTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigurationTag" }) as any as S.Schema<ConfigurationTag>;
 export type ConfigurationTagSet = ConfigurationTag[];
 export const ConfigurationTagSet = /*@__PURE__*/ S.Array(
-  ConfigurationTag.pipe(T.XmlName("item")).annotate({ identifier: "ConfigurationTag" }),
+  /*@__PURE__*/ ConfigurationTag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ConfigurationTag",
+  }),
 );
 export interface DescribeTagsResponse {
   tags?: ConfigurationTag[];
@@ -1029,7 +1036,10 @@ export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConfigurationsRequest",
 }) as any as S.Schema<ListConfigurationsRequest>;
 export type Configuration = { [key: string]: string | undefined };
-export const Configuration = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Configuration = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type Configurations = { [key: string]: string | undefined }[];
 export const Configurations = /*@__PURE__*/ S.Array(Configuration);
 export interface ListConfigurationsResponse {
@@ -1239,7 +1249,7 @@ export type ExportPreferences = {
   ec2RecommendationsPreferences: Ec2RecommendationsExportPreferences;
 };
 export const ExportPreferences = /*@__PURE__*/ S.Union([
-  S.Struct({ ec2RecommendationsPreferences: Ec2RecommendationsExportPreferences }),
+  /*@__PURE__*/ S.Struct({ ec2RecommendationsPreferences: Ec2RecommendationsExportPreferences }),
 ]);
 export interface StartExportTaskRequest {
   exportDataFormat?: ExportDataFormat[];

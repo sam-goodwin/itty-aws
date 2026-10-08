@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "LakeFormation", serviceShapeName: "AWSLakeFormation" });
-const auth = T.AwsAuthSigv4({ name: "lakeformation" });
-const ver = T.ServiceVersion("2017-03-31");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "LakeFormation",
+  serviceShapeName: "AWSLakeFormation",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lakeformation" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,118 +78,124 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()("AlreadyExistsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class EntityNotFoundException
   extends /*@__PURE__*/ S.TaggedError<EntityNotFoundException>()("EntityNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ExpiredException
   extends /*@__PURE__*/ S.TaggedError<ExpiredException>()(
     "ExpiredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class GlueEncryptionException
   extends /*@__PURE__*/ S.TaggedError<GlueEncryptionException>()("GlueEncryptionException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLakeFormationPrincipal
   extends /*@__PURE__*/ S.TaggedError<InvalidLakeFormationPrincipal>()(
     "InvalidLakeFormationPrincipal",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidInputException", message: { includes: "Invalid principal" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidInputException",
+      message: { includes: "Invalid principal" },
+    }),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class LastServiceLinkedRoleRegistration
   extends /*@__PURE__*/ S.TaggedError<LastServiceLinkedRoleRegistration>()(
     "LastServiceLinkedRoleRegistration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidInputException",
       message: { includes: "Must manually delete service-linked role" },
     }),
   ).pipe(C.withConflictError) {}
 export class OperationTimeoutException
   extends /*@__PURE__*/ S.TaggedError<OperationTimeoutException>()("OperationTimeoutException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PermissionTypeMismatchException
   extends /*@__PURE__*/ S.TaggedError<PermissionTypeMismatchException>()(
     "PermissionTypeMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()(
     "ResourceNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNumberLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceNumberLimitExceededException>()(
     "ResourceNumberLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class StatisticsNotReadyYetException
   extends /*@__PURE__*/ S.TaggedError<StatisticsNotReadyYetException>()(
     "StatisticsNotReadyYetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TransactionCanceledException
   extends /*@__PURE__*/ S.TaggedError<TransactionCanceledException>()(
     "TransactionCanceledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommitInProgressException
   extends /*@__PURE__*/ S.TaggedError<TransactionCommitInProgressException>()(
     "TransactionCommitInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommittedException
   extends /*@__PURE__*/ S.TaggedError<TransactionCommittedException>()(
     "TransactionCommittedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WorkUnitsNotReadyYetException
   extends /*@__PURE__*/ S.TaggedError<WorkUnitsNotReadyYetException>()(
     "WorkUnitsNotReadyYetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export type CatalogIdString = string;
 export interface CatalogResource {
@@ -661,13 +670,13 @@ export const RedshiftConnect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedshiftConnect" }) as any as S.Schema<RedshiftConnect>;
 export type RedshiftScopeUnion = { RedshiftConnect: RedshiftConnect };
 export const RedshiftScopeUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ RedshiftConnect: RedshiftConnect }),
+  /*@__PURE__*/ S.Struct({ RedshiftConnect: RedshiftConnect }),
 ]);
 export type RedshiftServiceIntegrations = RedshiftScopeUnion[];
 export const RedshiftServiceIntegrations = /*@__PURE__*/ S.Array(RedshiftScopeUnion);
 export type ServiceIntegrationUnion = { Redshift: RedshiftScopeUnion[] };
 export const ServiceIntegrationUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ Redshift: RedshiftServiceIntegrations }),
+  /*@__PURE__*/ S.Struct({ Redshift: RedshiftServiceIntegrations }),
 ]);
 export type ServiceIntegrationList = ServiceIntegrationUnion[];
 export const ServiceIntegrationList = /*@__PURE__*/ S.Array(ServiceIntegrationUnion);
@@ -1118,7 +1127,10 @@ export const PrincipalPermissionsList = /*@__PURE__*/ S.Array(PrincipalPermissio
 export type KeyString = string;
 export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
-export const ParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TrustedResourceOwners = string[];
 export const TrustedResourceOwners = /*@__PURE__*/ S.Array(S.String);
 export type AuthorizedSessionTagValueList = string[];
@@ -1587,7 +1599,10 @@ export type NullableString = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
-export const AdditionalContextMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface QuerySessionContext {
   QueryId?: string;
   QueryStartTime?: Date;
@@ -2022,7 +2037,10 @@ export const ListTableStorageOptimizersRequest = /*@__PURE__*/ S.suspend(() =>
 export type StorageOptimizerConfigKey = string;
 export type StorageOptimizerConfigValue = string;
 export type StorageOptimizerConfig = { [key: string]: string | undefined };
-export const StorageOptimizerConfig = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StorageOptimizerConfig = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type MessageString = string;
 export interface StorageOptimizer {
   StorageOptimizerType?: OptimizerType;
@@ -2272,7 +2290,10 @@ export const SearchTablesByLFTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchTablesByLFTagsResponse>;
 export type QueryPlanningContextDatabaseNameString = string;
 export type QueryParameterMap = { [key: string]: string | undefined };
-export const QueryParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const QueryParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface QueryPlanningContext {
   CatalogId?: string;
   DatabaseName: string;
@@ -2500,7 +2521,7 @@ export type StorageOptimizerConfigMap = {
 };
 export const StorageOptimizerConfigMap = /*@__PURE__*/ S.Record(
   OptimizerType,
-  StorageOptimizerConfig.pipe(S.optional),
+  /*@__PURE__*/ StorageOptimizerConfig.pipe(S.optional),
 );
 export interface UpdateTableStorageOptimizerRequest {
   CatalogId?: string;

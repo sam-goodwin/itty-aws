@@ -13,12 +13,12 @@ export type { GcpOpError, GcpOpContext };
 export class AgentServiceV1Unsupported
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<AgentServiceV1Unsupported>()("AgentServiceV1Unsupported", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "not supported by AgentService" } }],
   ) {}
@@ -26,12 +26,12 @@ export class AgentServiceV1Unsupported
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -40,12 +40,12 @@ export class BadRequest
 export class CachedContentTooFewTokens
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<CachedContentTooFewTokens>()("CachedContentTooFewTokens", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "The minimum token count to start explicit caching" } }],
   ) {}
@@ -53,12 +53,12 @@ export class CachedContentTooFewTokens
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -67,12 +67,12 @@ export class Conflict
 export class DataLabelingJobDeprecated
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<DataLabelingJobDeprecated>()("DataLabelingJobDeprecated", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "DataLabelingJob is deprecated" } }],
   ) {}
@@ -80,12 +80,12 @@ export class DataLabelingJobDeprecated
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -93,12 +93,12 @@ export class Forbidden
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -107,12 +107,12 @@ export class NotFound
 export class ReasoningEngineNotRunning
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ReasoningEngineNotRunning>()("ReasoningEngineNotRunning", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "does not have running instances" } }],
   ) {}
@@ -121,12 +121,12 @@ export class ReasoningEngineNotRunning
 export class SandboxEnvironmentsNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<SandboxEnvironmentsNotEnabled>()("SandboxEnvironmentsNotEnabled", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withServerError),
     [{ status: 501 }],
   ) {}
@@ -2179,7 +2179,7 @@ export type GoogleCloudAiplatformV1SchemaMap = {
 };
 export const GoogleCloudAiplatformV1SchemaMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => GoogleCloudAiplatformV1Schema),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudAiplatformV1Schema),
 ) as any as S.Schema<GoogleCloudAiplatformV1SchemaMap>;
 
 export type GoogleCloudAiplatformV1SchemaTypeEnum =
@@ -2195,7 +2195,7 @@ export const GoogleCloudAiplatformV1SchemaTypeEnum = S.String;
 
 export type GoogleCloudAiplatformV1SchemaList = Array<GoogleCloudAiplatformV1Schema>;
 export const GoogleCloudAiplatformV1SchemaList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudAiplatformV1Schema),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudAiplatformV1Schema),
 ) as any as S.Schema<GoogleCloudAiplatformV1SchemaList>;
 
 /** Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). */
@@ -23839,7 +23839,7 @@ export type GoogleCloudAiplatformV1TensorMap = {
 };
 export const GoogleCloudAiplatformV1TensorMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => GoogleCloudAiplatformV1Tensor),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudAiplatformV1Tensor),
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorMap>;
 
 export type GoogleCloudAiplatformV1TensorDtypeEnum =
@@ -23863,7 +23863,7 @@ export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<B
 
 export type GoogleCloudAiplatformV1TensorList = Array<GoogleCloudAiplatformV1Tensor>;
 export const GoogleCloudAiplatformV1TensorList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudAiplatformV1Tensor),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudAiplatformV1Tensor),
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorList>;
 
 /** A tensor value type. */

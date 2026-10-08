@@ -621,7 +621,7 @@ export type InvestigateBulkCreateResponseActionParams =
   | InvestigateBulkCreateResponseActionParamsMove
   | InvestigateBulkCreateResponseActionParamsRelease;
 export const InvestigateBulkCreateResponseActionParams = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
     key: "type",
     values: ["MOVE", "RELEASE"],
   }),
@@ -875,7 +875,7 @@ export type InvestigateBulkCancelCreateResponseActionParams =
   | InvestigateBulkCancelCreateResponseActionParamsMove
   | InvestigateBulkCancelCreateResponseActionParamsRelease;
 export const InvestigateBulkCancelCreateResponseActionParams = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
     key: "type",
     values: ["MOVE", "RELEASE"],
   }),
@@ -2930,7 +2930,7 @@ export type InvestigateBulkGetResponseActionParams =
   | InvestigateBulkGetResponseActionParamsMove
   | InvestigateBulkGetResponseActionParamsRelease;
 export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
     key: "type",
     values: ["MOVE", "RELEASE"],
   }),
@@ -4264,7 +4264,7 @@ export type InvestigateBulkMessagesListResultItemActionParams =
   | InvestigateBulkMessagesListResultItemActionParamsMove
   | InvestigateBulkMessagesListResultItemActionParamsRelease;
 export const InvestigateBulkMessagesListResultItemActionParams = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["clientRecipient", "destination", "type", "expectedDisposition"],
       ["clientRecipient", "type"],
@@ -4851,7 +4851,7 @@ export type InvestigateBulkListResultItemActionParams =
   | InvestigateBulkListResultItemActionParamsMove
   | InvestigateBulkListResultItemActionParamsRelease;
 export const InvestigateBulkListResultItemActionParams = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
     key: "type",
     values: ["MOVE", "RELEASE"],
   }),

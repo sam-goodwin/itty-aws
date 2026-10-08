@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Inspector2", serviceShapeName: "Inspector2" });
-const auth = T.AwsAuthSigv4({ name: "inspector2" });
-const ver = T.ServiceVersion("2020-06-08");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Inspector2", serviceShapeName: "Inspector2" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "inspector2" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-06-08");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,64 +75,75 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), resourceId: S.String },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionFields).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFields).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export interface AssociateMemberRequest {
@@ -152,7 +163,9 @@ export const AssociateMemberResponse = /*@__PURE__*/ S.suspend(() =>
 export type ScanConfigurationArn = string;
 export type ProjectId = string;
 export type CodeSecurityResource = { projectId: string };
-export const CodeSecurityResource = /*@__PURE__*/ S.Union([S.Struct({ projectId: S.String })]);
+export const CodeSecurityResource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ projectId: S.String }),
+]);
 export interface AssociateConfigurationRequest {
   scanConfigurationArn: string;
   resource: CodeSecurityResource;
@@ -827,10 +840,10 @@ export type Schedule =
   | { oneTime?: never; daily?: never; weekly: WeeklySchedule; monthly?: never }
   | { oneTime?: never; daily?: never; weekly?: never; monthly: MonthlySchedule };
 export const Schedule = /*@__PURE__*/ S.Union([
-  S.Struct({ oneTime: OneTimeSchedule }),
-  S.Struct({ daily: DailySchedule }),
-  S.Struct({ weekly: WeeklySchedule }),
-  S.Struct({ monthly: MonthlySchedule }),
+  /*@__PURE__*/ S.Struct({ oneTime: OneTimeSchedule }),
+  /*@__PURE__*/ S.Struct({ daily: DailySchedule }),
+  /*@__PURE__*/ S.Struct({ weekly: WeeklySchedule }),
+  /*@__PURE__*/ S.Struct({ monthly: MonthlySchedule }),
 ]);
 export type TargetAccount = string;
 export type TargetAccountList = string[];
@@ -840,7 +853,10 @@ export type TargetResourceTagsValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export type TargetResourceTags = { [key: string]: string[] | undefined };
-export const TargetResourceTags = /*@__PURE__*/ S.Record(S.String, TagValueList.pipe(S.optional));
+export const TargetResourceTags = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TagValueList.pipe(S.optional),
+);
 export interface CreateCisTargets {
   accountIds: string[];
   targetResourceTags: { [key: string]: string[] | undefined };
@@ -851,7 +867,7 @@ export const CreateCisTargets = /*@__PURE__*/ S.suspend(() =>
 export type MapKey = string;
 export type MapValue = string;
 export type CisTagMap = { [key: string]: string | undefined };
-export const CisTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CisTagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateCisScanConfigurationRequest {
   scanName: string;
   securityLevel: CisSecurityLevel;
@@ -907,10 +923,10 @@ export type CreateIntegrationDetail = {
   gitlabSelfManaged: CreateGitLabSelfManagedIntegrationDetail;
 };
 export const CreateIntegrationDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ gitlabSelfManaged: CreateGitLabSelfManagedIntegrationDetail }),
+  /*@__PURE__*/ S.Struct({ gitlabSelfManaged: CreateGitLabSelfManagedIntegrationDetail }),
 ]);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateCodeSecurityIntegrationRequest {
   name: string;
   type: IntegrationType;
@@ -1113,12 +1129,15 @@ export const AzureProviderDetailCreate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureProviderDetailCreate>;
 export type ProviderDetailCreate = { azure: AzureProviderDetailCreate };
 export const ProviderDetailCreate = /*@__PURE__*/ S.Union([
-  S.Struct({ azure: AzureProviderDetailCreate }),
+  /*@__PURE__*/ S.Struct({ azure: AzureProviderDetailCreate }),
 ]);
 export type ConnectorTagKey = string;
 export type ConnectorTagValue = string;
 export type ConnectorTagMap = { [key: string]: string | undefined };
-export const ConnectorTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConnectorTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateConnectorRequest {
   clientToken?: string;
   name: string;
@@ -2004,8 +2023,8 @@ export type ClusterMetadata =
   | { awsEcsMetadataDetails: AwsEcsMetadataDetails; awsEksMetadataDetails?: never }
   | { awsEcsMetadataDetails?: never; awsEksMetadataDetails: AwsEksMetadataDetails };
 export const ClusterMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ awsEcsMetadataDetails: AwsEcsMetadataDetails }),
-  S.Struct({ awsEksMetadataDetails: AwsEksMetadataDetails }),
+  /*@__PURE__*/ S.Struct({ awsEcsMetadataDetails: AwsEcsMetadataDetails }),
+  /*@__PURE__*/ S.Struct({ awsEksMetadataDetails: AwsEksMetadataDetails }),
 ]);
 export interface ClusterDetails {
   lastInUse: Date;
@@ -4527,21 +4546,21 @@ export type AggregationRequest =
       serverlessFunctionAggregation: ServerlessFunctionAggregation;
     };
 export const AggregationRequest = /*@__PURE__*/ S.Union([
-  S.Struct({ accountAggregation: AccountAggregation }),
-  S.Struct({ amiAggregation: AmiAggregation }),
-  S.Struct({ awsEcrContainerAggregation: AwsEcrContainerAggregation }),
-  S.Struct({ ec2InstanceAggregation: Ec2InstanceAggregation }),
-  S.Struct({ findingTypeAggregation: FindingTypeAggregation }),
-  S.Struct({ imageLayerAggregation: ImageLayerAggregation }),
-  S.Struct({ packageAggregation: PackageAggregation }),
-  S.Struct({ repositoryAggregation: RepositoryAggregation }),
-  S.Struct({ titleAggregation: TitleAggregation }),
-  S.Struct({ lambdaLayerAggregation: LambdaLayerAggregation }),
-  S.Struct({ lambdaFunctionAggregation: LambdaFunctionAggregation }),
-  S.Struct({ codeRepositoryAggregation: CodeRepositoryAggregation }),
-  S.Struct({ vmInstanceAggregation: VmInstanceAggregation }),
-  S.Struct({ containerImageAggregation: ContainerImageAggregation }),
-  S.Struct({ serverlessFunctionAggregation: ServerlessFunctionAggregation }),
+  /*@__PURE__*/ S.Struct({ accountAggregation: AccountAggregation }),
+  /*@__PURE__*/ S.Struct({ amiAggregation: AmiAggregation }),
+  /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: AwsEcrContainerAggregation }),
+  /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: Ec2InstanceAggregation }),
+  /*@__PURE__*/ S.Struct({ findingTypeAggregation: FindingTypeAggregation }),
+  /*@__PURE__*/ S.Struct({ imageLayerAggregation: ImageLayerAggregation }),
+  /*@__PURE__*/ S.Struct({ packageAggregation: PackageAggregation }),
+  /*@__PURE__*/ S.Struct({ repositoryAggregation: RepositoryAggregation }),
+  /*@__PURE__*/ S.Struct({ titleAggregation: TitleAggregation }),
+  /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: LambdaLayerAggregation }),
+  /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: LambdaFunctionAggregation }),
+  /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: CodeRepositoryAggregation }),
+  /*@__PURE__*/ S.Struct({ vmInstanceAggregation: VmInstanceAggregation }),
+  /*@__PURE__*/ S.Struct({ containerImageAggregation: ContainerImageAggregation }),
+  /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: ServerlessFunctionAggregation }),
 ]);
 export interface ListFindingAggregationsRequest {
   aggregationType: string;
@@ -5221,21 +5240,21 @@ export type AggregationResponse =
       serverlessFunctionAggregation: ServerlessFunctionAggregationResponse;
     };
 export const AggregationResponse = /*@__PURE__*/ S.Union([
-  S.Struct({ accountAggregation: AccountAggregationResponse }),
-  S.Struct({ amiAggregation: AmiAggregationResponse }),
-  S.Struct({ awsEcrContainerAggregation: AwsEcrContainerAggregationResponse }),
-  S.Struct({ ec2InstanceAggregation: Ec2InstanceAggregationResponse }),
-  S.Struct({ findingTypeAggregation: FindingTypeAggregationResponse }),
-  S.Struct({ imageLayerAggregation: ImageLayerAggregationResponse }),
-  S.Struct({ packageAggregation: PackageAggregationResponse }),
-  S.Struct({ repositoryAggregation: RepositoryAggregationResponse }),
-  S.Struct({ titleAggregation: TitleAggregationResponse }),
-  S.Struct({ lambdaLayerAggregation: LambdaLayerAggregationResponse }),
-  S.Struct({ lambdaFunctionAggregation: LambdaFunctionAggregationResponse }),
-  S.Struct({ codeRepositoryAggregation: CodeRepositoryAggregationResponse }),
-  S.Struct({ vmInstanceAggregation: VmInstanceAggregationResponse }),
-  S.Struct({ containerImageAggregation: ContainerImageAggregationResponse }),
-  S.Struct({ serverlessFunctionAggregation: ServerlessFunctionAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ accountAggregation: AccountAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ amiAggregation: AmiAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: AwsEcrContainerAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: Ec2InstanceAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ findingTypeAggregation: FindingTypeAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ imageLayerAggregation: ImageLayerAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ packageAggregation: PackageAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ repositoryAggregation: RepositoryAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ titleAggregation: TitleAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: LambdaLayerAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: LambdaFunctionAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: CodeRepositoryAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ vmInstanceAggregation: VmInstanceAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ containerImageAggregation: ContainerImageAggregationResponse }),
+  /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: ServerlessFunctionAggregationResponse }),
 ]);
 export type AggregationResponseList = AggregationResponse[];
 export const AggregationResponseList = /*@__PURE__*/ S.Array(AggregationResponse);
@@ -6369,8 +6388,8 @@ export type UpdateIntegrationDetails =
   | { gitlabSelfManaged: UpdateGitLabSelfManagedIntegrationDetail; github?: never }
   | { gitlabSelfManaged?: never; github: UpdateGitHubIntegrationDetail };
 export const UpdateIntegrationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ gitlabSelfManaged: UpdateGitLabSelfManagedIntegrationDetail }),
-  S.Struct({ github: UpdateGitHubIntegrationDetail }),
+  /*@__PURE__*/ S.Struct({ gitlabSelfManaged: UpdateGitLabSelfManagedIntegrationDetail }),
+  /*@__PURE__*/ S.Struct({ github: UpdateGitHubIntegrationDetail }),
 ]);
 export interface UpdateCodeSecurityIntegrationRequest {
   integrationArn: string;
@@ -6492,7 +6511,7 @@ export const AzureProviderDetailUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureProviderDetailUpdate>;
 export type ProviderDetailUpdate = { azure: AzureProviderDetailUpdate };
 export const ProviderDetailUpdate = /*@__PURE__*/ S.Union([
-  S.Struct({ azure: AzureProviderDetailUpdate }),
+  /*@__PURE__*/ S.Struct({ azure: AzureProviderDetailUpdate }),
 ]);
 export interface UpdateConnectorRequest {
   connectorArn: string;

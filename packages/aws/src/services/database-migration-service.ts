@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://dms.amazonaws.com/doc/2016-01-01/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://dms.amazonaws.com/doc/2016-01-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Database Migration Service",
   serviceShapeName: "AmazonDMSv20160101",
 });
-const auth = T.AwsAuthSigv4({ name: "dms" });
-const ver = T.ServiceVersion("2016-01-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "dms" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -83,113 +83,113 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedFault
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedFault>()("AccessDeniedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class CollectorNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<CollectorNotFoundFault>()(
     "CollectorNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyFault
   extends /*@__PURE__*/ S.TaggedError<FailedDependencyFault>()("FailedDependencyFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InsufficientResourceCapacityFault
   extends /*@__PURE__*/ S.TaggedError<InsufficientResourceCapacityFault>()(
     "InsufficientResourceCapacityFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCertificateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidCertificateFault>()("InvalidCertificateFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidOperationFault
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationFault>()("InvalidOperationFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidResourceStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateFault>()("InvalidResourceStateFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnet
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()("InvalidSubnet", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSAccessDeniedFault
   extends /*@__PURE__*/ S.TaggedError<KMSAccessDeniedFault>()("KMSAccessDeniedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class KMSDisabledFault
   extends /*@__PURE__*/ S.TaggedError<KMSDisabledFault>()("KMSDisabledFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSFault
   extends /*@__PURE__*/ S.TaggedError<KMSFault>()("KMSFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSInvalidStateFault
   extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateFault>()("KMSInvalidStateFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSKeyNotAccessibleFault
   extends /*@__PURE__*/ S.TaggedError<KMSKeyNotAccessibleFault>()("KMSKeyNotAccessibleFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<KMSNotFoundFault>()("KMSNotFoundFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSThrottlingFault
   extends /*@__PURE__*/ S.TaggedError<KMSThrottlingFault>()("KMSThrottlingFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ReplicationSubnetGroupDoesNotCoverEnoughAZs
   extends /*@__PURE__*/ S.TaggedError<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
     "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsFault>()("ResourceAlreadyExistsFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    resourceArn: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    resourceArn: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundFault>()("ResourceNotFoundFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<ResourceQuotaExceededFault>()("ResourceQuotaExceededFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class S3AccessDeniedFault
   extends /*@__PURE__*/ S.TaggedError<S3AccessDeniedFault>()("S3AccessDeniedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class S3ResourceNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<S3ResourceNotFoundFault>()("S3ResourceNotFoundFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SNSInvalidTopicFault
   extends /*@__PURE__*/ S.TaggedError<SNSInvalidTopicFault>()("SNSInvalidTopicFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SNSNoAuthorizationFault
   extends /*@__PURE__*/ S.TaggedError<SNSNoAuthorizationFault>()("SNSNoAuthorizationFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class StorageQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<StorageQuotaExceededFault>()("StorageQuotaExceededFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SubnetAlreadyInUse
   extends /*@__PURE__*/ S.TaggedError<SubnetAlreadyInUse>()("SubnetAlreadyInUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class UpgradeDependencyFailureFault
   extends /*@__PURE__*/ S.TaggedError<UpgradeDependencyFailureFault>()(
     "UpgradeDependencyFailureFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export interface Tag {
   Key?: string;
@@ -205,7 +205,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface AddTagsToResourceMessage {
   ResourceArn: string;
@@ -254,7 +254,9 @@ export const PendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingMaintenanceAction" }) as any as S.Schema<PendingMaintenanceAction>;
 export type PendingMaintenanceActionDetails = PendingMaintenanceAction[];
 export const PendingMaintenanceActionDetails = /*@__PURE__*/ S.Array(
-  PendingMaintenanceAction.pipe(T.XmlName("PendingMaintenanceAction")).annotate({
+  /*@__PURE__*/ PendingMaintenanceAction.pipe(
+    /*@__PURE__*/ T.XmlName("PendingMaintenanceAction"),
+  ).annotate({
     identifier: "PendingMaintenanceAction",
   }),
 );
@@ -356,7 +358,7 @@ export const DefaultErrorDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DefaultErrorDetails" }) as any as S.Schema<DefaultErrorDetails>;
 export type ErrorDetails = { defaultErrorDetails: DefaultErrorDetails };
 export const ErrorDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ defaultErrorDetails: DefaultErrorDetails }),
+  /*@__PURE__*/ S.Struct({ defaultErrorDetails: DefaultErrorDetails }),
 ]);
 export interface ExportSqlDetails {
   S3ObjectKey?: string;
@@ -1074,17 +1076,17 @@ export type DataProviderSettings =
       MongoDbSettings: MongoDbDataProviderSettings;
     };
 export const DataProviderSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ RedshiftSettings: RedshiftDataProviderSettings }),
-  S.Struct({ PostgreSqlSettings: PostgreSqlDataProviderSettings }),
-  S.Struct({ MySqlSettings: MySqlDataProviderSettings }),
-  S.Struct({ OracleSettings: OracleDataProviderSettings }),
-  S.Struct({ SybaseAseSettings: SybaseAseDataProviderSettings }),
-  S.Struct({ MicrosoftSqlServerSettings: MicrosoftSqlServerDataProviderSettings }),
-  S.Struct({ DocDbSettings: DocDbDataProviderSettings }),
-  S.Struct({ MariaDbSettings: MariaDbDataProviderSettings }),
-  S.Struct({ IbmDb2LuwSettings: IbmDb2LuwDataProviderSettings }),
-  S.Struct({ IbmDb2zOsSettings: IbmDb2zOsDataProviderSettings }),
-  S.Struct({ MongoDbSettings: MongoDbDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ RedshiftSettings: RedshiftDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ PostgreSqlSettings: PostgreSqlDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ MySqlSettings: MySqlDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ OracleSettings: OracleDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ SybaseAseSettings: SybaseAseDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ MicrosoftSqlServerSettings: MicrosoftSqlServerDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ DocDbSettings: DocDbDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ MariaDbSettings: MariaDbDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ IbmDb2LuwSettings: IbmDb2LuwDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ IbmDb2zOsSettings: IbmDb2zOsDataProviderSettings }),
+  /*@__PURE__*/ S.Struct({ MongoDbSettings: MongoDbDataProviderSettings }),
 ]);
 export interface CreateDataProviderMessage {
   DataProviderName?: string;
@@ -2130,9 +2132,13 @@ export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoint: S.optional(Endpoint) }).pipe(ns),
 ).annotate({ identifier: "CreateEndpointResponse" }) as any as S.Schema<CreateEndpointResponse>;
 export type EventCategoriesList = string[];
-export const EventCategoriesList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("EventCategory")));
+export const EventCategoriesList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")),
+);
 export type SourceIdsList = string[];
-export const SourceIdsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("SourceId")));
+export const SourceIdsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")),
+);
 export interface CreateEventSubscriptionMessage {
   SubscriptionName: string;
   SnsTopicArn: string;
@@ -2475,7 +2481,7 @@ export const CreateReplicationConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReplicationInstanceClass = string;
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("VpcSecurityGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")),
 );
 export interface KerberosAuthenticationSettings {
   KeyCacheSecretId?: string;
@@ -2544,7 +2550,9 @@ export const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
 export const VpcSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
-  VpcSecurityGroupMembership.pipe(T.XmlName("VpcSecurityGroupMembership")).annotate({
+  /*@__PURE__*/ VpcSecurityGroupMembership.pipe(
+    /*@__PURE__*/ T.XmlName("VpcSecurityGroupMembership"),
+  ).annotate({
     identifier: "VpcSecurityGroupMembership",
   }),
 );
@@ -2568,7 +2576,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
 export const SubnetList = /*@__PURE__*/ S.Array(
-  Subnet.pipe(T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
+  /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
 );
 export interface ReplicationSubnetGroup {
   ReplicationSubnetGroupIdentifier?: string;
@@ -2682,7 +2690,7 @@ export const CreateReplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateReplicationInstanceResponse>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SubnetIdentifier")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")),
 );
 export interface CreateReplicationSubnetGroupMessage {
   ReplicationSubnetGroupIdentifier: string;
@@ -3144,7 +3152,9 @@ export const AccountQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountQuota" }) as any as S.Schema<AccountQuota>;
 export type AccountQuotaList = AccountQuota[];
 export const AccountQuotaList = /*@__PURE__*/ S.Array(
-  AccountQuota.pipe(T.XmlName("AccountQuota")).annotate({ identifier: "AccountQuota" }),
+  /*@__PURE__*/ AccountQuota.pipe(/*@__PURE__*/ T.XmlName("AccountQuota")).annotate({
+    identifier: "AccountQuota",
+  }),
 );
 export interface DescribeAccountAttributesResponse {
   AccountQuotas?: AccountQuota[];
@@ -3197,7 +3207,9 @@ export const DescribeApplicableIndividualAssessmentsResponse = /*@__PURE__*/ S.s
   identifier: "DescribeApplicableIndividualAssessmentsResponse",
 }) as any as S.Schema<DescribeApplicableIndividualAssessmentsResponse>;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Value")));
+export const FilterValueList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")),
+);
 export interface Filter {
   Name: string;
   Values: string[];
@@ -3207,7 +3219,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(
-  Filter.pipe(T.XmlName("Filter")).annotate({ identifier: "Filter" }),
+  /*@__PURE__*/ Filter.pipe(/*@__PURE__*/ T.XmlName("Filter")).annotate({ identifier: "Filter" }),
 );
 export interface DescribeCertificatesMessage {
   Filters?: Filter[];
@@ -3225,7 +3237,9 @@ export const DescribeCertificatesMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCertificatesMessage>;
 export type CertificateList = Certificate[];
 export const CertificateList = /*@__PURE__*/ S.Array(
-  Certificate.pipe(T.XmlName("Certificate")).annotate({ identifier: "Certificate" }),
+  /*@__PURE__*/ Certificate.pipe(/*@__PURE__*/ T.XmlName("Certificate")).annotate({
+    identifier: "Certificate",
+  }),
 );
 export interface DescribeCertificatesResponse {
   Marker?: string;
@@ -3252,7 +3266,9 @@ export const DescribeConnectionsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConnectionsMessage>;
 export type ConnectionList = Connection[];
 export const ConnectionList = /*@__PURE__*/ S.Array(
-  Connection.pipe(T.XmlName("Connection")).annotate({ identifier: "Connection" }),
+  /*@__PURE__*/ Connection.pipe(/*@__PURE__*/ T.XmlName("Connection")).annotate({
+    identifier: "Connection",
+  }),
 );
 export interface DescribeConnectionsResponse {
   Marker?: string;
@@ -3331,7 +3347,9 @@ export const DescribeDataProvidersMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDataProvidersMessage>;
 export type DataProviderList = DataProvider[];
 export const DataProviderList = /*@__PURE__*/ S.Array(
-  DataProvider.pipe(T.XmlName("DataProvider")).annotate({ identifier: "DataProvider" }),
+  /*@__PURE__*/ DataProvider.pipe(/*@__PURE__*/ T.XmlName("DataProvider")).annotate({
+    identifier: "DataProvider",
+  }),
 );
 export interface DescribeDataProvidersResponse {
   Marker?: string;
@@ -3356,7 +3374,9 @@ export const DescribeEndpointsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeEndpointsMessage" }) as any as S.Schema<DescribeEndpointsMessage>;
 export type EndpointList = Endpoint[];
 export const EndpointList = /*@__PURE__*/ S.Array(
-  Endpoint.pipe(T.XmlName("Endpoint")).annotate({ identifier: "Endpoint" }),
+  /*@__PURE__*/ Endpoint.pipe(/*@__PURE__*/ T.XmlName("Endpoint")).annotate({
+    identifier: "Endpoint",
+  }),
 );
 export interface DescribeEndpointsResponse {
   Marker?: string;
@@ -3456,7 +3476,9 @@ export const SupportedEndpointType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportedEndpointType" }) as any as S.Schema<SupportedEndpointType>;
 export type SupportedEndpointTypeList = SupportedEndpointType[];
 export const SupportedEndpointTypeList = /*@__PURE__*/ S.Array(
-  SupportedEndpointType.pipe(T.XmlName("SupportedEndpointType")).annotate({
+  /*@__PURE__*/ SupportedEndpointType.pipe(
+    /*@__PURE__*/ T.XmlName("SupportedEndpointType"),
+  ).annotate({
     identifier: "SupportedEndpointType",
   }),
 );
@@ -3512,7 +3534,9 @@ export const EngineVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EngineVersion" }) as any as S.Schema<EngineVersion>;
 export type EngineVersionList = EngineVersion[];
 export const EngineVersionList = /*@__PURE__*/ S.Array(
-  EngineVersion.pipe(T.XmlName("EngineVersion")).annotate({ identifier: "EngineVersion" }),
+  /*@__PURE__*/ EngineVersion.pipe(/*@__PURE__*/ T.XmlName("EngineVersion")).annotate({
+    identifier: "EngineVersion",
+  }),
 );
 export interface DescribeEngineVersionsResponse {
   EngineVersions?: EngineVersion[];
@@ -3545,7 +3569,7 @@ export const EventCategoryGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventCategoryGroup" }) as any as S.Schema<EventCategoryGroup>;
 export type EventCategoryGroupList = EventCategoryGroup[];
 export const EventCategoryGroupList = /*@__PURE__*/ S.Array(
-  EventCategoryGroup.pipe(T.XmlName("EventCategoryGroup")).annotate({
+  /*@__PURE__*/ EventCategoryGroup.pipe(/*@__PURE__*/ T.XmlName("EventCategoryGroup")).annotate({
     identifier: "EventCategoryGroup",
   }),
 );
@@ -3602,7 +3626,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type EventList = Event[];
 export const EventList = /*@__PURE__*/ S.Array(
-  Event.pipe(T.XmlName("Event")).annotate({ identifier: "Event" }),
+  /*@__PURE__*/ Event.pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({ identifier: "Event" }),
 );
 export interface DescribeEventsResponse {
   Marker?: string;
@@ -3629,7 +3653,7 @@ export const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEventSubscriptionsMessage>;
 export type EventSubscriptionsList = EventSubscription[];
 export const EventSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventSubscription.pipe(T.XmlName("EventSubscription")).annotate({
+  /*@__PURE__*/ EventSubscription.pipe(/*@__PURE__*/ T.XmlName("EventSubscription")).annotate({
     identifier: "EventSubscription",
   }),
 );
@@ -4033,7 +4057,9 @@ export const DescribeInstanceProfilesMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceProfilesMessage>;
 export type InstanceProfileList = InstanceProfile[];
 export const InstanceProfileList = /*@__PURE__*/ S.Array(
-  InstanceProfile.pipe(T.XmlName("InstanceProfile")).annotate({ identifier: "InstanceProfile" }),
+  /*@__PURE__*/ InstanceProfile.pipe(/*@__PURE__*/ T.XmlName("InstanceProfile")).annotate({
+    identifier: "InstanceProfile",
+  }),
 );
 export interface DescribeInstanceProfilesResponse {
   Marker?: string;
@@ -4303,7 +4329,9 @@ export const DescribeMigrationProjectsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMigrationProjectsMessage>;
 export type MigrationProjectList = MigrationProject[];
 export const MigrationProjectList = /*@__PURE__*/ S.Array(
-  MigrationProject.pipe(T.XmlName("MigrationProject")).annotate({ identifier: "MigrationProject" }),
+  /*@__PURE__*/ MigrationProject.pipe(/*@__PURE__*/ T.XmlName("MigrationProject")).annotate({
+    identifier: "MigrationProject",
+  }),
 );
 export interface DescribeMigrationProjectsResponse {
   Marker?: string;
@@ -4358,7 +4386,9 @@ export const OrderableReplicationInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderableReplicationInstance>;
 export type OrderableReplicationInstanceList = OrderableReplicationInstance[];
 export const OrderableReplicationInstanceList = /*@__PURE__*/ S.Array(
-  OrderableReplicationInstance.pipe(T.XmlName("OrderableReplicationInstance")).annotate({
+  /*@__PURE__*/ OrderableReplicationInstance.pipe(
+    /*@__PURE__*/ T.XmlName("OrderableReplicationInstance"),
+  ).annotate({
     identifier: "OrderableReplicationInstance",
   }),
 );
@@ -4392,7 +4422,9 @@ export const DescribePendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribePendingMaintenanceActionsMessage>;
 export type PendingMaintenanceActions = ResourcePendingMaintenanceActions[];
 export const PendingMaintenanceActions = /*@__PURE__*/ S.Array(
-  ResourcePendingMaintenanceActions.pipe(T.XmlName("ResourcePendingMaintenanceActions")).annotate({
+  /*@__PURE__*/ ResourcePendingMaintenanceActions.pipe(
+    /*@__PURE__*/ T.XmlName("ResourcePendingMaintenanceActions"),
+  ).annotate({
     identifier: "ResourcePendingMaintenanceActions",
   }),
 );
@@ -4612,7 +4644,7 @@ export const DescribeReplicationConfigsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReplicationConfigsMessage>;
 export type ReplicationConfigList = ReplicationConfig[];
 export const ReplicationConfigList = /*@__PURE__*/ S.Array(
-  ReplicationConfig.pipe(T.XmlName("ReplicationConfig")).annotate({
+  /*@__PURE__*/ ReplicationConfig.pipe(/*@__PURE__*/ T.XmlName("ReplicationConfig")).annotate({
     identifier: "ReplicationConfig",
   }),
 );
@@ -4644,7 +4676,7 @@ export const DescribeReplicationInstancesMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReplicationInstancesMessage>;
 export type ReplicationInstanceList = ReplicationInstance[];
 export const ReplicationInstanceList = /*@__PURE__*/ S.Array(
-  ReplicationInstance.pipe(T.XmlName("ReplicationInstance")).annotate({
+  /*@__PURE__*/ ReplicationInstance.pipe(/*@__PURE__*/ T.XmlName("ReplicationInstance")).annotate({
     identifier: "ReplicationInstance",
   }),
 );
@@ -4848,7 +4880,9 @@ export const Replication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 export type ReplicationList = Replication[];
 export const ReplicationList = /*@__PURE__*/ S.Array(
-  Replication.pipe(T.XmlName("Replication")).annotate({ identifier: "Replication" }),
+  /*@__PURE__*/ Replication.pipe(/*@__PURE__*/ T.XmlName("Replication")).annotate({
+    identifier: "Replication",
+  }),
 );
 export interface DescribeReplicationsResponse {
   Marker?: string;
@@ -4875,7 +4909,9 @@ export const DescribeReplicationSubnetGroupsMessage = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeReplicationSubnetGroupsMessage>;
 export type ReplicationSubnetGroups = ReplicationSubnetGroup[];
 export const ReplicationSubnetGroups = /*@__PURE__*/ S.Array(
-  ReplicationSubnetGroup.pipe(T.XmlName("ReplicationSubnetGroup")).annotate({
+  /*@__PURE__*/ ReplicationSubnetGroup.pipe(
+    /*@__PURE__*/ T.XmlName("ReplicationSubnetGroup"),
+  ).annotate({
     identifier: "ReplicationSubnetGroup",
   }),
 );
@@ -5023,7 +5059,9 @@ export const ReplicationTaskAssessmentResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationTaskAssessmentResult>;
 export type ReplicationTaskAssessmentResultList = ReplicationTaskAssessmentResult[];
 export const ReplicationTaskAssessmentResultList = /*@__PURE__*/ S.Array(
-  ReplicationTaskAssessmentResult.pipe(T.XmlName("ReplicationTaskAssessmentResult")).annotate({
+  /*@__PURE__*/ ReplicationTaskAssessmentResult.pipe(
+    /*@__PURE__*/ T.XmlName("ReplicationTaskAssessmentResult"),
+  ).annotate({
     identifier: "ReplicationTaskAssessmentResult",
   }),
 );
@@ -5137,7 +5175,9 @@ export const DescribeReplicationTasksMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReplicationTasksMessage>;
 export type ReplicationTaskList = ReplicationTask[];
 export const ReplicationTaskList = /*@__PURE__*/ S.Array(
-  ReplicationTask.pipe(T.XmlName("ReplicationTask")).annotate({ identifier: "ReplicationTask" }),
+  /*@__PURE__*/ ReplicationTask.pipe(/*@__PURE__*/ T.XmlName("ReplicationTask")).annotate({
+    identifier: "ReplicationTask",
+  }),
 );
 export interface DescribeReplicationTasksResponse {
   Marker?: string;
@@ -5930,7 +5970,7 @@ export const StatementProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatementProperties" }) as any as S.Schema<StatementProperties>;
 export type MetadataModelProperties = { StatementProperties: StatementProperties };
 export const MetadataModelProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ StatementProperties: StatementProperties }),
+  /*@__PURE__*/ S.Struct({ StatementProperties: StatementProperties }),
 ]);
 export interface StartMetadataModelCreationMessage {
   MigrationProjectIdentifier: string;

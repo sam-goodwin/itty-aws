@@ -14,7 +14,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export type DataSecurityContentFindingsTopNRequestFiltersItemValuesItem = string | number | boolean;
 export const DataSecurityContentFindingsTopNRequestFiltersItemValuesItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type DataSecurityContentFindingsTopNRequestFiltersItemValuesList =
   Array<DataSecurityContentFindingsTopNRequestFiltersItemValuesItem>;
@@ -96,7 +96,7 @@ export const DataSecurityContentFindingsTopNResponse = /*@__PURE__*/ S.suspend((
 
 export type DataSecurityFindingsSummaryRequestFiltersItemValuesItem = string | number | boolean;
 export const DataSecurityFindingsSummaryRequestFiltersItemValuesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DataSecurityFindingsSummaryRequestFiltersItemValuesList =
@@ -201,7 +201,7 @@ export const DataSecurityFindingsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem = string | number | boolean;
 export const DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type DataSecurityFindingsTimeseriesRequestFiltersItemValuesList =
   Array<DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem>;
@@ -291,7 +291,7 @@ export const DataSecurityFindingsTimeseriesResponse = /*@__PURE__*/ S.suspend(()
 
 export type SummaryRequestFiltersItemValuesItem = string | number | boolean;
 export const SummaryRequestFiltersItemValuesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type SummaryRequestFiltersItemValuesList = Array<SummaryRequestFiltersItemValuesItem>;
@@ -402,7 +402,7 @@ export const SummaryResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TimeseriesRequestFiltersItemValuesItem = string | number | boolean;
 export const TimeseriesRequestFiltersItemValuesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type TimeseriesRequestFiltersItemValuesList = Array<TimeseriesRequestFiltersItemValuesItem>;
@@ -505,7 +505,7 @@ export const TimeseriesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TopNRequestFiltersItemValuesItem = string | number | boolean;
 export const TopNRequestFiltersItemValuesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type TopNRequestFiltersItemValuesList = Array<TopNRequestFiltersItemValuesItem>;

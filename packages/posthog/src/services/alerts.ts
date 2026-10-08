@@ -1012,7 +1012,7 @@ export const AlertSimulateResponseDatesList = /*@__PURE__*/ S.Array(
 /** Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict. */
 export type AlertSimulateResponseScoresList = Array<number | null>;
 export const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<AlertSimulateResponseScoresList>;
 
 /** Indices of points flagged as anomalies. */
@@ -1055,7 +1055,7 @@ export const BreakdownSimulationResultDatesList = /*@__PURE__*/ S.Array(
 /** Anomaly score for each point. */
 export type BreakdownSimulationResultScoresList = Array<number | null>;
 export const BreakdownSimulationResultScoresList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<BreakdownSimulationResultScoresList>;
 
 /** Indices of points flagged as anomalies. */

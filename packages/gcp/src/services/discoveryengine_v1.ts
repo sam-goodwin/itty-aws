@@ -12,12 +12,12 @@ export type { GcpOpError, GcpOpContext };
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -25,12 +25,12 @@ export class BadRequest
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -39,12 +39,12 @@ export class Conflict
 export class DataStoreNotReady
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<DataStoreNotReady>()("DataStoreNotReady", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "try again later" } }],
   ) {}
@@ -52,12 +52,12 @@ export class DataStoreNotReady
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -66,12 +66,12 @@ export class Forbidden
 export class IdentityProviderNotConfigured
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<IdentityProviderNotConfigured>()("IdentityProviderNotConfigured", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "IdP must be configured" } }],
   ) {}
@@ -80,12 +80,12 @@ export class IdentityProviderNotConfigured
 export class LlmAddOnRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<LlmAddOnRequired>()("LlmAddOnRequired", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400, message: { includes: "Large Language Model add-on" } }],
   ) {}
@@ -93,12 +93,12 @@ export class LlmAddOnRequired
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -4645,7 +4645,7 @@ export const GoogleCloudDiscoveryengineV1ChunkPageSpan = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1ChunkList = Array<GoogleCloudDiscoveryengineV1Chunk>;
 export const GoogleCloudDiscoveryengineV1ChunkList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudDiscoveryengineV1Chunk),
+  /*@__PURE__*/ S.suspend(() => GoogleCloudDiscoveryengineV1Chunk),
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1ChunkList>;
 
 /** Metadata of the current chunk. This field is only populated on SearchService.Search API. */
@@ -17046,7 +17046,7 @@ export type GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnders
   Array<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
   /*@__PURE__*/ S.Array(
-    S.suspend(
+    /*@__PURE__*/ S.suspend(
       () =>
         GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression,
     ),

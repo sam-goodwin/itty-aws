@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Omics", serviceShapeName: "Omics" });
-const auth = T.AwsAuthSigv4({ name: "omics" });
-const ver = T.ServiceVersion("2022-11-28");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Omics", serviceShapeName: "Omics" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "omics" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-11-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,66 +69,69 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class NotSupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<NotSupportedOperationException>()(
     "NotSupportedOperationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(405),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class RangeNotSatisfiableException
   extends /*@__PURE__*/ S.TaggedError<RangeNotSatisfiableException>()(
     "RangeNotSatisfiableException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(416), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(416), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withRetryableError) {}
 export class RequestTimeoutException
   extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type SequenceStoreId = string;
 export type UploadId = string;
@@ -336,13 +339,15 @@ export const CompleteMultipartReadSetUploadResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CompleteMultipartReadSetUploadResponse>;
 export type ReferenceArn = string;
 export type ReferenceItem = { referenceArn: string };
-export const ReferenceItem = /*@__PURE__*/ S.Union([S.Struct({ referenceArn: S.String })]);
+export const ReferenceItem = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ referenceArn: S.String }),
+]);
 export type StoreName = string;
 export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type VersionName = string;
 export type EncryptionType = string;
 export interface SseConfig {
@@ -356,10 +361,13 @@ export type StoreFormat = string;
 export type AnnotationType = string;
 export type FormatToHeaderKey = string;
 export type FormatToHeader = { [key: string]: string | undefined };
-export const FormatToHeader = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FormatToHeader = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type SchemaValueType = string;
 export type SchemaItem = { [key: string]: string | undefined };
-export const SchemaItem = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SchemaItem = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Schema = { [key: string]: string | undefined }[];
 export const Schema = /*@__PURE__*/ S.Array(SchemaItem);
 export interface TsvStoreOptions {
@@ -375,7 +383,9 @@ export const TsvStoreOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TsvStoreOptions" }) as any as S.Schema<TsvStoreOptions>;
 export type StoreOptions = { tsvStoreOptions: TsvStoreOptions };
-export const StoreOptions = /*@__PURE__*/ S.Union([S.Struct({ tsvStoreOptions: TsvStoreOptions })]);
+export const StoreOptions = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ tsvStoreOptions: TsvStoreOptions }),
+]);
 export interface CreateAnnotationStoreRequest {
   reference?: ReferenceItem;
   name?: string;
@@ -440,7 +450,7 @@ export const TsvVersionOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TsvVersionOptions" }) as any as S.Schema<TsvVersionOptions>;
 export type VersionOptions = { tsvVersionOptions: TsvVersionOptions };
 export const VersionOptions = /*@__PURE__*/ S.Union([
-  S.Struct({ tsvVersionOptions: TsvVersionOptions }),
+  /*@__PURE__*/ S.Struct({ tsvVersionOptions: TsvVersionOptions }),
 ]);
 export interface CreateAnnotationStoreVersionRequest {
   name: string;
@@ -938,7 +948,7 @@ export const WorkflowParameter = /*@__PURE__*/ S.suspend(() =>
 export type WorkflowParameterTemplate = { [key: string]: WorkflowParameter | undefined };
 export const WorkflowParameterTemplate = /*@__PURE__*/ S.Record(
   S.String,
-  WorkflowParameter.pipe(S.optional),
+  /*@__PURE__*/ WorkflowParameter.pipe(S.optional),
 );
 export type WorkflowRequestId = string;
 export type Accelerators = string;
@@ -1536,11 +1546,14 @@ export type FormatOptions =
   | { tsvOptions: TsvOptions; vcfOptions?: never }
   | { tsvOptions?: never; vcfOptions: VcfOptions };
 export const FormatOptions = /*@__PURE__*/ S.Union([
-  S.Struct({ tsvOptions: TsvOptions }),
-  S.Struct({ vcfOptions: VcfOptions }),
+  /*@__PURE__*/ S.Struct({ tsvOptions: TsvOptions }),
+  /*@__PURE__*/ S.Struct({ vcfOptions: VcfOptions }),
 ]);
 export type AnnotationFieldMap = { [key: string]: string | undefined };
-export const AnnotationFieldMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AnnotationFieldMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetAnnotationImportResponse {
   id: string;
   destinationName: string;
@@ -2445,7 +2458,10 @@ export type WorkflowDigest = string;
 export type RunResourceDigestKey = string;
 export type RunResourceDigest = string;
 export type RunResourceDigests = { [key: string]: string | undefined };
-export const RunResourceDigests = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RunResourceDigests = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type RunStartedBy = string;
 export type RunTimestamp = Date;
 export type RunStatusMessage = string;
@@ -2926,7 +2942,10 @@ export type WorkflowStatusMessage = string;
 export type WorkflowMetadataKey = string;
 export type WorkflowMetadataValue = string;
 export type WorkflowMetadata = { [key: string]: string | undefined };
-export const WorkflowMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const WorkflowMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ReadmeS3PresignedUrl = string;
 export interface DefinitionRepositoryDetails {
   connectionArn?: string;
@@ -2954,7 +2973,7 @@ export type WorkflowProfileParameterTemplates = {
 };
 export const WorkflowProfileParameterTemplates = /*@__PURE__*/ S.Record(
   S.String,
-  WorkflowParameterTemplate.pipe(S.optional),
+  /*@__PURE__*/ WorkflowParameterTemplate.pipe(S.optional),
 );
 export interface GetWorkflowResponse {
   arn?: string;
@@ -5058,8 +5077,8 @@ export type BatchRunSettings =
   | { inlineSettings: InlineSetting[]; s3UriSettings?: never }
   | { inlineSettings?: never; s3UriSettings: string };
 export const BatchRunSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ inlineSettings: InlineSettings }),
-  S.Struct({ s3UriSettings: S.String }),
+  /*@__PURE__*/ S.Struct({ inlineSettings: InlineSettings }),
+  /*@__PURE__*/ S.Struct({ s3UriSettings: S.String }),
 ]);
 export interface StartRunBatchRequest {
   batchName?: string;

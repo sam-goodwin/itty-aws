@@ -6,14 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Service Catalog",
   serviceShapeName: "AWS242ServiceCatalogService",
 });
-const auth = T.AwsAuthSigv4({ name: "servicecatalog" });
-const ver = T.ServiceVersion("2015-12-10");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "servicecatalog" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-12-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,46 +74,46 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class DuplicateResourceException
   extends /*@__PURE__*/ S.TaggedError<DuplicateResourceException>()("DuplicateResourceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidParametersException
   extends /*@__PURE__*/ S.TaggedError<InvalidParametersException>()("InvalidParametersException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()("InvalidStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OperationNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<OperationNotSupportedException>()(
     "OperationNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ProvisionedProductNotFound
   extends /*@__PURE__*/ S.TaggedError<ProvisionedProductNotFound>()(
     "ProvisionedProductNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Provisioned product not found" },
     }),
   ) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TagOptionNotMigratedException
   extends /*@__PURE__*/ S.TaggedError<TagOptionNotMigratedException>()(
     "TagOptionNotMigratedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type AcceptLanguage = string;
 export type Id = string;
@@ -348,7 +348,7 @@ export type SourceProvisioningArtifactPropertiesMap = {
 };
 export const SourceProvisioningArtifactPropertiesMap = /*@__PURE__*/ S.Record(
   ProvisioningArtifactPropertyName,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type SourceProvisioningArtifactProperties = { [key: string]: string | undefined }[];
 export const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
@@ -565,7 +565,10 @@ export type ProvisioningArtifactDescription = string;
 export type ProvisioningArtifactInfoKey = string;
 export type ProvisioningArtifactInfoValue = string;
 export type ProvisioningArtifactInfo = { [key: string]: string | undefined };
-export const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ProvisioningArtifactType =
   | "CLOUD_FORMATION_TEMPLATE"
   | "MARKETPLACE_AMI"
@@ -906,7 +909,7 @@ export type ServiceActionDefinitionValue = string;
 export type ServiceActionDefinitionMap = { [key in ServiceActionDefinitionKey]?: string };
 export const ServiceActionDefinitionMap = /*@__PURE__*/ S.Record(
   ServiceActionDefinitionKey,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ServiceActionDescription = string;
 export interface CreateServiceActionInput {
@@ -2227,7 +2230,7 @@ export const ExecuteProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
 export type ExecutionParameterMap = { [key: string]: string[] | undefined };
 export const ExecutionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExecutionParameterValueList.pipe(S.optional),
+  /*@__PURE__*/ ExecutionParameterValueList.pipe(S.optional),
 );
 export interface ExecuteProvisionedProductServiceActionInput {
   ProvisionedProductId: string;
@@ -3167,7 +3170,7 @@ export const ProductViewFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type ProductViewFilters = { [key in ProductViewFilterBy]?: string[] };
 export const ProductViewFilters = /*@__PURE__*/ S.Record(
   ProductViewFilterBy,
-  ProductViewFilterValues.pipe(S.optional),
+  /*@__PURE__*/ ProductViewFilterValues.pipe(S.optional),
 );
 export type ProductViewSortBy = "Title" | "VersionCount" | "CreationDate" | (string & {});
 export const ProductViewSortBy = S.String;
@@ -3212,7 +3215,7 @@ export const ProductViewAggregationValues = /*@__PURE__*/ S.Array(ProductViewAgg
 export type ProductViewAggregations = { [key: string]: ProductViewAggregationValue[] | undefined };
 export const ProductViewAggregations = /*@__PURE__*/ S.Record(
   S.String,
-  ProductViewAggregationValues.pipe(S.optional),
+  /*@__PURE__*/ ProductViewAggregationValues.pipe(S.optional),
 );
 export interface SearchProductsOutput {
   ProductViewSummaries?: ProductViewSummary[];
@@ -3276,7 +3279,7 @@ export const ProvisionedProductViewFilterValues = /*@__PURE__*/ S.Array(S.String
 export type ProvisionedProductFilters = { [key in ProvisionedProductViewFilterBy]?: string[] };
 export const ProvisionedProductFilters = /*@__PURE__*/ S.Record(
   ProvisionedProductViewFilterBy,
-  ProvisionedProductViewFilterValues.pipe(S.optional),
+  /*@__PURE__*/ ProvisionedProductViewFilterValues.pipe(S.optional),
 );
 export type SortField = string;
 export type SearchProvisionedProductsPageSize = number;
@@ -3591,7 +3594,7 @@ export type PropertyValue = string;
 export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
 export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
   PropertyKey,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface UpdateProvisionedProductPropertiesInput {
   AcceptLanguage?: string;

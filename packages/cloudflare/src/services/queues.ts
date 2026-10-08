@@ -355,7 +355,7 @@ export type MessagesBulkPushRequestMessagesItem =
   | MessagesBulkPushRequestMessagesItemMqQueueMessageText
   | MessagesBulkPushRequestMessagesItemMqQueueMessageJson;
 export const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["body", "contentType", "delaySeconds"],
       ["body", "contentType", "delaySeconds"],
@@ -487,7 +487,7 @@ export type ConsumersCreateRequestSettings =
   | ConsumersCreateRequestSettingsWorker
   | ConsumersCreateRequestSettingsHTTPPull;
 export const ConsumersCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["batchSize", "maxConcurrency", "maxRetries", "maxWaitTimeMs", "retryDelay"],
     ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
   ]),
@@ -625,7 +625,7 @@ export const ConsumersCreateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
 
 export type ConsumersCreateResult = ConsumersCreateResultWorker | ConsumersCreateResultHTTPPull;
 export const ConsumersCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -723,7 +723,7 @@ export type CreateResponseConsumersItem =
   | CreateResponseConsumersItemWorker
   | CreateResponseConsumersItemHTTPPull;
 export const CreateResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -776,7 +776,7 @@ export type CreateResponseProducersItem =
   | CreateResponseProducersItemMqWorkerProducer
   | CreateResponseProducersItemMqR2Producer;
 export const CreateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],
@@ -1084,7 +1084,7 @@ export type SubscriptionsCreateRequestSource =
   | SubscriptionsCreateRequestSourceMqEventSourceArtifactsRepo
   | SubscriptionsCreateRequestSourceMqEventSourceEmailSending;
 export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -1408,7 +1408,7 @@ export type SubscriptionsCreateResponseSource =
   | SubscriptionsCreateResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsCreateResponseSourceMqEventSourceEmailSending;
 export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -1803,7 +1803,7 @@ export type SubscriptionsDeleteResponseSource =
   | SubscriptionsDeleteResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsDeleteResponseSourceMqEventSourceEmailSending;
 export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -1957,7 +1957,7 @@ export const ConsumersGetResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
 
 export type ConsumersGetResult = ConsumersGetResultWorker | ConsumersGetResultHTTPPull;
 export const ConsumersGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -2085,7 +2085,7 @@ export type GetResponseConsumersItem =
   | GetResponseConsumersItemWorker
   | GetResponseConsumersItemHTTPPull;
 export const GetResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -2138,7 +2138,7 @@ export type GetResponseProducersItem =
   | GetResponseProducersItemMqWorkerProducer
   | GetResponseProducersItemMqR2Producer;
 export const GetResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],
@@ -2453,7 +2453,7 @@ export type SubscriptionsGetResponseSource =
   | SubscriptionsGetResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsGetResponseSourceMqEventSourceEmailSending;
 export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -2606,7 +2606,7 @@ export type ConsumersListResultItem =
   | ConsumersListResultItemWorker
   | ConsumersListResultItemHTTPPull;
 export const ConsumersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -2710,7 +2710,7 @@ export type ListResultItemConsumersItem =
   | ListResultItemConsumersItemWorker
   | ListResultItemConsumersItemHTTPPull;
 export const ListResultItemConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -2763,7 +2763,7 @@ export type ListResultItemProducersItem =
   | ListResultItemProducersItemMqWorkerProducer
   | ListResultItemProducersItemMqR2Producer;
 export const ListResultItemProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],
@@ -3115,7 +3115,7 @@ export type SubscriptionsListResultItemSource =
   | SubscriptionsListResultItemSourceMqEventSourceArtifactsRepo
   | SubscriptionsListResultItemSourceMqEventSourceEmailSending;
 export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -3369,7 +3369,7 @@ export type EditResponseConsumersItem =
   | EditResponseConsumersItemWorker
   | EditResponseConsumersItemHTTPPull;
 export const EditResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -3422,7 +3422,7 @@ export type EditResponseProducersItem =
   | EditResponseProducersItemMqWorkerProducer
   | EditResponseProducersItemMqR2Producer;
 export const EditResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],
@@ -3777,7 +3777,7 @@ export type SubscriptionsUpdateResponseSource =
   | SubscriptionsUpdateResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsUpdateResponseSourceMqEventSourceEmailSending;
 export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type"],
       ["type"],
@@ -4161,7 +4161,7 @@ export type PurgeStartResponseConsumersItem =
   | PurgeStartResponseConsumersItemWorker
   | PurgeStartResponseConsumersItemHTTPPull;
 export const PurgeStartResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -4214,7 +4214,7 @@ export type PurgeStartResponseProducersItem =
   | PurgeStartResponseProducersItemMqWorkerProducer
   | PurgeStartResponseProducersItemMqR2Producer;
 export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],
@@ -4272,7 +4272,7 @@ export type ConsumersUpdateRequestSettings =
   | ConsumersCreateRequestSettingsWorker
   | ConsumersCreateRequestSettingsHTTPPull;
 export const ConsumersUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["batchSize", "maxConcurrency", "maxRetries", "maxWaitTimeMs", "retryDelay"],
     ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
   ]),
@@ -4374,7 +4374,7 @@ export const ConsumersUpdateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
 
 export type ConsumersUpdateResult = ConsumersUpdateResultWorker | ConsumersUpdateResultHTTPPull;
 export const ConsumersUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -4480,7 +4480,7 @@ export type UpdateResponseConsumersItem =
   | UpdateResponseConsumersItemWorker
   | UpdateResponseConsumersItemHTTPPull;
 export const UpdateResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "scriptName", "settings", "type"],
       ["consumerId", "createdOn", "deadLetterQueue", "queueName", "settings", "type"],
@@ -4533,7 +4533,7 @@ export type UpdateResponseProducersItem =
   | UpdateResponseProducersItemMqWorkerProducer
   | UpdateResponseProducersItemMqR2Producer;
 export const UpdateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "scriptName"],
       ["bucketName", "type"],

@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://elasticache.amazonaws.com/doc/2015-02-02/");
-const svc = T.AwsApiService({ sdkId: "ElastiCache", serviceShapeName: "AmazonElastiCacheV9" });
-const auth = T.AwsAuthSigv4({ name: "elasticache" });
-const ver = T.ServiceVersion("2015-02-02");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://elasticache.amazonaws.com/doc/2015-02-02/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "ElastiCache",
+  serviceShapeName: "AmazonElastiCacheV9",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "elasticache" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-02-02");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,659 +82,800 @@ const rules = T.EndpointResolver((p, _) => {
 export class APICallRateForCustomerExceededFault
   extends /*@__PURE__*/ S.TaggedError<APICallRateForCustomerExceededFault>()(
     "APICallRateForCustomerExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "APICallRateForCustomerExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "APICallRateForCustomerExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class AuthorizationAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<AuthorizationAlreadyExistsFault>()(
     "AuthorizationAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AuthorizationAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AuthorizationAlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class AuthorizationNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<AuthorizationNotFoundFault>()(
     "AuthorizationNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheClusterAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<CacheClusterAlreadyExistsFault>()(
     "CacheClusterAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheClusterAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CacheClusterAlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CacheClusterNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<CacheClusterNotFoundFault>()(
     "CacheClusterNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheClusterNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CacheClusterNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheParameterGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<CacheParameterGroupAlreadyExistsFault>()(
     "CacheParameterGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheParameterGroupAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheParameterGroupAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CacheParameterGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<CacheParameterGroupNotFoundFault>()(
     "CacheParameterGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheParameterGroupNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CacheParameterGroupNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheParameterGroupQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<CacheParameterGroupQuotaExceededFault>()(
     "CacheParameterGroupQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheParameterGroupQuotaExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheParameterGroupQuotaExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheSecurityGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<CacheSecurityGroupAlreadyExistsFault>()(
     "CacheSecurityGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSecurityGroupAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheSecurityGroupAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CacheSecurityGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<CacheSecurityGroupNotFoundFault>()(
     "CacheSecurityGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSecurityGroupNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CacheSecurityGroupNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheSecurityGroupQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<CacheSecurityGroupQuotaExceededFault>()(
     "CacheSecurityGroupQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "QuotaExceeded.CacheSecurityGroup", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "QuotaExceeded.CacheSecurityGroup",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheSubnetGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<CacheSubnetGroupAlreadyExistsFault>()(
     "CacheSubnetGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSubnetGroupAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheSubnetGroupAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CacheSubnetGroupInUse
   extends /*@__PURE__*/ S.TaggedError<CacheSubnetGroupInUse>()(
     "CacheSubnetGroupInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSubnetGroupInUse", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CacheSubnetGroupInUse", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class CacheSubnetGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<CacheSubnetGroupNotFoundFault>()(
     "CacheSubnetGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSubnetGroupNotFoundFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheSubnetGroupNotFoundFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheSubnetGroupQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<CacheSubnetGroupQuotaExceededFault>()(
     "CacheSubnetGroupQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSubnetGroupQuotaExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheSubnetGroupQuotaExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CacheSubnetQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<CacheSubnetQuotaExceededFault>()(
     "CacheSubnetQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CacheSubnetQuotaExceededFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CacheSubnetQuotaExceededFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ClusterQuotaForCustomerExceededFault
   extends /*@__PURE__*/ S.TaggedError<ClusterQuotaForCustomerExceededFault>()(
     "ClusterQuotaForCustomerExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ClusterQuotaForCustomerExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ClusterQuotaForCustomerExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class DefaultUserAssociatedToUserGroupFault
   extends /*@__PURE__*/ S.TaggedError<DefaultUserAssociatedToUserGroupFault>()(
     "DefaultUserAssociatedToUserGroupFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "DefaultUserAssociatedToUserGroup", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "DefaultUserAssociatedToUserGroup",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class DefaultUserRequired
   extends /*@__PURE__*/ S.TaggedError<DefaultUserRequired>()(
     "DefaultUserRequired",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "DefaultUserRequired", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DefaultUserRequired", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateUserNameFault
   extends /*@__PURE__*/ S.TaggedError<DuplicateUserNameFault>()(
     "DuplicateUserNameFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "DuplicateUserName", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DuplicateUserName", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class GlobalReplicationGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<GlobalReplicationGroupAlreadyExistsFault>()(
     "GlobalReplicationGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "GlobalReplicationGroupAlreadyExistsFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "GlobalReplicationGroupAlreadyExistsFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class GlobalReplicationGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<GlobalReplicationGroupNotFoundFault>()(
     "GlobalReplicationGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "GlobalReplicationGroupNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "GlobalReplicationGroupNotFoundFault",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCacheClusterCapacityFault
   extends /*@__PURE__*/ S.TaggedError<InsufficientCacheClusterCapacityFault>()(
     "InsufficientCacheClusterCapacityFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InsufficientCacheClusterCapacity", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InsufficientCacheClusterCapacity",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidARNFault
   extends /*@__PURE__*/ S.TaggedError<InvalidARNFault>()(
     "InvalidARNFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCacheClusterStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidCacheClusterStateFault>()(
     "InvalidCacheClusterStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidCacheClusterState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidCacheClusterState", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCacheParameterGroupStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidCacheParameterGroupStateFault>()(
     "InvalidCacheParameterGroupStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidCacheParameterGroupState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidCacheParameterGroupState",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCacheSecurityGroupStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidCacheSecurityGroupStateFault>()(
     "InvalidCacheSecurityGroupStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidCacheSecurityGroupState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidCacheSecurityGroupState",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCredentialsException
   extends /*@__PURE__*/ S.TaggedError<InvalidCredentialsException>()(
     "InvalidCredentialsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidCredentialsException", httpResponseCode: 408 }),
-      T.HttpError(408),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidCredentialsException", httpResponseCode: 408 }),
+      /*@__PURE__*/ T.HttpError(408),
     ),
   ).pipe(C.withTimeoutError) {}
 export class InvalidGlobalReplicationGroupStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidGlobalReplicationGroupStateFault>()(
     "InvalidGlobalReplicationGroupStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidGlobalReplicationGroupState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidGlobalReplicationGroupState",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKMSKeyFault
   extends /*@__PURE__*/ S.TaggedError<InvalidKMSKeyFault>()(
     "InvalidKMSKeyFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidKMSKeyFault", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidKMSKeyFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidParameterCombination", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidParameterCombination", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidReplicationGroupStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidReplicationGroupStateFault>()(
     "InvalidReplicationGroupStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidReplicationGroupState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidReplicationGroupState",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidServerlessCacheSnapshotStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidServerlessCacheSnapshotStateFault>()(
     "InvalidServerlessCacheSnapshotStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidServerlessCacheSnapshotStateFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidServerlessCacheSnapshotStateFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidServerlessCacheStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidServerlessCacheStateFault>()(
     "InvalidServerlessCacheStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidServerlessCacheStateFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidServerlessCacheStateFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnapshotStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidSnapshotStateFault>()(
     "InvalidSnapshotStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidSnapshotState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidSnapshotState", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSubnet
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()(
     "InvalidSubnet",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidUserGroupStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidUserGroupStateFault>()(
     "InvalidUserGroupStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidUserGroupState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidUserGroupState", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidUserStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidUserStateFault>()(
     "InvalidUserStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidUserState", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidUserState", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVPCNetworkStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidVPCNetworkStateFault>()(
     "InvalidVPCNetworkStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidVPCNetworkStateFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidVPCNetworkStateFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<NodeGroupNotFoundFault>()(
     "NodeGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "NodeGroupNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NodeGroupNotFoundFault", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeGroupsPerReplicationGroupQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<NodeGroupsPerReplicationGroupQuotaExceededFault>()(
     "NodeGroupsPerReplicationGroupQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "NodeGroupsPerReplicationGroupQuotaExceeded",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForClusterExceededFault
   extends /*@__PURE__*/ S.TaggedError<NodeQuotaForClusterExceededFault>()(
     "NodeQuotaForClusterExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "NodeQuotaForClusterExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NodeQuotaForClusterExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForCustomerExceededFault
   extends /*@__PURE__*/ S.TaggedError<NodeQuotaForCustomerExceededFault>()(
     "NodeQuotaForCustomerExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "NodeQuotaForCustomerExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "NodeQuotaForCustomerExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class NoOperationFault
   extends /*@__PURE__*/ S.TaggedError<NoOperationFault>()(
     "NoOperationFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "NoOperationFault", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NoOperationFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ReplicationGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<ReplicationGroupAlreadyExistsFault>()(
     "ReplicationGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReplicationGroupAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReplicationGroupAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ReplicationGroupAlreadyUnderMigrationFault
   extends /*@__PURE__*/ S.TaggedError<ReplicationGroupAlreadyUnderMigrationFault>()(
     "ReplicationGroupAlreadyUnderMigrationFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "ReplicationGroupAlreadyUnderMigrationFault",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReplicationGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ReplicationGroupNotFoundFault>()(
     "ReplicationGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReplicationGroupNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReplicationGroupNotFoundFault",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReplicationGroupNotUnderMigrationFault
   extends /*@__PURE__*/ S.TaggedError<ReplicationGroupNotUnderMigrationFault>()(
     "ReplicationGroupNotUnderMigrationFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReplicationGroupNotUnderMigrationFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReplicationGroupNotUnderMigrationFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReservedCacheNodeAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<ReservedCacheNodeAlreadyExistsFault>()(
     "ReservedCacheNodeAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReservedCacheNodeAlreadyExists", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReservedCacheNodeAlreadyExists",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ReservedCacheNodeNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ReservedCacheNodeNotFoundFault>()(
     "ReservedCacheNodeNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReservedCacheNodeNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ReservedCacheNodeNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReservedCacheNodeQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<ReservedCacheNodeQuotaExceededFault>()(
     "ReservedCacheNodeQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReservedCacheNodeQuotaExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReservedCacheNodeQuotaExceeded",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReservedCacheNodesOfferingNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ReservedCacheNodesOfferingNotFoundFault>()(
     "ReservedCacheNodesOfferingNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ReservedCacheNodesOfferingNotFound", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ReservedCacheNodesOfferingNotFound",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerlessCacheAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheAlreadyExistsFault>()(
     "ServerlessCacheAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServerlessCacheAlreadyExistsFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServerlessCacheAlreadyExistsFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ServerlessCacheNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheNotFoundFault>()(
     "ServerlessCacheNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServerlessCacheNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServerlessCacheNotFoundFault",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerlessCacheQuotaForCustomerExceededFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheQuotaForCustomerExceededFault>()(
     "ServerlessCacheQuotaForCustomerExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "ServerlessCacheQuotaForCustomerExceededFault",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerlessCacheSnapshotAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheSnapshotAlreadyExistsFault>()(
     "ServerlessCacheSnapshotAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServerlessCacheSnapshotAlreadyExistsFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServerlessCacheSnapshotAlreadyExistsFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ServerlessCacheSnapshotNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheSnapshotNotFoundFault>()(
     "ServerlessCacheSnapshotNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServerlessCacheSnapshotNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServerlessCacheSnapshotNotFoundFault",
+        httpResponseCode: 404,
+      }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerlessCacheSnapshotQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<ServerlessCacheSnapshotQuotaExceededFault>()(
     "ServerlessCacheSnapshotQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServerlessCacheSnapshotQuotaExceededFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServerlessCacheSnapshotQuotaExceededFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceLinkedRoleNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ServiceLinkedRoleNotFoundFault>()(
     "ServiceLinkedRoleNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServiceLinkedRoleNotFoundFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServiceLinkedRoleNotFoundFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUpdateNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ServiceUpdateNotFoundFault>()(
     "ServiceUpdateNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServiceUpdateNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceUpdateNotFoundFault", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class SnapshotAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<SnapshotAlreadyExistsFault>()(
     "SnapshotAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "SnapshotAlreadyExistsFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "SnapshotAlreadyExistsFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SnapshotFeatureNotSupportedFault
   extends /*@__PURE__*/ S.TaggedError<SnapshotFeatureNotSupportedFault>()(
     "SnapshotFeatureNotSupportedFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "SnapshotFeatureNotSupportedFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "SnapshotFeatureNotSupportedFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class SnapshotNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<SnapshotNotFoundFault>()(
     "SnapshotNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "SnapshotNotFoundFault", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "SnapshotNotFoundFault", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class SnapshotQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<SnapshotQuotaExceededFault>()(
     "SnapshotQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "SnapshotQuotaExceededFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "SnapshotQuotaExceededFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetInUse
   extends /*@__PURE__*/ S.TaggedError<SubnetInUse>()(
     "SubnetInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class SubnetNotAllowedFault
   extends /*@__PURE__*/ S.TaggedError<SubnetNotAllowedFault>()(
     "SubnetNotAllowedFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<TagNotFoundFault>()(
     "TagNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class TagQuotaPerResourceExceeded
   extends /*@__PURE__*/ S.TaggedError<TagQuotaPerResourceExceeded>()(
     "TagQuotaPerResourceExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TagQuotaPerResourceExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TagQuotaPerResourceExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TestFailoverNotAvailableFault
   extends /*@__PURE__*/ S.TaggedError<TestFailoverNotAvailableFault>()(
     "TestFailoverNotAvailableFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TestFailoverNotAvailableFault", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "TestFailoverNotAvailableFault",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class UserAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<UserAlreadyExistsFault>()(
     "UserAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "UserAlreadyExists", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserAlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class UserGroupAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<UserGroupAlreadyExistsFault>()(
     "UserGroupAlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "UserGroupAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserGroupAlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class UserGroupNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<UserGroupNotFoundFault>()(
     "UserGroupNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "UserGroupNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserGroupNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class UserGroupQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<UserGroupQuotaExceededFault>()(
     "UserGroupQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "UserGroupQuotaExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserGroupQuotaExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class UserNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<UserNotFoundFault>()(
     "UserNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "UserNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class UserQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<UserQuotaExceededFault>()(
     "UserQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "UserQuotaExceeded", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "UserQuotaExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export interface Tag {
   Key?: string;
@@ -742,7 +886,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface AddTagsToResourceMessage {
   ResourceName?: string;
@@ -787,7 +931,9 @@ export const EC2SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EC2SecurityGroup" }) as any as S.Schema<EC2SecurityGroup>;
 export type EC2SecurityGroupList = EC2SecurityGroup[];
 export const EC2SecurityGroupList = /*@__PURE__*/ S.Array(
-  EC2SecurityGroup.pipe(T.XmlName("EC2SecurityGroup")).annotate({ identifier: "EC2SecurityGroup" }),
+  /*@__PURE__*/ EC2SecurityGroup.pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup")).annotate({
+    identifier: "EC2SecurityGroup",
+  }),
 );
 export interface CacheSecurityGroup {
   OwnerId?: string;
@@ -860,7 +1006,9 @@ export const ProcessedUpdateAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessedUpdateAction" }) as any as S.Schema<ProcessedUpdateAction>;
 export type ProcessedUpdateActionList = ProcessedUpdateAction[];
 export const ProcessedUpdateActionList = /*@__PURE__*/ S.Array(
-  ProcessedUpdateAction.pipe(T.XmlName("ProcessedUpdateAction")).annotate({
+  /*@__PURE__*/ ProcessedUpdateAction.pipe(
+    /*@__PURE__*/ T.XmlName("ProcessedUpdateAction"),
+  ).annotate({
     identifier: "ProcessedUpdateAction",
   }),
 );
@@ -882,7 +1030,9 @@ export const UnprocessedUpdateAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnprocessedUpdateAction" }) as any as S.Schema<UnprocessedUpdateAction>;
 export type UnprocessedUpdateActionList = UnprocessedUpdateAction[];
 export const UnprocessedUpdateActionList = /*@__PURE__*/ S.Array(
-  UnprocessedUpdateAction.pipe(T.XmlName("UnprocessedUpdateAction")).annotate({
+  /*@__PURE__*/ UnprocessedUpdateAction.pipe(
+    /*@__PURE__*/ T.XmlName("UnprocessedUpdateAction"),
+  ).annotate({
     identifier: "UnprocessedUpdateAction",
   }),
 );
@@ -1052,7 +1202,9 @@ export const ReplicationGroupPendingModifiedValues = /*@__PURE__*/ S.suspend(() 
   identifier: "ReplicationGroupPendingModifiedValues",
 }) as any as S.Schema<ReplicationGroupPendingModifiedValues>;
 export type ClusterIdList = string[];
-export const ClusterIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ClusterId")));
+export const ClusterIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ClusterId")),
+);
 export interface Endpoint {
   Address?: string;
   Port?: number;
@@ -1080,7 +1232,9 @@ export const NodeGroupMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeGroupMember" }) as any as S.Schema<NodeGroupMember>;
 export type NodeGroupMemberList = NodeGroupMember[];
 export const NodeGroupMemberList = /*@__PURE__*/ S.Array(
-  NodeGroupMember.pipe(T.XmlName("NodeGroupMember")).annotate({ identifier: "NodeGroupMember" }),
+  /*@__PURE__*/ NodeGroupMember.pipe(/*@__PURE__*/ T.XmlName("NodeGroupMember")).annotate({
+    identifier: "NodeGroupMember",
+  }),
 );
 export interface NodeGroup {
   NodeGroupId?: string;
@@ -1102,7 +1256,9 @@ export const NodeGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeGroup" }) as any as S.Schema<NodeGroup>;
 export type NodeGroupList = NodeGroup[];
 export const NodeGroupList = /*@__PURE__*/ S.Array(
-  NodeGroup.pipe(T.XmlName("NodeGroup")).annotate({ identifier: "NodeGroup" }),
+  /*@__PURE__*/ NodeGroup.pipe(/*@__PURE__*/ T.XmlName("NodeGroup")).annotate({
+    identifier: "NodeGroup",
+  }),
 );
 export type AutomaticFailoverStatus =
   | "enabled"
@@ -1117,7 +1273,7 @@ export const MultiAZStatus = S.String;
 
 export type ReplicationGroupOutpostArnList = string[];
 export const ReplicationGroupOutpostArnList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ReplicationGroupOutpostArn")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReplicationGroupOutpostArn")),
 );
 export type StorageEncryptionType = "none" | "sse-elasticache" | "sse-kms" | (string & {});
 export const StorageEncryptionType = S.String;
@@ -1151,7 +1307,9 @@ export const LogDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogDeliveryConfiguration" }) as any as S.Schema<LogDeliveryConfiguration>;
 export type LogDeliveryConfigurationList = LogDeliveryConfiguration[];
 export const LogDeliveryConfigurationList = /*@__PURE__*/ S.Array(
-  LogDeliveryConfiguration.pipe(T.XmlName("LogDeliveryConfiguration")).annotate({
+  /*@__PURE__*/ LogDeliveryConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("LogDeliveryConfiguration"),
+  ).annotate({
     identifier: "LogDeliveryConfiguration",
   }),
 );
@@ -1335,10 +1493,12 @@ export const CopySnapshotMessage = /*@__PURE__*/ S.suspend(() =>
 export type AllowedNodeGroupId = string;
 export type AvailabilityZonesList = string[];
 export const AvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("AvailabilityZone")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")),
 );
 export type OutpostArnsList = string[];
-export const OutpostArnsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("OutpostArn")));
+export const OutpostArnsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OutpostArn")),
+);
 export interface NodeGroupConfiguration {
   NodeGroupId?: string;
   Slots?: string;
@@ -1381,7 +1541,9 @@ export const NodeSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeSnapshot" }) as any as S.Schema<NodeSnapshot>;
 export type NodeSnapshotList = NodeSnapshot[];
 export const NodeSnapshotList = /*@__PURE__*/ S.Array(
-  NodeSnapshot.pipe(T.XmlName("NodeSnapshot")).annotate({ identifier: "NodeSnapshot" }),
+  /*@__PURE__*/ NodeSnapshot.pipe(/*@__PURE__*/ T.XmlName("NodeSnapshot")).annotate({
+    identifier: "NodeSnapshot",
+  }),
 );
 export interface Snapshot {
   SnapshotName?: string;
@@ -1458,24 +1620,26 @@ export const AZMode = S.String;
 
 export type PreferredAvailabilityZoneList = string[];
 export const PreferredAvailabilityZoneList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("PreferredAvailabilityZone")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PreferredAvailabilityZone")),
 );
 export type CacheSecurityGroupNameList = string[];
 export const CacheSecurityGroupNameList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("CacheSecurityGroupName")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("CacheSecurityGroupName")),
 );
 export type SecurityGroupIdsList = string[];
 export const SecurityGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SecurityGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SecurityGroupId")),
 );
 export type SnapshotArnsList = string[];
-export const SnapshotArnsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("SnapshotArn")));
+export const SnapshotArnsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SnapshotArn")),
+);
 export type OutpostMode = "single-outpost" | "cross-outpost" | (string & {});
 export const OutpostMode = S.String;
 
 export type PreferredOutpostArnList = string[];
 export const PreferredOutpostArnList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("PreferredOutpostArn")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PreferredOutpostArn")),
 );
 export interface LogDeliveryConfigurationRequest {
   LogType?: LogType;
@@ -1497,7 +1661,9 @@ export const LogDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogDeliveryConfigurationRequest>;
 export type LogDeliveryConfigurationRequestList = LogDeliveryConfigurationRequest[];
 export const LogDeliveryConfigurationRequestList = /*@__PURE__*/ S.Array(
-  LogDeliveryConfigurationRequest.pipe(T.XmlName("LogDeliveryConfigurationRequest")).annotate({
+  /*@__PURE__*/ LogDeliveryConfigurationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("LogDeliveryConfigurationRequest"),
+  ).annotate({
     identifier: "LogDeliveryConfigurationRequest",
   }),
 );
@@ -1570,7 +1736,9 @@ export const CreateCacheClusterMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCacheClusterMessage",
 }) as any as S.Schema<CreateCacheClusterMessage>;
 export type CacheNodeIdsList = string[];
-export const CacheNodeIdsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("CacheNodeId")));
+export const CacheNodeIdsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("CacheNodeId")),
+);
 export interface ScaleConfig {
   ScalePercentage?: number;
   ScaleIntervalMinutes?: number;
@@ -1622,7 +1790,9 @@ export const CacheSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheSecurityGroupMembership>;
 export type CacheSecurityGroupMembershipList = CacheSecurityGroupMembership[];
 export const CacheSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
-  CacheSecurityGroupMembership.pipe(T.XmlName("CacheSecurityGroup")).annotate({
+  /*@__PURE__*/ CacheSecurityGroupMembership.pipe(
+    /*@__PURE__*/ T.XmlName("CacheSecurityGroup"),
+  ).annotate({
     identifier: "CacheSecurityGroupMembership",
   }),
 );
@@ -1664,7 +1834,9 @@ export const CacheNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheNode" }) as any as S.Schema<CacheNode>;
 export type CacheNodeList = CacheNode[];
 export const CacheNodeList = /*@__PURE__*/ S.Array(
-  CacheNode.pipe(T.XmlName("CacheNode")).annotate({ identifier: "CacheNode" }),
+  /*@__PURE__*/ CacheNode.pipe(/*@__PURE__*/ T.XmlName("CacheNode")).annotate({
+    identifier: "CacheNode",
+  }),
 );
 export interface SecurityGroupMembership {
   SecurityGroupId?: string;
@@ -1817,7 +1989,7 @@ export const CreateCacheSecurityGroupResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCacheSecurityGroupResult>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SubnetIdentifier")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")),
 );
 export interface CreateCacheSubnetGroupMessage {
   CacheSubnetGroupName?: string;
@@ -1865,7 +2037,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
 export const SubnetList = /*@__PURE__*/ S.Array(
-  Subnet.pipe(T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
+  /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
 );
 export interface CacheSubnetGroup {
   CacheSubnetGroupName?: string;
@@ -1929,7 +2101,9 @@ export const GlobalReplicationGroupMember = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalReplicationGroupMember>;
 export type GlobalReplicationGroupMemberList = GlobalReplicationGroupMember[];
 export const GlobalReplicationGroupMemberList = /*@__PURE__*/ S.Array(
-  GlobalReplicationGroupMember.pipe(T.XmlName("GlobalReplicationGroupMember")).annotate({
+  /*@__PURE__*/ GlobalReplicationGroupMember.pipe(
+    /*@__PURE__*/ T.XmlName("GlobalReplicationGroupMember"),
+  ).annotate({
     identifier: "GlobalReplicationGroupMember",
   }),
 );
@@ -1942,7 +2116,9 @@ export const GlobalNodeGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GlobalNodeGroup" }) as any as S.Schema<GlobalNodeGroup>;
 export type GlobalNodeGroupList = GlobalNodeGroup[];
 export const GlobalNodeGroupList = /*@__PURE__*/ S.Array(
-  GlobalNodeGroup.pipe(T.XmlName("GlobalNodeGroup")).annotate({ identifier: "GlobalNodeGroup" }),
+  /*@__PURE__*/ GlobalNodeGroup.pipe(/*@__PURE__*/ T.XmlName("GlobalNodeGroup")).annotate({
+    identifier: "GlobalNodeGroup",
+  }),
 );
 export interface GlobalReplicationGroup {
   GlobalReplicationGroupId?: string;
@@ -1986,7 +2162,9 @@ export const CreateGlobalReplicationGroupResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGlobalReplicationGroupResult>;
 export type NodeGroupConfigurationList = NodeGroupConfiguration[];
 export const NodeGroupConfigurationList = /*@__PURE__*/ S.Array(
-  NodeGroupConfiguration.pipe(T.XmlName("NodeGroupConfiguration")).annotate({
+  /*@__PURE__*/ NodeGroupConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("NodeGroupConfiguration"),
+  ).annotate({
     identifier: "NodeGroupConfiguration",
   }),
 );
@@ -2118,7 +2296,9 @@ export const CacheUsageLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DataStorage: S.optional(DataStorage), ECPUPerSecond: S.optional(ECPUPerSecond) }),
 ).annotate({ identifier: "CacheUsageLimits" }) as any as S.Schema<CacheUsageLimits>;
 export type SubnetIdsList = string[];
-export const SubnetIdsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("SubnetId")));
+export const SubnetIdsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetId")),
+);
 export type ConnectionType = "vpc" | "public" | (string & {});
 export const ConnectionType = S.String;
 
@@ -2392,7 +2572,7 @@ export const UserGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserGroup" }) as any as S.Schema<UserGroup>;
 export type GlobalNodeGroupIdList = string[];
 export const GlobalNodeGroupIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("GlobalNodeGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("GlobalNodeGroupId")),
 );
 export interface DecreaseNodeGroupsInGlobalReplicationGroupMessage {
   GlobalReplicationGroupId?: string;
@@ -2436,7 +2616,9 @@ export const ConfigureShard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigureShard" }) as any as S.Schema<ConfigureShard>;
 export type ReplicaConfigurationList = ConfigureShard[];
 export const ReplicaConfigurationList = /*@__PURE__*/ S.Array(
-  ConfigureShard.pipe(T.XmlName("ConfigureShard")).annotate({ identifier: "ConfigureShard" }),
+  /*@__PURE__*/ ConfigureShard.pipe(/*@__PURE__*/ T.XmlName("ConfigureShard")).annotate({
+    identifier: "ConfigureShard",
+  }),
 );
 export type RemoveReplicasList = string[];
 export const RemoveReplicasList = /*@__PURE__*/ S.Array(S.String);
@@ -2664,7 +2846,9 @@ export const DescribeCacheClustersMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCacheClustersMessage>;
 export type CacheClusterList = CacheCluster[];
 export const CacheClusterList = /*@__PURE__*/ S.Array(
-  CacheCluster.pipe(T.XmlName("CacheCluster")).annotate({ identifier: "CacheCluster" }),
+  /*@__PURE__*/ CacheCluster.pipe(/*@__PURE__*/ T.XmlName("CacheCluster")).annotate({
+    identifier: "CacheCluster",
+  }),
 );
 export interface CacheClusterMessage {
   Marker?: string;
@@ -2711,7 +2895,7 @@ export const CacheEngineVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheEngineVersion" }) as any as S.Schema<CacheEngineVersion>;
 export type CacheEngineVersionList = CacheEngineVersion[];
 export const CacheEngineVersionList = /*@__PURE__*/ S.Array(
-  CacheEngineVersion.pipe(T.XmlName("CacheEngineVersion")).annotate({
+  /*@__PURE__*/ CacheEngineVersion.pipe(/*@__PURE__*/ T.XmlName("CacheEngineVersion")).annotate({
     identifier: "CacheEngineVersion",
   }),
 );
@@ -2743,7 +2927,7 @@ export const DescribeCacheParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCacheParameterGroupsMessage>;
 export type CacheParameterGroupList = CacheParameterGroup[];
 export const CacheParameterGroupList = /*@__PURE__*/ S.Array(
-  CacheParameterGroup.pipe(T.XmlName("CacheParameterGroup")).annotate({
+  /*@__PURE__*/ CacheParameterGroup.pipe(/*@__PURE__*/ T.XmlName("CacheParameterGroup")).annotate({
     identifier: "CacheParameterGroup",
   }),
 );
@@ -2804,7 +2988,9 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type ParametersList = Parameter[];
 export const ParametersList = /*@__PURE__*/ S.Array(
-  Parameter.pipe(T.XmlName("Parameter")).annotate({ identifier: "Parameter" }),
+  /*@__PURE__*/ Parameter.pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
+    identifier: "Parameter",
+  }),
 );
 export interface CacheNodeTypeSpecificValue {
   CacheNodeType?: string;
@@ -2817,7 +3003,9 @@ export const CacheNodeTypeSpecificValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheNodeTypeSpecificValue>;
 export type CacheNodeTypeSpecificValueList = CacheNodeTypeSpecificValue[];
 export const CacheNodeTypeSpecificValueList = /*@__PURE__*/ S.Array(
-  CacheNodeTypeSpecificValue.pipe(T.XmlName("CacheNodeTypeSpecificValue")).annotate({
+  /*@__PURE__*/ CacheNodeTypeSpecificValue.pipe(
+    /*@__PURE__*/ T.XmlName("CacheNodeTypeSpecificValue"),
+  ).annotate({
     identifier: "CacheNodeTypeSpecificValue",
   }),
 );
@@ -2849,7 +3037,9 @@ export const CacheNodeTypeSpecificParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheNodeTypeSpecificParameter>;
 export type CacheNodeTypeSpecificParametersList = CacheNodeTypeSpecificParameter[];
 export const CacheNodeTypeSpecificParametersList = /*@__PURE__*/ S.Array(
-  CacheNodeTypeSpecificParameter.pipe(T.XmlName("CacheNodeTypeSpecificParameter")).annotate({
+  /*@__PURE__*/ CacheNodeTypeSpecificParameter.pipe(
+    /*@__PURE__*/ T.XmlName("CacheNodeTypeSpecificParameter"),
+  ).annotate({
     identifier: "CacheNodeTypeSpecificParameter",
   }),
 );
@@ -2883,7 +3073,7 @@ export const DescribeCacheSecurityGroupsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCacheSecurityGroupsMessage>;
 export type CacheSecurityGroups = CacheSecurityGroup[];
 export const CacheSecurityGroups = /*@__PURE__*/ S.Array(
-  CacheSecurityGroup.pipe(T.XmlName("CacheSecurityGroup")).annotate({
+  /*@__PURE__*/ CacheSecurityGroup.pipe(/*@__PURE__*/ T.XmlName("CacheSecurityGroup")).annotate({
     identifier: "CacheSecurityGroup",
   }),
 );
@@ -2915,7 +3105,9 @@ export const DescribeCacheSubnetGroupsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCacheSubnetGroupsMessage>;
 export type CacheSubnetGroups = CacheSubnetGroup[];
 export const CacheSubnetGroups = /*@__PURE__*/ S.Array(
-  CacheSubnetGroup.pipe(T.XmlName("CacheSubnetGroup")).annotate({ identifier: "CacheSubnetGroup" }),
+  /*@__PURE__*/ CacheSubnetGroup.pipe(/*@__PURE__*/ T.XmlName("CacheSubnetGroup")).annotate({
+    identifier: "CacheSubnetGroup",
+  }),
 );
 export interface CacheSubnetGroupMessage {
   Marker?: string;
@@ -3011,7 +3203,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type EventList = Event[];
 export const EventList = /*@__PURE__*/ S.Array(
-  Event.pipe(T.XmlName("Event")).annotate({ identifier: "Event" }),
+  /*@__PURE__*/ Event.pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({ identifier: "Event" }),
 );
 export interface EventsMessage {
   Marker?: string;
@@ -3038,7 +3230,9 @@ export const DescribeGlobalReplicationGroupsMessage = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeGlobalReplicationGroupsMessage>;
 export type GlobalReplicationGroupList = GlobalReplicationGroup[];
 export const GlobalReplicationGroupList = /*@__PURE__*/ S.Array(
-  GlobalReplicationGroup.pipe(T.XmlName("GlobalReplicationGroup")).annotate({
+  /*@__PURE__*/ GlobalReplicationGroup.pipe(
+    /*@__PURE__*/ T.XmlName("GlobalReplicationGroup"),
+  ).annotate({
     identifier: "GlobalReplicationGroup",
   }),
 );
@@ -3070,7 +3264,9 @@ export const DescribeReplicationGroupsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReplicationGroupsMessage>;
 export type ReplicationGroupList = ReplicationGroup[];
 export const ReplicationGroupList = /*@__PURE__*/ S.Array(
-  ReplicationGroup.pipe(T.XmlName("ReplicationGroup")).annotate({ identifier: "ReplicationGroup" }),
+  /*@__PURE__*/ ReplicationGroup.pipe(/*@__PURE__*/ T.XmlName("ReplicationGroup")).annotate({
+    identifier: "ReplicationGroup",
+  }),
 );
 export interface ReplicationGroupMessage {
   Marker?: string;
@@ -3118,7 +3314,9 @@ export const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecurringCharge" }) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
 export const RecurringChargeList = /*@__PURE__*/ S.Array(
-  RecurringCharge.pipe(T.XmlName("RecurringCharge")).annotate({ identifier: "RecurringCharge" }),
+  /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
+    identifier: "RecurringCharge",
+  }),
 );
 export interface ReservedCacheNode {
   ReservedCacheNodeId?: string;
@@ -3154,7 +3352,7 @@ export const ReservedCacheNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedCacheNode" }) as any as S.Schema<ReservedCacheNode>;
 export type ReservedCacheNodeList = ReservedCacheNode[];
 export const ReservedCacheNodeList = /*@__PURE__*/ S.Array(
-  ReservedCacheNode.pipe(T.XmlName("ReservedCacheNode")).annotate({
+  /*@__PURE__*/ ReservedCacheNode.pipe(/*@__PURE__*/ T.XmlName("ReservedCacheNode")).annotate({
     identifier: "ReservedCacheNode",
   }),
 );
@@ -3216,7 +3414,9 @@ export const ReservedCacheNodesOffering = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedCacheNodesOffering>;
 export type ReservedCacheNodesOfferingList = ReservedCacheNodesOffering[];
 export const ReservedCacheNodesOfferingList = /*@__PURE__*/ S.Array(
-  ReservedCacheNodesOffering.pipe(T.XmlName("ReservedCacheNodesOffering")).annotate({
+  /*@__PURE__*/ ReservedCacheNodesOffering.pipe(
+    /*@__PURE__*/ T.XmlName("ReservedCacheNodesOffering"),
+  ).annotate({
     identifier: "ReservedCacheNodesOffering",
   }),
 );
@@ -3282,7 +3482,9 @@ export const DescribeServerlessCacheSnapshotsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DescribeServerlessCacheSnapshotsRequest>;
 export type ServerlessCacheSnapshotList = ServerlessCacheSnapshot[];
 export const ServerlessCacheSnapshotList = /*@__PURE__*/ S.Array(
-  ServerlessCacheSnapshot.pipe(T.XmlName("ServerlessCacheSnapshot")).annotate({
+  /*@__PURE__*/ ServerlessCacheSnapshot.pipe(
+    /*@__PURE__*/ T.XmlName("ServerlessCacheSnapshot"),
+  ).annotate({
     identifier: "ServerlessCacheSnapshot",
   }),
 );
@@ -3359,7 +3561,9 @@ export const ServiceUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceUpdate" }) as any as S.Schema<ServiceUpdate>;
 export type ServiceUpdateList = ServiceUpdate[];
 export const ServiceUpdateList = /*@__PURE__*/ S.Array(
-  ServiceUpdate.pipe(T.XmlName("ServiceUpdate")).annotate({ identifier: "ServiceUpdate" }),
+  /*@__PURE__*/ ServiceUpdate.pipe(/*@__PURE__*/ T.XmlName("ServiceUpdate")).annotate({
+    identifier: "ServiceUpdate",
+  }),
 );
 export interface ServiceUpdatesMessage {
   Marker?: string;
@@ -3392,7 +3596,9 @@ export const DescribeSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeSnapshotsMessage" }) as any as S.Schema<DescribeSnapshotsMessage>;
 export type SnapshotList = Snapshot[];
 export const SnapshotList = /*@__PURE__*/ S.Array(
-  Snapshot.pipe(T.XmlName("Snapshot")).annotate({ identifier: "Snapshot" }),
+  /*@__PURE__*/ Snapshot.pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
+    identifier: "Snapshot",
+  }),
 );
 export interface DescribeSnapshotsListMessage {
   Marker?: string;
@@ -3487,7 +3693,9 @@ export const NodeGroupMemberUpdateStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupMemberUpdateStatus>;
 export type NodeGroupMemberUpdateStatusList = NodeGroupMemberUpdateStatus[];
 export const NodeGroupMemberUpdateStatusList = /*@__PURE__*/ S.Array(
-  NodeGroupMemberUpdateStatus.pipe(T.XmlName("NodeGroupMemberUpdateStatus")).annotate({
+  /*@__PURE__*/ NodeGroupMemberUpdateStatus.pipe(
+    /*@__PURE__*/ T.XmlName("NodeGroupMemberUpdateStatus"),
+  ).annotate({
     identifier: "NodeGroupMemberUpdateStatus",
   }),
 );
@@ -3503,7 +3711,9 @@ export const NodeGroupUpdateStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeGroupUpdateStatus" }) as any as S.Schema<NodeGroupUpdateStatus>;
 export type NodeGroupUpdateStatusList = NodeGroupUpdateStatus[];
 export const NodeGroupUpdateStatusList = /*@__PURE__*/ S.Array(
-  NodeGroupUpdateStatus.pipe(T.XmlName("NodeGroupUpdateStatus")).annotate({
+  /*@__PURE__*/ NodeGroupUpdateStatus.pipe(
+    /*@__PURE__*/ T.XmlName("NodeGroupUpdateStatus"),
+  ).annotate({
     identifier: "NodeGroupUpdateStatus",
   }),
 );
@@ -3531,7 +3741,9 @@ export const CacheNodeUpdateStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheNodeUpdateStatus" }) as any as S.Schema<CacheNodeUpdateStatus>;
 export type CacheNodeUpdateStatusList = CacheNodeUpdateStatus[];
 export const CacheNodeUpdateStatusList = /*@__PURE__*/ S.Array(
-  CacheNodeUpdateStatus.pipe(T.XmlName("CacheNodeUpdateStatus")).annotate({
+  /*@__PURE__*/ CacheNodeUpdateStatus.pipe(
+    /*@__PURE__*/ T.XmlName("CacheNodeUpdateStatus"),
+  ).annotate({
     identifier: "CacheNodeUpdateStatus",
   }),
 );
@@ -3581,7 +3793,9 @@ export const UpdateAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAction" }) as any as S.Schema<UpdateAction>;
 export type UpdateActionList = UpdateAction[];
 export const UpdateActionList = /*@__PURE__*/ S.Array(
-  UpdateAction.pipe(T.XmlName("UpdateAction")).annotate({ identifier: "UpdateAction" }),
+  /*@__PURE__*/ UpdateAction.pipe(/*@__PURE__*/ T.XmlName("UpdateAction")).annotate({
+    identifier: "UpdateAction",
+  }),
 );
 export interface UpdateActionsMessage {
   Marker?: string;
@@ -3727,7 +3941,9 @@ export const ReshardingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReshardingConfiguration" }) as any as S.Schema<ReshardingConfiguration>;
 export type ReshardingConfigurationList = ReshardingConfiguration[];
 export const ReshardingConfigurationList = /*@__PURE__*/ S.Array(
-  ReshardingConfiguration.pipe(T.XmlName("ReshardingConfiguration")).annotate({
+  /*@__PURE__*/ ReshardingConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("ReshardingConfiguration"),
+  ).annotate({
     identifier: "ReshardingConfiguration",
   }),
 );
@@ -3745,7 +3961,9 @@ export const RegionalConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalConfiguration" }) as any as S.Schema<RegionalConfiguration>;
 export type RegionalConfigurationList = RegionalConfiguration[];
 export const RegionalConfigurationList = /*@__PURE__*/ S.Array(
-  RegionalConfiguration.pipe(T.XmlName("RegionalConfiguration")).annotate({
+  /*@__PURE__*/ RegionalConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("RegionalConfiguration"),
+  ).annotate({
     identifier: "RegionalConfiguration",
   }),
 );
@@ -3904,7 +4122,7 @@ export const ParameterNameValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParameterNameValue" }) as any as S.Schema<ParameterNameValue>;
 export type ParameterNameValueList = ParameterNameValue[];
 export const ParameterNameValueList = /*@__PURE__*/ S.Array(
-  ParameterNameValue.pipe(T.XmlName("ParameterNameValue")).annotate({
+  /*@__PURE__*/ ParameterNameValue.pipe(/*@__PURE__*/ T.XmlName("ParameterNameValue")).annotate({
     identifier: "ParameterNameValue",
   }),
 );
@@ -4062,11 +4280,11 @@ export const ModifyReplicationGroupResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyReplicationGroupResult>;
 export type NodeGroupsToRemoveList = string[];
 export const NodeGroupsToRemoveList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("NodeGroupToRemove")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NodeGroupToRemove")),
 );
 export type NodeGroupsToRetainList = string[];
 export const NodeGroupsToRetainList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("NodeGroupToRetain")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NodeGroupToRetain")),
 );
 export interface ModifyReplicationGroupShardConfigurationMessage {
   ReplicationGroupId?: string;

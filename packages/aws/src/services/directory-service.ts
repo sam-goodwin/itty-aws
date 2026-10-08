@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://directoryservice.amazonaws.com/doc/2015-04-16/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://directoryservice.amazonaws.com/doc/2015-04-16/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Directory Service",
   serviceShapeName: "DirectoryService_20150416",
 });
-const auth = T.AwsAuthSigv4({ name: "ds" });
-const ver = T.ServiceVersion("2015-04-16");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ds" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-04-16");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,203 +74,290 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withAuthError) {}
 export class ADAssessmentLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ADAssessmentLimitExceededException>()(
     "ADAssessmentLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class AuthenticationFailedException
   extends /*@__PURE__*/ S.TaggedError<AuthenticationFailedException>()(
     "AuthenticationFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class CertificateAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<CertificateAlreadyExistsException>()(
     "CertificateAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withAlreadyExistsError) {}
 export class CertificateDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<CertificateDoesNotExistException>()(
     "CertificateDoesNotExistException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class CertificateInUseException
   extends /*@__PURE__*/ S.TaggedError<CertificateInUseException>()("CertificateInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class CertificateLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CertificateLimitExceededException>()(
     "CertificateLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class ClientException
   extends /*@__PURE__*/ S.TaggedError<ClientException>()("ClientException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class DirectoryAlreadyInRegionException
   extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadyInRegionException>()(
     "DirectoryAlreadyInRegionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryAlreadySharedException
   extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadySharedException>()(
     "DirectoryAlreadySharedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<DirectoryDoesNotExistException>()(
     "DirectoryDoesNotExistException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryInDesiredStateException
   extends /*@__PURE__*/ S.TaggedError<DirectoryInDesiredStateException>()(
     "DirectoryInDesiredStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<DirectoryLimitExceededException>()(
     "DirectoryLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryNotSharedException
   extends /*@__PURE__*/ S.TaggedError<DirectoryNotSharedException>()(
     "DirectoryNotSharedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DirectoryUnavailableException
   extends /*@__PURE__*/ S.TaggedError<DirectoryUnavailableException>()(
     "DirectoryUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DisableAlreadyInProgressException
   extends /*@__PURE__*/ S.TaggedError<DisableAlreadyInProgressException>()(
     "DisableAlreadyInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class DomainControllerLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<DomainControllerLimitExceededException>()(
     "DomainControllerLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class EnableAlreadyInProgressException
   extends /*@__PURE__*/ S.TaggedError<EnableAlreadyInProgressException>()(
     "EnableAlreadyInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class EntityAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withAlreadyExistsError) {}
 export class EntityDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<EntityDoesNotExistException>()(
     "EntityDoesNotExistException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class IncompatibleSettingsException
   extends /*@__PURE__*/ S.TaggedError<IncompatibleSettingsException>()(
     "IncompatibleSettingsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class InsufficientPermissionsException
   extends /*@__PURE__*/ S.TaggedError<InsufficientPermissionsException>()(
     "InsufficientPermissionsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class InvalidCertificateException
   extends /*@__PURE__*/ S.TaggedError<InvalidCertificateException>()(
     "InvalidCertificateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class InvalidClientAuthStatusException
   extends /*@__PURE__*/ S.TaggedError<InvalidClientAuthStatusException>()(
     "InvalidClientAuthStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class InvalidLDAPSStatusException
   extends /*@__PURE__*/ S.TaggedError<InvalidLDAPSStatusException>()(
     "InvalidLDAPSStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()("InvalidNextTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidPasswordException
   extends /*@__PURE__*/ S.TaggedError<InvalidPasswordException>()("InvalidPasswordException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidTargetException
   extends /*@__PURE__*/ S.TaggedError<InvalidTargetException>()("InvalidTargetException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class IpRouteLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<IpRouteLimitExceededException>()(
     "IpRouteLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class NoAvailableCertificateException
   extends /*@__PURE__*/ S.TaggedError<NoAvailableCertificateException>()(
     "NoAvailableCertificateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class OrganizationsException
   extends /*@__PURE__*/ S.TaggedError<OrganizationsException>()("OrganizationsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class RegionLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<RegionLimitExceededException>()(
     "RegionLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()("ServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ShareLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ShareLimitExceededException>()(
     "ShareLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class SnapshotLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<SnapshotLimitExceededException>()(
     "SnapshotLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class TagLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()("TagLimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class UnsupportedSettingsException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedSettingsException>()(
     "UnsupportedSettingsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class UserDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<UserDoesNotExistException>()("UserDoesNotExistException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    RequestId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    RequestId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export type DirectoryId = string;
 export interface AcceptSharedDirectoryRequest {
@@ -1798,7 +1885,7 @@ export type DirectoryConfigurationSettingRequestDetailedStatus = {
 };
 export const DirectoryConfigurationSettingRequestDetailedStatus = /*@__PURE__*/ S.Record(
   S.String,
-  DirectoryConfigurationStatus.pipe(S.optional),
+  /*@__PURE__*/ DirectoryConfigurationStatus.pipe(S.optional),
 );
 export type DirectoryConfigurationSettingRequestStatusMessage = string;
 export type DirectoryConfigurationSettingLastUpdatedDateTime = Date;

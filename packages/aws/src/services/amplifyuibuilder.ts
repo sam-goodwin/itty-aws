@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "AmplifyUIBuilder", serviceShapeName: "AmplifyUIBuilder" });
-const auth = T.AwsAuthSigv4({ name: "amplifyuibuilder" });
-const ver = T.ServiceVersion("2021-08-11");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "AmplifyUIBuilder",
+  serviceShapeName: "AmplifyUIBuilder",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "amplifyuibuilder" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-08-11");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,44 +78,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type ComponentName = string;
 export type ComponentType = string;
@@ -133,10 +136,13 @@ export const FormBindingElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ element: S.String, property: S.String }),
 ).annotate({ identifier: "FormBindingElement" }) as any as S.Schema<FormBindingElement>;
 export type FormBindings = { [key: string]: FormBindingElement | undefined };
-export const FormBindings = /*@__PURE__*/ S.Record(S.String, FormBindingElement.pipe(S.optional));
+export const FormBindings = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FormBindingElement.pipe(S.optional),
+);
 export type ComponentPropertyList = ComponentProperty[];
 export const ComponentPropertyList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ComponentProperty> => ComponentProperty).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => ComponentProperty).annotate({
     identifier: "ComponentProperty",
   }),
 ) as any as S.Schema<ComponentPropertyList>;
@@ -215,7 +221,7 @@ export const ComponentProperty = /*@__PURE__*/ S.suspend(() =>
 export type ComponentProperties = { [key: string]: ComponentProperty | undefined };
 export const ComponentProperties = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<ComponentProperty> => ComponentProperty)
+  /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => ComponentProperty)
     .annotate({ identifier: "ComponentProperty" })
     .pipe(S.optional),
 );
@@ -266,7 +272,10 @@ export const ComponentEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComponentEvent" }) as any as S.Schema<ComponentEvent>;
 export type ComponentEvents = { [key: string]: ComponentEvent | undefined };
-export const ComponentEvents = /*@__PURE__*/ S.Record(S.String, ComponentEvent.pipe(S.optional));
+export const ComponentEvents = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ComponentEvent.pipe(S.optional),
+);
 export interface ComponentChild {
   componentType: string;
   name: string;
@@ -289,20 +298,26 @@ export const ComponentChild = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComponentChild" }) as any as S.Schema<ComponentChild>;
 export type ComponentChildList = ComponentChild[];
 export const ComponentChildList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ComponentChild> => ComponentChild).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<ComponentChild> => ComponentChild).annotate({
     identifier: "ComponentChild",
   }),
 ) as any as S.Schema<ComponentChildList>;
 export type ComponentVariantValues = { [key: string]: string | undefined };
-export const ComponentVariantValues = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ComponentVariantValues = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ComponentOverridesValue = { [key: string]: string | undefined };
-export const ComponentOverridesValue = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ComponentOverridesValue = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ComponentOverrides = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
 export const ComponentOverrides = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentOverridesValue.pipe(S.optional),
+  /*@__PURE__*/ ComponentOverridesValue.pipe(S.optional),
 );
 export interface ComponentVariant {
   variantValues?: { [key: string]: string | undefined };
@@ -337,7 +352,9 @@ export const Predicate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Predicate" }) as any as S.Schema<Predicate>;
 export type PredicateList = Predicate[];
 export const PredicateList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Predicate> => Predicate).annotate({ identifier: "Predicate" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Predicate> => Predicate).annotate({
+    identifier: "Predicate",
+  }),
 ) as any as S.Schema<PredicateList>;
 export interface ComponentBindingPropertiesValueProperties {
   model?: string;
@@ -382,7 +399,7 @@ export type ComponentBindingProperties = {
 };
 export const ComponentBindingProperties = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentBindingPropertiesValue.pipe(S.optional),
+  /*@__PURE__*/ ComponentBindingPropertiesValue.pipe(S.optional),
 );
 export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = S.String;
@@ -419,12 +436,12 @@ export type ComponentCollectionProperties = {
 };
 export const ComponentCollectionProperties = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentDataConfiguration.pipe(S.optional),
+  /*@__PURE__*/ ComponentDataConfiguration.pipe(S.optional),
 );
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateComponentData {
   name: string;
   sourceId?: string;
@@ -549,9 +566,9 @@ export type FieldPosition =
   | { fixed?: never; rightOf: string; below?: never }
   | { fixed?: never; rightOf?: never; below: string };
 export const FieldPosition = /*@__PURE__*/ S.Union([
-  S.Struct({ fixed: FixedPosition }),
-  S.Struct({ rightOf: S.String }),
-  S.Struct({ below: S.String }),
+  /*@__PURE__*/ S.Struct({ fixed: FixedPosition }),
+  /*@__PURE__*/ S.Struct({ rightOf: S.String }),
+  /*@__PURE__*/ S.Struct({ below: S.String }),
 ]);
 export interface FormInputValuePropertyBindingProperties {
   property: string;
@@ -564,7 +581,7 @@ export const FormInputValuePropertyBindingProperties = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<FormInputValuePropertyBindingProperties>;
 export type FormInputValuePropertyList = FormInputValueProperty[];
 export const FormInputValuePropertyList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<FormInputValueProperty> => FormInputValueProperty).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<FormInputValueProperty> => FormInputValueProperty).annotate({
     identifier: "FormInputValueProperty",
   }),
 ) as any as S.Schema<FormInputValuePropertyList>;
@@ -618,7 +635,7 @@ export type FormInputBindingProperties = {
 };
 export const FormInputBindingProperties = /*@__PURE__*/ S.Record(
   S.String,
-  FormInputBindingPropertiesValue.pipe(S.optional),
+  /*@__PURE__*/ FormInputBindingPropertiesValue.pipe(S.optional),
 );
 export interface ValueMappings {
   values: ValueMapping[];
@@ -725,13 +742,16 @@ export const FieldConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldConfig" }) as any as S.Schema<FieldConfig>;
 export type FieldsMap = { [key: string]: FieldConfig | undefined };
-export const FieldsMap = /*@__PURE__*/ S.Record(S.String, FieldConfig.pipe(S.optional));
+export const FieldsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FieldConfig.pipe(S.optional),
+);
 export type FormStyleConfig =
   | { tokenReference: string; value?: never }
   | { tokenReference?: never; value: string };
 export const FormStyleConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ tokenReference: S.String }),
-  S.Struct({ value: S.String }),
+  /*@__PURE__*/ S.Struct({ tokenReference: S.String }),
+  /*@__PURE__*/ S.Struct({ value: S.String }),
 ]);
 export interface FormStyle {
   horizontalGap?: FormStyleConfig;
@@ -766,7 +786,7 @@ export const SectionalElement = /*@__PURE__*/ S.suspend(() =>
 export type SectionalElementMap = { [key: string]: SectionalElement | undefined };
 export const SectionalElementMap = /*@__PURE__*/ S.Record(
   S.String,
-  SectionalElement.pipe(S.optional),
+  /*@__PURE__*/ SectionalElement.pipe(S.optional),
 );
 export type FormButtonsPosition = "top" | "bottom" | "top_and_bottom" | (string & {});
 export const FormButtonsPosition = S.String;
@@ -912,7 +932,9 @@ export const ThemeValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThemeValues" }) as any as S.Schema<ThemeValues>;
 export type ThemeValuesList = ThemeValues[];
 export const ThemeValuesList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ThemeValues> => ThemeValues).annotate({ identifier: "ThemeValues" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<ThemeValues> => ThemeValues).annotate({
+    identifier: "ThemeValues",
+  }),
 ) as any as S.Schema<ThemeValuesList>;
 export interface CreateThemeData {
   name: string;
@@ -1255,12 +1277,15 @@ export type ApiConfiguration =
   | { graphQLConfig?: never; dataStoreConfig: DataStoreRenderConfig; noApiConfig?: never }
   | { graphQLConfig?: never; dataStoreConfig?: never; noApiConfig: NoApiRenderConfig };
 export const ApiConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ graphQLConfig: GraphQLRenderConfig }),
-  S.Struct({ dataStoreConfig: DataStoreRenderConfig }),
-  S.Struct({ noApiConfig: NoApiRenderConfig }),
+  /*@__PURE__*/ S.Struct({ graphQLConfig: GraphQLRenderConfig }),
+  /*@__PURE__*/ S.Struct({ dataStoreConfig: DataStoreRenderConfig }),
+  /*@__PURE__*/ S.Struct({ noApiConfig: NoApiRenderConfig }),
 ]);
 export type ReactCodegenDependencies = { [key: string]: string | undefined };
-export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ReactStartCodegenJobData {
   module?: JSModule;
   target?: JSTarget;
@@ -1283,7 +1308,7 @@ export const ReactStartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReactStartCodegenJobData" }) as any as S.Schema<ReactStartCodegenJobData>;
 export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
 export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ react: ReactStartCodegenJobData }),
+  /*@__PURE__*/ S.Struct({ react: ReactStartCodegenJobData }),
 ]);
 export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
 export const CodegenJobGenericDataSourceType = S.String;
@@ -1363,7 +1388,7 @@ export const CodegenGenericDataField = /*@__PURE__*/ S.suspend(() =>
 export type CodegenGenericDataFields = { [key: string]: CodegenGenericDataField | undefined };
 export const CodegenGenericDataFields = /*@__PURE__*/ S.Record(
   S.String,
-  CodegenGenericDataField.pipe(S.optional),
+  /*@__PURE__*/ CodegenGenericDataField.pipe(S.optional),
 );
 export type CodegenPrimaryKeysList = string[];
 export const CodegenPrimaryKeysList = /*@__PURE__*/ S.Array(S.String);
@@ -1382,7 +1407,7 @@ export const CodegenGenericDataModel = /*@__PURE__*/ S.suspend(() =>
 export type CodegenGenericDataModels = { [key: string]: CodegenGenericDataModel | undefined };
 export const CodegenGenericDataModels = /*@__PURE__*/ S.Record(
   S.String,
-  CodegenGenericDataModel.pipe(S.optional),
+  /*@__PURE__*/ CodegenGenericDataModel.pipe(S.optional),
 );
 export type CodegenGenericDataEnumValuesList = string[];
 export const CodegenGenericDataEnumValuesList = /*@__PURE__*/ S.Array(S.String);
@@ -1395,14 +1420,14 @@ export const CodegenGenericDataEnum = /*@__PURE__*/ S.suspend(() =>
 export type CodegenGenericDataEnums = { [key: string]: CodegenGenericDataEnum | undefined };
 export const CodegenGenericDataEnums = /*@__PURE__*/ S.Record(
   S.String,
-  CodegenGenericDataEnum.pipe(S.optional),
+  /*@__PURE__*/ CodegenGenericDataEnum.pipe(S.optional),
 );
 export type CodegenGenericDataNonModelFields = {
   [key: string]: CodegenGenericDataField | undefined;
 };
 export const CodegenGenericDataNonModelFields = /*@__PURE__*/ S.Record(
   S.String,
-  CodegenGenericDataField.pipe(S.optional),
+  /*@__PURE__*/ CodegenGenericDataField.pipe(S.optional),
 );
 export interface CodegenGenericDataNonModel {
   fields: { [key: string]: CodegenGenericDataField | undefined };
@@ -1415,7 +1440,7 @@ export const CodegenGenericDataNonModel = /*@__PURE__*/ S.suspend(() =>
 export type CodegenGenericDataNonModels = { [key: string]: CodegenGenericDataNonModel | undefined };
 export const CodegenGenericDataNonModels = /*@__PURE__*/ S.Record(
   S.String,
-  CodegenGenericDataNonModel.pipe(S.optional),
+  /*@__PURE__*/ CodegenGenericDataNonModel.pipe(S.optional),
 );
 export interface CodegenJobGenericDataSchema {
   dataSourceType: CodegenJobGenericDataSourceType;
@@ -1586,7 +1611,10 @@ export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetMetadataRequest" }) as any as S.Schema<GetMetadataRequest>;
 export type FeaturesMap = { [key: string]: string | undefined };
-export const FeaturesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FeaturesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetMetadataResponse {
   features: { [key: string]: string | undefined };
 }

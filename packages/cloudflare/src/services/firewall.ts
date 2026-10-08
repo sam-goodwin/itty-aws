@@ -159,7 +159,7 @@ export type RulesBulkDeleteResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkDeleteResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -268,7 +268,7 @@ export type RulesBulkEditResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -375,7 +375,7 @@ export type RulesBulkUpdateResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkUpdateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -545,7 +545,7 @@ export type AccessRulesCreateRequestConfiguration =
   | AccessRulesCreateRequestConfigurationASNConfiguration
   | AccessRulesCreateRequestConfigurationCountryConfiguration;
 export const AccessRulesCreateRequestConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -714,7 +714,7 @@ export type AccessRulesCreateResponseConfiguration =
   | AccessRulesCreateResponseConfigurationASNConfiguration
   | AccessRulesCreateResponseConfigurationCountryConfiguration;
 export const AccessRulesCreateResponseConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -861,7 +861,7 @@ export type LockdownsCreateRequestConfigurations =
   | LockdownsCreateRequestConfigurationsLockdownIPConfiguration
   | LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration;
 export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -1045,7 +1045,7 @@ export type RulesCreateResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesCreateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -1359,7 +1359,7 @@ export type RulesDeleteResponseFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesDeleteResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -1631,7 +1631,7 @@ export type AccessRulesGetResponseConfiguration =
   | AccessRulesGetResponseConfigurationASNConfiguration
   | AccessRulesGetResponseConfigurationCountryConfiguration;
 export const AccessRulesGetResponseConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -1820,7 +1820,7 @@ export type RulesGetResponseFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesGetResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -2233,7 +2233,7 @@ export type AccessRulesListResultItemConfiguration =
   | AccessRulesListResultItemConfigurationASNConfiguration
   | AccessRulesListResultItemConfigurationCountryConfiguration;
 export const AccessRulesListResultItemConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -2514,7 +2514,7 @@ export type RulesListResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesListResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -3067,7 +3067,7 @@ export type WafPackagesRulesListResultItem =
   | WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule
   | WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule;
 export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "allowedModes", "description", "group", "mode", "packageId", "priority"],
     ["id", "allowedModes", "defaultMode", "description", "group", "mode", "packageId", "priority"],
     ["id", "allowedModes", "description", "group", "mode", "packageId", "priority"],
@@ -3238,7 +3238,7 @@ export type AccessRulesEditRequestConfiguration =
   | AccessRulesEditRequestConfigurationASNConfiguration
   | AccessRulesEditRequestConfigurationCountryConfiguration;
 export const AccessRulesEditRequestConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -3408,7 +3408,7 @@ export type AccessRulesEditResponseConfiguration =
   | AccessRulesEditResponseConfigurationASNConfiguration
   | AccessRulesEditResponseConfigurationCountryConfiguration;
 export const AccessRulesEditResponseConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],
@@ -3549,7 +3549,7 @@ export type RulesEditResultItemFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -3880,7 +3880,7 @@ export type WafPackagesRulesEditResult =
   | WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule
   | WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule;
 export const WafPackagesRulesEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "allowedModes", "description", "group", "mode", "packageId", "priority"],
     ["id", "allowedModes", "defaultMode", "description", "group", "mode", "packageId", "priority"],
     ["id", "allowedModes", "description", "group", "mode", "packageId", "priority"],
@@ -4043,7 +4043,7 @@ export type RulesUpdateResponseFilter =
   | RulesBulkDeleteResultItemFilterFirewallFilter
   | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesUpdateResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
     ["id", "deleted"],
   ]),
@@ -4193,7 +4193,7 @@ export type UaRulesUpdateRequestConfiguration =
   | UaRulesUpdateRequestConfigurationASNConfiguration
   | UaRulesUpdateRequestConfigurationCountryConfiguration;
 export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["target", "value"],
       ["target", "value"],

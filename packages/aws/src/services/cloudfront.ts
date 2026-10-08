@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cloudfront.amazonaws.com/doc/2020-05-31/");
-const svc = T.AwsApiService({ sdkId: "CloudFront", serviceShapeName: "Cloudfront2020_05_31" });
-const auth = T.AwsAuthSigv4({ name: "cloudfront" });
-const ver = T.ServiceVersion("2020-05-31");
-const proto = T.AwsProtocolsRestXml();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudfront.amazonaws.com/doc/2020-05-31/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudFront",
+  serviceShapeName: "Cloudfront2020_05_31",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudfront" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-05-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestXml();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -119,914 +122,914 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDenied
   extends /*@__PURE__*/ S.TaggedError<AccessDenied>()(
     "AccessDenied",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BatchTooLarge
   extends /*@__PURE__*/ S.TaggedError<BatchTooLarge>()(
     "BatchTooLarge",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class CachePolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<CachePolicyAlreadyExists>()(
     "CachePolicyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class CachePolicyInUse
   extends /*@__PURE__*/ S.TaggedError<CachePolicyInUse>()(
     "CachePolicyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CannotChangeImmutablePublicKeyFields
   extends /*@__PURE__*/ S.TaggedError<CannotChangeImmutablePublicKeyFields>()(
     "CannotChangeImmutablePublicKeyFields",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CannotDeleteEntityWhileInUse
   extends /*@__PURE__*/ S.TaggedError<CannotDeleteEntityWhileInUse>()(
     "CannotDeleteEntityWhileInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CannotUpdateEntityWhileInUse
   extends /*@__PURE__*/ S.TaggedError<CannotUpdateEntityWhileInUse>()(
     "CannotUpdateEntityWhileInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CloudFrontOriginAccessIdentityAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<CloudFrontOriginAccessIdentityAlreadyExists>()(
     "CloudFrontOriginAccessIdentityAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class CloudFrontOriginAccessIdentityInUse
   extends /*@__PURE__*/ S.TaggedError<CloudFrontOriginAccessIdentityInUse>()(
     "CloudFrontOriginAccessIdentityInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CNAMEAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<CNAMEAlreadyExists>()(
     "CNAMEAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ContinuousDeploymentPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ContinuousDeploymentPolicyAlreadyExists>()(
     "ContinuousDeploymentPolicyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ContinuousDeploymentPolicyInUse
   extends /*@__PURE__*/ S.TaggedError<ContinuousDeploymentPolicyInUse>()(
     "ContinuousDeploymentPolicyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class DistributionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<DistributionAlreadyExists>()(
     "DistributionAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class DistributionNotDisabled
   extends /*@__PURE__*/ S.TaggedError<DistributionNotDisabled>()(
     "DistributionNotDisabled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EntityAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExists>()(
     "EntityAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<EntityLimitExceeded>()(
     "EntityLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class EntityNotFound
   extends /*@__PURE__*/ S.TaggedError<EntityNotFound>()(
     "EntityNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class EntitySizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<EntitySizeLimitExceeded>()(
     "EntitySizeLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class FieldLevelEncryptionConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<FieldLevelEncryptionConfigAlreadyExists>()(
     "FieldLevelEncryptionConfigAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FieldLevelEncryptionConfigInUse
   extends /*@__PURE__*/ S.TaggedError<FieldLevelEncryptionConfigInUse>()(
     "FieldLevelEncryptionConfigInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FieldLevelEncryptionProfileAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<FieldLevelEncryptionProfileAlreadyExists>()(
     "FieldLevelEncryptionProfileAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FieldLevelEncryptionProfileInUse
   extends /*@__PURE__*/ S.TaggedError<FieldLevelEncryptionProfileInUse>()(
     "FieldLevelEncryptionProfileInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FieldLevelEncryptionProfileSizeExceeded
   extends /*@__PURE__*/ S.TaggedError<FieldLevelEncryptionProfileSizeExceeded>()(
     "FieldLevelEncryptionProfileSizeExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FunctionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<FunctionAlreadyExists>()(
     "FunctionAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FunctionInUse
   extends /*@__PURE__*/ S.TaggedError<FunctionInUse>()(
     "FunctionInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FunctionSizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<FunctionSizeLimitExceeded>()(
     "FunctionSizeLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class IllegalDelete
   extends /*@__PURE__*/ S.TaggedError<IllegalDelete>()(
     "IllegalDelete",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
   extends /*@__PURE__*/ S.TaggedError<IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior>()(
     "IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalOriginAccessConfiguration
   extends /*@__PURE__*/ S.TaggedError<IllegalOriginAccessConfiguration>()(
     "IllegalOriginAccessConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalUpdate
   extends /*@__PURE__*/ S.TaggedError<IllegalUpdate>()(
     "IllegalUpdate",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InconsistentQuantities
   extends /*@__PURE__*/ S.TaggedError<InconsistentQuantities>()(
     "InconsistentQuantities",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgument
   extends /*@__PURE__*/ S.TaggedError<InvalidArgument>()(
     "InvalidArgument",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAssociation
   extends /*@__PURE__*/ S.TaggedError<InvalidAssociation>()(
     "InvalidAssociation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidDefaultRootObject
   extends /*@__PURE__*/ S.TaggedError<InvalidDefaultRootObject>()(
     "InvalidDefaultRootObject",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDomainNameForOriginAccessControl
   extends /*@__PURE__*/ S.TaggedError<InvalidDomainNameForOriginAccessControl>()(
     "InvalidDomainNameForOriginAccessControl",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidErrorCode
   extends /*@__PURE__*/ S.TaggedError<InvalidErrorCode>()(
     "InvalidErrorCode",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidForwardCookies
   extends /*@__PURE__*/ S.TaggedError<InvalidForwardCookies>()(
     "InvalidForwardCookies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFunctionAssociation
   extends /*@__PURE__*/ S.TaggedError<InvalidFunctionAssociation>()(
     "InvalidFunctionAssociation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGeoRestrictionParameter
   extends /*@__PURE__*/ S.TaggedError<InvalidGeoRestrictionParameter>()(
     "InvalidGeoRestrictionParameter",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidHeadersForS3Origin
   extends /*@__PURE__*/ S.TaggedError<InvalidHeadersForS3Origin>()(
     "InvalidHeadersForS3Origin",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIfMatchVersion
   extends /*@__PURE__*/ S.TaggedError<InvalidIfMatchVersion>()(
     "InvalidIfMatchVersion",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionAssociation
   extends /*@__PURE__*/ S.TaggedError<InvalidLambdaFunctionAssociation>()(
     "InvalidLambdaFunctionAssociation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLocationCode
   extends /*@__PURE__*/ S.TaggedError<InvalidLocationCode>()(
     "InvalidLocationCode",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMinimumProtocolVersion
   extends /*@__PURE__*/ S.TaggedError<InvalidMinimumProtocolVersion>()(
     "InvalidMinimumProtocolVersion",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOrigin
   extends /*@__PURE__*/ S.TaggedError<InvalidOrigin>()(
     "InvalidOrigin",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginAccessControl
   extends /*@__PURE__*/ S.TaggedError<InvalidOriginAccessControl>()(
     "InvalidOriginAccessControl",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginAccessIdentity
   extends /*@__PURE__*/ S.TaggedError<InvalidOriginAccessIdentity>()(
     "InvalidOriginAccessIdentity",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginKeepaliveTimeout
   extends /*@__PURE__*/ S.TaggedError<InvalidOriginKeepaliveTimeout>()(
     "InvalidOriginKeepaliveTimeout",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginReadTimeout
   extends /*@__PURE__*/ S.TaggedError<InvalidOriginReadTimeout>()(
     "InvalidOriginReadTimeout",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidProtocolSettings
   extends /*@__PURE__*/ S.TaggedError<InvalidProtocolSettings>()(
     "InvalidProtocolSettings",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryStringParameters
   extends /*@__PURE__*/ S.TaggedError<InvalidQueryStringParameters>()(
     "InvalidQueryStringParameters",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRelativePath
   extends /*@__PURE__*/ S.TaggedError<InvalidRelativePath>()(
     "InvalidRelativePath",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequiredProtocol
   extends /*@__PURE__*/ S.TaggedError<InvalidRequiredProtocol>()(
     "InvalidRequiredProtocol",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResponseCode
   extends /*@__PURE__*/ S.TaggedError<InvalidResponseCode>()(
     "InvalidResponseCode",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagging
   extends /*@__PURE__*/ S.TaggedError<InvalidTagging>()(
     "InvalidTagging",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTTLOrder
   extends /*@__PURE__*/ S.TaggedError<InvalidTTLOrder>()(
     "InvalidTTLOrder",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidViewerCertificate
   extends /*@__PURE__*/ S.TaggedError<InvalidViewerCertificate>()(
     "InvalidViewerCertificate",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidWebACLId
   extends /*@__PURE__*/ S.TaggedError<InvalidWebACLId>()(
     "InvalidWebACLId",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeyGroupAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<KeyGroupAlreadyExists>()(
     "KeyGroupAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class MissingBody
   extends /*@__PURE__*/ S.TaggedError<MissingBody>()(
     "MissingBody",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MonitoringSubscriptionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<MonitoringSubscriptionAlreadyExists>()(
     "MonitoringSubscriptionAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class NoSuchCachePolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchCachePolicy>()(
     "NoSuchCachePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCloudFrontOriginAccessIdentity
   extends /*@__PURE__*/ S.TaggedError<NoSuchCloudFrontOriginAccessIdentity>()(
     "NoSuchCloudFrontOriginAccessIdentity",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchContinuousDeploymentPolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchContinuousDeploymentPolicy>()(
     "NoSuchContinuousDeploymentPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDistribution
   extends /*@__PURE__*/ S.TaggedError<NoSuchDistribution>()(
     "NoSuchDistribution",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFieldLevelEncryptionConfig
   extends /*@__PURE__*/ S.TaggedError<NoSuchFieldLevelEncryptionConfig>()(
     "NoSuchFieldLevelEncryptionConfig",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFieldLevelEncryptionProfile
   extends /*@__PURE__*/ S.TaggedError<NoSuchFieldLevelEncryptionProfile>()(
     "NoSuchFieldLevelEncryptionProfile",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFunctionExists
   extends /*@__PURE__*/ S.TaggedError<NoSuchFunctionExists>()(
     "NoSuchFunctionExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchInvalidation
   extends /*@__PURE__*/ S.TaggedError<NoSuchInvalidation>()(
     "NoSuchInvalidation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchMonitoringSubscription
   extends /*@__PURE__*/ S.TaggedError<NoSuchMonitoringSubscription>()(
     "NoSuchMonitoringSubscription",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOrigin
   extends /*@__PURE__*/ S.TaggedError<NoSuchOrigin>()(
     "NoSuchOrigin",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOriginAccessControl
   extends /*@__PURE__*/ S.TaggedError<NoSuchOriginAccessControl>()(
     "NoSuchOriginAccessControl",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchOriginRequestPolicy>()(
     "NoSuchOriginRequestPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchPublicKey
   extends /*@__PURE__*/ S.TaggedError<NoSuchPublicKey>()(
     "NoSuchPublicKey",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchRealtimeLogConfig
   extends /*@__PURE__*/ S.TaggedError<NoSuchRealtimeLogConfig>()(
     "NoSuchRealtimeLogConfig",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchResource
   extends /*@__PURE__*/ S.TaggedError<NoSuchResource>()(
     "NoSuchResource",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchResponseHeadersPolicy>()(
     "NoSuchResponseHeadersPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchStreamingDistribution
   extends /*@__PURE__*/ S.TaggedError<NoSuchStreamingDistribution>()(
     "NoSuchStreamingDistribution",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OriginAccessControlAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<OriginAccessControlAlreadyExists>()(
     "OriginAccessControlAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OriginAccessControlInUse
   extends /*@__PURE__*/ S.TaggedError<OriginAccessControlInUse>()(
     "OriginAccessControlInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class OriginRequestPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<OriginRequestPolicyAlreadyExists>()(
     "OriginRequestPolicyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OriginRequestPolicyInUse
   extends /*@__PURE__*/ S.TaggedError<OriginRequestPolicyInUse>()(
     "OriginRequestPolicyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class PreconditionFailed
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailed>()(
     "PreconditionFailed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class PublicKeyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<PublicKeyAlreadyExists>()(
     "PublicKeyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class PublicKeyInUse
   extends /*@__PURE__*/ S.TaggedError<PublicKeyInUse>()(
     "PublicKeyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class QueryArgProfileEmpty
   extends /*@__PURE__*/ S.TaggedError<QueryArgProfileEmpty>()(
     "QueryArgProfileEmpty",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RealtimeLogConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<RealtimeLogConfigAlreadyExists>()(
     "RealtimeLogConfigAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class RealtimeLogConfigInUse
   extends /*@__PURE__*/ S.TaggedError<RealtimeLogConfigInUse>()(
     "RealtimeLogConfigInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class RealtimeLogConfigOwnerMismatch
   extends /*@__PURE__*/ S.TaggedError<RealtimeLogConfigOwnerMismatch>()(
     "RealtimeLogConfigOwnerMismatch",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceInUse
   extends /*@__PURE__*/ S.TaggedError<ResourceInUse>()(
     "ResourceInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class ResourceNotDisabled
   extends /*@__PURE__*/ S.TaggedError<ResourceNotDisabled>()(
     "ResourceNotDisabled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResponseHeadersPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ResponseHeadersPolicyAlreadyExists>()(
     "ResponseHeadersPolicyAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResponseHeadersPolicyInUse
   extends /*@__PURE__*/ S.TaggedError<ResponseHeadersPolicyInUse>()(
     "ResponseHeadersPolicyInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class StagingDistributionInUse
   extends /*@__PURE__*/ S.TaggedError<StagingDistributionInUse>()(
     "StagingDistributionInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class StreamingDistributionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<StreamingDistributionAlreadyExists>()(
     "StreamingDistributionAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class StreamingDistributionNotDisabled
   extends /*@__PURE__*/ S.TaggedError<StreamingDistributionNotDisabled>()(
     "StreamingDistributionNotDisabled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class TestFunctionFailed
   extends /*@__PURE__*/ S.TaggedError<TestFunctionFailed>()(
     "TestFunctionFailed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class TooLongCSPInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedError<TooLongCSPInResponseHeadersPolicy>()(
     "TooLongCSPInResponseHeadersPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCacheBehaviors
   extends /*@__PURE__*/ S.TaggedError<TooManyCacheBehaviors>()(
     "TooManyCacheBehaviors",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCachePolicies
   extends /*@__PURE__*/ S.TaggedError<TooManyCachePolicies>()(
     "TooManyCachePolicies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCertificates
   extends /*@__PURE__*/ S.TaggedError<TooManyCertificates>()(
     "TooManyCertificates",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCloudFrontOriginAccessIdentities
   extends /*@__PURE__*/ S.TaggedError<TooManyCloudFrontOriginAccessIdentities>()(
     "TooManyCloudFrontOriginAccessIdentities",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyContinuousDeploymentPolicies
   extends /*@__PURE__*/ S.TaggedError<TooManyContinuousDeploymentPolicies>()(
     "TooManyContinuousDeploymentPolicies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookieNamesInWhiteList
   extends /*@__PURE__*/ S.TaggedError<TooManyCookieNamesInWhiteList>()(
     "TooManyCookieNamesInWhiteList",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookiesInCachePolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyCookiesInCachePolicy>()(
     "TooManyCookiesInCachePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookiesInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyCookiesInOriginRequestPolicy>()(
     "TooManyCookiesInOriginRequestPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCustomHeadersInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyCustomHeadersInResponseHeadersPolicy>()(
     "TooManyCustomHeadersInResponseHeadersPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionCNAMEs
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionCNAMEs>()(
     "TooManyDistributionCNAMEs",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributions
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributions>()(
     "TooManyDistributions",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToCachePolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToCachePolicy>()(
     "TooManyDistributionsAssociatedToCachePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToFieldLevelEncryptionConfig>()(
     "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToKeyGroup
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToKeyGroup>()(
     "TooManyDistributionsAssociatedToKeyGroup",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToOriginAccessControl
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToOriginAccessControl>()(
     "TooManyDistributionsAssociatedToOriginAccessControl",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToOriginRequestPolicy>()(
     "TooManyDistributionsAssociatedToOriginRequestPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsAssociatedToResponseHeadersPolicy>()(
     "TooManyDistributionsAssociatedToResponseHeadersPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithFunctionAssociations
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsWithFunctionAssociations>()(
     "TooManyDistributionsWithFunctionAssociations",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithLambdaAssociations
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsWithLambdaAssociations>()(
     "TooManyDistributionsWithLambdaAssociations",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithSingleFunctionARN
   extends /*@__PURE__*/ S.TaggedError<TooManyDistributionsWithSingleFunctionARN>()(
     "TooManyDistributionsWithSingleFunctionARN",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionConfigs
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionConfigs>()(
     "TooManyFieldLevelEncryptionConfigs",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionContentTypeProfiles
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionContentTypeProfiles>()(
     "TooManyFieldLevelEncryptionContentTypeProfiles",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionEncryptionEntities
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionEncryptionEntities>()(
     "TooManyFieldLevelEncryptionEncryptionEntities",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionFieldPatterns
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionFieldPatterns>()(
     "TooManyFieldLevelEncryptionFieldPatterns",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionProfiles
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionProfiles>()(
     "TooManyFieldLevelEncryptionProfiles",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionQueryArgProfiles
   extends /*@__PURE__*/ S.TaggedError<TooManyFieldLevelEncryptionQueryArgProfiles>()(
     "TooManyFieldLevelEncryptionQueryArgProfiles",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFunctionAssociations
   extends /*@__PURE__*/ S.TaggedError<TooManyFunctionAssociations>()(
     "TooManyFunctionAssociations",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFunctions
   extends /*@__PURE__*/ S.TaggedError<TooManyFunctions>()(
     "TooManyFunctions",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInCachePolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyHeadersInCachePolicy>()(
     "TooManyHeadersInCachePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInForwardedValues
   extends /*@__PURE__*/ S.TaggedError<TooManyHeadersInForwardedValues>()(
     "TooManyHeadersInForwardedValues",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyHeadersInOriginRequestPolicy>()(
     "TooManyHeadersInOriginRequestPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyInvalidationsInProgress
   extends /*@__PURE__*/ S.TaggedError<TooManyInvalidationsInProgress>()(
     "TooManyInvalidationsInProgress",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeyGroups
   extends /*@__PURE__*/ S.TaggedError<TooManyKeyGroups>()(
     "TooManyKeyGroups",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeyGroupsAssociatedToDistribution
   extends /*@__PURE__*/ S.TaggedError<TooManyKeyGroupsAssociatedToDistribution>()(
     "TooManyKeyGroupsAssociatedToDistribution",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyLambdaFunctionAssociations
   extends /*@__PURE__*/ S.TaggedError<TooManyLambdaFunctionAssociations>()(
     "TooManyLambdaFunctionAssociations",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginAccessControls
   extends /*@__PURE__*/ S.TaggedError<TooManyOriginAccessControls>()(
     "TooManyOriginAccessControls",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginCustomHeaders
   extends /*@__PURE__*/ S.TaggedError<TooManyOriginCustomHeaders>()(
     "TooManyOriginCustomHeaders",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginGroupsPerDistribution
   extends /*@__PURE__*/ S.TaggedError<TooManyOriginGroupsPerDistribution>()(
     "TooManyOriginGroupsPerDistribution",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginRequestPolicies
   extends /*@__PURE__*/ S.TaggedError<TooManyOriginRequestPolicies>()(
     "TooManyOriginRequestPolicies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOrigins
   extends /*@__PURE__*/ S.TaggedError<TooManyOrigins>()(
     "TooManyOrigins",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPublicKeys
   extends /*@__PURE__*/ S.TaggedError<TooManyPublicKeys>()(
     "TooManyPublicKeys",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPublicKeysInKeyGroup
   extends /*@__PURE__*/ S.TaggedError<TooManyPublicKeysInKeyGroup>()(
     "TooManyPublicKeysInKeyGroup",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringParameters
   extends /*@__PURE__*/ S.TaggedError<TooManyQueryStringParameters>()(
     "TooManyQueryStringParameters",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringsInCachePolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyQueryStringsInCachePolicy>()(
     "TooManyQueryStringsInCachePolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringsInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyQueryStringsInOriginRequestPolicy>()(
     "TooManyQueryStringsInOriginRequestPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRealtimeLogConfigs
   extends /*@__PURE__*/ S.TaggedError<TooManyRealtimeLogConfigs>()(
     "TooManyRealtimeLogConfigs",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRemoveHeadersInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedError<TooManyRemoveHeadersInResponseHeadersPolicy>()(
     "TooManyRemoveHeadersInResponseHeadersPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyResponseHeadersPolicies
   extends /*@__PURE__*/ S.TaggedError<TooManyResponseHeadersPolicies>()(
     "TooManyResponseHeadersPolicies",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyStreamingDistributionCNAMEs
   extends /*@__PURE__*/ S.TaggedError<TooManyStreamingDistributionCNAMEs>()(
     "TooManyStreamingDistributionCNAMEs",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyStreamingDistributions
   extends /*@__PURE__*/ S.TaggedError<TooManyStreamingDistributions>()(
     "TooManyStreamingDistributions",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrustedSigners
   extends /*@__PURE__*/ S.TaggedError<TooManyTrustedSigners>()(
     "TooManyTrustedSigners",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrustedKeyGroupDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<TrustedKeyGroupDoesNotExist>()(
     "TrustedKeyGroupDoesNotExist",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrustedSignerDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<TrustedSignerDoesNotExist>()(
     "TrustedSignerDoesNotExist",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()(
     "UnsupportedOperation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AssociateAliasRequest {
   TargetDistributionId: string;
@@ -1158,7 +1161,9 @@ export const CopyDistributionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CopyDistributionRequest" }) as any as S.Schema<CopyDistributionRequest>;
 export type KeyPairIdList = string[];
-export const KeyPairIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("KeyPairId")));
+export const KeyPairIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("KeyPairId")),
+);
 export interface KeyPairIds {
   Quantity: number;
   Items?: string[];
@@ -1175,7 +1180,7 @@ export const Signer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Signer" }) as any as S.Schema<Signer>;
 export type SignerList = Signer[];
 export const SignerList = /*@__PURE__*/ S.Array(
-  Signer.pipe(T.XmlName("Signer")).annotate({ identifier: "Signer" }),
+  /*@__PURE__*/ Signer.pipe(/*@__PURE__*/ T.XmlName("Signer")).annotate({ identifier: "Signer" }),
 );
 export interface ActiveTrustedSigners {
   Enabled: boolean;
@@ -1194,7 +1199,9 @@ export const KGKeyPairIds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KGKeyPairIds" }) as any as S.Schema<KGKeyPairIds>;
 export type KGKeyPairIdsList = KGKeyPairIds[];
 export const KGKeyPairIdsList = /*@__PURE__*/ S.Array(
-  KGKeyPairIds.pipe(T.XmlName("KeyGroup")).annotate({ identifier: "KGKeyPairIds" }),
+  /*@__PURE__*/ KGKeyPairIds.pipe(/*@__PURE__*/ T.XmlName("KeyGroup")).annotate({
+    identifier: "KGKeyPairIds",
+  }),
 );
 export interface ActiveTrustedKeyGroups {
   Enabled: boolean;
@@ -1205,7 +1212,9 @@ export const ActiveTrustedKeyGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.Boolean, Quantity: S.Number, Items: S.optional(KGKeyPairIdsList) }),
 ).annotate({ identifier: "ActiveTrustedKeyGroups" }) as any as S.Schema<ActiveTrustedKeyGroups>;
 export type AliasList = string[];
-export const AliasList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("CNAME")));
+export const AliasList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("CNAME")),
+);
 export interface Aliases {
   Quantity: number;
   Items?: string[];
@@ -1223,7 +1232,7 @@ export const OriginCustomHeader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginCustomHeader" }) as any as S.Schema<OriginCustomHeader>;
 export type OriginCustomHeadersList = OriginCustomHeader[];
 export const OriginCustomHeadersList = /*@__PURE__*/ S.Array(
-  OriginCustomHeader.pipe(T.XmlName("OriginCustomHeader")).annotate({
+  /*@__PURE__*/ OriginCustomHeader.pipe(/*@__PURE__*/ T.XmlName("OriginCustomHeader")).annotate({
     identifier: "OriginCustomHeader",
   }),
 );
@@ -1248,7 +1257,9 @@ export type SslProtocol = "SSLv3" | "TLSv1" | "TLSv1.1" | "TLSv1.2" | (string & 
 export const SslProtocol = S.String;
 
 export type SslProtocolsList = SslProtocol[];
-export const SslProtocolsList = /*@__PURE__*/ S.Array(SslProtocol.pipe(T.XmlName("SslProtocol")));
+export const SslProtocolsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ SslProtocol.pipe(/*@__PURE__*/ T.XmlName("SslProtocol")),
+);
 export interface OriginSslProtocols {
   Quantity: number;
   Items: SslProtocol[];
@@ -1341,7 +1352,7 @@ export const Origin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
 export type OriginList = Origin[];
 export const OriginList = /*@__PURE__*/ S.Array(
-  Origin.pipe(T.XmlName("Origin")).annotate({ identifier: "Origin" }),
+  /*@__PURE__*/ Origin.pipe(/*@__PURE__*/ T.XmlName("Origin")).annotate({ identifier: "Origin" }),
 );
 export interface Origins {
   Quantity: number;
@@ -1351,7 +1362,9 @@ export const Origins = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, Items: OriginList }),
 ).annotate({ identifier: "Origins" }) as any as S.Schema<Origins>;
 export type StatusCodeList = number[];
-export const StatusCodeList = /*@__PURE__*/ S.Array(S.Number.pipe(T.XmlName("StatusCode")));
+export const StatusCodeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("StatusCode")),
+);
 export interface StatusCodes {
   Quantity: number;
   Items: number[];
@@ -1375,7 +1388,7 @@ export const OriginGroupMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroupMember" }) as any as S.Schema<OriginGroupMember>;
 export type OriginGroupMemberList = OriginGroupMember[];
 export const OriginGroupMemberList = /*@__PURE__*/ S.Array(
-  OriginGroupMember.pipe(T.XmlName("OriginGroupMember")).annotate({
+  /*@__PURE__*/ OriginGroupMember.pipe(/*@__PURE__*/ T.XmlName("OriginGroupMember")).annotate({
     identifier: "OriginGroupMember",
   }),
 );
@@ -1405,7 +1418,9 @@ export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroup" }) as any as S.Schema<OriginGroup>;
 export type OriginGroupList = OriginGroup[];
 export const OriginGroupList = /*@__PURE__*/ S.Array(
-  OriginGroup.pipe(T.XmlName("OriginGroup")).annotate({ identifier: "OriginGroup" }),
+  /*@__PURE__*/ OriginGroup.pipe(/*@__PURE__*/ T.XmlName("OriginGroup")).annotate({
+    identifier: "OriginGroup",
+  }),
 );
 export interface OriginGroups {
   Quantity: number;
@@ -1416,7 +1431,7 @@ export const OriginGroups = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroups" }) as any as S.Schema<OriginGroups>;
 export type AwsAccountNumberList = string[];
 export const AwsAccountNumberList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("AwsAccountNumber")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AwsAccountNumber")),
 );
 export interface TrustedSigners {
   Enabled: boolean;
@@ -1427,7 +1442,9 @@ export const TrustedSigners = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.Boolean, Quantity: S.Number, Items: S.optional(AwsAccountNumberList) }),
 ).annotate({ identifier: "TrustedSigners" }) as any as S.Schema<TrustedSigners>;
 export type TrustedKeyGroupIdList = string[];
-export const TrustedKeyGroupIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("KeyGroup")));
+export const TrustedKeyGroupIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("KeyGroup")),
+);
 export interface TrustedKeyGroups {
   Enabled: boolean;
   Quantity: number;
@@ -1451,7 +1468,9 @@ export type Method =
 export const Method = S.String;
 
 export type MethodsList = Method[];
-export const MethodsList = /*@__PURE__*/ S.Array(Method.pipe(T.XmlName("Method")));
+export const MethodsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ Method.pipe(/*@__PURE__*/ T.XmlName("Method")),
+);
 export interface CachedMethods {
   Quantity: number;
   Items: Method[];
@@ -1492,7 +1511,9 @@ export const LambdaFunctionAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaFunctionAssociation>;
 export type LambdaFunctionAssociationList = LambdaFunctionAssociation[];
 export const LambdaFunctionAssociationList = /*@__PURE__*/ S.Array(
-  LambdaFunctionAssociation.pipe(T.XmlName("LambdaFunctionAssociation")).annotate({
+  /*@__PURE__*/ LambdaFunctionAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("LambdaFunctionAssociation"),
+  ).annotate({
     identifier: "LambdaFunctionAssociation",
   }),
 );
@@ -1515,7 +1536,7 @@ export const FunctionAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionAssociation" }) as any as S.Schema<FunctionAssociation>;
 export type FunctionAssociationList = FunctionAssociation[];
 export const FunctionAssociationList = /*@__PURE__*/ S.Array(
-  FunctionAssociation.pipe(T.XmlName("FunctionAssociation")).annotate({
+  /*@__PURE__*/ FunctionAssociation.pipe(/*@__PURE__*/ T.XmlName("FunctionAssociation")).annotate({
     identifier: "FunctionAssociation",
   }),
 );
@@ -1536,7 +1557,9 @@ export type ItemSelection = "none" | "whitelist" | "all" | (string & {});
 export const ItemSelection = S.String;
 
 export type CookieNameList = string[];
-export const CookieNameList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Name")));
+export const CookieNameList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+);
 export interface CookieNames {
   Quantity: number;
   Items?: string[];
@@ -1552,7 +1575,9 @@ export const CookiePreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Forward: ItemSelection, WhitelistedNames: S.optional(CookieNames) }),
 ).annotate({ identifier: "CookiePreference" }) as any as S.Schema<CookiePreference>;
 export type HeaderList = string[];
-export const HeaderList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Name")));
+export const HeaderList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+);
 export interface Headers {
   Quantity: number;
   Items?: string[];
@@ -1561,7 +1586,9 @@ export const Headers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, Items: S.optional(HeaderList) }),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
 export type QueryStringCacheKeysList = string[];
-export const QueryStringCacheKeysList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Name")));
+export const QueryStringCacheKeysList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+);
 export interface QueryStringCacheKeys {
   Quantity: number;
   Items?: string[];
@@ -1675,7 +1702,9 @@ export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheBehavior" }) as any as S.Schema<CacheBehavior>;
 export type CacheBehaviorList = CacheBehavior[];
 export const CacheBehaviorList = /*@__PURE__*/ S.Array(
-  CacheBehavior.pipe(T.XmlName("CacheBehavior")).annotate({ identifier: "CacheBehavior" }),
+  /*@__PURE__*/ CacheBehavior.pipe(/*@__PURE__*/ T.XmlName("CacheBehavior")).annotate({
+    identifier: "CacheBehavior",
+  }),
 );
 export interface CacheBehaviors {
   Quantity: number;
@@ -1700,7 +1729,7 @@ export const CustomErrorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomErrorResponse" }) as any as S.Schema<CustomErrorResponse>;
 export type CustomErrorResponseList = CustomErrorResponse[];
 export const CustomErrorResponseList = /*@__PURE__*/ S.Array(
-  CustomErrorResponse.pipe(T.XmlName("CustomErrorResponse")).annotate({
+  /*@__PURE__*/ CustomErrorResponse.pipe(/*@__PURE__*/ T.XmlName("CustomErrorResponse")).annotate({
     identifier: "CustomErrorResponse",
   }),
 );
@@ -1778,7 +1807,9 @@ export type GeoRestrictionType = "blacklist" | "whitelist" | "none" | (string & 
 export const GeoRestrictionType = S.String;
 
 export type LocationList = string[];
-export const LocationList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Location")));
+export const LocationList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Location")),
+);
 export interface GeoRestriction {
   RestrictionType: GeoRestrictionType;
   Quantity: number;
@@ -1954,7 +1985,9 @@ export const AliasICPRecordal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AliasICPRecordal" }) as any as S.Schema<AliasICPRecordal>;
 export type AliasICPRecordals = AliasICPRecordal[];
 export const AliasICPRecordals = /*@__PURE__*/ S.Array(
-  AliasICPRecordal.pipe(T.XmlName("AliasICPRecordal")).annotate({ identifier: "AliasICPRecordal" }),
+  /*@__PURE__*/ AliasICPRecordal.pipe(/*@__PURE__*/ T.XmlName("AliasICPRecordal")).annotate({
+    identifier: "AliasICPRecordal",
+  }),
 );
 export interface Distribution {
   Id: string;
@@ -2008,7 +2041,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface Tags {
   Items?: Tag[];
@@ -2048,7 +2081,9 @@ export const IpamCidrConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamCidrConfig" }) as any as S.Schema<IpamCidrConfig>;
 export type IpamCidrConfigList = IpamCidrConfig[];
 export const IpamCidrConfigList = /*@__PURE__*/ S.Array(
-  IpamCidrConfig.pipe(T.XmlName("IpamCidrConfig")).annotate({ identifier: "IpamCidrConfig" }),
+  /*@__PURE__*/ IpamCidrConfig.pipe(/*@__PURE__*/ T.XmlName("IpamCidrConfig")).annotate({
+    identifier: "IpamCidrConfig",
+  }),
 );
 export interface CreateAnycastIpListRequest {
   Name: string;
@@ -2086,7 +2121,9 @@ export const IpamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, IpamCidrConfigs: IpamCidrConfigList }),
 ).annotate({ identifier: "IpamConfig" }) as any as S.Schema<IpamConfig>;
 export type AnycastIps = string[];
-export const AnycastIps = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("AnycastIp")));
+export const AnycastIps = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AnycastIp")),
+);
 export interface AnycastIpList {
   Id: string;
   Name: string;
@@ -2154,7 +2191,9 @@ export type CachePolicyQueryStringBehavior =
 export const CachePolicyQueryStringBehavior = S.String;
 
 export type QueryStringNamesList = string[];
-export const QueryStringNamesList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Name")));
+export const QueryStringNamesList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+);
 export interface QueryStringNames {
   Quantity: number;
   Items?: string[];
@@ -2332,7 +2371,9 @@ export const KeyValueStoreAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyValueStoreAssociation" }) as any as S.Schema<KeyValueStoreAssociation>;
 export type KeyValueStoreAssociationList = KeyValueStoreAssociation[];
 export const KeyValueStoreAssociationList = /*@__PURE__*/ S.Array(
-  KeyValueStoreAssociation.pipe(T.XmlName("KeyValueStoreAssociation")).annotate({
+  /*@__PURE__*/ KeyValueStoreAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("KeyValueStoreAssociation"),
+  ).annotate({
     identifier: "KeyValueStoreAssociation",
   }),
 );
@@ -2501,7 +2542,7 @@ export const CreateConnectionGroupResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConnectionGroupResult>;
 export type StagingDistributionDnsNameList = string[];
 export const StagingDistributionDnsNameList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("DnsName")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DnsName")),
 );
 export interface StagingDistributionDnsNames {
   Quantity: number;
@@ -2881,7 +2922,9 @@ export const QueryArgProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryArgProfile" }) as any as S.Schema<QueryArgProfile>;
 export type QueryArgProfileList = QueryArgProfile[];
 export const QueryArgProfileList = /*@__PURE__*/ S.Array(
-  QueryArgProfile.pipe(T.XmlName("QueryArgProfile")).annotate({ identifier: "QueryArgProfile" }),
+  /*@__PURE__*/ QueryArgProfile.pipe(/*@__PURE__*/ T.XmlName("QueryArgProfile")).annotate({
+    identifier: "QueryArgProfile",
+  }),
 );
 export interface QueryArgProfiles {
   Quantity: number;
@@ -2913,7 +2956,7 @@ export const ContentTypeProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentTypeProfile" }) as any as S.Schema<ContentTypeProfile>;
 export type ContentTypeProfileList = ContentTypeProfile[];
 export const ContentTypeProfileList = /*@__PURE__*/ S.Array(
-  ContentTypeProfile.pipe(T.XmlName("ContentTypeProfile")).annotate({
+  /*@__PURE__*/ ContentTypeProfile.pipe(/*@__PURE__*/ T.XmlName("ContentTypeProfile")).annotate({
     identifier: "ContentTypeProfile",
   }),
 );
@@ -3002,7 +3045,9 @@ export const CreateFieldLevelEncryptionConfigResult = /*@__PURE__*/ S.suspend(()
   identifier: "CreateFieldLevelEncryptionConfigResult",
 }) as any as S.Schema<CreateFieldLevelEncryptionConfigResult>;
 export type FieldPatternList = string[];
-export const FieldPatternList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("FieldPattern")));
+export const FieldPatternList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("FieldPattern")),
+);
 export interface FieldPatterns {
   Quantity: number;
   Items?: string[];
@@ -3020,7 +3065,9 @@ export const EncryptionEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EncryptionEntity" }) as any as S.Schema<EncryptionEntity>;
 export type EncryptionEntityList = EncryptionEntity[];
 export const EncryptionEntityList = /*@__PURE__*/ S.Array(
-  EncryptionEntity.pipe(T.XmlName("EncryptionEntity")).annotate({ identifier: "EncryptionEntity" }),
+  /*@__PURE__*/ EncryptionEntity.pipe(/*@__PURE__*/ T.XmlName("EncryptionEntity")).annotate({
+    identifier: "EncryptionEntity",
+  }),
 );
 export interface EncryptionEntities {
   Quantity: number;
@@ -3165,7 +3212,9 @@ export const CreateFunctionResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "CreateFunctionResult" }) as any as S.Schema<CreateFunctionResult>;
 export type PathList = string[];
-export const PathList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Path")));
+export const PathList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Path")),
+);
 export interface Paths {
   Quantity: number;
   Items?: string[];
@@ -3271,7 +3320,9 @@ export const CreateInvalidationForDistributionTenantResult = /*@__PURE__*/ S.sus
   identifier: "CreateInvalidationForDistributionTenantResult",
 }) as any as S.Schema<CreateInvalidationForDistributionTenantResult>;
 export type PublicKeyIdList = string[];
-export const PublicKeyIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("PublicKey")));
+export const PublicKeyIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PublicKey")),
+);
 export interface KeyGroupConfig {
   Name: string;
   Items: string[];
@@ -3727,7 +3778,9 @@ export const EndPoint = /*@__PURE__*/ S.suspend(() =>
 export type EndPointList = EndPoint[];
 export const EndPointList = /*@__PURE__*/ S.Array(EndPoint);
 export type FieldList = string[];
-export const FieldList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Field")));
+export const FieldList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Field")),
+);
 export interface CreateRealtimeLogConfigRequest {
   EndPoints: EndPoint[];
   Fields: string[];
@@ -3780,7 +3833,7 @@ export const CreateRealtimeLogConfigResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRealtimeLogConfigResult>;
 export type AccessControlAllowOriginsList = string[];
 export const AccessControlAllowOriginsList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Origin")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Origin")),
 );
 export interface ResponseHeadersPolicyAccessControlAllowOrigins {
   Quantity: number;
@@ -3793,7 +3846,7 @@ export const ResponseHeadersPolicyAccessControlAllowOrigins = /*@__PURE__*/ S.su
 }) as any as S.Schema<ResponseHeadersPolicyAccessControlAllowOrigins>;
 export type AccessControlAllowHeadersList = string[];
 export const AccessControlAllowHeadersList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Header")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Header")),
 );
 export interface ResponseHeadersPolicyAccessControlAllowHeaders {
   Quantity: number;
@@ -3818,7 +3871,9 @@ export const ResponseHeadersPolicyAccessControlAllowMethodsValues = S.String;
 
 export type AccessControlAllowMethodsList = ResponseHeadersPolicyAccessControlAllowMethodsValues[];
 export const AccessControlAllowMethodsList = /*@__PURE__*/ S.Array(
-  ResponseHeadersPolicyAccessControlAllowMethodsValues.pipe(T.XmlName("Method")),
+  /*@__PURE__*/ ResponseHeadersPolicyAccessControlAllowMethodsValues.pipe(
+    /*@__PURE__*/ T.XmlName("Method"),
+  ),
 );
 export interface ResponseHeadersPolicyAccessControlAllowMethods {
   Quantity: number;
@@ -3831,7 +3886,7 @@ export const ResponseHeadersPolicyAccessControlAllowMethods = /*@__PURE__*/ S.su
 }) as any as S.Schema<ResponseHeadersPolicyAccessControlAllowMethods>;
 export type AccessControlExposeHeadersList = string[];
 export const AccessControlExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Header")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Header")),
 );
 export interface ResponseHeadersPolicyAccessControlExposeHeaders {
   Quantity: number;
@@ -3988,7 +4043,9 @@ export const ResponseHeadersPolicyCustomHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseHeadersPolicyCustomHeader>;
 export type ResponseHeadersPolicyCustomHeaderList = ResponseHeadersPolicyCustomHeader[];
 export const ResponseHeadersPolicyCustomHeaderList = /*@__PURE__*/ S.Array(
-  ResponseHeadersPolicyCustomHeader.pipe(T.XmlName("ResponseHeadersPolicyCustomHeader")).annotate({
+  /*@__PURE__*/ ResponseHeadersPolicyCustomHeader.pipe(
+    /*@__PURE__*/ T.XmlName("ResponseHeadersPolicyCustomHeader"),
+  ).annotate({
     identifier: "ResponseHeadersPolicyCustomHeader",
   }),
 );
@@ -4011,7 +4068,9 @@ export const ResponseHeadersPolicyRemoveHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseHeadersPolicyRemoveHeader>;
 export type ResponseHeadersPolicyRemoveHeaderList = ResponseHeadersPolicyRemoveHeader[];
 export const ResponseHeadersPolicyRemoveHeaderList = /*@__PURE__*/ S.Array(
-  ResponseHeadersPolicyRemoveHeader.pipe(T.XmlName("ResponseHeadersPolicyRemoveHeader")).annotate({
+  /*@__PURE__*/ ResponseHeadersPolicyRemoveHeader.pipe(
+    /*@__PURE__*/ T.XmlName("ResponseHeadersPolicyRemoveHeader"),
+  ).annotate({
     identifier: "ResponseHeadersPolicyRemoveHeader",
   }),
 );
@@ -4258,7 +4317,7 @@ export type CaCertificatesBundleSource = {
   CaCertificatesBundleS3Location: CaCertificatesBundleS3Location;
 };
 export const CaCertificatesBundleSource = /*@__PURE__*/ S.Union([
-  S.Struct({ CaCertificatesBundleS3Location: CaCertificatesBundleS3Location }),
+  /*@__PURE__*/ S.Struct({ CaCertificatesBundleS3Location: CaCertificatesBundleS3Location }),
 ]);
 export interface CreateTrustStoreRequest {
   Name: string;
@@ -6459,9 +6518,11 @@ export const AnycastIpListSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnycastIpListSummary" }) as any as S.Schema<AnycastIpListSummary>;
 export type AnycastIpListSummaries = AnycastIpListSummary[];
 export const AnycastIpListSummaries = /*@__PURE__*/ S.Array(
-  AnycastIpListSummary.pipe(T.XmlName("AnycastIpListSummary")).annotate({
-    identifier: "AnycastIpListSummary",
-  }),
+  /*@__PURE__*/ AnycastIpListSummary.pipe(/*@__PURE__*/ T.XmlName("AnycastIpListSummary")).annotate(
+    {
+      identifier: "AnycastIpListSummary",
+    },
+  ),
 );
 export interface AnycastIpListCollection {
   Items?: AnycastIpListSummary[];
@@ -6525,7 +6586,7 @@ export const CachePolicySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CachePolicySummary" }) as any as S.Schema<CachePolicySummary>;
 export type CachePolicySummaryList = CachePolicySummary[];
 export const CachePolicySummaryList = /*@__PURE__*/ S.Array(
-  CachePolicySummary.pipe(T.XmlName("CachePolicySummary")).annotate({
+  /*@__PURE__*/ CachePolicySummary.pipe(/*@__PURE__*/ T.XmlName("CachePolicySummary")).annotate({
     identifier: "CachePolicySummary",
   }),
 );
@@ -6587,8 +6648,8 @@ export const CloudFrontOriginAccessIdentitySummary = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CloudFrontOriginAccessIdentitySummary>;
 export type CloudFrontOriginAccessIdentitySummaryList = CloudFrontOriginAccessIdentitySummary[];
 export const CloudFrontOriginAccessIdentitySummaryList = /*@__PURE__*/ S.Array(
-  CloudFrontOriginAccessIdentitySummary.pipe(
-    T.XmlName("CloudFrontOriginAccessIdentitySummary"),
+  /*@__PURE__*/ CloudFrontOriginAccessIdentitySummary.pipe(
+    /*@__PURE__*/ T.XmlName("CloudFrontOriginAccessIdentitySummary"),
   ).annotate({ identifier: "CloudFrontOriginAccessIdentitySummary" }),
 );
 export interface CloudFrontOriginAccessIdentityList {
@@ -6666,7 +6727,9 @@ export const ConflictingAlias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConflictingAlias" }) as any as S.Schema<ConflictingAlias>;
 export type ConflictingAliases = ConflictingAlias[];
 export const ConflictingAliases = /*@__PURE__*/ S.Array(
-  ConflictingAlias.pipe(T.XmlName("ConflictingAlias")).annotate({ identifier: "ConflictingAlias" }),
+  /*@__PURE__*/ ConflictingAlias.pipe(/*@__PURE__*/ T.XmlName("ConflictingAlias")).annotate({
+    identifier: "ConflictingAlias",
+  }),
 );
 export interface ConflictingAliasesList {
   NextMarker?: string;
@@ -6720,7 +6783,9 @@ export const ListConnectionFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConnectionFunctionsRequest>;
 export type ConnectionFunctionSummaryList = ConnectionFunctionSummary[];
 export const ConnectionFunctionSummaryList = /*@__PURE__*/ S.Array(
-  ConnectionFunctionSummary.pipe(T.XmlName("ConnectionFunctionSummary")).annotate({
+  /*@__PURE__*/ ConnectionFunctionSummary.pipe(
+    /*@__PURE__*/ T.XmlName("ConnectionFunctionSummary"),
+  ).annotate({
     identifier: "ConnectionFunctionSummary",
   }),
 );
@@ -6798,7 +6863,9 @@ export const ConnectionGroupSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectionGroupSummary" }) as any as S.Schema<ConnectionGroupSummary>;
 export type ConnectionGroupSummaryList = ConnectionGroupSummary[];
 export const ConnectionGroupSummaryList = /*@__PURE__*/ S.Array(
-  ConnectionGroupSummary.pipe(T.XmlName("ConnectionGroupSummary")).annotate({
+  /*@__PURE__*/ ConnectionGroupSummary.pipe(
+    /*@__PURE__*/ T.XmlName("ConnectionGroupSummary"),
+  ).annotate({
     identifier: "ConnectionGroupSummary",
   }),
 );
@@ -6846,7 +6913,9 @@ export const ContinuousDeploymentPolicySummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContinuousDeploymentPolicySummary>;
 export type ContinuousDeploymentPolicySummaryList = ContinuousDeploymentPolicySummary[];
 export const ContinuousDeploymentPolicySummaryList = /*@__PURE__*/ S.Array(
-  ContinuousDeploymentPolicySummary.pipe(T.XmlName("ContinuousDeploymentPolicySummary")).annotate({
+  /*@__PURE__*/ ContinuousDeploymentPolicySummary.pipe(
+    /*@__PURE__*/ T.XmlName("ContinuousDeploymentPolicySummary"),
+  ).annotate({
     identifier: "ContinuousDeploymentPolicySummary",
   }),
 );
@@ -6958,7 +7027,7 @@ export const DistributionSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DistributionSummary" }) as any as S.Schema<DistributionSummary>;
 export type DistributionSummaryList = DistributionSummary[];
 export const DistributionSummaryList = /*@__PURE__*/ S.Array(
-  DistributionSummary.pipe(T.XmlName("DistributionSummary")).annotate({
+  /*@__PURE__*/ DistributionSummary.pipe(/*@__PURE__*/ T.XmlName("DistributionSummary")).annotate({
     identifier: "DistributionSummary",
   }),
 );
@@ -7055,7 +7124,7 @@ export const ListDistributionsByCachePolicyIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListDistributionsByCachePolicyIdRequest>;
 export type DistributionIdListSummary = string[];
 export const DistributionIdListSummary = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("DistributionId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DistributionId")),
 );
 export interface DistributionIdList {
   Marker?: string;
@@ -7267,7 +7336,7 @@ export const DistributionIdOwner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DistributionIdOwner" }) as any as S.Schema<DistributionIdOwner>;
 export type DistributionIdOwnerItemList = DistributionIdOwner[];
 export const DistributionIdOwnerItemList = /*@__PURE__*/ S.Array(
-  DistributionIdOwner.pipe(T.XmlName("DistributionIdOwner")).annotate({
+  /*@__PURE__*/ DistributionIdOwner.pipe(/*@__PURE__*/ T.XmlName("DistributionIdOwner")).annotate({
     identifier: "DistributionIdOwner",
   }),
 );
@@ -7553,7 +7622,9 @@ export const DistributionTenantSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DistributionTenantSummary>;
 export type DistributionTenantList = DistributionTenantSummary[];
 export const DistributionTenantList = /*@__PURE__*/ S.Array(
-  DistributionTenantSummary.pipe(T.XmlName("DistributionTenantSummary")).annotate({
+  /*@__PURE__*/ DistributionTenantSummary.pipe(
+    /*@__PURE__*/ T.XmlName("DistributionTenantSummary"),
+  ).annotate({
     identifier: "DistributionTenantSummary",
   }),
 );
@@ -7659,7 +7730,9 @@ export const DomainConflict = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainConflict" }) as any as S.Schema<DomainConflict>;
 export type DomainConflictsList = DomainConflict[];
 export const DomainConflictsList = /*@__PURE__*/ S.Array(
-  DomainConflict.pipe(T.XmlName("DomainConflicts")).annotate({ identifier: "DomainConflict" }),
+  /*@__PURE__*/ DomainConflict.pipe(/*@__PURE__*/ T.XmlName("DomainConflicts")).annotate({
+    identifier: "DomainConflict",
+  }),
 );
 export interface ListDomainConflictsResult {
   DomainConflicts?: DomainConflict[];
@@ -7715,7 +7788,9 @@ export const FieldLevelEncryptionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldLevelEncryptionSummary>;
 export type FieldLevelEncryptionSummaryList = FieldLevelEncryptionSummary[];
 export const FieldLevelEncryptionSummaryList = /*@__PURE__*/ S.Array(
-  FieldLevelEncryptionSummary.pipe(T.XmlName("FieldLevelEncryptionSummary")).annotate({
+  /*@__PURE__*/ FieldLevelEncryptionSummary.pipe(
+    /*@__PURE__*/ T.XmlName("FieldLevelEncryptionSummary"),
+  ).annotate({
     identifier: "FieldLevelEncryptionSummary",
   }),
 );
@@ -7787,9 +7862,9 @@ export const FieldLevelEncryptionProfileSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldLevelEncryptionProfileSummary>;
 export type FieldLevelEncryptionProfileSummaryList = FieldLevelEncryptionProfileSummary[];
 export const FieldLevelEncryptionProfileSummaryList = /*@__PURE__*/ S.Array(
-  FieldLevelEncryptionProfileSummary.pipe(T.XmlName("FieldLevelEncryptionProfileSummary")).annotate(
-    { identifier: "FieldLevelEncryptionProfileSummary" },
-  ),
+  /*@__PURE__*/ FieldLevelEncryptionProfileSummary.pipe(
+    /*@__PURE__*/ T.XmlName("FieldLevelEncryptionProfileSummary"),
+  ).annotate({ identifier: "FieldLevelEncryptionProfileSummary" }),
 );
 export interface FieldLevelEncryptionProfileList {
   NextMarker?: string;
@@ -7835,7 +7910,9 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFunctionsRequest" }) as any as S.Schema<ListFunctionsRequest>;
 export type FunctionSummaryList = FunctionSummary[];
 export const FunctionSummaryList = /*@__PURE__*/ S.Array(
-  FunctionSummary.pipe(T.XmlName("FunctionSummary")).annotate({ identifier: "FunctionSummary" }),
+  /*@__PURE__*/ FunctionSummary.pipe(/*@__PURE__*/ T.XmlName("FunctionSummary")).annotate({
+    identifier: "FunctionSummary",
+  }),
 );
 export interface FunctionList {
   NextMarker?: string;
@@ -7893,7 +7970,7 @@ export const InvalidationSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvalidationSummary" }) as any as S.Schema<InvalidationSummary>;
 export type InvalidationSummaryList = InvalidationSummary[];
 export const InvalidationSummaryList = /*@__PURE__*/ S.Array(
-  InvalidationSummary.pipe(T.XmlName("InvalidationSummary")).annotate({
+  /*@__PURE__*/ InvalidationSummary.pipe(/*@__PURE__*/ T.XmlName("InvalidationSummary")).annotate({
     identifier: "InvalidationSummary",
   }),
 );
@@ -7989,7 +8066,9 @@ export const KeyGroupSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyGroupSummary" }) as any as S.Schema<KeyGroupSummary>;
 export type KeyGroupSummaryList = KeyGroupSummary[];
 export const KeyGroupSummaryList = /*@__PURE__*/ S.Array(
-  KeyGroupSummary.pipe(T.XmlName("KeyGroupSummary")).annotate({ identifier: "KeyGroupSummary" }),
+  /*@__PURE__*/ KeyGroupSummary.pipe(/*@__PURE__*/ T.XmlName("KeyGroupSummary")).annotate({
+    identifier: "KeyGroupSummary",
+  }),
 );
 export interface KeyGroupList {
   NextMarker?: string;
@@ -8041,7 +8120,9 @@ export const ListKeyValueStoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeyValueStoresRequest>;
 export type KeyValueStoreSummaryList = KeyValueStore[];
 export const KeyValueStoreSummaryList = /*@__PURE__*/ S.Array(
-  KeyValueStore.pipe(T.XmlName("KeyValueStore")).annotate({ identifier: "KeyValueStore" }),
+  /*@__PURE__*/ KeyValueStore.pipe(/*@__PURE__*/ T.XmlName("KeyValueStore")).annotate({
+    identifier: "KeyValueStore",
+  }),
 );
 export interface KeyValueStoreList {
   NextMarker?: string;
@@ -8111,7 +8192,9 @@ export const OriginAccessControlSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginAccessControlSummary>;
 export type OriginAccessControlSummaryList = OriginAccessControlSummary[];
 export const OriginAccessControlSummaryList = /*@__PURE__*/ S.Array(
-  OriginAccessControlSummary.pipe(T.XmlName("OriginAccessControlSummary")).annotate({
+  /*@__PURE__*/ OriginAccessControlSummary.pipe(
+    /*@__PURE__*/ T.XmlName("OriginAccessControlSummary"),
+  ).annotate({
     identifier: "OriginAccessControlSummary",
   }),
 );
@@ -8183,7 +8266,9 @@ export const OriginRequestPolicySummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginRequestPolicySummary>;
 export type OriginRequestPolicySummaryList = OriginRequestPolicySummary[];
 export const OriginRequestPolicySummaryList = /*@__PURE__*/ S.Array(
-  OriginRequestPolicySummary.pipe(T.XmlName("OriginRequestPolicySummary")).annotate({
+  /*@__PURE__*/ OriginRequestPolicySummary.pipe(
+    /*@__PURE__*/ T.XmlName("OriginRequestPolicySummary"),
+  ).annotate({
     identifier: "OriginRequestPolicySummary",
   }),
 );
@@ -8251,7 +8336,9 @@ export const PublicKeySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicKeySummary" }) as any as S.Schema<PublicKeySummary>;
 export type PublicKeySummaryList = PublicKeySummary[];
 export const PublicKeySummaryList = /*@__PURE__*/ S.Array(
-  PublicKeySummary.pipe(T.XmlName("PublicKeySummary")).annotate({ identifier: "PublicKeySummary" }),
+  /*@__PURE__*/ PublicKeySummary.pipe(/*@__PURE__*/ T.XmlName("PublicKeySummary")).annotate({
+    identifier: "PublicKeySummary",
+  }),
 );
 export interface PublicKeyList {
   NextMarker?: string;
@@ -8367,7 +8454,9 @@ export const ResponseHeadersPolicySummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseHeadersPolicySummary>;
 export type ResponseHeadersPolicySummaryList = ResponseHeadersPolicySummary[];
 export const ResponseHeadersPolicySummaryList = /*@__PURE__*/ S.Array(
-  ResponseHeadersPolicySummary.pipe(T.XmlName("ResponseHeadersPolicySummary")).annotate({
+  /*@__PURE__*/ ResponseHeadersPolicySummary.pipe(
+    /*@__PURE__*/ T.XmlName("ResponseHeadersPolicySummary"),
+  ).annotate({
     identifier: "ResponseHeadersPolicySummary",
   }),
 );
@@ -8453,7 +8542,9 @@ export const StreamingDistributionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamingDistributionSummary>;
 export type StreamingDistributionSummaryList = StreamingDistributionSummary[];
 export const StreamingDistributionSummaryList = /*@__PURE__*/ S.Array(
-  StreamingDistributionSummary.pipe(T.XmlName("StreamingDistributionSummary")).annotate({
+  /*@__PURE__*/ StreamingDistributionSummary.pipe(
+    /*@__PURE__*/ T.XmlName("StreamingDistributionSummary"),
+  ).annotate({
     identifier: "StreamingDistributionSummary",
   }),
 );
@@ -8549,7 +8640,7 @@ export const TrustStoreSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrustStoreSummary" }) as any as S.Schema<TrustStoreSummary>;
 export type TrustStoreList = TrustStoreSummary[];
 export const TrustStoreList = /*@__PURE__*/ S.Array(
-  TrustStoreSummary.pipe(T.XmlName("TrustStoreSummary")).annotate({
+  /*@__PURE__*/ TrustStoreSummary.pipe(/*@__PURE__*/ T.XmlName("TrustStoreSummary")).annotate({
     identifier: "TrustStoreSummary",
   }),
 );
@@ -8606,7 +8697,9 @@ export const VpcOriginSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcOriginSummary" }) as any as S.Schema<VpcOriginSummary>;
 export type VpcOriginSummaryList = VpcOriginSummary[];
 export const VpcOriginSummaryList = /*@__PURE__*/ S.Array(
-  VpcOriginSummary.pipe(T.XmlName("VpcOriginSummary")).annotate({ identifier: "VpcOriginSummary" }),
+  /*@__PURE__*/ VpcOriginSummary.pipe(/*@__PURE__*/ T.XmlName("VpcOriginSummary")).annotate({
+    identifier: "VpcOriginSummary",
+  }),
 );
 export interface VpcOriginList {
   Marker?: string;
@@ -8855,7 +8948,9 @@ export const TestFunctionResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "TestFunctionResult" }) as any as S.Schema<TestFunctionResult>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Key")));
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
+);
 export interface TagKeys {
   Items?: string[];
 }
@@ -9825,7 +9920,9 @@ export const DnsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsConfiguration" }) as any as S.Schema<DnsConfiguration>;
 export type DnsConfigurationList = DnsConfiguration[];
 export const DnsConfigurationList = /*@__PURE__*/ S.Array(
-  DnsConfiguration.pipe(T.XmlName("DnsConfiguration")).annotate({ identifier: "DnsConfiguration" }),
+  /*@__PURE__*/ DnsConfiguration.pipe(/*@__PURE__*/ T.XmlName("DnsConfiguration")).annotate({
+    identifier: "DnsConfiguration",
+  }),
 );
 export interface VerifyDnsConfigurationResult {
   DnsConfigurationList?: DnsConfiguration[];

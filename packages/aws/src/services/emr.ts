@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://elasticmapreduce.amazonaws.com/doc/2009-03-31");
-const svc = T.AwsApiService({ sdkId: "EMR", serviceShapeName: "ElasticMapReduce" });
-const auth = T.AwsAuthSigv4({ name: "elasticmapreduce" });
-const ver = T.ServiceVersion("2009-03-31");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://elasticmapreduce.amazonaws.com/doc/2009-03-31");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "EMR", serviceShapeName: "ElasticMapReduce" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "elasticmapreduce" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2009-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,8 +79,11 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClusterNotFound
   extends /*@__PURE__*/ S.TaggedError<ClusterNotFound>()(
     "ClusterNotFound",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^Cluster id .* is not valid" },
     }),
@@ -88,23 +91,26 @@ export class ClusterNotFound
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()("InternalServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    ErrorCode: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ErrorCode: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class JobFlowNotFound
   extends /*@__PURE__*/ S.TaggedError<JobFlowNotFound>()(
     "JobFlowNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Specified job flow ID not valid" },
     }),
@@ -112,8 +118,11 @@ export class JobFlowNotFound
 export class SecurityConfigurationAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<SecurityConfigurationAlreadyExists>()(
     "SecurityConfigurationAlreadyExists",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^SecurityConfiguration with name .* already exists" },
     }),
@@ -121,8 +130,11 @@ export class SecurityConfigurationAlreadyExists
 export class SecurityConfigurationNotFound
   extends /*@__PURE__*/ S.TaggedError<SecurityConfigurationNotFound>()(
     "SecurityConfigurationNotFound",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^Security configuration with name .* does not exist" },
     }),
@@ -130,8 +142,11 @@ export class SecurityConfigurationNotFound
 export class StudioNotFound
   extends /*@__PURE__*/ S.TaggedError<StudioNotFound>()(
     "StudioNotFound",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "Studio does not exist" },
     }),
@@ -139,8 +154,11 @@ export class StudioNotFound
 export class StudioServiceRoleMissingS3Access
   extends /*@__PURE__*/ S.TaggedError<StudioServiceRoleMissingS3Access>()(
     "StudioServiceRoleMissingS3Access",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "does not have permission to access the 'S3 Location'" },
     }),
@@ -148,8 +166,11 @@ export class StudioServiceRoleMissingS3Access
 export class StudioServiceRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedError<StudioServiceRoleNotAssumable>()(
     "StudioServiceRoleNotAssumable",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "does not have permissions to assume role" },
     }),
@@ -199,7 +220,7 @@ export const EbsConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EbsConfiguration" }) as any as S.Schema<EbsConfiguration>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface Configuration {
   Classification?: string;
   Configurations?: Configuration[];
@@ -216,7 +237,9 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 export type ConfigurationList = Configuration[];
 export const ConfigurationList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Configuration> => Configuration).annotate({ identifier: "Configuration" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => Configuration).annotate({
+    identifier: "Configuration",
+  }),
 ) as any as S.Schema<ConfigurationList>;
 export interface InstanceTypeConfig {
   InstanceType?: string;
@@ -1128,7 +1151,10 @@ export const PlacementGroupConfig = /*@__PURE__*/ S.suspend(() =>
 export type PlacementGroupConfigList = PlacementGroupConfig[];
 export const PlacementGroupConfigList = /*@__PURE__*/ S.Array(PlacementGroupConfig);
 export type LogTypesMap = { [key: string]: string[] | undefined };
-export const LogTypesMap = /*@__PURE__*/ S.Record(S.String, XmlStringList.pipe(S.optional));
+export const LogTypesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ XmlStringList.pipe(S.optional),
+);
 export interface CloudWatchLogConfiguration {
   Enabled?: boolean;
   LogGroupName?: string;
@@ -1158,7 +1184,10 @@ export type LogUploadPolicyValue =
 export const LogUploadPolicyValue = S.String;
 
 export type LogTypeMap = { [key in LogType]?: LogUploadPolicyValue };
-export const LogTypeMap = /*@__PURE__*/ S.Record(LogType, LogUploadPolicyValue.pipe(S.optional));
+export const LogTypeMap = /*@__PURE__*/ S.Record(
+  LogType,
+  /*@__PURE__*/ LogUploadPolicyValue.pipe(S.optional),
+);
 export interface S3LoggingConfiguration {
   LogTypeUploadPolicy?: { [key: string]: LogUploadPolicyValue | undefined };
 }
@@ -1631,7 +1660,10 @@ export type OutputNotebookFormat = "HTML" | (string & {});
 export const OutputNotebookFormat = S.String;
 
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface NotebookExecution {
   NotebookExecutionId?: string;
   EditorId?: string;
@@ -2079,7 +2111,7 @@ export const UsernamePassword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsernamePassword" }) as any as S.Schema<UsernamePassword>;
 export type Credentials = { UsernamePassword: UsernamePassword };
 export const Credentials = /*@__PURE__*/ S.Union([
-  S.Struct({ UsernamePassword: UsernamePassword }),
+  /*@__PURE__*/ S.Struct({ UsernamePassword: UsernamePassword }),
 ]);
 export interface GetClusterSessionCredentialsOutput {
   Credentials?: Credentials;

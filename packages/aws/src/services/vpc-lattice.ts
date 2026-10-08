@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "VPC Lattice", serviceShapeName: "MercuryControlPlane" });
-const auth = T.AwsAuthSigv4({ name: "vpc-lattice" });
-const ver = T.ServiceVersion("2022-11-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "VPC Lattice",
+  serviceShapeName: "MercuryControlPlane",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "vpc-lattice" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-11-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,66 +76,81 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ServiceIdentifier = string;
 export type ListenerIdentifier = string;
@@ -142,8 +160,8 @@ export type PathMatchExact = string;
 export type PathMatchPrefix = string;
 export type PathMatchType = { exact: string; prefix?: never } | { exact?: never; prefix: string };
 export const PathMatchType = /*@__PURE__*/ S.Union([
-  S.Struct({ exact: S.String }),
-  S.Struct({ prefix: S.String }),
+  /*@__PURE__*/ S.Struct({ exact: S.String }),
+  /*@__PURE__*/ S.Struct({ prefix: S.String }),
 ]);
 export interface PathMatch {
   match: PathMatchType;
@@ -161,9 +179,9 @@ export type HeaderMatchType =
   | { exact?: never; prefix: string; contains?: never }
   | { exact?: never; prefix?: never; contains: string };
 export const HeaderMatchType = /*@__PURE__*/ S.Union([
-  S.Struct({ exact: S.String }),
-  S.Struct({ prefix: S.String }),
-  S.Struct({ contains: S.String }),
+  /*@__PURE__*/ S.Struct({ exact: S.String }),
+  /*@__PURE__*/ S.Struct({ prefix: S.String }),
+  /*@__PURE__*/ S.Struct({ contains: S.String }),
 ]);
 export interface HeaderMatch {
   name: string;
@@ -188,7 +206,7 @@ export const HttpMatch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpMatch" }) as any as S.Schema<HttpMatch>;
 export type RuleMatch = { httpMatch: HttpMatch };
-export const RuleMatch = /*@__PURE__*/ S.Union([S.Struct({ httpMatch: HttpMatch })]);
+export const RuleMatch = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ httpMatch: HttpMatch })]);
 export type RulePriority = number;
 export type TargetGroupIdentifier = string;
 export type TargetGroupWeight = number;
@@ -218,8 +236,8 @@ export type RuleAction =
   | { forward: ForwardAction; fixedResponse?: never }
   | { forward?: never; fixedResponse: FixedResponseAction };
 export const RuleAction = /*@__PURE__*/ S.Union([
-  S.Struct({ forward: ForwardAction }),
-  S.Struct({ fixedResponse: FixedResponseAction }),
+  /*@__PURE__*/ S.Struct({ forward: ForwardAction }),
+  /*@__PURE__*/ S.Struct({ fixedResponse: FixedResponseAction }),
 ]);
 export interface RuleUpdate {
   ruleIdentifier: string;
@@ -319,7 +337,7 @@ export type ServiceNetworkLogType = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAccessLogSubscriptionRequest {
   clientToken?: string;
   resourceIdentifier: string;
@@ -478,10 +496,10 @@ export type ResourceConfigurationDefinition =
   | { dnsResource?: never; ipResource?: never; arnResource: ArnResource; cidrResource?: never }
   | { dnsResource?: never; ipResource?: never; arnResource?: never; cidrResource: CidrResource };
 export const ResourceConfigurationDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ dnsResource: DnsResource }),
-  S.Struct({ ipResource: IpResource }),
-  S.Struct({ arnResource: ArnResource }),
-  S.Struct({ cidrResource: CidrResource }),
+  /*@__PURE__*/ S.Struct({ dnsResource: DnsResource }),
+  /*@__PURE__*/ S.Struct({ ipResource: IpResource }),
+  /*@__PURE__*/ S.Struct({ arnResource: ArnResource }),
+  /*@__PURE__*/ S.Struct({ cidrResource: CidrResource }),
 ]);
 export type DomainVerificationIdentifier = string;
 export interface CreateResourceConfigurationRequest {
@@ -974,7 +992,7 @@ export type HealthyThresholdCount = number;
 export type UnhealthyThresholdCount = number;
 export type HttpCodeMatcher = string;
 export type Matcher = { httpCode: string };
-export const Matcher = /*@__PURE__*/ S.Union([S.Struct({ httpCode: S.String })]);
+export const Matcher = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ httpCode: S.String })]);
 export interface HealthCheckConfig {
   enabled?: boolean;
   protocol?: string;

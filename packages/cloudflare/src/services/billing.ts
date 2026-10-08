@@ -710,7 +710,9 @@ export type UsageGetResultItemChargeClass = "Correction";
 export const UsageGetResultItemChargeClass = S.String;
 
 export type UsageGetResultItemTagsValue = string | boolean;
-export const UsageGetResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const UsageGetResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type UsageGetResultItemTagsMap = { [key: string]: UsageGetResultItemTagsValue | undefined };
 export const UsageGetResultItemTagsMap = /*@__PURE__*/ S.Record(
@@ -1470,7 +1472,7 @@ export const UsageGetAccountUsageV2ResultItemChargeClass = S.String;
 
 export type UsageGetAccountUsageV2ResultItemTagsValue = string | boolean;
 export const UsageGetAccountUsageV2ResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UsageGetAccountUsageV2ResultItemTagsMap = {

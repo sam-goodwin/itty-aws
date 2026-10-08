@@ -246,7 +246,7 @@ export const AddOnPlansResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
 
 export type AddOnPlansResponseEdgesList = (AddOnPlansResponseEdgesItem | null)[];
 export const AddOnPlansResponseEdgesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AddOnPlansResponseEdgesItem),
+  /*@__PURE__*/ S.NullOr(AddOnPlansResponseEdgesItem),
 ) as any as S.Schema<AddOnPlansResponseEdgesList>;
 
 export type AddOnPlansResponseNodesItem = AddOnResponseAddOnPlan;
@@ -254,7 +254,7 @@ export const AddOnPlansResponseNodesItem = AddOnResponseAddOnPlan;
 
 export type AddOnPlansResponseNodesList = (AddOnResponseAddOnPlan | null)[];
 export const AddOnPlansResponseNodesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AddOnResponseAddOnPlan),
+  /*@__PURE__*/ S.NullOr(AddOnResponseAddOnPlan),
 ) as any as S.Schema<AddOnPlansResponseNodesList>;
 
 export interface AddOnPlansResponsePageInfo {
@@ -457,7 +457,7 @@ export const AddOnsResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
 
 export type AddOnsResponseEdgesList = (AddOnsResponseEdgesItem | null)[];
 export const AddOnsResponseEdgesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AddOnsResponseEdgesItem),
+  /*@__PURE__*/ S.NullOr(AddOnsResponseEdgesItem),
 ) as any as S.Schema<AddOnsResponseEdgesList>;
 
 export type AddOnsResponseNodesItemReadRegionsList = Array<string>;
@@ -506,7 +506,7 @@ export const AddOnsResponseNodesItem = /*@__PURE__*/ S.suspend(() =>
 
 export type AddOnsResponseNodesList = (AddOnsResponseNodesItem | null)[];
 export const AddOnsResponseNodesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AddOnsResponseNodesItem),
+  /*@__PURE__*/ S.NullOr(AddOnsResponseNodesItem),
 ) as any as S.Schema<AddOnsResponseNodesList>;
 
 export type AddOnsResponsePageInfo = AddOnPlansResponsePageInfo;
@@ -862,7 +862,7 @@ export const OrganizationResponseAddOnsEdgesItem = /*@__PURE__*/ S.suspend(() =>
 
 export type OrganizationResponseAddOnsEdgesList = (OrganizationResponseAddOnsEdgesItem | null)[];
 export const OrganizationResponseAddOnsEdgesList = /*@__PURE__*/ S.Array(
-  S.NullOr(OrganizationResponseAddOnsEdgesItem),
+  /*@__PURE__*/ S.NullOr(OrganizationResponseAddOnsEdgesItem),
 ) as any as S.Schema<OrganizationResponseAddOnsEdgesList>;
 
 export type OrganizationResponseAddOnsPageInfo = AddOnPlansResponsePageInfo;

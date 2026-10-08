@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "kendra", serviceShapeName: "AWSKendraFrontendService" });
-const auth = T.AwsAuthSigv4({ name: "kendra" });
-const ver = T.ServiceVersion("2019-02-03");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "kendra",
+  serviceShapeName: "AWSKendraFrontendService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "kendra" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-02-03");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,79 +76,81 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class FeaturedResultsConflictException
   extends /*@__PURE__*/ S.TaggedError<FeaturedResultsConflictException>()(
     "FeaturedResultsConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ConflictingItems: S.optional(
-        S.suspend(() => ConflictingItems).annotate({ identifier: "ConflictingItems" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ConflictingItems: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ConflictingItems).annotate({
+          identifier: "ConflictingItems",
+        }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistException>()(
     "ResourceAlreadyExistException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ExperienceId = string;
 export type IndexId = string;
@@ -2700,7 +2705,10 @@ export const Order = S.String;
 
 export type ValueImportanceMapKey = string;
 export type ValueImportanceMap = { [key: string]: number | undefined };
-export const ValueImportanceMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const ValueImportanceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface Relevance {
   Freshness?: boolean;
   Importance?: number;
@@ -3110,7 +3118,7 @@ export type DocumentAttributeKeyList = string[];
 export const DocumentAttributeKeyList = /*@__PURE__*/ S.Array(S.String);
 export type AttributeFilterList = AttributeFilter[];
 export const AttributeFilterList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
     identifier: "AttributeFilter",
   }),
 ) as any as S.Schema<AttributeFilterList>;
@@ -3986,7 +3994,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 export type FacetList = Facet[];
 export const FacetList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Facet> => Facet).annotate({ identifier: "Facet" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Facet> => Facet).annotate({ identifier: "Facet" }),
 ) as any as S.Schema<FacetList>;
 export type QueryResultType = "DOCUMENT" | "QUESTION_ANSWER" | "ANSWER" | (string & {});
 export const QueryResultType = S.String;
@@ -4276,7 +4284,7 @@ export const DocumentAttributeValueCountPair = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DocumentAttributeValueCountPair>;
 export type DocumentAttributeValueCountPairList = DocumentAttributeValueCountPair[];
 export const DocumentAttributeValueCountPairList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<DocumentAttributeValueCountPair> => DocumentAttributeValueCountPair,
   ).annotate({ identifier: "DocumentAttributeValueCountPair" }),
 ) as any as S.Schema<DocumentAttributeValueCountPairList>;
@@ -4298,7 +4306,9 @@ export const FacetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetResult" }) as any as S.Schema<FacetResult>;
 export type FacetResultList = FacetResult[];
 export const FacetResultList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<FacetResult> => FacetResult).annotate({ identifier: "FacetResult" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<FacetResult> => FacetResult).annotate({
+    identifier: "FacetResult",
+  }),
 ) as any as S.Schema<FacetResultList>;
 export type WarningMessage = string;
 export type WarningCode = "QUERY_LANGUAGE_INVALID_SYNTAX" | (string & {});

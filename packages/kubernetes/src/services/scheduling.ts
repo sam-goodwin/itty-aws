@@ -700,7 +700,7 @@ export type IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroup
   Array<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
-    S.suspend(() => IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate),
   ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList>;
 
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
@@ -1127,7 +1127,7 @@ export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupT
   Array<IoK8sApiSchedulingV1beta1CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
-    S.suspend(() => IoK8sApiSchedulingV1beta1CompositePodGroupTemplate),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiSchedulingV1beta1CompositePodGroupTemplate),
   ) as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList>;
 
 /** CompositeDisruptionMode defines how individual entities within a composite pod group can be disrupted. Exactly one mode must be set. */

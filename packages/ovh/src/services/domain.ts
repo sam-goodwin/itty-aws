@@ -2642,7 +2642,7 @@ export const GetDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 /** An "and" operator on multiple rules */
 export type DomainConfigurationRulesRuleAndList = Array<DomainConfigurationRulesRule>;
 export const DomainConfigurationRulesRuleAndList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DomainConfigurationRulesRule),
+  /*@__PURE__*/ S.suspend(() => DomainConfigurationRulesRule),
 ) as any as S.Schema<DomainConfigurationRulesRuleAndList>;
 
 /** Used in rule to tell if rule (or part of the rule) is applicable for a given context */
@@ -2733,7 +2733,7 @@ export const DomainConfigurationRulesRuleContextsList = /*@__PURE__*/ S.Array(
 /** An "or" operator on multiple rules */
 export type DomainConfigurationRulesRuleOrList = Array<DomainConfigurationRulesRule>;
 export const DomainConfigurationRulesRuleOrList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DomainConfigurationRulesRule),
+  /*@__PURE__*/ S.suspend(() => DomainConfigurationRulesRule),
 ) as any as S.Schema<DomainConfigurationRulesRuleOrList>;
 
 /** Type of rule configuration */

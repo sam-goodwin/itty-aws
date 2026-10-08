@@ -10,11 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "IoTSiteWise", serviceShapeName: "AWSIoTSiteWise" });
-const auth = T.AwsAuthSigv4({ name: "iotsitewise" });
-const ver = T.ServiceVersion("2019-12-02");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "IoTSiteWise",
+  serviceShapeName: "AWSIoTSiteWise",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iotsitewise" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-12-02");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,86 +79,101 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictingOperationException
   extends /*@__PURE__*/ S.TaggedError<ConflictingOperationException>()(
     "ConflictingOperationException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceArn: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceArn: S.String },
-    T.HttpError(412),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class QueryTimeoutException
   extends /*@__PURE__*/ S.TaggedError<QueryTimeoutException>()(
     "QueryTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceArn: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type CustomID = string;
 export type ClientToken = string;
@@ -1319,7 +1337,7 @@ export const Permission = S.String;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAccessPolicyRequest {
   accessPolicyIdentity: Identity;
   accessPolicyResource: Resource;
@@ -1979,7 +1997,7 @@ export const AssetPropertyBindingValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetPropertyBindingValue>;
 export type BindingValueList = ComputationModelDataBindingValue[];
 export const BindingValueList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<ComputationModelDataBindingValue> => ComputationModelDataBindingValue,
   ).annotate({ identifier: "ComputationModelDataBindingValue" }),
 ) as any as S.Schema<BindingValueList>;
@@ -2004,7 +2022,9 @@ export type ComputationModelDataBinding = {
 };
 export const ComputationModelDataBinding = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<ComputationModelDataBindingValue> => ComputationModelDataBindingValue)
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<ComputationModelDataBindingValue> => ComputationModelDataBindingValue,
+  )
     .annotate({ identifier: "ComputationModelDataBindingValue" })
     .pipe(S.optional),
 );
@@ -2105,7 +2125,7 @@ export const DatasetConfig = /*@__PURE__*/ S.suspend(() =>
 export type MetadataKey = string;
 export type MetadataValue = string;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DatasetSourceType = "KENDRA" | "SITEWISE" | (string & {});
 export const DatasetSourceType = S.String;
 
@@ -2246,8 +2266,8 @@ export type ProcessingInput =
   | { timeseries: TimeseriesItem[]; dataset?: never }
   | { timeseries?: never; dataset: DatasetItem };
 export const ProcessingInput = /*@__PURE__*/ S.Union([
-  S.Struct({ timeseries: TimeseriesList }),
-  S.Struct({ dataset: DatasetItem }),
+  /*@__PURE__*/ S.Struct({ timeseries: TimeseriesList }),
+  /*@__PURE__*/ S.Struct({ dataset: DatasetItem }),
 ]);
 export interface ExportErrorReportLocation {
   s3Uri: string;
@@ -2317,7 +2337,7 @@ export const EventDetection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventDetection" }) as any as S.Schema<EventDetection>;
 export type EnrichmentJobConfiguration = { eventDetection: EventDetection };
 export const EnrichmentJobConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ eventDetection: EventDetection }),
+  /*@__PURE__*/ S.Struct({ eventDetection: EventDetection }),
 ]);
 export interface CreateEnrichmentJobRequest {
   workspaceName: string;
@@ -2427,7 +2447,10 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentVariableName = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ComputeNodeNameList = string[];
 export const ComputeNodeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ComputeNode {
@@ -2552,7 +2575,7 @@ export const PortalTypeEntry = /*@__PURE__*/ S.suspend(() =>
 export type PortalTypeConfiguration = { [key: string]: PortalTypeEntry | undefined };
 export const PortalTypeConfiguration = /*@__PURE__*/ S.Record(
   S.String,
-  PortalTypeEntry.pipe(S.optional),
+  /*@__PURE__*/ PortalTypeEntry.pipe(S.optional),
 );
 export interface CreatePortalRequest {
   portalName: string;
@@ -2716,7 +2739,7 @@ export const S3AccessPointSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3AccessPointSource" }) as any as S.Schema<S3AccessPointSource>;
 export type MountSource = { s3AccessPoint: S3AccessPointSource };
 export const MountSource = /*@__PURE__*/ S.Union([
-  S.Struct({ s3AccessPoint: S3AccessPointSource }),
+  /*@__PURE__*/ S.Struct({ s3AccessPoint: S3AccessPointSource }),
 ]);
 export type MountStorageType = "SHARED_STORAGE" | (string & {});
 export const MountStorageType = S.String;
@@ -2765,7 +2788,7 @@ export const ContainerTaskConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerTaskConfiguration>;
 export type TaskConfiguration = { containerTaskConfiguration: ContainerTaskConfiguration };
 export const TaskConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ containerTaskConfiguration: ContainerTaskConfiguration }),
+  /*@__PURE__*/ S.Struct({ containerTaskConfiguration: ContainerTaskConfiguration }),
 ]);
 export interface CreateTaskRequest {
   workspaceName: string;
@@ -4115,7 +4138,7 @@ export type ComputationModelExecutionSummaryValue = string;
 export type ComputationModelExecutionSummary = { [key: string]: string | undefined };
 export const ComputationModelExecutionSummary = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface DescribeComputationModelExecutionSummaryResponse {
   computationModelId: string;
@@ -4422,11 +4445,17 @@ export const ExecutionStatus = /*@__PURE__*/ S.suspend(() =>
 export type ExecutionResultKey = string;
 export type ExecutionResultValue = string;
 export type ExecutionResult = { [key: string]: string | undefined };
-export const ExecutionResult = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExecutionResult = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ExecutionDetailsKey = string;
 export type ExecutionDetailsValue = string;
 export type ExecutionDetails = { [key: string]: string | undefined };
-export const ExecutionDetails = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExecutionDetails = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DescribeExecutionResponse {
   executionId: string;
   actionType?: string;
@@ -4714,7 +4743,7 @@ export type ComputeNodeEnvironmentVariablesMap = {
 };
 export const ComputeNodeEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  EnvironmentVariablesMap.pipe(S.optional),
+  /*@__PURE__*/ EnvironmentVariablesMap.pipe(S.optional),
 );
 export interface ExecutionEnvironmentVariables {
   global?: { [key: string]: string | undefined };
@@ -4729,7 +4758,10 @@ export const ExecutionEnvironmentVariables = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionEnvironmentVariables",
 }) as any as S.Schema<ExecutionEnvironmentVariables>;
 export type ComputeNodeMountsMap = { [key: string]: Mount[] | undefined };
-export const ComputeNodeMountsMap = /*@__PURE__*/ S.Record(S.String, MountList.pipe(S.optional));
+export const ComputeNodeMountsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MountList.pipe(S.optional),
+);
 export interface MountOverrides {
   computeNodes: { [key: string]: Mount[] | undefined };
 }
@@ -4785,7 +4817,7 @@ export type ExecutionEnvironmentVariablesMapValueString = string;
 export type ExecutionEnvironmentVariablesMap = { [key: string]: string | undefined };
 export const ExecutionEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ComputeNodeExecutionDetails {
   computeNodeName: string;
@@ -5382,7 +5414,7 @@ export const Datum = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Datum" }) as any as S.Schema<Datum>;
 export type DatumList = Datum[];
 export const DatumList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
 ) as any as S.Schema<DatumList>;
 export interface Row {
   data: Datum[];
@@ -5392,7 +5424,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 export type Rows = Row[];
 export const Rows = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Row> => Row).annotate({ identifier: "Row" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Row> => Row).annotate({ identifier: "Row" }),
 );
 export interface ExecuteQueryResponse {
   columns?: ColumnInfo[];
@@ -5670,7 +5702,7 @@ export type ColumnInformationList = ColumnInformation[];
 export const ColumnInformationList = /*@__PURE__*/ S.Array(ColumnInformation);
 export type ColumnValue = string;
 export type Result = string[];
-export const Result = /*@__PURE__*/ S.Array(S.String).pipe(T.Sparse());
+export const Result = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
 export type RowList = string[][];
 export const RowList = /*@__PURE__*/ S.Array(Result);
 export interface GetQueryResultsResponse {
@@ -5913,41 +5945,43 @@ export type ResponseStream =
       throttlingException: ThrottlingException;
     };
 export const ResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ trace: Trace }),
-    S.Struct({ output: InvocationOutput }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ trace: Trace }),
+    /*@__PURE__*/ S.Struct({ output: InvocationOutput }),
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictingOperationException: S.suspend(() => ConflictingOperationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictingOperationException: /*@__PURE__*/ S.suspend(
+        () => ConflictingOperationException,
+      ).annotate({
         identifier: "ConflictingOperationException",
       }),
     }),
-    S.Struct({
-      internalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      internalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),
-    S.Struct({
-      invalidRequestException: S.suspend(() => InvalidRequestException).annotate({
+    /*@__PURE__*/ S.Struct({
+      invalidRequestException: /*@__PURE__*/ S.suspend(() => InvalidRequestException).annotate({
         identifier: "InvalidRequestException",
       }),
     }),
-    S.Struct({
-      limitExceededException: S.suspend(() => LimitExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      limitExceededException: /*@__PURE__*/ S.suspend(() => LimitExceededException).annotate({
         identifier: "LimitExceededException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),

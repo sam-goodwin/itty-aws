@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Greengrass", serviceShapeName: "Greengrass" });
-const auth = T.AwsAuthSigv4({ name: "greengrass" });
-const ver = T.ServiceVersion("2017-06-07");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Greengrass", serviceShapeName: "Greengrass" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "greengrass" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-06-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -102,23 +102,23 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
-      ErrorDetails: S.optional(
-        S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+      ErrorDetails: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
       ),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      ErrorDetails: S.optional(
-        S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+      ErrorDetails: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
       ),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export interface AssociateRoleToGroupRequest {
   GroupId: string;
@@ -165,7 +165,10 @@ export const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "AssociateServiceRoleToAccountResponse",
 }) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Connector {
   ConnectorArn?: string;
   Id?: string;
@@ -189,7 +192,7 @@ export const ConnectorDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorDefinitionVersion",
 }) as any as S.Schema<ConnectorDefinitionVersion>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateConnectorDefinitionRequest {
   AmznClientToken?: string;
   InitialVersion?: ConnectorDefinitionVersion;

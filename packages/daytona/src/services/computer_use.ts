@@ -146,7 +146,7 @@ export const AccessibilityBounds = /*@__PURE__*/ S.suspend(() =>
 
 export type ComputeruseAccessibilityNodeChildrenList = Array<ComputeruseAccessibilityNode>;
 export const ComputeruseAccessibilityNodeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ComputeruseAccessibilityNode),
+  /*@__PURE__*/ S.suspend(() => ComputeruseAccessibilityNode),
 ) as any as S.Schema<ComputeruseAccessibilityNodeChildrenList>;
 
 export type ComputeruseAccessibilityNodeStatesList = Array<string>;

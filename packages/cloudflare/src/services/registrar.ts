@@ -1657,7 +1657,7 @@ export type TransferCheckResponseDomainsValue =
   | TransferCheckResponseDomainsValueTransferableResult
   | TransferCheckResponseDomainsValueNonTransferableResult;
 export const TransferCheckResponseDomainsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["pricing", "transferable", "name", "reasons"],
     ["transferable", "name", "pricing", "reasons"],
   ]),

@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
-const svc = T.AwsApiService({ sdkId: "DynamoDB", serviceShapeName: "DynamoDB_20120810" });
-const auth = T.AwsAuthSigv4({ name: "dynamodb" });
-const ver = T.ServiceVersion("2012-08-10");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "DynamoDB",
+  serviceShapeName: "DynamoDB_20120810",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "dynamodb" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2012-08-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const {
     Region,
     UseDualStack = false,
@@ -372,184 +375,197 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class BackupInUseException
   extends /*@__PURE__*/ S.TaggedError<BackupInUseException>()("BackupInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class BackupNotFoundException
   extends /*@__PURE__*/ S.TaggedError<BackupNotFoundException>()("BackupNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ConditionalCheckFailedException
   extends /*@__PURE__*/ S.TaggedError<ConditionalCheckFailedException>()(
     "ConditionalCheckFailedException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Item: S.optional(S.suspend(() => AttributeMap).annotate({ identifier: "AttributeMap" })),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Item: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => AttributeMap).annotate({ identifier: "AttributeMap" }),
+      ),
     },
   ).pipe(C.withConflictError) {}
 export class ContinuousBackupsUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ContinuousBackupsUnavailableException>()(
     "ContinuousBackupsUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class DuplicateItemException
   extends /*@__PURE__*/ S.TaggedError<DuplicateItemException>()("DuplicateItemException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ExportConflictException
   extends /*@__PURE__*/ S.TaggedError<ExportConflictException>()("ExportConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ExportNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ExportNotFoundException>()("ExportNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class GlobalTableAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<GlobalTableAlreadyExistsException>()(
     "GlobalTableAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class GlobalTableNotFoundException
   extends /*@__PURE__*/ S.TaggedError<GlobalTableNotFoundException>()(
     "GlobalTableNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ImportConflictException
   extends /*@__PURE__*/ S.TaggedError<ImportConflictException>()("ImportConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ImportNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ImportNotFoundException>()("ImportNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class IndexNotFoundException
   extends /*@__PURE__*/ S.TaggedError<IndexNotFoundException>()("IndexNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidEndpointException
   extends /*@__PURE__*/ S.TaggedError<InvalidEndpointException>()(
     "InvalidEndpointException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(421),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(421),
   ).pipe(C.withBadRequestError) {}
 export class InvalidExportTimeException
   extends /*@__PURE__*/ S.TaggedError<InvalidExportTimeException>()("InvalidExportTimeException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidRestoreTimeException
   extends /*@__PURE__*/ S.TaggedError<InvalidRestoreTimeException>()(
     "InvalidRestoreTimeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ItemCollectionSizeLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ItemCollectionSizeLimitExceededException>()(
     "ItemCollectionSizeLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError, C.withRetryableError) {}
 export class PointInTimeRecoveryUnavailableException
   extends /*@__PURE__*/ S.TaggedError<PointInTimeRecoveryUnavailableException>()(
     "PointInTimeRecoveryUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<PolicyNotFoundException>()("PolicyNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ProvisionedThroughputExceededException
   extends /*@__PURE__*/ S.TaggedError<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ThrottlingReasons: S.optional(
-        S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ThrottlingReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
       ),
     },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ReplicaAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ReplicaAlreadyExistsException>()(
     "ReplicaAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ReplicaNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ReplicaNotFoundException>()("ReplicaNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ReplicatedWriteConflictException
   extends /*@__PURE__*/ S.TaggedError<ReplicatedWriteConflictException>()(
     "ReplicatedWriteConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.Retryable(),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.Retryable(),
   ).pipe(C.withRetryableError) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    ThrottlingReasons: S.optional(
-      S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    ThrottlingReasons: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+        identifier: "ThrottlingReasonList",
+      }),
     ),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class TableAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<TableAlreadyExistsException>()(
     "TableAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TableInUseException
   extends /*@__PURE__*/ S.TaggedError<TableInUseException>()("TableInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class TableNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TableNotFoundException>()("TableNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      throttlingReasons: S.optional(
-        S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      throttlingReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
       ),
     },
-    T.all(T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }), T.HttpError(400)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class TransactionCanceledException
   extends /*@__PURE__*/ S.TaggedError<TransactionCanceledException>()(
     "TransactionCanceledException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      CancellationReasons: S.optional(
-        S.suspend(() => CancellationReasonList).annotate({ identifier: "CancellationReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      CancellationReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => CancellationReasonList).annotate({
+          identifier: "CancellationReasonList",
+        }),
       ),
     },
   ) {}
 export class TransactionConflictException
   extends /*@__PURE__*/ S.TaggedError<TransactionConflictException>()(
     "TransactionConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class TransactionInProgressException
   extends /*@__PURE__*/ S.TaggedError<TransactionInProgressException>()(
     "TransactionInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export type PartiQLStatement = string;
 export type StringAttributeValue = string;
@@ -565,13 +581,13 @@ export type AttributeName = string;
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };
 export const MapAttributeValue = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 ) as any as S.Schema<MapAttributeValue>;
 export type ListAttributeValue = AttributeValue[];
 export const ListAttributeValue = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 ) as any as S.Schema<ListAttributeValue>;
 export type NullAttributeValue = boolean;
 export type BooleanAttributeValue = boolean;
@@ -697,22 +713,28 @@ export type AttributeValue =
       BOOL: boolean;
     };
 export const AttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ S: S.String }),
-  S.Struct({ N: S.String }),
-  S.Struct({ B: T.Blob }),
-  S.Struct({ SS: StringSetAttributeValue }),
-  S.Struct({ NS: NumberSetAttributeValue }),
-  S.Struct({ BS: BinarySetAttributeValue }),
-  S.Struct({ M: S.suspend(() => MapAttributeValue).annotate({ identifier: "MapAttributeValue" }) }),
-  S.Struct({
-    L: S.suspend(() => ListAttributeValue).annotate({ identifier: "ListAttributeValue" }),
+  /*@__PURE__*/ S.Struct({ S: S.String }),
+  /*@__PURE__*/ S.Struct({ N: S.String }),
+  /*@__PURE__*/ S.Struct({ B: T.Blob }),
+  /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
+  /*@__PURE__*/ S.Struct({ NS: NumberSetAttributeValue }),
+  /*@__PURE__*/ S.Struct({ BS: BinarySetAttributeValue }),
+  /*@__PURE__*/ S.Struct({
+    M: /*@__PURE__*/ S.suspend(() => MapAttributeValue).annotate({
+      identifier: "MapAttributeValue",
+    }),
   }),
-  S.Struct({ NULL: S.Boolean }),
-  S.Struct({ BOOL: S.Boolean }),
+  /*@__PURE__*/ S.Struct({
+    L: /*@__PURE__*/ S.suspend(() => ListAttributeValue).annotate({
+      identifier: "ListAttributeValue",
+    }),
+  }),
+  /*@__PURE__*/ S.Struct({ NULL: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
 ]) as any as S.Schema<AttributeValue>;
 export type PreparedStatementParameters = AttributeValue[];
 export const PreparedStatementParameters = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 );
 export type ConsistentRead = boolean;
 export type ReturnValuesOnConditionCheckFailure = "ALL_OLD" | "NONE" | (string & {});
@@ -767,7 +789,7 @@ export const BatchStatementErrorCodeEnum = S.String;
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -816,7 +838,7 @@ export type IndexName = string;
 export type SecondaryIndexesCapacityMap = { [key: string]: Capacity | undefined };
 export const SecondaryIndexesCapacityMap = /*@__PURE__*/ S.Record(
   S.String,
-  Capacity.pipe(S.optional),
+  /*@__PURE__*/ Capacity.pipe(S.optional),
 );
 export interface VectorCapacity {
   VectorSearchRequestBytes?: number;
@@ -831,7 +853,7 @@ export const VectorCapacity = /*@__PURE__*/ S.suspend(() =>
 export type VectorIndexesCapacityMap = { [key: string]: VectorCapacity | undefined };
 export const VectorIndexesCapacityMap = /*@__PURE__*/ S.Record(
   S.String,
-  VectorCapacity.pipe(S.optional),
+  /*@__PURE__*/ VectorCapacity.pipe(S.optional),
 );
 export interface ConsumedCapacity {
   TableName?: string;
@@ -872,7 +894,7 @@ export const BatchExecuteStatementOutput = /*@__PURE__*/ S.suspend(() =>
 export type Key = { [key: string]: AttributeValue | undefined };
 export const Key = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -885,7 +907,7 @@ export type ExpressionAttributeNameVariable = string;
 export type ExpressionAttributeNameMap = { [key: string]: string | undefined };
 export const ExpressionAttributeNameMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface KeysAndAttributes {
   Keys: { [key: string]: AttributeValue | undefined }[];
@@ -906,7 +928,7 @@ export const KeysAndAttributes = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetRequestMap = { [key: string]: KeysAndAttributes | undefined };
 export const BatchGetRequestMap = /*@__PURE__*/ S.Record(
   S.String,
-  KeysAndAttributes.pipe(S.optional),
+  /*@__PURE__*/ KeysAndAttributes.pipe(S.optional),
 );
 export interface BatchGetItemInput {
   RequestItems: { [key: string]: KeysAndAttributes | undefined };
@@ -923,7 +945,10 @@ export const ItemList = /*@__PURE__*/ S.Array(AttributeMap);
 export type BatchGetResponseMap = {
   [key: string]: { [key: string]: AttributeValue | undefined }[] | undefined;
 };
-export const BatchGetResponseMap = /*@__PURE__*/ S.Record(S.String, ItemList.pipe(S.optional));
+export const BatchGetResponseMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ItemList.pipe(S.optional),
+);
 export interface BatchGetItemOutput {
   Responses?: { [key: string]: { [key: string]: AttributeValue | undefined }[] | undefined };
   UnprocessedKeys?: { [key: string]: KeysAndAttributes | undefined };
@@ -939,7 +964,7 @@ export const BatchGetItemOutput = /*@__PURE__*/ S.suspend(() =>
 export type PutItemInputAttributeMap = { [key: string]: AttributeValue | undefined };
 export const PutItemInputAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -967,7 +992,7 @@ export const WriteRequests = /*@__PURE__*/ S.Array(WriteRequest);
 export type BatchWriteItemRequestMap = { [key: string]: WriteRequest[] | undefined };
 export const BatchWriteItemRequestMap = /*@__PURE__*/ S.Record(
   S.String,
-  WriteRequests.pipe(S.optional),
+  /*@__PURE__*/ WriteRequests.pipe(S.optional),
 );
 export type ReturnItemCollectionMetrics = "SIZE" | "NONE" | (string & {});
 export const ReturnItemCollectionMetrics = S.String;
@@ -987,7 +1012,7 @@ export const BatchWriteItemInput = /*@__PURE__*/ S.suspend(() =>
 export type ItemCollectionKeyAttributeMap = { [key: string]: AttributeValue | undefined };
 export const ItemCollectionKeyAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -1009,7 +1034,7 @@ export const ItemCollectionMetricsMultiple = /*@__PURE__*/ S.Array(ItemCollectio
 export type ItemCollectionMetricsPerTable = { [key: string]: ItemCollectionMetrics[] | undefined };
 export const ItemCollectionMetricsPerTable = /*@__PURE__*/ S.Record(
   S.String,
-  ItemCollectionMetricsMultiple.pipe(S.optional),
+  /*@__PURE__*/ ItemCollectionMetricsMultiple.pipe(S.optional),
 );
 export interface BatchWriteItemOutput {
   UnprocessedItems?: { [key: string]: WriteRequest[] | undefined };
@@ -1911,7 +1936,7 @@ export const ComparisonOperator = S.String;
 
 export type AttributeValueList = AttributeValue[];
 export const AttributeValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 );
 export interface ExpectedAttributeValue {
   Value?: AttributeValue;
@@ -1930,7 +1955,7 @@ export const ExpectedAttributeValue = /*@__PURE__*/ S.suspend(() =>
 export type ExpectedAttributeMap = { [key: string]: ExpectedAttributeValue | undefined };
 export const ExpectedAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExpectedAttributeValue.pipe(S.optional),
+  /*@__PURE__*/ ExpectedAttributeValue.pipe(S.optional),
 );
 export type ConditionalOperator = "AND" | "OR" | (string & {});
 export const ConditionalOperator = S.String;
@@ -1949,7 +1974,7 @@ export type ExpressionAttributeValueVariable = string;
 export type ExpressionAttributeValueMap = { [key: string]: AttributeValue | undefined };
 export const ExpressionAttributeValueMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -3332,9 +3357,15 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 export type KeyConditions = { [key: string]: Condition | undefined };
-export const KeyConditions = /*@__PURE__*/ S.Record(S.String, Condition.pipe(S.optional));
+export const KeyConditions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Condition.pipe(S.optional),
+);
 export type FilterConditionMap = { [key: string]: Condition | undefined };
-export const FilterConditionMap = /*@__PURE__*/ S.Record(S.String, Condition.pipe(S.optional));
+export const FilterConditionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Condition.pipe(S.optional),
+);
 export interface QueryInput {
   TableName: string;
   IndexName?: string;
@@ -3523,7 +3554,7 @@ export const ScanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScanOutput" }) as any as S.Schema<ScanOutput>;
 export type SearchVectorList = AttributeValue[];
 export const SearchVectorList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 );
 export type TopKInteger = number;
 export interface SearchVectorsInput {
@@ -4020,7 +4051,7 @@ export const AttributeValueUpdate = /*@__PURE__*/ S.suspend(() =>
 export type AttributeUpdates = { [key: string]: AttributeValueUpdate | undefined };
 export const AttributeUpdates = /*@__PURE__*/ S.Record(
   S.String,
-  AttributeValueUpdate.pipe(S.optional),
+  /*@__PURE__*/ AttributeValueUpdate.pipe(S.optional),
 );
 export interface UpdateItemInput {
   TableName: string;

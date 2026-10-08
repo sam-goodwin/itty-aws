@@ -6,11 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Health", serviceShapeName: "AWSHealth_20160804" });
-const auth = T.AwsAuthSigv4({ name: "health" });
-const ver = T.ServiceVersion("2016-08-04");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Health",
+  serviceShapeName: "AWSHealth_20160804",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "health" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-08-04");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -112,15 +115,15 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPaginationToken
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationToken>()("InvalidPaginationToken", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UnsupportedLocale
   extends /*@__PURE__*/ S.TaggedError<UnsupportedLocale>()("UnsupportedLocale", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type EventArn = string;
 export type NextToken = string;
@@ -182,7 +185,7 @@ export const DateTimeRangeList = /*@__PURE__*/ S.Array(DateTimeRange);
 export type TagKey = string;
 export type TagValue = string;
 export type TagSet = { [key: string]: string | undefined };
-export const TagSet = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagSet = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type TagFilter = { [key: string]: string | undefined }[];
 export const TagFilter = /*@__PURE__*/ S.Array(TagSet);
 export type EntityStatusCode =
@@ -236,7 +239,10 @@ export type EntityUrl = string;
 export type EntityMetadataKey = string;
 export type EntityMetadataValue = string;
 export type EntityMetadata = { [key: string]: string | undefined };
-export const EntityMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EntityMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AffectedEntity {
   entityArn?: string;
   eventArn?: string;
@@ -362,7 +368,10 @@ export const DescribeEntityAggregatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEntityAggregatesRequest>;
 export type Count = number;
 export type EntityStatuses = { [key in EntityStatusCode]?: number };
-export const EntityStatuses = /*@__PURE__*/ S.Record(EntityStatusCode, S.Number.pipe(S.optional));
+export const EntityStatuses = /*@__PURE__*/ S.Record(
+  EntityStatusCode,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface EntityAggregate {
   eventArn?: string;
   count?: number;
@@ -610,7 +619,10 @@ export const EventDescription = /*@__PURE__*/ S.suspend(() =>
 export type MetadataKey = string;
 export type MetadataValue = string;
 export type EventMetadata = { [key: string]: string | undefined };
-export const EventMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EventMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface EventDetails {
   event?: Event;
   eventDescription?: EventDescription;

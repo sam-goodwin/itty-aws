@@ -858,7 +858,7 @@ export const CodeScanningAlertClassification = S.String;
 export type CodeScanningAlertInstanceClassificationsList =
   Array<CodeScanningAlertClassification | null>;
 export const CodeScanningAlertInstanceClassificationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CodeScanningAlertClassification),
+  /*@__PURE__*/ S.NullOr(CodeScanningAlertClassification),
 ) as any as S.Schema<CodeScanningAlertInstanceClassificationsList>;
 
 export interface CodeScanningAlertInstance {
@@ -2105,7 +2105,7 @@ export const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ S.suspend(() =
 export type CodeScanningAlertInstanceListClassificationsList =
   Array<CodeScanningAlertClassification | null>;
 export const CodeScanningAlertInstanceListClassificationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CodeScanningAlertClassification),
+  /*@__PURE__*/ S.NullOr(CodeScanningAlertClassification),
 ) as any as S.Schema<CodeScanningAlertInstanceListClassificationsList>;
 
 export interface CodeScanningAlertInstanceList {

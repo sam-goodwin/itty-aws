@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ddp.amazonaws.com/doc/2016-06-02/");
-const svc = T.AwsApiService({ sdkId: "Shield", serviceShapeName: "AWSShield_20160616" });
-const auth = T.AwsAuthSigv4({ name: "shield" });
-const ver = T.ServiceVersion("2016-06-02");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ddp.amazonaws.com/doc/2016-06-02/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Shield",
+  serviceShapeName: "AWSShield_20160616",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "shield" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-06-02");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -88,78 +91,84 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class AccessDeniedForDependencyException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedForDependencyException>()(
     "AccessDeniedForDependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()("InternalErrorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()("InvalidOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPaginationTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    reason: S.optional(
-      S.suspend(() => ValidationExceptionReason).annotate({
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    reason: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
     ),
-    fields: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
+    fields: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
   }) {}
 export class InvalidResourceException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceException>()("InvalidResourceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitsExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitsExceededException>()("LimitsExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Type: S.optional(S.String),
-    Limit: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Limit: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class LockedSubscriptionException
   extends /*@__PURE__*/ S.TaggedError<LockedSubscriptionException>()(
     "LockedSubscriptionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class NoAssociatedRoleException
   extends /*@__PURE__*/ S.TaggedError<NoAssociatedRoleException>()("NoAssociatedRoleException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OptimisticLockException
   extends /*@__PURE__*/ S.TaggedError<OptimisticLockException>()("OptimisticLockException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceType: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    resourceType: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    resourceType: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class SubscriptionNotFound
   extends /*@__PURE__*/ S.TaggedError<SubscriptionNotFound>()(
     "SubscriptionNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceType: S.optional(S.String) },
-    T.SyntheticError({
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ResourceNotFoundException",
       message: "The subscription does not exist.",
     }),

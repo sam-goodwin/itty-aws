@@ -170,7 +170,7 @@ export type RulesCreateRequestBodyBlockRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyBlockRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyBlockRule {
@@ -241,7 +241,7 @@ export type RulesCreateRequestBodyChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesCreateRequestBodyChallengeRuleRatelimitCharacteristicsList = Array<string>;
@@ -352,7 +352,7 @@ export type RulesCreateRequestBodyResponseCompressionRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyResponseCompressionRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyResponseCompressionRule {
@@ -387,7 +387,7 @@ export type RulesCreateRequestBodyDDoSDynamicRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyDDoSDynamicRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyDDoSDynamicRule {
@@ -422,7 +422,7 @@ export type RulesCreateRequestBodyExecuteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyExecuteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyExecuteRule {
@@ -457,7 +457,7 @@ export type RulesCreateRequestBodyForceConnectionCloseRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyForceConnectionCloseRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyForceConnectionCloseRule {
@@ -510,7 +510,7 @@ export type RulesCreateRequestBodyJavaScriptChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyJavaScriptChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesCreateRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList =
@@ -622,7 +622,7 @@ export type RulesCreateRequestBodyLogRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyLogRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyLogRule {
@@ -657,7 +657,7 @@ export type RulesCreateRequestBodyLogCustomFieldRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyLogCustomFieldRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyLogCustomFieldRule {
@@ -692,7 +692,7 @@ export type RulesCreateRequestBodyManagedChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyManagedChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyManagedChallengeRule {
@@ -727,7 +727,7 @@ export type RulesCreateRequestBodyRedirectRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyRedirectRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyRedirectRule {
@@ -762,7 +762,7 @@ export type RulesCreateRequestBodyRewriteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyRewriteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyRewriteRule {
@@ -797,7 +797,7 @@ export type RulesCreateRequestBodyRouteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyRouteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyRouteRule {
@@ -832,7 +832,7 @@ export type RulesCreateRequestBodyScoreRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyScoreRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyScoreRule {
@@ -867,7 +867,7 @@ export type RulesCreateRequestBodyServeErrorRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyServeErrorRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodyServeErrorRule {
@@ -940,7 +940,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1004,7 +1004,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1067,7 +1067,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalid
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1130,7 +1130,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderst
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1203,7 +1203,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1264,7 +1264,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1326,7 +1326,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1399,7 +1399,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1462,7 +1462,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevali
   | RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1523,7 +1523,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersPublic =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1587,7 +1587,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1652,7 +1652,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErro
   | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1718,7 +1718,7 @@ export type RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileR
   | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -1840,7 +1840,7 @@ export type RulesCreateRequestBodySetCacheControlRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodySetCacheControlRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesCreateRequestBodySetCacheControlRuleRatelimitCharacteristicsList = Array<string>;
@@ -1952,7 +1952,7 @@ export type RulesCreateRequestBodySetCacheSettingsRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodySetCacheSettingsRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodySetCacheSettingsRule {
@@ -2153,7 +2153,7 @@ export type RulesCreateRequestBodySetCacheTagsRuleActionParameters =
   | RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValues
   | RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const RulesCreateRequestBodySetCacheTagsRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operation", "values"],
     ["expression", "operation"],
     ["operation", "values"],
@@ -2198,7 +2198,7 @@ export type RulesCreateRequestBodySetCacheTagsRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodySetCacheTagsRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesCreateRequestBodySetCacheTagsRuleRatelimitCharacteristicsList = Array<string>;
@@ -2310,7 +2310,7 @@ export type RulesCreateRequestBodySetConfigurationRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodySetConfigurationRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodySetConfigurationRule {
@@ -2345,7 +2345,7 @@ export type RulesCreateRequestBodySkipRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodySkipRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesCreateRequestBodySkipRule {
@@ -2411,7 +2411,7 @@ export type RulesCreateRequestBodyTransformResponseHTMLRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateRequestBodyTransformResponseHTMLRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesCreateRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
@@ -2530,7 +2530,7 @@ export type RulesCreateRequestBody =
   | RulesCreateRequestBodySkipRule
   | RulesCreateRequestBodyTransformResponseHTMLRule;
 export const RulesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["position"],
     [
       "id",
@@ -4520,7 +4520,7 @@ export type RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -4609,7 +4609,7 @@ export type RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -5095,7 +5095,7 @@ export type RulesCreateResultRulesetRulesItemServeErrorRuleActionParameters =
   | RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const RulesCreateResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -5265,7 +5265,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5327,7 +5327,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5386,7 +5386,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5445,7 +5445,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5518,7 +5518,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5577,7 +5577,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5636,7 +5636,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5709,7 +5709,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5768,7 +5768,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5827,7 +5827,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5889,7 +5889,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -5951,7 +5951,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -6013,7 +6013,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -7204,7 +7204,7 @@ export type RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -8000,7 +8000,7 @@ export type RulesCreateResultRulesetRulesItem =
   | RulesCreateResultRulesetRulesItemSkipRule
   | RulesCreateResultRulesetRulesItemTransformResponseHTMLRule;
 export const RulesCreateResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -10092,7 +10092,7 @@ export type CreateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   | CreateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const CreateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -10177,7 +10177,7 @@ export type CreateRequestRulesItemRewriteRuleActionParametersUri =
   | CreateRequestRulesItemRewriteRuleActionParametersUriURIPath
   | CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery;
 export const CreateRequestRulesItemRewriteRuleActionParametersUri = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["path", "origin"],
     ["query", "origin"],
   ]),
@@ -10616,7 +10616,7 @@ export type CreateRequestRulesItemServeErrorRuleActionParameters =
   | CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContent
   | CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const CreateRequestRulesItemServeErrorRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["content", "contentType", "statusCode"],
     ["assetName", "contentType", "statusCode"],
   ]),
@@ -10781,7 +10781,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersImmutable =
   | CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -10844,7 +10844,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -10906,7 +10906,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate 
   | CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -10968,7 +10968,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand 
   | CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11040,7 +11040,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersNoCache =
   | CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11100,7 +11100,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersNoStore =
   | CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11161,7 +11161,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersNoTransform =
   | CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11233,7 +11233,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersPrivate =
   | CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11295,7 +11295,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate
   | CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11355,7 +11355,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersPublic =
   | CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11418,7 +11418,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11482,7 +11482,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   | CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -11548,7 +11548,7 @@ export type CreateRequestRulesItemSetCacheControlActionParametersStaleWhileReval
   | CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -12637,7 +12637,7 @@ export type CreateRequestRulesItemSetCacheTagsActionParameters =
   | CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValues
   | CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
 export const CreateRequestRulesItemSetCacheTagsActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operation", "values"],
     ["expression", "operation"],
     ["operation", "values"],
@@ -13346,7 +13346,7 @@ export type CreateRequestRulesItem =
   | CreateRequestRulesItemSkipRule
   | CreateRequestRulesItemTransformResponseHTML;
 export const CreateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -15444,7 +15444,7 @@ export type CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue 
   | CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -15487,7 +15487,7 @@ export type CreateResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -15926,7 +15926,7 @@ export type CreateResultRulesetRulesItemServeErrorRuleActionParameters =
   | CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const CreateResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -16094,7 +16094,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmut
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16155,7 +16155,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAg
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16214,7 +16214,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustR
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16273,7 +16273,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustU
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16346,7 +16346,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCac
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16405,7 +16405,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoSto
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16464,7 +16464,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTra
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16537,7 +16537,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPriva
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16596,7 +16596,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxy
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16654,7 +16654,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPubli
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16716,7 +16716,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxa
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16778,7 +16778,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStale
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -16840,7 +16840,7 @@ export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStale
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -17931,7 +17931,7 @@ export type CreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const CreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -18690,7 +18690,7 @@ export type CreateResultRulesetRulesItem =
   | CreateResultRulesetRulesItemSkipRule
   | CreateResultRulesetRulesItemTransformResponseHTMLRule;
 export const CreateResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -20923,7 +20923,7 @@ export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   | RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -20968,7 +20968,7 @@ export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -21411,7 +21411,7 @@ export type RulesDeleteResultRulesetRulesItemServeErrorRuleActionParameters =
   | RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const RulesDeleteResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -21581,7 +21581,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21643,7 +21643,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21702,7 +21702,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21761,7 +21761,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21834,7 +21834,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21893,7 +21893,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -21952,7 +21952,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22025,7 +22025,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22084,7 +22084,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22143,7 +22143,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22205,7 +22205,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22267,7 +22267,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -22329,7 +22329,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParameters
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -23435,7 +23435,7 @@ export type RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -24217,7 +24217,7 @@ export type RulesDeleteResultRulesetRulesItem =
   | RulesDeleteResultRulesetRulesItemSkipRule
   | RulesDeleteResultRulesetRulesItemTransformResponseHTMLRule;
 export const RulesDeleteResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -26522,7 +26522,7 @@ export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -26565,7 +26565,7 @@ export type PhasesGetResponseRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -27002,7 +27002,7 @@ export type PhasesGetResponseRulesItemServeErrorRuleActionParameters =
   | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const PhasesGetResponseRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -27170,7 +27170,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutab
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27231,7 +27231,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge 
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27290,7 +27290,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRev
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27349,7 +27349,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnd
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27421,7 +27421,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCache
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27479,7 +27479,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStore
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27538,7 +27538,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTrans
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27610,7 +27610,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivate
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27669,7 +27669,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRe
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27727,7 +27727,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublic 
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27788,7 +27788,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27850,7 +27850,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIf
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -27912,7 +27912,7 @@ export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWh
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -28995,7 +28995,7 @@ export type PhasesGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const PhasesGetResponseRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -29740,7 +29740,7 @@ export type PhasesGetResponseRulesItem =
   | PhasesGetResponseRulesItemSkipRule
   | PhasesGetResponseRulesItemTransformResponseHTMLRule;
 export const PhasesGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -31967,7 +31967,7 @@ export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders
   | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -32012,7 +32012,7 @@ export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -32455,7 +32455,7 @@ export type PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
   | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -32627,7 +32627,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32689,7 +32689,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32748,7 +32748,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32807,7 +32807,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32880,7 +32880,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32939,7 +32939,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -32998,7 +32998,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33071,7 +33071,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33130,7 +33130,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33189,7 +33189,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33251,7 +33251,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33313,7 +33313,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -33375,7 +33375,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParameter
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -34483,7 +34483,7 @@ export type PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -35269,7 +35269,7 @@ export type PhasesVersionsGetResponseRulesItem =
   | PhasesVersionsGetResponseRulesItemSkipRule
   | PhasesVersionsGetResponseRulesItemTransformResponseHTMLRule;
 export const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -37407,7 +37407,7 @@ export type GetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -37448,7 +37448,7 @@ export type GetResponseRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIPath
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const GetResponseRulesItemRewriteRuleActionParametersUri = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["path", "origin"],
     ["query", "origin"],
   ]),
@@ -37879,7 +37879,7 @@ export type GetResponseRulesItemServeErrorRuleActionParameters =
   | GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
   | GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const GetResponseRulesItemServeErrorRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["content", "contentType", "statusCode"],
     ["assetName", "contentType", "statusCode"],
   ]),
@@ -38044,7 +38044,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   | GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38103,7 +38103,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   | GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38161,7 +38161,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidat
   | GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38219,7 +38219,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstan
   | GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38290,7 +38290,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38347,7 +38347,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38404,7 +38404,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38475,7 +38475,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   | GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38534,7 +38534,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalida
   | GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38590,7 +38590,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   | GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38650,7 +38650,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   | GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38711,7 +38711,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError 
   | GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -38773,7 +38773,7 @@ export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRev
   | GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -39831,7 +39831,7 @@ export type GetResponseRulesItemSetCacheTagsRuleActionParameters =
   | GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValues
   | GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const GetResponseRulesItemSetCacheTagsRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operation", "values"],
     ["expression", "operation"],
     ["operation", "values"],
@@ -40564,7 +40564,7 @@ export type GetResponseRulesItem =
   | GetResponseRulesItemSkipRule
   | GetResponseRulesItemTransformResponseHTMLRule;
 export const GetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -42745,7 +42745,7 @@ export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValue 
   | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -42788,7 +42788,7 @@ export type VersionsGetResponseRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -43227,7 +43227,7 @@ export type VersionsGetResponseRulesItemServeErrorRuleActionParameters =
   | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const VersionsGetResponseRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -43395,7 +43395,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmut
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43456,7 +43456,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAg
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43515,7 +43515,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustR
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43574,7 +43574,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustU
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43647,7 +43647,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCac
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43706,7 +43706,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoSto
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43765,7 +43765,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTra
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43838,7 +43838,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPriva
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43897,7 +43897,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxy
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -43955,7 +43955,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPubli
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -44017,7 +44017,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxa
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -44079,7 +44079,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStale
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -44141,7 +44141,7 @@ export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStale
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -45232,7 +45232,7 @@ export type VersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const VersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -45991,7 +45991,7 @@ export type VersionsGetResponseRulesItem =
   | VersionsGetResponseRulesItemSkipRule
   | VersionsGetResponseRulesItemTransformResponseHTMLRule;
 export const VersionsGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -46777,7 +46777,7 @@ export type RulesEditRequestBodyBlockRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyBlockRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyBlockRule {
@@ -46828,7 +46828,7 @@ export type RulesEditRequestBodyChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesEditRequestBodyChallengeRuleRatelimitCharacteristicsList = Array<string>;
@@ -46938,7 +46938,7 @@ export type RulesEditRequestBodyResponseCompressionRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyResponseCompressionRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyResponseCompressionRule {
@@ -46973,7 +46973,7 @@ export type RulesEditRequestBodyDDoSDynamicRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyDDoSDynamicRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyDDoSDynamicRule {
@@ -47008,7 +47008,7 @@ export type RulesEditRequestBodyExecuteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyExecuteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyExecuteRule {
@@ -47043,7 +47043,7 @@ export type RulesEditRequestBodyForceConnectionCloseRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyForceConnectionCloseRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyForceConnectionCloseRule {
@@ -47096,7 +47096,7 @@ export type RulesEditRequestBodyJavaScriptChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyJavaScriptChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesEditRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList = Array<string>;
@@ -47207,7 +47207,7 @@ export type RulesEditRequestBodyLogRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyLogRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyLogRule {
@@ -47242,7 +47242,7 @@ export type RulesEditRequestBodyLogCustomFieldRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyLogCustomFieldRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyLogCustomFieldRule {
@@ -47277,7 +47277,7 @@ export type RulesEditRequestBodyManagedChallengeRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyManagedChallengeRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyManagedChallengeRule {
@@ -47312,7 +47312,7 @@ export type RulesEditRequestBodyRedirectRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyRedirectRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyRedirectRule {
@@ -47347,7 +47347,7 @@ export type RulesEditRequestBodyRewriteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyRewriteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyRewriteRule {
@@ -47382,7 +47382,7 @@ export type RulesEditRequestBodyRouteRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyRouteRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyRouteRule {
@@ -47417,7 +47417,7 @@ export type RulesEditRequestBodyScoreRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyScoreRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyScoreRule {
@@ -47452,7 +47452,7 @@ export type RulesEditRequestBodyServeErrorRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyServeErrorRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodyServeErrorRule {
@@ -47525,7 +47525,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersImmutable =
   | RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47588,7 +47588,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge =
   | RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47650,7 +47650,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidat
   | RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47712,7 +47712,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstan
   | RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47785,7 +47785,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersNoCache =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47846,7 +47846,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersNoStore =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47907,7 +47907,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -47980,7 +47980,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersPrivate =
   | RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48043,7 +48043,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalida
   | RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48103,7 +48103,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersPublic =
   | RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48167,7 +48167,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage =
   | RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48232,7 +48232,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError 
   | RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48298,7 +48298,7 @@ export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRev
   | RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -48419,7 +48419,7 @@ export type RulesEditRequestBodySetCacheControlRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodySetCacheControlRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesEditRequestBodySetCacheControlRuleRatelimitCharacteristicsList = Array<string>;
@@ -48531,7 +48531,7 @@ export type RulesEditRequestBodySetCacheSettingsRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodySetCacheSettingsRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodySetCacheSettingsRule {
@@ -48731,7 +48731,7 @@ export type RulesEditRequestBodySetCacheTagsRuleActionParameters =
   | RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValues
   | RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const RulesEditRequestBodySetCacheTagsRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operation", "values"],
     ["expression", "operation"],
     ["operation", "values"],
@@ -48776,7 +48776,7 @@ export type RulesEditRequestBodySetCacheTagsRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodySetCacheTagsRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesEditRequestBodySetCacheTagsRuleRatelimitCharacteristicsList = Array<string>;
@@ -48888,7 +48888,7 @@ export type RulesEditRequestBodySetConfigurationRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodySetConfigurationRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodySetConfigurationRule {
@@ -48923,7 +48923,7 @@ export type RulesEditRequestBodySkipRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodySkipRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export interface RulesEditRequestBodySkipRule {
@@ -48981,7 +48981,7 @@ export type RulesEditRequestBodyTransformResponseHTMLRulePosition =
   | RulesCreateRequestBodyBlockRulePositionAfterPosition
   | RulesCreateRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditRequestBodyTransformResponseHTMLRulePosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["before"], ["after"], ["index"]]),
+  /*@__PURE__*/ T.UnionCases([["before"], ["after"], ["index"]]),
 );
 
 export type RulesEditRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
@@ -49099,7 +49099,7 @@ export type RulesEditRequestBody =
   | RulesEditRequestBodySkipRule
   | RulesEditRequestBodyTransformResponseHTMLRule;
 export const RulesEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["position"],
     [
       "id",
@@ -50997,7 +50997,7 @@ export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersVal
   | RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -51040,7 +51040,7 @@ export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -51482,7 +51482,7 @@ export type RulesEditResultRulesetRulesItemServeErrorRuleActionParameters =
   | RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const RulesEditResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -51651,7 +51651,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersIm
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -51713,7 +51713,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMa
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -51772,7 +51772,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMu
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -51831,7 +51831,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMu
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -51904,7 +51904,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNo
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -51963,7 +51963,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNo
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52022,7 +52022,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNo
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52095,7 +52095,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPr
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52154,7 +52154,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPr
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52213,7 +52213,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPu
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52275,7 +52275,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSM
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52337,7 +52337,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSt
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -52399,7 +52399,7 @@ export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSt
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -53500,7 +53500,7 @@ export type RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -54268,7 +54268,7 @@ export type RulesEditResultRulesetRulesItem =
   | RulesEditResultRulesetRulesItemSkipRule
   | RulesEditResultRulesetRulesItemTransformResponseHTMLRule;
 export const RulesEditResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -56346,7 +56346,7 @@ export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValue 
   | PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -56389,7 +56389,7 @@ export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri =
   | CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery;
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -56815,7 +56815,7 @@ export type PhasesUpdateRequestRulesItemServeErrorRuleActionParameters =
   | PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const PhasesUpdateRequestRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -56981,7 +56981,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57045,7 +57045,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57108,7 +57108,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustReval
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57171,7 +57171,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnder
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57244,7 +57244,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57305,7 +57305,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57368,7 +57368,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransfo
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57441,7 +57441,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57504,7 +57504,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyReva
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57565,7 +57565,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57629,7 +57629,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57695,7 +57695,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfEr
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -57761,7 +57761,7 @@ export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhil
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -58806,7 +58806,7 @@ export type PhasesUpdateRequestRulesItemSetCacheTagsActionParameters =
   | PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -59521,7 +59521,7 @@ export type PhasesUpdateRequestRulesItem =
   | PhasesUpdateRequestRulesItemSkipRule
   | PhasesUpdateRequestRulesItemTransformResponseHTML;
 export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -61660,7 +61660,7 @@ export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeaders
   | PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -61705,7 +61705,7 @@ export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -62148,7 +62148,7 @@ export type PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   | PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -62320,7 +62320,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62382,7 +62382,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62441,7 +62441,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62500,7 +62500,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62573,7 +62573,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62632,7 +62632,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62691,7 +62691,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62764,7 +62764,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62823,7 +62823,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62882,7 +62882,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -62944,7 +62944,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -63006,7 +63006,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -63068,7 +63068,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParameter
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -64176,7 +64176,7 @@ export type PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -64962,7 +64962,7 @@ export type PhasesUpdateResultRulesetRulesItem =
   | PhasesUpdateResultRulesetRulesItemSkipRule
   | PhasesUpdateResultRulesetRulesItemTransformResponseHTMLRule;
 export const PhasesUpdateResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",
@@ -67036,7 +67036,7 @@ export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   | UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -67077,7 +67077,7 @@ export type UpdateRequestRulesItemRewriteRuleActionParametersUri =
   | CreateRequestRulesItemRewriteRuleActionParametersUriURIPath
   | CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery;
 export const UpdateRequestRulesItemRewriteRuleActionParametersUri = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["path", "origin"],
     ["query", "origin"],
   ]),
@@ -67493,7 +67493,7 @@ export type UpdateRequestRulesItemServeErrorRuleActionParameters =
   | UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent
   | UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const UpdateRequestRulesItemServeErrorRuleActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["content", "contentType", "statusCode"],
     ["assetName", "contentType", "statusCode"],
   ]),
@@ -67658,7 +67658,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersImmutable =
   | UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -67721,7 +67721,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -67783,7 +67783,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate 
   | UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -67845,7 +67845,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand 
   | UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -67917,7 +67917,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -67977,7 +67977,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68038,7 +68038,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersNoTransform =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68110,7 +68110,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   | UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68172,7 +68172,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate
   | UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68232,7 +68232,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersPublic =
   | UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68295,7 +68295,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68359,7 +68359,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   | UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -68425,7 +68425,7 @@ export type UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileReval
   | UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -69442,7 +69442,7 @@ export type UpdateRequestRulesItemSetCacheTagsActionParameters =
   | UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValues
   | UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
 export const UpdateRequestRulesItemSetCacheTagsActionParameters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operation", "values"],
     ["expression", "operation"],
     ["operation", "values"],
@@ -70137,7 +70137,7 @@ export type UpdateRequestRulesItem =
   | UpdateRequestRulesItemSkipRule
   | UpdateRequestRulesItemTransformResponseHTML;
 export const UpdateRequestRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -72238,7 +72238,7 @@ export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue 
   | UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader;
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value"],
       ["expression", "operation"],
       ["operation", "value"],
@@ -72281,7 +72281,7 @@ export type UpdateResultRulesetRulesItemRewriteRuleActionParametersUri =
   | RulesCreateResultRulesetRulesItemRewriteRuleActionParametersUriURIQuery;
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersUri =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["path", "origin"],
       ["query", "origin"],
     ]),
@@ -72720,7 +72720,7 @@ export type UpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   | UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset;
 export const UpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["content", "contentType", "statusCode"],
       ["assetName", "contentType", "statusCode"],
     ]),
@@ -72888,7 +72888,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmut
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -72949,7 +72949,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAg
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73008,7 +73008,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustR
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73067,7 +73067,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustU
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73140,7 +73140,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCac
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73199,7 +73199,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoSto
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73258,7 +73258,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTra
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73331,7 +73331,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPriva
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly", "qualifiers"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73390,7 +73390,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxy
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73448,7 +73448,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPubli
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73510,7 +73510,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxa
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73572,7 +73572,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStale
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -73634,7 +73634,7 @@ export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStale
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective;
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "value", "cloudflareOnly"],
       ["operation", "cloudflareOnly"],
     ]),
@@ -74725,7 +74725,7 @@ export type UpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression;
 export const UpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["operation", "values"],
       ["expression", "operation"],
       ["operation", "values"],
@@ -75484,7 +75484,7 @@ export type UpdateResultRulesetRulesItem =
   | UpdateResultRulesetRulesItemSkipRule
   | UpdateResultRulesetRulesItemTransformResponseHTMLRule;
 export const UpdateResultRulesetRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "lastUpdated",

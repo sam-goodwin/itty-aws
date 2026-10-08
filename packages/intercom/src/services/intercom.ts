@@ -1420,7 +1420,7 @@ export const TicketTypeAttribute = /*@__PURE__*/ S.suspend(() =>
 /** A list of ticket type attributes associated with a given ticket type. */
 export type TicketTypeAttributeListTicketTypeAttributesList = Array<TicketTypeAttribute | null>;
 export const TicketTypeAttributeListTicketTypeAttributesList = /*@__PURE__*/ S.Array(
-  S.NullOr(TicketTypeAttribute),
+  /*@__PURE__*/ S.NullOr(TicketTypeAttribute),
 ) as any as S.Schema<TicketTypeAttributeListTicketTypeAttributesList>;
 
 /** A list of attributes associated with a given ticket type. */
@@ -1440,7 +1440,7 @@ export const TicketTypeAttributeList = /*@__PURE__*/ S.suspend(() =>
 /** A list of ticket states associated with a given ticket type. */
 export type TicketTypeTicketStatesDataList = Array<TicketState | null>;
 export const TicketTypeTicketStatesDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(TicketState),
+  /*@__PURE__*/ S.NullOr(TicketState),
 ) as any as S.Schema<TicketTypeTicketStatesDataList>;
 
 /** A list of ticket states associated with a given ticket type. */
@@ -6039,7 +6039,7 @@ export const CreateNewsItemRequestLabelsList = /*@__PURE__*/ S.Array(
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type CreateNewsItemRequestReactionsList = Array<string | null>;
 export const CreateNewsItemRequestReactionsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateNewsItemRequestReactionsList>;
 
 /** Assigns a news item to a newsfeed. */
@@ -6110,13 +6110,13 @@ export const NewsItemNewsfeedAssignmentsList = /*@__PURE__*/ S.Array(
 /** Label names displayed to users to categorize the news item. */
 export type NewsItemLabelsList = Array<string | null>;
 export const NewsItemLabelsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<NewsItemLabelsList>;
 
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type NewsItemReactionsList = Array<string | null>;
 export const NewsItemReactionsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<NewsItemReactionsList>;
 
 /** A News Item is a content type in Intercom enabling you to announce product updates, company news, promotions, events and more with your customers. */
@@ -6424,7 +6424,7 @@ export const Datetime = S.Unknown as any as S.Schema<Datetime>;
 /** The list of associated custom object instances for a given reference attribute on the parent object. */
 export type CustomObjectInstanceListInstancesList = Array<CustomObjectInstance | null>;
 export const CustomObjectInstanceListInstancesList = /*@__PURE__*/ S.Array(
-  S.NullOr(CustomObjectInstance),
+  /*@__PURE__*/ S.NullOr(CustomObjectInstance),
 ) as any as S.Schema<CustomObjectInstanceListInstancesList>;
 
 /** The list of associated custom object instances for a given reference attribute on the parent object. */
@@ -11653,7 +11653,7 @@ export const DataEventSummaryItem = /*@__PURE__*/ S.suspend(() =>
 /** A summary of data events */
 export type DataEventSummaryEventsList = Array<DataEventSummaryItem | null>;
 export const DataEventSummaryEventsList = /*@__PURE__*/ S.Array(
-  S.NullOr(DataEventSummaryItem),
+  /*@__PURE__*/ S.NullOr(DataEventSummaryItem),
 ) as any as S.Schema<DataEventSummaryEventsList>;
 
 /** This will return a summary of data events for the App. */
@@ -12007,7 +12007,7 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
 /** An array of activity logs */
 export type ActivityLogListActivityLogsList = Array<ActivityLog | null>;
 export const ActivityLogListActivityLogsList = /*@__PURE__*/ S.Array(
-  S.NullOr(ActivityLog),
+  /*@__PURE__*/ S.NullOr(ActivityLog),
 ) as any as S.Schema<ActivityLogListActivityLogsList>;
 
 /** A paginated list of activity logs. */
@@ -12039,7 +12039,7 @@ export const ListAdminsRequest = /*@__PURE__*/ S.suspend(() =>
 /** A list of admins associated with a given workspace. */
 export type AdminListAdminsList = Array<Admin | null>;
 export const AdminListAdminsList = /*@__PURE__*/ S.Array(
-  S.NullOr(Admin),
+  /*@__PURE__*/ S.NullOr(Admin),
 ) as any as S.Schema<AdminListAdminsList>;
 
 /** A list of admins associated with a given workspace. */
@@ -13353,7 +13353,7 @@ export const CustomObjectInstancesPaginatedListType = S.String;
 /** An array of Custom Object Instance objects. */
 export type CustomObjectInstancesPaginatedListDataList = Array<CustomObjectInstance | null>;
 export const CustomObjectInstancesPaginatedListDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(CustomObjectInstance),
+  /*@__PURE__*/ S.NullOr(CustomObjectInstance),
 ) as any as S.Schema<CustomObjectInstancesPaginatedListDataList>;
 
 /** A paginated list of custom object instances. */
@@ -14215,7 +14215,7 @@ export const MacroListType = S.String;
 /** The list of macro objects */
 export type MacroListDataList = Array<Macro | null>;
 export const MacroListDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(Macro),
+  /*@__PURE__*/ S.NullOr(Macro),
 ) as any as S.Schema<MacroListDataList>;
 
 /** The type of pagination */
@@ -14645,7 +14645,7 @@ export const TicketStateDetailedCategory = S.String;
 /** A list of ticket type attributes associated with a given ticket type. */
 export type TicketStateDetailedTicketTypesDataList = Array<TicketType2 | null>;
 export const TicketStateDetailedTicketTypesDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(TicketType2),
+  /*@__PURE__*/ S.NullOr(TicketType2),
 ) as any as S.Schema<TicketStateDetailedTicketTypesDataList>;
 
 /** A list of ticket types associated with a given ticket state. */
@@ -14696,7 +14696,7 @@ export const TicketStateDetailed = /*@__PURE__*/ S.suspend(() =>
 /** A list of ticket states associated with a given ticket type. */
 export type TicketStateListDataList = Array<TicketStateDetailed | null>;
 export const TicketStateListDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(TicketStateDetailed),
+  /*@__PURE__*/ S.NullOr(TicketStateDetailed),
 ) as any as S.Schema<TicketStateListDataList>;
 
 /** A list of ticket states associated with a given ticket type. */
@@ -14721,7 +14721,7 @@ export const ListTicketTypesRequest = /*@__PURE__*/ S.suspend(() =>
 /** A list of ticket_types associated with a given workspace. */
 export type TicketTypeListDataList = Array<TicketType2 | null>;
 export const TicketTypeListDataList = /*@__PURE__*/ S.Array(
-  S.NullOr(TicketType2),
+  /*@__PURE__*/ S.NullOr(TicketType2),
 ) as any as S.Schema<TicketTypeListDataList>;
 
 /** A list of ticket types associated with a given workspace. */
@@ -16169,7 +16169,7 @@ export const MultipleFilterSearchRequestOperator = S.String;
 /** Add mutiple filters. */
 export type MultipleFilterSearchRequestValueCase0List = Array<MultipleFilterSearchRequest>;
 export const MultipleFilterSearchRequestValueCase0List = /*@__PURE__*/ S.Array(
-  S.suspend(() => MultipleFilterSearchRequest),
+  /*@__PURE__*/ S.suspend(() => MultipleFilterSearchRequest),
 ) as any as S.Schema<MultipleFilterSearchRequestValueCase0List>;
 
 /** Add a single filter field. */
@@ -16621,7 +16621,7 @@ export const TicketListType = S.String;
 /** The list of ticket objects */
 export type TicketListTicketsList = Array<Ticket | null>;
 export const TicketListTicketsList = /*@__PURE__*/ S.Array(
-  S.NullOr(Ticket),
+  /*@__PURE__*/ S.NullOr(Ticket),
 ) as any as S.Schema<TicketListTicketsList>;
 
 /** Tickets are how you track requests from your users. */
@@ -18016,7 +18016,7 @@ export const UpdateNewsItemRequestLabelsList = /*@__PURE__*/ S.Array(
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type UpdateNewsItemRequestReactionsList = Array<string | null>;
 export const UpdateNewsItemRequestReactionsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateNewsItemRequestReactionsList>;
 
 /** A list of newsfeed_assignments to assign to the specified newsfeed. */

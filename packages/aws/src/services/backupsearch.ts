@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "BackupSearch", serviceShapeName: "CryoBackupSearchService" });
-const auth = T.AwsAuthSigv4({ name: "backup-search" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "BackupSearch",
+  serviceShapeName: "CryoBackupSearchService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "backup-search" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -50,26 +53,34 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export type GenericId = string;
 export interface GetSearchJobInput {
@@ -140,7 +151,10 @@ export type RecoveryPoint = string;
 export type RecoveryPointArnList = string[];
 export const RecoveryPointArnList = /*@__PURE__*/ S.Array(S.String);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional)).pipe(T.Sparse());
+export const TagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+).pipe(/*@__PURE__*/ T.Sparse());
 export interface SearchScope {
   BackupResourceTypes: ResourceType[];
   BackupResourceCreationTime?: BackupCreationTimeFilter;
@@ -320,7 +334,7 @@ export const S3ExportSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3ExportSpecification" }) as any as S.Schema<S3ExportSpecification>;
 export type ExportSpecification = { s3ExportSpecification: S3ExportSpecification };
 export const ExportSpecification = /*@__PURE__*/ S.Union([
-  S.Struct({ s3ExportSpecification: S3ExportSpecification }),
+  /*@__PURE__*/ S.Struct({ s3ExportSpecification: S3ExportSpecification }),
 ]);
 export interface GetSearchResultExportJobOutput {
   ExportJobIdentifier: string;
@@ -473,8 +487,8 @@ export type ResultItem =
   | { S3ResultItem: S3ResultItem; EBSResultItem?: never }
   | { S3ResultItem?: never; EBSResultItem: EBSResultItem };
 export const ResultItem = /*@__PURE__*/ S.Union([
-  S.Struct({ S3ResultItem: S3ResultItem }),
-  S.Struct({ EBSResultItem: EBSResultItem }),
+  /*@__PURE__*/ S.Struct({ S3ResultItem: S3ResultItem }),
+  /*@__PURE__*/ S.Struct({ EBSResultItem: EBSResultItem }),
 ]);
 export type Results = ResultItem[];
 export const Results = /*@__PURE__*/ S.Array(ResultItem);

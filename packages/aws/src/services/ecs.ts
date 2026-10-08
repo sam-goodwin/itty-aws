@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ecs.amazonaws.com/doc/2014-11-13/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ecs.amazonaws.com/doc/2014-11-13/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ECS",
   serviceShapeName: "AmazonEC2ContainerServiceV20141113",
 });
-const auth = T.AwsAuthSigv4({ name: "ecs" });
-const ver = T.ServiceVersion("2014-11-13");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ecs" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-11-13");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,134 +75,136 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AttributeLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<AttributeLimitExceededException>()(
     "AttributeLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class BlockedException
   extends /*@__PURE__*/ S.TaggedError<BlockedException>()("BlockedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class ClientException
   extends /*@__PURE__*/ S.TaggedError<ClientException>()("ClientException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class ClusterContainsCapacityProviderException
   extends /*@__PURE__*/ S.TaggedError<ClusterContainsCapacityProviderException>()(
     "ClusterContainsCapacityProviderException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsContainerInstancesException
   extends /*@__PURE__*/ S.TaggedError<ClusterContainsContainerInstancesException>()(
     "ClusterContainsContainerInstancesException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsServicesException
   extends /*@__PURE__*/ S.TaggedError<ClusterContainsServicesException>()(
     "ClusterContainsServicesException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsTasksException
   extends /*@__PURE__*/ S.TaggedError<ClusterContainsTasksException>()(
     "ClusterContainsTasksException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ClusterNotFoundException>()("ClusterNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    resourceIds: S.optional(S.suspend(() => ResourceIds).annotate({ identifier: "ResourceIds" })),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    resourceIds: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ResourceIds).annotate({ identifier: "ResourceIds" }),
+    ),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class DaemonNotActiveException
   extends /*@__PURE__*/ S.TaggedError<DaemonNotActiveException>()("DaemonNotActiveException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class DaemonNotFoundException
   extends /*@__PURE__*/ S.TaggedError<DaemonNotFoundException>()("DaemonNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError) {}
 export class MissingVersionException
   extends /*@__PURE__*/ S.TaggedError<MissingVersionException>()("MissingVersionException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class NamespaceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<NamespaceNotFoundException>()("NamespaceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class NoUpdateAvailableException
   extends /*@__PURE__*/ S.TaggedError<NoUpdateAvailableException>()("NoUpdateAvailableException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PlatformTaskDefinitionIncompatibilityException
   extends /*@__PURE__*/ S.TaggedError<PlatformTaskDefinitionIncompatibilityException>()(
     "PlatformTaskDefinitionIncompatibilityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PlatformUnknownException
   extends /*@__PURE__*/ S.TaggedError<PlatformUnknownException>()("PlatformUnknownException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ServerException
   extends /*@__PURE__*/ S.TaggedError<ServerException>()("ServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceDeploymentNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ServiceDeploymentNotFoundException>()(
     "ServiceDeploymentNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ServiceNotActiveException
   extends /*@__PURE__*/ S.TaggedError<ServiceNotActiveException>()("ServiceNotActiveException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ServiceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ServiceNotFoundException>()("ServiceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class TargetNotConnectedException
   extends /*@__PURE__*/ S.TaggedError<TargetNotConnectedException>()(
     "TargetNotConnectedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class TargetNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TargetNotFoundException>()("TargetNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class TaskSetNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TaskSetNotFoundException>()("TaskSetNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class UnsupportedFeatureException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedFeatureException>()(
     "UnsupportedFeatureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class UpdateInProgressException
   extends /*@__PURE__*/ S.TaggedError<UpdateInProgressException>()("UpdateInProgressException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export type DeploymentLifecycleHookAction = "ROLLBACK" | "CONTINUE" | (string & {});
 export const DeploymentLifecycleHookAction = S.String;
@@ -325,7 +327,9 @@ export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | (string 
 export const CpuManufacturer = S.String;
 
 export type CpuManufacturerSet = CpuManufacturer[];
-export const CpuManufacturerSet = /*@__PURE__*/ S.Array(CpuManufacturer.pipe(T.XmlName("item")));
+export const CpuManufacturerSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ CpuManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type BoxedDouble = number;
 export interface MemoryGiBPerVCpuRequest {
   min?: number;
@@ -336,13 +340,15 @@ export const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemoryGiBPerVCpuRequest" }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
 export type ExcludedInstanceType = string;
 export type ExcludedInstanceTypeSet = string[];
-export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = S.String;
 
 export type InstanceGenerationSet = InstanceGeneration[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
-  InstanceGeneration.pipe(T.XmlName("item")),
+  /*@__PURE__*/ InstanceGeneration.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type BareMetal = "included" | "required" | "excluded" | (string & {});
 export const BareMetal = S.String;
@@ -366,7 +372,9 @@ export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = S.String;
 
 export type LocalStorageTypeSet = LocalStorageType[];
-export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(LocalStorageType.pipe(T.XmlName("item")));
+export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ LocalStorageType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface TotalLocalStorageGBRequest {
   min?: number;
   max?: number;
@@ -389,7 +397,9 @@ export type AcceleratorType = "gpu" | "fpga" | "inference" | (string & {});
 export const AcceleratorType = S.String;
 
 export type AcceleratorTypeSet = AcceleratorType[];
-export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(AcceleratorType.pipe(T.XmlName("item")));
+export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ AcceleratorType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceleratorCountRequest {
   min?: number;
   max?: number;
@@ -408,7 +418,7 @@ export const AcceleratorManufacturer = S.String;
 
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
 export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
-  AcceleratorManufacturer.pipe(T.XmlName("item")),
+  /*@__PURE__*/ AcceleratorManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type AcceleratorName =
   | "a100"
@@ -427,7 +437,9 @@ export type AcceleratorName =
 export const AcceleratorName = S.String;
 
 export type AcceleratorNameSet = AcceleratorName[];
-export const AcceleratorNameSet = /*@__PURE__*/ S.Array(AcceleratorName.pipe(T.XmlName("item")));
+export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ AcceleratorName.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceleratorTotalMemoryMiBRequest {
   min?: number;
   max?: number;
@@ -448,7 +460,9 @@ export const NetworkBandwidthGbpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkBandwidthGbpsRequest>;
 export type AllowedInstanceType = string;
 export type AllowedInstanceTypeSet = string[];
-export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface InstanceRequirementsRequest {
   vCpuCount: VCpuCountRangeRequest;
   memoryMiB: MemoryMiBRequest;
@@ -1551,7 +1565,7 @@ export const LogDriver = S.String;
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
 export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface LogConfiguration {
   logDriver: LogDriver;
@@ -2443,7 +2457,10 @@ export const HostEntry = /*@__PURE__*/ S.suspend(() =>
 export type HostEntryList = HostEntry[];
 export const HostEntryList = /*@__PURE__*/ S.Array(HostEntry);
 export type DockerLabelsMap = { [key: string]: string | undefined };
-export const DockerLabelsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DockerLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type UlimitName =
   | "core"
   | "cpu"
@@ -2516,7 +2533,7 @@ export const FirelensConfigurationType = S.String;
 export type FirelensConfigurationOptionsMap = { [key: string]: string | undefined };
 export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface FirelensConfiguration {
   type: FirelensConfigurationType;
@@ -2633,7 +2650,7 @@ export type Scope = "task" | "shared" | (string & {});
 export const Scope = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DockerVolumeConfiguration {
   scope?: Scope;
   autoprovision?: boolean;

@@ -12508,7 +12508,7 @@ export type PatchConnectionAttributeMapsDtoCustomAttributesMap = {
 };
 export const PatchConnectionAttributeMapsDtoCustomAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<PatchConnectionAttributeMapsDtoCustomAttributesMap>;
 
 export interface PatchConnectionAttributeMapsDto {

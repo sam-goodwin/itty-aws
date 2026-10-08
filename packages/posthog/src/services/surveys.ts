@@ -898,7 +898,7 @@ export const SurveyAppearanceSchema = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateSurveyRequestIterationStartDatesList = Array<string | null>;
 export const CreateSurveyRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateSurveyRequestIterationStartDatesList>;
 
 /** * `day` - day * `week` - week * `month` - month */
@@ -1121,7 +1121,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 export type SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList = Array<string | null>;
 export const SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList>;
 
 export type SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType =
@@ -1248,7 +1248,7 @@ export const CreateSurveysSummarizeResponseResponse = /*@__PURE__*/ S.suspend(()
 
 export type CreateSurveysSummaryHeadlineRequestIterationStartDatesList = Array<string | null>;
 export const CreateSurveysSummaryHeadlineRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateSurveysSummaryHeadlineRequestIterationStartDatesList>;
 
 export type CreateSurveysSummaryHeadlineRequestResponseSamplingIntervalType =
@@ -1377,7 +1377,7 @@ export const SurveyConditionsMap = /*@__PURE__*/ S.Record(
 export type SurveyFeatureFlagKeysItemMap = { [key: string]: string | null | undefined };
 export const SurveyFeatureFlagKeysItemMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveyFeatureFlagKeysItemMap>;
 
 export type SurveyFeatureFlagKeysList = Array<SurveyFeatureFlagKeysItemMap>;
@@ -1387,7 +1387,7 @@ export const SurveyFeatureFlagKeysList = /*@__PURE__*/ S.Array(
 
 export type SurveyIterationStartDatesList = Array<string | null>;
 export const SurveyIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveyIterationStartDatesList>;
 
 export type SurveyResponseSamplingIntervalType = SurveySamplingIntervalTypeEnum | BlankEnum;
@@ -1942,7 +1942,7 @@ export const SurveysDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 
 export type SurveysDuplicateToProjectsCreateRequestIterationStartDatesList = Array<string | null>;
 export const SurveysDuplicateToProjectsCreateRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveysDuplicateToProjectsCreateRequestIterationStartDatesList>;
 
 export type SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType =
@@ -2290,7 +2290,7 @@ export const SurveyQuestionLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type SurveysResponsesArchiveCreateRequestIterationStartDatesList = Array<string | null>;
 export const SurveysResponsesArchiveCreateRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveysResponsesArchiveCreateRequestIterationStartDatesList>;
 
 export type SurveysResponsesArchiveCreateRequestResponseSamplingIntervalType =
@@ -2401,7 +2401,7 @@ export const SurveysResponsesArchiveCreateResponse = /*@__PURE__*/ S.suspend(() 
 
 export type SurveysResponsesUnarchiveCreateRequestIterationStartDatesList = Array<string | null>;
 export const SurveysResponsesUnarchiveCreateRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<SurveysResponsesUnarchiveCreateRequestIterationStartDatesList>;
 
 export type SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType =
@@ -2518,7 +2518,7 @@ export const UpdateSurveyRequestQuestionsList = /*@__PURE__*/ S.Array(
 
 export type UpdateSurveyRequestIterationStartDatesList = Array<string | null>;
 export const UpdateSurveyRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateSurveyRequestIterationStartDatesList>;
 
 export type UpdateSurveyRequestResponseSamplingIntervalType =
@@ -2633,7 +2633,7 @@ export const UpdateSurveysPartialRequestQuestionsList = /*@__PURE__*/ S.Array(
 
 export type UpdateSurveysPartialRequestIterationStartDatesList = Array<string | null>;
 export const UpdateSurveysPartialRequestIterationStartDatesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateSurveysPartialRequestIterationStartDatesList>;
 
 export type UpdateSurveysPartialRequestResponseSamplingIntervalType =

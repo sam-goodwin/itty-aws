@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://awss3control.amazonaws.com/doc/2018-08-20/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://awss3control.amazonaws.com/doc/2018-08-20/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "S3 Control",
   serviceShapeName: "AWSS3ControlServiceV20180820",
 });
-const auth = T.AwsAuthSigv4({ name: "s3" });
-const ver = T.ServiceVersion("2018-08-20");
-const proto = T.AwsProtocolsRestXml();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "s3" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-08-20");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestXml();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const {
     Region,
     UseFIPS = false,
@@ -872,102 +872,105 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessPointAlreadyOwnedByYou
   extends /*@__PURE__*/ S.TaggedError<AccessPointAlreadyOwnedByYou>()(
     "AccessPointAlreadyOwnedByYou",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()("BadRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class BucketAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<BucketAlreadyExists>()("BucketAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class BucketAlreadyOwnedByYou
   extends /*@__PURE__*/ S.TaggedError<BucketAlreadyOwnedByYou>()("BucketAlreadyOwnedByYou", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class IdempotencyException
   extends /*@__PURE__*/ S.TaggedError<IdempotencyException>()("IdempotencyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()("InternalServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()("InvalidNextTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequest
   extends /*@__PURE__*/ S.TaggedError<InvalidRequest>()("InvalidRequest", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class JobStatusException
   extends /*@__PURE__*/ S.TaggedError<JobStatusException>()("JobStatusException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class JobStatusTransitionForbidden
   extends /*@__PURE__*/ S.TaggedError<JobStatusTransitionForbidden>()(
     "JobStatusTransitionForbidden",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidRequest", message: { includes: "job status forbidden" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidRequest",
+      message: { includes: "job status forbidden" },
+    }),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicy
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicy>()("MalformedPolicy", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class MissingBucketLevelActivityMetrics
   extends /*@__PURE__*/ S.TaggedError<MissingBucketLevelActivityMetrics>()(
     "MissingBucketLevelActivityMetrics",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class NoSuchAccessPoint
   extends /*@__PURE__*/ S.TaggedError<NoSuchAccessPoint>()("NoSuchAccessPoint", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class NoSuchAccessPointPolicy
   extends /*@__PURE__*/ S.TaggedError<NoSuchAccessPointPolicy>()("NoSuchAccessPointPolicy", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class NoSuchConfiguration
   extends /*@__PURE__*/ S.TaggedError<NoSuchConfiguration>()("NoSuchConfiguration", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class NoSuchMultiRegionAccessPoint
   extends /*@__PURE__*/ S.TaggedError<NoSuchMultiRegionAccessPoint>()(
     "NoSuchMultiRegionAccessPoint",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoSuchPublicAccessBlockConfiguration
   extends /*@__PURE__*/ S.TaggedError<NoSuchPublicAccessBlockConfiguration>()(
     "NoSuchPublicAccessBlockConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()("NotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ObjectLambdaNotAvailable
   extends /*@__PURE__*/ S.TaggedError<ObjectLambdaNotAvailable>()(
     "ObjectLambdaNotAvailable",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "AccessDenied",
       message: { includes: "Object Lambda is available only to existing customers" },
     }),
   ).pipe(C.withAuthError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()("TooManyTagsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type AccountId = string;
 export type IdentityCenterArn = string;
@@ -1043,7 +1046,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface CreateAccessGrantRequest {
   AccountId: string;
@@ -1239,7 +1242,9 @@ export const PublicAccessBlockConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicAccessBlockConfiguration>;
 export type Prefix = string;
 export type PrefixesList = string[];
-export const PrefixesList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Prefix")));
+export const PrefixesList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")),
+);
 export type ScopePermission =
   | "GetObject"
   | "GetObjectAttributes"
@@ -1254,7 +1259,7 @@ export const ScopePermission = S.String;
 
 export type ScopePermissionList = ScopePermission[];
 export const ScopePermissionList = /*@__PURE__*/ S.Array(
-  ScopePermission.pipe(T.XmlName("Permission")),
+  /*@__PURE__*/ ScopePermission.pipe(/*@__PURE__*/ T.XmlName("Permission")),
 );
 export interface Scope {
   Prefixes?: string[];
@@ -1324,7 +1329,7 @@ export const ObjectLambdaAllowedFeature = S.String;
 
 export type ObjectLambdaAllowedFeaturesList = ObjectLambdaAllowedFeature[];
 export const ObjectLambdaAllowedFeaturesList = /*@__PURE__*/ S.Array(
-  ObjectLambdaAllowedFeature.pipe(T.XmlName("AllowedFeature")),
+  /*@__PURE__*/ ObjectLambdaAllowedFeature.pipe(/*@__PURE__*/ T.XmlName("AllowedFeature")),
 );
 export type ObjectLambdaTransformationConfigurationAction =
   | "GetObject"
@@ -1337,7 +1342,9 @@ export const ObjectLambdaTransformationConfigurationAction = S.String;
 export type ObjectLambdaTransformationConfigurationActionsList =
   ObjectLambdaTransformationConfigurationAction[];
 export const ObjectLambdaTransformationConfigurationActionsList = /*@__PURE__*/ S.Array(
-  ObjectLambdaTransformationConfigurationAction.pipe(T.XmlName("Action")),
+  /*@__PURE__*/ ObjectLambdaTransformationConfigurationAction.pipe(
+    /*@__PURE__*/ T.XmlName("Action"),
+  ),
 );
 export type FunctionArnString = string;
 export type AwsLambdaTransformationPayload = string;
@@ -1350,7 +1357,7 @@ export const AwsLambdaTransformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsLambdaTransformation" }) as any as S.Schema<AwsLambdaTransformation>;
 export type ObjectLambdaContentTransformation = { AwsLambda: AwsLambdaTransformation };
 export const ObjectLambdaContentTransformation = /*@__PURE__*/ S.Union([
-  S.Struct({ AwsLambda: AwsLambdaTransformation }),
+  /*@__PURE__*/ S.Struct({ AwsLambda: AwsLambdaTransformation }),
 ]);
 export interface ObjectLambdaTransformationConfiguration {
   Actions: ObjectLambdaTransformationConfigurationAction[];
@@ -1367,7 +1374,9 @@ export const ObjectLambdaTransformationConfiguration = /*@__PURE__*/ S.suspend((
 export type ObjectLambdaTransformationConfigurationsList =
   ObjectLambdaTransformationConfiguration[];
 export const ObjectLambdaTransformationConfigurationsList = /*@__PURE__*/ S.Array(
-  ObjectLambdaTransformationConfiguration.pipe(T.XmlName("TransformationConfiguration")).annotate({
+  /*@__PURE__*/ ObjectLambdaTransformationConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("TransformationConfiguration"),
+  ).annotate({
     identifier: "ObjectLambdaTransformationConfiguration",
   }),
 );
@@ -1538,7 +1547,10 @@ export const CreateBucketResult = /*@__PURE__*/ S.suspend(() =>
 export type ConfirmationRequired = boolean;
 export type MaxLength1024String = string;
 export type UserArguments = { [key: string]: string | undefined };
-export const UserArguments = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const UserArguments = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface LambdaInvokeOperation {
   FunctionArn?: string;
   InvocationSchemaVersion?: string;
@@ -1604,7 +1616,10 @@ export type S3AnnotationDirective = "COPY" | "EXCLUDE" | (string & {});
 export const S3AnnotationDirective = S.String;
 
 export type S3UserMetadata = { [key: string]: string | undefined };
-export const S3UserMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const S3UserMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type S3ContentLength = number;
 export type S3SSEAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SSEAlgorithm = S.String;
@@ -2109,23 +2124,35 @@ export type ObjectEncryptionFilter =
   | { SSES3?: never; SSEKMS?: never; DSSEKMS?: never; SSEC: SSECFilter; NOTSSE?: never }
   | { SSES3?: never; SSEKMS?: never; DSSEKMS?: never; SSEC?: never; NOTSSE: NotSSEFilter };
 export const ObjectEncryptionFilter = /*@__PURE__*/ S.Union([
-  S.Struct({
-    SSES3: SSES3Filter.pipe(T.XmlName("SSE-S3")).annotate({ identifier: "SSES3Filter" }),
+  /*@__PURE__*/ S.Struct({
+    SSES3: /*@__PURE__*/ SSES3Filter.pipe(/*@__PURE__*/ T.XmlName("SSE-S3")).annotate({
+      identifier: "SSES3Filter",
+    }),
   }),
-  S.Struct({
-    SSEKMS: SSEKMSFilter.pipe(T.XmlName("SSE-KMS")).annotate({ identifier: "SSEKMSFilter" }),
+  /*@__PURE__*/ S.Struct({
+    SSEKMS: /*@__PURE__*/ SSEKMSFilter.pipe(/*@__PURE__*/ T.XmlName("SSE-KMS")).annotate({
+      identifier: "SSEKMSFilter",
+    }),
   }),
-  S.Struct({
-    DSSEKMS: DSSEKMSFilter.pipe(T.XmlName("DSSE-KMS")).annotate({ identifier: "DSSEKMSFilter" }),
+  /*@__PURE__*/ S.Struct({
+    DSSEKMS: /*@__PURE__*/ DSSEKMSFilter.pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS")).annotate({
+      identifier: "DSSEKMSFilter",
+    }),
   }),
-  S.Struct({ SSEC: SSECFilter.pipe(T.XmlName("SSE-C")).annotate({ identifier: "SSECFilter" }) }),
-  S.Struct({
-    NOTSSE: NotSSEFilter.pipe(T.XmlName("NOT-SSE")).annotate({ identifier: "NotSSEFilter" }),
+  /*@__PURE__*/ S.Struct({
+    SSEC: /*@__PURE__*/ SSECFilter.pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
+      identifier: "SSECFilter",
+    }),
+  }),
+  /*@__PURE__*/ S.Struct({
+    NOTSSE: /*@__PURE__*/ NotSSEFilter.pipe(/*@__PURE__*/ T.XmlName("NOT-SSE")).annotate({
+      identifier: "NotSSEFilter",
+    }),
   }),
 ]);
 export type ObjectEncryptionFilterList = ObjectEncryptionFilter[];
 export const ObjectEncryptionFilterList = /*@__PURE__*/ S.Array(
-  ObjectEncryptionFilter.pipe(T.XmlName("ObjectEncryption")),
+  /*@__PURE__*/ ObjectEncryptionFilter.pipe(/*@__PURE__*/ T.XmlName("ObjectEncryption")),
 );
 export interface JobManifestGeneratorFilter {
   EligibleForReplication?: boolean;
@@ -2171,7 +2198,7 @@ export const S3JobManifestGenerator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3JobManifestGenerator" }) as any as S.Schema<S3JobManifestGenerator>;
 export type JobManifestGenerator = { S3JobManifestGenerator: S3JobManifestGenerator };
 export const JobManifestGenerator = /*@__PURE__*/ S.Union([
-  S.Struct({ S3JobManifestGenerator: S3JobManifestGenerator }),
+  /*@__PURE__*/ S.Struct({ S3JobManifestGenerator: S3JobManifestGenerator }),
 ]);
 export interface CreateJobRequest {
   AccountId: string;
@@ -2234,7 +2261,7 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 export type RegionCreationList = Region[];
 export const RegionCreationList = /*@__PURE__*/ S.Array(
-  Region.pipe(T.XmlName("Region")).annotate({ identifier: "Region" }),
+  /*@__PURE__*/ Region.pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({ identifier: "Region" }),
 );
 export interface CreateMultiRegionAccessPointInput {
   Name: string;
@@ -2290,13 +2317,17 @@ export const CreateMultiRegionAccessPointResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMultiRegionAccessPointResult>;
 export type StorageLensGroupName = string;
 export type MatchAnyPrefix = string[];
-export const MatchAnyPrefix = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Prefix")));
+export const MatchAnyPrefix = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")),
+);
 export type Suffix = string;
 export type MatchAnySuffix = string[];
-export const MatchAnySuffix = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Suffix")));
+export const MatchAnySuffix = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Suffix")),
+);
 export type MatchAnyTag = S3Tag[];
 export const MatchAnyTag = /*@__PURE__*/ S.Array(
-  S3Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "S3Tag" }),
+  /*@__PURE__*/ S3Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "S3Tag" }),
 );
 export type ObjectAgeValue = number;
 export interface MatchObjectAge {
@@ -3294,7 +3325,9 @@ export const MultiRegionAccessPointRegionalResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<MultiRegionAccessPointRegionalResponse>;
 export type MultiRegionAccessPointRegionalResponseList = MultiRegionAccessPointRegionalResponse[];
 export const MultiRegionAccessPointRegionalResponseList = /*@__PURE__*/ S.Array(
-  MultiRegionAccessPointRegionalResponse.pipe(T.XmlName("Region")).annotate({
+  /*@__PURE__*/ MultiRegionAccessPointRegionalResponse.pipe(
+    /*@__PURE__*/ T.XmlName("Region"),
+  ).annotate({
     identifier: "MultiRegionAccessPointRegionalResponse",
   }),
 );
@@ -3640,7 +3673,7 @@ export const NetworkOrigin = S.String;
 
 export type CreationDate = Date;
 export type Endpoints = { [key: string]: string | undefined };
-export const Endpoints = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Endpoints = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DataSourceId = string;
 export type DataSourceType = string;
 export interface GetAccessPointResult {
@@ -4073,7 +4106,9 @@ export const Transition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transition" }) as any as S.Schema<Transition>;
 export type TransitionList = Transition[];
 export const TransitionList = /*@__PURE__*/ S.Array(
-  Transition.pipe(T.XmlName("Transition")).annotate({ identifier: "Transition" }),
+  /*@__PURE__*/ Transition.pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
+    identifier: "Transition",
+  }),
 );
 export interface NoncurrentVersionTransition {
   NoncurrentDays?: number;
@@ -4089,7 +4124,9 @@ export const NoncurrentVersionTransition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NoncurrentVersionTransition>;
 export type NoncurrentVersionTransitionList = NoncurrentVersionTransition[];
 export const NoncurrentVersionTransitionList = /*@__PURE__*/ S.Array(
-  NoncurrentVersionTransition.pipe(T.XmlName("NoncurrentVersionTransition")).annotate({
+  /*@__PURE__*/ NoncurrentVersionTransition.pipe(
+    /*@__PURE__*/ T.XmlName("NoncurrentVersionTransition"),
+  ).annotate({
     identifier: "NoncurrentVersionTransition",
   }),
 );
@@ -4136,7 +4173,9 @@ export const LifecycleRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LifecycleRule" }) as any as S.Schema<LifecycleRule>;
 export type LifecycleRules = LifecycleRule[];
 export const LifecycleRules = /*@__PURE__*/ S.Array(
-  LifecycleRule.pipe(T.XmlName("Rule")).annotate({ identifier: "LifecycleRule" }),
+  /*@__PURE__*/ LifecycleRule.pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+    identifier: "LifecycleRule",
+  }),
 );
 export interface GetBucketLifecycleConfigurationResult {
   Rules?: LifecycleRule[];
@@ -4383,7 +4422,9 @@ export const ReplicationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicationRule" }) as any as S.Schema<ReplicationRule>;
 export type ReplicationRules = ReplicationRule[];
 export const ReplicationRules = /*@__PURE__*/ S.Array(
-  ReplicationRule.pipe(T.XmlName("Rule")).annotate({ identifier: "ReplicationRule" }),
+  /*@__PURE__*/ ReplicationRule.pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+    identifier: "ReplicationRule",
+  }),
 );
 export interface ReplicationConfiguration {
   Role: string;
@@ -4629,7 +4670,9 @@ export const RegionReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionReport" }) as any as S.Schema<RegionReport>;
 export type RegionReportList = RegionReport[];
 export const RegionReportList = /*@__PURE__*/ S.Array(
-  RegionReport.pipe(T.XmlName("Region")).annotate({ identifier: "RegionReport" }),
+  /*@__PURE__*/ RegionReport.pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
+    identifier: "RegionReport",
+  }),
 );
 export interface MultiRegionAccessPointReport {
   Name?: string;
@@ -4802,7 +4845,7 @@ export const MultiRegionAccessPointRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiRegionAccessPointRoute>;
 export type RouteList = MultiRegionAccessPointRoute[];
 export const RouteList = /*@__PURE__*/ S.Array(
-  MultiRegionAccessPointRoute.pipe(T.XmlName("Route")).annotate({
+  /*@__PURE__*/ MultiRegionAccessPointRoute.pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
     identifier: "MultiRegionAccessPointRoute",
   }),
 );
@@ -4967,9 +5010,13 @@ export const BucketLevel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BucketLevel" }) as any as S.Schema<BucketLevel>;
 export type StorageLensGroupLevelInclude = string[];
-export const StorageLensGroupLevelInclude = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Arn")));
+export const StorageLensGroupLevelInclude = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")),
+);
 export type StorageLensGroupLevelExclude = string[];
-export const StorageLensGroupLevelExclude = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Arn")));
+export const StorageLensGroupLevelExclude = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")),
+);
 export interface StorageLensGroupLevelSelectionCriteria {
   Include?: string[];
   Exclude?: string[];
@@ -5009,10 +5056,14 @@ export const AccountLevel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountLevel" }) as any as S.Schema<AccountLevel>;
 export type Buckets = string[];
-export const Buckets = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Arn")));
+export const Buckets = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")),
+);
 export type S3AWSRegion = string;
 export type Regions = string[];
-export const Regions = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Region")));
+export const Regions = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Region")),
+);
 export interface Include {
   Buckets?: string[];
   Regions?: string[];
@@ -5195,7 +5246,9 @@ export const StorageLensTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageLensTag" }) as any as S.Schema<StorageLensTag>;
 export type StorageLensTags = StorageLensTag[];
 export const StorageLensTags = /*@__PURE__*/ S.Array(
-  StorageLensTag.pipe(T.XmlName("Tag")).annotate({ identifier: "StorageLensTag" }),
+  /*@__PURE__*/ StorageLensTag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
+    identifier: "StorageLensTag",
+  }),
 );
 export interface GetStorageLensConfigurationTaggingResult {
   Tags?: StorageLensTag[];
@@ -5309,7 +5362,7 @@ export const ListAccessGrantEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccessGrantEntry" }) as any as S.Schema<ListAccessGrantEntry>;
 export type AccessGrantsList = ListAccessGrantEntry[];
 export const AccessGrantsList = /*@__PURE__*/ S.Array(
-  ListAccessGrantEntry.pipe(T.XmlName("AccessGrant")).annotate({
+  /*@__PURE__*/ ListAccessGrantEntry.pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
     identifier: "ListAccessGrantEntry",
   }),
 );
@@ -5374,7 +5427,9 @@ export const ListAccessGrantsInstanceEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessGrantsInstanceEntry>;
 export type AccessGrantsInstancesList = ListAccessGrantsInstanceEntry[];
 export const AccessGrantsInstancesList = /*@__PURE__*/ S.Array(
-  ListAccessGrantsInstanceEntry.pipe(T.XmlName("AccessGrantsInstance")).annotate({
+  /*@__PURE__*/ ListAccessGrantsInstanceEntry.pipe(
+    /*@__PURE__*/ T.XmlName("AccessGrantsInstance"),
+  ).annotate({
     identifier: "ListAccessGrantsInstanceEntry",
   }),
 );
@@ -5441,7 +5496,9 @@ export const ListAccessGrantsLocationsEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessGrantsLocationsEntry>;
 export type AccessGrantsLocationsList = ListAccessGrantsLocationsEntry[];
 export const AccessGrantsLocationsList = /*@__PURE__*/ S.Array(
-  ListAccessGrantsLocationsEntry.pipe(T.XmlName("AccessGrantsLocation")).annotate({
+  /*@__PURE__*/ ListAccessGrantsLocationsEntry.pipe(
+    /*@__PURE__*/ T.XmlName("AccessGrantsLocation"),
+  ).annotate({
     identifier: "ListAccessGrantsLocationsEntry",
   }),
 );
@@ -5516,7 +5573,9 @@ export const AccessPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessPoint" }) as any as S.Schema<AccessPoint>;
 export type AccessPointList = AccessPoint[];
 export const AccessPointList = /*@__PURE__*/ S.Array(
-  AccessPoint.pipe(T.XmlName("AccessPoint")).annotate({ identifier: "AccessPoint" }),
+  /*@__PURE__*/ AccessPoint.pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
+    identifier: "AccessPoint",
+  }),
 );
 export interface ListAccessPointsResult {
   AccessPointList?: AccessPoint[];
@@ -5615,7 +5674,9 @@ export const ObjectLambdaAccessPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectLambdaAccessPoint" }) as any as S.Schema<ObjectLambdaAccessPoint>;
 export type ObjectLambdaAccessPointList = ObjectLambdaAccessPoint[];
 export const ObjectLambdaAccessPointList = /*@__PURE__*/ S.Array(
-  ObjectLambdaAccessPoint.pipe(T.XmlName("ObjectLambdaAccessPoint")).annotate({
+  /*@__PURE__*/ ObjectLambdaAccessPoint.pipe(
+    /*@__PURE__*/ T.XmlName("ObjectLambdaAccessPoint"),
+  ).annotate({
     identifier: "ObjectLambdaAccessPoint",
   }),
 );
@@ -5680,7 +5741,7 @@ export const ListCallerAccessGrantsEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCallerAccessGrantsEntry>;
 export type CallerAccessGrantsList = ListCallerAccessGrantsEntry[];
 export const CallerAccessGrantsList = /*@__PURE__*/ S.Array(
-  ListCallerAccessGrantsEntry.pipe(T.XmlName("AccessGrant")).annotate({
+  /*@__PURE__*/ ListCallerAccessGrantsEntry.pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
     identifier: "ListCallerAccessGrantsEntry",
   }),
 );
@@ -5805,7 +5866,7 @@ export const ListMultiRegionAccessPointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMultiRegionAccessPointsRequest>;
 export type MultiRegionAccessPointReportList = MultiRegionAccessPointReport[];
 export const MultiRegionAccessPointReportList = /*@__PURE__*/ S.Array(
-  MultiRegionAccessPointReport.pipe(T.XmlName("AccessPoint")).annotate({
+  /*@__PURE__*/ MultiRegionAccessPointReport.pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
     identifier: "MultiRegionAccessPointReport",
   }),
 );
@@ -5873,7 +5934,9 @@ export const RegionalBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalBucket" }) as any as S.Schema<RegionalBucket>;
 export type RegionalBucketList = RegionalBucket[];
 export const RegionalBucketList = /*@__PURE__*/ S.Array(
-  RegionalBucket.pipe(T.XmlName("RegionalBucket")).annotate({ identifier: "RegionalBucket" }),
+  /*@__PURE__*/ RegionalBucket.pipe(/*@__PURE__*/ T.XmlName("RegionalBucket")).annotate({
+    identifier: "RegionalBucket",
+  }),
 );
 export interface ListRegionalBucketsResult {
   RegionalBucketList?: RegionalBucket[];
@@ -5932,7 +5995,9 @@ export const ListStorageLensConfigurationEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStorageLensConfigurationEntry>;
 export type StorageLensConfigurationList = ListStorageLensConfigurationEntry[];
 export const StorageLensConfigurationList = /*@__PURE__*/ S.Array(
-  ListStorageLensConfigurationEntry.pipe(T.XmlName("StorageLensConfiguration")).annotate({
+  /*@__PURE__*/ ListStorageLensConfigurationEntry.pipe(
+    /*@__PURE__*/ T.XmlName("StorageLensConfiguration"),
+  ).annotate({
     identifier: "ListStorageLensConfigurationEntry",
   }),
 );
@@ -5990,7 +6055,9 @@ export const ListStorageLensGroupEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStorageLensGroupEntry>;
 export type StorageLensGroupList = ListStorageLensGroupEntry[];
 export const StorageLensGroupList = /*@__PURE__*/ S.Array(
-  ListStorageLensGroupEntry.pipe(T.XmlName("StorageLensGroup")).annotate({
+  /*@__PURE__*/ ListStorageLensGroupEntry.pipe(
+    /*@__PURE__*/ T.XmlName("StorageLensGroup"),
+  ).annotate({
     identifier: "ListStorageLensGroupEntry",
   }),
 );

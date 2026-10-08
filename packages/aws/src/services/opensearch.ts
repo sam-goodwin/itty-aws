@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://es.amazonaws.com/doc/2021-01-01/");
-const svc = T.AwsApiService({ sdkId: "OpenSearch", serviceShapeName: "AmazonOpenSearchService" });
-const auth = T.AwsAuthSigv4({ name: "es" });
-const ver = T.ServiceVersion("2021-01-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://es.amazonaws.com/doc/2021-01-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "OpenSearch",
+  serviceShapeName: "AmazonOpenSearchService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "es" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,93 +84,95 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BaseException
   extends /*@__PURE__*/ S.TaggedError<BaseException>()("BaseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailureException
   extends /*@__PURE__*/ S.TaggedError<DependencyFailureException>()(
     "DependencyFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class DisabledOperationException
   extends /*@__PURE__*/ S.TaggedError<DisabledOperationException>()(
     "DisabledOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidPaginationTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTypeException
   extends /*@__PURE__*/ S.TaggedError<InvalidTypeException>()(
     "InvalidTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class SlotNotAvailableException
   extends /*@__PURE__*/ S.TaggedError<SlotNotAvailableException>()(
     "SlotNotAvailableException",
     {
-      SlotSuggestions: S.optional(S.suspend(() => SlotList).annotate({ identifier: "SlotList" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      SlotSuggestions: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => SlotList).annotate({ identifier: "SlotList" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ConnectionId = string;
 export interface AcceptInboundConnectionRequest {
@@ -267,7 +272,7 @@ export const S3GlueDataCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3GlueDataCatalog" }) as any as S.Schema<S3GlueDataCatalog>;
 export type DataSourceType = { S3GlueDataCatalog: S3GlueDataCatalog };
 export const DataSourceType = /*@__PURE__*/ S.Union([
-  S.Struct({ S3GlueDataCatalog: S3GlueDataCatalog }),
+  /*@__PURE__*/ S.Struct({ S3GlueDataCatalog: S3GlueDataCatalog }),
 ]);
 export type DataSourceDescription = string;
 export interface AddDataSourceRequest {
@@ -333,9 +338,9 @@ export type DirectQueryDataSourceType =
   | { CloudWatchLog?: never; SecurityLake: SecurityLakeDirectQueryDataSource; Prometheus?: never }
   | { CloudWatchLog?: never; SecurityLake?: never; Prometheus: PrometheusDirectQueryDataSource };
 export const DirectQueryDataSourceType = /*@__PURE__*/ S.Union([
-  S.Struct({ CloudWatchLog: CloudWatchDirectQueryDataSource }),
-  S.Struct({ SecurityLake: SecurityLakeDirectQueryDataSource }),
-  S.Struct({ Prometheus: PrometheusDirectQueryDataSource }),
+  /*@__PURE__*/ S.Struct({ CloudWatchLog: CloudWatchDirectQueryDataSource }),
+  /*@__PURE__*/ S.Struct({ SecurityLake: SecurityLakeDirectQueryDataSource }),
+  /*@__PURE__*/ S.Struct({ Prometheus: PrometheusDirectQueryDataSource }),
 ]);
 export type DirectQueryDataSourceDescription = string;
 export type ARN = string;
@@ -1160,7 +1165,10 @@ export const NodeToNodeEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeToNodeEncryptionOptions",
 }) as any as S.Schema<NodeToNodeEncryptionOptions>;
 export type AdvancedOptions = { [key: string]: string | undefined };
-export const AdvancedOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdvancedOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type LogType =
   | "INDEX_SLOW_LOGS"
   | "SEARCH_SLOW_LOGS"
@@ -1180,7 +1188,7 @@ export const LogPublishingOption = /*@__PURE__*/ S.suspend(() =>
 export type LogPublishingOptions = { [key in LogType]?: LogPublishingOption };
 export const LogPublishingOptions = /*@__PURE__*/ S.Record(
   LogType,
-  LogPublishingOption.pipe(S.optional),
+  /*@__PURE__*/ LogPublishingOption.pipe(S.optional),
 );
 export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
@@ -1545,7 +1553,10 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainId = string;
 export type ServiceUrl = string;
 export type EndpointsMap = { [key: string]: string | undefined };
-export const EndpointsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EndpointsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type HostedZoneId = string;
 export interface VPCDerivedInfo {
   VPCId?: string;
@@ -3548,7 +3559,7 @@ export const Limits = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Limits" }) as any as S.Schema<Limits>;
 export type LimitsByRole = { [key: string]: Limits | undefined };
-export const LimitsByRole = /*@__PURE__*/ S.Record(S.String, Limits.pipe(S.optional));
+export const LimitsByRole = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Limits.pipe(S.optional));
 export interface DescribeInstanceTypeLimitsResponse {
   LimitsByRole?: { [key: string]: Limits | undefined };
 }
@@ -3696,7 +3707,9 @@ export const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecurringCharge" }) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
 export const RecurringChargeList = /*@__PURE__*/ S.Array(
-  RecurringCharge.pipe(T.XmlName("RecurringCharge")).annotate({ identifier: "RecurringCharge" }),
+  /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
+    identifier: "RecurringCharge",
+  }),
 );
 export interface ReservedInstanceOffering {
   ReservedInstanceOfferingId?: string;
@@ -3722,7 +3735,9 @@ export const ReservedInstanceOffering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedInstanceOffering" }) as any as S.Schema<ReservedInstanceOffering>;
 export type ReservedInstanceOfferingList = ReservedInstanceOffering[];
 export const ReservedInstanceOfferingList = /*@__PURE__*/ S.Array(
-  ReservedInstanceOffering.pipe(T.XmlName("ReservedInstanceOffering")).annotate({
+  /*@__PURE__*/ ReservedInstanceOffering.pipe(
+    /*@__PURE__*/ T.XmlName("ReservedInstanceOffering"),
+  ).annotate({
     identifier: "ReservedInstanceOffering",
   }),
 );
@@ -4025,7 +4040,7 @@ export const AIConfig = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 }) as any as S.Schema<AIConfig>;
 export type CapabilityExtendedResponseConfig = { aiConfig: AIConfig };
 export const CapabilityExtendedResponseConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ aiConfig: AIConfig }),
+  /*@__PURE__*/ S.Struct({ aiConfig: AIConfig }),
 ]);
 export type CapabilityFailureReason = "KMS_KEY_INSUFFICIENT_PERMISSION" | (string & {});
 export const CapabilityFailureReason = S.String;
@@ -5412,7 +5427,7 @@ export const PutDefaultApplicationSettingResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutDefaultApplicationSettingResponse>;
 export type CapabilityBaseRequestConfig = { aiConfig: AIConfig };
 export const CapabilityBaseRequestConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ aiConfig: AIConfig }),
+  /*@__PURE__*/ S.Struct({ aiConfig: AIConfig }),
 ]);
 export interface RegisterCapabilityRequest {
   applicationId: string;
@@ -5443,7 +5458,7 @@ export const RegisterCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterCapabilityRequest>;
 export type CapabilityBaseResponseConfig = { aiConfig: AIConfig };
 export const CapabilityBaseResponseConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ aiConfig: AIConfig }),
+  /*@__PURE__*/ S.Struct({ aiConfig: AIConfig }),
 ]);
 export interface RegisterCapabilityResponse {
   capabilityName?: string;

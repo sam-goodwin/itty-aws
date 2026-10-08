@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "forecast", serviceShapeName: "AmazonForecast" });
-const auth = T.AwsAuthSigv4({ name: "forecast" });
-const ver = T.ServiceVersion("2018-06-26");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "forecast",
+  serviceShapeName: "AmazonForecast",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "forecast" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-06-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,38 +76,38 @@ const rules = T.EndpointResolver((p, _) => {
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError, C.withAlreadyExistsError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type ForecastType = string;
@@ -116,7 +119,10 @@ export type Frequency = string;
 export type Arn = string;
 export type Value = string;
 export type Transformations = { [key: string]: string | undefined };
-export const Transformations = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Transformations = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AttributeConfig {
   AttributeName: string;
   Transformations: { [key: string]: string | undefined };
@@ -129,7 +135,10 @@ export const AttributeConfigs = /*@__PURE__*/ S.Array(AttributeConfig);
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type Configuration = { [key: string]: string[] | undefined };
-export const Configuration = /*@__PURE__*/ S.Record(S.String, Values.pipe(S.optional));
+export const Configuration = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Values.pipe(S.optional),
+);
 export interface AdditionalDataset {
   Name: string;
   Configuration?: { [key: string]: string[] | undefined };
@@ -594,7 +603,10 @@ export const AutoMLOverrideStrategy = S.String;
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type TrainingParameters = { [key: string]: string | undefined };
-export const TrainingParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TrainingParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface EvaluationParameters {
   NumberOfBacktestWindows?: number;
   BackTestWindowOffset?: number;
@@ -693,7 +705,7 @@ export const FeaturizationMethodName = S.String;
 export type FeaturizationMethodParameters = { [key: string]: string | undefined };
 export const FeaturizationMethodParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface FeaturizationMethod {
   FeaturizationMethodName: FeaturizationMethodName;
@@ -1310,7 +1322,10 @@ export const Statistics = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Statistics" }) as any as S.Schema<Statistics>;
 export type FieldStatistics = { [key: string]: Statistics | undefined };
-export const FieldStatistics = /*@__PURE__*/ S.Record(S.String, Statistics.pipe(S.optional));
+export const FieldStatistics = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Statistics.pipe(S.optional),
+);
 export interface DescribeDatasetImportJobResponse {
   DatasetImportJobName?: string;
   DatasetImportJobArn?: string;

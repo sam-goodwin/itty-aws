@@ -656,7 +656,7 @@ export const HealthcheckResult = /*@__PURE__*/ S.suspend(() =>
 /** Log contains the last few results (oldest first) */
 export type HealthLogList = Array<HealthcheckResult | null>;
 export const HealthLogList = /*@__PURE__*/ S.Array(
-  S.NullOr(HealthcheckResult),
+  /*@__PURE__*/ S.NullOr(HealthcheckResult),
 ) as any as S.Schema<HealthLogList>;
 
 /** Health stores information about the container's healthcheck results. */
@@ -1014,7 +1014,7 @@ export const PortMapValueList = /*@__PURE__*/ S.Array(
 export type PortMap = { [key: string]: PortMapValueList | null | undefined };
 export const PortMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(PortMapValueList),
+  /*@__PURE__*/ S.NullOr(PortMapValueList),
 ) as any as S.Schema<PortMap>;
 
 /** - Empty string means not to restart - `no` Do not automatically restart - `always` Always restart - `unless-stopped` Restart always except when the user has manually stopped the container - `on-failure` Restart only when the container exit code is non-zero */
@@ -2007,7 +2007,7 @@ export const ContainerCPUStats = /*@__PURE__*/ S.suspend(() =>
 export type ContainerMemoryStatsStatsMap = { [key: string]: number | null | undefined };
 export const ContainerMemoryStatsStatsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<ContainerMemoryStatsStatsMap>;
 
 /** Aggregates all memory stats since container inception on Linux. Windows returns stats for commit and private working set only. */
@@ -2086,7 +2086,7 @@ export type ContainerStatsResponseNetworksMap = {
 };
 export const ContainerStatsResponseNetworksMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ContainerNetworkStats),
+  /*@__PURE__*/ S.NullOr(ContainerNetworkStats),
 ) as any as S.Schema<ContainerStatsResponseNetworksMap>;
 
 /** PidsStats contains Linux-specific stats of a container's process-IDs (PIDs). This type is Linux-specific and omitted for Windows containers. */
@@ -2121,49 +2121,49 @@ export const ContainerBlkioStatEntry = /*@__PURE__*/ S.suspend(() =>
 
 export type ContainerBlkioStatsIoServiceBytesRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoServiceBytesRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoServiceBytesRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoServicedRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoServicedRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoServicedRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoQueueRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoQueueRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoQueueRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoServiceTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoServiceTimeRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoServiceTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoWaitTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoWaitTimeRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoWaitTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoMergedRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoMergedRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoMergedRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsIoTimeRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsIoTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsSectorsRecursiveList = Array<ContainerBlkioStatEntry | null>;
 export const ContainerBlkioStatsSectorsRecursiveList = /*@__PURE__*/ S.Array(
-  S.NullOr(ContainerBlkioStatEntry),
+  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
 ) as any as S.Schema<ContainerBlkioStatsSectorsRecursiveList>;
 
 /** BlkioStats stores all IO service stats for data read and write. This type is Linux-specific and holds many fields that are specific to cgroups v1. On a cgroup v2 host, all fields other than `io_service_bytes_recursive` are omitted or `null`. This type is only populated on Linux and omitted for Windows containers. */
@@ -4550,7 +4550,7 @@ export const DistributionInspectRequest = /*@__PURE__*/ S.suspend(() =>
 /** An array containing all platforms supported by the image. */
 export type DistributionInspectPlatformsList = Array<OCIPlatform | null>;
 export const DistributionInspectPlatformsList = /*@__PURE__*/ S.Array(
-  S.NullOr(OCIPlatform),
+  /*@__PURE__*/ S.NullOr(OCIPlatform),
 ) as any as S.Schema<DistributionInspectPlatformsList>;
 
 /** Describes the result obtained from contacting the registry to retrieve image metadata. */
@@ -8141,7 +8141,7 @@ export const IndexInfo = /*@__PURE__*/ S.suspend(() =>
 export type RegistryServiceConfigIndexConfigsMap = { [key: string]: IndexInfo | null | undefined };
 export const RegistryServiceConfigIndexConfigsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(IndexInfo),
+  /*@__PURE__*/ S.NullOr(IndexInfo),
 ) as any as S.Schema<RegistryServiceConfigIndexConfigsMap>;
 
 /** List of registry URLs that act as a mirror for the official (`docker.io`) registry. */

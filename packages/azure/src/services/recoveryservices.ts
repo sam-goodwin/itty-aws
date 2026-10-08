@@ -370,7 +370,7 @@ export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
 /** The error details. */
 export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Error),
+  /*@__PURE__*/ S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
 
 /** The resource management error response. */

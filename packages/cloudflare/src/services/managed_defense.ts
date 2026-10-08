@@ -200,7 +200,7 @@ export type CreateVulnerabilityDiscoveryRepositoryResult =
   | CreateVulnerabilityDiscoveryRepositoryResultCase0
   | CreateVulnerabilityDiscoveryRepositoryResultRepository;
 export const CreateVulnerabilityDiscoveryRepositoryResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["repository", "upload"], ["repository"]]),
+  /*@__PURE__*/ T.UnionCases([["repository", "upload"], ["repository"]]),
 );
 
 export type CreateVulnerabilityDiscoveryRepositoryResponse =
@@ -1637,7 +1637,7 @@ export type ListVulnerabilityDiscoveryScansRequestStatus =
   | (string & {})
   | ListVulnerabilityDiscoveryScansRequestStatusCase1List;
 export const ListVulnerabilityDiscoveryScansRequestStatus = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface ListVulnerabilityDiscoveryScansRequest {

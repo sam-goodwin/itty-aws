@@ -6,14 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Entitlement Service",
   serviceShapeName: "AWSMPEntitlementService",
 });
-const auth = T.AwsAuthSigv4({ name: "aws-marketplace" });
-const ver = T.ServiceVersion("2017-01-11");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aws-marketplace" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-01-11");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -109,15 +109,15 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServiceErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceErrorException>()(
     "InternalServiceErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()("ThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type ProductCode = string;
 export type GetEntitlementFilterName =
@@ -134,7 +134,7 @@ export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type GetEntitlementFilters = { [key in GetEntitlementFilterName]?: string[] };
 export const GetEntitlementFilters = /*@__PURE__*/ S.Record(
   GetEntitlementFilterName,
-  FilterValueList.pipe(S.optional),
+  /*@__PURE__*/ FilterValueList.pipe(S.optional),
 );
 export type NonEmptyString = string;
 export type PageSizeInteger = number;

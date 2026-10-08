@@ -2127,7 +2127,7 @@ export const CostCalculatorCosts = /*@__PURE__*/ S.suspend(() =>
 
 export type MinimalRegionChildRegionsList = Array<MinimalRegion>;
 export const MinimalRegionChildRegionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MinimalRegion),
+  /*@__PURE__*/ S.suspend(() => MinimalRegion),
 ) as any as S.Schema<MinimalRegionChildRegionsList>;
 
 export type RegionStatus = "active" | "inactive";
@@ -7281,7 +7281,7 @@ export const BenefitProvider = /*@__PURE__*/ S.suspend(() =>
 /** The insurance carriers or providers associated with this tier. */
 export type BenefitTierProvidersList = Array<BenefitProvider | null>;
 export const BenefitTierProvidersList = /*@__PURE__*/ S.Array(
-  S.NullOr(BenefitProvider),
+  /*@__PURE__*/ S.NullOr(BenefitProvider),
 ) as any as S.Schema<BenefitTierProvidersList>;
 
 /** A specific coverage level within a benefit group. For example, a "Health" benefit group might have tiers like "Basic", "Standard", and "Premium", each with different coverage and providers. */

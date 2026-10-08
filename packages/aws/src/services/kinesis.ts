@@ -8,12 +8,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://kinesis.amazonaws.com/doc/2013-12-02");
-const svc = T.AwsApiService({ sdkId: "Kinesis", serviceShapeName: "Kinesis_20131202" });
-const auth = T.AwsAuthSigv4({ name: "kinesis" });
-const ver = T.ServiceVersion("2013-12-02");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://kinesis.amazonaws.com/doc/2013-12-02");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Kinesis",
+  serviceShapeName: "Kinesis_20131202",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "kinesis" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-12-02");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const {
     Region,
     UseDualStack = false,
@@ -737,78 +740,78 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class DryRunOperationException
   extends /*@__PURE__*/ S.TaggedError<DryRunOperationException>()("DryRunOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ExpiredIteratorException
   extends /*@__PURE__*/ S.TaggedError<ExpiredIteratorException>()("ExpiredIteratorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class ExpiredNextTokenException
   extends /*@__PURE__*/ S.TaggedError<ExpiredNextTokenException>()("ExpiredNextTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()("InternalFailureException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()("InvalidArgumentException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class KMSAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<KMSAccessDeniedException>()("KMSAccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class KMSDisabledException
   extends /*@__PURE__*/ S.TaggedError<KMSDisabledException>()("KMSDisabledException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class KMSInvalidStateException
   extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateException>()("KMSInvalidStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class KMSNotFoundException
   extends /*@__PURE__*/ S.TaggedError<KMSNotFoundException>()("KMSNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class KMSOptInRequired
   extends /*@__PURE__*/ S.TaggedError<KMSOptInRequired>()("KMSOptInRequired", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class KMSThrottlingException
   extends /*@__PURE__*/ S.TaggedError<KMSThrottlingException>()("KMSThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError, C.withRetryableError) {}
 export class ProvisionedThroughputExceededException
   extends /*@__PURE__*/ S.TaggedError<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export type StreamName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type StreamARN = string;
 export type StreamId = string;
 export interface AddTagsToStreamInput {
@@ -2804,50 +2807,50 @@ export type SubscribeToShardEventStream =
       InternalFailureException: InternalFailureException;
     };
 export const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
-    S.Struct({
-      ResourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
+    /*@__PURE__*/ S.Struct({
+      ResourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      ResourceInUseException: S.suspend(() => ResourceInUseException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ResourceInUseException: /*@__PURE__*/ S.suspend(() => ResourceInUseException).annotate({
         identifier: "ResourceInUseException",
       }),
     }),
-    S.Struct({
-      KMSDisabledException: S.suspend(() => KMSDisabledException).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSDisabledException: /*@__PURE__*/ S.suspend(() => KMSDisabledException).annotate({
         identifier: "KMSDisabledException",
       }),
     }),
-    S.Struct({
-      KMSInvalidStateException: S.suspend(() => KMSInvalidStateException).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSInvalidStateException: /*@__PURE__*/ S.suspend(() => KMSInvalidStateException).annotate({
         identifier: "KMSInvalidStateException",
       }),
     }),
-    S.Struct({
-      KMSAccessDeniedException: S.suspend(() => KMSAccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSAccessDeniedException: /*@__PURE__*/ S.suspend(() => KMSAccessDeniedException).annotate({
         identifier: "KMSAccessDeniedException",
       }),
     }),
-    S.Struct({
-      KMSNotFoundException: S.suspend(() => KMSNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSNotFoundException: /*@__PURE__*/ S.suspend(() => KMSNotFoundException).annotate({
         identifier: "KMSNotFoundException",
       }),
     }),
-    S.Struct({
-      KMSOptInRequired: S.suspend(() => KMSOptInRequired).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSOptInRequired: /*@__PURE__*/ S.suspend(() => KMSOptInRequired).annotate({
         identifier: "KMSOptInRequired",
       }),
     }),
-    S.Struct({
-      KMSThrottlingException: S.suspend(() => KMSThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      KMSThrottlingException: /*@__PURE__*/ S.suspend(() => KMSThrottlingException).annotate({
         identifier: "KMSThrottlingException",
       }),
     }),
-    S.Struct({
-      InternalFailureException: S.suspend(() => InternalFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
         identifier: "InternalFailureException",
       }),
     }),

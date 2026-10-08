@@ -2432,7 +2432,7 @@ export type ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMa
 export const ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<ClusterManagersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2624,7 +2624,7 @@ export type ClusterManagersCreateOrUpdateResponseIdentityUserAssignedIdentitiesM
 export const ClusterManagersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<ClusterManagersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3156,7 +3156,7 @@ export type ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
 export const ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<ClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3550,7 +3550,7 @@ export type ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
 export const ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<ClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5096,7 +5096,7 @@ export type GetClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5196,7 +5196,7 @@ export type GetClusterManagerResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetClusterManagerResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7729,7 +7729,7 @@ export type GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -9141,7 +9141,7 @@ export type ClusterIdentityUserAssignedIdentitiesMap = {
 };
 export const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -9290,7 +9290,7 @@ export type ClusterManagerIdentityUserAssignedIdentitiesMap = {
 };
 export const ClusterManagerIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<ClusterManagerIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -10665,7 +10665,7 @@ export type VirtualMachineIdentityUserAssignedIdentitiesMap = {
 };
 export const VirtualMachineIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<VirtualMachineIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12504,7 +12504,7 @@ export type UpdateClusterRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdateClusterRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12859,7 +12859,7 @@ export type UpdateClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12929,7 +12929,7 @@ export type UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdateClusterManagerRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13000,7 +13000,7 @@ export type UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateClusterManagerResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14095,7 +14095,7 @@ export type UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdateVirtualMachineRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14201,7 +14201,7 @@ export type UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateVirtualMachineResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14481,7 +14481,7 @@ export type VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMa
 export const VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<VirtualMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14555,7 +14555,7 @@ export type VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesM
 export const VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<VirtualMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

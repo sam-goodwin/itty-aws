@@ -4525,7 +4525,7 @@ export const DeploymentPropertiesExtendedValidatedResourcesList = /*@__PURE__*/ 
 /** The error details. */
 export type ErrorResponseDetailsList = Array<ErrorResponse>;
 export const ErrorResponseDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorResponse),
+  /*@__PURE__*/ S.suspend(() => ErrorResponse),
 ) as any as S.Schema<ErrorResponseDetailsList>;
 
 /** The resource management error additional info. */
@@ -5375,7 +5375,7 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupRequest = /*@__PURE_
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -6375,7 +6375,7 @@ export const DeploymentStacksWhatIfPropertyChangeType = S.String;
 export type DeploymentStacksWhatIfPropertyChangeChildrenList =
   Array<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfPropertyChangeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DeploymentStacksWhatIfPropertyChange),
+  /*@__PURE__*/ S.suspend(() => DeploymentStacksWhatIfPropertyChange),
 ) as any as S.Schema<DeploymentStacksWhatIfPropertyChangeChildrenList>;
 
 /** The predicted change to the resource property. */
@@ -7280,7 +7280,7 @@ export const PropertyChangeType = S.String;
 /** Nested property changes. */
 export type WhatIfPropertyChangeChildrenList = Array<WhatIfPropertyChange>;
 export const WhatIfPropertyChangeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => WhatIfPropertyChange),
+  /*@__PURE__*/ S.suspend(() => WhatIfPropertyChange),
 ) as any as S.Schema<WhatIfPropertyChangeChildrenList>;
 
 /** The predicted change to the resource property. */

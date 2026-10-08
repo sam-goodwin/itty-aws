@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Neptune Graph", serviceShapeName: "AmazonNeptuneGraph" });
-const auth = T.AwsAuthSigv4({ name: "neptune-graph" });
-const ver = T.ServiceVersion("2023-11-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Neptune Graph",
+  serviceShapeName: "AmazonNeptuneGraph",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "neptune-graph" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-11-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseFIPS = false, UseDualStack = false, Endpoint, ApiType } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -97,75 +100,78 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ConflictExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ConflictExceptionReason).annotate({
           identifier: "ConflictExceptionReason",
         }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class UnprocessableException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableException>()(
     "UnprocessableException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => UnprocessableExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => UnprocessableExceptionReason).annotate({
         identifier: "UnprocessableExceptionReason",
       }),
     },
-    T.HttpError(422),
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ExportTaskId = string;
 export interface CancelExportTaskInput {
@@ -312,7 +318,7 @@ export type GraphName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type VectorSearchDimension = number;
 export interface VectorSearchConfiguration {
   dimension: number;
@@ -467,7 +473,9 @@ export const NeptuneImportOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NeptuneImportOptions" }) as any as S.Schema<NeptuneImportOptions>;
 export type ImportOptions = { neptune: NeptuneImportOptions };
-export const ImportOptions = /*@__PURE__*/ S.Union([S.Struct({ neptune: NeptuneImportOptions })]);
+export const ImportOptions = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ neptune: NeptuneImportOptions }),
+]);
 export type BlankNodeHandling = "convertToIri" | (string & {});
 export const BlankNodeHandling = S.String;
 
@@ -740,7 +748,10 @@ export type QueryLanguage = "OPEN_CYPHER" | (string & {});
 export const QueryLanguage = S.String;
 
 export type DocumentValuedMap = { [key: string]: any | undefined };
-export const DocumentValuedMap = /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export const DocumentValuedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Any.pipe(S.optional),
+);
 export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
 export const PlanCacheType = S.String;
 
@@ -841,7 +852,7 @@ export const ExportFilterPropertyAttributes = /*@__PURE__*/ S.suspend(() =>
 export type ExportFilterPropertyMap = { [key: string]: ExportFilterPropertyAttributes | undefined };
 export const ExportFilterPropertyMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExportFilterPropertyAttributes.pipe(S.optional),
+  /*@__PURE__*/ ExportFilterPropertyAttributes.pipe(S.optional),
 );
 export interface ExportFilterElement {
   properties?: { [key: string]: ExportFilterPropertyAttributes | undefined };
@@ -852,7 +863,7 @@ export const ExportFilterElement = /*@__PURE__*/ S.suspend(() =>
 export type ExportFilterPerLabelMap = { [key: string]: ExportFilterElement | undefined };
 export const ExportFilterPerLabelMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExportFilterElement.pipe(S.optional),
+  /*@__PURE__*/ ExportFilterElement.pipe(S.optional),
 );
 export interface ExportFilter {
   vertexFilter?: { [key: string]: ExportFilterElement | undefined };
@@ -1008,7 +1019,10 @@ export const NodeLabels = /*@__PURE__*/ S.Array(S.String);
 export type EdgeLabels = string[];
 export const EdgeLabels = /*@__PURE__*/ S.Array(S.String);
 export type LongValuedMap = { [key: string]: number | undefined };
-export const LongValuedMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const LongValuedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type LongValuedMapList = { [key: string]: number | undefined }[];
 export const LongValuedMapList = /*@__PURE__*/ S.Array(LongValuedMap);
 export type NodeProperties = string[];

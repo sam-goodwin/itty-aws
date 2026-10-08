@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "IoTFleetWise", serviceShapeName: "IoTAutobahnControlPlane" });
-const auth = T.AwsAuthSigv4({ name: "iotfleetwise" });
-const ver = T.ServiceVersion("2021-06-17");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "IoTFleetWise",
+  serviceShapeName: "IoTAutobahnControlPlane",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iotfleetwise" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-06-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,101 +78,121 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resource: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resource: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DecoderManifestValidationException
   extends /*@__PURE__*/ S.TaggedError<DecoderManifestValidationException>()(
     "DecoderManifestValidationException",
     {
-      invalidSignals: S.optional(
-        S.suspend(() => InvalidSignalDecoders).annotate({ identifier: "InvalidSignalDecoders" }),
+      invalidSignals: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => InvalidSignalDecoders).annotate({
+          identifier: "InvalidSignalDecoders",
+        }),
       ),
-      invalidNetworkInterfaces: S.optional(
-        S.suspend(() => InvalidNetworkInterfaces).annotate({
+      invalidNetworkInterfaces: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => InvalidNetworkInterfaces).annotate({
           identifier: "InvalidNetworkInterfaces",
         }),
       ),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidNodeException
   extends /*@__PURE__*/ S.TaggedError<InvalidNodeException>()(
     "InvalidNodeException",
     {
-      invalidNodes: S.optional(S.suspend(() => Nodes).annotate({ identifier: "Nodes" })),
-      reason: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      invalidNodes: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => Nodes).annotate({ identifier: "Nodes" }),
+      ),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSignalsException
   extends /*@__PURE__*/ S.TaggedError<InvalidSignalsException>()(
     "InvalidSignalsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      invalidSignals: S.optional(
-        S.suspend(() => InvalidSignals).annotate({ identifier: "InvalidSignals" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      invalidSignals: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => InvalidSignals).annotate({ identifier: "InvalidSignals" }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      quotaCode: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type VehicleName = string;
 export type FleetId = string;
@@ -199,7 +222,10 @@ export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type AttributesMap = { [key: string]: string | undefined };
-export const AttributesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type VehicleAssociationBehavior =
   | "CreateIotThing"
   | "ValidateIotThingExists"
@@ -247,8 +273,8 @@ export type StateTemplateUpdateStrategy =
   | { periodic: PeriodicStateTemplateUpdateStrategy; onChange?: never }
   | { periodic?: never; onChange: OnChangeStateTemplateUpdateStrategy };
 export const StateTemplateUpdateStrategy = /*@__PURE__*/ S.Union([
-  S.Struct({ periodic: PeriodicStateTemplateUpdateStrategy }),
-  S.Struct({ onChange: OnChangeStateTemplateUpdateStrategy }),
+  /*@__PURE__*/ S.Struct({ periodic: PeriodicStateTemplateUpdateStrategy }),
+  /*@__PURE__*/ S.Struct({ onChange: OnChangeStateTemplateUpdateStrategy }),
 ]);
 export interface StateTemplateAssociation {
   identifier: string;
@@ -478,8 +504,8 @@ export type CollectionScheme =
       conditionBasedCollectionScheme: ConditionBasedCollectionScheme;
     };
 export const CollectionScheme = /*@__PURE__*/ S.Union([
-  S.Struct({ timeBasedCollectionScheme: TimeBasedCollectionScheme }),
-  S.Struct({ conditionBasedCollectionScheme: ConditionBasedCollectionScheme }),
+  /*@__PURE__*/ S.Struct({ timeBasedCollectionScheme: TimeBasedCollectionScheme }),
+  /*@__PURE__*/ S.Struct({ conditionBasedCollectionScheme: ConditionBasedCollectionScheme }),
 ]);
 export type NodePath = string;
 export type DataExtraDimensionNodePathList = string[];
@@ -528,9 +554,9 @@ export type DataDestinationConfig =
   | { s3Config?: never; timestreamConfig: TimestreamConfig; mqttTopicConfig?: never }
   | { s3Config?: never; timestreamConfig?: never; mqttTopicConfig: MqttTopicConfig };
 export const DataDestinationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ s3Config: S3Config }),
-  S.Struct({ timestreamConfig: TimestreamConfig }),
-  S.Struct({ mqttTopicConfig: MqttTopicConfig }),
+  /*@__PURE__*/ S.Struct({ s3Config: S3Config }),
+  /*@__PURE__*/ S.Struct({ timestreamConfig: TimestreamConfig }),
+  /*@__PURE__*/ S.Struct({ mqttTopicConfig: MqttTopicConfig }),
 ]);
 export type DataDestinationConfigs = DataDestinationConfig[];
 export const DataDestinationConfigs = /*@__PURE__*/ S.Array(DataDestinationConfig);
@@ -617,8 +643,8 @@ export type SignalFetchConfig =
   | { timeBased: TimeBasedSignalFetchConfig; conditionBased?: never }
   | { timeBased?: never; conditionBased: ConditionBasedSignalFetchConfig };
 export const SignalFetchConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ timeBased: TimeBasedSignalFetchConfig }),
-  S.Struct({ conditionBased: ConditionBasedSignalFetchConfig }),
+  /*@__PURE__*/ S.Struct({ timeBased: TimeBasedSignalFetchConfig }),
+  /*@__PURE__*/ S.Struct({ conditionBased: ConditionBasedSignalFetchConfig }),
 ]);
 export type ActionEventExpression = string | redacted.Redacted<string>;
 export type EventExpressionList = (string | redacted.Redacted<string>)[];
@@ -802,7 +828,7 @@ export type PrimitiveMessageDefinition = {
   ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition;
 };
 export const PrimitiveMessageDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition }),
+  /*@__PURE__*/ S.Struct({ ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition }),
 ]);
 export type StructureMessageName = string;
 export type StructuredMessageListType =
@@ -842,7 +868,7 @@ export const StructuredMessageFieldNameAndDataTypePair = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<StructuredMessageFieldNameAndDataTypePair>;
 export type StructuredMessageDefinition = StructuredMessageFieldNameAndDataTypePair[];
 export const StructuredMessageDefinition = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<StructuredMessageFieldNameAndDataTypePair> =>
       StructuredMessageFieldNameAndDataTypePair,
   ).annotate({ identifier: "StructuredMessageFieldNameAndDataTypePair" }),
@@ -864,14 +890,16 @@ export type StructuredMessage =
       structuredMessageDefinition: StructuredMessageFieldNameAndDataTypePair[];
     };
 export const StructuredMessage = /*@__PURE__*/ S.Union([
-  S.Struct({ primitiveMessageDefinition: PrimitiveMessageDefinition }),
-  S.Struct({
-    structuredMessageListDefinition: S.suspend(
+  /*@__PURE__*/ S.Struct({ primitiveMessageDefinition: PrimitiveMessageDefinition }),
+  /*@__PURE__*/ S.Struct({
+    structuredMessageListDefinition: /*@__PURE__*/ S.suspend(
       (): S.Schema<StructuredMessageListDefinition> => StructuredMessageListDefinition,
     ).annotate({ identifier: "StructuredMessageListDefinition" }),
   }),
-  S.Struct({
-    structuredMessageDefinition: S.suspend(() => StructuredMessageDefinition).annotate({
+  /*@__PURE__*/ S.Struct({
+    structuredMessageDefinition: /*@__PURE__*/ S.suspend(
+      () => StructuredMessageDefinition,
+    ).annotate({
       identifier: "StructuredMessageDefinition",
     }),
   }),
@@ -1309,12 +1337,12 @@ export type Node =
       property: CustomProperty;
     };
 export const Node = /*@__PURE__*/ S.Union([
-  S.Struct({ branch: Branch }),
-  S.Struct({ sensor: Sensor }),
-  S.Struct({ actuator: Actuator }),
-  S.Struct({ attribute: Attribute }),
-  S.Struct({ struct: CustomStruct }),
-  S.Struct({ property: CustomProperty }),
+  /*@__PURE__*/ S.Struct({ branch: Branch }),
+  /*@__PURE__*/ S.Struct({ sensor: Sensor }),
+  /*@__PURE__*/ S.Struct({ actuator: Actuator }),
+  /*@__PURE__*/ S.Struct({ attribute: Attribute }),
+  /*@__PURE__*/ S.Struct({ struct: CustomStruct }),
+  /*@__PURE__*/ S.Struct({ property: CustomProperty }),
 ]);
 export type Nodes = Node[];
 export const Nodes = /*@__PURE__*/ S.Array(Node);
@@ -2080,7 +2108,10 @@ export type NetworkFileBlob = Uint8Array;
 export type NetworkFilesList = Uint8Array[];
 export const NetworkFilesList = /*@__PURE__*/ S.Array(T.Blob);
 export type ModelSignalsMap = { [key: string]: string | undefined };
-export const ModelSignalsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ModelSignalsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CanDbcDefinition {
   networkInterface: string;
   canDbcFiles: Uint8Array[];
@@ -2095,7 +2126,7 @@ export const CanDbcDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CanDbcDefinition" }) as any as S.Schema<CanDbcDefinition>;
 export type NetworkFileDefinition = { canDbc: CanDbcDefinition };
 export const NetworkFileDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ canDbc: CanDbcDefinition }),
+  /*@__PURE__*/ S.Struct({ canDbc: CanDbcDefinition }),
 ]);
 export type NetworkFileDefinitions = NetworkFileDefinition[];
 export const NetworkFileDefinitions = /*@__PURE__*/ S.Array(NetworkFileDefinition);
@@ -2130,7 +2161,7 @@ export const ImportDecoderManifestResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportDecoderManifestResponse",
 }) as any as S.Schema<ImportDecoderManifestResponse>;
 export type FormattedVss = { vssJson: string };
-export const FormattedVss = /*@__PURE__*/ S.Union([S.Struct({ vssJson: S.String })]);
+export const FormattedVss = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ vssJson: S.String })]);
 export interface ImportSignalCatalogRequest {
   name: string;
   description?: string;

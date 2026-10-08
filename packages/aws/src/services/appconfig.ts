@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "AppConfig", serviceShapeName: "AmazonAppConfig" });
-const auth = T.AwsAuthSigv4({ name: "appconfig" });
-const ver = T.ServiceVersion("2019-10-09");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "AppConfig",
+  serviceShapeName: "AmazonAppConfig",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "appconfig" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-10-09");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,57 +83,66 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => BadRequestReason).annotate({ identifier: "BadRequestReason" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => BadRequestReason).annotate({
+          identifier: "BadRequestReason",
+        }),
       ),
-      Details: S.optional(
-        S.suspend(() => BadRequestDetails).annotate({ identifier: "BadRequestDetails" }),
+      Details: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => BadRequestDetails).annotate({
+          identifier: "BadRequestDetails",
+        }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class PayloadTooLargeException
   extends /*@__PURE__*/ S.TaggedError<PayloadTooLargeException>()(
     "PayloadTooLargeException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Measure: S.optional(S.suspend(() => BytesMeasure).annotate({ identifier: "BytesMeasure" })),
-      Limit: S.optional(S.Number),
-      Size: S.optional(S.Number),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Measure: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => BytesMeasure).annotate({ identifier: "BytesMeasure" }),
+      ),
+      Limit: /*@__PURE__*/ S.optional(S.Number),
+      Size: /*@__PURE__*/ S.optional(S.Number),
     },
-    T.HttpError(413),
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export type Name = string;
 export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateApplicationRequest {
   Name: string;
   Description?: string;
@@ -400,14 +412,17 @@ export type AttributeValue =
       NumberArray: number[];
     };
 export const AttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ StringValue: S.String }),
-  S.Struct({ NumberValue: S.Number }),
-  S.Struct({ BooleanValue: S.Boolean }),
-  S.Struct({ StringArray: StringList }),
-  S.Struct({ NumberArray: NumberList }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ NumberValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ BooleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ StringArray: StringList }),
+  /*@__PURE__*/ S.Struct({ NumberArray: NumberList }),
 ]);
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-export const AttributeValueMap = /*@__PURE__*/ S.Record(S.String, AttributeValue.pipe(S.optional));
+export const AttributeValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AttributeValue.pipe(S.optional),
+);
 export interface FlagValue {
   Enabled: boolean;
   AttributeValues?: { [key: string]: AttributeValue | undefined };
@@ -559,7 +574,10 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
 export type ActionsMap = { [key in ActionPoint]?: Action[] };
-export const ActionsMap = /*@__PURE__*/ S.Record(ActionPoint, ActionList.pipe(S.optional));
+export const ActionsMap = /*@__PURE__*/ S.Record(
+  ActionPoint,
+  /*@__PURE__*/ ActionList.pipe(S.optional),
+);
 export interface Parameter {
   Description?: string;
   Required?: boolean;
@@ -573,7 +591,10 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type ParameterMap = { [key: string]: Parameter | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, Parameter.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Parameter.pipe(S.optional),
+);
 export interface CreateExtensionRequest {
   Name: string;
   Description?: string;
@@ -613,7 +634,10 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 export type ParameterValueMap = { [key: string]: string | undefined };
-export const ParameterValueMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParameterValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateExtensionAssociationRequest {
   ExtensionIdentifier: string;
   ExtensionVersionNumber?: number;
@@ -1303,10 +1327,13 @@ export const ExperimentRunStatus = S.String;
 export type NullablePercentage = number;
 export type EntityId = string;
 export type TreatmentOverrideMap = { [key: string]: string | undefined };
-export const TreatmentOverrideMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TreatmentOverrideMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TreatmentOverrides = { Inline: { [key: string]: string | undefined } };
 export const TreatmentOverrides = /*@__PURE__*/ S.Union([
-  S.Struct({ Inline: TreatmentOverrideMap }),
+  /*@__PURE__*/ S.Struct({ Inline: TreatmentOverrideMap }),
 ]);
 export interface ExperimentRunResult {
   ExecutiveSummary?: string;
@@ -2000,7 +2027,10 @@ export const ResourceTags = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTags" }) as any as S.Schema<ResourceTags>;
 export type DynamicParameterKey = string;
 export type DynamicParameterMap = { [key: string]: string | undefined };
-export const DynamicParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DynamicParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface StartDeploymentRequest {
   ApplicationId: string;
   EnvironmentId: string;
@@ -2464,7 +2494,7 @@ export type InvalidConfigurationDetailList = InvalidConfigurationDetail[];
 export const InvalidConfigurationDetailList = /*@__PURE__*/ S.Array(InvalidConfigurationDetail);
 export type BadRequestDetails = { InvalidConfiguration: InvalidConfigurationDetail[] };
 export const BadRequestDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ InvalidConfiguration: InvalidConfigurationDetailList }),
+  /*@__PURE__*/ S.Struct({ InvalidConfiguration: InvalidConfigurationDetailList }),
 ]);
 export type BytesMeasure = "KILOBYTES" | (string & {});
 export const BytesMeasure = S.String;

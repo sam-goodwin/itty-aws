@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://hawksnest.amazonaws.com/doc/2019-11-15");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://hawksnest.amazonaws.com/doc/2019-11-15");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "FraudDetector",
   serviceShapeName: "AWSHawksNestServiceFacade",
 });
-const auth = T.AwsAuthSigv4({ name: "frauddetector" });
-const ver = T.ServiceVersion("2019-11-15");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "frauddetector" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-11-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,44 +79,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface VariableEntry {
   name?: string;
@@ -473,7 +473,10 @@ export type TrainingDataSourceEnum = "EXTERNAL_EVENTS" | "INGESTED_EVENTS" | (st
 export const TrainingDataSourceEnum = S.String;
 
 export type LabelMapper = { [key: string]: string[] | undefined };
-export const LabelMapper = /*@__PURE__*/ S.Record(S.String, ListOfStrings.pipe(S.optional));
+export const LabelMapper = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ListOfStrings.pipe(S.optional),
+);
 export type UnlabeledEventsTreatment = "IGNORE" | "FRAUD" | "LEGIT" | "AUTO" | (string & {});
 export const UnlabeledEventsTreatment = S.String;
 
@@ -1469,7 +1472,10 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 export type AttributeKey = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type EventAttributeMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const EventAttributeMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const EventAttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type EntityRestrictedString = string;
 export interface Entity {
   entityType: string;
@@ -1510,7 +1516,10 @@ export type UtcTimestampISO8601 = string;
 export type VariableName = string;
 export type VariableValue = string | redacted.Redacted<string>;
 export type EventVariableMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const EventVariableMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const EventVariableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type ContentType = string;
 export interface ModelEndpointDataBlob {
   byteBuffer?: Uint8Array;
@@ -1522,7 +1531,7 @@ export const ModelEndpointDataBlob = /*@__PURE__*/ S.suspend(() =>
 export type ExternalModelEndpointDataBlobMap = { [key: string]: ModelEndpointDataBlob | undefined };
 export const ExternalModelEndpointDataBlobMap = /*@__PURE__*/ S.Record(
   S.String,
-  ModelEndpointDataBlob.pipe(S.optional),
+  /*@__PURE__*/ ModelEndpointDataBlob.pipe(S.optional),
 );
 export interface GetEventPredictionRequest {
   detectorId: string;
@@ -1549,7 +1558,10 @@ export const GetEventPredictionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventPredictionRequest",
 }) as any as S.Schema<GetEventPredictionRequest>;
 export type ModelPredictionMap = { [key: string]: number | undefined };
-export const ModelPredictionMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const ModelPredictionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface ModelScores {
   modelVersion?: ModelVersion;
   scores?: { [key: string]: number | undefined };
@@ -1581,7 +1593,7 @@ export const ExternalModelSummary = /*@__PURE__*/ S.suspend(() =>
 export type ExternalModelPredictionMap = { [key: string]: string | undefined };
 export const ExternalModelPredictionMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ExternalModelOutputs {
   externalModel?: ExternalModelSummary;
@@ -1737,7 +1749,10 @@ export const EvaluatedModelVersion = /*@__PURE__*/ S.suspend(() =>
 export type ListOfEvaluatedModelVersions = EvaluatedModelVersion[];
 export const ListOfEvaluatedModelVersions = /*@__PURE__*/ S.Array(EvaluatedModelVersion);
 export type MapOfStrings = { [key: string]: string | undefined };
-export const MapOfStrings = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MapOfStrings = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface EvaluatedExternalModel {
   modelEndpoint?: string;
   useEventVariables?: boolean;
@@ -1905,9 +1920,15 @@ export type ModelOutputDataFormat = "TEXT_CSV" | "APPLICATION_JSONLINES" | (stri
 export const ModelOutputDataFormat = S.String;
 
 export type JsonKeyToVariableMap = { [key: string]: string | undefined };
-export const JsonKeyToVariableMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const JsonKeyToVariableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type CsvIndexToVariableMap = { [key: string]: string | undefined };
-export const CsvIndexToVariableMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CsvIndexToVariableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ModelOutputConfiguration {
   format: ModelOutputDataFormat;
   jsonKeyToVariableMap?: { [key: string]: string | undefined };

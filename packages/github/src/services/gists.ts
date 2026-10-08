@@ -413,7 +413,7 @@ export const GistSimpleFilesValue = /*@__PURE__*/ S.suspend(() =>
 export type GistSimpleFilesMap = { [key: string]: GistSimpleFilesValue | null | undefined };
 export const GistSimpleFilesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GistSimpleFilesValue),
+  /*@__PURE__*/ S.NullOr(GistSimpleFilesValue),
 ) as any as S.Schema<GistSimpleFilesMap>;
 
 /** A GitHub user. */
@@ -940,7 +940,7 @@ export const UpdateRequestFilesValue = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestFilesMap = { [key: string]: UpdateRequestFilesValue | null | undefined };
 export const UpdateRequestFilesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateRequestFilesValue),
+  /*@__PURE__*/ S.NullOr(UpdateRequestFilesValue),
 ) as any as S.Schema<UpdateRequestFilesMap>;
 
 export interface UpdateRequest {

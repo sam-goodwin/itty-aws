@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Agreement",
   serviceShapeName: "AWSMPCommerceService_v20200301",
 });
-const auth = T.AwsAuthSigv4({ name: "aws-marketplace" });
-const ver = T.ServiceVersion("2020-03-01");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aws-marketplace" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-03-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,85 +81,91 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      requestId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => AccessDeniedExceptionReason).annotate({
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => AccessDeniedExceptionReason).annotate({
           identifier: "AccessDeniedExceptionReason",
         }),
       ),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      requestId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { requestId: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    {
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      requestId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      requestId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      quotaCode: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      resourceId: S.optional(S.String),
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { requestId: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    {
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      requestId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AgreementId = string;
 export type AgreementCancellationRequestId = string;
@@ -566,11 +572,11 @@ export type RequestedTermConfiguration =
       variablePaymentTermConfiguration: VariablePaymentTermConfiguration;
     };
 export const RequestedTermConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
     configurableUpfrontPricingTermConfiguration: ConfigurableUpfrontPricingTermConfiguration,
   }),
-  S.Struct({ renewalTermConfiguration: RenewalTermConfiguration }),
-  S.Struct({ variablePaymentTermConfiguration: VariablePaymentTermConfiguration }),
+  /*@__PURE__*/ S.Struct({ renewalTermConfiguration: RenewalTermConfiguration }),
+  /*@__PURE__*/ S.Struct({ variablePaymentTermConfiguration: VariablePaymentTermConfiguration }),
 ]);
 export interface RequestedTerm {
   id: string;
@@ -1060,8 +1066,8 @@ export type PriceIncrease =
   | { fixedPercentage: FixedPercentage; percentageRange?: never }
   | { fixedPercentage?: never; percentageRange: PercentageRange };
 export const PriceIncrease = /*@__PURE__*/ S.Union([
-  S.Struct({ fixedPercentage: FixedPercentage }),
-  S.Struct({ percentageRange: PercentageRange }),
+  /*@__PURE__*/ S.Struct({ fixedPercentage: FixedPercentage }),
+  /*@__PURE__*/ S.Struct({ percentageRange: PercentageRange }),
 ]);
 export type OffsetDuration = string;
 export type ChargePercentage = string;
@@ -1089,7 +1095,7 @@ export const PaymentScheduleTermTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentScheduleTermTemplate>;
 export type TermTemplate = { paymentScheduleTermTemplate: PaymentScheduleTermTemplate };
 export const TermTemplate = /*@__PURE__*/ S.Union([
-  S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
+  /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
 ]);
 export type TermTemplateList = TermTemplate[];
 export const TermTemplateList = /*@__PURE__*/ S.Array(TermTemplate);
@@ -1531,19 +1537,19 @@ export type AcceptedTerm =
       netPaymentTerm: NetPaymentTerm;
     };
 export const AcceptedTerm = /*@__PURE__*/ S.Union([
-  S.Struct({ legalTerm: LegalTerm }),
-  S.Struct({ supportTerm: SupportTerm }),
-  S.Struct({ renewalTerm: RenewalTerm }),
-  S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
-  S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
-  S.Struct({ byolPricingTerm: ByolPricingTerm }),
-  S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
-  S.Struct({ validityTerm: ValidityTerm }),
-  S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
-  S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
-  S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
-  S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
-  S.Struct({ netPaymentTerm: NetPaymentTerm }),
+  /*@__PURE__*/ S.Struct({ legalTerm: LegalTerm }),
+  /*@__PURE__*/ S.Struct({ supportTerm: SupportTerm }),
+  /*@__PURE__*/ S.Struct({ renewalTerm: RenewalTerm }),
+  /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
+  /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
+  /*@__PURE__*/ S.Struct({ byolPricingTerm: ByolPricingTerm }),
+  /*@__PURE__*/ S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
+  /*@__PURE__*/ S.Struct({ validityTerm: ValidityTerm }),
+  /*@__PURE__*/ S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
+  /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
+  /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
+  /*@__PURE__*/ S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
+  /*@__PURE__*/ S.Struct({ netPaymentTerm: NetPaymentTerm }),
 ]);
 export type AcceptedTermList = AcceptedTerm[];
 export const AcceptedTermList = /*@__PURE__*/ S.Array(AcceptedTerm);

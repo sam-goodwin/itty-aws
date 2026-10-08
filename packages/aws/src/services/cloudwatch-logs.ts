@@ -8,12 +8,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://monitoring.amazonaws.com/doc/2014-03-28/");
-const svc = T.AwsApiService({ sdkId: "CloudWatch Logs", serviceShapeName: "Logs_20140328" });
-const auth = T.AwsAuthSigv4({ name: "logs" });
-const ver = T.ServiceVersion("2014-03-28");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://monitoring.amazonaws.com/doc/2014-03-28/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudWatch Logs",
+  serviceShapeName: "Logs_20140328",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "logs" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-03-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,94 +79,99 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class DataAlreadyAcceptedException
   extends /*@__PURE__*/ S.TaggedError<DataAlreadyAcceptedException>()(
     "DataAlreadyAcceptedException",
     {
-      expectedSequenceToken: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      expectedSequenceToken: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()("InvalidOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidSequenceTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidSequenceTokenException>()(
     "InvalidSequenceTokenException",
     {
-      expectedSequenceToken: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      expectedSequenceToken: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError) {}
 export class MalformedQueryException
   extends /*@__PURE__*/ S.TaggedError<MalformedQueryException>()("MalformedQueryException", {
-    queryCompileError: S.optional(
-      S.suspend(() => QueryCompileError).annotate({ identifier: "QueryCompileError" }),
+    queryCompileError: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => QueryCompileError).annotate({
+        identifier: "QueryCompileError",
+      }),
     ),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class OperationAbortedException
   extends /*@__PURE__*/ S.TaggedError<OperationAbortedException>()("OperationAbortedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withNotFoundError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()("ThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnrecognizedClientException
   extends /*@__PURE__*/ S.TaggedError<UnrecognizedClientException>()(
     "UnrecognizedClientException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export type LogGroupName = string;
 export type KmsKeyId = string;
@@ -278,7 +286,7 @@ export const S3DeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDeliveryRequest {
   deliverySourceName: string;
   deliveryDestinationArn: string;
@@ -1263,7 +1271,7 @@ export type DeliverySourceConfigurationValue = string;
 export type DeliverySourceConfiguration = { [key: string]: string | undefined };
 export const DeliverySourceConfiguration = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type DeliverySourceStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const DeliverySourceStatus = S.String;
@@ -1852,7 +1860,7 @@ export type DefaultValue = number;
 export type DimensionsKey = string;
 export type DimensionsValue = string;
 export type Dimensions = { [key: string]: string | undefined };
-export const Dimensions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Dimensions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type StandardUnit =
   | "Seconds"
   | "Microseconds"
@@ -2534,7 +2542,7 @@ export const OpenSearchIntegrationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenSearchIntegrationDetails>;
 export type IntegrationDetails = { openSearchIntegrationDetails: OpenSearchIntegrationDetails };
 export const IntegrationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ openSearchIntegrationDetails: OpenSearchIntegrationDetails }),
+  /*@__PURE__*/ S.Struct({ openSearchIntegrationDetails: OpenSearchIntegrationDetails }),
 ]);
 export interface GetIntegrationResponse {
   integrationName?: string;
@@ -2690,7 +2698,7 @@ export const LogFieldsListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogFieldsListItem" }) as any as S.Schema<LogFieldsListItem>;
 export type LogFieldsList = LogFieldsListItem[];
 export const LogFieldsList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<LogFieldsListItem> => LogFieldsListItem).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<LogFieldsListItem> => LogFieldsListItem).annotate({
     identifier: "LogFieldsListItem",
   }),
 ) as any as S.Schema<LogFieldsList>;
@@ -2761,9 +2769,9 @@ export type GetLogObjectResponseStream =
   | { fields: FieldsData; InternalStreamingException?: never }
   | { fields?: never; InternalStreamingException: InternalStreamingException };
 export const GetLogObjectResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ fields: FieldsData }),
-    S.Struct({ InternalStreamingException: InternalStreamingException }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ fields: FieldsData }),
+    /*@__PURE__*/ S.Struct({ InternalStreamingException: InternalStreamingException }),
   ]),
 ) as any as S.Schema<stream.Stream<GetLogObjectResponseStream, Error, never>>;
 export interface GetLogObjectResponse {
@@ -2784,7 +2792,7 @@ export const GetLogRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogRecordRequest" }) as any as S.Schema<GetLogRecordRequest>;
 export type Value = string;
 export type LogRecord = { [key: string]: string | undefined };
-export const LogRecord = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LogRecord = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetLogRecordResponse {
   logRecord?: { [key: string]: string | undefined };
 }
@@ -3560,7 +3568,7 @@ export const State = S.String;
 
 export type Count = number;
 export type Histogram = { [key: string]: number | undefined };
-export const Histogram = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const Histogram = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface LogEvent {
   timestamp?: number;
   message?: string;
@@ -3574,7 +3582,10 @@ export type DynamicTokenPosition = number;
 export type TokenString = string;
 export type TokenValue = number;
 export type Enumerations = { [key: string]: number | undefined };
-export const Enumerations = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const Enumerations = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type InferredTokenName = string;
 export interface PatternToken {
   dynamicTokenPosition?: number;
@@ -4233,7 +4244,7 @@ export const OpenSearchResourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OpenSearchResourceConfig" }) as any as S.Schema<OpenSearchResourceConfig>;
 export type ResourceConfig = { openSearchResourceConfig: OpenSearchResourceConfig };
 export const ResourceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ openSearchResourceConfig: OpenSearchResourceConfig }),
+  /*@__PURE__*/ S.Struct({ openSearchResourceConfig: OpenSearchResourceConfig }),
 ]);
 export interface PutIntegrationRequest {
   integrationName: string;
@@ -4269,11 +4280,17 @@ export const InputLogEvents = /*@__PURE__*/ S.Array(InputLogEvent);
 export type EntityKeyAttributesKey = string;
 export type EntityKeyAttributesValue = string;
 export type EntityKeyAttributes = { [key: string]: string | undefined };
-export const EntityKeyAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EntityKeyAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EntityAttributesKey = string;
 export type EntityAttributesValue = string;
 export type EntityAttributes = { [key: string]: string | undefined };
-export const EntityAttributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EntityAttributes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Entity {
   keyAttributes?: { [key: string]: string | undefined };
   attributes?: { [key: string]: string | undefined };
@@ -4650,11 +4667,11 @@ export type StartLiveTailResponseStream =
       SessionStreamingException: SessionStreamingException;
     };
 export const StartLiveTailResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ sessionStart: LiveTailSessionStart }),
-    S.Struct({ sessionUpdate: LiveTailSessionUpdate }),
-    S.Struct({ SessionTimeoutException: SessionTimeoutException }),
-    S.Struct({ SessionStreamingException: SessionStreamingException }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ sessionStart: LiveTailSessionStart }),
+    /*@__PURE__*/ S.Struct({ sessionUpdate: LiveTailSessionUpdate }),
+    /*@__PURE__*/ S.Struct({ SessionTimeoutException: SessionTimeoutException }),
+    /*@__PURE__*/ S.Struct({ SessionStreamingException: SessionStreamingException }),
   ]),
 ) as any as S.Schema<stream.Stream<StartLiveTailResponseStream, Error, never>>;
 export interface StartLiveTailResponse {
@@ -4746,7 +4763,10 @@ export const TestMetricFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventNumber = number;
 export type Token = string;
 export type ExtractedValues = { [key: string]: string | undefined };
-export const ExtractedValues = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExtractedValues = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface MetricFilterMatchRecord {
   eventNumber?: number;
   eventMessage?: string;

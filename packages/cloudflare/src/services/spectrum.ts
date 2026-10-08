@@ -128,7 +128,7 @@ export type AppsCreateRequestEdgeIps =
   | AppsCreateRequestEdgeIpsDynamic
   | AppsCreateRequestEdgeIpsStatic;
 export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -164,7 +164,9 @@ export const AppsCreateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsCreateRequestOriginDns>;
 
 export type AppsCreateRequestOriginPort = string | number;
-export const AppsCreateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const AppsCreateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type AppsCreateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
 export const AppsCreateRequestProxyProtocol = S.String;
@@ -301,7 +303,7 @@ export type AppsCreateResultSpectrumConfigAppConfigEdgeIps =
   | AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic;
 export const AppsCreateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -338,7 +340,7 @@ export const AppsCreateResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.
 
 export type AppsCreateResultSpectrumConfigAppConfigOriginPort = string | number;
 export const AppsCreateResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsCreateResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
@@ -474,7 +476,7 @@ export type AppsCreateResult =
   | AppsCreateResultSpectrumConfigAppConfig
   | AppsCreateResultSpectrumConfigPaygoAppConfig;
 export const AppsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "createdOn",
@@ -698,7 +700,7 @@ export type AnalyticsEventsBytimesGetResponseDataItemMetrics =
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List;
 export const AnalyticsEventsBytimesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface AnalyticsEventsBytimesGetResponseDataItem {
@@ -939,7 +941,7 @@ export type AnalyticsEventsSummariesGetResponseDataItemMetrics =
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List;
 export const AnalyticsEventsSummariesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface AnalyticsEventsSummariesGetResponseDataItem {
@@ -1182,7 +1184,7 @@ export type AppsGetResultSpectrumConfigAppConfigEdgeIps =
   | AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic;
 export const AppsGetResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -1219,7 +1221,7 @@ export const AppsGetResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.sus
 
 export type AppsGetResultSpectrumConfigAppConfigOriginPort = string | number;
 export const AppsGetResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsGetResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
@@ -1353,7 +1355,7 @@ export type AppsGetResult =
   | AppsGetResultSpectrumConfigAppConfig
   | AppsGetResultSpectrumConfigPaygoAppConfig;
 export const AppsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "createdOn",
@@ -1480,7 +1482,7 @@ export type AppsListResultCase0ItemEdgeIps =
   | AppsListResultCase0ItemEdgeIpsDynamic
   | AppsListResultCase0ItemEdgeIpsStatic;
 export const AppsListResultCase0ItemEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -1517,7 +1519,7 @@ export const AppsListResultCase0ItemOriginDns = /*@__PURE__*/ S.suspend(() =>
 
 export type AppsListResultCase0ItemOriginPort = string | number;
 export const AppsListResultCase0ItemOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsListResultCase0ItemProxyProtocol = "off" | "v1" | "v2" | "simple";
@@ -1646,7 +1648,7 @@ export const AppsListResultCase1List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsListResultCase1List>;
 
 export type AppsListResult = AppsListResultCase0List | AppsListResultCase1List;
-export const AppsListResult = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const AppsListResult = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1774,7 +1776,7 @@ export type AppsUpdateRequestEdgeIps =
   | AppsUpdateRequestEdgeIpsDynamic
   | AppsUpdateRequestEdgeIpsStatic;
 export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -1810,7 +1812,9 @@ export const AppsUpdateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsUpdateRequestOriginDns>;
 
 export type AppsUpdateRequestOriginPort = string | number;
-export const AppsUpdateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const AppsUpdateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type AppsUpdateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
 export const AppsUpdateRequestProxyProtocol = S.String;
@@ -1950,7 +1954,7 @@ export type AppsUpdateResultSpectrumConfigAppConfigEdgeIps =
   | AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic;
 export const AppsUpdateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
       ["ips", "type"],
@@ -1987,7 +1991,7 @@ export const AppsUpdateResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.
 
 export type AppsUpdateResultSpectrumConfigAppConfigOriginPort = string | number;
 export const AppsUpdateResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsUpdateResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
@@ -2123,7 +2127,7 @@ export type AppsUpdateResult =
   | AppsUpdateResultSpectrumConfigAppConfig
   | AppsUpdateResultSpectrumConfigPaygoAppConfig;
 export const AppsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "createdOn",

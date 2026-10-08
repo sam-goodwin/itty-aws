@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://devicefarm.amazonaws.com/doc/2015-06-23/");
-const svc = T.AwsApiService({ sdkId: "Device Farm", serviceShapeName: "DeviceFarm_20150623" });
-const auth = T.AwsAuthSigv4({ name: "devicefarm" });
-const ver = T.ServiceVersion("2015-06-23");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://devicefarm.amazonaws.com/doc/2015-06-23/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Device Farm",
+  serviceShapeName: "DeviceFarm_20150623",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "devicefarm" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-06-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,61 +78,70 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ArgumentException
   extends /*@__PURE__*/ S.TaggedError<ArgumentException>()("ArgumentException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CannotDeleteException
   extends /*@__PURE__*/ S.TaggedError<CannotDeleteException>()(
     "CannotDeleteException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IdempotencyException
   extends /*@__PURE__*/ S.TaggedError<IdempotencyException>()("IdempotencyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()("InvalidOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotEligibleException
   extends /*@__PURE__*/ S.TaggedError<NotEligibleException>()("NotEligibleException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()("NotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ServiceAccountException
   extends /*@__PURE__*/ S.TaggedError<ServiceAccountException>()("ServiceAccountException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TagOperationException
   extends /*@__PURE__*/ S.TaggedError<TagOperationException>()(
     "TagOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyException
   extends /*@__PURE__*/ S.TaggedError<TagPolicyException>()(
     "TagPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AmazonResourceName = string;
 export type Name = string;
@@ -429,7 +441,10 @@ export const DeviceProxy = /*@__PURE__*/ S.suspend(() =>
 export type RemoteAccessParameterKey = string;
 export type RemoteAccessParameterValue = string;
 export type RemoteAccessParameters = { [key: string]: string | undefined };
-export const RemoteAccessParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RemoteAccessParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateRemoteAccessSessionConfiguration {
   auxiliaryApps?: string[];
   billingMethod?: BillingMethod;
@@ -1029,7 +1044,7 @@ export type AWSAccountNumber = string;
 export type PurchasedDevicesMap = { [key in DevicePlatform]?: number };
 export const PurchasedDevicesMap = /*@__PURE__*/ S.Record(
   DevicePlatform,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface TrialMinutes {
   total?: number;
@@ -1039,7 +1054,7 @@ export const TrialMinutes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ total: S.optional(S.Number), remaining: S.optional(S.Number) }),
 ).annotate({ identifier: "TrialMinutes" }) as any as S.Schema<TrialMinutes>;
 export type MaxSlotMap = { [key: string]: number | undefined };
-export const MaxSlotMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const MaxSlotMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface AccountSettings {
   awsAccountNumber?: string;
   unmeteredDevices?: { [key: string]: number | undefined };
@@ -1130,7 +1145,10 @@ export const TestType = S.String;
 
 export type Filter = string;
 export type TestParameters = { [key: string]: string | undefined };
-export const TestParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TestParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ScheduleRunTest {
   type: TestType;
   testPackageArn?: string;
@@ -1505,7 +1523,10 @@ export const OfferingStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OfferingStatus" }) as any as S.Schema<OfferingStatus>;
 export type OfferingStatusMap = { [key: string]: OfferingStatus | undefined };
-export const OfferingStatusMap = /*@__PURE__*/ S.Record(S.String, OfferingStatus.pipe(S.optional));
+export const OfferingStatusMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ OfferingStatus.pipe(S.optional),
+);
 export interface GetOfferingStatusResult {
   current?: { [key: string]: OfferingStatus | undefined };
   nextPeriod?: { [key: string]: OfferingStatus | undefined };
@@ -2604,7 +2625,7 @@ export const UniqueProblems = /*@__PURE__*/ S.Array(UniqueProblem);
 export type UniqueProblemsByExecutionResultMap = { [key in ExecutionResult]?: UniqueProblem[] };
 export const UniqueProblemsByExecutionResultMap = /*@__PURE__*/ S.Record(
   ExecutionResult,
-  UniqueProblems.pipe(S.optional),
+  /*@__PURE__*/ UniqueProblems.pipe(S.optional),
 );
 export interface ListUniqueProblemsResult {
   uniqueProblems?: { [key: string]: UniqueProblem[] | undefined };

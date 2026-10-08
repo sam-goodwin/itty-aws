@@ -7,12 +7,12 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("s3files");
-const svc = T.AwsApiService({ sdkId: "S3Files", serviceShapeName: "S3Files" });
-const auth = T.AwsAuthSigv4({ name: "s3files" });
-const ver = T.ServiceVersion("2025-05-05");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("s3files");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "S3Files", serviceShapeName: "S3Files" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "s3files" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-05-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -49,35 +49,47 @@ export class ConflictException
     "ConflictException",
     {
       errorCode: S.String,
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { errorCode: S.String, message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    {
+      errorCode: S.String,
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { errorCode: S.String, message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      errorCode: S.String,
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { errorCode: S.String, message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    {
+      errorCode: S.String,
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { errorCode: S.String, message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      errorCode: S.String,
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
 export type TagKey = string;

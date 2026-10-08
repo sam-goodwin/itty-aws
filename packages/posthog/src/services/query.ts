@@ -17317,7 +17317,7 @@ export const AccountsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
 
 export type AccountsQueryResponseMetricsResultsList = Array<number | null>;
 export const AccountsQueryResponseMetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<AccountsQueryResponseMetricsResultsList>;
 
 export type AccountsQueryResponseResultsItemList = Array<unknown>;
@@ -17838,14 +17838,14 @@ export const AccountsTableQueryMetricsList = /*@__PURE__*/ S.Array(
 
 export type AccountsTableQueryResponseMetricsResultsList = Array<number | null>;
 export const AccountsTableQueryResponseMetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<AccountsTableQueryResponseMetricsResultsList>;
 
 /** Requested direct Account fields, keyed by their typed field reference. */
 export type AccountsTableRowAccountFieldsMap = { [key: string]: string | null | undefined };
 export const AccountsTableRowAccountFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<AccountsTableRowAccountFieldsMap>;
 
 export type AccountsTableRowCustomPropertiesValue = string | number | boolean;
@@ -17858,7 +17858,7 @@ export type AccountsTableRowCustomPropertiesMap = {
 };
 export const AccountsTableRowCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AccountsTableRowCustomPropertiesValue),
+  /*@__PURE__*/ S.NullOr(AccountsTableRowCustomPropertiesValue),
 ) as any as S.Schema<AccountsTableRowCustomPropertiesMap>;
 
 export interface AccountsTableCustomPropertyHistoryPoint {
@@ -23823,7 +23823,7 @@ export const Response21ColumnsList = /*@__PURE__*/ S.Array(
 
 export type Response21MetricsResultsList = Array<number | null>;
 export const Response21MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<Response21MetricsResultsList>;
 
 export type Response21ResultsItemList = Array<unknown>;
@@ -23912,7 +23912,7 @@ export const Response21 = /*@__PURE__*/ S.suspend(() =>
 
 export type Response22MetricsResultsList = Array<number | null>;
 export const Response22MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<Response22MetricsResultsList>;
 
 export type Response22ResultsList = Array<AccountsTableRow>;
@@ -30308,7 +30308,7 @@ export const QueryResponseAlternative60ColumnsList = /*@__PURE__*/ S.Array(
 
 export type QueryResponseAlternative60MetricsResultsList = Array<number | null>;
 export const QueryResponseAlternative60MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<QueryResponseAlternative60MetricsResultsList>;
 
 export type QueryResponseAlternative60ResultsItemList = Array<unknown>;
@@ -30406,7 +30406,7 @@ export const QueryResponseAlternative60 = /*@__PURE__*/ S.suspend(() =>
 
 export type QueryResponseAlternative61MetricsResultsList = Array<number | null>;
 export const QueryResponseAlternative61MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<QueryResponseAlternative61MetricsResultsList>;
 
 export type QueryResponseAlternative61ResultsList = Array<AccountsTableRow>;
@@ -32268,7 +32268,7 @@ export const QueryResponseAlternative91ColumnsList = /*@__PURE__*/ S.Array(
 
 export type QueryResponseAlternative91MetricsResultsList = Array<number | null>;
 export const QueryResponseAlternative91MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<QueryResponseAlternative91MetricsResultsList>;
 
 export type QueryResponseAlternative91ResultsItemList = Array<unknown>;
@@ -32366,7 +32366,7 @@ export const QueryResponseAlternative91 = /*@__PURE__*/ S.suspend(() =>
 
 export type QueryResponseAlternative92MetricsResultsList = Array<number | null>;
 export const QueryResponseAlternative92MetricsResultsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<QueryResponseAlternative92MetricsResultsList>;
 
 export type QueryResponseAlternative92ResultsList = Array<AccountsTableRow>;

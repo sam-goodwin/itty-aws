@@ -1034,7 +1034,7 @@ export const GPGKeyEmailsList = /*@__PURE__*/ S.Array(
 
 export type GPGKeySubkeysList = Array<GPGKey>;
 export const GPGKeySubkeysList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GPGKey),
+  /*@__PURE__*/ S.suspend(() => GPGKey),
 ) as any as S.Schema<GPGKeySubkeysList>;
 
 /** GPGKey a user GPG key to sign commit and tag in repository */

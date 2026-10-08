@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "DataZone", serviceShapeName: "DataZone" });
-const auth = T.AwsAuthSigv4({ name: "datazone" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "DataZone", serviceShapeName: "DataZone" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "datazone" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -62,44 +62,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainId = string;
 export type AssetIdentifier = string;
@@ -189,7 +189,7 @@ export const S3Permission = S.String;
 export type S3Permissions = S3Permission[];
 export const S3Permissions = /*@__PURE__*/ S.Array(S3Permission);
 export type Permissions = { s3: S3Permission[] };
-export const Permissions = /*@__PURE__*/ S.Union([S.Struct({ s3: S3Permissions })]);
+export const Permissions = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Permissions })]);
 export interface AssetPermission {
   assetId: string;
   permissions: Permissions;
@@ -280,8 +280,8 @@ export type UserProfileDetails =
   | { iam: IamUserProfileDetails; sso?: never }
   | { iam?: never; sso: SsoUserProfileDetails };
 export const UserProfileDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ iam: IamUserProfileDetails }),
-  S.Struct({ sso: SsoUserProfileDetails }),
+  /*@__PURE__*/ S.Struct({ iam: IamUserProfileDetails }),
+  /*@__PURE__*/ S.Struct({ sso: SsoUserProfileDetails }),
 ]);
 export interface SubscribedUser {
   id?: string;
@@ -312,10 +312,10 @@ export type SubscribedPrincipal =
   | { project?: never; user?: never; group: SubscribedGroup; iam?: never }
   | { project?: never; user?: never; group?: never; iam: SubscribedIamPrincipal };
 export const SubscribedPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ project: SubscribedProject }),
-  S.Struct({ user: SubscribedUser }),
-  S.Struct({ group: SubscribedGroup }),
-  S.Struct({ iam: SubscribedIamPrincipal }),
+  /*@__PURE__*/ S.Struct({ project: SubscribedProject }),
+  /*@__PURE__*/ S.Struct({ user: SubscribedUser }),
+  /*@__PURE__*/ S.Struct({ group: SubscribedGroup }),
+  /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipal }),
 ]);
 export type SubscribedPrincipals = SubscribedPrincipal[];
 export const SubscribedPrincipals = /*@__PURE__*/ S.Array(SubscribedPrincipal);
@@ -409,8 +409,8 @@ export type SubscribedListingItem =
   | { assetListing: SubscribedAssetListing; productListing?: never }
   | { assetListing?: never; productListing: SubscribedProductListing };
 export const SubscribedListingItem = /*@__PURE__*/ S.Union([
-  S.Struct({ assetListing: SubscribedAssetListing }),
-  S.Struct({ productListing: SubscribedProductListing }),
+  /*@__PURE__*/ S.Struct({ assetListing: SubscribedAssetListing }),
+  /*@__PURE__*/ S.Struct({ productListing: SubscribedProductListing }),
 ]);
 export interface SubscribedListing {
   id: string;
@@ -510,8 +510,8 @@ export type OwnerProperties =
   | { user: OwnerUserProperties; group?: never }
   | { user?: never; group: OwnerGroupProperties };
 export const OwnerProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ user: OwnerUserProperties }),
-  S.Struct({ group: OwnerGroupProperties }),
+  /*@__PURE__*/ S.Struct({ user: OwnerUserProperties }),
+  /*@__PURE__*/ S.Struct({ group: OwnerGroupProperties }),
 ]);
 export interface AddEntityOwnerInput {
   domainIdentifier: string;
@@ -579,12 +579,12 @@ export type UserPolicyGrantPrincipal =
   | { userIdentifier: string; allUsersGrantFilter?: never }
   | { userIdentifier?: never; allUsersGrantFilter: AllUsersGrantFilter };
 export const UserPolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ userIdentifier: S.String }),
-  S.Struct({ allUsersGrantFilter: AllUsersGrantFilter }),
+  /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ allUsersGrantFilter: AllUsersGrantFilter }),
 ]);
 export type GroupPolicyGrantPrincipal = { groupIdentifier: string };
 export const GroupPolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ groupIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ groupIdentifier: S.String }),
 ]);
 export type ProjectDesignation =
   | "OWNER"
@@ -605,7 +605,7 @@ export const DomainUnitFilterForProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainUnitFilterForProject>;
 export type ProjectGrantFilter = { domainUnitFilter: DomainUnitFilterForProject };
 export const ProjectGrantFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ domainUnitFilter: DomainUnitFilterForProject }),
+  /*@__PURE__*/ S.Struct({ domainUnitFilter: DomainUnitFilterForProject }),
 ]);
 export interface ProjectPolicyGrantPrincipal {
   projectDesignation: ProjectDesignation;
@@ -630,7 +630,7 @@ export const AllDomainUnitsGrantFilter = /*@__PURE__*/ S.suspend(() => S.Struct(
 }) as any as S.Schema<AllDomainUnitsGrantFilter>;
 export type DomainUnitGrantFilter = { allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter };
 export const DomainUnitGrantFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter }),
+  /*@__PURE__*/ S.Struct({ allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter }),
 ]);
 export interface DomainUnitPolicyGrantPrincipal {
   domainUnitDesignation: DomainUnitDesignation;
@@ -652,10 +652,10 @@ export type PolicyGrantPrincipal =
   | { user?: never; group?: never; project: ProjectPolicyGrantPrincipal; domainUnit?: never }
   | { user?: never; group?: never; project?: never; domainUnit: DomainUnitPolicyGrantPrincipal };
 export const PolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ user: UserPolicyGrantPrincipal }),
-  S.Struct({ group: GroupPolicyGrantPrincipal }),
-  S.Struct({ project: ProjectPolicyGrantPrincipal }),
-  S.Struct({ domainUnit: DomainUnitPolicyGrantPrincipal }),
+  /*@__PURE__*/ S.Struct({ user: UserPolicyGrantPrincipal }),
+  /*@__PURE__*/ S.Struct({ group: GroupPolicyGrantPrincipal }),
+  /*@__PURE__*/ S.Struct({ project: ProjectPolicyGrantPrincipal }),
+  /*@__PURE__*/ S.Struct({ domainUnit: DomainUnitPolicyGrantPrincipal }),
 ]);
 export interface CreateDomainUnitPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
@@ -981,20 +981,22 @@ export type PolicyGrantDetail =
       useAssetType: UseAssetTypePolicyGrantDetail;
     };
 export const PolicyGrantDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ createDomainUnit: CreateDomainUnitPolicyGrantDetail }),
-  S.Struct({ overrideDomainUnitOwners: OverrideDomainUnitOwnersPolicyGrantDetail }),
-  S.Struct({ addToProjectMemberPool: AddToProjectMemberPoolPolicyGrantDetail }),
-  S.Struct({ overrideProjectOwners: OverrideProjectOwnersPolicyGrantDetail }),
-  S.Struct({ createGlossary: CreateGlossaryPolicyGrantDetail }),
-  S.Struct({ createFormType: CreateFormTypePolicyGrantDetail }),
-  S.Struct({ createAssetType: CreateAssetTypePolicyGrantDetail }),
-  S.Struct({ createProject: CreateProjectPolicyGrantDetail }),
-  S.Struct({ createEnvironmentProfile: CreateEnvironmentProfilePolicyGrantDetail }),
-  S.Struct({ delegateCreateEnvironmentProfile: Unit }),
-  S.Struct({ createEnvironment: Unit }),
-  S.Struct({ createEnvironmentFromBlueprint: Unit }),
-  S.Struct({ createProjectFromProjectProfile: CreateProjectFromProjectProfilePolicyGrantDetail }),
-  S.Struct({ useAssetType: UseAssetTypePolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createDomainUnit: CreateDomainUnitPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ overrideDomainUnitOwners: OverrideDomainUnitOwnersPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ addToProjectMemberPool: AddToProjectMemberPoolPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ overrideProjectOwners: OverrideProjectOwnersPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createGlossary: CreateGlossaryPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createFormType: CreateFormTypePolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createAssetType: CreateAssetTypePolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createProject: CreateProjectPolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ createEnvironmentProfile: CreateEnvironmentProfilePolicyGrantDetail }),
+  /*@__PURE__*/ S.Struct({ delegateCreateEnvironmentProfile: Unit }),
+  /*@__PURE__*/ S.Struct({ createEnvironment: Unit }),
+  /*@__PURE__*/ S.Struct({ createEnvironmentFromBlueprint: Unit }),
+  /*@__PURE__*/ S.Struct({
+    createProjectFromProjectProfile: CreateProjectFromProjectProfilePolicyGrantDetail,
+  }),
+  /*@__PURE__*/ S.Struct({ useAssetType: UseAssetTypePolicyGrantDetail }),
 ]);
 export interface AddPolicyGrantInput {
   domainIdentifier: string;
@@ -1369,8 +1371,8 @@ export type AccountSource =
   | { accounts: AccountInfo[]; customAccountPoolHandler?: never }
   | { accounts?: never; customAccountPoolHandler: CustomAccountPoolHandler };
 export const AccountSource = /*@__PURE__*/ S.Union([
-  S.Struct({ accounts: AccountInfoList }),
-  S.Struct({ customAccountPoolHandler: CustomAccountPoolHandler }),
+  /*@__PURE__*/ S.Struct({ accounts: AccountInfoList }),
+  /*@__PURE__*/ S.Struct({ customAccountPoolHandler: CustomAccountPoolHandler }),
 ]);
 export interface CreateAccountPoolInput {
   domainIdentifier: string;
@@ -1833,31 +1835,35 @@ export type RowFilterExpression =
       notLike: NotLikeExpression;
     };
 export const RowFilterExpression = /*@__PURE__*/ S.Union([
-  S.Struct({ equalTo: EqualToExpression }),
-  S.Struct({ notEqualTo: NotEqualToExpression }),
-  S.Struct({ greaterThan: GreaterThanExpression }),
-  S.Struct({ lessThan: LessThanExpression }),
-  S.Struct({ greaterThanOrEqualTo: GreaterThanOrEqualToExpression }),
-  S.Struct({ lessThanOrEqualTo: LessThanOrEqualToExpression }),
-  S.Struct({ isNull: IsNullExpression }),
-  S.Struct({ isNotNull: IsNotNullExpression }),
-  S.Struct({ in: InExpression }),
-  S.Struct({ notIn: NotInExpression }),
-  S.Struct({ like: LikeExpression }),
-  S.Struct({ notLike: NotLikeExpression }),
+  /*@__PURE__*/ S.Struct({ equalTo: EqualToExpression }),
+  /*@__PURE__*/ S.Struct({ notEqualTo: NotEqualToExpression }),
+  /*@__PURE__*/ S.Struct({ greaterThan: GreaterThanExpression }),
+  /*@__PURE__*/ S.Struct({ lessThan: LessThanExpression }),
+  /*@__PURE__*/ S.Struct({ greaterThanOrEqualTo: GreaterThanOrEqualToExpression }),
+  /*@__PURE__*/ S.Struct({ lessThanOrEqualTo: LessThanOrEqualToExpression }),
+  /*@__PURE__*/ S.Struct({ isNull: IsNullExpression }),
+  /*@__PURE__*/ S.Struct({ isNotNull: IsNotNullExpression }),
+  /*@__PURE__*/ S.Struct({ in: InExpression }),
+  /*@__PURE__*/ S.Struct({ notIn: NotInExpression }),
+  /*@__PURE__*/ S.Struct({ like: LikeExpression }),
+  /*@__PURE__*/ S.Struct({ notLike: NotLikeExpression }),
 ]);
 export type RowFilterList = RowFilter[];
 export const RowFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RowFilter).annotate({ identifier: "RowFilter" }),
+  /*@__PURE__*/ S.suspend(() => RowFilter).annotate({ identifier: "RowFilter" }),
 ) as any as S.Schema<RowFilterList>;
 export type RowFilter =
   | { expression: RowFilterExpression; and?: never; or?: never }
   | { expression?: never; and: RowFilter[]; or?: never }
   | { expression?: never; and?: never; or: RowFilter[] };
 export const RowFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ expression: RowFilterExpression }),
-  S.Struct({ and: S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }) }),
-  S.Struct({ or: S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }) }),
+  /*@__PURE__*/ S.Struct({ expression: RowFilterExpression }),
+  /*@__PURE__*/ S.Struct({
+    and: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }),
+  }),
+  /*@__PURE__*/ S.Struct({
+    or: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }),
+  }),
 ]) as any as S.Schema<RowFilter>;
 export interface RowFilterConfiguration {
   rowFilter: RowFilter;
@@ -1870,8 +1876,8 @@ export type AssetFilterConfiguration =
   | { columnConfiguration: ColumnFilterConfiguration; rowConfiguration?: never }
   | { columnConfiguration?: never; rowConfiguration: RowFilterConfiguration };
 export const AssetFilterConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ columnConfiguration: ColumnFilterConfiguration }),
-  S.Struct({ rowConfiguration: RowFilterConfiguration }),
+  /*@__PURE__*/ S.Struct({ columnConfiguration: ColumnFilterConfiguration }),
+  /*@__PURE__*/ S.Struct({ rowConfiguration: RowFilterConfiguration }),
 ]);
 export interface CreateAssetFilterInput {
   domainIdentifier: string;
@@ -2027,7 +2033,10 @@ export const FormEntryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ typeIdentifier: S.String, typeRevision: S.String, required: S.optional(S.Boolean) }),
 ).annotate({ identifier: "FormEntryInput" }) as any as S.Schema<FormEntryInput>;
 export type FormsInputMap = { [key: string]: FormEntryInput | undefined };
-export const FormsInputMap = /*@__PURE__*/ S.Record(S.String, FormEntryInput.pipe(S.optional));
+export const FormsInputMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FormEntryInput.pipe(S.optional),
+);
 export interface CreateAssetTypeInput {
   domainIdentifier: string;
   name: string;
@@ -2062,7 +2071,10 @@ export const FormEntryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ typeName: SensitiveString, typeRevision: S.String, required: S.optional(S.Boolean) }),
 ).annotate({ identifier: "FormEntryOutput" }) as any as S.Schema<FormEntryOutput>;
 export type FormsOutputMap = { [key: string]: FormEntryOutput | undefined };
-export const FormsOutputMap = /*@__PURE__*/ S.Record(S.String, FormEntryOutput.pipe(S.optional));
+export const FormsOutputMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FormEntryOutput.pipe(S.optional),
+);
 export interface CreateAssetTypeOutput {
   domainId: string;
   name: string;
@@ -2109,7 +2121,10 @@ export const AwsLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsLocation" }) as any as S.Schema<AwsLocation>;
 export type PropertyMap = { [key: string]: string | undefined };
-export const PropertyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PropertyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Configuration {
   classification?: string;
   properties?: { [key: string]: string | undefined };
@@ -2127,7 +2142,10 @@ export const AthenaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workgroupName: S.optional(S.String) }),
 ).annotate({ identifier: "AthenaPropertiesInput" }) as any as S.Schema<AthenaPropertiesInput>;
 export type ConnectionProperties = { [key: string]: string | undefined };
-export const ConnectionProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConnectionProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type SubnetId = string;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
@@ -2192,7 +2210,10 @@ export const OAuth2ClientApplication = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OAuth2ClientApplication" }) as any as S.Schema<OAuth2ClientApplication>;
 export type TokenUrlParametersMap = { [key: string]: string | undefined };
-export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AuthorizationCodeProperties {
   authorizationCode?: string;
   redirectUri?: string;
@@ -2244,7 +2265,10 @@ export const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "BasicAuthenticationCredentials",
 }) as any as S.Schema<BasicAuthenticationCredentials>;
 export type CredentialMap = { [key: string]: string | undefined };
-export const CredentialMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CredentialMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AuthenticationConfigurationInput {
   authenticationType?: AuthenticationType;
   oAuth2Properties?: OAuth2Properties;
@@ -2319,8 +2343,8 @@ export type RedshiftStorageProperties =
   | { clusterName: string; workgroupName?: never }
   | { clusterName?: never; workgroupName: string };
 export const RedshiftStorageProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ clusterName: S.String }),
-  S.Struct({ workgroupName: S.String }),
+  /*@__PURE__*/ S.Struct({ clusterName: S.String }),
+  /*@__PURE__*/ S.Struct({ workgroupName: S.String }),
 ]);
 export type Password = string | redacted.Redacted<string>;
 export type Username = string;
@@ -2335,8 +2359,8 @@ export type RedshiftCredentials =
   | { secretArn: string; usernamePassword?: never }
   | { secretArn?: never; usernamePassword: UsernamePassword };
 export const RedshiftCredentials = /*@__PURE__*/ S.Union([
-  S.Struct({ secretArn: S.String }),
-  S.Struct({ usernamePassword: UsernamePassword }),
+  /*@__PURE__*/ S.Struct({ secretArn: S.String }),
+  /*@__PURE__*/ S.Struct({ usernamePassword: UsernamePassword }),
 ]);
 export interface LineageSyncSchedule {
   schedule?: string;
@@ -2917,22 +2941,22 @@ export type ConnectionPropertiesInput =
       gitProperties: GitPropertiesInput;
     };
 export const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
-  S.Struct({ athenaProperties: AthenaPropertiesInput }),
-  S.Struct({ glueProperties: GluePropertiesInput }),
-  S.Struct({ hyperPodProperties: HyperPodPropertiesInput }),
-  S.Struct({ iamProperties: IamPropertiesInput }),
-  S.Struct({ redshiftProperties: RedshiftPropertiesInput }),
-  S.Struct({ sparkEmrProperties: SparkEmrPropertiesInput }),
-  S.Struct({ sparkGlueProperties: SparkGluePropertiesInput }),
-  S.Struct({ s3Properties: S3PropertiesInput }),
-  S.Struct({ snowflakeProperties: SnowflakePropertiesInput }),
-  S.Struct({ amazonQProperties: AmazonQPropertiesInput }),
-  S.Struct({ mlflowProperties: MlflowPropertiesInput }),
-  S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesInput }),
-  S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesInput }),
-  S.Struct({ lakehouseProperties: LakehousePropertiesInput }),
-  S.Struct({ vpcProperties: VpcPropertiesInput }),
-  S.Struct({ gitProperties: GitPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesInput }),
+  /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesInput }),
+  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesInput }),
+  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesInput }),
+  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesInput }),
+  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesInput }),
+  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesInput }),
 ]);
 export type ConnectionScope = "DOMAIN" | "PROJECT" | (string & {});
 export const ConnectionScope = S.String;
@@ -3662,22 +3686,22 @@ export type ConnectionPropertiesOutput =
       gitProperties: GitPropertiesOutput;
     };
 export const ConnectionPropertiesOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ athenaProperties: AthenaPropertiesOutput }),
-  S.Struct({ glueProperties: GluePropertiesOutput }),
-  S.Struct({ hyperPodProperties: HyperPodPropertiesOutput }),
-  S.Struct({ iamProperties: IamPropertiesOutput }),
-  S.Struct({ redshiftProperties: RedshiftPropertiesOutput }),
-  S.Struct({ sparkEmrProperties: SparkEmrPropertiesOutput }),
-  S.Struct({ sparkGlueProperties: SparkGluePropertiesOutput }),
-  S.Struct({ s3Properties: S3PropertiesOutput }),
-  S.Struct({ snowflakeProperties: SnowflakePropertiesOutput }),
-  S.Struct({ amazonQProperties: AmazonQPropertiesOutput }),
-  S.Struct({ mlflowProperties: MlflowPropertiesOutput }),
-  S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput }),
-  S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesOutput }),
-  S.Struct({ lakehouseProperties: LakehousePropertiesOutput }),
-  S.Struct({ vpcProperties: VpcPropertiesOutput }),
-  S.Struct({ gitProperties: GitPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesOutput }),
 ]);
 export interface CreateConnectionOutput {
   connectionId: string;
@@ -3945,8 +3969,8 @@ export type RedshiftStorage =
   | { redshiftClusterSource: RedshiftClusterStorage; redshiftServerlessSource?: never }
   | { redshiftClusterSource?: never; redshiftServerlessSource: RedshiftServerlessStorage };
 export const RedshiftStorage = /*@__PURE__*/ S.Union([
-  S.Struct({ redshiftClusterSource: RedshiftClusterStorage }),
-  S.Struct({ redshiftServerlessSource: RedshiftServerlessStorage }),
+  /*@__PURE__*/ S.Struct({ redshiftClusterSource: RedshiftClusterStorage }),
+  /*@__PURE__*/ S.Struct({ redshiftServerlessSource: RedshiftServerlessStorage }),
 ]);
 export interface RedshiftRunConfigurationInput {
   dataAccessRole?: string;
@@ -3969,7 +3993,10 @@ export type SageMakerResourceArn = string;
 export type TrackingAssetArns = string[];
 export const TrackingAssetArns = /*@__PURE__*/ S.Array(S.String);
 export type TrackingAssets = { [key: string]: string[] | undefined };
-export const TrackingAssets = /*@__PURE__*/ S.Record(S.String, TrackingAssetArns.pipe(S.optional));
+export const TrackingAssets = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TrackingAssetArns.pipe(S.optional),
+);
 export interface SageMakerRunConfigurationInput {
   trackingAssets: { [key: string]: string[] | undefined };
 }
@@ -3995,9 +4022,9 @@ export type DataSourceConfigurationInput =
       sageMakerRunConfiguration: SageMakerRunConfigurationInput;
     };
 export const DataSourceConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ glueRunConfiguration: GlueRunConfigurationInput }),
-  S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationInput }),
-  S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationInput }),
 ]);
 export interface RecommendationConfiguration {
   enableBusinessNameGeneration?: boolean;
@@ -4145,9 +4172,9 @@ export type DataSourceConfigurationOutput =
       sageMakerRunConfiguration: SageMakerRunConfigurationOutput;
     };
 export const DataSourceConfigurationOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
-  S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
-  S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
 ]);
 export type DataSourceRunStatus =
   | "REQUESTED"
@@ -4246,7 +4273,7 @@ export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DomainVersion = "V1" | "V2" | (string & {});
 export const DomainVersion = S.String;
 
@@ -4361,8 +4388,8 @@ export type DomainUnitOwnerProperties =
   | { user: DomainUnitUserProperties; group?: never }
   | { user?: never; group: DomainUnitGroupProperties };
 export const DomainUnitOwnerProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ user: DomainUnitUserProperties }),
-  S.Struct({ group: DomainUnitGroupProperties }),
+  /*@__PURE__*/ S.Struct({ user: DomainUnitUserProperties }),
+  /*@__PURE__*/ S.Struct({ group: DomainUnitGroupProperties }),
 ]);
 export type DomainUnitOwners = DomainUnitOwnerProperties[];
 export const DomainUnitOwners = /*@__PURE__*/ S.Array(DomainUnitOwnerProperties);
@@ -4579,8 +4606,8 @@ export type ProvisioningProperties =
   | { cloudFormation: CloudFormationProperties; manual?: never }
   | { cloudFormation?: never; manual: Record<string, never> };
 export const ProvisioningProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudFormation: CloudFormationProperties }),
-  S.Struct({ manual: S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ cloudFormation: CloudFormationProperties }),
+  /*@__PURE__*/ S.Struct({ manual: /*@__PURE__*/ S.Struct({}) }),
 ]);
 export interface DeploymentProperties {
   startTimeoutMinutes?: number;
@@ -4651,7 +4678,7 @@ export const AwsConsoleLinkParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsConsoleLinkParameters" }) as any as S.Schema<AwsConsoleLinkParameters>;
 export type ActionParameters = { awsConsoleLink: AwsConsoleLinkParameters };
 export const ActionParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ awsConsoleLink: AwsConsoleLinkParameters }),
+  /*@__PURE__*/ S.Struct({ awsConsoleLink: AwsConsoleLinkParameters }),
 ]);
 export interface CreateEnvironmentActionInput {
   domainIdentifier: string;
@@ -4835,7 +4862,7 @@ export const CreateEnvironmentProfileOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnvironmentProfileOutput>;
 export type Smithy = string;
 export type Model = { smithy: string };
-export const Model = /*@__PURE__*/ S.Union([S.Struct({ smithy: S.String })]);
+export const Model = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ smithy: S.String })]);
 export type FormTypeStatus = "ENABLED" | "DISABLED" | (string & {});
 export const FormTypeStatus = S.String;
 
@@ -5108,11 +5135,14 @@ export const NotebookType = S.String;
 export type MetadataKey = string;
 export type MetadataValue = string | redacted.Redacted<string>;
 export type Metadata = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const Metadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type Parameters = { [key: string]: string | undefined };
-export const Parameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Parameters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateNotebookInput {
   domainIdentifier: string;
   owningProjectIdentifier: string;
@@ -5296,8 +5326,8 @@ export type Member =
   | { userIdentifier: string; groupIdentifier?: never }
   | { userIdentifier?: never; groupIdentifier: string };
 export const Member = /*@__PURE__*/ S.Union([
-  S.Struct({ userIdentifier: S.String }),
-  S.Struct({ groupIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ groupIdentifier: S.String }),
 ]);
 export type UserDesignation =
   | "PROJECT_OWNER"
@@ -5402,7 +5432,7 @@ export const EnvironmentFailureReasonsList = /*@__PURE__*/ S.Array(EnvironmentEr
 export type EnvironmentFailureReasons = { [key: string]: EnvironmentError[] | undefined };
 export const EnvironmentFailureReasons = /*@__PURE__*/ S.Record(
   S.String,
-  EnvironmentFailureReasonsList.pipe(S.optional),
+  /*@__PURE__*/ EnvironmentFailureReasonsList.pipe(S.optional),
 );
 export interface EnvironmentDeploymentDetails {
   overallDeploymentStatus?: OverallDeploymentStatus;
@@ -5541,8 +5571,8 @@ export type AwsAccount =
   | { awsAccountId: string; awsAccountIdPath?: never }
   | { awsAccountId?: never; awsAccountIdPath: string };
 export const AwsAccount = /*@__PURE__*/ S.Union([
-  S.Struct({ awsAccountId: S.String }),
-  S.Struct({ awsAccountIdPath: S.String }),
+  /*@__PURE__*/ S.Struct({ awsAccountId: S.String }),
+  /*@__PURE__*/ S.Struct({ awsAccountIdPath: S.String }),
 ]);
 export type AccountPoolList = string[];
 export const AccountPoolList = /*@__PURE__*/ S.Array(S.String);
@@ -5551,8 +5581,8 @@ export type Region =
   | { regionName: string; regionNamePath?: never }
   | { regionName?: never; regionNamePath: string };
 export const Region = /*@__PURE__*/ S.Union([
-  S.Struct({ regionName: S.String }),
-  S.Struct({ regionNamePath: S.String }),
+  /*@__PURE__*/ S.Struct({ regionName: S.String }),
+  /*@__PURE__*/ S.Struct({ regionNamePath: S.String }),
 ]);
 export type DeploymentOrder = number;
 export interface EnvironmentConfiguration {
@@ -5661,7 +5691,9 @@ export const DomainUnitTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainUnitId: S.String, includeChildDomainUnits: S.optional(S.Boolean) }),
 ).annotate({ identifier: "DomainUnitTarget" }) as any as S.Schema<DomainUnitTarget>;
 export type RuleTarget = { domainUnitTarget: DomainUnitTarget };
-export const RuleTarget = /*@__PURE__*/ S.Union([S.Struct({ domainUnitTarget: DomainUnitTarget })]);
+export const RuleTarget = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ domainUnitTarget: DomainUnitTarget }),
+]);
 export type RuleAction =
   | "CREATE_LISTING_CHANGE_SET"
   | "CREATE_SUBSCRIPTION_REQUEST"
@@ -5744,8 +5776,8 @@ export type RuleDetail =
       glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail;
     };
 export const RuleDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ metadataFormEnforcementDetail: MetadataFormEnforcementDetail }),
-  S.Struct({ glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail }),
+  /*@__PURE__*/ S.Struct({ metadataFormEnforcementDetail: MetadataFormEnforcementDetail }),
+  /*@__PURE__*/ S.Struct({ glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail }),
 ]);
 export interface CreateRuleInput {
   domainIdentifier: string;
@@ -5823,7 +5855,7 @@ export const ListingRevisionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListingRevisionInput" }) as any as S.Schema<ListingRevisionInput>;
 export type GrantedEntityInput = { listing: ListingRevisionInput };
 export const GrantedEntityInput = /*@__PURE__*/ S.Union([
-  S.Struct({ listing: ListingRevisionInput }),
+  /*@__PURE__*/ S.Struct({ listing: ListingRevisionInput }),
 ]);
 export interface AssetTargetNameMap {
   assetId: string;
@@ -5872,7 +5904,9 @@ export const ListingRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, revision: S.String }),
 ).annotate({ identifier: "ListingRevision" }) as any as S.Schema<ListingRevision>;
 export type GrantedEntity = { listing: ListingRevision };
-export const GrantedEntity = /*@__PURE__*/ S.Union([S.Struct({ listing: ListingRevision })]);
+export const GrantedEntity = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ listing: ListingRevision }),
+]);
 export type SubscriptionGrantOverallStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -5992,10 +6026,10 @@ export type SubscribedPrincipalInput =
   | { project?: never; user?: never; group: SubscribedGroupInput; iam?: never }
   | { project?: never; user?: never; group?: never; iam: SubscribedIamPrincipalInput };
 export const SubscribedPrincipalInput = /*@__PURE__*/ S.Union([
-  S.Struct({ project: SubscribedProjectInput }),
-  S.Struct({ user: SubscribedUserInput }),
-  S.Struct({ group: SubscribedGroupInput }),
-  S.Struct({ iam: SubscribedIamPrincipalInput }),
+  /*@__PURE__*/ S.Struct({ project: SubscribedProjectInput }),
+  /*@__PURE__*/ S.Struct({ user: SubscribedUserInput }),
+  /*@__PURE__*/ S.Struct({ group: SubscribedGroupInput }),
+  /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipalInput }),
 ]);
 export type SubscribedPrincipalInputs = SubscribedPrincipalInput[];
 export const SubscribedPrincipalInputs = /*@__PURE__*/ S.Array(SubscribedPrincipalInput);
@@ -6480,8 +6514,8 @@ export type SelfGrantStatusOutput =
   | { glueSelfGrantStatus: GlueSelfGrantStatusOutput; redshiftSelfGrantStatus?: never }
   | { glueSelfGrantStatus?: never; redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput };
 export const SelfGrantStatusOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ glueSelfGrantStatus: GlueSelfGrantStatusOutput }),
-  S.Struct({ redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput }),
+  /*@__PURE__*/ S.Struct({ glueSelfGrantStatus: GlueSelfGrantStatusOutput }),
+  /*@__PURE__*/ S.Struct({ redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput }),
 ]);
 export interface DeleteDataSourceOutput {
   id: string;
@@ -8075,18 +8109,21 @@ export type PolicyArn = string;
 export type EnabledRegionList = string[];
 export const EnabledRegionList = /*@__PURE__*/ S.Array(S.String);
 export type RegionalParameter = { [key: string]: string | undefined };
-export const RegionalParameter = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RegionalParameter = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type RegionalParameterMap = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
 export const RegionalParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  RegionalParameter.pipe(S.optional),
+  /*@__PURE__*/ RegionalParameter.pipe(S.optional),
 );
 export type ResourceConfigurationParameterMap = { [key: string]: string | undefined };
 export const ResourceConfigurationParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ResourceConfiguration {
   identifier: string;
@@ -8123,7 +8160,7 @@ export const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LakeFormationConfiguration>;
 export type ProvisioningConfiguration = { lakeFormationConfiguration: LakeFormationConfiguration };
 export const ProvisioningConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ lakeFormationConfiguration: LakeFormationConfiguration }),
+  /*@__PURE__*/ S.Struct({ lakeFormationConfiguration: LakeFormationConfiguration }),
 ]);
 export type ProvisioningConfigurationList = ProvisioningConfiguration[];
 export const ProvisioningConfigurationList = /*@__PURE__*/ S.Array(ProvisioningConfiguration);
@@ -8536,7 +8573,7 @@ export const LineageRunDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LineageRunDetails" }) as any as S.Schema<LineageRunDetails>;
 export type JobRunDetails = { lineageRunDetails: LineageRunDetails };
 export const JobRunDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ lineageRunDetails: LineageRunDetails }),
+  /*@__PURE__*/ S.Struct({ lineageRunDetails: LineageRunDetails }),
 ]);
 export type JobRunStatus =
   | "SCHEDULED"
@@ -8787,8 +8824,8 @@ export type ListingItem =
   | { assetListing: AssetListing; dataProductListing?: never }
   | { assetListing?: never; dataProductListing: DataProductListing };
 export const ListingItem = /*@__PURE__*/ S.Union([
-  S.Struct({ assetListing: AssetListing }),
-  S.Struct({ dataProductListing: DataProductListing }),
+  /*@__PURE__*/ S.Struct({ assetListing: AssetListing }),
+  /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListing }),
 ]);
 export interface GetListingOutput {
   domainId: string;
@@ -9028,7 +9065,9 @@ export const S3Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.optional(SensitiveString) }),
 ).annotate({ identifier: "S3Destination" }) as any as S.Schema<S3Destination>;
 export type OutputLocation = { s3: S3Destination };
-export const OutputLocation = /*@__PURE__*/ S.Union([S.Struct({ s3: S3Destination })]);
+export const OutputLocation = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ s3: S3Destination }),
+]);
 export interface NotebookExportError {
   message: string;
 }
@@ -10459,8 +10498,8 @@ export type OwnerPropertiesOutput =
   | { user: OwnerUserPropertiesOutput; group?: never }
   | { user?: never; group: OwnerGroupPropertiesOutput };
 export const OwnerPropertiesOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ user: OwnerUserPropertiesOutput }),
-  S.Struct({ group: OwnerGroupPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ user: OwnerUserPropertiesOutput }),
+  /*@__PURE__*/ S.Struct({ group: OwnerGroupPropertiesOutput }),
 ]);
 export type EntityOwners = OwnerPropertiesOutput[];
 export const EntityOwners = /*@__PURE__*/ S.Array(OwnerPropertiesOutput);
@@ -10964,7 +11003,7 @@ export const OpenLineageRunEventSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenLineageRunEventSummary>;
 export type EventSummary = { openLineageRunEventSummary: OpenLineageRunEventSummary };
 export const EventSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ openLineageRunEventSummary: OpenLineageRunEventSummary }),
+  /*@__PURE__*/ S.Struct({ openLineageRunEventSummary: OpenLineageRunEventSummary }),
 ]);
 export interface LineageEventSummary {
   id?: string;
@@ -11364,7 +11403,10 @@ export type Title = string | redacted.Redacted<string>;
 export type Message = string | redacted.Redacted<string>;
 export type ActionLink = string | redacted.Redacted<string>;
 export type MetadataMap = { [key: string]: string | undefined };
-export const MetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface NotificationOutput {
   identifier: string;
   domainIdentifier: string;
@@ -11508,8 +11550,8 @@ export type MemberDetails =
   | { user: UserDetails; group?: never }
   | { user?: never; group: GroupDetails };
 export const MemberDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ user: UserDetails }),
-  S.Struct({ group: GroupDetails }),
+  /*@__PURE__*/ S.Struct({ user: UserDetails }),
+  /*@__PURE__*/ S.Struct({ group: GroupDetails }),
 ]);
 export interface ProjectMember {
   memberDetails: MemberDetails;
@@ -12297,7 +12339,10 @@ export const PutResourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type PutResourceConfigurations = PutResourceConfiguration[];
 export const PutResourceConfigurations = /*@__PURE__*/ S.Array(PutResourceConfiguration);
 export type GlobalParameterMap = { [key: string]: string | undefined };
-export const GlobalParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const GlobalParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface PutEnvironmentBlueprintConfigurationInput {
   domainIdentifier: string;
   environmentBlueprintIdentifier: string;
@@ -12413,16 +12458,20 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = FilterClause[];
 export const FilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => FilterClause).annotate({ identifier: "FilterClause" }),
+  /*@__PURE__*/ S.suspend(() => FilterClause).annotate({ identifier: "FilterClause" }),
 ) as any as S.Schema<FilterList>;
 export type FilterClause =
   | { filter: Filter; and?: never; or?: never }
   | { filter?: never; and: FilterClause[]; or?: never }
   | { filter?: never; and?: never; or: FilterClause[] };
 export const FilterClause = /*@__PURE__*/ S.Union([
-  S.Struct({ filter: Filter }),
-  S.Struct({ and: S.suspend(() => FilterList).annotate({ identifier: "FilterList" }) }),
-  S.Struct({ or: S.suspend(() => FilterList).annotate({ identifier: "FilterList" }) }),
+  /*@__PURE__*/ S.Struct({ filter: Filter }),
+  /*@__PURE__*/ S.Struct({
+    and: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
+  }),
+  /*@__PURE__*/ S.Struct({
+    or: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
+  }),
 ]) as any as S.Schema<FilterClause>;
 export interface EntityPattern {
   entityType: GraphEntityType;
@@ -12440,8 +12489,8 @@ export type MatchClause =
   | { relationPattern: RelationPattern; entityPattern?: never }
   | { relationPattern?: never; entityPattern: EntityPattern };
 export const MatchClause = /*@__PURE__*/ S.Union([
-  S.Struct({ relationPattern: RelationPattern }),
-  S.Struct({ entityPattern: EntityPattern }),
+  /*@__PURE__*/ S.Struct({ relationPattern: RelationPattern }),
+  /*@__PURE__*/ S.Struct({ entityPattern: EntityPattern }),
 ]);
 export type MatchClauses = MatchClause[];
 export const MatchClauses = /*@__PURE__*/ S.Array(MatchClause);
@@ -12517,7 +12566,9 @@ export const LineageNodeItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LineageNodeItem" }) as any as S.Schema<LineageNodeItem>;
 export type ResultItem = { lineageNode: LineageNodeItem };
-export const ResultItem = /*@__PURE__*/ S.Union([S.Struct({ lineageNode: LineageNodeItem })]);
+export const ResultItem = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ lineageNode: LineageNodeItem }),
+]);
 export type ResultItemList = ResultItem[];
 export const ResultItemList = /*@__PURE__*/ S.Array(ResultItem);
 export interface QueryGraphOutput {
@@ -12865,7 +12916,9 @@ export const TextMatchItem = /*@__PURE__*/ S.suspend(() =>
 export type TextMatches = TextMatchItem[];
 export const TextMatches = /*@__PURE__*/ S.Array(TextMatchItem);
 export type MatchRationaleItem = { textMatches: TextMatchItem[] };
-export const MatchRationaleItem = /*@__PURE__*/ S.Union([S.Struct({ textMatches: TextMatches })]);
+export const MatchRationaleItem = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ textMatches: TextMatches }),
+]);
 export type MatchRationale = MatchRationaleItem[];
 export const MatchRationale = /*@__PURE__*/ S.Array(MatchRationaleItem);
 export interface GlossaryItemAdditionalAttributes {
@@ -13062,10 +13115,10 @@ export type SearchInventoryResultItem =
       dataProductItem: DataProductResultItem;
     };
 export const SearchInventoryResultItem = /*@__PURE__*/ S.Union([
-  S.Struct({ glossaryItem: GlossaryItem }),
-  S.Struct({ glossaryTermItem: GlossaryTermItem }),
-  S.Struct({ assetItem: AssetItem }),
-  S.Struct({ dataProductItem: DataProductResultItem }),
+  /*@__PURE__*/ S.Struct({ glossaryItem: GlossaryItem }),
+  /*@__PURE__*/ S.Struct({ glossaryTermItem: GlossaryTermItem }),
+  /*@__PURE__*/ S.Struct({ assetItem: AssetItem }),
+  /*@__PURE__*/ S.Struct({ dataProductItem: DataProductResultItem }),
 ]);
 export type SearchInventoryResultItems = SearchInventoryResultItem[];
 export const SearchInventoryResultItems = /*@__PURE__*/ S.Array(SearchInventoryResultItem);
@@ -13293,8 +13346,8 @@ export type SearchResultItem =
   | { assetListing: AssetListingItem; dataProductListing?: never }
   | { assetListing?: never; dataProductListing: DataProductListingItem };
 export const SearchResultItem = /*@__PURE__*/ S.Union([
-  S.Struct({ assetListing: AssetListingItem }),
-  S.Struct({ dataProductListing: DataProductListingItem }),
+  /*@__PURE__*/ S.Struct({ assetListing: AssetListingItem }),
+  /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListingItem }),
 ]);
 export type SearchResultItems = SearchResultItem[];
 export const SearchResultItems = /*@__PURE__*/ S.Array(SearchResultItem);
@@ -13467,9 +13520,9 @@ export type SearchTypesResultItem =
   | { assetTypeItem?: never; formTypeItem: FormTypeData; lineageNodeTypeItem?: never }
   | { assetTypeItem?: never; formTypeItem?: never; lineageNodeTypeItem: LineageNodeTypeItem };
 export const SearchTypesResultItem = /*@__PURE__*/ S.Union([
-  S.Struct({ assetTypeItem: AssetTypeItem }),
-  S.Struct({ formTypeItem: FormTypeData }),
-  S.Struct({ lineageNodeTypeItem: LineageNodeTypeItem }),
+  /*@__PURE__*/ S.Struct({ assetTypeItem: AssetTypeItem }),
+  /*@__PURE__*/ S.Struct({ formTypeItem: FormTypeData }),
+  /*@__PURE__*/ S.Struct({ lineageNodeTypeItem: LineageNodeTypeItem }),
 ]);
 export type SearchTypesResultItems = SearchTypesResultItem[];
 export const SearchTypesResultItems = /*@__PURE__*/ S.Array(SearchTypesResultItem);
@@ -13704,7 +13757,9 @@ export const StartNotebookExportOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartNotebookExportOutput>;
 export type S3SourceLocation = string | redacted.Redacted<string>;
 export type SourceLocation = { s3: string | redacted.Redacted<string> };
-export const SourceLocation = /*@__PURE__*/ S.Union([S.Struct({ s3: SensitiveString })]);
+export const SourceLocation = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ s3: SensitiveString }),
+]);
 export interface StartNotebookImportInput {
   domainIdentifier: string;
   owningProjectIdentifier: string;
@@ -14421,18 +14476,18 @@ export type ConnectionPropertiesPatch =
       gitProperties: GitPropertiesPatch;
     };
 export const ConnectionPropertiesPatch = /*@__PURE__*/ S.Union([
-  S.Struct({ athenaProperties: AthenaPropertiesPatch }),
-  S.Struct({ glueProperties: GluePropertiesPatch }),
-  S.Struct({ iamProperties: IamPropertiesPatch }),
-  S.Struct({ redshiftProperties: RedshiftPropertiesPatch }),
-  S.Struct({ sparkEmrProperties: SparkEmrPropertiesPatch }),
-  S.Struct({ s3Properties: S3PropertiesPatch }),
-  S.Struct({ snowflakeProperties: SnowflakePropertiesPatch }),
-  S.Struct({ amazonQProperties: AmazonQPropertiesPatch }),
-  S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
-  S.Struct({ lakehouseProperties: LakehousePropertiesPatch }),
-  S.Struct({ vpcProperties: VpcPropertiesPatch }),
-  S.Struct({ gitProperties: GitPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesPatch }),
+  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesPatch }),
 ]);
 export interface UpdateConnectionInput {
   configurations?: Configuration[];

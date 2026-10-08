@@ -79,7 +79,7 @@ export const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
 export type Metadata = { [key: string]: MetadataValue | null | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(MetadataValue),
+  /*@__PURE__*/ S.NullOr(MetadataValue),
 ) as any as S.Schema<Metadata>;
 
 export interface ManifestFile {

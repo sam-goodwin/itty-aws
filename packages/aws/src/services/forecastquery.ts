@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "forecastquery", serviceShapeName: "AmazonForecastRuntime" });
-const auth = T.AwsAuthSigv4({ name: "forecast" });
-const ver = T.ServiceVersion("2018-06-26");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "forecastquery",
+  serviceShapeName: "AmazonForecastRuntime",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "forecast" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-06-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,38 +76,38 @@ const rules = T.EndpointResolver((p, _) => {
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Filters = { [key: string]: string | undefined };
-export const Filters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type NextToken = string;
 export interface QueryForecastRequest {
   ForecastArn: string;
@@ -133,7 +136,10 @@ export const DataPoint = /*@__PURE__*/ S.suspend(() =>
 export type TimeSeries = DataPoint[];
 export const TimeSeries = /*@__PURE__*/ S.Array(DataPoint);
 export type Predictions = { [key: string]: DataPoint[] | undefined };
-export const Predictions = /*@__PURE__*/ S.Record(S.String, TimeSeries.pipe(S.optional));
+export const Predictions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TimeSeries.pipe(S.optional),
+);
 export interface Forecast {
   Predictions?: { [key: string]: DataPoint[] | undefined };
 }

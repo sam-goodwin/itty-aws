@@ -436,7 +436,7 @@ export const RouteSerializerMatchersList = /*@__PURE__*/ S.Array(
 export type RouteSerializerRoutesItemMap = { [key: string]: string | null | undefined };
 export const RouteSerializerRoutesItemMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<RouteSerializerRoutesItemMap>;
 
 export type RouteSerializerRoutesList = Array<RouteSerializerRoutesItemMap>;
@@ -2936,7 +2936,7 @@ export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetCredentialsResponseCredentialsInfoMap = { [key: string]: string | null | undefined };
 export const GetCredentialsResponseCredentialsInfoMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetCredentialsResponseCredentialsInfoMap>;
 
 export interface GetCredentialsResponse {
@@ -3186,7 +3186,7 @@ export const InstanceSensitiveData = /*@__PURE__*/ S.suspend(() =>
 export type GetInstanceResponseParametersMap = { [key: string]: string | null | undefined };
 export const GetInstanceResponseParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetInstanceResponseParametersMap>;
 
 export type GetInstanceResponseStatus =
@@ -3757,7 +3757,7 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceKeysListCredentialsInfoMap = { [key: string]: string | null | undefined };
 export const ServiceKeysListCredentialsInfoMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ServiceKeysListCredentialsInfoMap>;
 
 export interface ServiceKeysList {

@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock AgentCore Control",
   serviceShapeName: "AmazonBedrockAgentCoreControl",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock-agentcore" });
-const ver = T.ServiceVersion("2023-06-05");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock-agentcore" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-06-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,112 +80,112 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DecryptionFailure
   extends /*@__PURE__*/ S.TaggedError<DecryptionFailure>()(
     "DecryptionFailure",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class EncryptionFailure
   extends /*@__PURE__*/ S.TaggedError<EncryptionFailure>()(
     "EncryptionFailure",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RetryableConflictException
   extends /*@__PURE__*/ S.TaggedError<RetryableConflictException>()(
     "RetryableConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(409), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(409), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class SubscriptionRequiredException
   extends /*@__PURE__*/ S.TaggedError<SubscriptionRequiredException>()(
     "SubscriptionRequiredException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      subscriptionUrl: S.optional(S.String),
-      productName: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      subscriptionUrl: /*@__PURE__*/ S.optional(S.String),
+      productName: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DatasetId = string;
 export type ClientToken = string;
@@ -209,8 +209,8 @@ export type DataSourceType =
   | { inlineExamples: InlineExamplesSource; s3Source?: never }
   | { inlineExamples?: never; s3Source: S3Source };
 export const DataSourceType = /*@__PURE__*/ S.Union([
-  S.Struct({ inlineExamples: InlineExamplesSource }),
-  S.Struct({ s3Source: S3Source }),
+  /*@__PURE__*/ S.Struct({ inlineExamples: InlineExamplesSource }),
+  /*@__PURE__*/ S.Struct({ s3Source: S3Source }),
 ]);
 export interface AddDatasetExamplesRequest {
   datasetId: string;
@@ -278,7 +278,7 @@ export type DimensionKeys = string[];
 export const DimensionKeys = /*@__PURE__*/ S.Array(S.String);
 export type DimensionValue = string;
 export type Dimensions = { [key: string]: string | undefined };
-export const Dimensions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Dimensions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Period = "second" | "minute" | (string & {});
 export const Period = S.String;
 
@@ -403,7 +403,7 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, prefix: S.String, versionId: S.optional(S.String) }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export type Code = { s3: S3Location };
-export const Code = /*@__PURE__*/ S.Union([S.Struct({ s3: S3Location })]);
+export const Code = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Location })]);
 export type AgentManagedRuntimeType =
   | "PYTHON_3_10"
   | "PYTHON_3_11"
@@ -429,8 +429,8 @@ export type AgentRuntimeArtifact =
   | { containerConfiguration: ContainerConfiguration; codeConfiguration?: never }
   | { containerConfiguration?: never; codeConfiguration: CodeConfiguration };
 export const AgentRuntimeArtifact = /*@__PURE__*/ S.Union([
-  S.Struct({ containerConfiguration: ContainerConfiguration }),
-  S.Struct({ codeConfiguration: CodeConfiguration }),
+  /*@__PURE__*/ S.Struct({ containerConfiguration: ContainerConfiguration }),
+  /*@__PURE__*/ S.Struct({ codeConfiguration: CodeConfiguration }),
 ]);
 export type RoleArn = string;
 export type NetworkMode = "PUBLIC" | "VPC" | (string & {});
@@ -475,7 +475,7 @@ export const AllowedScopesType = /*@__PURE__*/ S.Array(S.String);
 export type AdvertisedScopeMappingType = { [key: string]: string | undefined };
 export const AdvertisedScopeMappingType = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type InboundTokenClaimNameType = string;
 export type InboundTokenClaimValueType = "STRING" | "STRING_ARRAY" | (string & {});
@@ -488,8 +488,8 @@ export type ClaimMatchValueType =
   | { matchValueString: string; matchValueStringList?: never }
   | { matchValueString?: never; matchValueStringList: string[] };
 export const ClaimMatchValueType = /*@__PURE__*/ S.Union([
-  S.Struct({ matchValueString: S.String }),
-  S.Struct({ matchValueStringList: MatchValueStringList }),
+  /*@__PURE__*/ S.Struct({ matchValueString: S.String }),
+  /*@__PURE__*/ S.Struct({ matchValueStringList: MatchValueStringList }),
 ]);
 export type ClaimMatchOperatorType = "EQUALS" | "CONTAINS" | "CONTAINS_ANY" | (string & {});
 export const ClaimMatchOperatorType = S.String;
@@ -522,7 +522,7 @@ export const CustomClaimValidationsType = /*@__PURE__*/ S.Array(CustomClaimValid
 export type ResourceConfigurationIdentifier = string;
 export type SelfManagedLatticeResource = { resourceConfigurationIdentifier: string };
 export const SelfManagedLatticeResource = /*@__PURE__*/ S.Union([
-  S.Struct({ resourceConfigurationIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceConfigurationIdentifier: S.String }),
 ]);
 export type VpcIdentifier = string;
 export type SubnetIds = string[];
@@ -536,7 +536,7 @@ export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type RoutingDomain = string;
 export interface ManagedVpcResource {
   vpcIdentifier: string;
@@ -560,8 +560,8 @@ export type PrivateEndpoint =
   | { selfManagedLatticeResource: SelfManagedLatticeResource; managedVpcResource?: never }
   | { selfManagedLatticeResource?: never; managedVpcResource: ManagedVpcResource };
 export const PrivateEndpoint = /*@__PURE__*/ S.Union([
-  S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
-  S.Struct({ managedVpcResource: ManagedVpcResource }),
+  /*@__PURE__*/ S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
+  /*@__PURE__*/ S.Struct({ managedVpcResource: ManagedVpcResource }),
 ]);
 export type PrivateEndpointOverrideDomain = string;
 export interface PrivateEndpointOverride {
@@ -625,14 +625,14 @@ export const CustomJWTAuthorizerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomJWTAuthorizerConfiguration>;
 export type AuthorizerConfiguration = { customJWTAuthorizer: CustomJWTAuthorizerConfiguration };
 export const AuthorizerConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customJWTAuthorizer: CustomJWTAuthorizerConfiguration }),
+  /*@__PURE__*/ S.Struct({ customJWTAuthorizer: CustomJWTAuthorizerConfiguration }),
 ]);
 export type HeaderName = string;
 export type RequestHeaderAllowlist = string[];
 export const RequestHeaderAllowlist = /*@__PURE__*/ S.Array(S.String);
 export type RequestHeaderConfiguration = { requestHeaderAllowlist: string[] };
 export const RequestHeaderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ requestHeaderAllowlist: RequestHeaderAllowlist }),
+  /*@__PURE__*/ S.Struct({ requestHeaderAllowlist: RequestHeaderAllowlist }),
 ]);
 export type ServerProtocol = "MCP" | "HTTP" | "A2A" | "AGUI" | (string & {});
 export const ServerProtocol = S.String;
@@ -653,7 +653,10 @@ export const LifecycleConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentVariableKey = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type MountPath = string;
 export interface SessionStorageConfiguration {
   mountPath: string;
@@ -719,10 +722,10 @@ export type FilesystemConfiguration =
       capacityProviderVolume: CapacityProviderVolumeConfiguration;
     };
 export const FilesystemConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ sessionStorage: SessionStorageConfiguration }),
-  S.Struct({ s3FilesAccessPoint: S3FilesAccessPointConfiguration }),
-  S.Struct({ efsAccessPoint: EfsAccessPointConfiguration }),
-  S.Struct({ capacityProviderVolume: CapacityProviderVolumeConfiguration }),
+  /*@__PURE__*/ S.Struct({ sessionStorage: SessionStorageConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3FilesAccessPoint: S3FilesAccessPointConfiguration }),
+  /*@__PURE__*/ S.Struct({ efsAccessPoint: EfsAccessPointConfiguration }),
+  /*@__PURE__*/ S.Struct({ capacityProviderVolume: CapacityProviderVolumeConfiguration }),
 ]);
 export type FilesystemConfigurations = FilesystemConfiguration[];
 export const FilesystemConfigurations = /*@__PURE__*/ S.Array(FilesystemConfiguration);
@@ -976,7 +979,7 @@ export const BrowserSigningConfigInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrowserSigningConfigInput",
 }) as any as S.Schema<BrowserSigningConfigInput>;
 export type ResourceLocation = { s3: S3Location };
-export const ResourceLocation = /*@__PURE__*/ S.Union([S.Struct({ s3: S3Location })]);
+export const ResourceLocation = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Location })]);
 export type BrowserEnterprisePolicyType = "MANAGED" | "RECOMMENDED" | (string & {});
 export const BrowserEnterprisePolicyType = S.String;
 
@@ -998,7 +1001,7 @@ export const SecretsManagerLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretsManagerLocation" }) as any as S.Schema<SecretsManagerLocation>;
 export type CertificateLocation = { secretsManager: SecretsManagerLocation };
 export const CertificateLocation = /*@__PURE__*/ S.Union([
-  S.Struct({ secretsManager: SecretsManagerLocation }),
+  /*@__PURE__*/ S.Struct({ secretsManager: SecretsManagerLocation }),
 ]);
 export interface Certificate {
   location: CertificateLocation;
@@ -1030,8 +1033,8 @@ export type ToolsFileSystemConfiguration =
   | { s3FilesConfiguration: S3FilesConfiguration; efsConfiguration?: never }
   | { s3FilesConfiguration?: never; efsConfiguration: EfsConfiguration };
 export const ToolsFileSystemConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
-  S.Struct({ efsConfiguration: EfsConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
+  /*@__PURE__*/ S.Struct({ efsConfiguration: EfsConfiguration }),
 ]);
 export type ToolsFileSystemConfigurations = ToolsFileSystemConfiguration[];
 export const ToolsFileSystemConfigurations = /*@__PURE__*/ S.Array(ToolsFileSystemConfiguration);
@@ -1281,7 +1284,7 @@ export const LaunchParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LaunchParameters" }) as any as S.Schema<LaunchParameters>;
 export type LaunchTemplateSource = { launchParameters: LaunchParameters };
 export const LaunchTemplateSource = /*@__PURE__*/ S.Union([
-  S.Struct({ launchParameters: LaunchParameters }),
+  /*@__PURE__*/ S.Struct({ launchParameters: LaunchParameters }),
 ]);
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
@@ -1319,7 +1322,7 @@ export const EbsVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EbsVolumeConfiguration" }) as any as S.Schema<EbsVolumeConfiguration>;
 export type VolumeConfiguration = { ebsConfiguration: EbsVolumeConfiguration };
 export const VolumeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ ebsConfiguration: EbsVolumeConfiguration }),
+  /*@__PURE__*/ S.Struct({ ebsConfiguration: EbsVolumeConfiguration }),
 ]);
 export type VolumeConfigurationList = VolumeConfiguration[];
 export const VolumeConfigurationList = /*@__PURE__*/ S.Array(VolumeConfiguration);
@@ -1368,7 +1371,7 @@ export const Ec2Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Configuration" }) as any as S.Schema<Ec2Configuration>;
 export type ComputeConfiguration = { ec2Configuration: Ec2Configuration };
 export const ComputeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ ec2Configuration: Ec2Configuration }),
+  /*@__PURE__*/ S.Struct({ ec2Configuration: Ec2Configuration }),
 ]);
 export interface CreateCapacityProviderInput {
   name: string;
@@ -1498,7 +1501,7 @@ export const ComponentConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ComponentConfigurationMap = { [key: string]: ComponentConfiguration | undefined };
 export const ComponentConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentConfiguration.pipe(S.optional),
+  /*@__PURE__*/ ComponentConfiguration.pipe(S.optional),
 );
 export type BranchName = string;
 export interface VersionCreatedBySource {
@@ -1778,8 +1781,8 @@ export type RatingScale =
   | { numerical: NumericalScaleDefinition[]; categorical?: never }
   | { numerical?: never; categorical: CategoricalScaleDefinition[] };
 export const RatingScale = /*@__PURE__*/ S.Union([
-  S.Struct({ numerical: NumericalScaleDefinitions }),
-  S.Struct({ categorical: CategoricalScaleDefinitions }),
+  /*@__PURE__*/ S.Struct({ numerical: NumericalScaleDefinitions }),
+  /*@__PURE__*/ S.Struct({ categorical: CategoricalScaleDefinitions }),
 ]);
 export type ModelId = string;
 export type NonEmptyString = string;
@@ -1848,8 +1851,8 @@ export type EvaluatorModelConfig =
       responsesEvaluatorModelConfig: OpenResponsesEvaluatorModelConfig;
     };
 export const EvaluatorModelConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ bedrockEvaluatorModelConfig: BedrockEvaluatorModelConfig }),
-  S.Struct({ responsesEvaluatorModelConfig: OpenResponsesEvaluatorModelConfig }),
+  /*@__PURE__*/ S.Struct({ bedrockEvaluatorModelConfig: BedrockEvaluatorModelConfig }),
+  /*@__PURE__*/ S.Struct({ responsesEvaluatorModelConfig: OpenResponsesEvaluatorModelConfig }),
 ]);
 export interface LlmAsAJudgeEvaluatorConfig {
   instructions: string | redacted.Redacted<string>;
@@ -1875,7 +1878,7 @@ export const LambdaEvaluatorConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LambdaEvaluatorConfig" }) as any as S.Schema<LambdaEvaluatorConfig>;
 export type CodeBasedEvaluatorConfig = { lambdaConfig: LambdaEvaluatorConfig };
 export const CodeBasedEvaluatorConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ lambdaConfig: LambdaEvaluatorConfig }),
+  /*@__PURE__*/ S.Struct({ lambdaConfig: LambdaEvaluatorConfig }),
 ]);
 export type EvaluatorId = string;
 export interface DerivedEvaluatorConfig {
@@ -1890,9 +1893,9 @@ export type EvaluatorConfig =
   | { llmAsAJudge?: never; codeBased: CodeBasedEvaluatorConfig; derived?: never }
   | { llmAsAJudge?: never; codeBased?: never; derived: DerivedEvaluatorConfig };
 export const EvaluatorConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ llmAsAJudge: LlmAsAJudgeEvaluatorConfig }),
-  S.Struct({ codeBased: CodeBasedEvaluatorConfig }),
-  S.Struct({ derived: DerivedEvaluatorConfig }),
+  /*@__PURE__*/ S.Struct({ llmAsAJudge: LlmAsAJudgeEvaluatorConfig }),
+  /*@__PURE__*/ S.Struct({ codeBased: CodeBasedEvaluatorConfig }),
+  /*@__PURE__*/ S.Struct({ derived: DerivedEvaluatorConfig }),
 ]);
 export type EvaluatorLevel = "TOOL_CALL" | "TRACE" | "SESSION" | (string & {});
 export const EvaluatorLevel = S.String;
@@ -1988,7 +1991,7 @@ export const MCPGatewayConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPGatewayConfiguration" }) as any as S.Schema<MCPGatewayConfiguration>;
 export type GatewayProtocolConfiguration = { mcp: MCPGatewayConfiguration };
 export const GatewayProtocolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ mcp: MCPGatewayConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcp: MCPGatewayConfiguration }),
 ]);
 export type AuthorizerType =
   | "CUSTOM_JWT"
@@ -2009,7 +2012,7 @@ export const LambdaInterceptorConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaInterceptorConfiguration>;
 export type InterceptorConfiguration = { lambda: LambdaInterceptorConfiguration };
 export const InterceptorConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ lambda: LambdaInterceptorConfiguration }),
+  /*@__PURE__*/ S.Struct({ lambda: LambdaInterceptorConfiguration }),
 ]);
 export type GatewayInterceptionPoint = "REQUEST" | "RESPONSE" | (string & {});
 export const GatewayInterceptionPoint = S.String;
@@ -2021,7 +2024,7 @@ export const InterceptorPayloadExclusion = S.String;
 
 export type InterceptorPayloadExclusionSelector = { field: InterceptorPayloadExclusion };
 export const InterceptorPayloadExclusionSelector = /*@__PURE__*/ S.Union([
-  S.Struct({ field: InterceptorPayloadExclusion }),
+  /*@__PURE__*/ S.Struct({ field: InterceptorPayloadExclusion }),
 ]);
 export type InterceptorPayloadExclusionSelectorList = InterceptorPayloadExclusionSelector[];
 export const InterceptorPayloadExclusionSelectorList = /*@__PURE__*/ S.Array(
@@ -2267,7 +2270,7 @@ export const IamPrincipal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPrincipal" }) as any as S.Schema<IamPrincipal>;
 export type MatchPrincipalEntry = { iamPrincipal: IamPrincipal };
 export const MatchPrincipalEntry = /*@__PURE__*/ S.Union([
-  S.Struct({ iamPrincipal: IamPrincipal }),
+  /*@__PURE__*/ S.Struct({ iamPrincipal: IamPrincipal }),
 ]);
 export type MatchPrincipalEntries = MatchPrincipalEntry[];
 export const MatchPrincipalEntries = /*@__PURE__*/ S.Array(MatchPrincipalEntry);
@@ -2290,8 +2293,8 @@ export type Condition =
   | { matchPrincipals: MatchPrincipals; matchPaths?: never }
   | { matchPrincipals?: never; matchPaths: MatchPaths };
 export const Condition = /*@__PURE__*/ S.Union([
-  S.Struct({ matchPrincipals: MatchPrincipals }),
-  S.Struct({ matchPaths: MatchPaths }),
+  /*@__PURE__*/ S.Struct({ matchPrincipals: MatchPrincipals }),
+  /*@__PURE__*/ S.Struct({ matchPaths: MatchPaths }),
 ]);
 export type Conditions = Condition[];
 export const Conditions = /*@__PURE__*/ S.Array(Condition);
@@ -2315,7 +2318,10 @@ export const ConfigurationBundleReference = /*@__PURE__*/ S.suspend(() =>
 export type TrafficSplitMetadataKey = string;
 export type TrafficSplitMetadataValue = string;
 export type TrafficSplitMetadataMap = { [key: string]: string | undefined };
-export const TrafficSplitMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TrafficSplitMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface TrafficSplitEntry {
   name: string;
   weight: number;
@@ -2344,8 +2350,8 @@ export type ConfigurationBundleAction =
   | { staticOverride: StaticOverride; weightedOverride?: never }
   | { staticOverride?: never; weightedOverride: WeightedOverride };
 export const ConfigurationBundleAction = /*@__PURE__*/ S.Union([
-  S.Struct({ staticOverride: StaticOverride }),
-  S.Struct({ weightedOverride: WeightedOverride }),
+  /*@__PURE__*/ S.Struct({ staticOverride: StaticOverride }),
+  /*@__PURE__*/ S.Struct({ weightedOverride: WeightedOverride }),
 ]);
 export type TargetName = string | redacted.Redacted<string>;
 export interface StaticRoute {
@@ -2382,15 +2388,15 @@ export type RouteToTargetAction =
   | { staticRoute: StaticRoute; weightedRoute?: never }
   | { staticRoute?: never; weightedRoute: WeightedRoute };
 export const RouteToTargetAction = /*@__PURE__*/ S.Union([
-  S.Struct({ staticRoute: StaticRoute }),
-  S.Struct({ weightedRoute: WeightedRoute }),
+  /*@__PURE__*/ S.Struct({ staticRoute: StaticRoute }),
+  /*@__PURE__*/ S.Struct({ weightedRoute: WeightedRoute }),
 ]);
 export type Action =
   | { configurationBundle: ConfigurationBundleAction; routeToTarget?: never }
   | { configurationBundle?: never; routeToTarget: RouteToTargetAction };
 export const Action = /*@__PURE__*/ S.Union([
-  S.Struct({ configurationBundle: ConfigurationBundleAction }),
-  S.Struct({ routeToTarget: RouteToTargetAction }),
+  /*@__PURE__*/ S.Struct({ configurationBundle: ConfigurationBundleAction }),
+  /*@__PURE__*/ S.Struct({ routeToTarget: RouteToTargetAction }),
 ]);
 export type Actions = Action[];
 export const Actions = /*@__PURE__*/ S.Array(Action);
@@ -2473,8 +2479,8 @@ export type ApiSchemaConfiguration =
   | { s3: S3Configuration; inlinePayload?: never }
   | { s3?: never; inlinePayload: string | redacted.Redacted<string> };
 export const ApiSchemaConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3Configuration }),
-  S.Struct({ inlinePayload: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ s3: S3Configuration }),
+  /*@__PURE__*/ S.Struct({ inlinePayload: SensitiveString }),
 ]);
 export type SchemaType =
   | "string"
@@ -2489,7 +2495,7 @@ export const SchemaType = S.String;
 export type SchemaProperties = { [key: string]: SchemaDefinition | undefined };
 export const SchemaProperties = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<SchemaDefinition> => SchemaDefinition)
+  /*@__PURE__*/ S.suspend((): S.Schema<SchemaDefinition> => SchemaDefinition)
     .annotate({ identifier: "SchemaDefinition" })
     .pipe(S.optional),
 ) as any as S.Schema<SchemaProperties>;
@@ -2537,8 +2543,8 @@ export type ToolSchema =
   | { s3: S3Configuration; inlinePayload?: never }
   | { s3?: never; inlinePayload: ToolDefinition[] };
 export const ToolSchema = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3Configuration }),
-  S.Struct({ inlinePayload: ToolDefinitions }),
+  /*@__PURE__*/ S.Struct({ s3: S3Configuration }),
+  /*@__PURE__*/ S.Struct({ inlinePayload: ToolDefinitions }),
 ]);
 export interface McpLambdaTargetConfiguration {
   lambdaArn: string;
@@ -2553,8 +2559,8 @@ export type McpToolSchemaConfiguration =
   | { s3: S3Configuration; inlinePayload?: never }
   | { s3?: never; inlinePayload: string | redacted.Redacted<string> };
 export const McpToolSchemaConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3Configuration }),
-  S.Struct({ inlinePayload: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ s3: S3Configuration }),
+  /*@__PURE__*/ S.Struct({ inlinePayload: SensitiveString }),
 ]);
 export type ListingMode = "DEFAULT" | "DYNAMIC" | (string & {});
 export const ListingMode = S.String;
@@ -2743,12 +2749,12 @@ export type McpTargetConfiguration =
       connector: ConnectorTargetConfiguration;
     };
 export const McpTargetConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ openApiSchema: ApiSchemaConfiguration }),
-  S.Struct({ smithyModel: ApiSchemaConfiguration }),
-  S.Struct({ lambda: McpLambdaTargetConfiguration }),
-  S.Struct({ mcpServer: McpServerTargetConfiguration }),
-  S.Struct({ apiGateway: ApiGatewayTargetConfiguration }),
-  S.Struct({ connector: ConnectorTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ openApiSchema: ApiSchemaConfiguration }),
+  /*@__PURE__*/ S.Struct({ smithyModel: ApiSchemaConfiguration }),
+  /*@__PURE__*/ S.Struct({ lambda: McpLambdaTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpServer: McpServerTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ apiGateway: ApiGatewayTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ connector: ConnectorTargetConfiguration }),
 ]);
 export type RuntimeArn = string;
 export type RuntimeQualifier = string;
@@ -2801,7 +2807,7 @@ export type StaticQueryParameters = {
 };
 export const StaticQueryParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type StaticQueryParameterConflictResolution =
   | "CLIENT_OVERRIDE"
@@ -2838,7 +2844,10 @@ export const HttpConnectorSource = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorParameterName = string;
 export type ConnectorParameterValue = string;
 export type HttpConnectorParameters = { [key: string]: string | undefined };
-export const HttpConnectorParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HttpConnectorParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface HttpConnectorTargetConfiguration {
   source: HttpConnectorSource;
   parameters?: { [key: string]: string | undefined };
@@ -2853,9 +2862,9 @@ export type HttpTargetConfiguration =
   | { agentcoreRuntime?: never; passthrough: PassthroughTargetConfiguration; connector?: never }
   | { agentcoreRuntime?: never; passthrough?: never; connector: HttpConnectorTargetConfiguration };
 export const HttpTargetConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ agentcoreRuntime: RuntimeTargetConfiguration }),
-  S.Struct({ passthrough: PassthroughTargetConfiguration }),
-  S.Struct({ connector: HttpConnectorTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ agentcoreRuntime: RuntimeTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ passthrough: PassthroughTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ connector: HttpConnectorTargetConfiguration }),
 ]);
 export type InferenceConnectorId = string;
 export interface InferenceConnectorSource {
@@ -2931,17 +2940,17 @@ export type InferenceTargetConfiguration =
   | { connector: InferenceConnectorTargetConfiguration; provider?: never }
   | { connector?: never; provider: InferenceProviderTargetConfiguration };
 export const InferenceTargetConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ connector: InferenceConnectorTargetConfiguration }),
-  S.Struct({ provider: InferenceProviderTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ connector: InferenceConnectorTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ provider: InferenceProviderTargetConfiguration }),
 ]);
 export type TargetConfiguration =
   | { mcp: McpTargetConfiguration; http?: never; inference?: never }
   | { mcp?: never; http: HttpTargetConfiguration; inference?: never }
   | { mcp?: never; http?: never; inference: InferenceTargetConfiguration };
 export const TargetConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ mcp: McpTargetConfiguration }),
-  S.Struct({ http: HttpTargetConfiguration }),
-  S.Struct({ inference: InferenceTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcp: McpTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ http: HttpTargetConfiguration }),
+  /*@__PURE__*/ S.Struct({ inference: InferenceTargetConfiguration }),
 ]);
 export type CredentialProviderType =
   | "GATEWAY_IAM_ROLE"
@@ -2963,7 +2972,7 @@ export type OAuthCustomParameters = {
 };
 export const OAuthCustomParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type OAuthGrantType =
   | "CLIENT_CREDENTIALS"
@@ -3035,9 +3044,9 @@ export type CredentialProvider =
       iamCredentialProvider: IamCredentialProvider;
     };
 export const CredentialProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ oauthCredentialProvider: OAuthCredentialProvider }),
-  S.Struct({ apiKeyCredentialProvider: GatewayApiKeyCredentialProvider }),
-  S.Struct({ iamCredentialProvider: IamCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ oauthCredentialProvider: OAuthCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ apiKeyCredentialProvider: GatewayApiKeyCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ iamCredentialProvider: IamCredentialProvider }),
 ]);
 export interface CredentialProviderConfiguration {
   credentialProviderType: CredentialProviderType;
@@ -3099,8 +3108,8 @@ export type CertificateConfiguration =
   | { s3: S3CertificateConfiguration; secretsManager?: never }
   | { s3?: never; secretsManager: SecretsManagerCertificateConfiguration };
 export const CertificateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3CertificateConfiguration }),
-  S.Struct({ secretsManager: SecretsManagerCertificateConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3: S3CertificateConfiguration }),
+  /*@__PURE__*/ S.Struct({ secretsManager: SecretsManagerCertificateConfiguration }),
 ]);
 export type CertificateConfigurationList = CertificateConfiguration[];
 export const CertificateConfigurationList = /*@__PURE__*/ S.Array(CertificateConfiguration);
@@ -3181,7 +3190,7 @@ export const OAuth2AuthorizationData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OAuth2AuthorizationData" }) as any as S.Schema<OAuth2AuthorizationData>;
 export type AuthorizationData = { oauth2: OAuth2AuthorizationData };
 export const AuthorizationData = /*@__PURE__*/ S.Union([
-  S.Struct({ oauth2: OAuth2AuthorizationData }),
+  /*@__PURE__*/ S.Struct({ oauth2: OAuth2AuthorizationData }),
 ]);
 export type TargetProtocolType = "MCP" | "HTTP" | (string & {});
 export const TargetProtocolType = S.String;
@@ -3247,11 +3256,13 @@ export type HarnessEnvironmentProviderRequest = {
   agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironmentRequest;
 };
 export const HarnessEnvironmentProviderRequest = /*@__PURE__*/ S.Union([
-  S.Struct({ agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironmentRequest }),
+  /*@__PURE__*/ S.Struct({
+    agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironmentRequest,
+  }),
 ]);
 export type HarnessEnvironmentArtifact = { containerConfiguration: ContainerConfiguration };
 export const HarnessEnvironmentArtifact = /*@__PURE__*/ S.Union([
-  S.Struct({ containerConfiguration: ContainerConfiguration }),
+  /*@__PURE__*/ S.Struct({ containerConfiguration: ContainerConfiguration }),
 ]);
 export type MaxTokens = number;
 export type Temperature = number;
@@ -3380,15 +3391,15 @@ export type HarnessModelConfiguration =
       liteLlmModelConfig: HarnessLiteLlmModelConfig;
     };
 export const HarnessModelConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
-  S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
-  S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
-  S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
+  /*@__PURE__*/ S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
+  /*@__PURE__*/ S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
+  /*@__PURE__*/ S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
+  /*@__PURE__*/ S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
 ]);
 export type SensitiveText = string | redacted.Redacted<string>;
 export type HarnessSystemContentBlock = { text: string | redacted.Redacted<string> };
 export const HarnessSystemContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
 ]);
 export type HarnessSystemPrompt = HarnessSystemContentBlock[];
 export const HarnessSystemPrompt = /*@__PURE__*/ S.Array(HarnessSystemContentBlock);
@@ -3406,7 +3417,10 @@ export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
 export type HttpHeaderKey = string;
 export type HttpHeaderValue = string;
 export type HttpHeadersMap = { [key: string]: string | undefined };
-export const HttpHeadersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HttpHeadersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface HarnessRemoteMcpConfig {
   url: string | redacted.Redacted<string>;
   headers?: { [key: string]: string | undefined };
@@ -3428,9 +3442,9 @@ export type HarnessGatewayOutboundAuth =
   | { awsIam?: never; none: Record<string, never>; oauth?: never }
   | { awsIam?: never; none?: never; oauth: OAuthCredentialProvider };
 export const HarnessGatewayOutboundAuth = /*@__PURE__*/ S.Union([
-  S.Struct({ awsIam: S.Struct({}) }),
-  S.Struct({ none: S.Struct({}) }),
-  S.Struct({ oauth: OAuthCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ awsIam: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ none: /*@__PURE__*/ S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ oauth: OAuthCredentialProvider }),
 ]);
 export interface HarnessAgentCoreGatewayConfig {
   gatewayArn: string;
@@ -3497,11 +3511,11 @@ export type HarnessToolConfiguration =
       agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig;
     };
 export const HarnessToolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
-  S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
-  S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
-  S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
-  S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
+  /*@__PURE__*/ S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
+  /*@__PURE__*/ S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
+  /*@__PURE__*/ S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
 ]);
 export interface HarnessTool {
   type: HarnessToolType;
@@ -3558,10 +3572,10 @@ export type HarnessSkill =
   | { path?: never; s3?: never; git: HarnessSkillGitSource; awsSkills?: never }
   | { path?: never; s3?: never; git?: never; awsSkills: HarnessSkillAwsSkillsSource };
 export const HarnessSkill = /*@__PURE__*/ S.Union([
-  S.Struct({ path: S.String }),
-  S.Struct({ s3: HarnessSkillS3Source }),
-  S.Struct({ git: HarnessSkillGitSource }),
-  S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
+  /*@__PURE__*/ S.Struct({ path: S.String }),
+  /*@__PURE__*/ S.Struct({ s3: HarnessSkillS3Source }),
+  /*@__PURE__*/ S.Struct({ git: HarnessSkillGitSource }),
+  /*@__PURE__*/ S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
 ]);
 export type HarnessSkills = HarnessSkill[];
 export const HarnessSkills = /*@__PURE__*/ S.Array(HarnessSkill);
@@ -3588,7 +3602,7 @@ export type HarnessAgentCoreMemoryRetrievalConfigs = {
 };
 export const HarnessAgentCoreMemoryRetrievalConfigs = /*@__PURE__*/ S.Record(
   S.String,
-  HarnessAgentCoreMemoryRetrievalConfig.pipe(S.optional),
+  /*@__PURE__*/ HarnessAgentCoreMemoryRetrievalConfig.pipe(S.optional),
 );
 export interface HarnessAgentCoreMemoryConfiguration {
   arn: string;
@@ -3657,9 +3671,9 @@ export type HarnessMemoryConfiguration =
       disabled: HarnessDisabledMemoryConfiguration;
     };
 export const HarnessMemoryConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ agentCoreMemoryConfiguration: HarnessAgentCoreMemoryConfiguration }),
-  S.Struct({ managedMemoryConfiguration: HarnessManagedMemoryConfiguration }),
-  S.Struct({ disabled: HarnessDisabledMemoryConfiguration }),
+  /*@__PURE__*/ S.Struct({ agentCoreMemoryConfiguration: HarnessAgentCoreMemoryConfiguration }),
+  /*@__PURE__*/ S.Struct({ managedMemoryConfiguration: HarnessManagedMemoryConfiguration }),
+  /*@__PURE__*/ S.Struct({ disabled: HarnessDisabledMemoryConfiguration }),
 ]);
 export type HarnessTruncationStrategy = "sliding_window" | "summarization" | "none" | (string & {});
 export const HarnessTruncationStrategy = S.String;
@@ -3690,8 +3704,8 @@ export type HarnessTruncationStrategyConfiguration =
   | { slidingWindow: HarnessSlidingWindowConfiguration; summarization?: never }
   | { slidingWindow?: never; summarization: HarnessSummarizationConfiguration };
 export const HarnessTruncationStrategyConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ slidingWindow: HarnessSlidingWindowConfiguration }),
-  S.Struct({ summarization: HarnessSummarizationConfiguration }),
+  /*@__PURE__*/ S.Struct({ slidingWindow: HarnessSlidingWindowConfiguration }),
+  /*@__PURE__*/ S.Struct({ summarization: HarnessSummarizationConfiguration }),
 ]);
 export interface HarnessTruncationConfiguration {
   strategy: HarnessTruncationStrategy;
@@ -3743,9 +3757,9 @@ export type HarnessHookTarget =
   | { lambda?: never; sns: HarnessHookSnsTarget; eventBridge?: never }
   | { lambda?: never; sns?: never; eventBridge: HarnessHookEventBridgeTarget };
 export const HarnessHookTarget = /*@__PURE__*/ S.Union([
-  S.Struct({ lambda: HarnessHookLambdaTarget }),
-  S.Struct({ sns: HarnessHookSnsTarget }),
-  S.Struct({ eventBridge: HarnessHookEventBridgeTarget }),
+  /*@__PURE__*/ S.Struct({ lambda: HarnessHookLambdaTarget }),
+  /*@__PURE__*/ S.Struct({ sns: HarnessHookSnsTarget }),
+  /*@__PURE__*/ S.Struct({ eventBridge: HarnessHookEventBridgeTarget }),
 ]);
 export interface HarnessBeforeInvocationHook {
   name: string;
@@ -3807,10 +3821,10 @@ export type HarnessHook =
       afterToolCall: HarnessAfterToolCallHook;
     };
 export const HarnessHook = /*@__PURE__*/ S.Union([
-  S.Struct({ beforeInvocation: HarnessBeforeInvocationHook }),
-  S.Struct({ afterInvocation: HarnessAfterInvocationHook }),
-  S.Struct({ beforeToolCall: HarnessBeforeToolCallHook }),
-  S.Struct({ afterToolCall: HarnessAfterToolCallHook }),
+  /*@__PURE__*/ S.Struct({ beforeInvocation: HarnessBeforeInvocationHook }),
+  /*@__PURE__*/ S.Struct({ afterInvocation: HarnessAfterInvocationHook }),
+  /*@__PURE__*/ S.Struct({ beforeToolCall: HarnessBeforeToolCallHook }),
+  /*@__PURE__*/ S.Struct({ afterToolCall: HarnessAfterToolCallHook }),
 ]);
 export type HarnessHooks = HarnessHook[];
 export const HarnessHooks = /*@__PURE__*/ S.Array(HarnessHook);
@@ -3896,7 +3910,7 @@ export type HarnessEnvironmentProvider = {
   agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironment;
 };
 export const HarnessEnvironmentProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironment }),
+  /*@__PURE__*/ S.Struct({ agentCoreRuntimeEnvironment: HarnessAgentCoreRuntimeEnvironment }),
 ]);
 export interface Harness {
   harnessId: string;
@@ -4089,9 +4103,9 @@ export type Validation =
     }
   | { stringValidation?: never; stringListValidation?: never; numberValidation: NumberValidation };
 export const Validation = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValidation: StringValidation }),
-  S.Struct({ stringListValidation: StringListValidation }),
-  S.Struct({ numberValidation: NumberValidation }),
+  /*@__PURE__*/ S.Struct({ stringValidation: StringValidation }),
+  /*@__PURE__*/ S.Struct({ stringListValidation: StringListValidation }),
+  /*@__PURE__*/ S.Struct({ numberValidation: NumberValidation }),
 ]);
 export interface LlmExtractionConfig {
   llmExtractionInstruction?: string | redacted.Redacted<string>;
@@ -4107,7 +4121,7 @@ export const LlmExtractionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LlmExtractionConfig" }) as any as S.Schema<LlmExtractionConfig>;
 export type ExtractionConfig = { llmExtractionConfig: LlmExtractionConfig };
 export const ExtractionConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ llmExtractionConfig: LlmExtractionConfig }),
+  /*@__PURE__*/ S.Struct({ llmExtractionConfig: LlmExtractionConfig }),
 ]);
 export interface MetadataSchemaEntry {
   key: string;
@@ -4348,9 +4362,9 @@ export type TriggerConditionInput =
       timeBasedTrigger: TimeBasedTriggerInput;
     };
 export const TriggerConditionInput = /*@__PURE__*/ S.Union([
-  S.Struct({ messageBasedTrigger: MessageBasedTriggerInput }),
-  S.Struct({ tokenBasedTrigger: TokenBasedTriggerInput }),
-  S.Struct({ timeBasedTrigger: TimeBasedTriggerInput }),
+  /*@__PURE__*/ S.Struct({ messageBasedTrigger: MessageBasedTriggerInput }),
+  /*@__PURE__*/ S.Struct({ tokenBasedTrigger: TokenBasedTriggerInput }),
+  /*@__PURE__*/ S.Struct({ timeBasedTrigger: TimeBasedTriggerInput }),
 ]);
 export type TriggerConditionInputList = TriggerConditionInput[];
 export const TriggerConditionInputList = /*@__PURE__*/ S.Array(TriggerConditionInput);
@@ -4414,11 +4428,11 @@ export type CustomConfigurationInput =
       selfManagedConfiguration: SelfManagedConfigurationInput;
     };
 export const CustomConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticOverride: SemanticOverrideConfigurationInput }),
-  S.Struct({ summaryOverride: SummaryOverrideConfigurationInput }),
-  S.Struct({ userPreferenceOverride: UserPreferenceOverrideConfigurationInput }),
-  S.Struct({ episodicOverride: EpisodicOverrideConfigurationInput }),
-  S.Struct({ selfManagedConfiguration: SelfManagedConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ semanticOverride: SemanticOverrideConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ summaryOverride: SummaryOverrideConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ userPreferenceOverride: UserPreferenceOverrideConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ episodicOverride: EpisodicOverrideConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ selfManagedConfiguration: SelfManagedConfigurationInput }),
 ]);
 export interface CustomMemoryStrategyInput {
   name: string;
@@ -4511,11 +4525,11 @@ export type MemoryStrategyInput =
       episodicMemoryStrategy: EpisodicMemoryStrategyInput;
     };
 export const MemoryStrategyInput = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticMemoryStrategy: SemanticMemoryStrategyInput }),
-  S.Struct({ summaryMemoryStrategy: SummaryMemoryStrategyInput }),
-  S.Struct({ userPreferenceMemoryStrategy: UserPreferenceMemoryStrategyInput }),
-  S.Struct({ customMemoryStrategy: CustomMemoryStrategyInput }),
-  S.Struct({ episodicMemoryStrategy: EpisodicMemoryStrategyInput }),
+  /*@__PURE__*/ S.Struct({ semanticMemoryStrategy: SemanticMemoryStrategyInput }),
+  /*@__PURE__*/ S.Struct({ summaryMemoryStrategy: SummaryMemoryStrategyInput }),
+  /*@__PURE__*/ S.Struct({ userPreferenceMemoryStrategy: UserPreferenceMemoryStrategyInput }),
+  /*@__PURE__*/ S.Struct({ customMemoryStrategy: CustomMemoryStrategyInput }),
+  /*@__PURE__*/ S.Struct({ episodicMemoryStrategy: EpisodicMemoryStrategyInput }),
 ]);
 export type MemoryStrategyInputList = MemoryStrategyInput[];
 export const MemoryStrategyInputList = /*@__PURE__*/ S.Array(MemoryStrategyInput);
@@ -4576,7 +4590,7 @@ export const KinesisResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KinesisResource" }) as any as S.Schema<KinesisResource>;
 export type StreamDeliveryResource = { kinesis: KinesisResource };
 export const StreamDeliveryResource = /*@__PURE__*/ S.Union([
-  S.Struct({ kinesis: KinesisResource }),
+  /*@__PURE__*/ S.Struct({ kinesis: KinesisResource }),
 ]);
 export type StreamDeliveryResourcesList = StreamDeliveryResource[];
 export const StreamDeliveryResourcesList = /*@__PURE__*/ S.Array(StreamDeliveryResource);
@@ -4678,15 +4692,15 @@ export type CustomExtractionConfiguration =
       episodicExtractionOverride: EpisodicExtractionOverride;
     };
 export const CustomExtractionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticExtractionOverride: SemanticExtractionOverride }),
-  S.Struct({ userPreferenceExtractionOverride: UserPreferenceExtractionOverride }),
-  S.Struct({ episodicExtractionOverride: EpisodicExtractionOverride }),
+  /*@__PURE__*/ S.Struct({ semanticExtractionOverride: SemanticExtractionOverride }),
+  /*@__PURE__*/ S.Struct({ userPreferenceExtractionOverride: UserPreferenceExtractionOverride }),
+  /*@__PURE__*/ S.Struct({ episodicExtractionOverride: EpisodicExtractionOverride }),
 ]);
 export type ExtractionConfiguration = {
   customExtractionConfiguration: CustomExtractionConfiguration;
 };
 export const ExtractionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customExtractionConfiguration: CustomExtractionConfiguration }),
+  /*@__PURE__*/ S.Struct({ customExtractionConfiguration: CustomExtractionConfiguration }),
 ]);
 export interface SemanticConsolidationOverride {
   appendToPrompt: string | redacted.Redacted<string>;
@@ -4750,16 +4764,18 @@ export type CustomConsolidationConfiguration =
       episodicConsolidationOverride: EpisodicConsolidationOverride;
     };
 export const CustomConsolidationConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticConsolidationOverride: SemanticConsolidationOverride }),
-  S.Struct({ summaryConsolidationOverride: SummaryConsolidationOverride }),
-  S.Struct({ userPreferenceConsolidationOverride: UserPreferenceConsolidationOverride }),
-  S.Struct({ episodicConsolidationOverride: EpisodicConsolidationOverride }),
+  /*@__PURE__*/ S.Struct({ semanticConsolidationOverride: SemanticConsolidationOverride }),
+  /*@__PURE__*/ S.Struct({ summaryConsolidationOverride: SummaryConsolidationOverride }),
+  /*@__PURE__*/ S.Struct({
+    userPreferenceConsolidationOverride: UserPreferenceConsolidationOverride,
+  }),
+  /*@__PURE__*/ S.Struct({ episodicConsolidationOverride: EpisodicConsolidationOverride }),
 ]);
 export type ConsolidationConfiguration = {
   customConsolidationConfiguration: CustomConsolidationConfiguration;
 };
 export const ConsolidationConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customConsolidationConfiguration: CustomConsolidationConfiguration }),
+  /*@__PURE__*/ S.Struct({ customConsolidationConfiguration: CustomConsolidationConfiguration }),
 ]);
 export interface EpisodicReflectionOverride {
   appendToPrompt: string | redacted.Redacted<string>;
@@ -4783,7 +4799,7 @@ export type CustomReflectionConfiguration = {
   episodicReflectionOverride: EpisodicReflectionOverride;
 };
 export const CustomReflectionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ episodicReflectionOverride: EpisodicReflectionOverride }),
+  /*@__PURE__*/ S.Struct({ episodicReflectionOverride: EpisodicReflectionOverride }),
 ]);
 export interface EpisodicReflectionConfiguration {
   namespaces?: string[];
@@ -4809,8 +4825,8 @@ export type ReflectionConfiguration =
       episodicReflectionConfiguration: EpisodicReflectionConfiguration;
     };
 export const ReflectionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customReflectionConfiguration: CustomReflectionConfiguration }),
-  S.Struct({ episodicReflectionConfiguration: EpisodicReflectionConfiguration }),
+  /*@__PURE__*/ S.Struct({ customReflectionConfiguration: CustomReflectionConfiguration }),
+  /*@__PURE__*/ S.Struct({ episodicReflectionConfiguration: EpisodicReflectionConfiguration }),
 ]);
 export interface MessageBasedTrigger {
   messageCount?: number;
@@ -4839,9 +4855,9 @@ export type TriggerCondition =
   | { messageBasedTrigger?: never; tokenBasedTrigger: TokenBasedTrigger; timeBasedTrigger?: never }
   | { messageBasedTrigger?: never; tokenBasedTrigger?: never; timeBasedTrigger: TimeBasedTrigger };
 export const TriggerCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ messageBasedTrigger: MessageBasedTrigger }),
-  S.Struct({ tokenBasedTrigger: TokenBasedTrigger }),
-  S.Struct({ timeBasedTrigger: TimeBasedTrigger }),
+  /*@__PURE__*/ S.Struct({ messageBasedTrigger: MessageBasedTrigger }),
+  /*@__PURE__*/ S.Struct({ tokenBasedTrigger: TokenBasedTrigger }),
+  /*@__PURE__*/ S.Struct({ timeBasedTrigger: TimeBasedTrigger }),
 ]);
 export type TriggerConditionsList = TriggerCondition[];
 export const TriggerConditionsList = /*@__PURE__*/ S.Array(TriggerCondition);
@@ -5027,8 +5043,8 @@ export type Oauth2Discovery =
   | { discoveryUrl: string; authorizationServerMetadata?: never }
   | { discoveryUrl?: never; authorizationServerMetadata: Oauth2AuthorizationServerMetadata };
 export const Oauth2Discovery = /*@__PURE__*/ S.Union([
-  S.Struct({ discoveryUrl: S.String }),
-  S.Struct({ authorizationServerMetadata: Oauth2AuthorizationServerMetadata }),
+  /*@__PURE__*/ S.Struct({ discoveryUrl: S.String }),
+  /*@__PURE__*/ S.Struct({ authorizationServerMetadata: Oauth2AuthorizationServerMetadata }),
 ]);
 export type DefaultClientIdType = string;
 export type DefaultClientSecretType = string | redacted.Redacted<string>;
@@ -5084,7 +5100,7 @@ export const KmsKeySourceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KmsKeySourceType" }) as any as S.Schema<KmsKeySourceType>;
 export type PrivateKeySource = { kmsKeySource: KmsKeySourceType };
 export const PrivateKeySource = /*@__PURE__*/ S.Union([
-  S.Struct({ kmsKeySource: KmsKeySourceType }),
+  /*@__PURE__*/ S.Struct({ kmsKeySource: KmsKeySourceType }),
 ]);
 export type SigningAlgorithm = "RS256" | "PS256" | "ES256" | (string & {});
 export const SigningAlgorithm = S.String;
@@ -5092,7 +5108,10 @@ export const SigningAlgorithm = S.String;
 export type AdditionalClaimName = string;
 export type AdditionalClaimValue = string | redacted.Redacted<string>;
 export type AdditionalClaims = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const AdditionalClaims = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const AdditionalClaims = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface PrivateKeyJwtConfig {
   privateKeySource?: PrivateKeySource;
   signingAlgorithm?: SigningAlgorithm;
@@ -5374,15 +5393,15 @@ export type Oauth2ProviderConfigInput =
       includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput;
     };
 export const Oauth2ProviderConfigInput = /*@__PURE__*/ S.Union([
-  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigInput }),
-  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput }),
-  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput }),
-  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput }),
-  S.Struct({ salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput }),
-  S.Struct({ microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput }),
-  S.Struct({ atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput }),
-  S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput }),
-  S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput }),
+  /*@__PURE__*/ S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput }),
 ]);
 export interface CreateOauth2CredentialProviderRequest {
   name: string;
@@ -5605,15 +5624,15 @@ export type Oauth2ProviderConfigOutput =
       includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput;
     };
 export const Oauth2ProviderConfigOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput }),
-  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput }),
-  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput }),
-  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput }),
-  S.Struct({ salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput }),
-  S.Struct({ microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput }),
-  S.Struct({ atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput }),
-  S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput }),
-  S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput }),
+  /*@__PURE__*/ S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput }),
 ]);
 export type Status =
   | "CREATING"
@@ -5676,9 +5695,9 @@ export type FilterValue =
   | { stringValue?: never; doubleValue: number; booleanValue?: never }
   | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
 export const FilterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
 ]);
 export interface Filter {
   key: string;
@@ -5733,10 +5752,12 @@ export const CloudWatchLogsInputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudWatchLogsInputConfig>;
 export type DataSourceConfig = { cloudWatchLogs: CloudWatchLogsInputConfig };
 export const DataSourceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudWatchLogs: CloudWatchLogsInputConfig }),
+  /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsInputConfig }),
 ]);
 export type EvaluatorReference = { evaluatorId: string };
-export const EvaluatorReference = /*@__PURE__*/ S.Union([S.Struct({ evaluatorId: S.String })]);
+export const EvaluatorReference = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ evaluatorId: S.String }),
+]);
 export type EvaluatorList = EvaluatorReference[];
 export const EvaluatorList = /*@__PURE__*/ S.Array(EvaluatorReference);
 export type InsightId = string;
@@ -5880,8 +5901,8 @@ export type CredentialsProviderConfiguration =
   | { coinbaseCDP: PaymentCredentialProviderConfiguration; stripePrivy?: never }
   | { coinbaseCDP?: never; stripePrivy: PaymentCredentialProviderConfiguration };
 export const CredentialsProviderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCDP: PaymentCredentialProviderConfiguration }),
-  S.Struct({ stripePrivy: PaymentCredentialProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ coinbaseCDP: PaymentCredentialProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ stripePrivy: PaymentCredentialProviderConfiguration }),
 ]);
 export type CredentialsProviderConfigurations = CredentialsProviderConfiguration[];
 export const CredentialsProviderConfigurations = /*@__PURE__*/ S.Array(
@@ -6023,8 +6044,8 @@ export type PaymentProviderConfigurationInput =
   | { coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput; stripePrivyConfiguration?: never }
   | { coinbaseCdpConfiguration?: never; stripePrivyConfiguration: StripePrivyConfigurationInput };
 export const PaymentProviderConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput }),
-  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationInput }),
 ]);
 export interface CreatePaymentCredentialProviderRequest {
   name: string;
@@ -6102,8 +6123,8 @@ export type PaymentProviderConfigurationOutput =
   | { coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput; stripePrivyConfiguration?: never }
   | { coinbaseCdpConfiguration?: never; stripePrivyConfiguration: StripePrivyConfigurationOutput };
 export const PaymentProviderConfigurationOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput }),
-  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput }),
+  /*@__PURE__*/ S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationOutput }),
 ]);
 export interface CreatePaymentCredentialProviderResponse {
   name: string;
@@ -6220,9 +6241,9 @@ export type PolicyDefinition =
   | { cedar?: never; policyGeneration: PolicyGenerationDetails; policy?: never }
   | { cedar?: never; policyGeneration?: never; policy: PolicyStatement };
 export const PolicyDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ cedar: CedarPolicy }),
-  S.Struct({ policyGeneration: PolicyGenerationDetails }),
-  S.Struct({ policy: PolicyStatement }),
+  /*@__PURE__*/ S.Struct({ cedar: CedarPolicy }),
+  /*@__PURE__*/ S.Struct({ policyGeneration: PolicyGenerationDetails }),
+  /*@__PURE__*/ S.Struct({ policy: PolicyStatement }),
 ]);
 export type PolicyValidationMode = "FAIL_ON_ANY_FINDINGS" | "IGNORE_ALL_FINDINGS" | (string & {});
 export const PolicyValidationMode = S.String;
@@ -6492,7 +6513,10 @@ export const RegistryRecordOAuthGrantType = S.String;
 export type ScopeList = string[];
 export const ScopeList = /*@__PURE__*/ S.Array(S.String);
 export type CustomParameterMap = { [key: string]: string | undefined };
-export const CustomParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RegistryRecordOAuthCredentialProvider {
   providerArn: string;
   grantType?: RegistryRecordOAuthGrantType;
@@ -6533,8 +6557,8 @@ export type RegistryRecordCredentialProviderUnion =
     }
   | { oauthCredentialProvider?: never; iamCredentialProvider: RegistryRecordIamCredentialProvider };
 export const RegistryRecordCredentialProviderUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
-  S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
+  /*@__PURE__*/ S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
 ]);
 export interface RegistryRecordCredentialProviderConfiguration {
   credentialProviderType: RegistryRecordCredentialProviderType;
@@ -8939,7 +8963,7 @@ export const GetPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyGenerationName = string;
 export type PolicyGenerationArn = string;
 export type Resource = { arn: string };
-export const Resource = /*@__PURE__*/ S.Union([S.Struct({ arn: S.String })]);
+export const Resource = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ arn: S.String })]);
 export type PolicyGenerationStatus =
   | "GENERATING"
   | "GENERATED"
@@ -11275,7 +11299,7 @@ export const CoinbaseCdpRotationTargets = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CoinbaseCdpRotationTargets>;
 export type CredentialRotationConfig = { coinbaseCDP: CoinbaseCdpRotationTargets };
 export const CredentialRotationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCDP: CoinbaseCdpRotationTargets }),
+  /*@__PURE__*/ S.Struct({ coinbaseCDP: CoinbaseCdpRotationTargets }),
 ]);
 export interface RotatePaymentConnectorCredentialsRequest {
   paymentManagerId: string;
@@ -11350,7 +11374,7 @@ export const SetTokenVaultCMKResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SetTokenVaultCMKResponse" }) as any as S.Schema<SetTokenVaultCMKResponse>;
 export type Content = { rawText: string };
-export const Content = /*@__PURE__*/ S.Union([S.Struct({ rawText: S.String })]);
+export const Content = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ rawText: S.String })]);
 export interface StartPolicyGenerationRequest {
   policyEngineId: string;
   resource: Resource;
@@ -12387,17 +12411,21 @@ export type CustomExtractionConfigurationInput =
       episodicExtractionOverride: EpisodicOverrideExtractionConfigurationInput;
     };
 export const CustomExtractionConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticExtractionOverride: SemanticOverrideExtractionConfigurationInput }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
+    semanticExtractionOverride: SemanticOverrideExtractionConfigurationInput,
+  }),
+  /*@__PURE__*/ S.Struct({
     userPreferenceExtractionOverride: UserPreferenceOverrideExtractionConfigurationInput,
   }),
-  S.Struct({ episodicExtractionOverride: EpisodicOverrideExtractionConfigurationInput }),
+  /*@__PURE__*/ S.Struct({
+    episodicExtractionOverride: EpisodicOverrideExtractionConfigurationInput,
+  }),
 ]);
 export type ModifyExtractionConfiguration = {
   customExtractionConfiguration: CustomExtractionConfigurationInput;
 };
 export const ModifyExtractionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customExtractionConfiguration: CustomExtractionConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ customExtractionConfiguration: CustomExtractionConfigurationInput }),
 ]);
 export type CustomConsolidationConfigurationInput =
   | {
@@ -12425,24 +12453,34 @@ export type CustomConsolidationConfigurationInput =
       episodicConsolidationOverride: EpisodicOverrideConsolidationConfigurationInput;
     };
 export const CustomConsolidationConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ semanticConsolidationOverride: SemanticOverrideConsolidationConfigurationInput }),
-  S.Struct({ summaryConsolidationOverride: SummaryOverrideConsolidationConfigurationInput }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
+    semanticConsolidationOverride: SemanticOverrideConsolidationConfigurationInput,
+  }),
+  /*@__PURE__*/ S.Struct({
+    summaryConsolidationOverride: SummaryOverrideConsolidationConfigurationInput,
+  }),
+  /*@__PURE__*/ S.Struct({
     userPreferenceConsolidationOverride: UserPreferenceOverrideConsolidationConfigurationInput,
   }),
-  S.Struct({ episodicConsolidationOverride: EpisodicOverrideConsolidationConfigurationInput }),
+  /*@__PURE__*/ S.Struct({
+    episodicConsolidationOverride: EpisodicOverrideConsolidationConfigurationInput,
+  }),
 ]);
 export type ModifyConsolidationConfiguration = {
   customConsolidationConfiguration: CustomConsolidationConfigurationInput;
 };
 export const ModifyConsolidationConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customConsolidationConfiguration: CustomConsolidationConfigurationInput }),
+  /*@__PURE__*/ S.Struct({
+    customConsolidationConfiguration: CustomConsolidationConfigurationInput,
+  }),
 ]);
 export type CustomReflectionConfigurationInput = {
   episodicReflectionOverride: EpisodicOverrideReflectionConfigurationInput;
 };
 export const CustomReflectionConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ episodicReflectionOverride: EpisodicOverrideReflectionConfigurationInput }),
+  /*@__PURE__*/ S.Struct({
+    episodicReflectionOverride: EpisodicOverrideReflectionConfigurationInput,
+  }),
 ]);
 export type ModifyReflectionConfiguration =
   | {
@@ -12454,8 +12492,8 @@ export type ModifyReflectionConfiguration =
       customReflectionConfiguration: CustomReflectionConfigurationInput;
     };
 export const ModifyReflectionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ episodicReflectionConfiguration: EpisodicReflectionConfigurationInput }),
-  S.Struct({ customReflectionConfiguration: CustomReflectionConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ episodicReflectionConfiguration: EpisodicReflectionConfigurationInput }),
+  /*@__PURE__*/ S.Struct({ customReflectionConfiguration: CustomReflectionConfigurationInput }),
 ]);
 export interface ModifyInvocationConfigurationInput {
   topicArn?: string;

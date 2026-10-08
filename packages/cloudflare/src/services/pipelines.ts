@@ -373,7 +373,7 @@ export type CreateRequestSourceItem =
   | CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const CreateRequestSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),
@@ -556,7 +556,7 @@ export type CreateResponseSourceItem =
   | CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const CreateResponseSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),
@@ -747,7 +747,7 @@ export type SinksCreateRequestConfig =
   | SinksCreateRequestConfigCloudflarePipelinesR2Table
   | SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable;
 export const SinksCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accountId",
       "bucket",
@@ -828,7 +828,7 @@ export type SinksCreateRequestFormat =
   | SinksCreateRequestFormatJson
   | SinksCreateRequestFormatParquet;
 export const SinksCreateRequestFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "compression", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -1101,7 +1101,7 @@ export type SinksCreateRequestSchemaFieldsItem =
   | SinksCreateRequestSchemaFieldsItemStruct
   | SinksCreateRequestSchemaFieldsItemList;
 export const SinksCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -1328,7 +1328,7 @@ export type SinksCreateResponseConfig =
   | SinksCreateResponseConfigCloudflarePipelinesR2Table
   | SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable;
 export const SinksCreateResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accountId",
       "bucket",
@@ -1409,7 +1409,7 @@ export type SinksCreateResponseFormat =
   | SinksCreateResponseFormatJson
   | SinksCreateResponseFormatParquet;
 export const SinksCreateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "compression", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -1682,7 +1682,7 @@ export type SinksCreateResponseSchemaFieldsItem =
   | SinksCreateResponseSchemaFieldsItemStruct
   | SinksCreateResponseSchemaFieldsItemList;
 export const SinksCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -1823,7 +1823,7 @@ export type StreamsCreateRequestFormat =
   | StreamsCreateRequestFormatJson
   | StreamsCreateRequestFormatParquet;
 export const StreamsCreateRequestFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -2128,7 +2128,7 @@ export type StreamsCreateRequestSchemaFieldsItem =
   | StreamsCreateRequestSchemaFieldsItemStruct
   | StreamsCreateRequestSchemaFieldsItemList;
 export const StreamsCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -2313,7 +2313,7 @@ export type StreamsCreateResponseFormat =
   | StreamsCreateResponseFormatJson
   | StreamsCreateResponseFormatParquet;
 export const StreamsCreateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -2586,7 +2586,7 @@ export type StreamsCreateResponseSchemaFieldsItem =
   | StreamsCreateResponseSchemaFieldsItemStruct
   | StreamsCreateResponseSchemaFieldsItemList;
 export const StreamsCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -2951,7 +2951,7 @@ export type GetResponseSourceItem =
   | GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const GetResponseSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),
@@ -3126,7 +3126,7 @@ export type SinksGetResponseConfig =
   | SinksGetResponseConfigCloudflarePipelinesR2TablePublic
   | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
 export const SinksGetResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountId", "bucket", "fileNaming", "jurisdiction", "partitioning", "path", "rollingPolicy"],
     ["accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
   ]),
@@ -3196,7 +3196,7 @@ export const SinksGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 
 export type SinksGetResponseFormat = SinksGetResponseFormatJson | SinksGetResponseFormatParquet;
 export const SinksGetResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "compression", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -3469,7 +3469,7 @@ export type SinksGetResponseSchemaFieldsItem =
   | SinksGetResponseSchemaFieldsItemStruct
   | SinksGetResponseSchemaFieldsItemList;
 export const SinksGetResponseSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -3664,7 +3664,7 @@ export type StreamsGetResponseFormat =
   | StreamsGetResponseFormatJson
   | StreamsGetResponseFormatParquet;
 export const StreamsGetResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -3937,7 +3937,7 @@ export type StreamsGetResponseSchemaFieldsItem =
   | StreamsGetResponseSchemaFieldsItemStruct
   | StreamsGetResponseSchemaFieldsItemList;
 export const StreamsGetResponseSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -4249,7 +4249,7 @@ export type ListResponseResultsItemSourceItem =
   | ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const ListResponseResultsItemSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),
@@ -4418,7 +4418,7 @@ export type SinksListResultItemConfig =
   | SinksListResultItemConfigCloudflarePipelinesR2TablePublic
   | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
 export const SinksListResultItemConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accountId", "bucket", "fileNaming", "jurisdiction", "partitioning", "path", "rollingPolicy"],
     ["accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
   ]),
@@ -4490,7 +4490,7 @@ export type SinksListResultItemFormat =
   | SinksListResultItemFormatJson
   | SinksListResultItemFormatParquet;
 export const SinksListResultItemFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "compression", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -4763,7 +4763,7 @@ export type SinksListResultItemSchemaFieldsItem =
   | SinksListResultItemSchemaFieldsItemStruct
   | SinksListResultItemSchemaFieldsItemList;
 export const SinksListResultItemSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -4980,7 +4980,7 @@ export type StreamsListResultItemFormat =
   | StreamsListResultItemFormatJson
   | StreamsListResultItemFormatParquet;
 export const StreamsListResultItemFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -5253,7 +5253,7 @@ export type StreamsListResultItemSchemaFieldsItem =
   | StreamsListResultItemSchemaFieldsItemStruct
   | StreamsListResultItemSchemaFieldsItemList;
 export const StreamsListResultItemSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -5574,7 +5574,7 @@ export type StreamsUpdateResponseFormat =
   | StreamsUpdateResponseFormatJson
   | StreamsUpdateResponseFormatParquet;
 export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "decimalEncoding", "timestampFormat", "unstructured"],
       ["type", "compression", "rowGroupBytes"],
@@ -5847,7 +5847,7 @@ export type StreamsUpdateResponseSchemaFieldsItem =
   | StreamsUpdateResponseSchemaFieldsItemStruct
   | StreamsUpdateResponseSchemaFieldsItemList;
 export const StreamsUpdateResponseSchemaFieldsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "metadataKey", "name", "required", "sqlName"],
       ["type", "metadataKey", "name", "required", "sqlName"],
@@ -6083,7 +6083,7 @@ export type UpdateRequestSourceItem =
   | UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const UpdateRequestSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),
@@ -6238,7 +6238,7 @@ export type UpdateResponseSourceItem =
   | UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
   | UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource;
 export const UpdateResponseSourceItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["format", "type", "authentication", "cors"],
     ["format", "type"],
   ]),

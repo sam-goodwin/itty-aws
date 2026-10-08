@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SSM Contacts", serviceShapeName: "SSMContacts" });
-const auth = T.AwsAuthSigv4({ name: "ssm-contacts" });
-const ver = T.ServiceVersion("2021-05-03");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SSM Contacts",
+  serviceShapeName: "SSMContacts",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ssm-contacts" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-05-03");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,45 +76,47 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: S.String,
       ResourceType: S.String,
-      DependentEntities: S.optional(
-        S.suspend(() => DependentEntityList).annotate({ identifier: "DependentEntityList" }),
+      DependentEntities: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => DependentEntityList).annotate({
+          identifier: "DependentEntityList",
+        }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DataEncryptionException
   extends /*@__PURE__*/ S.TaggedError<DataEncryptionException>()(
     "DataEncryptionException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IncidentManagerNotOnboarded
   extends /*@__PURE__*/ S.TaggedError<IncidentManagerNotOnboarded>()(
     "IncidentManagerNotOnboarded",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      Fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      Fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Account not found for the request" },
     }),
@@ -120,28 +125,30 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RetryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRotationArn
   extends /*@__PURE__*/ S.TaggedError<InvalidRotationArn>()(
     "InvalidRotationArn",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      Fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      Fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Invalid resource Arn" },
     }),
@@ -149,49 +156,55 @@ export class InvalidRotationArn
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String, ResourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: S.String,
+      ResourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
       QuotaCode: S.String,
       ServiceCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      QuotaCode: S.optional(S.String),
-      ServiceCode: S.optional(S.String),
-      RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
+      RetryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      Fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      Fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type SsmContactsArn = string;
 export type AcceptType = "DELIVERED" | "READ" | (string & {});
@@ -416,7 +429,10 @@ export const CoverageTime = /*@__PURE__*/ S.suspend(() =>
 export type CoverageTimes = CoverageTime[];
 export const CoverageTimes = /*@__PURE__*/ S.Array(CoverageTime);
 export type ShiftCoveragesMap = { [key in DayOfWeek]?: CoverageTime[] };
-export const ShiftCoveragesMap = /*@__PURE__*/ S.Record(DayOfWeek, CoverageTimes.pipe(S.optional));
+export const ShiftCoveragesMap = /*@__PURE__*/ S.Record(
+  DayOfWeek,
+  /*@__PURE__*/ CoverageTimes.pipe(S.optional),
+);
 export type RecurrenceMultiplier = number;
 export interface RecurrenceSettings {
   MonthlySettings?: MonthlySetting[];

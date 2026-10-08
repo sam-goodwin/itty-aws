@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Inspector", serviceShapeName: "InspectorService" });
-const auth = T.AwsAuthSigv4({ name: "inspector" });
-const ver = T.ServiceVersion("2016-02-16");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Inspector",
+  serviceShapeName: "InspectorService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "inspector" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-02-16");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,20 +75,20 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.suspend(() => AccessDeniedErrorCode).annotate({
         identifier: "AccessDeniedErrorCode",
       }),
       canRetry: S.Boolean,
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AgentsAlreadyRunningAssessmentException
   extends /*@__PURE__*/ S.TaggedError<AgentsAlreadyRunningAssessmentException>()(
     "AgentsAlreadyRunningAssessmentException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      agents: /*@__PURE__*/ S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
         identifier: "AgentAlreadyRunningAssessmentList",
       }),
       agentsTruncated: S.Boolean,
@@ -96,8 +99,8 @@ export class AssessmentRunInProgressException
   extends /*@__PURE__*/ S.TaggedError<AssessmentRunInProgressException>()(
     "AssessmentRunInProgressException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      assessmentRunArns: S.suspend(() => AssessmentRunInProgressArnList).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      assessmentRunArns: /*@__PURE__*/ S.suspend(() => AssessmentRunInProgressArnList).annotate({
         identifier: "AssessmentRunInProgressArnList",
       }),
       assessmentRunArnsTruncated: S.Boolean,
@@ -106,15 +109,15 @@ export class AssessmentRunInProgressException
   ) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()("InternalException", {
-    message: S.String.pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     canRetry: S.Boolean,
   }) {}
 export class InvalidCrossAccountRoleException
   extends /*@__PURE__*/ S.TaggedError<InvalidCrossAccountRoleException>()(
     "InvalidCrossAccountRoleException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
         identifier: "InvalidCrossAccountRoleErrorCode",
       }),
       canRetry: S.Boolean,
@@ -122,24 +125,24 @@ export class InvalidCrossAccountRoleException
   ) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()("InvalidInputException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    errorCode: /*@__PURE__*/ S.suspend(() => InvalidInputErrorCode).annotate({
       identifier: "InvalidInputErrorCode",
     }),
     canRetry: S.Boolean,
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    errorCode: /*@__PURE__*/ S.suspend(() => LimitExceededErrorCode).annotate({
       identifier: "LimitExceededErrorCode",
     }),
     canRetry: S.Boolean,
   }) {}
 export class NoSuchEntityException
   extends /*@__PURE__*/ S.TaggedError<NoSuchEntityException>()("NoSuchEntityException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    errorCode: /*@__PURE__*/ S.suspend(() => NoSuchEntityErrorCode).annotate({
       identifier: "NoSuchEntityErrorCode",
     }),
     canRetry: S.Boolean,
@@ -147,18 +150,18 @@ export class NoSuchEntityException
 export class PreviewGenerationInProgressException
   extends /*@__PURE__*/ S.TaggedError<PreviewGenerationInProgressException>()(
     "PreviewGenerationInProgressException",
-    { message: S.String.pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ServiceTemporarilyUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceTemporarilyUnavailableException>()(
     "ServiceTemporarilyUnavailableException",
-    { message: S.String.pipe(T.ErrorMessage()), canRetry: S.Boolean },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), canRetry: S.Boolean },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class UnsupportedFeatureException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedFeatureException>()(
     "UnsupportedFeatureException",
-    { message: S.String.pipe(T.ErrorMessage()), canRetry: S.Boolean },
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), canRetry: S.Boolean },
   ) {}
 export type Arn = string;
 export type AddRemoveAttributesFindingArnList = string[];
@@ -203,7 +206,10 @@ export const FailedItemDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ failureCode: FailedItemErrorCode, retryable: S.Boolean }),
 ).annotate({ identifier: "FailedItemDetails" }) as any as S.Schema<FailedItemDetails>;
 export type FailedItems = { [key: string]: FailedItemDetails | undefined };
-export const FailedItems = /*@__PURE__*/ S.Record(S.String, FailedItemDetails.pipe(S.optional));
+export const FailedItems = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FailedItemDetails.pipe(S.optional),
+);
 export interface AddAttributesToFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
@@ -445,7 +451,7 @@ export type FindingCount = number;
 export type AssessmentRunFindingCounts = { [key in Severity]?: number };
 export const AssessmentRunFindingCounts = /*@__PURE__*/ S.Record(
   Severity,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface AssessmentRun {
   arn: string;
@@ -648,7 +654,10 @@ export const Exclusion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exclusion" }) as any as S.Schema<Exclusion>;
 export type ExclusionMap = { [key: string]: Exclusion | undefined };
-export const ExclusionMap = /*@__PURE__*/ S.Record(S.String, Exclusion.pipe(S.optional));
+export const ExclusionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Exclusion.pipe(S.optional),
+);
 export interface DescribeExclusionsResponse {
   exclusions: { [key: string]: Exclusion | undefined };
   failedItems: { [key: string]: FailedItemDetails | undefined };

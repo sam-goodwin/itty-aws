@@ -870,7 +870,10 @@ export const V2QueriesGetResultCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type V2QueriesGetResult = V2QueriesGetResultCase0List | V2QueriesGetResultCase1;
 export const V2QueriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["created", "parameters", "queryId", "queryTag", "scan", "updated"]]),
+  /*@__PURE__*/ T.UnionCases([
+    [],
+    ["created", "parameters", "queryId", "queryTag", "scan", "updated"],
+  ]),
 );
 
 export type GetV2QueryResponse = V2QueriesGetResult;

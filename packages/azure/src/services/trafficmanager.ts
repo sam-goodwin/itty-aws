@@ -432,7 +432,7 @@ export const GetGeographicHierarchyDefaultRequest = /*@__PURE__*/ S.suspend(() =
 /** The list of Regions grouped under this Region in the Geographic Hierarchy. */
 export type RegionRegionsList = Array<Region>;
 export const RegionRegionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Region),
+  /*@__PURE__*/ S.suspend(() => Region),
 ) as any as S.Schema<RegionRegionsList>;
 
 /** Class representing a region in the Geographic hierarchy used with the Geographic traffic routing method. */

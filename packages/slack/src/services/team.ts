@@ -13,7 +13,9 @@ export type AccessLogsRequestBeforeCase0 = "now";
 export const AccessLogsRequestBeforeCase0 = S.String;
 
 export type AccessLogsRequestBefore = AccessLogsRequestBeforeCase0 | (string & {}) | string;
-export const AccessLogsRequestBefore = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const AccessLogsRequestBefore = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface AccessLogsRequest {
   /** End of time range of logs to include in results (inclusive). */

@@ -155,17 +155,19 @@ export type UpdateCustomHostnameResponseOutputStatus =
 export const UpdateCustomHostnameResponseOutputStatus = S.String;
 
 export type JsonValueOutputCase0 = string | number | boolean;
-export const JsonValueOutputCase0 = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+export const JsonValueOutputCase0 = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
+);
 
 export type JsonValueOutputCase1List = Array<JsonValueOutput>;
 export const JsonValueOutputCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => JsonValueOutput),
+  /*@__PURE__*/ S.suspend(() => JsonValueOutput),
 ) as any as S.Schema<JsonValueOutputCase1List>;
 
 export type JsonValueOutputCase2Map = { [key: string]: JsonValueOutput | undefined };
 export const JsonValueOutputCase2Map = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => JsonValueOutput),
+  /*@__PURE__*/ S.suspend(() => JsonValueOutput),
 ) as any as S.Schema<JsonValueOutputCase2Map>;
 
 /** Any JSON-serializable value */
@@ -173,7 +175,9 @@ export type JsonValueOutput =
   | JsonValueOutputCase0
   | JsonValueOutputCase1List
   | JsonValueOutputCase2Map;
-export const JsonValueOutput = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+export const JsonValueOutput = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
+);
 
 export type UpdateCustomHostnameResponseOutputDataErrorsList = Array<JsonValueOutput>;
 export const UpdateCustomHostnameResponseOutputDataErrorsList = /*@__PURE__*/ S.Array(
@@ -413,7 +417,7 @@ export type V1ApplyProjectAddonRequestAddonVariant =
   | V1ApplyProjectAddonRequestAddonVariantCase3
   | (string & {});
 export const V1ApplyProjectAddonRequestAddonVariant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], []]),
 );
 
 export type V1ApplyProjectAddonRequestAddonType =
@@ -1089,7 +1093,7 @@ export type V1CreateAProjectRequestRegionSelection =
   | V1CreateAProjectRequestRegionSelectionCase0
   | V1CreateAProjectRequestRegionSelectionCase1;
 export const V1CreateAProjectRequestRegionSelection = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "code"],
       ["type", "code"],
@@ -1233,7 +1237,7 @@ export type V1CreateASsoProviderRequestAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const V1CreateASsoProviderRequestAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface V1CreateASsoProviderRequestAttributeMappingKeysValue {
   name?: string;
@@ -1317,7 +1321,7 @@ export type CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface CreateProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
@@ -1804,7 +1808,7 @@ export type V1CreateProjectSigningKeyRequestPrivateJwk =
   | V1CreateProjectSigningKeyRequestPrivateJwkCase2
   | V1CreateProjectSigningKeyRequestPrivateJwkCase3;
 export const V1CreateProjectSigningKeyRequestPrivateJwk = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["kid", "use", "key_ops", "ext", "kty", "alg", "n", "e", "d", "p", "q", "dp", "dq", "qi"],
       ["kid", "use", "key_ops", "ext", "kty", "alg", "crv", "x", "y", "d"],
@@ -2035,7 +2039,7 @@ export type DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface DeleteProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
@@ -3236,7 +3240,7 @@ export type GetProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const GetProviderResponseOutputSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface GetProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
@@ -4162,7 +4166,7 @@ export type DiskResponseOutputAttributes =
   | DiskResponseOutputAttributesCase0
   | DiskResponseOutputAttributesCase1;
 export const DiskResponseOutputAttributes = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["iops", "size_gb", "throughput_mibps", "type"],
       ["iops", "size_gb", "type"],
@@ -4378,7 +4382,7 @@ export type V1GetJitAccessConfigResponseBody =
   | V1GetJitAccessConfigResponseBodyCase0
   | V1GetJitAccessConfigResponseBodyCase1;
 export const V1GetJitAccessConfigResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["state", "appliedSuccessfully"],
     ["state", "unavailableReason"],
   ]),
@@ -4650,7 +4654,11 @@ export type V1ListEntitlementsResponseOutputEntitlementsItemConfig =
   | V1ListEntitlementsResponseOutputEntitlementsItemConfigCase1
   | V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2;
 export const V1ListEntitlementsResponseOutputEntitlementsItemConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["enabled"], ["enabled", "value", "unlimited", "unit"], ["enabled", "set"]]),
+  /*@__PURE__*/ T.UnionCases([
+    ["enabled"],
+    ["enabled", "value", "unlimited", "unit"],
+    ["enabled", "set"],
+  ]),
 );
 
 export interface V1ListEntitlementsResponseOutputEntitlementsItem {
@@ -5466,7 +5474,7 @@ export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6ObjT
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6ObjTypeCase0
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6ObjTypeCase1;
 export const ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6ObjType =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6 {
   type: ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase6Type;
@@ -5549,7 +5557,7 @@ export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItem =
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9;
 export const ProjectUpgradeEligibilityResponseOutputValidationErrorsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["type", "dependents"],
         ["type", "schema_name", "table_name", "index_name"],
@@ -5654,7 +5662,7 @@ export type ProjectUpgradeEligibilityResponseOutputWarningsItem =
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase2
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase3;
 export const ProjectUpgradeEligibilityResponseOutputWarningsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type"], ["type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type"], ["type"], ["type"]], {
     key: "type",
     values: [
       "pg_graphql_introspection_change",
@@ -6060,7 +6068,7 @@ export const AnalyticsResponseOutputErrorCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type AnalyticsResponseOutputError = string | AnalyticsResponseOutputErrorCase1;
 export const AnalyticsResponseOutputError = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["code", "errors", "message", "status"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["code", "errors", "message", "status"]]),
 );
 
 export interface AnalyticsResponseOutput {
@@ -6340,7 +6348,7 @@ export type V1GetUsageApiCountResponseOutputError =
   | string
   | V1GetUsageApiCountResponseOutputErrorCase1;
 export const V1GetUsageApiCountResponseOutputError = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["code", "errors", "message", "status"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["code", "errors", "message", "status"]]),
 );
 
 export interface V1GetUsageApiCountResponseOutput {
@@ -6423,7 +6431,7 @@ export type V1GetUsageApiRequestsCountResponseOutputError =
   | string
   | V1GetUsageApiRequestsCountResponseOutputErrorCase1;
 export const V1GetUsageApiRequestsCountResponseOutputError = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["code", "errors", "message", "status"]]),
+  /*@__PURE__*/ T.UnionCases([[], ["code", "errors", "message", "status"]]),
 );
 
 export interface V1GetUsageApiRequestsCountResponseOutput {
@@ -6580,7 +6588,7 @@ export type V1GetServicesHealthRequestServices =
   | string
   | V1GetServicesHealthRequestServicesCase1List;
 export const V1GetServicesHealthRequestServices = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface V1GetServicesHealthRequest {
@@ -6666,7 +6674,7 @@ export type V1ServiceHealthResponseOutputInfo =
   | V1ServiceHealthResponseOutputInfoCase1
   | V1ServiceHealthResponseOutputInfoCase2;
 export const V1ServiceHealthResponseOutputInfo = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name", "version", "description"],
     ["healthy", "db_connected", "replication_connected", "connected_cluster"],
     ["db_schema"],
@@ -7597,7 +7605,7 @@ export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDef
   | string
   | boolean;
 export const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue {
   name?: string;
@@ -7963,7 +7971,7 @@ export type JitListAccessResponseOutputItemsItem =
   | JitListAccessResponseOutputItemsItemCase0
   | JitListAccessResponseOutputItemsItemCase1;
 export const JitListAccessResponseOutputItemsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
     ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
   ]),
@@ -8148,7 +8156,7 @@ export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantId =
   | ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase6
   | ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase7;
 export const ListProjectAddonsResponseOutputSelectedAddonsItemVariantId =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], [], [], [], []]));
 
 export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType = "fixed" | "usage";
 export const ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType = S.String;
@@ -8283,7 +8291,7 @@ export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId =
   | ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase6
   | ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase7;
 export const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], [], [], [], []]));
 
 export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPriceType =
   | "fixed"
@@ -8467,7 +8475,7 @@ export type V1ModifyDatabaseDiskRequestAttributes =
   | V1ModifyDatabaseDiskRequestAttributesCase0
   | V1ModifyDatabaseDiskRequestAttributesCase1;
 export const V1ModifyDatabaseDiskRequestAttributes = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["iops", "size_gb", "throughput_mibps", "type"],
       ["iops", "size_gb", "type"],
@@ -9317,7 +9325,7 @@ export type V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface V1UpdateASsoProviderRequestAttributeMappingKeysValue {
   name?: string;
@@ -9404,7 +9412,7 @@ export type UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | string
   | boolean;
 export const UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], []]));
 
 export interface UpdateProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
@@ -10212,7 +10220,7 @@ export type V1UpdateJitAccessConfigResponseBody =
   | V1UpdateJitAccessConfigResponseBodyCase0
   | V1UpdateJitAccessConfigResponseBodyCase1;
 export const V1UpdateJitAccessConfigResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["state", "appliedSuccessfully"],
     ["state", "unavailableReason"],
   ]),

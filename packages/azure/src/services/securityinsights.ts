@@ -741,7 +741,7 @@ export const MetadataDependencyOperator = S.String;
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
 export type MetadataDependenciesCriteriaList = Array<MetadataDependencies>;
 export const MetadataDependenciesCriteriaList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MetadataDependencies),
+  /*@__PURE__*/ S.suspend(() => MetadataDependencies),
 ) as any as S.Schema<MetadataDependenciesCriteriaList>;
 
 /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
@@ -2560,7 +2560,7 @@ export const WarningCode = S.String;
 
 export type WarningBodyDetailsList = Array<WarningBody>;
 export const WarningBodyDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => WarningBody),
+  /*@__PURE__*/ S.suspend(() => WarningBody),
 ) as any as S.Schema<WarningBodyDetailsList>;
 
 /** Warning details. */
@@ -3173,7 +3173,7 @@ export const TemplatePropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
 /** Dependant templates. Expandable. */
 export type TemplatePropertiesDependantTemplatesList = Array<TemplateProperties>;
 export const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TemplateProperties),
+  /*@__PURE__*/ S.suspend(() => TemplateProperties),
 ) as any as S.Schema<TemplatePropertiesDependantTemplatesList>;
 
 /** Template property bag. */

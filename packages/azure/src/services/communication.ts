@@ -163,7 +163,7 @@ export type CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdenti
 export const CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -341,7 +341,7 @@ export type CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdent
 export const CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1108,7 +1108,7 @@ export type GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap = {
 export const GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1635,7 +1635,7 @@ export type CommunicationServiceResourceIdentityUserAssignedIdentitiesMap = {
 };
 export const CommunicationServiceResourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CommunicationServiceResourceIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2722,7 +2722,7 @@ export type UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap =
 export const UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2790,7 +2790,7 @@ export type UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap 
 export const UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

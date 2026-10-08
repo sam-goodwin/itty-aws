@@ -578,7 +578,7 @@ export type SuperSlurperJobsCreateRequestSource =
   | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema
   | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema;
 export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["bucket", "secret", "vendor", "endpoint", "keys", "pathPrefix", "region"],
       ["bucket", "secret", "vendor", "keys", "pathPrefix"],
@@ -1543,7 +1543,7 @@ export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition
   | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["maxAge", "type"],
         ["date", "type"],
@@ -1612,7 +1612,7 @@ export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondi
   | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["maxAge", "type"],
         ["date", "type"],
@@ -1785,7 +1785,7 @@ export type BucketsLocksGetResponseRulesItemCondition =
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksGetResponseRulesItemCondition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]], {
     key: "type",
     values: ["Age", "Date", "Indefinite"],
   }),
@@ -2127,7 +2127,7 @@ export type SuperSlurperJobsGetResponseSource =
   | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema
   | SuperSlurperJobsGetResponseSourceR2SourceResponseSchema;
 export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
       ["bucket", "keys", "pathPrefix", "vendor"],
@@ -3026,7 +3026,7 @@ export type SuperSlurperJobsListResultItemSource =
   | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema
   | SuperSlurperJobsListResultItemSourceR2SourceResponseSchema;
 export const SuperSlurperJobsListResultItemSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
       ["bucket", "keys", "pathPrefix", "vendor"],
@@ -3599,7 +3599,7 @@ export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditi
   | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["maxAge", "type"],
         ["date", "type"],
@@ -3666,7 +3666,7 @@ export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCon
   | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["maxAge", "type"],
         ["date", "type"],
@@ -3842,7 +3842,7 @@ export type BucketsLocksUpdateRequestRulesItemCondition =
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksUpdateRequestRulesItemCondition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]], {
     key: "type",
     values: ["Age", "Date", "Indefinite"],
   }),
@@ -4038,7 +4038,7 @@ export type BucketsSippyUpdateRequestSource =
   | BucketsSippyUpdateRequestSourceR2EnableSippyS3
   | BucketsSippyUpdateRequestSourceR2EnableSippyAzure;
 export const BucketsSippyUpdateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["accessKeyId", "bucket", "provider", "region", "secretAccessKey"],
       ["bucket", "clientEmail", "privateKey", "provider"],
@@ -4195,7 +4195,7 @@ export type SuperSlurperConnectivityPrecheckSourceRequestSecret =
   | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret
   | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
 export const SuperSlurperConnectivityPrecheckSourceRequestSecret = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["accessKeyId", "secretAccessKey"],
     ["clientEmail", "privateKey"],
   ]),

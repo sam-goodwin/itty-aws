@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ecr.amazonaws.com/doc/2015-09-21/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ecr.amazonaws.com/doc/2015-09-21/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ECR",
   serviceShapeName: "AmazonEC2ContainerRegistry_V20150921",
 });
-const auth = T.AwsAuthSigv4({ name: "ecr" });
-const ver = T.ServiceVersion("2015-09-21");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ecr" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-09-21");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -317,225 +317,225 @@ const rules = T.EndpointResolver((p, _) => {
 export class BlockedByOrganizationPolicyException
   extends /*@__PURE__*/ S.TaggedError<BlockedByOrganizationPolicyException>()(
     "BlockedByOrganizationPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class EmptyUploadException
   extends /*@__PURE__*/ S.TaggedError<EmptyUploadException>()("EmptyUploadException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ExclusionAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ExclusionAlreadyExistsException>()(
     "ExclusionAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ExclusionNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ExclusionNotFoundException>()("ExclusionNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ImageAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ImageAlreadyExistsException>()(
     "ImageAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ImageArchivedException
   extends /*@__PURE__*/ S.TaggedError<ImageArchivedException>()("ImageArchivedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ImageDigestDoesNotMatchException
   extends /*@__PURE__*/ S.TaggedError<ImageDigestDoesNotMatchException>()(
     "ImageDigestDoesNotMatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ImageNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ImageNotFoundException>()("ImageNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ImageStorageClassUpdateNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<ImageStorageClassUpdateNotSupportedException>()(
     "ImageStorageClassUpdateNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ImageTagAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ImageTagAlreadyExistsException>()(
     "ImageTagAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class InvalidLayerException
   extends /*@__PURE__*/ S.TaggedError<InvalidLayerException>()("InvalidLayerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidLayerPartException
   extends /*@__PURE__*/ S.TaggedError<InvalidLayerPartException>()("InvalidLayerPartException", {
-    registryId: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    uploadId: S.optional(S.String),
-    lastValidByteReceived: S.optional(S.Number),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    registryId: /*@__PURE__*/ S.optional(S.String),
+    repositoryName: /*@__PURE__*/ S.optional(S.String),
+    uploadId: /*@__PURE__*/ S.optional(S.String),
+    lastValidByteReceived: /*@__PURE__*/ S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidTagParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidTagParameterException>()(
     "InvalidTagParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class KmsException
   extends /*@__PURE__*/ S.TaggedError<KmsException>()("KmsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    kmsError: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    kmsError: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class LayerAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<LayerAlreadyExistsException>()(
     "LayerAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class LayerInaccessibleException
   extends /*@__PURE__*/ S.TaggedError<LayerInaccessibleException>()("LayerInaccessibleException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LayerPartTooSmallException
   extends /*@__PURE__*/ S.TaggedError<LayerPartTooSmallException>()("LayerPartTooSmallException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LayersNotFoundException
   extends /*@__PURE__*/ S.TaggedError<LayersNotFoundException>()("LayersNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LifecyclePolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<LifecyclePolicyNotFoundException>()(
     "LifecyclePolicyNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class LifecyclePolicyPreviewInProgressException
   extends /*@__PURE__*/ S.TaggedError<LifecyclePolicyPreviewInProgressException>()(
     "LifecyclePolicyPreviewInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class LifecyclePolicyPreviewNotFoundException
   extends /*@__PURE__*/ S.TaggedError<LifecyclePolicyPreviewNotFoundException>()(
     "LifecyclePolicyPreviewNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError) {}
 export class PullThroughCacheRuleAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<PullThroughCacheRuleAlreadyExistsException>()(
     "PullThroughCacheRuleAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class PullThroughCacheRuleNotFoundException
   extends /*@__PURE__*/ S.TaggedError<PullThroughCacheRuleNotFoundException>()(
     "PullThroughCacheRuleNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ReferencedImagesNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ReferencedImagesNotFoundException>()(
     "ReferencedImagesNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class RegistryPolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<RegistryPolicyNotFoundException>()(
     "RegistryPolicyNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class RepositoryAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<RepositoryAlreadyExistsException>()(
     "RepositoryAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class RepositoryNotEmptyException
   extends /*@__PURE__*/ S.TaggedError<RepositoryNotEmptyException>()(
     "RepositoryNotEmptyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class RepositoryNotFoundException
   extends /*@__PURE__*/ S.TaggedError<RepositoryNotFoundException>()(
     "RepositoryNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class RepositoryPolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<RepositoryPolicyNotFoundException>()(
     "RepositoryPolicyNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ScanNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ScanNotFoundException>()("ScanNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SecretNotFoundException
   extends /*@__PURE__*/ S.TaggedError<SecretNotFoundException>()("SecretNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ServerException
   extends /*@__PURE__*/ S.TaggedError<ServerException>()("ServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError, C.withRetryableError) {}
 export class SigningConfigurationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<SigningConfigurationNotFoundException>()(
     "SigningConfigurationNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class TemplateAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<TemplateAlreadyExistsException>()(
     "TemplateAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class TemplateNotFoundException
   extends /*@__PURE__*/ S.TaggedError<TemplateNotFoundException>()("TemplateNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()("TooManyTagsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withQuotaError, C.withBadRequestError) {}
 export class UnableToAccessSecretException
   extends /*@__PURE__*/ S.TaggedError<UnableToAccessSecretException>()(
     "UnableToAccessSecretException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnableToDecryptSecretValueException
   extends /*@__PURE__*/ S.TaggedError<UnableToDecryptSecretValueException>()(
     "UnableToDecryptSecretValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnableToGetUpstreamImageException
   extends /*@__PURE__*/ S.TaggedError<UnableToGetUpstreamImageException>()(
     "UnableToGetUpstreamImageException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnableToGetUpstreamLayerException
   extends /*@__PURE__*/ S.TaggedError<UnableToGetUpstreamLayerException>()(
     "UnableToGetUpstreamLayerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnableToListUpstreamImageReferrersException
   extends /*@__PURE__*/ S.TaggedError<UnableToListUpstreamImageReferrersException>()(
     "UnableToListUpstreamImageReferrersException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnsupportedImageTypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedImageTypeException>()(
     "UnsupportedImageTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnsupportedUpstreamRegistryException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedUpstreamRegistryException>()(
     "UnsupportedUpstreamRegistryException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UploadNotFoundException
   extends /*@__PURE__*/ S.TaggedError<UploadNotFoundException>()("UploadNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type RegistryId = string;
 export type RepositoryName = string;
@@ -1428,7 +1428,7 @@ export type SeverityCount = number;
 export type FindingSeverityCounts = { [key in FindingSeverity]?: number };
 export const FindingSeverityCounts = /*@__PURE__*/ S.Record(
   FindingSeverity,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface ImageScanFindingsSummary {
   imageScanCompletedAt?: Date;
@@ -1687,7 +1687,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
 export type ResourceId = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Type = string;
 export interface Resource {
   details?: ResourceDetails;
@@ -2439,7 +2439,10 @@ export const ListImageReferrersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListImageReferrersRequest",
 }) as any as S.Schema<ListImageReferrersRequest>;
 export type Annotations = { [key: string]: string | undefined };
-export const Annotations = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Annotations = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ArtifactStatus = "ACTIVE" | "ARCHIVED" | "ACTIVATING" | (string & {});
 export const ArtifactStatus = S.String;
 

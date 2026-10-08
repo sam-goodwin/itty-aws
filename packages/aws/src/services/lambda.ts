@@ -10,11 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Lambda", serviceShapeName: "AWSGirApiService" });
-const auth = T.AwsAuthSigv4({ name: "lambda" });
-const ver = T.ServiceVersion("2015-03-31");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Lambda",
+  serviceShapeName: "AWSGirApiService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lambda" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,198 +77,291 @@ const rules = T.EndpointResolver((p, _) => {
 export class AliasLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<AliasLimitExceededException>()(
     "AliasLimitExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CallbackTimeoutException
   extends /*@__PURE__*/ S.TaggedError<CallbackTimeoutException>()(
     "CallbackTimeoutException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CapacityProviderLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CapacityProviderLimitExceededException>()(
     "CapacityProviderLimitExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CodeArtifactUserDeletedException
   extends /*@__PURE__*/ S.TaggedError<CodeArtifactUserDeletedException>()(
     "CodeArtifactUserDeletedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CodeArtifactUserFailedException
   extends /*@__PURE__*/ S.TaggedError<CodeArtifactUserFailedException>()(
     "CodeArtifactUserFailedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CodeArtifactUserPendingException
   extends /*@__PURE__*/ S.TaggedError<CodeArtifactUserPendingException>()(
     "CodeArtifactUserPendingException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CodeSigningConfigNotFoundException
   extends /*@__PURE__*/ S.TaggedError<CodeSigningConfigNotFoundException>()(
     "CodeSigningConfigNotFoundException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class CodeStorageExceededException
   extends /*@__PURE__*/ S.TaggedError<CodeStorageExceededException>()(
     "CodeStorageExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CodeVerificationFailedException
   extends /*@__PURE__*/ S.TaggedError<CodeVerificationFailedException>()(
     "CodeVerificationFailedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DurableExecutionAlreadyStartedException
   extends /*@__PURE__*/ S.TaggedError<DurableExecutionAlreadyStartedException>()(
     "DurableExecutionAlreadyStartedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EC2AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<EC2AccessDeniedException>()(
     "EC2AccessDeniedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError, C.withAuthError) {}
 export class EC2ThrottledException
   extends /*@__PURE__*/ S.TaggedError<EC2ThrottledException>()(
     "EC2ThrottledException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class EC2UnexpectedException
   extends /*@__PURE__*/ S.TaggedError<EC2UnexpectedException>()(
     "EC2UnexpectedException",
     {
-      Type: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      EC2ErrorCode: S.optional(S.String),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      EC2ErrorCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(502),
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class EFSIOException
   extends /*@__PURE__*/ S.TaggedError<EFSIOException>()(
     "EFSIOException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(410),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class EFSMountConnectivityException
   extends /*@__PURE__*/ S.TaggedError<EFSMountConnectivityException>()(
     "EFSMountConnectivityException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class EFSMountFailureException
   extends /*@__PURE__*/ S.TaggedError<EFSMountFailureException>()(
     "EFSMountFailureException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class EFSMountTimeoutException
   extends /*@__PURE__*/ S.TaggedError<EFSMountTimeoutException>()(
     "EFSMountTimeoutException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ENILimitReachedException
   extends /*@__PURE__*/ S.TaggedError<ENILimitReachedException>()(
     "ENILimitReachedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class ENINotReadyException
   extends /*@__PURE__*/ S.TaggedError<ENINotReadyException>()(
     "ENINotReadyException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class FunctionVersionsPerCapacityProviderLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<FunctionVersionsPerCapacityProviderLimitExceededException>()(
     "FunctionVersionsPerCapacityProviderLimitExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCodeSignatureException
   extends /*@__PURE__*/ S.TaggedError<InvalidCodeSignatureException>()(
     "InvalidCodeSignatureException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestContentException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestContentException>()(
     "InvalidRequestContentException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRuntimeException
   extends /*@__PURE__*/ S.TaggedError<InvalidRuntimeException>()(
     "InvalidRuntimeException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class InvalidSecurityGroupIDException
   extends /*@__PURE__*/ S.TaggedError<InvalidSecurityGroupIDException>()(
     "InvalidSecurityGroupIDException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class InvalidSubnetIDException
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetIDException>()(
     "InvalidSubnetIDException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class InvalidZipFileException
   extends /*@__PURE__*/ S.TaggedError<InvalidZipFileException>()(
     "InvalidZipFileException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class KMSAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<KMSAccessDeniedException>()(
     "KMSAccessDeniedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError, C.withAuthError) {}
 export class KMSDisabledException
   extends /*@__PURE__*/ S.TaggedError<KMSDisabledException>()(
     "KMSDisabledException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class KMSInvalidStateException
   extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateException>()(
     "KMSInvalidStateException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class KMSNotFoundException
   extends /*@__PURE__*/ S.TaggedError<KMSNotFoundException>()(
     "KMSNotFoundException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class LambdaInternalKmsError
   extends /*@__PURE__*/ S.TaggedError<LambdaInternalKmsError>()(
     "LambdaInternalKmsError",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidParameterValueException",
       message: "Internal KMS service error. Try again.",
     }),
@@ -273,167 +369,241 @@ export class LambdaInternalKmsError
 export class ModeNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<ModeNotSupportedException>()(
     "ModeNotSupportedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoPublishedVersionException
   extends /*@__PURE__*/ S.TaggedError<NoPublishedVersionException>()(
     "NoPublishedVersionException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ParseError
   extends /*@__PURE__*/ S.TaggedError<ParseError>()("ParseError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PolicyLengthExceededException
   extends /*@__PURE__*/ S.TaggedError<PolicyLengthExceededException>()(
     "PolicyLengthExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class ProvisionedConcurrencyConfigNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ProvisionedConcurrencyConfigNotFoundException>()(
     "ProvisionedConcurrencyConfigNotFoundException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PublicPolicyException
   extends /*@__PURE__*/ S.TaggedError<PublicPolicyException>()(
     "PublicPolicyException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RecursiveInvocationException
   extends /*@__PURE__*/ S.TaggedError<RecursiveInvocationException>()(
     "RecursiveInvocationException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class RequestTooLargeException
   extends /*@__PURE__*/ S.TaggedError<RequestTooLargeException>()(
     "RequestTooLargeException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()(
     "ResourceNotReadyException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class S3FilesMountConnectivityException
   extends /*@__PURE__*/ S.TaggedError<S3FilesMountConnectivityException>()(
     "S3FilesMountConnectivityException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class S3FilesMountFailureException
   extends /*@__PURE__*/ S.TaggedError<S3FilesMountFailureException>()(
     "S3FilesMountFailureException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class S3FilesMountTimeoutException
   extends /*@__PURE__*/ S.TaggedError<S3FilesMountTimeoutException>()(
     "S3FilesMountTimeoutException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class SerializedRequestEntityTooLargeException
   extends /*@__PURE__*/ S.TaggedError<SerializedRequestEntityTooLargeException>()(
     "SerializedRequestEntityTooLargeException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class SnapStartException
   extends /*@__PURE__*/ S.TaggedError<SnapStartException>()(
     "SnapStartException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SnapStartNotReadyException
   extends /*@__PURE__*/ S.TaggedError<SnapStartNotReadyException>()(
     "SnapStartNotReadyException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class SnapStartRegenerationFailureException
   extends /*@__PURE__*/ S.TaggedError<SnapStartRegenerationFailureException>()(
     "SnapStartRegenerationFailureException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class SnapStartTimeoutException
   extends /*@__PURE__*/ S.TaggedError<SnapStartTimeoutException>()(
     "SnapStartTimeoutException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class SubnetIPAddressLimitReachedException
   extends /*@__PURE__*/ S.TaggedError<SubnetIPAddressLimitReachedException>()(
     "SubnetIPAddressLimitReachedException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      Type: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" }),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" }),
       ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedMediaTypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedMediaTypeException>()(
     "UnsupportedMediaTypeException",
-    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(415),
+    {
+      Type: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(415),
   ).pipe(C.withBadRequestError) {}
 export type LayerName = string;
 export type LayerVersionNumber = number;
@@ -815,7 +985,10 @@ export type Description = string;
 export type AdditionalVersion = string;
 export type Weight = number;
 export type AdditionalVersionWeights = { [key: string]: number | undefined };
-export const AdditionalVersionWeights = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const AdditionalVersionWeights = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface AliasRoutingConfiguration {
   AdditionalVersionWeights?: { [key: string]: number | undefined };
 }
@@ -958,7 +1131,7 @@ export type KMSKeyArnNonEmpty = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type PropagateTagsMode = "None" | "Explicit" | (string & {});
 export const PropagateTagsMode = S.String;
 
@@ -1248,7 +1421,10 @@ export type Endpoint = string;
 export type EndpointLists = string[];
 export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
 export type Endpoints = { [key in EndPointType]?: string[] };
-export const Endpoints = /*@__PURE__*/ S.Record(EndPointType, EndpointLists.pipe(S.optional));
+export const Endpoints = /*@__PURE__*/ S.Record(
+  EndPointType,
+  /*@__PURE__*/ EndpointLists.pipe(S.optional),
+);
 export interface SelfManagedEventSource {
   Endpoints?: { [key: string]: string[] | undefined };
 }
@@ -1649,7 +1825,7 @@ export type EnvironmentVariables = {
 };
 export const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface Environment {
   Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
@@ -3847,9 +4023,9 @@ export type InvokeWithResponseStreamResponseEvent =
   | { PayloadChunk: InvokeResponseStreamUpdate; InvokeComplete?: never }
   | { PayloadChunk?: never; InvokeComplete: InvokeWithResponseStreamCompleteEvent };
 export const InvokeWithResponseStreamResponseEvent = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ PayloadChunk: InvokeResponseStreamUpdate }),
-    S.Struct({ InvokeComplete: InvokeWithResponseStreamCompleteEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ PayloadChunk: InvokeResponseStreamUpdate }),
+    /*@__PURE__*/ S.Struct({ InvokeComplete: InvokeWithResponseStreamCompleteEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<InvokeWithResponseStreamResponseEvent, Error, never>>;
 export interface InvokeWithResponseStreamResponse {
@@ -5063,7 +5239,9 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Key")));
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
+);
 export interface UntagResourceRequest {
   Resource: string;
   TagKeys: string[];

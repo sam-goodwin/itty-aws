@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "FMS", serviceShapeName: "AWSFMS_20180101" });
-const auth = T.AwsAuthSigv4({ name: "fms" });
-const ver = T.ServiceVersion("2018-01-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "FMS", serviceShapeName: "AWSFMS_20180101" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "fms" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -68,27 +68,27 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()("InternalErrorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()("InvalidInputException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()("InvalidOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTypeException
   extends /*@__PURE__*/ S.TaggedError<InvalidTypeException>()("InvalidTypeException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type AWSAccountId = string;
 export interface AssociateAdminAccountRequest {
@@ -444,7 +444,10 @@ export type AppsList = App[];
 export const AppsList = /*@__PURE__*/ S.Array(App);
 export type PreviousListVersion = string;
 export type PreviousAppsList = { [key: string]: App[] | undefined };
-export const PreviousAppsList = /*@__PURE__*/ S.Record(S.String, AppsList.pipe(S.optional));
+export const PreviousAppsList = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AppsList.pipe(S.optional),
+);
 export interface AppsListData {
   ListId?: string;
   ListName: string;
@@ -524,7 +527,7 @@ export type LengthBoundedString = string;
 export type ComplianceViolatorMetadata = { [key: string]: string | undefined };
 export const ComplianceViolatorMetadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ComplianceViolator {
   ResourceId?: string;
@@ -552,7 +555,10 @@ export const DependentServiceName = S.String;
 
 export type DetailedInfo = string;
 export type IssueInfoMap = { [key in DependentServiceName]?: string };
-export const IssueInfoMap = /*@__PURE__*/ S.Record(DependentServiceName, S.String.pipe(S.optional));
+export const IssueInfoMap = /*@__PURE__*/ S.Record(
+  DependentServiceName,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface PolicyComplianceDetail {
   PolicyOwner?: string;
   PolicyId?: string;
@@ -731,7 +737,7 @@ export const CustomerPolicyScopeIdList = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyScopeMap = { [key in CustomerPolicyScopeIdType]?: string[] };
 export const CustomerPolicyScopeMap = /*@__PURE__*/ S.Record(
   CustomerPolicyScopeIdType,
-  CustomerPolicyScopeIdList.pipe(S.optional),
+  /*@__PURE__*/ CustomerPolicyScopeIdList.pipe(S.optional),
 );
 export type ResourceSetIds = string[];
 export const ResourceSetIds = /*@__PURE__*/ S.Array(S.String);
@@ -840,7 +846,7 @@ export const ProtocolsList = /*@__PURE__*/ S.Array(S.String);
 export type PreviousProtocolsList = { [key: string]: string[] | undefined };
 export const PreviousProtocolsList = /*@__PURE__*/ S.Record(
   S.String,
-  ProtocolsList.pipe(S.optional),
+  /*@__PURE__*/ ProtocolsList.pipe(S.optional),
 );
 export interface ProtocolsListData {
   ListId?: string;

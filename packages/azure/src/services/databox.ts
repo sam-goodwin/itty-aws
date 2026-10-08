@@ -865,7 +865,7 @@ export const CloudErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
 /** Gets or sets details for the error. */
 export type CloudErrorDetailsList = Array<CloudError>;
 export const CloudErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => CloudError),
+  /*@__PURE__*/ S.suspend(() => CloudError),
 ) as any as S.Schema<CloudErrorDetailsList>;
 
 /** Provides additional information about an http error response. */

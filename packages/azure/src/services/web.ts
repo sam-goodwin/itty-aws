@@ -3722,13 +3722,13 @@ export const ErrorEntityParametersList = /*@__PURE__*/ S.Array(
 /** Inner errors. */
 export type ErrorEntityInnerErrorsList = Array<ErrorEntity>;
 export const ErrorEntityInnerErrorsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorEntity),
+  /*@__PURE__*/ S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityInnerErrorsList>;
 
 /** Error Details. */
 export type ErrorEntityDetailsList = Array<ErrorEntity>;
 export const ErrorEntityDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorEntity),
+  /*@__PURE__*/ S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityDetailsList>;
 
 /** Body of the error response returned from the API. */
@@ -10925,13 +10925,13 @@ export const ApplicationStackMajorVersionsList = /*@__PURE__*/ S.Array(
 /** List of frameworks associated with application stack. */
 export type ApplicationStackFrameworksList = Array<ApplicationStack>;
 export const ApplicationStackFrameworksList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApplicationStack),
+  /*@__PURE__*/ S.suspend(() => ApplicationStack),
 ) as any as S.Schema<ApplicationStackFrameworksList>;
 
 /** <code>true</code> if this is the stack is deprecated; otherwise, <code>false</code>. */
 export type ApplicationStackIsDeprecatedList = Array<ApplicationStack>;
 export const ApplicationStackIsDeprecatedList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApplicationStack),
+  /*@__PURE__*/ S.suspend(() => ApplicationStack),
 ) as any as S.Schema<ApplicationStackIsDeprecatedList>;
 
 /** Application stack. */
@@ -33956,13 +33956,13 @@ export const ListWorkflowRunActionExpressionTracesRequest = /*@__PURE__*/ S.susp
 /** The sub expressions. */
 export type ExpressionSubexpressionsList = Array<Expression>;
 export const ExpressionSubexpressionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Expression),
+  /*@__PURE__*/ S.suspend(() => Expression),
 ) as any as S.Schema<ExpressionSubexpressionsList>;
 
 /** The error details. */
 export type AzureResourceErrorInfoDetailsList = Array<AzureResourceErrorInfo>;
 export const AzureResourceErrorInfoDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AzureResourceErrorInfo),
+  /*@__PURE__*/ S.suspend(() => AzureResourceErrorInfo),
 ) as any as S.Schema<AzureResourceErrorInfoDetailsList>;
 
 /** The azure resource error info. */

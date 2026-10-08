@@ -1360,7 +1360,9 @@ export const GetBuildsLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBuildsLogRequest" }) as any as S.Schema<GetBuildsLogRequest>;
 
 export type GetBuildsLogResponseLinesItem = string | number;
-export const GetBuildsLogResponseLinesItem = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const GetBuildsLogResponseLinesItem = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type GetBuildsLogResponseLinesList = Array<GetBuildsLogResponseLinesItem>;
 export const GetBuildsLogResponseLinesList = /*@__PURE__*/ S.Array(

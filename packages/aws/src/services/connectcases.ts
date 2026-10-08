@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "ConnectCases", serviceShapeName: "AmazonConnectCases" });
-const auth = T.AwsAuthSigv4({ name: "cases" });
-const ver = T.ServiceVersion("2022-10-03");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "ConnectCases",
+  serviceShapeName: "AmazonConnectCases",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cases" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-10-03");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,47 +74,53 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainId = string;
 export type CaseRuleId = string;
@@ -146,7 +155,7 @@ export type CaseRuleName = string;
 export type CaseRuleArn = string;
 export type FieldId = string;
 export type OperandOne = { fieldId: string };
-export const OperandOne = /*@__PURE__*/ S.Union([S.Struct({ fieldId: S.String })]);
+export const OperandOne = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ fieldId: S.String })]);
 export interface EmptyOperandValue {}
 export const EmptyOperandValue = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EmptyOperandValue",
@@ -162,10 +171,10 @@ export type OperandTwo =
       emptyValue: EmptyOperandValue;
     };
 export const OperandTwo = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ booleanValue: S.Boolean }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ emptyValue: EmptyOperandValue }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ emptyValue: EmptyOperandValue }),
 ]);
 export interface BooleanOperands {
   operandOne: OperandOne;
@@ -191,22 +200,22 @@ export type BooleanCondition =
   | { equalTo?: never; notEqualTo?: never; andAll: CompoundCondition; orAll?: never }
   | { equalTo?: never; notEqualTo?: never; andAll?: never; orAll: CompoundCondition };
 export const BooleanCondition = /*@__PURE__*/ S.Union([
-  S.Struct({ equalTo: BooleanOperands }),
-  S.Struct({ notEqualTo: BooleanOperands }),
-  S.Struct({
-    andAll: S.suspend((): S.Schema<CompoundCondition> => CompoundCondition).annotate({
+  /*@__PURE__*/ S.Struct({ equalTo: BooleanOperands }),
+  /*@__PURE__*/ S.Struct({ notEqualTo: BooleanOperands }),
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend((): S.Schema<CompoundCondition> => CompoundCondition).annotate({
       identifier: "CompoundCondition",
     }),
   }),
-  S.Struct({
-    orAll: S.suspend((): S.Schema<CompoundCondition> => CompoundCondition).annotate({
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend((): S.Schema<CompoundCondition> => CompoundCondition).annotate({
       identifier: "CompoundCondition",
     }),
   }),
 ]) as any as S.Schema<BooleanCondition>;
 export type BooleanConditionList = BooleanCondition[];
 export const BooleanConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(() => BooleanCondition).annotate({ identifier: "BooleanCondition" }),
+  /*@__PURE__*/ S.suspend(() => BooleanCondition).annotate({ identifier: "BooleanCondition" }),
 ) as any as S.Schema<BooleanConditionList>;
 export interface RequiredCaseRule {
   defaultValue: boolean;
@@ -258,16 +267,18 @@ export type CaseRuleDetails =
   | { required?: never; fieldOptions: FieldOptionsCaseRule; hidden?: never }
   | { required?: never; fieldOptions?: never; hidden: HiddenCaseRule };
 export const CaseRuleDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ required: RequiredCaseRule }),
-  S.Struct({ fieldOptions: FieldOptionsCaseRule }),
-  S.Struct({ hidden: HiddenCaseRule }),
+  /*@__PURE__*/ S.Struct({ required: RequiredCaseRule }),
+  /*@__PURE__*/ S.Struct({ fieldOptions: FieldOptionsCaseRule }),
+  /*@__PURE__*/ S.Struct({ hidden: HiddenCaseRule }),
 ]);
 export type CaseRuleDescription = string;
 export type Deleted = boolean;
 export type CreatedTime = Date;
 export type LastModifiedTime = Date;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional)).pipe(T.Sparse());
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional)).pipe(
+  /*@__PURE__*/ T.Sparse(),
+);
 export interface GetCaseRuleResponse {
   caseRuleId: string;
   name: string;
@@ -357,7 +368,9 @@ export const TextAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ isMultiline: S.Boolean }),
 ).annotate({ identifier: "TextAttributes" }) as any as S.Schema<TextAttributes>;
 export type FieldAttributes = { text: TextAttributes };
-export const FieldAttributes = /*@__PURE__*/ S.Union([S.Struct({ text: TextAttributes })]);
+export const FieldAttributes = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: TextAttributes }),
+]);
 export interface GetFieldResponse {
   fieldId: string;
   name: string;
@@ -500,11 +513,11 @@ export type FieldValueUnion =
       userArnValue: string;
     };
 export const FieldValueUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ booleanValue: S.Boolean }),
-  S.Struct({ emptyValue: EmptyFieldValue }),
-  S.Struct({ userArnValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ emptyValue: EmptyFieldValue }),
+  /*@__PURE__*/ S.Struct({ userArnValue: S.String }),
 ]);
 export interface FieldValue {
   id: string;
@@ -521,13 +534,16 @@ export type UserUnion =
   | { userArn: string; customEntity?: never }
   | { userArn?: never; customEntity: string | redacted.Redacted<string> };
 export const UserUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ userArn: S.String }),
-  S.Struct({ customEntity: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ userArn: S.String }),
+  /*@__PURE__*/ S.Struct({ customEntity: SensitiveString }),
 ]);
 export type MutableTagKey = string;
 export type TagValueString = string;
 export type MutableTags = { [key: string]: string | undefined };
-export const MutableTags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MutableTags = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateCaseRequest {
   domainId: string;
   templateId: string;
@@ -662,7 +678,7 @@ export const FieldGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), fields: FieldList }),
 ).annotate({ identifier: "FieldGroup" }) as any as S.Schema<FieldGroup>;
 export type Section = { fieldGroup: FieldGroup };
-export const Section = /*@__PURE__*/ S.Union([S.Struct({ fieldGroup: FieldGroup })]);
+export const Section = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ fieldGroup: FieldGroup })]);
 export type SectionsList = Section[];
 export const SectionsList = /*@__PURE__*/ S.Array(Section);
 export interface LayoutSections {
@@ -679,7 +695,9 @@ export const BasicLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ topPanel: S.optional(LayoutSections), moreInfo: S.optional(LayoutSections) }),
 ).annotate({ identifier: "BasicLayout" }) as any as S.Schema<BasicLayout>;
 export type LayoutContent = { basic: BasicLayout };
-export const LayoutContent = /*@__PURE__*/ S.Union([S.Struct({ basic: BasicLayout })]);
+export const LayoutContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ basic: BasicLayout }),
+]);
 export interface CreateLayoutRequest {
   domainId: string;
   name: string;
@@ -757,7 +775,7 @@ export const SlaInputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlaInputConfiguration" }) as any as S.Schema<SlaInputConfiguration>;
 export type SlaInputContent = { slaInputConfiguration: SlaInputConfiguration };
 export const SlaInputContent = /*@__PURE__*/ S.Union([
-  S.Struct({ slaInputConfiguration: SlaInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ slaInputConfiguration: SlaInputConfiguration }),
 ]);
 export interface ConnectCaseInputContent {
   caseId: string;
@@ -821,12 +839,12 @@ export type RelatedItemInputContent =
       custom: CustomInputContent;
     };
 export const RelatedItemInputContent = /*@__PURE__*/ S.Union([
-  S.Struct({ contact: Contact }),
-  S.Struct({ comment: CommentContent }),
-  S.Struct({ file: FileContent }),
-  S.Struct({ sla: SlaInputContent }),
-  S.Struct({ connectCase: ConnectCaseInputContent }),
-  S.Struct({ custom: CustomInputContent }),
+  /*@__PURE__*/ S.Struct({ contact: Contact }),
+  /*@__PURE__*/ S.Struct({ comment: CommentContent }),
+  /*@__PURE__*/ S.Struct({ file: FileContent }),
+  /*@__PURE__*/ S.Struct({ sla: SlaInputContent }),
+  /*@__PURE__*/ S.Struct({ connectCase: ConnectCaseInputContent }),
+  /*@__PURE__*/ S.Struct({ custom: CustomInputContent }),
 ]);
 export interface CreateRelatedItemRequest {
   domainId: string;
@@ -1202,11 +1220,11 @@ export type AuditEventFieldValueUnion =
       userArnValue: string;
     };
 export const AuditEventFieldValueUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ booleanValue: S.Boolean }),
-  S.Struct({ emptyValue: EmptyFieldValue }),
-  S.Struct({ userArnValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ emptyValue: EmptyFieldValue }),
+  /*@__PURE__*/ S.Struct({ userArnValue: S.String }),
 ]);
 export interface AuditEventField {
   eventFieldId: string;
@@ -1221,7 +1239,9 @@ export const AuditEventField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditEventField" }) as any as S.Schema<AuditEventField>;
 export type AuditEventFieldList = AuditEventField[];
-export const AuditEventFieldList = /*@__PURE__*/ S.Array(AuditEventField).pipe(T.Sparse());
+export const AuditEventFieldList = /*@__PURE__*/ S.Array(AuditEventField).pipe(
+  /*@__PURE__*/ T.Sparse(),
+);
 export type IamPrincipalArn = string;
 export interface AuditEventPerformedBy {
   user?: UserUnion;
@@ -1249,7 +1269,7 @@ export const AuditEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditEvent" }) as any as S.Schema<AuditEvent>;
 export type AuditEventsList = AuditEvent[];
-export const AuditEventsList = /*@__PURE__*/ S.Array(AuditEvent).pipe(T.Sparse());
+export const AuditEventsList = /*@__PURE__*/ S.Array(AuditEvent).pipe(/*@__PURE__*/ T.Sparse());
 export interface GetCaseAuditEventsResponse {
   nextToken?: string;
   auditEvents: AuditEvent[];
@@ -1852,16 +1872,16 @@ export type FieldFilter =
       lessThanOrEqualTo: FieldValue;
     };
 export const FieldFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ equalTo: FieldValue }),
-  S.Struct({ contains: FieldValue }),
-  S.Struct({ greaterThan: FieldValue }),
-  S.Struct({ greaterThanOrEqualTo: FieldValue }),
-  S.Struct({ lessThan: FieldValue }),
-  S.Struct({ lessThanOrEqualTo: FieldValue }),
+  /*@__PURE__*/ S.Struct({ equalTo: FieldValue }),
+  /*@__PURE__*/ S.Struct({ contains: FieldValue }),
+  /*@__PURE__*/ S.Struct({ greaterThan: FieldValue }),
+  /*@__PURE__*/ S.Struct({ greaterThanOrEqualTo: FieldValue }),
+  /*@__PURE__*/ S.Struct({ lessThan: FieldValue }),
+  /*@__PURE__*/ S.Struct({ lessThanOrEqualTo: FieldValue }),
 ]);
 export type CustomFieldsFilterList = CustomFieldsFilter[];
 export const CustomFieldsFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => CustomFieldsFilter).annotate({ identifier: "CustomFieldsFilter" }),
+  /*@__PURE__*/ S.suspend(() => CustomFieldsFilter).annotate({ identifier: "CustomFieldsFilter" }),
 ) as any as S.Schema<CustomFieldsFilterList>;
 export type CustomFieldsFilter =
   | { field: FieldFilter; not?: never; andAll?: never; orAll?: never }
@@ -1869,17 +1889,19 @@ export type CustomFieldsFilter =
   | { field?: never; not?: never; andAll: CustomFieldsFilter[]; orAll?: never }
   | { field?: never; not?: never; andAll?: never; orAll: CustomFieldsFilter[] };
 export const CustomFieldsFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ field: FieldFilter }),
-  S.Struct({
-    not: S.suspend(() => CustomFieldsFilter).annotate({ identifier: "CustomFieldsFilter" }),
+  /*@__PURE__*/ S.Struct({ field: FieldFilter }),
+  /*@__PURE__*/ S.Struct({
+    not: /*@__PURE__*/ S.suspend(() => CustomFieldsFilter).annotate({
+      identifier: "CustomFieldsFilter",
+    }),
   }),
-  S.Struct({
-    andAll: S.suspend(() => CustomFieldsFilterList).annotate({
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend(() => CustomFieldsFilterList).annotate({
       identifier: "CustomFieldsFilterList",
     }),
   }),
-  S.Struct({
-    orAll: S.suspend(() => CustomFieldsFilterList).annotate({
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend(() => CustomFieldsFilterList).annotate({
       identifier: "CustomFieldsFilterList",
     }),
   }),
@@ -1940,12 +1962,12 @@ export type RelatedItemTypeFilter =
       custom: CustomFilter;
     };
 export const RelatedItemTypeFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ contact: ContactFilter }),
-  S.Struct({ comment: CommentFilter }),
-  S.Struct({ file: FileFilter }),
-  S.Struct({ sla: SlaFilter }),
-  S.Struct({ connectCase: ConnectCaseFilter }),
-  S.Struct({ custom: CustomFilter }),
+  /*@__PURE__*/ S.Struct({ contact: ContactFilter }),
+  /*@__PURE__*/ S.Struct({ comment: CommentFilter }),
+  /*@__PURE__*/ S.Struct({ file: FileFilter }),
+  /*@__PURE__*/ S.Struct({ sla: SlaFilter }),
+  /*@__PURE__*/ S.Struct({ connectCase: ConnectCaseFilter }),
+  /*@__PURE__*/ S.Struct({ custom: CustomFilter }),
 ]);
 export type RelatedItemFilterList = RelatedItemTypeFilter[];
 export const RelatedItemFilterList = /*@__PURE__*/ S.Array(RelatedItemTypeFilter);
@@ -2093,12 +2115,12 @@ export type RelatedItemContent =
       custom: CustomContent;
     };
 export const RelatedItemContent = /*@__PURE__*/ S.Union([
-  S.Struct({ contact: ContactContent }),
-  S.Struct({ comment: CommentContent }),
-  S.Struct({ file: FileContent }),
-  S.Struct({ sla: SlaContent }),
-  S.Struct({ connectCase: ConnectCaseContent }),
-  S.Struct({ custom: CustomContent }),
+  /*@__PURE__*/ S.Struct({ contact: ContactContent }),
+  /*@__PURE__*/ S.Struct({ comment: CommentContent }),
+  /*@__PURE__*/ S.Struct({ file: FileContent }),
+  /*@__PURE__*/ S.Struct({ sla: SlaContent }),
+  /*@__PURE__*/ S.Struct({ connectCase: ConnectCaseContent }),
+  /*@__PURE__*/ S.Struct({ custom: CustomContent }),
 ]);
 export interface SearchAllRelatedItemsResponseItem {
   relatedItemId: string;
@@ -2125,7 +2147,7 @@ export const SearchAllRelatedItemsResponseItem = /*@__PURE__*/ S.suspend(() =>
 export type SearchAllRelatedItemsResponseItemList = SearchAllRelatedItemsResponseItem[];
 export const SearchAllRelatedItemsResponseItemList = /*@__PURE__*/ S.Array(
   SearchAllRelatedItemsResponseItem,
-).pipe(T.Sparse());
+).pipe(/*@__PURE__*/ T.Sparse());
 export interface SearchAllRelatedItemsResponse {
   nextToken?: string;
   relatedItems: SearchAllRelatedItemsResponseItem[];
@@ -2147,10 +2169,10 @@ export const TagValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({ identifier: "TagValue" }) as any as S.Schema<TagValue>;
 export type TagFilter = { equalTo: TagValue };
-export const TagFilter = /*@__PURE__*/ S.Union([S.Struct({ equalTo: TagValue })]);
+export const TagFilter = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ equalTo: TagValue })]);
 export type CaseFilterList = CaseFilter[];
 export const CaseFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => CaseFilter).annotate({ identifier: "CaseFilter" }),
+  /*@__PURE__*/ S.suspend(() => CaseFilter).annotate({ identifier: "CaseFilter" }),
 ) as any as S.Schema<CaseFilterList>;
 export type CaseFilter =
   | { field: FieldFilter; not?: never; tag?: never; andAll?: never; orAll?: never }
@@ -2159,11 +2181,19 @@ export type CaseFilter =
   | { field?: never; not?: never; tag?: never; andAll: CaseFilter[]; orAll?: never }
   | { field?: never; not?: never; tag?: never; andAll?: never; orAll: CaseFilter[] };
 export const CaseFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ field: FieldFilter }),
-  S.Struct({ not: S.suspend(() => CaseFilter).annotate({ identifier: "CaseFilter" }) }),
-  S.Struct({ tag: TagFilter }),
-  S.Struct({ andAll: S.suspend(() => CaseFilterList).annotate({ identifier: "CaseFilterList" }) }),
-  S.Struct({ orAll: S.suspend(() => CaseFilterList).annotate({ identifier: "CaseFilterList" }) }),
+  /*@__PURE__*/ S.Struct({ field: FieldFilter }),
+  /*@__PURE__*/ S.Struct({
+    not: /*@__PURE__*/ S.suspend(() => CaseFilter).annotate({ identifier: "CaseFilter" }),
+  }),
+  /*@__PURE__*/ S.Struct({ tag: TagFilter }),
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend(() => CaseFilterList).annotate({
+      identifier: "CaseFilterList",
+    }),
+  }),
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend(() => CaseFilterList).annotate({ identifier: "CaseFilterList" }),
+  }),
 ]) as any as S.Schema<CaseFilter>;
 export interface Sort {
   fieldId: string;
@@ -2219,7 +2249,7 @@ export const SearchCasesResponseItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchCasesResponseItem" }) as any as S.Schema<SearchCasesResponseItem>;
 export type SearchCasesResponseItemList = SearchCasesResponseItem[];
 export const SearchCasesResponseItemList = /*@__PURE__*/ S.Array(SearchCasesResponseItem).pipe(
-  T.Sparse(),
+  /*@__PURE__*/ T.Sparse(),
 );
 export type TotalCount = number;
 export interface SearchCasesResponse {
@@ -2284,7 +2314,7 @@ export const SearchRelatedItemsResponseItem = /*@__PURE__*/ S.suspend(() =>
 export type SearchRelatedItemsResponseItemList = SearchRelatedItemsResponseItem[];
 export const SearchRelatedItemsResponseItemList = /*@__PURE__*/ S.Array(
   SearchRelatedItemsResponseItem,
-).pipe(T.Sparse());
+).pipe(/*@__PURE__*/ T.Sparse());
 export interface SearchRelatedItemsResponse {
   nextToken?: string;
   relatedItems: SearchRelatedItemsResponseItem[];
@@ -2453,8 +2483,8 @@ export type RelatedItemUpdateContent =
   | { comment: CommentUpdateContent; custom?: never }
   | { comment?: never; custom: CustomUpdateContent };
 export const RelatedItemUpdateContent = /*@__PURE__*/ S.Union([
-  S.Struct({ comment: CommentUpdateContent }),
-  S.Struct({ custom: CustomUpdateContent }),
+  /*@__PURE__*/ S.Struct({ comment: CommentUpdateContent }),
+  /*@__PURE__*/ S.Struct({ custom: CustomUpdateContent }),
 ]);
 export interface UpdateRelatedItemRequest {
   domainId: string;

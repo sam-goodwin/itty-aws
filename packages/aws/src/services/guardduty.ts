@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "GuardDuty", serviceShapeName: "GuardDutyAPIService" });
-const auth = T.AwsAuthSigv4({ name: "guardduty" });
-const ver = T.ServiceVersion("2017-11-28");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "GuardDuty",
+  serviceShapeName: "GuardDutyAPIService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "guardduty" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-11-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,32 +79,47 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Type: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Type: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Type: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Type: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Type: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type DetectorId = string;
 export interface AcceptAdministratorInvitationRequest {
@@ -198,7 +216,7 @@ export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateCustomDetectionRuleAssociationRequest {
   RuleId?: string;
   Mode?: AssociationMode;
@@ -615,7 +633,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 export type Criterion = { [key: string]: Condition | undefined };
-export const Criterion = /*@__PURE__*/ S.Record(S.String, Condition.pipe(S.optional));
+export const Criterion = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Condition.pipe(S.optional));
 export interface FindingCriteria {
   Criterion?: { [key: string]: Condition | undefined };
 }
@@ -2266,14 +2284,17 @@ export type ResourceType = "EKS" | "ECS" | "EC2" | (string & {});
 export const ResourceType = S.String;
 
 export type CountByResourceType = { [key in ResourceType]?: number };
-export const CountByResourceType = /*@__PURE__*/ S.Record(ResourceType, S.Number.pipe(S.optional));
+export const CountByResourceType = /*@__PURE__*/ S.Record(
+  ResourceType,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type CoverageStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoverageStatus = S.String;
 
 export type CountByCoverageStatus = { [key in CoverageStatus]?: number };
 export const CountByCoverageStatus = /*@__PURE__*/ S.Record(
   CoverageStatus,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface CoverageStatistics {
   CountByResourceType?: { [key: string]: number | undefined };
@@ -3877,7 +3898,10 @@ export const RemoteAccountDetails = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoteAccountDetails" }) as any as S.Schema<RemoteAccountDetails>;
 export type AffectedResources = { [key: string]: string | undefined };
-export const AffectedResources = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AffectedResources = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AwsApiCallAction {
   Api?: string;
   CallerType?: string;
@@ -4639,24 +4663,24 @@ export const AnomalyProfileFeatureObjects = /*@__PURE__*/ S.Array(AnomalyObject)
 export type AnomalyProfileFeatures = { [key: string]: AnomalyObject[] | undefined };
 export const AnomalyProfileFeatures = /*@__PURE__*/ S.Record(
   S.String,
-  AnomalyProfileFeatureObjects.pipe(S.optional),
+  /*@__PURE__*/ AnomalyProfileFeatureObjects.pipe(S.optional),
 );
 export type AnomalyProfiles = {
   [key: string]: { [key: string]: AnomalyObject[] | undefined } | undefined;
 };
 export const AnomalyProfiles = /*@__PURE__*/ S.Record(
   S.String,
-  AnomalyProfileFeatures.pipe(S.optional),
+  /*@__PURE__*/ AnomalyProfileFeatures.pipe(S.optional),
 );
 export type AnomalyUnusualBehaviorFeature = { [key: string]: AnomalyObject | undefined };
 export const AnomalyUnusualBehaviorFeature = /*@__PURE__*/ S.Record(
   S.String,
-  AnomalyObject.pipe(S.optional),
+  /*@__PURE__*/ AnomalyObject.pipe(S.optional),
 );
 export type Behavior = { [key: string]: { [key: string]: AnomalyObject | undefined } | undefined };
 export const Behavior = /*@__PURE__*/ S.Record(
   S.String,
-  AnomalyUnusualBehaviorFeature.pipe(S.optional),
+  /*@__PURE__*/ AnomalyUnusualBehaviorFeature.pipe(S.optional),
 );
 export interface AnomalyUnusual {
   Behavior?: { [key: string]: { [key: string]: AnomalyObject | undefined } | undefined };
@@ -5878,7 +5902,10 @@ export const GetFindingsStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFindingsStatisticsRequest",
 }) as any as S.Schema<GetFindingsStatisticsRequest>;
 export type CountBySeverity = { [key: string]: number | undefined };
-export const CountBySeverity = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const CountBySeverity = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface AccountStatistics {
   AccountId?: string;
   LastGeneratedAt?: Date;
@@ -6601,7 +6628,7 @@ export const ScanCondition = /*@__PURE__*/ S.suspend(() =>
 export type ScanCriterion = { [key in ScanCriterionKey]?: ScanCondition };
 export const ScanCriterion = /*@__PURE__*/ S.Record(
   ScanCriterionKey,
-  ScanCondition.pipe(S.optional),
+  /*@__PURE__*/ ScanCondition.pipe(S.optional),
 );
 export interface ScanResourceCriteria {
   Include?: { [key: string]: ScanCondition | undefined };

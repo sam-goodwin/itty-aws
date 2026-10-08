@@ -219,7 +219,7 @@ export const DiagnosticInsightsList = /*@__PURE__*/ S.Array(
 /** An array of additional nested error response info objects, as described by this contract. */
 export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Error),
+  /*@__PURE__*/ S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
 
 /** Error definition. */

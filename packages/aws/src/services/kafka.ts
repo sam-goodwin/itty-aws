@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Kafka", serviceShapeName: "Kafka" });
-const auth = T.AwsAuthSigv4({ name: "kafka" });
-const ver = T.ServiceVersion("2018-11-14");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Kafka", serviceShapeName: "Kafka" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "kafka" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-14");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -131,154 +131,154 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClusterConnectivityException
   extends /*@__PURE__*/ S.TaggedError<ClusterConnectivityException>()(
     "ClusterConnectivityException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ControllerMovedException
   extends /*@__PURE__*/ S.TaggedError<ControllerMovedException>()(
     "ControllerMovedException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GroupSubscribedToTopicException
   extends /*@__PURE__*/ S.TaggedError<GroupSubscribedToTopicException>()(
     "GroupSubscribedToTopicException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class KafkaRequestException
   extends /*@__PURE__*/ S.TaggedError<KafkaRequestException>()(
     "KafkaRequestException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KafkaTimeoutException
   extends /*@__PURE__*/ S.TaggedError<KafkaTimeoutException>()(
     "KafkaTimeoutException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotControllerException
   extends /*@__PURE__*/ S.TaggedError<NotControllerException>()(
     "NotControllerException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ReassignmentInProgressException
   extends /*@__PURE__*/ S.TaggedError<ReassignmentInProgressException>()(
     "ReassignmentInProgressException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(503),
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TopicExistsException
   extends /*@__PURE__*/ S.TaggedError<TopicExistsException>()(
     "TopicExistsException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(401),
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnknownTopicOrPartitionException
   extends /*@__PURE__*/ S.TaggedError<UnknownTopicOrPartitionException>()(
     "UnknownTopicOrPartitionException",
     {
-      InvalidParameter: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      InvalidParameter: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
@@ -560,7 +560,10 @@ export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3DestinationConfiguration",
 }) as any as S.Schema<S3DestinationConfiguration>;
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ValueConverter = "BYTE_ARRAY" | "JSON" | "JSON_SCHEMA_GSR" | "STRING" | (string & {});
 export const ValueConverter = S.String;
 

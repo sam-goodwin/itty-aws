@@ -10,14 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock Agent Runtime",
   serviceShapeName: "AmazonBedrockAgentRunTimeService",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock" });
-const ver = T.ServiceVersion("2023-07-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-07-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,62 +81,71 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadGatewayException
   extends /*@__PURE__*/ S.TaggedError<BadGatewayException>()(
     "BadGatewayException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(502),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailedException
   extends /*@__PURE__*/ S.TaggedError<DependencyFailedException>()(
     "DependencyFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(424),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), reason: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ModelNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ModelNotReadyException>()(
     "ModelNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AgenticRetrieveMessageContent {
   text?: string;
@@ -170,7 +179,7 @@ export const FilterAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterAttribute" }) as any as S.Schema<FilterAttribute>;
 export type RetrievalFilterList = RetrievalFilter[];
 export const RetrievalFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
+  /*@__PURE__*/ S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
 ) as any as S.Schema<RetrievalFilterList>;
 export type RetrievalFilter =
   | {
@@ -369,22 +378,26 @@ export type RetrievalFilter =
       orAll: RetrievalFilter[];
     };
 export const RetrievalFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ equals: FilterAttribute }),
-  S.Struct({ notEquals: FilterAttribute }),
-  S.Struct({ greaterThan: FilterAttribute }),
-  S.Struct({ greaterThanOrEquals: FilterAttribute }),
-  S.Struct({ lessThan: FilterAttribute }),
-  S.Struct({ lessThanOrEquals: FilterAttribute }),
-  S.Struct({ in: FilterAttribute }),
-  S.Struct({ notIn: FilterAttribute }),
-  S.Struct({ startsWith: FilterAttribute }),
-  S.Struct({ listContains: FilterAttribute }),
-  S.Struct({ stringContains: FilterAttribute }),
-  S.Struct({
-    andAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({ equals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ in: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notIn: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ startsWith: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ listContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ stringContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
-  S.Struct({
-    orAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
 ]) as any as S.Schema<RetrievalFilter>;
 export interface RetrievalOverrides {
@@ -405,7 +418,7 @@ export const KnowledgeBaseRetrieverConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeBaseRetrieverConfiguration>;
 export type RetrieverConfiguration = { knowledgeBase: KnowledgeBaseRetrieverConfiguration };
 export const RetrieverConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBase: KnowledgeBaseRetrieverConfiguration }),
+  /*@__PURE__*/ S.Struct({ knowledgeBase: KnowledgeBaseRetrieverConfiguration }),
 ]);
 export interface AgenticRetriever {
   description?: string;
@@ -569,7 +582,7 @@ export type MemoryStrategyId = string;
 export type AgenticRetrieveMemoryMetadataKey = string;
 export type AgenticRetrieveMemoryMetadataFilterLeft = { metadataKey: string };
 export const AgenticRetrieveMemoryMetadataFilterLeft = /*@__PURE__*/ S.Union([
-  S.Struct({ metadataKey: S.String }),
+  /*@__PURE__*/ S.Struct({ metadataKey: S.String }),
 ]);
 export type AgenticRetrieveMemoryMetadataFilterOperator =
   | "EQUALS_TO"
@@ -595,16 +608,18 @@ export type AgenticRetrieveMemoryMetadataValue =
   | { stringValue?: never; numberValue?: never; stringListValue: string[]; dateTimeValue?: never }
   | { stringValue?: never; numberValue?: never; stringListValue?: never; dateTimeValue: Date };
 export const AgenticRetrieveMemoryMetadataValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ numberValue: S.Number }),
-  S.Struct({ stringListValue: AgenticRetrieveMemoryMetadataStringList }),
-  S.Struct({ dateTimeValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ numberValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ stringListValue: AgenticRetrieveMemoryMetadataStringList }),
+  /*@__PURE__*/ S.Struct({
+    dateTimeValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
 ]);
 export type AgenticRetrieveMemoryMetadataFilterRight = {
   metadataValue: AgenticRetrieveMemoryMetadataValue;
 };
 export const AgenticRetrieveMemoryMetadataFilterRight = /*@__PURE__*/ S.Union([
-  S.Struct({ metadataValue: AgenticRetrieveMemoryMetadataValue }),
+  /*@__PURE__*/ S.Struct({ metadataValue: AgenticRetrieveMemoryMetadataValue }),
 ]);
 export interface AgenticRetrieveMemoryMetadataFilter {
   left: AgenticRetrieveMemoryMetadataFilterLeft;
@@ -699,7 +714,10 @@ export const RetrievalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ byteContent: S.optional(T.Blob), text: S.optional(S.String), mimeType: S.String }),
 ).annotate({ identifier: "RetrievalContent" }) as any as S.Schema<RetrievalContent>;
 export type AgenticRetrieveMetadata = { [key: string]: any | undefined };
-export const AgenticRetrieveMetadata = /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export const AgenticRetrieveMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Any.pipe(S.optional),
+);
 export interface AgenticRetrieveSourceRetriever {
   identifier: string;
 }
@@ -876,8 +894,8 @@ export type AgenticRetrieveWarning =
   | { message: AgenticRetrieveWarningMessage; guardrail?: never }
   | { message?: never; guardrail: AgenticRetrieveGuardrailWarning };
 export const AgenticRetrieveWarning = /*@__PURE__*/ S.Union([
-  S.Struct({ message: AgenticRetrieveWarningMessage }),
-  S.Struct({ guardrail: AgenticRetrieveGuardrailWarning }),
+  /*@__PURE__*/ S.Struct({ message: AgenticRetrieveWarningMessage }),
+  /*@__PURE__*/ S.Struct({ guardrail: AgenticRetrieveGuardrailWarning }),
 ]);
 export type AgenticRetrieveWarnings = AgenticRetrieveWarning[];
 export const AgenticRetrieveWarnings = /*@__PURE__*/ S.Array(AgenticRetrieveWarning);
@@ -1134,52 +1152,54 @@ export type AgenticRetrieveStreamResponseOutput =
       badGatewayException: BadGatewayException;
     };
 export const AgenticRetrieveStreamResponseOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ result: AgenticRetrieveResultEvent }),
-    S.Struct({ traceEvent: AgenticRetrieveTraceEvent }),
-    S.Struct({ responseEvent: AgenticRetrieveResponseEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ result: AgenticRetrieveResultEvent }),
+    /*@__PURE__*/ S.Struct({ traceEvent: AgenticRetrieveTraceEvent }),
+    /*@__PURE__*/ S.Struct({ responseEvent: AgenticRetrieveResponseEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),
@@ -1271,12 +1291,15 @@ export const CreateInvocationResponse = /*@__PURE__*/ S.suspend(() =>
 export type SessionMetadataKey = string;
 export type SessionMetadataValue = string;
 export type SessionMetadataMap = { [key: string]: string | undefined };
-export const SessionMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SessionMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateSessionRequest {
   sessionMetadata?: { [key: string]: string | undefined };
   encryptionKeyArn?: string;
@@ -1504,7 +1527,9 @@ export const MemorySessionSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemorySessionSummary" }) as any as S.Schema<MemorySessionSummary>;
 export type Memory = { sessionSummary: MemorySessionSummary };
-export const Memory = /*@__PURE__*/ S.Union([S.Struct({ sessionSummary: MemorySessionSummary })]);
+export const Memory = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ sessionSummary: MemorySessionSummary }),
+]);
 export type Memories = Memory[];
 export const Memories = /*@__PURE__*/ S.Array(Memory);
 export interface GetAgentMemoryResponse {
@@ -1817,8 +1842,8 @@ export type ImageSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
 export const ImageSource = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ s3Location: S3Location }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
 ]);
 export interface ImageBlock {
   format: ImageFormat;
@@ -1831,14 +1856,14 @@ export type BedrockSessionContentBlock =
   | { text: string; image?: never }
   | { text?: never; image: ImageBlock };
 export const BedrockSessionContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ image: ImageBlock }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ image: ImageBlock }),
 ]);
 export type BedrockSessionContentBlocks = BedrockSessionContentBlock[];
 export const BedrockSessionContentBlocks = /*@__PURE__*/ S.Array(BedrockSessionContentBlock);
 export type InvocationStepPayload = { contentBlocks: BedrockSessionContentBlock[] };
 export const InvocationStepPayload = /*@__PURE__*/ S.Union([
-  S.Struct({ contentBlocks: BedrockSessionContentBlocks }),
+  /*@__PURE__*/ S.Struct({ contentBlocks: BedrockSessionContentBlocks }),
 ]);
 export interface InvocationStep {
   sessionId: string;
@@ -1900,11 +1925,14 @@ export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetSessionResponse" }) as any as S.Schema<GetSessionResponse>;
 export type SessionAttributesMap = { [key: string]: string | undefined };
-export const SessionAttributesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SessionAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type PromptSessionAttributesMap = { [key: string]: string | undefined };
 export const PromptSessionAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ApiPath = string | redacted.Redacted<string>;
 export type ConfirmationState = "CONFIRM" | "DENY" | (string & {});
@@ -1917,7 +1945,7 @@ export type ImageInputFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
 export const ImageInputFormat = S.String;
 
 export type ImageInputSource = { bytes: Uint8Array };
-export const ImageInputSource = /*@__PURE__*/ S.Union([S.Struct({ bytes: T.Blob })]);
+export const ImageInputSource = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ bytes: T.Blob })]);
 export interface ImageInput {
   format: ImageInputFormat;
   source: ImageInputSource;
@@ -1935,7 +1963,10 @@ export const ContentBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ body: S.optional(S.String), images: S.optional(ImageInputs) }),
 ).annotate({ identifier: "ContentBody" }) as any as S.Schema<ContentBody>;
 export type ResponseBody = { [key: string]: ContentBody | undefined };
-export const ResponseBody = /*@__PURE__*/ S.Record(S.String, ContentBody.pipe(S.optional));
+export const ResponseBody = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ContentBody.pipe(S.optional),
+);
 export interface ApiResult {
   actionGroup: string;
   httpMethod?: string;
@@ -1980,8 +2011,8 @@ export type InvocationResultMember =
   | { apiResult: ApiResult; functionResult?: never }
   | { apiResult?: never; functionResult: FunctionResult };
 export const InvocationResultMember = /*@__PURE__*/ S.Union([
-  S.Struct({ apiResult: ApiResult }),
-  S.Struct({ functionResult: FunctionResult }),
+  /*@__PURE__*/ S.Struct({ apiResult: ApiResult }),
+  /*@__PURE__*/ S.Struct({ functionResult: FunctionResult }),
 ]);
 export type ReturnControlInvocationResults = InvocationResultMember[];
 export const ReturnControlInvocationResults = /*@__PURE__*/ S.Array(InvocationResultMember);
@@ -2039,7 +2070,7 @@ export type AdditionalModelRequestFieldsValue = unknown;
 export type AdditionalModelRequestFields = { [key: string]: any | undefined };
 export const AdditionalModelRequestFields = /*@__PURE__*/ S.Record(
   S.String,
-  S.Any.pipe(S.optional),
+  /*@__PURE__*/ S.Any.pipe(S.optional),
 );
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
@@ -2068,8 +2099,8 @@ export type RerankingMetadataSelectiveModeConfiguration =
   | { fieldsToInclude: FieldForReranking[]; fieldsToExclude?: never }
   | { fieldsToInclude?: never; fieldsToExclude: FieldForReranking[] };
 export const RerankingMetadataSelectiveModeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ fieldsToInclude: FieldsForReranking }),
-  S.Struct({ fieldsToExclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToInclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToExclude: FieldsForReranking }),
 ]);
 export interface MetadataConfigurationForReranking {
   selectionMode: RerankingMetadataSelectionMode;
@@ -2236,7 +2267,7 @@ export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type KnowledgeBaseConfigurations = KnowledgeBaseConfiguration[];
 export const KnowledgeBaseConfigurations = /*@__PURE__*/ S.Array(KnowledgeBaseConfiguration);
 export type ContentBlock = { text: string };
-export const ContentBlock = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const ContentBlock = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
 export interface Message {
@@ -2570,7 +2601,10 @@ export const RetrievalResultLocation = /*@__PURE__*/ S.suspend(() =>
 export type RetrievalResultMetadataKey = string;
 export type RetrievalResultMetadataValue = unknown;
 export type RetrievalResultMetadata = { [key: string]: any | undefined };
-export const RetrievalResultMetadata = /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export const RetrievalResultMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Any.pipe(S.optional),
+);
 export interface RetrievedReference {
   content?: RetrievalResultContent;
   location?: RetrievalResultLocation;
@@ -2941,8 +2975,8 @@ export type ReasoningContentBlock =
   | { reasoningText: ReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
 export const ReasoningContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ reasoningText: ReasoningTextBlock }),
-  S.Struct({ redactedContent: T.Blob }),
+  /*@__PURE__*/ S.Struct({ reasoningText: ReasoningTextBlock }),
+  /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
 ]);
 export interface PreProcessingModelInvocationOutput {
   traceId?: string;
@@ -2966,8 +3000,8 @@ export type PreProcessingTrace =
   | { modelInvocationInput: ModelInvocationInput; modelInvocationOutput?: never }
   | { modelInvocationInput?: never; modelInvocationOutput: PreProcessingModelInvocationOutput };
 export const PreProcessingTrace = /*@__PURE__*/ S.Union([
-  S.Struct({ modelInvocationInput: ModelInvocationInput }),
-  S.Struct({ modelInvocationOutput: PreProcessingModelInvocationOutput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationInput: ModelInvocationInput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationOutput: PreProcessingModelInvocationOutput }),
 ]);
 export interface Rationale {
   traceId?: string;
@@ -2998,7 +3032,10 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 export type Parameters = Parameter[];
 export const Parameters = /*@__PURE__*/ S.Array(Parameter);
 export type ContentMap = { [key: string]: Parameter[] | undefined };
-export const ContentMap = /*@__PURE__*/ S.Record(S.String, Parameters.pipe(S.optional));
+export const ContentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Parameters.pipe(S.optional),
+);
 export interface RequestBody {
   content?: { [key: string]: Parameter[] | undefined };
 }
@@ -3152,7 +3189,10 @@ export const PropertyParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ properties: S.optional(ParameterList) }),
 ).annotate({ identifier: "PropertyParameters" }) as any as S.Schema<PropertyParameters>;
 export type ApiContentMap = { [key: string]: PropertyParameters | undefined };
-export const ApiContentMap = /*@__PURE__*/ S.Record(S.String, PropertyParameters.pipe(S.optional));
+export const ApiContentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ PropertyParameters.pipe(S.optional),
+);
 export interface ApiRequestBody {
   content?: { [key: string]: PropertyParameters | undefined };
 }
@@ -3221,8 +3261,8 @@ export type InvocationInputMember =
   | { apiInvocationInput: ApiInvocationInput; functionInvocationInput?: never }
   | { apiInvocationInput?: never; functionInvocationInput: FunctionInvocationInput };
 export const InvocationInputMember = /*@__PURE__*/ S.Union([
-  S.Struct({ apiInvocationInput: ApiInvocationInput }),
-  S.Struct({ functionInvocationInput: FunctionInvocationInput }),
+  /*@__PURE__*/ S.Struct({ apiInvocationInput: ApiInvocationInput }),
+  /*@__PURE__*/ S.Struct({ functionInvocationInput: FunctionInvocationInput }),
 ]);
 export type InvocationInputs = InvocationInputMember[];
 export const InvocationInputs = /*@__PURE__*/ S.Array(InvocationInputMember);
@@ -3386,11 +3426,11 @@ export type OrchestrationTrace =
       modelInvocationOutput: OrchestrationModelInvocationOutput;
     };
 export const OrchestrationTrace = /*@__PURE__*/ S.Union([
-  S.Struct({ rationale: Rationale }),
-  S.Struct({ invocationInput: InvocationInput }),
-  S.Struct({ observation: Observation }),
-  S.Struct({ modelInvocationInput: ModelInvocationInput }),
-  S.Struct({ modelInvocationOutput: OrchestrationModelInvocationOutput }),
+  /*@__PURE__*/ S.Struct({ rationale: Rationale }),
+  /*@__PURE__*/ S.Struct({ invocationInput: InvocationInput }),
+  /*@__PURE__*/ S.Struct({ observation: Observation }),
+  /*@__PURE__*/ S.Struct({ modelInvocationInput: ModelInvocationInput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationOutput: OrchestrationModelInvocationOutput }),
 ]);
 export type OutputString = string | redacted.Redacted<string>;
 export interface PostProcessingParsedResponse {
@@ -3423,8 +3463,8 @@ export type PostProcessingTrace =
   | { modelInvocationInput: ModelInvocationInput; modelInvocationOutput?: never }
   | { modelInvocationInput?: never; modelInvocationOutput: PostProcessingModelInvocationOutput };
 export const PostProcessingTrace = /*@__PURE__*/ S.Union([
-  S.Struct({ modelInvocationInput: ModelInvocationInput }),
-  S.Struct({ modelInvocationOutput: PostProcessingModelInvocationOutput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationInput: ModelInvocationInput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationOutput: PostProcessingModelInvocationOutput }),
 ]);
 export interface RoutingClassifierModelInvocationOutput {
   traceId?: string;
@@ -3466,10 +3506,10 @@ export type RoutingClassifierTrace =
       modelInvocationOutput: RoutingClassifierModelInvocationOutput;
     };
 export const RoutingClassifierTrace = /*@__PURE__*/ S.Union([
-  S.Struct({ invocationInput: InvocationInput }),
-  S.Struct({ observation: Observation }),
-  S.Struct({ modelInvocationInput: ModelInvocationInput }),
-  S.Struct({ modelInvocationOutput: RoutingClassifierModelInvocationOutput }),
+  /*@__PURE__*/ S.Struct({ invocationInput: InvocationInput }),
+  /*@__PURE__*/ S.Struct({ observation: Observation }),
+  /*@__PURE__*/ S.Struct({ modelInvocationInput: ModelInvocationInput }),
+  /*@__PURE__*/ S.Struct({ modelInvocationOutput: RoutingClassifierModelInvocationOutput }),
 ]);
 export type FailureReasonString = string | redacted.Redacted<string>;
 export interface FailureTrace {
@@ -3566,16 +3606,16 @@ export type Trace =
       customOrchestrationTrace: CustomOrchestrationTrace;
     };
 export const Trace = /*@__PURE__*/ S.Union([
-  S.Struct({ guardrailTrace: GuardrailTrace }),
-  S.Struct({ preProcessingTrace: PreProcessingTrace }),
-  S.Struct({ orchestrationTrace: OrchestrationTrace }),
-  S.Struct({ postProcessingTrace: PostProcessingTrace }),
-  S.Struct({ routingClassifierTrace: RoutingClassifierTrace }),
-  S.Struct({ failureTrace: FailureTrace }),
-  S.Struct({ customOrchestrationTrace: CustomOrchestrationTrace }),
+  /*@__PURE__*/ S.Struct({ guardrailTrace: GuardrailTrace }),
+  /*@__PURE__*/ S.Struct({ preProcessingTrace: PreProcessingTrace }),
+  /*@__PURE__*/ S.Struct({ orchestrationTrace: OrchestrationTrace }),
+  /*@__PURE__*/ S.Struct({ postProcessingTrace: PostProcessingTrace }),
+  /*@__PURE__*/ S.Struct({ routingClassifierTrace: RoutingClassifierTrace }),
+  /*@__PURE__*/ S.Struct({ failureTrace: FailureTrace }),
+  /*@__PURE__*/ S.Struct({ customOrchestrationTrace: CustomOrchestrationTrace }),
 ]);
 export type Caller = { agentAliasArn: string };
-export const Caller = /*@__PURE__*/ S.Union([S.Struct({ agentAliasArn: S.String })]);
+export const Caller = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ agentAliasArn: S.String })]);
 export type CallerChain = Caller[];
 export const CallerChain = /*@__PURE__*/ S.Array(Caller);
 export type AgentVersion = string;
@@ -3848,61 +3888,63 @@ export type ResponseStream =
       files: FilePart;
     };
 export const ResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ chunk: PayloadPart }),
-    S.Struct({ trace: TracePart }),
-    S.Struct({ returnControl: ReturnControlPayload }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ chunk: PayloadPart }),
+    /*@__PURE__*/ S.Struct({ trace: TracePart }),
+    /*@__PURE__*/ S.Struct({ returnControl: ReturnControlPayload }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),
-    S.Struct({
-      modelNotReadyException: S.suspend(() => ModelNotReadyException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelNotReadyException: /*@__PURE__*/ S.suspend(() => ModelNotReadyException).annotate({
         identifier: "ModelNotReadyException",
       }),
     }),
-    S.Struct({ files: FilePart }),
+    /*@__PURE__*/ S.Struct({ files: FilePart }),
   ]),
 ) as any as S.Schema<stream.Stream<ResponseStream, Error, never>>;
 export interface InvokeAgentResponse {
@@ -3921,7 +3963,9 @@ export const InvokeAgentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvokeAgentResponse" }) as any as S.Schema<InvokeAgentResponse>;
 export type NodeOutputName = string;
 export type FlowInputContent = { document: any };
-export const FlowInputContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowInputContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export type NodeInputName = string;
 export interface FlowInput {
   nodeName: string;
@@ -3987,7 +4031,9 @@ export type NodeType =
 export const NodeType = S.String;
 
 export type FlowOutputContent = { document: any };
-export const FlowOutputContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowOutputContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export interface FlowOutputEvent {
   nodeName: string;
   nodeType: NodeType;
@@ -4006,7 +4052,9 @@ export const FlowCompletionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ completionReason: FlowCompletionReason }),
 ).annotate({ identifier: "FlowCompletionEvent" }) as any as S.Schema<FlowCompletionEvent>;
 export type FlowTraceNodeInputContent = { document: any };
-export const FlowTraceNodeInputContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowTraceNodeInputContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export type FlowNodeOutputName = string;
 export type FlowNodeInputExpression = string | redacted.Redacted<string>;
 export interface FlowTraceNodeInputSource {
@@ -4083,7 +4131,9 @@ export const FlowTraceNodeInputEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlowTraceNodeInputEvent" }) as any as S.Schema<FlowTraceNodeInputEvent>;
 export type FlowTraceNodeOutputContent = { document: any };
-export const FlowTraceNodeOutputContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowTraceNodeOutputContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export type FlowNodeInputName = string;
 export interface FlowTraceNodeOutputNext {
   nodeName: string;
@@ -4167,7 +4217,9 @@ export const FlowTraceNodeActionEvent = /*@__PURE__*/ S.suspend(() =>
 export type AgentTraces = TracePart[];
 export const AgentTraces = /*@__PURE__*/ S.Array(TracePart);
 export type TraceElements = { agentTraces: TracePart[] };
-export const TraceElements = /*@__PURE__*/ S.Union([S.Struct({ agentTraces: AgentTraces })]);
+export const TraceElements = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ agentTraces: AgentTraces }),
+]);
 export interface FlowTraceDependencyEvent {
   nodeName: string;
   timestamp: Date;
@@ -4217,11 +4269,11 @@ export type FlowTrace =
       nodeDependencyTrace: FlowTraceDependencyEvent;
     };
 export const FlowTrace = /*@__PURE__*/ S.Union([
-  S.Struct({ nodeInputTrace: FlowTraceNodeInputEvent }),
-  S.Struct({ nodeOutputTrace: FlowTraceNodeOutputEvent }),
-  S.Struct({ conditionNodeResultTrace: FlowTraceConditionNodeResultEvent }),
-  S.Struct({ nodeActionTrace: FlowTraceNodeActionEvent }),
-  S.Struct({ nodeDependencyTrace: FlowTraceDependencyEvent }),
+  /*@__PURE__*/ S.Struct({ nodeInputTrace: FlowTraceNodeInputEvent }),
+  /*@__PURE__*/ S.Struct({ nodeOutputTrace: FlowTraceNodeOutputEvent }),
+  /*@__PURE__*/ S.Struct({ conditionNodeResultTrace: FlowTraceConditionNodeResultEvent }),
+  /*@__PURE__*/ S.Struct({ nodeActionTrace: FlowTraceNodeActionEvent }),
+  /*@__PURE__*/ S.Struct({ nodeDependencyTrace: FlowTraceDependencyEvent }),
 ]);
 export interface FlowTraceEvent {
   trace: FlowTrace;
@@ -4230,7 +4282,9 @@ export const FlowTraceEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trace: FlowTrace }),
 ).annotate({ identifier: "FlowTraceEvent" }) as any as S.Schema<FlowTraceEvent>;
 export type FlowMultiTurnInputContent = { document: any };
-export const FlowMultiTurnInputContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowMultiTurnInputContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export interface FlowMultiTurnInputRequestEvent {
   nodeName: string;
   nodeType: NodeType;
@@ -4438,56 +4492,58 @@ export type FlowResponseStream =
       flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent;
     };
 export const FlowResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ flowOutputEvent: FlowOutputEvent }),
-    S.Struct({ flowCompletionEvent: FlowCompletionEvent }),
-    S.Struct({ flowTraceEvent: FlowTraceEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ flowOutputEvent: FlowOutputEvent }),
+    /*@__PURE__*/ S.Struct({ flowCompletionEvent: FlowCompletionEvent }),
+    /*@__PURE__*/ S.Struct({ flowTraceEvent: FlowTraceEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),
-    S.Struct({ flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent }),
+    /*@__PURE__*/ S.Struct({ flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<FlowResponseStream, Error, never>>;
 export interface InvokeFlowResponse {
@@ -4521,8 +4577,8 @@ export type ActionGroupExecutor =
   | { lambda: string; customControl?: never }
   | { lambda?: never; customControl: CustomControlMethod };
 export const ActionGroupExecutor = /*@__PURE__*/ S.Union([
-  S.Struct({ lambda: S.String }),
-  S.Struct({ customControl: CustomControlMethod }),
+  /*@__PURE__*/ S.Struct({ lambda: S.String }),
+  /*@__PURE__*/ S.Struct({ customControl: CustomControlMethod }),
 ]);
 export type S3BucketName = string;
 export type S3ObjectKey = string;
@@ -4538,8 +4594,8 @@ export type APISchema =
   | { s3: S3Identifier; payload?: never }
   | { s3?: never; payload: string | redacted.Redacted<string> };
 export const APISchema = /*@__PURE__*/ S.Union([
-  S.Struct({ s3: S3Identifier }),
-  S.Struct({ payload: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ s3: S3Identifier }),
+  /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
 ]);
 export type FunctionDescription = string;
 export type ParameterName = string;
@@ -4560,7 +4616,10 @@ export const ParameterDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ParameterDetail" }) as any as S.Schema<ParameterDetail>;
 export type ParameterMap = { [key: string]: ParameterDetail | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, ParameterDetail.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ParameterDetail.pipe(S.optional),
+);
 export type RequireConfirmation = "ENABLED" | "DISABLED" | (string & {});
 export const RequireConfirmation = S.String;
 
@@ -4581,11 +4640,13 @@ export const FunctionDefinition = /*@__PURE__*/ S.suspend(() =>
 export type Functions = FunctionDefinition[];
 export const Functions = /*@__PURE__*/ S.Array(FunctionDefinition);
 export type FunctionSchema = { functions: FunctionDefinition[] };
-export const FunctionSchema = /*@__PURE__*/ S.Union([S.Struct({ functions: Functions })]);
+export const FunctionSchema = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ functions: Functions }),
+]);
 export type ActionGroupSignatureParams = { [key: string]: string | undefined };
 export const ActionGroupSignatureParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface AgentActionGroup {
   actionGroupName: string | redacted.Redacted<string>;
@@ -4756,7 +4817,9 @@ export type OrchestrationType = "DEFAULT" | "CUSTOM_ORCHESTRATION" | (string & {
 export const OrchestrationType = S.String;
 
 export type OrchestrationExecutor = { lambda: string };
-export const OrchestrationExecutor = /*@__PURE__*/ S.Union([S.Struct({ lambda: S.String })]);
+export const OrchestrationExecutor = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ lambda: S.String }),
+]);
 export interface CustomOrchestration {
   executor?: OrchestrationExecutor;
 }
@@ -5050,56 +5113,58 @@ export type InlineAgentResponseStream =
       files: InlineAgentFilePart;
     };
 export const InlineAgentResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ chunk: InlineAgentPayloadPart }),
-    S.Struct({ trace: InlineAgentTracePart }),
-    S.Struct({ returnControl: InlineAgentReturnControlPayload }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ chunk: InlineAgentPayloadPart }),
+    /*@__PURE__*/ S.Struct({ trace: InlineAgentTracePart }),
+    /*@__PURE__*/ S.Struct({ returnControl: InlineAgentReturnControlPayload }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),
-    S.Struct({ files: InlineAgentFilePart }),
+    /*@__PURE__*/ S.Struct({ files: InlineAgentFilePart }),
   ]),
 ) as any as S.Schema<stream.Stream<InlineAgentResponseStream, Error, never>>;
 export interface InvokeInlineAgentResponse {
@@ -5152,7 +5217,9 @@ export const ListFlowExecutionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFlowExecutionEventsRequest",
 }) as any as S.Schema<ListFlowExecutionEventsRequest>;
 export type FlowExecutionContent = { document: any };
-export const FlowExecutionContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const FlowExecutionContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export interface FlowInputField {
   name: string;
   content: FlowExecutionContent;
@@ -5196,7 +5263,9 @@ export const FlowExecutionOutputEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlowExecutionOutputEvent" }) as any as S.Schema<FlowExecutionOutputEvent>;
 export type NodeExecutionContent = { document: any };
-export const NodeExecutionContent = /*@__PURE__*/ S.Union([S.Struct({ document: S.Any })]);
+export const NodeExecutionContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ document: S.Any }),
+]);
 export interface NodeInputSource {
   nodeName: string;
   outputFieldName: string;
@@ -5368,7 +5437,9 @@ export const NodeActionEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeActionEvent" }) as any as S.Schema<NodeActionEvent>;
 export type NodeTraceElements = { agentTraces: TracePart[] };
-export const NodeTraceElements = /*@__PURE__*/ S.Union([S.Struct({ agentTraces: AgentTraces })]);
+export const NodeTraceElements = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ agentTraces: AgentTraces }),
+]);
 export interface NodeDependencyEvent {
   nodeName: string;
   timestamp: Date;
@@ -5482,15 +5553,15 @@ export type FlowExecutionEvent =
       nodeDependencyEvent: NodeDependencyEvent;
     };
 export const FlowExecutionEvent = /*@__PURE__*/ S.Union([
-  S.Struct({ flowInputEvent: FlowExecutionInputEvent }),
-  S.Struct({ flowOutputEvent: FlowExecutionOutputEvent }),
-  S.Struct({ nodeInputEvent: NodeInputEvent }),
-  S.Struct({ nodeOutputEvent: NodeOutputEvent }),
-  S.Struct({ conditionResultEvent: ConditionResultEvent }),
-  S.Struct({ nodeFailureEvent: NodeFailureEvent }),
-  S.Struct({ flowFailureEvent: FlowFailureEvent }),
-  S.Struct({ nodeActionEvent: NodeActionEvent }),
-  S.Struct({ nodeDependencyEvent: NodeDependencyEvent }),
+  /*@__PURE__*/ S.Struct({ flowInputEvent: FlowExecutionInputEvent }),
+  /*@__PURE__*/ S.Struct({ flowOutputEvent: FlowExecutionOutputEvent }),
+  /*@__PURE__*/ S.Struct({ nodeInputEvent: NodeInputEvent }),
+  /*@__PURE__*/ S.Struct({ nodeOutputEvent: NodeOutputEvent }),
+  /*@__PURE__*/ S.Struct({ conditionResultEvent: ConditionResultEvent }),
+  /*@__PURE__*/ S.Struct({ nodeFailureEvent: NodeFailureEvent }),
+  /*@__PURE__*/ S.Struct({ flowFailureEvent: FlowFailureEvent }),
+  /*@__PURE__*/ S.Struct({ nodeActionEvent: NodeActionEvent }),
+  /*@__PURE__*/ S.Struct({ nodeDependencyEvent: NodeDependencyEvent }),
 ]);
 export type FlowExecutionEvents = FlowExecutionEvent[];
 export const FlowExecutionEvents = /*@__PURE__*/ S.Array(FlowExecutionEvent);
@@ -5712,7 +5783,9 @@ export const TextPrompt = /*@__PURE__*/ S.suspend(() => S.Struct({ text: S.Strin
   identifier: "TextPrompt",
 }) as any as S.Schema<TextPrompt>;
 export type InputPrompt = { textPrompt: TextPrompt };
-export const InputPrompt = /*@__PURE__*/ S.Union([S.Struct({ textPrompt: TextPrompt })]);
+export const InputPrompt = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ textPrompt: TextPrompt }),
+]);
 export interface OptimizePromptRequest {
   input: InputPrompt;
   targetModelId: string;
@@ -5723,7 +5796,9 @@ export const OptimizePromptRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "OptimizePromptRequest" }) as any as S.Schema<OptimizePromptRequest>;
 export type OptimizedPrompt = { textPrompt: TextPrompt };
-export const OptimizedPrompt = /*@__PURE__*/ S.Union([S.Struct({ textPrompt: TextPrompt })]);
+export const OptimizedPrompt = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ textPrompt: TextPrompt }),
+]);
 export interface OptimizedPromptEvent {
   optimizedPrompt?: OptimizedPrompt;
 }
@@ -5818,36 +5893,36 @@ export type OptimizedPromptStream =
       badGatewayException: BadGatewayException;
     };
 export const OptimizedPromptStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ optimizedPromptEvent: OptimizedPromptEvent }),
-    S.Struct({ analyzePromptEvent: AnalyzePromptEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ optimizedPromptEvent: OptimizedPromptEvent }),
+    /*@__PURE__*/ S.Struct({ analyzePromptEvent: AnalyzePromptEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),
@@ -6555,52 +6630,54 @@ export type RetrieveAndGenerateStreamResponseOutput =
       badGatewayException: BadGatewayException;
     };
 export const RetrieveAndGenerateStreamResponseOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ output: RetrieveAndGenerateOutputEvent }),
-    S.Struct({ citation: CitationEvent }),
-    S.Struct({ guardrail: GuardrailEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ output: RetrieveAndGenerateOutputEvent }),
+    /*@__PURE__*/ S.Struct({ citation: CitationEvent }),
+    /*@__PURE__*/ S.Struct({ guardrail: GuardrailEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      resourceNotFoundException: S.suspend(() => ResourceNotFoundException).annotate({
+    /*@__PURE__*/ S.Struct({
+      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
         identifier: "ResourceNotFoundException",
       }),
     }),
-    S.Struct({
-      serviceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
         identifier: "AccessDeniedException",
       }),
     }),
-    S.Struct({
-      conflictException: S.suspend(() => ConflictException).annotate({
+    /*@__PURE__*/ S.Struct({
+      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
         identifier: "ConflictException",
       }),
     }),
-    S.Struct({
-      dependencyFailedException: S.suspend(() => DependencyFailedException).annotate({
+    /*@__PURE__*/ S.Struct({
+      dependencyFailedException: /*@__PURE__*/ S.suspend(() => DependencyFailedException).annotate({
         identifier: "DependencyFailedException",
       }),
     }),
-    S.Struct({
-      badGatewayException: S.suspend(() => BadGatewayException).annotate({
+    /*@__PURE__*/ S.Struct({
+      badGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
         identifier: "BadGatewayException",
       }),
     }),

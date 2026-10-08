@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MPA", serviceShapeName: "AWSFluffyCoreService" });
-const auth = T.AwsAuthSigv4({ name: "mpa" });
-const ver = T.ServiceVersion("2022-07-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MPA",
+  serviceShapeName: "AWSFluffyCoreService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mpa" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-07-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -48,56 +51,59 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type SessionArn = string;
 export interface CancelSessionRequest {
@@ -120,7 +126,9 @@ export const MofNApprovalStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinApprovalsRequired: S.Number }),
 ).annotate({ identifier: "MofNApprovalStrategy" }) as any as S.Schema<MofNApprovalStrategy>;
 export type ApprovalStrategy = { MofN: MofNApprovalStrategy };
-export const ApprovalStrategy = /*@__PURE__*/ S.Union([S.Struct({ MofN: MofNApprovalStrategy })]);
+export const ApprovalStrategy = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ MofN: MofNApprovalStrategy }),
+]);
 export type IdentityId = string;
 export interface ApprovalTeamRequestApprover {
   PrimaryIdentityId: string;
@@ -147,7 +155,10 @@ export type ApprovalTeamName = string;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export type Tags = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface CreateApprovalTeamRequest {
   ClientToken?: string;
   ApprovalStrategy: ApprovalStrategy;
@@ -293,7 +304,7 @@ export const GetApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApprovalTeamRequest" }) as any as S.Schema<GetApprovalTeamRequest>;
 export type ApprovalStrategyResponse = { MofN: MofNApprovalStrategy };
 export const ApprovalStrategyResponse = /*@__PURE__*/ S.Union([
-  S.Struct({ MofN: MofNApprovalStrategy }),
+  /*@__PURE__*/ S.Struct({ MofN: MofNApprovalStrategy }),
 ]);
 export type ParticipantId = string;
 export type IdentityStatus = "PENDING" | "ACCEPTED" | "REJECTED" | "INVALID" | (string & {});
@@ -460,7 +471,7 @@ export const IamIdentityCenterForGet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamIdentityCenterForGet" }) as any as S.Schema<IamIdentityCenterForGet>;
 export type IdentitySourceParametersForGet = { IamIdentityCenter: IamIdentityCenterForGet };
 export const IdentitySourceParametersForGet = /*@__PURE__*/ S.Union([
-  S.Struct({ IamIdentityCenter: IamIdentityCenterForGet }),
+  /*@__PURE__*/ S.Struct({ IamIdentityCenter: IamIdentityCenterForGet }),
 ]);
 export type IdentitySourceStatus = "CREATING" | "ACTIVE" | "DELETING" | "ERROR" | (string & {});
 export const IdentitySourceStatus = S.String;
@@ -591,7 +602,10 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export type SessionKey = string | redacted.Redacted<string>;
 export type SessionValue = string | redacted.Redacted<string>;
 export type SessionMetadata = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const SessionMetadata = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const SessionMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type SessionStatus =
   | "PENDING"
   | "CANCELLED"
@@ -787,7 +801,7 @@ export const IamIdentityCenterForList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamIdentityCenterForList" }) as any as S.Schema<IamIdentityCenterForList>;
 export type IdentitySourceParametersForList = { IamIdentityCenter: IamIdentityCenterForList };
 export const IdentitySourceParametersForList = /*@__PURE__*/ S.Union([
-  S.Struct({ IamIdentityCenter: IamIdentityCenterForList }),
+  /*@__PURE__*/ S.Struct({ IamIdentityCenter: IamIdentityCenterForList }),
 ]);
 export interface IdentitySourceForList {
   IdentitySourceType?: IdentitySourceType;

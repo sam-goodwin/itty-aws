@@ -2259,7 +2259,7 @@ export const CreateProjectBranchRoleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type ScheduleTriggerCreateRequestType = "schedule";
-export const ScheduleTriggerCreateRequestType = S.Literals(["schedule"]);
+export const ScheduleTriggerCreateRequestType = /*@__PURE__*/ S.Literals(["schedule"]);
 /** A numeric five-field cron schedule interpreted in UTC. */
 export interface FunctionTriggerSchedule {
   /** Numeric five-field cron expression (minute through day-of-week), interpreted in UTC. */
@@ -2299,7 +2299,9 @@ export const ScheduleTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type StorageObjectCreatedTriggerCreateRequestType = "storage_object_created";
-export const StorageObjectCreatedTriggerCreateRequestType = S.Literals(["storage_object_created"]);
+export const StorageObjectCreatedTriggerCreateRequestType = /*@__PURE__*/ S.Literals([
+  "storage_object_created",
+]);
 /** Matches successful uploads to one exact bucket and, when configured, an object-key prefix. The Function receives a JSON request body with `type` set to `storage_object_created` and a `data` object containing exactly `bucket_name` and `object_key`. */
 export interface FunctionTriggerStorageObjectCreated {
   /** The exact object-storage bucket name to watch. */
@@ -2346,7 +2348,7 @@ export const StorageObjectCreatedTriggerCreateRequest = /*@__PURE__*/ S.suspend(
 export type TriggerCreateRequest =
   | ScheduleTriggerCreateRequest
   | StorageObjectCreatedTriggerCreateRequest;
-export const TriggerCreateRequest = S.suspend(() =>
+export const TriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTriggerCreateRequest, StorageObjectCreatedTriggerCreateRequest]),
 ) as S.Codec<TriggerCreateRequest>;
 
@@ -2375,7 +2377,7 @@ export const CreateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type ScheduleTriggerType = "schedule";
-export const ScheduleTriggerType = S.Literals(["schedule"]);
+export const ScheduleTriggerType = /*@__PURE__*/ S.Literals(["schedule"]);
 /** A branch-effective schedule trigger for a Function. */
 export interface ScheduleTrigger {
   /** Trigger type discriminator. */
@@ -2413,7 +2415,7 @@ export const ScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type StorageObjectCreatedTriggerType = "storage_object_created";
-export const StorageObjectCreatedTriggerType = S.Literals(["storage_object_created"]);
+export const StorageObjectCreatedTriggerType = /*@__PURE__*/ S.Literals(["storage_object_created"]);
 /** A branch-effective trigger that invokes a Function after a successful upload matching its exact bucket and optional object-key prefix. */
 export interface StorageObjectCreatedTrigger {
   /** Trigger type discriminator. */
@@ -2450,7 +2452,7 @@ export const StorageObjectCreatedTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** A branch-effective trigger discriminated by `type`. The supported trigger types are `schedule` and `storage_object_created`. */
 export type Trigger = ScheduleTrigger | StorageObjectCreatedTrigger;
-export const Trigger = S.suspend(() =>
+export const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTrigger, StorageObjectCreatedTrigger]),
 ) as S.Codec<Trigger>;
 
@@ -4522,7 +4524,7 @@ export const GetNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use a custom SMTP server to send authentication emails. */
 export type StandardEmailServerResponseType = "standard";
-export const StandardEmailServerResponseType = S.Literals(["standard"]);
+export const StandardEmailServerResponseType = /*@__PURE__*/ S.Literals(["standard"]);
 export interface StandardEmailServerResponse {
   /** Hostname of the email server. */
   host: string;
@@ -4557,7 +4559,7 @@ export const StandardEmailServerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use the shared email server to send authentication emails. */
 export type SharedEmailServerType = "shared";
-export const SharedEmailServerType = S.Literals(["shared"]);
+export const SharedEmailServerType = /*@__PURE__*/ S.Literals(["shared"]);
 export interface SharedEmailServer {
   /** Email address used as the sender for outgoing messages from this shared email server. */
   sender_email?: string;
@@ -4575,7 +4577,7 @@ export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedEmailServer" }) as any as S.Codec<SharedEmailServer>;
 
 export type NeonAuthEmailServerConfigResponse = StandardEmailServerResponse | SharedEmailServer;
-export const NeonAuthEmailServerConfigResponse = S.suspend(() =>
+export const NeonAuthEmailServerConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Union([StandardEmailServerResponse, SharedEmailServer]),
 ) as S.Codec<NeonAuthEmailServerConfigResponse>;
 
@@ -5238,8 +5240,8 @@ export const GetProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<GetProjectBranchBucketObjectRequest>;
 
 export type GetProjectBranchBucketObjectResponse = Uint8Array;
-export const GetProjectBranchBucketObjectResponse = S.instanceOf(Uint8Array).pipe(
-  T.BinaryResponse(),
+export const GetProjectBranchBucketObjectResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  /*@__PURE__*/ T.BinaryResponse(),
 ) as S.Codec<GetProjectBranchBucketObjectResponse>;
 export interface GetProjectBranchDataAPIRequest {
   /** The Neon project ID */
@@ -8518,7 +8520,7 @@ export const UpdateNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspe
 
 /** Use a custom SMTP server to send authentication emails. */
 export type StandardEmailServerType = "standard";
-export const StandardEmailServerType = S.Literals(["standard"]);
+export const StandardEmailServerType = /*@__PURE__*/ S.Literals(["standard"]);
 export interface StandardEmailServer {
   /** Hostname of the email server. */
   host?: string;
@@ -8552,7 +8554,7 @@ export const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardEmailServer" }) as any as S.Codec<StandardEmailServer>;
 
 export type NeonAuthEmailServerConfig = StandardEmailServer | SharedEmailServer;
-export const NeonAuthEmailServerConfig = S.suspend(() =>
+export const NeonAuthEmailServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Union([StandardEmailServer, SharedEmailServer]),
 ) as S.Codec<NeonAuthEmailServerConfig>;
 
@@ -9030,7 +9032,7 @@ export const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type ScheduleTriggerUpdateRequestType = "schedule";
-export const ScheduleTriggerUpdateRequestType = S.Literals(["schedule"]);
+export const ScheduleTriggerUpdateRequestType = /*@__PURE__*/ S.Literals(["schedule"]);
 export interface ScheduleTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
   type: ScheduleTriggerUpdateRequestType;
@@ -9057,7 +9059,9 @@ export const ScheduleTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type StorageObjectCreatedTriggerUpdateRequestType = "storage_object_created";
-export const StorageObjectCreatedTriggerUpdateRequestType = S.Literals(["storage_object_created"]);
+export const StorageObjectCreatedTriggerUpdateRequestType = /*@__PURE__*/ S.Literals([
+  "storage_object_created",
+]);
 export interface StorageObjectCreatedTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
   type: StorageObjectCreatedTriggerUpdateRequestType;
@@ -9086,7 +9090,7 @@ export const StorageObjectCreatedTriggerUpdateRequest = /*@__PURE__*/ S.suspend(
 export type TriggerUpdateRequest =
   | ScheduleTriggerUpdateRequest
   | StorageObjectCreatedTriggerUpdateRequest;
-export const TriggerUpdateRequest = S.suspend(() =>
+export const TriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTriggerUpdateRequest, StorageObjectCreatedTriggerUpdateRequest]),
 ) as S.Codec<TriggerUpdateRequest>;
 

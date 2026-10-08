@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Snowball",
   serviceShapeName: "AWSIESnowballJobManagementService",
 });
-const auth = T.AwsAuthSigv4({ name: "snowball" });
-const ver = T.ServiceVersion("2016-06-30");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "snowball" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-06-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,52 +76,52 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClusterLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ClusterLimitExceededException>()(
     "ClusterLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    ConflictResource: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ConflictResource: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class Ec2RequestFailedException
   extends /*@__PURE__*/ S.TaggedError<Ec2RequestFailedException>()("Ec2RequestFailedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAddressException
   extends /*@__PURE__*/ S.TaggedError<InvalidAddressException>()("InvalidAddressException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInputCombinationException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputCombinationException>()(
     "InvalidInputCombinationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidJobStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidJobStateException>()("InvalidJobStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()("InvalidNextTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidResourceException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceException>()("InvalidResourceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    ResourceType: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    ResourceType: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class KMSRequestFailedException
   extends /*@__PURE__*/ S.TaggedError<KMSRequestFailedException>()("KMSRequestFailedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ReturnShippingLabelAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ReturnShippingLabelAlreadyExistsException>()(
     "ReturnShippingLabelAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class UnsupportedAddressException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedAddressException>()(
     "UnsupportedAddressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type ClusterId = string;
 export interface CancelClusterRequest {

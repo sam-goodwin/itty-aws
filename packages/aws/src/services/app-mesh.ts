@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "App Mesh", serviceShapeName: "AppMesh" });
-const auth = T.AwsAuthSigv4({ name: "appmesh" });
-const ver = T.ServiceVersion("2019-01-25");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "App Mesh", serviceShapeName: "AppMesh" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "appmesh" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-01-25");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,62 +71,65 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(503), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(503), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ResourceName = string;
 export type GatewayRoutePriority = number;
@@ -183,11 +186,11 @@ export type HeaderMatchMethod =
   | { exact?: never; regex?: never; range?: never; prefix: string; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix?: never; suffix: string };
 export const HeaderMatchMethod = /*@__PURE__*/ S.Union([
-  S.Struct({ exact: S.String }),
-  S.Struct({ regex: S.String }),
-  S.Struct({ range: MatchRange }),
-  S.Struct({ prefix: S.String }),
-  S.Struct({ suffix: S.String }),
+  /*@__PURE__*/ S.Struct({ exact: S.String }),
+  /*@__PURE__*/ S.Struct({ regex: S.String }),
+  /*@__PURE__*/ S.Struct({ range: MatchRange }),
+  /*@__PURE__*/ S.Struct({ prefix: S.String }),
+  /*@__PURE__*/ S.Struct({ suffix: S.String }),
 ]);
 export interface HttpGatewayRouteHeader {
   name: string;
@@ -296,11 +299,11 @@ export type GrpcMetadataMatchMethod =
   | { exact?: never; regex?: never; range?: never; prefix: string; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix?: never; suffix: string };
 export const GrpcMetadataMatchMethod = /*@__PURE__*/ S.Union([
-  S.Struct({ exact: S.String }),
-  S.Struct({ regex: S.String }),
-  S.Struct({ range: MatchRange }),
-  S.Struct({ prefix: S.String }),
-  S.Struct({ suffix: S.String }),
+  /*@__PURE__*/ S.Struct({ exact: S.String }),
+  /*@__PURE__*/ S.Struct({ regex: S.String }),
+  /*@__PURE__*/ S.Struct({ range: MatchRange }),
+  /*@__PURE__*/ S.Struct({ prefix: S.String }),
+  /*@__PURE__*/ S.Struct({ suffix: S.String }),
 ]);
 export interface GrpcGatewayRouteMetadata {
   name: string;
@@ -668,11 +671,11 @@ export type GrpcRouteMetadataMatchMethod =
   | { exact?: never; regex?: never; range?: never; prefix: string; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix?: never; suffix: string };
 export const GrpcRouteMetadataMatchMethod = /*@__PURE__*/ S.Union([
-  S.Struct({ exact: S.String }),
-  S.Struct({ regex: S.String }),
-  S.Struct({ range: MatchRange }),
-  S.Struct({ prefix: S.String }),
-  S.Struct({ suffix: S.String }),
+  /*@__PURE__*/ S.Struct({ exact: S.String }),
+  /*@__PURE__*/ S.Struct({ regex: S.String }),
+  /*@__PURE__*/ S.Struct({ range: MatchRange }),
+  /*@__PURE__*/ S.Struct({ prefix: S.String }),
+  /*@__PURE__*/ S.Struct({ suffix: S.String }),
 ]);
 export interface GrpcRouteMetadata {
   name: string;
@@ -847,8 +850,8 @@ export type VirtualGatewayClientTlsCertificate =
   | { file: VirtualGatewayListenerTlsFileCertificate; sds?: never }
   | { file?: never; sds: VirtualGatewayListenerTlsSdsCertificate };
 export const VirtualGatewayClientTlsCertificate = /*@__PURE__*/ S.Union([
-  S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
-  S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
+  /*@__PURE__*/ S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
+  /*@__PURE__*/ S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
 ]);
 export type VirtualGatewayCertificateAuthorityArns = string[];
 export const VirtualGatewayCertificateAuthorityArns = /*@__PURE__*/ S.Array(S.String);
@@ -881,9 +884,9 @@ export type VirtualGatewayTlsValidationContextTrust =
   | { acm?: never; file: VirtualGatewayTlsValidationContextFileTrust; sds?: never }
   | { acm?: never; file?: never; sds: VirtualGatewayTlsValidationContextSdsTrust };
 export const VirtualGatewayTlsValidationContextTrust = /*@__PURE__*/ S.Union([
-  S.Struct({ acm: VirtualGatewayTlsValidationContextAcmTrust }),
-  S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
-  S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
+  /*@__PURE__*/ S.Struct({ acm: VirtualGatewayTlsValidationContextAcmTrust }),
+  /*@__PURE__*/ S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
+  /*@__PURE__*/ S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
 ]);
 export type SubjectAlternativeName = string;
 export type SubjectAlternativeNameList = string[];
@@ -986,8 +989,8 @@ export type VirtualGatewayListenerTlsValidationContextTrust =
   | { file: VirtualGatewayTlsValidationContextFileTrust; sds?: never }
   | { file?: never; sds: VirtualGatewayTlsValidationContextSdsTrust };
 export const VirtualGatewayListenerTlsValidationContextTrust = /*@__PURE__*/ S.Union([
-  S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
-  S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
+  /*@__PURE__*/ S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
+  /*@__PURE__*/ S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
 ]);
 export interface VirtualGatewayListenerTlsValidationContext {
   trust: VirtualGatewayListenerTlsValidationContextTrust;
@@ -1014,9 +1017,9 @@ export type VirtualGatewayListenerTlsCertificate =
   | { acm?: never; file: VirtualGatewayListenerTlsFileCertificate; sds?: never }
   | { acm?: never; file?: never; sds: VirtualGatewayListenerTlsSdsCertificate };
 export const VirtualGatewayListenerTlsCertificate = /*@__PURE__*/ S.Union([
-  S.Struct({ acm: VirtualGatewayListenerTlsAcmCertificate }),
-  S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
-  S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
+  /*@__PURE__*/ S.Struct({ acm: VirtualGatewayListenerTlsAcmCertificate }),
+  /*@__PURE__*/ S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
+  /*@__PURE__*/ S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
 ]);
 export interface VirtualGatewayListenerTls {
   mode: string;
@@ -1065,9 +1068,9 @@ export type VirtualGatewayConnectionPool =
   | { http?: never; http2: VirtualGatewayHttp2ConnectionPool; grpc?: never }
   | { http?: never; http2?: never; grpc: VirtualGatewayGrpcConnectionPool };
 export const VirtualGatewayConnectionPool = /*@__PURE__*/ S.Union([
-  S.Struct({ http: VirtualGatewayHttpConnectionPool }),
-  S.Struct({ http2: VirtualGatewayHttp2ConnectionPool }),
-  S.Struct({ grpc: VirtualGatewayGrpcConnectionPool }),
+  /*@__PURE__*/ S.Struct({ http: VirtualGatewayHttpConnectionPool }),
+  /*@__PURE__*/ S.Struct({ http2: VirtualGatewayHttp2ConnectionPool }),
+  /*@__PURE__*/ S.Struct({ grpc: VirtualGatewayGrpcConnectionPool }),
 ]);
 export interface VirtualGatewayListener {
   healthCheck?: VirtualGatewayHealthCheckPolicy;
@@ -1101,8 +1104,8 @@ export type LoggingFormat =
   | { text: string; json?: never }
   | { text?: never; json: JsonFormatRef[] };
 export const LoggingFormat = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ json: JsonFormat }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ json: JsonFormat }),
 ]);
 export interface VirtualGatewayFileAccessLog {
   path: string;
@@ -1115,7 +1118,7 @@ export const VirtualGatewayFileAccessLog = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualGatewayFileAccessLog>;
 export type VirtualGatewayAccessLog = { file: VirtualGatewayFileAccessLog };
 export const VirtualGatewayAccessLog = /*@__PURE__*/ S.Union([
-  S.Struct({ file: VirtualGatewayFileAccessLog }),
+  /*@__PURE__*/ S.Struct({ file: VirtualGatewayFileAccessLog }),
 ]);
 export interface VirtualGatewayLogging {
   accessLog?: VirtualGatewayAccessLog;
@@ -1247,8 +1250,8 @@ export type ServiceDiscovery =
   | { dns: DnsServiceDiscovery; awsCloudMap?: never }
   | { dns?: never; awsCloudMap: AwsCloudMapServiceDiscovery };
 export const ServiceDiscovery = /*@__PURE__*/ S.Union([
-  S.Struct({ dns: DnsServiceDiscovery }),
-  S.Struct({ awsCloudMap: AwsCloudMapServiceDiscovery }),
+  /*@__PURE__*/ S.Struct({ dns: DnsServiceDiscovery }),
+  /*@__PURE__*/ S.Struct({ awsCloudMap: AwsCloudMapServiceDiscovery }),
 ]);
 export type PortProtocol = string;
 export interface PortMapping {
@@ -1290,9 +1293,9 @@ export type ListenerTlsCertificate =
   | { acm?: never; file: ListenerTlsFileCertificate; sds?: never }
   | { acm?: never; file?: never; sds: ListenerTlsSdsCertificate };
 export const ListenerTlsCertificate = /*@__PURE__*/ S.Union([
-  S.Struct({ acm: ListenerTlsAcmCertificate }),
-  S.Struct({ file: ListenerTlsFileCertificate }),
-  S.Struct({ sds: ListenerTlsSdsCertificate }),
+  /*@__PURE__*/ S.Struct({ acm: ListenerTlsAcmCertificate }),
+  /*@__PURE__*/ S.Struct({ file: ListenerTlsFileCertificate }),
+  /*@__PURE__*/ S.Struct({ sds: ListenerTlsSdsCertificate }),
 ]);
 export interface TlsValidationContextFileTrust {
   certificateChain: string;
@@ -1314,8 +1317,8 @@ export type ListenerTlsValidationContextTrust =
   | { file: TlsValidationContextFileTrust; sds?: never }
   | { file?: never; sds: TlsValidationContextSdsTrust };
 export const ListenerTlsValidationContextTrust = /*@__PURE__*/ S.Union([
-  S.Struct({ file: TlsValidationContextFileTrust }),
-  S.Struct({ sds: TlsValidationContextSdsTrust }),
+  /*@__PURE__*/ S.Struct({ file: TlsValidationContextFileTrust }),
+  /*@__PURE__*/ S.Struct({ sds: TlsValidationContextSdsTrust }),
 ]);
 export interface ListenerTlsValidationContext {
   trust: ListenerTlsValidationContextTrust;
@@ -1370,10 +1373,10 @@ export type ListenerTimeout =
   | { tcp?: never; http?: never; http2: HttpTimeout; grpc?: never }
   | { tcp?: never; http?: never; http2?: never; grpc: GrpcTimeout };
 export const ListenerTimeout = /*@__PURE__*/ S.Union([
-  S.Struct({ tcp: TcpTimeout }),
-  S.Struct({ http: HttpTimeout }),
-  S.Struct({ http2: HttpTimeout }),
-  S.Struct({ grpc: GrpcTimeout }),
+  /*@__PURE__*/ S.Struct({ tcp: TcpTimeout }),
+  /*@__PURE__*/ S.Struct({ http: HttpTimeout }),
+  /*@__PURE__*/ S.Struct({ http2: HttpTimeout }),
+  /*@__PURE__*/ S.Struct({ grpc: GrpcTimeout }),
 ]);
 export type OutlierDetectionMaxServerErrors = number;
 export type OutlierDetectionMaxEjectionPercent = number;
@@ -1430,10 +1433,10 @@ export type VirtualNodeConnectionPool =
   | { tcp?: never; http?: never; http2: VirtualNodeHttp2ConnectionPool; grpc?: never }
   | { tcp?: never; http?: never; http2?: never; grpc: VirtualNodeGrpcConnectionPool };
 export const VirtualNodeConnectionPool = /*@__PURE__*/ S.Union([
-  S.Struct({ tcp: VirtualNodeTcpConnectionPool }),
-  S.Struct({ http: VirtualNodeHttpConnectionPool }),
-  S.Struct({ http2: VirtualNodeHttp2ConnectionPool }),
-  S.Struct({ grpc: VirtualNodeGrpcConnectionPool }),
+  /*@__PURE__*/ S.Struct({ tcp: VirtualNodeTcpConnectionPool }),
+  /*@__PURE__*/ S.Struct({ http: VirtualNodeHttpConnectionPool }),
+  /*@__PURE__*/ S.Struct({ http2: VirtualNodeHttp2ConnectionPool }),
+  /*@__PURE__*/ S.Struct({ grpc: VirtualNodeGrpcConnectionPool }),
 ]);
 export interface Listener {
   portMapping: PortMapping;
@@ -1459,8 +1462,8 @@ export type ClientTlsCertificate =
   | { file: ListenerTlsFileCertificate; sds?: never }
   | { file?: never; sds: ListenerTlsSdsCertificate };
 export const ClientTlsCertificate = /*@__PURE__*/ S.Union([
-  S.Struct({ file: ListenerTlsFileCertificate }),
-  S.Struct({ sds: ListenerTlsSdsCertificate }),
+  /*@__PURE__*/ S.Struct({ file: ListenerTlsFileCertificate }),
+  /*@__PURE__*/ S.Struct({ sds: ListenerTlsSdsCertificate }),
 ]);
 export type CertificateAuthorityArns = string[];
 export const CertificateAuthorityArns = /*@__PURE__*/ S.Array(S.String);
@@ -1477,9 +1480,9 @@ export type TlsValidationContextTrust =
   | { acm?: never; file: TlsValidationContextFileTrust; sds?: never }
   | { acm?: never; file?: never; sds: TlsValidationContextSdsTrust };
 export const TlsValidationContextTrust = /*@__PURE__*/ S.Union([
-  S.Struct({ acm: TlsValidationContextAcmTrust }),
-  S.Struct({ file: TlsValidationContextFileTrust }),
-  S.Struct({ sds: TlsValidationContextSdsTrust }),
+  /*@__PURE__*/ S.Struct({ acm: TlsValidationContextAcmTrust }),
+  /*@__PURE__*/ S.Struct({ file: TlsValidationContextFileTrust }),
+  /*@__PURE__*/ S.Struct({ sds: TlsValidationContextSdsTrust }),
 ]);
 export interface TlsValidationContext {
   trust: TlsValidationContextTrust;
@@ -1519,7 +1522,9 @@ export const VirtualServiceBackend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ virtualServiceName: S.String, clientPolicy: S.optional(ClientPolicy) }),
 ).annotate({ identifier: "VirtualServiceBackend" }) as any as S.Schema<VirtualServiceBackend>;
 export type Backend = { virtualService: VirtualServiceBackend };
-export const Backend = /*@__PURE__*/ S.Union([S.Struct({ virtualService: VirtualServiceBackend })]);
+export const Backend = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ virtualService: VirtualServiceBackend }),
+]);
 export type Backends = Backend[];
 export const Backends = /*@__PURE__*/ S.Array(Backend);
 export interface BackendDefaults {
@@ -1536,7 +1541,7 @@ export const FileAccessLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.String, format: S.optional(LoggingFormat) }),
 ).annotate({ identifier: "FileAccessLog" }) as any as S.Schema<FileAccessLog>;
 export type AccessLog = { file: FileAccessLog };
-export const AccessLog = /*@__PURE__*/ S.Union([S.Struct({ file: FileAccessLog })]);
+export const AccessLog = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ file: FileAccessLog })]);
 export interface Logging {
   accessLog?: AccessLog;
 }
@@ -1713,8 +1718,8 @@ export type VirtualServiceProvider =
   | { virtualNode: VirtualNodeServiceProvider; virtualRouter?: never }
   | { virtualNode?: never; virtualRouter: VirtualRouterServiceProvider };
 export const VirtualServiceProvider = /*@__PURE__*/ S.Union([
-  S.Struct({ virtualNode: VirtualNodeServiceProvider }),
-  S.Struct({ virtualRouter: VirtualRouterServiceProvider }),
+  /*@__PURE__*/ S.Struct({ virtualNode: VirtualNodeServiceProvider }),
+  /*@__PURE__*/ S.Struct({ virtualRouter: VirtualRouterServiceProvider }),
 ]);
 export interface VirtualServiceSpec {
   provider?: VirtualServiceProvider;

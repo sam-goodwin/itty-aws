@@ -3274,7 +3274,7 @@ export const ApiAgentChatbotIdentifiersList = /*@__PURE__*/ S.Array(
 /** Child agents */
 export type ApiAgentChildAgentsList = Array<ApiAgent>;
 export const ApiAgentChildAgentsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApiAgent),
+  /*@__PURE__*/ S.suspend(() => ApiAgent),
 ) as any as S.Schema<ApiAgentChildAgentsList>;
 
 export type ApiDeploymentStatus =
@@ -4138,7 +4138,7 @@ export const ApiOpenAIAPIKeyInfo = /*@__PURE__*/ S.suspend(() =>
 /** Parent agents */
 export type ApiAgentParentAgentsList = Array<ApiAgent>;
 export const ApiAgentParentAgentsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApiAgent),
+  /*@__PURE__*/ S.suspend(() => ApiAgent),
 ) as any as S.Schema<ApiAgentParentAgentsList>;
 
 /** - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries - RETRIEVAL_METHOD_NONE: The retrieval method is none */
@@ -4262,7 +4262,7 @@ export const ApiAgentVpcEgressIpsList = /*@__PURE__*/ S.Array(
 /** Agents */
 export type ApiWorkspaceAgentsList = Array<ApiAgent>;
 export const ApiWorkspaceAgentsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApiAgent),
+  /*@__PURE__*/ S.suspend(() => ApiAgent),
 ) as any as S.Schema<ApiWorkspaceAgentsList>;
 
 /** EvaluationDatasetParadigm is the row/content shape of a dataset, orthogonal to the surface in EvaluationDatasetType (e.g. a model dataset can be single- or multi-turn). */
@@ -25397,7 +25397,7 @@ export const ApiSpanCommon = /*@__PURE__*/ S.suspend(() =>
 /** Child spans - must contain between 1 and 999 spans Allowed types: llm, tool, retriever */
 export type ApiAgentSpanSpansList = Array<ApiTraceSpan>;
 export const ApiAgentSpanSpansList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApiTraceSpan),
+  /*@__PURE__*/ S.suspend(() => ApiTraceSpan),
 ) as any as S.Schema<ApiAgentSpanSpansList>;
 
 export interface ApiAgentSpan {
@@ -25484,7 +25484,7 @@ export const ApiTraceSpanType = S.String;
 /** Child spans - must contain between 1 and 999 spans Allowed types: agent, llm, tool, retriever (not workflow) */
 export type ApiWorkflowSpanSpansList = Array<ApiTraceSpan>;
 export const ApiWorkflowSpanSpansList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ApiTraceSpan),
+  /*@__PURE__*/ S.suspend(() => ApiTraceSpan),
 ) as any as S.Schema<ApiWorkflowSpanSpansList>;
 
 /** Workflow span - can contain child spans (agent, llm, tool, retriever) */
@@ -32374,7 +32374,7 @@ export const LogsFilterCondition = /*@__PURE__*/ S.suspend(() =>
 
 export type LogsFilterExpressionAndExpressionsList = Array<LogsFilterExpression>;
 export const LogsFilterExpressionAndExpressionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => LogsFilterExpression),
+  /*@__PURE__*/ S.suspend(() => LogsFilterExpression),
 ) as any as S.Schema<LogsFilterExpressionAndExpressionsList>;
 
 export interface LogsFilterExpressionAnd {
@@ -32388,7 +32388,7 @@ export const LogsFilterExpressionAnd = /*@__PURE__*/ S.suspend(() =>
 
 export type LogsFilterExpressionOrExpressionsList = Array<LogsFilterExpression>;
 export const LogsFilterExpressionOrExpressionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => LogsFilterExpression),
+  /*@__PURE__*/ S.suspend(() => LogsFilterExpression),
 ) as any as S.Schema<LogsFilterExpressionOrExpressionsList>;
 
 export interface LogsFilterExpressionOr {
@@ -35209,7 +35209,7 @@ export const ListDropletKernelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDropletKernelsResponseKernelsList = Array<Kernel | null>;
 export const ListDropletKernelsResponseKernelsList = /*@__PURE__*/ S.Array(
-  S.NullOr(Kernel),
+  /*@__PURE__*/ S.NullOr(Kernel),
 ) as any as S.Schema<ListDropletKernelsResponseKernelsList>;
 
 export type ListDropletKernelsResponseMeta = GetInvoiceByUUIDResponseMeta;

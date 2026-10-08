@@ -3595,7 +3595,7 @@ export type ConnectionPropertiesOptionsConfigurationMap = {
 };
 export const ConnectionPropertiesOptionsConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ConnectionPropertiesOptionsConfigurationMap>;
 
 /** A map of scripts used to integrate with a custom database. */
@@ -4502,7 +4502,7 @@ export const CreateConnectionRequestRealmsList = /*@__PURE__*/ S.Array(
 export type ConnectionsMetadata = { [key: string]: string | null | undefined };
 export const ConnectionsMetadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ConnectionsMetadata>;
 
 /** Configure the purpose of a connection to be used for authentication during login. */
@@ -4950,7 +4950,7 @@ export const CustomDomainCustomClientIpHeaderEnum = S.String;
 export type DomainMetadata = { [key: string]: string | null | undefined };
 export const DomainMetadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<DomainMetadata>;
 
 export interface CreateCustomDomainRequest {
@@ -6361,7 +6361,7 @@ export type FlowActionAuth0SendRequestParamsQueryParams = {
 };
 export const FlowActionAuth0SendRequestParamsQueryParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(FlowActionAuth0SendRequestParamsQueryParamsValue),
+  /*@__PURE__*/ S.NullOr(FlowActionAuth0SendRequestParamsQueryParamsValue),
 ) as any as S.Schema<FlowActionAuth0SendRequestParamsQueryParams>;
 
 export type FlowActionAuth0SendRequestParamsPayloadCase1List = Array<unknown>;
@@ -6811,12 +6811,12 @@ export const FlowActionFlowBooleanConditionAction = S.String;
 
 export type FlowActionFlowBooleanConditionParamsThenList = Array<FlowAction>;
 export const FlowActionFlowBooleanConditionParamsThenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => FlowAction),
+  /*@__PURE__*/ S.suspend(() => FlowAction),
 ) as any as S.Schema<FlowActionFlowBooleanConditionParamsThenList>;
 
 export type FlowActionFlowBooleanConditionParamsElseList = Array<FlowAction>;
 export const FlowActionFlowBooleanConditionParamsElseList = /*@__PURE__*/ S.Array(
-  S.suspend(() => FlowAction),
+  /*@__PURE__*/ S.suspend(() => FlowAction),
 ) as any as S.Schema<FlowActionFlowBooleanConditionParamsElseList>;
 
 export interface FlowActionFlowBooleanConditionParams {
@@ -7158,7 +7158,7 @@ export const FlowActionGoogleSheetsAddRowParamsSheetId =
 
 export type FlowActionGoogleSheetsAddRowParamsValues = Array<string | null>;
 export const FlowActionGoogleSheetsAddRowParamsValues = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<FlowActionGoogleSheetsAddRowParamsValues>;
 
 export interface FlowActionGoogleSheetsAddRowParams {
@@ -7238,7 +7238,7 @@ export type FlowActionHttpSendRequestParamsQueryParams = {
 };
 export const FlowActionHttpSendRequestParamsQueryParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(FlowActionHttpSendRequestParamsQueryParamsValue),
+  /*@__PURE__*/ S.NullOr(FlowActionHttpSendRequestParamsQueryParamsValue),
 ) as any as S.Schema<FlowActionHttpSendRequestParamsQueryParams>;
 
 export type FlowActionHttpSendRequestParamsPayloadCase1List = Array<unknown>;
@@ -13541,7 +13541,7 @@ export const OrganizationBranding = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationMetadata = { [key: string]: string | null | undefined };
 export const OrganizationMetadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<OrganizationMetadata>;
 
 /** Connection to be added to the organization. */
@@ -40279,7 +40279,7 @@ export const UpdateConnectionOptionsPrecedenceList = /*@__PURE__*/ S.Array(
 export type UpdateConnectionOptionsConfigurationMap = { [key: string]: string | null | undefined };
 export const UpdateConnectionOptionsConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateConnectionOptionsConfigurationMap>;
 
 /** The connection's options (depend on the connection strategy). To update these options, the `update:connections_options` scope must be present. To verify your changes, also include the `read:connections_options` scope. If this scope is not specified, you will not be able to review the updated object. */

@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Application Signals",
   serviceShapeName: "ApplicationSignals",
 });
-const auth = T.AwsAuthSigv4({ name: "application-signals" });
-const ver = T.ServiceVersion("2024-04-15");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "application-signals" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-04-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -51,38 +51,48 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { ResourceType: S.String, ResourceId: S.String, message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      ResourceType: S.String,
+      ResourceId: S.String,
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export type InstrumentationType = "BREAKPOINT" | "PROBE" | (string & {});
 export const InstrumentationType = S.String;
@@ -110,8 +120,8 @@ export type BatchDeleteDeletionTarget =
   | { Scope: BatchDeleteScope; ResourceArns?: never }
   | { Scope?: never; ResourceArns: BatchDeleteByResourceArns };
 export const BatchDeleteDeletionTarget = /*@__PURE__*/ S.Union([
-  S.Struct({ Scope: BatchDeleteScope }),
-  S.Struct({ ResourceArns: BatchDeleteByResourceArns }),
+  /*@__PURE__*/ S.Struct({ Scope: BatchDeleteScope }),
+  /*@__PURE__*/ S.Struct({ ResourceArns: BatchDeleteByResourceArns }),
 ]);
 export interface BatchDeleteInstrumentationConfigurationsRequest {
   DeletionTarget: BatchDeleteDeletionTarget;
@@ -214,7 +224,7 @@ export type BudgetRequestsRemaining = number;
 export type KeyAttributeName = string;
 export type KeyAttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type OperationName = string;
 export type ServiceLevelIndicatorMetricType = "LATENCY" | "AVAILABILITY" | (string & {});
 export const ServiceLevelIndicatorMetricType = S.String;
@@ -342,7 +352,9 @@ export const SelectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: SelectionType, Pattern: S.optional(S.String) }),
 ).annotate({ identifier: "SelectionConfig" }) as any as S.Schema<SelectionConfig>;
 export type CompositeSliComponent = { OperationName: string };
-export const CompositeSliComponent = /*@__PURE__*/ S.Union([S.Struct({ OperationName: S.String })]);
+export const CompositeSliComponent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ OperationName: S.String }),
+]);
 export type CompositeSliComponents = CompositeSliComponent[];
 export const CompositeSliComponents = /*@__PURE__*/ S.Array(CompositeSliComponent);
 export interface CompositeSliConfig {
@@ -399,8 +411,8 @@ export type MonitoredRequestCountMetricDataQueries =
   | { GoodCountMetric: MetricDataQuery[]; BadCountMetric?: never }
   | { GoodCountMetric?: never; BadCountMetric: MetricDataQuery[] };
 export const MonitoredRequestCountMetricDataQueries = /*@__PURE__*/ S.Union([
-  S.Struct({ GoodCountMetric: MetricDataQueries }),
-  S.Struct({ BadCountMetric: MetricDataQueries }),
+  /*@__PURE__*/ S.Struct({ GoodCountMetric: MetricDataQueries }),
+  /*@__PURE__*/ S.Struct({ BadCountMetric: MetricDataQueries }),
 ]);
 export interface RequestBasedServiceLevelIndicatorMetric {
   KeyAttributes?: { [key: string]: string | undefined };
@@ -468,8 +480,8 @@ export type Interval =
   | { RollingInterval: RollingInterval; CalendarInterval?: never }
   | { RollingInterval?: never; CalendarInterval: CalendarInterval };
 export const Interval = /*@__PURE__*/ S.Union([
-  S.Struct({ RollingInterval: RollingInterval }),
-  S.Struct({ CalendarInterval: CalendarInterval }),
+  /*@__PURE__*/ S.Struct({ RollingInterval: RollingInterval }),
+  /*@__PURE__*/ S.Struct({ CalendarInterval: CalendarInterval }),
 ]);
 export type AttainmentGoal = number;
 export type WarningThreshold = number;
@@ -656,11 +668,13 @@ export const CodeLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CodeLocation" }) as any as S.Schema<CodeLocation>;
 export type Location = { CodeLocation: CodeLocation };
-export const Location = /*@__PURE__*/ S.Union([S.Struct({ CodeLocation: CodeLocation })]);
+export const Location = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ CodeLocation: CodeLocation }),
+]);
 export type DynamicInstrumentationAttributeFilterGroup = { [key: string]: string | undefined };
 export const DynamicInstrumentationAttributeFilterGroup = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type DynamicInstrumentationAttributeFilters = { [key: string]: string | undefined }[];
 export const DynamicInstrumentationAttributeFilters = /*@__PURE__*/ S.Array(
@@ -708,7 +722,7 @@ export const CodeCaptureConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeCaptureConfiguration" }) as any as S.Schema<CodeCaptureConfiguration>;
 export type CaptureConfiguration = { CodeCapture: CodeCaptureConfiguration };
 export const CaptureConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ CodeCapture: CodeCaptureConfiguration }),
+  /*@__PURE__*/ S.Struct({ CodeCapture: CodeCaptureConfiguration }),
 ]);
 export type TagKey = string;
 export type TagValue = string;
@@ -984,8 +998,8 @@ export type LocationIdentifier =
   | { CodeLocation: CodeLocation; LocationHash?: never }
   | { CodeLocation?: never; LocationHash: string };
 export const LocationIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ CodeLocation: CodeLocation }),
-  S.Struct({ LocationHash: S.String }),
+  /*@__PURE__*/ S.Struct({ CodeLocation: CodeLocation }),
+  /*@__PURE__*/ S.Struct({ LocationHash: S.String }),
 ]);
 export interface DeleteInstrumentationConfigurationRequest {
   InstrumentationType: InstrumentationType;
@@ -1213,7 +1227,10 @@ export const GetServiceInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/service" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetServiceInput" }) as any as S.Schema<GetServiceInput>;
 export type AttributeMap = { [key: string]: string | undefined };
-export const AttributeMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AttributeMaps = { [key: string]: string | undefined }[];
 export const AttributeMaps = /*@__PURE__*/ S.Array(AttributeMap);
 export type GroupName = string;
@@ -1355,10 +1372,10 @@ export type AuditTargetEntity =
   | { Service?: never; Slo?: never; ServiceOperation: ServiceOperationEntity; Canary?: never }
   | { Service?: never; Slo?: never; ServiceOperation?: never; Canary: CanaryEntity };
 export const AuditTargetEntity = /*@__PURE__*/ S.Union([
-  S.Struct({ Service: ServiceEntity }),
-  S.Struct({ Slo: ServiceLevelObjectiveEntity }),
-  S.Struct({ ServiceOperation: ServiceOperationEntity }),
-  S.Struct({ Canary: CanaryEntity }),
+  /*@__PURE__*/ S.Struct({ Service: ServiceEntity }),
+  /*@__PURE__*/ S.Struct({ Slo: ServiceLevelObjectiveEntity }),
+  /*@__PURE__*/ S.Struct({ ServiceOperation: ServiceOperationEntity }),
+  /*@__PURE__*/ S.Struct({ Canary: CanaryEntity }),
 ]);
 export interface AuditTarget {
   Type: string;
@@ -1394,7 +1411,7 @@ export const ListAuditFindingsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/auditFindings" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAuditFindingsInput" }) as any as S.Schema<ListAuditFindingsInput>;
 export type DataMap = { [key: string]: string | undefined };
-export const DataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DataMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Severity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "NONE" | (string & {});
 export const Severity = S.String;
 

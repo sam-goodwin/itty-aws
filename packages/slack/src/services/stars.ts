@@ -178,7 +178,7 @@ export type ListStarsResponseItemsItem =
   | ListStarsResponseItemsItemCase4
   | ListStarsResponseItemsItemCase5;
 export const ListStarsResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "channel", "message", "date_create"],
       ["type", "file", "date_create"],

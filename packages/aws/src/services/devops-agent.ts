@@ -10,11 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "DevOps Agent", serviceShapeName: "DevOpsAgent" });
-const auth = T.AwsAuthSigv4({ name: "aidevops" });
-const ver = T.ServiceVersion("2026-01-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "DevOps Agent",
+  serviceShapeName: "DevOpsAgent",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aidevops" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2026-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -49,62 +52,65 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ContentSizeExceededException
   extends /*@__PURE__*/ S.TaggedError<ContentSizeExceededException>()(
     "ContentSizeExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class IdentityCenterServiceException
   extends /*@__PURE__*/ S.TaggedError<IdentityCenterServiceException>()(
     "IdentityCenterServiceException",
-    { message: S.String.pipe(T.ErrorMessage()), underlyingErrorCode: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      underlyingErrorCode: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    fieldList: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    fieldList: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -752,25 +758,25 @@ export type ServiceConfiguration =
       remoteagentsigv4: RemoteAgentSigV4Configuration;
     };
 export const ServiceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ sourceAws: SourceAwsConfiguration }),
-  S.Struct({ aws: AWSConfiguration }),
-  S.Struct({ github: GitHubConfiguration }),
-  S.Struct({ slack: SlackConfiguration }),
-  S.Struct({ dynatrace: DynatraceConfiguration }),
-  S.Struct({ servicenow: ServiceNowConfiguration }),
-  S.Struct({ mcpservernewrelic: MCPServerNewRelicConfiguration }),
-  S.Struct({ mcpserverdatadog: MCPServerDatadogConfiguration }),
-  S.Struct({ mcpserver: MCPServerConfiguration }),
-  S.Struct({ gitlab: GitLabConfiguration }),
-  S.Struct({ mcpserversplunk: MCPServerSplunkConfiguration }),
-  S.Struct({ eventChannel: EventChannelConfiguration }),
-  S.Struct({ azure: AzureConfiguration }),
-  S.Struct({ azuredevops: AzureDevOpsConfiguration }),
-  S.Struct({ mcpservergrafana: MCPServerGrafanaConfiguration }),
-  S.Struct({ pagerduty: PagerDutyConfiguration }),
-  S.Struct({ mcpserversigv4: MCPServerSigV4Configuration }),
-  S.Struct({ remoteagent: RemoteAgentConfiguration }),
-  S.Struct({ remoteagentsigv4: RemoteAgentSigV4Configuration }),
+  /*@__PURE__*/ S.Struct({ sourceAws: SourceAwsConfiguration }),
+  /*@__PURE__*/ S.Struct({ aws: AWSConfiguration }),
+  /*@__PURE__*/ S.Struct({ github: GitHubConfiguration }),
+  /*@__PURE__*/ S.Struct({ slack: SlackConfiguration }),
+  /*@__PURE__*/ S.Struct({ dynatrace: DynatraceConfiguration }),
+  /*@__PURE__*/ S.Struct({ servicenow: ServiceNowConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpservernewrelic: MCPServerNewRelicConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpserverdatadog: MCPServerDatadogConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpserver: MCPServerConfiguration }),
+  /*@__PURE__*/ S.Struct({ gitlab: GitLabConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpserversplunk: MCPServerSplunkConfiguration }),
+  /*@__PURE__*/ S.Struct({ eventChannel: EventChannelConfiguration }),
+  /*@__PURE__*/ S.Struct({ azure: AzureConfiguration }),
+  /*@__PURE__*/ S.Struct({ azuredevops: AzureDevOpsConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpservergrafana: MCPServerGrafanaConfiguration }),
+  /*@__PURE__*/ S.Struct({ pagerduty: PagerDutyConfiguration }),
+  /*@__PURE__*/ S.Struct({ mcpserversigv4: MCPServerSigV4Configuration }),
+  /*@__PURE__*/ S.Struct({ remoteagent: RemoteAgentConfiguration }),
+  /*@__PURE__*/ S.Struct({ remoteagentsigv4: RemoteAgentSigV4Configuration }),
 ]);
 export type CapabilityType =
   | "RELEASE_READINESS_REVIEW"
@@ -814,7 +820,7 @@ export const CapabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type AssociationCapabilities = { [key in CapabilityType]?: CapabilityConfiguration };
 export const AssociationCapabilities = /*@__PURE__*/ S.Record(
   CapabilityType,
-  CapabilityConfiguration.pipe(S.optional),
+  /*@__PURE__*/ CapabilityConfiguration.pipe(S.optional),
 );
 export interface AssociateServiceInput {
   agentSpaceId: string;
@@ -897,14 +903,14 @@ export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type AgentSpacePreferenceKey = "elevatedActionsEnabled" | (string & {});
 export const AgentSpacePreferenceKey = S.String;
 
 export type AgentSpacePreferences = { [key in AgentSpacePreferenceKey]?: boolean };
 export const AgentSpacePreferences = /*@__PURE__*/ S.Record(
   AgentSpacePreferenceKey,
-  S.Boolean.pipe(S.optional),
+  /*@__PURE__*/ S.Boolean.pipe(S.optional),
 );
 export interface CreateAgentSpaceInput {
   name: string;
@@ -962,8 +968,8 @@ export type AssetFileBytes = Uint8Array;
 export type AssetFileText = string;
 export type AssetFileBody = { bytes: Uint8Array; text?: never } | { bytes?: never; text: string };
 export const AssetFileBody = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
 ]);
 export interface AssetFileContent {
   path: string;
@@ -992,9 +998,9 @@ export type AssetContent =
   | { file?: never; zip: AssetZipContent; sourceUrl?: never }
   | { file?: never; zip?: never; sourceUrl: AssetSourceUrlContent };
 export const AssetContent = /*@__PURE__*/ S.Union([
-  S.Struct({ file: AssetFileContent }),
-  S.Struct({ zip: AssetZipContent }),
-  S.Struct({ sourceUrl: AssetSourceUrlContent }),
+  /*@__PURE__*/ S.Struct({ file: AssetFileContent }),
+  /*@__PURE__*/ S.Struct({ zip: AssetZipContent }),
+  /*@__PURE__*/ S.Struct({ sourceUrl: AssetSourceUrlContent }),
 ]);
 export interface CreateAssetRequest {
   agentSpaceId: string;
@@ -1325,8 +1331,8 @@ export type PrivateConnectionMode =
   | { serviceManaged: ServiceManagedInput; selfManaged?: never }
   | { serviceManaged?: never; selfManaged: SelfManagedInput };
 export const PrivateConnectionMode = /*@__PURE__*/ S.Union([
-  S.Struct({ serviceManaged: ServiceManagedInput }),
-  S.Struct({ selfManaged: SelfManagedInput }),
+  /*@__PURE__*/ S.Struct({ serviceManaged: ServiceManagedInput }),
+  /*@__PURE__*/ S.Struct({ selfManaged: SelfManagedInput }),
 ]);
 export interface CreatePrivateConnectionInput {
   name: string;
@@ -1393,7 +1399,9 @@ export const ScheduleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ expression: S.String }),
 ).annotate({ identifier: "ScheduleCondition" }) as any as S.Schema<ScheduleCondition>;
 export type TriggerCondition = { schedule: ScheduleCondition };
-export const TriggerCondition = /*@__PURE__*/ S.Union([S.Struct({ schedule: ScheduleCondition })]);
+export const TriggerCondition = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ schedule: ScheduleCondition }),
+]);
 export type TriggerAction = unknown;
 export type TriggerStatus = string;
 export interface CreateTriggerRequest {
@@ -2260,7 +2268,10 @@ export type SigV4Region = string;
 export type CustomHeaderName = string;
 export type CustomHeaderValue = string | redacted.Redacted<string>;
 export type CustomHeaders = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const CustomHeaders = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const CustomHeaders = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface RegisteredMCPServerSigV4Details {
   name: string;
   endpoint: string;
@@ -2589,21 +2600,21 @@ export type AdditionalServiceDetails =
       remoteagentsigv4: RegisteredRemoteAgentSigV4Details;
     };
 export const AdditionalServiceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ github: RegisteredGithubServiceDetails }),
-  S.Struct({ slack: RegisteredSlackServiceDetails }),
-  S.Struct({ mcpserverdatadog: RegisteredMCPServerDetails }),
-  S.Struct({ mcpserver: RegisteredMCPServerDetails }),
-  S.Struct({ servicenow: RegisteredServiceNowDetails }),
-  S.Struct({ gitlab: RegisteredGitLabServiceDetails }),
-  S.Struct({ mcpserversplunk: RegisteredMCPServerDetails }),
-  S.Struct({ mcpservernewrelic: RegisteredNewRelicDetails }),
-  S.Struct({ azuredevops: RegisteredAzureDevOpsServiceDetails }),
-  S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
-  S.Struct({ mcpservergrafana: RegisteredGrafanaServerDetails }),
-  S.Struct({ pagerduty: RegisteredPagerDutyDetails }),
-  S.Struct({ mcpserversigv4: RegisteredMCPServerSigV4Details }),
-  S.Struct({ remoteagent: RegisteredRemoteAgentDetails }),
-  S.Struct({ remoteagentsigv4: RegisteredRemoteAgentSigV4Details }),
+  /*@__PURE__*/ S.Struct({ github: RegisteredGithubServiceDetails }),
+  /*@__PURE__*/ S.Struct({ slack: RegisteredSlackServiceDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserverdatadog: RegisteredMCPServerDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserver: RegisteredMCPServerDetails }),
+  /*@__PURE__*/ S.Struct({ servicenow: RegisteredServiceNowDetails }),
+  /*@__PURE__*/ S.Struct({ gitlab: RegisteredGitLabServiceDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserversplunk: RegisteredMCPServerDetails }),
+  /*@__PURE__*/ S.Struct({ mcpservernewrelic: RegisteredNewRelicDetails }),
+  /*@__PURE__*/ S.Struct({ azuredevops: RegisteredAzureDevOpsServiceDetails }),
+  /*@__PURE__*/ S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
+  /*@__PURE__*/ S.Struct({ mcpservergrafana: RegisteredGrafanaServerDetails }),
+  /*@__PURE__*/ S.Struct({ pagerduty: RegisteredPagerDutyDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserversigv4: RegisteredMCPServerSigV4Details }),
+  /*@__PURE__*/ S.Struct({ remoteagent: RegisteredRemoteAgentDetails }),
+  /*@__PURE__*/ S.Struct({ remoteagentsigv4: RegisteredRemoteAgentSigV4Details }),
 ]);
 export interface RegisteredService {
   serviceId: string;
@@ -3240,8 +3251,8 @@ export type UserMessageBlock =
   | { text: string; toolResult?: never }
   | { text?: never; toolResult: any };
 export const UserMessageBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ toolResult: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ toolResult: S.Any }),
 ]);
 export type UserMessage = UserMessageBlock[];
 export const UserMessage = /*@__PURE__*/ S.Array(UserMessageBlock);
@@ -3249,8 +3260,8 @@ export type AssistantMessageBlock =
   | { text: string; toolUse?: never }
   | { text?: never; toolUse: any };
 export const AssistantMessageBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ toolUse: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ toolUse: S.Any }),
 ]);
 export type AssistantMessage = AssistantMessageBlock[];
 export const AssistantMessage = /*@__PURE__*/ S.Array(AssistantMessageBlock);
@@ -3258,8 +3269,8 @@ export type Message =
   | { userMessage: UserMessageBlock[]; assistantMessage?: never }
   | { userMessage?: never; assistantMessage: AssistantMessageBlock[] };
 export const Message = /*@__PURE__*/ S.Union([
-  S.Struct({ userMessage: UserMessage }),
-  S.Struct({ assistantMessage: AssistantMessage }),
+  /*@__PURE__*/ S.Struct({ userMessage: UserMessage }),
+  /*@__PURE__*/ S.Struct({ assistantMessage: AssistantMessage }),
 ]);
 export interface PendingMessage {
   messageId: string;
@@ -3506,7 +3517,7 @@ export type ExchangeParameterValue = string | redacted.Redacted<string>;
 export type ExchangeParameters = { [key: string]: string | redacted.Redacted<string> | undefined };
 export const ExchangeParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type ClientSecret = string | redacted.Redacted<string>;
 export interface DynatraceOAuthClientCredentialsConfig {
@@ -3529,7 +3540,7 @@ export type DynatraceServiceAuthorizationConfig = {
   oAuthClientCredentials: DynatraceOAuthClientCredentialsConfig;
 };
 export const DynatraceServiceAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ oAuthClientCredentials: DynatraceOAuthClientCredentialsConfig }),
+  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: DynatraceOAuthClientCredentialsConfig }),
 ]);
 export interface DynatraceServiceDetails {
   accountUrn: string;
@@ -3561,7 +3572,7 @@ export type ServiceNowServiceAuthorizationConfig = {
   oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig;
 };
 export const ServiceNowServiceAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig }),
+  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: ServiceNowOAuthClientCredentialsConfig }),
 ]);
 export interface ServiceNowServiceDetails {
   instanceUrl: string;
@@ -3585,7 +3596,7 @@ export type DatadogAuthorizationConfig = {
   authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig;
 };
 export const DatadogAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
+  /*@__PURE__*/ S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
 ]);
 export interface DatadogServiceDetails {
   name: string;
@@ -3708,11 +3719,11 @@ export type MCPServerAuthorizationConfig =
       authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig;
     };
 export const MCPServerAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ oAuthClientCredentials: MCPServerOAuthClientCredentialsConfig }),
-  S.Struct({ oAuth3LO: MCPServerOAuth3LOConfig }),
-  S.Struct({ apiKey: MCPServerAPIKeyConfig }),
-  S.Struct({ bearerToken: MCPServerBearerTokenConfig }),
-  S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
+  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: MCPServerOAuthClientCredentialsConfig }),
+  /*@__PURE__*/ S.Struct({ oAuth3LO: MCPServerOAuth3LOConfig }),
+  /*@__PURE__*/ S.Struct({ apiKey: MCPServerAPIKeyConfig }),
+  /*@__PURE__*/ S.Struct({ bearerToken: MCPServerBearerTokenConfig }),
+  /*@__PURE__*/ S.Struct({ authorizationDiscovery: MCPServerAuthorizationDiscoveryConfig }),
 ]);
 export interface MCPServerDetails {
   name: string;
@@ -3770,7 +3781,7 @@ export const NewRelicApiKeyConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewRelicApiKeyConfig" }) as any as S.Schema<NewRelicApiKeyConfig>;
 export type NewRelicServiceAuthorizationConfig = { apiKey: NewRelicApiKeyConfig };
 export const NewRelicServiceAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ apiKey: NewRelicApiKeyConfig }),
+  /*@__PURE__*/ S.Struct({ apiKey: NewRelicApiKeyConfig }),
 ]);
 export interface NewRelicServiceDetails {
   authorizationConfig: NewRelicServiceAuthorizationConfig;
@@ -3823,7 +3834,7 @@ export type PagerDutyAuthorizationConfig = {
   oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig;
 };
 export const PagerDutyAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig }),
+  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: PagerDutyOAuthClientCredentialsConfig }),
 ]);
 export interface PagerDutyDetails {
   scopes: string[];
@@ -3917,9 +3928,9 @@ export type RemoteAgentAuthorizationConfig =
     }
   | { apiKey?: never; oAuthClientCredentials?: never; bearerToken: RemoteAgentBearerTokenConfig };
 export const RemoteAgentAuthorizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ apiKey: RemoteAgentAPIKeyConfig }),
-  S.Struct({ oAuthClientCredentials: RemoteAgentOAuthClientCredentialsConfig }),
-  S.Struct({ bearerToken: RemoteAgentBearerTokenConfig }),
+  /*@__PURE__*/ S.Struct({ apiKey: RemoteAgentAPIKeyConfig }),
+  /*@__PURE__*/ S.Struct({ oAuthClientCredentials: RemoteAgentOAuthClientCredentialsConfig }),
+  /*@__PURE__*/ S.Struct({ bearerToken: RemoteAgentBearerTokenConfig }),
 ]);
 export interface RemoteAgentServiceDetails {
   name: string;
@@ -4189,20 +4200,20 @@ export type ServiceDetails =
       remoteagentsigv4: RemoteAgentSigV4ServiceDetails;
     };
 export const ServiceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ dynatrace: DynatraceServiceDetails }),
-  S.Struct({ servicenow: ServiceNowServiceDetails }),
-  S.Struct({ mcpserverdatadog: DatadogServiceDetails }),
-  S.Struct({ mcpserver: MCPServerDetails }),
-  S.Struct({ gitlab: GitLabDetails }),
-  S.Struct({ mcpserversplunk: MCPServerDetails }),
-  S.Struct({ mcpservernewrelic: NewRelicServiceDetails }),
-  S.Struct({ eventChannel: EventChannelDetails }),
-  S.Struct({ mcpservergrafana: GrafanaServiceDetails }),
-  S.Struct({ pagerduty: PagerDutyDetails }),
-  S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
-  S.Struct({ mcpserversigv4: MCPServerSigV4ServiceDetails }),
-  S.Struct({ remoteagent: RemoteAgentServiceDetails }),
-  S.Struct({ remoteagentsigv4: RemoteAgentSigV4ServiceDetails }),
+  /*@__PURE__*/ S.Struct({ dynatrace: DynatraceServiceDetails }),
+  /*@__PURE__*/ S.Struct({ servicenow: ServiceNowServiceDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserverdatadog: DatadogServiceDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserver: MCPServerDetails }),
+  /*@__PURE__*/ S.Struct({ gitlab: GitLabDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserversplunk: MCPServerDetails }),
+  /*@__PURE__*/ S.Struct({ mcpservernewrelic: NewRelicServiceDetails }),
+  /*@__PURE__*/ S.Struct({ eventChannel: EventChannelDetails }),
+  /*@__PURE__*/ S.Struct({ mcpservergrafana: GrafanaServiceDetails }),
+  /*@__PURE__*/ S.Struct({ pagerduty: PagerDutyDetails }),
+  /*@__PURE__*/ S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
+  /*@__PURE__*/ S.Struct({ mcpserversigv4: MCPServerSigV4ServiceDetails }),
+  /*@__PURE__*/ S.Struct({ remoteagent: RemoteAgentServiceDetails }),
+  /*@__PURE__*/ S.Struct({ remoteagentsigv4: RemoteAgentSigV4ServiceDetails }),
 ]);
 export interface RegisterServiceInput {
   service: PostRegisterServiceSupportedService;
@@ -4238,7 +4249,7 @@ export const OAuthAdditionalStepDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OAuthAdditionalStepDetails>;
 export type AdditionalServiceRegistrationStep = { oauth: OAuthAdditionalStepDetails };
 export const AdditionalServiceRegistrationStep = /*@__PURE__*/ S.Union([
-  S.Struct({ oauth: OAuthAdditionalStepDetails }),
+  /*@__PURE__*/ S.Struct({ oauth: OAuthAdditionalStepDetails }),
 ]);
 export interface RegisterServiceOutput {
   serviceId?: string;
@@ -4429,8 +4440,8 @@ export type SendMessageContentBlockDelta =
   | { textDelta: SendMessageTextDelta; jsonDelta?: never }
   | { textDelta?: never; jsonDelta: SendMessageJsonDelta };
 export const SendMessageContentBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ textDelta: SendMessageTextDelta }),
-  S.Struct({ jsonDelta: SendMessageJsonDelta }),
+  /*@__PURE__*/ S.Struct({ textDelta: SendMessageTextDelta }),
+  /*@__PURE__*/ S.Struct({ jsonDelta: SendMessageJsonDelta }),
 ]);
 export interface SendMessageContentBlockDeltaEvent {
   index?: number;
@@ -4565,16 +4576,16 @@ export type SendMessageEvents =
       contentBlockStop: SendMessageContentBlockStopEvent;
     };
 export const SendMessageEvents = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ responseCreated: SendMessageResponseCreatedEvent }),
-    S.Struct({ responseInProgress: SendMessageResponseInProgressEvent }),
-    S.Struct({ responseCompleted: SendMessageResponseCompletedEvent }),
-    S.Struct({ responseFailed: SendMessageResponseFailedEvent }),
-    S.Struct({ summary: SendMessageSummaryEvent }),
-    S.Struct({ heartbeat: SendMessageHeartbeatEvent }),
-    S.Struct({ contentBlockStart: SendMessageContentBlockStartEvent }),
-    S.Struct({ contentBlockDelta: SendMessageContentBlockDeltaEvent }),
-    S.Struct({ contentBlockStop: SendMessageContentBlockStopEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ responseCreated: SendMessageResponseCreatedEvent }),
+    /*@__PURE__*/ S.Struct({ responseInProgress: SendMessageResponseInProgressEvent }),
+    /*@__PURE__*/ S.Struct({ responseCompleted: SendMessageResponseCompletedEvent }),
+    /*@__PURE__*/ S.Struct({ responseFailed: SendMessageResponseFailedEvent }),
+    /*@__PURE__*/ S.Struct({ summary: SendMessageSummaryEvent }),
+    /*@__PURE__*/ S.Struct({ heartbeat: SendMessageHeartbeatEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStart: SendMessageContentBlockStartEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockDelta: SendMessageContentBlockDeltaEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStop: SendMessageContentBlockStopEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<SendMessageEvents, Error, never>>;
 export interface SendMessageResponse {
@@ -4649,7 +4660,10 @@ export type ToolIdentifier = string;
 export type ApprovalPinKey = string;
 export type ApprovalPinValue = string;
 export type ApprovalArgumentPins = { [key: string]: string | undefined };
-export const ApprovalArgumentPins = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ApprovalArgumentPins = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ApprovalPattern {
   tool: string;
   argumentPins: { [key: string]: string | undefined };

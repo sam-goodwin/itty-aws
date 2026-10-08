@@ -578,7 +578,7 @@ export const ManagementGroupChildType = S.String;
 /** The list of children. */
 export type ManagementGroupChildInfoChildrenList = Array<ManagementGroupChildInfo>;
 export const ManagementGroupChildInfoChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ManagementGroupChildInfo),
+  /*@__PURE__*/ S.suspend(() => ManagementGroupChildInfo),
 ) as any as S.Schema<ManagementGroupChildInfoChildrenList>;
 
 /** The child information of a management group. */

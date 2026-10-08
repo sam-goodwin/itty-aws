@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SSM Incidents", serviceShapeName: "SSMIncidents" });
-const auth = T.AwsAuthSigv4({ name: "ssm-incidents" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SSM Incidents",
+  serviceShapeName: "SSMIncidents",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ssm-incidents" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,64 +76,70 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceIdentifier: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      retryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceIdentifier: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      retryAfter: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+      ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceIdentifier: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceIdentifier: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceIdentifier: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceIdentifier: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()), serviceCode: S.String, quotaCode: S.String },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: S.String,
+      quotaCode: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type FindingId = string;
@@ -186,8 +195,8 @@ export type FindingDetails =
   | { codeDeployDeployment: CodeDeployDeployment; cloudFormationStackUpdate?: never }
   | { codeDeployDeployment?: never; cloudFormationStackUpdate: CloudFormationStackUpdate };
 export const FindingDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ codeDeployDeployment: CodeDeployDeployment }),
-  S.Struct({ cloudFormationStackUpdate: CloudFormationStackUpdate }),
+  /*@__PURE__*/ S.Struct({ codeDeployDeployment: CodeDeployDeployment }),
+  /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: CloudFormationStackUpdate }),
 ]);
 export interface Finding {
   id: string;
@@ -239,13 +248,13 @@ export const RegionMapInputValue = /*@__PURE__*/ S.suspend(() =>
 export type RegionMapInput = { [key: string]: RegionMapInputValue | undefined };
 export const RegionMapInput = /*@__PURE__*/ S.Record(
   S.String,
-  RegionMapInputValue.pipe(S.optional),
+  /*@__PURE__*/ RegionMapInputValue.pipe(S.optional),
 );
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateReplicationSetInput {
   regions: { [key: string]: RegionMapInputValue | undefined };
   clientToken?: string;
@@ -277,7 +286,9 @@ export type Impact = number;
 export type IncidentSummary = string;
 export type DedupeString = string;
 export type NotificationTargetItem = { snsTopicArn: string };
-export const NotificationTargetItem = /*@__PURE__*/ S.Union([S.Struct({ snsTopicArn: S.String })]);
+export const NotificationTargetItem = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ snsTopicArn: S.String }),
+]);
 export type NotificationTargetSet = NotificationTargetItem[];
 export const NotificationTargetSet = /*@__PURE__*/ S.Array(NotificationTargetItem);
 export interface IncidentTemplate {
@@ -309,8 +320,8 @@ export type ChatChannel =
   | { empty: EmptyChatChannel; chatbotSns?: never }
   | { empty?: never; chatbotSns: string[] };
 export const ChatChannel = /*@__PURE__*/ S.Union([
-  S.Struct({ empty: EmptyChatChannel }),
-  S.Struct({ chatbotSns: ChatbotSnsConfigurationSet }),
+  /*@__PURE__*/ S.Struct({ empty: EmptyChatChannel }),
+  /*@__PURE__*/ S.Struct({ chatbotSns: ChatbotSnsConfigurationSet }),
 ]);
 export type SsmContactsArn = string;
 export type EngagementSet = string[];
@@ -320,14 +331,19 @@ export type SsmTargetAccount = string;
 export type SsmParameterValues = string[];
 export const SsmParameterValues = /*@__PURE__*/ S.Array(S.String);
 export type SsmParameters = { [key: string]: string[] | undefined };
-export const SsmParameters = /*@__PURE__*/ S.Record(S.String, SsmParameterValues.pipe(S.optional));
+export const SsmParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SsmParameterValues.pipe(S.optional),
+);
 export type VariableType = string;
 export type DynamicSsmParameterValue = { variable: string };
-export const DynamicSsmParameterValue = /*@__PURE__*/ S.Union([S.Struct({ variable: S.String })]);
+export const DynamicSsmParameterValue = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ variable: S.String }),
+]);
 export type DynamicSsmParameters = { [key: string]: DynamicSsmParameterValue | undefined };
 export const DynamicSsmParameters = /*@__PURE__*/ S.Record(
   S.String,
-  DynamicSsmParameterValue.pipe(S.optional),
+  /*@__PURE__*/ DynamicSsmParameterValue.pipe(S.optional),
 );
 export interface SsmAutomation {
   roleArn: string;
@@ -348,7 +364,9 @@ export const SsmAutomation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SsmAutomation" }) as any as S.Schema<SsmAutomation>;
 export type Action = { ssmAutomation: SsmAutomation };
-export const Action = /*@__PURE__*/ S.Union([S.Struct({ ssmAutomation: SsmAutomation })]);
+export const Action = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ ssmAutomation: SsmAutomation }),
+]);
 export type ActionsList = Action[];
 export const ActionsList = /*@__PURE__*/ S.Array(Action);
 export interface PagerDutyIncidentConfiguration {
@@ -373,7 +391,7 @@ export const PagerDutyConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PagerDutyConfiguration" }) as any as S.Schema<PagerDutyConfiguration>;
 export type Integration = { pagerDutyConfiguration: PagerDutyConfiguration };
 export const Integration = /*@__PURE__*/ S.Union([
-  S.Struct({ pagerDutyConfiguration: PagerDutyConfiguration }),
+  /*@__PURE__*/ S.Struct({ pagerDutyConfiguration: PagerDutyConfiguration }),
 ]);
 export type Integrations = Integration[];
 export const Integrations = /*@__PURE__*/ S.Array(Integration);
@@ -416,8 +434,8 @@ export type EventReference =
   | { resource: string; relatedItemId?: never }
   | { resource?: never; relatedItemId: string };
 export const EventReference = /*@__PURE__*/ S.Union([
-  S.Struct({ resource: S.String }),
-  S.Struct({ relatedItemId: S.String }),
+  /*@__PURE__*/ S.Struct({ resource: S.String }),
+  /*@__PURE__*/ S.Struct({ relatedItemId: S.String }),
 ]);
 export type EventReferenceList = EventReference[];
 export const EventReferenceList = /*@__PURE__*/ S.Array(EventReference);
@@ -530,7 +548,9 @@ export const GetIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIncidentRecordInput" }) as any as S.Schema<GetIncidentRecordInput>;
 export type IncidentRecordStatus = string;
 export type AutomationExecution = { ssmExecutionArn: string };
-export const AutomationExecution = /*@__PURE__*/ S.Union([S.Struct({ ssmExecutionArn: S.String })]);
+export const AutomationExecution = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ ssmExecutionArn: S.String }),
+]);
 export type AutomationExecutionSet = AutomationExecution[];
 export const AutomationExecutionSet = /*@__PURE__*/ S.Array(AutomationExecution);
 export type ServicePrincipal = string;
@@ -613,7 +633,10 @@ export const RegionInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionInfo" }) as any as S.Schema<RegionInfo>;
 export type RegionInfoMap = { [key: string]: RegionInfo | undefined };
-export const RegionInfoMap = /*@__PURE__*/ S.Record(S.String, RegionInfo.pipe(S.optional));
+export const RegionInfoMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ RegionInfo.pipe(S.optional),
+);
 export type ReplicationSetStatus = string;
 export interface ReplicationSet {
   arn?: string;
@@ -787,17 +810,21 @@ export type AttributeValueList =
   | { stringValues: string[]; integerValues?: never }
   | { stringValues?: never; integerValues: number[] };
 export const AttributeValueList = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValues: StringList }),
-  S.Struct({ integerValues: IntegerList }),
+  /*@__PURE__*/ S.Struct({ stringValues: StringList }),
+  /*@__PURE__*/ S.Struct({ integerValues: IntegerList }),
 ]);
 export type Condition =
   | { before: Date; after?: never; equals?: never }
   | { before?: never; after: Date; equals?: never }
   | { before?: never; after?: never; equals: AttributeValueList };
 export const Condition = /*@__PURE__*/ S.Union([
-  S.Struct({ before: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-  S.Struct({ after: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-  S.Struct({ equals: AttributeValueList }),
+  /*@__PURE__*/ S.Struct({
+    before: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
+  /*@__PURE__*/ S.Struct({
+    after: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
+  /*@__PURE__*/ S.Struct({ equals: AttributeValueList }),
 ]);
 export interface Filter {
   key: string;
@@ -888,10 +915,10 @@ export type ItemValue =
       pagerDutyIncidentDetail: PagerDutyIncidentDetail;
     };
 export const ItemValue = /*@__PURE__*/ S.Union([
-  S.Struct({ arn: S.String }),
-  S.Struct({ url: S.String }),
-  S.Struct({ metricDefinition: S.String }),
-  S.Struct({ pagerDutyIncidentDetail: PagerDutyIncidentDetail }),
+  /*@__PURE__*/ S.Struct({ arn: S.String }),
+  /*@__PURE__*/ S.Struct({ url: S.String }),
+  /*@__PURE__*/ S.Struct({ metricDefinition: S.String }),
+  /*@__PURE__*/ S.Struct({ pagerDutyIncidentDetail: PagerDutyIncidentDetail }),
 ]);
 export type ItemType = string;
 export interface ItemIdentifier {
@@ -1181,8 +1208,8 @@ export type RelatedItemsUpdate =
   | { itemToAdd: RelatedItem; itemToRemove?: never }
   | { itemToAdd?: never; itemToRemove: ItemIdentifier };
 export const RelatedItemsUpdate = /*@__PURE__*/ S.Union([
-  S.Struct({ itemToAdd: RelatedItem }),
-  S.Struct({ itemToRemove: ItemIdentifier }),
+  /*@__PURE__*/ S.Struct({ itemToAdd: RelatedItem }),
+  /*@__PURE__*/ S.Struct({ itemToRemove: ItemIdentifier }),
 ]);
 export interface UpdateRelatedItemsInput {
   clientToken?: string;
@@ -1219,8 +1246,8 @@ export type UpdateReplicationSetAction =
   | { addRegionAction: AddRegionAction; deleteRegionAction?: never }
   | { addRegionAction?: never; deleteRegionAction: DeleteRegionAction };
 export const UpdateReplicationSetAction = /*@__PURE__*/ S.Union([
-  S.Struct({ addRegionAction: AddRegionAction }),
-  S.Struct({ deleteRegionAction: DeleteRegionAction }),
+  /*@__PURE__*/ S.Struct({ addRegionAction: AddRegionAction }),
+  /*@__PURE__*/ S.Struct({ deleteRegionAction: DeleteRegionAction }),
 ]);
 export type UpdateActionList = UpdateReplicationSetAction[];
 export const UpdateActionList = /*@__PURE__*/ S.Array(UpdateReplicationSetAction);
@@ -1245,7 +1272,10 @@ export const UpdateReplicationSetOutput = /*@__PURE__*/ S.suspend(() => S.Struct
   identifier: "UpdateReplicationSetOutput",
 }) as any as S.Schema<UpdateReplicationSetOutput>;
 export type TagMapUpdate = { [key: string]: string | undefined };
-export const TagMapUpdate = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMapUpdate = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface UpdateResponsePlanInput {
   clientToken?: string;
   arn: string;

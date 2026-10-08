@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "RolesAnywhere", serviceShapeName: "RolesAnywhere" });
-const auth = T.AwsAuthSigv4({ name: "rolesanywhere" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "RolesAnywhere",
+  serviceShapeName: "RolesAnywhere",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "rolesanywhere" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,26 +78,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ResourceName = string;
 export type RoleArn = string;
@@ -202,8 +205,8 @@ export type SourceData =
   | { x509CertificateData: string; acmPcaArn?: never }
   | { x509CertificateData?: never; acmPcaArn: string };
 export const SourceData = /*@__PURE__*/ S.Union([
-  S.Struct({ x509CertificateData: S.String }),
-  S.Struct({ acmPcaArn: S.String }),
+  /*@__PURE__*/ S.Struct({ x509CertificateData: S.String }),
+  /*@__PURE__*/ S.Struct({ acmPcaArn: S.String }),
 ]);
 export interface Source {
   sourceType?: string;
@@ -417,7 +420,10 @@ export const CredentialSummary = /*@__PURE__*/ S.suspend(() =>
 export type CredentialSummaries = CredentialSummary[];
 export const CredentialSummaries = /*@__PURE__*/ S.Array(CredentialSummary);
 export type InstancePropertyMap = { [key: string]: string | undefined };
-export const InstancePropertyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const InstancePropertyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface InstanceProperty {
   seenAt?: Date;
   properties?: { [key: string]: string | undefined };
@@ -866,7 +872,7 @@ export const deleteTrustAnchor: API.OperationMethod<
 
 export interface DisableCrlRequest extends ScalarCrlRequest {}
 export const DisableCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
-  T.Http({ method: "POST", uri: "/crl/{crlId}/disable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/crl/{crlId}/disable" }),
 ).annotate({ identifier: "DisableCrlRequest" }) as any as S.Schema<DisableCrlRequest>;
 export type DisableCrlError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
 /**
@@ -890,7 +896,7 @@ export const disableCrl: API.OperationMethod<
 
 export interface DisableProfileRequest extends ScalarProfileRequest {}
 export const DisableProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
-  T.Http({ method: "POST", uri: "/profile/{profileId}/disable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/profile/{profileId}/disable" }),
 ).annotate({ identifier: "DisableProfileRequest" }) as any as S.Schema<DisableProfileRequest>;
 export type DisableProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
 /**
@@ -914,7 +920,7 @@ export const disableProfile: API.OperationMethod<
 
 export interface DisableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
 export const DisableTrustAnchorRequest = /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
-  T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/disable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/disable" }),
 ).annotate({
   identifier: "DisableTrustAnchorRequest",
 }) as any as S.Schema<DisableTrustAnchorRequest>;
@@ -943,7 +949,7 @@ export const disableTrustAnchor: API.OperationMethod<
 
 export interface EnableCrlRequest extends ScalarCrlRequest {}
 export const EnableCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
-  T.Http({ method: "POST", uri: "/crl/{crlId}/enable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/crl/{crlId}/enable" }),
 ).annotate({ identifier: "EnableCrlRequest" }) as any as S.Schema<EnableCrlRequest>;
 export type EnableCrlError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
 /**
@@ -967,7 +973,7 @@ export const enableCrl: API.OperationMethod<
 
 export interface EnableProfileRequest extends ScalarProfileRequest {}
 export const EnableProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
-  T.Http({ method: "POST", uri: "/profile/{profileId}/enable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/profile/{profileId}/enable" }),
 ).annotate({ identifier: "EnableProfileRequest" }) as any as S.Schema<EnableProfileRequest>;
 export type EnableProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
 /**
@@ -991,7 +997,7 @@ export const enableProfile: API.OperationMethod<
 
 export interface EnableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
 export const EnableTrustAnchorRequest = /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
-  T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/enable" }),
+  /*@__PURE__*/ T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/enable" }),
 ).annotate({ identifier: "EnableTrustAnchorRequest" }) as any as S.Schema<EnableTrustAnchorRequest>;
 export type EnableTrustAnchorError =
   | AccessDeniedException
@@ -1018,7 +1024,7 @@ export const enableTrustAnchor: API.OperationMethod<
 
 export interface GetCrlRequest extends ScalarCrlRequest {}
 export const GetCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
-  T.Http({ method: "GET", uri: "/crl/{crlId}" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/crl/{crlId}" }),
 ).annotate({ identifier: "GetCrlRequest" }) as any as S.Schema<GetCrlRequest>;
 export type GetCrlError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1042,7 +1048,7 @@ export const getCrl: API.OperationMethod<
 
 export interface GetProfileRequest extends ScalarProfileRequest {}
 export const GetProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
-  T.Http({ method: "GET", uri: "/profile/{profileId}" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/profile/{profileId}" }),
 ).annotate({ identifier: "GetProfileRequest" }) as any as S.Schema<GetProfileRequest>;
 export type GetProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
 /**
@@ -1086,7 +1092,7 @@ export const getSubject: API.OperationMethod<
 
 export interface GetTrustAnchorRequest extends ScalarTrustAnchorRequest {}
 export const GetTrustAnchorRequest = /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
-  T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
 ).annotate({ identifier: "GetTrustAnchorRequest" }) as any as S.Schema<GetTrustAnchorRequest>;
 export type GetTrustAnchorError =
   | AccessDeniedException
@@ -1156,7 +1162,7 @@ export const listCrls: API.PaginatedOperationMethod<
 
 export interface ListProfilesRequest extends ListRequest {}
 export const ListProfilesRequest = /*@__PURE__*/ ListRequest.pipe(
-  T.Http({ method: "GET", uri: "/profiles" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/profiles" }),
 ).annotate({ identifier: "ListProfilesRequest" }) as any as S.Schema<ListProfilesRequest>;
 export type ListProfilesError = AccessDeniedException | ValidationException | CommonErrors;
 /**
@@ -1182,7 +1188,7 @@ export const listProfiles: API.PaginatedOperationMethod<
 
 export interface ListSubjectsRequest extends ListRequest {}
 export const ListSubjectsRequest = /*@__PURE__*/ ListRequest.pipe(
-  T.Http({ method: "GET", uri: "/subjects" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/subjects" }),
 ).annotate({ identifier: "ListSubjectsRequest" }) as any as S.Schema<ListSubjectsRequest>;
 export type ListSubjectsError = AccessDeniedException | ValidationException | CommonErrors;
 /**
@@ -1232,7 +1238,7 @@ export const listTagsForResource: API.OperationMethod<
 
 export interface ListTrustAnchorsRequest extends ListRequest {}
 export const ListTrustAnchorsRequest = /*@__PURE__*/ ListRequest.pipe(
-  T.Http({ method: "GET", uri: "/trustanchors" }),
+  /*@__PURE__*/ T.Http({ method: "GET", uri: "/trustanchors" }),
 ).annotate({ identifier: "ListTrustAnchorsRequest" }) as any as S.Schema<ListTrustAnchorsRequest>;
 export type ListTrustAnchorsError = AccessDeniedException | ValidationException | CommonErrors;
 /**

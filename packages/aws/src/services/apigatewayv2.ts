@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "ApiGatewayV2", serviceShapeName: "ApiGatewayV2" });
-const auth = T.AwsAuthSigv4({ name: "apigateway" });
-const ver = T.ServiceVersion("2018-11-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "ApiGatewayV2",
+  serviceShapeName: "ApiGatewayV2",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "apigateway" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,32 +76,38 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceType: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { LimitType: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    {
+      LimitType: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type SelectionExpression = string;
 export type CorsHeaderList = string[];
@@ -148,7 +157,7 @@ export const ProtocolType = S.String;
 export type SelectionKey = string;
 export type StringWithLengthBetween1And1600 = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type UriWithLengthBetween1And2048 = string;
 export interface CreateApiRequest {
   ApiKeySelectionExpression?: string;
@@ -640,16 +649,22 @@ export type PassthroughBehavior = "WHEN_NO_MATCH" | "NEVER" | "WHEN_NO_TEMPLATES
 export const PassthroughBehavior = S.String;
 
 export type IntegrationParameters = { [key: string]: string | undefined };
-export const IntegrationParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const IntegrationParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type StringWithLengthBetween0And32K = string;
 export type TemplateMap = { [key: string]: string | undefined };
-export const TemplateMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TemplateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ResponseParameters = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
 export const ResponseParameters = /*@__PURE__*/ S.Record(
   S.String,
-  IntegrationParameters.pipe(S.optional),
+  /*@__PURE__*/ IntegrationParameters.pipe(S.optional),
 );
 export type IntegerWithLengthBetween50And30000 = number;
 export interface TlsConfigInput {
@@ -1496,7 +1511,10 @@ export type AuthorizationType = "NONE" | "AWS_IAM" | "CUSTOM" | "JWT" | (string 
 export const AuthorizationType = S.String;
 
 export type RouteModels = { [key: string]: string | undefined };
-export const RouteModels = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RouteModels = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ParameterConstraints {
   Required?: boolean;
 }
@@ -1506,7 +1524,7 @@ export const ParameterConstraints = /*@__PURE__*/ S.suspend(() =>
 export type RouteParameters = { [key: string]: ParameterConstraints | undefined };
 export const RouteParameters = /*@__PURE__*/ S.Record(
   S.String,
-  ParameterConstraints.pipe(S.optional),
+  /*@__PURE__*/ ParameterConstraints.pipe(S.optional),
 );
 export interface CreateRouteRequest {
   ApiId: string;
@@ -1845,10 +1863,16 @@ export const RouteSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RouteSettings" }) as any as S.Schema<RouteSettings>;
 export type RouteSettingsMap = { [key: string]: RouteSettings | undefined };
-export const RouteSettingsMap = /*@__PURE__*/ S.Record(S.String, RouteSettings.pipe(S.optional));
+export const RouteSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ RouteSettings.pipe(S.optional),
+);
 export type StringWithLengthBetween0And2048 = string;
 export type StageVariablesMap = { [key: string]: string | undefined };
-export const StageVariablesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StageVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateStageRequest {
   AccessLogSettings?: AccessLogSettings;
   ApiId: string;

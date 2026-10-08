@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Connect", serviceShapeName: "AmazonConnectService" });
-const auth = T.AwsAuthSigv4({ name: "connect" });
-const ver = T.ServiceVersion("2017-08-08");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Connect",
+  serviceShapeName: "AmazonConnectService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "connect" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-08-08");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,230 +79,242 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class ConditionalOperationFailedException
   extends /*@__PURE__*/ S.TaggedError<ConditionalOperationFailedException>()(
     "ConditionalOperationFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ContactFlowNotPublishedException
   extends /*@__PURE__*/ S.TaggedError<ContactFlowNotPublishedException>()(
     "ContactFlowNotPublishedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ContactNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ContactNotFoundException>()(
     "ContactNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ContactNotFoundException", httpResponseCode: 410 }),
-      T.HttpError(410),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ContactNotFoundException", httpResponseCode: 410 }),
+      /*@__PURE__*/ T.HttpError(410),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ContactNotTerminatedException
   extends /*@__PURE__*/ S.TaggedError<ContactNotTerminatedException>()(
     "ContactNotTerminatedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DestinationNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<DestinationNotAllowedException>()(
     "DestinationNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "DestinationNotAllowedException", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "DestinationNotAllowedException",
+        httpResponseCode: 403,
+      }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class DuplicateResourceException
   extends /*@__PURE__*/ S.TaggedError<DuplicateResourceException>()(
     "DuplicateResourceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IdempotencyException
   extends /*@__PURE__*/ S.TaggedError<IdempotencyException>()(
     "IdempotencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidActiveRegionException
   extends /*@__PURE__*/ S.TaggedError<InvalidActiveRegionException>()(
     "InvalidActiveRegionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidContactFlowException
   extends /*@__PURE__*/ S.TaggedError<InvalidContactFlowException>()(
     "InvalidContactFlowException",
     {
-      problems: S.optional(S.suspend(() => Problems).annotate({ identifier: "Problems" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      problems: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidContactFlowModuleException
   extends /*@__PURE__*/ S.TaggedError<InvalidContactFlowModuleException>()(
     "InvalidContactFlowModuleException",
     {
-      Problems: S.optional(S.suspend(() => Problems).annotate({ identifier: "Problems" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Problems: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => InvalidRequestExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => InvalidRequestExceptionReason).annotate({
           identifier: "InvalidRequestExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTestCaseException
   extends /*@__PURE__*/ S.TaggedError<InvalidTestCaseException>()(
     "InvalidTestCaseException",
     {
-      Problems: S.optional(S.suspend(() => Problems).annotate({ identifier: "Problems" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Problems: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class MaximumResultReturnedException
   extends /*@__PURE__*/ S.TaggedError<MaximumResultReturnedException>()(
     "MaximumResultReturnedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OutboundContactNotPermittedException
   extends /*@__PURE__*/ S.TaggedError<OutboundContactNotPermittedException>()(
     "OutboundContactNotPermittedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OutboundContactNotPermittedException", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "OutboundContactNotPermittedException",
+        httpResponseCode: 403,
+      }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class OutputTypeNotFoundException
   extends /*@__PURE__*/ S.TaggedError<OutputTypeNotFoundException>()(
     "OutputTypeNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PropertyValidationException
   extends /*@__PURE__*/ S.TaggedError<PropertyValidationException>()(
     "PropertyValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      PropertyList: S.optional(
-        S.suspend(() => PropertyValidationExceptionPropertyList).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      PropertyList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => PropertyValidationExceptionPropertyList).annotate({
           identifier: "PropertyValidationExceptionPropertyList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
-      ResourceId: S.optional(S.String),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()(
     "ResourceNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
           identifier: "ServiceQuotaExceededExceptionReason",
         }),
       ),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UserNotFoundException
   extends /*@__PURE__*/ S.TaggedError<UserNotFoundException>()(
     "UserNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type InstanceId = string;
 export type ResourceId = string;
@@ -1690,8 +1705,8 @@ export type CreatedByInfo =
   | { ConnectUserArn: string; AWSIdentityArn?: never }
   | { ConnectUserArn?: never; AWSIdentityArn: string };
 export const CreatedByInfo = /*@__PURE__*/ S.Union([
-  S.Struct({ ConnectUserArn: S.String }),
-  S.Struct({ AWSIdentityArn: S.String }),
+  /*@__PURE__*/ S.Struct({ ConnectUserArn: S.String }),
+  /*@__PURE__*/ S.Struct({ AWSIdentityArn: S.String }),
 ]);
 export type FileUseCaseType =
   | "CONTACT_ANALYSIS"
@@ -1707,7 +1722,7 @@ export const FileUseCaseType = S.String;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AttachedFile {
   CreationTime: string;
   FileArn: string;
@@ -1838,7 +1853,7 @@ export type RequestIdentifier = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type CampaignId = string;
 export interface Campaign {
   CampaignId?: string;
@@ -2296,7 +2311,10 @@ export const Reference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reference" }) as any as S.Schema<Reference>;
 export type ContactReferences = { [key: string]: Reference | undefined };
-export const ContactReferences = /*@__PURE__*/ S.Record(S.String, Reference.pipe(S.optional));
+export const ContactReferences = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Reference.pipe(S.optional),
+);
 export type ContactInitiationMethod =
   | "INBOUND"
   | "OUTBOUND"
@@ -2330,14 +2348,14 @@ export type SegmentAttributeValueString = string;
 export type SegmentAttributeValueMap = { [key: string]: SegmentAttributeValue | undefined };
 export const SegmentAttributeValueMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue)
+  /*@__PURE__*/ S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue)
     .annotate({ identifier: "SegmentAttributeValue" })
     .pipe(S.optional),
 ) as any as S.Schema<SegmentAttributeValueMap>;
 export type SegmentAttributeValueInteger = number;
 export type SegmentAttributeValueList = SegmentAttributeValue[];
 export const SegmentAttributeValueList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue).annotate({
     identifier: "SegmentAttributeValue",
   }),
 ) as any as S.Schema<SegmentAttributeValueList>;
@@ -2368,7 +2386,7 @@ export const SegmentAttributeValue = /*@__PURE__*/ S.suspend(() =>
 export type SegmentAttributes = { [key: string]: SegmentAttributeValue | undefined };
 export const SegmentAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue)
+  /*@__PURE__*/ S.suspend((): S.Schema<SegmentAttributeValue> => SegmentAttributeValue)
     .annotate({ identifier: "SegmentAttributeValue" })
     .pipe(S.optional),
 );
@@ -2985,8 +3003,8 @@ export type EvaluationFormNumericQuestionAutomation =
   | { PropertyValue: NumericQuestionPropertyValueAutomation; AnswerSource?: never }
   | { PropertyValue?: never; AnswerSource: EvaluationFormQuestionAutomationAnswerSource };
 export const EvaluationFormNumericQuestionAutomation = /*@__PURE__*/ S.Union([
-  S.Struct({ PropertyValue: NumericQuestionPropertyValueAutomation }),
-  S.Struct({ AnswerSource: EvaluationFormQuestionAutomationAnswerSource }),
+  /*@__PURE__*/ S.Struct({ PropertyValue: NumericQuestionPropertyValueAutomation }),
+  /*@__PURE__*/ S.Struct({ AnswerSource: EvaluationFormQuestionAutomationAnswerSource }),
 ]);
 export interface EvaluationFormNumericQuestionProperties {
   MinValue: number;
@@ -3058,7 +3076,7 @@ export type EvaluationFormSingleSelectQuestionAutomationOption = {
   RuleCategory: SingleSelectQuestionRuleCategoryAutomation;
 };
 export const EvaluationFormSingleSelectQuestionAutomationOption = /*@__PURE__*/ S.Union([
-  S.Struct({ RuleCategory: SingleSelectQuestionRuleCategoryAutomation }),
+  /*@__PURE__*/ S.Struct({ RuleCategory: SingleSelectQuestionRuleCategoryAutomation }),
 ]);
 export type EvaluationFormSingleSelectQuestionAutomationOptionList =
   EvaluationFormSingleSelectQuestionAutomationOption[];
@@ -3164,7 +3182,7 @@ export type EvaluationFormMultiSelectQuestionAutomationOption = {
   RuleCategory: MultiSelectQuestionRuleCategoryAutomation;
 };
 export const EvaluationFormMultiSelectQuestionAutomationOption = /*@__PURE__*/ S.Union([
-  S.Struct({ RuleCategory: MultiSelectQuestionRuleCategoryAutomation }),
+  /*@__PURE__*/ S.Struct({ RuleCategory: MultiSelectQuestionRuleCategoryAutomation }),
 ]);
 export type EvaluationFormMultiSelectQuestionAutomationOptionList =
   EvaluationFormMultiSelectQuestionAutomationOption[];
@@ -3225,10 +3243,10 @@ export type EvaluationFormQuestionTypeProperties =
       MultiSelect: EvaluationFormMultiSelectQuestionProperties;
     };
 export const EvaluationFormQuestionTypeProperties = /*@__PURE__*/ S.Union([
-  S.Struct({ Numeric: EvaluationFormNumericQuestionProperties }),
-  S.Struct({ SingleSelect: EvaluationFormSingleSelectQuestionProperties }),
-  S.Struct({ Text: EvaluationFormTextQuestionProperties }),
-  S.Struct({ MultiSelect: EvaluationFormMultiSelectQuestionProperties }),
+  /*@__PURE__*/ S.Struct({ Numeric: EvaluationFormNumericQuestionProperties }),
+  /*@__PURE__*/ S.Struct({ SingleSelect: EvaluationFormSingleSelectQuestionProperties }),
+  /*@__PURE__*/ S.Struct({ Text: EvaluationFormTextQuestionProperties }),
+  /*@__PURE__*/ S.Struct({ MultiSelect: EvaluationFormMultiSelectQuestionProperties }),
 ]);
 export type EvaluationFormItemEnablementSourceType = "QUESTION_REF_ID" | (string & {});
 export const EvaluationFormItemEnablementSourceType = S.String;
@@ -3284,9 +3302,9 @@ export type EvaluationFormItemEnablementConditionOperand =
   | { Expression: EvaluationFormItemEnablementExpression; Condition?: never }
   | { Expression?: never; Condition: EvaluationFormItemEnablementCondition };
 export const EvaluationFormItemEnablementConditionOperand = /*@__PURE__*/ S.Union([
-  S.Struct({ Expression: EvaluationFormItemEnablementExpression }),
-  S.Struct({
-    Condition: S.suspend(
+  /*@__PURE__*/ S.Struct({ Expression: EvaluationFormItemEnablementExpression }),
+  /*@__PURE__*/ S.Struct({
+    Condition: /*@__PURE__*/ S.suspend(
       (): S.Schema<EvaluationFormItemEnablementCondition> => EvaluationFormItemEnablementCondition,
     ).annotate({ identifier: "EvaluationFormItemEnablementCondition" }),
   }),
@@ -3294,7 +3312,7 @@ export const EvaluationFormItemEnablementConditionOperand = /*@__PURE__*/ S.Unio
 export type EvaluationFormItemEnablementConditionOperandList =
   EvaluationFormItemEnablementConditionOperand[];
 export const EvaluationFormItemEnablementConditionOperandList = /*@__PURE__*/ S.Array(
-  S.suspend(() => EvaluationFormItemEnablementConditionOperand).annotate({
+  /*@__PURE__*/ S.suspend(() => EvaluationFormItemEnablementConditionOperand).annotate({
     identifier: "EvaluationFormItemEnablementConditionOperand",
   }),
 ) as any as S.Schema<EvaluationFormItemEnablementConditionOperandList>;
@@ -3403,16 +3421,18 @@ export type EvaluationFormItem =
   | { Section: EvaluationFormSection; Question?: never }
   | { Section?: never; Question: EvaluationFormQuestion };
 export const EvaluationFormItem = /*@__PURE__*/ S.Union([
-  S.Struct({
-    Section: S.suspend((): S.Schema<EvaluationFormSection> => EvaluationFormSection).annotate({
+  /*@__PURE__*/ S.Struct({
+    Section: /*@__PURE__*/ S.suspend(
+      (): S.Schema<EvaluationFormSection> => EvaluationFormSection,
+    ).annotate({
       identifier: "EvaluationFormSection",
     }),
   }),
-  S.Struct({ Question: EvaluationFormQuestion }),
+  /*@__PURE__*/ S.Struct({ Question: EvaluationFormQuestion }),
 ]) as any as S.Schema<EvaluationFormItem>;
 export type EvaluationFormItemsList = EvaluationFormItem[];
 export const EvaluationFormItemsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => EvaluationFormItem).annotate({ identifier: "EvaluationFormItem" }),
+  /*@__PURE__*/ S.suspend(() => EvaluationFormItem).annotate({ identifier: "EvaluationFormItem" }),
 ) as any as S.Schema<EvaluationFormItemsList>;
 export type EvaluationFormScoringMode =
   | "QUESTION_ONLY"
@@ -4111,7 +4131,10 @@ export const LocaleCode = S.String;
 
 export type LocalizedString = string;
 export type NotificationContent = { [key in LocaleCode]?: string };
-export const NotificationContent = /*@__PURE__*/ S.Record(LocaleCode, S.String.pipe(S.optional));
+export const NotificationContent = /*@__PURE__*/ S.Record(
+  LocaleCode,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type NotificationId = string;
 export interface CreateNotificationRequest {
   InstanceId: string;
@@ -4281,7 +4304,7 @@ export type PredefinedAttributeStringValuesList = string[];
 export const PredefinedAttributeStringValuesList = /*@__PURE__*/ S.Array(S.String);
 export type PredefinedAttributeValues = { StringList: string[] };
 export const PredefinedAttributeValues = /*@__PURE__*/ S.Union([
-  S.Struct({ StringList: PredefinedAttributeStringValuesList }),
+  /*@__PURE__*/ S.Struct({ StringList: PredefinedAttributeStringValuesList }),
 ]);
 export type PredefinedAttributePurposeName = string;
 export type PredefinedAttributePurposeNameList = string[];
@@ -4748,7 +4771,7 @@ export type NotificationContentType = "PLAIN_TEXT" | (string & {});
 export const NotificationContentType = S.String;
 
 export type UserTagMap = { [key: string]: string | undefined };
-export const UserTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const UserTagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type UserIdList = string[];
 export const UserIdList = /*@__PURE__*/ S.Array(S.String);
 export interface NotificationRecipientType {
@@ -5027,7 +5050,10 @@ export const PermissionsList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityProfilePolicyKey = string;
 export type SecurityProfilePolicyValue = string;
 export type AllowedAccessControlTags = { [key: string]: string | undefined };
-export const AllowedAccessControlTags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AllowedAccessControlTags = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TagRestrictedResourceName = string;
 export type TagRestrictedResourceList = string[];
 export const TagRestrictedResourceList = /*@__PURE__*/ S.Array(S.String);
@@ -7536,7 +7562,10 @@ export type QueuePriority = number;
 export type ContactTagKey = string;
 export type ContactTagValue = string;
 export type ContactTagMap = { [key: string]: string | undefined };
-export const ContactTagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContactTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DurationInSeconds = number;
 export interface Expiry {
   DurationInSeconds?: number;
@@ -7596,7 +7625,9 @@ export const AttributeCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeCondition" }) as any as S.Schema<AttributeCondition>;
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<Expressions>;
 export interface Expression {
   AttributeCondition?: AttributeCondition;
@@ -7885,7 +7916,7 @@ export const ContactEvaluation = /*@__PURE__*/ S.suspend(() =>
 export type ContactEvaluations = { [key: string]: ContactEvaluation | undefined };
 export const ContactEvaluations = /*@__PURE__*/ S.Record(
   S.String,
-  ContactEvaluation.pipe(S.optional),
+  /*@__PURE__*/ ContactEvaluation.pipe(S.optional),
 );
 export interface TaskTemplateInfoV2 {
   Arn?: string;
@@ -7924,7 +7955,7 @@ export const QuickConnectContactData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuickConnectContactData" }) as any as S.Schema<QuickConnectContactData>;
 export type NextContactMetadata = { QuickConnectContactData: QuickConnectContactData };
 export const NextContactMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ QuickConnectContactData: QuickConnectContactData }),
+  /*@__PURE__*/ S.Struct({ QuickConnectContactData: QuickConnectContactData }),
 ]);
 export interface NextContactEntry {
   Type?: NextContactType;
@@ -8248,11 +8279,11 @@ export type EvaluationAnswerData =
       NotApplicable: boolean;
     };
 export const EvaluationAnswerData = /*@__PURE__*/ S.Union([
-  S.Struct({ StringValue: S.String }),
-  S.Struct({ NumericValue: S.Number }),
-  S.Struct({ StringValues: EvaluationAnswerDataStringValueList }),
-  S.Struct({ DateTimeValue: S.String }),
-  S.Struct({ NotApplicable: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ NumericValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ StringValues: EvaluationAnswerDataStringValueList }),
+  /*@__PURE__*/ S.Struct({ DateTimeValue: S.String }),
+  /*@__PURE__*/ S.Struct({ NotApplicable: S.Boolean }),
 ]);
 export type EvaluationSuggestedAnswerStatus =
   | "IN_PROGRESS"
@@ -8348,8 +8379,8 @@ export type EvaluationQuestionAnswerAnalysisDetails =
   | { GenAI: EvaluationGenAIAnswerAnalysisDetails; ContactLens?: never }
   | { GenAI?: never; ContactLens: EvaluationContactLensAnswerAnalysisDetails };
 export const EvaluationQuestionAnswerAnalysisDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ GenAI: EvaluationGenAIAnswerAnalysisDetails }),
-  S.Struct({ ContactLens: EvaluationContactLensAnswerAnalysisDetails }),
+  /*@__PURE__*/ S.Struct({ GenAI: EvaluationGenAIAnswerAnalysisDetails }),
+  /*@__PURE__*/ S.Struct({ ContactLens: EvaluationContactLensAnswerAnalysisDetails }),
 ]);
 export interface EvaluationSuggestedAnswer {
   Value?: EvaluationAnswerData;
@@ -8386,7 +8417,7 @@ export const EvaluationAnswerOutput = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationAnswersOutputMap = { [key: string]: EvaluationAnswerOutput | undefined };
 export const EvaluationAnswersOutputMap = /*@__PURE__*/ S.Record(
   S.String,
-  EvaluationAnswerOutput.pipe(S.optional),
+  /*@__PURE__*/ EvaluationAnswerOutput.pipe(S.optional),
 );
 export type EvaluationNoteString = string;
 export interface EvaluationNote {
@@ -8396,7 +8427,10 @@ export const EvaluationNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.String) }),
 ).annotate({ identifier: "EvaluationNote" }) as any as S.Schema<EvaluationNote>;
 export type EvaluationNotesMap = { [key: string]: EvaluationNote | undefined };
-export const EvaluationNotesMap = /*@__PURE__*/ S.Record(S.String, EvaluationNote.pipe(S.optional));
+export const EvaluationNotesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ EvaluationNote.pipe(S.optional),
+);
 export type EvaluationStatus =
   | "DRAFT"
   | "SUBMITTED"
@@ -8408,7 +8442,7 @@ export const EvaluationStatus = S.String;
 export type EvaluationScoresMap = { [key: string]: EvaluationScore | undefined };
 export const EvaluationScoresMap = /*@__PURE__*/ S.Record(
   S.String,
-  EvaluationScore.pipe(S.optional),
+  /*@__PURE__*/ EvaluationScore.pipe(S.optional),
 );
 export type EvaluationType = "STANDARD" | "CALIBRATION" | (string & {});
 export const EvaluationType = S.String;
@@ -11435,7 +11469,9 @@ export const GetContactMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetContactMetricsRequest" }) as any as S.Schema<GetContactMetricsRequest>;
 export type ContactMetricValue = { Number: number };
-export const ContactMetricValue = /*@__PURE__*/ S.Union([S.Struct({ Number: S.Number })]);
+export const ContactMetricValue = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ Number: S.Number }),
+]);
 export interface ContactMetricResult {
   Name: ContactMetricName;
   Value: ContactMetricValue;
@@ -11809,7 +11845,10 @@ export const AgentStatusReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentStatusReference" }) as any as S.Schema<AgentStatusReference>;
 export type IntegerCount = number;
 export type ChannelToCountMap = { [key in Channel]?: number };
-export const ChannelToCountMap = /*@__PURE__*/ S.Record(Channel, S.Number.pipe(S.optional));
+export const ChannelToCountMap = /*@__PURE__*/ S.Record(
+  Channel,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface AgentContactReference {
   ContactId?: string;
   Channel?: Channel;
@@ -12370,7 +12409,10 @@ export const GetMetricDataV2Request = /*@__PURE__*/ S.suspend(() =>
 export type DimensionsV2Key = string;
 export type DimensionsV2Value = string;
 export type DimensionsV2Map = { [key: string]: string | undefined };
-export const DimensionsV2Map = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DimensionsV2Map = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface MetricInterval {
   Interval?: IntervalPeriod;
   StartTime?: Date;
@@ -13748,17 +13790,17 @@ export type ReferenceSummary =
       ContactAnalysis: ContactAnalysisReference;
     };
 export const ReferenceSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ Url: UrlReference }),
-  S.Struct({ Attachment: AttachmentReference }),
-  S.Struct({ EmailMessage: EmailMessageReference }),
-  S.Struct({ EmailMessageRedacted: EmailMessageReference }),
-  S.Struct({ EmailMessagePlainText: EmailMessageReference }),
-  S.Struct({ EmailMessagePlainTextRedacted: EmailMessageReference }),
-  S.Struct({ String: StringReference }),
-  S.Struct({ Number: NumberReference }),
-  S.Struct({ Date: DateReference }),
-  S.Struct({ Email: EmailReference }),
-  S.Struct({ ContactAnalysis: ContactAnalysisReference }),
+  /*@__PURE__*/ S.Struct({ Url: UrlReference }),
+  /*@__PURE__*/ S.Struct({ Attachment: AttachmentReference }),
+  /*@__PURE__*/ S.Struct({ EmailMessage: EmailMessageReference }),
+  /*@__PURE__*/ S.Struct({ EmailMessageRedacted: EmailMessageReference }),
+  /*@__PURE__*/ S.Struct({ EmailMessagePlainText: EmailMessageReference }),
+  /*@__PURE__*/ S.Struct({ EmailMessagePlainTextRedacted: EmailMessageReference }),
+  /*@__PURE__*/ S.Struct({ String: StringReference }),
+  /*@__PURE__*/ S.Struct({ Number: NumberReference }),
+  /*@__PURE__*/ S.Struct({ Date: DateReference }),
+  /*@__PURE__*/ S.Struct({ Email: EmailReference }),
+  /*@__PURE__*/ S.Struct({ ContactAnalysis: ContactAnalysisReference }),
 ]);
 export type ReferenceSummaryList = ReferenceSummary[];
 export const ReferenceSummaryList = /*@__PURE__*/ S.Array(ReferenceSummary);
@@ -15308,7 +15350,9 @@ export type RealTimeContactAnalysisContentType = string;
 export type RealTimeContactAnalysisTimeInstant = Date;
 export type RealTimeContactAnalysisTimeData = { AbsoluteTime: Date };
 export const RealTimeContactAnalysisTimeData = /*@__PURE__*/ S.Union([
-  S.Struct({ AbsoluteTime: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
+  /*@__PURE__*/ S.Struct({
+    AbsoluteTime: /*@__PURE__*/ T.DateFromString.pipe(/*@__PURE__*/ T.TimestampFormat("date-time")),
+  }),
 ]);
 export type RealTimeContactAnalysisOffset = number;
 export interface RealTimeContactAnalysisCharacterInterval {
@@ -15411,7 +15455,7 @@ export type RealTimeContactAnalysisMatchedDetails = {
 };
 export const RealTimeContactAnalysisMatchedDetails = /*@__PURE__*/ S.Record(
   S.String,
-  RealTimeContactAnalysisCategoryDetails.pipe(S.optional),
+  /*@__PURE__*/ RealTimeContactAnalysisCategoryDetails.pipe(S.optional),
 );
 export interface RealTimeContactAnalysisSegmentCategories {
   MatchedDetails: { [key: string]: RealTimeContactAnalysisCategoryDetails | undefined };
@@ -15667,13 +15711,15 @@ export type RealtimeContactAnalysisSegment =
       ExtractedInformation: RealTimeContactAnalysisSegmentExtractedInformation;
     };
 export const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.Union([
-  S.Struct({ Transcript: RealTimeContactAnalysisSegmentTranscript }),
-  S.Struct({ Categories: RealTimeContactAnalysisSegmentCategories }),
-  S.Struct({ Issues: RealTimeContactAnalysisSegmentIssues }),
-  S.Struct({ Event: RealTimeContactAnalysisSegmentEvent }),
-  S.Struct({ Attachments: RealTimeContactAnalysisSegmentAttachments }),
-  S.Struct({ PostContactSummary: RealTimeContactAnalysisSegmentPostContactSummary }),
-  S.Struct({ ExtractedInformation: RealTimeContactAnalysisSegmentExtractedInformation }),
+  /*@__PURE__*/ S.Struct({ Transcript: RealTimeContactAnalysisSegmentTranscript }),
+  /*@__PURE__*/ S.Struct({ Categories: RealTimeContactAnalysisSegmentCategories }),
+  /*@__PURE__*/ S.Struct({ Issues: RealTimeContactAnalysisSegmentIssues }),
+  /*@__PURE__*/ S.Struct({ Event: RealTimeContactAnalysisSegmentEvent }),
+  /*@__PURE__*/ S.Struct({ Attachments: RealTimeContactAnalysisSegmentAttachments }),
+  /*@__PURE__*/ S.Struct({ PostContactSummary: RealTimeContactAnalysisSegmentPostContactSummary }),
+  /*@__PURE__*/ S.Struct({
+    ExtractedInformation: RealTimeContactAnalysisSegmentExtractedInformation,
+  }),
 ]);
 export type RealtimeContactAnalysisSegments = RealtimeContactAnalysisSegment[];
 export const RealtimeContactAnalysisSegments = /*@__PURE__*/ S.Array(
@@ -17247,7 +17293,9 @@ export const AgentStatusSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentStatusSearchFilter" }) as any as S.Schema<AgentStatusSearchFilter>;
 export type AgentStatusSearchConditionList = AgentStatusSearchCriteria[];
 export const AgentStatusSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<AgentStatusSearchCriteria> => AgentStatusSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<AgentStatusSearchCriteria> => AgentStatusSearchCriteria,
+  ).annotate({
     identifier: "AgentStatusSearchCriteria",
   }),
 ) as any as S.Schema<AgentStatusSearchConditionList>;
@@ -17383,7 +17431,9 @@ export const SearchAvailablePhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
 export type EvaluationSearchConditionList = EvaluationSearchCriteria[];
 export const EvaluationSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<EvaluationSearchCriteria> => EvaluationSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<EvaluationSearchCriteria> => EvaluationSearchCriteria,
+  ).annotate({
     identifier: "EvaluationSearchCriteria",
   }),
 ) as any as S.Schema<EvaluationSearchConditionList>;
@@ -17714,7 +17764,7 @@ export const ContactFlowModuleSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContactFlowModuleSearchFilter>;
 export type ContactFlowModuleSearchConditionList = ContactFlowModuleSearchCriteria[];
 export const ContactFlowModuleSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<ContactFlowModuleSearchCriteria> => ContactFlowModuleSearchCriteria,
   ).annotate({ identifier: "ContactFlowModuleSearchCriteria" }),
 ) as any as S.Schema<ContactFlowModuleSearchConditionList>;
@@ -17837,7 +17887,9 @@ export const ContactFlowSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactFlowSearchFilter" }) as any as S.Schema<ContactFlowSearchFilter>;
 export type ContactFlowSearchConditionList = ContactFlowSearchCriteria[];
 export const ContactFlowSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ContactFlowSearchCriteria> => ContactFlowSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<ContactFlowSearchCriteria> => ContactFlowSearchCriteria,
+  ).annotate({
     identifier: "ContactFlowSearchCriteria",
   }),
 ) as any as S.Schema<ContactFlowSearchConditionList>;
@@ -18265,7 +18317,7 @@ export type ContactSearchSummarySegmentAttributes = {
 };
 export const ContactSearchSummarySegmentAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  ContactSearchSummarySegmentAttributeValue.pipe(S.optional),
+  /*@__PURE__*/ ContactSearchSummarySegmentAttributeValue.pipe(S.optional),
 );
 export interface ContactSearchSummaryAiAgentInfo {
   AiAgentVersionId?: string;
@@ -18348,7 +18400,9 @@ export const DataTableSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataTableSearchFilter" }) as any as S.Schema<DataTableSearchFilter>;
 export type DataTableSearchConditionList = DataTableSearchCriteria[];
 export const DataTableSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<DataTableSearchCriteria> => DataTableSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<DataTableSearchCriteria> => DataTableSearchCriteria,
+  ).annotate({
     identifier: "DataTableSearchCriteria",
   }),
 ) as any as S.Schema<DataTableSearchConditionList>;
@@ -18406,7 +18460,9 @@ export const SearchDataTablesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchDataTablesResponse" }) as any as S.Schema<SearchDataTablesResponse>;
 export type EmailAddressSearchConditionList = EmailAddressSearchCriteria[];
 export const EmailAddressSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<EmailAddressSearchCriteria> => EmailAddressSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<EmailAddressSearchCriteria> => EmailAddressSearchCriteria,
+  ).annotate({
     identifier: "EmailAddressSearchCriteria",
   }),
 ) as any as S.Schema<EmailAddressSearchConditionList>;
@@ -18494,7 +18550,9 @@ export const SearchEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchEmailAddressesResponse>;
 export type EvaluationFormSearchConditionList = EvaluationFormSearchCriteria[];
 export const EvaluationFormSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<EvaluationFormSearchCriteria> => EvaluationFormSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<EvaluationFormSearchCriteria> => EvaluationFormSearchCriteria,
+  ).annotate({
     identifier: "EvaluationFormSearchCriteria",
   }),
 ) as any as S.Schema<EvaluationFormSearchConditionList>;
@@ -18631,7 +18689,7 @@ export const HoursOfOperationSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HoursOfOperationSearchFilter>;
 export type HoursOfOperationOverrideSearchConditionList = HoursOfOperationOverrideSearchCriteria[];
 export const HoursOfOperationOverrideSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<HoursOfOperationOverrideSearchCriteria> => HoursOfOperationOverrideSearchCriteria,
   ).annotate({ identifier: "HoursOfOperationOverrideSearchCriteria" }),
 ) as any as S.Schema<HoursOfOperationOverrideSearchConditionList>;
@@ -18724,7 +18782,7 @@ export const SearchHoursOfOperationOverridesResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SearchHoursOfOperationOverridesResponse>;
 export type HoursOfOperationSearchConditionList = HoursOfOperationSearchCriteria[];
 export const HoursOfOperationSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<HoursOfOperationSearchCriteria> => HoursOfOperationSearchCriteria,
   ).annotate({ identifier: "HoursOfOperationSearchCriteria" }),
 ) as any as S.Schema<HoursOfOperationSearchConditionList>;
@@ -18801,7 +18859,7 @@ export const MetricSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricSearchFilter" }) as any as S.Schema<MetricSearchFilter>;
 export type MetricSearchConditionList = MetricSearchCriteria[];
 export const MetricSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<MetricSearchCriteria> => MetricSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<MetricSearchCriteria> => MetricSearchCriteria).annotate({
     identifier: "MetricSearchCriteria",
   }),
 ) as any as S.Schema<MetricSearchConditionList>;
@@ -18865,7 +18923,9 @@ export const NotificationSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationSearchFilter" }) as any as S.Schema<NotificationSearchFilter>;
 export type NotificationSearchConditionList = NotificationSearchCriteria[];
 export const NotificationSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<NotificationSearchCriteria> => NotificationSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<NotificationSearchCriteria> => NotificationSearchCriteria,
+  ).annotate({
     identifier: "NotificationSearchCriteria",
   }),
 ) as any as S.Schema<NotificationSearchConditionList>;
@@ -18959,7 +19019,7 @@ export const SearchNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchNotificationsResponse>;
 export type PredefinedAttributeSearchConditionList = PredefinedAttributeSearchCriteria[];
 export const PredefinedAttributeSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<PredefinedAttributeSearchCriteria> => PredefinedAttributeSearchCriteria,
   ).annotate({ identifier: "PredefinedAttributeSearchCriteria" }),
 ) as any as S.Schema<PredefinedAttributeSearchConditionList>;
@@ -19034,7 +19094,7 @@ export const PromptSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromptSearchFilter" }) as any as S.Schema<PromptSearchFilter>;
 export type PromptSearchConditionList = PromptSearchCriteria[];
 export const PromptSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<PromptSearchCriteria> => PromptSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<PromptSearchCriteria> => PromptSearchCriteria).annotate({
     identifier: "PromptSearchCriteria",
   }),
 ) as any as S.Schema<PromptSearchConditionList>;
@@ -19097,7 +19157,7 @@ export const QueueSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueueSearchFilter" }) as any as S.Schema<QueueSearchFilter>;
 export type QueueSearchConditionList = QueueSearchCriteria[];
 export const QueueSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<QueueSearchCriteria> => QueueSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<QueueSearchCriteria> => QueueSearchCriteria).annotate({
     identifier: "QueueSearchCriteria",
   }),
 ) as any as S.Schema<QueueSearchConditionList>;
@@ -19164,7 +19224,9 @@ export const QuickConnectSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuickConnectSearchFilter" }) as any as S.Schema<QuickConnectSearchFilter>;
 export type QuickConnectSearchConditionList = QuickConnectSearchCriteria[];
 export const QuickConnectSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<QuickConnectSearchCriteria> => QuickConnectSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<QuickConnectSearchCriteria> => QuickConnectSearchCriteria,
+  ).annotate({
     identifier: "QuickConnectSearchCriteria",
   }),
 ) as any as S.Schema<QuickConnectSearchConditionList>;
@@ -19300,7 +19362,9 @@ export const RoutingProfileSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutingProfileSearchFilter>;
 export type RoutingProfileSearchConditionList = RoutingProfileSearchCriteria[];
 export const RoutingProfileSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<RoutingProfileSearchCriteria> => RoutingProfileSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<RoutingProfileSearchCriteria> => RoutingProfileSearchCriteria,
+  ).annotate({
     identifier: "RoutingProfileSearchCriteria",
   }),
 ) as any as S.Schema<RoutingProfileSearchConditionList>;
@@ -19371,7 +19435,7 @@ export const SearchRoutingProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchRoutingProfilesResponse>;
 export type RulesSearchConditionList = RulesSearchCriteria[];
 export const RulesSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<RulesSearchCriteria> => RulesSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<RulesSearchCriteria> => RulesSearchCriteria).annotate({
     identifier: "RulesSearchCriteria",
   }),
 ) as any as S.Schema<RulesSearchConditionList>;
@@ -19485,7 +19549,9 @@ export const SearchRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRulesResponse" }) as any as S.Schema<SearchRulesResponse>;
 export type SecurityProfileSearchConditionList = SecurityProfileSearchCriteria[];
 export const SecurityProfileSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<SecurityProfileSearchCriteria> => SecurityProfileSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<SecurityProfileSearchCriteria> => SecurityProfileSearchCriteria,
+  ).annotate({
     identifier: "SecurityProfileSearchCriteria",
   }),
 ) as any as S.Schema<SecurityProfileSearchConditionList>;
@@ -19592,7 +19658,7 @@ export const TestCaseSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestCaseSearchFilter" }) as any as S.Schema<TestCaseSearchFilter>;
 export type TestCaseSearchConditionList = TestCaseSearchCriteria[];
 export const TestCaseSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<TestCaseSearchCriteria> => TestCaseSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<TestCaseSearchCriteria> => TestCaseSearchCriteria).annotate({
     identifier: "TestCaseSearchCriteria",
   }),
 ) as any as S.Schema<TestCaseSearchConditionList>;
@@ -19660,7 +19726,7 @@ export const UserHierarchyGroupSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserHierarchyGroupSearchFilter>;
 export type UserHierarchyGroupSearchConditionList = UserHierarchyGroupSearchCriteria[];
 export const UserHierarchyGroupSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<UserHierarchyGroupSearchCriteria> => UserHierarchyGroupSearchCriteria,
   ).annotate({ identifier: "UserHierarchyGroupSearchCriteria" }),
 ) as any as S.Schema<UserHierarchyGroupSearchConditionList>;
@@ -19782,7 +19848,7 @@ export const UserSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSearchFilter" }) as any as S.Schema<UserSearchFilter>;
 export type UserSearchConditionList = UserSearchCriteria[];
 export const UserSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<UserSearchCriteria> => UserSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<UserSearchCriteria> => UserSearchCriteria).annotate({
     identifier: "UserSearchCriteria",
   }),
 ) as any as S.Schema<UserSearchConditionList>;
@@ -19909,7 +19975,7 @@ export const ViewSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewSearchFilter" }) as any as S.Schema<ViewSearchFilter>;
 export type ViewSearchConditionList = ViewSearchCriteria[];
 export const ViewSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ViewSearchCriteria> => ViewSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<ViewSearchCriteria> => ViewSearchCriteria).annotate({
     identifier: "ViewSearchCriteria",
   }),
 ) as any as S.Schema<ViewSearchConditionList>;
@@ -20036,7 +20102,7 @@ export const WorkspaceAssociationSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceAssociationSearchFilter>;
 export type WorkspaceAssociationSearchConditionList = WorkspaceAssociationSearchCriteria[];
 export const WorkspaceAssociationSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<WorkspaceAssociationSearchCriteria> => WorkspaceAssociationSearchCriteria,
   ).annotate({ identifier: "WorkspaceAssociationSearchCriteria" }),
 ) as any as S.Schema<WorkspaceAssociationSearchConditionList>;
@@ -20138,7 +20204,9 @@ export const WorkspaceSearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkspaceSearchFilter" }) as any as S.Schema<WorkspaceSearchFilter>;
 export type WorkspaceSearchConditionList = WorkspaceSearchCriteria[];
 export const WorkspaceSearchConditionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<WorkspaceSearchCriteria> => WorkspaceSearchCriteria).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<WorkspaceSearchCriteria> => WorkspaceSearchCriteria,
+  ).annotate({
     identifier: "WorkspaceSearchCriteria",
   }),
 ) as any as S.Schema<WorkspaceSearchConditionList>;
@@ -20437,7 +20505,10 @@ export type RecommenderName = string;
 export type RecommenderContextKey = string;
 export type RecommenderContextValue = string;
 export type RecommenderContext = { [key: string]: string | undefined };
-export const RecommenderContext = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RecommenderContext = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RecommenderConfig {
   DomainName: string;
   RecommenderName: string;
@@ -20607,7 +20678,10 @@ export const StartAttachedFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
 export type UrlMetadataSignedHeadersKey = string;
 export type UrlMetadataSignedHeadersValue = string;
 export type UrlMetadataSignedHeaders = { [key: string]: string | undefined };
-export const UrlMetadataSignedHeaders = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const UrlMetadataSignedHeaders = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface UploadUrlMetadata {
   Url?: string;
   UrlExpiry?: string;
@@ -21033,7 +21107,10 @@ export const EmailHeaderType = S.String;
 
 export type EmailHeaderValue = string;
 export type EmailHeaders = { [key in EmailHeaderType]?: string };
-export const EmailHeaders = /*@__PURE__*/ S.Record(EmailHeaderType, S.String.pipe(S.optional));
+export const EmailHeaders = /*@__PURE__*/ S.Record(
+  EmailHeaderType,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface InboundRawMessage {
   Subject: string | redacted.Redacted<string>;
   Body: string | redacted.Redacted<string>;
@@ -21649,10 +21726,12 @@ export const EvaluationAnswerInput = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationAnswersInputMap = { [key: string]: EvaluationAnswerInput | undefined };
 export const EvaluationAnswersInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  EvaluationAnswerInput.pipe(S.optional),
+  /*@__PURE__*/ EvaluationAnswerInput.pipe(S.optional),
 );
 export type EvaluatorUserUnion = { ConnectUserArn: string };
-export const EvaluatorUserUnion = /*@__PURE__*/ S.Union([S.Struct({ ConnectUserArn: S.String })]);
+export const EvaluatorUserUnion = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ ConnectUserArn: S.String }),
+]);
 export interface SubmitContactEvaluationRequest {
   InstanceId: string;
   EvaluationId: string;
@@ -22894,8 +22973,8 @@ export type ParticipantTimerValue =
   | { ParticipantTimerAction: ParticipantTimerAction; ParticipantTimerDurationInMinutes?: never }
   | { ParticipantTimerAction?: never; ParticipantTimerDurationInMinutes: number };
 export const ParticipantTimerValue = /*@__PURE__*/ S.Union([
-  S.Struct({ ParticipantTimerAction: ParticipantTimerAction }),
-  S.Struct({ ParticipantTimerDurationInMinutes: S.Number }),
+  /*@__PURE__*/ S.Struct({ ParticipantTimerAction: ParticipantTimerAction }),
+  /*@__PURE__*/ S.Struct({ ParticipantTimerDurationInMinutes: S.Number }),
 ]);
 export interface ParticipantTimerConfiguration {
   ParticipantRole: TimerEligibleParticipantRoles;
@@ -22923,7 +23002,7 @@ export const ChatParticipantRoleConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatParticipantRoleConfig>;
 export type UpdateParticipantRoleConfigChannelInfo = { Chat: ChatParticipantRoleConfig };
 export const UpdateParticipantRoleConfigChannelInfo = /*@__PURE__*/ S.Union([
-  S.Struct({ Chat: ChatParticipantRoleConfig }),
+  /*@__PURE__*/ S.Struct({ Chat: ChatParticipantRoleConfig }),
 ]);
 export interface UpdateParticipantRoleConfigRequest {
   InstanceId: string;
@@ -24196,7 +24275,7 @@ export type InvalidRequestExceptionReason = {
   AttachedFileInvalidRequestExceptionReason: AttachedFileInvalidRequestExceptionReason;
 };
 export const InvalidRequestExceptionReason = /*@__PURE__*/ S.Union([
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
     AttachedFileInvalidRequestExceptionReason: AttachedFileInvalidRequestExceptionReason,
   }),
 ]);
@@ -24210,7 +24289,7 @@ export type ServiceQuotaExceededExceptionReason = {
   AttachedFileServiceQuotaExceededExceptionReason: AttachedFileServiceQuotaExceededExceptionReason;
 };
 export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.Union([
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
     AttachedFileServiceQuotaExceededExceptionReason:
       AttachedFileServiceQuotaExceededExceptionReason,
   }),

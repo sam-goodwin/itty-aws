@@ -8,11 +8,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Interconnect", serviceShapeName: "Interconnect" });
-const auth = T.AwsAuthSigv4({ name: "interconnect" });
-const ver = T.ServiceVersion("2022-07-26");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Interconnect",
+  serviceShapeName: "Interconnect",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "interconnect" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-07-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -52,15 +55,15 @@ export type AttachPoint =
   | { directConnectGateway: string; arn?: never }
   | { directConnectGateway?: never; arn: string };
 export const AttachPoint = /*@__PURE__*/ S.Union([
-  S.Struct({ directConnectGateway: S.String }),
-  S.Struct({ arn: S.String }),
+  /*@__PURE__*/ S.Struct({ directConnectGateway: S.String }),
+  /*@__PURE__*/ S.Struct({ arn: S.String }),
 ]);
 export type ActivationKey = string | redacted.Redacted<string>;
 export type ConnectionDescription = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AcceptConnectionProposalRequest {
   attachPoint: AttachPoint;
   activationKey: string | redacted.Redacted<string>;
@@ -88,8 +91,8 @@ export type Provider =
   | { cloudServiceProvider: string; lastMileProvider?: never }
   | { cloudServiceProvider?: never; lastMileProvider: string };
 export const Provider = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudServiceProvider: S.String }),
-  S.Struct({ lastMileProvider: S.String }),
+  /*@__PURE__*/ S.Struct({ cloudServiceProvider: S.String }),
+  /*@__PURE__*/ S.Struct({ lastMileProvider: S.String }),
 ]);
 export type Location = string;
 export type ProductType = string;
@@ -154,7 +157,9 @@ export const AcceptConnectionProposalResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptConnectionProposalResponse>;
 export type RemoteOwnerAccount = string;
 export type RemoteAccountIdentifier = { identifier: string };
-export const RemoteAccountIdentifier = /*@__PURE__*/ S.Union([S.Struct({ identifier: S.String })]);
+export const RemoteAccountIdentifier = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ identifier: S.String }),
+]);
 export interface CreateConnectionRequest {
   description?: string;
   bandwidth: string;

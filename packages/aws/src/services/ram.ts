@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "RAM", serviceShapeName: "AmazonResourceSharing" });
-const auth = T.AwsAuthSigv4({ name: "ram" });
-const ver = T.ServiceVersion("2018-01-04");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "RAM",
+  serviceShapeName: "AmazonResourceSharing",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ram" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-01-04");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,235 +75,286 @@ const rules = T.EndpointResolver((p, _) => {
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "IdempotentParameterMismatch", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "IdempotentParameterMismatch", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidClientTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidClientTokenException>()(
     "InvalidClientTokenException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMaxResultsException
   extends /*@__PURE__*/ S.TaggedError<InvalidMaxResultsException>()(
     "InvalidMaxResultsException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPolicyException
   extends /*@__PURE__*/ S.TaggedError<InvalidPolicyException>()(
     "InvalidPolicyException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceTypeException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceTypeException>()(
     "InvalidResourceTypeException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResourceType.Unknown", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidResourceType.Unknown", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateTransitionException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateTransitionException>()(
     "InvalidStateTransitionException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidStateTransitionException.Unknown", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidStateTransitionException.Unknown",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedArnException
   extends /*@__PURE__*/ S.TaggedError<MalformedArnException>()(
     "MalformedArnException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyTemplateException
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicyTemplateException>()(
     "MalformedPolicyTemplateException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MalformedPolicyTemplateException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "MalformedPolicyTemplateException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException
   extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MissingRequiredParameter", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "MissingRequiredParameter", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
   extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class PermissionAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<PermissionAlreadyExistsException>()(
     "PermissionAlreadyExistsException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "PermissionAlreadyExistsException", httpResponseCode: 409 }),
-      T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "PermissionAlreadyExistsException",
+        httpResponseCode: 409,
+      }),
+      /*@__PURE__*/ T.HttpError(409),
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class PermissionLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<PermissionLimitExceededException>()(
     "PermissionLimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "PermissionLimitExceededException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "PermissionLimitExceededException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class PermissionVersionsLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<PermissionVersionsLimitExceededException>()(
     "PermissionVersionsLimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "PermissionVersionsLimitExceededException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "PermissionVersionsLimitExceededException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceArnNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceArnNotFoundException>()(
     "ResourceArnNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResourceArn.NotFound", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidResourceArn.NotFound", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationAlreadyAcceptedException
   extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationAlreadyAcceptedException>()(
     "ResourceShareInvitationAlreadyAcceptedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "InvalidResourceShareInvitationArn.AlreadyAccepted",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationAlreadyRejectedException
   extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationAlreadyRejectedException>()(
     "ResourceShareInvitationAlreadyRejectedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "InvalidResourceShareInvitationArn.AlreadyRejected",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationArnNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationArnNotFoundException>()(
     "ResourceShareInvitationArnNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "InvalidResourceShareInvitationArn.NotFound",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationExpiredException
   extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationExpiredException>()(
     "ResourceShareInvitationExpiredException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResourceShareInvitationArn.Expired", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidResourceShareInvitationArn.Expired",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceShareLimitExceededException>()(
     "ResourceShareLimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceShareLimitExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceShareLimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerInternalException
   extends /*@__PURE__*/ S.TaggedError<ServerInternalException>()(
     "ServerInternalException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }), T.HttpError(503)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }),
+      /*@__PURE__*/ T.HttpError(503),
+    ),
   ).pipe(C.withServerError) {}
 export class TagLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()(
     "TagLimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyViolationException
   extends /*@__PURE__*/ S.TaggedError<TagPolicyViolationException>()(
     "TagPolicyViolationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class UnknownResourceException
   extends /*@__PURE__*/ S.TaggedError<UnknownResourceException>()(
     "UnknownResourceException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResourceShareArn.NotFound", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidResourceShareArn.NotFound",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnmatchedPolicyPermissionException
   extends /*@__PURE__*/ S.TaggedError<UnmatchedPolicyPermissionException>()(
     "UnmatchedPolicyPermissionException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "UnmatchedPolicyPermissionException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "UnmatchedPolicyPermissionException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export interface AcceptResourceShareInvitationRequest {
@@ -370,7 +424,7 @@ export const ResourceShareAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceShareAssociation" }) as any as S.Schema<ResourceShareAssociation>;
 export type ResourceShareAssociationList = ResourceShareAssociation[];
 export const ResourceShareAssociationList = /*@__PURE__*/ S.Array(
-  ResourceShareAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ResourceShareAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ResourceShareAssociation",
   }),
 );
@@ -411,11 +465,17 @@ export const AcceptResourceShareInvitationResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "AcceptResourceShareInvitationResponse",
 }) as any as S.Schema<AcceptResourceShareInvitationResponse>;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResourceArnList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PrincipalArnOrIdList = string[];
-export const PrincipalArnOrIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PrincipalArnOrIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type SourceArnOrAccountList = string[];
-export const SourceArnOrAccountList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SourceArnOrAccountList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AssociateResourceShareRequest {
   resourceShareArn: string;
   resourceArns?: string[];
@@ -645,7 +705,9 @@ export const CreatePermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionVersionResponse",
 }) as any as S.Schema<CreatePermissionVersionResponse>;
 export type PermissionArnList = string[];
-export const PermissionArnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PermissionArnList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface ResourceShareConfiguration {
   retainSharingOnAccountLeaveOrganization?: boolean;
 }
@@ -951,7 +1013,9 @@ export const GetResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourcePoliciesRequest",
 }) as any as S.Schema<GetResourcePoliciesRequest>;
 export type PolicyList = string[];
-export const PolicyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PolicyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface GetResourcePoliciesResponse {
   policies?: string[];
   nextToken?: string;
@@ -962,7 +1026,9 @@ export const GetResourcePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourcePoliciesResponse",
 }) as any as S.Schema<GetResourcePoliciesResponse>;
 export type ResourceShareArnList = string[];
-export const ResourceShareArnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResourceShareArnList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface GetResourceShareAssociationsRequest {
   associationType: ResourceShareAssociationType;
   resourceShareArns?: string[];
@@ -1008,7 +1074,7 @@ export const GetResourceShareAssociationsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetResourceShareAssociationsResponse>;
 export type ResourceShareInvitationArnList = string[];
 export const ResourceShareInvitationArnList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface GetResourceShareInvitationsRequest {
   resourceShareInvitationArns?: string[];
@@ -1037,7 +1103,7 @@ export const GetResourceShareInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourceShareInvitationsRequest>;
 export type ResourceShareInvitationList = ResourceShareInvitation[];
 export const ResourceShareInvitationList = /*@__PURE__*/ S.Array(
-  ResourceShareInvitation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ResourceShareInvitation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ResourceShareInvitation",
   }),
 );
@@ -1095,7 +1161,9 @@ export const GetResourceSharesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResourceSharesRequest" }) as any as S.Schema<GetResourceSharesRequest>;
 export type ResourceShareList = ResourceShare[];
 export const ResourceShareList = /*@__PURE__*/ S.Array(
-  ResourceShare.pipe(T.XmlName("item")).annotate({ identifier: "ResourceShare" }),
+  /*@__PURE__*/ ResourceShare.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ResourceShare",
+  }),
 );
 export interface GetResourceSharesResponse {
   resourceShares?: ResourceShare[];
@@ -1172,7 +1240,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
 export const ResourceList = /*@__PURE__*/ S.Array(
-  Resource.pipe(T.XmlName("item")).annotate({ identifier: "Resource" }),
+  /*@__PURE__*/ Resource.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Resource" }),
 );
 export interface ListPendingInvitationResourcesResponse {
   resources?: Resource[];
@@ -1240,7 +1308,9 @@ export const AssociatedPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedPermission" }) as any as S.Schema<AssociatedPermission>;
 export type AssociatedPermissionList = AssociatedPermission[];
 export const AssociatedPermissionList = /*@__PURE__*/ S.Array(
-  AssociatedPermission.pipe(T.XmlName("item")).annotate({ identifier: "AssociatedPermission" }),
+  /*@__PURE__*/ AssociatedPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AssociatedPermission",
+  }),
 );
 export interface ListPermissionAssociationsResponse {
   permissions?: AssociatedPermission[];
@@ -1270,7 +1340,7 @@ export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPermissionsRequest" }) as any as S.Schema<ListPermissionsRequest>;
 export type ResourceSharePermissionList = ResourceSharePermissionSummary[];
 export const ResourceSharePermissionList = /*@__PURE__*/ S.Array(
-  ResourceSharePermissionSummary.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ResourceSharePermissionSummary.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ResourceSharePermissionSummary",
   }),
 );
@@ -1350,7 +1420,9 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 export type PrincipalList = Principal[];
 export const PrincipalList = /*@__PURE__*/ S.Array(
-  Principal.pipe(T.XmlName("item")).annotate({ identifier: "Principal" }),
+  /*@__PURE__*/ Principal.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Principal",
+  }),
 );
 export interface ListPrincipalsResponse {
   principals?: Principal[];
@@ -1361,7 +1433,7 @@ export const ListPrincipalsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPrincipalsResponse" }) as any as S.Schema<ListPrincipalsResponse>;
 export type ReplacePermissionAssociationsWorkIdList = string[];
 export const ReplacePermissionAssociationsWorkIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type ReplacePermissionAssociationsWorkStatus =
   | "IN_PROGRESS"
@@ -1423,7 +1495,7 @@ export const ReplacePermissionAssociationsWork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplacePermissionAssociationsWork>;
 export type ReplacePermissionAssociationsWorkList = ReplacePermissionAssociationsWork[];
 export const ReplacePermissionAssociationsWorkList = /*@__PURE__*/ S.Array(
-  ReplacePermissionAssociationsWork.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReplacePermissionAssociationsWork.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReplacePermissionAssociationsWork",
   }),
 );
@@ -1533,7 +1605,7 @@ export const ServiceNameAndResourceType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceNameAndResourceType>;
 export type ServiceNameAndResourceTypeList = ServiceNameAndResourceType[];
 export const ServiceNameAndResourceTypeList = /*@__PURE__*/ S.Array(
-  ServiceNameAndResourceType.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ServiceNameAndResourceType.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ServiceNameAndResourceType",
   }),
 );
@@ -1593,7 +1665,9 @@ export const AssociatedSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedSource" }) as any as S.Schema<AssociatedSource>;
 export type AssociatedSourceList = AssociatedSource[];
 export const AssociatedSourceList = /*@__PURE__*/ S.Array(
-  AssociatedSource.pipe(T.XmlName("item")).annotate({ identifier: "AssociatedSource" }),
+  /*@__PURE__*/ AssociatedSource.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AssociatedSource",
+  }),
 );
 export interface ListSourceAssociationsResponse {
   sourceAssociations?: AssociatedSource[];

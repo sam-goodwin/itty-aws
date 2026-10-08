@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Backup", serviceShapeName: "CryoControllerUserManager" });
-const auth = T.AwsAuthSigv4({ name: "backup" });
-const ver = T.ServiceVersion("2018-11-15");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Backup",
+  serviceShapeName: "CryoControllerUserManager",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "backup" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,90 +75,93 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()("AlreadyExistsException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    CreatorRequestId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    CreatorRequestId: /*@__PURE__*/ S.optional(S.String),
+    Arn: /*@__PURE__*/ S.optional(S.String),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Context: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withAlreadyExistsError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      Code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Type: S.optional(S.String),
-      Context: S.optional(S.String),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      Context: /*@__PURE__*/ S.optional(S.String),
     },
-    T.all(T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }), T.HttpError(409)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class DependencyFailureException
   extends /*@__PURE__*/ S.TaggedError<DependencyFailureException>()("DependencyFailureException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Context: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
-      Code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Type: S.optional(S.String),
-      Context: S.optional(S.String),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      Context: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Context: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidResourceStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     {
-      Code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Type: S.optional(S.String),
-      Context: S.optional(S.String),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      Context: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Context: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class MissingParameterValueException
   extends /*@__PURE__*/ S.TaggedError<MissingParameterValueException>()(
     "MissingParameterValueException",
     {
-      Code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Type: S.optional(S.String),
-      Context: S.optional(S.String),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      Context: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    Code: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Type: /*@__PURE__*/ S.optional(S.String),
+    Context: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
-      Code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Type: S.optional(S.String),
-      Context: S.optional(S.String),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Type: /*@__PURE__*/ S.optional(S.String),
+      Context: /*@__PURE__*/ S.optional(S.String),
     },
   ).pipe(C.withServerError) {}
 export type BackupVaultName = string;
@@ -218,14 +224,17 @@ export const CancelLegalHoldOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}))
 export type AccessPointMetadataMapKeyString = string;
 export type AccessPointMetadataMapValueString = string;
 export type AccessPointMetadataMap = { [key: string]: string | undefined };
-export const AccessPointMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AccessPointMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AccessPointPolicy = string;
 export type AccessPointName = string;
 export type RecoveryPointArn = string;
 export type TagMapKeyString = string;
 export type TagMapValueString = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateBackupAccessPointRequest {
   AccessPointMetadata?: { [key: string]: string | undefined };
   AccessPointPolicy?: string;
@@ -298,7 +307,7 @@ export const Lifecycle = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CopyAction {
   Lifecycle?: Lifecycle;
   DestinationBackupVaultArn: string;
@@ -372,7 +381,10 @@ export const BackupRulesInput = /*@__PURE__*/ S.Array(BackupRuleInput);
 export type BackupOptionKey = string;
 export type BackupOptionValue = string;
 export type BackupOptions = { [key: string]: string | undefined };
-export const BackupOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const BackupOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AdvancedBackupSetting {
   ResourceType?: string;
   BackupOptions?: { [key: string]: string | undefined };
@@ -589,7 +601,7 @@ export const ComplianceResourceIdList = /*@__PURE__*/ S.Array(S.String);
 export type ResourceTypeList = string[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ControlScope {
   ComplianceResourceIds?: string[];
   ComplianceResourceTypes?: string[];
@@ -915,7 +927,10 @@ export const RestoreTestingPlanForCreate = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreTestingPlanForCreate",
 }) as any as S.Schema<RestoreTestingPlanForCreate>;
 export type SensitiveStringMap = { [key: string]: string | undefined };
-export const SensitiveStringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SensitiveStringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateRestoreTestingPlanInput {
   CreatorRequestId?: string;
   RestoreTestingPlan: RestoreTestingPlanForCreate;
@@ -1498,7 +1513,7 @@ export const RecoveryPointCreator = /*@__PURE__*/ S.suspend(() =>
 export type BackupJobChildJobsInState = { [key in BackupJobState]?: number };
 export const BackupJobChildJobsInState = /*@__PURE__*/ S.Record(
   BackupJobState,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface DescribeBackupJobOutput {
   AccountId?: string;
@@ -1683,7 +1698,7 @@ export const CopyJobState = S.String;
 export type CopyJobChildJobsInState = { [key in CopyJobState]?: number };
 export const CopyJobChildJobsInState = /*@__PURE__*/ S.Record(
   CopyJobState,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface CopyJob {
   AccountId?: string;
@@ -1799,7 +1814,10 @@ export const DescribeGlobalSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export type GlobalSettingsName = string;
 export type GlobalSettingsValue = string;
 export type GlobalSettings = { [key: string]: string | undefined };
-export const GlobalSettings = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const GlobalSettings = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DescribeGlobalSettingsOutput {
   GlobalSettings?: { [key: string]: string | undefined };
   LastUpdateTime?: Date;
@@ -2010,12 +2028,12 @@ export type IsEnabled = boolean;
 export type ResourceTypeOptInPreference = { [key: string]: boolean | undefined };
 export const ResourceTypeOptInPreference = /*@__PURE__*/ S.Record(
   S.String,
-  S.Boolean.pipe(S.optional),
+  /*@__PURE__*/ S.Boolean.pipe(S.optional),
 );
 export type ResourceTypeManagementPreference = { [key: string]: boolean | undefined };
 export const ResourceTypeManagementPreference = /*@__PURE__*/ S.Record(
   S.String,
-  S.Boolean.pipe(S.optional),
+  /*@__PURE__*/ S.Boolean.pipe(S.optional),
 );
 export interface DescribeRegionSettingsOutput {
   ResourceTypeOptInPreference?: { [key: string]: boolean | undefined };
@@ -2895,7 +2913,7 @@ export const GetRecoveryPointRestoreMetadataInput = /*@__PURE__*/ S.suspend(() =
 export type MetadataKey = string;
 export type MetadataValue = string;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetRecoveryPointRestoreMetadataOutput {
   BackupVaultArn?: string;
   RecoveryPointArn?: string;

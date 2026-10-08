@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Personalize Runtime",
   serviceShapeName: "AmazonPersonalizeRuntime",
 });
-const auth = T.AwsAuthSigv4({ name: "personalize" });
-const ver = T.ServiceVersion("2018-05-22");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "personalize" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-22");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,14 +80,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type UserID = string;
@@ -95,7 +95,10 @@ export type NumResults = number;
 export type FilterAttributeName = string;
 export type FilterAttributeValue = string | redacted.Redacted<string>;
 export type FilterValues = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const FilterValues = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const FilterValues = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface GetActionRecommendationsRequest {
   campaignArn?: string;
   userId?: string;
@@ -143,13 +146,19 @@ export const InputList = /*@__PURE__*/ S.Array(S.String);
 export type AttributeName = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type Context = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const Context = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const Context = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type DatasetType = string;
 export type ColumnName = string;
 export type ColumnNamesList = string[];
 export const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
 export type MetadataColumns = { [key: string]: string[] | undefined };
-export const MetadataColumns = /*@__PURE__*/ S.Record(S.String, ColumnNamesList.pipe(S.optional));
+export const MetadataColumns = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
+);
 export interface GetPersonalizedRankingRequest {
   campaignArn: string;
   inputList: string[];
@@ -177,7 +186,7 @@ export const GetPersonalizedRankingRequest = /*@__PURE__*/ S.suspend(() =>
 export type Name = string;
 export type ColumnValue = string;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Reason = string;
 export type ReasonList = string[];
 export const ReasonList = /*@__PURE__*/ S.Array(S.String);

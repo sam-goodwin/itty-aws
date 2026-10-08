@@ -468,7 +468,7 @@ export type GetOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -756,7 +756,7 @@ export type OpenShiftClusterIdentityUserAssignedIdentitiesMap = {
 };
 export const OpenShiftClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<OpenShiftClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1292,7 +1292,7 @@ export type OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentities
 export const OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(ConsoleProfileInput),
+    /*@__PURE__*/ S.NullOr(ConsoleProfileInput),
   ) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1363,7 +1363,7 @@ export type OpenShiftClustersCreateOrUpdateResponseIdentityUserAssignedIdentitie
 export const OpenShiftClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1436,7 +1436,7 @@ export type UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap = {
 export const UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(ConsoleProfileInput),
+    /*@__PURE__*/ S.NullOr(ConsoleProfileInput),
   ) as any as S.Schema<UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1504,7 +1504,7 @@ export type UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap = {
 export const UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

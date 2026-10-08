@@ -125,7 +125,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase0Value =
   | AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase0Value = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase0 {
@@ -182,7 +182,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Va
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -241,7 +241,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -303,7 +303,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -365,7 +365,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -427,7 +427,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -472,7 +472,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -506,7 +506,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -551,7 +551,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -596,7 +596,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -641,7 +641,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -684,7 +684,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -720,7 +720,7 @@ export type AppsFlagsCreateRequestRulesItemConditionsItem =
   | AppsFlagsCreateRequestRulesItemConditionsItemCase0
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1;
 export const AppsFlagsCreateRequestRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),
@@ -861,7 +861,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase0Value =
   | AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase0 {
   attribute: string;
@@ -917,7 +917,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0V
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -974,7 +974,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1034,7 +1034,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1094,7 +1094,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1154,7 +1154,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1197,7 +1197,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -1229,7 +1229,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -1272,7 +1272,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -1315,7 +1315,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -1358,7 +1358,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -1399,7 +1399,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -1433,7 +1433,7 @@ export type AppsFlagsCreateResponseRulesItemConditionsItem =
   | AppsFlagsCreateResponseRulesItemConditionsItemCase0
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1;
 export const AppsFlagsCreateResponseRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),
@@ -1671,7 +1671,7 @@ export type AppsEvaluateGetResponseValue =
   | AppsEvaluateGetResponseValueCase3Map
   | AppsEvaluateGetResponseValueCase4List;
 export const AppsEvaluateGetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -1753,7 +1753,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase0Value =
   | AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase0Value = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase0 {
@@ -1810,7 +1810,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Valu
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1867,7 +1867,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1925,7 +1925,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -1985,7 +1985,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2045,7 +2045,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2088,7 +2088,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -2120,7 +2120,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2163,7 +2163,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2206,7 +2206,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2248,7 +2248,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Clau
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2289,7 +2289,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2323,7 +2323,7 @@ export type AppsFlagsGetResponseRulesItemConditionsItem =
   | AppsFlagsGetResponseRulesItemConditionsItemCase0
   | AppsFlagsGetResponseRulesItemConditionsItemCase1;
 export const AppsFlagsGetResponseRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),
@@ -2471,7 +2471,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0 {
   attribute: string;
@@ -2528,7 +2528,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2588,7 +2588,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2648,7 +2648,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2708,7 +2708,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2768,7 +2768,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -2811,7 +2811,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -2843,7 +2843,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2886,7 +2886,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2929,7 +2929,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -2972,7 +2972,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3015,7 +3015,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3056,7 +3056,7 @@ export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem =
   | AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3199,7 +3199,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase0 {
   attribute: string;
@@ -3256,7 +3256,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -3316,7 +3316,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -3376,7 +3376,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -3436,7 +3436,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -3496,7 +3496,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -3539,7 +3539,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -3571,7 +3571,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3614,7 +3614,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3657,7 +3657,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3700,7 +3700,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3743,7 +3743,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3784,7 +3784,7 @@ export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem =
   | AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -3927,7 +3927,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase0 {
   attribute: string;
@@ -3984,7 +3984,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4044,7 +4044,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4104,7 +4104,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4164,7 +4164,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4224,7 +4224,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4267,7 +4267,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -4299,7 +4299,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4342,7 +4342,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4385,7 +4385,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4428,7 +4428,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4471,7 +4471,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCas
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4512,7 +4512,7 @@ export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem =
   | AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -4617,7 +4617,7 @@ export type AppsFlagsChangelogListResultItemCase2DiffValueFrom =
   | AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map
   | AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List;
 export const AppsFlagsChangelogListResultItemCase2DiffValueFrom = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map = {
@@ -4640,7 +4640,7 @@ export type AppsFlagsChangelogListResultItemCase2DiffValueTo =
   | AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map
   | AppsFlagsChangelogListResultItemCase2DiffValueToCase4List;
 export const AppsFlagsChangelogListResultItemCase2DiffValueTo = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 export interface AppsFlagsChangelogListResultItemCase2DiffValue {
@@ -4689,7 +4689,7 @@ export type AppsFlagsChangelogListResultItem =
   | AppsFlagsChangelogListResultItemCase1
   | AppsFlagsChangelogListResultItemCase2;
 export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["after", "event", "flagKey"],
       ["after", "event", "flagKey"],
@@ -4784,7 +4784,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase0Value =
   | AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase0 {
   attribute: string;
@@ -4840,7 +4840,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0V
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4897,7 +4897,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -4957,7 +4957,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5017,7 +5017,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5077,7 +5077,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5120,7 +5120,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -5152,7 +5152,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -5195,7 +5195,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -5238,7 +5238,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -5281,7 +5281,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -5322,7 +5322,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -5356,7 +5356,7 @@ export type AppsFlagsListResultItemRulesItemConditionsItem =
   | AppsFlagsListResultItemRulesItemConditionsItemCase0
   | AppsFlagsListResultItemRulesItemConditionsItemCase1;
 export const AppsFlagsListResultItemRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),
@@ -5574,7 +5574,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0Value =
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase0Value = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], []]),
 );
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase0 {
@@ -5631,7 +5631,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Va
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5690,7 +5690,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5752,7 +5752,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5814,7 +5814,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5876,7 +5876,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -5921,7 +5921,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -5955,7 +5955,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6000,7 +6000,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6045,7 +6045,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6090,7 +6090,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1Cl
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6133,7 +6133,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6169,7 +6169,7 @@ export type AppsFlagsUpdateRequestRulesItemConditionsItem =
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase0
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1;
 export const AppsFlagsUpdateRequestRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),
@@ -6295,7 +6295,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0Value =
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase0 {
   attribute: string;
@@ -6351,7 +6351,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0V
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase0 {
   attribute: string;
@@ -6408,7 +6408,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -6468,7 +6468,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -6528,7 +6528,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -6588,7 +6588,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0ValueCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Value =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0 {
   attribute: string;
@@ -6631,7 +6631,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator =
   | "AND"
@@ -6663,7 +6663,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6706,7 +6706,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6749,7 +6749,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6792,7 +6792,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1C
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6833,7 +6833,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem =
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["attribute", "operator", "value"],
       ["clauses", "logicalOperator"],
     ]),
@@ -6867,7 +6867,7 @@ export type AppsFlagsUpdateResponseRulesItemConditionsItem =
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase0
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1;
 export const AppsFlagsUpdateResponseRulesItemConditionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["attribute", "operator", "value"],
     ["clauses", "logicalOperator"],
   ]),

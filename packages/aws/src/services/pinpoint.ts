@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Pinpoint", serviceShapeName: "Pinpoint" });
-const auth = T.AwsAuthSigv4({ name: "mobiletargeting" });
-const ver = T.ServiceVersion("2016-12-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Pinpoint", serviceShapeName: "Pinpoint" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mobiletargeting" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-12-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -86,53 +86,80 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MethodNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<MethodNotAllowedException>()(
     "MethodNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(405),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PayloadTooLargeException
   extends /*@__PURE__*/ S.TaggedError<PayloadTooLargeException>()(
     "PayloadTooLargeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(413),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestID: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestID: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type MapOf__string = { [key: string]: string | undefined };
-export const MapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateApplicationRequest {
   Name?: string;
   tags?: { [key: string]: string | undefined };
@@ -456,7 +483,7 @@ export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
 export type MapOfAttributeDimension = { [key: string]: AttributeDimension | undefined };
 export const MapOfAttributeDimension = /*@__PURE__*/ S.Record(
   S.String,
-  AttributeDimension.pipe(S.optional),
+  /*@__PURE__*/ AttributeDimension.pipe(S.optional),
 );
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 export const DimensionType = S.String;
@@ -478,7 +505,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 export type MapOfMetricDimension = { [key: string]: MetricDimension | undefined };
 export const MapOfMetricDimension = /*@__PURE__*/ S.Record(
   S.String,
-  MetricDimension.pipe(S.optional),
+  /*@__PURE__*/ MetricDimension.pipe(S.optional),
 );
 export interface EventDimensions {
   Attributes?: { [key: string]: AttributeDimension | undefined };
@@ -1581,7 +1608,10 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 export type MapOfActivity = { [key: string]: Activity | undefined };
-export const MapOfActivity = /*@__PURE__*/ S.Record(S.String, Activity.pipe(S.optional));
+export const MapOfActivity = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Activity.pipe(S.optional),
+);
 export interface JourneyTimeframeCap {
   Cap?: number;
   Days?: number;
@@ -1689,7 +1719,7 @@ export const ListOfOpenHoursRules = /*@__PURE__*/ S.Array(OpenHoursRule);
 export type MapOfListOfOpenHoursRules = { [key in DayOfWeek]?: OpenHoursRule[] };
 export const MapOfListOfOpenHoursRules = /*@__PURE__*/ S.Record(
   DayOfWeek,
-  ListOfOpenHoursRules.pipe(S.optional),
+  /*@__PURE__*/ ListOfOpenHoursRules.pipe(S.optional),
 );
 export interface OpenHours {
   EMAIL?: { [key: string]: OpenHoursRule[] | undefined };
@@ -2297,7 +2327,10 @@ export const CreateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateSegmentRequest" }) as any as S.Schema<CreateSegmentRequest>;
 export type MapOf__integer = { [key: string]: number | undefined };
-export const MapOf__integer = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const MapOf__integer = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface SegmentImportResource {
   ChannelCounts?: { [key: string]: number | undefined };
   ExternalId?: string;
@@ -3182,7 +3215,7 @@ export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export type MapOfListOf__string = { [key: string]: string[] | undefined };
 export const MapOfListOf__string = /*@__PURE__*/ S.Record(
   S.String,
-  ListOf__string.pipe(S.optional),
+  /*@__PURE__*/ ListOf__string.pipe(S.optional),
 );
 export type ChannelType =
   | "PUSH"
@@ -3242,7 +3275,10 @@ export const EndpointLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndpointLocation" }) as any as S.Schema<EndpointLocation>;
 export type MapOf__double = { [key: string]: number | undefined };
-export const MapOf__double = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const MapOf__double = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface EndpointUser {
   UserAttributes?: { [key: string]: string[] | undefined };
   UserId?: string;
@@ -5188,7 +5224,7 @@ export const ChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export type MapOfChannelResponse = { [key: string]: ChannelResponse | undefined };
 export const MapOfChannelResponse = /*@__PURE__*/ S.Record(
   S.String,
-  ChannelResponse.pipe(S.optional),
+  /*@__PURE__*/ ChannelResponse.pipe(S.optional),
 );
 export interface ChannelsResponse {
   Channels?: { [key: string]: ChannelResponse | undefined };
@@ -7772,7 +7808,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type MapOfEvent = { [key: string]: Event | undefined };
-export const MapOfEvent = /*@__PURE__*/ S.Record(S.String, Event.pipe(S.optional));
+export const MapOfEvent = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Event.pipe(S.optional));
 export interface EventsBatch {
   Endpoint?: PublicEndpoint;
   Events?: { [key: string]: Event | undefined };
@@ -7781,7 +7817,10 @@ export const EventsBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoint: S.optional(PublicEndpoint), Events: S.optional(MapOfEvent) }),
 ).annotate({ identifier: "EventsBatch" }) as any as S.Schema<EventsBatch>;
 export type MapOfEventsBatch = { [key: string]: EventsBatch | undefined };
-export const MapOfEventsBatch = /*@__PURE__*/ S.Record(S.String, EventsBatch.pipe(S.optional));
+export const MapOfEventsBatch = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ EventsBatch.pipe(S.optional),
+);
 export interface EventsRequest {
   BatchItem?: { [key: string]: EventsBatch | undefined };
 }
@@ -7826,7 +7865,7 @@ export const EventItemResponse = /*@__PURE__*/ S.suspend(() =>
 export type MapOfEventItemResponse = { [key: string]: EventItemResponse | undefined };
 export const MapOfEventItemResponse = /*@__PURE__*/ S.Record(
   S.String,
-  EventItemResponse.pipe(S.optional),
+  /*@__PURE__*/ EventItemResponse.pipe(S.optional),
 );
 export interface ItemResponse {
   EndpointItemResponse?: EndpointItemResponse;
@@ -7839,7 +7878,10 @@ export const ItemResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemResponse" }) as any as S.Schema<ItemResponse>;
 export type MapOfItemResponse = { [key: string]: ItemResponse | undefined };
-export const MapOfItemResponse = /*@__PURE__*/ S.Record(S.String, ItemResponse.pipe(S.optional));
+export const MapOfItemResponse = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ItemResponse.pipe(S.optional),
+);
 export interface EventsResponse {
   Results?: { [key: string]: ItemResponse | undefined };
 }
@@ -7970,7 +8012,7 @@ export const AddressConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type MapOfAddressConfiguration = { [key: string]: AddressConfiguration | undefined };
 export const MapOfAddressConfiguration = /*@__PURE__*/ S.Record(
   S.String,
-  AddressConfiguration.pipe(S.optional),
+  /*@__PURE__*/ AddressConfiguration.pipe(S.optional),
 );
 export interface EndpointSendConfiguration {
   BodyOverride?: string;
@@ -7995,7 +8037,7 @@ export type MapOfEndpointSendConfiguration = {
 };
 export const MapOfEndpointSendConfiguration = /*@__PURE__*/ S.Record(
   S.String,
-  EndpointSendConfiguration.pipe(S.optional),
+  /*@__PURE__*/ EndpointSendConfiguration.pipe(S.optional),
 );
 export interface ADMMessage {
   Action?: Action;
@@ -8367,7 +8409,7 @@ export const EndpointMessageResult = /*@__PURE__*/ S.suspend(() =>
 export type MapOfEndpointMessageResult = { [key: string]: EndpointMessageResult | undefined };
 export const MapOfEndpointMessageResult = /*@__PURE__*/ S.Record(
   S.String,
-  EndpointMessageResult.pipe(S.optional),
+  /*@__PURE__*/ EndpointMessageResult.pipe(S.optional),
 );
 export interface MessageResult {
   DeliveryStatus?: DeliveryStatus;
@@ -8386,7 +8428,10 @@ export const MessageResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MessageResult" }) as any as S.Schema<MessageResult>;
 export type MapOfMessageResult = { [key: string]: MessageResult | undefined };
-export const MapOfMessageResult = /*@__PURE__*/ S.Record(S.String, MessageResult.pipe(S.optional));
+export const MapOfMessageResult = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MessageResult.pipe(S.optional),
+);
 export interface MessageResponse {
   ApplicationId?: string;
   EndpointResult?: { [key: string]: EndpointMessageResult | undefined };
@@ -8538,7 +8583,7 @@ export type MapOfMapOfEndpointMessageResult = {
 };
 export const MapOfMapOfEndpointMessageResult = /*@__PURE__*/ S.Record(
   S.String,
-  MapOfEndpointMessageResult.pipe(S.optional),
+  /*@__PURE__*/ MapOfEndpointMessageResult.pipe(S.optional),
 );
 export interface SendUsersMessageResponse {
   ApplicationId?: string;

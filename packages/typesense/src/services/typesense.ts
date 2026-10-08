@@ -167,7 +167,10 @@ export type CreateAnalyticsRuleRequestBody =
   | AnalyticsRuleCreate
   | CreateAnalyticsRuleRequestBodyCase1List;
 export const CreateAnalyticsRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["name", "type", "collection", "event_type", "rule_tag", "params"], []]),
+  /*@__PURE__*/ T.UnionCases([
+    ["name", "type", "collection", "event_type", "rule_tag", "params"],
+    [],
+  ]),
 );
 
 export interface CreateAnalyticsRuleRequest {
@@ -241,7 +244,10 @@ export type CreateAnalyticsRuleResponseBodyCase1Item =
   | AnalyticsRule
   | CreateAnalyticsRuleResponseBodyCase1ItemCase1;
 export const CreateAnalyticsRuleResponseBodyCase1Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["name", "type", "collection", "event_type", "rule_tag", "params"], ["error"]]),
+  /*@__PURE__*/ T.UnionCases([
+    ["name", "type", "collection", "event_type", "rule_tag", "params"],
+    ["error"],
+  ]),
 );
 
 export type CreateAnalyticsRuleResponseBodyCase1List =
@@ -254,7 +260,10 @@ export type CreateAnalyticsRuleResponseBody =
   | AnalyticsRule
   | CreateAnalyticsRuleResponseBodyCase1List;
 export const CreateAnalyticsRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["name", "type", "collection", "event_type", "rule_tag", "params"], []]),
+  /*@__PURE__*/ T.UnionCases([
+    ["name", "type", "collection", "event_type", "rule_tag", "params"],
+    [],
+  ]),
 );
 
 export type CreateAnalyticsRuleResponse = CreateAnalyticsRuleResponseBody;
@@ -1981,7 +1990,7 @@ export const MultiSearchSearchesParameter = /*@__PURE__*/ S.suspend(() =>
 
 export type PresetSchemaValue = SearchParameters | MultiSearchSearchesParameter;
 export const PresetSchemaValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "q",
       "query_by",
@@ -3073,7 +3082,7 @@ export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetPresetResponseValue = SearchParameters | MultiSearchSearchesParameter;
 export const GetPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "q",
       "query_by",
@@ -4950,7 +4959,7 @@ export const UpsertCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type UpsertPresetRequestValue = SearchParameters | MultiSearchSearchesParameter;
 export const UpsertPresetRequestValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "q",
       "query_by",
@@ -5052,7 +5061,7 @@ export const UpsertPresetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpsertPresetResponseValue = SearchParameters | MultiSearchSearchesParameter;
 export const UpsertPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "q",
       "query_by",

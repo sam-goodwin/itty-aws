@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Lightsail", serviceShapeName: "Lightsail_20161128" });
-const auth = T.AwsAuthSigv4({ name: "lightsail" });
-const ver = T.ServiceVersion("2016-11-28");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Lightsail",
+  serviceShapeName: "Lightsail_20161128",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lightsail" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-11-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,89 +77,89 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AccountSetupInProgressException
   extends /*@__PURE__*/ S.TaggedError<AccountSetupInProgressException>()(
     "AccountSetupInProgressException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(428),
+    /*@__PURE__*/ T.HttpError(428),
   ) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OperationFailureException
   extends /*@__PURE__*/ S.TaggedError<OperationFailureException>()(
     "OperationFailureException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RegionSetupInProgressException
   extends /*@__PURE__*/ S.TaggedError<RegionSetupInProgressException>()(
     "RegionSetupInProgressException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(428),
+    /*@__PURE__*/ T.HttpError(428),
   ) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class UnauthenticatedException
   extends /*@__PURE__*/ S.TaggedError<UnauthenticatedException>()(
     "UnauthenticatedException",
     {
-      code: S.optional(S.String),
-      docs: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      tip: S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      docs: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tip: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(401),
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type ResourceName = string;
 export interface AllocateStaticIpRequest {
@@ -1071,16 +1074,22 @@ export const ContainerServicePublicDomainsList = /*@__PURE__*/ S.Array(S.String)
 export type ContainerServicePublicDomains = { [key: string]: string[] | undefined };
 export const ContainerServicePublicDomains = /*@__PURE__*/ S.Record(
   S.String,
-  ContainerServicePublicDomainsList.pipe(S.optional),
+  /*@__PURE__*/ ContainerServicePublicDomainsList.pipe(S.optional),
 );
 export type ContainerName = string;
 export type Environment = { [key: string]: string | undefined };
-export const Environment = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Environment = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ContainerServiceProtocol = "HTTP" | "HTTPS" | "TCP" | "UDP" | (string & {});
 export const ContainerServiceProtocol = S.String;
 
 export type PortMap = { [key: string]: ContainerServiceProtocol | undefined };
-export const PortMap = /*@__PURE__*/ S.Record(S.String, ContainerServiceProtocol.pipe(S.optional));
+export const PortMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ContainerServiceProtocol.pipe(S.optional),
+);
 export interface Container {
   image?: string;
   command?: string[];
@@ -1096,7 +1105,10 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 export type ContainerMap = { [key: string]: Container | undefined };
-export const ContainerMap = /*@__PURE__*/ S.Record(S.String, Container.pipe(S.optional));
+export const ContainerMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Container.pipe(S.optional),
+);
 export interface ContainerServiceHealthCheckConfig {
   healthyThreshold?: number;
   unhealthyThreshold?: number;
@@ -1819,7 +1831,10 @@ export const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
 export type DomainEntryType = string;
 export type DomainEntryOptionsKeys = string;
 export type DomainEntryOptions = { [key: string]: string | undefined };
-export const DomainEntryOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DomainEntryOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DomainEntry {
   id?: string;
   name?: string;
@@ -1975,7 +1990,10 @@ export const DiskMap = /*@__PURE__*/ S.suspend(() =>
 export type DiskMapList = DiskMap[];
 export const DiskMapList = /*@__PURE__*/ S.Array(DiskMap);
 export type AttachedDiskMap = { [key: string]: DiskMap[] | undefined };
-export const AttachedDiskMap = /*@__PURE__*/ S.Record(S.String, DiskMapList.pipe(S.optional));
+export const AttachedDiskMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ DiskMapList.pipe(S.optional),
+);
 export interface CreateInstancesFromSnapshotRequest {
   instanceNames: string[];
   attachedDiskMapping?: { [key: string]: DiskMap[] | undefined };
@@ -3796,7 +3814,7 @@ export const GetContainerAPIMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export type ContainerServiceMetadataEntry = { [key: string]: string | undefined };
 export const ContainerServiceMetadataEntry = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ContainerServiceMetadataEntryList = { [key: string]: string | undefined }[];
 export const ContainerServiceMetadataEntryList = /*@__PURE__*/ S.Array(
@@ -5354,7 +5372,7 @@ export const LoadBalancerAttributeName = S.String;
 export type LoadBalancerConfigurationOptions = { [key in LoadBalancerAttributeName]?: string };
 export const LoadBalancerConfigurationOptions = /*@__PURE__*/ S.Record(
   LoadBalancerAttributeName,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface LoadBalancer {
   name?: string;

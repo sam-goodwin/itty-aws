@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "FreeTier", serviceShapeName: "AWSFreeTierService" });
-const auth = T.AwsAuthSigv4({ name: "freetier" });
-const ver = T.ServiceVersion("2023-09-07");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "FreeTier",
+  serviceShapeName: "AWSFreeTierService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "freetier" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-09-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -84,32 +87,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ActivityId = string;
 export type LanguageCode =
@@ -159,7 +162,9 @@ export const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ amount: S.Number, unit: CurrencyCode }),
 ).annotate({ identifier: "MonetaryAmount" }) as any as S.Schema<MonetaryAmount>;
 export type ActivityReward = { credit: MonetaryAmount };
-export const ActivityReward = /*@__PURE__*/ S.Union([S.Struct({ credit: MonetaryAmount })]);
+export const ActivityReward = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ credit: MonetaryAmount }),
+]);
 export interface GetAccountActivityResponse {
   activityId: string;
   title: string;
@@ -221,7 +226,9 @@ export const GetAccountPlanStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountPlanStateResponse>;
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<Expressions>;
 export type Dimension =
   | "SERVICE"

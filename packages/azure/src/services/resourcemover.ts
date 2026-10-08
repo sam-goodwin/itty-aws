@@ -54,13 +54,13 @@ export const CommitMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 /** The error details. */
 export type OperationStatusErrorDetailsList = Array<OperationStatusError>;
 export const OperationStatusErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusError),
+  /*@__PURE__*/ S.suspend(() => OperationStatusError),
 ) as any as S.Schema<OperationStatusErrorDetailsList>;
 
 /** The affected move resources. */
 export type AffectedMoveResourceMoveResourcesList = Array<AffectedMoveResource>;
 export const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AffectedMoveResource),
+  /*@__PURE__*/ S.suspend(() => AffectedMoveResource),
 ) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
 
 /** The RP custom operation error info. */
@@ -272,7 +272,7 @@ export const ProvisioningState = S.String;
 /** A list of additional details about the error. */
 export type MoveResourceErrorBodyDetailsList = Array<MoveResourceErrorBody>;
 export const MoveResourceErrorBodyDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MoveResourceErrorBody),
+  /*@__PURE__*/ S.suspend(() => MoveResourceErrorBody),
 ) as any as S.Schema<MoveResourceErrorBodyDetailsList>;
 
 /** An error response from the Azure Migrate service. */

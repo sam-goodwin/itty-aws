@@ -6,15 +6,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudSearch Domain",
   serviceShapeName: "AmazonCloudSearch2013",
 });
-const auth = T.AwsAuthSigv4({ name: "cloudsearch" });
-const ver = T.ServiceVersion("2013-01-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudsearch" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,12 +75,12 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class DocumentServiceException
   extends /*@__PURE__*/ S.TaggedError<DocumentServiceException>()("DocumentServiceException", {
-    status: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    status: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SearchException
   extends /*@__PURE__*/ S.TaggedError<SearchException>()("SearchException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type Cursor = string;
 export type Expr = string;
@@ -152,11 +152,11 @@ export const SearchStatus = /*@__PURE__*/ S.suspend(() =>
 export type FieldValue = string[];
 export const FieldValue = /*@__PURE__*/ S.Array(S.String);
 export type Fields = { [key: string]: string[] | undefined };
-export const Fields = /*@__PURE__*/ S.Record(S.String, FieldValue.pipe(S.optional));
+export const Fields = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
 export type Exprs = { [key: string]: string | undefined };
-export const Exprs = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Exprs = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Highlights = { [key: string]: string | undefined };
-export const Highlights = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Highlights = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface Hit {
   id?: string;
   fields?: { [key: string]: string[] | undefined };
@@ -203,7 +203,7 @@ export const BucketInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buckets: S.optional(BucketList) }),
 ).annotate({ identifier: "BucketInfo" }) as any as S.Schema<BucketInfo>;
 export type Facets = { [key: string]: BucketInfo | undefined };
-export const Facets = /*@__PURE__*/ S.Record(S.String, BucketInfo.pipe(S.optional));
+export const Facets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
 export interface FieldStats {
   min?: string;
   max?: string;
@@ -227,7 +227,7 @@ export const FieldStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldStats" }) as any as S.Schema<FieldStats>;
 export type Stats = { [key: string]: FieldStats | undefined };
-export const Stats = /*@__PURE__*/ S.Record(S.String, FieldStats.pipe(S.optional));
+export const Stats = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
 export interface SearchResponse {
   status?: SearchStatus;
   hits?: Hits;

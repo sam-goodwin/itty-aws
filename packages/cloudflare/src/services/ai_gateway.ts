@@ -315,7 +315,7 @@ export const CreateRequestDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateRequestDlp = CreateRequestDlpCase0 | CreateRequestDlpCase1;
 export const CreateRequestDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -570,7 +570,10 @@ export type CreateRequestSpendLimitsRulesItemMetadataValue =
   | CreateRequestSpendLimitsRulesItemMetadataValueMode
   | CreateRequestSpendLimitsRulesItemMetadataValueCase1;
 export const CreateRequestSpendLimitsRulesItemMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["mode"], ["mode", "values"]], { key: "mode", values: ["partition", "filter"] }),
+  /*@__PURE__*/ T.UnionCases([["mode"], ["mode", "values"]], {
+    key: "mode",
+    values: ["partition", "filter"],
+  }),
 );
 
 export type CreateRequestSpendLimitsRulesItemMetadataMap = {
@@ -849,7 +852,7 @@ export const CreateResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateResponseDlp = CreateResponseDlpCase0 | CreateResponseDlpCase1;
 export const CreateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -1493,7 +1496,7 @@ export const DatasetsCreateRequestFiltersItemOperator = S.String;
 
 export type DatasetsCreateRequestFiltersItemValueItem = string | number | boolean;
 export const DatasetsCreateRequestFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsCreateRequestFiltersItemValueList =
@@ -1569,7 +1572,7 @@ export const DatasetsCreateResponseFiltersItemOperator = S.String;
 
 export type DatasetsCreateResponseFiltersItemValueItem = string | number | boolean;
 export const DatasetsCreateResponseFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsCreateResponseFiltersItemValueList =
@@ -1926,7 +1929,7 @@ export type DynamicRoutingCreateDeploymentResponseElementsItem =
   | DynamicRoutingCreateDeploymentResponseElementsItemCase4
   | DynamicRoutingCreateDeploymentResponseElementsItemCase5;
 export const DynamicRoutingCreateDeploymentResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -2190,7 +2193,7 @@ export type DynamicRoutingCreateRequestElementsItem =
   | DynamicRoutingCreateRequestElementsItemCase4
   | DynamicRoutingCreateRequestElementsItemCase5;
 export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -2472,7 +2475,7 @@ export type DynamicRoutingCreateResponseElementsItem =
   | DynamicRoutingCreateResponseElementsItemCase4
   | DynamicRoutingCreateResponseElementsItemCase5;
 export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -2602,7 +2605,7 @@ export const EvaluationsCreateResponseDatasetsItemFiltersItemOperator = S.String
 
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
 export const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
   Array<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
@@ -3024,7 +3027,7 @@ export type DynamicRoutingCreateVersionRequestElementsItem =
   | DynamicRoutingCreateVersionRequestElementsItemCase4
   | DynamicRoutingCreateVersionRequestElementsItemCase5;
 export const DynamicRoutingCreateVersionRequestElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -3296,7 +3299,7 @@ export type DynamicRoutingCreateVersionResponseElementsItem =
   | DynamicRoutingCreateVersionResponseElementsItemCase4
   | DynamicRoutingCreateVersionResponseElementsItemCase5;
 export const DynamicRoutingCreateVersionResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -3506,7 +3509,7 @@ export const DeleteResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteResponseDlp = DeleteResponseDlpCase0 | DeleteResponseDlpCase1;
 export const DeleteResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -4071,7 +4074,7 @@ export const DatasetsDeleteResponseFiltersItemOperator = S.String;
 
 export type DatasetsDeleteResponseFiltersItemValueItem = string | number | boolean;
 export const DatasetsDeleteResponseFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsDeleteResponseFiltersItemValueList =
@@ -4369,7 +4372,7 @@ export type DynamicRoutingDeleteResponseElementsItem =
   | DynamicRoutingDeleteResponseElementsItemCase4
   | DynamicRoutingDeleteResponseElementsItemCase5;
 export const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -4457,7 +4460,7 @@ export const EvaluationsDeleteResponseDatasetsItemFiltersItemOperator = S.String
 
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
 export const EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
   Array<EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem>;
@@ -4733,7 +4736,7 @@ export const GetResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type GetResponseDlp = GetResponseDlpCase0 | GetResponseDlpCase1;
 export const GetResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -5327,7 +5330,7 @@ export const DatasetsGetResponseFiltersItemOperator = S.String;
 
 export type DatasetsGetResponseFiltersItemValueItem = string | number | boolean;
 export const DatasetsGetResponseFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsGetResponseFiltersItemValueList =
@@ -5626,7 +5629,7 @@ export type DynamicRoutingGetResponseElementsItem =
   | DynamicRoutingGetResponseElementsItemCase4
   | DynamicRoutingGetResponseElementsItemCase5;
 export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -5735,7 +5738,7 @@ export const EvaluationsGetResponseDatasetsItemFiltersItemOperator = S.String;
 
 export type EvaluationsGetResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
 export const EvaluationsGetResponseDatasetsItemFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
@@ -6192,7 +6195,7 @@ export type DynamicRoutingGetVersionResponseElementsItem =
   | DynamicRoutingGetVersionResponseElementsItemCase4
   | DynamicRoutingGetVersionResponseElementsItemCase5;
 export const DynamicRoutingGetVersionResponseElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -6572,7 +6575,7 @@ export const ListResultItemDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type ListResultItemDlp = ListResultItemDlpCase0 | ListResultItemDlpCase1;
 export const ListResultItemDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -7139,7 +7142,7 @@ export const DatasetsListResultItemFiltersItemOperator = S.String;
 
 export type DatasetsListResultItemFiltersItemValueItem = string | number | boolean;
 export const DatasetsListResultItemFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsListResultItemFiltersItemValueList =
@@ -7540,7 +7543,7 @@ export type DynamicRoutingListResponseDataRoutesItemElementsItem =
   | DynamicRoutingListResponseDataRoutesItemElementsItemCase4
   | DynamicRoutingListResponseDataRoutesItemElementsItemCase5;
 export const DynamicRoutingListResponseDataRoutesItemElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -7701,7 +7704,7 @@ export const EvaluationsListResultItemDatasetsItemFiltersItemOperator = S.String
 
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueItem = string | number | boolean;
 export const EvaluationsListResultItemDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
   Array<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
@@ -8469,7 +8472,7 @@ export type DynamicRoutingUpdateResponseRouteElementsItem =
   | DynamicRoutingUpdateResponseRouteElementsItemCase4
   | DynamicRoutingUpdateResponseRouteElementsItemCase5;
 export const DynamicRoutingUpdateResponseRouteElementsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["id", "outputs", "type"],
       ["id", "outputs", "properties", "type"],
@@ -8551,7 +8554,7 @@ export const PatchDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type LogsEditRequestMetadataValue = string | number | boolean;
 export const LogsEditRequestMetadataValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type LogsEditRequestMetadataMap = {
@@ -8764,7 +8767,7 @@ export const UpdateRequestDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateRequestDlp = UpdateRequestDlpCase0 | UpdateRequestDlpCase1;
 export const UpdateRequestDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -9242,7 +9245,7 @@ export const UpdateResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateResponseDlp = UpdateResponseDlpCase0 | UpdateResponseDlpCase1;
 export const UpdateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["action", "enabled", "profiles"],
     ["enabled", "policies"],
   ]),
@@ -9671,7 +9674,7 @@ export const DatasetsUpdateRequestFiltersItemOperator = S.String;
 
 export type DatasetsUpdateRequestFiltersItemValueItem = string | number | boolean;
 export const DatasetsUpdateRequestFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsUpdateRequestFiltersItemValueList =
@@ -9749,7 +9752,7 @@ export const DatasetsUpdateResponseFiltersItemOperator = S.String;
 
 export type DatasetsUpdateResponseFiltersItemValueItem = string | number | boolean;
 export const DatasetsUpdateResponseFiltersItemValueItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export type DatasetsUpdateResponseFiltersItemValueList =

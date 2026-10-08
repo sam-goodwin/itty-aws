@@ -607,7 +607,7 @@ export const AccountByIdResponseBillingChargesItem = /*@__PURE__*/ S.suspend(() 
 export type AccountByIdResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountByIdResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountByIdResponseBillingChargesList>;
 
 export interface AccountByIdResponseBillingSubscription {
@@ -921,7 +921,7 @@ export const Feature = S.String;
 
 export type AccountByIdResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountByIdResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountByIdResponseOffersItemFeaturesList>;
 
 export type AccountByIdResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -1059,7 +1059,7 @@ export const AccountByIdResponseOwnerGithubAppRegistrationsItem =
 export type AccountByIdResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountByIdResponseOwnerGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountByIdResponseOwnerGithubAppRegistrationsList>;
 
 export interface AccountByIdResponseOwnerGithubUser {
@@ -1447,7 +1447,7 @@ export const AccountByIdResponseOwnerUserActorGithubAppRegistrationsItem =
 export type AccountByIdResponseOwnerUserActorGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountByIdResponseOwnerUserActorGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountByIdResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountByIdResponseOwnerUserActorGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -2387,7 +2387,7 @@ export const AccountByNameResponseBillingChargesItem = AccountByIdResponseBillin
 export type AccountByNameResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountByNameResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountByNameResponseBillingChargesList>;
 
 export type AccountByNameResponseBillingSubscription = AccountByIdResponseBillingSubscription;
@@ -2540,7 +2540,7 @@ export const AccountByNameResponseMemberStats = AccountByIdResponseMemberStats;
 
 export type AccountByNameResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountByNameResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountByNameResponseOffersItemFeaturesList>;
 
 export type AccountByNameResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -2625,7 +2625,7 @@ export const AccountByNameResponseOwnerGithubAppRegistrationsItem =
 export type AccountByNameResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountByNameResponseOwnerGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountByNameResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountByNameResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -2918,7 +2918,7 @@ export const AccountByNameResponseOwnerUserActorGithubAppRegistrationsItem =
 export type AccountByNameResponseOwnerUserActorGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountByNameResponseOwnerUserActorGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountByNameResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountByNameResponseOwnerUserActorGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -3660,7 +3660,7 @@ export type AccountCancelAllSubscriptionsImmediatelyResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountCancelAllSubscriptionsImmediatelyResponseBillingChargesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseBillingChargesItem),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
   ) as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseBillingChargesList>;
 
 export type AccountCancelAllSubscriptionsImmediatelyResponseBillingSubscription =
@@ -3829,7 +3829,7 @@ export type AccountCancelAllSubscriptionsImmediatelyResponseOffersItemFeaturesLi
   (Feature | null)[];
 export const AccountCancelAllSubscriptionsImmediatelyResponseOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseOffersItemFeaturesList>;
 
 export type AccountCancelAllSubscriptionsImmediatelyResponseOffersItemPrerequisiteStripeIdsList =
@@ -3931,7 +3931,7 @@ export type AccountCancelAllSubscriptionsImmediatelyResponseOwnerGithubAppRegist
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountCancelAllSubscriptionsImmediatelyResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountCancelAllSubscriptionsImmediatelyResponseOwnerGithubUser =
@@ -4254,7 +4254,7 @@ export type AccountCancelAllSubscriptionsImmediatelyResponseOwnerUserActorGithub
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountCancelAllSubscriptionsImmediatelyResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountCancelAllSubscriptionsImmediatelyResponseOwnerUserActorGithubUser =
@@ -5056,7 +5056,7 @@ export type AccountCancelScheduledSubscriptionChangeResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountCancelScheduledSubscriptionChangeResponseBillingChargesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseBillingChargesItem),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
   ) as any as S.Schema<AccountCancelScheduledSubscriptionChangeResponseBillingChargesList>;
 
 export type AccountCancelScheduledSubscriptionChangeResponseBillingSubscription =
@@ -5225,7 +5225,7 @@ export type AccountCancelScheduledSubscriptionChangeResponseOffersItemFeaturesLi
   (Feature | null)[];
 export const AccountCancelScheduledSubscriptionChangeResponseOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AccountCancelScheduledSubscriptionChangeResponseOffersItemFeaturesList>;
 
 export type AccountCancelScheduledSubscriptionChangeResponseOffersItemPrerequisiteStripeIdsList =
@@ -5327,7 +5327,7 @@ export type AccountCancelScheduledSubscriptionChangeResponseOwnerGithubAppRegist
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountCancelScheduledSubscriptionChangeResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountCancelScheduledSubscriptionChangeResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountCancelScheduledSubscriptionChangeResponseOwnerGithubUser =
@@ -5650,7 +5650,7 @@ export type AccountCancelScheduledSubscriptionChangeResponseOwnerUserActorGithub
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountCancelScheduledSubscriptionChangeResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountCancelScheduledSubscriptionChangeResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountCancelScheduledSubscriptionChangeResponseOwnerUserActorGithubUser =
@@ -6454,7 +6454,7 @@ export type AccountChangeAdditionalAgentCreditsCountResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountChangeAdditionalAgentCreditsCountResponseBillingChargesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseBillingChargesItem),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
   ) as any as S.Schema<AccountChangeAdditionalAgentCreditsCountResponseBillingChargesList>;
 
 export type AccountChangeAdditionalAgentCreditsCountResponseBillingSubscription =
@@ -6623,7 +6623,7 @@ export type AccountChangeAdditionalAgentCreditsCountResponseOffersItemFeaturesLi
   (Feature | null)[];
 export const AccountChangeAdditionalAgentCreditsCountResponseOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AccountChangeAdditionalAgentCreditsCountResponseOffersItemFeaturesList>;
 
 export type AccountChangeAdditionalAgentCreditsCountResponseOffersItemPrerequisiteStripeIdsList =
@@ -6725,7 +6725,7 @@ export type AccountChangeAdditionalAgentCreditsCountResponseOwnerGithubAppRegist
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangeAdditionalAgentCreditsCountResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountChangeAdditionalAgentCreditsCountResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountChangeAdditionalAgentCreditsCountResponseOwnerGithubUser =
@@ -7048,7 +7048,7 @@ export type AccountChangeAdditionalAgentCreditsCountResponseOwnerUserActorGithub
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangeAdditionalAgentCreditsCountResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountChangeAdditionalAgentCreditsCountResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountChangeAdditionalAgentCreditsCountResponseOwnerUserActorGithubUser =
@@ -7853,7 +7853,7 @@ export type AccountChangeAdditionalConcurrenciesCountResponseBillingChargesList 
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountChangeAdditionalConcurrenciesCountResponseBillingChargesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseBillingChargesItem),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
   ) as any as S.Schema<AccountChangeAdditionalConcurrenciesCountResponseBillingChargesList>;
 
 export type AccountChangeAdditionalConcurrenciesCountResponseBillingSubscription =
@@ -8023,7 +8023,7 @@ export type AccountChangeAdditionalConcurrenciesCountResponseOffersItemFeaturesL
   (Feature | null)[];
 export const AccountChangeAdditionalConcurrenciesCountResponseOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AccountChangeAdditionalConcurrenciesCountResponseOffersItemFeaturesList>;
 
 export type AccountChangeAdditionalConcurrenciesCountResponseOffersItemPrerequisiteStripeIdsList =
@@ -8125,7 +8125,7 @@ export type AccountChangeAdditionalConcurrenciesCountResponseOwnerGithubAppRegis
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangeAdditionalConcurrenciesCountResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountChangeAdditionalConcurrenciesCountResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountChangeAdditionalConcurrenciesCountResponseOwnerGithubUser =
@@ -8449,7 +8449,7 @@ export type AccountChangeAdditionalConcurrenciesCountResponseOwnerUserActorGithu
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangeAdditionalConcurrenciesCountResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountChangeAdditionalConcurrenciesCountResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountChangeAdditionalConcurrenciesCountResponseOwnerUserActorGithubUser =
@@ -9240,7 +9240,7 @@ export const AccountChangePlanResponseBillingChargesItem = AccountByIdResponseBi
 export type AccountChangePlanResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountChangePlanResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountChangePlanResponseBillingChargesList>;
 
 export type AccountChangePlanResponseBillingSubscription = AccountByIdResponseBillingSubscription;
@@ -9395,7 +9395,7 @@ export const AccountChangePlanResponseMemberStats = AccountByIdResponseMemberSta
 
 export type AccountChangePlanResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountChangePlanResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountChangePlanResponseOffersItemFeaturesList>;
 
 export type AccountChangePlanResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -9482,7 +9482,7 @@ export const AccountChangePlanResponseOwnerGithubAppRegistrationsItem =
 export type AccountChangePlanResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangePlanResponseOwnerGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountChangePlanResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountChangePlanResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -9781,7 +9781,7 @@ export type AccountChangePlanResponseOwnerUserActorGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountChangePlanResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountChangePlanResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountChangePlanResponseOwnerUserActorGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -10330,7 +10330,7 @@ export const AccountChangePlanResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PermissionList = (Permission | null)[];
 export const PermissionList = /*@__PURE__*/ S.Array(
-  S.NullOr(Permission),
+  /*@__PURE__*/ S.NullOr(Permission),
 ) as any as S.Schema<PermissionList>;
 
 export interface AccountGrantActorPermissionsRequest {
@@ -10536,7 +10536,7 @@ export const AccountGrantActorPermissionsResponseBillingChargesItem =
 export type AccountGrantActorPermissionsResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountGrantActorPermissionsResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountGrantActorPermissionsResponseBillingChargesList>;
 
 export type AccountGrantActorPermissionsResponseBillingSubscription =
@@ -10699,7 +10699,7 @@ export const AccountGrantActorPermissionsResponseMemberStats = AccountByIdRespon
 
 export type AccountGrantActorPermissionsResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountGrantActorPermissionsResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountGrantActorPermissionsResponseOffersItemFeaturesList>;
 
 export type AccountGrantActorPermissionsResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -10794,7 +10794,7 @@ export type AccountGrantActorPermissionsResponseOwnerGithubAppRegistrationsList 
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountGrantActorPermissionsResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountGrantActorPermissionsResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountGrantActorPermissionsResponseOwnerGithubUser =
@@ -11108,7 +11108,7 @@ export type AccountGrantActorPermissionsResponseOwnerUserActorGithubAppRegistrat
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountGrantActorPermissionsResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountGrantActorPermissionsResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountGrantActorPermissionsResponseOwnerUserActorGithubUser =
@@ -11881,7 +11881,7 @@ export const AccountRemoveProfileImageResponseBillingChargesItem =
 export type AccountRemoveProfileImageResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountRemoveProfileImageResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountRemoveProfileImageResponseBillingChargesList>;
 
 export type AccountRemoveProfileImageResponseBillingSubscription =
@@ -12040,7 +12040,7 @@ export const AccountRemoveProfileImageResponseMemberStats = AccountByIdResponseM
 
 export type AccountRemoveProfileImageResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountRemoveProfileImageResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountRemoveProfileImageResponseOffersItemFeaturesList>;
 
 export type AccountRemoveProfileImageResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -12131,7 +12131,7 @@ export type AccountRemoveProfileImageResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountRemoveProfileImageResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountRemoveProfileImageResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountRemoveProfileImageResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -12437,7 +12437,7 @@ export type AccountRemoveProfileImageResponseOwnerUserActorGithubAppRegistration
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountRemoveProfileImageResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountRemoveProfileImageResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountRemoveProfileImageResponseOwnerUserActorGithubUser =
@@ -13209,7 +13209,7 @@ export const AccountRevokeActorPermissionsResponseBillingChargesItem =
 export type AccountRevokeActorPermissionsResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountRevokeActorPermissionsResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountRevokeActorPermissionsResponseBillingChargesList>;
 
 export type AccountRevokeActorPermissionsResponseBillingSubscription =
@@ -13373,7 +13373,7 @@ export const AccountRevokeActorPermissionsResponseMemberStats = AccountByIdRespo
 
 export type AccountRevokeActorPermissionsResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountRevokeActorPermissionsResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountRevokeActorPermissionsResponseOffersItemFeaturesList>;
 
 export type AccountRevokeActorPermissionsResponseOffersItemPrerequisiteStripeIdsList =
@@ -13469,7 +13469,7 @@ export type AccountRevokeActorPermissionsResponseOwnerGithubAppRegistrationsList
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountRevokeActorPermissionsResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountRevokeActorPermissionsResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountRevokeActorPermissionsResponseOwnerGithubUser =
@@ -13784,7 +13784,7 @@ export type AccountRevokeActorPermissionsResponseOwnerUserActorGithubAppRegistra
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountRevokeActorPermissionsResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountRevokeActorPermissionsResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountRevokeActorPermissionsResponseOwnerUserActorGithubUser =
@@ -14556,7 +14556,7 @@ export const AccountSetDisplayNameResponseBillingChargesItem =
 export type AccountSetDisplayNameResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountSetDisplayNameResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountSetDisplayNameResponseBillingChargesList>;
 
 export type AccountSetDisplayNameResponseBillingSubscription =
@@ -14714,7 +14714,7 @@ export const AccountSetDisplayNameResponseMemberStats = AccountByIdResponseMembe
 
 export type AccountSetDisplayNameResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountSetDisplayNameResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountSetDisplayNameResponseOffersItemFeaturesList>;
 
 export type AccountSetDisplayNameResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -14803,7 +14803,7 @@ export const AccountSetDisplayNameResponseOwnerGithubAppRegistrationsItem =
 export type AccountSetDisplayNameResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetDisplayNameResponseOwnerGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<AccountSetDisplayNameResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountSetDisplayNameResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -15104,7 +15104,7 @@ export type AccountSetDisplayNameResponseOwnerUserActorGithubAppRegistrationsLis
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetDisplayNameResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetDisplayNameResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountSetDisplayNameResponseOwnerUserActorGithubUser =
@@ -15868,7 +15868,7 @@ export const AccountSetObserveIngestionPausedResponseBillingChargesItem =
 export type AccountSetObserveIngestionPausedResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountSetObserveIngestionPausedResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountSetObserveIngestionPausedResponseBillingChargesList>;
 
 export type AccountSetObserveIngestionPausedResponseBillingSubscription =
@@ -16033,7 +16033,7 @@ export const AccountSetObserveIngestionPausedResponseMemberStats = AccountByIdRe
 
 export type AccountSetObserveIngestionPausedResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountSetObserveIngestionPausedResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountSetObserveIngestionPausedResponseOffersItemFeaturesList>;
 
 export type AccountSetObserveIngestionPausedResponseOffersItemPrerequisiteStripeIdsList =
@@ -16129,7 +16129,7 @@ export type AccountSetObserveIngestionPausedResponseOwnerGithubAppRegistrationsL
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetObserveIngestionPausedResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetObserveIngestionPausedResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountSetObserveIngestionPausedResponseOwnerGithubUser =
@@ -16445,7 +16445,7 @@ export type AccountSetObserveIngestionPausedResponseOwnerUserActorGithubAppRegis
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetObserveIngestionPausedResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetObserveIngestionPausedResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountSetObserveIngestionPausedResponseOwnerUserActorGithubUser =
@@ -17226,7 +17226,7 @@ export const AccountSetPushSecurityEnabledResponseBillingChargesItem =
 export type AccountSetPushSecurityEnabledResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountSetPushSecurityEnabledResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountSetPushSecurityEnabledResponseBillingChargesList>;
 
 export type AccountSetPushSecurityEnabledResponseBillingSubscription =
@@ -17390,7 +17390,7 @@ export const AccountSetPushSecurityEnabledResponseMemberStats = AccountByIdRespo
 
 export type AccountSetPushSecurityEnabledResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountSetPushSecurityEnabledResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountSetPushSecurityEnabledResponseOffersItemFeaturesList>;
 
 export type AccountSetPushSecurityEnabledResponseOffersItemPrerequisiteStripeIdsList =
@@ -17486,7 +17486,7 @@ export type AccountSetPushSecurityEnabledResponseOwnerGithubAppRegistrationsList
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetPushSecurityEnabledResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetPushSecurityEnabledResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountSetPushSecurityEnabledResponseOwnerGithubUser =
@@ -17801,7 +17801,7 @@ export type AccountSetPushSecurityEnabledResponseOwnerUserActorGithubAppRegistra
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetPushSecurityEnabledResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetPushSecurityEnabledResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountSetPushSecurityEnabledResponseOwnerUserActorGithubUser =
@@ -18577,7 +18577,7 @@ export const AccountSetRequireTwoFactorResponseBillingChargesItem =
 export type AccountSetRequireTwoFactorResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountSetRequireTwoFactorResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountSetRequireTwoFactorResponseBillingChargesList>;
 
 export type AccountSetRequireTwoFactorResponseBillingSubscription =
@@ -18736,7 +18736,7 @@ export const AccountSetRequireTwoFactorResponseMemberStats = AccountByIdResponse
 
 export type AccountSetRequireTwoFactorResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountSetRequireTwoFactorResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AccountSetRequireTwoFactorResponseOffersItemFeaturesList>;
 
 export type AccountSetRequireTwoFactorResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -18829,7 +18829,7 @@ export type AccountSetRequireTwoFactorResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetRequireTwoFactorResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetRequireTwoFactorResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountSetRequireTwoFactorResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -19137,7 +19137,7 @@ export type AccountSetRequireTwoFactorResponseOwnerUserActorGithubAppRegistratio
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetRequireTwoFactorResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetRequireTwoFactorResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountSetRequireTwoFactorResponseOwnerUserActorGithubUser =
@@ -19914,7 +19914,7 @@ export const AccountSetUserSpecifiedAccountUsageResponseBillingChargesItem =
 export type AccountSetUserSpecifiedAccountUsageResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const AccountSetUserSpecifiedAccountUsageResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<AccountSetUserSpecifiedAccountUsageResponseBillingChargesList>;
 
 export type AccountSetUserSpecifiedAccountUsageResponseBillingSubscription =
@@ -20081,7 +20081,7 @@ export const AccountSetUserSpecifiedAccountUsageResponseMemberStats =
 export type AccountSetUserSpecifiedAccountUsageResponseOffersItemFeaturesList = (Feature | null)[];
 export const AccountSetUserSpecifiedAccountUsageResponseOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AccountSetUserSpecifiedAccountUsageResponseOffersItemFeaturesList>;
 
 export type AccountSetUserSpecifiedAccountUsageResponseOffersItemPrerequisiteStripeIdsList =
@@ -20179,7 +20179,7 @@ export type AccountSetUserSpecifiedAccountUsageResponseOwnerGithubAppRegistratio
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetUserSpecifiedAccountUsageResponseOwnerGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetUserSpecifiedAccountUsageResponseOwnerGithubAppRegistrationsList>;
 
 export type AccountSetUserSpecifiedAccountUsageResponseOwnerGithubUser =
@@ -20499,7 +20499,7 @@ export type AccountSetUserSpecifiedAccountUsageResponseOwnerUserActorGithubAppRe
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const AccountSetUserSpecifiedAccountUsageResponseOwnerUserActorGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<AccountSetUserSpecifiedAccountUsageResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type AccountSetUserSpecifiedAccountUsageResponseOwnerUserActorGithubUser =
@@ -21614,7 +21614,7 @@ export type AgentProviderConnectionCompleteClaudeConnectionResponseAccountOffers
   (Feature | null)[];
 export const AgentProviderConnectionCompleteClaudeConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AgentProviderConnectionCompleteClaudeConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface AgentProviderConnectionCompleteClaudeConnectionResponseAccountOffersItem {
@@ -22308,7 +22308,7 @@ export type AgentProviderConnectionDeleteAgentProviderConnectionResponseAccountO
   (Feature | null)[];
 export const AgentProviderConnectionDeleteAgentProviderConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AgentProviderConnectionDeleteAgentProviderConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface AgentProviderConnectionDeleteAgentProviderConnectionResponseAccountOffersItem {
@@ -23170,7 +23170,7 @@ export type AgentProviderConnectionUpdateAgentProviderConnectionResponseAccountO
   (Feature | null)[];
 export const AgentProviderConnectionUpdateAgentProviderConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AgentProviderConnectionUpdateAgentProviderConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface AgentProviderConnectionUpdateAgentProviderConnectionResponseAccountOffersItem {
@@ -28389,7 +28389,7 @@ export type AndroidKeystoreCreateAndroidKeystoreResponseAccountOffersItemFeature
   (Feature | null)[];
 export const AndroidKeystoreCreateAndroidKeystoreResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AndroidKeystoreCreateAndroidKeystoreResponseAccountOffersItemFeaturesList>;
 
 export interface AndroidKeystoreCreateAndroidKeystoreResponseAccountOffersItem {
@@ -29365,7 +29365,7 @@ export const AppByDevDomainNameResponseOwnerAccountMemberStats = AccountByIdResp
 
 export type AppByDevDomainNameResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppByDevDomainNameResponseOwnerAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppByDevDomainNameResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppByDevDomainNameResponseOwnerAccountOffersItem {
@@ -30478,7 +30478,7 @@ export const AppByFullNameResponseOwnerAccountMemberStats = AccountByIdResponseM
 
 export type AppByFullNameResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppByFullNameResponseOwnerAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppByFullNameResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppByFullNameResponseOwnerAccountOffersItem {
@@ -31473,7 +31473,7 @@ export const AppByIdResponseOwnerAccountMemberStats = AccountByIdResponseMemberS
 
 export type AppByIdResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppByIdResponseOwnerAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppByIdResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppByIdResponseOwnerAccountOffersItem {
@@ -32142,7 +32142,7 @@ export type AppleAppIdentifierCreateAppleAppIdentifierResponseAccountOffersItemF
   (Feature | null)[];
 export const AppleAppIdentifierCreateAppleAppIdentifierResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleAppIdentifierCreateAppleAppIdentifierResponseAccountOffersItemFeaturesList>;
 
 export interface AppleAppIdentifierCreateAppleAppIdentifierResponseAccountOffersItem {
@@ -32765,7 +32765,7 @@ export const AppleDeviceCreateAppleDeviceResponseAccountMemberStats =
 export type AppleDeviceCreateAppleDeviceResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppleDeviceCreateAppleDeviceResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDeviceCreateAppleDeviceResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDeviceCreateAppleDeviceResponseAccountOffersItem {
@@ -33387,7 +33387,7 @@ export type AppleDeviceRegistrationRequestByIdResponseAccountOffersItemFeaturesL
   (Feature | null)[];
 export const AppleDeviceRegistrationRequestByIdResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDeviceRegistrationRequestByIdResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDeviceRegistrationRequestByIdResponseAccountOffersItem {
@@ -34732,7 +34732,7 @@ export type AppleDeviceRegistrationRequestCreateAppleDeviceRegistrationRequestRe
   (Feature | null)[];
 export const AppleDeviceRegistrationRequestCreateAppleDeviceRegistrationRequestResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDeviceRegistrationRequestCreateAppleDeviceRegistrationRequestResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDeviceRegistrationRequestCreateAppleDeviceRegistrationRequestResponseAccountOffersItem {
@@ -35942,7 +35942,7 @@ export const AppleDeviceUpdateAppleDeviceResponseAccountMemberStats =
 export type AppleDeviceUpdateAppleDeviceResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppleDeviceUpdateAppleDeviceResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDeviceUpdateAppleDeviceResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDeviceUpdateAppleDeviceResponseAccountOffersItem {
@@ -36520,7 +36520,7 @@ export type AppleDistributionCertificateByIdResponseAccountOffersItemFeaturesLis
   (Feature | null)[];
 export const AppleDistributionCertificateByIdResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDistributionCertificateByIdResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDistributionCertificateByIdResponseAccountOffersItem {
@@ -37180,7 +37180,7 @@ export type AppleDistributionCertificateCreateAppleDistributionCertificateRespon
   (Feature | null)[];
 export const AppleDistributionCertificateCreateAppleDistributionCertificateResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleDistributionCertificateCreateAppleDistributionCertificateResponseAccountOffersItemFeaturesList>;
 
 export interface AppleDistributionCertificateCreateAppleDistributionCertificateResponseAccountOffersItem {
@@ -37848,7 +37848,7 @@ export const AppleProvisioningProfileByIdResponseAccountMemberStats =
 export type AppleProvisioningProfileByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppleProvisioningProfileByIdResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleProvisioningProfileByIdResponseAccountOffersItemFeaturesList>;
 
 export interface AppleProvisioningProfileByIdResponseAccountOffersItem {
@@ -38647,7 +38647,7 @@ export type AppleProvisioningProfileCreateAppleProvisioningProfileResponseAccoun
   (Feature | null)[];
 export const AppleProvisioningProfileCreateAppleProvisioningProfileResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleProvisioningProfileCreateAppleProvisioningProfileResponseAccountOffersItemFeaturesList>;
 
 export interface AppleProvisioningProfileCreateAppleProvisioningProfileResponseAccountOffersItem {
@@ -39551,7 +39551,7 @@ export type AppleProvisioningProfileUpdateAppleProvisioningProfileResponseAccoun
   (Feature | null)[];
 export const AppleProvisioningProfileUpdateAppleProvisioningProfileResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleProvisioningProfileUpdateAppleProvisioningProfileResponseAccountOffersItemFeaturesList>;
 
 export interface AppleProvisioningProfileUpdateAppleProvisioningProfileResponseAccountOffersItem {
@@ -40372,7 +40372,7 @@ export type ApplePushKeyCreateApplePushKeyResponseAccountOffersItemFeaturesList 
   (Feature | null)[];
 export const ApplePushKeyCreateApplePushKeyResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<ApplePushKeyCreateApplePushKeyResponseAccountOffersItemFeaturesList>;
 
 export interface ApplePushKeyCreateApplePushKeyResponseAccountOffersItem {
@@ -41192,7 +41192,7 @@ export type AppleTeamByAppleTeamIdentifierResponseAccountOffersItemFeaturesList 
   (Feature | null)[];
 export const AppleTeamByAppleTeamIdentifierResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleTeamByAppleTeamIdentifierResponseAccountOffersItemFeaturesList>;
 
 export interface AppleTeamByAppleTeamIdentifierResponseAccountOffersItem {
@@ -41900,7 +41900,7 @@ export const AppleTeamCreateAppleTeamResponseAccountMemberStats = AccountByIdRes
 
 export type AppleTeamCreateAppleTeamResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppleTeamCreateAppleTeamResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppleTeamCreateAppleTeamResponseAccountOffersItemFeaturesList>;
 
 export interface AppleTeamCreateAppleTeamResponseAccountOffersItem {
@@ -42595,7 +42595,7 @@ export type AppleTeamScheduleAppleTeamDeletionResponseAccountOffersItemFeaturesL
   (Feature | null)[];
 export const AppleTeamScheduleAppleTeamDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppleTeamScheduleAppleTeamDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface AppleTeamScheduleAppleTeamDeletionResponseAccountOffersItem {
@@ -43106,7 +43106,7 @@ export const AppleTeamUpdateAppleTeamResponseAccountMemberStats = AccountByIdRes
 
 export type AppleTeamUpdateAppleTeamResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppleTeamUpdateAppleTeamResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppleTeamUpdateAppleTeamResponseAccountOffersItemFeaturesList>;
 
 export interface AppleTeamUpdateAppleTeamResponseAccountOffersItem {
@@ -44158,7 +44158,7 @@ export const AppRemoveProfileImageResponseOwnerAccountMemberStats = AccountByIdR
 export type AppRemoveProfileImageResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppRemoveProfileImageResponseOwnerAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppRemoveProfileImageResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppRemoveProfileImageResponseOwnerAccountOffersItem {
@@ -44838,7 +44838,7 @@ export const AppScheduleAppDeletionResponseAccountMemberStats = AccountByIdRespo
 
 export type AppScheduleAppDeletionResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppScheduleAppDeletionResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppScheduleAppDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface AppScheduleAppDeletionResponseAccountOffersItem {
@@ -45671,7 +45671,7 @@ export const AppSetAppInfoResponseOwnerAccountMemberStats = AccountByIdResponseM
 
 export type AppSetAppInfoResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppSetAppInfoResponseOwnerAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppSetAppInfoResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppSetAppInfoResponseOwnerAccountOffersItem {
@@ -46712,7 +46712,7 @@ export type AppSetObserveIngestionPausedResponseOwnerAccountOffersItemFeaturesLi
   (Feature | null)[];
 export const AppSetObserveIngestionPausedResponseOwnerAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppSetObserveIngestionPausedResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppSetObserveIngestionPausedResponseOwnerAccountOffersItem {
@@ -47783,7 +47783,7 @@ export type AppSetPushSecurityEnabledResponseOwnerAccountOffersItemFeaturesList 
   (Feature | null)[];
 export const AppSetPushSecurityEnabledResponseOwnerAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppSetPushSecurityEnabledResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppSetPushSecurityEnabledResponseOwnerAccountOffersItem {
@@ -48853,7 +48853,7 @@ export type AppSetResourceClassExperimentResponseOwnerAccountOffersItemFeaturesL
   (Feature | null)[];
 export const AppSetResourceClassExperimentResponseOwnerAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppSetResourceClassExperimentResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppSetResourceClassExperimentResponseOwnerAccountOffersItem {
@@ -49946,7 +49946,7 @@ export type AppSetWorkflowCachingConfigResponseOwnerAccountOffersItemFeaturesLis
   (Feature | null)[];
 export const AppSetWorkflowCachingConfigResponseOwnerAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppSetWorkflowCachingConfigResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface AppSetWorkflowCachingConfigResponseOwnerAccountOffersItem {
@@ -50599,7 +50599,7 @@ export const AppStoreConnectApiKeyByIdResponseAccountMemberStats = AccountByIdRe
 
 export type AppStoreConnectApiKeyByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AppStoreConnectApiKeyByIdResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AppStoreConnectApiKeyByIdResponseAccountOffersItemFeaturesList>;
 
 export interface AppStoreConnectApiKeyByIdResponseAccountOffersItem {
@@ -51177,7 +51177,7 @@ export type AppStoreConnectApiKeyCreateAppStoreConnectApiKeyResponseAccountOffer
   (Feature | null)[];
 export const AppStoreConnectApiKeyCreateAppStoreConnectApiKeyResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppStoreConnectApiKeyCreateAppStoreConnectApiKeyResponseAccountOffersItemFeaturesList>;
 
 export interface AppStoreConnectApiKeyCreateAppStoreConnectApiKeyResponseAccountOffersItem {
@@ -51803,7 +51803,7 @@ export type AppStoreConnectApiKeyUpdateAppStoreConnectApiKeyResponseAccountOffer
   (Feature | null)[];
 export const AppStoreConnectApiKeyUpdateAppStoreConnectApiKeyResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<AppStoreConnectApiKeyUpdateAppStoreConnectApiKeyResponseAccountOffersItemFeaturesList>;
 
 export interface AppStoreConnectApiKeyUpdateAppStoreConnectApiKeyResponseAccountOffersItem {
@@ -52912,7 +52912,7 @@ export const AssetByStorageKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type StringList2 = (string | null)[];
 export const StringList2 = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<StringList2>;
 
 export interface AssetGetSignedAssetUploadSpecificationsRequest {
@@ -53276,7 +53276,7 @@ export const AuditLogExportAuditLogsResponseAccountMemberStats = AccountByIdResp
 
 export type AuditLogExportAuditLogsResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const AuditLogExportAuditLogsResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<AuditLogExportAuditLogsResponseAccountOffersItemFeaturesList>;
 
 export interface AuditLogExportAuditLogsResponseAccountOffersItem {
@@ -53792,7 +53792,7 @@ export const BackgroundJobReceiptByIdResponseAccountMemberStats = AccountByIdRes
 
 export type BackgroundJobReceiptByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const BackgroundJobReceiptByIdResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<BackgroundJobReceiptByIdResponseAccountOffersItemFeaturesList>;
 
 export interface BackgroundJobReceiptByIdResponseAccountOffersItem {
@@ -60089,7 +60089,7 @@ export type ConvexTeamConnectionCreateConvexTeamConnectionResponseAccountOffersI
   (Feature | null)[];
 export const ConvexTeamConnectionCreateConvexTeamConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<ConvexTeamConnectionCreateConvexTeamConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface ConvexTeamConnectionCreateConvexTeamConnectionResponseAccountOffersItem {
@@ -60696,7 +60696,7 @@ export type ConvexTeamConnectionDeleteConvexTeamConnectionResponseAccountOffersI
   (Feature | null)[];
 export const ConvexTeamConnectionDeleteConvexTeamConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<ConvexTeamConnectionDeleteConvexTeamConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface ConvexTeamConnectionDeleteConvexTeamConnectionResponseAccountOffersItem {
@@ -61707,7 +61707,7 @@ export const CreateAppResponseOwnerAccountMemberStats = AccountByIdResponseMembe
 
 export type CreateAppResponseOwnerAccountOffersItemFeaturesList = (Feature | null)[];
 export const CreateAppResponseOwnerAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<CreateAppResponseOwnerAccountOffersItemFeaturesList>;
 
 export interface CreateAppResponseOwnerAccountOffersItem {
@@ -62382,7 +62382,7 @@ export const CreateRobotForAccountResponseAccountsItemMemberStats = AccountByIdR
 export type CreateRobotForAccountResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const CreateRobotForAccountResponseAccountsItemOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<CreateRobotForAccountResponseAccountsItemOffersItemFeaturesList>;
 
 export interface CreateRobotForAccountResponseAccountsItemOffersItem {
@@ -73079,7 +73079,7 @@ export const EchoMessageByIdResponseUserGithubAppRegistrationsItem =
 export type EchoMessageByIdResponseUserGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const EchoMessageByIdResponseUserGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<EchoMessageByIdResponseUserGithubAppRegistrationsList>;
 
 export type EchoMessageByIdResponseUserGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -73644,7 +73644,7 @@ export type EchoMessageCompleteMessageResponseUserGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const EchoMessageCompleteMessageResponseUserGithubAppRegistrationsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+    /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
   ) as any as S.Schema<EchoMessageCompleteMessageResponseUserGithubAppRegistrationsList>;
 
 export type EchoMessageCompleteMessageResponseUserGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -74241,7 +74241,7 @@ export const EchoMessageCreateMessageResponseUserGithubAppRegistrationsItem =
 export type EchoMessageCreateMessageResponseUserGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const EchoMessageCreateMessageResponseUserGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<EchoMessageCreateMessageResponseUserGithubAppRegistrationsList>;
 
 export type EchoMessageCreateMessageResponseUserGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -75201,7 +75201,7 @@ export const EchoProjectByIdResponseAccountMemberStats = AccountByIdResponseMemb
 
 export type EchoProjectByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const EchoProjectByIdResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<EchoProjectByIdResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectByIdResponseAccountOffersItem {
@@ -75858,7 +75858,7 @@ export const EchoProjectBySlugResponseAccountMemberStats = AccountByIdResponseMe
 
 export type EchoProjectBySlugResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const EchoProjectBySlugResponseAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<EchoProjectBySlugResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectBySlugResponseAccountOffersItem {
@@ -76582,7 +76582,7 @@ export const EchoProjectCreateEchoProjectResponseAccountMemberStats =
 export type EchoProjectCreateEchoProjectResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const EchoProjectCreateEchoProjectResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<EchoProjectCreateEchoProjectResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectCreateEchoProjectResponseAccountOffersItem {
@@ -77319,7 +77319,7 @@ export const EchoProjectDeleteEchoProjectResponseAccountMemberStats =
 export type EchoProjectDeleteEchoProjectResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const EchoProjectDeleteEchoProjectResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<EchoProjectDeleteEchoProjectResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectDeleteEchoProjectResponseAccountOffersItem {
@@ -78119,7 +78119,7 @@ export type EchoProjectSelectEchoProjectIconResponseAccountOffersItemFeaturesLis
   (Feature | null)[];
 export const EchoProjectSelectEchoProjectIconResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<EchoProjectSelectEchoProjectIconResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectSelectEchoProjectIconResponseAccountOffersItem {
@@ -78828,7 +78828,7 @@ export const EchoProjectUpdateEchoProjectResponseAccountMemberStats =
 export type EchoProjectUpdateEchoProjectResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const EchoProjectUpdateEchoProjectResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<EchoProjectUpdateEchoProjectResponseAccountOffersItemFeaturesList>;
 
 export interface EchoProjectUpdateEchoProjectResponseAccountOffersItem {
@@ -83327,7 +83327,7 @@ export const GithubAppCreateGitHubBuildResponseAccountMemberStats = AccountByIdR
 export type GithubAppCreateGitHubBuildResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const GithubAppCreateGitHubBuildResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppCreateGitHubBuildResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppCreateGitHubBuildResponseAccountOffersItem {
@@ -83814,7 +83814,7 @@ export type GithubAppInstallationCreateGitHubAppInstallationForAccountResponseAc
   (Feature | null)[];
 export const GithubAppInstallationCreateGitHubAppInstallationForAccountResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppInstallationCreateGitHubAppInstallationForAccountResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppInstallationCreateGitHubAppInstallationForAccountResponseAccountOffersItem {
@@ -84534,7 +84534,7 @@ export type GithubAppInstallationDeleteGitHubAppInstallationResponseAccountOffer
   (Feature | null)[];
 export const GithubAppInstallationDeleteGitHubAppInstallationResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppInstallationDeleteGitHubAppInstallationResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppInstallationDeleteGitHubAppInstallationResponseAccountOffersItem {
@@ -85251,7 +85251,7 @@ export type GithubAppRegistrationDeleteGitHubAppRegistrationResponseAccountOffer
   (Feature | null)[];
 export const GithubAppRegistrationDeleteGitHubAppRegistrationResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppRegistrationDeleteGitHubAppRegistrationResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppRegistrationDeleteGitHubAppRegistrationResponseAccountOffersItem {
@@ -85799,7 +85799,7 @@ export type GithubAppRegistrationFinalizeGitHubAppRegistrationResponseAccountOff
   (Feature | null)[];
 export const GithubAppRegistrationFinalizeGitHubAppRegistrationResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppRegistrationFinalizeGitHubAppRegistrationResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppRegistrationFinalizeGitHubAppRegistrationResponseAccountOffersItem {
@@ -86303,7 +86303,7 @@ export const GithubAppRegistrationsByIdResponseAccountMemberStats = AccountByIdR
 export type GithubAppRegistrationsByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const GithubAppRegistrationsByIdResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubAppRegistrationsByIdResponseAccountOffersItemFeaturesList>;
 
 export interface GithubAppRegistrationsByIdResponseAccountOffersItem {
@@ -90583,7 +90583,7 @@ export const GithubRepositoryConfigureEASResponseAccountMemberStats =
 export type GithubRepositoryConfigureEASResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const GithubRepositoryConfigureEASResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubRepositoryConfigureEASResponseAccountOffersItemFeaturesList>;
 
 export interface GithubRepositoryConfigureEASResponseAccountOffersItem {
@@ -91081,7 +91081,7 @@ export type GithubRepositoryCreateAndConfigureRepositoryResponseAccountOffersIte
   (Feature | null)[];
 export const GithubRepositoryCreateAndConfigureRepositoryResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubRepositoryCreateAndConfigureRepositoryResponseAccountOffersItemFeaturesList>;
 
 export interface GithubRepositoryCreateAndConfigureRepositoryResponseAccountOffersItem {
@@ -92082,7 +92082,7 @@ export type GithubRepositoryScheduleGitHubRepositoryDeletionResponseAccountOffer
   (Feature | null)[];
 export const GithubRepositoryScheduleGitHubRepositoryDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GithubRepositoryScheduleGitHubRepositoryDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface GithubRepositoryScheduleGitHubRepositoryDeletionResponseAccountOffersItem {
@@ -93806,7 +93806,7 @@ export const GoogleServiceAccountKeyByIdResponseAccountMemberStats = AccountById
 export type GoogleServiceAccountKeyByIdResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const GoogleServiceAccountKeyByIdResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GoogleServiceAccountKeyByIdResponseAccountOffersItemFeaturesList>;
 
 export interface GoogleServiceAccountKeyByIdResponseAccountOffersItem {
@@ -94284,7 +94284,7 @@ export type GoogleServiceAccountKeyCreateGoogleServiceAccountKeyResponseAccountO
   (Feature | null)[];
 export const GoogleServiceAccountKeyCreateGoogleServiceAccountKeyResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<GoogleServiceAccountKeyCreateGoogleServiceAccountKeyResponseAccountOffersItemFeaturesList>;
 
 export interface GoogleServiceAccountKeyCreateGoogleServiceAccountKeyResponseAccountOffersItem {
@@ -102316,7 +102316,7 @@ export type LogRocketOrganizationLinkLogRocketOrganizationToExpoAccountResponseA
   (Feature | null)[];
 export const LogRocketOrganizationLinkLogRocketOrganizationToExpoAccountResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<LogRocketOrganizationLinkLogRocketOrganizationToExpoAccountResponseAccountOffersItemFeaturesList>;
 
 export interface LogRocketOrganizationLinkLogRocketOrganizationToExpoAccountResponseAccountOffersItem {
@@ -103218,7 +103218,7 @@ export const MeResponseAccountsItemMemberStats = AccountByIdResponseMemberStats;
 
 export type MeResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const MeResponseAccountsItemOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeResponseAccountsItemOffersItemFeaturesList>;
 
 export interface MeResponseAccountsItemOffersItem {
@@ -103618,7 +103618,7 @@ export const MeResponseGithubAppRegistrationsItem = /*@__PURE__*/ S.suspend(() =
 
 export type MeResponseGithubAppRegistrationsList = (MeResponseGithubAppRegistrationsItem | null)[];
 export const MeResponseGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(MeResponseGithubAppRegistrationsItem),
+  /*@__PURE__*/ S.NullOr(MeResponseGithubAppRegistrationsItem),
 ) as any as S.Schema<MeResponseGithubAppRegistrationsList>;
 
 export interface MeResponseGithubUserMetadata {
@@ -103822,7 +103822,7 @@ export const MeResponseOnboardingOrganizationMemberStats = AccountByIdResponseMe
 
 export type MeResponseOnboardingOrganizationOffersItemFeaturesList = (Feature | null)[];
 export const MeResponseOnboardingOrganizationOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeResponseOnboardingOrganizationOffersItemFeaturesList>;
 
 export interface MeResponseOnboardingOrganizationOffersItem {
@@ -104711,7 +104711,7 @@ export const MeResponsePrimaryAccountMemberStats = AccountByIdResponseMemberStat
 
 export type MeResponsePrimaryAccountOffersItemFeaturesList = (Feature | null)[];
 export const MeResponsePrimaryAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeResponsePrimaryAccountOffersItemFeaturesList>;
 
 export interface MeResponsePrimaryAccountOffersItem {
@@ -105203,7 +105203,7 @@ export const MeActorResponseAccountsItemMemberStats = AccountByIdResponseMemberS
 
 export type MeActorResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const MeActorResponseAccountsItemOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeActorResponseAccountsItemOffersItemFeaturesList>;
 
 export interface MeActorResponseAccountsItemOffersItem {
@@ -105667,7 +105667,7 @@ export const MeUserActorResponseAccountsItemMemberStats = AccountByIdResponseMem
 
 export type MeUserActorResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const MeUserActorResponseAccountsItemOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeUserActorResponseAccountsItemOffersItemFeaturesList>;
 
 export interface MeUserActorResponseAccountsItemOffersItem {
@@ -106065,7 +106065,7 @@ export const MeUserActorResponseGithubAppRegistrationsItem = /*@__PURE__*/ S.sus
 export type MeUserActorResponseGithubAppRegistrationsList =
   (MeUserActorResponseGithubAppRegistrationsItem | null)[];
 export const MeUserActorResponseGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(MeUserActorResponseGithubAppRegistrationsItem),
+  /*@__PURE__*/ S.NullOr(MeUserActorResponseGithubAppRegistrationsItem),
 ) as any as S.Schema<MeUserActorResponseGithubAppRegistrationsList>;
 
 export type MeUserActorResponseGithubUserMetadata = MeResponseGithubUserMetadata;
@@ -106591,7 +106591,7 @@ export const MeUserActorResponsePrimaryAccountMemberStats = AccountByIdResponseM
 
 export type MeUserActorResponsePrimaryAccountOffersItemFeaturesList = (Feature | null)[];
 export const MeUserActorResponsePrimaryAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<MeUserActorResponsePrimaryAccountOffersItemFeaturesList>;
 
 export interface MeUserActorResponsePrimaryAccountOffersItem {
@@ -107221,7 +107221,7 @@ export type PosthogOrganizationConnectionCompletePostHogConnectionResponseAccoun
   (Feature | null)[];
 export const PosthogOrganizationConnectionCompletePostHogConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<PosthogOrganizationConnectionCompletePostHogConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface PosthogOrganizationConnectionCompletePostHogConnectionResponseAccountOffersItem {
@@ -107852,7 +107852,7 @@ export type PosthogOrganizationConnectionCreatePostHogAccountRequestResponseAcco
   (Feature | null)[];
 export const PosthogOrganizationConnectionCreatePostHogAccountRequestResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<PosthogOrganizationConnectionCreatePostHogAccountRequestResponseAccountOffersItemFeaturesList>;
 
 export interface PosthogOrganizationConnectionCreatePostHogAccountRequestResponseAccountOffersItem {
@@ -109199,7 +109199,7 @@ export const RenameAccountResponseBillingChargesItem = AccountByIdResponseBillin
 export type RenameAccountResponseBillingChargesList =
   (AccountByIdResponseBillingChargesItem | null)[];
 export const RenameAccountResponseBillingChargesList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseBillingChargesItem),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseBillingChargesItem),
 ) as any as S.Schema<RenameAccountResponseBillingChargesList>;
 
 export type RenameAccountResponseBillingSubscription = AccountByIdResponseBillingSubscription;
@@ -109352,7 +109352,7 @@ export const RenameAccountResponseMemberStats = AccountByIdResponseMemberStats;
 
 export type RenameAccountResponseOffersItemFeaturesList = (Feature | null)[];
 export const RenameAccountResponseOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<RenameAccountResponseOffersItemFeaturesList>;
 
 export type RenameAccountResponseOffersItemPrerequisiteStripeIdsList = Array<string>;
@@ -109437,7 +109437,7 @@ export const RenameAccountResponseOwnerGithubAppRegistrationsItem =
 export type RenameAccountResponseOwnerGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const RenameAccountResponseOwnerGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<RenameAccountResponseOwnerGithubAppRegistrationsList>;
 
 export type RenameAccountResponseOwnerGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -109730,7 +109730,7 @@ export const RenameAccountResponseOwnerUserActorGithubAppRegistrationsItem =
 export type RenameAccountResponseOwnerUserActorGithubAppRegistrationsList =
   (AccountByIdResponseGithubAppInstallationsItemRegistration | null)[];
 export const RenameAccountResponseOwnerUserActorGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
+  /*@__PURE__*/ S.NullOr(AccountByIdResponseGithubAppInstallationsItemRegistration),
 ) as any as S.Schema<RenameAccountResponseOwnerUserActorGithubAppRegistrationsList>;
 
 export type RenameAccountResponseOwnerUserActorGithubUser = AccountByIdResponseOwnerGithubUser;
@@ -110850,7 +110850,7 @@ export const RobotScheduleRobotDeletionResponseAccountMemberStats = AccountByIdR
 export type RobotScheduleRobotDeletionResponseAccountOffersItemFeaturesList = (Feature | null)[];
 export const RobotScheduleRobotDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<RobotScheduleRobotDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface RobotScheduleRobotDeletionResponseAccountOffersItem {
@@ -113729,7 +113729,7 @@ export type SentryInstallationConfirmPendingSentryInstallationResponseAccountOff
   (Feature | null)[];
 export const SentryInstallationConfirmPendingSentryInstallationResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SentryInstallationConfirmPendingSentryInstallationResponseAccountOffersItemFeaturesList>;
 
 export interface SentryInstallationConfirmPendingSentryInstallationResponseAccountOffersItem {
@@ -114303,7 +114303,7 @@ export type SentryInstallationLinkSentryInstallationToExpoAccountResponseAccount
   (Feature | null)[];
 export const SentryInstallationLinkSentryInstallationToExpoAccountResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SentryInstallationLinkSentryInstallationToExpoAccountResponseAccountOffersItemFeaturesList>;
 
 export interface SentryInstallationLinkSentryInstallationToExpoAccountResponseAccountOffersItem {
@@ -118794,7 +118794,7 @@ export type SupabaseConnectionCompleteSupabaseOAuthResponseAccountOffersItemFeat
   (Feature | null)[];
 export const SupabaseConnectionCompleteSupabaseOAuthResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SupabaseConnectionCompleteSupabaseOAuthResponseAccountOffersItemFeaturesList>;
 
 export interface SupabaseConnectionCompleteSupabaseOAuthResponseAccountOffersItem {
@@ -119489,7 +119489,7 @@ export type SupabaseConnectionSetSupabaseConnectionOrganizationResponseAccountOf
   (Feature | null)[];
 export const SupabaseConnectionSetSupabaseConnectionOrganizationResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SupabaseConnectionSetSupabaseConnectionOrganizationResponseAccountOffersItemFeaturesList>;
 
 export interface SupabaseConnectionSetSupabaseConnectionOrganizationResponseAccountOffersItem {
@@ -120664,7 +120664,7 @@ export type SupabaseProjectProvisionAdditionalSupabaseProjectResponseAccountOffe
   (Feature | null)[];
 export const SupabaseProjectProvisionAdditionalSupabaseProjectResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SupabaseProjectProvisionAdditionalSupabaseProjectResponseAccountOffersItemFeaturesList>;
 
 export interface SupabaseProjectProvisionAdditionalSupabaseProjectResponseAccountOffersItem {
@@ -121186,7 +121186,7 @@ export type SupabaseProjectProvisionSupabaseProjectResponseAccountOffersItemFeat
   (Feature | null)[];
 export const SupabaseProjectProvisionSupabaseProjectResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<SupabaseProjectProvisionSupabaseProjectResponseAccountOffersItemFeaturesList>;
 
 export interface SupabaseProjectProvisionSupabaseProjectResponseAccountOffersItem {
@@ -123542,7 +123542,7 @@ export const SourceMapGroup = /*@__PURE__*/ S.suspend(() =>
 
 export type PartialManifestAssetList2 = (PartialManifestAsset | null)[];
 export const PartialManifestAssetList2 = /*@__PURE__*/ S.Array(
-  S.NullOr(PartialManifestAsset),
+  /*@__PURE__*/ S.NullOr(PartialManifestAsset),
 ) as any as S.Schema<PartialManifestAssetList2>;
 
 export interface PartialManifest {
@@ -125455,7 +125455,7 @@ export type UpdateBranchScheduleUpdateBranchDeletionResponseAccountOffersItemFea
   (Feature | null)[];
 export const UpdateBranchScheduleUpdateBranchDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UpdateBranchScheduleUpdateBranchDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface UpdateBranchScheduleUpdateBranchDeletionResponseAccountOffersItem {
@@ -128012,7 +128012,7 @@ export type UpdateChannelScheduleUpdateChannelDeletionResponseAccountOffersItemF
   (Feature | null)[];
 export const UpdateChannelScheduleUpdateChannelDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UpdateChannelScheduleUpdateChannelDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface UpdateChannelScheduleUpdateChannelDeletionResponseAccountOffersItem {
@@ -129271,7 +129271,7 @@ export const UpdateRobotResponseAccountsItemMemberStats = AccountByIdResponseMem
 
 export type UpdateRobotResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const UpdateRobotResponseAccountsItemOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<UpdateRobotResponseAccountsItemOffersItemFeaturesList>;
 
 export interface UpdateRobotResponseAccountsItemOffersItem {
@@ -132903,7 +132903,7 @@ export type UpdateScheduleUpdateGroupDeletionResponseAccountOffersItemFeaturesLi
   (Feature | null)[];
 export const UpdateScheduleUpdateGroupDeletionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UpdateScheduleUpdateGroupDeletionResponseAccountOffersItemFeaturesList>;
 
 export interface UpdateScheduleUpdateGroupDeletionResponseAccountOffersItem {
@@ -136915,7 +136915,7 @@ export type UserAuditLogExportUserAuditLogsResponseAccountOffersItemFeaturesList
   (Feature | null)[];
 export const UserAuditLogExportUserAuditLogsResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UserAuditLogExportUserAuditLogsResponseAccountOffersItemFeaturesList>;
 
 export interface UserAuditLogExportUserAuditLogsResponseAccountOffersItem {
@@ -137450,7 +137450,7 @@ export type UserDashboardViewPinsPinDashboardViewResponseAccountOffersItemFeatur
   (Feature | null)[];
 export const UserDashboardViewPinsPinDashboardViewResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UserDashboardViewPinsPinDashboardViewResponseAccountOffersItemFeaturesList>;
 
 export interface UserDashboardViewPinsPinDashboardViewResponseAccountOffersItem {
@@ -137926,7 +137926,7 @@ export type UserDashboardViewPinsUnpinDashboardViewResponseAccountOffersItemFeat
   (Feature | null)[];
 export const UserDashboardViewPinsUnpinDashboardViewResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<UserDashboardViewPinsUnpinDashboardViewResponseAccountOffersItemFeaturesList>;
 
 export interface UserDashboardViewPinsUnpinDashboardViewResponseAccountOffersItem {
@@ -138776,7 +138776,7 @@ export type VexoAccountConnectionCreateVexoAccountConnectionResponseAccountOffer
   (Feature | null)[];
 export const VexoAccountConnectionCreateVexoAccountConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<VexoAccountConnectionCreateVexoAccountConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface VexoAccountConnectionCreateVexoAccountConnectionResponseAccountOffersItem {
@@ -139264,7 +139264,7 @@ export type VexoAccountConnectionRevokeAndDeleteVexoAccountConnectionResponseAcc
   (Feature | null)[];
 export const VexoAccountConnectionRevokeAndDeleteVexoAccountConnectionResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<VexoAccountConnectionRevokeAndDeleteVexoAccountConnectionResponseAccountOffersItemFeaturesList>;
 
 export interface VexoAccountConnectionRevokeAndDeleteVexoAccountConnectionResponseAccountOffersItem {
@@ -140929,7 +140929,7 @@ export const ViewerResponseAccountsItemMemberStats = AccountByIdResponseMemberSt
 
 export type ViewerResponseAccountsItemOffersItemFeaturesList = (Feature | null)[];
 export const ViewerResponseAccountsItemOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<ViewerResponseAccountsItemOffersItemFeaturesList>;
 
 export interface ViewerResponseAccountsItemOffersItem {
@@ -141310,7 +141310,7 @@ export const ViewerResponseGithubAppRegistrationsItem = /*@__PURE__*/ S.suspend(
 export type ViewerResponseGithubAppRegistrationsList =
   (ViewerResponseGithubAppRegistrationsItem | null)[];
 export const ViewerResponseGithubAppRegistrationsList = /*@__PURE__*/ S.Array(
-  S.NullOr(ViewerResponseGithubAppRegistrationsItem),
+  /*@__PURE__*/ S.NullOr(ViewerResponseGithubAppRegistrationsItem),
 ) as any as S.Schema<ViewerResponseGithubAppRegistrationsList>;
 
 export type ViewerResponseGithubUserMetadata = MeResponseGithubUserMetadata;
@@ -141489,7 +141489,7 @@ export const ViewerResponseOnboardingOrganizationMemberStats = AccountByIdRespon
 
 export type ViewerResponseOnboardingOrganizationOffersItemFeaturesList = (Feature | null)[];
 export const ViewerResponseOnboardingOrganizationOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<ViewerResponseOnboardingOrganizationOffersItemFeaturesList>;
 
 export interface ViewerResponseOnboardingOrganizationOffersItem {
@@ -142369,7 +142369,7 @@ export const ViewerResponsePrimaryAccountMemberStats = AccountByIdResponseMember
 
 export type ViewerResponsePrimaryAccountOffersItemFeaturesList = (Feature | null)[];
 export const ViewerResponsePrimaryAccountOffersItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(Feature),
+  /*@__PURE__*/ S.NullOr(Feature),
 ) as any as S.Schema<ViewerResponsePrimaryAccountOffersItemFeaturesList>;
 
 export interface ViewerResponsePrimaryAccountOffersItem {
@@ -159665,7 +159665,7 @@ export type WorkflowsInsightsExportWorkflowRunsResponseAccountOffersItemFeatures
   (Feature | null)[];
 export const WorkflowsInsightsExportWorkflowRunsResponseAccountOffersItemFeaturesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(Feature),
+    /*@__PURE__*/ S.NullOr(Feature),
   ) as any as S.Schema<WorkflowsInsightsExportWorkflowRunsResponseAccountOffersItemFeaturesList>;
 
 export interface WorkflowsInsightsExportWorkflowRunsResponseAccountOffersItem {

@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Pinpoint SMS Voice V2",
   serviceShapeName: "PinpointSMSVoiceV2",
 });
-const auth = T.AwsAuthSigv4({ name: "sms-voice" });
-const ver = T.ServiceVersion("2022-03-31");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sms-voice" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,45 +73,51 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Reason: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Reason: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Reason: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Reason: /*@__PURE__*/ S.optional(S.String),
+    ResourceType: /*@__PURE__*/ S.optional(S.String),
+    ResourceId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.Retryable(),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.Retryable(),
   ).pipe(C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    ResourceType: /*@__PURE__*/ S.optional(S.String),
+    ResourceId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Reason: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(S.String),
+    },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.Retryable({ throttling: true }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.Retryable({ throttling: true }),
   ).pipe(C.withRetryableError, C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Reason: S.optional(S.String),
-    Fields: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Reason: /*@__PURE__*/ S.optional(S.String),
+    Fields: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -618,7 +624,7 @@ export const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 export type RegistrationStatus = string;
 export type RegistrationVersionNumber = number;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateRegistrationResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1758,7 +1764,7 @@ export const TemplateVariableMetadata = /*@__PURE__*/ S.suspend(() =>
 export type TemplateVariablesMap = { [key: string]: TemplateVariableMetadata | undefined };
 export const TemplateVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  TemplateVariableMetadata.pipe(S.optional),
+  /*@__PURE__*/ TemplateVariableMetadata.pipe(S.optional),
 );
 export type VoiceId = string;
 export type VoiceIdList = string[];
@@ -1947,7 +1953,7 @@ export const DescribePhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
 export type NumberStatus = string;
 export type NumberType = string;
 export type LongMap = { [key: string]: number | undefined };
-export const LongMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const LongMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface MessagingLimits {
   RateLimits?: { [key: string]: number | undefined };
   DailyMessageCaps?: { [key: string]: number | undefined };
@@ -3207,7 +3213,7 @@ export type ProtectConfigurationCountryRuleSet = {
 };
 export const ProtectConfigurationCountryRuleSet = /*@__PURE__*/ S.Record(
   S.String,
-  ProtectConfigurationCountryRuleSetInformation.pipe(S.optional),
+  /*@__PURE__*/ ProtectConfigurationCountryRuleSetInformation.pipe(S.optional),
 );
 export interface GetProtectConfigurationCountryRuleSetResult {
   ProtectConfigurationArn: string;
@@ -3952,13 +3958,13 @@ export type VerificationMessageOriginationIdentity = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type ContextMap = { [key: string]: string | undefined };
-export const ContextMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContextMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DestinationCountryParameterKey = string;
 export type DestinationCountryParameterValue = string;
 export type DestinationCountryParameters = { [key: string]: string | undefined };
 export const DestinationCountryParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface SendDestinationNumberVerificationCodeRequest {
   VerifiedDestinationNumberId: string;
@@ -4036,7 +4042,7 @@ export type TemplateVariableValue = string;
 export type TemplateVariableSubstitutionMap = { [key: string]: string | undefined };
 export const TemplateVariableSubstitutionMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface SendNotifyTextMessageRequest {
   NotifyConfigurationId: string;
@@ -4276,12 +4282,12 @@ export type RcsSuggestedAction =
       CreateCalendarEvent: RcsCreateCalendarEventAction;
     };
 export const RcsSuggestedAction = /*@__PURE__*/ S.Union([
-  S.Struct({ Reply: RcsReplyAction }),
-  S.Struct({ OpenUrl: RcsOpenUrlAction }),
-  S.Struct({ DialPhone: RcsDialPhoneAction }),
-  S.Struct({ ShowLocation: RcsShowLocationAction }),
-  S.Struct({ RequestLocation: RcsRequestLocationAction }),
-  S.Struct({ CreateCalendarEvent: RcsCreateCalendarEventAction }),
+  /*@__PURE__*/ S.Struct({ Reply: RcsReplyAction }),
+  /*@__PURE__*/ S.Struct({ OpenUrl: RcsOpenUrlAction }),
+  /*@__PURE__*/ S.Struct({ DialPhone: RcsDialPhoneAction }),
+  /*@__PURE__*/ S.Struct({ ShowLocation: RcsShowLocationAction }),
+  /*@__PURE__*/ S.Struct({ RequestLocation: RcsRequestLocationAction }),
+  /*@__PURE__*/ S.Struct({ CreateCalendarEvent: RcsCreateCalendarEventAction }),
 ]);
 export type RcsCardSuggestedActionList = RcsSuggestedAction[];
 export const RcsCardSuggestedActionList = /*@__PURE__*/ S.Array(RcsSuggestedAction);
@@ -4348,10 +4354,10 @@ export type RcsContent =
   | { TextMessage?: never; FileMessage?: never; RichCard: RcsStandaloneCard; Carousel?: never }
   | { TextMessage?: never; FileMessage?: never; RichCard?: never; Carousel: RcsCarousel };
 export const RcsContent = /*@__PURE__*/ S.Union([
-  S.Struct({ TextMessage: RcsTextMessage }),
-  S.Struct({ FileMessage: RcsFileMessage }),
-  S.Struct({ RichCard: RcsStandaloneCard }),
-  S.Struct({ Carousel: RcsCarousel }),
+  /*@__PURE__*/ S.Struct({ TextMessage: RcsTextMessage }),
+  /*@__PURE__*/ S.Struct({ FileMessage: RcsFileMessage }),
+  /*@__PURE__*/ S.Struct({ RichCard: RcsStandaloneCard }),
+  /*@__PURE__*/ S.Struct({ Carousel: RcsCarousel }),
 ]);
 export type RcsSuggestedActionList = RcsSuggestedAction[];
 export const RcsSuggestedActionList = /*@__PURE__*/ S.Array(RcsSuggestedAction);

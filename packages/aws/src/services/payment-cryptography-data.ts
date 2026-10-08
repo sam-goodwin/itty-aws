@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Payment Cryptography Data",
   serviceShapeName: "PaymentCryptographyDataPlane",
 });
-const auth = T.AwsAuthSigv4({ name: "payment-cryptography" });
-const ver = T.ServiceVersion("2022-02-03");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "payment-cryptography" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-02-03");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,32 +80,35 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { ResourceId: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    {
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.String.pipe(T.ErrorMessage()),
-    fieldList: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
+    message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+    fieldList: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -113,8 +116,8 @@ export class ValidationException
 export class VerificationFailedException
   extends /*@__PURE__*/ S.TaggedError<VerificationFailedException>()(
     "VerificationFailedException",
-    { Reason: S.String, message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { Reason: S.String, message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type KeyArnOrKeyAliasType = string;
 export type CipherTextType = string | redacted.Redacted<string>;
@@ -223,10 +226,10 @@ export type EncryptionDecryptionAttributes =
   | { Symmetric?: never; Asymmetric?: never; Dukpt: DukptEncryptionAttributes; Emv?: never }
   | { Symmetric?: never; Asymmetric?: never; Dukpt?: never; Emv: EmvEncryptionAttributes };
 export const EncryptionDecryptionAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
-  S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
-  S.Struct({ Dukpt: DukptEncryptionAttributes }),
-  S.Struct({ Emv: EmvEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Dukpt: DukptEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Emv: EmvEncryptionAttributes }),
 ]);
 export type Tr31WrappedKeyBlock = string | redacted.Redacted<string>;
 export type CertificateType = string;
@@ -272,8 +275,8 @@ export type WrappedKeyMaterial =
   | { Tr31KeyBlock: string | redacted.Redacted<string>; DiffieHellmanSymmetricKey?: never }
   | { Tr31KeyBlock?: never; DiffieHellmanSymmetricKey: EcdhDerivationAttributes };
 export const WrappedKeyMaterial = /*@__PURE__*/ S.Union([
-  S.Struct({ Tr31KeyBlock: SensitiveString }),
-  S.Struct({ DiffieHellmanSymmetricKey: EcdhDerivationAttributes }),
+  /*@__PURE__*/ S.Struct({ Tr31KeyBlock: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ DiffieHellmanSymmetricKey: EcdhDerivationAttributes }),
 ]);
 export type KeyCheckValueAlgorithm = string;
 export interface WrappedKey {
@@ -376,8 +379,8 @@ export type As2805KekValidationType =
   | { KekValidationRequest: KekValidationRequest; KekValidationResponse?: never }
   | { KekValidationRequest?: never; KekValidationResponse: KekValidationResponse };
 export const As2805KekValidationType = /*@__PURE__*/ S.Union([
-  S.Struct({ KekValidationRequest: KekValidationRequest }),
-  S.Struct({ KekValidationResponse: KekValidationResponse }),
+  /*@__PURE__*/ S.Struct({ KekValidationRequest: KekValidationRequest }),
+  /*@__PURE__*/ S.Struct({ KekValidationResponse: KekValidationResponse }),
 ]);
 export type RandomKeySendVariantMask = "VARIANT_MASK_82C0" | "VARIANT_MASK_82" | (string & {});
 export const RandomKeySendVariantMask = S.String;
@@ -541,12 +544,12 @@ export type SessionKeyDerivation =
       UnionPay: SessionKeyUnionPay;
     };
 export const SessionKeyDerivation = /*@__PURE__*/ S.Union([
-  S.Struct({ EmvCommon: SessionKeyEmvCommon }),
-  S.Struct({ Mastercard: SessionKeyMastercard }),
-  S.Struct({ Emv2000: SessionKeyEmv2000 }),
-  S.Struct({ Amex: SessionKeyAmex }),
-  S.Struct({ Visa: SessionKeyVisa }),
-  S.Struct({ UnionPay: SessionKeyUnionPay }),
+  /*@__PURE__*/ S.Struct({ EmvCommon: SessionKeyEmvCommon }),
+  /*@__PURE__*/ S.Struct({ Mastercard: SessionKeyMastercard }),
+  /*@__PURE__*/ S.Struct({ Emv2000: SessionKeyEmv2000 }),
+  /*@__PURE__*/ S.Struct({ Amex: SessionKeyAmex }),
+  /*@__PURE__*/ S.Struct({ Visa: SessionKeyVisa }),
+  /*@__PURE__*/ S.Struct({ UnionPay: SessionKeyUnionPay }),
 ]);
 export interface GenerateAuthRequestCryptogramInput {
   KeyIdentifier: string;
@@ -723,13 +726,13 @@ export type CardGenerationAttributes =
       DynamicCardVerificationValue: DynamicCardVerificationValue;
     };
 export const CardGenerationAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
-  S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
-  S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
-  S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
-  S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
-  S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
-  S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
+  /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
+  /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
+  /*@__PURE__*/ S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
+  /*@__PURE__*/ S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
+  /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
+  /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
+  /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
 ]);
 export type IntegerRangeBetween3And5Type = number;
 export interface GenerateCardValidationDataInput {
@@ -800,8 +803,8 @@ export type SessionKeyDerivationValue =
     }
   | { ApplicationCryptogram?: never; ApplicationTransactionCounter: string };
 export const SessionKeyDerivationValue = /*@__PURE__*/ S.Union([
-  S.Struct({ ApplicationCryptogram: SensitiveString }),
-  S.Struct({ ApplicationTransactionCounter: S.String }),
+  /*@__PURE__*/ S.Struct({ ApplicationCryptogram: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ ApplicationTransactionCounter: S.String }),
 ]);
 export interface MacAlgorithmEmv {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
@@ -868,11 +871,11 @@ export type MacAttributes =
       DukptCmac: MacAlgorithmDukpt;
     };
 export const MacAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ Algorithm: MacAlgorithm }),
-  S.Struct({ EmvMac: MacAlgorithmEmv }),
-  S.Struct({ DukptIso9797Algorithm1: MacAlgorithmDukpt }),
-  S.Struct({ DukptIso9797Algorithm3: MacAlgorithmDukpt }),
-  S.Struct({ DukptCmac: MacAlgorithmDukpt }),
+  /*@__PURE__*/ S.Struct({ Algorithm: MacAlgorithm }),
+  /*@__PURE__*/ S.Struct({ EmvMac: MacAlgorithmEmv }),
+  /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm1: MacAlgorithmDukpt }),
+  /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm3: MacAlgorithmDukpt }),
+  /*@__PURE__*/ S.Struct({ DukptCmac: MacAlgorithmDukpt }),
 ]);
 export type IntegerRangeBetween4And32 = number;
 export interface GenerateMacInput {
@@ -1029,11 +1032,11 @@ export type DerivationMethodAttributes =
       Mastercard: MasterCardAttributes;
     };
 export const DerivationMethodAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ EmvCommon: EmvCommonAttributes }),
-  S.Struct({ Amex: AmexAttributes }),
-  S.Struct({ Visa: VisaAttributes }),
-  S.Struct({ Emv2000: Emv2000Attributes }),
-  S.Struct({ Mastercard: MasterCardAttributes }),
+  /*@__PURE__*/ S.Struct({ EmvCommon: EmvCommonAttributes }),
+  /*@__PURE__*/ S.Struct({ Amex: AmexAttributes }),
+  /*@__PURE__*/ S.Struct({ Visa: VisaAttributes }),
+  /*@__PURE__*/ S.Struct({ Emv2000: Emv2000Attributes }),
+  /*@__PURE__*/ S.Struct({ Mastercard: MasterCardAttributes }),
 ]);
 export interface GenerateMacEmvPinChangeInput {
   NewPinPekIdentifier: string;
@@ -1230,12 +1233,12 @@ export type PinGenerationAttributes =
       Ibm3624PinFromOffset: Ibm3624PinFromOffset;
     };
 export const PinGenerationAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ VisaPin: VisaPin }),
-  S.Struct({ VisaPinVerificationValue: VisaPinVerificationValue }),
-  S.Struct({ Ibm3624PinOffset: Ibm3624PinOffset }),
-  S.Struct({ Ibm3624NaturalPin: Ibm3624NaturalPin }),
-  S.Struct({ Ibm3624RandomPin: Ibm3624RandomPin }),
-  S.Struct({ Ibm3624PinFromOffset: Ibm3624PinFromOffset }),
+  /*@__PURE__*/ S.Struct({ VisaPin: VisaPin }),
+  /*@__PURE__*/ S.Struct({ VisaPinVerificationValue: VisaPinVerificationValue }),
+  /*@__PURE__*/ S.Struct({ Ibm3624PinOffset: Ibm3624PinOffset }),
+  /*@__PURE__*/ S.Struct({ Ibm3624NaturalPin: Ibm3624NaturalPin }),
+  /*@__PURE__*/ S.Struct({ Ibm3624RandomPin: Ibm3624RandomPin }),
+  /*@__PURE__*/ S.Struct({ Ibm3624PinFromOffset: Ibm3624PinFromOffset }),
 ]);
 export type IntegerRangeBetween4And12 = number;
 export type PinBlockFormatForPinData =
@@ -1273,8 +1276,8 @@ export type PinData =
   | { PinOffset: string | redacted.Redacted<string>; VerificationValue?: never }
   | { PinOffset?: never; VerificationValue: string | redacted.Redacted<string> };
 export const PinData = /*@__PURE__*/ S.Union([
-  S.Struct({ PinOffset: SensitiveString }),
-  S.Struct({ VerificationValue: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ PinOffset: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ VerificationValue: SensitiveString }),
 ]);
 export interface GeneratePinDataOutput {
   GenerationKeyArn: string;
@@ -1299,9 +1302,9 @@ export type ReEncryptionAttributes =
   | { Symmetric?: never; Asymmetric: AsymmetricEncryptionAttributes; Dukpt?: never }
   | { Symmetric?: never; Asymmetric?: never; Dukpt: DukptEncryptionAttributes };
 export const ReEncryptionAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
-  S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
-  S.Struct({ Dukpt: DukptEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
+  /*@__PURE__*/ S.Struct({ Dukpt: DukptEncryptionAttributes }),
 ]);
 export interface ReEncryptDataInput {
   IncomingKeyIdentifier: string;
@@ -1342,7 +1345,7 @@ export const ReEncryptDataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReEncryptDataOutput" }) as any as S.Schema<ReEncryptDataOutput>;
 export type DiffieHellmanDerivationData = { SharedInformation: string };
 export const DiffieHellmanDerivationData = /*@__PURE__*/ S.Union([
-  S.Struct({ SharedInformation: S.String }),
+  /*@__PURE__*/ S.Struct({ SharedInformation: S.String }),
 ]);
 export interface IncomingDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
@@ -1370,7 +1373,7 @@ export const IncomingDiffieHellmanTr31KeyBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncomingDiffieHellmanTr31KeyBlock>;
 export type IncomingKeyMaterial = { DiffieHellmanTr31KeyBlock: IncomingDiffieHellmanTr31KeyBlock };
 export const IncomingKeyMaterial = /*@__PURE__*/ S.Union([
-  S.Struct({ DiffieHellmanTr31KeyBlock: IncomingDiffieHellmanTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: IncomingDiffieHellmanTr31KeyBlock }),
 ]);
 export interface OutgoingTr31KeyBlock {
   WrappingKeyIdentifier: string;
@@ -1380,7 +1383,7 @@ export const OutgoingTr31KeyBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OutgoingTr31KeyBlock" }) as any as S.Schema<OutgoingTr31KeyBlock>;
 export type OutgoingKeyMaterial = { Tr31KeyBlock: OutgoingTr31KeyBlock };
 export const OutgoingKeyMaterial = /*@__PURE__*/ S.Union([
-  S.Struct({ Tr31KeyBlock: OutgoingTr31KeyBlock }),
+  /*@__PURE__*/ S.Struct({ Tr31KeyBlock: OutgoingTr31KeyBlock }),
 ]);
 export interface TranslateKeyMaterialInput {
   IncomingKeyMaterial: IncomingKeyMaterial;
@@ -1477,11 +1480,11 @@ export type TranslationIsoFormats =
       As2805Format0: TranslationPinDataAs2805Format0;
     };
 export const TranslationIsoFormats = /*@__PURE__*/ S.Union([
-  S.Struct({ IsoFormat0: TranslationPinDataIsoFormat034 }),
-  S.Struct({ IsoFormat1: TranslationPinDataIsoFormat1 }),
-  S.Struct({ IsoFormat3: TranslationPinDataIsoFormat034 }),
-  S.Struct({ IsoFormat4: TranslationPinDataIsoFormat034 }),
-  S.Struct({ As2805Format0: TranslationPinDataAs2805Format0 }),
+  /*@__PURE__*/ S.Struct({ IsoFormat0: TranslationPinDataIsoFormat034 }),
+  /*@__PURE__*/ S.Struct({ IsoFormat1: TranslationPinDataIsoFormat1 }),
+  /*@__PURE__*/ S.Struct({ IsoFormat3: TranslationPinDataIsoFormat034 }),
+  /*@__PURE__*/ S.Struct({ IsoFormat4: TranslationPinDataIsoFormat034 }),
+  /*@__PURE__*/ S.Struct({ As2805Format0: TranslationPinDataAs2805Format0 }),
 ]);
 export type HexEvenLengthBetween16And32 = string | redacted.Redacted<string>;
 export interface DukptDerivationAttributes {
@@ -1570,8 +1573,8 @@ export type CryptogramAuthResponse =
   | { ArpcMethod1: CryptogramVerificationArpcMethod1; ArpcMethod2?: never }
   | { ArpcMethod1?: never; ArpcMethod2: CryptogramVerificationArpcMethod2 };
 export const CryptogramAuthResponse = /*@__PURE__*/ S.Union([
-  S.Struct({ ArpcMethod1: CryptogramVerificationArpcMethod1 }),
-  S.Struct({ ArpcMethod2: CryptogramVerificationArpcMethod2 }),
+  /*@__PURE__*/ S.Struct({ ArpcMethod1: CryptogramVerificationArpcMethod1 }),
+  /*@__PURE__*/ S.Struct({ ArpcMethod2: CryptogramVerificationArpcMethod2 }),
 ]);
 export interface VerifyAuthRequestCryptogramInput {
   KeyIdentifier: string;
@@ -1706,14 +1709,16 @@ export type CardVerificationAttributes =
       DiscoverDynamicCardVerificationCode: DiscoverDynamicCardVerificationCode;
     };
 export const CardVerificationAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
-  S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
-  S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
-  S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
-  S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
-  S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
-  S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
-  S.Struct({ DiscoverDynamicCardVerificationCode: DiscoverDynamicCardVerificationCode }),
+  /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
+  /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
+  /*@__PURE__*/ S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
+  /*@__PURE__*/ S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
+  /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
+  /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
+  /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
+  /*@__PURE__*/ S.Struct({
+    DiscoverDynamicCardVerificationCode: DiscoverDynamicCardVerificationCode,
+  }),
 ]);
 export interface VerifyCardValidationDataInput {
   KeyIdentifier: string;
@@ -1798,8 +1803,8 @@ export type PinVerificationAttributes =
   | { VisaPin: VisaPinVerification; Ibm3624Pin?: never }
   | { VisaPin?: never; Ibm3624Pin: Ibm3624PinVerification };
 export const PinVerificationAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ VisaPin: VisaPinVerification }),
-  S.Struct({ Ibm3624Pin: Ibm3624PinVerification }),
+  /*@__PURE__*/ S.Struct({ VisaPin: VisaPinVerification }),
+  /*@__PURE__*/ S.Struct({ Ibm3624Pin: Ibm3624PinVerification }),
 ]);
 export interface DukptAttributes {
   KeySerialNumber: string;

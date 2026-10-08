@@ -9481,7 +9481,7 @@ export const ScoutTrialResultReportsList = /*@__PURE__*/ S.Array(
 export type ScoutTrialResultMemoryMap = { [key: string]: ScratchpadEntry | null | undefined };
 export const ScoutTrialResultMemoryMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ScratchpadEntry),
+  /*@__PURE__*/ S.NullOr(ScratchpadEntry),
 ) as any as S.Schema<ScoutTrialResultMemoryMap>;
 
 export interface ScoutTrialResult {

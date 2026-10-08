@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
-const svc = T.AwsApiService({ sdkId: "Pipes", serviceShapeName: "Pipes" });
-const auth = T.AwsAuthSigv4({ name: "pipes" });
-const ver = T.ServiceVersion("2015-10-07");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Pipes", serviceShapeName: "Pipes" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "pipes" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-10-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,59 +72,67 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type PipeName = string;
 export type PipeDescription = string | redacted.Redacted<string>;
@@ -224,7 +232,9 @@ export const PipeSourceSqsQueueParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipeSourceSqsQueueParameters>;
 export type SecretManagerArn = string;
 export type MQBrokerAccessCredentials = { BasicAuth: string };
-export const MQBrokerAccessCredentials = /*@__PURE__*/ S.Union([S.Struct({ BasicAuth: S.String })]);
+export const MQBrokerAccessCredentials = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ BasicAuth: S.String }),
+]);
 export type MQBrokerQueueName = string | redacted.Redacted<string>;
 export interface PipeSourceActiveMQBrokerParameters {
   Credentials: MQBrokerAccessCredentials;
@@ -267,8 +277,8 @@ export type MSKAccessCredentials =
   | { SaslScram512Auth: string; ClientCertificateTlsAuth?: never }
   | { SaslScram512Auth?: never; ClientCertificateTlsAuth: string };
 export const MSKAccessCredentials = /*@__PURE__*/ S.Union([
-  S.Struct({ SaslScram512Auth: S.String }),
-  S.Struct({ ClientCertificateTlsAuth: S.String }),
+  /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
+  /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
 ]);
 export interface PipeSourceManagedStreamingKafkaParameters {
   TopicName: string | redacted.Redacted<string>;
@@ -320,10 +330,10 @@ export type SelfManagedKafkaAccessConfigurationCredentials =
       ClientCertificateTlsAuth: string;
     };
 export const SelfManagedKafkaAccessConfigurationCredentials = /*@__PURE__*/ S.Union([
-  S.Struct({ BasicAuth: S.String }),
-  S.Struct({ SaslScram512Auth: S.String }),
-  S.Struct({ SaslScram256Auth: S.String }),
-  S.Struct({ ClientCertificateTlsAuth: S.String }),
+  /*@__PURE__*/ S.Struct({ BasicAuth: S.String }),
+  /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
+  /*@__PURE__*/ S.Struct({ SaslScram256Auth: S.String }),
+  /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
 ]);
 export type SubnetId = string | redacted.Redacted<string>;
 export type SubnetIds = (string | redacted.Redacted<string>)[];
@@ -398,7 +408,7 @@ export type HeaderValue = string | redacted.Redacted<string>;
 export type HeaderParametersMap = { [key: string]: string | redacted.Redacted<string> | undefined };
 export const HeaderParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type QueryStringKey = string;
 export type QueryStringValue = string | redacted.Redacted<string>;
@@ -407,7 +417,7 @@ export type QueryStringParametersMap = {
 };
 export const QueryStringParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface PipeEnrichmentHttpParameters {
   PathParameterValues?: (string | redacted.Redacted<string>)[];
@@ -732,7 +742,10 @@ export const BatchJobDependency = /*@__PURE__*/ S.suspend(() =>
 export type BatchDependsOn = BatchJobDependency[];
 export const BatchDependsOn = /*@__PURE__*/ S.Array(BatchJobDependency);
 export type BatchParametersMap = { [key: string]: string | undefined };
-export const BatchParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const BatchParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface PipeTargetBatchJobParameters {
   JobDefinition: string;
   JobName: string;
@@ -982,7 +995,10 @@ export const PipeTargetParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PipeTargetParameters" }) as any as S.Schema<PipeTargetParameters>;
 export type RoleArn = string;
 export type TagMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type S3OutputFormat = string;
 export interface S3LogDestinationParameters {
   BucketName: string;

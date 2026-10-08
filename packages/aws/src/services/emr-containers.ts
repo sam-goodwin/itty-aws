@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "EMR containers", serviceShapeName: "AwsChicagoWebService" });
-const auth = T.AwsAuthSigv4({ name: "emr-containers" });
-const ver = T.ServiceVersion("2020-10-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "EMR containers",
+  serviceShapeName: "AwsChicagoWebService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "emr-containers" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-10-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,20 +84,20 @@ const rules = T.EndpointResolver((p, _) => {
 export class EKSRequestThrottledException
   extends /*@__PURE__*/ S.TaggedError<EKSRequestThrottledException>()(
     "EKSRequestThrottledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidResourceArn
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceArn>()(
     "InvalidResourceArn",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "BadRequestException",
       message: { includes: "Invalid input resource arn" },
     }),
@@ -102,24 +105,24 @@ export class InvalidResourceArn
 export class RequestThrottledException
   extends /*@__PURE__*/ S.TaggedError<RequestThrottledException>()(
     "RequestThrottledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ResourceIdString = string;
 export interface CancelJobRunRequest {
@@ -154,7 +157,10 @@ export type ParametricIAMRoleArn = string;
 export type ParametricReleaseLabel = string;
 export type String1024 = string;
 export type SensitivePropertiesMap = { [key: string]: string | undefined };
-export const SensitivePropertiesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SensitivePropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Configuration {
   classification: string;
   properties?: { [key: string]: string | undefined };
@@ -171,7 +177,9 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 export type ConfigurationList = Configuration[];
 export const ConfigurationList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Configuration> => Configuration).annotate({ identifier: "Configuration" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => Configuration).annotate({
+    identifier: "Configuration",
+  }),
 ) as any as S.Schema<ConfigurationList>;
 export type TemplateParameter = string;
 export type String256 = string;
@@ -275,12 +283,12 @@ export type TemplateParameterConfigurationMap = {
 };
 export const TemplateParameterConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  TemplateParameterConfiguration.pipe(S.optional),
+  /*@__PURE__*/ TemplateParameterConfiguration.pipe(S.optional),
 );
 export type String128 = string;
 export type StringEmpty256 = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface JobTemplateData {
   executionRoleArn: string;
   releaseLabel: string;
@@ -478,7 +486,7 @@ export const EksInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ namespace: S.optional(S.String), nodeLabel: S.optional(S.String) }),
 ).annotate({ identifier: "EksInfo" }) as any as S.Schema<EksInfo>;
 export type ContainerInfo = { eksInfo: EksInfo };
-export const ContainerInfo = /*@__PURE__*/ S.Union([S.Struct({ eksInfo: EksInfo })]);
+export const ContainerInfo = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ eksInfo: EksInfo })]);
 export interface ContainerProvider {
   type: ContainerProviderType;
   id: string;
@@ -1147,7 +1155,9 @@ export const GetManagedEndpointSessionCredentialsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetManagedEndpointSessionCredentialsRequest>;
 export type Token = string | redacted.Redacted<string>;
 export type Credentials = { token: string | redacted.Redacted<string> };
-export const Credentials = /*@__PURE__*/ S.Union([S.Struct({ token: SensitiveString })]);
+export const Credentials = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ token: SensitiveString }),
+]);
 export interface GetManagedEndpointSessionCredentialsResponse {
   id?: string;
   credentials?: Credentials;
@@ -1387,7 +1397,7 @@ export const ListVirtualClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export type TemplateParameterInputMap = { [key: string]: string | undefined };
 export const TemplateParameterInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface StartJobRunRequest {
   name?: string;

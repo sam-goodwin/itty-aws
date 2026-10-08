@@ -234,7 +234,7 @@ export const AccountStatusAccountProvisioningState = S.String;
 /** Gets or sets the details. */
 export type ErrorModelDetailsList = Array<ErrorModel>;
 export const ErrorModelDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorModel),
+  /*@__PURE__*/ S.suspend(() => ErrorModel),
 ) as any as S.Schema<ErrorModelDetailsList>;
 
 /** Default error model */

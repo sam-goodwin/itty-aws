@@ -311,7 +311,7 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey;
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["name", "text", "type"],
         ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -456,7 +456,7 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateResultValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey;
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -1105,7 +1105,7 @@ export type DispatchNamespacesScriptsGetResponseScriptExportsValue =
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsGetResponseScriptExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -1519,7 +1519,7 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList =
   Array<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem>;
@@ -1566,7 +1566,7 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacement =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase6
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7;
 export const DispatchNamespacesScriptsGetResponseScriptPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -2822,7 +2822,7 @@ export type DispatchNamespacesScriptsBindingsGetResultItem =
   | DispatchNamespacesScriptsBindingsGetResultItemVPCService
   | DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork;
 export const DispatchNamespacesScriptsBindingsGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "type", "namespace"],
@@ -3091,7 +3091,7 @@ export type DispatchNamespacesScriptsSecretsGetResult =
   | DispatchNamespacesScriptsSecretsGetResultSecretText
   | DispatchNamespacesScriptsSecretsGetResultSecretKey;
 export const DispatchNamespacesScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -4185,7 +4185,7 @@ export type DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["name", "type"],
         ["instanceName", "name", "type", "namespace"],
@@ -4524,7 +4524,7 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -5097,7 +5097,7 @@ export type DispatchNamespacesScriptsSettingsGetResponseMigrations =
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
 export const DispatchNamespacesScriptsSettingsGetResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -5349,7 +5349,7 @@ export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem>;
@@ -5384,7 +5384,7 @@ export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -5671,7 +5671,7 @@ export type DispatchNamespacesScriptsSecretsListResultItem =
   | DispatchNamespacesScriptsSecretsListResultItemSecretText
   | DispatchNamespacesScriptsSecretsListResultItemSecretKey;
 export const DispatchNamespacesScriptsSecretsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
@@ -6880,7 +6880,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["name", "type"],
         ["instanceName", "name", "type", "namespace"],
@@ -7236,7 +7236,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -7799,7 +7799,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "deletedClasses",
         "newClasses",
@@ -8045,7 +8045,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7Ta
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem>;
@@ -8081,7 +8081,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["mode"],
       ["region"],
       ["hostname"],
@@ -9284,7 +9284,7 @@ export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["name", "type"],
         ["instanceName", "name", "type", "namespace"],
@@ -9623,7 +9623,7 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -10142,7 +10142,7 @@ export type DispatchNamespacesScriptsSettingsEditResponseMigrations =
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
 export const DispatchNamespacesScriptsSettingsEditResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -10380,7 +10380,7 @@ export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetIte
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem>;
@@ -10415,7 +10415,7 @@ export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -10560,7 +10560,7 @@ export type PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst =
   | PutDispatchNamespaceScriptMetadataStringList
   | boolean;
 export const PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface PutDispatchNamespaceScriptAssetsConfig {
@@ -11471,7 +11471,7 @@ export type PutDispatchNamespaceScriptBinding =
   | PutDispatchNamespaceScriptBindingStream
   | PutDispatchNamespaceScriptBindingK2;
 export const PutDispatchNamespaceScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
       ["instanceName", "name", "namespace", "type"],
@@ -11729,7 +11729,7 @@ export type PutDispatchNamespaceScriptMetadataMigrations =
   | PutDispatchNamespaceScriptSingleStepMigration
   | PutDispatchNamespaceScriptMultipleStepMigrations;
 export const PutDispatchNamespaceScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
       "newClasses",
@@ -11931,7 +11931,7 @@ export type PutDispatchNamespaceScriptPlacementTarget =
   | PutDispatchNamespaceScriptPlacementHostname
   | PutDispatchNamespaceScriptPlacementHost;
 export const PutDispatchNamespaceScriptPlacementTarget = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["region"], ["hostname"], ["host"]]),
+  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
 );
 
 export type PutDispatchNamespaceScriptPlacementTargetsList =
@@ -11963,7 +11963,7 @@ export type PutDispatchNamespaceScriptMetadataPlacement =
   | PutDispatchNamespaceScriptPlacementTargetedHost
   | PutDispatchNamespaceScriptPlacementTargetedList;
 export const PutDispatchNamespaceScriptMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
     ["hostname"],
@@ -12445,7 +12445,7 @@ export type DispatchNamespacesScriptsUpdateResponseExportsValue =
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
     ["state", "type"],
@@ -12819,7 +12819,7 @@ export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem>;
@@ -12865,7 +12865,7 @@ export type DispatchNamespacesScriptsUpdateResponsePlacement =
   | DispatchNamespacesScriptsUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsUpdateResponsePlacementCase7;
 export const DispatchNamespacesScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -13299,7 +13299,7 @@ export type DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
       ["storage", "type", "container", "state"],
       ["state", "type"],
@@ -13700,7 +13700,7 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetIt
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["region"], ["hostname"], ["host"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem>;
@@ -13749,7 +13749,7 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
     ["hostname", "lastAnalyzedAt", "status"],
@@ -14059,7 +14059,7 @@ export type DispatchNamespacesScriptsSecretsUpdateResult =
   | DispatchNamespacesScriptsSecretsUpdateResultSecretText
   | DispatchNamespacesScriptsSecretsUpdateResultSecretKey;
 export const DispatchNamespacesScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
       ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],

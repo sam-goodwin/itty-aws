@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "IoTTwinMaker", serviceShapeName: "AWSIoTTwinMaker" });
-const auth = T.AwsAuthSigv4({ name: "iottwinmaker" });
-const ver = T.ServiceVersion("2021-11-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "IoTTwinMaker",
+  serviceShapeName: "AWSIoTTwinMaker",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iottwinmaker" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-11-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,74 +76,77 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConnectorFailureException
   extends /*@__PURE__*/ S.TaggedError<ConnectorFailureException>()(
     "ConnectorFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ConnectorTimeoutException
   extends /*@__PURE__*/ S.TaggedError<ConnectorTimeoutException>()(
     "ConnectorTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class QueryTimeoutException
   extends /*@__PURE__*/ S.TaggedError<QueryTimeoutException>()(
     "QueryTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(400), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(400), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Id = string;
 export type Name = string;
 export type ComponentPath = string;
 export type ExternalIdProperty = { [key: string]: string | undefined };
-export const ExternalIdProperty = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExternalIdProperty = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EntityId = string;
 export interface EntityPropertyReference {
   componentName?: string;
@@ -160,12 +166,14 @@ export const EntityPropertyReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntityPropertyReference" }) as any as S.Schema<EntityPropertyReference>;
 export type DataValueList = DataValue[];
 export const DataValueList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<DataValue> => DataValue).annotate({ identifier: "DataValue" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue).annotate({
+    identifier: "DataValue",
+  }),
 ) as any as S.Schema<DataValueList>;
 export type DataValueMap = { [key: string]: DataValue | undefined };
 export const DataValueMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<DataValue> => DataValue)
+  /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue)
     .annotate({ identifier: "DataValue" })
     .pipe(S.optional),
 ) as any as S.Schema<DataValueMap>;
@@ -381,7 +389,10 @@ export const DataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataType" }) as any as S.Schema<DataType>;
 export type Value = string;
 export type Configuration = { [key: string]: string | undefined };
-export const Configuration = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Configuration = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type PropertyDisplayName = string;
 export interface PropertyDefinitionRequest {
   dataType?: DataType;
@@ -410,7 +421,7 @@ export const PropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export type PropertyDefinitionsRequest = { [key: string]: PropertyDefinitionRequest | undefined };
 export const PropertyDefinitionsRequest = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyDefinitionRequest.pipe(S.optional),
+  /*@__PURE__*/ PropertyDefinitionRequest.pipe(S.optional),
 );
 export type ExtendsFrom = string[];
 export const ExtendsFrom = /*@__PURE__*/ S.Array(S.String);
@@ -444,11 +455,14 @@ export const FunctionRequest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionRequest" }) as any as S.Schema<FunctionRequest>;
 export type FunctionsRequest = { [key: string]: FunctionRequest | undefined };
-export const FunctionsRequest = /*@__PURE__*/ S.Record(S.String, FunctionRequest.pipe(S.optional));
+export const FunctionsRequest = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FunctionRequest.pipe(S.optional),
+);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type GroupType = string;
 export type PropertyNames = string[];
 export const PropertyNames = /*@__PURE__*/ S.Array(S.String);
@@ -462,7 +476,7 @@ export const PropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type PropertyGroupsRequest = { [key: string]: PropertyGroupRequest | undefined };
 export const PropertyGroupsRequest = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyGroupRequest.pipe(S.optional),
+  /*@__PURE__*/ PropertyGroupRequest.pipe(S.optional),
 );
 export type ComponentTypeName = string;
 export interface CompositeComponentTypeRequest {
@@ -478,7 +492,7 @@ export type CompositeComponentTypesRequest = {
 };
 export const CompositeComponentTypesRequest = /*@__PURE__*/ S.Record(
   S.String,
-  CompositeComponentTypeRequest.pipe(S.optional),
+  /*@__PURE__*/ CompositeComponentTypeRequest.pipe(S.optional),
 );
 export interface CreateComponentTypeRequest {
   workspaceId: string;
@@ -552,7 +566,10 @@ export const PropertyRequest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyRequest" }) as any as S.Schema<PropertyRequest>;
 export type PropertyRequests = { [key: string]: PropertyRequest | undefined };
-export const PropertyRequests = /*@__PURE__*/ S.Record(S.String, PropertyRequest.pipe(S.optional));
+export const PropertyRequests = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ PropertyRequest.pipe(S.optional),
+);
 export type PropertyGroupUpdateType = string;
 export interface ComponentPropertyGroupRequest {
   groupType?: string;
@@ -573,7 +590,7 @@ export type ComponentPropertyGroupRequests = {
 };
 export const ComponentPropertyGroupRequests = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentPropertyGroupRequest.pipe(S.optional),
+  /*@__PURE__*/ ComponentPropertyGroupRequest.pipe(S.optional),
 );
 export interface ComponentRequest {
   description?: string;
@@ -592,7 +609,7 @@ export const ComponentRequest = /*@__PURE__*/ S.suspend(() =>
 export type ComponentsMapRequest = { [key: string]: ComponentRequest | undefined };
 export const ComponentsMapRequest = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentRequest.pipe(S.optional),
+  /*@__PURE__*/ ComponentRequest.pipe(S.optional),
 );
 export interface CompositeComponentRequest {
   description?: string;
@@ -613,7 +630,7 @@ export type CompositeComponentsMapRequest = {
 };
 export const CompositeComponentsMapRequest = /*@__PURE__*/ S.Record(
   S.String,
-  CompositeComponentRequest.pipe(S.optional),
+  /*@__PURE__*/ CompositeComponentRequest.pipe(S.optional),
 );
 export type ParentEntityId = string;
 export interface CreateEntityRequest {
@@ -703,8 +720,8 @@ export type IotSiteWiseSourceConfigurationFilter =
   | { filterByAssetModel: FilterByAssetModel; filterByAsset?: never }
   | { filterByAssetModel?: never; filterByAsset: FilterByAsset };
 export const IotSiteWiseSourceConfigurationFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ filterByAssetModel: FilterByAssetModel }),
-  S.Struct({ filterByAsset: FilterByAsset }),
+  /*@__PURE__*/ S.Struct({ filterByAssetModel: FilterByAssetModel }),
+  /*@__PURE__*/ S.Struct({ filterByAsset: FilterByAsset }),
 ]);
 export type IotSiteWiseSourceConfigurationFilters = IotSiteWiseSourceConfigurationFilter[];
 export const IotSiteWiseSourceConfigurationFilters = /*@__PURE__*/ S.Array(
@@ -734,8 +751,8 @@ export type IotTwinMakerSourceConfigurationFilter =
   | { filterByComponentType: FilterByComponentType; filterByEntity?: never }
   | { filterByComponentType?: never; filterByEntity: FilterByEntity };
 export const IotTwinMakerSourceConfigurationFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ filterByComponentType: FilterByComponentType }),
-  S.Struct({ filterByEntity: FilterByEntity }),
+  /*@__PURE__*/ S.Struct({ filterByComponentType: FilterByComponentType }),
+  /*@__PURE__*/ S.Struct({ filterByEntity: FilterByEntity }),
 ]);
 export type IotTwinMakerSourceConfigurationFilters = IotTwinMakerSourceConfigurationFilter[];
 export const IotTwinMakerSourceConfigurationFilters = /*@__PURE__*/ S.Array(
@@ -836,7 +853,10 @@ export type SceneCapabilities = string[];
 export const SceneCapabilities = /*@__PURE__*/ S.Array(S.String);
 export type SceneMetadataValue = string;
 export type SceneMetadataMap = { [key: string]: string | undefined };
-export const SceneMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SceneMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateSceneRequest {
   workspaceId: string;
   sceneId: string;
@@ -1178,7 +1198,7 @@ export const PropertyDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 export type PropertyDefinitionsResponse = { [key: string]: PropertyDefinitionResponse | undefined };
 export const PropertyDefinitionsResponse = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyDefinitionResponse.pipe(S.optional),
+  /*@__PURE__*/ PropertyDefinitionResponse.pipe(S.optional),
 );
 export interface FunctionResponse {
   requiredProperties?: string[];
@@ -1197,7 +1217,7 @@ export const FunctionResponse = /*@__PURE__*/ S.suspend(() =>
 export type FunctionsResponse = { [key: string]: FunctionResponse | undefined };
 export const FunctionsResponse = /*@__PURE__*/ S.Record(
   S.String,
-  FunctionResponse.pipe(S.optional),
+  /*@__PURE__*/ FunctionResponse.pipe(S.optional),
 );
 export interface Status {
   state?: string;
@@ -1217,7 +1237,7 @@ export const PropertyGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export type PropertyGroupsResponse = { [key: string]: PropertyGroupResponse | undefined };
 export const PropertyGroupsResponse = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyGroupResponse.pipe(S.optional),
+  /*@__PURE__*/ PropertyGroupResponse.pipe(S.optional),
 );
 export interface CompositeComponentTypeResponse {
   componentTypeId?: string;
@@ -1233,7 +1253,7 @@ export type CompositeComponentTypesResponse = {
 };
 export const CompositeComponentTypesResponse = /*@__PURE__*/ S.Record(
   S.String,
-  CompositeComponentTypeResponse.pipe(S.optional),
+  /*@__PURE__*/ CompositeComponentTypeResponse.pipe(S.optional),
 );
 export interface GetComponentTypeResponse {
   workspaceId: string;
@@ -1309,7 +1329,7 @@ export const PropertyResponse = /*@__PURE__*/ S.suspend(() =>
 export type PropertyResponses = { [key: string]: PropertyResponse | undefined };
 export const PropertyResponses = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyResponse.pipe(S.optional),
+  /*@__PURE__*/ PropertyResponse.pipe(S.optional),
 );
 export interface ComponentPropertyGroupResponse {
   groupType: string;
@@ -1326,7 +1346,7 @@ export type ComponentPropertyGroupResponses = {
 };
 export const ComponentPropertyGroupResponses = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentPropertyGroupResponse.pipe(S.optional),
+  /*@__PURE__*/ ComponentPropertyGroupResponse.pipe(S.optional),
 );
 export interface ComponentSummary {
   componentName: string;
@@ -1353,7 +1373,7 @@ export const ComponentSummary = /*@__PURE__*/ S.suspend(() =>
 export type CompositeComponentResponse = { [key: string]: ComponentSummary | undefined };
 export const CompositeComponentResponse = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentSummary.pipe(S.optional),
+  /*@__PURE__*/ ComponentSummary.pipe(S.optional),
 );
 export interface ComponentResponse {
   componentName?: string;
@@ -1384,7 +1404,10 @@ export const ComponentResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComponentResponse" }) as any as S.Schema<ComponentResponse>;
 export type ComponentsMap = { [key: string]: ComponentResponse | undefined };
-export const ComponentsMap = /*@__PURE__*/ S.Record(S.String, ComponentResponse.pipe(S.optional));
+export const ComponentsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ComponentResponse.pipe(S.optional),
+);
 export interface GetEntityResponse {
   entityId: string;
   entityName: string;
@@ -1587,12 +1610,12 @@ export const PropertyLatestValue = /*@__PURE__*/ S.suspend(() =>
 export type PropertyLatestValueMap = { [key: string]: PropertyLatestValue | undefined };
 export const PropertyLatestValueMap = /*@__PURE__*/ S.Record(
   S.String,
-  PropertyLatestValue.pipe(S.optional),
+  /*@__PURE__*/ PropertyLatestValue.pipe(S.optional),
 );
 export type PropertyTableValue = { [key: string]: DataValue | undefined };
 export const PropertyTableValue = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<DataValue> => DataValue)
+  /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue)
     .annotate({ identifier: "DataValue" })
     .pipe(S.optional),
 );
@@ -1711,7 +1734,7 @@ export const GetSceneRequest = /*@__PURE__*/ S.suspend(() =>
 export type GeneratedSceneMetadataMap = { [key: string]: string | undefined };
 export const GeneratedSceneMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type SceneErrorCode = string;
 export interface SceneError {
@@ -1871,9 +1894,9 @@ export type ListComponentTypesFilter =
   | { extendsFrom?: never; namespace: string; isAbstract?: never }
   | { extendsFrom?: never; namespace?: never; isAbstract: boolean };
 export const ListComponentTypesFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ extendsFrom: S.String }),
-  S.Struct({ namespace: S.String }),
-  S.Struct({ isAbstract: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ extendsFrom: S.String }),
+  /*@__PURE__*/ S.Struct({ namespace: S.String }),
+  /*@__PURE__*/ S.Struct({ isAbstract: S.Boolean }),
 ]);
 export type ListComponentTypesFilters = ListComponentTypesFilter[];
 export const ListComponentTypesFilters = /*@__PURE__*/ S.Array(ListComponentTypesFilter);
@@ -1945,9 +1968,9 @@ export type ListEntitiesFilter =
   | { parentEntityId?: never; componentTypeId: string; externalId?: never }
   | { parentEntityId?: never; componentTypeId?: never; externalId: string };
 export const ListEntitiesFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ parentEntityId: S.String }),
-  S.Struct({ componentTypeId: S.String }),
-  S.Struct({ externalId: S.String }),
+  /*@__PURE__*/ S.Struct({ parentEntityId: S.String }),
+  /*@__PURE__*/ S.Struct({ componentTypeId: S.String }),
+  /*@__PURE__*/ S.Struct({ externalId: S.String }),
 ]);
 export type ListEntitiesFilters = ListEntitiesFilter[];
 export const ListEntitiesFilters = /*@__PURE__*/ S.Array(ListEntitiesFilter);
@@ -2011,8 +2034,8 @@ export type ListMetadataTransferJobsFilter =
   | { workspaceId: string; state?: never }
   | { workspaceId?: never; state: string };
 export const ListMetadataTransferJobsFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ workspaceId: S.String }),
-  S.Struct({ state: S.String }),
+  /*@__PURE__*/ S.Struct({ workspaceId: S.String }),
+  /*@__PURE__*/ S.Struct({ state: S.String }),
 ]);
 export type ListMetadataTransferJobsFilters = ListMetadataTransferJobsFilter[];
 export const ListMetadataTransferJobsFilters = /*@__PURE__*/ S.Array(
@@ -2233,10 +2256,10 @@ export type SyncResourceFilter =
   | { state?: never; resourceType?: never; resourceId: string; externalId?: never }
   | { state?: never; resourceType?: never; resourceId?: never; externalId: string };
 export const SyncResourceFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ state: S.String }),
-  S.Struct({ resourceType: S.String }),
-  S.Struct({ resourceId: S.String }),
-  S.Struct({ externalId: S.String }),
+  /*@__PURE__*/ S.Struct({ state: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceType: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceId: S.String }),
+  /*@__PURE__*/ S.Struct({ externalId: S.String }),
 ]);
 export type SyncResourceFilters = SyncResourceFilter[];
 export const SyncResourceFilters = /*@__PURE__*/ S.Array(SyncResourceFilter);
@@ -2458,7 +2481,7 @@ export const ComponentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type ComponentUpdatesMapRequest = { [key: string]: ComponentUpdateRequest | undefined };
 export const ComponentUpdatesMapRequest = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentUpdateRequest.pipe(S.optional),
+  /*@__PURE__*/ ComponentUpdateRequest.pipe(S.optional),
 );
 export interface CompositeComponentUpdateRequest {
   updateType?: string;
@@ -2481,7 +2504,7 @@ export type CompositeComponentUpdatesMapRequest = {
 };
 export const CompositeComponentUpdatesMapRequest = /*@__PURE__*/ S.Record(
   S.String,
-  CompositeComponentUpdateRequest.pipe(S.optional),
+  /*@__PURE__*/ CompositeComponentUpdateRequest.pipe(S.optional),
 );
 export type ParentEntityUpdateType = string;
 export interface ParentEntityUpdateRequest {

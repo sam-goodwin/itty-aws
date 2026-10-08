@@ -289,7 +289,7 @@ export const IamPermissionsGroup = /*@__PURE__*/ S.suspend(() =>
 /** conditions */
 export type IamPolicyConditionConditionsList = Array<IamPolicyCondition>;
 export const IamPolicyConditionConditionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IamPolicyCondition),
+  /*@__PURE__*/ S.suspend(() => IamPolicyCondition),
 ) as any as S.Schema<IamPolicyConditionConditionsList>;
 
 /** Operator that can be used in order to restrict policy */

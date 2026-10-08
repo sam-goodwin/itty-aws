@@ -172,7 +172,7 @@ export const InstanceEncryption = /*@__PURE__*/ S.suspend(() =>
 export type Labels = { [key: string]: string | null | undefined };
 export const Labels = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
 
 /** The access scope of the instance. It defines if the instance is public or airgapped. ⚠️ **Note:** "SNA" value for the "network.accessScope" field is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */

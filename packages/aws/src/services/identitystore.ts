@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "identitystore", serviceShapeName: "AWSIdentityStore" });
-const auth = T.AwsAuthSigv4({ name: "identitystore" });
-const ver = T.ServiceVersion("2020-06-15");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "identitystore",
+  serviceShapeName: "AWSIdentityStore",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "identitystore" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-06-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,53 +82,56 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      RequestId: S.optional(S.String),
-      Reason: S.optional(
-        S.suspend(() => ConflictExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ConflictExceptionReason).annotate({
           identifier: "ConflictExceptionReason",
         }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      ResourceType: S.optional(
-        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
-      ResourceId: S.optional(S.String),
-      Reason: S.optional(
-        S.suspend(() => ResourceNotFoundExceptionReason).annotate({
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ResourceNotFoundExceptionReason).annotate({
           identifier: "ResourceNotFoundExceptionReason",
         }),
       ),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      RequestId: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      RequestId: S.optional(S.String),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type IdentityStoreId = string;
 export type GroupDisplayName = string | redacted.Redacted<string>;
@@ -160,7 +166,7 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateGroupResponse" }) as any as S.Schema<CreateGroupResponse>;
 export type MemberId = { UserId: string };
-export const MemberId = /*@__PURE__*/ S.Union([S.Struct({ UserId: S.String })]);
+export const MemberId = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ UserId: S.String })]);
 export interface CreateGroupMembershipRequest {
   IdentityStoreId: string;
   GroupId: string;
@@ -287,7 +293,7 @@ export const Roles = /*@__PURE__*/ S.Array(Role);
 export type ExtensionName = string;
 export type AttributeValue = unknown;
 export type Extensions = { [key: string]: any | undefined };
-export const Extensions = /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export const Extensions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
 export interface CreateUserRequest {
   IdentityStoreId: string;
   UserName?: string | redacted.Redacted<string>;
@@ -608,8 +614,8 @@ export type AlternateIdentifier =
   | { ExternalId: ExternalId; UniqueAttribute?: never }
   | { ExternalId?: never; UniqueAttribute: UniqueAttribute };
 export const AlternateIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ ExternalId: ExternalId }),
-  S.Struct({ UniqueAttribute: UniqueAttribute }),
+  /*@__PURE__*/ S.Struct({ ExternalId: ExternalId }),
+  /*@__PURE__*/ S.Struct({ UniqueAttribute: UniqueAttribute }),
 ]);
 export interface GetGroupIdRequest {
   IdentityStoreId: string;

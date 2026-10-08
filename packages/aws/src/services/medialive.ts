@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MediaLive", serviceShapeName: "MediaLive" });
-const auth = T.AwsAuthSigv4({ name: "medialive" });
-const ver = T.ServiceVersion("2017-10-14");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "MediaLive", serviceShapeName: "MediaLive" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "medialive" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-14");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,51 +73,51 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadGatewayException
   extends /*@__PURE__*/ S.TaggedError<BadGatewayException>()(
     "BadGatewayException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(502),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GatewayTimeoutException
   extends /*@__PURE__*/ S.TaggedError<GatewayTimeoutException>()(
     "GatewayTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(504),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MediaLiveRoleNotYetTrusted
   extends /*@__PURE__*/ S.TaggedError<MediaLiveRoleNotYetTrusted>()(
     "MediaLiveRoleNotYetTrusted",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ValidationErrors: S.optional(
-        S.suspend(() => __listOfValidationError).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ValidationErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfValidationError).annotate({
           identifier: "__listOfValidationError",
         }),
       ),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "UnprocessableEntityException",
       message: { includes: "is a trusted service" },
     }),
@@ -125,27 +125,27 @@ export class MediaLiveRoleNotYetTrusted
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ValidationErrors: S.optional(
-        S.suspend(() => __listOfValidationError).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ValidationErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfValidationError).annotate({
           identifier: "__listOfValidationError",
         }),
       ),
     },
-    T.HttpError(422),
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export interface AcceptInputDeviceTransferRequest {
   InputDeviceId: string;
@@ -6607,7 +6607,7 @@ export const MaintenanceCreateSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceCreateSettings",
 }) as any as S.Schema<MaintenanceCreateSettings>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface VpcOutputSettings {
   PublicAddressAllocationIds?: string[];
   SecurityGroupIds?: string[];
@@ -6846,7 +6846,7 @@ export type MediaConnectRouterOutputConnections = {
 };
 export const MediaConnectRouterOutputConnections = /*@__PURE__*/ S.Record(
   S.String,
-  MediaConnectRouterOutputConnection.pipe(S.optional),
+  /*@__PURE__*/ MediaConnectRouterOutputConnection.pipe(S.optional),
 );
 export interface PipelineDetail {
   ActiveInputAttachmentName?: string;
@@ -7499,7 +7499,7 @@ export type CloudWatchAlarmTemplateStatistic =
 export const CloudWatchAlarmTemplateStatistic = S.String;
 
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type CloudWatchAlarmTemplateTargetResourceType =
   | "CLOUDFRONT_DISTRIBUTION"
   | "MEDIALIVE_MULTIPLEX"
@@ -9634,7 +9634,7 @@ export const MediaResource = /*@__PURE__*/ S.suspend(() =>
 export type FailedMediaResourceMap = { [key: string]: MediaResource | undefined };
 export const FailedMediaResourceMap = /*@__PURE__*/ S.Record(
   S.String,
-  MediaResource.pipe(S.optional),
+  /*@__PURE__*/ MediaResource.pipe(S.optional),
 );
 export type SignalMapMonitorDeploymentStatus =
   | "NOT_DEPLOYED"
@@ -9663,7 +9663,10 @@ export const SuccessfulMonitorDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuccessfulMonitorDeployment",
 }) as any as S.Schema<SuccessfulMonitorDeployment>;
 export type MediaResourceMap = { [key: string]: MediaResource | undefined };
-export const MediaResourceMap = /*@__PURE__*/ S.Record(S.String, MediaResource.pipe(S.optional));
+export const MediaResourceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MediaResource.pipe(S.optional),
+);
 export interface MonitorDeployment {
   DetailsUri?: string;
   ErrorMessage?: string;
@@ -17923,7 +17926,7 @@ export type MultiplexPacketIdentifiersMapping = {
 };
 export const MultiplexPacketIdentifiersMapping = /*@__PURE__*/ S.Record(
   S.String,
-  MultiplexProgramPacketIdentifiersMap.pipe(S.optional),
+  /*@__PURE__*/ MultiplexProgramPacketIdentifiersMap.pipe(S.optional),
 );
 export interface UpdateMultiplexRequest {
   MultiplexId: string;

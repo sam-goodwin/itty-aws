@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "mq", serviceShapeName: "mq" });
-const auth = T.AwsAuthSigv4({ name: "mq" });
-const ver = T.ServiceVersion("2017-11-27");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "mq", serviceShapeName: "mq" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mq" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-11-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,85 +72,85 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     {
-      ErrorAttribute: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceShareErrors: S.optional(
-        S.suspend(() => __listOfResourceShareError).annotate({
+      ErrorAttribute: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceShareErrors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
         }),
       ),
     },
-    T.HttpError(401),
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type AuthenticationStrategy = "SIMPLE" | "LDAP" | "CONFIG_MANAGED" | (string & {});
 export const AuthenticationStrategy = S.String;
@@ -263,7 +263,10 @@ export type BrokerStorageType = "EBS" | "EFS" | (string & {});
 export const BrokerStorageType = S.String;
 
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface User {
   ConsoleAccess?: boolean;
   Groups?: string[];

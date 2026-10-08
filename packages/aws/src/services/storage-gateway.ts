@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://storagegateway.amazonaws.com/doc/2013-06-30");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://storagegateway.amazonaws.com/doc/2013-06-30");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Storage Gateway",
   serviceShapeName: "StorageGateway_20130630",
 });
-const auth = T.AwsAuthSigv4({ name: "storagegateway" });
-const ver = T.ServiceVersion("2013-06-30");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "storagegateway" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-06-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,34 +80,40 @@ export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      error: S.optional(
-        S.suspend(() => StorageGatewayError).annotate({ identifier: "StorageGatewayError" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
       ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidGatewayRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidGatewayRequestException>()(
     "InvalidGatewayRequestException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      error: S.optional(
-        S.suspend(() => StorageGatewayError).annotate({ identifier: "StorageGatewayError" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableError
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableError>()(
     "ServiceUnavailableError",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      error: S.optional(
-        S.suspend(() => StorageGatewayError).annotate({ identifier: "StorageGatewayError" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      error: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
       ),
     },
-    T.HttpError(503),
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export type ActivationKey = string;
 export type GatewayName = string;
@@ -3305,7 +3311,10 @@ export type ErrorCode =
 export const ErrorCode = S.String;
 
 export type ErrorDetails = { [key: string]: string | undefined };
-export const ErrorDetails = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ErrorDetails = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface StorageGatewayError {
   errorCode?: ErrorCode;
   errorDetails?: { [key: string]: string | undefined };

@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cost Optimization Hub",
   serviceShapeName: "CostOptimizationHubService",
 });
-const auth = T.AwsAuthSigv4({ name: "cost-optimization-hub" });
-const ver = T.ServiceVersion("2022-07-26");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cost-optimization-hub" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-07-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,44 +78,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), resourceId: S.String },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionDetails).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionDetails).annotate({
           identifier: "ValidationExceptionDetails",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface GetPreferencesRequest {}
 export const GetPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1664,31 +1664,31 @@ export type ResourceDetails =
       sageMakerEndpoint: SageMakerEndpoint;
     };
 export const ResourceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ lambdaFunction: LambdaFunction }),
-  S.Struct({ ecsService: EcsService }),
-  S.Struct({ ec2Instance: Ec2Instance }),
-  S.Struct({ ebsVolume: EbsVolume }),
-  S.Struct({ ec2AutoScalingGroup: Ec2AutoScalingGroup }),
-  S.Struct({ ec2ReservedInstances: Ec2ReservedInstances }),
-  S.Struct({ rdsReservedInstances: RdsReservedInstances }),
-  S.Struct({ elastiCacheReservedInstances: ElastiCacheReservedInstances }),
-  S.Struct({ openSearchReservedInstances: OpenSearchReservedInstances }),
-  S.Struct({ redshiftReservedInstances: RedshiftReservedInstances }),
-  S.Struct({ ec2InstanceSavingsPlans: Ec2InstanceSavingsPlans }),
-  S.Struct({ computeSavingsPlans: ComputeSavingsPlans }),
-  S.Struct({ sageMakerSavingsPlans: SageMakerSavingsPlans }),
-  S.Struct({ rdsDbInstance: RdsDbInstance }),
-  S.Struct({ rdsDbInstanceStorage: RdsDbInstanceStorage }),
-  S.Struct({ auroraDbClusterStorage: AuroraDbClusterStorage }),
-  S.Struct({ dynamoDbReservedCapacity: DynamoDbReservedCapacity }),
-  S.Struct({ memoryDbReservedInstances: MemoryDbReservedInstances }),
-  S.Struct({ natGateway: NatGateway }),
-  S.Struct({ dynamoDbTable: DynamoDbTable }),
-  S.Struct({ elastiCacheCluster: ElastiCacheCluster }),
-  S.Struct({ memoryDbCluster: MemoryDbCluster }),
-  S.Struct({ documentDbCluster: DocumentDbCluster }),
-  S.Struct({ workSpaces: WorkSpaces }),
-  S.Struct({ sageMakerEndpoint: SageMakerEndpoint }),
+  /*@__PURE__*/ S.Struct({ lambdaFunction: LambdaFunction }),
+  /*@__PURE__*/ S.Struct({ ecsService: EcsService }),
+  /*@__PURE__*/ S.Struct({ ec2Instance: Ec2Instance }),
+  /*@__PURE__*/ S.Struct({ ebsVolume: EbsVolume }),
+  /*@__PURE__*/ S.Struct({ ec2AutoScalingGroup: Ec2AutoScalingGroup }),
+  /*@__PURE__*/ S.Struct({ ec2ReservedInstances: Ec2ReservedInstances }),
+  /*@__PURE__*/ S.Struct({ rdsReservedInstances: RdsReservedInstances }),
+  /*@__PURE__*/ S.Struct({ elastiCacheReservedInstances: ElastiCacheReservedInstances }),
+  /*@__PURE__*/ S.Struct({ openSearchReservedInstances: OpenSearchReservedInstances }),
+  /*@__PURE__*/ S.Struct({ redshiftReservedInstances: RedshiftReservedInstances }),
+  /*@__PURE__*/ S.Struct({ ec2InstanceSavingsPlans: Ec2InstanceSavingsPlans }),
+  /*@__PURE__*/ S.Struct({ computeSavingsPlans: ComputeSavingsPlans }),
+  /*@__PURE__*/ S.Struct({ sageMakerSavingsPlans: SageMakerSavingsPlans }),
+  /*@__PURE__*/ S.Struct({ rdsDbInstance: RdsDbInstance }),
+  /*@__PURE__*/ S.Struct({ rdsDbInstanceStorage: RdsDbInstanceStorage }),
+  /*@__PURE__*/ S.Struct({ auroraDbClusterStorage: AuroraDbClusterStorage }),
+  /*@__PURE__*/ S.Struct({ dynamoDbReservedCapacity: DynamoDbReservedCapacity }),
+  /*@__PURE__*/ S.Struct({ memoryDbReservedInstances: MemoryDbReservedInstances }),
+  /*@__PURE__*/ S.Struct({ natGateway: NatGateway }),
+  /*@__PURE__*/ S.Struct({ dynamoDbTable: DynamoDbTable }),
+  /*@__PURE__*/ S.Struct({ elastiCacheCluster: ElastiCacheCluster }),
+  /*@__PURE__*/ S.Struct({ memoryDbCluster: MemoryDbCluster }),
+  /*@__PURE__*/ S.Struct({ documentDbCluster: DocumentDbCluster }),
+  /*@__PURE__*/ S.Struct({ workSpaces: WorkSpaces }),
+  /*@__PURE__*/ S.Struct({ sageMakerEndpoint: SageMakerEndpoint }),
 ]);
 export interface Tag {
   key?: string;

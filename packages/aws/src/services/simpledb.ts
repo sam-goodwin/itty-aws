@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://sdb.amazonaws.com/doc/2009-04-15/");
-const svc = T.AwsApiService({ sdkId: "SimpleDB", serviceShapeName: "AmazonSimpleDB" });
-const auth = T.AwsAuthSigv2({ name: "sdb" });
-const ver = T.ServiceVersion("2009-04-15");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://sdb.amazonaws.com/doc/2009-04-15/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SimpleDB",
+  serviceShapeName: "AmazonSimpleDB",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv2({ name: "sdb" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2009-04-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -42,98 +45,140 @@ const rules = T.EndpointResolver((p) => {
 
 export class AttributeDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<AttributeDoesNotExist>()("AttributeDoesNotExist", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    BoxUsage: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    BoxUsage: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withNotFoundError) {}
 export class DuplicateItemName
   extends /*@__PURE__*/ S.TaggedError<DuplicateItemName>()(
     "DuplicateItemName",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedError<InvalidNextToken>()(
     "InvalidNextToken",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberPredicates
   extends /*@__PURE__*/ S.TaggedError<InvalidNumberPredicates>()(
     "InvalidNumberPredicates",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberValueTests
   extends /*@__PURE__*/ S.TaggedError<InvalidNumberValueTests>()(
     "InvalidNumberValueTests",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()(
     "InvalidParameterValue",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryExpression
   extends /*@__PURE__*/ S.TaggedError<InvalidQueryExpression>()(
     "InvalidQueryExpression",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameter
   extends /*@__PURE__*/ S.TaggedError<MissingParameter>()(
     "MissingParameter",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDomain
   extends /*@__PURE__*/ S.TaggedError<NoSuchDomain>()(
     "NoSuchDomain",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class NumberDomainAttributesExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberDomainAttributesExceeded>()(
     "NumberDomainAttributesExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberDomainBytesExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberDomainBytesExceeded>()("NumberDomainBytesExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    BoxUsage: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    BoxUsage: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withQuotaError) {}
 export class NumberDomainsExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberDomainsExceeded>()("NumberDomainsExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    BoxUsage: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    BoxUsage: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withQuotaError) {}
 export class NumberItemAttributesExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberItemAttributesExceeded>()(
     "NumberItemAttributesExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedAttributesExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberSubmittedAttributesExceeded>()(
     "NumberSubmittedAttributesExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedItemsExceeded
   extends /*@__PURE__*/ S.TaggedError<NumberSubmittedItemsExceeded>()(
     "NumberSubmittedItemsExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class RequestTimeout
   extends /*@__PURE__*/ S.TaggedError<RequestTimeout>()(
     "RequestTimeout",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(408),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class TooManyRequestedAttributes
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestedAttributes>()(
     "TooManyRequestedAttributes",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), BoxUsage: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      BoxUsage: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export interface DeletableAttribute {

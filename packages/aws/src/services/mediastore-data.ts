@@ -7,15 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://object.mediastore.amazonaws.com/doc/2017-09-01");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("https://object.mediastore.amazonaws.com/doc/2017-09-01");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MediaStore Data",
   serviceShapeName: "MediaStoreObject_20170901",
 });
-const auth = T.AwsAuthSigv4({ name: "mediastore" });
-const ver = T.ServiceVersion("2017-09-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mediastore" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-09-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,24 +77,24 @@ const rules = T.EndpointResolver((p, _) => {
 export class ContainerNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ContainerNotFoundException>()(
     "ContainerNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ObjectNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ObjectNotFoundException>()(
     "ObjectNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestedRangeNotSatisfiableException
   extends /*@__PURE__*/ S.TaggedError<RequestedRangeNotSatisfiableException>()(
     "RequestedRangeNotSatisfiableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(416),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(416),
   ) {}
 export type PathNaming = string;
 export interface DeleteObjectRequest {

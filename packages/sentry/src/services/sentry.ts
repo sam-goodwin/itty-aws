@@ -14861,7 +14861,7 @@ export const GetOrganizationSessionsResponseGroupsItemBy = /*@__PURE__*/ S.suspe
 
 export type GetOrganizationSessionsResponseGroupsItemSeriesValueList = Array<number | null>;
 export const GetOrganizationSessionsResponseGroupsItemSeriesValueList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<GetOrganizationSessionsResponseGroupsItemSeriesValueList>;
 
 export type GetOrganizationSessionsResponseGroupsItemSeriesMap = {
@@ -14877,7 +14877,7 @@ export type GetOrganizationSessionsResponseGroupsItemTotalsMap = {
 };
 export const GetOrganizationSessionsResponseGroupsItemTotalsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<GetOrganizationSessionsResponseGroupsItemTotalsMap>;
 
 export interface GetOrganizationSessionsResponseGroupsItem {
@@ -17063,7 +17063,7 @@ export type GetProjectEventAttachmentResponseHeadersMap = {
 };
 export const GetProjectEventAttachmentResponseHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetProjectEventAttachmentResponseHeadersMap>;
 
 export interface GetProjectEventAttachmentResponse {
@@ -20681,7 +20681,7 @@ export type ListOrganizationEventsResponseMetaUnitsMap = {
 };
 export const ListOrganizationEventsResponseMetaUnitsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ListOrganizationEventsResponseMetaUnitsMap>;
 
 export type ListOrganizationEventsResponseMetaTipsMap = { [key: string]: string | undefined };
@@ -29224,7 +29224,7 @@ export type ListProjectEventAttachmentsResponseBodyItemHeadersMap = {
 };
 export const ListProjectEventAttachmentsResponseBodyItemHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ListProjectEventAttachmentsResponseBodyItemHeadersMap>;
 
 export interface ListProjectEventAttachmentsResponseBodyItem {

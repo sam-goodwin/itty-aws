@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ec2.amazonaws.com/doc/2016-11-15");
-const svc = T.AwsApiService({ sdkId: "EC2", serviceShapeName: "AmazonEC2" });
-const auth = T.AwsAuthSigv4({ name: "ec2" });
-const ver = T.ServiceVersion("2016-11-15");
-const proto = T.AwsProtocolsEc2Query();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ec2.amazonaws.com/doc/2016-11-15");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "EC2", serviceShapeName: "AmazonEC2" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ec2" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-11-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsEc2Query();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,39 +74,39 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AddressLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<AddressLimitExceeded>()("AddressLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class AuthFailure
   extends /*@__PURE__*/ S.TaggedError<AuthFailure>()("AuthFailure", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class CannotDelete
   extends /*@__PURE__*/ S.TaggedError<CannotDelete>()("CannotDelete", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CapacityManagerDisabled
   extends /*@__PURE__*/ S.TaggedError<CapacityManagerDisabled>()("CapacityManager.Disabled", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CidrConflict
   extends /*@__PURE__*/ S.TaggedError<CidrConflict>()("CidrConflict", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ClientVpnAuthorizationRuleLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ClientVpnAuthorizationRuleLimitExceeded>()(
     "ClientVpnAuthorizationRuleLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ClientVpnEndpointAssociationExists
   extends /*@__PURE__*/ S.TaggedError<ClientVpnEndpointAssociationExists>()(
     "ClientVpnEndpointAssociationExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ClientVpnEndpointCreationInProgress
   extends /*@__PURE__*/ S.TaggedError<ClientVpnEndpointCreationInProgress>()(
     "ClientVpnEndpointCreationInProgress",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "OperationNotPermitted",
       message: { includes: "another endpoint is being created" },
     }),
@@ -114,1117 +114,1117 @@ export class ClientVpnEndpointCreationInProgress
 export class ClientVpnEndpointLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ClientVpnEndpointLimitExceeded>()(
     "ClientVpnEndpointLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ClientVpnRouteLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ClientVpnRouteLimitExceeded>()(
     "ClientVpnRouteLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class DeclarativePoliciesAccessDenied
   extends /*@__PURE__*/ S.TaggedError<DeclarativePoliciesAccessDenied>()(
     "DeclarativePoliciesAccessDenied",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class DefaultSubnetAlreadyExistsInAvailabilityZone
   extends /*@__PURE__*/ S.TaggedError<DefaultSubnetAlreadyExistsInAvailabilityZone>()(
     "DefaultSubnetAlreadyExistsInAvailabilityZone",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class DefaultVpcAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<DefaultVpcAlreadyExists>()("DefaultVpcAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class DependencyViolation
   extends /*@__PURE__*/ S.TaggedError<DependencyViolation>()("DependencyViolation", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class DryRunOperation
   extends /*@__PURE__*/ S.TaggedError<DryRunOperation>()("DryRunOperation", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class FilterLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<FilterLimitExceeded>()("FilterLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class GatewayNotAttached
   extends /*@__PURE__*/ S.TaggedError<GatewayNotAttached>()("Gateway.NotAttached", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class IdempotentParameterMismatch
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatch>()(
     "IdempotentParameterMismatch",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class InaccessibleStorageLocation
   extends /*@__PURE__*/ S.TaggedError<InaccessibleStorageLocation>()(
     "InaccessibleStorageLocation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IncorrectState
   extends /*@__PURE__*/ S.TaggedError<IncorrectState>()("IncorrectState", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class InternetGatewayLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<InternetGatewayLimitExceeded>()(
     "InternetGatewayLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class InvalidAction
   extends /*@__PURE__*/ S.TaggedError<InvalidAction>()("InvalidAction", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAddressMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidAddressMalformed>()("InvalidAddress.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAddressNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidAddressNotFound>()("InvalidAddress.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAllocationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidAllocationIDNotFound>()(
     "InvalidAllocationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidAMIIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidAMIIDMalformed>()("InvalidAMIID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAMIIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidAMIIDNotFound>()("InvalidAMIID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAssociationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidAssociationIDNotFound>()(
     "InvalidAssociationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidAttachmentIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidAttachmentIDNotFound>()(
     "InvalidAttachmentID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidBundleIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidBundleIDNotFound>()("InvalidBundleID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidCapacityBlockIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityBlockIdMalformed>()(
     "InvalidCapacityBlockId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCapacityManagerDataExportIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityManagerDataExportIdMalformed>()(
     "InvalidCapacityManagerDataExportId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCapacityManagerDataExportIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityManagerDataExportIdNotFound>()(
     "InvalidCapacityManagerDataExportId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCapacityReservationFleetIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityReservationFleetIdMalformed>()(
     "InvalidCapacityReservationFleetId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCapacityReservationIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityReservationIdMalformed>()(
     "InvalidCapacityReservationId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCapacityReservationIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidCapacityReservationIdNotFound>()(
     "InvalidCapacityReservationId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCarrierGatewayIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCarrierGatewayIDMalformed>()(
     "InvalidCarrierGatewayID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCarrierGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidCarrierGatewayIDNotFound>()(
     "InvalidCarrierGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCertificateArnMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCertificateArnMalformed>()(
     "InvalidCertificateArn.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCidrBlockMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCidrBlockMalformed>()("InvalidCidrBlock.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidCidrNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidCidrNotFound>()("InvalidCidr.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidClientVpnActiveAssociationNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnActiveAssociationNotFound>()(
     "InvalidClientVpnActiveAssociationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnAssociationIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnAssociationIdNotFound>()(
     "InvalidClientVpnAssociationIdNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnDuplicateAssociationException
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnDuplicateAssociationException>()(
     "InvalidClientVpnDuplicateAssociationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnDuplicateAuthorizationRule
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnDuplicateAuthorizationRule>()(
     "InvalidClientVpnDuplicateAuthorizationRule",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnDuplicateRoute
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnDuplicateRoute>()(
     "InvalidClientVpnDuplicateRoute",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnEndpointAuthorizationRuleNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnEndpointAuthorizationRuleNotFound>()(
     "InvalidClientVpnEndpointAuthorizationRuleNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnEndpointIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnEndpointIdNotFound>()(
     "InvalidClientVpnEndpointId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnRouteNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnRouteNotFound>()(
     "InvalidClientVpnRouteNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnSubnetIdDuplicateAz
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnSubnetIdDuplicateAz>()(
     "InvalidClientVpnSubnetId.DuplicateAz",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnSubnetIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnSubnetIdNotFound>()(
     "InvalidClientVpnSubnetId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidClientVpnSubnetIdOverlappingCidr
   extends /*@__PURE__*/ S.TaggedError<InvalidClientVpnSubnetIdOverlappingCidr>()(
     "InvalidClientVpnSubnetId.OverlappingCidr",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidConnectionNotification
   extends /*@__PURE__*/ S.TaggedError<InvalidConnectionNotification>()(
     "InvalidConnectionNotification",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidConversionTaskIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidConversionTaskIdMalformed>()(
     "InvalidConversionTaskId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCustomerGatewayIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidCustomerGatewayIdMalformed>()(
     "InvalidCustomerGatewayId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidCustomerGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidCustomerGatewayIDNotFound>()(
     "InvalidCustomerGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidDeclarativePoliciesReportIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidDeclarativePoliciesReportIdMalformed>()(
     "InvalidDeclarativePoliciesReportId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidDhcpOptionIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidDhcpOptionIDNotFound>()(
     "InvalidDhcpOptionID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidDhcpOptionsIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidDhcpOptionsIdMalformed>()(
     "InvalidDhcpOptionsId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidDhcpOptionsIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidDhcpOptionsIDNotFound>()(
     "InvalidDhcpOptionsID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidEgressOnlyInternetGatewayIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidEgressOnlyInternetGatewayIdMalformed>()(
     "InvalidEgressOnlyInternetGatewayId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidEgressOnlyInternetGatewayIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidEgressOnlyInternetGatewayIdNotFound>()(
     "InvalidEgressOnlyInternetGatewayId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidElasticIpIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidElasticIpIDNotFound>()("InvalidElasticIpID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidExportTaskIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidExportTaskIDMalformed>()(
     "InvalidExportTaskID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidFleetIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidFleetIdMalformed>()("InvalidFleetId.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidFlowLogIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidFlowLogIdNotFound>()("InvalidFlowLogId.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidFpgaImageIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidFpgaImageIDMalformed>()(
     "InvalidFpgaImageID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidFpgaImageIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidFpgaImageIDNotFound>()("InvalidFpgaImageID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidGatewayIDNotFound>()("InvalidGatewayID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidGroupDuplicate
   extends /*@__PURE__*/ S.TaggedError<InvalidGroupDuplicate>()("InvalidGroup.Duplicate", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class InvalidGroupIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidGroupIdMalformed>()("InvalidGroupId.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidGroupNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidGroupNotFound>()("InvalidGroup.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidHostConfiguration
   extends /*@__PURE__*/ S.TaggedError<InvalidHostConfiguration>()("InvalidHostConfiguration", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidHostIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidHostIDMalformed>()("InvalidHostID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidHostReservationOfferingIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidHostReservationOfferingIdMalformed>()(
     "InvalidHostReservationOfferingId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidID
   extends /*@__PURE__*/ S.TaggedError<InvalidID>()("InvalidID", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidImageUsageReportIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidImageUsageReportIdMalformed>()(
     "InvalidImageUsageReportId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInput
   extends /*@__PURE__*/ S.TaggedError<InvalidInput>()("InvalidInput", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInstanceConnectEndpointIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceConnectEndpointIdMalformed>()(
     "InvalidInstanceConnectEndpointId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceConnectEndpointIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceConnectEndpointIdNotFound>()(
     "InvalidInstanceConnectEndpointId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceEventWindowIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceEventWindowIdMalformed>()(
     "InvalidInstanceEventWindowId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceEventWindowIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceEventWindowIDNotFound>()(
     "InvalidInstanceEventWindowIDNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceIDMalformed>()("InvalidInstanceID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInstanceIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidInstanceIDNotFound>()("InvalidInstanceID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInternetGatewayIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidInternetGatewayIdMalformed>()(
     "InvalidInternetGatewayId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidInternetGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidInternetGatewayIDNotFound>()(
     "InvalidInternetGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIPAddressInUse
   extends /*@__PURE__*/ S.TaggedError<InvalidIPAddressInUse>()("InvalidIPAddress.InUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class InvalidIpamExternalResourceVerificationTokenIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamExternalResourceVerificationTokenIdMalformed>()(
     "InvalidIpamExternalResourceVerificationTokenId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamExternalResourceVerificationTokenIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamExternalResourceVerificationTokenIdNotFound>()(
     "InvalidIpamExternalResourceVerificationTokenId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamIdNotFound>()("InvalidIpamId.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidIpamPolicyIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPolicyIdMalformed>()(
     "InvalidIpamPolicyId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamPolicyIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPolicyIdNotFound>()(
     "InvalidIpamPolicyId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamPoolIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPoolIdNotFound>()("InvalidIpamPoolId.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidIpamPrefixListResolverIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPrefixListResolverIdMalformed>()(
     "InvalidIpamPrefixListResolverId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamPrefixListResolverIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPrefixListResolverIdNotFound>()(
     "InvalidIpamPrefixListResolverId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamPrefixListResolverTargetIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamPrefixListResolverTargetIdMalformed>()(
     "InvalidIpamPrefixListResolverTargetId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamResourceDiscoveryAssociationIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamResourceDiscoveryAssociationIdMalformed>()(
     "InvalidIpamResourceDiscoveryAssociationId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamResourceDiscoveryAssociationIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamResourceDiscoveryAssociationIdNotFound>()(
     "InvalidIpamResourceDiscoveryAssociationId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamResourceDiscoveryIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamResourceDiscoveryIdMalformed>()(
     "InvalidIpamResourceDiscoveryId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamResourceDiscoveryIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamResourceDiscoveryIdNotFound>()(
     "InvalidIpamResourceDiscoveryId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamScopeIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamScopeIdMalformed>()(
     "InvalidIpamScopeId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpamScopeIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpamScopeIdNotFound>()("InvalidIpamScopeId.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidIpv4PoolCoipIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpv4PoolCoipIdMalformed>()(
     "InvalidIpv4PoolCoipId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidIpv6PoolIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidIpv6PoolIDMalformed>()("InvalidIpv6PoolID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidIpv6PoolIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidIpv6PoolIDNotFound>()("InvalidIpv6PoolID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidKeyPairDuplicate
   extends /*@__PURE__*/ S.TaggedError<InvalidKeyPairDuplicate>()("InvalidKeyPair.Duplicate", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class InvalidKeyPairNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidKeyPairNotFound>()("InvalidKeyPair.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidLaunchTemplateIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLaunchTemplateIdMalformed>()(
     "InvalidLaunchTemplateId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLaunchTemplateIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLaunchTemplateIdNotFound>()(
     "InvalidLaunchTemplateId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLaunchTemplateNameNotFoundException
   extends /*@__PURE__*/ S.TaggedError<InvalidLaunchTemplateNameNotFoundException>()(
     "InvalidLaunchTemplateName.NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayIDMalformed>()(
     "InvalidLocalGatewayID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayIDNotFound>()(
     "InvalidLocalGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableIDMalformed>()(
     "InvalidLocalGatewayRouteTableID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableIDNotFound>()(
     "InvalidLocalGatewayRouteTableID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed>()(
     "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound>()(
     "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableVpcAssociationIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableVpcAssociationIDMalformed>()(
     "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayRouteTableVpcAssociationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayRouteTableVpcAssociationIDNotFound>()(
     "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayVirtualInterfaceGroupIDMalformed>()(
     "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayVirtualInterfaceGroupIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayVirtualInterfaceGroupIDNotFound>()(
     "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayVirtualInterfaceIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayVirtualInterfaceIDMalformed>()(
     "InvalidLocalGatewayVirtualInterfaceID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidLocalGatewayVirtualInterfaceIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidLocalGatewayVirtualInterfaceIDNotFound>()(
     "InvalidLocalGatewayVirtualInterfaceID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkAclEntryNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkAclEntryNotFound>()(
     "InvalidNetworkAclEntry.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkAclIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkAclIdMalformed>()(
     "InvalidNetworkAclId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkAclIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkAclIDNotFound>()(
     "InvalidNetworkAclID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkInsightsAccessScopeIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkInsightsAccessScopeIdNotFound>()(
     "InvalidNetworkInsightsAccessScopeId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkInterfaceAttachmentIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkInterfaceAttachmentIdMalformed>()(
     "InvalidNetworkInterfaceAttachmentId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkInterfaceIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkInterfaceIdMalformed>()(
     "InvalidNetworkInterfaceId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkInterfaceIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkInterfaceIDNotFound>()(
     "InvalidNetworkInterfaceID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidNetworkInterfaceInUse
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkInterfaceInUse>()(
     "InvalidNetworkInterface.InUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class InvalidOutpostLagIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidOutpostLagIDMalformed>()(
     "InvalidOutpostLagID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidParameter
   extends /*@__PURE__*/ S.TaggedError<InvalidParameter>()("InvalidParameter", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidParameterCombination
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombination>()(
     "InvalidParameterCombination",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidParameterValue
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()("InvalidParameterValue", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPermissionDuplicate
   extends /*@__PURE__*/ S.TaggedError<InvalidPermissionDuplicate>()("InvalidPermission.Duplicate", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class InvalidPermissionIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidPermissionIDMalformed>()(
     "InvalidPermissionID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPermissionIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPermissionIDNotFound>()(
     "InvalidPermissionID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPermissionNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPermissionNotFound>()("InvalidPermission.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPlacementGroupUnknown
   extends /*@__PURE__*/ S.TaggedError<InvalidPlacementGroupUnknown>()(
     "InvalidPlacementGroup.Unknown",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPoolIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidPoolIDMalformed>()("InvalidPoolID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPoolIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPoolIDNotFound>()("InvalidPoolID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPrefixListIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidPrefixListIdMalformed>()(
     "InvalidPrefixListId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPrefixListIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPrefixListIdNotFound>()(
     "InvalidPrefixListId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPrefixListIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPrefixListIDNotFound>()(
     "InvalidPrefixListID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPublicIpv4PoolIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidPublicIpv4PoolIDMalformed>()(
     "InvalidPublicIpv4PoolID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPublicIpv4PoolIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPublicIpv4PoolIDNotFound>()(
     "InvalidPublicIpv4PoolID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPublicIpv4PoolNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidPublicIpv4PoolNotFound>()(
     "InvalidPublicIpv4Pool.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidPurchaseTokenMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidPurchaseTokenMalformed>()(
     "InvalidPurchaseToken.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRegion
   extends /*@__PURE__*/ S.TaggedError<InvalidRegion>()("InvalidRegion", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequest
   extends /*@__PURE__*/ S.TaggedError<InvalidRequest>()("InvalidRequest", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidReservedInstancesIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidReservedInstancesIDNotFound>()(
     "InvalidReservedInstancesID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRoleArnMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidRoleArnMalformed>()("InvalidRoleArn.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRouteMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteMalformed>()("InvalidRoute.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRouteNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteNotFound>()("InvalidRoute.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRouteServerEndpointIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteServerEndpointIdNotFound>()(
     "InvalidRouteServerEndpointId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteServerIdNotAssociated
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteServerIdNotAssociated>()(
     "InvalidRouteServerId.NotAssociated",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteServerIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteServerIdNotFound>()(
     "InvalidRouteServerId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteServerPeerIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteServerPeerIdMalformed>()(
     "InvalidRouteServerPeerId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteServerPeerIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteServerPeerIdNotFound>()(
     "InvalidRouteServerPeerId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteTableAssociationIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteTableAssociationIdMalformed>()(
     "InvalidRouteTableAssociationId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteTableIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteTableIdMalformed>()(
     "InvalidRouteTableId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRouteTableIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidRouteTableIDNotFound>()(
     "InvalidRouteTableID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidScheduledInstance
   extends /*@__PURE__*/ S.TaggedError<InvalidScheduledInstance>()("InvalidScheduledInstance", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSecurityGroupRuleIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSecurityGroupRuleIdMalformed>()(
     "InvalidSecurityGroupRuleId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSecurityGroupRuleIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSecurityGroupRuleIdNotFound>()(
     "InvalidSecurityGroupRuleId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidServiceLinkVirtualInterfaceIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidServiceLinkVirtualInterfaceIDMalformed>()(
     "InvalidServiceLinkVirtualInterfaceID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidServiceName
   extends /*@__PURE__*/ S.TaggedError<InvalidServiceName>()("InvalidServiceName", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSnapshotIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSnapshotIDMalformed>()("InvalidSnapshotID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSnapshotNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSnapshotNotFound>()("InvalidSnapshot.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSpotDatafeedNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSpotDatafeedNotFound>()(
     "InvalidSpotDatafeed.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSpotInstanceRequestIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSpotInstanceRequestIDMalformed>()(
     "InvalidSpotInstanceRequestID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidState
   extends /*@__PURE__*/ S.TaggedError<InvalidState>()("InvalidState", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnet
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()("InvalidSubnet", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnetCidrBlockAssociationIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetCidrBlockAssociationIdMalformed>()(
     "InvalidSubnetCidrBlockAssociationId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSubnetCidrBlockAssociationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetCidrBlockAssociationIDNotFound>()(
     "InvalidSubnetCidrBlockAssociationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSubnetCidrReservationIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetCidrReservationIDMalformed>()(
     "InvalidSubnetCidrReservationID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSubnetCidrReservationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetCidrReservationIDNotFound>()(
     "InvalidSubnetCidrReservationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidSubnetConflict
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetConflict>()("InvalidSubnet.Conflict", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnetIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetIdMalformed>()("InvalidSubnetId.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnetIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetIDMalformed>()("InvalidSubnetID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidSubnetIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidSubnetIDNotFound>()("InvalidSubnetID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTargetArnUnknown
   extends /*@__PURE__*/ S.TaggedError<InvalidTargetArnUnknown>()("InvalidTargetArn.Unknown", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTrafficMirrorFilterIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTrafficMirrorFilterIdNotFound>()(
     "InvalidTrafficMirrorFilterId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTrafficMirrorFilterRuleIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTrafficMirrorFilterRuleIdNotFound>()(
     "InvalidTrafficMirrorFilterRuleId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTrafficMirrorSessionIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTrafficMirrorSessionIdNotFound>()(
     "InvalidTrafficMirrorSessionId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTrafficMirrorTargetIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTrafficMirrorTargetIdNotFound>()(
     "InvalidTrafficMirrorTargetId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayAttachmentIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayAttachmentIDMalformed>()(
     "InvalidTransitGatewayAttachmentID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayAttachmentIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayAttachmentIDNotFound>()(
     "InvalidTransitGatewayAttachmentID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayConnectPeerIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayConnectPeerIDMalformed>()(
     "InvalidTransitGatewayConnectPeerID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayConnectPeerIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayConnectPeerIDNotFound>()(
     "InvalidTransitGatewayConnectPeerID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayIDMalformed>()(
     "InvalidTransitGatewayID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayIDNotFound>()(
     "InvalidTransitGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayMeteringPolicyIdMalformedException
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayMeteringPolicyIdMalformedException>()(
     "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayMeteringPolicyIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayMeteringPolicyIdNotFound>()(
     "InvalidTransitGatewayMeteringPolicyId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayMulticastDomainIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayMulticastDomainIdMalformed>()(
     "InvalidTransitGatewayMulticastDomainId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayMulticastDomainIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayMulticastDomainIdNotFound>()(
     "InvalidTransitGatewayMulticastDomainId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayPolicyTableIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayPolicyTableIdMalformed>()(
     "InvalidTransitGatewayPolicyTableId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayPolicyTableIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayPolicyTableIdNotFound>()(
     "InvalidTransitGatewayPolicyTableId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidTransitGatewayRouteTableAnnouncementIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidTransitGatewayRouteTableAnnouncementIdMalformed>()(
     "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidUserIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidUserIDMalformed>()("InvalidUserID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVerifiedAccessEndpointIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVerifiedAccessEndpointIdNotFound>()(
     "InvalidVerifiedAccessEndpointId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVerifiedAccessGroupIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVerifiedAccessGroupIdNotFound>()(
     "InvalidVerifiedAccessGroupId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVerifiedAccessInstanceIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVerifiedAccessInstanceIdNotFound>()(
     "InvalidVerifiedAccessInstanceId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVerifiedAccessTrustProviderIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVerifiedAccessTrustProviderIdNotFound>()(
     "InvalidVerifiedAccessTrustProviderId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVolumeIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVolumeIDMalformed>()("InvalidVolumeID.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVolumeNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVolumeNotFound>()("InvalidVolume.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVpcCidrBlockAssociationIdErrorNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcCidrBlockAssociationIdErrorNotFound>()(
     "InvalidVpcCidrBlockAssociationIdError.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcCidrBlockAssociationIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcCidrBlockAssociationIdMalformed>()(
     "InvalidVpcCidrBlockAssociationId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcCidrBlockAssociationIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcCidrBlockAssociationIDNotFound>()(
     "InvalidVpcCidrBlockAssociationID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcEncryptionControlIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcEncryptionControlIdMalformed>()(
     "InvalidVpcEncryptionControlId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcEncryptionControlIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcEncryptionControlIdNotFound>()(
     "InvalidVpcEncryptionControlId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcEndpointIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcEndpointIdNotFound>()(
     "InvalidVpcEndpointId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcEndpointServiceIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcEndpointServiceIdMalformed>()(
     "InvalidVpcEndpointServiceId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcEndpointServiceIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcEndpointServiceIdNotFound>()(
     "InvalidVpcEndpointServiceId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcIdMalformed>()("InvalidVpcId.Malformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVpcIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcIdNotFound>()("InvalidVpcId.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVpcIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcIDNotFound>()("InvalidVpcID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVpcPeeringConnectionIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcPeeringConnectionIdNotFound>()(
     "InvalidVpcPeeringConnectionId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpcPeeringConnectionIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpcPeeringConnectionIDNotFound>()(
     "InvalidVpcPeeringConnectionID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpnConcentratorIdMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnConcentratorIdMalformed>()(
     "InvalidVpnConcentratorId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpnConcentratorIDMalformed
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnConcentratorIDMalformed>()(
     "InvalidVpnConcentratorID.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpnConnectionDeviceTypeIdNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnConnectionDeviceTypeIdNotFound>()(
     "InvalidVpnConnectionDeviceTypeId.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpnConnectionId
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnConnectionId>()("InvalidVpnConnectionId", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidVpnConnectionIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnConnectionIDNotFound>()(
     "InvalidVpnConnectionID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidVpnGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidVpnGatewayIDNotFound>()(
     "InvalidVpnGatewayID.NotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidZoneNotFound
   extends /*@__PURE__*/ S.TaggedError<InvalidZoneNotFound>()("InvalidZone.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MalformedGatewayIDNotFound
   extends /*@__PURE__*/ S.TaggedError<MalformedGatewayIDNotFound>()("MalformedGatewayID.NotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MissingParameter
   extends /*@__PURE__*/ S.TaggedError<MissingParameter>()("MissingParameter", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MissingRequiredParameter
   extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameter>()("MissingRequiredParameter", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NatGatewayMalformed
   extends /*@__PURE__*/ S.TaggedError<NatGatewayMalformed>()("NatGatewayMalformed", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NatGatewayNotFound
   extends /*@__PURE__*/ S.TaggedError<NatGatewayNotFound>()("NatGatewayNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OperationNotPermitted
   extends /*@__PURE__*/ S.TaggedError<OperationNotPermitted>()("OperationNotPermitted", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ParseError
   extends /*@__PURE__*/ S.TaggedError<ParseError>()("ParseError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class RequestError
   extends /*@__PURE__*/ S.TaggedError<RequestError>()("RequestError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class ResourceLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceeded>()("ResourceLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class RouteAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<RouteAlreadyExists>()("RouteAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class TransitGatewayLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<TransitGatewayLimitExceeded>()(
     "TransitGatewayLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedOperation
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedOperation>()("UnauthorizedOperation", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class UnknownParameter
   extends /*@__PURE__*/ S.TaggedError<UnknownParameter>()("UnknownParameter", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UnknownResource
   extends /*@__PURE__*/ S.TaggedError<UnknownResource>()("UnknownResource", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class Unsupported
   extends /*@__PURE__*/ S.TaggedError<Unsupported>()("Unsupported", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()("UnsupportedOperation", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class VerifiedAccessInstanceLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<VerifiedAccessInstanceLimitExceeded>()(
     "VerifiedAccessInstanceLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class VolumeInUse
   extends /*@__PURE__*/ S.TaggedError<VolumeInUse>()("VolumeInUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withConflictError, C.withRetryableError, C.withDependencyViolationError) {}
 export class VpcBlockPublicAccessExclusionIdMalformed
   extends /*@__PURE__*/ S.TaggedError<VpcBlockPublicAccessExclusionIdMalformed>()(
     "VpcBlockPublicAccessExclusionId.Malformed",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class VPCIdNotSpecified
   extends /*@__PURE__*/ S.TaggedError<VPCIdNotSpecified>()("VPCIdNotSpecified", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class VpcLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<VpcLimitExceeded>()("VpcLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export type ResourceType =
   | "capacity-reservation"
@@ -1354,7 +1354,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(
-  Tag.pipe(T.XmlName("item")).annotate({ identifier: "Tag" }),
+  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Tag" }),
 );
 export interface TagSpecification {
   ResourceType?: ResourceType;
@@ -1371,7 +1371,9 @@ export const TagSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagSpecification" }) as any as S.Schema<TagSpecification>;
 export type TagSpecificationList = TagSpecification[];
 export const TagSpecificationList = /*@__PURE__*/ S.Array(
-  TagSpecification.pipe(T.XmlName("item")).annotate({ identifier: "TagSpecification" }),
+  /*@__PURE__*/ TagSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TagSpecification",
+  }),
 );
 export interface AcceptAddressTransferRequest {
   Address?: string;
@@ -1465,7 +1467,7 @@ export const AcceptCapacityReservationBillingOwnershipResult = /*@__PURE__*/ S.s
 export type ReservationId = string;
 export type ReservedInstanceIdSet = string[];
 export const ReservedInstanceIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ReservedInstanceId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReservedInstanceId")),
 );
 export type ReservedInstancesOfferingId = string;
 export interface TargetConfigurationRequest {
@@ -1479,7 +1481,9 @@ export const TargetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetConfigurationRequest>;
 export type TargetConfigurationRequestSet = TargetConfigurationRequest[];
 export const TargetConfigurationRequestSet = /*@__PURE__*/ S.Array(
-  TargetConfigurationRequest.pipe(T.XmlName("TargetConfigurationRequest")).annotate({
+  /*@__PURE__*/ TargetConfigurationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("TargetConfigurationRequest"),
+  ).annotate({
     identifier: "TargetConfigurationRequest",
   }),
 );
@@ -1589,7 +1593,9 @@ export const AcceptTransitGatewayClientVpnAttachmentResult = /*@__PURE__*/ S.sus
 }) as any as S.Schema<AcceptTransitGatewayClientVpnAttachmentResult>;
 export type TransitGatewayMulticastDomainId = string;
 export type ValueStringList = string[];
-export const ValueStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ValueStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceptTransitGatewayMulticastDomainAssociationsRequest {
   TransitGatewayMulticastDomainId?: string;
   TransitGatewayAttachmentId?: string;
@@ -1645,7 +1651,9 @@ export const SubnetAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubnetAssociation" }) as any as S.Schema<SubnetAssociation>;
 export type SubnetAssociationList = SubnetAssociation[];
 export const SubnetAssociationList = /*@__PURE__*/ S.Array(
-  SubnetAssociation.pipe(T.XmlName("item")).annotate({ identifier: "SubnetAssociation" }),
+  /*@__PURE__*/ SubnetAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SubnetAssociation",
+  }),
 );
 export interface TransitGatewayMulticastDomainAssociations {
   TransitGatewayMulticastDomainId?: string;
@@ -1940,7 +1948,9 @@ export const AcceptTransitGatewayVpcAttachmentResult = /*@__PURE__*/ S.suspend((
 export type VpcEndpointServiceId = string;
 export type VpcEndpointId = string;
 export type VpcEndpointIdList = string[];
-export const VpcEndpointIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcEndpointIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceptVpcEndpointConnectionsRequest {
   DryRun?: boolean;
   ServiceId?: string;
@@ -1979,7 +1989,9 @@ export const UnsuccessfulItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnsuccessfulItem" }) as any as S.Schema<UnsuccessfulItem>;
 export type UnsuccessfulItemSet = UnsuccessfulItem[];
 export const UnsuccessfulItemSet = /*@__PURE__*/ S.Array(
-  UnsuccessfulItem.pipe(T.XmlName("item")).annotate({ identifier: "UnsuccessfulItem" }),
+  /*@__PURE__*/ UnsuccessfulItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "UnsuccessfulItem",
+  }),
 );
 export interface AcceptVpcEndpointConnectionsResult {
   Unsuccessful?: UnsuccessfulItem[];
@@ -2023,7 +2035,9 @@ export const Ipv6CidrBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6CidrBlock" }) as any as S.Schema<Ipv6CidrBlock>;
 export type Ipv6CidrBlockSet = Ipv6CidrBlock[];
 export const Ipv6CidrBlockSet = /*@__PURE__*/ S.Array(
-  Ipv6CidrBlock.pipe(T.XmlName("item")).annotate({ identifier: "Ipv6CidrBlock" }),
+  /*@__PURE__*/ Ipv6CidrBlock.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Ipv6CidrBlock",
+  }),
 );
 export interface CidrBlock {
   CidrBlock?: string;
@@ -2035,7 +2049,9 @@ export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 export type CidrBlockSet = CidrBlock[];
 export const CidrBlockSet = /*@__PURE__*/ S.Array(
-  CidrBlock.pipe(T.XmlName("item")).annotate({ identifier: "CidrBlock" }),
+  /*@__PURE__*/ CidrBlock.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CidrBlock",
+  }),
 );
 export interface VpcPeeringConnectionOptionsDescription {
   AllowDnsResolutionFromRemoteVpc?: boolean;
@@ -2205,7 +2221,9 @@ export const AsnAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AsnAssociation" }) as any as S.Schema<AsnAssociation>;
 export type AsnAssociationSet = AsnAssociation[];
 export const AsnAssociationSet = /*@__PURE__*/ S.Array(
-  AsnAssociation.pipe(T.XmlName("item")).annotate({ identifier: "AsnAssociation" }),
+  /*@__PURE__*/ AsnAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AsnAssociation",
+  }),
 );
 export type ByoipCidrState =
   | "advertised"
@@ -2397,7 +2415,9 @@ export const AllocateHostsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "AllocateHostsRequest" }) as any as S.Schema<AllocateHostsRequest>;
 export type ResponseHostIdList = string[];
-export const ResponseHostIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResponseHostIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AllocateHostsResult {
   HostIds?: string[];
 }
@@ -2411,11 +2431,11 @@ export const AllocateHostsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllocateHostsResult" }) as any as S.Schema<AllocateHostsResult>;
 export type IpamPoolAllocationAllowedCidrs = string[];
 export const IpamPoolAllocationAllowedCidrs = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type IpamPoolAllocationDisallowedCidrs = string[];
 export const IpamPoolAllocationDisallowedCidrs = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface AllocateIpamPoolCidrRequest {
   DryRun?: boolean;
@@ -2508,7 +2528,9 @@ export const AllocateIpamPoolCidrResult = /*@__PURE__*/ S.suspend(() =>
 export type VpcId = string;
 export type SecurityGroupId = string;
 export type ClientVpnSecurityGroupIdSet = string[];
-export const ClientVpnSecurityGroupIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ClientVpnSecurityGroupIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface ApplySecurityGroupsToClientVpnTargetNetworkRequest {
   ClientVpnEndpointId?: string;
   VpcId?: string;
@@ -2539,10 +2561,14 @@ export const ApplySecurityGroupsToClientVpnTargetNetworkResult = /*@__PURE__*/ S
   identifier: "ApplySecurityGroupsToClientVpnTargetNetworkResult",
 }) as any as S.Schema<ApplySecurityGroupsToClientVpnTargetNetworkResult>;
 export type IpPrefixList = string[];
-export const IpPrefixList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const IpPrefixList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type NetworkInterfaceId = string;
 export type Ipv6AddressList = string[];
-export const Ipv6AddressList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const Ipv6AddressList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AssignIpv6AddressesRequest {
   Ipv6PrefixCount?: number;
   Ipv6Prefixes?: string[];
@@ -2595,7 +2621,7 @@ export const AssignIpv6AddressesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignIpv6AddressesResult>;
 export type PrivateIpAddressStringList = string[];
 export const PrivateIpAddressStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("PrivateIpAddress")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PrivateIpAddress")),
 );
 export interface AssignPrivateIpAddressesRequest {
   Ipv4Prefixes?: string[];
@@ -2642,7 +2668,7 @@ export const AssignedPrivateIpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignedPrivateIpAddress" }) as any as S.Schema<AssignedPrivateIpAddress>;
 export type AssignedPrivateIpAddressList = AssignedPrivateIpAddress[];
 export const AssignedPrivateIpAddressList = /*@__PURE__*/ S.Array(
-  AssignedPrivateIpAddress.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AssignedPrivateIpAddress.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AssignedPrivateIpAddress",
   }),
 );
@@ -2656,7 +2682,7 @@ export const Ipv4PrefixSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv4PrefixSpecification" }) as any as S.Schema<Ipv4PrefixSpecification>;
 export type Ipv4PrefixesList = Ipv4PrefixSpecification[];
 export const Ipv4PrefixesList = /*@__PURE__*/ S.Array(
-  Ipv4PrefixSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv4PrefixSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv4PrefixSpecification",
   }),
 );
@@ -2685,7 +2711,9 @@ export const AssignPrivateIpAddressesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignPrivateIpAddressesResult>;
 export type NatGatewayId = string;
 export type IpList = string[];
-export const IpList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const IpList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PrivateIpAddressCount = number;
 export interface AssignPrivateNatGatewayAddressRequest {
   NatGatewayId?: string;
@@ -2759,7 +2787,9 @@ export const NatGatewayAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NatGatewayAddress" }) as any as S.Schema<NatGatewayAddress>;
 export type NatGatewayAddressList = NatGatewayAddress[];
 export const NatGatewayAddressList = /*@__PURE__*/ S.Array(
-  NatGatewayAddress.pipe(T.XmlName("item")).annotate({ identifier: "NatGatewayAddress" }),
+  /*@__PURE__*/ NatGatewayAddress.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NatGatewayAddress",
+  }),
 );
 export interface AssignPrivateNatGatewayAddressResult {
   NatGatewayId?: string;
@@ -2834,12 +2864,14 @@ export const CustomTagKeyValueRequestPair = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTagKeyValueRequestPair>;
 export type CustomKeyValuePairRequestSet = CustomTagKeyValueRequestPair[];
 export const CustomKeyValuePairRequestSet = /*@__PURE__*/ S.Array(
-  CustomTagKeyValueRequestPair.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CustomTagKeyValueRequestPair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CustomTagKeyValueRequestPair",
   }),
 );
 export type InstanceIdList = string[];
-export const InstanceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AssociateApplicationStatusCheckRequest {
   ApplicationStatusCheckId?: string;
   TargetTagAssociations?: CustomTagKeyValueRequestPair[];
@@ -2885,7 +2917,7 @@ export const SuccessfulAssociationResponseObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulAssociationResponseObject>;
 export type SuccessfulAssociationResponseSet = SuccessfulAssociationResponseObject[];
 export const SuccessfulAssociationResponseSet = /*@__PURE__*/ S.Array(
-  SuccessfulAssociationResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SuccessfulAssociationResponseObject.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SuccessfulAssociationResponseObject",
   }),
 );
@@ -2916,7 +2948,9 @@ export const UnsuccessfulAssociationResponseObject = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnsuccessfulAssociationResponseObject>;
 export type UnsuccessfulAssociationResponseSet = UnsuccessfulAssociationResponseObject[];
 export const UnsuccessfulAssociationResponseSet = /*@__PURE__*/ S.Array(
-  UnsuccessfulAssociationResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ UnsuccessfulAssociationResponseObject.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "UnsuccessfulAssociationResponseObject",
   }),
 );
@@ -3169,7 +3203,9 @@ export const AssociateIamInstanceProfileResult = /*@__PURE__*/ S.suspend(() =>
 export type InstanceEventWindowId = string;
 export type DedicatedHostId = string;
 export type DedicatedHostIdList = string[];
-export const DedicatedHostIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const DedicatedHostIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface InstanceEventWindowAssociationRequest {
   InstanceIds?: string[];
   InstanceTags?: Tag[];
@@ -3231,7 +3267,7 @@ export const InstanceEventWindowTimeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceEventWindowTimeRange>;
 export type InstanceEventWindowTimeRangeList = InstanceEventWindowTimeRange[];
 export const InstanceEventWindowTimeRangeList = /*@__PURE__*/ S.Array(
-  InstanceEventWindowTimeRange.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceEventWindowTimeRange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceEventWindowTimeRange",
   }),
 );
@@ -3432,7 +3468,9 @@ export const AssociateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =
   identifier: "AssociateIpamResourceDiscoveryResult",
 }) as any as S.Schema<AssociateIpamResourceDiscoveryResult>;
 export type AllocationIdList = string[];
-export const AllocationIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("AllocationId")));
+export const AllocationIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AllocationId")),
+);
 export interface AssociateNatGatewayAddressRequest {
   NatGatewayId?: string;
   AllocationIds?: string[];
@@ -3721,7 +3759,9 @@ export const AssociateSubnetCidrBlockResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateSubnetCidrBlockResult",
 }) as any as S.Schema<AssociateSubnetCidrBlockResult>;
 export type TransitGatewaySubnetIdList = string[];
-export const TransitGatewaySubnetIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TransitGatewaySubnetIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AssociateTransitGatewayMulticastDomainRequest {
   TransitGatewayMulticastDomainId?: string;
   TransitGatewayAttachmentId?: string;
@@ -4071,7 +4111,9 @@ export const AssociateVpcCidrBlockResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateVpcCidrBlockResult",
 }) as any as S.Schema<AssociateVpcCidrBlockResult>;
 export type GroupIdStringList = string[];
-export const GroupIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("groupId")));
+export const GroupIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("groupId")),
+);
 export interface AttachClassicLinkVpcRequest {
   DryRun?: boolean;
   InstanceId?: string;
@@ -4431,9 +4473,11 @@ export const VerifiedAccessTrustProviderCondensed = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<VerifiedAccessTrustProviderCondensed>;
 export type VerifiedAccessTrustProviderCondensedList = VerifiedAccessTrustProviderCondensed[];
 export const VerifiedAccessTrustProviderCondensedList = /*@__PURE__*/ S.Array(
-  VerifiedAccessTrustProviderCondensed.pipe(T.XmlName("item")).annotate({
-    identifier: "VerifiedAccessTrustProviderCondensed",
-  }),
+  /*@__PURE__*/ VerifiedAccessTrustProviderCondensed.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "VerifiedAccessTrustProviderCondensed",
+    },
+  ),
 );
 export interface VerifiedAccessInstanceCustomSubDomain {
   SubDomain?: string;
@@ -4701,7 +4745,9 @@ export const UserIdGroupPair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserIdGroupPair" }) as any as S.Schema<UserIdGroupPair>;
 export type UserIdGroupPairList = UserIdGroupPair[];
 export const UserIdGroupPairList = /*@__PURE__*/ S.Array(
-  UserIdGroupPair.pipe(T.XmlName("item")).annotate({ identifier: "UserIdGroupPair" }),
+  /*@__PURE__*/ UserIdGroupPair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "UserIdGroupPair",
+  }),
 );
 export interface IpRange {
   Description?: string;
@@ -4715,7 +4761,7 @@ export const IpRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 export type IpRangeList = IpRange[];
 export const IpRangeList = /*@__PURE__*/ S.Array(
-  IpRange.pipe(T.XmlName("item")).annotate({ identifier: "IpRange" }),
+  /*@__PURE__*/ IpRange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "IpRange" }),
 );
 export interface Ipv6Range {
   Description?: string;
@@ -4729,7 +4775,9 @@ export const Ipv6Range = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6Range" }) as any as S.Schema<Ipv6Range>;
 export type Ipv6RangeList = Ipv6Range[];
 export const Ipv6RangeList = /*@__PURE__*/ S.Array(
-  Ipv6Range.pipe(T.XmlName("item")).annotate({ identifier: "Ipv6Range" }),
+  /*@__PURE__*/ Ipv6Range.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Ipv6Range",
+  }),
 );
 export interface PrefixListId {
   Description?: string;
@@ -4746,7 +4794,9 @@ export const PrefixListId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixListId" }) as any as S.Schema<PrefixListId>;
 export type PrefixListIdList = PrefixListId[];
 export const PrefixListIdList = /*@__PURE__*/ S.Array(
-  PrefixListId.pipe(T.XmlName("item")).annotate({ identifier: "PrefixListId" }),
+  /*@__PURE__*/ PrefixListId.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrefixListId",
+  }),
 );
 export interface IpPermission {
   IpProtocol?: string;
@@ -4779,7 +4829,9 @@ export const IpPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPermission" }) as any as S.Schema<IpPermission>;
 export type IpPermissionList = IpPermission[];
 export const IpPermissionList = /*@__PURE__*/ S.Array(
-  IpPermission.pipe(T.XmlName("item")).annotate({ identifier: "IpPermission" }),
+  /*@__PURE__*/ IpPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpPermission",
+  }),
 );
 export interface AuthorizeSecurityGroupEgressRequest {
   TagSpecifications?: TagSpecification[];
@@ -4892,7 +4944,9 @@ export const SecurityGroupRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroupRule" }) as any as S.Schema<SecurityGroupRule>;
 export type SecurityGroupRuleList = SecurityGroupRule[];
 export const SecurityGroupRuleList = /*@__PURE__*/ S.Array(
-  SecurityGroupRule.pipe(T.XmlName("item")).annotate({ identifier: "SecurityGroupRule" }),
+  /*@__PURE__*/ SecurityGroupRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecurityGroupRule",
+  }),
 );
 export interface AuthorizeSecurityGroupEgressResult {
   Return?: boolean;
@@ -5180,7 +5234,7 @@ export const CancelCapacityReservationResult = /*@__PURE__*/ S.suspend(() =>
 export type CapacityReservationFleetId = string;
 export type CapacityReservationFleetIdSet = string[];
 export const CapacityReservationFleetIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface CancelCapacityReservationFleetsRequest {
   DryRun?: boolean;
@@ -5235,7 +5289,9 @@ export const CapacityReservationFleetCancellationState = /*@__PURE__*/ S.suspend
 export type CapacityReservationFleetCancellationStateSet =
   CapacityReservationFleetCancellationState[];
 export const CapacityReservationFleetCancellationStateSet = /*@__PURE__*/ S.Array(
-  CapacityReservationFleetCancellationState.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationFleetCancellationState.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "CapacityReservationFleetCancellationState",
   }),
 );
@@ -5276,7 +5332,9 @@ export const FailedCapacityReservationFleetCancellationResult = /*@__PURE__*/ S.
 export type FailedCapacityReservationFleetCancellationResultSet =
   FailedCapacityReservationFleetCancellationResult[];
 export const FailedCapacityReservationFleetCancellationResultSet = /*@__PURE__*/ S.Array(
-  FailedCapacityReservationFleetCancellationResult.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FailedCapacityReservationFleetCancellationResult.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "FailedCapacityReservationFleetCancellationResult",
   }),
 );
@@ -5445,7 +5503,9 @@ export const InstanceCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceCount" }) as any as S.Schema<InstanceCount>;
 export type InstanceCountList = InstanceCount[];
 export const InstanceCountList = /*@__PURE__*/ S.Array(
-  InstanceCount.pipe(T.XmlName("item")).annotate({ identifier: "InstanceCount" }),
+  /*@__PURE__*/ InstanceCount.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceCount",
+  }),
 );
 export type CurrencyCodeValues = "USD" | (string & {});
 export const CurrencyCodeValues = S.String;
@@ -5469,7 +5529,9 @@ export const PriceSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PriceSchedule" }) as any as S.Schema<PriceSchedule>;
 export type PriceScheduleList = PriceSchedule[];
 export const PriceScheduleList = /*@__PURE__*/ S.Array(
-  PriceSchedule.pipe(T.XmlName("item")).annotate({ identifier: "PriceSchedule" }),
+  /*@__PURE__*/ PriceSchedule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PriceSchedule",
+  }),
 );
 export type ListingStatus = "active" | "pending" | "cancelled" | "closed" | (string & {});
 export const ListingStatus = S.String;
@@ -5523,7 +5585,7 @@ export const ReservedInstancesListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedInstancesListing" }) as any as S.Schema<ReservedInstancesListing>;
 export type ReservedInstancesListingList = ReservedInstancesListing[];
 export const ReservedInstancesListingList = /*@__PURE__*/ S.Array(
-  ReservedInstancesListing.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstancesListing.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstancesListing",
   }),
 );
@@ -5542,7 +5604,9 @@ export const CancelReservedInstancesListingResult = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CancelReservedInstancesListingResult>;
 export type SpotFleetRequestId = string;
 export type SpotFleetRequestIdList = string[];
-export const SpotFleetRequestIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SpotFleetRequestIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface CancelSpotFleetRequestsRequest {
   DryRun?: boolean;
   SpotFleetRequestIds?: string[];
@@ -5599,7 +5663,7 @@ export const CancelSpotFleetRequestsSuccessItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelSpotFleetRequestsSuccessItem>;
 export type CancelSpotFleetRequestsSuccessSet = CancelSpotFleetRequestsSuccessItem[];
 export const CancelSpotFleetRequestsSuccessSet = /*@__PURE__*/ S.Array(
-  CancelSpotFleetRequestsSuccessItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CancelSpotFleetRequestsSuccessItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CancelSpotFleetRequestsSuccessItem",
   }),
 );
@@ -5642,7 +5706,7 @@ export const CancelSpotFleetRequestsErrorItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelSpotFleetRequestsErrorItem>;
 export type CancelSpotFleetRequestsErrorSet = CancelSpotFleetRequestsErrorItem[];
 export const CancelSpotFleetRequestsErrorSet = /*@__PURE__*/ S.Array(
-  CancelSpotFleetRequestsErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CancelSpotFleetRequestsErrorItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CancelSpotFleetRequestsErrorItem",
   }),
 );
@@ -5667,7 +5731,7 @@ export const CancelSpotFleetRequestsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SpotInstanceRequestId = string;
 export type SpotInstanceRequestIdList = string[];
 export const SpotInstanceRequestIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SpotInstanceRequestId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SpotInstanceRequestId")),
 );
 export interface CancelSpotInstanceRequestsRequest {
   DryRun?: boolean;
@@ -5712,7 +5776,7 @@ export const CancelledSpotInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelledSpotInstanceRequest>;
 export type CancelledSpotInstanceRequestList = CancelledSpotInstanceRequest[];
 export const CancelledSpotInstanceRequestList = /*@__PURE__*/ S.Array(
-  CancelledSpotInstanceRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CancelledSpotInstanceRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CancelledSpotInstanceRequest",
   }),
 );
@@ -5936,7 +6000,9 @@ export const VolumeState = S.String;
 
 export type VolumeAttachmentList = VolumeAttachment[];
 export const VolumeAttachmentList = /*@__PURE__*/ S.Array(
-  VolumeAttachment.pipe(T.XmlName("item")).annotate({ identifier: "VolumeAttachment" }),
+  /*@__PURE__*/ VolumeAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeAttachment",
+  }),
 );
 export interface Volume {
   AvailabilityZoneId?: string;
@@ -6018,7 +6084,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 export type VolumeList = Volume[];
 export const VolumeList = /*@__PURE__*/ S.Array(
-  Volume.pipe(T.XmlName("item")).annotate({ identifier: "Volume" }),
+  /*@__PURE__*/ Volume.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Volume" }),
 );
 export interface CopyVolumesResult {
   Volumes?: Volume[];
@@ -6048,7 +6114,9 @@ export const HealthCheckPathDestinationRequestObject = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<HealthCheckPathDestinationRequestObject>;
 export type HealthCheckPathDestinationRequestSet = HealthCheckPathDestinationRequestObject[];
 export const HealthCheckPathDestinationRequestSet = /*@__PURE__*/ S.Array(
-  HealthCheckPathDestinationRequestObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ HealthCheckPathDestinationRequestObject.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "HealthCheckPathDestinationRequestObject",
   }),
 );
@@ -6066,7 +6134,7 @@ export const HealthCheckPathRequestObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckPathRequestObject>;
 export type HealthCheckPathRequestList = HealthCheckPathRequestObject[];
 export const HealthCheckPathRequestList = /*@__PURE__*/ S.Array(
-  HealthCheckPathRequestObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ HealthCheckPathRequestObject.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "HealthCheckPathRequestObject",
   }),
 );
@@ -6158,7 +6226,9 @@ export const HealthCheckPathDestinationResponseObject = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthCheckPathDestinationResponseObject>;
 export type HealthCheckPathDestinationResponseList = HealthCheckPathDestinationResponseObject[];
 export const HealthCheckPathDestinationResponseList = /*@__PURE__*/ S.Array(
-  HealthCheckPathDestinationResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ HealthCheckPathDestinationResponseObject.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "HealthCheckPathDestinationResponseObject",
   }),
 );
@@ -6181,7 +6251,7 @@ export const HealthCheckPathResponseObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckPathResponseObject>;
 export type HealthCheckPathResponseList = HealthCheckPathResponseObject[];
 export const HealthCheckPathResponseList = /*@__PURE__*/ S.Array(
-  HealthCheckPathResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ HealthCheckPathResponseObject.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "HealthCheckPathResponseObject",
   }),
 );
@@ -6199,7 +6269,7 @@ export const CustomTagKeyValueResponsePair = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTagKeyValueResponsePair>;
 export type CustomKeyValuePairResponseSet = CustomTagKeyValueResponsePair[];
 export const CustomKeyValuePairResponseSet = /*@__PURE__*/ S.Array(
-  CustomTagKeyValueResponsePair.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CustomTagKeyValueResponsePair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CustomTagKeyValueResponsePair",
   }),
 );
@@ -6463,7 +6533,7 @@ export const CapacityAllocationMetadataEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityAllocationMetadataEntry>;
 export type CapacityAllocationMetadataList = CapacityAllocationMetadataEntry[];
 export const CapacityAllocationMetadataList = /*@__PURE__*/ S.Array(
-  CapacityAllocationMetadataEntry.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityAllocationMetadataEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityAllocationMetadataEntry",
   }),
 );
@@ -6487,7 +6557,9 @@ export const CapacityAllocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityAllocation" }) as any as S.Schema<CapacityAllocation>;
 export type CapacityAllocations = CapacityAllocation[];
 export const CapacityAllocations = /*@__PURE__*/ S.Array(
-  CapacityAllocation.pipe(T.XmlName("item")).annotate({ identifier: "CapacityAllocation" }),
+  /*@__PURE__*/ CapacityAllocation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityAllocation",
+  }),
 );
 export type CapacityReservationType = "default" | "capacity-block" | (string & {});
 export const CapacityReservationType = S.String;
@@ -6928,7 +7000,9 @@ export const CancellationTerms = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancellationTerms" }) as any as S.Schema<CancellationTerms>;
 export type CancellationTermsSet = CancellationTerms[];
 export const CancellationTermsSet = /*@__PURE__*/ S.Array(
-  CancellationTerms.pipe(T.XmlName("item")).annotate({ identifier: "CancellationTerms" }),
+  /*@__PURE__*/ CancellationTerms.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CancellationTerms",
+  }),
 );
 export interface CapacityReservationCancellationQuote {
   CapacityReservationCancellationQuoteId?: string;
@@ -8681,7 +8755,7 @@ export const FleetCapacityReservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FleetCapacityReservation" }) as any as S.Schema<FleetCapacityReservation>;
 export type FleetCapacityReservationSet = FleetCapacityReservation[];
 export const FleetCapacityReservationSet = /*@__PURE__*/ S.Array(
-  FleetCapacityReservation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FleetCapacityReservation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FleetCapacityReservation",
   }),
 );
@@ -8900,10 +8974,12 @@ export type TrafficIpAddressType = "ipv4" | "ipv6" | "dual-stack" | (string & {}
 export const TrafficIpAddressType = S.String;
 
 export type ClientVpnAvailabilityZoneSet = string[];
-export const ClientVpnAvailabilityZoneSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ClientVpnAvailabilityZoneSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ClientVpnAvailabilityZoneIdSet = string[];
 export const ClientVpnAvailabilityZoneIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface TransitGatewayConfigurationInputStructure {
   TransitGatewayId?: string;
@@ -8940,7 +9016,7 @@ export const ClientVpnTrustProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientVpnTrustProviderRequest>;
 export type ClientVpnTrustProviderRequestList = ClientVpnTrustProviderRequest[];
 export const ClientVpnTrustProviderRequestList = /*@__PURE__*/ S.Array(
-  ClientVpnTrustProviderRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ClientVpnTrustProviderRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ClientVpnTrustProviderRequest",
   }),
 );
@@ -9276,7 +9352,7 @@ export const CreateDefaultSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 export type CoipPoolId = string;
 export type SubnetIpv6CidrBlockAssociationSet = SubnetIpv6CidrBlockAssociation[];
 export const SubnetIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
-  SubnetIpv6CidrBlockAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SubnetIpv6CidrBlockAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SubnetIpv6CidrBlockAssociation",
   }),
 );
@@ -9446,13 +9522,13 @@ export const Tenancy = S.String;
 
 export type VpcIpv6CidrBlockAssociationSet = VpcIpv6CidrBlockAssociation[];
 export const VpcIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
-  VpcIpv6CidrBlockAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VpcIpv6CidrBlockAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VpcIpv6CidrBlockAssociation",
   }),
 );
 export type VpcCidrBlockAssociationSet = VpcCidrBlockAssociation[];
 export const VpcCidrBlockAssociationSet = /*@__PURE__*/ S.Array(
-  VpcCidrBlockAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VpcCidrBlockAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VpcCidrBlockAssociation",
   }),
 );
@@ -9772,7 +9848,9 @@ export const NewDhcpConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewDhcpConfiguration" }) as any as S.Schema<NewDhcpConfiguration>;
 export type NewDhcpConfigurationList = NewDhcpConfiguration[];
 export const NewDhcpConfigurationList = /*@__PURE__*/ S.Array(
-  NewDhcpConfiguration.pipe(T.XmlName("item")).annotate({ identifier: "NewDhcpConfiguration" }),
+  /*@__PURE__*/ NewDhcpConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NewDhcpConfiguration",
+  }),
 );
 export interface CreateDhcpOptionsRequest {
   DhcpConfigurations?: NewDhcpConfiguration[];
@@ -9797,7 +9875,9 @@ export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 export type DhcpConfigurationValueList = AttributeValue[];
 export const DhcpConfigurationValueList = /*@__PURE__*/ S.Array(
-  AttributeValue.pipe(T.XmlName("item")).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ AttributeValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AttributeValue",
+  }),
 );
 export interface DhcpConfiguration {
   Key?: string;
@@ -9814,7 +9894,9 @@ export const DhcpConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DhcpConfiguration" }) as any as S.Schema<DhcpConfiguration>;
 export type DhcpConfigurationList = DhcpConfiguration[];
 export const DhcpConfigurationList = /*@__PURE__*/ S.Array(
-  DhcpConfiguration.pipe(T.XmlName("item")).annotate({ identifier: "DhcpConfiguration" }),
+  /*@__PURE__*/ DhcpConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DhcpConfiguration",
+  }),
 );
 export interface DhcpOptions {
   OwnerId?: string;
@@ -9876,7 +9958,7 @@ export const InternetGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternetGatewayAttachment>;
 export type InternetGatewayAttachmentList = InternetGatewayAttachment[];
 export const InternetGatewayAttachmentList = /*@__PURE__*/ S.Array(
-  InternetGatewayAttachment.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InternetGatewayAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InternetGatewayAttachment",
   }),
 );
@@ -10018,14 +10100,16 @@ export const FleetReservationType = S.String;
 
 export type ReservationTypeListRequest = FleetReservationType[];
 export const ReservationTypeListRequest = /*@__PURE__*/ S.Array(
-  FleetReservationType.pipe(T.XmlName("ReservationType")),
+  /*@__PURE__*/ FleetReservationType.pipe(/*@__PURE__*/ T.XmlName("ReservationType")),
 );
 export type CapacityReservationIdSet = string[];
-export const CapacityReservationIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const CapacityReservationIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ResourceGroupName = string;
 export type CapacityReservationResourceGroupArnSet = string[];
 export const CapacityReservationResourceGroupArnSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface FleetCapacityReservationTargetRequest {
   CapacityReservationIds?: string[];
@@ -10048,7 +10132,7 @@ export const ReservedCapacityFallbackMarketType = S.String;
 
 export type ReservedCapacityFallbackMarketTypeList = ReservedCapacityFallbackMarketType[];
 export const ReservedCapacityFallbackMarketTypeList = /*@__PURE__*/ S.Array(
-  ReservedCapacityFallbackMarketType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ ReservedCapacityFallbackMarketType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface ReservedCapacityFallbackOptionsRequest {
   MarketTypes?: ReservedCapacityFallbackMarketType[];
@@ -10184,7 +10268,9 @@ export const FleetBlockDeviceMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetBlockDeviceMappingRequest>;
 export type FleetBlockDeviceMappingRequestList = FleetBlockDeviceMappingRequest[];
 export const FleetBlockDeviceMappingRequestList = /*@__PURE__*/ S.Array(
-  FleetBlockDeviceMappingRequest.pipe(T.XmlName("BlockDeviceMapping")).annotate({
+  /*@__PURE__*/ FleetBlockDeviceMappingRequest.pipe(
+    /*@__PURE__*/ T.XmlName("BlockDeviceMapping"),
+  ).annotate({
     identifier: "FleetBlockDeviceMappingRequest",
   }),
 );
@@ -10235,7 +10321,9 @@ export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | "apple" 
 export const CpuManufacturer = S.String;
 
 export type CpuManufacturerSet = CpuManufacturer[];
-export const CpuManufacturerSet = /*@__PURE__*/ S.Array(CpuManufacturer.pipe(T.XmlName("item")));
+export const CpuManufacturerSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ CpuManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface MemoryGiBPerVCpuRequest {
   Min?: number;
   Max?: number;
@@ -10245,13 +10333,15 @@ export const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemoryGiBPerVCpuRequest" }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
 export type ExcludedInstanceType = string;
 export type ExcludedInstanceTypeSet = string[];
-export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = S.String;
 
 export type InstanceGenerationSet = InstanceGeneration[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
-  InstanceGeneration.pipe(T.XmlName("item")),
+  /*@__PURE__*/ InstanceGeneration.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type BareMetal = "included" | "required" | "excluded" | (string & {});
 export const BareMetal = S.String;
@@ -10275,7 +10365,9 @@ export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = S.String;
 
 export type LocalStorageTypeSet = LocalStorageType[];
-export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(LocalStorageType.pipe(T.XmlName("item")));
+export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ LocalStorageType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface TotalLocalStorageGBRequest {
   Min?: number;
   Max?: number;
@@ -10298,7 +10390,9 @@ export type AcceleratorType = "gpu" | "fpga" | "inference" | "media" | (string &
 export const AcceleratorType = S.String;
 
 export type AcceleratorTypeSet = AcceleratorType[];
-export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(AcceleratorType.pipe(T.XmlName("item")));
+export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ AcceleratorType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceleratorCountRequest {
   Min?: number;
   Max?: number;
@@ -10317,7 +10411,7 @@ export const AcceleratorManufacturer = S.String;
 
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
 export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
-  AcceleratorManufacturer.pipe(T.XmlName("item")),
+  /*@__PURE__*/ AcceleratorManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type AcceleratorName =
   | "a100"
@@ -10343,7 +10437,9 @@ export type AcceleratorName =
 export const AcceleratorName = S.String;
 
 export type AcceleratorNameSet = AcceleratorName[];
-export const AcceleratorNameSet = /*@__PURE__*/ S.Array(AcceleratorName.pipe(T.XmlName("item")));
+export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ AcceleratorName.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AcceleratorTotalMemoryMiBRequest {
   Min?: number;
   Max?: number;
@@ -10364,7 +10460,9 @@ export const NetworkBandwidthGbpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkBandwidthGbpsRequest>;
 export type AllowedInstanceType = string;
 export type AllowedInstanceTypeSet = string[];
-export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface PerformanceFactorReferenceRequest {
   InstanceFamily?: string;
 }
@@ -10375,7 +10473,7 @@ export const PerformanceFactorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceFactorReferenceRequest>;
 export type PerformanceFactorReferenceSetRequest = PerformanceFactorReferenceRequest[];
 export const PerformanceFactorReferenceSetRequest = /*@__PURE__*/ S.Array(
-  PerformanceFactorReferenceRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PerformanceFactorReferenceRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PerformanceFactorReferenceRequest",
   }),
 );
@@ -10501,7 +10599,7 @@ export const FleetLaunchTemplateOverridesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetLaunchTemplateOverridesRequest>;
 export type FleetLaunchTemplateOverridesListRequest = FleetLaunchTemplateOverridesRequest[];
 export const FleetLaunchTemplateOverridesListRequest = /*@__PURE__*/ S.Array(
-  FleetLaunchTemplateOverridesRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FleetLaunchTemplateOverridesRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FleetLaunchTemplateOverridesRequest",
   }),
 );
@@ -10519,7 +10617,7 @@ export const FleetLaunchTemplateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetLaunchTemplateConfigRequest>;
 export type FleetLaunchTemplateConfigListRequest = FleetLaunchTemplateConfigRequest[];
 export const FleetLaunchTemplateConfigListRequest = /*@__PURE__*/ S.Array(
-  FleetLaunchTemplateConfigRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FleetLaunchTemplateConfigRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FleetLaunchTemplateConfigRequest",
   }),
 );
@@ -10727,7 +10825,7 @@ export const PerformanceFactorReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceFactorReference>;
 export type PerformanceFactorReferenceSet = PerformanceFactorReference[];
 export const PerformanceFactorReferenceSet = /*@__PURE__*/ S.Array(
-  PerformanceFactorReference.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PerformanceFactorReference.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PerformanceFactorReference",
   }),
 );
@@ -10922,7 +11020,7 @@ export const BlockDeviceMappingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlockDeviceMappingResponse>;
 export type BlockDeviceMappingResponseList = BlockDeviceMappingResponse[];
 export const BlockDeviceMappingResponseList = /*@__PURE__*/ S.Array(
-  BlockDeviceMappingResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ BlockDeviceMappingResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "BlockDeviceMappingResponse",
   }),
 );
@@ -11023,10 +11121,14 @@ export const CreateFleetError_ = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFleetError" }) as any as S.Schema<CreateFleetError_>;
 export type CreateFleetErrorsSet = CreateFleetError_[];
 export const CreateFleetErrorsSet = /*@__PURE__*/ S.Array(
-  CreateFleetError_.pipe(T.XmlName("item")).annotate({ identifier: "CreateFleetError" }),
+  /*@__PURE__*/ CreateFleetError_.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CreateFleetError",
+  }),
 );
 export type InstanceIdsSet = string[];
-export const InstanceIdsSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceIdsSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PlatformValues = "Windows" | (string & {});
 export const PlatformValues = S.String;
 
@@ -11071,7 +11173,9 @@ export const CreateFleetInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFleetInstance" }) as any as S.Schema<CreateFleetInstance>;
 export type CreateFleetInstancesSet = CreateFleetInstance[];
 export const CreateFleetInstancesSet = /*@__PURE__*/ S.Array(
-  CreateFleetInstance.pipe(T.XmlName("item")).annotate({ identifier: "CreateFleetInstance" }),
+  /*@__PURE__*/ CreateFleetInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CreateFleetInstance",
+  }),
 );
 export interface CreateFleetResult {
   FleetId?: string;
@@ -11093,7 +11197,9 @@ export const CreateFleetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFleetResult" }) as any as S.Schema<CreateFleetResult>;
 export type FlowLogResourceId = string;
 export type FlowLogResourceIds = string[];
-export const FlowLogResourceIds = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FlowLogResourceIds = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type FlowLogsResourceType =
   | "VPC"
   | "Subnet"
@@ -11140,7 +11246,9 @@ export const TaggableResourceType = S.String;
 
 export type TagKey = string;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface TagFieldSpecificationRequest {
   ResourceType?: TaggableResourceType;
   TagKeys?: string[];
@@ -11155,7 +11263,7 @@ export const TagFieldSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagFieldSpecificationRequest>;
 export type TagFieldSpecificationListRequest = TagFieldSpecificationRequest[];
 export const TagFieldSpecificationListRequest = /*@__PURE__*/ S.Array(
-  TagFieldSpecificationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TagFieldSpecificationRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TagFieldSpecificationRequest",
   }),
 );
@@ -11317,7 +11425,7 @@ export const BlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockDeviceMapping" }) as any as S.Schema<BlockDeviceMapping>;
 export type BlockDeviceMappingRequestList = BlockDeviceMapping[];
 export const BlockDeviceMappingRequestList = /*@__PURE__*/ S.Array(
-  BlockDeviceMapping.pipe(T.XmlName("BlockDeviceMapping")).annotate({
+  /*@__PURE__*/ BlockDeviceMapping.pipe(/*@__PURE__*/ T.XmlName("BlockDeviceMapping")).annotate({
     identifier: "BlockDeviceMapping",
   }),
 );
@@ -11360,7 +11468,7 @@ export type ImageUsageResourceTypeName = string;
 export type ImageUsageResourceTypeOptionValue = string;
 export type ImageUsageResourceTypeOptionValuesList = string[];
 export const ImageUsageResourceTypeOptionValuesList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface ImageUsageResourceTypeOptionRequest {
   OptionName?: string;
@@ -11398,7 +11506,7 @@ export const ImageUsageResourceTypeRequestList = /*@__PURE__*/ S.Array(
 );
 export type ImageUsageReportUserIdStringList = string[];
 export const ImageUsageReportUserIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("UserId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("UserId")),
 );
 export type CreateImageUsageReportClientToken = string;
 export interface CreateImageUsageReportRequest {
@@ -11434,7 +11542,7 @@ export const CreateImageUsageReportResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateImageUsageReportResult>;
 export type SecurityGroupIdStringListRequest = string[];
 export const SecurityGroupIdStringListRequest = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SecurityGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SecurityGroupId")),
 );
 export type IpAddressType = "ipv4" | "dualstack" | "ipv6" | (string & {});
 export const IpAddressType = S.String;
@@ -11478,9 +11586,13 @@ export type Ec2InstanceConnectEndpointState =
 export const Ec2InstanceConnectEndpointState = S.String;
 
 export type NetworkInterfaceIdSet = string[];
-export const NetworkInterfaceIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkInterfaceIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type SecurityGroupIdSet = string[];
-export const SecurityGroupIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecurityGroupIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface InstanceConnectEndpointDnsNames {
   DnsName?: string;
   FipsDnsName?: string;
@@ -11923,7 +12035,9 @@ export const IpamOperatingRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamOperatingRegion" }) as any as S.Schema<IpamOperatingRegion>;
 export type IpamOperatingRegionSet = IpamOperatingRegion[];
 export const IpamOperatingRegionSet = /*@__PURE__*/ S.Array(
-  IpamOperatingRegion.pipe(T.XmlName("item")).annotate({ identifier: "IpamOperatingRegion" }),
+  /*@__PURE__*/ IpamOperatingRegion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamOperatingRegion",
+  }),
 );
 export type IpamState =
   | "create-in-progress"
@@ -12301,7 +12415,9 @@ export const RequestIpamResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestIpamResourceTag" }) as any as S.Schema<RequestIpamResourceTag>;
 export type RequestIpamResourceTagList = RequestIpamResourceTag[];
 export const RequestIpamResourceTagList = /*@__PURE__*/ S.Array(
-  RequestIpamResourceTag.pipe(T.XmlName("item")).annotate({ identifier: "RequestIpamResourceTag" }),
+  /*@__PURE__*/ RequestIpamResourceTag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RequestIpamResourceTag",
+  }),
 );
 export type IpamPoolAwsService = "ec2" | "global-services" | (string & {});
 export const IpamPoolAwsService = S.String;
@@ -12401,7 +12517,9 @@ export const IpamResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamResourceTag" }) as any as S.Schema<IpamResourceTag>;
 export type IpamResourceTagList = IpamResourceTag[];
 export const IpamResourceTagList = /*@__PURE__*/ S.Array(
-  IpamResourceTag.pipe(T.XmlName("item")).annotate({ identifier: "IpamResourceTag" }),
+  /*@__PURE__*/ IpamResourceTag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamResourceTag",
+  }),
 );
 export interface IpamPoolSourceResource {
   ResourceId?: string;
@@ -12578,7 +12696,9 @@ export const IpamPrefixListResolverRuleConditionRequest = /*@__PURE__*/ S.suspen
 export type IpamPrefixListResolverRuleConditionRequestSet =
   IpamPrefixListResolverRuleConditionRequest[];
 export const IpamPrefixListResolverRuleConditionRequestSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverRuleConditionRequest.pipe(T.XmlName("Condition")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverRuleConditionRequest.pipe(
+    /*@__PURE__*/ T.XmlName("Condition"),
+  ).annotate({
     identifier: "IpamPrefixListResolverRuleConditionRequest",
   }),
 );
@@ -12604,7 +12724,7 @@ export const IpamPrefixListResolverRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPrefixListResolverRuleRequest>;
 export type IpamPrefixListResolverRuleRequestSet = IpamPrefixListResolverRuleRequest[];
 export const IpamPrefixListResolverRuleRequestSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverRuleRequest.pipe(T.XmlName("Rule")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverRuleRequest.pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
     identifier: "IpamPrefixListResolverRuleRequest",
   }),
 );
@@ -12882,7 +13002,7 @@ export const IpamOrganizationalUnitExclusion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamOrganizationalUnitExclusion>;
 export type IpamOrganizationalUnitExclusionSet = IpamOrganizationalUnitExclusion[];
 export const IpamOrganizationalUnitExclusionSet = /*@__PURE__*/ S.Array(
-  IpamOrganizationalUnitExclusion.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamOrganizationalUnitExclusion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamOrganizationalUnitExclusion",
   }),
 );
@@ -12940,7 +13060,9 @@ export const CreateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpamResourceDiscoveryResult",
 }) as any as S.Schema<CreateIpamResourceDiscoveryResult>;
 export type AsnList = string[];
-export const AsnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AsnList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type IpamRoutingPolicyRegistrationMaxLength = number;
 export interface CreateIpamRoutingPolicyRegistrationRequest {
   DryRun?: boolean;
@@ -13202,13 +13324,15 @@ export const LaunchTemplateBlockDeviceMappingRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<LaunchTemplateBlockDeviceMappingRequest>;
 export type LaunchTemplateBlockDeviceMappingRequestList = LaunchTemplateBlockDeviceMappingRequest[];
 export const LaunchTemplateBlockDeviceMappingRequestList = /*@__PURE__*/ S.Array(
-  LaunchTemplateBlockDeviceMappingRequest.pipe(T.XmlName("BlockDeviceMapping")).annotate({
+  /*@__PURE__*/ LaunchTemplateBlockDeviceMappingRequest.pipe(
+    /*@__PURE__*/ T.XmlName("BlockDeviceMapping"),
+  ).annotate({
     identifier: "LaunchTemplateBlockDeviceMappingRequest",
   }),
 );
 export type SecurityGroupIdStringList = string[];
 export const SecurityGroupIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SecurityGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SecurityGroupId")),
 );
 export interface InstanceIpv6AddressRequest {
   Ipv6Address?: string;
@@ -13220,7 +13344,9 @@ export const InstanceIpv6AddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceIpv6AddressRequest>;
 export type InstanceIpv6AddressListRequest = InstanceIpv6AddressRequest[];
 export const InstanceIpv6AddressListRequest = /*@__PURE__*/ S.Array(
-  InstanceIpv6AddressRequest.pipe(T.XmlName("InstanceIpv6Address")).annotate({
+  /*@__PURE__*/ InstanceIpv6AddressRequest.pipe(
+    /*@__PURE__*/ T.XmlName("InstanceIpv6Address"),
+  ).annotate({
     identifier: "InstanceIpv6AddressRequest",
   }),
 );
@@ -13241,7 +13367,7 @@ export const PrivateIpAddressSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateIpAddressSpecification>;
 export type PrivateIpAddressSpecificationList = PrivateIpAddressSpecification[];
 export const PrivateIpAddressSpecificationList = /*@__PURE__*/ S.Array(
-  PrivateIpAddressSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PrivateIpAddressSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PrivateIpAddressSpecification",
   }),
 );
@@ -13255,7 +13381,7 @@ export const Ipv4PrefixSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ipv4PrefixSpecificationRequest>;
 export type Ipv4PrefixList = Ipv4PrefixSpecificationRequest[];
 export const Ipv4PrefixList = /*@__PURE__*/ S.Array(
-  Ipv4PrefixSpecificationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv4PrefixSpecificationRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv4PrefixSpecificationRequest",
   }),
 );
@@ -13269,7 +13395,7 @@ export const Ipv6PrefixSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ipv6PrefixSpecificationRequest>;
 export type Ipv6PrefixList = Ipv6PrefixSpecificationRequest[];
 export const Ipv6PrefixList = /*@__PURE__*/ S.Array(
-  Ipv6PrefixSpecificationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv6PrefixSpecificationRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv6PrefixSpecificationRequest",
   }),
 );
@@ -13365,8 +13491,8 @@ export const LaunchTemplateInstanceNetworkInterfaceSpecificationRequest = /*@__P
 export type LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList =
   LaunchTemplateInstanceNetworkInterfaceSpecificationRequest[];
 export const LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList = /*@__PURE__*/ S.Array(
-  LaunchTemplateInstanceNetworkInterfaceSpecificationRequest.pipe(
-    T.XmlName("InstanceNetworkInterfaceSpecification"),
+  /*@__PURE__*/ LaunchTemplateInstanceNetworkInterfaceSpecificationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("InstanceNetworkInterfaceSpecification"),
   ).annotate({ identifier: "LaunchTemplateInstanceNetworkInterfaceSpecificationRequest" }),
 );
 export type KeyPairName = string;
@@ -13424,8 +13550,8 @@ export const LaunchTemplateTagSpecificationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<LaunchTemplateTagSpecificationRequest>;
 export type LaunchTemplateTagSpecificationRequestList = LaunchTemplateTagSpecificationRequest[];
 export const LaunchTemplateTagSpecificationRequestList = /*@__PURE__*/ S.Array(
-  LaunchTemplateTagSpecificationRequest.pipe(
-    T.XmlName("LaunchTemplateTagSpecificationRequest"),
+  /*@__PURE__*/ LaunchTemplateTagSpecificationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("LaunchTemplateTagSpecificationRequest"),
   ).annotate({ identifier: "LaunchTemplateTagSpecificationRequest" }),
 );
 export interface ElasticGpuSpecification {
@@ -13436,7 +13562,9 @@ export const ElasticGpuSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticGpuSpecification" }) as any as S.Schema<ElasticGpuSpecification>;
 export type ElasticGpuSpecificationList = ElasticGpuSpecification[];
 export const ElasticGpuSpecificationList = /*@__PURE__*/ S.Array(
-  ElasticGpuSpecification.pipe(T.XmlName("ElasticGpuSpecification")).annotate({
+  /*@__PURE__*/ ElasticGpuSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("ElasticGpuSpecification"),
+  ).annotate({
     identifier: "ElasticGpuSpecification",
   }),
 );
@@ -13453,13 +13581,15 @@ export const LaunchTemplateElasticInferenceAccelerator = /*@__PURE__*/ S.suspend
 export type LaunchTemplateElasticInferenceAcceleratorList =
   LaunchTemplateElasticInferenceAccelerator[];
 export const LaunchTemplateElasticInferenceAcceleratorList = /*@__PURE__*/ S.Array(
-  LaunchTemplateElasticInferenceAccelerator.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateElasticInferenceAccelerator.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LaunchTemplateElasticInferenceAccelerator",
   }),
 );
 export type SecurityGroupStringList = string[];
 export const SecurityGroupStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SecurityGroup")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SecurityGroup")),
 );
 export type MarketType =
   | "spot"
@@ -13577,7 +13707,9 @@ export const LaunchTemplateLicenseConfigurationRequest = /*@__PURE__*/ S.suspend
 export type LaunchTemplateLicenseSpecificationListRequest =
   LaunchTemplateLicenseConfigurationRequest[];
 export const LaunchTemplateLicenseSpecificationListRequest = /*@__PURE__*/ S.Array(
-  LaunchTemplateLicenseConfigurationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateLicenseConfigurationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LaunchTemplateLicenseConfigurationRequest",
   }),
 );
@@ -13680,8 +13812,8 @@ export const SecondaryInterfacePrivateIpAddressSpecificationRequest = /*@__PURE_
 export type SecondaryInterfacePrivateIpAddressSpecificationListRequest =
   SecondaryInterfacePrivateIpAddressSpecificationRequest[];
 export const SecondaryInterfacePrivateIpAddressSpecificationListRequest = /*@__PURE__*/ S.Array(
-  SecondaryInterfacePrivateIpAddressSpecificationRequest.pipe(
-    T.XmlName("SecondaryInterfacePrivateIpAddressSpecification"),
+  /*@__PURE__*/ SecondaryInterfacePrivateIpAddressSpecificationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("SecondaryInterfacePrivateIpAddressSpecification"),
   ).annotate({ identifier: "SecondaryInterfacePrivateIpAddressSpecificationRequest" }),
 );
 export type SecondarySubnetId = string;
@@ -13717,8 +13849,8 @@ export type LaunchTemplateInstanceSecondaryInterfaceSpecificationRequestList =
   LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest[];
 export const LaunchTemplateInstanceSecondaryInterfaceSpecificationRequestList =
   /*@__PURE__*/ S.Array(
-    LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest.pipe(
-      T.XmlName("InstanceSecondaryInterfaceSpecification"),
+    /*@__PURE__*/ LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest.pipe(
+      /*@__PURE__*/ T.XmlName("InstanceSecondaryInterfaceSpecification"),
     ).annotate({ identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest" }),
   );
 export interface RequestLaunchTemplateData {
@@ -13886,7 +14018,9 @@ export const ValidationError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidationError" }) as any as S.Schema<ValidationError>;
 export type ErrorSet = ValidationError[];
 export const ErrorSet = /*@__PURE__*/ S.Array(
-  ValidationError.pipe(T.XmlName("item")).annotate({ identifier: "ValidationError" }),
+  /*@__PURE__*/ ValidationError.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ValidationError",
+  }),
 );
 export interface ValidationWarning {
   Errors?: ValidationError[];
@@ -14005,7 +14139,7 @@ export const LaunchTemplateBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateBlockDeviceMapping>;
 export type LaunchTemplateBlockDeviceMappingList = LaunchTemplateBlockDeviceMapping[];
 export const LaunchTemplateBlockDeviceMappingList = /*@__PURE__*/ S.Array(
-  LaunchTemplateBlockDeviceMapping.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateBlockDeviceMapping.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LaunchTemplateBlockDeviceMapping",
   }),
 );
@@ -14024,7 +14158,9 @@ export const InstanceIpv6Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceIpv6Address" }) as any as S.Schema<InstanceIpv6Address>;
 export type InstanceIpv6AddressList = InstanceIpv6Address[];
 export const InstanceIpv6AddressList = /*@__PURE__*/ S.Array(
-  InstanceIpv6Address.pipe(T.XmlName("item")).annotate({ identifier: "InstanceIpv6Address" }),
+  /*@__PURE__*/ InstanceIpv6Address.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceIpv6Address",
+  }),
 );
 export interface Ipv4PrefixSpecificationResponse {
   Ipv4Prefix?: string;
@@ -14038,7 +14174,7 @@ export const Ipv4PrefixSpecificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ipv4PrefixSpecificationResponse>;
 export type Ipv4PrefixListResponse = Ipv4PrefixSpecificationResponse[];
 export const Ipv4PrefixListResponse = /*@__PURE__*/ S.Array(
-  Ipv4PrefixSpecificationResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv4PrefixSpecificationResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv4PrefixSpecificationResponse",
   }),
 );
@@ -14054,7 +14190,7 @@ export const Ipv6PrefixSpecificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ipv6PrefixSpecificationResponse>;
 export type Ipv6PrefixListResponse = Ipv6PrefixSpecificationResponse[];
 export const Ipv6PrefixListResponse = /*@__PURE__*/ S.Array(
-  Ipv6PrefixSpecificationResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv6PrefixSpecificationResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv6PrefixSpecificationResponse",
   }),
 );
@@ -14223,7 +14359,9 @@ export const LaunchTemplateInstanceNetworkInterfaceSpecification = /*@__PURE__*/
 export type LaunchTemplateInstanceNetworkInterfaceSpecificationList =
   LaunchTemplateInstanceNetworkInterfaceSpecification[];
 export const LaunchTemplateInstanceNetworkInterfaceSpecificationList = /*@__PURE__*/ S.Array(
-  LaunchTemplateInstanceNetworkInterfaceSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateInstanceNetworkInterfaceSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LaunchTemplateInstanceNetworkInterfaceSpecification",
   }),
 );
@@ -14295,7 +14433,7 @@ export const LaunchTemplateTagSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateTagSpecification>;
 export type LaunchTemplateTagSpecificationList = LaunchTemplateTagSpecification[];
 export const LaunchTemplateTagSpecificationList = /*@__PURE__*/ S.Array(
-  LaunchTemplateTagSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateTagSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LaunchTemplateTagSpecification",
   }),
 );
@@ -14309,7 +14447,7 @@ export const ElasticGpuSpecificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticGpuSpecificationResponse>;
 export type ElasticGpuSpecificationResponseList = ElasticGpuSpecificationResponse[];
 export const ElasticGpuSpecificationResponseList = /*@__PURE__*/ S.Array(
-  ElasticGpuSpecificationResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ElasticGpuSpecificationResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ElasticGpuSpecificationResponse",
   }),
 );
@@ -14328,7 +14466,9 @@ export const LaunchTemplateElasticInferenceAcceleratorResponse = /*@__PURE__*/ S
 export type LaunchTemplateElasticInferenceAcceleratorResponseList =
   LaunchTemplateElasticInferenceAcceleratorResponse[];
 export const LaunchTemplateElasticInferenceAcceleratorResponseList = /*@__PURE__*/ S.Array(
-  LaunchTemplateElasticInferenceAcceleratorResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateElasticInferenceAcceleratorResponse.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LaunchTemplateElasticInferenceAcceleratorResponse",
   }),
 );
@@ -14457,7 +14597,7 @@ export const LaunchTemplateLicenseConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateLicenseConfiguration>;
 export type LaunchTemplateLicenseList = LaunchTemplateLicenseConfiguration[];
 export const LaunchTemplateLicenseList = /*@__PURE__*/ S.Array(
-  LaunchTemplateLicenseConfiguration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateLicenseConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LaunchTemplateLicenseConfiguration",
   }),
 );
@@ -14587,7 +14727,9 @@ export const SecondaryInterfacePrivateIpAddressSpecification = /*@__PURE__*/ S.s
 export type SecondaryInterfacePrivateIpAddressSpecificationList =
   SecondaryInterfacePrivateIpAddressSpecification[];
 export const SecondaryInterfacePrivateIpAddressSpecificationList = /*@__PURE__*/ S.Array(
-  SecondaryInterfacePrivateIpAddressSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecondaryInterfacePrivateIpAddressSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "SecondaryInterfacePrivateIpAddressSpecification",
   }),
 );
@@ -14634,7 +14776,9 @@ export const LaunchTemplateInstanceSecondaryInterfaceSpecification = /*@__PURE__
 export type LaunchTemplateInstanceSecondaryInterfaceSpecificationList =
   LaunchTemplateInstanceSecondaryInterfaceSpecification[];
 export const LaunchTemplateInstanceSecondaryInterfaceSpecificationList = /*@__PURE__*/ S.Array(
-  LaunchTemplateInstanceSecondaryInterfaceSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateInstanceSecondaryInterfaceSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecification",
   }),
 );
@@ -15297,7 +15441,7 @@ export const CreateLocalGatewayVirtualInterfaceGroupRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateLocalGatewayVirtualInterfaceGroupRequest>;
 export type LocalGatewayVirtualInterfaceIdSet = string[];
 export const LocalGatewayVirtualInterfaceIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type LocalGatewayVirtualInterfaceGroupConfigurationState =
   | "pending"
@@ -15554,7 +15698,9 @@ export const AvailabilityZoneAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailabilityZoneAddress" }) as any as S.Schema<AvailabilityZoneAddress>;
 export type AvailabilityZoneAddresses = AvailabilityZoneAddress[];
 export const AvailabilityZoneAddresses = /*@__PURE__*/ S.Array(
-  AvailabilityZoneAddress.pipe(T.XmlName("AvailabilityZoneAddress")).annotate({
+  /*@__PURE__*/ AvailabilityZoneAddress.pipe(
+    /*@__PURE__*/ T.XmlName("AvailabilityZoneAddress"),
+  ).annotate({
     identifier: "AvailabilityZoneAddress",
   }),
 );
@@ -15687,7 +15833,7 @@ export const NatGatewayAttachedAppliance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NatGatewayAttachedAppliance>;
 export type NatGatewayAttachedApplianceList = NatGatewayAttachedAppliance[];
 export const NatGatewayAttachedApplianceList = /*@__PURE__*/ S.Array(
-  NatGatewayAttachedAppliance.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NatGatewayAttachedAppliance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NatGatewayAttachedAppliance",
   }),
 );
@@ -15812,7 +15958,9 @@ export const NetworkAclAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAclAssociation" }) as any as S.Schema<NetworkAclAssociation>;
 export type NetworkAclAssociationList = NetworkAclAssociation[];
 export const NetworkAclAssociationList = /*@__PURE__*/ S.Array(
-  NetworkAclAssociation.pipe(T.XmlName("item")).annotate({ identifier: "NetworkAclAssociation" }),
+  /*@__PURE__*/ NetworkAclAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkAclAssociation",
+  }),
 );
 export interface IcmpTypeCode {
   Code?: number;
@@ -15868,7 +16016,9 @@ export const NetworkAclEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAclEntry" }) as any as S.Schema<NetworkAclEntry>;
 export type NetworkAclEntryList = NetworkAclEntry[];
 export const NetworkAclEntryList = /*@__PURE__*/ S.Array(
-  NetworkAclEntry.pipe(T.XmlName("item")).annotate({ identifier: "NetworkAclEntry" }),
+  /*@__PURE__*/ NetworkAclEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkAclEntry",
+  }),
 );
 export interface NetworkAcl {
   Associations?: NetworkAclAssociation[];
@@ -15960,7 +16110,9 @@ export type Protocol = "tcp" | "udp" | (string & {});
 export const Protocol = S.String;
 
 export type ProtocolList = Protocol[];
-export const ProtocolList = /*@__PURE__*/ S.Array(Protocol.pipe(T.XmlName("item")));
+export const ProtocolList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ Protocol.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface PacketHeaderStatementRequest {
   SourceAddresses?: string[];
   DestinationAddresses?: string[];
@@ -16013,7 +16165,7 @@ export const ThroughResourcesStatementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThroughResourcesStatementRequest>;
 export type ThroughResourcesStatementRequestList = ThroughResourcesStatementRequest[];
 export const ThroughResourcesStatementRequestList = /*@__PURE__*/ S.Array(
-  ThroughResourcesStatementRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ThroughResourcesStatementRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ThroughResourcesStatementRequest",
   }),
 );
@@ -16033,7 +16185,9 @@ export const AccessScopePathRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessScopePathRequest" }) as any as S.Schema<AccessScopePathRequest>;
 export type AccessScopePathListRequest = AccessScopePathRequest[];
 export const AccessScopePathListRequest = /*@__PURE__*/ S.Array(
-  AccessScopePathRequest.pipe(T.XmlName("item")).annotate({ identifier: "AccessScopePathRequest" }),
+  /*@__PURE__*/ AccessScopePathRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AccessScopePathRequest",
+  }),
 );
 export interface CreateNetworkInsightsAccessScopeRequest {
   MatchPaths?: AccessScopePathRequest[];
@@ -16169,7 +16323,7 @@ export const ThroughResourcesStatement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThroughResourcesStatement>;
 export type ThroughResourcesStatementList = ThroughResourcesStatement[];
 export const ThroughResourcesStatementList = /*@__PURE__*/ S.Array(
-  ThroughResourcesStatement.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ThroughResourcesStatement.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ThroughResourcesStatement",
   }),
 );
@@ -16194,7 +16348,9 @@ export const AccessScopePath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessScopePath" }) as any as S.Schema<AccessScopePath>;
 export type AccessScopePathList = AccessScopePath[];
 export const AccessScopePathList = /*@__PURE__*/ S.Array(
-  AccessScopePath.pipe(T.XmlName("item")).annotate({ identifier: "AccessScopePath" }),
+  /*@__PURE__*/ AccessScopePath.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AccessScopePath",
+  }),
 );
 export interface NetworkInsightsAccessScopeContent {
   NetworkInsightsAccessScopeId?: string;
@@ -16603,7 +16759,9 @@ export const GroupIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupIdentifier" }) as any as S.Schema<GroupIdentifier>;
 export type GroupIdentifierList = GroupIdentifier[];
 export const GroupIdentifierList = /*@__PURE__*/ S.Array(
-  GroupIdentifier.pipe(T.XmlName("item")).annotate({ identifier: "GroupIdentifier" }),
+  /*@__PURE__*/ GroupIdentifier.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "GroupIdentifier",
+  }),
 );
 export type NetworkInterfaceType =
   | "interface"
@@ -16649,7 +16807,7 @@ export const NetworkInterfaceIpv6Address = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceIpv6Address>;
 export type NetworkInterfaceIpv6AddressesList = NetworkInterfaceIpv6Address[];
 export const NetworkInterfaceIpv6AddressesList = /*@__PURE__*/ S.Array(
-  NetworkInterfaceIpv6Address.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInterfaceIpv6Address.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInterfaceIpv6Address",
   }),
 );
@@ -16705,7 +16863,7 @@ export const NetworkInterfacePrivateIpAddress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacePrivateIpAddress>;
 export type NetworkInterfacePrivateIpAddressList = NetworkInterfacePrivateIpAddress[];
 export const NetworkInterfacePrivateIpAddressList = /*@__PURE__*/ S.Array(
-  NetworkInterfacePrivateIpAddress.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInterfacePrivateIpAddress.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInterfacePrivateIpAddress",
   }),
 );
@@ -16719,7 +16877,7 @@ export const Ipv6PrefixSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6PrefixSpecification" }) as any as S.Schema<Ipv6PrefixSpecification>;
 export type Ipv6PrefixesList = Ipv6PrefixSpecification[];
 export const Ipv6PrefixesList = /*@__PURE__*/ S.Array(
-  Ipv6PrefixSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ipv6PrefixSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ipv6PrefixSpecification",
   }),
 );
@@ -16733,7 +16891,9 @@ export type NetworkInterfaceStatus =
 export const NetworkInterfaceStatus = S.String;
 
 export type AssociatedSubnetList = string[];
-export const AssociatedSubnetList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AssociatedSubnetList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface NetworkInterface {
   Association?: NetworkInterfaceAssociation;
   Attachment?: NetworkInterfaceAttachment;
@@ -17191,7 +17351,7 @@ export const PriceScheduleSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PriceScheduleSpecification>;
 export type PriceScheduleSpecificationList = PriceScheduleSpecification[];
 export const PriceScheduleSpecificationList = /*@__PURE__*/ S.Array(
-  PriceScheduleSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PriceScheduleSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PriceScheduleSpecification",
   }),
 );
@@ -17693,7 +17853,9 @@ export const RouteTableAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteTableAssociation" }) as any as S.Schema<RouteTableAssociation>;
 export type RouteTableAssociationList = RouteTableAssociation[];
 export const RouteTableAssociationList = /*@__PURE__*/ S.Array(
-  RouteTableAssociation.pipe(T.XmlName("item")).annotate({ identifier: "RouteTableAssociation" }),
+  /*@__PURE__*/ RouteTableAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteTableAssociation",
+  }),
 );
 export interface PropagatingVgw {
   GatewayId?: string;
@@ -17705,7 +17867,9 @@ export const PropagatingVgw = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropagatingVgw" }) as any as S.Schema<PropagatingVgw>;
 export type PropagatingVgwList = PropagatingVgw[];
 export const PropagatingVgwList = /*@__PURE__*/ S.Array(
-  PropagatingVgw.pipe(T.XmlName("item")).annotate({ identifier: "PropagatingVgw" }),
+  /*@__PURE__*/ PropagatingVgw.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PropagatingVgw",
+  }),
 );
 export type RouteOrigin =
   | "CreateRouteTable"
@@ -17801,7 +17965,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 export type RouteList = Route[];
 export const RouteList = /*@__PURE__*/ S.Array(
-  Route.pipe(T.XmlName("item")).annotate({ identifier: "Route" }),
+  /*@__PURE__*/ Route.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Route" }),
 );
 export interface RouteTable {
   Associations?: RouteTableAssociation[];
@@ -17912,7 +18076,9 @@ export const SecondaryNetworkIpv4CidrBlockAssociation = /*@__PURE__*/ S.suspend(
 export type SecondaryNetworkIpv4CidrBlockAssociationList =
   SecondaryNetworkIpv4CidrBlockAssociation[];
 export const SecondaryNetworkIpv4CidrBlockAssociationList = /*@__PURE__*/ S.Array(
-  SecondaryNetworkIpv4CidrBlockAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecondaryNetworkIpv4CidrBlockAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "SecondaryNetworkIpv4CidrBlockAssociation",
   }),
 );
@@ -18018,7 +18184,9 @@ export const SecondarySubnetIpv4CidrBlockAssociation = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SecondarySubnetIpv4CidrBlockAssociation>;
 export type SecondarySubnetIpv4CidrBlockAssociationList = SecondarySubnetIpv4CidrBlockAssociation[];
 export const SecondarySubnetIpv4CidrBlockAssociationList = /*@__PURE__*/ S.Array(
-  SecondarySubnetIpv4CidrBlockAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecondarySubnetIpv4CidrBlockAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "SecondarySubnetIpv4CidrBlockAssociation",
   }),
 );
@@ -18248,7 +18416,9 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 export type InstanceIdWithVolumeResolver = string;
 export type VolumeIdStringList = string[];
-export const VolumeIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("VolumeId")));
+export const VolumeIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VolumeId")),
+);
 export interface InstanceSpecification {
   InstanceId?: string;
   ExcludeBootVolume?: boolean;
@@ -18324,7 +18494,9 @@ export const SnapshotInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotInfo" }) as any as S.Schema<SnapshotInfo>;
 export type SnapshotSet = SnapshotInfo[];
 export const SnapshotSet = /*@__PURE__*/ S.Array(
-  SnapshotInfo.pipe(T.XmlName("item")).annotate({ identifier: "SnapshotInfo" }),
+  /*@__PURE__*/ SnapshotInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SnapshotInfo",
+  }),
 );
 export interface CreateSnapshotsResult {
   Snapshots?: SnapshotInfo[];
@@ -18403,7 +18575,9 @@ export const S3ObjectTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3ObjectTag" }) as any as S.Schema<S3ObjectTag>;
 export type S3ObjectTagList = S3ObjectTag[];
 export const S3ObjectTagList = /*@__PURE__*/ S.Array(
-  S3ObjectTag.pipe(T.XmlName("item")).annotate({ identifier: "S3ObjectTag" }),
+  /*@__PURE__*/ S3ObjectTag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "S3ObjectTag",
+  }),
 );
 export interface CreateStoreImageTaskRequest {
   ImageId?: string;
@@ -18640,7 +18814,7 @@ export const TrafficMirrorFilterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficMirrorFilterRule" }) as any as S.Schema<TrafficMirrorFilterRule>;
 export type TrafficMirrorFilterRuleList = TrafficMirrorFilterRule[];
 export const TrafficMirrorFilterRuleList = /*@__PURE__*/ S.Array(
-  TrafficMirrorFilterRule.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TrafficMirrorFilterRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TrafficMirrorFilterRule",
   }),
 );
@@ -18649,7 +18823,7 @@ export const TrafficMirrorNetworkService = S.String;
 
 export type TrafficMirrorNetworkServiceList = TrafficMirrorNetworkService[];
 export const TrafficMirrorNetworkServiceList = /*@__PURE__*/ S.Array(
-  TrafficMirrorNetworkService.pipe(T.XmlName("item")),
+  /*@__PURE__*/ TrafficMirrorNetworkService.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface TrafficMirrorFilter {
   TrafficMirrorFilterId?: string;
@@ -18937,7 +19111,7 @@ export const MulticastSupportValue = S.String;
 
 export type TransitGatewayCidrBlockStringList = string[];
 export const TransitGatewayCidrBlockStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface TransitGatewayRequestOptions {
   AmazonSideAsn?: number;
@@ -19219,7 +19393,9 @@ export const TransitGatewayConnectRequestBgpOptions = /*@__PURE__*/ S.suspend(()
   identifier: "TransitGatewayConnectRequestBgpOptions",
 }) as any as S.Schema<TransitGatewayConnectRequestBgpOptions>;
 export type InsideCidrBlocksStringList = string[];
-export const InsideCidrBlocksStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InsideCidrBlocksStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface CreateTransitGatewayConnectPeerRequest {
   TransitGatewayAttachmentId?: string;
   TransitGatewayAddress?: string;
@@ -19281,7 +19457,9 @@ export const TransitGatewayAttachmentBgpConfiguration = /*@__PURE__*/ S.suspend(
 export type TransitGatewayAttachmentBgpConfigurationList =
   TransitGatewayAttachmentBgpConfiguration[];
 export const TransitGatewayAttachmentBgpConfigurationList = /*@__PURE__*/ S.Array(
-  TransitGatewayAttachmentBgpConfiguration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayAttachmentBgpConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "TransitGatewayAttachmentBgpConfiguration",
   }),
 );
@@ -20095,7 +20273,7 @@ export const TransitGatewayRouteAttachment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitGatewayRouteAttachment>;
 export type TransitGatewayRouteAttachmentList = TransitGatewayRouteAttachment[];
 export const TransitGatewayRouteAttachmentList = /*@__PURE__*/ S.Array(
-  TransitGatewayRouteAttachment.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayRouteAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayRouteAttachment",
   }),
 );
@@ -20391,7 +20569,9 @@ export const VerifiedAccessEndpointAttachmentType = S.String;
 
 export type CertificateArn = string;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecurityGroupIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VerifiedAccessEndpointProtocol = "http" | "https" | "tcp" | (string & {});
 export const VerifiedAccessEndpointProtocol = S.String;
 
@@ -20399,7 +20579,7 @@ export type VerifiedAccessEndpointPortNumber = number;
 export type LoadBalancerArn = string;
 export type CreateVerifiedAccessEndpointSubnetIdList = string[];
 export const CreateVerifiedAccessEndpointSubnetIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface CreateVerifiedAccessEndpointPortRange {
   FromPort?: number;
@@ -20412,7 +20592,9 @@ export const CreateVerifiedAccessEndpointPortRange = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateVerifiedAccessEndpointPortRange>;
 export type CreateVerifiedAccessEndpointPortRangeList = CreateVerifiedAccessEndpointPortRange[];
 export const CreateVerifiedAccessEndpointPortRangeList = /*@__PURE__*/ S.Array(
-  CreateVerifiedAccessEndpointPortRange.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CreateVerifiedAccessEndpointPortRange.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "CreateVerifiedAccessEndpointPortRange",
   }),
 );
@@ -20544,7 +20726,7 @@ export const CreateVerifiedAccessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVerifiedAccessEndpointRequest>;
 export type VerifiedAccessEndpointSubnetIdList = string[];
 export const VerifiedAccessEndpointSubnetIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface VerifiedAccessEndpointPortRange {
   FromPort?: number;
@@ -20560,7 +20742,7 @@ export const VerifiedAccessEndpointPortRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifiedAccessEndpointPortRange>;
 export type VerifiedAccessEndpointPortRangeList = VerifiedAccessEndpointPortRange[];
 export const VerifiedAccessEndpointPortRangeList = /*@__PURE__*/ S.Array(
-  VerifiedAccessEndpointPortRange.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessEndpointPortRange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VerifiedAccessEndpointPortRange",
   }),
 );
@@ -21271,18 +21453,24 @@ export type VpcEndpointType =
 export const VpcEndpointType = S.String;
 
 export type VpcEndpointRouteTableIdList = string[];
-export const VpcEndpointRouteTableIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcEndpointRouteTableIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VpcEndpointSubnetIdList = string[];
-export const VpcEndpointSubnetIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcEndpointSubnetIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VpcEndpointSecurityGroupIdList = string[];
 export const VpcEndpointSecurityGroupIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DnsRecordIpType = "ipv4" | "dualstack" | "ipv6" | "service-defined" | (string & {});
 export const DnsRecordIpType = S.String;
 
 export type PrivateDnsSpecifiedDomainSet = string[];
-export const PrivateDnsSpecifiedDomainSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PrivateDnsSpecifiedDomainSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DnsOptionsSpecification {
   DnsRecordIpType?: DnsRecordIpType;
   PrivateDnsOnlyForInboundResolverEndpoint?: boolean;
@@ -21313,7 +21501,9 @@ export const SubnetConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubnetConfiguration" }) as any as S.Schema<SubnetConfiguration>;
 export type SubnetConfigurationsList = SubnetConfiguration[];
 export const SubnetConfigurationsList = /*@__PURE__*/ S.Array(
-  SubnetConfiguration.pipe(T.XmlName("item")).annotate({ identifier: "SubnetConfiguration" }),
+  /*@__PURE__*/ SubnetConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SubnetConfiguration",
+  }),
 );
 export type ServiceNetworkArn = string;
 export type ResourceConfigurationArn = string;
@@ -21384,7 +21574,7 @@ export const SecurityGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroupIdentifier" }) as any as S.Schema<SecurityGroupIdentifier>;
 export type GroupIdentifierSet = SecurityGroupIdentifier[];
 export const GroupIdentifierSet = /*@__PURE__*/ S.Array(
-  SecurityGroupIdentifier.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecurityGroupIdentifier.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SecurityGroupIdentifier",
   }),
 );
@@ -21429,7 +21619,7 @@ export const DnsEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsEntry" }) as any as S.Schema<DnsEntry>;
 export type DnsEntrySet = DnsEntry[];
 export const DnsEntrySet = /*@__PURE__*/ S.Array(
-  DnsEntry.pipe(T.XmlName("item")).annotate({ identifier: "DnsEntry" }),
+  /*@__PURE__*/ DnsEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "DnsEntry" }),
 );
 export interface LastError {
   Message?: string;
@@ -21456,7 +21646,9 @@ export const SubnetIpPrefixes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubnetIpPrefixes" }) as any as S.Schema<SubnetIpPrefixes>;
 export type SubnetIpPrefixesList = SubnetIpPrefixes[];
 export const SubnetIpPrefixesList = /*@__PURE__*/ S.Array(
-  SubnetIpPrefixes.pipe(T.XmlName("item")).annotate({ identifier: "SubnetIpPrefixes" }),
+  /*@__PURE__*/ SubnetIpPrefixes.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SubnetIpPrefixes",
+  }),
 );
 export type PayerResponsibilityScope =
   | "vpc-endpoint-charges"
@@ -21486,7 +21678,7 @@ export const PayerResponsibilityEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayerResponsibilityEntry" }) as any as S.Schema<PayerResponsibilityEntry>;
 export type PayerResponsibilitySet = PayerResponsibilityEntry[];
 export const PayerResponsibilitySet = /*@__PURE__*/ S.Array(
-  PayerResponsibilityEntry.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PayerResponsibilityEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PayerResponsibilityEntry",
   }),
 );
@@ -21743,7 +21935,9 @@ export const ServiceTypeDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceTypeDetail" }) as any as S.Schema<ServiceTypeDetail>;
 export type ServiceTypeDetailSet = ServiceTypeDetail[];
 export const ServiceTypeDetailSet = /*@__PURE__*/ S.Array(
-  ServiceTypeDetail.pipe(T.XmlName("item")).annotate({ identifier: "ServiceTypeDetail" }),
+  /*@__PURE__*/ ServiceTypeDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ServiceTypeDetail",
+  }),
 );
 export type ServiceState =
   | "Pending"
@@ -21759,7 +21953,7 @@ export const ServiceConnectivityType = S.String;
 
 export type SupportedIpAddressTypes = ServiceConnectivityType[];
 export const SupportedIpAddressTypes = /*@__PURE__*/ S.Array(
-  ServiceConnectivityType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ ServiceConnectivityType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DnsNameState = "pendingVerification" | "verified" | "failed" | (string & {});
 export const DnsNameState = S.String;
@@ -21798,7 +21992,9 @@ export const SupportedRegionDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportedRegionDetail" }) as any as S.Schema<SupportedRegionDetail>;
 export type SupportedRegionSet = SupportedRegionDetail[];
 export const SupportedRegionSet = /*@__PURE__*/ S.Array(
-  SupportedRegionDetail.pipe(T.XmlName("item")).annotate({ identifier: "SupportedRegionDetail" }),
+  /*@__PURE__*/ SupportedRegionDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SupportedRegionDetail",
+  }),
 );
 export interface ServiceConfiguration {
   ServiceType?: ServiceTypeDetail[];
@@ -22006,7 +22202,9 @@ export const Phase1EncryptionAlgorithmsRequestListValue = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<Phase1EncryptionAlgorithmsRequestListValue>;
 export type Phase1EncryptionAlgorithmsRequestList = Phase1EncryptionAlgorithmsRequestListValue[];
 export const Phase1EncryptionAlgorithmsRequestList = /*@__PURE__*/ S.Array(
-  Phase1EncryptionAlgorithmsRequestListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase1EncryptionAlgorithmsRequestListValue.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "Phase1EncryptionAlgorithmsRequestListValue",
   }),
 );
@@ -22020,7 +22218,9 @@ export const Phase2EncryptionAlgorithmsRequestListValue = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<Phase2EncryptionAlgorithmsRequestListValue>;
 export type Phase2EncryptionAlgorithmsRequestList = Phase2EncryptionAlgorithmsRequestListValue[];
 export const Phase2EncryptionAlgorithmsRequestList = /*@__PURE__*/ S.Array(
-  Phase2EncryptionAlgorithmsRequestListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase2EncryptionAlgorithmsRequestListValue.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "Phase2EncryptionAlgorithmsRequestListValue",
   }),
 );
@@ -22034,7 +22234,9 @@ export const Phase1IntegrityAlgorithmsRequestListValue = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<Phase1IntegrityAlgorithmsRequestListValue>;
 export type Phase1IntegrityAlgorithmsRequestList = Phase1IntegrityAlgorithmsRequestListValue[];
 export const Phase1IntegrityAlgorithmsRequestList = /*@__PURE__*/ S.Array(
-  Phase1IntegrityAlgorithmsRequestListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase1IntegrityAlgorithmsRequestListValue.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "Phase1IntegrityAlgorithmsRequestListValue",
   }),
 );
@@ -22048,7 +22250,9 @@ export const Phase2IntegrityAlgorithmsRequestListValue = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<Phase2IntegrityAlgorithmsRequestListValue>;
 export type Phase2IntegrityAlgorithmsRequestList = Phase2IntegrityAlgorithmsRequestListValue[];
 export const Phase2IntegrityAlgorithmsRequestList = /*@__PURE__*/ S.Array(
-  Phase2IntegrityAlgorithmsRequestListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase2IntegrityAlgorithmsRequestListValue.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "Phase2IntegrityAlgorithmsRequestListValue",
   }),
 );
@@ -22062,9 +22266,11 @@ export const Phase1DHGroupNumbersRequestListValue = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<Phase1DHGroupNumbersRequestListValue>;
 export type Phase1DHGroupNumbersRequestList = Phase1DHGroupNumbersRequestListValue[];
 export const Phase1DHGroupNumbersRequestList = /*@__PURE__*/ S.Array(
-  Phase1DHGroupNumbersRequestListValue.pipe(T.XmlName("item")).annotate({
-    identifier: "Phase1DHGroupNumbersRequestListValue",
-  }),
+  /*@__PURE__*/ Phase1DHGroupNumbersRequestListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "Phase1DHGroupNumbersRequestListValue",
+    },
+  ),
 );
 export interface Phase2DHGroupNumbersRequestListValue {
   Value?: number;
@@ -22076,9 +22282,11 @@ export const Phase2DHGroupNumbersRequestListValue = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<Phase2DHGroupNumbersRequestListValue>;
 export type Phase2DHGroupNumbersRequestList = Phase2DHGroupNumbersRequestListValue[];
 export const Phase2DHGroupNumbersRequestList = /*@__PURE__*/ S.Array(
-  Phase2DHGroupNumbersRequestListValue.pipe(T.XmlName("item")).annotate({
-    identifier: "Phase2DHGroupNumbersRequestListValue",
-  }),
+  /*@__PURE__*/ Phase2DHGroupNumbersRequestListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "Phase2DHGroupNumbersRequestListValue",
+    },
+  ),
 );
 export interface IKEVersionsRequestListValue {
   Value?: string;
@@ -22090,7 +22298,7 @@ export const IKEVersionsRequestListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IKEVersionsRequestListValue>;
 export type IKEVersionsRequestList = IKEVersionsRequestListValue[];
 export const IKEVersionsRequestList = /*@__PURE__*/ S.Array(
-  IKEVersionsRequestListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IKEVersionsRequestListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IKEVersionsRequestListValue",
   }),
 );
@@ -22269,7 +22477,7 @@ export const Phase1EncryptionAlgorithmsListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase1EncryptionAlgorithmsListValue>;
 export type Phase1EncryptionAlgorithmsList = Phase1EncryptionAlgorithmsListValue[];
 export const Phase1EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  Phase1EncryptionAlgorithmsListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase1EncryptionAlgorithmsListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase1EncryptionAlgorithmsListValue",
   }),
 );
@@ -22283,7 +22491,7 @@ export const Phase2EncryptionAlgorithmsListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase2EncryptionAlgorithmsListValue>;
 export type Phase2EncryptionAlgorithmsList = Phase2EncryptionAlgorithmsListValue[];
 export const Phase2EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  Phase2EncryptionAlgorithmsListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase2EncryptionAlgorithmsListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase2EncryptionAlgorithmsListValue",
   }),
 );
@@ -22297,7 +22505,7 @@ export const Phase1IntegrityAlgorithmsListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase1IntegrityAlgorithmsListValue>;
 export type Phase1IntegrityAlgorithmsList = Phase1IntegrityAlgorithmsListValue[];
 export const Phase1IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  Phase1IntegrityAlgorithmsListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase1IntegrityAlgorithmsListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase1IntegrityAlgorithmsListValue",
   }),
 );
@@ -22311,7 +22519,7 @@ export const Phase2IntegrityAlgorithmsListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase2IntegrityAlgorithmsListValue>;
 export type Phase2IntegrityAlgorithmsList = Phase2IntegrityAlgorithmsListValue[];
 export const Phase2IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  Phase2IntegrityAlgorithmsListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase2IntegrityAlgorithmsListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase2IntegrityAlgorithmsListValue",
   }),
 );
@@ -22325,7 +22533,7 @@ export const Phase1DHGroupNumbersListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase1DHGroupNumbersListValue>;
 export type Phase1DHGroupNumbersList = Phase1DHGroupNumbersListValue[];
 export const Phase1DHGroupNumbersList = /*@__PURE__*/ S.Array(
-  Phase1DHGroupNumbersListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase1DHGroupNumbersListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase1DHGroupNumbersListValue",
   }),
 );
@@ -22339,7 +22547,7 @@ export const Phase2DHGroupNumbersListValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Phase2DHGroupNumbersListValue>;
 export type Phase2DHGroupNumbersList = Phase2DHGroupNumbersListValue[];
 export const Phase2DHGroupNumbersList = /*@__PURE__*/ S.Array(
-  Phase2DHGroupNumbersListValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Phase2DHGroupNumbersListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Phase2DHGroupNumbersListValue",
   }),
 );
@@ -22351,7 +22559,9 @@ export const IKEVersionsListValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IKEVersionsListValue" }) as any as S.Schema<IKEVersionsListValue>;
 export type IKEVersionsList = IKEVersionsListValue[];
 export const IKEVersionsList = /*@__PURE__*/ S.Array(
-  IKEVersionsListValue.pipe(T.XmlName("item")).annotate({ identifier: "IKEVersionsListValue" }),
+  /*@__PURE__*/ IKEVersionsListValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IKEVersionsListValue",
+  }),
 );
 export interface CloudWatchLogOptions {
   LogEnabled?: boolean;
@@ -22505,7 +22715,9 @@ export const TunnelOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TunnelOption" }) as any as S.Schema<TunnelOption>;
 export type TunnelOptionsList = TunnelOption[];
 export const TunnelOptionsList = /*@__PURE__*/ S.Array(
-  TunnelOption.pipe(T.XmlName("item")).annotate({ identifier: "TunnelOption" }),
+  /*@__PURE__*/ TunnelOption.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TunnelOption",
+  }),
 );
 export interface VpnConnectionOptions {
   EnableAcceleration?: boolean;
@@ -22591,7 +22803,9 @@ export const VpnStaticRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnStaticRoute" }) as any as S.Schema<VpnStaticRoute>;
 export type VpnStaticRouteList = VpnStaticRoute[];
 export const VpnStaticRouteList = /*@__PURE__*/ S.Array(
-  VpnStaticRoute.pipe(T.XmlName("item")).annotate({ identifier: "VpnStaticRoute" }),
+  /*@__PURE__*/ VpnStaticRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpnStaticRoute",
+  }),
 );
 export type TelemetryStatus = "UP" | "DOWN" | (string & {});
 export const TelemetryStatus = S.String;
@@ -22631,7 +22845,9 @@ export const VgwTelemetry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VgwTelemetry" }) as any as S.Schema<VgwTelemetry>;
 export type VgwTelemetryList = VgwTelemetry[];
 export const VgwTelemetryList = /*@__PURE__*/ S.Array(
-  VgwTelemetry.pipe(T.XmlName("item")).annotate({ identifier: "VgwTelemetry" }),
+  /*@__PURE__*/ VgwTelemetry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VgwTelemetry",
+  }),
 );
 export type CustomerGatewayConfiguration = string | redacted.Redacted<string>;
 export interface VpnConnection {
@@ -22758,7 +22974,9 @@ export const CreateVpnGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVpnGatewayRequest" }) as any as S.Schema<CreateVpnGatewayRequest>;
 export type VpcAttachmentList = VpcAttachment[];
 export const VpcAttachmentList = /*@__PURE__*/ S.Array(
-  VpcAttachment.pipe(T.XmlName("item")).annotate({ identifier: "VpcAttachment" }),
+  /*@__PURE__*/ VpcAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcAttachment",
+  }),
 );
 export interface VpnGateway {
   AmazonSideAsn?: number;
@@ -23103,7 +23321,9 @@ export const DeleteFleetSuccessItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFleetSuccessItem" }) as any as S.Schema<DeleteFleetSuccessItem>;
 export type DeleteFleetSuccessSet = DeleteFleetSuccessItem[];
 export const DeleteFleetSuccessSet = /*@__PURE__*/ S.Array(
-  DeleteFleetSuccessItem.pipe(T.XmlName("item")).annotate({ identifier: "DeleteFleetSuccessItem" }),
+  /*@__PURE__*/ DeleteFleetSuccessItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DeleteFleetSuccessItem",
+  }),
 );
 export type DeleteFleetErrorCode =
   | "fleetIdDoesNotExist"
@@ -23137,7 +23357,9 @@ export const DeleteFleetErrorItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFleetErrorItem" }) as any as S.Schema<DeleteFleetErrorItem>;
 export type DeleteFleetErrorSet = DeleteFleetErrorItem[];
 export const DeleteFleetErrorSet = /*@__PURE__*/ S.Array(
-  DeleteFleetErrorItem.pipe(T.XmlName("item")).annotate({ identifier: "DeleteFleetErrorItem" }),
+  /*@__PURE__*/ DeleteFleetErrorItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DeleteFleetErrorItem",
+  }),
 );
 export interface DeleteFleetsResult {
   SuccessfulFleetDeletions?: DeleteFleetSuccessItem[];
@@ -23157,7 +23379,9 @@ export const DeleteFleetsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFleetsResult" }) as any as S.Schema<DeleteFleetsResult>;
 export type VpcFlowLogId = string;
 export type FlowLogIdList = string[];
-export const FlowLogIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FlowLogIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeleteFlowLogsRequest {
   DryRun?: boolean;
   FlowLogIds?: string[];
@@ -23596,7 +23820,9 @@ export const DeleteLaunchTemplateResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLaunchTemplateResult",
 }) as any as S.Schema<DeleteLaunchTemplateResult>;
 export type VersionStringList = string[];
-export const VersionStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VersionStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeleteLaunchTemplateVersionsRequest {
   DryRun?: boolean;
   LaunchTemplateId?: string;
@@ -23639,7 +23865,9 @@ export const DeleteLaunchTemplateVersionsResponseSuccessItem = /*@__PURE__*/ S.s
 export type DeleteLaunchTemplateVersionsResponseSuccessSet =
   DeleteLaunchTemplateVersionsResponseSuccessItem[];
 export const DeleteLaunchTemplateVersionsResponseSuccessSet = /*@__PURE__*/ S.Array(
-  DeleteLaunchTemplateVersionsResponseSuccessItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DeleteLaunchTemplateVersionsResponseSuccessItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "DeleteLaunchTemplateVersionsResponseSuccessItem",
   }),
 );
@@ -23693,7 +23921,9 @@ export const DeleteLaunchTemplateVersionsResponseErrorItem = /*@__PURE__*/ S.sus
 export type DeleteLaunchTemplateVersionsResponseErrorSet =
   DeleteLaunchTemplateVersionsResponseErrorItem[];
 export const DeleteLaunchTemplateVersionsResponseErrorSet = /*@__PURE__*/ S.Array(
-  DeleteLaunchTemplateVersionsResponseErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DeleteLaunchTemplateVersionsResponseErrorItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "DeleteLaunchTemplateVersionsResponseErrorItem",
   }),
 );
@@ -24162,7 +24392,7 @@ export const DeletePublicIpv4PoolResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePublicIpv4PoolResult>;
 export type DeleteQueuedReservedInstancesIdList = string[];
 export const DeleteQueuedReservedInstancesIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DeleteQueuedReservedInstancesRequest {
   DryRun?: boolean;
@@ -24193,7 +24423,7 @@ export const SuccessfulQueuedPurchaseDeletion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulQueuedPurchaseDeletion>;
 export type SuccessfulQueuedPurchaseDeletionSet = SuccessfulQueuedPurchaseDeletion[];
 export const SuccessfulQueuedPurchaseDeletionSet = /*@__PURE__*/ S.Array(
-  SuccessfulQueuedPurchaseDeletion.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SuccessfulQueuedPurchaseDeletion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SuccessfulQueuedPurchaseDeletion",
   }),
 );
@@ -24238,7 +24468,7 @@ export const FailedQueuedPurchaseDeletion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FailedQueuedPurchaseDeletion>;
 export type FailedQueuedPurchaseDeletionSet = FailedQueuedPurchaseDeletion[];
 export const FailedQueuedPurchaseDeletionSet = /*@__PURE__*/ S.Array(
-  FailedQueuedPurchaseDeletion.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FailedQueuedPurchaseDeletion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FailedQueuedPurchaseDeletion",
   }),
 );
@@ -25216,7 +25446,7 @@ export const DeleteVpcEncryptionControlResult = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionNotificationId = string;
 export type ConnectionNotificationIdsList = string[];
 export const ConnectionNotificationIdsList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DeleteVpcEndpointConnectionNotificationsRequest {
   DryRun?: boolean;
@@ -25269,7 +25499,9 @@ export const DeleteVpcEndpointsResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DeleteVpcEndpointsResult" }) as any as S.Schema<DeleteVpcEndpointsResult>;
 export type VpcEndpointServiceIdList = string[];
-export const VpcEndpointServiceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcEndpointServiceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeleteVpcEndpointServiceConfigurationsRequest {
   DryRun?: boolean;
   ServiceIds?: string[];
@@ -25560,7 +25792,9 @@ export const DeprovisionPublicIpv4PoolCidrRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeprovisionPublicIpv4PoolCidrRequest",
 }) as any as S.Schema<DeprovisionPublicIpv4PoolCidrRequest>;
 export type DeprovisionedAddressSet = string[];
-export const DeprovisionedAddressSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const DeprovisionedAddressSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeprovisionPublicIpv4PoolCidrResult {
   PoolId?: string;
   DeprovisionedAddresses?: string[];
@@ -25612,7 +25846,7 @@ export const DeleteSnapshotReturnCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnapshotReturnCode" }) as any as S.Schema<DeleteSnapshotReturnCode>;
 export type DeleteSnapshotResultSet = DeleteSnapshotReturnCode[];
 export const DeleteSnapshotResultSet = /*@__PURE__*/ S.Array(
-  DeleteSnapshotReturnCode.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DeleteSnapshotReturnCode.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "DeleteSnapshotReturnCode",
   }),
 );
@@ -25630,7 +25864,9 @@ export const DeregisterImageResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DeregisterImageResult" }) as any as S.Schema<DeregisterImageResult>;
 export type InstanceTagKeySet = string[];
-export const InstanceTagKeySet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceTagKeySet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeregisterInstanceTagAttributeRequest {
   IncludeAllTagsOfInstance?: boolean;
   InstanceTagKeys?: string[];
@@ -25687,7 +25923,7 @@ export const DeregisterInstanceEventNotificationAttributesResult = /*@__PURE__*/
 }) as any as S.Schema<DeregisterInstanceEventNotificationAttributesResult>;
 export type TransitGatewayNetworkInterfaceIdList = string[];
 export const TransitGatewayNetworkInterfaceIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DeregisterTransitGatewayMulticastGroupMembersRequest {
   TransitGatewayMulticastDomainId?: string;
@@ -25802,7 +26038,7 @@ export const AccountAttributeName = S.String;
 
 export type AccountAttributeNameStringList = AccountAttributeName[];
 export const AccountAttributeNameStringList = /*@__PURE__*/ S.Array(
-  AccountAttributeName.pipe(T.XmlName("attributeName")),
+  /*@__PURE__*/ AccountAttributeName.pipe(/*@__PURE__*/ T.XmlName("attributeName")),
 );
 export interface DescribeAccountAttributesRequest {
   DryRun?: boolean;
@@ -25832,7 +26068,9 @@ export const AccountAttributeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAttributeValue" }) as any as S.Schema<AccountAttributeValue>;
 export type AccountAttributeValueList = AccountAttributeValue[];
 export const AccountAttributeValueList = /*@__PURE__*/ S.Array(
-  AccountAttributeValue.pipe(T.XmlName("item")).annotate({ identifier: "AccountAttributeValue" }),
+  /*@__PURE__*/ AccountAttributeValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AccountAttributeValue",
+  }),
 );
 export interface AccountAttribute {
   AttributeName?: string;
@@ -25852,7 +26090,9 @@ export const AccountAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAttribute" }) as any as S.Schema<AccountAttribute>;
 export type AccountAttributeList = AccountAttribute[];
 export const AccountAttributeList = /*@__PURE__*/ S.Array(
-  AccountAttribute.pipe(T.XmlName("item")).annotate({ identifier: "AccountAttribute" }),
+  /*@__PURE__*/ AccountAttribute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AccountAttribute",
+  }),
 );
 export interface DescribeAccountAttributesResult {
   AccountAttributes?: AccountAttribute[];
@@ -25986,7 +26226,9 @@ export const DescribeAccountVpcEncryptionControlResult = /*@__PURE__*/ S.suspend
   identifier: "DescribeAccountVpcEncryptionControlResult",
 }) as any as S.Schema<DescribeAccountVpcEncryptionControlResult>;
 export type PublicIpStringList = string[];
-export const PublicIpStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("PublicIp")));
+export const PublicIpStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("PublicIp")),
+);
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -25999,7 +26241,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(
-  Filter.pipe(T.XmlName("Filter")).annotate({ identifier: "Filter" }),
+  /*@__PURE__*/ Filter.pipe(/*@__PURE__*/ T.XmlName("Filter")).annotate({ identifier: "Filter" }),
 );
 export interface DescribeAddressesRequest {
   PublicIps?: string[];
@@ -26088,7 +26330,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 export type AddressList = Address[];
 export const AddressList = /*@__PURE__*/ S.Array(
-  Address.pipe(T.XmlName("item")).annotate({ identifier: "Address" }),
+  /*@__PURE__*/ Address.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Address" }),
 );
 export interface DescribeAddressesResult {
   Addresses?: Address[];
@@ -26102,7 +26344,9 @@ export const DescribeAddressesResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeAddressesResult" }) as any as S.Schema<DescribeAddressesResult>;
 export type AllocationIds = string[];
-export const AllocationIds = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AllocationIds = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type AddressAttributeName = "domain-name" | (string & {});
 export const AddressAttributeName = S.String;
 
@@ -26159,7 +26403,9 @@ export const AddressAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddressAttribute" }) as any as S.Schema<AddressAttribute>;
 export type AddressSet = AddressAttribute[];
 export const AddressSet = /*@__PURE__*/ S.Array(
-  AddressAttribute.pipe(T.XmlName("item")).annotate({ identifier: "AddressAttribute" }),
+  /*@__PURE__*/ AddressAttribute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AddressAttribute",
+  }),
 );
 export interface DescribeAddressesAttributeResult {
   Addresses?: AddressAttribute[];
@@ -26192,7 +26438,9 @@ export const DescribeAddressTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAddressTransfersRequest>;
 export type AddressTransferList = AddressTransfer[];
 export const AddressTransferList = /*@__PURE__*/ S.Array(
-  AddressTransfer.pipe(T.XmlName("item")).annotate({ identifier: "AddressTransfer" }),
+  /*@__PURE__*/ AddressTransfer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AddressTransfer",
+  }),
 );
 export interface DescribeAddressTransfersResult {
   AddressTransfers?: AddressTransfer[];
@@ -26236,7 +26484,7 @@ export const IdFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdFormat" }) as any as S.Schema<IdFormat>;
 export type IdFormatList = IdFormat[];
 export const IdFormatList = /*@__PURE__*/ S.Array(
-  IdFormat.pipe(T.XmlName("item")).annotate({ identifier: "IdFormat" }),
+  /*@__PURE__*/ IdFormat.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "IdFormat" }),
 );
 export interface DescribeAggregateIdFormatResult {
   UseLongIdsAggregated?: boolean;
@@ -26345,7 +26593,7 @@ export const ApplicationStatusDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationStatusDetail" }) as any as S.Schema<ApplicationStatusDetail>;
 export type ApplicationStatusDetailSet = ApplicationStatusDetail[];
 export const ApplicationStatusDetailSet = /*@__PURE__*/ S.Array(
-  ApplicationStatusDetail.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ApplicationStatusDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ApplicationStatusDetail",
   }),
 );
@@ -26405,7 +26653,7 @@ export const InstanceApplicationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceApplicationStatus>;
 export type InstanceApplicationStatusSet = InstanceApplicationStatus[];
 export const InstanceApplicationStatusSet = /*@__PURE__*/ S.Array(
-  InstanceApplicationStatus.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceApplicationStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceApplicationStatus",
   }),
 );
@@ -26440,7 +26688,9 @@ export const DescribeApplicationStatusResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeApplicationStatusResult",
 }) as any as S.Schema<DescribeApplicationStatusResult>;
 export type ApplicationStatusCheckIdList = string[];
-export const ApplicationStatusCheckIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ApplicationStatusCheckIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeApplicationStatusCheckAssociationsMaxResults = number;
 export interface DescribeApplicationStatusCheckAssociationsRequest {
   ApplicationStatusCheckIds?: string[];
@@ -26489,7 +26739,9 @@ export const ApplicationStatusCheckAssociationObject = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ApplicationStatusCheckAssociationObject>;
 export type ApplicationStatusCheckAssociationSet = ApplicationStatusCheckAssociationObject[];
 export const ApplicationStatusCheckAssociationSet = /*@__PURE__*/ S.Array(
-  ApplicationStatusCheckAssociationObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ApplicationStatusCheckAssociationObject.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "ApplicationStatusCheckAssociationObject",
   }),
 );
@@ -26535,9 +26787,11 @@ export const DescribeApplicationStatusChecksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeApplicationStatusChecksRequest>;
 export type ApplicationStatusCheckResponseSet = ApplicationStatusCheckResponseObject[];
 export const ApplicationStatusCheckResponseSet = /*@__PURE__*/ S.Array(
-  ApplicationStatusCheckResponseObject.pipe(T.XmlName("item")).annotate({
-    identifier: "ApplicationStatusCheckResponseObject",
-  }),
+  /*@__PURE__*/ ApplicationStatusCheckResponseObject.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "ApplicationStatusCheckResponseObject",
+    },
+  ),
 );
 export interface DescribeApplicationStatusChecksResult {
   ApplicationStatusChecks?: ApplicationStatusCheckResponseObject[];
@@ -26555,9 +26809,13 @@ export const DescribeApplicationStatusChecksResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeApplicationStatusChecksResult",
 }) as any as S.Schema<DescribeApplicationStatusChecksResult>;
 export type ZoneNameStringList = string[];
-export const ZoneNameStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ZoneName")));
+export const ZoneNameStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ZoneName")),
+);
 export type ZoneIdStringList = string[];
-export const ZoneIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ZoneId")));
+export const ZoneIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ZoneId")),
+);
 export interface DescribeAvailabilityZonesRequest {
   ZoneNames?: string[];
   ZoneIds?: string[];
@@ -26591,7 +26849,7 @@ export const AvailabilityZoneMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailabilityZoneMessage" }) as any as S.Schema<AvailabilityZoneMessage>;
 export type AvailabilityZoneMessageList = AvailabilityZoneMessage[];
 export const AvailabilityZoneMessageList = /*@__PURE__*/ S.Array(
-  AvailabilityZoneMessage.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AvailabilityZoneMessage.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AvailabilityZoneMessage",
   }),
 );
@@ -26605,7 +26863,7 @@ export const AvailabilityZoneGeography = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityZoneGeography>;
 export type AvailabilityZoneGeographyList = AvailabilityZoneGeography[];
 export const AvailabilityZoneGeographyList = /*@__PURE__*/ S.Array(
-  AvailabilityZoneGeography.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AvailabilityZoneGeography.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AvailabilityZoneGeography",
   }),
 );
@@ -26619,7 +26877,7 @@ export const AvailabilityZoneSubGeography = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityZoneSubGeography>;
 export type AvailabilityZoneSubGeographyList = AvailabilityZoneSubGeography[];
 export const AvailabilityZoneSubGeographyList = /*@__PURE__*/ S.Array(
-  AvailabilityZoneSubGeography.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AvailabilityZoneSubGeography.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AvailabilityZoneSubGeography",
   }),
 );
@@ -26695,7 +26953,9 @@ export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailabilityZone" }) as any as S.Schema<AvailabilityZone>;
 export type AvailabilityZoneList = AvailabilityZone[];
 export const AvailabilityZoneList = /*@__PURE__*/ S.Array(
-  AvailabilityZone.pipe(T.XmlName("item")).annotate({ identifier: "AvailabilityZone" }),
+  /*@__PURE__*/ AvailabilityZone.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AvailabilityZone",
+  }),
 );
 export interface DescribeAvailabilityZonesResult {
   AvailabilityZones?: AvailabilityZone[];
@@ -26761,7 +27021,9 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
 export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription.pipe(T.XmlName("item")).annotate({ identifier: "Subscription" }),
+  /*@__PURE__*/ Subscription.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Subscription",
+  }),
 );
 export interface DescribeAwsNetworkPerformanceMetricSubscriptionsResult {
   NextToken?: string;
@@ -26779,7 +27041,9 @@ export const DescribeAwsNetworkPerformanceMetricSubscriptionsResult = /*@__PURE_
   identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsResult",
 }) as any as S.Schema<DescribeAwsNetworkPerformanceMetricSubscriptionsResult>;
 export type BundleIdStringList = string[];
-export const BundleIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("BundleId")));
+export const BundleIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("BundleId")),
+);
 export interface DescribeBundleTasksRequest {
   BundleIds?: string[];
   DryRun?: boolean;
@@ -26796,7 +27060,9 @@ export const DescribeBundleTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeBundleTasksRequest>;
 export type BundleTaskList = BundleTask[];
 export const BundleTaskList = /*@__PURE__*/ S.Array(
-  BundleTask.pipe(T.XmlName("item")).annotate({ identifier: "BundleTask" }),
+  /*@__PURE__*/ BundleTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "BundleTask",
+  }),
 );
 export interface DescribeBundleTasksResult {
   BundleTasks?: BundleTask[];
@@ -26828,7 +27094,9 @@ export const DescribeByoipCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeByoipCidrsRequest>;
 export type ByoipCidrSet = ByoipCidr[];
 export const ByoipCidrSet = /*@__PURE__*/ S.Array(
-  ByoipCidr.pipe(T.XmlName("item")).annotate({ identifier: "ByoipCidr" }),
+  /*@__PURE__*/ ByoipCidr.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ByoipCidr",
+  }),
 );
 export interface DescribeByoipCidrsResult {
   ByoipCidrs?: ByoipCidr[];
@@ -26950,7 +27218,9 @@ export const CapacityBlockExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityBlockExtension" }) as any as S.Schema<CapacityBlockExtension>;
 export type CapacityBlockExtensionSet = CapacityBlockExtension[];
 export const CapacityBlockExtensionSet = /*@__PURE__*/ S.Array(
-  CapacityBlockExtension.pipe(T.XmlName("item")).annotate({ identifier: "CapacityBlockExtension" }),
+  /*@__PURE__*/ CapacityBlockExtension.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityBlockExtension",
+  }),
 );
 export interface DescribeCapacityBlockExtensionHistoryResult {
   CapacityBlockExtensions?: CapacityBlockExtension[];
@@ -27059,7 +27329,7 @@ export const CapacityBlockExtensionOffering = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityBlockExtensionOffering>;
 export type CapacityBlockExtensionOfferingSet = CapacityBlockExtensionOffering[];
 export const CapacityBlockExtensionOfferingSet = /*@__PURE__*/ S.Array(
-  CapacityBlockExtensionOffering.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityBlockExtensionOffering.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityBlockExtensionOffering",
   }),
 );
@@ -27181,7 +27451,9 @@ export const CapacityBlockOffering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityBlockOffering" }) as any as S.Schema<CapacityBlockOffering>;
 export type CapacityBlockOfferingSet = CapacityBlockOffering[];
 export const CapacityBlockOfferingSet = /*@__PURE__*/ S.Array(
-  CapacityBlockOffering.pipe(T.XmlName("item")).annotate({ identifier: "CapacityBlockOffering" }),
+  /*@__PURE__*/ CapacityBlockOffering.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityBlockOffering",
+  }),
 );
 export interface DescribeCapacityBlockOfferingsResult {
   CapacityBlockOfferings?: CapacityBlockOffering[];
@@ -27199,7 +27471,9 @@ export const DescribeCapacityBlockOfferingsResult = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeCapacityBlockOfferingsResult",
 }) as any as S.Schema<DescribeCapacityBlockOfferingsResult>;
 export type CapacityBlockIds = string[];
-export const CapacityBlockIds = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const CapacityBlockIds = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeCapacityBlocksMaxResults = number;
 export interface DescribeCapacityBlocksRequest {
   CapacityBlockIds?: string[];
@@ -27283,7 +27557,9 @@ export const CapacityBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityBlock" }) as any as S.Schema<CapacityBlock>;
 export type CapacityBlockSet = CapacityBlock[];
 export const CapacityBlockSet = /*@__PURE__*/ S.Array(
-  CapacityBlock.pipe(T.XmlName("item")).annotate({ identifier: "CapacityBlock" }),
+  /*@__PURE__*/ CapacityBlock.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityBlock",
+  }),
 );
 export interface DescribeCapacityBlocksResult {
   CapacityBlocks?: CapacityBlock[];
@@ -27356,7 +27632,7 @@ export const CapacityReservationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityReservationStatus>;
 export type CapacityReservationStatusSet = CapacityReservationStatus[];
 export const CapacityReservationStatusSet = /*@__PURE__*/ S.Array(
-  CapacityReservationStatus.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityReservationStatus",
   }),
 );
@@ -27398,7 +27674,9 @@ export const CapacityBlockStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityBlockStatus" }) as any as S.Schema<CapacityBlockStatus>;
 export type CapacityBlockStatusSet = CapacityBlockStatus[];
 export const CapacityBlockStatusSet = /*@__PURE__*/ S.Array(
-  CapacityBlockStatus.pipe(T.XmlName("item")).annotate({ identifier: "CapacityBlockStatus" }),
+  /*@__PURE__*/ CapacityBlockStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityBlockStatus",
+  }),
 );
 export interface DescribeCapacityBlockStatusResult {
   CapacityBlockStatuses?: CapacityBlockStatus[];
@@ -27417,7 +27695,7 @@ export const DescribeCapacityBlockStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCapacityBlockStatusResult>;
 export type CapacityManagerDataExportIdSet = string[];
 export const CapacityManagerDataExportIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeCapacityManagerDataExportsRequestMaxResults = number;
 export interface DescribeCapacityManagerDataExportsRequest {
@@ -27507,7 +27785,7 @@ export const CapacityManagerDataExportResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityManagerDataExportResponse>;
 export type CapacityManagerDataExportResponseSet = CapacityManagerDataExportResponse[];
 export const CapacityManagerDataExportResponseSet = /*@__PURE__*/ S.Array(
-  CapacityManagerDataExportResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityManagerDataExportResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityManagerDataExportResponse",
   }),
 );
@@ -27629,7 +27907,7 @@ export const CapacityReservationBillingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityReservationBillingRequest>;
 export type CapacityReservationBillingRequestSet = CapacityReservationBillingRequest[];
 export const CapacityReservationBillingRequestSet = /*@__PURE__*/ S.Array(
-  CapacityReservationBillingRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationBillingRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityReservationBillingRequest",
   }),
 );
@@ -27650,7 +27928,7 @@ export const DescribeCapacityReservationBillingRequestsResult = /*@__PURE__*/ S.
 }) as any as S.Schema<DescribeCapacityReservationBillingRequestsResult>;
 export type CapacityReservationCancellationQuoteIdSet = string[];
 export const CapacityReservationCancellationQuoteIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeCapacityReservationCancellationQuotesRequestMaxResults = number;
 export interface DescribeCapacityReservationCancellationQuotesRequest {
@@ -27676,9 +27954,11 @@ export const DescribeCapacityReservationCancellationQuotesRequest = /*@__PURE__*
 export type CapacityReservationCancellationQuoteResponseSet =
   CapacityReservationCancellationQuote[];
 export const CapacityReservationCancellationQuoteResponseSet = /*@__PURE__*/ S.Array(
-  CapacityReservationCancellationQuote.pipe(T.XmlName("item")).annotate({
-    identifier: "CapacityReservationCancellationQuote",
-  }),
+  /*@__PURE__*/ CapacityReservationCancellationQuote.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "CapacityReservationCancellationQuote",
+    },
+  ),
 );
 export interface DescribeCapacityReservationCancellationQuotesResult {
   CapacityReservationCancellationQuotes?: CapacityReservationCancellationQuote[];
@@ -27699,7 +27979,7 @@ export const DescribeCapacityReservationCancellationQuotesResult = /*@__PURE__*/
 }) as any as S.Schema<DescribeCapacityReservationCancellationQuotesResult>;
 export type CapacityReservationModificationQuoteIdSet = string[];
 export const CapacityReservationModificationQuoteIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeCapacityReservationDateChangeQuotesRequestMaxResults = number;
 export interface DescribeCapacityReservationDateChangeQuotesRequest {
@@ -27725,9 +28005,11 @@ export const DescribeCapacityReservationDateChangeQuotesRequest = /*@__PURE__*/ 
 export type CapacityReservationModificationQuoteResponseSet =
   CapacityReservationModificationQuote[];
 export const CapacityReservationModificationQuoteResponseSet = /*@__PURE__*/ S.Array(
-  CapacityReservationModificationQuote.pipe(T.XmlName("item")).annotate({
-    identifier: "CapacityReservationModificationQuote",
-  }),
+  /*@__PURE__*/ CapacityReservationModificationQuote.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "CapacityReservationModificationQuote",
+    },
+  ),
 );
 export interface DescribeCapacityReservationDateChangeQuotesResult {
   CapacityReservationModificationQuotes?: CapacityReservationModificationQuote[];
@@ -27832,7 +28114,7 @@ export const CapacityReservationFleet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityReservationFleet" }) as any as S.Schema<CapacityReservationFleet>;
 export type CapacityReservationFleetSet = CapacityReservationFleet[];
 export const CapacityReservationFleetSet = /*@__PURE__*/ S.Array(
-  CapacityReservationFleet.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationFleet.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityReservationFleet",
   }),
 );
@@ -27874,7 +28156,9 @@ export const DescribeCapacityReservationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCapacityReservationsRequest>;
 export type CapacityReservationSet = CapacityReservation[];
 export const CapacityReservationSet = /*@__PURE__*/ S.Array(
-  CapacityReservation.pipe(T.XmlName("item")).annotate({ identifier: "CapacityReservation" }),
+  /*@__PURE__*/ CapacityReservation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CapacityReservation",
+  }),
 );
 export interface DescribeCapacityReservationsResult {
   NextToken?: string;
@@ -27913,7 +28197,9 @@ export const DescribeCapacityReservationTopologyRequest = /*@__PURE__*/ S.suspen
   identifier: "DescribeCapacityReservationTopologyRequest",
 }) as any as S.Schema<DescribeCapacityReservationTopologyRequest>;
 export type NetworkNodeSet = string[];
-export const NetworkNodeSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkNodeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface CapacityReservationTopology {
   CapacityReservationId?: string;
   CapacityBlockId?: string;
@@ -27958,7 +28244,7 @@ export const CapacityReservationTopology = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityReservationTopology>;
 export type CapacityReservationTopologySet = CapacityReservationTopology[];
 export const CapacityReservationTopologySet = /*@__PURE__*/ S.Array(
-  CapacityReservationTopology.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationTopology.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityReservationTopology",
   }),
 );
@@ -28000,7 +28286,9 @@ export const DescribeCarrierGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCarrierGatewaysRequest>;
 export type CarrierGatewaySet = CarrierGateway[];
 export const CarrierGatewaySet = /*@__PURE__*/ S.Array(
-  CarrierGateway.pipe(T.XmlName("item")).annotate({ identifier: "CarrierGateway" }),
+  /*@__PURE__*/ CarrierGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CarrierGateway",
+  }),
 );
 export interface DescribeCarrierGatewaysResult {
   CarrierGateways?: CarrierGateway[];
@@ -28018,7 +28306,9 @@ export const DescribeCarrierGatewaysResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeCarrierGatewaysResult",
 }) as any as S.Schema<DescribeCarrierGatewaysResult>;
 export type InstanceIdStringList = string[];
-export const InstanceIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("InstanceId")));
+export const InstanceIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstanceId")),
+);
 export type DescribeClassicLinkInstancesMaxResults = number;
 export interface DescribeClassicLinkInstancesRequest {
   DryRun?: boolean;
@@ -28054,7 +28344,9 @@ export const ClassicLinkInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassicLinkInstance" }) as any as S.Schema<ClassicLinkInstance>;
 export type ClassicLinkInstanceList = ClassicLinkInstance[];
 export const ClassicLinkInstanceList = /*@__PURE__*/ S.Array(
-  ClassicLinkInstance.pipe(T.XmlName("item")).annotate({ identifier: "ClassicLinkInstance" }),
+  /*@__PURE__*/ ClassicLinkInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClassicLinkInstance",
+  }),
 );
 export interface DescribeClassicLinkInstancesResult {
   Instances?: ClassicLinkInstance[];
@@ -28118,7 +28410,9 @@ export const AuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizationRule" }) as any as S.Schema<AuthorizationRule>;
 export type AuthorizationRuleSet = AuthorizationRule[];
 export const AuthorizationRuleSet = /*@__PURE__*/ S.Array(
-  AuthorizationRule.pipe(T.XmlName("item")).annotate({ identifier: "AuthorizationRule" }),
+  /*@__PURE__*/ AuthorizationRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AuthorizationRule",
+  }),
 );
 export interface DescribeClientVpnAuthorizationRulesResult {
   AuthorizationRules?: AuthorizationRule[];
@@ -28246,7 +28540,9 @@ export const ClientVpnConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientVpnConnection" }) as any as S.Schema<ClientVpnConnection>;
 export type ClientVpnConnectionSet = ClientVpnConnection[];
 export const ClientVpnConnectionSet = /*@__PURE__*/ S.Array(
-  ClientVpnConnection.pipe(T.XmlName("item")).annotate({ identifier: "ClientVpnConnection" }),
+  /*@__PURE__*/ ClientVpnConnection.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClientVpnConnection",
+  }),
 );
 export interface DescribeClientVpnConnectionsResult {
   Connections?: ClientVpnConnection[];
@@ -28264,7 +28560,9 @@ export const DescribeClientVpnConnectionsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeClientVpnConnectionsResult",
 }) as any as S.Schema<DescribeClientVpnConnectionsResult>;
 export type ClientVpnEndpointIdList = string[];
-export const ClientVpnEndpointIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ClientVpnEndpointIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeClientVpnEndpointMaxResults = number;
 export interface DescribeClientVpnEndpointsRequest {
   ClientVpnEndpointIds?: string[];
@@ -28307,7 +28605,7 @@ export const AssociatedTargetNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedTargetNetwork" }) as any as S.Schema<AssociatedTargetNetwork>;
 export type AssociatedTargetNetworkSet = AssociatedTargetNetwork[];
 export const AssociatedTargetNetworkSet = /*@__PURE__*/ S.Array(
-  AssociatedTargetNetwork.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AssociatedTargetNetwork.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AssociatedTargetNetwork",
   }),
 );
@@ -28372,7 +28670,7 @@ export const ClientVpnAuthentication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientVpnAuthentication" }) as any as S.Schema<ClientVpnAuthentication>;
 export type ClientVpnAuthenticationList = ClientVpnAuthentication[];
 export const ClientVpnAuthenticationList = /*@__PURE__*/ S.Array(
-  ClientVpnAuthentication.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ClientVpnAuthentication.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ClientVpnAuthentication",
   }),
 );
@@ -28499,7 +28797,9 @@ export const ClientVpnTrustProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientVpnTrustProvider" }) as any as S.Schema<ClientVpnTrustProvider>;
 export type ClientVpnTrustProviderSet = ClientVpnTrustProvider[];
 export const ClientVpnTrustProviderSet = /*@__PURE__*/ S.Array(
-  ClientVpnTrustProvider.pipe(T.XmlName("item")).annotate({ identifier: "ClientVpnTrustProvider" }),
+  /*@__PURE__*/ ClientVpnTrustProvider.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClientVpnTrustProvider",
+  }),
 );
 export interface DevicePostureResponseOptions {
   TrustProviders?: ClientVpnTrustProvider[];
@@ -28648,7 +28948,9 @@ export const ClientVpnEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientVpnEndpoint" }) as any as S.Schema<ClientVpnEndpoint>;
 export type EndpointSet = ClientVpnEndpoint[];
 export const EndpointSet = /*@__PURE__*/ S.Array(
-  ClientVpnEndpoint.pipe(T.XmlName("item")).annotate({ identifier: "ClientVpnEndpoint" }),
+  /*@__PURE__*/ ClientVpnEndpoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClientVpnEndpoint",
+  }),
 );
 export interface DescribeClientVpnEndpointsResult {
   ClientVpnEndpoints?: ClientVpnEndpoint[];
@@ -28722,7 +29024,9 @@ export const ClientVpnRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientVpnRoute" }) as any as S.Schema<ClientVpnRoute>;
 export type ClientVpnRouteSet = ClientVpnRoute[];
 export const ClientVpnRouteSet = /*@__PURE__*/ S.Array(
-  ClientVpnRoute.pipe(T.XmlName("item")).annotate({ identifier: "ClientVpnRoute" }),
+  /*@__PURE__*/ ClientVpnRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClientVpnRoute",
+  }),
 );
 export interface DescribeClientVpnRoutesResult {
   Routes?: ClientVpnRoute[];
@@ -28801,7 +29105,9 @@ export const TargetNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetNetwork" }) as any as S.Schema<TargetNetwork>;
 export type TargetNetworkSet = TargetNetwork[];
 export const TargetNetworkSet = /*@__PURE__*/ S.Array(
-  TargetNetwork.pipe(T.XmlName("item")).annotate({ identifier: "TargetNetwork" }),
+  /*@__PURE__*/ TargetNetwork.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TargetNetwork",
+  }),
 );
 export interface DescribeClientVpnTargetNetworksResult {
   ClientVpnTargetNetworks?: TargetNetwork[];
@@ -28819,7 +29125,9 @@ export const DescribeClientVpnTargetNetworksResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeClientVpnTargetNetworksResult",
 }) as any as S.Schema<DescribeClientVpnTargetNetworksResult>;
 export type CoipPoolIdSet = string[];
-export const CoipPoolIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const CoipPoolIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type CoipPoolMaxResults = number;
 export interface DescribeCoipPoolsRequest {
   PoolIds?: string[];
@@ -28839,7 +29147,7 @@ export const DescribeCoipPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeCoipPoolsRequest" }) as any as S.Schema<DescribeCoipPoolsRequest>;
 export type CoipPoolSet = CoipPool[];
 export const CoipPoolSet = /*@__PURE__*/ S.Array(
-  CoipPool.pipe(T.XmlName("item")).annotate({ identifier: "CoipPool" }),
+  /*@__PURE__*/ CoipPool.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "CoipPool" }),
 );
 export interface DescribeCoipPoolsResult {
   CoipPools?: CoipPool[];
@@ -28855,7 +29163,9 @@ export const DescribeCoipPoolsResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeCoipPoolsResult" }) as any as S.Schema<DescribeCoipPoolsResult>;
 export type ConversionIdStringList = string[];
-export const ConversionIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ConversionIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeConversionTasksRequest {
   DryRun?: boolean;
   ConversionTaskIds?: string[];
@@ -28943,7 +29253,7 @@ export const ImportInstanceVolumeDetailItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportInstanceVolumeDetailItem>;
 export type ImportInstanceVolumeDetailSet = ImportInstanceVolumeDetailItem[];
 export const ImportInstanceVolumeDetailSet = /*@__PURE__*/ S.Array(
-  ImportInstanceVolumeDetailItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImportInstanceVolumeDetailItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ImportInstanceVolumeDetailItem",
   }),
 );
@@ -29040,7 +29350,9 @@ export const ConversionTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversionTask" }) as any as S.Schema<ConversionTask>;
 export type DescribeConversionTaskList = ConversionTask[];
 export const DescribeConversionTaskList = /*@__PURE__*/ S.Array(
-  ConversionTask.pipe(T.XmlName("item")).annotate({ identifier: "ConversionTask" }),
+  /*@__PURE__*/ ConversionTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ConversionTask",
+  }),
 );
 export interface DescribeConversionTasksResult {
   ConversionTasks?: ConversionTask[];
@@ -29057,7 +29369,7 @@ export const DescribeConversionTasksResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConversionTasksResult>;
 export type CustomerGatewayIdStringList = string[];
 export const CustomerGatewayIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("CustomerGatewayId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("CustomerGatewayId")),
 );
 export interface DescribeCustomerGatewaysRequest {
   CustomerGatewayIds?: string[];
@@ -29077,7 +29389,9 @@ export const DescribeCustomerGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCustomerGatewaysRequest>;
 export type CustomerGatewayList = CustomerGateway[];
 export const CustomerGatewayList = /*@__PURE__*/ S.Array(
-  CustomerGateway.pipe(T.XmlName("item")).annotate({ identifier: "CustomerGateway" }),
+  /*@__PURE__*/ CustomerGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CustomerGateway",
+  }),
 );
 export interface DescribeCustomerGatewaysResult {
   CustomerGateways?: CustomerGateway[];
@@ -29144,7 +29458,7 @@ export const DeclarativePoliciesReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeclarativePoliciesReport>;
 export type DeclarativePoliciesReportList = DeclarativePoliciesReport[];
 export const DeclarativePoliciesReportList = /*@__PURE__*/ S.Array(
-  DeclarativePoliciesReport.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DeclarativePoliciesReport.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "DeclarativePoliciesReport",
   }),
 );
@@ -29165,7 +29479,7 @@ export const DescribeDeclarativePoliciesReportsResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDeclarativePoliciesReportsResult>;
 export type DhcpOptionsIdStringList = string[];
 export const DhcpOptionsIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("DhcpOptionsId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DhcpOptionsId")),
 );
 export type DescribeDhcpOptionsMaxResults = number;
 export interface DescribeDhcpOptionsRequest {
@@ -29188,7 +29502,9 @@ export const DescribeDhcpOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDhcpOptionsRequest>;
 export type DhcpOptionsList = DhcpOptions[];
 export const DhcpOptionsList = /*@__PURE__*/ S.Array(
-  DhcpOptions.pipe(T.XmlName("item")).annotate({ identifier: "DhcpOptions" }),
+  /*@__PURE__*/ DhcpOptions.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DhcpOptions",
+  }),
 );
 export interface DescribeDhcpOptionsResult {
   NextToken?: string;
@@ -29207,7 +29523,7 @@ export const DescribeDhcpOptionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDhcpOptionsResult>;
 export type EgressOnlyInternetGatewayIdList = string[];
 export const EgressOnlyInternetGatewayIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeEgressOnlyInternetGatewaysMaxResults = number;
 export interface DescribeEgressOnlyInternetGatewaysRequest {
@@ -29232,7 +29548,7 @@ export const DescribeEgressOnlyInternetGatewaysRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeEgressOnlyInternetGatewaysRequest>;
 export type EgressOnlyInternetGatewayList = EgressOnlyInternetGateway[];
 export const EgressOnlyInternetGatewayList = /*@__PURE__*/ S.Array(
-  EgressOnlyInternetGateway.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ EgressOnlyInternetGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "EgressOnlyInternetGateway",
   }),
 );
@@ -29253,7 +29569,9 @@ export const DescribeEgressOnlyInternetGatewaysResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeEgressOnlyInternetGatewaysResult>;
 export type ElasticGpuId = string;
 export type ElasticGpuIdSet = string[];
-export const ElasticGpuIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ElasticGpuIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeElasticGpusMaxResults = number;
 export interface DescribeElasticGpusRequest {
   ElasticGpuIds?: string[];
@@ -29323,7 +29641,9 @@ export const ElasticGpus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticGpus" }) as any as S.Schema<ElasticGpus>;
 export type ElasticGpuSet = ElasticGpus[];
 export const ElasticGpuSet = /*@__PURE__*/ S.Array(
-  ElasticGpus.pipe(T.XmlName("item")).annotate({ identifier: "ElasticGpus" }),
+  /*@__PURE__*/ ElasticGpus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ElasticGpus",
+  }),
 );
 export interface DescribeElasticGpusResult {
   ElasticGpuSet?: ElasticGpus[];
@@ -29345,7 +29665,7 @@ export const DescribeElasticGpusResult = /*@__PURE__*/ S.suspend(() =>
 export type ExportImageTaskId = string;
 export type ExportImageTaskIdList = string[];
 export const ExportImageTaskIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ExportImageTaskId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ExportImageTaskId")),
 );
 export type DescribeExportImageTasksMaxResults = number;
 export interface DescribeExportImageTasksRequest {
@@ -29408,7 +29728,9 @@ export const ExportImageTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportImageTask" }) as any as S.Schema<ExportImageTask>;
 export type ExportImageTaskList = ExportImageTask[];
 export const ExportImageTaskList = /*@__PURE__*/ S.Array(
-  ExportImageTask.pipe(T.XmlName("item")).annotate({ identifier: "ExportImageTask" }),
+  /*@__PURE__*/ ExportImageTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ExportImageTask",
+  }),
 );
 export interface DescribeExportImageTasksResult {
   ExportImageTasks?: ExportImageTask[];
@@ -29428,7 +29750,7 @@ export const DescribeExportImageTasksResult = /*@__PURE__*/ S.suspend(() =>
 export type ExportTaskId = string;
 export type ExportTaskIdStringList = string[];
 export const ExportTaskIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ExportTaskId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ExportTaskId")),
 );
 export interface DescribeExportTasksRequest {
   Filters?: Filter[];
@@ -29447,7 +29769,9 @@ export const DescribeExportTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeExportTasksRequest>;
 export type ExportTaskList = ExportTask[];
 export const ExportTaskList = /*@__PURE__*/ S.Array(
-  ExportTask.pipe(T.XmlName("item")).annotate({ identifier: "ExportTask" }),
+  /*@__PURE__*/ ExportTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ExportTask",
+  }),
 );
 export interface DescribeExportTasksResult {
   ExportTasks?: ExportTask[];
@@ -29463,7 +29787,9 @@ export const DescribeExportTasksResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeExportTasksResult",
 }) as any as S.Schema<DescribeExportTasksResult>;
 export type FastLaunchImageIdList = string[];
-export const FastLaunchImageIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ImageId")));
+export const FastLaunchImageIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ImageId")),
+);
 export type DescribeFastLaunchImagesRequestMaxResults = number;
 export interface DescribeFastLaunchImagesRequest {
   ImageIds?: string[];
@@ -29573,7 +29899,7 @@ export const DescribeFastLaunchImagesSuccessItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFastLaunchImagesSuccessItem>;
 export type DescribeFastLaunchImagesSuccessSet = DescribeFastLaunchImagesSuccessItem[];
 export const DescribeFastLaunchImagesSuccessSet = /*@__PURE__*/ S.Array(
-  DescribeFastLaunchImagesSuccessItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DescribeFastLaunchImagesSuccessItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "DescribeFastLaunchImagesSuccessItem",
   }),
 );
@@ -29679,7 +30005,9 @@ export const DescribeFastSnapshotRestoreSuccessItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeFastSnapshotRestoreSuccessItem>;
 export type DescribeFastSnapshotRestoreSuccessSet = DescribeFastSnapshotRestoreSuccessItem[];
 export const DescribeFastSnapshotRestoreSuccessSet = /*@__PURE__*/ S.Array(
-  DescribeFastSnapshotRestoreSuccessItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DescribeFastSnapshotRestoreSuccessItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "DescribeFastSnapshotRestoreSuccessItem",
   }),
 );
@@ -29758,7 +30086,9 @@ export const HistoryRecordEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistoryRecordEntry" }) as any as S.Schema<HistoryRecordEntry>;
 export type HistoryRecordSet = HistoryRecordEntry[];
 export const HistoryRecordSet = /*@__PURE__*/ S.Array(
-  HistoryRecordEntry.pipe(T.XmlName("item")).annotate({ identifier: "HistoryRecordEntry" }),
+  /*@__PURE__*/ HistoryRecordEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "HistoryRecordEntry",
+  }),
 );
 export interface DescribeFleetHistoryResult {
   HistoryRecords?: HistoryRecordEntry[];
@@ -29833,7 +30163,9 @@ export const ActiveInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActiveInstance" }) as any as S.Schema<ActiveInstance>;
 export type ActiveInstanceSet = ActiveInstance[];
 export const ActiveInstanceSet = /*@__PURE__*/ S.Array(
-  ActiveInstance.pipe(T.XmlName("item")).annotate({ identifier: "ActiveInstance" }),
+  /*@__PURE__*/ ActiveInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ActiveInstance",
+  }),
 );
 export interface DescribeFleetInstancesResult {
   ActiveInstances?: ActiveInstance[];
@@ -29878,7 +30210,7 @@ export const FleetActivityStatus = S.String;
 
 export type FleetLaunchTemplateOverridesList = FleetLaunchTemplateOverrides[];
 export const FleetLaunchTemplateOverridesList = /*@__PURE__*/ S.Array(
-  FleetLaunchTemplateOverrides.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FleetLaunchTemplateOverrides.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FleetLaunchTemplateOverrides",
   }),
 );
@@ -29901,7 +30233,7 @@ export const FleetLaunchTemplateConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetLaunchTemplateConfig>;
 export type FleetLaunchTemplateConfigList = FleetLaunchTemplateConfig[];
 export const FleetLaunchTemplateConfigList = /*@__PURE__*/ S.Array(
-  FleetLaunchTemplateConfig.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ FleetLaunchTemplateConfig.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "FleetLaunchTemplateConfig",
   }),
 );
@@ -30063,7 +30395,7 @@ export const OnDemandOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnDemandOptions" }) as any as S.Schema<OnDemandOptions>;
 export type ReservationTypeList = FleetReservationType[];
 export const ReservationTypeList = /*@__PURE__*/ S.Array(
-  FleetReservationType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ FleetReservationType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface ReservedCapacityFallbackOptions {
   MarketTypes?: ReservedCapacityFallbackMarketType[];
@@ -30125,7 +30457,9 @@ export const DescribeFleetError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeFleetError" }) as any as S.Schema<DescribeFleetError>;
 export type DescribeFleetsErrorSet = DescribeFleetError[];
 export const DescribeFleetsErrorSet = /*@__PURE__*/ S.Array(
-  DescribeFleetError.pipe(T.XmlName("item")).annotate({ identifier: "DescribeFleetError" }),
+  /*@__PURE__*/ DescribeFleetError.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DescribeFleetError",
+  }),
 );
 export interface DescribeFleetsInstances {
   LaunchTemplateAndOverrides?: LaunchTemplateAndOverridesResponse;
@@ -30156,7 +30490,7 @@ export const DescribeFleetsInstances = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeFleetsInstances" }) as any as S.Schema<DescribeFleetsInstances>;
 export type DescribeFleetsInstancesSet = DescribeFleetsInstances[];
 export const DescribeFleetsInstancesSet = /*@__PURE__*/ S.Array(
-  DescribeFleetsInstances.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DescribeFleetsInstances.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "DescribeFleetsInstances",
   }),
 );
@@ -30259,7 +30593,9 @@ export const FleetData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FleetData" }) as any as S.Schema<FleetData>;
 export type FleetSet = FleetData[];
 export const FleetSet = /*@__PURE__*/ S.Array(
-  FleetData.pipe(T.XmlName("item")).annotate({ identifier: "FleetData" }),
+  /*@__PURE__*/ FleetData.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "FleetData",
+  }),
 );
 export interface DescribeFleetsResult {
   NextToken?: string;
@@ -30327,7 +30663,7 @@ export const TagFieldSpecificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagFieldSpecificationResponse>;
 export type TagFieldSpecificationListResponse = TagFieldSpecificationResponse[];
 export const TagFieldSpecificationListResponse = /*@__PURE__*/ S.Array(
-  TagFieldSpecificationResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TagFieldSpecificationResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TagFieldSpecificationResponse",
   }),
 );
@@ -30411,7 +30747,7 @@ export const FlowLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlowLog" }) as any as S.Schema<FlowLog>;
 export type FlowLogSet = FlowLog[];
 export const FlowLogSet = /*@__PURE__*/ S.Array(
-  FlowLog.pipe(T.XmlName("item")).annotate({ identifier: "FlowLog" }),
+  /*@__PURE__*/ FlowLog.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "FlowLog" }),
 );
 export interface DescribeFlowLogsResult {
   FlowLogs?: FlowLog[];
@@ -30460,7 +30796,9 @@ export const LoadPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadPermission" }) as any as S.Schema<LoadPermission>;
 export type LoadPermissionList = LoadPermission[];
 export const LoadPermissionList = /*@__PURE__*/ S.Array(
-  LoadPermission.pipe(T.XmlName("item")).annotate({ identifier: "LoadPermission" }),
+  /*@__PURE__*/ LoadPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LoadPermission",
+  }),
 );
 export type ProductCodeValues = "devpay" | "marketplace" | (string & {});
 export const ProductCodeValues = S.String;
@@ -30480,7 +30818,9 @@ export const ProductCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductCode" }) as any as S.Schema<ProductCode>;
 export type ProductCodeList = ProductCode[];
 export const ProductCodeList = /*@__PURE__*/ S.Array(
-  ProductCode.pipe(T.XmlName("item")).annotate({ identifier: "ProductCode" }),
+  /*@__PURE__*/ ProductCode.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ProductCode",
+  }),
 );
 export interface FpgaImageAttribute {
   FpgaImageId?: string;
@@ -30517,9 +30857,13 @@ export const DescribeFpgaImageAttributeResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFpgaImageAttributeResult",
 }) as any as S.Schema<DescribeFpgaImageAttributeResult>;
 export type FpgaImageIdList = string[];
-export const FpgaImageIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FpgaImageIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type OwnerStringList = string[];
-export const OwnerStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Owner")));
+export const OwnerStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Owner")),
+);
 export type DescribeFpgaImagesMaxResults = number;
 export interface DescribeFpgaImagesRequest {
   DryRun?: boolean;
@@ -30569,7 +30913,9 @@ export const FpgaImageState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FpgaImageState" }) as any as S.Schema<FpgaImageState>;
 export type InstanceTypesList = string[];
-export const InstanceTypesList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceTypesList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface FpgaImage {
   FpgaImageId?: string;
   FpgaImageGlobalId?: string;
@@ -30635,7 +30981,9 @@ export const FpgaImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FpgaImage" }) as any as S.Schema<FpgaImage>;
 export type FpgaImageList = FpgaImage[];
 export const FpgaImageList = /*@__PURE__*/ S.Array(
-  FpgaImage.pipe(T.XmlName("item")).annotate({ identifier: "FpgaImage" }),
+  /*@__PURE__*/ FpgaImage.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "FpgaImage",
+  }),
 );
 export interface DescribeFpgaImagesResult {
   FpgaImages?: FpgaImage[];
@@ -30708,7 +31056,9 @@ export const HostOffering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostOffering" }) as any as S.Schema<HostOffering>;
 export type HostOfferingSet = HostOffering[];
 export const HostOfferingSet = /*@__PURE__*/ S.Array(
-  HostOffering.pipe(T.XmlName("item")).annotate({ identifier: "HostOffering" }),
+  /*@__PURE__*/ HostOffering.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "HostOffering",
+  }),
 );
 export interface DescribeHostReservationOfferingsResult {
   NextToken?: string;
@@ -30727,7 +31077,9 @@ export const DescribeHostReservationOfferingsResult = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeHostReservationOfferingsResult>;
 export type HostReservationId = string;
 export type HostReservationIdSet = string[];
-export const HostReservationIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const HostReservationIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeHostReservationsRequest {
   Filter?: Filter[];
   HostReservationIdSet?: string[];
@@ -30745,7 +31097,9 @@ export const DescribeHostReservationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeHostReservationsRequest",
 }) as any as S.Schema<DescribeHostReservationsRequest>;
 export type ResponseHostIdSet = string[];
-export const ResponseHostIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResponseHostIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ReservationState =
   | "active"
   | "expired"
@@ -30821,7 +31175,9 @@ export const HostReservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostReservation" }) as any as S.Schema<HostReservation>;
 export type HostReservationSet = HostReservation[];
 export const HostReservationSet = /*@__PURE__*/ S.Array(
-  HostReservation.pipe(T.XmlName("item")).annotate({ identifier: "HostReservation" }),
+  /*@__PURE__*/ HostReservation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "HostReservation",
+  }),
 );
 export interface DescribeHostReservationsResult {
   HostReservationSet?: HostReservation[];
@@ -30839,7 +31195,9 @@ export const DescribeHostReservationsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeHostReservationsResult",
 }) as any as S.Schema<DescribeHostReservationsResult>;
 export type RequestHostIdList = string[];
-export const RequestHostIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const RequestHostIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeHostsRequest {
   HostIds?: string[];
   NextToken?: string;
@@ -30877,7 +31235,9 @@ export const InstanceCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceCapacity" }) as any as S.Schema<InstanceCapacity>;
 export type AvailableInstanceCapacityList = InstanceCapacity[];
 export const AvailableInstanceCapacityList = /*@__PURE__*/ S.Array(
-  InstanceCapacity.pipe(T.XmlName("item")).annotate({ identifier: "InstanceCapacity" }),
+  /*@__PURE__*/ InstanceCapacity.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceCapacity",
+  }),
 );
 export interface AvailableCapacity {
   AvailableInstanceCapacity?: InstanceCapacity[];
@@ -30934,7 +31294,9 @@ export const HostInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostInstance" }) as any as S.Schema<HostInstance>;
 export type HostInstanceList = HostInstance[];
 export const HostInstanceList = /*@__PURE__*/ S.Array(
-  HostInstance.pipe(T.XmlName("item")).annotate({ identifier: "HostInstance" }),
+  /*@__PURE__*/ HostInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "HostInstance",
+  }),
 );
 export type AllocationState =
   | "available"
@@ -31047,7 +31409,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type HostList = Host[];
 export const HostList = /*@__PURE__*/ S.Array(
-  Host.pipe(T.XmlName("item")).annotate({ identifier: "Host" }),
+  /*@__PURE__*/ Host.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Host" }),
 );
 export interface DescribeHostsResult {
   Hosts?: Host[];
@@ -31061,7 +31423,9 @@ export const DescribeHostsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeHostsResult" }) as any as S.Schema<DescribeHostsResult>;
 export type IamInstanceProfileAssociationId = string;
 export type AssociationIdList = string[];
-export const AssociationIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("AssociationId")));
+export const AssociationIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AssociationId")),
+);
 export type DescribeIamInstanceProfileAssociationsMaxResults = number;
 export interface DescribeIamInstanceProfileAssociationsRequest {
   AssociationIds?: string[];
@@ -31081,7 +31445,7 @@ export const DescribeIamInstanceProfileAssociationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DescribeIamInstanceProfileAssociationsRequest>;
 export type IamInstanceProfileAssociationSet = IamInstanceProfileAssociation[];
 export const IamInstanceProfileAssociationSet = /*@__PURE__*/ S.Array(
-  IamInstanceProfileAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IamInstanceProfileAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IamInstanceProfileAssociation",
   }),
 );
@@ -31194,11 +31558,15 @@ export const LaunchPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LaunchPermission" }) as any as S.Schema<LaunchPermission>;
 export type LaunchPermissionList = LaunchPermission[];
 export const LaunchPermissionList = /*@__PURE__*/ S.Array(
-  LaunchPermission.pipe(T.XmlName("item")).annotate({ identifier: "LaunchPermission" }),
+  /*@__PURE__*/ LaunchPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LaunchPermission",
+  }),
 );
 export type BlockDeviceMappingList = BlockDeviceMapping[];
 export const BlockDeviceMappingList = /*@__PURE__*/ S.Array(
-  BlockDeviceMapping.pipe(T.XmlName("item")).annotate({ identifier: "BlockDeviceMapping" }),
+  /*@__PURE__*/ BlockDeviceMapping.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "BlockDeviceMapping",
+  }),
 );
 export interface ImageAttribute {
   Description?: AttributeValue;
@@ -31342,7 +31710,9 @@ export const ImageReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
 export type ImageReferenceList = ImageReference[];
 export const ImageReferenceList = /*@__PURE__*/ S.Array(
-  ImageReference.pipe(T.XmlName("item")).annotate({ identifier: "ImageReference" }),
+  /*@__PURE__*/ ImageReference.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageReference",
+  }),
 );
 export interface DescribeImageReferencesResult {
   NextToken?: string;
@@ -31361,10 +31731,12 @@ export const DescribeImageReferencesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeImageReferencesResult>;
 export type ExecutableByStringList = string[];
 export const ExecutableByStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ExecutableBy")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ExecutableBy")),
 );
 export type ImageIdStringList = string[];
-export const ImageIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ImageId")));
+export const ImageIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ImageId")),
+);
 export interface DescribeImagesRequest {
   ExecutableUsers?: string[];
   ImageIds?: string[];
@@ -31440,7 +31812,9 @@ export const ImageWatermark = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageWatermark" }) as any as S.Schema<ImageWatermark>;
 export type ImageWatermarkList = ImageWatermark[];
 export const ImageWatermarkList = /*@__PURE__*/ S.Array(
-  ImageWatermark.pipe(T.XmlName("item")).annotate({ identifier: "ImageWatermark" }),
+  /*@__PURE__*/ ImageWatermark.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageWatermark",
+  }),
 );
 export interface InstanceTypeItem {
   InstanceType?: string;
@@ -31455,11 +31829,15 @@ export const InstanceTypeItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceTypeItem" }) as any as S.Schema<InstanceTypeItem>;
 export type SupportedInstanceTypeSet = InstanceTypeItem[];
 export const SupportedInstanceTypeSet = /*@__PURE__*/ S.Array(
-  InstanceTypeItem.pipe(T.XmlName("item")).annotate({ identifier: "InstanceTypeItem" }),
+  /*@__PURE__*/ InstanceTypeItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceTypeItem",
+  }),
 );
 export type UnsupportedInstanceTypeSet = InstanceTypeItem[];
 export const UnsupportedInstanceTypeSet = /*@__PURE__*/ S.Array(
-  InstanceTypeItem.pipe(T.XmlName("item")).annotate({ identifier: "InstanceTypeItem" }),
+  /*@__PURE__*/ InstanceTypeItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceTypeItem",
+  }),
 );
 export interface InstanceTypeSpecification {
   SupportedInstanceTypes?: InstanceTypeItem[];
@@ -31673,7 +32051,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 export type ImageList = Image[];
 export const ImageList = /*@__PURE__*/ S.Array(
-  Image.pipe(T.XmlName("item")).annotate({ identifier: "Image" }),
+  /*@__PURE__*/ Image.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Image" }),
 );
 export interface DescribeImagesResult {
   NextToken?: string;
@@ -31736,7 +32114,9 @@ export const ImageUsageReportEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageUsageReportEntry" }) as any as S.Schema<ImageUsageReportEntry>;
 export type ImageUsageReportEntryList = ImageUsageReportEntry[];
 export const ImageUsageReportEntryList = /*@__PURE__*/ S.Array(
-  ImageUsageReportEntry.pipe(T.XmlName("item")).annotate({ identifier: "ImageUsageReportEntry" }),
+  /*@__PURE__*/ ImageUsageReportEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageUsageReportEntry",
+  }),
 );
 export interface DescribeImageUsageReportEntriesResult {
   NextToken?: string;
@@ -31791,7 +32171,7 @@ export const ImageUsageResourceTypeOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageUsageResourceTypeOption>;
 export type ImageUsageResourceTypeOptionList = ImageUsageResourceTypeOption[];
 export const ImageUsageResourceTypeOptionList = /*@__PURE__*/ S.Array(
-  ImageUsageResourceTypeOption.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImageUsageResourceTypeOption.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ImageUsageResourceTypeOption",
   }),
 );
@@ -31813,10 +32193,14 @@ export const ImageUsageResourceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageUsageResourceType" }) as any as S.Schema<ImageUsageResourceType>;
 export type ImageUsageResourceTypeList = ImageUsageResourceType[];
 export const ImageUsageResourceTypeList = /*@__PURE__*/ S.Array(
-  ImageUsageResourceType.pipe(T.XmlName("item")).annotate({ identifier: "ImageUsageResourceType" }),
+  /*@__PURE__*/ ImageUsageResourceType.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageUsageResourceType",
+  }),
 );
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const UserIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ImageUsageReportState = string;
 export type ImageUsageReportStateReason = string;
 export interface ImageUsageReport {
@@ -31857,7 +32241,9 @@ export const ImageUsageReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageUsageReport" }) as any as S.Schema<ImageUsageReport>;
 export type ImageUsageReportList = ImageUsageReport[];
 export const ImageUsageReportList = /*@__PURE__*/ S.Array(
-  ImageUsageReport.pipe(T.XmlName("item")).annotate({ identifier: "ImageUsageReport" }),
+  /*@__PURE__*/ ImageUsageReport.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageUsageReport",
+  }),
 );
 export interface DescribeImageUsageReportsResult {
   NextToken?: string;
@@ -31876,7 +32262,9 @@ export const DescribeImageUsageReportsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeImageUsageReportsResult>;
 export type ImportImageTaskId = string;
 export type ImportTaskIdList = string[];
-export const ImportTaskIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ImportTaskId")));
+export const ImportTaskIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ImportTaskId")),
+);
 export interface DescribeImportImageTasksRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -31942,7 +32330,9 @@ export const SnapshotDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotDetail" }) as any as S.Schema<SnapshotDetail>;
 export type SnapshotDetailList = SnapshotDetail[];
 export const SnapshotDetailList = /*@__PURE__*/ S.Array(
-  SnapshotDetail.pipe(T.XmlName("item")).annotate({ identifier: "SnapshotDetail" }),
+  /*@__PURE__*/ SnapshotDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SnapshotDetail",
+  }),
 );
 export interface ImportImageLicenseConfigurationResponse {
   LicenseConfigurationArn?: string;
@@ -31959,7 +32349,9 @@ export const ImportImageLicenseConfigurationResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ImportImageLicenseConfigurationResponse>;
 export type ImportImageLicenseSpecificationListResponse = ImportImageLicenseConfigurationResponse[];
 export const ImportImageLicenseSpecificationListResponse = /*@__PURE__*/ S.Array(
-  ImportImageLicenseConfigurationResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImportImageLicenseConfigurationResponse.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "ImportImageLicenseConfigurationResponse",
   }),
 );
@@ -32023,7 +32415,9 @@ export const ImportImageTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportImageTask" }) as any as S.Schema<ImportImageTask>;
 export type ImportImageTaskList = ImportImageTask[];
 export const ImportImageTaskList = /*@__PURE__*/ S.Array(
-  ImportImageTask.pipe(T.XmlName("item")).annotate({ identifier: "ImportImageTask" }),
+  /*@__PURE__*/ ImportImageTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImportImageTask",
+  }),
 );
 export interface DescribeImportImageTasksResult {
   ImportImageTasks?: ImportImageTask[];
@@ -32043,7 +32437,7 @@ export const DescribeImportImageTasksResult = /*@__PURE__*/ S.suspend(() =>
 export type ImportSnapshotTaskId = string;
 export type ImportSnapshotTaskIdList = string[];
 export const ImportSnapshotTaskIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ImportTaskId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ImportTaskId")),
 );
 export interface DescribeImportSnapshotTasksRequest {
   DryRun?: boolean;
@@ -32120,7 +32514,9 @@ export const ImportSnapshotTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportSnapshotTask" }) as any as S.Schema<ImportSnapshotTask>;
 export type ImportSnapshotTaskList = ImportSnapshotTask[];
 export const ImportSnapshotTaskList = /*@__PURE__*/ S.Array(
-  ImportSnapshotTask.pipe(T.XmlName("item")).annotate({ identifier: "ImportSnapshotTask" }),
+  /*@__PURE__*/ ImportSnapshotTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImportSnapshotTask",
+  }),
 );
 export interface DescribeImportSnapshotTasksResult {
   ImportSnapshotTasks?: ImportSnapshotTask[];
@@ -32229,7 +32625,7 @@ export const InstanceBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceBlockDeviceMapping>;
 export type InstanceBlockDeviceMappingList = InstanceBlockDeviceMapping[];
 export const InstanceBlockDeviceMappingList = /*@__PURE__*/ S.Array(
-  InstanceBlockDeviceMapping.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceBlockDeviceMapping.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceBlockDeviceMapping",
   }),
 );
@@ -32345,7 +32741,7 @@ export const DescribeInstanceConnectEndpointsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DescribeInstanceConnectEndpointsRequest>;
 export type InstanceConnectEndpointSet = Ec2InstanceConnectEndpoint[];
 export const InstanceConnectEndpointSet = /*@__PURE__*/ S.Array(
-  Ec2InstanceConnectEndpoint.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ Ec2InstanceConnectEndpoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "Ec2InstanceConnectEndpoint",
   }),
 );
@@ -32397,7 +32793,7 @@ export const InstanceCreditSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceCreditSpecification>;
 export type InstanceCreditSpecificationList = InstanceCreditSpecification[];
 export const InstanceCreditSpecificationList = /*@__PURE__*/ S.Array(
-  InstanceCreditSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceCreditSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceCreditSpecification",
   }),
 );
@@ -32440,7 +32836,7 @@ export const DescribeInstanceEventNotificationAttributesResult = /*@__PURE__*/ S
 }) as any as S.Schema<DescribeInstanceEventNotificationAttributesResult>;
 export type InstanceEventWindowIdSet = string[];
 export const InstanceEventWindowIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("InstanceEventWindowId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstanceEventWindowId")),
 );
 export type ResultRange = number;
 export interface DescribeInstanceEventWindowsRequest {
@@ -32465,7 +32861,9 @@ export const DescribeInstanceEventWindowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceEventWindowsRequest>;
 export type InstanceEventWindowSet = InstanceEventWindow[];
 export const InstanceEventWindowSet = /*@__PURE__*/ S.Array(
-  InstanceEventWindow.pipe(T.XmlName("item")).annotate({ identifier: "InstanceEventWindow" }),
+  /*@__PURE__*/ InstanceEventWindow.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceEventWindow",
+  }),
 );
 export interface DescribeInstanceEventWindowsResult {
   InstanceEventWindows?: InstanceEventWindow[];
@@ -32608,7 +33006,9 @@ export const InstanceImageMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceImageMetadata" }) as any as S.Schema<InstanceImageMetadata>;
 export type InstanceImageMetadataList = InstanceImageMetadata[];
 export const InstanceImageMetadataList = /*@__PURE__*/ S.Array(
-  InstanceImageMetadata.pipe(T.XmlName("item")).annotate({ identifier: "InstanceImageMetadata" }),
+  /*@__PURE__*/ InstanceImageMetadata.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceImageMetadata",
+  }),
 );
 export interface DescribeInstanceImageMetadataResult {
   InstanceImageMetadata?: InstanceImageMetadata[];
@@ -32679,7 +33079,9 @@ export const ElasticGpuAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticGpuAssociation" }) as any as S.Schema<ElasticGpuAssociation>;
 export type ElasticGpuAssociationList = ElasticGpuAssociation[];
 export const ElasticGpuAssociationList = /*@__PURE__*/ S.Array(
-  ElasticGpuAssociation.pipe(T.XmlName("item")).annotate({ identifier: "ElasticGpuAssociation" }),
+  /*@__PURE__*/ ElasticGpuAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ElasticGpuAssociation",
+  }),
 );
 export interface ElasticInferenceAcceleratorAssociation {
   ElasticInferenceAcceleratorArn?: string;
@@ -32713,7 +33115,9 @@ export const ElasticInferenceAcceleratorAssociation = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ElasticInferenceAcceleratorAssociation>;
 export type ElasticInferenceAcceleratorAssociationList = ElasticInferenceAcceleratorAssociation[];
 export const ElasticInferenceAcceleratorAssociationList = /*@__PURE__*/ S.Array(
-  ElasticInferenceAcceleratorAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ElasticInferenceAcceleratorAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "ElasticInferenceAcceleratorAssociation",
   }),
 );
@@ -32836,7 +33240,7 @@ export const InstancePrivateIpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancePrivateIpAddress" }) as any as S.Schema<InstancePrivateIpAddress>;
 export type InstancePrivateIpAddressList = InstancePrivateIpAddress[];
 export const InstancePrivateIpAddressList = /*@__PURE__*/ S.Array(
-  InstancePrivateIpAddress.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstancePrivateIpAddress.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstancePrivateIpAddress",
   }),
 );
@@ -32850,7 +33254,9 @@ export const InstanceIpv4Prefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceIpv4Prefix" }) as any as S.Schema<InstanceIpv4Prefix>;
 export type InstanceIpv4PrefixList = InstanceIpv4Prefix[];
 export const InstanceIpv4PrefixList = /*@__PURE__*/ S.Array(
-  InstanceIpv4Prefix.pipe(T.XmlName("item")).annotate({ identifier: "InstanceIpv4Prefix" }),
+  /*@__PURE__*/ InstanceIpv4Prefix.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceIpv4Prefix",
+  }),
 );
 export interface InstanceIpv6Prefix {
   Ipv6Prefix?: string;
@@ -32862,7 +33268,9 @@ export const InstanceIpv6Prefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceIpv6Prefix" }) as any as S.Schema<InstanceIpv6Prefix>;
 export type InstanceIpv6PrefixList = InstanceIpv6Prefix[];
 export const InstanceIpv6PrefixList = /*@__PURE__*/ S.Array(
-  InstanceIpv6Prefix.pipe(T.XmlName("item")).annotate({ identifier: "InstanceIpv6Prefix" }),
+  /*@__PURE__*/ InstanceIpv6Prefix.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceIpv6Prefix",
+  }),
 );
 export interface ConnectionTrackingSpecificationResponse {
   TcpEstablishedTimeout?: number;
@@ -32970,7 +33378,7 @@ export const InstanceNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceNetworkInterface" }) as any as S.Schema<InstanceNetworkInterface>;
 export type InstanceNetworkInterfaceList = InstanceNetworkInterface[];
 export const InstanceNetworkInterfaceList = /*@__PURE__*/ S.Array(
-  InstanceNetworkInterface.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceNetworkInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceNetworkInterface",
   }),
 );
@@ -33035,7 +33443,9 @@ export const LicenseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseConfiguration" }) as any as S.Schema<LicenseConfiguration>;
 export type LicenseList = LicenseConfiguration[];
 export const LicenseList = /*@__PURE__*/ S.Array(
-  LicenseConfiguration.pipe(T.XmlName("item")).annotate({ identifier: "LicenseConfiguration" }),
+  /*@__PURE__*/ LicenseConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LicenseConfiguration",
+  }),
 );
 export type InstanceMetadataOptionsState = "pending" | "applied" | (string & {});
 export const InstanceMetadataOptionsState = S.String;
@@ -33202,7 +33612,9 @@ export const InstanceSecondaryInterfacePrivateIpAddress = /*@__PURE__*/ S.suspen
 export type InstanceSecondaryInterfacePrivateIpAddressList =
   InstanceSecondaryInterfacePrivateIpAddress[];
 export const InstanceSecondaryInterfacePrivateIpAddressList = /*@__PURE__*/ S.Array(
-  InstanceSecondaryInterfacePrivateIpAddress.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceSecondaryInterfacePrivateIpAddress.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceSecondaryInterfacePrivateIpAddress",
   }),
 );
@@ -33262,7 +33674,7 @@ export const InstanceSecondaryInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceSecondaryInterface>;
 export type InstanceSecondaryInterfaceList = InstanceSecondaryInterface[];
 export const InstanceSecondaryInterfaceList = /*@__PURE__*/ S.Array(
-  InstanceSecondaryInterface.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceSecondaryInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceSecondaryInterface",
   }),
 );
@@ -33523,7 +33935,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
 export const InstanceList = /*@__PURE__*/ S.Array(
-  Instance.pipe(T.XmlName("item")).annotate({ identifier: "Instance" }),
+  /*@__PURE__*/ Instance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Instance" }),
 );
 export interface Reservation {
   ReservationId?: string;
@@ -33549,7 +33961,9 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 export type ReservationList = Reservation[];
 export const ReservationList = /*@__PURE__*/ S.Array(
-  Reservation.pipe(T.XmlName("item")).annotate({ identifier: "Reservation" }),
+  /*@__PURE__*/ Reservation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Reservation",
+  }),
 );
 export interface DescribeInstancesResult {
   NextToken?: string;
@@ -33627,7 +34041,9 @@ export const RegisteredInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisteredInstance" }) as any as S.Schema<RegisteredInstance>;
 export type RegisteredInstanceList = RegisteredInstance[];
 export const RegisteredInstanceList = /*@__PURE__*/ S.Array(
-  RegisteredInstance.pipe(T.XmlName("item")).annotate({ identifier: "RegisteredInstance" }),
+  /*@__PURE__*/ RegisteredInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RegisteredInstance",
+  }),
 );
 export interface DescribeInstanceSqlHaHistoryStatesResult {
   Instances?: RegisteredInstance[];
@@ -33744,7 +34160,9 @@ export const InstanceStatusEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceStatusEvent" }) as any as S.Schema<InstanceStatusEvent>;
 export type InstanceStatusEventList = InstanceStatusEvent[];
 export const InstanceStatusEventList = /*@__PURE__*/ S.Array(
-  InstanceStatusEvent.pipe(T.XmlName("item")).annotate({ identifier: "InstanceStatusEvent" }),
+  /*@__PURE__*/ InstanceStatusEvent.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceStatusEvent",
+  }),
 );
 export type StatusName = "reachability" | (string & {});
 export const StatusName = S.String;
@@ -33769,7 +34187,9 @@ export const InstanceStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceStatusDetails" }) as any as S.Schema<InstanceStatusDetails>;
 export type InstanceStatusDetailsList = InstanceStatusDetails[];
 export const InstanceStatusDetailsList = /*@__PURE__*/ S.Array(
-  InstanceStatusDetails.pipe(T.XmlName("item")).annotate({ identifier: "InstanceStatusDetails" }),
+  /*@__PURE__*/ InstanceStatusDetails.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceStatusDetails",
+  }),
 );
 export type SummaryStatus =
   | "ok"
@@ -33810,7 +34230,9 @@ export const EbsStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EbsStatusDetails" }) as any as S.Schema<EbsStatusDetails>;
 export type EbsStatusDetailsList = EbsStatusDetails[];
 export const EbsStatusDetailsList = /*@__PURE__*/ S.Array(
-  EbsStatusDetails.pipe(T.XmlName("item")).annotate({ identifier: "EbsStatusDetails" }),
+  /*@__PURE__*/ EbsStatusDetails.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "EbsStatusDetails",
+  }),
 );
 export interface EbsStatusSummary {
   Details?: EbsStatusDetails[];
@@ -33886,7 +34308,9 @@ export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceStatus" }) as any as S.Schema<InstanceStatus>;
 export type InstanceStatusList = InstanceStatus[];
 export const InstanceStatusList = /*@__PURE__*/ S.Array(
-  InstanceStatus.pipe(T.XmlName("item")).annotate({ identifier: "InstanceStatus" }),
+  /*@__PURE__*/ InstanceStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceStatus",
+  }),
 );
 export interface DescribeInstanceStatusResult {
   InstanceStatuses?: InstanceStatus[];
@@ -33929,7 +34353,9 @@ export const DescribeInstanceTopologyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInstanceTopologyRequest",
 }) as any as S.Schema<DescribeInstanceTopologyRequest>;
 export type NetworkNodesList = string[];
-export const NetworkNodesList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkNodesList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface InstanceTopology {
   InstanceId?: string;
   InstanceType?: string;
@@ -33964,7 +34390,9 @@ export const InstanceTopology = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceTopology" }) as any as S.Schema<InstanceTopology>;
 export type InstanceSet = InstanceTopology[];
 export const InstanceSet = /*@__PURE__*/ S.Array(
-  InstanceTopology.pipe(T.XmlName("item")).annotate({ identifier: "InstanceTopology" }),
+  /*@__PURE__*/ InstanceTopology.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceTopology",
+  }),
 );
 export interface DescribeInstanceTopologyResult {
   Instances?: InstanceTopology[];
@@ -34029,7 +34457,9 @@ export const InstanceTypeOffering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceTypeOffering" }) as any as S.Schema<InstanceTypeOffering>;
 export type InstanceTypeOfferingsList = InstanceTypeOffering[];
 export const InstanceTypeOfferingsList = /*@__PURE__*/ S.Array(
-  InstanceTypeOffering.pipe(T.XmlName("item")).annotate({ identifier: "InstanceTypeOffering" }),
+  /*@__PURE__*/ InstanceTypeOffering.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceTypeOffering",
+  }),
 );
 export interface DescribeInstanceTypeOfferingsResult {
   InstanceTypeOfferings?: InstanceTypeOffering[];
@@ -34076,15 +34506,19 @@ export type UsageClassType = "spot" | "on-demand" | "capacity-block" | (string &
 export const UsageClassType = S.String;
 
 export type UsageClassTypeList = UsageClassType[];
-export const UsageClassTypeList = /*@__PURE__*/ S.Array(UsageClassType.pipe(T.XmlName("item")));
+export const UsageClassTypeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ UsageClassType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type RootDeviceType = "ebs" | "instance-store" | (string & {});
 export const RootDeviceType = S.String;
 
 export type RootDeviceTypeList = RootDeviceType[];
-export const RootDeviceTypeList = /*@__PURE__*/ S.Array(RootDeviceType.pipe(T.XmlName("item")));
+export const RootDeviceTypeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ RootDeviceType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VirtualizationTypeList = VirtualizationType[];
 export const VirtualizationTypeList = /*@__PURE__*/ S.Array(
-  VirtualizationType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ VirtualizationType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type BareMetalFlag = boolean;
 export type InstanceTypeHypervisor = "nitro" | "xen" | (string & {});
@@ -34100,7 +34534,9 @@ export type ArchitectureType =
 export const ArchitectureType = S.String;
 
 export type ArchitectureTypeList = ArchitectureType[];
-export const ArchitectureTypeList = /*@__PURE__*/ S.Array(ArchitectureType.pipe(T.XmlName("item")));
+export const ArchitectureTypeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ ArchitectureType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ProcessorSustainedClockSpeed = number;
 export type SupportedAdditionalProcessorFeature =
   | "amd-sev-snp"
@@ -34110,7 +34546,7 @@ export const SupportedAdditionalProcessorFeature = S.String;
 
 export type SupportedAdditionalProcessorFeatureList = SupportedAdditionalProcessorFeature[];
 export const SupportedAdditionalProcessorFeatureList = /*@__PURE__*/ S.Array(
-  SupportedAdditionalProcessorFeature.pipe(T.XmlName("item")),
+  /*@__PURE__*/ SupportedAdditionalProcessorFeature.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type CpuManufacturerName = string;
 export interface ProcessorInfo {
@@ -34143,9 +34579,13 @@ export type VCpuCount = number;
 export type CoreCount = number;
 export type ThreadsPerCore = number;
 export type CoreCountList = number[];
-export const CoreCountList = /*@__PURE__*/ S.Array(S.Number.pipe(T.XmlName("item")));
+export const CoreCountList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ThreadsPerCoreList = number[];
-export const ThreadsPerCoreList = /*@__PURE__*/ S.Array(S.Number.pipe(T.XmlName("item")));
+export const ThreadsPerCoreList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface VCpuInfo {
   DefaultVCpus?: number;
   DefaultCores?: number;
@@ -34206,7 +34646,7 @@ export const DiskInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskInfo" }) as any as S.Schema<DiskInfo>;
 export type DiskInfoList = DiskInfo[];
 export const DiskInfoList = /*@__PURE__*/ S.Array(
-  DiskInfo.pipe(T.XmlName("item")).annotate({ identifier: "DiskInfo" }),
+  /*@__PURE__*/ DiskInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "DiskInfo" }),
 );
 export type EphemeralNvmeSupport = "unsupported" | "supported" | "required" | (string & {});
 export const EphemeralNvmeSupport = S.String;
@@ -34331,7 +34771,9 @@ export const EbsCardInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EbsCardInfo" }) as any as S.Schema<EbsCardInfo>;
 export type EbsCardInfoList = EbsCardInfo[];
 export const EbsCardInfoList = /*@__PURE__*/ S.Array(
-  EbsCardInfo.pipe(T.XmlName("item")).annotate({ identifier: "EbsCardInfo" }),
+  /*@__PURE__*/ EbsCardInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "EbsCardInfo",
+  }),
 );
 export interface EbsInfo {
   EbsOptimizedSupport?: EbsOptimizedSupport;
@@ -34399,7 +34841,7 @@ export const NetworkCardInterfaceType = S.String;
 
 export type NetworkCardInterfaceTypeList = NetworkCardInterfaceType[];
 export const NetworkCardInterfaceTypeList = /*@__PURE__*/ S.Array(
-  NetworkCardInterfaceType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ NetworkCardInterfaceType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface NetworkCardInfo {
   NetworkCardIndex?: number;
@@ -34459,7 +34901,9 @@ export const NetworkCardInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkCardInfo" }) as any as S.Schema<NetworkCardInfo>;
 export type NetworkCardInfoList = NetworkCardInfo[];
 export const NetworkCardInfoList = /*@__PURE__*/ S.Array(
-  NetworkCardInfo.pipe(T.XmlName("item")).annotate({ identifier: "NetworkCardInfo" }),
+  /*@__PURE__*/ NetworkCardInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkCardInfo",
+  }),
 );
 export type MaxIpv4AddrPerInterface = number;
 export type MaxIpv6AddrPerInterface = number;
@@ -34487,7 +34931,7 @@ export const BandwidthWeightingType = S.String;
 
 export type BandwidthWeightingTypeList = BandwidthWeightingType[];
 export const BandwidthWeightingTypeList = /*@__PURE__*/ S.Array(
-  BandwidthWeightingType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ BandwidthWeightingType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type FlexibleEnaQueuesSupport = "unsupported" | "supported" | (string & {});
 export const FlexibleEnaQueuesSupport = S.String;
@@ -34627,7 +35071,9 @@ export type LogicalGpuCount = number;
 export type GpuPartitionSize = number;
 export type Workload = string;
 export type WorkloadsList = string[];
-export const WorkloadsList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const WorkloadsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type GpuDeviceMemorySize = number;
 export interface GpuDeviceMemoryInfo {
   SizeInMiB?: number;
@@ -34673,7 +35119,9 @@ export const GpuDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GpuDeviceInfo" }) as any as S.Schema<GpuDeviceInfo>;
 export type GpuDeviceInfoList = GpuDeviceInfo[];
 export const GpuDeviceInfoList = /*@__PURE__*/ S.Array(
-  GpuDeviceInfo.pipe(T.XmlName("item")).annotate({ identifier: "GpuDeviceInfo" }),
+  /*@__PURE__*/ GpuDeviceInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "GpuDeviceInfo",
+  }),
 );
 export type TotalGpuMemory = number;
 export interface GpuInfo {
@@ -34722,7 +35170,9 @@ export const FpgaDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FpgaDeviceInfo" }) as any as S.Schema<FpgaDeviceInfo>;
 export type FpgaDeviceInfoList = FpgaDeviceInfo[];
 export const FpgaDeviceInfoList = /*@__PURE__*/ S.Array(
-  FpgaDeviceInfo.pipe(T.XmlName("item")).annotate({ identifier: "FpgaDeviceInfo" }),
+  /*@__PURE__*/ FpgaDeviceInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "FpgaDeviceInfo",
+  }),
 );
 export type TotalFpgaMemory = number;
 export interface FpgaInfo {
@@ -34743,7 +35193,7 @@ export const PlacementGroupStrategy = S.String;
 
 export type PlacementGroupStrategyList = PlacementGroupStrategy[];
 export const PlacementGroupStrategyList = /*@__PURE__*/ S.Array(
-  PlacementGroupStrategy.pipe(T.XmlName("item")),
+  /*@__PURE__*/ PlacementGroupStrategy.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface PlacementGroupInfo {
   SupportedStrategies?: PlacementGroupStrategy[];
@@ -34816,7 +35266,9 @@ export type BootModeType = "legacy-bios" | "uefi" | (string & {});
 export const BootModeType = S.String;
 
 export type BootModeTypeList = BootModeType[];
-export const BootModeTypeList = /*@__PURE__*/ S.Array(BootModeType.pipe(T.XmlName("item")));
+export const BootModeTypeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ BootModeType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type NitroEnclavesSupport = "unsupported" | "supported" | (string & {});
 export const NitroEnclavesSupport = S.String;
 
@@ -34826,7 +35278,7 @@ export const NitroTpmSupport = S.String;
 export type NitroTpmSupportedVersionType = string;
 export type NitroTpmSupportedVersionsList = string[];
 export const NitroTpmSupportedVersionsList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface NitroTpmInfo {
   SupportedVersions?: string[];
@@ -34872,7 +35324,9 @@ export const MediaDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MediaDeviceInfo" }) as any as S.Schema<MediaDeviceInfo>;
 export type MediaDeviceInfoList = MediaDeviceInfo[];
 export const MediaDeviceInfoList = /*@__PURE__*/ S.Array(
-  MediaDeviceInfo.pipe(T.XmlName("item")).annotate({ identifier: "MediaDeviceInfo" }),
+  /*@__PURE__*/ MediaDeviceInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MediaDeviceInfo",
+  }),
 );
 export type TotalMediaMemory = number;
 export interface MediaAcceleratorInfo {
@@ -34934,7 +35388,9 @@ export const NeuronDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NeuronDeviceInfo" }) as any as S.Schema<NeuronDeviceInfo>;
 export type NeuronDeviceInfoList = NeuronDeviceInfo[];
 export const NeuronDeviceInfoList = /*@__PURE__*/ S.Array(
-  NeuronDeviceInfo.pipe(T.XmlName("item")).annotate({ identifier: "NeuronDeviceInfo" }),
+  /*@__PURE__*/ NeuronDeviceInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NeuronDeviceInfo",
+  }),
 );
 export type TotalNeuronMemory = number;
 export interface NeuronInfo {
@@ -35109,7 +35565,9 @@ export const InstanceTypeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceTypeInfo" }) as any as S.Schema<InstanceTypeInfo>;
 export type InstanceTypeInfoList = InstanceTypeInfo[];
 export const InstanceTypeInfoList = /*@__PURE__*/ S.Array(
-  InstanceTypeInfo.pipe(T.XmlName("item")).annotate({ identifier: "InstanceTypeInfo" }),
+  /*@__PURE__*/ InstanceTypeInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceTypeInfo",
+  }),
 );
 export interface DescribeInstanceTypesResult {
   InstanceTypes?: InstanceTypeInfo[];
@@ -35128,7 +35586,9 @@ export const DescribeInstanceTypesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceTypesResult>;
 export type DescribeInternetGatewaysMaxResults = number;
 export type InternetGatewayIdList = string[];
-export const InternetGatewayIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InternetGatewayIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeInternetGatewaysRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -35152,7 +35612,9 @@ export const DescribeInternetGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInternetGatewaysRequest>;
 export type InternetGatewayList = InternetGateway[];
 export const InternetGatewayList = /*@__PURE__*/ S.Array(
-  InternetGateway.pipe(T.XmlName("item")).annotate({ identifier: "InternetGateway" }),
+  /*@__PURE__*/ InternetGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InternetGateway",
+  }),
 );
 export interface DescribeInternetGatewaysResult {
   InternetGateways?: InternetGateway[];
@@ -35186,7 +35648,7 @@ export const DescribeIpamByoasnRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIpamByoasnRequest>;
 export type ByoasnSet = Byoasn[];
 export const ByoasnSet = /*@__PURE__*/ S.Array(
-  Byoasn.pipe(T.XmlName("item")).annotate({ identifier: "Byoasn" }),
+  /*@__PURE__*/ Byoasn.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Byoasn" }),
 );
 export interface DescribeIpamByoasnResult {
   Byoasns?: Byoasn[];
@@ -35221,7 +35683,9 @@ export const DescribeIpamExternalResourceVerificationTokensRequest = /*@__PURE__
 }) as any as S.Schema<DescribeIpamExternalResourceVerificationTokensRequest>;
 export type IpamExternalResourceVerificationTokenSet = IpamExternalResourceVerificationToken[];
 export const IpamExternalResourceVerificationTokenSet = /*@__PURE__*/ S.Array(
-  IpamExternalResourceVerificationToken.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamExternalResourceVerificationToken.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "IpamExternalResourceVerificationToken",
   }),
 );
@@ -35264,7 +35728,7 @@ export const DescribeIpamInternetRegistryAssociationsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DescribeIpamInternetRegistryAssociationsRequest>;
 export type IpamInternetRegistryAssociationSet = IpamInternetRegistryAssociation[];
 export const IpamInternetRegistryAssociationSet = /*@__PURE__*/ S.Array(
-  IpamInternetRegistryAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamInternetRegistryAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamInternetRegistryAssociation",
   }),
 );
@@ -35303,7 +35767,9 @@ export const DescribeIpamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIpamPoliciesRequest>;
 export type IpamPolicySet = IpamPolicy[];
 export const IpamPolicySet = /*@__PURE__*/ S.Array(
-  IpamPolicy.pipe(T.XmlName("item")).annotate({ identifier: "IpamPolicy" }),
+  /*@__PURE__*/ IpamPolicy.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPolicy",
+  }),
 );
 export interface DescribeIpamPoliciesResult {
   NextToken?: string;
@@ -35341,7 +35807,9 @@ export const DescribeIpamPoolAllocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIpamPoolAllocationsRequest>;
 export type IpamPoolAllocationSet = IpamPoolAllocation[];
 export const IpamPoolAllocationSet = /*@__PURE__*/ S.Array(
-  IpamPoolAllocation.pipe(T.XmlName("item")).annotate({ identifier: "IpamPoolAllocation" }),
+  /*@__PURE__*/ IpamPoolAllocation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPoolAllocation",
+  }),
 );
 export interface DescribeIpamPoolAllocationsResult {
   IpamPoolAllocations?: IpamPoolAllocation[];
@@ -35376,7 +35844,7 @@ export const DescribeIpamPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeIpamPoolsRequest" }) as any as S.Schema<DescribeIpamPoolsRequest>;
 export type IpamPoolSet = IpamPool[];
 export const IpamPoolSet = /*@__PURE__*/ S.Array(
-  IpamPool.pipe(T.XmlName("item")).annotate({ identifier: "IpamPool" }),
+  /*@__PURE__*/ IpamPool.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "IpamPool" }),
 );
 export interface DescribeIpamPoolsResult {
   NextToken?: string;
@@ -35413,7 +35881,9 @@ export const DescribeIpamPrefixListResolversRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeIpamPrefixListResolversRequest>;
 export type IpamPrefixListResolverSet = IpamPrefixListResolver[];
 export const IpamPrefixListResolverSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolver.pipe(T.XmlName("item")).annotate({ identifier: "IpamPrefixListResolver" }),
+  /*@__PURE__*/ IpamPrefixListResolver.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPrefixListResolver",
+  }),
 );
 export interface DescribeIpamPrefixListResolversResult {
   NextToken?: string;
@@ -35454,7 +35924,7 @@ export const DescribeIpamPrefixListResolverTargetsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DescribeIpamPrefixListResolverTargetsRequest>;
 export type IpamPrefixListResolverTargetSet = IpamPrefixListResolverTarget[];
 export const IpamPrefixListResolverTargetSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverTarget.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverTarget.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPrefixListResolverTarget",
   }),
 );
@@ -35495,7 +35965,9 @@ export const DescribeIpamResourceDiscoveriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeIpamResourceDiscoveriesRequest>;
 export type IpamResourceDiscoverySet = IpamResourceDiscovery[];
 export const IpamResourceDiscoverySet = /*@__PURE__*/ S.Array(
-  IpamResourceDiscovery.pipe(T.XmlName("item")).annotate({ identifier: "IpamResourceDiscovery" }),
+  /*@__PURE__*/ IpamResourceDiscovery.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamResourceDiscovery",
+  }),
 );
 export interface DescribeIpamResourceDiscoveriesResult {
   IpamResourceDiscoveries?: IpamResourceDiscovery[];
@@ -35534,7 +36006,7 @@ export const DescribeIpamResourceDiscoveryAssociationsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DescribeIpamResourceDiscoveryAssociationsRequest>;
 export type IpamResourceDiscoveryAssociationSet = IpamResourceDiscoveryAssociation[];
 export const IpamResourceDiscoveryAssociationSet = /*@__PURE__*/ S.Array(
-  IpamResourceDiscoveryAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamResourceDiscoveryAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamResourceDiscoveryAssociation",
   }),
 );
@@ -35571,7 +36043,7 @@ export const DescribeIpamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeIpamsRequest" }) as any as S.Schema<DescribeIpamsRequest>;
 export type IpamSet = Ipam[];
 export const IpamSet = /*@__PURE__*/ S.Array(
-  Ipam.pipe(T.XmlName("item")).annotate({ identifier: "Ipam" }),
+  /*@__PURE__*/ Ipam.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Ipam" }),
 );
 export interface DescribeIpamsResult {
   NextToken?: string;
@@ -35603,7 +36075,9 @@ export const DescribeIpamScopesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIpamScopesRequest>;
 export type IpamScopeSet = IpamScope[];
 export const IpamScopeSet = /*@__PURE__*/ S.Array(
-  IpamScope.pipe(T.XmlName("item")).annotate({ identifier: "IpamScope" }),
+  /*@__PURE__*/ IpamScope.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamScope",
+  }),
 );
 export interface DescribeIpamScopesResult {
   NextToken?: string;
@@ -35619,7 +36093,9 @@ export const DescribeIpamScopesResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeIpamScopesResult" }) as any as S.Schema<DescribeIpamScopesResult>;
 export type Ipv6PoolIdList = string[];
-export const Ipv6PoolIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const Ipv6PoolIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type Ipv6PoolMaxResults = number;
 export interface DescribeIpv6PoolsRequest {
   PoolIds?: string[];
@@ -35647,7 +36123,9 @@ export const PoolCidrBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PoolCidrBlock" }) as any as S.Schema<PoolCidrBlock>;
 export type PoolCidrBlocksSet = PoolCidrBlock[];
 export const PoolCidrBlocksSet = /*@__PURE__*/ S.Array(
-  PoolCidrBlock.pipe(T.XmlName("item")).annotate({ identifier: "PoolCidrBlock" }),
+  /*@__PURE__*/ PoolCidrBlock.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PoolCidrBlock",
+  }),
 );
 export interface Ipv6Pool {
   PoolId?: string;
@@ -35668,7 +36146,7 @@ export const Ipv6Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6Pool" }) as any as S.Schema<Ipv6Pool>;
 export type Ipv6PoolSet = Ipv6Pool[];
 export const Ipv6PoolSet = /*@__PURE__*/ S.Array(
-  Ipv6Pool.pipe(T.XmlName("item")).annotate({ identifier: "Ipv6Pool" }),
+  /*@__PURE__*/ Ipv6Pool.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Ipv6Pool" }),
 );
 export interface DescribeIpv6PoolsResult {
   Ipv6Pools?: Ipv6Pool[];
@@ -35684,9 +36162,13 @@ export const DescribeIpv6PoolsResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeIpv6PoolsResult" }) as any as S.Schema<DescribeIpv6PoolsResult>;
 export type KeyNameStringList = string[];
-export const KeyNameStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("KeyName")));
+export const KeyNameStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("KeyName")),
+);
 export type KeyPairIdStringList = string[];
-export const KeyPairIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("KeyPairId")));
+export const KeyPairIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("KeyPairId")),
+);
 export interface DescribeKeyPairsRequest {
   KeyNames?: string[];
   KeyPairIds?: string[];
@@ -35731,7 +36213,9 @@ export const KeyPairInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyPairInfo" }) as any as S.Schema<KeyPairInfo>;
 export type KeyPairList = KeyPairInfo[];
 export const KeyPairList = /*@__PURE__*/ S.Array(
-  KeyPairInfo.pipe(T.XmlName("item")).annotate({ identifier: "KeyPairInfo" }),
+  /*@__PURE__*/ KeyPairInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "KeyPairInfo",
+  }),
 );
 export interface DescribeKeyPairsResult {
   KeyPairs?: KeyPairInfo[];
@@ -35742,9 +36226,13 @@ export const DescribeKeyPairsResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeKeyPairsResult" }) as any as S.Schema<DescribeKeyPairsResult>;
 export type LaunchTemplateIdStringList = string[];
-export const LaunchTemplateIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const LaunchTemplateIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type LaunchTemplateNameStringList = string[];
-export const LaunchTemplateNameStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const LaunchTemplateNameStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeLaunchTemplatesMaxResults = number;
 export interface DescribeLaunchTemplatesRequest {
   DryRun?: boolean;
@@ -35772,7 +36260,9 @@ export const DescribeLaunchTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLaunchTemplatesRequest>;
 export type LaunchTemplateSet = LaunchTemplate[];
 export const LaunchTemplateSet = /*@__PURE__*/ S.Array(
-  LaunchTemplate.pipe(T.XmlName("item")).annotate({ identifier: "LaunchTemplate" }),
+  /*@__PURE__*/ LaunchTemplate.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LaunchTemplate",
+  }),
 );
 export interface DescribeLaunchTemplatesResult {
   LaunchTemplates?: LaunchTemplate[];
@@ -35821,7 +36311,9 @@ export const DescribeLaunchTemplateVersionsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DescribeLaunchTemplateVersionsRequest>;
 export type LaunchTemplateVersionSet = LaunchTemplateVersion[];
 export const LaunchTemplateVersionSet = /*@__PURE__*/ S.Array(
-  LaunchTemplateVersion.pipe(T.XmlName("item")).annotate({ identifier: "LaunchTemplateVersion" }),
+  /*@__PURE__*/ LaunchTemplateVersion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LaunchTemplateVersion",
+  }),
 );
 export interface DescribeLaunchTemplateVersionsResult {
   LaunchTemplateVersions?: LaunchTemplateVersion[];
@@ -35839,7 +36331,9 @@ export const DescribeLaunchTemplateVersionsResult = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeLaunchTemplateVersionsResult",
 }) as any as S.Schema<DescribeLaunchTemplateVersionsResult>;
 export type LocalGatewayRouteTableIdSet = string[];
-export const LocalGatewayRouteTableIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const LocalGatewayRouteTableIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type LocalGatewayMaxResults = number;
 export interface DescribeLocalGatewayRouteTablesRequest {
   LocalGatewayRouteTableIds?: string[];
@@ -35863,7 +36357,9 @@ export const DescribeLocalGatewayRouteTablesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeLocalGatewayRouteTablesRequest>;
 export type LocalGatewayRouteTableSet = LocalGatewayRouteTable[];
 export const LocalGatewayRouteTableSet = /*@__PURE__*/ S.Array(
-  LocalGatewayRouteTable.pipe(T.XmlName("item")).annotate({ identifier: "LocalGatewayRouteTable" }),
+  /*@__PURE__*/ LocalGatewayRouteTable.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LocalGatewayRouteTable",
+  }),
 );
 export interface DescribeLocalGatewayRouteTablesResult {
   LocalGatewayRouteTables?: LocalGatewayRouteTable[];
@@ -35882,7 +36378,7 @@ export const DescribeLocalGatewayRouteTablesResult = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DescribeLocalGatewayRouteTablesResult>;
 export type LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet = string[];
 export const LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest {
   LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds?: string[];
@@ -35908,7 +36404,9 @@ export const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequ
 export type LocalGatewayRouteTableVirtualInterfaceGroupAssociationSet =
   LocalGatewayRouteTableVirtualInterfaceGroupAssociation[];
 export const LocalGatewayRouteTableVirtualInterfaceGroupAssociationSet = /*@__PURE__*/ S.Array(
-  LocalGatewayRouteTableVirtualInterfaceGroupAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LocalGatewayRouteTableVirtualInterfaceGroupAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "LocalGatewayRouteTableVirtualInterfaceGroupAssociation",
   }),
 );
@@ -35932,7 +36430,7 @@ export const DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResu
   }) as any as S.Schema<DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult>;
 export type LocalGatewayRouteTableVpcAssociationIdSet = string[];
 export const LocalGatewayRouteTableVpcAssociationIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeLocalGatewayRouteTableVpcAssociationsRequest {
   LocalGatewayRouteTableVpcAssociationIds?: string[];
@@ -35956,9 +36454,11 @@ export const DescribeLocalGatewayRouteTableVpcAssociationsRequest = /*@__PURE__*
 }) as any as S.Schema<DescribeLocalGatewayRouteTableVpcAssociationsRequest>;
 export type LocalGatewayRouteTableVpcAssociationSet = LocalGatewayRouteTableVpcAssociation[];
 export const LocalGatewayRouteTableVpcAssociationSet = /*@__PURE__*/ S.Array(
-  LocalGatewayRouteTableVpcAssociation.pipe(T.XmlName("item")).annotate({
-    identifier: "LocalGatewayRouteTableVpcAssociation",
-  }),
+  /*@__PURE__*/ LocalGatewayRouteTableVpcAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "LocalGatewayRouteTableVpcAssociation",
+    },
+  ),
 );
 export interface DescribeLocalGatewayRouteTableVpcAssociationsResult {
   LocalGatewayRouteTableVpcAssociations?: LocalGatewayRouteTableVpcAssociation[];
@@ -35976,7 +36476,9 @@ export const DescribeLocalGatewayRouteTableVpcAssociationsResult = /*@__PURE__*/
   identifier: "DescribeLocalGatewayRouteTableVpcAssociationsResult",
 }) as any as S.Schema<DescribeLocalGatewayRouteTableVpcAssociationsResult>;
 export type LocalGatewayIdSet = string[];
-export const LocalGatewayIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const LocalGatewayIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeLocalGatewaysRequest {
   LocalGatewayIds?: string[];
   Filters?: Filter[];
@@ -36016,7 +36518,9 @@ export const LocalGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalGateway" }) as any as S.Schema<LocalGateway>;
 export type LocalGatewaySet = LocalGateway[];
 export const LocalGatewaySet = /*@__PURE__*/ S.Array(
-  LocalGateway.pipe(T.XmlName("item")).annotate({ identifier: "LocalGateway" }),
+  /*@__PURE__*/ LocalGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LocalGateway",
+  }),
 );
 export interface DescribeLocalGatewaysResult {
   LocalGateways?: LocalGateway[];
@@ -36035,7 +36539,7 @@ export const DescribeLocalGatewaysResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLocalGatewaysResult>;
 export type LocalGatewayVirtualInterfaceGroupIdSet = string[];
 export const LocalGatewayVirtualInterfaceGroupIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeLocalGatewayVirtualInterfaceGroupsRequest {
   LocalGatewayVirtualInterfaceGroupIds?: string[];
@@ -36059,7 +36563,7 @@ export const DescribeLocalGatewayVirtualInterfaceGroupsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DescribeLocalGatewayVirtualInterfaceGroupsRequest>;
 export type LocalGatewayVirtualInterfaceGroupSet = LocalGatewayVirtualInterfaceGroup[];
 export const LocalGatewayVirtualInterfaceGroupSet = /*@__PURE__*/ S.Array(
-  LocalGatewayVirtualInterfaceGroup.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LocalGatewayVirtualInterfaceGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LocalGatewayVirtualInterfaceGroup",
   }),
 );
@@ -36100,7 +36604,7 @@ export const DescribeLocalGatewayVirtualInterfacesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DescribeLocalGatewayVirtualInterfacesRequest>;
 export type LocalGatewayVirtualInterfaceSet = LocalGatewayVirtualInterface[];
 export const LocalGatewayVirtualInterfaceSet = /*@__PURE__*/ S.Array(
-  LocalGatewayVirtualInterface.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LocalGatewayVirtualInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LocalGatewayVirtualInterface",
   }),
 );
@@ -36121,7 +36625,9 @@ export const DescribeLocalGatewayVirtualInterfacesResult = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DescribeLocalGatewayVirtualInterfacesResult>;
 export type DescribeLockedSnapshotsMaxResults = number;
 export type SnapshotIdStringList = string[];
-export const SnapshotIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("SnapshotId")));
+export const SnapshotIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SnapshotId")),
+);
 export interface DescribeLockedSnapshotsRequest {
   Filters?: Filter[];
   MaxResults?: number;
@@ -36194,7 +36700,9 @@ export const LockedSnapshotsInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LockedSnapshotsInfo" }) as any as S.Schema<LockedSnapshotsInfo>;
 export type LockedSnapshotsInfoList = LockedSnapshotsInfo[];
 export const LockedSnapshotsInfoList = /*@__PURE__*/ S.Array(
-  LockedSnapshotsInfo.pipe(T.XmlName("item")).annotate({ identifier: "LockedSnapshotsInfo" }),
+  /*@__PURE__*/ LockedSnapshotsInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LockedSnapshotsInfo",
+  }),
 );
 export interface DescribeLockedSnapshotsResult {
   Snapshots?: LockedSnapshotsInfo[];
@@ -36227,7 +36735,9 @@ export const DescribeMacHostsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeMacHostsRequest" }) as any as S.Schema<DescribeMacHostsRequest>;
 export type MacOSVersionStringList = string[];
-export const MacOSVersionStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const MacOSVersionStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface MacHost {
   HostId?: string;
   MacOSLatestSupportedVersions?: string[];
@@ -36243,7 +36753,7 @@ export const MacHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacHost" }) as any as S.Schema<MacHost>;
 export type MacHostList = MacHost[];
 export const MacHostList = /*@__PURE__*/ S.Array(
-  MacHost.pipe(T.XmlName("item")).annotate({ identifier: "MacHost" }),
+  /*@__PURE__*/ MacHost.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "MacHost" }),
 );
 export interface DescribeMacHostsResult {
   MacHosts?: MacHost[];
@@ -36256,7 +36766,9 @@ export const DescribeMacHostsResult = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeMacHostsResult" }) as any as S.Schema<DescribeMacHostsResult>;
 export type MacModificationTaskIdList = string[];
-export const MacModificationTaskIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const MacModificationTaskIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeMacModificationTasksMaxResults = number;
 export interface DescribeMacModificationTasksRequest {
   DryRun?: boolean;
@@ -36280,7 +36792,9 @@ export const DescribeMacModificationTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMacModificationTasksRequest>;
 export type MacModificationTaskList = MacModificationTask[];
 export const MacModificationTaskList = /*@__PURE__*/ S.Array(
-  MacModificationTask.pipe(T.XmlName("item")).annotate({ identifier: "MacModificationTask" }),
+  /*@__PURE__*/ MacModificationTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MacModificationTask",
+  }),
 );
 export interface DescribeMacModificationTasksResult {
   MacModificationTasks?: MacModificationTask[];
@@ -36318,7 +36832,9 @@ export const DescribeManagedPrefixListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeManagedPrefixListsRequest>;
 export type ManagedPrefixListSet = ManagedPrefixList[];
 export const ManagedPrefixListSet = /*@__PURE__*/ S.Array(
-  ManagedPrefixList.pipe(T.XmlName("item")).annotate({ identifier: "ManagedPrefixList" }),
+  /*@__PURE__*/ ManagedPrefixList.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ManagedPrefixList",
+  }),
 );
 export interface DescribeManagedPrefixListsResult {
   NextToken?: string;
@@ -36369,7 +36885,9 @@ export const MovingAddressStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MovingAddressStatus" }) as any as S.Schema<MovingAddressStatus>;
 export type MovingAddressStatusSet = MovingAddressStatus[];
 export const MovingAddressStatusSet = /*@__PURE__*/ S.Array(
-  MovingAddressStatus.pipe(T.XmlName("item")).annotate({ identifier: "MovingAddressStatus" }),
+  /*@__PURE__*/ MovingAddressStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MovingAddressStatus",
+  }),
 );
 export interface DescribeMovingAddressesResult {
   MovingAddressStatuses?: MovingAddressStatus[];
@@ -36388,7 +36906,9 @@ export const DescribeMovingAddressesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMovingAddressesResult>;
 export type DescribeNatGatewaysMaxResults = number;
 export type NatGatewayIdStringList = string[];
-export const NatGatewayIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NatGatewayIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeNatGatewaysRequest {
   DryRun?: boolean;
   Filter?: Filter[];
@@ -36409,7 +36929,9 @@ export const DescribeNatGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNatGatewaysRequest>;
 export type NatGatewayList = NatGateway[];
 export const NatGatewayList = /*@__PURE__*/ S.Array(
-  NatGateway.pipe(T.XmlName("item")).annotate({ identifier: "NatGateway" }),
+  /*@__PURE__*/ NatGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NatGateway",
+  }),
 );
 export interface DescribeNatGatewaysResult {
   NatGateways?: NatGateway[];
@@ -36428,7 +36950,9 @@ export const DescribeNatGatewaysResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNatGatewaysResult>;
 export type DescribeNetworkAclsMaxResults = number;
 export type NetworkAclIdStringList = string[];
-export const NetworkAclIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkAclIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeNetworkAclsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -36449,7 +36973,9 @@ export const DescribeNetworkAclsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNetworkAclsRequest>;
 export type NetworkAclList = NetworkAcl[];
 export const NetworkAclList = /*@__PURE__*/ S.Array(
-  NetworkAcl.pipe(T.XmlName("item")).annotate({ identifier: "NetworkAcl" }),
+  /*@__PURE__*/ NetworkAcl.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkAcl",
+  }),
 );
 export interface DescribeNetworkAclsResult {
   NetworkAcls?: NetworkAcl[];
@@ -36468,7 +36994,7 @@ export const DescribeNetworkAclsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNetworkAclsResult>;
 export type NetworkInsightsAccessScopeAnalysisIdList = string[];
 export const NetworkInsightsAccessScopeAnalysisIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type NetworkInsightsMaxResults = number;
 export interface DescribeNetworkInsightsAccessScopeAnalysesRequest {
@@ -36562,7 +37088,7 @@ export const NetworkInsightsAccessScopeAnalysis = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInsightsAccessScopeAnalysis>;
 export type NetworkInsightsAccessScopeAnalysisList = NetworkInsightsAccessScopeAnalysis[];
 export const NetworkInsightsAccessScopeAnalysisList = /*@__PURE__*/ S.Array(
-  NetworkInsightsAccessScopeAnalysis.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInsightsAccessScopeAnalysis.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInsightsAccessScopeAnalysis",
   }),
 );
@@ -36583,7 +37109,7 @@ export const DescribeNetworkInsightsAccessScopeAnalysesResult = /*@__PURE__*/ S.
 }) as any as S.Schema<DescribeNetworkInsightsAccessScopeAnalysesResult>;
 export type NetworkInsightsAccessScopeIdList = string[];
 export const NetworkInsightsAccessScopeIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeNetworkInsightsAccessScopesRequest {
   NetworkInsightsAccessScopeIds?: string[];
@@ -36607,7 +37133,7 @@ export const DescribeNetworkInsightsAccessScopesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DescribeNetworkInsightsAccessScopesRequest>;
 export type NetworkInsightsAccessScopeList = NetworkInsightsAccessScope[];
 export const NetworkInsightsAccessScopeList = /*@__PURE__*/ S.Array(
-  NetworkInsightsAccessScope.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInsightsAccessScope.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInsightsAccessScope",
   }),
 );
@@ -36628,7 +37154,7 @@ export const DescribeNetworkInsightsAccessScopesResult = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeNetworkInsightsAccessScopesResult>;
 export type NetworkInsightsAnalysisIdList = string[];
 export const NetworkInsightsAnalysisIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeNetworkInsightsAnalysesRequest {
   NetworkInsightsAnalysisIds?: string[];
@@ -36657,7 +37183,9 @@ export const DescribeNetworkInsightsAnalysesRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeNetworkInsightsAnalysesRequest",
 }) as any as S.Schema<DescribeNetworkInsightsAnalysesRequest>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ArnList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface AnalysisAclRule {
   Cidr?: string;
   Egress?: boolean;
@@ -36691,10 +37219,14 @@ export const AnalysisComponent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnalysisComponent" }) as any as S.Schema<AnalysisComponent>;
 export type IpAddressList = string[];
-export const IpAddressList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const IpAddressList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PortRangeList = PortRange[];
 export const PortRangeList = /*@__PURE__*/ S.Array(
-  PortRange.pipe(T.XmlName("item")).annotate({ identifier: "PortRange" }),
+  /*@__PURE__*/ PortRange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PortRange",
+  }),
 );
 export interface AnalysisPacketHeader {
   DestinationAddresses?: string[];
@@ -36817,7 +37349,9 @@ export const AnalysisSecurityGroupRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalysisSecurityGroupRule",
 }) as any as S.Schema<AnalysisSecurityGroupRule>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const StringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface RuleOption {
   Keyword?: string;
   Settings?: string[];
@@ -36830,7 +37364,9 @@ export const RuleOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleOption" }) as any as S.Schema<RuleOption>;
 export type RuleOptionList = RuleOption[];
 export const RuleOptionList = /*@__PURE__*/ S.Array(
-  RuleOption.pipe(T.XmlName("item")).annotate({ identifier: "RuleOption" }),
+  /*@__PURE__*/ RuleOption.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RuleOption",
+  }),
 );
 export interface RuleGroupTypePair {
   RuleGroupArn?: string;
@@ -36850,7 +37386,9 @@ export const RuleGroupTypePair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleGroupTypePair" }) as any as S.Schema<RuleGroupTypePair>;
 export type RuleGroupTypePairList = RuleGroupTypePair[];
 export const RuleGroupTypePairList = /*@__PURE__*/ S.Array(
-  RuleGroupTypePair.pipe(T.XmlName("item")).annotate({ identifier: "RuleGroupTypePair" }),
+  /*@__PURE__*/ RuleGroupTypePair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RuleGroupTypePair",
+  }),
 );
 export interface RuleGroupRuleOptionsPair {
   RuleGroupArn?: string;
@@ -36870,13 +37408,15 @@ export const RuleGroupRuleOptionsPair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleGroupRuleOptionsPair" }) as any as S.Schema<RuleGroupRuleOptionsPair>;
 export type RuleGroupRuleOptionsPairList = RuleGroupRuleOptionsPair[];
 export const RuleGroupRuleOptionsPairList = /*@__PURE__*/ S.Array(
-  RuleGroupRuleOptionsPair.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ RuleGroupRuleOptionsPair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "RuleGroupRuleOptionsPair",
   }),
 );
 export type AnalysisComponentList = AnalysisComponent[];
 export const AnalysisComponentList = /*@__PURE__*/ S.Array(
-  AnalysisComponent.pipe(T.XmlName("item")).annotate({ identifier: "AnalysisComponent" }),
+  /*@__PURE__*/ AnalysisComponent.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AnalysisComponent",
+  }),
 );
 export interface AdditionalDetail {
   AdditionalDetailType?: string;
@@ -36921,7 +37461,9 @@ export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdditionalDetail" }) as any as S.Schema<AdditionalDetail>;
 export type AdditionalDetailList = AdditionalDetail[];
 export const AdditionalDetailList = /*@__PURE__*/ S.Array(
-  AdditionalDetail.pipe(T.XmlName("item")).annotate({ identifier: "AdditionalDetail" }),
+  /*@__PURE__*/ AdditionalDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AdditionalDetail",
+  }),
 );
 export interface TransitGatewayRouteTableRoute {
   DestinationCidr?: string;
@@ -37005,7 +37547,9 @@ export type ComponentAccount = string;
 export type ComponentRegion = string;
 export type ProtocolInt = number;
 export type ProtocolIntList = number[];
-export const ProtocolIntList = /*@__PURE__*/ S.Array(S.Number.pipe(T.XmlName("item")));
+export const ProtocolIntList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type Priority = number;
 export interface FirewallStatelessRule {
   RuleGroupArn?: string;
@@ -37304,7 +37848,9 @@ export const Explanation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Explanation" }) as any as S.Schema<Explanation>;
 export type ExplanationList = Explanation[];
 export const ExplanationList = /*@__PURE__*/ S.Array(
-  Explanation.pipe(T.XmlName("item")).annotate({ identifier: "Explanation" }),
+  /*@__PURE__*/ Explanation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Explanation",
+  }),
 );
 export interface PathComponent {
   SequenceNumber?: number;
@@ -37398,7 +37944,9 @@ export const PathComponent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PathComponent" }) as any as S.Schema<PathComponent>;
 export type PathComponentList = PathComponent[];
 export const PathComponentList = /*@__PURE__*/ S.Array(
-  PathComponent.pipe(T.XmlName("item")).annotate({ identifier: "PathComponent" }),
+  /*@__PURE__*/ PathComponent.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PathComponent",
+  }),
 );
 export interface AlternatePathHint {
   ComponentId?: string;
@@ -37415,7 +37963,9 @@ export const AlternatePathHint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlternatePathHint" }) as any as S.Schema<AlternatePathHint>;
 export type AlternatePathHintList = AlternatePathHint[];
 export const AlternatePathHintList = /*@__PURE__*/ S.Array(
-  AlternatePathHint.pipe(T.XmlName("item")).annotate({ identifier: "AlternatePathHint" }),
+  /*@__PURE__*/ AlternatePathHint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AlternatePathHint",
+  }),
 );
 export interface NetworkInsightsAnalysis {
   NetworkInsightsAnalysisId?: string;
@@ -37504,7 +38054,7 @@ export const NetworkInsightsAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkInsightsAnalysis" }) as any as S.Schema<NetworkInsightsAnalysis>;
 export type NetworkInsightsAnalysisList = NetworkInsightsAnalysis[];
 export const NetworkInsightsAnalysisList = /*@__PURE__*/ S.Array(
-  NetworkInsightsAnalysis.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInsightsAnalysis.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInsightsAnalysis",
   }),
 );
@@ -37524,7 +38074,9 @@ export const DescribeNetworkInsightsAnalysesResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeNetworkInsightsAnalysesResult",
 }) as any as S.Schema<DescribeNetworkInsightsAnalysesResult>;
 export type NetworkInsightsPathIdList = string[];
-export const NetworkInsightsPathIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkInsightsPathIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeNetworkInsightsPathsRequest {
   NetworkInsightsPathIds?: string[];
   Filters?: Filter[];
@@ -37547,7 +38099,9 @@ export const DescribeNetworkInsightsPathsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNetworkInsightsPathsRequest>;
 export type NetworkInsightsPathList = NetworkInsightsPath[];
 export const NetworkInsightsPathList = /*@__PURE__*/ S.Array(
-  NetworkInsightsPath.pipe(T.XmlName("item")).annotate({ identifier: "NetworkInsightsPath" }),
+  /*@__PURE__*/ NetworkInsightsPath.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkInsightsPath",
+  }),
 );
 export interface DescribeNetworkInsightsPathsResult {
   NetworkInsightsPaths?: NetworkInsightsPath[];
@@ -37648,7 +38202,7 @@ export const DescribeNetworkInterfacePermissionsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DescribeNetworkInterfacePermissionsRequest>;
 export type NetworkInterfacePermissionList = NetworkInterfacePermission[];
 export const NetworkInterfacePermissionList = /*@__PURE__*/ S.Array(
-  NetworkInterfacePermission.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ NetworkInterfacePermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "NetworkInterfacePermission",
   }),
 );
@@ -37669,7 +38223,9 @@ export const DescribeNetworkInterfacePermissionsResult = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeNetworkInterfacePermissionsResult>;
 export type DescribeNetworkInterfacesMaxResults = number;
 export type NetworkInterfaceIdList = string[];
-export const NetworkInterfaceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const NetworkInterfaceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeNetworkInterfacesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -37692,7 +38248,9 @@ export const DescribeNetworkInterfacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNetworkInterfacesRequest>;
 export type NetworkInterfaceList = NetworkInterface[];
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
-  NetworkInterface.pipe(T.XmlName("item")).annotate({ identifier: "NetworkInterface" }),
+  /*@__PURE__*/ NetworkInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NetworkInterface",
+  }),
 );
 export interface DescribeNetworkInterfacesResult {
   NetworkInterfaces?: NetworkInterface[];
@@ -37710,7 +38268,9 @@ export const DescribeNetworkInterfacesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeNetworkInterfacesResult",
 }) as any as S.Schema<DescribeNetworkInterfacesResult>;
 export type OutpostLagIdSet = string[];
-export const OutpostLagIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const OutpostLagIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type OutpostLagMaxResults = number;
 export interface DescribeOutpostLagsRequest {
   OutpostLagIds?: string[];
@@ -37733,7 +38293,7 @@ export const DescribeOutpostLagsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceLinkVirtualInterfaceId = string;
 export type ServiceLinkVirtualInterfaceIdSet = string[];
 export const ServiceLinkVirtualInterfaceIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface OutpostLag {
   OutpostArn?: string;
@@ -37766,7 +38326,9 @@ export const OutpostLag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OutpostLag" }) as any as S.Schema<OutpostLag>;
 export type OutpostLagSet = OutpostLag[];
 export const OutpostLagSet = /*@__PURE__*/ S.Array(
-  OutpostLag.pipe(T.XmlName("item")).annotate({ identifier: "OutpostLag" }),
+  /*@__PURE__*/ OutpostLag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "OutpostLag",
+  }),
 );
 export interface DescribeOutpostLagsResult {
   OutpostLags?: OutpostLag[];
@@ -37785,7 +38347,7 @@ export const DescribeOutpostLagsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeOutpostLagsResult>;
 export type PlacementGroupIdStringList = string[];
 export const PlacementGroupIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("GroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("GroupId")),
 );
 export type PlacementGroupStringList = string[];
 export const PlacementGroupStringList = /*@__PURE__*/ S.Array(S.String);
@@ -37810,7 +38372,9 @@ export const DescribePlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePlacementGroupsRequest>;
 export type PlacementGroupList = PlacementGroup[];
 export const PlacementGroupList = /*@__PURE__*/ S.Array(
-  PlacementGroup.pipe(T.XmlName("item")).annotate({ identifier: "PlacementGroup" }),
+  /*@__PURE__*/ PlacementGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PlacementGroup",
+  }),
 );
 export interface DescribePlacementGroupsResult {
   PlacementGroups?: PlacementGroup[];
@@ -37827,7 +38391,7 @@ export const DescribePlacementGroupsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePlacementGroupsResult>;
 export type PrefixListResourceIdStringList = string[];
 export const PrefixListResourceIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribePrefixListsRequest {
   DryRun?: boolean;
@@ -37867,7 +38431,9 @@ export const PrefixList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixList" }) as any as S.Schema<PrefixList>;
 export type PrefixListSet = PrefixList[];
 export const PrefixListSet = /*@__PURE__*/ S.Array(
-  PrefixList.pipe(T.XmlName("item")).annotate({ identifier: "PrefixList" }),
+  /*@__PURE__*/ PrefixList.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrefixList",
+  }),
 );
 export interface DescribePrefixListsResult {
   NextToken?: string;
@@ -37885,7 +38451,9 @@ export const DescribePrefixListsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribePrefixListsResult",
 }) as any as S.Schema<DescribePrefixListsResult>;
 export type ResourceList = string[];
-export const ResourceList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResourceList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribePrincipalIdFormatMaxResults = number;
 export interface DescribePrincipalIdFormatRequest {
   DryRun?: boolean;
@@ -37915,7 +38483,9 @@ export const PrincipalIdFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrincipalIdFormat" }) as any as S.Schema<PrincipalIdFormat>;
 export type PrincipalIdFormatList = PrincipalIdFormat[];
 export const PrincipalIdFormatList = /*@__PURE__*/ S.Array(
-  PrincipalIdFormat.pipe(T.XmlName("item")).annotate({ identifier: "PrincipalIdFormat" }),
+  /*@__PURE__*/ PrincipalIdFormat.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrincipalIdFormat",
+  }),
 );
 export interface DescribePrincipalIdFormatResult {
   Principals?: PrincipalIdFormat[];
@@ -37933,7 +38503,9 @@ export const DescribePrincipalIdFormatResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribePrincipalIdFormatResult",
 }) as any as S.Schema<DescribePrincipalIdFormatResult>;
 export type PublicIpv4PoolIdStringList = string[];
-export const PublicIpv4PoolIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PublicIpv4PoolIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PoolMaxResults = number;
 export interface DescribePublicIpv4PoolsRequest {
   PoolIds?: string[];
@@ -37976,7 +38548,9 @@ export const PublicIpv4PoolRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicIpv4PoolRange" }) as any as S.Schema<PublicIpv4PoolRange>;
 export type PublicIpv4PoolRangeSet = PublicIpv4PoolRange[];
 export const PublicIpv4PoolRangeSet = /*@__PURE__*/ S.Array(
-  PublicIpv4PoolRange.pipe(T.XmlName("item")).annotate({ identifier: "PublicIpv4PoolRange" }),
+  /*@__PURE__*/ PublicIpv4PoolRange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PublicIpv4PoolRange",
+  }),
 );
 export interface PublicIpv4Pool {
   PoolId?: string;
@@ -38012,7 +38586,9 @@ export const PublicIpv4Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicIpv4Pool" }) as any as S.Schema<PublicIpv4Pool>;
 export type PublicIpv4PoolSet = PublicIpv4Pool[];
 export const PublicIpv4PoolSet = /*@__PURE__*/ S.Array(
-  PublicIpv4Pool.pipe(T.XmlName("item")).annotate({ identifier: "PublicIpv4Pool" }),
+  /*@__PURE__*/ PublicIpv4Pool.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PublicIpv4Pool",
+  }),
 );
 export interface DescribePublicIpv4PoolsResult {
   PublicIpv4Pools?: PublicIpv4Pool[];
@@ -38030,7 +38606,9 @@ export const DescribePublicIpv4PoolsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribePublicIpv4PoolsResult",
 }) as any as S.Schema<DescribePublicIpv4PoolsResult>;
 export type RegionNameStringList = string[];
-export const RegionNameStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("RegionName")));
+export const RegionNameStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("RegionName")),
+);
 export interface DescribeRegionsRequest {
   RegionNames?: string[];
   AllRegions?: boolean;
@@ -38053,7 +38631,9 @@ export const RegionGeography = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionGeography" }) as any as S.Schema<RegionGeography>;
 export type RegionGeographyList = RegionGeography[];
 export const RegionGeographyList = /*@__PURE__*/ S.Array(
-  RegionGeography.pipe(T.XmlName("item")).annotate({ identifier: "RegionGeography" }),
+  /*@__PURE__*/ RegionGeography.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RegionGeography",
+  }),
 );
 export interface Region {
   OptInStatus?: string;
@@ -38077,7 +38657,7 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 export type RegionList = Region[];
 export const RegionList = /*@__PURE__*/ S.Array(
-  Region.pipe(T.XmlName("item")).annotate({ identifier: "Region" }),
+  /*@__PURE__*/ Region.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Region" }),
 );
 export interface DescribeRegionsResult {
   Regions?: Region[];
@@ -38089,7 +38669,7 @@ export const DescribeRegionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeRegionsResult" }) as any as S.Schema<DescribeRegionsResult>;
 export type ReplaceRootVolumeTaskIds = string[];
 export const ReplaceRootVolumeTaskIds = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ReplaceRootVolumeTaskId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReplaceRootVolumeTaskId")),
 );
 export type DescribeReplaceRootVolumeTasksMaxResults = number;
 export interface DescribeReplaceRootVolumeTasksRequest {
@@ -38114,7 +38694,9 @@ export const DescribeReplaceRootVolumeTasksRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DescribeReplaceRootVolumeTasksRequest>;
 export type ReplaceRootVolumeTasks = ReplaceRootVolumeTask[];
 export const ReplaceRootVolumeTasks = /*@__PURE__*/ S.Array(
-  ReplaceRootVolumeTask.pipe(T.XmlName("item")).annotate({ identifier: "ReplaceRootVolumeTask" }),
+  /*@__PURE__*/ ReplaceRootVolumeTask.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ReplaceRootVolumeTask",
+  }),
 );
 export interface DescribeReplaceRootVolumeTasksResult {
   ReplaceRootVolumeTasks?: ReplaceRootVolumeTask[];
@@ -38136,7 +38718,7 @@ export const OfferingClassType = S.String;
 
 export type ReservedInstancesIdStringList = string[];
 export const ReservedInstancesIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ReservedInstancesId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReservedInstancesId")),
 );
 export type OfferingTypeValues =
   | "Heavy Utilization"
@@ -38189,7 +38771,9 @@ export const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecurringCharge" }) as any as S.Schema<RecurringCharge>;
 export type RecurringChargesList = RecurringCharge[];
 export const RecurringChargesList = /*@__PURE__*/ S.Array(
-  RecurringCharge.pipe(T.XmlName("item")).annotate({ identifier: "RecurringCharge" }),
+  /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RecurringCharge",
+  }),
 );
 export type Scope = "Availability Zone" | "Region" | (string & {});
 export const Scope = S.String;
@@ -38300,7 +38884,9 @@ export const ReservedInstances = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedInstances" }) as any as S.Schema<ReservedInstances>;
 export type ReservedInstancesList = ReservedInstances[];
 export const ReservedInstancesList = /*@__PURE__*/ S.Array(
-  ReservedInstances.pipe(T.XmlName("item")).annotate({ identifier: "ReservedInstances" }),
+  /*@__PURE__*/ ReservedInstances.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ReservedInstances",
+  }),
 );
 export interface DescribeReservedInstancesResult {
   ReservedInstances?: ReservedInstances[];
@@ -38351,7 +38937,7 @@ export const DescribeReservedInstancesListingsResult = /*@__PURE__*/ S.suspend((
 export type ReservedInstancesModificationId = string;
 export type ReservedInstancesModificationIdStringList = string[];
 export const ReservedInstancesModificationIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ReservedInstancesModificationId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReservedInstancesModificationId")),
 );
 export interface DescribeReservedInstancesModificationsRequest {
   ReservedInstancesModificationIds?: string[];
@@ -38420,7 +39006,7 @@ export const ReservedInstancesModificationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedInstancesModificationResult>;
 export type ReservedInstancesModificationResultList = ReservedInstancesModificationResult[];
 export const ReservedInstancesModificationResultList = /*@__PURE__*/ S.Array(
-  ReservedInstancesModificationResult.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstancesModificationResult.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstancesModificationResult",
   }),
 );
@@ -38437,7 +39023,9 @@ export const ReservedInstancesId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedInstancesId" }) as any as S.Schema<ReservedInstancesId>;
 export type ReservedIntancesIds = ReservedInstancesId[];
 export const ReservedIntancesIds = /*@__PURE__*/ S.Array(
-  ReservedInstancesId.pipe(T.XmlName("item")).annotate({ identifier: "ReservedInstancesId" }),
+  /*@__PURE__*/ ReservedInstancesId.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ReservedInstancesId",
+  }),
 );
 export interface ReservedInstancesModification {
   ClientToken?: string;
@@ -38488,7 +39076,7 @@ export const ReservedInstancesModification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedInstancesModification>;
 export type ReservedInstancesModificationList = ReservedInstancesModification[];
 export const ReservedInstancesModificationList = /*@__PURE__*/ S.Array(
-  ReservedInstancesModification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstancesModification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstancesModification",
   }),
 );
@@ -38569,7 +39157,9 @@ export const PricingDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PricingDetail" }) as any as S.Schema<PricingDetail>;
 export type PricingDetailsList = PricingDetail[];
 export const PricingDetailsList = /*@__PURE__*/ S.Array(
-  PricingDetail.pipe(T.XmlName("item")).annotate({ identifier: "PricingDetail" }),
+  /*@__PURE__*/ PricingDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PricingDetail",
+  }),
 );
 export interface ReservedInstancesOffering {
   CurrencyCode?: CurrencyCodeValues;
@@ -38649,7 +39239,7 @@ export const ReservedInstancesOffering = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedInstancesOffering>;
 export type ReservedInstancesOfferingList = ReservedInstancesOffering[];
 export const ReservedInstancesOfferingList = /*@__PURE__*/ S.Array(
-  ReservedInstancesOffering.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstancesOffering.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstancesOffering",
   }),
 );
@@ -38693,7 +39283,9 @@ export const DescribeRouteServerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouteServerEndpointsRequest>;
 export type RouteServerEndpointsList = RouteServerEndpoint[];
 export const RouteServerEndpointsList = /*@__PURE__*/ S.Array(
-  RouteServerEndpoint.pipe(T.XmlName("item")).annotate({ identifier: "RouteServerEndpoint" }),
+  /*@__PURE__*/ RouteServerEndpoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServerEndpoint",
+  }),
 );
 export interface DescribeRouteServerEndpointsResult {
   RouteServerEndpoints?: RouteServerEndpoint[];
@@ -38732,7 +39324,9 @@ export const DescribeRouteServerPeersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouteServerPeersRequest>;
 export type RouteServerPeersList = RouteServerPeer[];
 export const RouteServerPeersList = /*@__PURE__*/ S.Array(
-  RouteServerPeer.pipe(T.XmlName("item")).annotate({ identifier: "RouteServerPeer" }),
+  /*@__PURE__*/ RouteServerPeer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServerPeer",
+  }),
 );
 export interface DescribeRouteServerPeersResult {
   RouteServerPeers?: RouteServerPeer[];
@@ -38771,7 +39365,9 @@ export const DescribeRouteServersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouteServersRequest>;
 export type RouteServersList = RouteServer[];
 export const RouteServersList = /*@__PURE__*/ S.Array(
-  RouteServer.pipe(T.XmlName("item")).annotate({ identifier: "RouteServer" }),
+  /*@__PURE__*/ RouteServer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServer",
+  }),
 );
 export interface DescribeRouteServersResult {
   RouteServers?: RouteServer[];
@@ -38790,7 +39386,9 @@ export const DescribeRouteServersResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouteServersResult>;
 export type DescribeRouteTablesMaxResults = number;
 export type RouteTableIdStringList = string[];
-export const RouteTableIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const RouteTableIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeRouteTablesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -38811,7 +39409,9 @@ export const DescribeRouteTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRouteTablesRequest>;
 export type RouteTableList = RouteTable[];
 export const RouteTableList = /*@__PURE__*/ S.Array(
-  RouteTable.pipe(T.XmlName("item")).annotate({ identifier: "RouteTable" }),
+  /*@__PURE__*/ RouteTable.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteTable",
+  }),
 );
 export interface DescribeRouteTablesResult {
   RouteTables?: RouteTable[];
@@ -38841,7 +39441,7 @@ export const SlotDateTimeRangeRequest = /*@__PURE__*/ S.suspend(() =>
 export type DescribeScheduledInstanceAvailabilityMaxResults = number;
 export type OccurrenceDayRequestSet = number[];
 export const OccurrenceDayRequestSet = /*@__PURE__*/ S.Array(
-  S.Number.pipe(T.XmlName("OccurenceDay")),
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("OccurenceDay")),
 );
 export interface ScheduledInstanceRecurrenceRequest {
   Frequency?: string;
@@ -38886,7 +39486,9 @@ export const DescribeScheduledInstanceAvailabilityRequest = /*@__PURE__*/ S.susp
   identifier: "DescribeScheduledInstanceAvailabilityRequest",
 }) as any as S.Schema<DescribeScheduledInstanceAvailabilityRequest>;
 export type OccurrenceDaySet = number[];
-export const OccurrenceDaySet = /*@__PURE__*/ S.Array(S.Number.pipe(T.XmlName("item")));
+export const OccurrenceDaySet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface ScheduledInstanceRecurrence {
   Frequency?: string;
   Interval?: number;
@@ -38982,7 +39584,7 @@ export const ScheduledInstanceAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledInstanceAvailability>;
 export type ScheduledInstanceAvailabilitySet = ScheduledInstanceAvailability[];
 export const ScheduledInstanceAvailabilitySet = /*@__PURE__*/ S.Array(
-  ScheduledInstanceAvailability.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ScheduledInstanceAvailability.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ScheduledInstanceAvailability",
   }),
 );
@@ -39004,7 +39606,7 @@ export const DescribeScheduledInstanceAvailabilityResult = /*@__PURE__*/ S.suspe
 export type ScheduledInstanceId = string;
 export type ScheduledInstanceIdRequestSet = string[];
 export const ScheduledInstanceIdRequestSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("ScheduledInstanceId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ScheduledInstanceId")),
 );
 export interface SlotStartTimeRangeRequest {
   EarliestTime?: Date;
@@ -39116,7 +39718,9 @@ export const ScheduledInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduledInstance" }) as any as S.Schema<ScheduledInstance>;
 export type ScheduledInstanceSet = ScheduledInstance[];
 export const ScheduledInstanceSet = /*@__PURE__*/ S.Array(
-  ScheduledInstance.pipe(T.XmlName("item")).annotate({ identifier: "ScheduledInstance" }),
+  /*@__PURE__*/ ScheduledInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ScheduledInstance",
+  }),
 );
 export interface DescribeScheduledInstancesResult {
   NextToken?: string;
@@ -39135,7 +39739,9 @@ export const DescribeScheduledInstancesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScheduledInstancesResult>;
 export type DescribeSecondaryInterfacesMaxResults = number;
 export type SecondaryInterfaceIdList = string[];
-export const SecondaryInterfaceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecondaryInterfaceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeSecondaryInterfacesRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -39210,7 +39816,7 @@ export const SecondaryInterfaceIpv4Address = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecondaryInterfaceIpv4Address>;
 export type SecondaryInterfaceIpv4AddressList = SecondaryInterfaceIpv4Address[];
 export const SecondaryInterfaceIpv4AddressList = /*@__PURE__*/ S.Array(
-  SecondaryInterfaceIpv4Address.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecondaryInterfaceIpv4Address.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SecondaryInterfaceIpv4Address",
   }),
 );
@@ -39287,7 +39893,9 @@ export const SecondaryInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecondaryInterface" }) as any as S.Schema<SecondaryInterface>;
 export type SecondaryInterfaceList = SecondaryInterface[];
 export const SecondaryInterfaceList = /*@__PURE__*/ S.Array(
-  SecondaryInterface.pipe(T.XmlName("item")).annotate({ identifier: "SecondaryInterface" }),
+  /*@__PURE__*/ SecondaryInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecondaryInterface",
+  }),
 );
 export interface DescribeSecondaryInterfacesResult {
   SecondaryInterfaces?: SecondaryInterface[];
@@ -39306,7 +39914,9 @@ export const DescribeSecondaryInterfacesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSecondaryInterfacesResult>;
 export type DescribeSecondaryNetworksMaxResults = number;
 export type SecondaryNetworkIdList = string[];
-export const SecondaryNetworkIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecondaryNetworkIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeSecondaryNetworksRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -39327,7 +39937,9 @@ export const DescribeSecondaryNetworksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSecondaryNetworksRequest>;
 export type SecondaryNetworkList = SecondaryNetwork[];
 export const SecondaryNetworkList = /*@__PURE__*/ S.Array(
-  SecondaryNetwork.pipe(T.XmlName("item")).annotate({ identifier: "SecondaryNetwork" }),
+  /*@__PURE__*/ SecondaryNetwork.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecondaryNetwork",
+  }),
 );
 export interface DescribeSecondaryNetworksResult {
   SecondaryNetworks?: SecondaryNetwork[];
@@ -39346,7 +39958,9 @@ export const DescribeSecondaryNetworksResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSecondaryNetworksResult>;
 export type DescribeSecondarySubnetsMaxResults = number;
 export type SecondarySubnetIdList = string[];
-export const SecondarySubnetIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecondarySubnetIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeSecondarySubnetsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -39367,7 +39981,9 @@ export const DescribeSecondarySubnetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSecondarySubnetsRequest>;
 export type SecondarySubnetList = SecondarySubnet[];
 export const SecondarySubnetList = /*@__PURE__*/ S.Array(
-  SecondarySubnet.pipe(T.XmlName("item")).annotate({ identifier: "SecondarySubnet" }),
+  /*@__PURE__*/ SecondarySubnet.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecondarySubnet",
+  }),
 );
 export interface DescribeSecondarySubnetsResult {
   SecondarySubnets?: SecondarySubnet[];
@@ -39385,7 +40001,9 @@ export const DescribeSecondarySubnetsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSecondarySubnetsResult",
 }) as any as S.Schema<DescribeSecondarySubnetsResult>;
 export type GroupIds = string[];
-export const GroupIds = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const GroupIds = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeSecurityGroupReferencesRequest {
   DryRun?: boolean;
   GroupId?: string[];
@@ -39422,7 +40040,9 @@ export const SecurityGroupReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroupReference" }) as any as S.Schema<SecurityGroupReference>;
 export type SecurityGroupReferences = SecurityGroupReference[];
 export const SecurityGroupReferences = /*@__PURE__*/ S.Array(
-  SecurityGroupReference.pipe(T.XmlName("item")).annotate({ identifier: "SecurityGroupReference" }),
+  /*@__PURE__*/ SecurityGroupReference.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecurityGroupReference",
+  }),
 );
 export interface DescribeSecurityGroupReferencesResult {
   SecurityGroupReferenceSet?: SecurityGroupReference[];
@@ -39438,7 +40058,9 @@ export const DescribeSecurityGroupReferencesResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeSecurityGroupReferencesResult",
 }) as any as S.Schema<DescribeSecurityGroupReferencesResult>;
 export type SecurityGroupRuleIdList = string[];
-export const SecurityGroupRuleIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const SecurityGroupRuleIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeSecurityGroupRulesMaxResults = number;
 export interface DescribeSecurityGroupRulesRequest {
   Filters?: Filter[];
@@ -39476,7 +40098,9 @@ export const DescribeSecurityGroupRulesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSecurityGroupRulesResult",
 }) as any as S.Schema<DescribeSecurityGroupRulesResult>;
 export type GroupNameStringList = string[];
-export const GroupNameStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("GroupName")));
+export const GroupNameStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("GroupName")),
+);
 export type DescribeSecurityGroupsMaxResults = number;
 export interface DescribeSecurityGroupsRequest {
   GroupIds?: string[];
@@ -39536,7 +40160,9 @@ export const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroup" }) as any as S.Schema<SecurityGroup>;
 export type SecurityGroupList = SecurityGroup[];
 export const SecurityGroupList = /*@__PURE__*/ S.Array(
-  SecurityGroup.pipe(T.XmlName("item")).annotate({ identifier: "SecurityGroup" }),
+  /*@__PURE__*/ SecurityGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecurityGroup",
+  }),
 );
 export interface DescribeSecurityGroupsResult {
   NextToken?: string;
@@ -39598,7 +40224,7 @@ export const SecurityGroupVpcAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityGroupVpcAssociation>;
 export type SecurityGroupVpcAssociationList = SecurityGroupVpcAssociation[];
 export const SecurityGroupVpcAssociationList = /*@__PURE__*/ S.Array(
-  SecurityGroupVpcAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecurityGroupVpcAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SecurityGroupVpcAssociation",
   }),
 );
@@ -39695,7 +40321,7 @@ export const ServiceLinkVirtualInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceLinkVirtualInterface>;
 export type ServiceLinkVirtualInterfaceSet = ServiceLinkVirtualInterface[];
 export const ServiceLinkVirtualInterfaceSet = /*@__PURE__*/ S.Array(
-  ServiceLinkVirtualInterface.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ServiceLinkVirtualInterface.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ServiceLinkVirtualInterface",
   }),
 );
@@ -39743,7 +40369,9 @@ export const CreateVolumePermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVolumePermission" }) as any as S.Schema<CreateVolumePermission>;
 export type CreateVolumePermissionList = CreateVolumePermission[];
 export const CreateVolumePermissionList = /*@__PURE__*/ S.Array(
-  CreateVolumePermission.pipe(T.XmlName("item")).annotate({ identifier: "CreateVolumePermission" }),
+  /*@__PURE__*/ CreateVolumePermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CreateVolumePermission",
+  }),
 );
 export interface DescribeSnapshotAttributeResult {
   ProductCodes?: ProductCode[];
@@ -39789,7 +40417,7 @@ export const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeSnapshotsRequest" }) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotList = Snapshot[];
 export const SnapshotList = /*@__PURE__*/ S.Array(
-  Snapshot.pipe(T.XmlName("item")).annotate({ identifier: "Snapshot" }),
+  /*@__PURE__*/ Snapshot.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Snapshot" }),
 );
 export interface DescribeSnapshotsResult {
   NextToken?: string;
@@ -39887,7 +40515,9 @@ export const SnapshotTierStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotTierStatus" }) as any as S.Schema<SnapshotTierStatus>;
 export type SnapshotTierStatusSet = SnapshotTierStatus[];
 export const SnapshotTierStatusSet = /*@__PURE__*/ S.Array(
-  SnapshotTierStatus.pipe(T.XmlName("item")).annotate({ identifier: "SnapshotTierStatus" }),
+  /*@__PURE__*/ SnapshotTierStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SnapshotTierStatus",
+  }),
 );
 export interface DescribeSnapshotTierStatusResult {
   SnapshotTierStatuses?: SnapshotTierStatus[];
@@ -40020,7 +40650,9 @@ export const HistoryRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistoryRecord" }) as any as S.Schema<HistoryRecord>;
 export type HistoryRecords = HistoryRecord[];
 export const HistoryRecords = /*@__PURE__*/ S.Array(
-  HistoryRecord.pipe(T.XmlName("item")).annotate({ identifier: "HistoryRecord" }),
+  /*@__PURE__*/ HistoryRecord.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "HistoryRecord",
+  }),
 );
 export interface DescribeSpotFleetRequestHistoryResponse {
   HistoryRecords?: HistoryRecord[];
@@ -40213,7 +40845,9 @@ export const InstanceNetworkInterfaceSpecification = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<InstanceNetworkInterfaceSpecification>;
 export type InstanceNetworkInterfaceSpecificationList = InstanceNetworkInterfaceSpecification[];
 export const InstanceNetworkInterfaceSpecificationList = /*@__PURE__*/ S.Array(
-  InstanceNetworkInterfaceSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceNetworkInterfaceSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceNetworkInterfaceSpecification",
   }),
 );
@@ -40254,7 +40888,7 @@ export const SpotFleetTagSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotFleetTagSpecification>;
 export type SpotFleetTagSpecificationList = SpotFleetTagSpecification[];
 export const SpotFleetTagSpecificationList = /*@__PURE__*/ S.Array(
-  SpotFleetTagSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SpotFleetTagSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SpotFleetTagSpecification",
   }),
 );
@@ -40338,7 +40972,7 @@ export const SpotFleetLaunchSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotFleetLaunchSpecification>;
 export type LaunchSpecsList = SpotFleetLaunchSpecification[];
 export const LaunchSpecsList = /*@__PURE__*/ S.Array(
-  SpotFleetLaunchSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SpotFleetLaunchSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SpotFleetLaunchSpecification",
   }),
 );
@@ -40380,7 +41014,7 @@ export const LaunchTemplateOverrides = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LaunchTemplateOverrides" }) as any as S.Schema<LaunchTemplateOverrides>;
 export type LaunchTemplateOverridesList = LaunchTemplateOverrides[];
 export const LaunchTemplateOverridesList = /*@__PURE__*/ S.Array(
-  LaunchTemplateOverrides.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LaunchTemplateOverrides.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LaunchTemplateOverrides",
   }),
 );
@@ -40401,7 +41035,9 @@ export const LaunchTemplateConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LaunchTemplateConfig" }) as any as S.Schema<LaunchTemplateConfig>;
 export type LaunchTemplateConfigList = LaunchTemplateConfig[];
 export const LaunchTemplateConfigList = /*@__PURE__*/ S.Array(
-  LaunchTemplateConfig.pipe(T.XmlName("item")).annotate({ identifier: "LaunchTemplateConfig" }),
+  /*@__PURE__*/ LaunchTemplateConfig.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LaunchTemplateConfig",
+  }),
 );
 export interface ClassicLoadBalancer {
   Name?: string;
@@ -40411,7 +41047,9 @@ export const ClassicLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassicLoadBalancer" }) as any as S.Schema<ClassicLoadBalancer>;
 export type ClassicLoadBalancers = ClassicLoadBalancer[];
 export const ClassicLoadBalancers = /*@__PURE__*/ S.Array(
-  ClassicLoadBalancer.pipe(T.XmlName("item")).annotate({ identifier: "ClassicLoadBalancer" }),
+  /*@__PURE__*/ ClassicLoadBalancer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClassicLoadBalancer",
+  }),
 );
 export interface ClassicLoadBalancersConfig {
   ClassicLoadBalancers?: ClassicLoadBalancer[];
@@ -40434,7 +41072,9 @@ export const TargetGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetGroup" }) as any as S.Schema<TargetGroup>;
 export type TargetGroups = TargetGroup[];
 export const TargetGroups = /*@__PURE__*/ S.Array(
-  TargetGroup.pipe(T.XmlName("item")).annotate({ identifier: "TargetGroup" }),
+  /*@__PURE__*/ TargetGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TargetGroup",
+  }),
 );
 export interface TargetGroupsConfig {
   TargetGroups?: TargetGroup[];
@@ -40616,7 +41256,9 @@ export const SpotFleetRequestConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpotFleetRequestConfig" }) as any as S.Schema<SpotFleetRequestConfig>;
 export type SpotFleetRequestConfigSet = SpotFleetRequestConfig[];
 export const SpotFleetRequestConfigSet = /*@__PURE__*/ S.Array(
-  SpotFleetRequestConfig.pipe(T.XmlName("item")).annotate({ identifier: "SpotFleetRequestConfig" }),
+  /*@__PURE__*/ SpotFleetRequestConfig.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SpotFleetRequestConfig",
+  }),
 );
 export interface DescribeSpotFleetRequestsResponse {
   NextToken?: string;
@@ -40840,7 +41482,9 @@ export const SpotInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpotInstanceRequest" }) as any as S.Schema<SpotInstanceRequest>;
 export type SpotInstanceRequestList = SpotInstanceRequest[];
 export const SpotInstanceRequestList = /*@__PURE__*/ S.Array(
-  SpotInstanceRequest.pipe(T.XmlName("item")).annotate({ identifier: "SpotInstanceRequest" }),
+  /*@__PURE__*/ SpotInstanceRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SpotInstanceRequest",
+  }),
 );
 export interface DescribeSpotInstanceRequestsResult {
   SpotInstanceRequests?: (SpotInstanceRequest & {
@@ -40937,7 +41581,9 @@ export const SpotPrice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpotPrice" }) as any as S.Schema<SpotPrice>;
 export type SpotPriceHistoryList = SpotPrice[];
 export const SpotPriceHistoryList = /*@__PURE__*/ S.Array(
-  SpotPrice.pipe(T.XmlName("item")).annotate({ identifier: "SpotPrice" }),
+  /*@__PURE__*/ SpotPrice.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SpotPrice",
+  }),
 );
 export interface DescribeSpotPriceHistoryResult {
   NextToken?: string;
@@ -40973,12 +41619,18 @@ export const DescribeStaleSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeStaleSecurityGroupsRequest",
 }) as any as S.Schema<DescribeStaleSecurityGroupsRequest>;
 export type IpRanges = string[];
-export const IpRanges = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const IpRanges = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type PrefixListIdSet = string[];
-export const PrefixListIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const PrefixListIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type UserIdGroupPairSet = UserIdGroupPair[];
 export const UserIdGroupPairSet = /*@__PURE__*/ S.Array(
-  UserIdGroupPair.pipe(T.XmlName("item")).annotate({ identifier: "UserIdGroupPair" }),
+  /*@__PURE__*/ UserIdGroupPair.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "UserIdGroupPair",
+  }),
 );
 export interface StaleIpPermission {
   FromPort?: number;
@@ -41006,7 +41658,9 @@ export const StaleIpPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaleIpPermission" }) as any as S.Schema<StaleIpPermission>;
 export type StaleIpPermissionSet = StaleIpPermission[];
 export const StaleIpPermissionSet = /*@__PURE__*/ S.Array(
-  StaleIpPermission.pipe(T.XmlName("item")).annotate({ identifier: "StaleIpPermission" }),
+  /*@__PURE__*/ StaleIpPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "StaleIpPermission",
+  }),
 );
 export interface StaleSecurityGroup {
   Description?: string;
@@ -41034,7 +41688,9 @@ export const StaleSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaleSecurityGroup" }) as any as S.Schema<StaleSecurityGroup>;
 export type StaleSecurityGroupSet = StaleSecurityGroup[];
 export const StaleSecurityGroupSet = /*@__PURE__*/ S.Array(
-  StaleSecurityGroup.pipe(T.XmlName("item")).annotate({ identifier: "StaleSecurityGroup" }),
+  /*@__PURE__*/ StaleSecurityGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "StaleSecurityGroup",
+  }),
 );
 export interface DescribeStaleSecurityGroupsResult {
   NextToken?: string;
@@ -41052,7 +41708,9 @@ export const DescribeStaleSecurityGroupsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeStaleSecurityGroupsResult",
 }) as any as S.Schema<DescribeStaleSecurityGroupsResult>;
 export type ImageIdList = string[];
-export const ImageIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ImageIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeStoreImageTasksRequestMaxResults = number;
 export interface DescribeStoreImageTasksRequest {
   ImageIds?: string[];
@@ -41106,7 +41764,9 @@ export const StoreImageTaskResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoreImageTaskResult" }) as any as S.Schema<StoreImageTaskResult>;
 export type StoreImageTaskResultSet = StoreImageTaskResult[];
 export const StoreImageTaskResultSet = /*@__PURE__*/ S.Array(
-  StoreImageTaskResult.pipe(T.XmlName("item")).annotate({ identifier: "StoreImageTaskResult" }),
+  /*@__PURE__*/ StoreImageTaskResult.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "StoreImageTaskResult",
+  }),
 );
 export interface DescribeStoreImageTasksResult {
   StoreImageTaskResults?: StoreImageTaskResult[];
@@ -41124,7 +41784,9 @@ export const DescribeStoreImageTasksResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeStoreImageTasksResult",
 }) as any as S.Schema<DescribeStoreImageTasksResult>;
 export type SubnetIdStringList = string[];
-export const SubnetIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("SubnetId")));
+export const SubnetIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetId")),
+);
 export type DescribeSubnetsMaxResults = number;
 export interface DescribeSubnetsRequest {
   Filters?: Filter[];
@@ -41144,7 +41806,7 @@ export const DescribeSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeSubnetsRequest" }) as any as S.Schema<DescribeSubnetsRequest>;
 export type SubnetList = Subnet[];
 export const SubnetList = /*@__PURE__*/ S.Array(
-  Subnet.pipe(T.XmlName("item")).annotate({ identifier: "Subnet" }),
+  /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Subnet" }),
 );
 export interface DescribeSubnetsResult {
   NextToken?: string;
@@ -41189,7 +41851,9 @@ export const TagDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagDescription" }) as any as S.Schema<TagDescription>;
 export type TagDescriptionList = TagDescription[];
 export const TagDescriptionList = /*@__PURE__*/ S.Array(
-  TagDescription.pipe(T.XmlName("item")).annotate({ identifier: "TagDescription" }),
+  /*@__PURE__*/ TagDescription.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TagDescription",
+  }),
 );
 export interface DescribeTagsResult {
   NextToken?: string;
@@ -41203,7 +41867,7 @@ export const DescribeTagsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeTagsResult" }) as any as S.Schema<DescribeTagsResult>;
 export type TrafficMirrorFilterRuleIdList = string[];
 export const TrafficMirrorFilterRuleIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type TrafficMirroringMaxResults = number;
 export interface DescribeTrafficMirrorFilterRulesRequest {
@@ -41230,7 +41894,7 @@ export const DescribeTrafficMirrorFilterRulesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DescribeTrafficMirrorFilterRulesRequest>;
 export type TrafficMirrorFilterRuleSet = TrafficMirrorFilterRule[];
 export const TrafficMirrorFilterRuleSet = /*@__PURE__*/ S.Array(
-  TrafficMirrorFilterRule.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TrafficMirrorFilterRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TrafficMirrorFilterRule",
   }),
 );
@@ -41250,7 +41914,9 @@ export const DescribeTrafficMirrorFilterRulesResult = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeTrafficMirrorFilterRulesResult",
 }) as any as S.Schema<DescribeTrafficMirrorFilterRulesResult>;
 export type TrafficMirrorFilterIdList = string[];
-export const TrafficMirrorFilterIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TrafficMirrorFilterIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeTrafficMirrorFiltersRequest {
   TrafficMirrorFilterIds?: string[];
   DryRun?: boolean;
@@ -41273,7 +41939,9 @@ export const DescribeTrafficMirrorFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeTrafficMirrorFiltersRequest>;
 export type TrafficMirrorFilterSet = TrafficMirrorFilter[];
 export const TrafficMirrorFilterSet = /*@__PURE__*/ S.Array(
-  TrafficMirrorFilter.pipe(T.XmlName("item")).annotate({ identifier: "TrafficMirrorFilter" }),
+  /*@__PURE__*/ TrafficMirrorFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TrafficMirrorFilter",
+  }),
 );
 export interface DescribeTrafficMirrorFiltersResult {
   TrafficMirrorFilters?: TrafficMirrorFilter[];
@@ -41291,7 +41959,9 @@ export const DescribeTrafficMirrorFiltersResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTrafficMirrorFiltersResult",
 }) as any as S.Schema<DescribeTrafficMirrorFiltersResult>;
 export type TrafficMirrorSessionIdList = string[];
-export const TrafficMirrorSessionIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TrafficMirrorSessionIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeTrafficMirrorSessionsRequest {
   TrafficMirrorSessionIds?: string[];
   DryRun?: boolean;
@@ -41314,7 +41984,9 @@ export const DescribeTrafficMirrorSessionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DescribeTrafficMirrorSessionsRequest>;
 export type TrafficMirrorSessionSet = TrafficMirrorSession[];
 export const TrafficMirrorSessionSet = /*@__PURE__*/ S.Array(
-  TrafficMirrorSession.pipe(T.XmlName("item")).annotate({ identifier: "TrafficMirrorSession" }),
+  /*@__PURE__*/ TrafficMirrorSession.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TrafficMirrorSession",
+  }),
 );
 export interface DescribeTrafficMirrorSessionsResult {
   TrafficMirrorSessions?: TrafficMirrorSession[];
@@ -41332,7 +42004,9 @@ export const DescribeTrafficMirrorSessionsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTrafficMirrorSessionsResult",
 }) as any as S.Schema<DescribeTrafficMirrorSessionsResult>;
 export type TrafficMirrorTargetIdList = string[];
-export const TrafficMirrorTargetIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TrafficMirrorTargetIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeTrafficMirrorTargetsRequest {
   TrafficMirrorTargetIds?: string[];
   DryRun?: boolean;
@@ -41355,7 +42029,9 @@ export const DescribeTrafficMirrorTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeTrafficMirrorTargetsRequest>;
 export type TrafficMirrorTargetSet = TrafficMirrorTarget[];
 export const TrafficMirrorTargetSet = /*@__PURE__*/ S.Array(
-  TrafficMirrorTarget.pipe(T.XmlName("item")).annotate({ identifier: "TrafficMirrorTarget" }),
+  /*@__PURE__*/ TrafficMirrorTarget.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TrafficMirrorTarget",
+  }),
 );
 export interface DescribeTrafficMirrorTargetsResult {
   TrafficMirrorTargets?: TrafficMirrorTarget[];
@@ -41465,7 +42141,7 @@ export const TransitGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransitGatewayAttachment" }) as any as S.Schema<TransitGatewayAttachment>;
 export type TransitGatewayAttachmentList = TransitGatewayAttachment[];
 export const TransitGatewayAttachmentList = /*@__PURE__*/ S.Array(
-  TransitGatewayAttachment.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayAttachment",
   }),
 );
@@ -41486,7 +42162,7 @@ export const DescribeTransitGatewayAttachmentsResult = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DescribeTransitGatewayAttachmentsResult>;
 export type TransitGatewayConnectPeerIdStringList = string[];
 export const TransitGatewayConnectPeerIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayConnectPeersRequest {
   TransitGatewayConnectPeerIds?: string[];
@@ -41508,7 +42184,7 @@ export const DescribeTransitGatewayConnectPeersRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeTransitGatewayConnectPeersRequest>;
 export type TransitGatewayConnectPeerList = TransitGatewayConnectPeer[];
 export const TransitGatewayConnectPeerList = /*@__PURE__*/ S.Array(
-  TransitGatewayConnectPeer.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayConnectPeer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayConnectPeer",
   }),
 );
@@ -41547,7 +42223,9 @@ export const DescribeTransitGatewayConnectsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DescribeTransitGatewayConnectsRequest>;
 export type TransitGatewayConnectList = TransitGatewayConnect[];
 export const TransitGatewayConnectList = /*@__PURE__*/ S.Array(
-  TransitGatewayConnect.pipe(T.XmlName("item")).annotate({ identifier: "TransitGatewayConnect" }),
+  /*@__PURE__*/ TransitGatewayConnect.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TransitGatewayConnect",
+  }),
 );
 export interface DescribeTransitGatewayConnectsResult {
   TransitGatewayConnects?: TransitGatewayConnect[];
@@ -41566,7 +42244,7 @@ export const DescribeTransitGatewayConnectsResult = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DescribeTransitGatewayConnectsResult>;
 export type TransitGatewayMeteringPolicyIdStringList = string[];
 export const TransitGatewayMeteringPolicyIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayMeteringPoliciesRequest {
   TransitGatewayMeteringPolicyIds?: string[];
@@ -41588,7 +42266,7 @@ export const DescribeTransitGatewayMeteringPoliciesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DescribeTransitGatewayMeteringPoliciesRequest>;
 export type TransitGatewayMeteringPolicyList = TransitGatewayMeteringPolicy[];
 export const TransitGatewayMeteringPolicyList = /*@__PURE__*/ S.Array(
-  TransitGatewayMeteringPolicy.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayMeteringPolicy.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayMeteringPolicy",
   }),
 );
@@ -41609,7 +42287,7 @@ export const DescribeTransitGatewayMeteringPoliciesResult = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DescribeTransitGatewayMeteringPoliciesResult>;
 export type TransitGatewayMulticastDomainIdStringList = string[];
 export const TransitGatewayMulticastDomainIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayMulticastDomainsRequest {
   TransitGatewayMulticastDomainIds?: string[];
@@ -41631,7 +42309,7 @@ export const DescribeTransitGatewayMulticastDomainsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DescribeTransitGatewayMulticastDomainsRequest>;
 export type TransitGatewayMulticastDomainList = TransitGatewayMulticastDomain[];
 export const TransitGatewayMulticastDomainList = /*@__PURE__*/ S.Array(
-  TransitGatewayMulticastDomain.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayMulticastDomain.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayMulticastDomain",
   }),
 );
@@ -41670,7 +42348,7 @@ export const DescribeTransitGatewayPeeringAttachmentsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DescribeTransitGatewayPeeringAttachmentsRequest>;
 export type TransitGatewayPeeringAttachmentList = TransitGatewayPeeringAttachment[];
 export const TransitGatewayPeeringAttachmentList = /*@__PURE__*/ S.Array(
-  TransitGatewayPeeringAttachment.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayPeeringAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayPeeringAttachment",
   }),
 );
@@ -41691,7 +42369,7 @@ export const DescribeTransitGatewayPeeringAttachmentsResult = /*@__PURE__*/ S.su
 }) as any as S.Schema<DescribeTransitGatewayPeeringAttachmentsResult>;
 export type TransitGatewayPolicyTableIdStringList = string[];
 export const TransitGatewayPolicyTableIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayPolicyTablesRequest {
   TransitGatewayPolicyTableIds?: string[];
@@ -41713,7 +42391,7 @@ export const DescribeTransitGatewayPolicyTablesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeTransitGatewayPolicyTablesRequest>;
 export type TransitGatewayPolicyTableList = TransitGatewayPolicyTable[];
 export const TransitGatewayPolicyTableList = /*@__PURE__*/ S.Array(
-  TransitGatewayPolicyTable.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayPolicyTable.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayPolicyTable",
   }),
 );
@@ -41734,7 +42412,7 @@ export const DescribeTransitGatewayPolicyTablesResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeTransitGatewayPolicyTablesResult>;
 export type TransitGatewayRouteTableAnnouncementIdStringList = string[];
 export const TransitGatewayRouteTableAnnouncementIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayRouteTableAnnouncementsRequest {
   TransitGatewayRouteTableAnnouncementIds?: string[];
@@ -41758,9 +42436,11 @@ export const DescribeTransitGatewayRouteTableAnnouncementsRequest = /*@__PURE__*
 }) as any as S.Schema<DescribeTransitGatewayRouteTableAnnouncementsRequest>;
 export type TransitGatewayRouteTableAnnouncementList = TransitGatewayRouteTableAnnouncement[];
 export const TransitGatewayRouteTableAnnouncementList = /*@__PURE__*/ S.Array(
-  TransitGatewayRouteTableAnnouncement.pipe(T.XmlName("item")).annotate({
-    identifier: "TransitGatewayRouteTableAnnouncement",
-  }),
+  /*@__PURE__*/ TransitGatewayRouteTableAnnouncement.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "TransitGatewayRouteTableAnnouncement",
+    },
+  ),
 );
 export interface DescribeTransitGatewayRouteTableAnnouncementsResult {
   TransitGatewayRouteTableAnnouncements?: TransitGatewayRouteTableAnnouncement[];
@@ -41781,7 +42461,7 @@ export const DescribeTransitGatewayRouteTableAnnouncementsResult = /*@__PURE__*/
 }) as any as S.Schema<DescribeTransitGatewayRouteTableAnnouncementsResult>;
 export type TransitGatewayRouteTableIdStringList = string[];
 export const TransitGatewayRouteTableIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface DescribeTransitGatewayRouteTablesRequest {
   TransitGatewayRouteTableIds?: string[];
@@ -41803,7 +42483,7 @@ export const DescribeTransitGatewayRouteTablesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeTransitGatewayRouteTablesRequest>;
 export type TransitGatewayRouteTableList = TransitGatewayRouteTable[];
 export const TransitGatewayRouteTableList = /*@__PURE__*/ S.Array(
-  TransitGatewayRouteTable.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayRouteTable.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayRouteTable",
   }),
 );
@@ -41823,7 +42503,9 @@ export const DescribeTransitGatewayRouteTablesResult = /*@__PURE__*/ S.suspend((
   identifier: "DescribeTransitGatewayRouteTablesResult",
 }) as any as S.Schema<DescribeTransitGatewayRouteTablesResult>;
 export type TransitGatewayIdStringList = string[];
-export const TransitGatewayIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const TransitGatewayIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeTransitGatewaysRequest {
   TransitGatewayIds?: string[];
   Filters?: Filter[];
@@ -41844,7 +42526,9 @@ export const DescribeTransitGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeTransitGatewaysRequest>;
 export type TransitGatewayList = TransitGateway[];
 export const TransitGatewayList = /*@__PURE__*/ S.Array(
-  TransitGateway.pipe(T.XmlName("item")).annotate({ identifier: "TransitGateway" }),
+  /*@__PURE__*/ TransitGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TransitGateway",
+  }),
 );
 export interface DescribeTransitGatewaysResult {
   TransitGateways?: TransitGateway[];
@@ -41881,7 +42565,7 @@ export const DescribeTransitGatewayVpcAttachmentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DescribeTransitGatewayVpcAttachmentsRequest>;
 export type TransitGatewayVpcAttachmentList = TransitGatewayVpcAttachment[];
 export const TransitGatewayVpcAttachmentList = /*@__PURE__*/ S.Array(
-  TransitGatewayVpcAttachment.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayVpcAttachment.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayVpcAttachment",
   }),
 );
@@ -41902,7 +42586,7 @@ export const DescribeTransitGatewayVpcAttachmentsResult = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DescribeTransitGatewayVpcAttachmentsResult>;
 export type TrunkInterfaceAssociationIdList = string[];
 export const TrunkInterfaceAssociationIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeTrunkInterfaceAssociationsMaxResults = number;
 export interface DescribeTrunkInterfaceAssociationsRequest {
@@ -41925,7 +42609,7 @@ export const DescribeTrunkInterfaceAssociationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeTrunkInterfaceAssociationsRequest>;
 export type TrunkInterfaceAssociationList = TrunkInterfaceAssociation[];
 export const TrunkInterfaceAssociationList = /*@__PURE__*/ S.Array(
-  TrunkInterfaceAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TrunkInterfaceAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TrunkInterfaceAssociation",
   }),
 );
@@ -41945,7 +42629,9 @@ export const DescribeTrunkInterfaceAssociationsResult = /*@__PURE__*/ S.suspend(
   identifier: "DescribeTrunkInterfaceAssociationsResult",
 }) as any as S.Schema<DescribeTrunkInterfaceAssociationsResult>;
 export type VerifiedAccessEndpointIdList = string[];
-export const VerifiedAccessEndpointIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VerifiedAccessEndpointIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeVerifiedAccessEndpointsMaxResults = number;
 export interface DescribeVerifiedAccessEndpointsRequest {
   VerifiedAccessEndpointIds?: string[];
@@ -41973,7 +42659,9 @@ export const DescribeVerifiedAccessEndpointsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeVerifiedAccessEndpointsRequest>;
 export type VerifiedAccessEndpointList = VerifiedAccessEndpoint[];
 export const VerifiedAccessEndpointList = /*@__PURE__*/ S.Array(
-  VerifiedAccessEndpoint.pipe(T.XmlName("item")).annotate({ identifier: "VerifiedAccessEndpoint" }),
+  /*@__PURE__*/ VerifiedAccessEndpoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VerifiedAccessEndpoint",
+  }),
 );
 export interface DescribeVerifiedAccessEndpointsResult {
   VerifiedAccessEndpoints?: VerifiedAccessEndpoint[];
@@ -41991,7 +42679,9 @@ export const DescribeVerifiedAccessEndpointsResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeVerifiedAccessEndpointsResult",
 }) as any as S.Schema<DescribeVerifiedAccessEndpointsResult>;
 export type VerifiedAccessGroupIdList = string[];
-export const VerifiedAccessGroupIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VerifiedAccessGroupIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeVerifiedAccessGroupMaxResults = number;
 export interface DescribeVerifiedAccessGroupsRequest {
   VerifiedAccessGroupIds?: string[];
@@ -42017,7 +42707,9 @@ export const DescribeVerifiedAccessGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVerifiedAccessGroupsRequest>;
 export type VerifiedAccessGroupList = VerifiedAccessGroup[];
 export const VerifiedAccessGroupList = /*@__PURE__*/ S.Array(
-  VerifiedAccessGroup.pipe(T.XmlName("item")).annotate({ identifier: "VerifiedAccessGroup" }),
+  /*@__PURE__*/ VerifiedAccessGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VerifiedAccessGroup",
+  }),
 );
 export interface DescribeVerifiedAccessGroupsResult {
   VerifiedAccessGroups?: VerifiedAccessGroup[];
@@ -42035,7 +42727,9 @@ export const DescribeVerifiedAccessGroupsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeVerifiedAccessGroupsResult",
 }) as any as S.Schema<DescribeVerifiedAccessGroupsResult>;
 export type VerifiedAccessInstanceIdList = string[];
-export const VerifiedAccessInstanceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VerifiedAccessInstanceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults = number;
 export interface DescribeVerifiedAccessInstanceLoggingConfigurationsRequest {
   VerifiedAccessInstanceIds?: string[];
@@ -42176,7 +42870,9 @@ export const VerifiedAccessInstanceLoggingConfiguration = /*@__PURE__*/ S.suspen
 export type VerifiedAccessInstanceLoggingConfigurationList =
   VerifiedAccessInstanceLoggingConfiguration[];
 export const VerifiedAccessInstanceLoggingConfigurationList = /*@__PURE__*/ S.Array(
-  VerifiedAccessInstanceLoggingConfiguration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessInstanceLoggingConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "VerifiedAccessInstanceLoggingConfiguration",
   }),
 );
@@ -42219,7 +42915,9 @@ export const DescribeVerifiedAccessInstancesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeVerifiedAccessInstancesRequest>;
 export type VerifiedAccessInstanceList = VerifiedAccessInstance[];
 export const VerifiedAccessInstanceList = /*@__PURE__*/ S.Array(
-  VerifiedAccessInstance.pipe(T.XmlName("item")).annotate({ identifier: "VerifiedAccessInstance" }),
+  /*@__PURE__*/ VerifiedAccessInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VerifiedAccessInstance",
+  }),
 );
 export interface DescribeVerifiedAccessInstancesResult {
   VerifiedAccessInstances?: VerifiedAccessInstance[];
@@ -42238,7 +42936,7 @@ export const DescribeVerifiedAccessInstancesResult = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DescribeVerifiedAccessInstancesResult>;
 export type VerifiedAccessTrustProviderIdList = string[];
 export const VerifiedAccessTrustProviderIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeVerifiedAccessTrustProvidersMaxResults = number;
 export interface DescribeVerifiedAccessTrustProvidersRequest {
@@ -42263,7 +42961,7 @@ export const DescribeVerifiedAccessTrustProvidersRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DescribeVerifiedAccessTrustProvidersRequest>;
 export type VerifiedAccessTrustProviderList = VerifiedAccessTrustProvider[];
 export const VerifiedAccessTrustProviderList = /*@__PURE__*/ S.Array(
-  VerifiedAccessTrustProvider.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessTrustProvider.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VerifiedAccessTrustProvider",
   }),
 );
@@ -42454,7 +43152,9 @@ export const VolumeModification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeModification" }) as any as S.Schema<VolumeModification>;
 export type VolumeModificationList = VolumeModification[];
 export const VolumeModificationList = /*@__PURE__*/ S.Array(
-  VolumeModification.pipe(T.XmlName("item")).annotate({ identifier: "VolumeModification" }),
+  /*@__PURE__*/ VolumeModification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeModification",
+  }),
 );
 export interface DescribeVolumesModificationsResult {
   NextToken?: string;
@@ -42507,7 +43207,9 @@ export const VolumeStatusAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeStatusAction" }) as any as S.Schema<VolumeStatusAction>;
 export type VolumeStatusActionsList = VolumeStatusAction[];
 export const VolumeStatusActionsList = /*@__PURE__*/ S.Array(
-  VolumeStatusAction.pipe(T.XmlName("item")).annotate({ identifier: "VolumeStatusAction" }),
+  /*@__PURE__*/ VolumeStatusAction.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeStatusAction",
+  }),
 );
 export interface VolumeStatusEvent {
   Description?: string;
@@ -42535,7 +43237,9 @@ export const VolumeStatusEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeStatusEvent" }) as any as S.Schema<VolumeStatusEvent>;
 export type VolumeStatusEventsList = VolumeStatusEvent[];
 export const VolumeStatusEventsList = /*@__PURE__*/ S.Array(
-  VolumeStatusEvent.pipe(T.XmlName("item")).annotate({ identifier: "VolumeStatusEvent" }),
+  /*@__PURE__*/ VolumeStatusEvent.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeStatusEvent",
+  }),
 );
 export type VolumeStatusName =
   | "io-enabled"
@@ -42556,7 +43260,9 @@ export const VolumeStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeStatusDetails" }) as any as S.Schema<VolumeStatusDetails>;
 export type VolumeStatusDetailsList = VolumeStatusDetails[];
 export const VolumeStatusDetailsList = /*@__PURE__*/ S.Array(
-  VolumeStatusDetails.pipe(T.XmlName("item")).annotate({ identifier: "VolumeStatusDetails" }),
+  /*@__PURE__*/ VolumeStatusDetails.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeStatusDetails",
+  }),
 );
 export type VolumeStatusInfoStatus =
   | "ok"
@@ -42596,7 +43302,7 @@ export const VolumeStatusAttachmentStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeStatusAttachmentStatus>;
 export type VolumeStatusAttachmentStatusList = VolumeStatusAttachmentStatus[];
 export const VolumeStatusAttachmentStatusList = /*@__PURE__*/ S.Array(
-  VolumeStatusAttachmentStatus.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VolumeStatusAttachmentStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VolumeStatusAttachmentStatus",
   }),
 );
@@ -42672,7 +43378,9 @@ export const VolumeStatusItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeStatusItem" }) as any as S.Schema<VolumeStatusItem>;
 export type VolumeStatusList = VolumeStatusItem[];
 export const VolumeStatusList = /*@__PURE__*/ S.Array(
-  VolumeStatusItem.pipe(T.XmlName("item")).annotate({ identifier: "VolumeStatusItem" }),
+  /*@__PURE__*/ VolumeStatusItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeStatusItem",
+  }),
 );
 export interface DescribeVolumeStatusResult {
   NextToken?: string;
@@ -42737,7 +43445,7 @@ export const DescribeVpcAttributeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpcAttributeResult>;
 export type VpcBlockPublicAccessExclusionIdList = string[];
 export const VpcBlockPublicAccessExclusionIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type DescribeVpcBlockPublicAccessExclusionsMaxResults = number;
 export interface DescribeVpcBlockPublicAccessExclusionsRequest {
@@ -42760,7 +43468,7 @@ export const DescribeVpcBlockPublicAccessExclusionsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DescribeVpcBlockPublicAccessExclusionsRequest>;
 export type VpcBlockPublicAccessExclusionList = VpcBlockPublicAccessExclusion[];
 export const VpcBlockPublicAccessExclusionList = /*@__PURE__*/ S.Array(
-  VpcBlockPublicAccessExclusion.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VpcBlockPublicAccessExclusion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VpcBlockPublicAccessExclusion",
   }),
 );
@@ -42855,7 +43563,9 @@ export const DescribeVpcBlockPublicAccessOptionsResult = /*@__PURE__*/ S.suspend
   identifier: "DescribeVpcBlockPublicAccessOptionsResult",
 }) as any as S.Schema<DescribeVpcBlockPublicAccessOptionsResult>;
 export type VpcClassicLinkIdList = string[];
-export const VpcClassicLinkIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("VpcId")));
+export const VpcClassicLinkIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcId")),
+);
 export interface DescribeVpcClassicLinkRequest {
   DryRun?: boolean;
   VpcIds?: string[];
@@ -42887,7 +43597,9 @@ export const VpcClassicLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcClassicLink" }) as any as S.Schema<VpcClassicLink>;
 export type VpcClassicLinkList = VpcClassicLink[];
 export const VpcClassicLinkList = /*@__PURE__*/ S.Array(
-  VpcClassicLink.pipe(T.XmlName("item")).annotate({ identifier: "VpcClassicLink" }),
+  /*@__PURE__*/ VpcClassicLink.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcClassicLink",
+  }),
 );
 export interface DescribeVpcClassicLinkResult {
   Vpcs?: VpcClassicLink[];
@@ -42930,7 +43642,9 @@ export const ClassicLinkDnsSupport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassicLinkDnsSupport" }) as any as S.Schema<ClassicLinkDnsSupport>;
 export type ClassicLinkDnsSupportList = ClassicLinkDnsSupport[];
 export const ClassicLinkDnsSupportList = /*@__PURE__*/ S.Array(
-  ClassicLinkDnsSupport.pipe(T.XmlName("item")).annotate({ identifier: "ClassicLinkDnsSupport" }),
+  /*@__PURE__*/ ClassicLinkDnsSupport.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ClassicLinkDnsSupport",
+  }),
 );
 export interface DescribeVpcClassicLinkDnsSupportResult {
   NextToken?: string;
@@ -42945,9 +43659,13 @@ export const DescribeVpcClassicLinkDnsSupportResult = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeVpcClassicLinkDnsSupportResult",
 }) as any as S.Schema<DescribeVpcClassicLinkDnsSupportResult>;
 export type VpcEncryptionControlIdList = string[];
-export const VpcEncryptionControlIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcEncryptionControlIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VpcIdStringList = string[];
-export const VpcIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("VpcId")));
+export const VpcIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcId")),
+);
 export type DescribeVpcEncryptionControlsMaxResults = number;
 export interface DescribeVpcEncryptionControlsRequest {
   DryRun?: boolean;
@@ -42973,7 +43691,9 @@ export const DescribeVpcEncryptionControlsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DescribeVpcEncryptionControlsRequest>;
 export type VpcEncryptionControlList = VpcEncryptionControl[];
 export const VpcEncryptionControlList = /*@__PURE__*/ S.Array(
-  VpcEncryptionControl.pipe(T.XmlName("item")).annotate({ identifier: "VpcEncryptionControl" }),
+  /*@__PURE__*/ VpcEncryptionControl.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcEncryptionControl",
+  }),
 );
 export interface DescribeVpcEncryptionControlsResult {
   VpcEncryptionControls?: VpcEncryptionControl[];
@@ -43066,7 +43786,9 @@ export const VpcEndpointAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcEndpointAssociation" }) as any as S.Schema<VpcEndpointAssociation>;
 export type VpcEndpointAssociationSet = VpcEndpointAssociation[];
 export const VpcEndpointAssociationSet = /*@__PURE__*/ S.Array(
-  VpcEndpointAssociation.pipe(T.XmlName("item")).annotate({ identifier: "VpcEndpointAssociation" }),
+  /*@__PURE__*/ VpcEndpointAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcEndpointAssociation",
+  }),
 );
 export interface DescribeVpcEndpointAssociationsResult {
   VpcEndpointAssociations?: VpcEndpointAssociation[];
@@ -43103,7 +43825,9 @@ export const DescribeVpcEndpointConnectionNotificationsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DescribeVpcEndpointConnectionNotificationsRequest>;
 export type ConnectionNotificationSet = ConnectionNotification[];
 export const ConnectionNotificationSet = /*@__PURE__*/ S.Array(
-  ConnectionNotification.pipe(T.XmlName("item")).annotate({ identifier: "ConnectionNotification" }),
+  /*@__PURE__*/ ConnectionNotification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ConnectionNotification",
+  }),
 );
 export interface DescribeVpcEndpointConnectionNotificationsResult {
   ConnectionNotificationSet?: ConnectionNotification[];
@@ -43203,7 +43927,9 @@ export const VpcEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcEndpointConnection" }) as any as S.Schema<VpcEndpointConnection>;
 export type VpcEndpointConnectionSet = VpcEndpointConnection[];
 export const VpcEndpointConnectionSet = /*@__PURE__*/ S.Array(
-  VpcEndpointConnection.pipe(T.XmlName("item")).annotate({ identifier: "VpcEndpointConnection" }),
+  /*@__PURE__*/ VpcEndpointConnection.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcEndpointConnection",
+  }),
 );
 export interface DescribeVpcEndpointConnectionsResult {
   VpcEndpointConnections?: VpcEndpointConnection[];
@@ -43240,7 +43966,9 @@ export const DescribeVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpcEndpointsRequest>;
 export type VpcEndpointSet = VpcEndpoint[];
 export const VpcEndpointSet = /*@__PURE__*/ S.Array(
-  VpcEndpoint.pipe(T.XmlName("item")).annotate({ identifier: "VpcEndpoint" }),
+  /*@__PURE__*/ VpcEndpoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcEndpoint",
+  }),
 );
 export interface DescribeVpcEndpointsResult {
   VpcEndpoints?: VpcEndpoint[];
@@ -43277,7 +44005,9 @@ export const DescribeVpcEndpointServiceConfigurationsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DescribeVpcEndpointServiceConfigurationsRequest>;
 export type ServiceConfigurationSet = ServiceConfiguration[];
 export const ServiceConfigurationSet = /*@__PURE__*/ S.Array(
-  ServiceConfiguration.pipe(T.XmlName("item")).annotate({ identifier: "ServiceConfiguration" }),
+  /*@__PURE__*/ ServiceConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ServiceConfiguration",
+  }),
 );
 export interface DescribeVpcEndpointServiceConfigurationsResult {
   ServiceConfigurations?: ServiceConfiguration[];
@@ -43346,7 +44076,9 @@ export const AllowedPrincipal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowedPrincipal" }) as any as S.Schema<AllowedPrincipal>;
 export type AllowedPrincipalSet = AllowedPrincipal[];
 export const AllowedPrincipalSet = /*@__PURE__*/ S.Array(
-  AllowedPrincipal.pipe(T.XmlName("item")).annotate({ identifier: "AllowedPrincipal" }),
+  /*@__PURE__*/ AllowedPrincipal.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AllowedPrincipal",
+  }),
 );
 export interface DescribeVpcEndpointServicePermissionsResult {
   AllowedPrincipals?: AllowedPrincipal[];
@@ -43396,7 +44128,9 @@ export const PrivateDnsDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateDnsDetails" }) as any as S.Schema<PrivateDnsDetails>;
 export type PrivateDnsDetailsSet = PrivateDnsDetails[];
 export const PrivateDnsDetailsSet = /*@__PURE__*/ S.Array(
-  PrivateDnsDetails.pipe(T.XmlName("item")).annotate({ identifier: "PrivateDnsDetails" }),
+  /*@__PURE__*/ PrivateDnsDetails.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrivateDnsDetails",
+  }),
 );
 export interface ServiceDetail {
   ServiceName?: string;
@@ -43479,7 +44213,9 @@ export const ServiceDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceDetail" }) as any as S.Schema<ServiceDetail>;
 export type ServiceDetailSet = ServiceDetail[];
 export const ServiceDetailSet = /*@__PURE__*/ S.Array(
-  ServiceDetail.pipe(T.XmlName("item")).annotate({ identifier: "ServiceDetail" }),
+  /*@__PURE__*/ ServiceDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ServiceDetail",
+  }),
 );
 export interface DescribeVpcEndpointServicesResult {
   ServiceNames?: string[];
@@ -43503,7 +44239,9 @@ export const DescribeVpcEndpointServicesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpcEndpointServicesResult>;
 export type DescribeVpcPeeringConnectionsMaxResults = number;
 export type VpcPeeringConnectionIdList = string[];
-export const VpcPeeringConnectionIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const VpcPeeringConnectionIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DescribeVpcPeeringConnectionsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -43526,7 +44264,9 @@ export const DescribeVpcPeeringConnectionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DescribeVpcPeeringConnectionsRequest>;
 export type VpcPeeringConnectionList = VpcPeeringConnection[];
 export const VpcPeeringConnectionList = /*@__PURE__*/ S.Array(
-  VpcPeeringConnection.pipe(T.XmlName("item")).annotate({ identifier: "VpcPeeringConnection" }),
+  /*@__PURE__*/ VpcPeeringConnection.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpcPeeringConnection",
+  }),
 );
 export interface DescribeVpcPeeringConnectionsResult {
   VpcPeeringConnections?: VpcPeeringConnection[];
@@ -43562,7 +44302,7 @@ export const DescribeVpcsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeVpcsRequest" }) as any as S.Schema<DescribeVpcsRequest>;
 export type VpcList = Vpc[];
 export const VpcList = /*@__PURE__*/ S.Array(
-  Vpc.pipe(T.XmlName("item")).annotate({ identifier: "Vpc" }),
+  /*@__PURE__*/ Vpc.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Vpc" }),
 );
 export interface DescribeVpcsResult {
   NextToken?: string;
@@ -43576,7 +44316,7 @@ export const DescribeVpcsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeVpcsResult" }) as any as S.Schema<DescribeVpcsResult>;
 export type VpnConcentratorIdStringList = string[];
 export const VpnConcentratorIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("VpnConcentratorId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpnConcentratorId")),
 );
 export type GVCDMaxResults = number;
 export interface DescribeVpnConcentratorsRequest {
@@ -43601,7 +44341,9 @@ export const DescribeVpnConcentratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpnConcentratorsRequest>;
 export type VpnConcentratorList = VpnConcentrator[];
 export const VpnConcentratorList = /*@__PURE__*/ S.Array(
-  VpnConcentrator.pipe(T.XmlName("item")).annotate({ identifier: "VpnConcentrator" }),
+  /*@__PURE__*/ VpnConcentrator.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpnConcentrator",
+  }),
 );
 export interface DescribeVpnConcentratorsResult {
   VpnConcentrators?: VpnConcentrator[];
@@ -43620,7 +44362,7 @@ export const DescribeVpnConcentratorsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpnConcentratorsResult>;
 export type VpnConnectionIdStringList = string[];
 export const VpnConnectionIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("VpnConnectionId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpnConnectionId")),
 );
 export interface DescribeVpnConnectionsRequest {
   Filters?: Filter[];
@@ -43638,7 +44380,9 @@ export const DescribeVpnConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpnConnectionsRequest>;
 export type VpnConnectionList = VpnConnection[];
 export const VpnConnectionList = /*@__PURE__*/ S.Array(
-  VpnConnection.pipe(T.XmlName("item")).annotate({ identifier: "VpnConnection" }),
+  /*@__PURE__*/ VpnConnection.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpnConnection",
+  }),
 );
 export interface DescribeVpnConnectionsResult {
   VpnConnections?: VpnConnection[];
@@ -43655,7 +44399,7 @@ export const DescribeVpnConnectionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpnConnectionsResult>;
 export type VpnGatewayIdStringList = string[];
 export const VpnGatewayIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("VpnGatewayId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpnGatewayId")),
 );
 export interface DescribeVpnGatewaysRequest {
   Filters?: Filter[];
@@ -43673,7 +44417,9 @@ export const DescribeVpnGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpnGatewaysRequest>;
 export type VpnGatewayList = VpnGateway[];
 export const VpnGatewayList = /*@__PURE__*/ S.Array(
-  VpnGateway.pipe(T.XmlName("item")).annotate({ identifier: "VpnGateway" }),
+  /*@__PURE__*/ VpnGateway.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VpnGateway",
+  }),
 );
 export interface DescribeVpnGatewaysResult {
   VpnGateways?: VpnGateway[];
@@ -43934,7 +44680,7 @@ export const SuccessfulSuppressionResponseObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulSuppressionResponseObject>;
 export type SuccessfulSuppressionResponseSet = SuccessfulSuppressionResponseObject[];
 export const SuccessfulSuppressionResponseSet = /*@__PURE__*/ S.Array(
-  SuccessfulSuppressionResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SuccessfulSuppressionResponseObject.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SuccessfulSuppressionResponseObject",
   }),
 );
@@ -43962,7 +44708,9 @@ export const UnsuccessfulSuppressionResponseObject = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnsuccessfulSuppressionResponseObject>;
 export type UnsuccessfulSuppressionResponseSet = UnsuccessfulSuppressionResponseObject[];
 export const UnsuccessfulSuppressionResponseSet = /*@__PURE__*/ S.Array(
-  UnsuccessfulSuppressionResponseObject.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ UnsuccessfulSuppressionResponseObject.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "UnsuccessfulSuppressionResponseObject",
   }),
 );
@@ -44122,11 +44870,11 @@ export const DisableFastLaunchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableFastLaunchResult" }) as any as S.Schema<DisableFastLaunchResult>;
 export type AvailabilityZoneStringList = string[];
 export const AvailabilityZoneStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("AvailabilityZone")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")),
 );
 export type AvailabilityZoneIdStringList = string[];
 export const AvailabilityZoneIdStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("AvailabilityZoneId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZoneId")),
 );
 export interface DisableFastSnapshotRestoresRequest {
   AvailabilityZones?: string[];
@@ -44207,7 +44955,9 @@ export const DisableFastSnapshotRestoreSuccessItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DisableFastSnapshotRestoreSuccessItem>;
 export type DisableFastSnapshotRestoreSuccessSet = DisableFastSnapshotRestoreSuccessItem[];
 export const DisableFastSnapshotRestoreSuccessSet = /*@__PURE__*/ S.Array(
-  DisableFastSnapshotRestoreSuccessItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DisableFastSnapshotRestoreSuccessItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "DisableFastSnapshotRestoreSuccessItem",
   }),
 );
@@ -44247,7 +44997,9 @@ export const DisableFastSnapshotRestoreStateErrorItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DisableFastSnapshotRestoreStateErrorItem>;
 export type DisableFastSnapshotRestoreStateErrorSet = DisableFastSnapshotRestoreStateErrorItem[];
 export const DisableFastSnapshotRestoreStateErrorSet = /*@__PURE__*/ S.Array(
-  DisableFastSnapshotRestoreStateErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DisableFastSnapshotRestoreStateErrorItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "DisableFastSnapshotRestoreStateErrorItem",
   }),
 );
@@ -44268,7 +45020,7 @@ export const DisableFastSnapshotRestoreErrorItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableFastSnapshotRestoreErrorItem>;
 export type DisableFastSnapshotRestoreErrorSet = DisableFastSnapshotRestoreErrorItem[];
 export const DisableFastSnapshotRestoreErrorSet = /*@__PURE__*/ S.Array(
-  DisableFastSnapshotRestoreErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ DisableFastSnapshotRestoreErrorItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "DisableFastSnapshotRestoreErrorItem",
   }),
 );
@@ -44376,7 +45128,9 @@ export const DisableImageDeregistrationProtectionResult = /*@__PURE__*/ S.suspen
   identifier: "DisableImageDeregistrationProtectionResult",
 }) as any as S.Schema<DisableImageDeregistrationProtectionResult>;
 export type InstanceIdUpdateStringList = string[];
-export const InstanceIdUpdateStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceIdUpdateStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DisableInstanceSqlHaStandbyDetectionsRequest {
   InstanceIds?: string[];
   DryRun?: boolean;
@@ -44936,7 +45690,9 @@ export const DisassociateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend((
   identifier: "DisassociateIpamResourceDiscoveryResult",
 }) as any as S.Schema<DisassociateIpamResourceDiscoveryResult>;
 export type EipAssociationIdList = string[];
-export const EipAssociationIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const EipAssociationIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type DrainSeconds = number;
 export interface DisassociateNatGatewayAddressRequest {
   NatGatewayId?: string;
@@ -45543,9 +46299,11 @@ export const EnableFastSnapshotRestoreSuccessItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<EnableFastSnapshotRestoreSuccessItem>;
 export type EnableFastSnapshotRestoreSuccessSet = EnableFastSnapshotRestoreSuccessItem[];
 export const EnableFastSnapshotRestoreSuccessSet = /*@__PURE__*/ S.Array(
-  EnableFastSnapshotRestoreSuccessItem.pipe(T.XmlName("item")).annotate({
-    identifier: "EnableFastSnapshotRestoreSuccessItem",
-  }),
+  /*@__PURE__*/ EnableFastSnapshotRestoreSuccessItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "EnableFastSnapshotRestoreSuccessItem",
+    },
+  ),
 );
 export interface EnableFastSnapshotRestoreStateError {
   Code?: string;
@@ -45583,7 +46341,9 @@ export const EnableFastSnapshotRestoreStateErrorItem = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<EnableFastSnapshotRestoreStateErrorItem>;
 export type EnableFastSnapshotRestoreStateErrorSet = EnableFastSnapshotRestoreStateErrorItem[];
 export const EnableFastSnapshotRestoreStateErrorSet = /*@__PURE__*/ S.Array(
-  EnableFastSnapshotRestoreStateErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ EnableFastSnapshotRestoreStateErrorItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "EnableFastSnapshotRestoreStateErrorItem",
   }),
 );
@@ -45604,7 +46364,7 @@ export const EnableFastSnapshotRestoreErrorItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableFastSnapshotRestoreErrorItem>;
 export type EnableFastSnapshotRestoreErrorSet = EnableFastSnapshotRestoreErrorItem[];
 export const EnableFastSnapshotRestoreErrorSet = /*@__PURE__*/ S.Array(
-  EnableFastSnapshotRestoreErrorItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ EnableFastSnapshotRestoreErrorItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "EnableFastSnapshotRestoreErrorItem",
   }),
 );
@@ -46208,7 +46968,7 @@ export const ExportVerifiedAccessInstanceClientConfigurationRequest = /*@__PURE_
 }) as any as S.Schema<ExportVerifiedAccessInstanceClientConfigurationRequest>;
 export type DeviceTrustProviderTypeList = DeviceTrustProviderType[];
 export const DeviceTrustProviderTypeList = /*@__PURE__*/ S.Array(
-  DeviceTrustProviderType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ DeviceTrustProviderType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface VerifiedAccessInstanceUserTrustProviderClientConfiguration {
   Type?: UserTrustProviderType;
@@ -46268,7 +47028,9 @@ export const VerifiedAccessInstanceOpenVpnClientConfigurationRoute = /*@__PURE__
 export type VerifiedAccessInstanceOpenVpnClientConfigurationRouteList =
   VerifiedAccessInstanceOpenVpnClientConfigurationRoute[];
 export const VerifiedAccessInstanceOpenVpnClientConfigurationRouteList = /*@__PURE__*/ S.Array(
-  VerifiedAccessInstanceOpenVpnClientConfigurationRoute.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessInstanceOpenVpnClientConfigurationRoute.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "VerifiedAccessInstanceOpenVpnClientConfigurationRoute",
   }),
 );
@@ -46290,7 +47052,9 @@ export const VerifiedAccessInstanceOpenVpnClientConfiguration = /*@__PURE__*/ S.
 export type VerifiedAccessInstanceOpenVpnClientConfigurationList =
   VerifiedAccessInstanceOpenVpnClientConfiguration[];
 export const VerifiedAccessInstanceOpenVpnClientConfigurationList = /*@__PURE__*/ S.Array(
-  VerifiedAccessInstanceOpenVpnClientConfiguration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessInstanceOpenVpnClientConfiguration.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "VerifiedAccessInstanceOpenVpnClientConfiguration",
   }),
 );
@@ -46414,13 +47178,19 @@ export const GetAllowedImagesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAllowedImagesSettingsRequest>;
 export type ImageProvider = string;
 export type ImageProviderList = string[];
-export const ImageProviderList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ImageProviderList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type MarketplaceProductCode = string;
 export type MarketplaceProductCodeList = string[];
-export const MarketplaceProductCodeList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const MarketplaceProductCodeList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ImageName = string;
 export type ImageNameList = string[];
-export const ImageNameList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ImageNameList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type MaximumDaysSinceDeprecatedValue = number;
 export interface DeprecationTimeCondition {
   MaximumDaysSinceDeprecated?: number;
@@ -46475,7 +47245,7 @@ export const ImageWatermarkFilterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageWatermarkFilterResponse>;
 export type ImageWatermarkFilterResponseList = ImageWatermarkFilterResponse[];
 export const ImageWatermarkFilterResponseList = /*@__PURE__*/ S.Array(
-  ImageWatermarkFilterResponse.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImageWatermarkFilterResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ImageWatermarkFilterResponse",
   }),
 );
@@ -46515,7 +47285,9 @@ export const ImageCriterion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageCriterion" }) as any as S.Schema<ImageCriterion>;
 export type ImageCriterionList = ImageCriterion[];
 export const ImageCriterionList = /*@__PURE__*/ S.Array(
-  ImageCriterion.pipe(T.XmlName("item")).annotate({ identifier: "ImageCriterion" }),
+  /*@__PURE__*/ ImageCriterion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageCriterion",
+  }),
 );
 export interface GetAllowedImagesSettingsResult {
   State?: string;
@@ -46573,7 +47345,9 @@ export const AssociatedRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedRole" }) as any as S.Schema<AssociatedRole>;
 export type AssociatedRolesList = AssociatedRole[];
 export const AssociatedRolesList = /*@__PURE__*/ S.Array(
-  AssociatedRole.pipe(T.XmlName("item")).annotate({ identifier: "AssociatedRole" }),
+  /*@__PURE__*/ AssociatedRole.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AssociatedRole",
+  }),
 );
 export interface GetAssociatedEnclaveCertificateIamRolesResult {
   AssociatedRoles?: AssociatedRole[];
@@ -46619,7 +47393,9 @@ export const Ipv6CidrAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6CidrAssociation" }) as any as S.Schema<Ipv6CidrAssociation>;
 export type Ipv6CidrAssociationSet = Ipv6CidrAssociation[];
 export const Ipv6CidrAssociationSet = /*@__PURE__*/ S.Array(
-  Ipv6CidrAssociation.pipe(T.XmlName("item")).annotate({ identifier: "Ipv6CidrAssociation" }),
+  /*@__PURE__*/ Ipv6CidrAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "Ipv6CidrAssociation",
+  }),
 );
 export interface GetAssociatedIpv6PoolCidrsResult {
   Ipv6CidrAssociations?: Ipv6CidrAssociation[];
@@ -46698,7 +47474,9 @@ export const MetricPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricPoint" }) as any as S.Schema<MetricPoint>;
 export type MetricPoints = MetricPoint[];
 export const MetricPoints = /*@__PURE__*/ S.Array(
-  MetricPoint.pipe(T.XmlName("item")).annotate({ identifier: "MetricPoint" }),
+  /*@__PURE__*/ MetricPoint.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MetricPoint",
+  }),
 );
 export interface DataResponse {
   Id?: string;
@@ -46725,7 +47503,9 @@ export const DataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataResponse" }) as any as S.Schema<DataResponse>;
 export type DataResponses = DataResponse[];
 export const DataResponses = /*@__PURE__*/ S.Array(
-  DataResponse.pipe(T.XmlName("item")).annotate({ identifier: "DataResponse" }),
+  /*@__PURE__*/ DataResponse.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "DataResponse",
+  }),
 );
 export interface GetAwsNetworkPerformanceDataResult {
   DataResponses?: DataResponse[];
@@ -46854,7 +47634,9 @@ export type Metric =
 export const Metric = S.String;
 
 export type MetricSet = Metric[];
-export const MetricSet = /*@__PURE__*/ S.Array(Metric.pipe(T.XmlName("item")));
+export const MetricSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ Metric.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type Period = number;
 export type GroupBy =
   | "resource-region"
@@ -46879,7 +47661,9 @@ export type GroupBy =
 export const GroupBy = S.String;
 
 export type GroupBySet = GroupBy[];
-export const GroupBySet = /*@__PURE__*/ S.Array(GroupBy.pipe(T.XmlName("item")));
+export const GroupBySet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ GroupBy.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type FilterByDimension =
   | "resource-region"
   | "availability-zone-id"
@@ -46907,7 +47691,9 @@ export const Comparison = S.String;
 
 export type ConditionValue = string;
 export type ConditionValueList = string[];
-export const ConditionValueList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ConditionValueList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DimensionCondition {
   Dimension?: FilterByDimension;
   Comparison?: Comparison;
@@ -46928,7 +47714,7 @@ export const CapacityManagerCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityManagerCondition" }) as any as S.Schema<CapacityManagerCondition>;
 export type CapacityManagerConditionSet = CapacityManagerCondition[];
 export const CapacityManagerConditionSet = /*@__PURE__*/ S.Array(
-  CapacityManagerCondition.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityManagerCondition.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityManagerCondition",
   }),
 );
@@ -46982,7 +47768,7 @@ export const CapacityManagerTagDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityManagerTagDimension>;
 export type CapacityManagerTagDimensionSet = CapacityManagerTagDimension[];
 export const CapacityManagerTagDimensionSet = /*@__PURE__*/ S.Array(
-  CapacityManagerTagDimension.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityManagerTagDimension.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityManagerTagDimension",
   }),
 );
@@ -47088,7 +47874,9 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 export type MetricValueSet = MetricValue[];
 export const MetricValueSet = /*@__PURE__*/ S.Array(
-  MetricValue.pipe(T.XmlName("item")).annotate({ identifier: "MetricValue" }),
+  /*@__PURE__*/ MetricValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MetricValue",
+  }),
 );
 export interface MetricDataResult {
   Dimension?: CapacityManagerDimension;
@@ -47112,7 +47900,9 @@ export const MetricDataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricDataResult" }) as any as S.Schema<MetricDataResult>;
 export type MetricDataResultSet = MetricDataResult[];
 export const MetricDataResultSet = /*@__PURE__*/ S.Array(
-  MetricDataResult.pipe(T.XmlName("item")).annotate({ identifier: "MetricDataResult" }),
+  /*@__PURE__*/ MetricDataResult.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "MetricDataResult",
+  }),
 );
 export interface GetCapacityManagerMetricDataResult {
   MetricDataResults?: MetricDataResult[];
@@ -47155,7 +47945,7 @@ export const GetCapacityManagerMetricDimensionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetCapacityManagerMetricDimensionsRequest>;
 export type MetricDimensionResultSet = CapacityManagerDimension[];
 export const MetricDimensionResultSet = /*@__PURE__*/ S.Array(
-  CapacityManagerDimension.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityManagerDimension.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityManagerDimension",
   }),
 );
@@ -47228,7 +48018,7 @@ export const CapacityManagerMonitoredTagKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityManagerMonitoredTagKey>;
 export type CapacityManagerMonitoredTagKeyList = CapacityManagerMonitoredTagKey[];
 export const CapacityManagerMonitoredTagKeyList = /*@__PURE__*/ S.Array(
-  CapacityManagerMonitoredTagKey.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityManagerMonitoredTagKey.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityManagerMonitoredTagKey",
   }),
 );
@@ -47279,7 +48069,9 @@ export const InstanceUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceUsage" }) as any as S.Schema<InstanceUsage>;
 export type InstanceUsageSet = InstanceUsage[];
 export const InstanceUsageSet = /*@__PURE__*/ S.Array(
-  InstanceUsage.pipe(T.XmlName("item")).annotate({ identifier: "InstanceUsage" }),
+  /*@__PURE__*/ InstanceUsage.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceUsage",
+  }),
 );
 export interface GetCapacityReservationUsageResult {
   NextToken?: string;
@@ -47416,7 +48208,9 @@ export const CoipAddressUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CoipAddressUsage" }) as any as S.Schema<CoipAddressUsage>;
 export type CoipAddressUsageSet = CoipAddressUsage[];
 export const CoipAddressUsageSet = /*@__PURE__*/ S.Array(
-  CoipAddressUsage.pipe(T.XmlName("item")).annotate({ identifier: "CoipAddressUsage" }),
+  /*@__PURE__*/ CoipAddressUsage.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "CoipAddressUsage",
+  }),
 );
 export interface GetCoipPoolUsageResult {
   CoipPoolId?: string;
@@ -47522,7 +48316,9 @@ export const RegionalSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalSummary" }) as any as S.Schema<RegionalSummary>;
 export type RegionalSummaryList = RegionalSummary[];
 export const RegionalSummaryList = /*@__PURE__*/ S.Array(
-  RegionalSummary.pipe(T.XmlName("item")).annotate({ identifier: "RegionalSummary" }),
+  /*@__PURE__*/ RegionalSummary.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RegionalSummary",
+  }),
 );
 export interface AttributeSummary {
   AttributeName?: string;
@@ -47557,7 +48353,9 @@ export const AttributeSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeSummary" }) as any as S.Schema<AttributeSummary>;
 export type AttributeSummaryList = AttributeSummary[];
 export const AttributeSummaryList = /*@__PURE__*/ S.Array(
-  AttributeSummary.pipe(T.XmlName("item")).annotate({ identifier: "AttributeSummary" }),
+  /*@__PURE__*/ AttributeSummary.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AttributeSummary",
+  }),
 );
 export interface GetDeclarativePoliciesReportSummaryResult {
   ReportId?: string;
@@ -47745,7 +48543,9 @@ export const AthenaIntegration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AthenaIntegration" }) as any as S.Schema<AthenaIntegration>;
 export type AthenaIntegrationsSet = AthenaIntegration[];
 export const AthenaIntegrationsSet = /*@__PURE__*/ S.Array(
-  AthenaIntegration.pipe(T.XmlName("item")).annotate({ identifier: "AthenaIntegration" }),
+  /*@__PURE__*/ AthenaIntegration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AthenaIntegration",
+  }),
 );
 export interface IntegrateServices {
   AthenaIntegrations?: AthenaIntegration[];
@@ -47812,7 +48612,7 @@ export const CapacityReservationGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityReservationGroup" }) as any as S.Schema<CapacityReservationGroup>;
 export type CapacityReservationGroupSet = CapacityReservationGroup[];
 export const CapacityReservationGroupSet = /*@__PURE__*/ S.Array(
-  CapacityReservationGroup.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ CapacityReservationGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "CapacityReservationGroup",
   }),
 );
@@ -47832,7 +48632,9 @@ export const GetGroupsForCapacityReservationResult = /*@__PURE__*/ S.suspend(() 
   identifier: "GetGroupsForCapacityReservationResult",
 }) as any as S.Schema<GetGroupsForCapacityReservationResult>;
 export type RequestHostIdSet = string[];
-export const RequestHostIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const RequestHostIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface GetHostReservationPurchasePreviewRequest {
   HostIdSet?: string[];
   OfferingId?: string;
@@ -47886,7 +48688,7 @@ export const Purchase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Purchase" }) as any as S.Schema<Purchase>;
 export type PurchaseSet = Purchase[];
 export const PurchaseSet = /*@__PURE__*/ S.Array(
-  Purchase.pipe(T.XmlName("item")).annotate({ identifier: "Purchase" }),
+  /*@__PURE__*/ Purchase.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Purchase" }),
 );
 export interface GetHostReservationPurchasePreviewResult {
   CurrencyCode?: CurrencyCodeValues;
@@ -47952,7 +48754,9 @@ export const ImageAncestryEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageAncestryEntry" }) as any as S.Schema<ImageAncestryEntry>;
 export type ImageAncestryEntryList = ImageAncestryEntry[];
 export const ImageAncestryEntryList = /*@__PURE__*/ S.Array(
-  ImageAncestryEntry.pipe(T.XmlName("item")).annotate({ identifier: "ImageAncestryEntry" }),
+  /*@__PURE__*/ ImageAncestryEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageAncestryEntry",
+  }),
 );
 export interface GetImageAncestryResult {
   ImageAncestryEntries?: ImageAncestryEntry[];
@@ -48095,10 +48899,12 @@ export const GetInstanceTpmEkPubResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInstanceTpmEkPubResult",
 }) as any as S.Schema<GetInstanceTpmEkPubResult>;
 export type ArchitectureTypeSet = ArchitectureType[];
-export const ArchitectureTypeSet = /*@__PURE__*/ S.Array(ArchitectureType.pipe(T.XmlName("item")));
+export const ArchitectureTypeSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ ArchitectureType.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type VirtualizationTypeSet = VirtualizationType[];
 export const VirtualizationTypeSet = /*@__PURE__*/ S.Array(
-  VirtualizationType.pipe(T.XmlName("item")),
+  /*@__PURE__*/ VirtualizationType.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface GetInstanceTypesFromInstanceRequirementsRequest {
   DryRun?: boolean;
@@ -48138,7 +48944,9 @@ export const InstanceTypeInfoFromInstanceRequirements = /*@__PURE__*/ S.suspend(
 export type InstanceTypeInfoFromInstanceRequirementsSet =
   InstanceTypeInfoFromInstanceRequirements[];
 export const InstanceTypeInfoFromInstanceRequirementsSet = /*@__PURE__*/ S.Array(
-  InstanceTypeInfoFromInstanceRequirements.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceTypeInfoFromInstanceRequirements.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceTypeInfoFromInstanceRequirements",
   }),
 );
@@ -48284,7 +49092,7 @@ export const IpamAddressHistoryRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamAddressHistoryRecord" }) as any as S.Schema<IpamAddressHistoryRecord>;
 export type IpamAddressHistoryRecordSet = IpamAddressHistoryRecord[];
 export const IpamAddressHistoryRecordSet = /*@__PURE__*/ S.Array(
-  IpamAddressHistoryRecord.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamAddressHistoryRecord.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamAddressHistoryRecord",
   }),
 );
@@ -48374,7 +49182,9 @@ export const IpamDiscoveredAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamDiscoveredAccount" }) as any as S.Schema<IpamDiscoveredAccount>;
 export type IpamDiscoveredAccountSet = IpamDiscoveredAccount[];
 export const IpamDiscoveredAccountSet = /*@__PURE__*/ S.Array(
-  IpamDiscoveredAccount.pipe(T.XmlName("item")).annotate({ identifier: "IpamDiscoveredAccount" }),
+  /*@__PURE__*/ IpamDiscoveredAccount.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamDiscoveredAccount",
+  }),
 );
 export interface GetIpamDiscoveredAccountsResult {
   IpamDiscoveredAccounts?: IpamDiscoveredAccount[];
@@ -48451,7 +49261,9 @@ export const IpamPublicAddressTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamPublicAddressTag" }) as any as S.Schema<IpamPublicAddressTag>;
 export type IpamPublicAddressTagList = IpamPublicAddressTag[];
 export const IpamPublicAddressTagList = /*@__PURE__*/ S.Array(
-  IpamPublicAddressTag.pipe(T.XmlName("item")).annotate({ identifier: "IpamPublicAddressTag" }),
+  /*@__PURE__*/ IpamPublicAddressTag.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPublicAddressTag",
+  }),
 );
 export interface IpamPublicAddressTags {
   EipTags?: IpamPublicAddressTag[];
@@ -48478,7 +49290,7 @@ export const IpamPublicAddressSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPublicAddressSecurityGroup>;
 export type IpamPublicAddressSecurityGroupList = IpamPublicAddressSecurityGroup[];
 export const IpamPublicAddressSecurityGroupList = /*@__PURE__*/ S.Array(
-  IpamPublicAddressSecurityGroup.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPublicAddressSecurityGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPublicAddressSecurityGroup",
   }),
 );
@@ -48574,7 +49386,7 @@ export const IpamDiscoveredPublicAddress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamDiscoveredPublicAddress>;
 export type IpamDiscoveredPublicAddressSet = IpamDiscoveredPublicAddress[];
 export const IpamDiscoveredPublicAddressSet = /*@__PURE__*/ S.Array(
-  IpamDiscoveredPublicAddress.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamDiscoveredPublicAddress.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamDiscoveredPublicAddress",
   }),
 );
@@ -48693,7 +49505,7 @@ export const IpamDiscoveredResourceCidr = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamDiscoveredResourceCidr>;
 export type IpamDiscoveredResourceCidrSet = IpamDiscoveredResourceCidr[];
 export const IpamDiscoveredResourceCidrSet = /*@__PURE__*/ S.Array(
-  IpamDiscoveredResourceCidr.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamDiscoveredResourceCidr.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamDiscoveredResourceCidr",
   }),
 );
@@ -48797,7 +49609,9 @@ export const IpamDiscoveredRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamDiscoveredRoute" }) as any as S.Schema<IpamDiscoveredRoute>;
 export type IpamDiscoveredRouteSet = IpamDiscoveredRoute[];
 export const IpamDiscoveredRouteSet = /*@__PURE__*/ S.Array(
-  IpamDiscoveredRoute.pipe(T.XmlName("item")).annotate({ identifier: "IpamDiscoveredRoute" }),
+  /*@__PURE__*/ IpamDiscoveredRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamDiscoveredRoute",
+  }),
 );
 export interface GetIpamDiscoveredRoutesResult {
   IpamDiscoveredRoutes?: IpamDiscoveredRoute[];
@@ -48849,7 +49663,7 @@ export const IpamInternetRegistryAssociationAsn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamInternetRegistryAssociationAsn>;
 export type IpamInternetRegistryAssociationAsnSet = IpamInternetRegistryAssociationAsn[];
 export const IpamInternetRegistryAssociationAsnSet = /*@__PURE__*/ S.Array(
-  IpamInternetRegistryAssociationAsn.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamInternetRegistryAssociationAsn.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamInternetRegistryAssociationAsn",
   }),
 );
@@ -48903,7 +49717,7 @@ export const IpamInternetRegistryAssociationCidr = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamInternetRegistryAssociationCidr>;
 export type IpamInternetRegistryAssociationCidrSet = IpamInternetRegistryAssociationCidr[];
 export const IpamInternetRegistryAssociationCidrSet = /*@__PURE__*/ S.Array(
-  IpamInternetRegistryAssociationCidr.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamInternetRegistryAssociationCidr.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamInternetRegistryAssociationCidr",
   }),
 );
@@ -48960,7 +49774,7 @@ export const IpamPolicyAllocationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamPolicyAllocationRule" }) as any as S.Schema<IpamPolicyAllocationRule>;
 export type IpamPolicyAllocationRuleList = IpamPolicyAllocationRule[];
 export const IpamPolicyAllocationRuleList = /*@__PURE__*/ S.Array(
-  IpamPolicyAllocationRule.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPolicyAllocationRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPolicyAllocationRule",
   }),
 );
@@ -48989,7 +49803,9 @@ export const IpamPolicyDocument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamPolicyDocument" }) as any as S.Schema<IpamPolicyDocument>;
 export type IpamPolicyDocumentSet = IpamPolicyDocument[];
 export const IpamPolicyDocumentSet = /*@__PURE__*/ S.Array(
-  IpamPolicyDocument.pipe(T.XmlName("item")).annotate({ identifier: "IpamPolicyDocument" }),
+  /*@__PURE__*/ IpamPolicyDocument.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPolicyDocument",
+  }),
 );
 export interface GetIpamPolicyAllocationRulesResult {
   IpamPolicyDocuments?: IpamPolicyDocument[];
@@ -49039,7 +49855,7 @@ export const IpamPolicyOrganizationTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPolicyOrganizationTarget>;
 export type IpamPolicyOrganizationTargetSet = IpamPolicyOrganizationTarget[];
 export const IpamPolicyOrganizationTargetSet = /*@__PURE__*/ S.Array(
-  IpamPolicyOrganizationTarget.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPolicyOrganizationTarget.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPolicyOrganizationTarget",
   }),
 );
@@ -49112,7 +49928,9 @@ export const GetIpamPoolCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIpamPoolCidrsRequest" }) as any as S.Schema<GetIpamPoolCidrsRequest>;
 export type IpamPoolCidrSet = IpamPoolCidr[];
 export const IpamPoolCidrSet = /*@__PURE__*/ S.Array(
-  IpamPoolCidr.pipe(T.XmlName("item")).annotate({ identifier: "IpamPoolCidr" }),
+  /*@__PURE__*/ IpamPoolCidr.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamPoolCidr",
+  }),
 );
 export interface GetIpamPoolCidrsResult {
   IpamPoolCidrs?: IpamPoolCidr[];
@@ -49180,7 +49998,7 @@ export const IpamPrefixListResolverRuleCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPrefixListResolverRuleCondition>;
 export type IpamPrefixListResolverRuleConditionSet = IpamPrefixListResolverRuleCondition[];
 export const IpamPrefixListResolverRuleConditionSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverRuleCondition.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverRuleCondition.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPrefixListResolverRuleCondition",
   }),
 );
@@ -49213,7 +50031,7 @@ export const IpamPrefixListResolverRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPrefixListResolverRule>;
 export type IpamPrefixListResolverRuleSet = IpamPrefixListResolverRule[];
 export const IpamPrefixListResolverRuleSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverRule.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPrefixListResolverRule",
   }),
 );
@@ -49260,7 +50078,7 @@ export const IpamPrefixListResolverVersionEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPrefixListResolverVersionEntry>;
 export type IpamPrefixListResolverVersionEntrySet = IpamPrefixListResolverVersionEntry[];
 export const IpamPrefixListResolverVersionEntrySet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverVersionEntry.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverVersionEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPrefixListResolverVersionEntry",
   }),
 );
@@ -49281,7 +50099,7 @@ export const GetIpamPrefixListResolverVersionEntriesResult = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetIpamPrefixListResolverVersionEntriesResult>;
 export type IpamPrefixListResolverVersionNumberSet = number[];
 export const IpamPrefixListResolverVersionNumberSet = /*@__PURE__*/ S.Array(
-  S.Number.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface GetIpamPrefixListResolverVersionsRequest {
   DryRun?: boolean;
@@ -49315,7 +50133,7 @@ export const IpamPrefixListResolverVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPrefixListResolverVersion>;
 export type IpamPrefixListResolverVersionSet = IpamPrefixListResolverVersion[];
 export const IpamPrefixListResolverVersionSet = /*@__PURE__*/ S.Array(
-  IpamPrefixListResolverVersion.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPrefixListResolverVersion.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPrefixListResolverVersion",
   }),
 );
@@ -49435,7 +50253,9 @@ export const IpamResourceCidr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamResourceCidr" }) as any as S.Schema<IpamResourceCidr>;
 export type IpamResourceCidrSet = IpamResourceCidr[];
 export const IpamResourceCidrSet = /*@__PURE__*/ S.Array(
-  IpamResourceCidr.pipe(T.XmlName("item")).annotate({ identifier: "IpamResourceCidr" }),
+  /*@__PURE__*/ IpamResourceCidr.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamResourceCidr",
+  }),
 );
 export interface GetIpamResourceCidrsResult {
   NextToken?: string;
@@ -49486,7 +50306,7 @@ export const IpamRouteOriginAuthorizationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamRouteOriginAuthorizationInfo>;
 export type IpamRouteOriginAuthorizationInfoSet = IpamRouteOriginAuthorizationInfo[];
 export const IpamRouteOriginAuthorizationInfoSet = /*@__PURE__*/ S.Array(
-  IpamRouteOriginAuthorizationInfo.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamRouteOriginAuthorizationInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamRouteOriginAuthorizationInfo",
   }),
 );
@@ -49552,7 +50372,7 @@ export const IpamRouteOriginAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamRouteOriginAuthorization>;
 export type IpamRouteOriginAuthorizationSet = IpamRouteOriginAuthorization[];
 export const IpamRouteOriginAuthorizationSet = /*@__PURE__*/ S.Array(
-  IpamRouteOriginAuthorization.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamRouteOriginAuthorization.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamRouteOriginAuthorization",
   }),
 );
@@ -49573,7 +50393,9 @@ export const IpamRouteOverlap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamRouteOverlap" }) as any as S.Schema<IpamRouteOverlap>;
 export type IpamRouteOverlapSet = IpamRouteOverlap[];
 export const IpamRouteOverlapSet = /*@__PURE__*/ S.Array(
-  IpamRouteOverlap.pipe(T.XmlName("item")).annotate({ identifier: "IpamRouteOverlap" }),
+  /*@__PURE__*/ IpamRouteOverlap.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "IpamRouteOverlap",
+  }),
 );
 export interface IpamRouteProtectionFinding {
   ResourceOwnerId?: string;
@@ -49645,7 +50467,7 @@ export const IpamRouteProtectionFinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamRouteProtectionFinding>;
 export type IpamRouteProtectionFindingSet = IpamRouteProtectionFinding[];
 export const IpamRouteProtectionFindingSet = /*@__PURE__*/ S.Array(
-  IpamRouteProtectionFinding.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamRouteProtectionFinding.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamRouteProtectionFinding",
   }),
 );
@@ -49695,7 +50517,7 @@ export const GetIpamRoutingPolicyRegistrationDeltasRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetIpamRoutingPolicyRegistrationDeltasRequest>;
 export type IpamRoutingPolicyRegistrationDeltaSet = IpamRoutingPolicyRegistrationDelta[];
 export const IpamRoutingPolicyRegistrationDeltaSet = /*@__PURE__*/ S.Array(
-  IpamRoutingPolicyRegistrationDelta.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamRoutingPolicyRegistrationDelta.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamRoutingPolicyRegistrationDelta",
   }),
 );
@@ -49777,7 +50599,7 @@ export const IpamRoutingPolicyRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamRoutingPolicyRegistration>;
 export type IpamRoutingPolicyRegistrationSet = IpamRoutingPolicyRegistration[];
 export const IpamRoutingPolicyRegistrationSet = /*@__PURE__*/ S.Array(
-  IpamRoutingPolicyRegistration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamRoutingPolicyRegistration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamRoutingPolicyRegistration",
   }),
 );
@@ -49851,7 +50673,9 @@ export const PrefixListAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixListAssociation" }) as any as S.Schema<PrefixListAssociation>;
 export type PrefixListAssociationSet = PrefixListAssociation[];
 export const PrefixListAssociationSet = /*@__PURE__*/ S.Array(
-  PrefixListAssociation.pipe(T.XmlName("item")).annotate({ identifier: "PrefixListAssociation" }),
+  /*@__PURE__*/ PrefixListAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrefixListAssociation",
+  }),
 );
 export interface GetManagedPrefixListAssociationsResult {
   PrefixListAssociations?: PrefixListAssociation[];
@@ -49898,7 +50722,9 @@ export const PrefixListEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixListEntry" }) as any as S.Schema<PrefixListEntry>;
 export type PrefixListEntrySet = PrefixListEntry[];
 export const PrefixListEntrySet = /*@__PURE__*/ S.Array(
-  PrefixListEntry.pipe(T.XmlName("item")).annotate({ identifier: "PrefixListEntry" }),
+  /*@__PURE__*/ PrefixListEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "PrefixListEntry",
+  }),
 );
 export interface GetManagedPrefixListEntriesResult {
   Entries?: PrefixListEntry[];
@@ -49994,7 +50820,7 @@ export const AccessScopeAnalysisFinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessScopeAnalysisFinding>;
 export type AccessScopeAnalysisFindingList = AccessScopeAnalysisFinding[];
 export const AccessScopeAnalysisFindingList = /*@__PURE__*/ S.Array(
-  AccessScopeAnalysisFinding.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ AccessScopeAnalysisFinding.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "AccessScopeAnalysisFinding",
   }),
 );
@@ -50132,7 +50958,7 @@ export const ReservedInstanceReservationValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedInstanceReservationValue>;
 export type ReservedInstanceReservationValueSet = ReservedInstanceReservationValue[];
 export const ReservedInstanceReservationValueSet = /*@__PURE__*/ S.Array(
-  ReservedInstanceReservationValue.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstanceReservationValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstanceReservationValue",
   }),
 );
@@ -50165,7 +50991,9 @@ export const TargetReservationValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetReservationValue" }) as any as S.Schema<TargetReservationValue>;
 export type TargetReservationValueSet = TargetReservationValue[];
 export const TargetReservationValueSet = /*@__PURE__*/ S.Array(
-  TargetReservationValue.pipe(T.XmlName("item")).annotate({ identifier: "TargetReservationValue" }),
+  /*@__PURE__*/ TargetReservationValue.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TargetReservationValue",
+  }),
 );
 export interface GetReservedInstancesExchangeQuoteResult {
   CurrencyCode?: string;
@@ -50233,7 +51061,9 @@ export const GetRouteServerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRouteServerAssociationsRequest>;
 export type RouteServerAssociationsList = RouteServerAssociation[];
 export const RouteServerAssociationsList = /*@__PURE__*/ S.Array(
-  RouteServerAssociation.pipe(T.XmlName("item")).annotate({ identifier: "RouteServerAssociation" }),
+  /*@__PURE__*/ RouteServerAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServerAssociation",
+  }),
 );
 export interface GetRouteServerAssociationsResult {
   RouteServerAssociations?: RouteServerAssociation[];
@@ -50264,7 +51094,9 @@ export const GetRouteServerPropagationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRouteServerPropagationsRequest>;
 export type RouteServerPropagationsList = RouteServerPropagation[];
 export const RouteServerPropagationsList = /*@__PURE__*/ S.Array(
-  RouteServerPropagation.pipe(T.XmlName("item")).annotate({ identifier: "RouteServerPropagation" }),
+  /*@__PURE__*/ RouteServerPropagation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServerPropagation",
+  }),
 );
 export interface GetRouteServerPropagationsResult {
   RouteServerPropagations?: RouteServerPropagation[];
@@ -50325,7 +51157,7 @@ export const RouteServerRouteInstallationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteServerRouteInstallationDetail>;
 export type RouteServerRouteInstallationDetails = RouteServerRouteInstallationDetail[];
 export const RouteServerRouteInstallationDetails = /*@__PURE__*/ S.Array(
-  RouteServerRouteInstallationDetail.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ RouteServerRouteInstallationDetail.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "RouteServerRouteInstallationDetail",
   }),
 );
@@ -50333,7 +51165,9 @@ export type RouteServerRouteStatus = "in-rib" | "in-fib" | (string & {});
 export const RouteServerRouteStatus = S.String;
 
 export type AsPath = string[];
-export const AsPath = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const AsPath = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface RouteServerRoute {
   RouteServerEndpointId?: string;
   RouteServerPeerId?: string;
@@ -50370,7 +51204,9 @@ export const RouteServerRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteServerRoute" }) as any as S.Schema<RouteServerRoute>;
 export type RouteServerRouteList = RouteServerRoute[];
 export const RouteServerRouteList = /*@__PURE__*/ S.Array(
-  RouteServerRoute.pipe(T.XmlName("item")).annotate({ identifier: "RouteServerRoute" }),
+  /*@__PURE__*/ RouteServerRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "RouteServerRoute",
+  }),
 );
 export interface GetRouteServerRoutingDatabaseResult {
   AreRoutesPersisted?: boolean;
@@ -50434,7 +51270,9 @@ export const SecurityGroupForVpc = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroupForVpc" }) as any as S.Schema<SecurityGroupForVpc>;
 export type SecurityGroupForVpcList = SecurityGroupForVpc[];
 export const SecurityGroupForVpcList = /*@__PURE__*/ S.Array(
-  SecurityGroupForVpc.pipe(T.XmlName("item")).annotate({ identifier: "SecurityGroupForVpc" }),
+  /*@__PURE__*/ SecurityGroupForVpc.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SecurityGroupForVpc",
+  }),
 );
 export interface GetSecurityGroupsForVpcResult {
   NextToken?: string;
@@ -50566,7 +51404,9 @@ export const SpotPlacementScore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpotPlacementScore" }) as any as S.Schema<SpotPlacementScore>;
 export type SpotPlacementScores = SpotPlacementScore[];
 export const SpotPlacementScores = /*@__PURE__*/ S.Array(
-  SpotPlacementScore.pipe(T.XmlName("item")).annotate({ identifier: "SpotPlacementScore" }),
+  /*@__PURE__*/ SpotPlacementScore.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SpotPlacementScore",
+  }),
 );
 export interface GetSpotPlacementScoresResult {
   SpotPlacementScores?: SpotPlacementScore[];
@@ -50604,7 +51444,9 @@ export const GetSubnetCidrReservationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubnetCidrReservationsRequest>;
 export type SubnetCidrReservationList = SubnetCidrReservation[];
 export const SubnetCidrReservationList = /*@__PURE__*/ S.Array(
-  SubnetCidrReservation.pipe(T.XmlName("item")).annotate({ identifier: "SubnetCidrReservation" }),
+  /*@__PURE__*/ SubnetCidrReservation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SubnetCidrReservation",
+  }),
 );
 export interface GetSubnetCidrReservationsResult {
   SubnetIpv4CidrReservations?: SubnetCidrReservation[];
@@ -50664,7 +51506,7 @@ export const TransitGatewayAttachmentPropagation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitGatewayAttachmentPropagation>;
 export type TransitGatewayAttachmentPropagationList = TransitGatewayAttachmentPropagation[];
 export const TransitGatewayAttachmentPropagationList = /*@__PURE__*/ S.Array(
-  TransitGatewayAttachmentPropagation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayAttachmentPropagation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayAttachmentPropagation",
   }),
 );
@@ -50703,7 +51545,7 @@ export const GetTransitGatewayMeteringPolicyEntriesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetTransitGatewayMeteringPolicyEntriesRequest>;
 export type TransitGatewayMeteringPolicyEntryList = TransitGatewayMeteringPolicyEntry[];
 export const TransitGatewayMeteringPolicyEntryList = /*@__PURE__*/ S.Array(
-  TransitGatewayMeteringPolicyEntry.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayMeteringPolicyEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayMeteringPolicyEntry",
   }),
 );
@@ -50772,7 +51614,9 @@ export const TransitGatewayMulticastDomainAssociation = /*@__PURE__*/ S.suspend(
 export type TransitGatewayMulticastDomainAssociationList =
   TransitGatewayMulticastDomainAssociation[];
 export const TransitGatewayMulticastDomainAssociationList = /*@__PURE__*/ S.Array(
-  TransitGatewayMulticastDomainAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayMulticastDomainAssociation.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "TransitGatewayMulticastDomainAssociation",
   }),
 );
@@ -50811,9 +51655,11 @@ export const GetTransitGatewayPolicyTableAssociationsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetTransitGatewayPolicyTableAssociationsRequest>;
 export type TransitGatewayPolicyTableAssociationList = TransitGatewayPolicyTableAssociation[];
 export const TransitGatewayPolicyTableAssociationList = /*@__PURE__*/ S.Array(
-  TransitGatewayPolicyTableAssociation.pipe(T.XmlName("item")).annotate({
-    identifier: "TransitGatewayPolicyTableAssociation",
-  }),
+  /*@__PURE__*/ TransitGatewayPolicyTableAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+    {
+      identifier: "TransitGatewayPolicyTableAssociation",
+    },
+  ),
 );
 export interface GetTransitGatewayPolicyTableAssociationsResult {
   Associations?: TransitGatewayPolicyTableAssociation[];
@@ -50850,7 +51696,7 @@ export const GetTransitGatewayPolicyTableEntriesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetTransitGatewayPolicyTableEntriesRequest>;
 export type TransitGatewayPolicyTableEntryList = TransitGatewayPolicyTableEntry[];
 export const TransitGatewayPolicyTableEntryList = /*@__PURE__*/ S.Array(
-  TransitGatewayPolicyTableEntry.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayPolicyTableEntry.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayPolicyTableEntry",
   }),
 );
@@ -50889,7 +51735,7 @@ export const GetTransitGatewayPrefixListReferencesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetTransitGatewayPrefixListReferencesRequest>;
 export type TransitGatewayPrefixListReferenceSet = TransitGatewayPrefixListReference[];
 export const TransitGatewayPrefixListReferenceSet = /*@__PURE__*/ S.Array(
-  TransitGatewayPrefixListReference.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayPrefixListReference.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayPrefixListReference",
   }),
 );
@@ -50953,7 +51799,7 @@ export const TransitGatewayRouteTableAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitGatewayRouteTableAssociation>;
 export type TransitGatewayRouteTableAssociationList = TransitGatewayRouteTableAssociation[];
 export const TransitGatewayRouteTableAssociationList = /*@__PURE__*/ S.Array(
-  TransitGatewayRouteTableAssociation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayRouteTableAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayRouteTableAssociation",
   }),
 );
@@ -51022,7 +51868,7 @@ export const TransitGatewayRouteTablePropagation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitGatewayRouteTablePropagation>;
 export type TransitGatewayRouteTablePropagationList = TransitGatewayRouteTablePropagation[];
 export const TransitGatewayRouteTablePropagationList = /*@__PURE__*/ S.Array(
-  TransitGatewayRouteTablePropagation.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayRouteTablePropagation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayRouteTablePropagation",
   }),
 );
@@ -51112,7 +51958,7 @@ export const VerifiedAccessEndpointTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifiedAccessEndpointTarget>;
 export type VerifiedAccessEndpointTargetList = VerifiedAccessEndpointTarget[];
 export const VerifiedAccessEndpointTargetList = /*@__PURE__*/ S.Array(
-  VerifiedAccessEndpointTarget.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VerifiedAccessEndpointTarget.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VerifiedAccessEndpointTarget",
   }),
 );
@@ -51198,7 +52044,7 @@ export const VpcEncryptionNonCompliantResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcEncryptionNonCompliantResource>;
 export type VpcEncryptionNonCompliantResourceList = VpcEncryptionNonCompliantResource[];
 export const VpcEncryptionNonCompliantResourceList = /*@__PURE__*/ S.Array(
-  VpcEncryptionNonCompliantResource.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VpcEncryptionNonCompliantResource.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VpcEncryptionNonCompliantResource",
   }),
 );
@@ -51283,7 +52129,7 @@ export const VpnConnectionDeviceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnConnectionDeviceType" }) as any as S.Schema<VpnConnectionDeviceType>;
 export type VpnConnectionDeviceTypeList = VpnConnectionDeviceType[];
 export const VpnConnectionDeviceTypeList = /*@__PURE__*/ S.Array(
-  VpnConnectionDeviceType.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ VpnConnectionDeviceType.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "VpnConnectionDeviceType",
   }),
 );
@@ -51438,7 +52284,9 @@ export const ImageDiskContainer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageDiskContainer" }) as any as S.Schema<ImageDiskContainer>;
 export type ImageDiskContainerList = ImageDiskContainer[];
 export const ImageDiskContainerList = /*@__PURE__*/ S.Array(
-  ImageDiskContainer.pipe(T.XmlName("item")).annotate({ identifier: "ImageDiskContainer" }),
+  /*@__PURE__*/ ImageDiskContainer.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageDiskContainer",
+  }),
 );
 export interface ImportImageLicenseConfigurationRequest {
   LicenseConfigurationArn?: string;
@@ -51450,7 +52298,9 @@ export const ImportImageLicenseConfigurationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ImportImageLicenseConfigurationRequest>;
 export type ImportImageLicenseSpecificationListRequest = ImportImageLicenseConfigurationRequest[];
 export const ImportImageLicenseSpecificationListRequest = /*@__PURE__*/ S.Array(
-  ImportImageLicenseConfigurationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImportImageLicenseConfigurationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "ImportImageLicenseConfigurationRequest",
   }),
 );
@@ -51833,7 +52683,9 @@ export const ImageRecycleBinInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageRecycleBinInfo" }) as any as S.Schema<ImageRecycleBinInfo>;
 export type ImageRecycleBinInfoList = ImageRecycleBinInfo[];
 export const ImageRecycleBinInfoList = /*@__PURE__*/ S.Array(
-  ImageRecycleBinInfo.pipe(T.XmlName("item")).annotate({ identifier: "ImageRecycleBinInfo" }),
+  /*@__PURE__*/ ImageRecycleBinInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ImageRecycleBinInfo",
+  }),
 );
 export interface ListImagesInRecycleBinResult {
   Images?: ImageRecycleBinInfo[];
@@ -51891,7 +52743,9 @@ export const SnapshotRecycleBinInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotRecycleBinInfo" }) as any as S.Schema<SnapshotRecycleBinInfo>;
 export type SnapshotRecycleBinInfoList = SnapshotRecycleBinInfo[];
 export const SnapshotRecycleBinInfoList = /*@__PURE__*/ S.Array(
-  SnapshotRecycleBinInfo.pipe(T.XmlName("item")).annotate({ identifier: "SnapshotRecycleBinInfo" }),
+  /*@__PURE__*/ SnapshotRecycleBinInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "SnapshotRecycleBinInfo",
+  }),
 );
 export interface ListSnapshotsInRecycleBinResult {
   Snapshots?: SnapshotRecycleBinInfo[];
@@ -51982,7 +52836,9 @@ export const VolumeRecycleBinInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeRecycleBinInfo" }) as any as S.Schema<VolumeRecycleBinInfo>;
 export type VolumeRecycleBinInfoList = VolumeRecycleBinInfo[];
 export const VolumeRecycleBinInfoList = /*@__PURE__*/ S.Array(
-  VolumeRecycleBinInfo.pipe(T.XmlName("item")).annotate({ identifier: "VolumeRecycleBinInfo" }),
+  /*@__PURE__*/ VolumeRecycleBinInfo.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "VolumeRecycleBinInfo",
+  }),
 );
 export interface ListVolumesInRecycleBinResult {
   Volumes?: VolumeRecycleBinInfo[];
@@ -52464,11 +53320,17 @@ export type OperationType = "add" | "remove" | (string & {});
 export const OperationType = S.String;
 
 export type UserIdStringList = string[];
-export const UserIdStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("UserId")));
+export const UserIdStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("UserId")),
+);
 export type UserGroupStringList = string[];
-export const UserGroupStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("UserGroup")));
+export const UserGroupStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("UserGroup")),
+);
 export type ProductCodeStringList = string[];
-export const ProductCodeStringList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("ProductCode")));
+export const ProductCodeStringList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ProductCode")),
+);
 export interface LoadPermissionRequest {
   Group?: PermissionGroup;
   UserId?: string;
@@ -52478,7 +53340,9 @@ export const LoadPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadPermissionRequest" }) as any as S.Schema<LoadPermissionRequest>;
 export type LoadPermissionListRequest = LoadPermissionRequest[];
 export const LoadPermissionListRequest = /*@__PURE__*/ S.Array(
-  LoadPermissionRequest.pipe(T.XmlName("item")).annotate({ identifier: "LoadPermissionRequest" }),
+  /*@__PURE__*/ LoadPermissionRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LoadPermissionRequest",
+  }),
 );
 export interface LoadPermissionModifications {
   Add?: LoadPermissionRequest[];
@@ -52555,7 +53419,9 @@ export const ModifyHostsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyHostsRequest" }) as any as S.Schema<ModifyHostsRequest>;
 export type UnsuccessfulItemList = UnsuccessfulItem[];
 export const UnsuccessfulItemList = /*@__PURE__*/ S.Array(
-  UnsuccessfulItem.pipe(T.XmlName("item")).annotate({ identifier: "UnsuccessfulItem" }),
+  /*@__PURE__*/ UnsuccessfulItem.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "UnsuccessfulItem",
+  }),
 );
 export interface ModifyHostsResult {
   Successful?: string[];
@@ -52620,11 +53486,11 @@ export const LaunchPermissionModifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchPermissionModifications>;
 export type OrganizationArnStringList = string[];
 export const OrganizationArnStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("OrganizationArn")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OrganizationArn")),
 );
 export type OrganizationalUnitArnStringList = string[];
 export const OrganizationalUnitArnStringList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("OrganizationalUnitArn")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OrganizationalUnitArn")),
 );
 export interface ModifyImageAttributeRequest {
   Attribute?: string;
@@ -52710,7 +53576,9 @@ export const InstanceBlockDeviceMappingSpecification = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<InstanceBlockDeviceMappingSpecification>;
 export type InstanceBlockDeviceMappingSpecificationList = InstanceBlockDeviceMappingSpecification[];
 export const InstanceBlockDeviceMappingSpecificationList = /*@__PURE__*/ S.Array(
-  InstanceBlockDeviceMappingSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceBlockDeviceMappingSpecification.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceBlockDeviceMappingSpecification",
   }),
 );
@@ -52914,7 +53782,7 @@ export const InstanceCreditSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceCreditSpecificationRequest>;
 export type InstanceCreditSpecificationListRequest = InstanceCreditSpecificationRequest[];
 export const InstanceCreditSpecificationListRequest = /*@__PURE__*/ S.Array(
-  InstanceCreditSpecificationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceCreditSpecificationRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "InstanceCreditSpecificationRequest",
   }),
 );
@@ -52946,7 +53814,9 @@ export const SuccessfulInstanceCreditSpecificationItem = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<SuccessfulInstanceCreditSpecificationItem>;
 export type SuccessfulInstanceCreditSpecificationSet = SuccessfulInstanceCreditSpecificationItem[];
 export const SuccessfulInstanceCreditSpecificationSet = /*@__PURE__*/ S.Array(
-  SuccessfulInstanceCreditSpecificationItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SuccessfulInstanceCreditSpecificationItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "SuccessfulInstanceCreditSpecificationItem",
   }),
 );
@@ -52990,7 +53860,9 @@ export const UnsuccessfulInstanceCreditSpecificationItem = /*@__PURE__*/ S.suspe
 export type UnsuccessfulInstanceCreditSpecificationSet =
   UnsuccessfulInstanceCreditSpecificationItem[];
 export const UnsuccessfulInstanceCreditSpecificationSet = /*@__PURE__*/ S.Array(
-  UnsuccessfulInstanceCreditSpecificationItem.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ UnsuccessfulInstanceCreditSpecificationItem.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "UnsuccessfulInstanceCreditSpecificationItem",
   }),
 );
@@ -53329,7 +54201,7 @@ export const IpamPolicyAllocationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPolicyAllocationRuleRequest>;
 export type IpamPolicyAllocationRuleListRequest = IpamPolicyAllocationRuleRequest[];
 export const IpamPolicyAllocationRuleListRequest = /*@__PURE__*/ S.Array(
-  IpamPolicyAllocationRuleRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ IpamPolicyAllocationRuleRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "IpamPolicyAllocationRuleRequest",
   }),
 );
@@ -53790,7 +54662,9 @@ export const ModifyManagedResourceVisibilityResult = /*@__PURE__*/ S.suspend(() 
   identifier: "ModifyManagedResourceVisibilityResult",
 }) as any as S.Schema<ModifyManagedResourceVisibilityResult>;
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("AssociatedSubnetId")));
+export const SubnetIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AssociatedSubnetId")),
+);
 export interface NetworkInterfaceAttachmentChanges {
   DefaultEnaQueueCount?: boolean;
   EnaQueueCount?: number;
@@ -53919,7 +54793,7 @@ export const ModifyPublicIpDnsNameOptionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyPublicIpDnsNameOptionsResult>;
 export type ReservedInstancesConfigurationList = ReservedInstancesConfiguration[];
 export const ReservedInstancesConfigurationList = /*@__PURE__*/ S.Array(
-  ReservedInstancesConfiguration.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ReservedInstancesConfiguration.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ReservedInstancesConfiguration",
   }),
 );
@@ -54014,7 +54888,7 @@ export const SecurityGroupRuleUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityGroupRuleUpdate" }) as any as S.Schema<SecurityGroupRuleUpdate>;
 export type SecurityGroupRuleUpdateList = SecurityGroupRuleUpdate[];
 export const SecurityGroupRuleUpdateList = /*@__PURE__*/ S.Array(
-  SecurityGroupRuleUpdate.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecurityGroupRuleUpdate.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SecurityGroupRuleUpdate",
   }),
 );
@@ -54536,7 +55410,7 @@ export const ModifyTransitGatewayVpcAttachmentResult = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ModifyTransitGatewayVpcAttachmentResult>;
 export type ModifyVerifiedAccessEndpointSubnetIdList = string[];
 export const ModifyVerifiedAccessEndpointSubnetIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface ModifyVerifiedAccessEndpointPortRange {
   FromPort?: number;
@@ -54549,7 +55423,9 @@ export const ModifyVerifiedAccessEndpointPortRange = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ModifyVerifiedAccessEndpointPortRange>;
 export type ModifyVerifiedAccessEndpointPortRangeList = ModifyVerifiedAccessEndpointPortRange[];
 export const ModifyVerifiedAccessEndpointPortRangeList = /*@__PURE__*/ S.Array(
-  ModifyVerifiedAccessEndpointPortRange.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ModifyVerifiedAccessEndpointPortRange.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "ModifyVerifiedAccessEndpointPortRange",
   }),
 );
@@ -55354,7 +56230,9 @@ export const AddedPrincipal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddedPrincipal" }) as any as S.Schema<AddedPrincipal>;
 export type AddedPrincipalSet = AddedPrincipal[];
 export const AddedPrincipalSet = /*@__PURE__*/ S.Array(
-  AddedPrincipal.pipe(T.XmlName("item")).annotate({ identifier: "AddedPrincipal" }),
+  /*@__PURE__*/ AddedPrincipal.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "AddedPrincipal",
+  }),
 );
 export interface ModifyVpcEndpointServicePermissionsResult {
   AddedPrincipals?: AddedPrincipal[];
@@ -55673,7 +56551,9 @@ export const InstanceMonitoring = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceMonitoring" }) as any as S.Schema<InstanceMonitoring>;
 export type InstanceMonitoringList = InstanceMonitoring[];
 export const InstanceMonitoringList = /*@__PURE__*/ S.Array(
-  InstanceMonitoring.pipe(T.XmlName("item")).annotate({ identifier: "InstanceMonitoring" }),
+  /*@__PURE__*/ InstanceMonitoring.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceMonitoring",
+  }),
 );
 export interface MonitorInstancesResult {
   InstanceMonitorings?: InstanceMonitoring[];
@@ -56102,7 +56982,9 @@ export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PurchaseRequest" }) as any as S.Schema<PurchaseRequest>;
 export type PurchaseRequestSet = PurchaseRequest[];
 export const PurchaseRequestSet = /*@__PURE__*/ S.Array(
-  PurchaseRequest.pipe(T.XmlName("PurchaseRequest")).annotate({ identifier: "PurchaseRequest" }),
+  /*@__PURE__*/ PurchaseRequest.pipe(/*@__PURE__*/ T.XmlName("PurchaseRequest")).annotate({
+    identifier: "PurchaseRequest",
+  }),
 );
 export interface PurchaseScheduledInstancesRequest {
   ClientToken?: string;
@@ -56120,7 +57002,9 @@ export const PurchaseScheduledInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurchaseScheduledInstancesRequest>;
 export type PurchasedScheduledInstanceSet = ScheduledInstance[];
 export const PurchasedScheduledInstanceSet = /*@__PURE__*/ S.Array(
-  ScheduledInstance.pipe(T.XmlName("item")).annotate({ identifier: "ScheduledInstance" }),
+  /*@__PURE__*/ ScheduledInstance.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ScheduledInstance",
+  }),
 );
 export interface PurchaseScheduledInstancesResult {
   ScheduledInstanceSet?: ScheduledInstance[];
@@ -56150,7 +57034,9 @@ export const RebootInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({ identifier: "RebootInstancesResponse" }) as any as S.Schema<RebootInstancesResponse>;
 export type BillingProductList = string[];
-export const BillingProductList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const BillingProductList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type ImageUefiDataRequest = string | redacted.Redacted<string>;
 export interface RegisterImageRequest {
   ImageLocation?: string;
@@ -56636,15 +57522,19 @@ export const ReplaceIamInstanceProfileAssociationResult = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ReplaceIamInstanceProfileAssociationResult>;
 export type ImageProviderRequest = string;
 export type ImageProviderRequestList = string[];
-export const ImageProviderRequestList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ImageProviderRequestList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type MarketplaceProductCodeRequest = string;
 export type MarketplaceProductCodeRequestList = string[];
 export const MarketplaceProductCodeRequestList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type ImageNameCriteriaRequest = string;
 export type ImageNameCriteriaRequestList = string[];
-export const ImageNameCriteriaRequestList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ImageNameCriteriaRequestList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface DeprecationTimeConditionRequest {
   MaximumDaysSinceDeprecated?: number;
 }
@@ -56679,7 +57569,7 @@ export const ImageWatermarkFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageWatermarkFilterRequest>;
 export type ImageWatermarkFilterRequestList = ImageWatermarkFilterRequest[];
 export const ImageWatermarkFilterRequestList = /*@__PURE__*/ S.Array(
-  ImageWatermarkFilterRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ImageWatermarkFilterRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ImageWatermarkFilterRequest",
   }),
 );
@@ -56705,7 +57595,7 @@ export const ImageCriterionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageCriterionRequest" }) as any as S.Schema<ImageCriterionRequest>;
 export type ImageCriterionRequestList = ImageCriterionRequest[];
 export const ImageCriterionRequestList = /*@__PURE__*/ S.Array(
-  ImageCriterionRequest.pipe(T.XmlName("ImageCriterion")).annotate({
+  /*@__PURE__*/ ImageCriterionRequest.pipe(/*@__PURE__*/ T.XmlName("ImageCriterion")).annotate({
     identifier: "ImageCriterionRequest",
   }),
 );
@@ -56734,11 +57624,11 @@ export const ReplaceImageCriteriaInAllowedImagesSettingsResult = /*@__PURE__*/ S
 export type InstanceTypeItemRequest = string;
 export type SupportedInstanceTypeRequestSet = string[];
 export const SupportedInstanceTypeRequestSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Item")),
 );
 export type UnsupportedInstanceTypeRequestSet = string[];
 export const UnsupportedInstanceTypeRequestSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Item")),
 );
 export interface InstanceTypeSpecificationRequest {
   SupportedInstanceTypes?: string[];
@@ -57035,7 +57925,7 @@ export const ReportInstanceReasonCodes = S.String;
 
 export type ReasonCodesList = ReportInstanceReasonCodes[];
 export const ReasonCodesList = /*@__PURE__*/ S.Array(
-  ReportInstanceReasonCodes.pipe(T.XmlName("item")),
+  /*@__PURE__*/ ReportInstanceReasonCodes.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type ReportInstanceStatusRequestDescription = string | redacted.Redacted<string>;
 export interface ReportInstanceStatusRequest {
@@ -57106,11 +57996,11 @@ export const RequestSpotFleetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestSpotFleetResponse" }) as any as S.Schema<RequestSpotFleetResponse>;
 export type RequestSpotLaunchSpecificationSecurityGroupIdList = string[];
 export const RequestSpotLaunchSpecificationSecurityGroupIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type RequestSpotLaunchSpecificationSecurityGroupList = string[];
 export const RequestSpotLaunchSpecificationSecurityGroupList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export interface RequestSpotLaunchSpecification {
   SecurityGroupIds?: string[];
@@ -57695,7 +58585,7 @@ export const RevokedSecurityGroupRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokedSecurityGroupRule" }) as any as S.Schema<RevokedSecurityGroupRule>;
 export type RevokedSecurityGroupRuleList = RevokedSecurityGroupRule[];
 export const RevokedSecurityGroupRuleList = /*@__PURE__*/ S.Array(
-  RevokedSecurityGroupRule.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ RevokedSecurityGroupRule.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "RevokedSecurityGroupRule",
   }),
 );
@@ -57774,7 +58664,7 @@ export const RevokeSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(() =>
 export type RunInstancesUserData = string | redacted.Redacted<string>;
 export type ElasticGpuSpecifications = ElasticGpuSpecification[];
 export const ElasticGpuSpecifications = /*@__PURE__*/ S.Array(
-  ElasticGpuSpecification.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ElasticGpuSpecification.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ElasticGpuSpecification",
   }),
 );
@@ -57790,7 +58680,7 @@ export const ElasticInferenceAccelerator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticInferenceAccelerator>;
 export type ElasticInferenceAccelerators = ElasticInferenceAccelerator[];
 export const ElasticInferenceAccelerators = /*@__PURE__*/ S.Array(
-  ElasticInferenceAccelerator.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ ElasticInferenceAccelerator.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "ElasticInferenceAccelerator",
   }),
 );
@@ -57865,7 +58755,7 @@ export const LicenseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseConfigurationRequest>;
 export type LicenseSpecificationListRequest = LicenseConfigurationRequest[];
 export const LicenseSpecificationListRequest = /*@__PURE__*/ S.Array(
-  LicenseConfigurationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ LicenseConfigurationRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "LicenseConfigurationRequest",
   }),
 );
@@ -57928,7 +58818,9 @@ export const InstanceSecondaryInterfacePrivateIpAddressRequest = /*@__PURE__*/ S
 export type InstanceSecondaryInterfacePrivateIpAddressListRequest =
   InstanceSecondaryInterfacePrivateIpAddressRequest[];
 export const InstanceSecondaryInterfacePrivateIpAddressListRequest = /*@__PURE__*/ S.Array(
-  InstanceSecondaryInterfacePrivateIpAddressRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceSecondaryInterfacePrivateIpAddressRequest.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceSecondaryInterfacePrivateIpAddressRequest",
   }),
 );
@@ -57959,7 +58851,9 @@ export const InstanceSecondaryInterfaceSpecificationRequest = /*@__PURE__*/ S.su
 export type InstanceSecondaryInterfaceSpecificationListRequest =
   InstanceSecondaryInterfaceSpecificationRequest[];
 export const InstanceSecondaryInterfaceSpecificationListRequest = /*@__PURE__*/ S.Array(
-  InstanceSecondaryInterfaceSpecificationRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ InstanceSecondaryInterfaceSpecificationRequest.pipe(
+    /*@__PURE__*/ T.XmlName("item"),
+  ).annotate({
     identifier: "InstanceSecondaryInterfaceSpecificationRequest",
   }),
 );
@@ -58125,7 +59019,9 @@ export const ScheduledInstancesBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ScheduledInstancesBlockDeviceMapping>;
 export type ScheduledInstancesBlockDeviceMappingSet = ScheduledInstancesBlockDeviceMapping[];
 export const ScheduledInstancesBlockDeviceMappingSet = /*@__PURE__*/ S.Array(
-  ScheduledInstancesBlockDeviceMapping.pipe(T.XmlName("BlockDeviceMapping")).annotate({
+  /*@__PURE__*/ ScheduledInstancesBlockDeviceMapping.pipe(
+    /*@__PURE__*/ T.XmlName("BlockDeviceMapping"),
+  ).annotate({
     identifier: "ScheduledInstancesBlockDeviceMapping",
   }),
 );
@@ -58148,7 +59044,7 @@ export const ScheduledInstancesMonitoring = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledInstancesMonitoring>;
 export type ScheduledInstancesSecurityGroupIdSet = string[];
 export const ScheduledInstancesSecurityGroupIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("SecurityGroupId")),
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SecurityGroupId")),
 );
 export type Ipv6Address = string;
 export interface ScheduledInstancesIpv6Address {
@@ -58161,9 +59057,11 @@ export const ScheduledInstancesIpv6Address = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledInstancesIpv6Address>;
 export type ScheduledInstancesIpv6AddressList = ScheduledInstancesIpv6Address[];
 export const ScheduledInstancesIpv6AddressList = /*@__PURE__*/ S.Array(
-  ScheduledInstancesIpv6Address.pipe(T.XmlName("Ipv6Address")).annotate({
-    identifier: "ScheduledInstancesIpv6Address",
-  }),
+  /*@__PURE__*/ ScheduledInstancesIpv6Address.pipe(/*@__PURE__*/ T.XmlName("Ipv6Address")).annotate(
+    {
+      identifier: "ScheduledInstancesIpv6Address",
+    },
+  ),
 );
 export interface ScheduledInstancesPrivateIpAddressConfig {
   Primary?: boolean;
@@ -58176,7 +59074,9 @@ export const ScheduledInstancesPrivateIpAddressConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScheduledInstancesPrivateIpAddressConfig>;
 export type PrivateIpAddressConfigSet = ScheduledInstancesPrivateIpAddressConfig[];
 export const PrivateIpAddressConfigSet = /*@__PURE__*/ S.Array(
-  ScheduledInstancesPrivateIpAddressConfig.pipe(T.XmlName("PrivateIpAddressConfigSet")).annotate({
+  /*@__PURE__*/ ScheduledInstancesPrivateIpAddressConfig.pipe(
+    /*@__PURE__*/ T.XmlName("PrivateIpAddressConfigSet"),
+  ).annotate({
     identifier: "ScheduledInstancesPrivateIpAddressConfig",
   }),
 );
@@ -58216,7 +59116,9 @@ export const ScheduledInstancesNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledInstancesNetworkInterface>;
 export type ScheduledInstancesNetworkInterfaceSet = ScheduledInstancesNetworkInterface[];
 export const ScheduledInstancesNetworkInterfaceSet = /*@__PURE__*/ S.Array(
-  ScheduledInstancesNetworkInterface.pipe(T.XmlName("NetworkInterface")).annotate({
+  /*@__PURE__*/ ScheduledInstancesNetworkInterface.pipe(
+    /*@__PURE__*/ T.XmlName("NetworkInterface"),
+  ).annotate({
     identifier: "ScheduledInstancesNetworkInterface",
   }),
 );
@@ -58290,7 +59192,9 @@ export const RunScheduledInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunScheduledInstancesRequest",
 }) as any as S.Schema<RunScheduledInstancesRequest>;
 export type InstanceIdSet = string[];
-export const InstanceIdSet = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const InstanceIdSet = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface RunScheduledInstancesResult {
   InstanceIdSet?: string[];
 }
@@ -58324,7 +59228,9 @@ export const SearchLocalGatewayRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchLocalGatewayRoutesRequest>;
 export type LocalGatewayRouteList = LocalGatewayRoute[];
 export const LocalGatewayRouteList = /*@__PURE__*/ S.Array(
-  LocalGatewayRoute.pipe(T.XmlName("item")).annotate({ identifier: "LocalGatewayRoute" }),
+  /*@__PURE__*/ LocalGatewayRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "LocalGatewayRoute",
+  }),
 );
 export interface SearchLocalGatewayRoutesResult {
   Routes?: LocalGatewayRoute[];
@@ -58421,7 +59327,7 @@ export const TransitGatewayMulticastGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitGatewayMulticastGroup>;
 export type TransitGatewayMulticastGroupList = TransitGatewayMulticastGroup[];
 export const TransitGatewayMulticastGroupList = /*@__PURE__*/ S.Array(
-  TransitGatewayMulticastGroup.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TransitGatewayMulticastGroup.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TransitGatewayMulticastGroup",
   }),
 );
@@ -58460,7 +59366,9 @@ export const SearchTransitGatewayRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchTransitGatewayRoutesRequest>;
 export type TransitGatewayRouteList = TransitGatewayRoute[];
 export const TransitGatewayRouteList = /*@__PURE__*/ S.Array(
-  TransitGatewayRoute.pipe(T.XmlName("item")).annotate({ identifier: "TransitGatewayRoute" }),
+  /*@__PURE__*/ TransitGatewayRoute.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "TransitGatewayRoute",
+  }),
 );
 export interface SearchTransitGatewayRoutesResult {
   Routes?: TransitGatewayRoute[];
@@ -58560,7 +59468,9 @@ export const InstanceStateChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceStateChange" }) as any as S.Schema<InstanceStateChange>;
 export type InstanceStateChangeList = InstanceStateChange[];
 export const InstanceStateChangeList = /*@__PURE__*/ S.Array(
-  InstanceStateChange.pipe(T.XmlName("item")).annotate({ identifier: "InstanceStateChange" }),
+  /*@__PURE__*/ InstanceStateChange.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "InstanceStateChange",
+  }),
 );
 export interface StartInstancesResult {
   StartingInstances?: InstanceStateChange[];
@@ -58725,7 +59635,7 @@ export const TerminateConnectionStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateConnectionStatus>;
 export type TerminateConnectionStatusSet = TerminateConnectionStatus[];
 export const TerminateConnectionStatusSet = /*@__PURE__*/ S.Array(
-  TerminateConnectionStatus.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ TerminateConnectionStatus.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "TerminateConnectionStatus",
   }),
 );
@@ -59045,7 +59955,7 @@ export const SecurityGroupRuleDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityGroupRuleDescription>;
 export type SecurityGroupRuleDescriptionList = SecurityGroupRuleDescription[];
 export const SecurityGroupRuleDescriptionList = /*@__PURE__*/ S.Array(
-  SecurityGroupRuleDescription.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ SecurityGroupRuleDescription.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "SecurityGroupRuleDescription",
   }),
 );

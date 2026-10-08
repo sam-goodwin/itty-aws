@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "ARC Region switch", serviceShapeName: "ArcRegionSwitch" });
-const auth = T.AwsAuthSigv4({ name: "arc-region-switch" });
-const ver = T.ServiceVersion("2022-07-26");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "ARC Region switch",
+  serviceShapeName: "ArcRegionSwitch",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "arc-region-switch" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-07-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region, UseControlPlaneEndpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -119,42 +122,42 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IllegalArgumentException
   extends /*@__PURE__*/ S.TaggedError<IllegalArgumentException>()(
     "IllegalArgumentException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalStateException
   extends /*@__PURE__*/ S.TaggedError<IllegalStateException>()(
     "IllegalStateException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type PlanArn = string;
 export type ExecutionId = string;
@@ -330,7 +333,7 @@ export const ArcRoutingControlStates = /*@__PURE__*/ S.Array(ArcRoutingControlSt
 export type RegionAndRoutingControls = { [key: string]: ArcRoutingControlState[] | undefined };
 export const RegionAndRoutingControls = /*@__PURE__*/ S.Record(
   S.String,
-  ArcRoutingControlStates.pipe(S.optional),
+  /*@__PURE__*/ ArcRoutingControlStates.pipe(S.optional),
 );
 export interface ArcRoutingControlConfiguration {
   timeoutMinutes?: number;
@@ -480,14 +483,14 @@ export const KubernetesScalingResource = /*@__PURE__*/ S.suspend(() =>
 export type RegionalScalingResource = { [key: string]: KubernetesScalingResource | undefined };
 export const RegionalScalingResource = /*@__PURE__*/ S.Record(
   S.String,
-  KubernetesScalingResource.pipe(S.optional),
+  /*@__PURE__*/ KubernetesScalingResource.pipe(S.optional),
 );
 export type KubernetesScalingApplication = {
   [key: string]: { [key: string]: KubernetesScalingResource | undefined } | undefined;
 };
 export const KubernetesScalingApplication = /*@__PURE__*/ S.Record(
   S.String,
-  RegionalScalingResource.pipe(S.optional),
+  /*@__PURE__*/ RegionalScalingResource.pipe(S.optional),
 );
 export type KubernetesScalingApps = {
   [key: string]: { [key: string]: KubernetesScalingResource | undefined } | undefined;
@@ -613,7 +616,10 @@ export const DocumentDbConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DocumentDbConfiguration" }) as any as S.Schema<DocumentDbConfiguration>;
 export type RdsDbInstanceArn = string;
 export type RdsDbInstanceArnMap = { [key: string]: string | undefined };
-export const RdsDbInstanceArnMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RdsDbInstanceArnMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RdsPromoteReadReplicaConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -665,7 +671,7 @@ export const EventSourceMapping = /*@__PURE__*/ S.suspend(() =>
 export type RegionEventSourceMappingMap = { [key: string]: EventSourceMapping | undefined };
 export const RegionEventSourceMappingMap = /*@__PURE__*/ S.Record(
   S.String,
-  EventSourceMapping.pipe(S.optional),
+  /*@__PURE__*/ EventSourceMapping.pipe(S.optional),
 );
 export type LambdaEventSourceMappingUngracefulBehavior = "skip" | (string & {});
 export const LambdaEventSourceMappingUngracefulBehavior = S.String;
@@ -695,7 +701,10 @@ export const LambdaEventSourceMappingConfiguration = /*@__PURE__*/ S.suspend(() 
   identifier: "LambdaEventSourceMappingConfiguration",
 }) as any as S.Schema<LambdaEventSourceMappingConfiguration>;
 export type RegionAuroraClusterMap = { [key: string]: string | undefined };
-export const RegionAuroraClusterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RegionAuroraClusterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AuroraServerlessScalingConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -720,7 +729,7 @@ export type AuroraInstanceArn = string;
 export type RegionAuroraInstanceArnMap = { [key: string]: string | undefined };
 export const RegionAuroraInstanceArnMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface AuroraProvisionedScalingConfiguration {
   timeoutMinutes?: number;
@@ -759,7 +768,7 @@ export type NeptuneClusterArn = string;
 export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
 export const RegionNeptuneClusterArnMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface NeptuneGlobalDatabaseConfiguration {
   timeoutMinutes?: number;
@@ -1172,28 +1181,30 @@ export type ExecutionBlockConfiguration =
       rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration;
     };
 export const ExecutionBlockConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
-  S.Struct({ ec2AsgCapacityIncreaseConfig: Ec2AsgCapacityIncreaseConfiguration }),
-  S.Struct({ executionApprovalConfig: ExecutionApprovalConfiguration }),
-  S.Struct({ arcRoutingControlConfig: ArcRoutingControlConfiguration }),
-  S.Struct({ globalAuroraConfig: GlobalAuroraConfiguration }),
-  S.Struct({
-    parallelConfig: S.suspend(
+  /*@__PURE__*/ S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
+  /*@__PURE__*/ S.Struct({ ec2AsgCapacityIncreaseConfig: Ec2AsgCapacityIncreaseConfiguration }),
+  /*@__PURE__*/ S.Struct({ executionApprovalConfig: ExecutionApprovalConfiguration }),
+  /*@__PURE__*/ S.Struct({ arcRoutingControlConfig: ArcRoutingControlConfiguration }),
+  /*@__PURE__*/ S.Struct({ globalAuroraConfig: GlobalAuroraConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    parallelConfig: /*@__PURE__*/ S.suspend(
       (): S.Schema<ParallelExecutionBlockConfiguration> => ParallelExecutionBlockConfiguration,
     ).annotate({ identifier: "ParallelExecutionBlockConfiguration" }),
   }),
-  S.Struct({ regionSwitchPlanConfig: RegionSwitchPlanConfiguration }),
-  S.Struct({ ecsCapacityIncreaseConfig: EcsCapacityIncreaseConfiguration }),
-  S.Struct({ eksResourceScalingConfig: EksResourceScalingConfiguration }),
-  S.Struct({ route53HealthCheckConfig: Route53HealthCheckConfiguration }),
-  S.Struct({ documentDbConfig: DocumentDbConfiguration }),
-  S.Struct({ rdsPromoteReadReplicaConfig: RdsPromoteReadReplicaConfiguration }),
-  S.Struct({ rdsCreateCrossRegionReadReplicaConfig: RdsCreateCrossRegionReplicaConfiguration }),
-  S.Struct({ lambdaEventSourceMappingConfig: LambdaEventSourceMappingConfiguration }),
-  S.Struct({ auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration }),
-  S.Struct({ auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration }),
-  S.Struct({ neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration }),
-  S.Struct({ rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration }),
+  /*@__PURE__*/ S.Struct({ regionSwitchPlanConfig: RegionSwitchPlanConfiguration }),
+  /*@__PURE__*/ S.Struct({ ecsCapacityIncreaseConfig: EcsCapacityIncreaseConfiguration }),
+  /*@__PURE__*/ S.Struct({ eksResourceScalingConfig: EksResourceScalingConfiguration }),
+  /*@__PURE__*/ S.Struct({ route53HealthCheckConfig: Route53HealthCheckConfiguration }),
+  /*@__PURE__*/ S.Struct({ documentDbConfig: DocumentDbConfiguration }),
+  /*@__PURE__*/ S.Struct({ rdsPromoteReadReplicaConfig: RdsPromoteReadReplicaConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    rdsCreateCrossRegionReadReplicaConfig: RdsCreateCrossRegionReplicaConfiguration,
+  }),
+  /*@__PURE__*/ S.Struct({ lambdaEventSourceMappingConfig: LambdaEventSourceMappingConfiguration }),
+  /*@__PURE__*/ S.Struct({ auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration }),
+  /*@__PURE__*/ S.Struct({ auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration }),
+  /*@__PURE__*/ S.Struct({ neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration }),
+  /*@__PURE__*/ S.Struct({ rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration }),
 ]) as any as S.Schema<ExecutionBlockConfiguration>;
 export type ExecutionBlockType =
   | "CustomActionLambda"
@@ -1235,7 +1246,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 export type Steps = Step[];
 export const Steps = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Step> => Step).annotate({ identifier: "Step" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Step> => Step).annotate({ identifier: "Step" }),
 ) as any as S.Schema<Steps>;
 export type WorkflowTargetAction = "activate" | "deactivate" | "postRecovery" | (string & {});
 export const WorkflowTargetAction = S.String;
@@ -1276,7 +1287,7 @@ export const AssociatedAlarm = /*@__PURE__*/ S.suspend(() =>
 export type AssociatedAlarmMap = { [key: string]: AssociatedAlarm | undefined };
 export const AssociatedAlarmMap = /*@__PURE__*/ S.Record(
   S.String,
-  AssociatedAlarm.pipe(S.optional),
+  /*@__PURE__*/ AssociatedAlarm.pipe(S.optional),
 );
 export type AlarmCondition = "red" | "green" | (string & {});
 export const AlarmCondition = S.String;
@@ -1320,7 +1331,7 @@ export const S3ReportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3ReportOutputConfiguration>;
 export type ReportOutputConfiguration = { s3Configuration: S3ReportOutputConfiguration };
 export const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ s3Configuration: S3ReportOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3Configuration: S3ReportOutputConfiguration }),
 ]);
 export type ReportOutputList = ReportOutputConfiguration[];
 export const ReportOutputList = /*@__PURE__*/ S.Array(ReportOutputConfiguration);
@@ -1339,7 +1350,7 @@ export const RecoveryApproach = S.String;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreatePlanRequest {
   description?: string;
   workflows: Workflow[];
@@ -1637,8 +1648,8 @@ export type ReportOutput =
   | { s3ReportOutput: S3ReportOutput; failedReportOutput?: never }
   | { s3ReportOutput?: never; failedReportOutput: FailedReportOutput };
 export const ReportOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ s3ReportOutput: S3ReportOutput }),
-  S.Struct({ failedReportOutput: FailedReportOutput }),
+  /*@__PURE__*/ S.Struct({ s3ReportOutput: S3ReportOutput }),
+  /*@__PURE__*/ S.Struct({ failedReportOutput: FailedReportOutput }),
 ]);
 export interface GeneratedReport {
   reportGenerationTime?: Date;

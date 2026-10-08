@@ -7,12 +7,12 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://ses.amazonaws.com/doc/2010-12-01/");
-const svc = T.AwsApiService({ sdkId: "SES", serviceShapeName: "SimpleEmailService" });
-const auth = T.AwsAuthSigv4({ name: "ses" });
-const ver = T.ServiceVersion("2010-12-01");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://ses.amazonaws.com/doc/2010-12-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SES", serviceShapeName: "SimpleEmailService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ses" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2010-12-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -70,142 +70,175 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccountSendingPausedException
   extends /*@__PURE__*/ S.TaggedError<AccountSendingPausedException>()(
     "AccountSendingPausedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AccountSendingPausedException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "AccountSendingPausedException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { Name: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      Name: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CannotDeleteException
   extends /*@__PURE__*/ S.TaggedError<CannotDeleteException>()(
     "CannotDeleteException",
-    { Name: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      Name: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ConfigurationSetAlreadyExistsException>()(
     "ConfigurationSetAlreadyExistsException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "ConfigurationSetAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ConfigurationSetAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ConfigurationSetDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<ConfigurationSetDoesNotExistException>()(
     "ConfigurationSetDoesNotExistException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "ConfigurationSetDoesNotExist", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ConfigurationSetDoesNotExist",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetSendingPausedException
   extends /*@__PURE__*/ S.TaggedError<ConfigurationSetSendingPausedException>()(
     "ConfigurationSetSendingPausedException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "ConfigurationSetSendingPausedException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ConfigurationSetSendingPausedException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailInvalidContentException
   extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailInvalidContentException>()(
     "CustomVerificationEmailInvalidContentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "CustomVerificationEmailInvalidContent", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "CustomVerificationEmailInvalidContent",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailTemplateAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailTemplateAlreadyExistsException>()(
     "CustomVerificationEmailTemplateAlreadyExistsException",
     {
-      CustomVerificationEmailTemplateName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      CustomVerificationEmailTemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "CustomVerificationEmailTemplateAlreadyExists",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CustomVerificationEmailTemplateDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailTemplateDoesNotExistException>()(
     "CustomVerificationEmailTemplateDoesNotExistException",
     {
-      CustomVerificationEmailTemplateName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      CustomVerificationEmailTemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
         code: "CustomVerificationEmailTemplateDoesNotExist",
         httpResponseCode: 400,
       }),
-      T.HttpError(400),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDestinationAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<EventDestinationAlreadyExistsException>()(
     "EventDestinationAlreadyExistsException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      EventDestinationName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "EventDestinationAlreadyExists", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "EventDestinationAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EventDestinationDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<EventDestinationDoesNotExistException>()(
     "EventDestinationDoesNotExistException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      EventDestinationName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "EventDestinationDoesNotExist", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "EventDestinationDoesNotExist",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class FromEmailAddressNotVerifiedException
   extends /*@__PURE__*/ S.TaggedError<FromEmailAddressNotVerifiedException>()(
     "FromEmailAddressNotVerifiedException",
     {
-      FromEmailAddress: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      FromEmailAddress: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "FromEmailAddressNotVerified", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "FromEmailAddressNotVerified", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class IdentityNotVerified
   extends /*@__PURE__*/ S.TaggedError<IdentityNotVerified>()(
     "IdentityNotVerified",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidParameterValue",
       message: { includes: "Identity is not verified" },
     }),
@@ -214,161 +247,200 @@ export class InvalidCloudWatchDestinationException
   extends /*@__PURE__*/ S.TaggedError<InvalidCloudWatchDestinationException>()(
     "InvalidCloudWatchDestinationException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      EventDestinationName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "InvalidCloudWatchDestination", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidCloudWatchDestination",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidConfigurationSetException
   extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationSetException>()(
     "InvalidConfigurationSetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDeliveryOptionsException
   extends /*@__PURE__*/ S.TaggedError<InvalidDeliveryOptionsException>()(
     "InvalidDeliveryOptionsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFirehoseDestinationException
   extends /*@__PURE__*/ S.TaggedError<InvalidFirehoseDestinationException>()(
     "InvalidFirehoseDestinationException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      EventDestinationName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "InvalidFirehoseDestination", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidFirehoseDestination", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionException
   extends /*@__PURE__*/ S.TaggedError<InvalidLambdaFunctionException>()(
     "InvalidLambdaFunctionException",
-    { FunctionArn: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      FunctionArn: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()("InvalidParameterValue", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidPolicyException
   extends /*@__PURE__*/ S.TaggedError<InvalidPolicyException>()(
     "InvalidPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRenderingParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidRenderingParameterException>()(
     "InvalidRenderingParameterException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidRenderingParameter", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      TemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidRenderingParameter", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3ConfigurationException
   extends /*@__PURE__*/ S.TaggedError<InvalidS3ConfigurationException>()(
     "InvalidS3ConfigurationException",
-    { Bucket: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      Bucket: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSNSDestinationException
   extends /*@__PURE__*/ S.TaggedError<InvalidSNSDestinationException>()(
     "InvalidSNSDestinationException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      EventDestinationName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicException
   extends /*@__PURE__*/ S.TaggedError<InvalidSnsTopicException>()(
     "InvalidSnsTopicException",
-    { Topic: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      Topic: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTemplateException
   extends /*@__PURE__*/ S.TaggedError<InvalidTemplateException>()(
     "InvalidTemplateException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      TemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTrackingOptionsException
   extends /*@__PURE__*/ S.TaggedError<InvalidTrackingOptionsException>()(
     "InvalidTrackingOptionsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class MailFromDomainNotVerifiedException
   extends /*@__PURE__*/ S.TaggedError<MailFromDomainNotVerifiedException>()(
     "MailFromDomainNotVerifiedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MailFromDomainNotVerifiedException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "MailFromDomainNotVerifiedException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class MessageRejected
   extends /*@__PURE__*/ S.TaggedError<MessageRejected>()(
     "MessageRejected",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRenderingAttributeException
   extends /*@__PURE__*/ S.TaggedError<MissingRenderingAttributeException>()(
     "MissingRenderingAttributeException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "MissingRenderingAttribute", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      TemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "MissingRenderingAttribute", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ProductionAccessNotGrantedException
   extends /*@__PURE__*/ S.TaggedError<ProductionAccessNotGrantedException>()(
     "ProductionAccessNotGrantedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ProductionAccessNotGranted", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ProductionAccessNotGranted", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReceiptRuleRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedError<ReceiptRuleRoleNotAssumable>()(
     "ReceiptRuleRoleNotAssumable",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidParameterValue",
       message: { includes: "Could not assume the provided IAM Role" },
     }),
@@ -376,49 +448,67 @@ export class ReceiptRuleRoleNotAssumable
 export class RuleDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<RuleDoesNotExistException>()(
     "RuleDoesNotExistException",
-    { Name: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      Name: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class RuleSetDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<RuleSetDoesNotExistException>()(
     "RuleSetDoesNotExistException",
-    { Name: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      Name: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TemplateDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<TemplateDoesNotExistException>()(
     "TemplateDoesNotExistException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
-      T.HttpError(400),
+    {
+      TemplateName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrackingOptionsAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<TrackingOptionsAlreadyExistsException>()(
     "TrackingOptionsAlreadyExistsException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "TrackingOptionsAlreadyExistsException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "TrackingOptionsAlreadyExistsException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TrackingOptionsDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<TrackingOptionsDoesNotExistException>()(
     "TrackingOptionsDoesNotExistException",
     {
-      ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ConfigurationSetName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.all(
-      T.AwsQueryError({ code: "TrackingOptionsDoesNotExistException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "TrackingOptionsDoesNotExistException",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export type ReceiptRuleSetName = string;
@@ -1243,7 +1333,7 @@ export const IdentityDkimAttributes = /*@__PURE__*/ S.suspend(() =>
 export type DkimAttributes = { [key: string]: IdentityDkimAttributes | undefined };
 export const DkimAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityDkimAttributes.pipe(S.optional),
+  /*@__PURE__*/ IdentityDkimAttributes.pipe(S.optional),
 );
 export interface GetIdentityDkimAttributesResponse {
   DkimAttributes: { [key: string]: IdentityDkimAttributes | undefined };
@@ -1294,7 +1384,7 @@ export type MailFromDomainAttributes = {
 };
 export const MailFromDomainAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityMailFromDomainAttributes.pipe(S.optional),
+  /*@__PURE__*/ IdentityMailFromDomainAttributes.pipe(S.optional),
 );
 export interface GetIdentityMailFromDomainAttributesResponse {
   MailFromDomainAttributes: { [key: string]: IdentityMailFromDomainAttributes | undefined };
@@ -1340,7 +1430,7 @@ export const IdentityNotificationAttributes = /*@__PURE__*/ S.suspend(() =>
 export type NotificationAttributes = { [key: string]: IdentityNotificationAttributes | undefined };
 export const NotificationAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityNotificationAttributes.pipe(S.optional),
+  /*@__PURE__*/ IdentityNotificationAttributes.pipe(S.optional),
 );
 export interface GetIdentityNotificationAttributesResponse {
   NotificationAttributes: { [key: string]: IdentityNotificationAttributes | undefined };
@@ -1365,7 +1455,7 @@ export const GetIdentityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIdentityPoliciesRequest>;
 export type Policy = string;
 export type PolicyMap = { [key: string]: string | undefined };
-export const PolicyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PolicyMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetIdentityPoliciesResponse {
   Policies: { [key: string]: string | undefined };
 }
@@ -1396,7 +1486,7 @@ export const IdentityVerificationAttributes = /*@__PURE__*/ S.suspend(() =>
 export type VerificationAttributes = { [key: string]: IdentityVerificationAttributes | undefined };
 export const VerificationAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityVerificationAttributes.pipe(S.optional),
+  /*@__PURE__*/ IdentityVerificationAttributes.pipe(S.optional),
 );
 export interface GetIdentityVerificationAttributesResponse {
   VerificationAttributes: { [key: string]: IdentityVerificationAttributes | undefined };

@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "KeyspacesStreams", serviceShapeName: "KeyspacesStreams" });
-const auth = T.AwsAuthSigv4({ name: "cassandra" });
-const ver = T.ServiceVersion("2024-09-09");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "KeyspacesStreams",
+  serviceShapeName: "KeyspacesStreams",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cassandra" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-09-09");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -48,53 +51,53 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
-      T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
     ),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-      T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
     ),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      errorCode: S.optional(
-        S.suspend(() => ValidationExceptionType).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionType).annotate({
           identifier: "ValidationExceptionType",
         }),
       ),
     },
-    T.all(
-      T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export type ShardIterator = string;
@@ -131,7 +134,9 @@ export const KeyspacesCell = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyspacesCell" }) as any as S.Schema<KeyspacesCell>;
 export type KeyspacesCellList = KeyspacesCell[];
 export const KeyspacesCellList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell).annotate({ identifier: "KeyspacesCell" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell).annotate({
+    identifier: "KeyspacesCell",
+  }),
 ) as any as S.Schema<KeyspacesCellList>;
 export interface KeyspacesCellMapDefinition {
   key?: KeyspacesCellValue;
@@ -153,14 +158,16 @@ export const KeyspacesCellMapDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyspacesCellMapDefinition>;
 export type KeyspacesCellMap = KeyspacesCellMapDefinition[];
 export const KeyspacesCellMap = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<KeyspacesCellMapDefinition> => KeyspacesCellMapDefinition).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<KeyspacesCellMapDefinition> => KeyspacesCellMapDefinition,
+  ).annotate({
     identifier: "KeyspacesCellMapDefinition",
   }),
 ) as any as S.Schema<KeyspacesCellMap>;
 export type KeyspacesUdtMap = { [key: string]: KeyspacesCell | undefined };
 export const KeyspacesUdtMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
+  /*@__PURE__*/ S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
     .annotate({ identifier: "KeyspacesCell" })
     .pipe(S.optional),
 ) as any as S.Schema<KeyspacesUdtMap>;
@@ -894,52 +901,64 @@ export type KeyspacesCellValue =
       udtT: { [key: string]: KeyspacesCell | undefined };
     };
 export const KeyspacesCellValue = /*@__PURE__*/ S.Union([
-  S.Struct({ asciiT: S.String }),
-  S.Struct({ bigintT: S.String }),
-  S.Struct({ blobT: T.Blob }),
-  S.Struct({ boolT: S.Boolean }),
-  S.Struct({ counterT: S.String }),
-  S.Struct({ dateT: S.String }),
-  S.Struct({ decimalT: S.String }),
-  S.Struct({ doubleT: S.String }),
-  S.Struct({ durationT: S.String }),
-  S.Struct({ floatT: S.String }),
-  S.Struct({ inetT: S.String }),
-  S.Struct({ intT: S.String }),
-  S.Struct({
-    listT: S.suspend(() => KeyspacesCellList).annotate({ identifier: "KeyspacesCellList" }),
+  /*@__PURE__*/ S.Struct({ asciiT: S.String }),
+  /*@__PURE__*/ S.Struct({ bigintT: S.String }),
+  /*@__PURE__*/ S.Struct({ blobT: T.Blob }),
+  /*@__PURE__*/ S.Struct({ boolT: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ counterT: S.String }),
+  /*@__PURE__*/ S.Struct({ dateT: S.String }),
+  /*@__PURE__*/ S.Struct({ decimalT: S.String }),
+  /*@__PURE__*/ S.Struct({ doubleT: S.String }),
+  /*@__PURE__*/ S.Struct({ durationT: S.String }),
+  /*@__PURE__*/ S.Struct({ floatT: S.String }),
+  /*@__PURE__*/ S.Struct({ inetT: S.String }),
+  /*@__PURE__*/ S.Struct({ intT: S.String }),
+  /*@__PURE__*/ S.Struct({
+    listT: /*@__PURE__*/ S.suspend(() => KeyspacesCellList).annotate({
+      identifier: "KeyspacesCellList",
+    }),
   }),
-  S.Struct({
-    mapT: S.suspend(() => KeyspacesCellMap).annotate({ identifier: "KeyspacesCellMap" }),
+  /*@__PURE__*/ S.Struct({
+    mapT: /*@__PURE__*/ S.suspend(() => KeyspacesCellMap).annotate({
+      identifier: "KeyspacesCellMap",
+    }),
   }),
-  S.Struct({
-    setT: S.suspend(() => KeyspacesCellList).annotate({ identifier: "KeyspacesCellList" }),
+  /*@__PURE__*/ S.Struct({
+    setT: /*@__PURE__*/ S.suspend(() => KeyspacesCellList).annotate({
+      identifier: "KeyspacesCellList",
+    }),
   }),
-  S.Struct({ smallintT: S.String }),
-  S.Struct({ textT: S.String }),
-  S.Struct({ timeT: S.String }),
-  S.Struct({ timestampT: S.String }),
-  S.Struct({ timeuuidT: S.String }),
-  S.Struct({ tinyintT: S.String }),
-  S.Struct({
-    tupleT: S.suspend(() => KeyspacesCellList).annotate({ identifier: "KeyspacesCellList" }),
+  /*@__PURE__*/ S.Struct({ smallintT: S.String }),
+  /*@__PURE__*/ S.Struct({ textT: S.String }),
+  /*@__PURE__*/ S.Struct({ timeT: S.String }),
+  /*@__PURE__*/ S.Struct({ timestampT: S.String }),
+  /*@__PURE__*/ S.Struct({ timeuuidT: S.String }),
+  /*@__PURE__*/ S.Struct({ tinyintT: S.String }),
+  /*@__PURE__*/ S.Struct({
+    tupleT: /*@__PURE__*/ S.suspend(() => KeyspacesCellList).annotate({
+      identifier: "KeyspacesCellList",
+    }),
   }),
-  S.Struct({ uuidT: S.String }),
-  S.Struct({ varcharT: S.String }),
-  S.Struct({ varintT: S.String }),
-  S.Struct({ udtT: S.suspend(() => KeyspacesUdtMap).annotate({ identifier: "KeyspacesUdtMap" }) }),
+  /*@__PURE__*/ S.Struct({ uuidT: S.String }),
+  /*@__PURE__*/ S.Struct({ varcharT: S.String }),
+  /*@__PURE__*/ S.Struct({ varintT: S.String }),
+  /*@__PURE__*/ S.Struct({
+    udtT: /*@__PURE__*/ S.suspend(() => KeyspacesUdtMap).annotate({
+      identifier: "KeyspacesUdtMap",
+    }),
+  }),
 ]) as any as S.Schema<KeyspacesCellValue>;
 export type KeyspacesKeysMap = { [key: string]: KeyspacesCellValue | undefined };
 export const KeyspacesKeysMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => KeyspacesCellValue)
+  /*@__PURE__*/ S.suspend(() => KeyspacesCellValue)
     .annotate({ identifier: "KeyspacesCellValue" })
     .pipe(S.optional),
 );
 export type KeyspacesCells = { [key: string]: KeyspacesCell | undefined };
 export const KeyspacesCells = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
+  /*@__PURE__*/ S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
     .annotate({ identifier: "KeyspacesCell" })
     .pipe(S.optional),
 );

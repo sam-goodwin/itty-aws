@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Glue", serviceShapeName: "AWSGlue" });
-const auth = T.AwsAuthSigv4({ name: "glue" });
-const ver = T.ServiceVersion("2017-03-31");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Glue", serviceShapeName: "AWSGlue" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "glue" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -70,106 +70,109 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()("AlreadyExistsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class ColumnStatisticsTaskNotRunningException
   extends /*@__PURE__*/ S.TaggedError<ColumnStatisticsTaskNotRunningException>()(
     "ColumnStatisticsTaskNotRunningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ColumnStatisticsTaskRunningException
   extends /*@__PURE__*/ S.TaggedError<ColumnStatisticsTaskRunningException>()(
     "ColumnStatisticsTaskRunningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ColumnStatisticsTaskStoppingException
   extends /*@__PURE__*/ S.TaggedError<ColumnStatisticsTaskStoppingException>()(
     "ColumnStatisticsTaskStoppingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConcurrentRunsExceededException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentRunsExceededException>()(
     "ConcurrentRunsExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConditionCheckFailureException
   extends /*@__PURE__*/ S.TaggedError<ConditionCheckFailureException>()(
     "ConditionCheckFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CrawlerNotRunningException
   extends /*@__PURE__*/ S.TaggedError<CrawlerNotRunningException>()("CrawlerNotRunningException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CrawlerRunningException
   extends /*@__PURE__*/ S.TaggedError<CrawlerRunningException>()("CrawlerRunningException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CrawlerStoppingException
   extends /*@__PURE__*/ S.TaggedError<CrawlerStoppingException>()("CrawlerStoppingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class EntityNotFoundException
   extends /*@__PURE__*/ S.TaggedError<EntityNotFoundException>()("EntityNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    FromFederationSource: S.optional(S.Boolean),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    FromFederationSource: /*@__PURE__*/ S.optional(S.Boolean),
   }) {}
 export class FederatedResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<FederatedResourceAlreadyExistsException>()(
     "FederatedResourceAlreadyExistsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      AssociatedGlueResource: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      AssociatedGlueResource: /*@__PURE__*/ S.optional(S.String),
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class FederationSourceException
   extends /*@__PURE__*/ S.TaggedError<FederationSourceException>()("FederationSourceException", {
-    FederationSourceErrorCode: S.optional(
-      S.suspend(() => FederationSourceErrorCode).annotate({
+    FederationSourceErrorCode: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => FederationSourceErrorCode).annotate({
         identifier: "FederationSourceErrorCode",
       }),
     ),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class FederationSourceRetryableException
   extends /*@__PURE__*/ S.TaggedError<FederationSourceRetryableException>()(
     "FederationSourceRetryableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class GlueEncryptionException
   extends /*@__PURE__*/ S.TaggedError<GlueEncryptionException>()("GlueEncryptionException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class GlueRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedError<GlueRoleNotAssumable>()(
     "GlueRoleNotAssumable",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      FromFederationSource: S.optional(S.Boolean),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      FromFederationSource: /*@__PURE__*/ S.optional(S.Boolean),
     },
-    T.SyntheticError({ from: "InvalidInputException", message: { includes: "unable to assume" } }),
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidInputException",
+      message: { includes: "unable to assume" },
+    }),
   ).pipe(C.withRetryableError) {}
 export class GlueS3TargetNotReady
   extends /*@__PURE__*/ S.TaggedError<GlueS3TargetNotReady>()(
     "GlueS3TargetNotReady",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      FromFederationSource: S.optional(S.Boolean),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      FromFederationSource: /*@__PURE__*/ S.optional(S.Boolean),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidInputException",
       message: { includes: "InvalidAccessKeyId" },
     }),
@@ -177,160 +180,160 @@ export class GlueS3TargetNotReady
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IllegalBlueprintStateException
   extends /*@__PURE__*/ S.TaggedError<IllegalBlueprintStateException>()(
     "IllegalBlueprintStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IllegalSessionStateException
   extends /*@__PURE__*/ S.TaggedError<IllegalSessionStateException>()(
     "IllegalSessionStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IllegalWorkflowStateException
   extends /*@__PURE__*/ S.TaggedError<IllegalWorkflowStateException>()(
     "IllegalWorkflowStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IntegrationConflictOperationFault
   extends /*@__PURE__*/ S.TaggedError<IntegrationConflictOperationFault>()(
     "IntegrationConflictOperationFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IntegrationNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<IntegrationNotFoundFault>()(
     "IntegrationNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class IntegrationQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedError<IntegrationQuotaExceededFault>()(
     "IntegrationQuotaExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()("InternalServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()("InvalidInputException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    FromFederationSource: S.optional(S.Boolean),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    FromFederationSource: /*@__PURE__*/ S.optional(S.Boolean),
   }) {}
 export class InvalidIntegrationStateFault
   extends /*@__PURE__*/ S.TaggedError<InvalidIntegrationStateFault>()(
     "InvalidIntegrationStateFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()("InvalidStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KMSKeyNotAccessibleFault
   extends /*@__PURE__*/ S.TaggedError<KMSKeyNotAccessibleFault>()(
     "KMSKeyNotAccessibleFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaterializedViewRefreshTaskNotRunningException
   extends /*@__PURE__*/ S.TaggedError<MaterializedViewRefreshTaskNotRunningException>()(
     "MaterializedViewRefreshTaskNotRunningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class MaterializedViewRefreshTaskRunningException
   extends /*@__PURE__*/ S.TaggedError<MaterializedViewRefreshTaskRunningException>()(
     "MaterializedViewRefreshTaskRunningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class MaterializedViewRefreshTaskStoppingException
   extends /*@__PURE__*/ S.TaggedError<MaterializedViewRefreshTaskStoppingException>()(
     "MaterializedViewRefreshTaskStoppingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class MLTransformNotReadyException
   extends /*@__PURE__*/ S.TaggedError<MLTransformNotReadyException>()(
     "MLTransformNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class NoScheduleException
   extends /*@__PURE__*/ S.TaggedError<NoScheduleException>()("NoScheduleException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OperationNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<OperationNotSupportedException>()(
     "OperationNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class OperationTimeoutException
   extends /*@__PURE__*/ S.TaggedError<OperationTimeoutException>()("OperationTimeoutException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PermissionTypeMismatchException
   extends /*@__PURE__*/ S.TaggedError<PermissionTypeMismatchException>()(
     "PermissionTypeMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()("ResourceNotReadyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNumberLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceNumberLimitExceededException>()(
     "ResourceNumberLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class SchedulerNotRunningException
   extends /*@__PURE__*/ S.TaggedError<SchedulerNotRunningException>()(
     "SchedulerNotRunningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class SchedulerRunningException
   extends /*@__PURE__*/ S.TaggedError<SchedulerRunningException>()("SchedulerRunningException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SchedulerTransitioningException
   extends /*@__PURE__*/ S.TaggedError<SchedulerTransitioningException>()(
     "SchedulerTransitioningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class SessionBusyException
   extends /*@__PURE__*/ S.TaggedError<SessionBusyException>()("SessionBusyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TargetResourceNotFound
   extends /*@__PURE__*/ S.TaggedError<TargetResourceNotFound>()(
     "TargetResourceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()("ThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class VersionMismatchException
   extends /*@__PURE__*/ S.TaggedError<VersionMismatchException>()("VersionMismatchException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type AssetId = string;
 export type IterableFormName = string;
@@ -392,7 +395,10 @@ export type CommentString = string;
 export type KeyString = string;
 export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
-export const ParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Column {
   Name: string;
   Type?: string;
@@ -441,7 +447,10 @@ export type ColumnValuesString = string;
 export type ColumnValueStringList = string[];
 export const ColumnValueStringList = /*@__PURE__*/ S.Array(S.String);
 export type LocationMap = { [key: string]: string | undefined };
-export const LocationMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LocationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SkewedInfo {
   SkewedColumnNames?: string[];
   SkewedColumnValues?: string[];
@@ -589,7 +598,10 @@ export const BatchDeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteConnectionRequest",
 }) as any as S.Schema<BatchDeleteConnectionRequest>;
 export type ErrorByName = { [key: string]: ErrorDetail | undefined };
-export const ErrorByName = /*@__PURE__*/ S.Record(S.String, ErrorDetail.pipe(S.optional));
+export const ErrorByName = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ErrorDetail.pipe(S.optional),
+);
 export interface BatchDeleteConnectionResponse {
   Succeeded?: string[];
   Errors?: { [key: string]: ErrorDetail | undefined };
@@ -1165,7 +1177,7 @@ export type GenericBoundedDouble = number;
 export type GlueTableAdditionalOptions = { [key: string]: string | undefined };
 export const GlueTableAdditionalOptions = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface GlueTable {
   DatabaseName: string;
@@ -1217,11 +1229,17 @@ export type DataQualityRuleResultStatus = "PASS" | "FAIL" | "ERROR" | (string & 
 export const DataQualityRuleResultStatus = S.String;
 
 export type EvaluatedMetricsMap = { [key: string]: number | undefined };
-export const EvaluatedMetricsMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const EvaluatedMetricsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type RuleMetricsMap = { [key: string]: number | undefined };
-export const RuleMetricsMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const RuleMetricsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type Labels = { [key: string]: string | undefined };
-export const Labels = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Labels = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DataQualityRuleResult {
   Name?: string;
   Description?: string | redacted.Redacted<string>;
@@ -1265,7 +1283,7 @@ export const DistributionData = /*@__PURE__*/ S.suspend(() =>
 export type EvaluatedDistributionsMap = { [key: string]: DistributionData | undefined };
 export const EvaluatedDistributionsMap = /*@__PURE__*/ S.Record(
   S.String,
-  DistributionData.pipe(S.optional),
+  /*@__PURE__*/ DistributionData.pipe(S.optional),
 );
 export interface DataQualityAnalyzerResult {
   Name?: string;
@@ -1545,7 +1563,10 @@ export const RulesetNames = /*@__PURE__*/ S.Array(S.String);
 export type DataQualityResultIdList = string[];
 export const DataQualityResultIdList = /*@__PURE__*/ S.Array(S.String);
 export type DataSourceMap = { [key: string]: DataSource | undefined };
-export const DataSourceMap = /*@__PURE__*/ S.Record(S.String, DataSource.pipe(S.optional));
+export const DataSourceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ DataSource.pipe(S.optional),
+);
 export interface DataQualityRulesetEvaluationRun {
   RunId?: string;
   DataSource?: DataSource;
@@ -1631,7 +1652,7 @@ export type GlueVersionString = string;
 export type PublicKeysList = string[];
 export const PublicKeysList = /*@__PURE__*/ S.Array(S.String);
 export type MapValue = { [key: string]: string | undefined };
-export const MapValue = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MapValue = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DevEndpoint {
   EndpointName?: string;
   RoleArn?: string;
@@ -1743,7 +1764,10 @@ export const AssetFormEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FormTypeId: S.optional(S.String), Content: S.optional(S.String) }),
 ).annotate({ identifier: "AssetFormEntry" }) as any as S.Schema<AssetFormEntry>;
 export type AssetFormMap = { [key: string]: AssetFormEntry | undefined };
-export const AssetFormMap = /*@__PURE__*/ S.Record(S.String, AssetFormEntry.pipe(S.optional));
+export const AssetFormMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AssetFormEntry.pipe(S.optional),
+);
 export interface IterableFormItem {
   ItemId?: string;
   ItemName?: string;
@@ -1825,7 +1849,7 @@ export const JobCommand = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobCommand" }) as any as S.Schema<JobCommand>;
 export type GenericMap = { [key: string]: string | undefined };
-export const GenericMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const GenericMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ConnectionString = string;
 export type ConnectionStringList = string[];
 export const ConnectionStringList = /*@__PURE__*/ S.Array(S.String);
@@ -1949,7 +1973,7 @@ export const GlueRecordType = S.String;
 export type JDBCDataTypeMapping = { [key in JDBCDataType]?: GlueRecordType };
 export const JDBCDataTypeMapping = /*@__PURE__*/ S.Record(
   JDBCDataType,
-  GlueRecordType.pipe(S.optional),
+  /*@__PURE__*/ GlueRecordType.pipe(S.optional),
 );
 export interface JDBCConnectorOptions {
   FilterPredicate?: string;
@@ -1997,7 +2021,10 @@ export const JDBCConnectorSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JDBCConnectorSource" }) as any as S.Schema<JDBCConnectorSource>;
 export type AdditionalOptions = { [key: string]: string | undefined };
-export const AdditionalOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SparkConnectorSource {
   Name: string;
   ConnectionName: string;
@@ -2486,7 +2513,7 @@ export const Mapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mapping" }) as any as S.Schema<Mapping>;
 export type Mappings = Mapping[];
 export const Mappings = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Mapping> => Mapping).annotate({ identifier: "Mapping" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Mapping> => Mapping).annotate({ identifier: "Mapping" }),
 ) as any as S.Schema<Mappings>;
 export interface ApplyMapping {
   Name: string;
@@ -3622,7 +3649,10 @@ export const AmazonRedshiftTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmazonRedshiftTarget" }) as any as S.Schema<AmazonRedshiftTarget>;
 export type DQDLAliases = { [key: string]: string | undefined };
-export const DQDLAliases = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DQDLAliases = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AdditionalOptionKeys =
   | "performanceTuning.caching"
   | "observations.scope"
@@ -3633,7 +3663,7 @@ export const AdditionalOptionKeys = S.String;
 export type DQAdditionalOptions = { [key in AdditionalOptionKeys]?: string };
 export const DQAdditionalOptions = /*@__PURE__*/ S.Record(
   AdditionalOptionKeys,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface EvaluateDataQualityMultiFrame {
   Name: string;
@@ -3669,7 +3699,10 @@ export type Operation = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RecipeAction {
   Operation: string;
   Parameters?: { [key: string]: string | undefined };
@@ -3778,7 +3811,10 @@ export const SnowflakeTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Data: SnowflakeNodeData, Inputs: S.optional(OneInput) }),
 ).annotate({ identifier: "SnowflakeTarget" }) as any as S.Schema<SnowflakeTarget>;
 export type ConnectorOptions = { [key: string]: string | undefined };
-export const ConnectorOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConnectorOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ConnectorDataSource {
   Name: string;
   ConnectionType: string;
@@ -4160,7 +4196,7 @@ export const CodeGenConfigurationNode = /*@__PURE__*/ S.suspend(() =>
 export type CodeGenConfigurationNodes = { [key: string]: CodeGenConfigurationNode | undefined };
 export const CodeGenConfigurationNodes = /*@__PURE__*/ S.Record(
   S.String,
-  CodeGenConfigurationNode.pipe(S.optional),
+  /*@__PURE__*/ CodeGenConfigurationNode.pipe(S.optional),
 );
 export type ExecutionClass = "FLEX" | "STANDARD" | (string & {});
 export const ExecutionClass = S.String;
@@ -4293,7 +4329,10 @@ export type NullableString = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
-export const AdditionalContextMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface QuerySessionContext {
   QueryId?: string;
   QueryStartTime?: Date;
@@ -4407,7 +4446,7 @@ export type ArnString = string;
 export type GlueConnectionNameString = string;
 export type TableOptimizerVpcConfiguration = { glueConnectionName: string };
 export const TableOptimizerVpcConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ glueConnectionName: S.String }),
+  /*@__PURE__*/ S.Struct({ glueConnectionName: S.String }),
 ]);
 export type CompactionStrategy = "binpack" | "sort" | "z-order" | (string & {});
 export const CompactionStrategy = S.String;
@@ -4840,7 +4879,10 @@ export const BatchGetWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BatchGetWorkflowsRequest" }) as any as S.Schema<BatchGetWorkflowsRequest>;
 export type WorkflowRunProperties = { [key: string]: string | undefined };
-export const WorkflowRunProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const WorkflowRunProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type WorkflowRunStatus =
   | "RUNNING"
   | "COMPLETED"
@@ -5361,7 +5403,7 @@ export type OrchestrationS3Location = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateBlueprintRequest {
   Name: string;
   Description?: string;
@@ -5810,12 +5852,15 @@ export const ConnectionPropertyKey = S.String;
 export type ConnectionProperties = { [key in ConnectionPropertyKey]?: string };
 export const ConnectionProperties = /*@__PURE__*/ S.Record(
   ConnectionPropertyKey,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type PropertyKey = string;
 export type PropertyValue = string;
 export type PropertyMap = { [key: string]: string | undefined };
-export const PropertyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PropertyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface PhysicalConnectionRequirements {
@@ -5859,7 +5904,10 @@ export type TokenUrl = string;
 export type TokenUrlParameterKey = string;
 export type TokenUrlParameterValue = string;
 export type TokenUrlParametersMap = { [key: string]: string | undefined };
-export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AuthorizationCode = string | redacted.Redacted<string>;
 export type RedirectUri = string;
 export interface AuthorizationCodeProperties {
@@ -5923,7 +5971,10 @@ export const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
 export type CredentialKey = string;
 export type CredentialValue = string;
 export type CredentialMap = { [key: string]: string | undefined };
-export const CredentialMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CredentialMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AuthenticationConfigurationInput {
   AuthenticationType?: AuthenticationType;
   OAuth2Properties?: OAuth2PropertiesInput;
@@ -6349,7 +6400,7 @@ export type IntegrationString = string;
 export type IntegrationAdditionalEncryptionContextMap = { [key: string]: string | undefined };
 export const IntegrationAdditionalEncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface Tag {
   key?: string;
@@ -6363,7 +6414,7 @@ export const IntegrationTagsList = /*@__PURE__*/ S.Array(Tag);
 export type IntegrationSourcePropertiesMap = { [key: string]: string | undefined };
 export const IntegrationSourcePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ContinuousSync = boolean;
 export interface IntegrationConfig {
@@ -7055,7 +7106,7 @@ export type OrchestrationArgumentsValue = string;
 export type OrchestrationArgumentsMap = { [key: string]: string | undefined };
 export const OrchestrationArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type SessionType = "LIVY" | "SPARK_CONNECT" | (string & {});
 export const SessionType = S.String;
@@ -7257,7 +7308,10 @@ export const SubObjectsStatisticsList = /*@__PURE__*/ S.Array(SubObjectStatistic
 export type SparkPipelineInfoKey = string;
 export type SparkPipelineInfoValue = string;
 export type SparkPipelineInfoMap = { [key: string]: string | undefined };
-export const SparkPipelineInfoMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SparkPipelineInfoMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ViewDefinitionInput {
   IsProtected?: boolean;
   IsManaged?: boolean;
@@ -7425,7 +7479,10 @@ export const IcebergSortOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrderId: S.Number, Fields: IcebergSortOrderFieldList }),
 ).annotate({ identifier: "IcebergSortOrder" }) as any as S.Schema<IcebergSortOrder>;
 export type StringToStringMap = { [key: string]: string | undefined };
-export const StringToStringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringToStringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateIcebergTableInput {
   Location: string;
   Schema: IcebergSchema;
@@ -7558,7 +7615,7 @@ export const ConfigurationObject = /*@__PURE__*/ S.suspend(() =>
 export type ConfigurationMap = { [key: string]: ConfigurationObject | undefined };
 export const ConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  ConfigurationObject.pipe(S.optional),
+  /*@__PURE__*/ ConfigurationObject.pipe(S.optional),
 );
 export interface ProfileConfiguration {
   SessionConfiguration?: { [key: string]: ConfigurationObject | undefined };
@@ -8488,7 +8545,10 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 export type PropertiesMap = { [key: string]: Property | undefined };
-export const PropertiesMap = /*@__PURE__*/ S.Record(S.String, Property.pipe(S.optional));
+export const PropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Property.pipe(S.optional),
+);
 export interface AuthConfiguration {
   AuthenticationType: Property;
   SecretArn?: Property;
@@ -8508,7 +8568,10 @@ export const AuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEnvironmentName = string;
 export type ComputeEnvironmentConfigurationDescriptionString = string;
 export type PropertyNameOverrides = { [key: string]: string | undefined };
-export const PropertyNameOverrides = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PropertyNameOverrides = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ListOfString = string[];
 export const ListOfString = /*@__PURE__*/ S.Array(S.String);
 export interface ComputeEnvironmentConfiguration {
@@ -8542,7 +8605,7 @@ export type ComputeEnvironmentConfigurationMap = {
 };
 export const ComputeEnvironmentConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  ComputeEnvironmentConfiguration.pipe(S.optional),
+  /*@__PURE__*/ ComputeEnvironmentConfiguration.pipe(S.optional),
 );
 export type HTTPMethod = "GET" | "POST" | (string & {});
 export const HTTPMethod = S.String;
@@ -8635,7 +8698,7 @@ export const FilterMode = S.String;
 export type ConnectionStringToStringMap = { [key: string]: string | undefined };
 export const ConnectionStringToStringMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface BetweenConfiguration {
   LowBoundKey?: string;
@@ -8762,7 +8825,7 @@ export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
 export type FieldDefinitionMap = { [key: string]: FieldDefinition | undefined };
 export const FieldDefinitionMap = /*@__PURE__*/ S.Record(
   S.String,
-  FieldDefinition.pipe(S.optional),
+  /*@__PURE__*/ FieldDefinition.pipe(S.optional),
 );
 export interface EntityConfiguration {
   SourceConfiguration?: SourceConfiguration;
@@ -8777,7 +8840,7 @@ export const EntityConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EntityConfigurationMap = { [key: string]: EntityConfiguration | undefined };
 export const EntityConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
-  EntityConfiguration.pipe(S.optional),
+  /*@__PURE__*/ EntityConfiguration.pipe(S.optional),
 );
 export interface RestConfiguration {
   GlobalSourceConfiguration?: SourceConfiguration;
@@ -8861,7 +8924,10 @@ export const FieldFilterOperator = S.String;
 export type FieldFilterOperatorsList = FieldFilterOperator[];
 export const FieldFilterOperatorsList = /*@__PURE__*/ S.Array(FieldFilterOperator);
 export type CustomProperties = { [key: string]: string | undefined };
-export const CustomProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Field {
   FieldName?: string;
   Label?: string;
@@ -9097,7 +9163,10 @@ export const IterableFormEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FormTypeId: S.optional(S.String) }),
 ).annotate({ identifier: "IterableFormEntry" }) as any as S.Schema<IterableFormEntry>;
 export type IterableFormMap = { [key: string]: IterableFormEntry | undefined };
-export const IterableFormMap = /*@__PURE__*/ S.Record(S.String, IterableFormEntry.pipe(S.optional));
+export const IterableFormMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ IterableFormEntry.pipe(S.optional),
+);
 export interface GetAssetOutput {
   Id: string;
   Name?: string;
@@ -9150,7 +9219,7 @@ export const AssetTypeFormReference = /*@__PURE__*/ S.suspend(() =>
 export type AssetTypeFormsMap = { [key: string]: AssetTypeFormReference | undefined };
 export const AssetTypeFormsMap = /*@__PURE__*/ S.Record(
   S.String,
-  AssetTypeFormReference.pipe(S.optional),
+  /*@__PURE__*/ AssetTypeFormReference.pipe(S.optional),
 );
 export interface GetAssetTypeResponse {
   Id?: string;
@@ -10699,7 +10768,10 @@ export const GetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export type OptionKey = string;
 export type OptionValue = string;
 export type ConnectionOptions = { [key: string]: string | undefined };
-export const ConnectionOptions = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConnectionOptions = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type FilterPredicate = string;
 export type Limit = number;
 export type SelectedFields = string[];
@@ -11671,7 +11743,10 @@ export const GetPartitionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Partitions: S.optional(PartitionList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetPartitionsResponse" }) as any as S.Schema<GetPartitionsResponse>;
 export type AdditionalPlanOptionsMap = { [key: string]: string | undefined };
-export const AdditionalPlanOptionsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalPlanOptionsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface GetPlanRequest {
   Mapping: MappingEntry[];
   Source: CatalogEntry;
@@ -12418,7 +12493,7 @@ export const GetTablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTablesRequest" }) as any as S.Schema<GetTablesRequest>;
 export type TableList = Table[];
 export const TableList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Table> => Table).annotate({ identifier: "Table" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Table> => Table).annotate({ identifier: "Table" }),
 );
 export interface GetTablesResponse {
   TableList?: Table[];
@@ -13514,7 +13589,10 @@ export const StatisticEvaluationLevel = S.String;
 export type ReferenceDatasetsList = string[];
 export const ReferenceDatasetsList = /*@__PURE__*/ S.Array(S.String);
 export type StatisticPropertiesMap = { [key: string]: string | undefined };
-export const StatisticPropertiesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StatisticPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface StatisticSummary {
   StatisticId?: string;
   ProfileId?: string;
@@ -14638,7 +14716,10 @@ export const MetadataInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataInfo" }) as any as S.Schema<MetadataInfo>;
 export type MetadataInfoMap = { [key: string]: MetadataInfo | undefined };
-export const MetadataInfoMap = /*@__PURE__*/ S.Record(S.String, MetadataInfo.pipe(S.optional));
+export const MetadataInfoMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MetadataInfo.pipe(S.optional),
+);
 export interface QuerySchemaVersionMetadataResponse {
   MetadataInfoMap?: { [key: string]: MetadataInfo | undefined };
   SchemaVersionId?: string;
@@ -14959,7 +15040,7 @@ export const SearchSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSort" }) as any as S.Schema<SearchSort>;
 export type SearchFilterClauseList = SearchFilterClause[];
 export const SearchFilterClauseList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SearchFilterClause).annotate({ identifier: "SearchFilterClause" }),
+  /*@__PURE__*/ S.suspend(() => SearchFilterClause).annotate({ identifier: "SearchFilterClause" }),
 ) as any as S.Schema<SearchFilterClauseList>;
 export type SearchFilterOperator =
   | "equals"
@@ -14977,8 +15058,8 @@ export type SearchFilterValue =
   | { StringValue: string; LongValue?: never }
   | { StringValue?: never; LongValue: number };
 export const SearchFilterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ StringValue: S.String }),
-  S.Struct({ LongValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ LongValue: S.Number }),
 ]);
 export interface SearchAttributeFilter {
   Attribute: string;
@@ -14994,7 +15075,9 @@ export const SearchAttributeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchAttributeFilter" }) as any as S.Schema<SearchAttributeFilter>;
 export type SearchMapKey = string;
 export type SearchMapFilterValue = { StringValue: string };
-export const SearchMapFilterValue = /*@__PURE__*/ S.Union([S.Struct({ StringValue: S.String })]);
+export const SearchMapFilterValue = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+]);
 export interface SearchMapFilter {
   Attribute: string;
   Key: string;
@@ -15029,18 +15112,18 @@ export type SearchFilterClause =
       MapFilter: SearchMapFilter;
     };
 export const SearchFilterClause = /*@__PURE__*/ S.Union([
-  S.Struct({
-    AndAllFilters: S.suspend(() => SearchFilterClauseList).annotate({
+  /*@__PURE__*/ S.Struct({
+    AndAllFilters: /*@__PURE__*/ S.suspend(() => SearchFilterClauseList).annotate({
       identifier: "SearchFilterClauseList",
     }),
   }),
-  S.Struct({
-    OrAnyFilters: S.suspend(() => SearchFilterClauseList).annotate({
+  /*@__PURE__*/ S.Struct({
+    OrAnyFilters: /*@__PURE__*/ S.suspend(() => SearchFilterClauseList).annotate({
       identifier: "SearchFilterClauseList",
     }),
   }),
-  S.Struct({ AttributeFilter: SearchAttributeFilter }),
-  S.Struct({ MapFilter: SearchMapFilter }),
+  /*@__PURE__*/ S.Struct({ AttributeFilter: SearchAttributeFilter }),
+  /*@__PURE__*/ S.Struct({ MapFilter: SearchMapFilter }),
 ]) as any as S.Schema<SearchFilterClause>;
 export interface SearchAssetsInput {
   SearchText?: string;

@@ -205,7 +205,7 @@ export const SearchRequestFiltersCase0Type = S.String;
 
 export type SearchRequestFiltersCase0Value = string | number | boolean;
 export const SearchRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface SearchRequestFiltersCase0 {
@@ -228,7 +228,7 @@ export const SearchRequestFiltersCase1FiltersItemType = S.String;
 
 export type SearchRequestFiltersCase1FiltersItemValue = string | number | boolean;
 export const SearchRequestFiltersCase1FiltersItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface SearchRequestFiltersCase1FiltersItem {
@@ -269,7 +269,7 @@ export const SearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchRequestFilters = SearchRequestFiltersCase0 | SearchRequestFiltersCase1;
 export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["key", "type", "value"],
     ["filters", "type"],
   ]),
@@ -391,7 +391,7 @@ export const SearchAiRequestFiltersCase0Type = S.String;
 
 export type SearchAiRequestFiltersCase0Value = string | number | boolean;
 export const SearchAiRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface SearchAiRequestFiltersCase0 {
@@ -414,7 +414,7 @@ export const SearchAiRequestFiltersCase1FiltersItemType = S.String;
 
 export type SearchAiRequestFiltersCase1FiltersItemValue = string | number | boolean;
 export const SearchAiRequestFiltersCase1FiltersItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], []]),
 );
 
 export interface SearchAiRequestFiltersCase1FiltersItem {
@@ -455,7 +455,7 @@ export const SearchAiRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchAiRequestFilters = SearchAiRequestFiltersCase0 | SearchAiRequestFiltersCase1;
 export const SearchAiRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["key", "type", "value"],
     ["filters", "type"],
   ]),

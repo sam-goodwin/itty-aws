@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "FSx", serviceShapeName: "AWSSimbaAPIService_v20180301" });
-const auth = T.AwsAuthSigv4({ name: "fsx" });
-const ver = T.ServiceVersion("2018-03-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "FSx",
+  serviceShapeName: "AWSSimbaAPIService_v20180301",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "fsx" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-03-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,194 +74,214 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessPointAlreadyOwnedByYou
   extends /*@__PURE__*/ S.TaggedError<AccessPointAlreadyOwnedByYou>()(
     "AccessPointAlreadyOwnedByYou",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ActiveDirectoryError
   extends /*@__PURE__*/ S.TaggedError<ActiveDirectoryError>()("ActiveDirectoryError", {
-    ActiveDirectoryId: S.optional(S.String),
-    Type: S.optional(
-      S.suspend(() => ActiveDirectoryErrorType).annotate({
+    ActiveDirectoryId: /*@__PURE__*/ S.optional(S.String),
+    Type: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ActiveDirectoryErrorType).annotate({
         identifier: "ActiveDirectoryErrorType",
       }),
     ),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class BackupBeingCopied
   extends /*@__PURE__*/ S.TaggedError<BackupBeingCopied>()("BackupBeingCopied", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    BackupId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    BackupId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class BackupInProgress
   extends /*@__PURE__*/ S.TaggedError<BackupInProgress>()("BackupInProgress", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class BackupNotFound
   extends /*@__PURE__*/ S.TaggedError<BackupNotFound>()("BackupNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class BackupRestoring
   extends /*@__PURE__*/ S.TaggedError<BackupRestoring>()("BackupRestoring", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    FileSystemId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    FileSystemId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class BadRequest
   extends /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DataRepositoryAssociationNotFound
   extends /*@__PURE__*/ S.TaggedError<DataRepositoryAssociationNotFound>()(
     "DataRepositoryAssociationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class DataRepositoryTaskEnded
   extends /*@__PURE__*/ S.TaggedError<DataRepositoryTaskEnded>()("DataRepositoryTaskEnded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DataRepositoryTaskExecuting
   extends /*@__PURE__*/ S.TaggedError<DataRepositoryTaskExecuting>()(
     "DataRepositoryTaskExecuting",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class DataRepositoryTaskNotFound
   extends /*@__PURE__*/ S.TaggedError<DataRepositoryTaskNotFound>()("DataRepositoryTaskNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class FileCacheNotFound
   extends /*@__PURE__*/ S.TaggedError<FileCacheNotFound>()("FileCacheNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class FileSystemNotFound
   extends /*@__PURE__*/ S.TaggedError<FileSystemNotFound>()("FileSystemNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class IncompatibleParameterError
   extends /*@__PURE__*/ S.TaggedError<IncompatibleParameterError>()("IncompatibleParameterError", {
-    Parameter: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    Parameter: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class IncompatibleRegionForMultiAZ
   extends /*@__PURE__*/ S.TaggedError<IncompatibleRegionForMultiAZ>()(
     "IncompatibleRegionForMultiAZ",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidAccessPoint
   extends /*@__PURE__*/ S.TaggedError<InvalidAccessPoint>()(
     "InvalidAccessPoint",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDataRepositoryType
   extends /*@__PURE__*/ S.TaggedError<InvalidDataRepositoryType>()("InvalidDataRepositoryType", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidDestinationKmsKey
   extends /*@__PURE__*/ S.TaggedError<InvalidDestinationKmsKey>()("InvalidDestinationKmsKey", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidExportPath
   extends /*@__PURE__*/ S.TaggedError<InvalidExportPath>()("InvalidExportPath", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidImportPath
   extends /*@__PURE__*/ S.TaggedError<InvalidImportPath>()("InvalidImportPath", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidNetworkSettings
   extends /*@__PURE__*/ S.TaggedError<InvalidNetworkSettings>()("InvalidNetworkSettings", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    InvalidSubnetId: S.optional(S.String),
-    InvalidSecurityGroupId: S.optional(S.String),
-    InvalidRouteTableId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    InvalidSubnetId: /*@__PURE__*/ S.optional(S.String),
+    InvalidSecurityGroupId: /*@__PURE__*/ S.optional(S.String),
+    InvalidRouteTableId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidPerUnitStorageThroughput
   extends /*@__PURE__*/ S.TaggedError<InvalidPerUnitStorageThroughput>()(
     "InvalidPerUnitStorageThroughput",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRegion
   extends /*@__PURE__*/ S.TaggedError<InvalidRegion>()("InvalidRegion", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequest
   extends /*@__PURE__*/ S.TaggedError<InvalidRequest>()(
     "InvalidRequest",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSourceKmsKey
   extends /*@__PURE__*/ S.TaggedError<InvalidSourceKmsKey>()("InvalidSourceKmsKey", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MissingFileCacheConfiguration
   extends /*@__PURE__*/ S.TaggedError<MissingFileCacheConfiguration>()(
     "MissingFileCacheConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class MissingFileSystemConfiguration
   extends /*@__PURE__*/ S.TaggedError<MissingFileSystemConfiguration>()(
     "MissingFileSystemConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class MissingVolumeConfiguration
   extends /*@__PURE__*/ S.TaggedError<MissingVolumeConfiguration>()("MissingVolumeConfiguration", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotServiceResourceError
   extends /*@__PURE__*/ S.TaggedError<NotServiceResourceError>()("NotServiceResourceError", {
-    ResourceARN: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ResourceARN: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceDoesNotSupportTagging
   extends /*@__PURE__*/ S.TaggedError<ResourceDoesNotSupportTagging>()(
     "ResourceDoesNotSupportTagging",
-    { ResourceARN: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    {
+      ResourceARN: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
   ) {}
 export class ResourceNotFound
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()("ResourceNotFound", {
-    ResourceARN: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ResourceARN: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class RestoreSnapshotNotFound
   extends /*@__PURE__*/ S.TaggedError<RestoreSnapshotNotFound>()(
     "RestoreSnapshotNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "BadRequest", message: { includes: "snapshot cannot be found" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "BadRequest",
+      message: { includes: "snapshot cannot be found" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class S3AccessPointAttachmentNotFound
   extends /*@__PURE__*/ S.TaggedError<S3AccessPointAttachmentNotFound>()(
     "S3AccessPointAttachmentNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ServiceLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ServiceLimitExceeded>()("ServiceLimitExceeded", {
-    Limit: S.optional(S.suspend(() => ServiceLimit).annotate({ identifier: "ServiceLimit" })),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    Limit: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ServiceLimit).annotate({ identifier: "ServiceLimit" }),
+    ),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class SnapshotNotFound
   extends /*@__PURE__*/ S.TaggedError<SnapshotNotFound>()("SnapshotNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class SnapshotVolumeNotFound
   extends /*@__PURE__*/ S.TaggedError<SnapshotVolumeNotFound>()(
     "SnapshotVolumeNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "BadRequest", message: { includes: "volume was not found" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "BadRequest",
+      message: { includes: "volume was not found" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class SourceBackupUnavailable
   extends /*@__PURE__*/ S.TaggedError<SourceBackupUnavailable>()("SourceBackupUnavailable", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    BackupId: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    BackupId: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class SourceSnapshotNotFound
   extends /*@__PURE__*/ S.TaggedError<SourceSnapshotNotFound>()(
     "SourceSnapshotNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "BadRequest",
       message: { includes: "SourceSnapshotARN provided is not a valid ARN" },
     }),
@@ -266,27 +289,33 @@ export class SourceSnapshotNotFound
 export class StorageVirtualMachineNotFound
   extends /*@__PURE__*/ S.TaggedError<StorageVirtualMachineNotFound>()(
     "StorageVirtualMachineNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class TooManyAccessPoints
   extends /*@__PURE__*/ S.TaggedError<TooManyAccessPoints>()(
     "TooManyAccessPoints",
-    { ErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()("UnsupportedOperation", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UpdateSnapshotNotFound
   extends /*@__PURE__*/ S.TaggedError<UpdateSnapshotNotFound>()(
     "UpdateSnapshotNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "BadRequest", message: { includes: "the snapshot is not found" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "BadRequest",
+      message: { includes: "the snapshot is not found" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class VolumeNotFound
   extends /*@__PURE__*/ S.TaggedError<VolumeNotFound>()("VolumeNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type ClientRequestToken = string;
 export type FileSystemId = string;
@@ -1165,7 +1194,7 @@ export const AdministrativeAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdministrativeAction" }) as any as S.Schema<AdministrativeAction>;
 export type AdministrativeActions = AdministrativeAction[];
 export const AdministrativeActions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<AdministrativeAction> => AdministrativeAction).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<AdministrativeAction> => AdministrativeAction).annotate({
     identifier: "AdministrativeAction",
   }),
 ) as any as S.Schema<AdministrativeActions>;
@@ -3891,7 +3920,9 @@ export const DescribeFileSystemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFileSystemsRequest>;
 export type FileSystems = FileSystem[];
 export const FileSystems = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<FileSystem> => FileSystem).annotate({ identifier: "FileSystem" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<FileSystem> => FileSystem).annotate({
+    identifier: "FileSystem",
+  }),
 );
 export interface DescribeFileSystemsResponse {
   FileSystems?: (FileSystem & {
@@ -4069,7 +4100,7 @@ export const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeSnapshotsRequest" }) as any as S.Schema<DescribeSnapshotsRequest>;
 export type Snapshots = Snapshot[];
 export const Snapshots = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Snapshot> => Snapshot).annotate({ identifier: "Snapshot" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Snapshot> => Snapshot).annotate({ identifier: "Snapshot" }),
 );
 export interface DescribeSnapshotsResponse {
   Snapshots?: (Snapshot & {
@@ -4213,7 +4244,7 @@ export const DescribeVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeVolumesRequest" }) as any as S.Schema<DescribeVolumesRequest>;
 export type Volumes = Volume[];
 export const Volumes = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Volume> => Volume).annotate({ identifier: "Volume" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Volume> => Volume).annotate({ identifier: "Volume" }),
 );
 export interface DescribeVolumesResponse {
   Volumes?: (Volume & {

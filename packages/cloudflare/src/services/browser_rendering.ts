@@ -317,7 +317,7 @@ export type CreateAccessibilityTreeRequestGotoOptionsWaitUntil =
   | (string & {})
   | CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1List;
 export const CreateAccessibilityTreeRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CreateAccessibilityTreeRequestGotoOptions {
@@ -507,7 +507,7 @@ export type CreateAccessibilityTreeResponseAccessibilityTreeChecked2 =
   | CreateAccessibilityTreeResponseAccessibilityTreeChecked
   | boolean;
 export const CreateAccessibilityTreeResponseAccessibilityTreeChecked2 =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type CreateAccessibilityTreeResponseAccessibilityTreeChildrenList = Array<unknown>;
 export const CreateAccessibilityTreeResponseAccessibilityTreeChildrenList = /*@__PURE__*/ S.Array(
@@ -521,11 +521,11 @@ export type CreateAccessibilityTreeResponseAccessibilityTreePressed2 =
   | CreateAccessibilityTreeResponseAccessibilityTreePressed
   | boolean;
 export const CreateAccessibilityTreeResponseAccessibilityTreePressed2 =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type CreateAccessibilityTreeResponseAccessibilityTreeValue = string | number;
 export const CreateAccessibilityTreeResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CreateAccessibilityTreeResponseAccessibilityTree {
@@ -737,7 +737,7 @@ export type ContentCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | ContentCreateRequestGotoOptionsWaitUntilCase1List;
 export const ContentCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface ContentCreateRequestGotoOptions {
@@ -1041,7 +1041,7 @@ export type CrawlCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | CrawlCreateRequestGotoOptionsWaitUntilCase1List;
 export const CrawlCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CrawlCreateRequestGotoOptions {
@@ -1695,7 +1695,7 @@ export type JsonCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | JsonCreateRequestGotoOptionsWaitUntilCase1List;
 export const JsonCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface JsonCreateRequestGotoOptions {
@@ -2009,7 +2009,7 @@ export type LinksCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | LinksCreateRequestGotoOptionsWaitUntilCase1List;
 export const LinksCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface LinksCreateRequestGotoOptions {
@@ -2297,7 +2297,7 @@ export type MarkdownCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | MarkdownCreateRequestGotoOptionsWaitUntilCase1List;
 export const MarkdownCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface MarkdownCreateRequestGotoOptions {
@@ -2579,7 +2579,7 @@ export type PdfCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | PdfCreateRequestGotoOptionsWaitUntilCase1List;
 export const PdfCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface PdfCreateRequestGotoOptions {
@@ -2615,27 +2615,27 @@ export const PdfCreateRequestPdfOptionsFormat = S.String;
 
 export type PdfCreateRequestPdfOptionsHeight = string | number;
 export const PdfCreateRequestPdfOptionsHeight = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginBottom = string | number;
 export const PdfCreateRequestPdfOptionsMarginBottom = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginLeft = string | number;
 export const PdfCreateRequestPdfOptionsMarginLeft = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginRight = string | number;
 export const PdfCreateRequestPdfOptionsMarginRight = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginTop = string | number;
 export const PdfCreateRequestPdfOptionsMarginTop = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface PdfCreateRequestPdfOptionsMargin {
@@ -2656,7 +2656,9 @@ export const PdfCreateRequestPdfOptionsMargin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestPdfOptionsMargin>;
 
 export type PdfCreateRequestPdfOptionsWidth = string | number;
-export const PdfCreateRequestPdfOptionsWidth = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PdfCreateRequestPdfOptionsWidth = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface PdfCreateRequestPdfOptions {
   /** Whether to show the header and footer. */
@@ -2993,7 +2995,7 @@ export type ScrapeCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | ScrapeCreateRequestGotoOptionsWaitUntilCase1List;
 export const ScrapeCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface ScrapeCreateRequestGotoOptions {
@@ -3343,7 +3345,7 @@ export type ScreenshotCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | ScreenshotCreateRequestGotoOptionsWaitUntilCase1List;
 export const ScreenshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface ScreenshotCreateRequestGotoOptions {
@@ -3699,7 +3701,7 @@ export type SnapshotCreateRequestGotoOptionsWaitUntil =
   | (string & {})
   | SnapshotCreateRequestGotoOptionsWaitUntilCase1List;
 export const SnapshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface SnapshotCreateRequestGotoOptions {
@@ -3886,7 +3888,7 @@ export type SnapshotCreateResponseAccessibilityTreeChecked2 =
   | SnapshotCreateResponseAccessibilityTreeChecked
   | boolean;
 export const SnapshotCreateResponseAccessibilityTreeChecked2 = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type SnapshotCreateResponseAccessibilityTreeChildrenList = Array<unknown>;
@@ -3901,12 +3903,12 @@ export type SnapshotCreateResponseAccessibilityTreePressed2 =
   | SnapshotCreateResponseAccessibilityTreePressed
   | boolean;
 export const SnapshotCreateResponseAccessibilityTreePressed2 = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type SnapshotCreateResponseAccessibilityTreeValue = string | number;
 export const SnapshotCreateResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface SnapshotCreateResponseAccessibilityTree {

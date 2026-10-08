@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker Geospatial",
   serviceShapeName: "SageMakerGeospatial",
 });
-const auth = T.AwsAuthSigv4({ name: "sagemaker-geospatial" });
-const ver = T.ServiceVersion("2020-05-27");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sagemaker-geospatial" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-05-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,44 +80,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type EarthObservationJobArn = string;
 export interface DeleteEarthObservationJobInput {
@@ -343,12 +361,12 @@ export type AreaOfInterestGeometry =
   | { PolygonGeometry: PolygonGeometryInput; MultiPolygonGeometry?: never }
   | { PolygonGeometry?: never; MultiPolygonGeometry: MultiPolygonGeometryInput };
 export const AreaOfInterestGeometry = /*@__PURE__*/ S.Union([
-  S.Struct({ PolygonGeometry: PolygonGeometryInput }),
-  S.Struct({ MultiPolygonGeometry: MultiPolygonGeometryInput }),
+  /*@__PURE__*/ S.Struct({ PolygonGeometry: PolygonGeometryInput }),
+  /*@__PURE__*/ S.Struct({ MultiPolygonGeometry: MultiPolygonGeometryInput }),
 ]);
 export type AreaOfInterest = { AreaOfInterestGeometry: AreaOfInterestGeometry };
 export const AreaOfInterest = /*@__PURE__*/ S.Union([
-  S.Struct({ AreaOfInterestGeometry: AreaOfInterestGeometry }),
+  /*@__PURE__*/ S.Struct({ AreaOfInterestGeometry: AreaOfInterestGeometry }),
 ]);
 export interface EoCloudCoverInput {
   LowerBound: number;
@@ -445,12 +463,12 @@ export type Property =
       LandsatCloudCoverLand: LandsatCloudCoverLandInput;
     };
 export const Property = /*@__PURE__*/ S.Union([
-  S.Struct({ EoCloudCover: EoCloudCoverInput }),
-  S.Struct({ ViewOffNadir: ViewOffNadirInput }),
-  S.Struct({ ViewSunAzimuth: ViewSunAzimuthInput }),
-  S.Struct({ ViewSunElevation: ViewSunElevationInput }),
-  S.Struct({ Platform: PlatformInput }),
-  S.Struct({ LandsatCloudCoverLand: LandsatCloudCoverLandInput }),
+  /*@__PURE__*/ S.Struct({ EoCloudCover: EoCloudCoverInput }),
+  /*@__PURE__*/ S.Struct({ ViewOffNadir: ViewOffNadirInput }),
+  /*@__PURE__*/ S.Struct({ ViewSunAzimuth: ViewSunAzimuthInput }),
+  /*@__PURE__*/ S.Struct({ ViewSunElevation: ViewSunElevationInput }),
+  /*@__PURE__*/ S.Struct({ Platform: PlatformInput }),
+  /*@__PURE__*/ S.Struct({ LandsatCloudCoverLand: LandsatCloudCoverLandInput }),
 ]);
 export interface PropertyFilter {
   Property: Property;
@@ -743,15 +761,15 @@ export type JobConfigInput =
       LandCoverSegmentationConfig: LandCoverSegmentationConfigInput;
     };
 export const JobConfigInput = /*@__PURE__*/ S.Union([
-  S.Struct({ BandMathConfig: BandMathConfigInput }),
-  S.Struct({ ResamplingConfig: ResamplingConfigInput }),
-  S.Struct({ TemporalStatisticsConfig: TemporalStatisticsConfigInput }),
-  S.Struct({ CloudRemovalConfig: CloudRemovalConfigInput }),
-  S.Struct({ ZonalStatisticsConfig: ZonalStatisticsConfigInput }),
-  S.Struct({ GeoMosaicConfig: GeoMosaicConfigInput }),
-  S.Struct({ StackConfig: StackConfigInput }),
-  S.Struct({ CloudMaskingConfig: CloudMaskingConfigInput }),
-  S.Struct({ LandCoverSegmentationConfig: LandCoverSegmentationConfigInput }),
+  /*@__PURE__*/ S.Struct({ BandMathConfig: BandMathConfigInput }),
+  /*@__PURE__*/ S.Struct({ ResamplingConfig: ResamplingConfigInput }),
+  /*@__PURE__*/ S.Struct({ TemporalStatisticsConfig: TemporalStatisticsConfigInput }),
+  /*@__PURE__*/ S.Struct({ CloudRemovalConfig: CloudRemovalConfigInput }),
+  /*@__PURE__*/ S.Struct({ ZonalStatisticsConfig: ZonalStatisticsConfigInput }),
+  /*@__PURE__*/ S.Struct({ GeoMosaicConfig: GeoMosaicConfigInput }),
+  /*@__PURE__*/ S.Struct({ StackConfig: StackConfigInput }),
+  /*@__PURE__*/ S.Struct({ CloudMaskingConfig: CloudMaskingConfigInput }),
+  /*@__PURE__*/ S.Struct({ LandCoverSegmentationConfig: LandCoverSegmentationConfigInput }),
 ]);
 export interface OutputBand {
   BandName: string;
@@ -791,7 +809,7 @@ export const ExportErrorDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExportErrorDetails" }) as any as S.Schema<ExportErrorDetails>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetEarthObservationJobOutput {
   Arn: string;
   Name: string;
@@ -947,7 +965,7 @@ export type VectorEnrichmentJobStatus = string;
 export type VectorEnrichmentJobDocumentType = string;
 export type VectorEnrichmentJobDataSourceConfigInput = { S3Data: VectorEnrichmentJobS3Data };
 export const VectorEnrichmentJobDataSourceConfigInput = /*@__PURE__*/ S.Union([
-  S.Struct({ S3Data: VectorEnrichmentJobS3Data }),
+  /*@__PURE__*/ S.Struct({ S3Data: VectorEnrichmentJobS3Data }),
 ]);
 export interface VectorEnrichmentJobInputConfig {
   DocumentType: string;
@@ -983,8 +1001,8 @@ export type VectorEnrichmentJobConfig =
   | { ReverseGeocodingConfig: ReverseGeocodingConfig; MapMatchingConfig?: never }
   | { ReverseGeocodingConfig?: never; MapMatchingConfig: MapMatchingConfig };
 export const VectorEnrichmentJobConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ ReverseGeocodingConfig: ReverseGeocodingConfig }),
-  S.Struct({ MapMatchingConfig: MapMatchingConfig }),
+  /*@__PURE__*/ S.Struct({ ReverseGeocodingConfig: ReverseGeocodingConfig }),
+  /*@__PURE__*/ S.Struct({ MapMatchingConfig: MapMatchingConfig }),
 ]);
 export type VectorEnrichmentJobErrorType = string;
 export interface VectorEnrichmentJobErrorDetails {
@@ -1302,7 +1320,10 @@ export const AssetValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Href: S.optional(S.String) }),
 ).annotate({ identifier: "AssetValue" }) as any as S.Schema<AssetValue>;
 export type AssetsMap = { [key: string]: AssetValue | undefined };
-export const AssetsMap = /*@__PURE__*/ S.Record(S.String, AssetValue.pipe(S.optional));
+export const AssetsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AssetValue.pipe(S.optional),
+);
 export interface Properties {
   EoCloudCover?: number;
   ViewOffNadir?: number;

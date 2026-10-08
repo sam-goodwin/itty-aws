@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Marketplace Catalog", serviceShapeName: "AWSMPSeymour" });
-const auth = T.AwsAuthSigv4({ name: "aws-marketplace" });
-const ver = T.ServiceVersion("2018-09-17");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Marketplace Catalog",
+  serviceShapeName: "AWSMPSeymour",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aws-marketplace" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-09-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,57 +83,57 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(423),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(423),
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotSupportedException>()(
     "ResourceNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(415),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(415),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ValidationExceptionFieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ValidationExceptionFieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(422),
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export type Catalog = string;
 export type EntityId = string;
@@ -175,7 +178,10 @@ export const EntityDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityDetail" }) as any as S.Schema<EntityDetail>;
 export type EntityDetails = { [key: string]: EntityDetail | undefined };
-export const EntityDetails = /*@__PURE__*/ S.Record(S.String, EntityDetail.pipe(S.optional));
+export const EntityDetails = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ EntityDetail.pipe(S.optional),
+);
 export type BatchDescribeErrorCodeString = string;
 export type BatchDescribeErrorMessageContent = string;
 export interface BatchDescribeErrorDetail {
@@ -186,7 +192,10 @@ export const BatchDescribeErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
 ).annotate({ identifier: "BatchDescribeErrorDetail" }) as any as S.Schema<BatchDescribeErrorDetail>;
 export type Errors = { [key: string]: BatchDescribeErrorDetail | undefined };
-export const Errors = /*@__PURE__*/ S.Record(S.String, BatchDescribeErrorDetail.pipe(S.optional));
+export const Errors = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ BatchDescribeErrorDetail.pipe(S.optional),
+);
 export interface BatchDescribeEntitiesResponse {
   EntityDetails?: { [key: string]: EntityDetail | undefined };
   Errors?: { [key: string]: BatchDescribeErrorDetail | undefined };
@@ -276,8 +285,8 @@ export type FrameworkSummary =
   | { AMISecuritySummary: AMISecuritySummary; ContainerSecuritySummary?: never }
   | { AMISecuritySummary?: never; ContainerSecuritySummary: ContainerSecuritySummary };
 export const FrameworkSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ AMISecuritySummary: AMISecuritySummary }),
-  S.Struct({ ContainerSecuritySummary: ContainerSecuritySummary }),
+  /*@__PURE__*/ S.Struct({ AMISecuritySummary: AMISecuritySummary }),
+  /*@__PURE__*/ S.Struct({ ContainerSecuritySummary: ContainerSecuritySummary }),
 ]);
 export type AssessmentResult = "PASS" | "FAIL" | (string & {});
 export const AssessmentResult = S.String;
@@ -525,8 +534,8 @@ export type FrameworkFilters =
   | { AMISecurityFilters: AMISecurityFilters; ContainerSecurityFilters?: never }
   | { AMISecurityFilters?: never; ContainerSecurityFilters: ContainerSecurityFilters };
 export const FrameworkFilters = /*@__PURE__*/ S.Union([
-  S.Struct({ AMISecurityFilters: AMISecurityFilters }),
-  S.Struct({ ContainerSecurityFilters: ContainerSecurityFilters }),
+  /*@__PURE__*/ S.Struct({ AMISecurityFilters: AMISecurityFilters }),
+  /*@__PURE__*/ S.Struct({ ContainerSecurityFilters: ContainerSecurityFilters }),
 ]);
 export type ListAssessmentsMaxResultInteger = number;
 export interface ListAssessmentsRequest {
@@ -1740,14 +1749,14 @@ export type EntityTypeFilters =
       OfferSetFilters: OfferSetFilters;
     };
 export const EntityTypeFilters = /*@__PURE__*/ S.Union([
-  S.Struct({ DataProductFilters: DataProductFilters }),
-  S.Struct({ SaaSProductFilters: SaaSProductFilters }),
-  S.Struct({ AmiProductFilters: AmiProductFilters }),
-  S.Struct({ OfferFilters: OfferFilters }),
-  S.Struct({ ContainerProductFilters: ContainerProductFilters }),
-  S.Struct({ ResaleAuthorizationFilters: ResaleAuthorizationFilters }),
-  S.Struct({ MachineLearningProductFilters: MachineLearningProductFilters }),
-  S.Struct({ OfferSetFilters: OfferSetFilters }),
+  /*@__PURE__*/ S.Struct({ DataProductFilters: DataProductFilters }),
+  /*@__PURE__*/ S.Struct({ SaaSProductFilters: SaaSProductFilters }),
+  /*@__PURE__*/ S.Struct({ AmiProductFilters: AmiProductFilters }),
+  /*@__PURE__*/ S.Struct({ OfferFilters: OfferFilters }),
+  /*@__PURE__*/ S.Struct({ ContainerProductFilters: ContainerProductFilters }),
+  /*@__PURE__*/ S.Struct({ ResaleAuthorizationFilters: ResaleAuthorizationFilters }),
+  /*@__PURE__*/ S.Struct({ MachineLearningProductFilters: MachineLearningProductFilters }),
+  /*@__PURE__*/ S.Struct({ OfferSetFilters: OfferSetFilters }),
 ]);
 export type DataProductSortBy =
   | "EntityId"
@@ -1979,14 +1988,14 @@ export type EntityTypeSort =
       OfferSetSort: OfferSetSort;
     };
 export const EntityTypeSort = /*@__PURE__*/ S.Union([
-  S.Struct({ DataProductSort: DataProductSort }),
-  S.Struct({ SaaSProductSort: SaaSProductSort }),
-  S.Struct({ AmiProductSort: AmiProductSort }),
-  S.Struct({ OfferSort: OfferSort }),
-  S.Struct({ ContainerProductSort: ContainerProductSort }),
-  S.Struct({ ResaleAuthorizationSort: ResaleAuthorizationSort }),
-  S.Struct({ MachineLearningProductSort: MachineLearningProductSort }),
-  S.Struct({ OfferSetSort: OfferSetSort }),
+  /*@__PURE__*/ S.Struct({ DataProductSort: DataProductSort }),
+  /*@__PURE__*/ S.Struct({ SaaSProductSort: SaaSProductSort }),
+  /*@__PURE__*/ S.Struct({ AmiProductSort: AmiProductSort }),
+  /*@__PURE__*/ S.Struct({ OfferSort: OfferSort }),
+  /*@__PURE__*/ S.Struct({ ContainerProductSort: ContainerProductSort }),
+  /*@__PURE__*/ S.Struct({ ResaleAuthorizationSort: ResaleAuthorizationSort }),
+  /*@__PURE__*/ S.Struct({ MachineLearningProductSort: MachineLearningProductSort }),
+  /*@__PURE__*/ S.Struct({ OfferSetSort: OfferSetSort }),
 ]);
 export interface ListEntitiesRequest {
   Catalog: string;

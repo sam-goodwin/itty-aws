@@ -142,7 +142,7 @@ export type CreateSuppressionRequestScope =
   | CreateSuppressionRequestScopeType
   | CreateSuppressionRequestScopeCase1;
 export const CreateSuppressionRequestScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -215,7 +215,7 @@ export type CreateSuppressionResponseScope =
   | CreateSuppressionResponseScopeType
   | CreateSuppressionResponseScopeCase1;
 export const CreateSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -321,7 +321,7 @@ export type DeleteSuppressionResponseScope =
   | DeleteSuppressionResponseScopeType
   | DeleteSuppressionResponseScopeCase1;
 export const DeleteSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -474,7 +474,7 @@ export type EditSuppressionResponseScope =
   | EditSuppressionResponseScopeType
   | EditSuppressionResponseScopeCase1;
 export const EditSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -712,7 +712,7 @@ export type GetSuppressionResponseScope =
   | GetSuppressionResponseScopeType
   | GetSuppressionResponseScopeCase1;
 export const GetSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -787,7 +787,7 @@ export type ImportSuppressionRequestItemsItemScope =
   | ImportSuppressionRequestItemsItemScopeType
   | ImportSuppressionRequestItemsItemScopeCase1;
 export const ImportSuppressionRequestItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -884,7 +884,7 @@ export type ImportSuppressionResponseItemsItemScope =
   | ImportSuppressionResponseItemsItemScopeType
   | ImportSuppressionResponseItemsItemScopeCase1;
 export const ImportSuppressionResponseItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),
@@ -1106,7 +1106,7 @@ export type ListSuppressionsResultItemScope =
   | ListSuppressionsResultItemScopeType
   | ListSuppressionsResultItemScopeCase1;
 export const ListSuppressionsResultItemScope = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "value"]], {
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
   }),

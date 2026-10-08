@@ -341,7 +341,7 @@ export type PersonPropertiesAtTimeResponsePropertiesMap = {
 };
 export const PersonPropertiesAtTimeResponsePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<PersonPropertiesAtTimeResponsePropertiesMap>;
 
 /** All distinct_ids that were queried for this person */

@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://autoscaling.amazonaws.com/doc/2011-01-01/");
-const svc = T.AwsApiService({ sdkId: "Auto Scaling", serviceShapeName: "AutoScaling_2011_01_01" });
-const auth = T.AwsAuthSigv4({ name: "autoscaling" });
-const ver = T.ServiceVersion("2011-01-01");
-const proto = T.AwsProtocolsAwsQuery();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://autoscaling.amazonaws.com/doc/2011-01-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Auto Scaling",
+  serviceShapeName: "AutoScaling_2011_01_01",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "autoscaling" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2011-01-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,56 +80,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class ActiveInstanceRefreshNotFoundFault
   extends /*@__PURE__*/ S.TaggedError<ActiveInstanceRefreshNotFoundFault>()(
     "ActiveInstanceRefreshNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ActiveInstanceRefreshNotFound", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ActiveInstanceRefreshNotFound",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<AlreadyExistsFault>()(
     "AlreadyExistsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class AutoScalingGroupNotFound
   extends /*@__PURE__*/ S.TaggedError<AutoScalingGroupNotFound>()(
     "AutoScalingGroupNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "ValidationError", message: { includes: "not found" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({ from: "ValidationError", message: { includes: "not found" } }),
   ) {}
 export class IdempotentCallInProgressFault
   extends /*@__PURE__*/ S.TaggedError<IdempotentCallInProgressFault>()(
     "IdempotentCallInProgressFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "IdempotentCallInProgress", httpResponseCode: 500 }),
-      T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "IdempotentCallInProgress", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
     ),
   ).pipe(C.withServerError) {}
 export class IdempotentParameterMismatchError
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchError>()(
     "IdempotentParameterMismatchError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "IdempotentParameterMismatch", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "IdempotentParameterMismatch", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InstanceRefreshInProgressFault
   extends /*@__PURE__*/ S.TaggedError<InstanceRefreshInProgressFault>()(
     "InstanceRefreshInProgressFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InstanceRefreshInProgress", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InstanceRefreshInProgress", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIamInstanceProfile
   extends /*@__PURE__*/ S.TaggedError<InvalidIamInstanceProfile>()(
     "InvalidIamInstanceProfile",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationError",
       message: { includes: "Invalid IAM Instance Profile" },
     }),
@@ -134,52 +143,64 @@ export class InvalidIamInstanceProfile
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedError<InvalidNextToken>()(
     "InvalidNextToken",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class IrreversibleInstanceRefreshFault
   extends /*@__PURE__*/ S.TaggedError<IrreversibleInstanceRefreshFault>()(
     "IrreversibleInstanceRefreshFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "IrreversibleInstanceRefresh", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "IrreversibleInstanceRefresh", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededFault
   extends /*@__PURE__*/ S.TaggedError<LimitExceededFault>()(
     "LimitExceededFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceContentionFault
   extends /*@__PURE__*/ S.TaggedError<ResourceContentionFault>()(
     "ResourceContentionFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class ResourceInUseFault
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseFault>()(
     "ResourceInUseFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ScalingActivityInProgressFault
   extends /*@__PURE__*/ S.TaggedError<ScalingActivityInProgressFault>()(
     "ScalingActivityInProgressFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ScalingActivityInProgress", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ScalingActivityInProgress", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceLinkedRoleFailure
   extends /*@__PURE__*/ S.TaggedError<ServiceLinkedRoleFailure>()(
     "ServiceLinkedRoleFailure",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServiceLinkedRoleFailure", httpResponseCode: 500 }),
-      T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceLinkedRoleFailure", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
     ),
   ).pipe(C.withServerError) {}
 export type XmlStringMaxLen19 = string;
@@ -575,7 +596,7 @@ export const PerformanceFactorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceFactorReferenceRequest>;
 export type PerformanceFactorReferenceSetRequest = PerformanceFactorReferenceRequest[];
 export const PerformanceFactorReferenceSetRequest = /*@__PURE__*/ S.Array(
-  PerformanceFactorReferenceRequest.pipe(T.XmlName("item")).annotate({
+  /*@__PURE__*/ PerformanceFactorReferenceRequest.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
     identifier: "PerformanceFactorReferenceRequest",
   }),
 );
@@ -3145,7 +3166,7 @@ export const GetPredictiveScalingForecastType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPredictiveScalingForecastType>;
 export type PredictiveScalingForecastTimestamps = Date[];
 export const PredictiveScalingForecastTimestamps = /*@__PURE__*/ S.Array(
-  T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  /*@__PURE__*/ T.DateFromString.pipe(/*@__PURE__*/ T.TimestampFormat("date-time")),
 );
 export type PredictiveScalingForecastValues = number[];
 export const PredictiveScalingForecastValues = /*@__PURE__*/ S.Array(S.Number);

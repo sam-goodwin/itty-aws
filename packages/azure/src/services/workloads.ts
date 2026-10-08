@@ -224,7 +224,7 @@ export const MonitorPropertiesProvisioningState = S.String;
 /** Array of details about specific errors that led to this reported error. */
 export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Error),
+  /*@__PURE__*/ S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
 
 /** Object containing more specific information than the current object about the error. */
@@ -725,7 +725,7 @@ export const SapVirtualInstanceProvisioningState = S.String;
 /** Internal error details. */
 export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
 export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDefinition),
+  /*@__PURE__*/ S.suspend(() => ErrorDefinition),
 ) as any as S.Schema<ErrorDefinitionDetailsList>;
 
 /** Error definition. */
@@ -2631,13 +2631,13 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 /** The operations list. */
 export type OperationStatusResultOperationsList_3 = Array<OperationStatusResult_3>;
 export const OperationStatusResultOperationsList_3 = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusResult_3),
+  /*@__PURE__*/ S.suspend(() => OperationStatusResult_3),
 ) as any as S.Schema<OperationStatusResultOperationsList_3>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -2885,7 +2885,7 @@ export const DeleteSAPApplicationServerInstanceRequest = /*@__PURE__*/ S.suspend
 /** The operations list. */
 export type OperationStatusResultOperationsList_2 = Array<OperationStatusResult_2>;
 export const OperationStatusResultOperationsList_2 = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusResult_2),
+  /*@__PURE__*/ S.suspend(() => OperationStatusResult_2),
 ) as any as S.Schema<OperationStatusResultOperationsList_2>;
 
 /** The current status of an async operation. */
@@ -5798,7 +5798,7 @@ export const StartSapApplicationServerInstanceRequest = /*@__PURE__*/ S.suspend(
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusResult),
+  /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The current status of an async operation. */

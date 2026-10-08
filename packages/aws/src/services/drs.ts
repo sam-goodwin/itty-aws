@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "drs", serviceShapeName: "ElasticDisasterRecoveryService" });
-const auth = T.AwsAuthSigv4({ name: "drs" });
-const ver = T.ServiceVersion("2020-02-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "drs",
+  serviceShapeName: "ElasticDisasterRecoveryService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "drs" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-02-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,84 +74,94 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UninitializedAccountException
   extends /*@__PURE__*/ S.TaggedError<UninitializedAccountException>()(
     "UninitializedAccountException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      reason: S.optional(S.String),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type SourceNetworkID = string;
 export type CfnStackName = string | redacted.Redacted<string>;
@@ -198,7 +211,7 @@ export const LaunchActionParameter = /*@__PURE__*/ S.suspend(() =>
 export type LaunchActionParameters = { [key: string]: LaunchActionParameter | undefined };
 export const LaunchActionParameters = /*@__PURE__*/ S.Record(
   S.String,
-  LaunchActionParameter.pipe(S.optional),
+  /*@__PURE__*/ LaunchActionParameter.pipe(S.optional),
 );
 export type LaunchActionDescription = string;
 export type LaunchActionCategory = string;
@@ -275,10 +288,10 @@ export const ParticipatingServers = /*@__PURE__*/ S.Array(ParticipatingServer);
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ParticipatingResourceID = { sourceNetworkID: string };
 export const ParticipatingResourceID = /*@__PURE__*/ S.Union([
-  S.Struct({ sourceNetworkID: S.String }),
+  /*@__PURE__*/ S.Struct({ sourceNetworkID: S.String }),
 ]);
 export interface ParticipatingResource {
   participatingResourceID?: ParticipatingResourceID;
@@ -854,8 +867,8 @@ export type RecoveryPlanStepConfiguration =
   | { serverStepConfiguration: ServerStepConfiguration; waitStepConfiguration?: never }
   | { serverStepConfiguration?: never; waitStepConfiguration: WaitStepConfiguration };
 export const RecoveryPlanStepConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ serverStepConfiguration: ServerStepConfiguration }),
-  S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
+  /*@__PURE__*/ S.Struct({ serverStepConfiguration: ServerStepConfiguration }),
+  /*@__PURE__*/ S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
 ]);
 export interface CreateRecoveryPlanStepRequest {
   recoveryPlanArn: string;
@@ -1249,16 +1262,22 @@ export const DescribeJobLogItemsRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobLogEvent = string;
 export type EbsSnapshot = string;
 export type ConversionMap = { [key: string]: string | undefined };
-export const ConversionMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConversionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type VolumeToConversionMap = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
 export const VolumeToConversionMap = /*@__PURE__*/ S.Record(
   S.String,
-  ConversionMap.pipe(S.optional),
+  /*@__PURE__*/ ConversionMap.pipe(S.optional),
 );
 export type VolumeToSizeMap = { [key: string]: number | undefined };
-export const VolumeToSizeMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const VolumeToSizeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type ProductCodeId = string;
 export type ProductCodeMode = string;
 export interface ProductCode {
@@ -1271,7 +1290,10 @@ export const ProductCode = /*@__PURE__*/ S.suspend(() =>
 export type ProductCodes = ProductCode[];
 export const ProductCodes = /*@__PURE__*/ S.Array(ProductCode);
 export type VolumeToProductCodes = { [key: string]: ProductCode[] | undefined };
-export const VolumeToProductCodes = /*@__PURE__*/ S.Record(S.String, ProductCodes.pipe(S.optional));
+export const VolumeToProductCodes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ProductCodes.pipe(S.optional),
+);
 export interface ConversionProperties {
   volumeToConversionMap?: { [key: string]: { [key: string]: string | undefined } | undefined };
   rootVolumeName?: string;
@@ -1306,7 +1328,7 @@ export const SourceNetworkData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceNetworkData" }) as any as S.Schema<SourceNetworkData>;
 export type EventResourceData = { sourceNetworkData: SourceNetworkData };
 export const EventResourceData = /*@__PURE__*/ S.Union([
-  S.Struct({ sourceNetworkData: SourceNetworkData }),
+  /*@__PURE__*/ S.Struct({ sourceNetworkData: SourceNetworkData }),
 ]);
 export type JobEventAttemptCount = number;
 export interface JobLogEventData {
@@ -2132,8 +2154,8 @@ export type RecoveryPlanExecutionStepConfiguration =
     }
   | { executionServerStepConfiguration?: never; waitStepConfiguration: WaitStepConfiguration };
 export const RecoveryPlanExecutionStepConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ executionServerStepConfiguration: ExecutionServerStepConfiguration }),
-  S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
+  /*@__PURE__*/ S.Struct({ executionServerStepConfiguration: ExecutionServerStepConfiguration }),
+  /*@__PURE__*/ S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
 ]);
 export interface RecoveryPlanExecutionStep {
   recoveryPlanExecutionStepArn: string;

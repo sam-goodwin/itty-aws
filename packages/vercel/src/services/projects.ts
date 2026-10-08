@@ -7617,7 +7617,7 @@ export type CreateProjectResponseTargetsMap = {
 };
 export const CreateProjectResponseTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CreateProjectResponseTargetsValue),
+  /*@__PURE__*/ S.NullOr(CreateProjectResponseTargetsValue),
 ) as any as S.Schema<CreateProjectResponseTargetsMap>;
 
 export type CreateProjectResponseTier = "priority";
@@ -17663,7 +17663,7 @@ export type GetProjectResponseTargetsMap = {
 };
 export const GetProjectResponseTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GetProjectResponseTargetsValue),
+  /*@__PURE__*/ S.NullOr(GetProjectResponseTargetsValue),
 ) as any as S.Schema<GetProjectResponseTargetsMap>;
 
 export type GetProjectResponseTier = "priority";
@@ -22909,7 +22909,7 @@ export type GetProjectsResponseBodyCase0ItemTargetsMap = {
 };
 export const GetProjectsResponseBodyCase0ItemTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GetProjectsResponseBodyCase0ItemTargetsValue),
+  /*@__PURE__*/ S.NullOr(GetProjectsResponseBodyCase0ItemTargetsValue),
 ) as any as S.Schema<GetProjectsResponseBodyCase0ItemTargetsMap>;
 
 export type GetProjectsResponseBodyCase0ItemTier = "priority";
@@ -26562,7 +26562,7 @@ export type GetProjectsResponseBodyCase1ProjectsItemTargetsMap = {
 };
 export const GetProjectsResponseBodyCase1ProjectsItemTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GetProjectsResponseBodyCase1ProjectsItemTargetsValue),
+  /*@__PURE__*/ S.NullOr(GetProjectsResponseBodyCase1ProjectsItemTargetsValue),
 ) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemTargetsMap>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemTier = "priority";
@@ -34559,7 +34559,7 @@ export type GetProjectsResponseBodyCase2ProjectsItemTargetsMap = {
 };
 export const GetProjectsResponseBodyCase2ProjectsItemTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GetProjectsResponseBodyCase2ProjectsItemTargetsValue),
+  /*@__PURE__*/ S.NullOr(GetProjectsResponseBodyCase2ProjectsItemTargetsValue),
 ) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemTargetsMap>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemTier = "priority";
@@ -36200,7 +36200,7 @@ export const RemoveProjectEnvResponseBodyCase0Item = /*@__PURE__*/ S.suspend(() 
 export type RemoveProjectEnvResponseBodyCase0List =
   Array<RemoveProjectEnvResponseBodyCase0Item | null>;
 export const RemoveProjectEnvResponseBodyCase0List = /*@__PURE__*/ S.Array(
-  S.NullOr(RemoveProjectEnvResponseBodyCase0Item),
+  /*@__PURE__*/ S.NullOr(RemoveProjectEnvResponseBodyCase0Item),
 ) as any as S.Schema<RemoveProjectEnvResponseBodyCase0List>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase0Type = "redis-url";
@@ -43879,7 +43879,7 @@ export type UpdateMicrofrontendsResponseTargetsMap = {
 };
 export const UpdateMicrofrontendsResponseTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateMicrofrontendsResponseTargetsValue),
+  /*@__PURE__*/ S.NullOr(UpdateMicrofrontendsResponseTargetsValue),
 ) as any as S.Schema<UpdateMicrofrontendsResponseTargetsMap>;
 
 export type UpdateMicrofrontendsResponseTier = "priority";
@@ -52156,7 +52156,7 @@ export type UpdateProjectResponseTargetsMap = {
 };
 export const UpdateProjectResponseTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateProjectResponseTargetsValue),
+  /*@__PURE__*/ S.NullOr(UpdateProjectResponseTargetsValue),
 ) as any as S.Schema<UpdateProjectResponseTargetsMap>;
 
 export type UpdateProjectResponseTier = "priority";
@@ -59803,7 +59803,7 @@ export type UploadProjectAvatarResponseTargetsMap = {
 };
 export const UploadProjectAvatarResponseTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UploadProjectAvatarResponseTargetsValue),
+  /*@__PURE__*/ S.NullOr(UploadProjectAvatarResponseTargetsValue),
 ) as any as S.Schema<UploadProjectAvatarResponseTargetsMap>;
 
 export type UploadProjectAvatarResponseTier = "priority";

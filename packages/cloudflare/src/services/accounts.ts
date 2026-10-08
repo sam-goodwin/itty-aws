@@ -1292,7 +1292,7 @@ export type TokensCreateRequestPoliciesItemResourcesValue =
   | string
   | TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensCreateRequestPoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensCreateRequestPoliciesItemResourcesMap = {
@@ -1464,7 +1464,7 @@ export type TokensCreateResponsePoliciesItemResourcesValue =
   | string
   | TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensCreateResponsePoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensCreateResponsePoliciesItemResourcesMap = {
@@ -2488,7 +2488,7 @@ export type TokensGetResponsePoliciesItemResourcesValue =
   | string
   | TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensGetResponsePoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensGetResponsePoliciesItemResourcesMap = {
@@ -2788,7 +2788,7 @@ export type ListEntitlementsResultItemAllocationValue =
   | ListEntitlementsResultItemAllocationValueCase3List
   | ListEntitlementsResultItemAllocationValueCase4;
 export const ListEntitlementsResultItemAllocationValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], [], ["max", "min"]]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], [], ["max", "min"]]),
 );
 
 export interface ListEntitlementsResultItemAllocation {
@@ -4198,7 +4198,7 @@ export type TokensListResultItemPoliciesItemResourcesValue =
   | string
   | TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensListResultItemPoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensListResultItemPoliciesItemResourcesMap = {
@@ -6274,7 +6274,7 @@ export type TokensUpdateRequestPoliciesItemResourcesValue =
   | string
   | TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensUpdateRequestPoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensUpdateRequestPoliciesItemResourcesMap = {
@@ -6455,7 +6455,7 @@ export type TokensUpdateResponsePoliciesItemResourcesValue =
   | string
   | TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensUpdateResponsePoliciesItemResourcesValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type TokensUpdateResponsePoliciesItemResourcesMap = {

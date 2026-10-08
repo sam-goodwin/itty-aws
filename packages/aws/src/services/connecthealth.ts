@@ -10,11 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "ConnectHealth", serviceShapeName: "ConnectHealth" });
-const auth = T.AwsAuthSigv4({ name: "health-agent" });
-const ver = T.ServiceVersion("2025-01-29");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "ConnectHealth",
+  serviceShapeName: "ConnectHealth",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "health-agent" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-01-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -51,44 +54,47 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainId = string;
 export type SubscriptionId = string;
@@ -165,7 +171,7 @@ export const CreateWebAppConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDomainInput {
   name: string;
   kmsKeyArn?: string;
@@ -435,8 +441,8 @@ export type NoteTemplateSettingsResponse =
   | { managedTemplate: ManagedTemplateResponse; customTemplate?: never }
   | { managedTemplate?: never; customTemplate: CustomTemplateResponse };
 export const NoteTemplateSettingsResponse = /*@__PURE__*/ S.Union([
-  S.Struct({ managedTemplate: ManagedTemplateResponse }),
-  S.Struct({ customTemplate: CustomTemplateResponse }),
+  /*@__PURE__*/ S.Struct({ managedTemplate: ManagedTemplateResponse }),
+  /*@__PURE__*/ S.Struct({ customTemplate: CustomTemplateResponse }),
 ]);
 export interface ClinicalNoteGenerationSettingsResponse {
   noteTemplateSettings?: NoteTemplateSettingsResponse;
@@ -863,8 +869,8 @@ export type NoteTemplateSettings =
   | { managedTemplate: ManagedTemplate; customTemplate?: never }
   | { managedTemplate?: never; customTemplate: CustomTemplate };
 export const NoteTemplateSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ managedTemplate: ManagedTemplate }),
-  S.Struct({ customTemplate: CustomTemplate }),
+  /*@__PURE__*/ S.Struct({ managedTemplate: ManagedTemplate }),
+  /*@__PURE__*/ S.Struct({ customTemplate: CustomTemplate }),
 ]);
 export interface ClinicalNoteGenerationSettings {
   noteTemplateSettings: NoteTemplateSettings;
@@ -932,11 +938,11 @@ export type MedicalScribeInputStream =
       configurationEvent: MedicalScribeConfigurationEvent;
     };
 export const MedicalScribeInputStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([
-    S.Struct({ audioEvent: MedicalScribeAudioEvent }),
-    S.Struct({ binaryAudioEvent: MedicalScribeBinaryAudioEvent }),
-    S.Struct({ sessionControlEvent: MedicalScribeSessionControlEvent }),
-    S.Struct({ configurationEvent: MedicalScribeConfigurationEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ audioEvent: MedicalScribeAudioEvent }),
+    /*@__PURE__*/ S.Struct({ binaryAudioEvent: MedicalScribeBinaryAudioEvent }),
+    /*@__PURE__*/ S.Struct({ sessionControlEvent: MedicalScribeSessionControlEvent }),
+    /*@__PURE__*/ S.Struct({ configurationEvent: MedicalScribeConfigurationEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<MedicalScribeInputStream, Error, never>>;
 export interface StartMedicalScribeListeningSessionInput {
@@ -1010,15 +1016,15 @@ export type MedicalScribeOutputStream =
       validationException: ValidationException;
     };
 export const MedicalScribeOutputStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ transcriptEvent: MedicalScribeTranscriptEvent }),
-    S.Struct({
-      internalFailureException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ transcriptEvent: MedicalScribeTranscriptEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalFailureException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),

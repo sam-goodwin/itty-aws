@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Personalize", serviceShapeName: "AmazonPersonalize" });
-const auth = T.AwsAuthSigv4({ name: "personalize" });
-const ver = T.ServiceVersion("2018-05-22");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Personalize",
+  serviceShapeName: "AmazonPersonalize",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "personalize" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-22");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,50 +78,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError, C.withAlreadyExistsError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagKeysException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagKeysException>()(
     "TooManyTagKeysException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type Arn = string;
@@ -148,7 +151,10 @@ export type RoleArn = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type HyperParameters = { [key: string]: string | undefined };
-export const HyperParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HyperParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type RankingInfluenceType = "POPULARITY" | "FRESHNESS" | (string & {});
 export const RankingInfluenceType = S.String;
 
@@ -156,7 +162,7 @@ export type RankingInfluenceWeight = number;
 export type RankingInfluence = { [key in RankingInfluenceType]?: number };
 export const RankingInfluence = /*@__PURE__*/ S.Record(
   RankingInfluenceType,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface BatchInferenceJobConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
@@ -561,12 +567,12 @@ export const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
 export type ExcludedDatasetColumns = { [key: string]: string[] | undefined };
 export const ExcludedDatasetColumns = /*@__PURE__*/ S.Record(
   S.String,
-  ColumnNamesList.pipe(S.optional),
+  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
 );
 export type IncludedDatasetColumns = { [key: string]: string[] | undefined };
 export const IncludedDatasetColumns = /*@__PURE__*/ S.Record(
   S.String,
-  ColumnNamesList.pipe(S.optional),
+  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
 );
 export interface TrainingDataConfig {
   excludedDatasetColumns?: { [key: string]: string[] | undefined };
@@ -741,7 +747,7 @@ export const HPOConfig = /*@__PURE__*/ S.suspend(() =>
 export type FeatureTransformationParameters = { [key: string]: string | undefined };
 export const FeatureTransformationParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
@@ -1082,7 +1088,10 @@ export const DefaultHyperParameterRanges = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultHyperParameterRanges",
 }) as any as S.Schema<DefaultHyperParameterRanges>;
 export type ResourceConfig = { [key: string]: string | undefined };
-export const ResourceConfig = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceConfig = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TrainingInputMode = string;
 export interface Algorithm {
   name?: string;
@@ -1566,7 +1575,10 @@ export const DescribeFeatureTransformationRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeFeatureTransformationRequest",
 }) as any as S.Schema<DescribeFeatureTransformationRequest>;
 export type FeaturizationParameters = { [key: string]: string | undefined };
-export const FeaturizationParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FeaturizationParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface FeatureTransformation {
   name?: string;
   featureTransformationArn?: string;
@@ -1737,7 +1749,7 @@ export const RecommenderUpdateSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecommenderUpdateSummary" }) as any as S.Schema<RecommenderUpdateSummary>;
 export type MetricValue = number;
 export type Metrics = { [key: string]: number | undefined };
-export const Metrics = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const Metrics = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface Recommender {
   recommenderArn?: string;
   datasetGroupArn?: string;

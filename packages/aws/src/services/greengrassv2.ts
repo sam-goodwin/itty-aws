@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "GreengrassV2", serviceShapeName: "GreengrassV2" });
-const auth = T.AwsAuthSigv4({ name: "greengrass" });
-const ver = T.ServiceVersion("2020-11-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "GreengrassV2",
+  serviceShapeName: "GreengrassV2",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "greengrass" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-11-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -101,76 +104,88 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class RequestAlreadyInProgressException
   extends /*@__PURE__*/ S.TaggedError<RequestAlreadyInProgressException>()(
     "RequestAlreadyInProgressException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
       quotaCode: S.String,
       serviceCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      quotaCode: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AssociateServiceRoleToAccountRequest {
   roleArn: string;
@@ -356,7 +371,10 @@ export type RecipeBlob = Uint8Array;
 export type ComponentNameString = string;
 export type ComponentVersionString = string;
 export type PlatformAttributesMap = { [key: string]: string | undefined };
-export const PlatformAttributesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PlatformAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ComponentPlatform {
   name?: string;
   attributes?: { [key: string]: string | undefined };
@@ -384,7 +402,7 @@ export const ComponentDependencyRequirement = /*@__PURE__*/ S.suspend(() =>
 export type ComponentDependencyMap = { [key: string]: ComponentDependencyRequirement | undefined };
 export const ComponentDependencyMap = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentDependencyRequirement.pipe(S.optional),
+  /*@__PURE__*/ ComponentDependencyRequirement.pipe(S.optional),
 );
 export type TopicString = string;
 export type LambdaEventSourceType = "PUB_SUB" | "IOT_CORE" | (string & {});
@@ -410,7 +428,7 @@ export const LambdaExecArgsList = /*@__PURE__*/ S.Array(S.String);
 export type LambdaEnvironmentVariables = { [key: string]: string | undefined };
 export const LambdaEnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type LambdaIsolationMode = "GreengrassContainer" | "NoContainer" | (string & {});
 export const LambdaIsolationMode = S.String;
@@ -526,7 +544,7 @@ export const LambdaFunctionRecipeSource = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ClientTokenString = string;
 export interface CreateComponentVersionRequest {
   inlineRecipe?: Uint8Array;
@@ -564,7 +582,7 @@ export type CloudComponentState =
 export const CloudComponentState = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type VendorGuidance = "ACTIVE" | "DISCONTINUED" | "DELETED" | (string & {});
 export const VendorGuidance = S.String;
 
@@ -657,7 +675,7 @@ export type ComponentDeploymentSpecifications = {
 };
 export const ComponentDeploymentSpecifications = /*@__PURE__*/ S.Record(
   S.String,
-  ComponentDeploymentSpecification.pipe(S.optional),
+  /*@__PURE__*/ ComponentDeploymentSpecification.pipe(S.optional),
 );
 export type IoTJobRolloutBaseRatePerMinute = number;
 export type IoTJobRolloutIncrementFactor = number;
@@ -1703,7 +1721,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export type ComponentVersionRequirementMap = { [key: string]: string | undefined };
 export const ComponentVersionRequirementMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ComponentCandidate {
   componentName?: string;

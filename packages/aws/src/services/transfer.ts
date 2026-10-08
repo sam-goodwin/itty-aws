@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Transfer", serviceShapeName: "TransferService" });
-const auth = T.AwsAuthSigv4({ name: "transfer" });
-const ver = T.ServiceVersion("2018-11-05");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Transfer",
+  serviceShapeName: "TransferService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "transfer" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,59 +76,75 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceError
   extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceExistsException>()(
     "ResourceExistsException",
-    { message: S.String.pipe(T.ErrorMessage()), Resource: S.String, ResourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Resource: S.String,
+      ResourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), Resource: S.String, ResourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Resource: S.String,
+      ResourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ServiceUnavailable", httpResponseCode: 503 }), T.HttpError(503)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceUnavailable", httpResponseCode: 503 }),
+      /*@__PURE__*/ T.HttpError(503),
+    ),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      RetryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type HomeDirectory = string;
 export type HomeDirectoryType = "PATH" | "LOGICAL" | (string & {});
@@ -372,7 +391,7 @@ export const ConnectorVpcLatticeEgressConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorVpcLatticeEgressConfig>;
 export type ConnectorEgressConfig = { VpcLattice: ConnectorVpcLatticeEgressConfig };
 export const ConnectorEgressConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ VpcLattice: ConnectorVpcLatticeEgressConfig }),
+  /*@__PURE__*/ S.Struct({ VpcLattice: ConnectorVpcLatticeEgressConfig }),
 ]);
 export type ConnectorsIpAddressType = "IPV4" | "DUALSTACK" | (string & {});
 export const ConnectorsIpAddressType = S.String;
@@ -693,12 +712,14 @@ export const IdentityCenterConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityCenterConfig" }) as any as S.Schema<IdentityCenterConfig>;
 export type WebAppIdentityProviderDetails = { IdentityCenterConfig: IdentityCenterConfig };
 export const WebAppIdentityProviderDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ IdentityCenterConfig: IdentityCenterConfig }),
+  /*@__PURE__*/ S.Struct({ IdentityCenterConfig: IdentityCenterConfig }),
 ]);
 export type WebAppAccessEndpoint = string;
 export type WebAppUnitCount = number;
 export type WebAppUnits = { Provisioned: number };
-export const WebAppUnits = /*@__PURE__*/ S.Union([S.Struct({ Provisioned: S.Number })]);
+export const WebAppUnits = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ Provisioned: S.Number }),
+]);
 export type WebAppEndpointPolicy = "FIPS" | "STANDARD" | (string & {});
 export const WebAppEndpointPolicy = S.String;
 
@@ -720,7 +741,9 @@ export const WebAppVpcConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebAppVpcConfig" }) as any as S.Schema<WebAppVpcConfig>;
 export type WebAppEndpointDetails = { Vpc: WebAppVpcConfig };
-export const WebAppEndpointDetails = /*@__PURE__*/ S.Union([S.Struct({ Vpc: WebAppVpcConfig })]);
+export const WebAppEndpointDetails = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ Vpc: WebAppVpcConfig }),
+]);
 export interface CreateWebAppRequest {
   IdentityProviderDetails: WebAppIdentityProviderDetails;
   AccessEndpoint?: string;
@@ -1243,7 +1266,7 @@ export type DescribedConnectorEgressConfig = {
   VpcLattice: DescribedConnectorVpcLatticeEgressConfig;
 };
 export const DescribedConnectorEgressConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ VpcLattice: DescribedConnectorVpcLatticeEgressConfig }),
+  /*@__PURE__*/ S.Struct({ VpcLattice: DescribedConnectorVpcLatticeEgressConfig }),
 ]);
 export type ConnectorEgressType = "SERVICE_MANAGED" | "VPC_LATTICE" | (string & {});
 export const ConnectorEgressType = S.String;
@@ -1724,7 +1747,7 @@ export type DescribedWebAppIdentityProviderDetails = {
   IdentityCenterConfig: DescribedIdentityCenterConfig;
 };
 export const DescribedWebAppIdentityProviderDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ IdentityCenterConfig: DescribedIdentityCenterConfig }),
+  /*@__PURE__*/ S.Struct({ IdentityCenterConfig: DescribedIdentityCenterConfig }),
 ]);
 export type WebAppEndpoint = string;
 export type WebAppEndpointType = "PUBLIC" | "VPC" | (string & {});
@@ -1744,7 +1767,7 @@ export const DescribedWebAppVpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribedWebAppVpcConfig" }) as any as S.Schema<DescribedWebAppVpcConfig>;
 export type DescribedWebAppEndpointDetails = { Vpc: DescribedWebAppVpcConfig };
 export const DescribedWebAppEndpointDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ Vpc: DescribedWebAppVpcConfig }),
+  /*@__PURE__*/ S.Struct({ Vpc: DescribedWebAppVpcConfig }),
 ]);
 export interface DescribedWebApp {
   Arn: string;
@@ -2786,7 +2809,7 @@ export const UpdateConnectorVpcLatticeEgressConfig = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateConnectorVpcLatticeEgressConfig>;
 export type UpdateConnectorEgressConfig = { VpcLattice: UpdateConnectorVpcLatticeEgressConfig };
 export const UpdateConnectorEgressConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ VpcLattice: UpdateConnectorVpcLatticeEgressConfig }),
+  /*@__PURE__*/ S.Struct({ VpcLattice: UpdateConnectorVpcLatticeEgressConfig }),
 ]);
 export interface UpdateConnectorRequest {
   ConnectorId: string;
@@ -2937,7 +2960,7 @@ export type UpdateWebAppIdentityProviderDetails = {
   IdentityCenterConfig: UpdateWebAppIdentityCenterConfig;
 };
 export const UpdateWebAppIdentityProviderDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ IdentityCenterConfig: UpdateWebAppIdentityCenterConfig }),
+  /*@__PURE__*/ S.Struct({ IdentityCenterConfig: UpdateWebAppIdentityCenterConfig }),
 ]);
 export interface UpdateWebAppVpcConfig {
   SubnetIds?: string[];
@@ -2951,7 +2974,7 @@ export const UpdateWebAppVpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebAppVpcConfig" }) as any as S.Schema<UpdateWebAppVpcConfig>;
 export type UpdateWebAppEndpointDetails = { Vpc: UpdateWebAppVpcConfig };
 export const UpdateWebAppEndpointDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ Vpc: UpdateWebAppVpcConfig }),
+  /*@__PURE__*/ S.Struct({ Vpc: UpdateWebAppVpcConfig }),
 ]);
 export interface UpdateWebAppRequest {
   WebAppId: string;

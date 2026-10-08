@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://requester.mturk.com/2017-01-17/");
-const svc = T.AwsApiService({ sdkId: "MTurk", serviceShapeName: "MTurkRequesterServiceV20170117" });
-const auth = T.AwsAuthSigv4({ name: "mturk-requester" });
-const ver = T.ServiceVersion("2017-01-17");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://requester.mturk.com/2017-01-17/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MTurk",
+  serviceShapeName: "MTurkRequesterServiceV20170117",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mturk-requester" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-01-17");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -77,14 +80,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class RequestError
   extends /*@__PURE__*/ S.TaggedError<RequestError>()(
     "RequestError",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), TurkErrorCode: S.optional(S.String) },
-    T.all(T.AwsQueryError({ code: "RequestError", httpResponseCode: 400 }), T.HttpError(400)),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      TurkErrorCode: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RequestError", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFault
   extends /*@__PURE__*/ S.TaggedError<ServiceFault>()(
     "ServiceFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), TurkErrorCode: S.optional(S.String) },
-    T.all(T.AwsQueryError({ code: "ServiceFault", httpResponseCode: 500 }), T.HttpError(500)),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      TurkErrorCode: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceFault", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export interface AcceptQualificationRequestRequest {
   QualificationRequestId: string;

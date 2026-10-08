@@ -7,12 +7,12 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://glacier.amazonaws.com/doc/2012-06-01/");
-const svc = T.AwsApiService({ sdkId: "Glacier", serviceShapeName: "Glacier" });
-const auth = T.AwsAuthSigv4({ name: "glacier" });
-const ver = T.ServiceVersion("2012-06-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://glacier.amazonaws.com/doc/2012-06-01/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Glacier", serviceShapeName: "Glacier" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "glacier" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2012-06-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,91 +76,91 @@ export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameterValueException
   extends /*@__PURE__*/ S.TaggedError<MissingParameterValueException>()(
     "MissingParameterValueException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoLongerSupportedException
   extends /*@__PURE__*/ S.TaggedError<NoLongerSupportedException>()(
     "NoLongerSupportedException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicyEnforcedException
   extends /*@__PURE__*/ S.TaggedError<PolicyEnforcedException>()(
     "PolicyEnforcedException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RequestTimeoutException
   extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(408),
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
-      type: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      type: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export interface AbortMultipartUploadInput {
   accountId: string;
@@ -222,7 +222,7 @@ export const AbortVaultLockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AddTagsToVaultInput {
   accountId: string;
   vaultName: string;
@@ -635,7 +635,7 @@ export const Grant = /*@__PURE__*/ S.suspend(() =>
 export type AccessControlPolicyList = Grant[];
 export const AccessControlPolicyList = /*@__PURE__*/ S.Array(Grant);
 export type Hashmap = { [key: string]: string | undefined };
-export const Hashmap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Hashmap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA" | (string & {});
 export const StorageClass = S.String;
 

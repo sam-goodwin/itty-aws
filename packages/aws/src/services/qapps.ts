@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "QApps", serviceShapeName: "QAppsService" });
-const auth = T.AwsAuthSigv4({ name: "qapps" });
-const ver = T.ServiceVersion("2023-11-27");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "QApps", serviceShapeName: "QAppsService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "qapps" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-11-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,70 +73,89 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ContentTooLargeException
   extends /*@__PURE__*/ S.TaggedError<ContentTooLargeException>()(
     "ContentTooLargeException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(413),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
       quotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       serviceCode: S.String,
       quotaCode: S.String,
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type InstanceId = string;
 export type UUID = string;
@@ -353,7 +372,10 @@ export const CreatePresignedUrlInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreatePresignedUrlInput" }) as any as S.Schema<CreatePresignedUrlInput>;
 export type PresignedUrlFields = { [key: string]: string | undefined };
-export const PresignedUrlFields = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PresignedUrlFields = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreatePresignedUrlOutput {
   fileId: string;
   presignedUrl: string;
@@ -403,7 +425,7 @@ export const CardOutputSource = S.String;
 
 export type AttributeFilters = AttributeFilter[];
 export const AttributeFilters = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
     identifier: "AttributeFilter",
   }),
 ) as any as S.Schema<AttributeFilters>;
@@ -418,10 +440,12 @@ export type DocumentAttributeValue =
   | { stringValue?: never; stringListValue?: never; longValue: number; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue?: never; dateValue: Date };
 export const DocumentAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ stringListValue: DocumentAttributeStringListValue }),
-  S.Struct({ longValue: S.Number }),
-  S.Struct({ dateValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringListValue: DocumentAttributeStringListValue }),
+  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+  /*@__PURE__*/ S.Struct({
+    dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
 ]);
 export interface DocumentAttribute {
   name: string;
@@ -583,11 +607,11 @@ export type CardInput =
       formInput: FormInputCardInput;
     };
 export const CardInput = /*@__PURE__*/ S.Union([
-  S.Struct({ textInput: TextInputCardInput }),
-  S.Struct({ qQuery: QQueryCardInput }),
-  S.Struct({ qPlugin: QPluginCardInput }),
-  S.Struct({ fileUpload: FileUploadCardInput }),
-  S.Struct({ formInput: FormInputCardInput }),
+  /*@__PURE__*/ S.Struct({ textInput: TextInputCardInput }),
+  /*@__PURE__*/ S.Struct({ qQuery: QQueryCardInput }),
+  /*@__PURE__*/ S.Struct({ qPlugin: QPluginCardInput }),
+  /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCardInput }),
+  /*@__PURE__*/ S.Struct({ formInput: FormInputCardInput }),
 ]);
 export type CardList = CardInput[];
 export const CardList = /*@__PURE__*/ S.Array(CardInput);
@@ -600,7 +624,7 @@ export const AppDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cards: CardList, initialPrompt: S.optional(S.String) }),
 ).annotate({ identifier: "AppDefinitionInput" }) as any as S.Schema<AppDefinitionInput>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateQAppInput {
   instanceId: string;
   title: string;
@@ -1061,11 +1085,11 @@ export type Card =
       formInput: FormInputCard;
     };
 export const Card = /*@__PURE__*/ S.Union([
-  S.Struct({ textInput: TextInputCard }),
-  S.Struct({ qQuery: QQueryCard }),
-  S.Struct({ qPlugin: QPluginCard }),
-  S.Struct({ fileUpload: FileUploadCard }),
-  S.Struct({ formInput: FormInputCard }),
+  /*@__PURE__*/ S.Struct({ textInput: TextInputCard }),
+  /*@__PURE__*/ S.Struct({ qQuery: QQueryCard }),
+  /*@__PURE__*/ S.Struct({ qPlugin: QPluginCard }),
+  /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCard }),
+  /*@__PURE__*/ S.Struct({ formInput: FormInputCard }),
 ]);
 export type CardModelList = Card[];
 export const CardModelList = /*@__PURE__*/ S.Array(Card);
@@ -1156,7 +1180,10 @@ export const CardStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CardStatus" }) as any as S.Schema<CardStatus>;
 export type CardStatusMap = { [key: string]: CardStatus | undefined };
-export const CardStatusMap = /*@__PURE__*/ S.Record(S.String, CardStatus.pipe(S.optional));
+export const CardStatusMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ CardStatus.pipe(S.optional),
+);
 export interface GetQAppSessionOutput {
   sessionId: string;
   sessionArn: string;
@@ -1453,7 +1480,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -1478,8 +1505,8 @@ export type PredictQAppInputOptions =
   | { conversation: ConversationMessage[]; problemStatement?: never }
   | { conversation?: never; problemStatement: string };
 export const PredictQAppInputOptions = /*@__PURE__*/ S.Union([
-  S.Struct({ conversation: MessageList }),
-  S.Struct({ problemStatement: S.String }),
+  /*@__PURE__*/ S.Struct({ conversation: MessageList }),
+  /*@__PURE__*/ S.Struct({ problemStatement: S.String }),
 ]);
 export interface PredictQAppInput {
   instanceId: string;

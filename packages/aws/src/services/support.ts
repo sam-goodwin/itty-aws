@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://support.amazonaws.com/doc/2013-04-15/");
-const svc = T.AwsApiService({ sdkId: "Support", serviceShapeName: "AWSSupport_20130415" });
-const auth = T.AwsAuthSigv4({ name: "support" });
-const ver = T.ServiceVersion("2013-04-15");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://support.amazonaws.com/doc/2013-04-15/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Support",
+  serviceShapeName: "AWSSupport_20130415",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "support" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2013-04-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -144,60 +147,65 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AttachmentIdNotFound
   extends /*@__PURE__*/ S.TaggedError<AttachmentIdNotFound>()("AttachmentIdNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class AttachmentLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<AttachmentLimitExceeded>()("AttachmentLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class AttachmentSetExpired
   extends /*@__PURE__*/ S.TaggedError<AttachmentSetExpired>()("AttachmentSetExpired", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class AttachmentSetIdNotFound
   extends /*@__PURE__*/ S.TaggedError<AttachmentSetIdNotFound>()("AttachmentSetIdNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class AttachmentSetSizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<AttachmentSetSizeLimitExceeded>()(
     "AttachmentSetSizeLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class CaseCreationLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<CaseCreationLimitExceeded>()("CaseCreationLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class CaseIdNotFound
   extends /*@__PURE__*/ S.TaggedError<CaseIdNotFound>()("CaseIdNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DescribeAttachmentLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<DescribeAttachmentLimitExceeded>()(
     "DescribeAttachmentLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class DryRunOperationException
   extends /*@__PURE__*/ S.TaggedError<DryRunOperationException>()("DryRunOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      throttlingReasons: S.optional(
-        S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      throttlingReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
       ),
     },
-    T.all(T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }), T.HttpError(400)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class UploadIdNotFound
   extends /*@__PURE__*/ S.TaggedError<UploadIdNotFound>()("UploadIdNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type AttachmentSetId = string;
 export type FileName = string;
@@ -733,7 +741,7 @@ export const DescribeSupportedLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSupportedLanguagesResponse",
 }) as any as S.Schema<DescribeSupportedLanguagesResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String).pipe(T.Sparse());
+export const StringList = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
 export interface DescribeTrustedAdvisorCheckRefreshStatusesRequest {
   checkIds: string[];
 }

@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Rekognition", serviceShapeName: "RekognitionService" });
-const auth = T.AwsAuthSigv4({ name: "rekognition" });
-const ver = T.ServiceVersion("2016-06-27");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Rekognition",
+  serviceShapeName: "RekognitionService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "rekognition" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-06-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,172 +77,172 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class HumanLoopQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<HumanLoopQuotaExceededException>()(
     "HumanLoopQuotaExceededException",
     {
-      ResourceType: S.optional(S.String),
-      QuotaCode: S.optional(S.String),
-      ServiceCode: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class ImageTooLargeException
   extends /*@__PURE__*/ S.TaggedError<ImageTooLargeException>()("ImageTooLargeException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidImageFormatException
   extends /*@__PURE__*/ S.TaggedError<InvalidImageFormatException>()(
     "InvalidImageFormatException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class InvalidManifestException
   extends /*@__PURE__*/ S.TaggedError<InvalidManifestException>()("InvalidManifestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidPaginationTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()("InvalidParameterException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidPolicyRevisionIdException
   extends /*@__PURE__*/ S.TaggedError<InvalidPolicyRevisionIdException>()(
     "InvalidPolicyRevisionIdException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class InvalidS3ObjectException
   extends /*@__PURE__*/ S.TaggedError<InvalidS3ObjectException>()("InvalidS3ObjectException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class ProvisionedThroughputExceededException
   extends /*@__PURE__*/ S.TaggedError<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()("ResourceInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()("ResourceNotReadyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Code: S.optional(S.String),
-      Logref: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+      Logref: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class SessionNotFoundException
   extends /*@__PURE__*/ S.TaggedError<SessionNotFoundException>()("SessionNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()("ThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class VideoTooLargeException
   extends /*@__PURE__*/ S.TaggedError<VideoTooLargeException>()("VideoTooLargeException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Code: /*@__PURE__*/ S.optional(S.String),
+    Logref: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export type CollectionId = string;
 export type UserId = string;
@@ -535,7 +538,7 @@ export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type KmsKeyId = string;
 export interface CopyProjectVersionRequest {
   SourceProjectArn: string;

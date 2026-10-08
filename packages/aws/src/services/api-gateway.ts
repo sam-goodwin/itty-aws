@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "API Gateway", serviceShapeName: "BackplaneControlService" });
-const auth = T.AwsAuthSigv4({ name: "apigateway" });
-const ver = T.ServiceVersion("2015-07-09");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "API Gateway",
+  serviceShapeName: "BackplaneControlService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "apigateway" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-07-09");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,53 +78,59 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(503),
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export interface StageKey {
   restApiId?: string;
@@ -133,7 +142,10 @@ export const StageKey = /*@__PURE__*/ S.suspend(() =>
 export type ListOfStageKeys = StageKey[];
 export const ListOfStageKeys = /*@__PURE__*/ S.Array(StageKey);
 export type MapOfStringToString = { [key: string]: string | undefined };
-export const MapOfStringToString = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MapOfStringToString = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateApiKeyRequest {
   name?: string;
   description?: string;
@@ -357,14 +369,14 @@ export const MethodSnapshot = /*@__PURE__*/ S.suspend(() =>
 export type MapOfMethodSnapshot = { [key: string]: MethodSnapshot | undefined };
 export const MapOfMethodSnapshot = /*@__PURE__*/ S.Record(
   S.String,
-  MethodSnapshot.pipe(S.optional),
+  /*@__PURE__*/ MethodSnapshot.pipe(S.optional),
 );
 export type PathToMapOfMethodSnapshot = {
   [key: string]: { [key: string]: MethodSnapshot | undefined } | undefined;
 };
 export const PathToMapOfMethodSnapshot = /*@__PURE__*/ S.Record(
   S.String,
-  MapOfMethodSnapshot.pipe(S.optional),
+  /*@__PURE__*/ MapOfMethodSnapshot.pipe(S.optional),
 );
 export interface Deployment {
   id?: string;
@@ -804,7 +816,10 @@ export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateResourceRequest" }) as any as S.Schema<CreateResourceRequest>;
 export type MapOfStringToBoolean = { [key: string]: boolean | undefined };
-export const MapOfStringToBoolean = /*@__PURE__*/ S.Record(S.String, S.Boolean.pipe(S.optional));
+export const MapOfStringToBoolean = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Boolean.pipe(S.optional),
+);
 export type StatusCode = string;
 export interface MethodResponse {
   statusCode?: string;
@@ -821,7 +836,7 @@ export const MethodResponse = /*@__PURE__*/ S.suspend(() =>
 export type MapOfMethodResponse = { [key: string]: MethodResponse | undefined };
 export const MapOfMethodResponse = /*@__PURE__*/ S.Record(
   S.String,
-  MethodResponse.pipe(S.optional),
+  /*@__PURE__*/ MethodResponse.pipe(S.optional),
 );
 export type IntegrationType = "HTTP" | "AWS" | "MOCK" | "HTTP_PROXY" | "AWS_PROXY" | (string & {});
 export const IntegrationType = S.String;
@@ -851,7 +866,7 @@ export const IntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 export type MapOfIntegrationResponse = { [key: string]: IntegrationResponse | undefined };
 export const MapOfIntegrationResponse = /*@__PURE__*/ S.Record(
   S.String,
-  IntegrationResponse.pipe(S.optional),
+  /*@__PURE__*/ IntegrationResponse.pipe(S.optional),
 );
 export interface TlsConfig {
   insecureSkipVerification?: boolean;
@@ -931,7 +946,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 export type MapOfMethod = { [key: string]: Method | undefined };
-export const MapOfMethod = /*@__PURE__*/ S.Record(S.String, Method.pipe(S.optional));
+export const MapOfMethod = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Method.pipe(S.optional));
 export interface Resource {
   id?: string;
   parentId?: string;
@@ -1122,7 +1137,10 @@ export const MethodSetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodSetting" }) as any as S.Schema<MethodSetting>;
 export type MapOfMethodSettings = { [key: string]: MethodSetting | undefined };
-export const MapOfMethodSettings = /*@__PURE__*/ S.Record(S.String, MethodSetting.pipe(S.optional));
+export const MapOfMethodSettings = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ MethodSetting.pipe(S.optional),
+);
 export interface AccessLogSettings {
   format?: string;
   destinationArn?: string;
@@ -1180,7 +1198,7 @@ export const ThrottleSettings = /*@__PURE__*/ S.suspend(() =>
 export type MapOfApiStageThrottleSettings = { [key: string]: ThrottleSettings | undefined };
 export const MapOfApiStageThrottleSettings = /*@__PURE__*/ S.Record(
   S.String,
-  ThrottleSettings.pipe(S.optional),
+  /*@__PURE__*/ ThrottleSettings.pipe(S.optional),
 );
 export interface ApiStage {
   apiId?: string;
@@ -3069,7 +3087,10 @@ export const ListOfLong = /*@__PURE__*/ S.Array(S.Number);
 export type ListOfUsage = number[][];
 export const ListOfUsage = /*@__PURE__*/ S.Array(ListOfLong);
 export type MapOfKeyUsages = { [key: string]: number[][] | undefined };
-export const MapOfKeyUsages = /*@__PURE__*/ S.Record(S.String, ListOfUsage.pipe(S.optional));
+export const MapOfKeyUsages = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ListOfUsage.pipe(S.optional),
+);
 export interface Usage {
   usagePlanId?: string;
   startDate?: string;
@@ -3535,7 +3556,10 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type MapOfStringToList = { [key: string]: string[] | undefined };
-export const MapOfStringToList = /*@__PURE__*/ S.Record(S.String, ListOfString.pipe(S.optional));
+export const MapOfStringToList = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ListOfString.pipe(S.optional),
+);
 export interface TestInvokeAuthorizerRequest {
   restApiId: string;
   authorizerId: string;

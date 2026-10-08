@@ -2203,7 +2203,7 @@ export const ConnectedOrgConfigPostAuthRoleGrantsItem = S.String;
 export type ConnectedOrgConfigPostAuthRoleGrantsList =
   Array<ConnectedOrgConfigPostAuthRoleGrantsItem | null>;
 export const ConnectedOrgConfigPostAuthRoleGrantsList = /*@__PURE__*/ S.Array(
-  S.NullOr(ConnectedOrgConfigPostAuthRoleGrantsItem),
+  /*@__PURE__*/ S.NullOr(ConnectedOrgConfigPostAuthRoleGrantsItem),
 ) as any as S.Schema<ConnectedOrgConfigPostAuthRoleGrantsList>;
 
 /** Role mappings that are configured in this organization. */
@@ -26478,7 +26478,7 @@ export type CreateAtlasOrganizationApiKeyRolesList = Array<
   CreateAtlasOrganizationApiKeyRolesItem | (string & {}) | null
 >;
 export const CreateAtlasOrganizationApiKeyRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(CreateAtlasOrganizationApiKeyRolesItem),
+  /*@__PURE__*/ S.NullOr(CreateAtlasOrganizationApiKeyRolesItem),
 ) as any as S.Schema<CreateAtlasOrganizationApiKeyRolesList>;
 
 /** Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request. */
@@ -26695,7 +26695,7 @@ export type CreateOrgApiKeyRequestRolesList = Array<
   CreateOrgApiKeyRequestRolesItem | (string & {}) | null
 >;
 export const CreateOrgApiKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(CreateOrgApiKeyRequestRolesItem),
+  /*@__PURE__*/ S.NullOr(CreateOrgApiKeyRequestRolesItem),
 ) as any as S.Schema<CreateOrgApiKeyRequestRolesList>;
 
 export interface CreateOrgApiKeyRequest {
@@ -37967,7 +37967,7 @@ export const MeasurementsIndexesGranularity = S.String;
 /** List that contains the Atlas Search index identifiers. */
 export type MeasurementsIndexesIndexIdsList = Array<string | null>;
 export const MeasurementsIndexesIndexIdsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<MeasurementsIndexesIndexIdsList>;
 
 /** Value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`. */
@@ -42408,7 +42408,7 @@ export const BillingInvoiceLineItemsList = /*@__PURE__*/ S.Array(
 /** List that contains the invoices for organizations linked to the paying organization. */
 export type BillingInvoiceLinkedInvoicesList = Array<BillingInvoice>;
 export const BillingInvoiceLinkedInvoicesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => BillingInvoice),
+  /*@__PURE__*/ S.suspend(() => BillingInvoice),
 ) as any as S.Schema<BillingInvoiceLinkedInvoicesList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -50013,7 +50013,7 @@ export const PaginatedApiInvoiceMetadataViewLinksList = /*@__PURE__*/ S.Array(
 /** List that contains the invoices for organizations linked to the paying organization. */
 export type BillingInvoiceMetadataLinkedInvoicesList = Array<BillingInvoiceMetadata>;
 export const BillingInvoiceMetadataLinkedInvoicesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => BillingInvoiceMetadata),
+  /*@__PURE__*/ S.suspend(() => BillingInvoiceMetadata),
 ) as any as S.Schema<BillingInvoiceMetadataLinkedInvoicesList>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -52710,7 +52710,7 @@ export type UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsLi
 >;
 export const UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsItem),
+    /*@__PURE__*/ S.NullOr(UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsItem),
   ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsList>;
 
 /** Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective `orgId`. Each element in the array can have a value for `orgId` or `groupId`, but not both. */
@@ -56109,7 +56109,7 @@ export type UpdateOrgApiKeyRequestRolesList = Array<
   UpdateOrgApiKeyRequestRolesItem | (string & {}) | null
 >;
 export const UpdateOrgApiKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(UpdateOrgApiKeyRequestRolesItem),
+  /*@__PURE__*/ S.NullOr(UpdateOrgApiKeyRequestRolesItem),
 ) as any as S.Schema<UpdateOrgApiKeyRequestRolesList>;
 
 export interface UpdateOrgApiKeyRequest {
@@ -56332,7 +56332,7 @@ export type UpdateOrgMcpConfigRequestRolesList = Array<
   UpdateOrgMcpConfigRequestRolesItem | (string & {}) | null
 >;
 export const UpdateOrgMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(UpdateOrgMcpConfigRequestRolesItem),
+  /*@__PURE__*/ S.NullOr(UpdateOrgMcpConfigRequestRolesItem),
 ) as any as S.Schema<UpdateOrgMcpConfigRequestRolesList>;
 
 export interface UpdateOrgMcpConfigRequest {

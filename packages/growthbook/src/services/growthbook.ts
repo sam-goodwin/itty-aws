@@ -859,7 +859,7 @@ export const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
 export type Metadata = { [key: string]: MetadataValue | null | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(MetadataValue),
+  /*@__PURE__*/ S.NullOr(MetadataValue),
 ) as any as S.Schema<Metadata>;
 
 export type ArtifactsKind =
@@ -2020,7 +2020,7 @@ export type CreateAutoRunRequestMetadataMap = {
 };
 export const CreateAutoRunRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CreateAutoRunRequestMetadataValue),
+  /*@__PURE__*/ S.NullOr(CreateAutoRunRequestMetadataValue),
 ) as any as S.Schema<CreateAutoRunRequestMetadataMap>;
 
 export interface CreateAutoRunRequest {
@@ -2046,7 +2046,7 @@ export const AutoRunMetadataValue = S.Unknown as any as S.Schema<AutoRunMetadata
 export type AutoRunMetadataMap = { [key: string]: AutoRunMetadataValue | null | undefined };
 export const AutoRunMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AutoRunMetadataValue),
+  /*@__PURE__*/ S.NullOr(AutoRunMetadataValue),
 ) as any as S.Schema<AutoRunMetadataMap>;
 
 export type AutoRunArtifactsItemKind =
@@ -27949,7 +27949,7 @@ export const AnalyticsExplorationStatus = S.String;
 
 export type AnalyticsExplorationResultRowsItemDimensionsList = Array<string | null>;
 export const AnalyticsExplorationResultRowsItemDimensionsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<AnalyticsExplorationResultRowsItemDimensionsList>;
 
 export interface AnalyticsExplorationResultRowsItemValuesItem {
@@ -34373,7 +34373,7 @@ export type PostDataSourceExplorationResponseExplorationResultRowsItemDimensions
 >;
 export const PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostDataSourceExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostDataSourceExplorationResponseExplorationResultRowsItemValuesItem =
@@ -36005,7 +36005,7 @@ export type PostFactTableExplorationResponseExplorationResultRowsItemDimensionsL
 >;
 export const PostFactTableExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostFactTableExplorationResponseExplorationResultRowsItemValuesItem =
@@ -39405,7 +39405,7 @@ export type PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList
 >;
 export const PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostFunnelExplorationResponseExplorationResultRowsItemValuesItem =
@@ -40355,7 +40355,7 @@ export type PostJourneyExplorationResponseExplorationResultRowsItemDimensionsLis
 >;
 export const PostJourneyExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostJourneyExplorationResponseExplorationResultRowsItemValuesItem =
@@ -41578,7 +41578,7 @@ export type PostMetricExplorationResponseExplorationResultRowsItemDimensionsList
 >;
 export const PostMetricExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostMetricExplorationResponseExplorationResultRowsItemValuesItem =
@@ -42494,7 +42494,7 @@ export type PostSqlExplorationResponseExplorationResultRowsItemDimensionsList = 
 >;
 export const PostSqlExplorationResponseExplorationResultRowsItemDimensionsList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemDimensionsList>;
 
 export type PostSqlExplorationResponseExplorationResultRowsItemValuesItem =
@@ -49142,7 +49142,7 @@ export type UpdateAutoRunRequestMetadataMap = {
 };
 export const UpdateAutoRunRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateAutoRunRequestMetadataValue),
+  /*@__PURE__*/ S.NullOr(UpdateAutoRunRequestMetadataValue),
 ) as any as S.Schema<UpdateAutoRunRequestMetadataMap>;
 
 export type UpdateAutoRunRequestChecksItem = Checks;

@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "mgn", serviceShapeName: "ApplicationMigrationService" });
-const auth = T.AwsAuthSigv4({ name: "mgn" });
-const ver = T.ServiceVersion("2020-02-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "mgn",
+  serviceShapeName: "ApplicationMigrationService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mgn" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-02-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,90 +72,100 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      errors: S.optional(
-        S.suspend(() => ConflictExceptionErrors).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      errors: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ConflictExceptionErrors).annotate({
           identifier: "ConflictExceptionErrors",
         }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      quotaValue: S.optional(S.Number),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.optional(S.String),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      quotaValue: /*@__PURE__*/ S.optional(S.Number),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
-      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UninitializedAccountException
   extends /*@__PURE__*/ S.TaggedError<UninitializedAccountException>()(
     "UninitializedAccountException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      code: S.optional(S.String),
-      reason: S.optional(S.String),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      code: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ApplicationID = string;
 export type AccountID = string;
@@ -193,7 +206,7 @@ export const ApplicationAggregatedStatus = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type WaveID = string;
 export interface Application {
   applicationID?: string;
@@ -786,15 +799,17 @@ export const SsmParameterStoreParameters = /*@__PURE__*/ S.Array(SsmParameterSto
 export type SsmDocumentParameters = { [key: string]: SsmParameterStoreParameter[] | undefined };
 export const SsmDocumentParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SsmParameterStoreParameters.pipe(S.optional),
+  /*@__PURE__*/ SsmParameterStoreParameters.pipe(S.optional),
 );
 export type JmesPathString = string;
 export type SsmExternalParameter = { dynamicPath: string };
-export const SsmExternalParameter = /*@__PURE__*/ S.Union([S.Struct({ dynamicPath: S.String })]);
+export const SsmExternalParameter = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ dynamicPath: S.String }),
+]);
 export type SsmDocumentExternalParameters = { [key: string]: SsmExternalParameter | undefined };
 export const SsmDocumentExternalParameters = /*@__PURE__*/ S.Record(
   S.String,
-  SsmExternalParameter.pipe(S.optional),
+  /*@__PURE__*/ SsmExternalParameter.pipe(S.optional),
 );
 export interface SsmDocument {
   actionName: string;
@@ -1017,7 +1032,10 @@ export const CidrMappingsList = /*@__PURE__*/ S.Array(CidrMapping);
 export type ScopeTagKey = string;
 export type ScopeTagValue = string;
 export type ScopeTagsMap = { [key: string]: string | undefined };
-export const ScopeTagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ScopeTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateNetworkMigrationDefinitionRequest {
   name: string;
   description?: string;
@@ -1913,7 +1931,10 @@ export type LogicalID = string;
 export type ConstructPropertyKey = string;
 export type MarshalledResourceDefinition = string;
 export type ConstructProperties = { [key: string]: string | undefined };
-export const ConstructProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConstructProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface NetworkMigrationMapperSegmentConstruct {
   constructID?: string;
   constructType?: string;
@@ -2721,7 +2742,7 @@ export type CodeGenerationOutputFormatStatusDetailsMap = {
 };
 export const CodeGenerationOutputFormatStatusDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
-  CodeGenerationOutputFormatStatusDetails.pipe(S.optional),
+  /*@__PURE__*/ CodeGenerationOutputFormatStatusDetails.pipe(S.optional),
 );
 export interface NetworkMigrationCodeGenerationJobDetails {
   jobID?: string;
@@ -4132,10 +4153,10 @@ export type OperationUnion =
   | { merge?: never; split?: never; delete: DeleteOperation; update?: never }
   | { merge?: never; split?: never; delete?: never; update: UpdateOperation };
 export const OperationUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ merge: MergeOperation }),
-  S.Struct({ split: SplitOperation }),
-  S.Struct({ delete: DeleteOperation }),
-  S.Struct({ update: UpdateOperation }),
+  /*@__PURE__*/ S.Struct({ merge: MergeOperation }),
+  /*@__PURE__*/ S.Struct({ split: SplitOperation }),
+  /*@__PURE__*/ S.Struct({ delete: DeleteOperation }),
+  /*@__PURE__*/ S.Struct({ update: UpdateOperation }),
 ]);
 export interface StartNetworkMigrationMappingUpdateConstruct {
   segmentID: string;

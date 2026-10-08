@@ -101,7 +101,7 @@ export const ListResultPublicIPIPsJDCloud = /*@__PURE__*/ S.suspend(() =>
 
 export type ListResult = ListResultPublicIPIPs | ListResultPublicIPIPsJDCloud;
 export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["etag", "ipv4Cidrs", "ipv6Cidrs"],
     ["etag", "ipv4Cidrs", "ipv6Cidrs", "jdcloudCidrs"],
   ]),

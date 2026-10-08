@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MediaTailor", serviceShapeName: "MediaTailor" });
-const auth = T.AwsAuthSigv4({ name: "mediatailor" });
-const ver = T.ServiceVersion("2018-04-23");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MediaTailor",
+  serviceShapeName: "MediaTailor",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mediatailor" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-04-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -82,32 +85,35 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ChannelNotFound
   extends /*@__PURE__*/ S.TaggedError<ChannelNotFound>()(
     "ChannelNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export class PlaybackConfigurationNotFound
   extends /*@__PURE__*/ S.TaggedError<PlaybackConfigurationNotFound>()(
     "PlaybackConfigurationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "NotFoundException", message: { includes: "not found" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "NotFoundException",
+      message: { includes: "not found" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class PrefetchScheduleNotFound
   extends /*@__PURE__*/ S.TaggedError<PrefetchScheduleNotFound>()(
     "PrefetchScheduleNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export class ProgramNotFound
   extends /*@__PURE__*/ S.TaggedError<ProgramNotFound>()(
     "ProgramNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export type LogType = "AS_RUN" | (string & {});
 export const LogType = S.String;
@@ -388,7 +394,10 @@ export type PlaybackMode = "LOOP" | "LINEAR" | (string & {});
 export const PlaybackMode = S.String;
 
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOf__string = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type Tier = "BASIC" | "STANDARD" | (string & {});
 export const Tier = S.String;
 
@@ -1871,7 +1880,7 @@ export type ConfigurationAliasesResponse = {
 };
 export const ConfigurationAliasesResponse = /*@__PURE__*/ S.Record(
   S.String,
-  __mapOf__string.pipe(S.optional),
+  /*@__PURE__*/ __mapOf__string.pipe(S.optional),
 );
 export type OriginManifestType = "SINGLE_PERIOD" | "MULTI_PERIOD" | (string & {});
 export const OriginManifestType = S.String;
@@ -1974,7 +1983,7 @@ export type Method = "GET" | "POST" | (string & {});
 export const Method = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type CompressionMethod = "NONE" | "GZIP" | (string & {});
 export const CompressionMethod = S.String;
 
@@ -2046,7 +2055,10 @@ export type EventName =
 export const EventName = S.String;
 
 export type FunctionMapping = { [key in EventName]?: string };
-export const FunctionMapping = /*@__PURE__*/ S.Record(EventName, S.String.pipe(S.optional));
+export const FunctionMapping = /*@__PURE__*/ S.Record(
+  EventName,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AdsPersonalizationTimeouts {
   AdsRequestTimeoutMilliseconds?: number;
   LiveMaximumAdsPersonalizationTimeMilliseconds?: number;
@@ -2761,7 +2773,7 @@ export type ConfigurationAliasesRequest = {
 };
 export const ConfigurationAliasesRequest = /*@__PURE__*/ S.Record(
   S.String,
-  __mapOf__string.pipe(S.optional),
+  /*@__PURE__*/ __mapOf__string.pipe(S.optional),
 );
 export interface DashConfigurationForPut {
   MpdLocation?: string;

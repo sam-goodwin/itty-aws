@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "EMR Serverless", serviceShapeName: "AwsToledoWebService" });
-const auth = T.AwsAuthSigv4({ name: "emr-serverless" });
-const ver = T.ServiceVersion("2021-07-13");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "EMR Serverless",
+  serviceShapeName: "AwsToledoWebService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "emr-serverless" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-07-13");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,32 +78,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ApplicationId = string;
 export type JobRunId = string;
@@ -169,7 +172,7 @@ export const InitialCapacityConfig = /*@__PURE__*/ S.suspend(() =>
 export type InitialCapacityConfigMap = { [key: string]: InitialCapacityConfig | undefined };
 export const InitialCapacityConfigMap = /*@__PURE__*/ S.Record(
   S.String,
-  InitialCapacityConfig.pipe(S.optional),
+  /*@__PURE__*/ InitialCapacityConfig.pipe(S.optional),
 );
 export interface MaximumAllowedResources {
   cpu: string;
@@ -182,7 +185,7 @@ export const MaximumAllowedResources = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AutoStartConfig {
   enabled?: boolean;
 }
@@ -234,13 +237,16 @@ export type WorkerTypeSpecificationInputMap = {
 };
 export const WorkerTypeSpecificationInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  WorkerTypeSpecificationInput.pipe(S.optional),
+  /*@__PURE__*/ WorkerTypeSpecificationInput.pipe(S.optional),
 );
 export type String1024 = string;
 export type ConfigurationPropertyKey = string;
 export type ConfigurationPropertyValue = string;
 export type SensitivePropertiesMap = { [key: string]: string | undefined };
-export const SensitivePropertiesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const SensitivePropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Configuration {
   classification: string;
   properties?: { [key: string]: string | undefined };
@@ -257,7 +263,9 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 export type ConfigurationList = Configuration[];
 export const ConfigurationList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Configuration> => Configuration).annotate({ identifier: "Configuration" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => Configuration).annotate({
+    identifier: "Configuration",
+  }),
 ) as any as S.Schema<ConfigurationList>;
 export type UriString = string;
 export type EncryptionKeyArn = string;
@@ -285,7 +293,10 @@ export type LogTypeString = string;
 export type LogTypeList = string[];
 export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
 export type LogTypeMap = { [key: string]: string[] | undefined };
-export const LogTypeMap = /*@__PURE__*/ S.Record(S.String, LogTypeList.pipe(S.optional));
+export const LogTypeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ LogTypeList.pipe(S.optional),
+);
 export interface CloudWatchLoggingConfiguration {
   enabled: boolean;
   logGroupName?: string;
@@ -332,7 +343,10 @@ export const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContext = { [key: string]: string | undefined };
-export const EncryptionContext = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EncryptionContext = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DiskEncryptionConfiguration {
   encryptionContext?: { [key: string]: string | undefined };
   encryptionKeyArn?: string;
@@ -500,7 +514,7 @@ export const WorkerTypeSpecification = /*@__PURE__*/ S.suspend(() =>
 export type WorkerTypeSpecificationMap = { [key: string]: WorkerTypeSpecification | undefined };
 export const WorkerTypeSpecificationMap = /*@__PURE__*/ S.Record(
   S.String,
-  WorkerTypeSpecification.pipe(S.optional),
+  /*@__PURE__*/ WorkerTypeSpecification.pipe(S.optional),
 );
 export type IdentityCenterApplicationArn = string;
 export interface IdentityCenterConfiguration {
@@ -698,8 +712,8 @@ export type JobDriver =
   | { sparkSubmit: SparkSubmit; hive?: never }
   | { sparkSubmit?: never; hive: Hive };
 export const JobDriver = /*@__PURE__*/ S.Union([
-  S.Struct({ sparkSubmit: SparkSubmit }),
-  S.Struct({ hive: Hive }),
+  /*@__PURE__*/ S.Struct({ sparkSubmit: SparkSubmit }),
+  /*@__PURE__*/ S.Struct({ hive: Hive }),
 ]);
 export interface TotalResourceUtilization {
   vCPUHour?: number;

@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cognito-sync.amazonaws.com/doc/2014-06-30/");
-const svc = T.AwsApiService({ sdkId: "Cognito Sync", serviceShapeName: "AWSCognitoSyncService" });
-const auth = T.AwsAuthSigv4({ name: "cognito-sync" });
-const ver = T.ServiceVersion("2014-06-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cognito-sync.amazonaws.com/doc/2014-06-30/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Cognito Sync",
+  serviceShapeName: "AWSCognitoSyncService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cognito-sync" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-06-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,89 +77,119 @@ const rules = T.EndpointResolver((p, _) => {
 export class AlreadyStreamedException
   extends /*@__PURE__*/ S.TaggedError<AlreadyStreamedException>()(
     "AlreadyStreamedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRequestException
   extends /*@__PURE__*/ S.TaggedError<DuplicateRequestException>()(
     "DuplicateRequestException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class InvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationException>()(
     "InvalidConfigurationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionOutputException
   extends /*@__PURE__*/ S.TaggedError<InvalidLambdaFunctionOutputException>()(
     "InvalidLambdaFunctionOutputException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidLambdaFunctionOutput", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidLambdaFunctionOutput", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class LambdaThrottledException
   extends /*@__PURE__*/ S.TaggedError<LambdaThrottledException>()(
     "LambdaThrottledException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }), T.HttpError(429)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
+    ),
   ).pipe(C.withThrottlingError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }), T.HttpError(400)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }), T.HttpError(404)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }), T.HttpError(429)),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
+    ),
   ).pipe(C.withThrottlingError) {}
 export type IdentityPoolId = string;
 export interface BulkPublishRequest {
@@ -414,7 +447,7 @@ export const GetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CognitoEventType = string;
 export type LambdaFunctionArn = string;
 export type Events = { [key: string]: string | undefined };
-export const Events = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Events = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetCognitoEventsResponse {
   Events?: { [key: string]: string | undefined };
 }

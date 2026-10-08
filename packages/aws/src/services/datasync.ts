@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "DataSync", serviceShapeName: "FmrsService" });
-const auth = T.AwsAuthSigv4({ name: "datasync" });
-const ver = T.ServiceVersion("2018-11-09");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "DataSync", serviceShapeName: "FmrsService" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "datasync" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-09");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,24 +72,24 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()("InternalException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    errorCode: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    errorCode: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    errorCode: /*@__PURE__*/ S.optional(S.String),
+    datasyncErrorCode: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class LocationAccessTestFailed
   extends /*@__PURE__*/ S.TaggedError<LocationAccessTestFailed>()(
     "LocationAccessTestFailed",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      errorCode: S.optional(S.String),
-      datasyncErrorCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.optional(S.String),
+      datasyncErrorCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "location access test failed" },
     }),
@@ -98,11 +98,11 @@ export class LocationNotFound
   extends /*@__PURE__*/ S.TaggedError<LocationNotFound>()(
     "LocationNotFound",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      errorCode: S.optional(S.String),
-      datasyncErrorCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.optional(S.String),
+      datasyncErrorCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^Location .* is not found" },
     }),
@@ -111,11 +111,11 @@ export class LocationRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedError<LocationRoleNotAssumable>()(
     "LocationRoleNotAssumable",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      errorCode: S.optional(S.String),
-      datasyncErrorCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.optional(S.String),
+      datasyncErrorCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "Invalid IAM role" },
     }),
@@ -124,11 +124,11 @@ export class TaskNotFound
   extends /*@__PURE__*/ S.TaggedError<TaskNotFound>()(
     "TaskNotFound",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      errorCode: S.optional(S.String),
-      datasyncErrorCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.optional(S.String),
+      datasyncErrorCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^Task .* is not found" },
     }),

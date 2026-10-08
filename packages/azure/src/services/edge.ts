@@ -75,7 +75,7 @@ export const ArtifactDownloadResult = /*@__PURE__*/ S.suspend(() =>
 /** Solution dependencies */
 export type SolutionDependencyParameterDependenciesList = Array<SolutionDependencyParameter>;
 export const SolutionDependencyParameterDependenciesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SolutionDependencyParameter),
+  /*@__PURE__*/ S.suspend(() => SolutionDependencyParameter),
 ) as any as S.Schema<SolutionDependencyParameterDependenciesList>;
 
 /** Solution Dependency Context */
@@ -4822,13 +4822,13 @@ export const JobStepStatisticsBase = /*@__PURE__*/ S.suspend(() =>
 /** Nested substeps for this step */
 export type JobStepStepsList = Array<JobStep>;
 export const JobStepStepsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => JobStep),
+  /*@__PURE__*/ S.suspend(() => JobStep),
 ) as any as S.Schema<JobStepStepsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -6056,7 +6056,7 @@ export const StateCategory = S.String;
 /** Child stages which represents more granular level stage status if any */
 export type StageMapChildStagesList = Array<StageMap>;
 export const StageMapChildStagesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => StageMap),
+  /*@__PURE__*/ S.suspend(() => StageMap),
 ) as any as S.Schema<StageMapChildStagesList>;
 
 /** Stage Map for Solution Version */
@@ -6094,7 +6094,7 @@ export const SolutionVersionPropertiesStagesList = /*@__PURE__*/ S.Array(
 /** Solution dependencies */
 export type SolutionDependencyDependenciesList = Array<SolutionDependency>;
 export const SolutionDependencyDependenciesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SolutionDependency),
+  /*@__PURE__*/ S.suspend(() => SolutionDependency),
 ) as any as S.Schema<SolutionDependencyDependenciesList>;
 
 /** Solution Dependency Context */

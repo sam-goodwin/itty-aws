@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://license-manager.amazonaws.com/doc/2018_08_01");
-const svc = T.AwsApiService({ sdkId: "License Manager", serviceShapeName: "AWSLicenseManager" });
-const auth = T.AwsAuthSigv4({ name: "license-manager" });
-const ver = T.ServiceVersion("2018-08-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("https://license-manager.amazonaws.com/doc/2018_08_01");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "License Manager",
+  serviceShapeName: "AWSLicenseManager",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "license-manager" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-08-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,71 +79,83 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
-      T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
+      /*@__PURE__*/ T.HttpError(401),
     ),
   ).pipe(C.withAuthError) {}
 export class AuthorizationException
   extends /*@__PURE__*/ S.TaggedError<AuthorizationException>()(
     "AuthorizationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
-      T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
     ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class EntitlementNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<EntitlementNotAllowedException>()(
     "EntitlementNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException
   extends /*@__PURE__*/ S.TaggedError<FailedDependencyException>()(
     "FailedDependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ErrorCode: S.optional(S.String) },
-    T.all(T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }), T.HttpError(424)),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ErrorCode: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
+      /*@__PURE__*/ T.HttpError(424),
+    ),
   ) {}
 export class FilterLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<FilterLimitExceededException>()(
     "FilterLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidParameterValueProvided", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "InvalidParameterValueProvided",
+        httpResponseCode: 400,
+      }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class LicenseConfigurationNotFound
   extends /*@__PURE__*/ S.TaggedError<LicenseConfigurationNotFound>()(
     "LicenseConfigurationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidParameterValueException",
       message: { includes: "Invalid license configuration ARN" },
     }),
@@ -148,68 +163,74 @@ export class LicenseConfigurationNotFound
 export class LicenseUsageException
   extends /*@__PURE__*/ S.TaggedError<LicenseUsageException>()(
     "LicenseUsageException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
-      T.HttpError(412),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
+      /*@__PURE__*/ T.HttpError(412),
     ),
   ) {}
 export class NoEntitlementsAllowedException
   extends /*@__PURE__*/ S.TaggedError<NoEntitlementsAllowedException>()(
     "NoEntitlementsAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RateLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<RateLimitExceededException>()(
     "RateLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }), T.HttpError(429)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
+      /*@__PURE__*/ T.HttpError(429),
+    ),
   ).pipe(C.withThrottlingError) {}
 export class RedirectException
   extends /*@__PURE__*/ S.TaggedError<RedirectException>()(
     "RedirectException",
     {
-      Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Location: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.HttpHeader("Location")),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(308),
+    /*@__PURE__*/ T.HttpError(308),
   ) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "InvalidResource.NotFound", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InvalidResource.NotFound", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerInternalException
   extends /*@__PURE__*/ S.TaggedError<ServerInternalException>()(
     "ServerInternalException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }), T.HttpError(500)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      /*@__PURE__*/ T.HttpError(500),
+    ),
   ).pipe(C.withServerError) {}
 export class UnsupportedDigitalSignatureMethodException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedDigitalSignatureMethodException>()(
     "UnsupportedDigitalSignatureMethodException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export interface AcceptGrantRequest {
@@ -1691,7 +1712,10 @@ export const RegionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(S.String) }),
 ).annotate({ identifier: "RegionStatus" }) as any as S.Schema<RegionStatus>;
 export type RegionStatusMap = { [key: string]: RegionStatus | undefined };
-export const RegionStatusMap = /*@__PURE__*/ S.Record(S.String, RegionStatus.pipe(S.optional));
+export const RegionStatusMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ RegionStatus.pipe(S.optional),
+);
 export interface CrossRegionDiscoveryStatus {
   Message?: { [key: string]: RegionStatus | undefined };
 }
@@ -1822,7 +1846,9 @@ export const ListAssociationsForLicenseConfigurationResponse = /*@__PURE__*/ S.s
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FilterValues = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -1912,7 +1938,7 @@ export const ListFailuresForLicenseConfigurationOperationsResponse = /*@__PURE__
 }) as any as S.Schema<ListFailuresForLicenseConfigurationOperationsResponse>;
 export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(
-  Filter.pipe(T.XmlName("item")).annotate({ identifier: "Filter" }),
+  /*@__PURE__*/ Filter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({ identifier: "Filter" }),
 );
 export interface ListLicenseAssetGroupsRequest {
   Filters?: Filter[];

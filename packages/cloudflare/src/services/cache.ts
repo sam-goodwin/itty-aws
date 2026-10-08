@@ -790,7 +790,9 @@ export const InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
 export type InvalidateRequestFiles =
   | InvalidateRequestFilesCachePurgeSingleFileList
   | InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-export const InvalidateRequestFiles = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const InvalidateRequestFiles = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface InvalidateRequest {
   zoneId: string;
@@ -886,7 +888,7 @@ export type InvalidateEnvironmentRequestFiles =
   | InvalidateEnvironmentRequestFilesCachePurgeSingleFileList
   | InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
 export const InvalidateEnvironmentRequestFiles = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface InvalidateEnvironmentRequest {
@@ -2078,7 +2080,7 @@ export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList = /*@__P
 export type PurgeRequestFiles =
   | PurgeRequestFilesCachePurgeSingleFileList
   | PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-export const PurgeRequestFiles = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PurgeRequestFiles = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface PurgeCacheRequest {
   zoneId: string;
@@ -2173,7 +2175,9 @@ export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersLi
 export type PurgeEnvironmentRequestFiles =
   | PurgeEnvironmentRequestFilesCachePurgeSingleFileList
   | PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList;
-export const PurgeEnvironmentRequestFiles = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PurgeEnvironmentRequestFiles = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface PurgeEnvironmentCacheRequest {
   zoneId: string;

@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "WellArchitected",
   serviceShapeName: "WellArchitectedApiServiceLambda",
 });
-const auth = T.AwsAuthSigv4({ name: "wellarchitected" });
-const ver = T.ServiceVersion("2020-03-31");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wellarchitected" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-03-31");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region, SubServiceType } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -132,74 +132,74 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
-      QuotaCode: S.optional(S.String),
-      ServiceCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      QuotaCode: S.optional(S.String),
-      ServiceCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
-      Fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      Fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type WorkloadId = string;
 export type LensAlias = string;
@@ -512,7 +512,10 @@ export const CreateAgentProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export type FieldErrorPath = string;
 export type FieldErrorMessage = string;
 export type FieldErrors = { [key: string]: string | undefined };
-export const FieldErrors = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FieldErrors = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateAgentProfileResponse {
   name: string;
   displayName?: string | redacted.Redacted<string>;
@@ -669,7 +672,7 @@ export const ProfileQuestionUpdates = /*@__PURE__*/ S.Array(ProfileQuestionUpdat
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateProfileInput {
   ProfileName?: string;
   ProfileDescription?: string;
@@ -1987,7 +1990,7 @@ export const MetricType = S.String;
 
 export type Count = number;
 export type RiskCounts = { [key in Risk]?: number };
-export const RiskCounts = /*@__PURE__*/ S.Record(Risk, S.Number.pipe(S.optional));
+export const RiskCounts = /*@__PURE__*/ S.Record(Risk, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface BestPractice {
   ChoiceId?: string;
   ChoiceTitle?: string;
@@ -2718,7 +2721,10 @@ export type Question = "UNANSWERED" | "ANSWERED" | (string & {});
 export const Question = S.String;
 
 export type QuestionCounts = { [key in Question]?: number };
-export const QuestionCounts = /*@__PURE__*/ S.Record(Question, S.Number.pipe(S.optional));
+export const QuestionCounts = /*@__PURE__*/ S.Record(
+  Question,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type ReviewTemplateUpdateStatus = "CURRENT" | "LENS_NOT_CURRENT" | (string & {});
 export const ReviewTemplateUpdateStatus = S.String;
 
@@ -3526,7 +3532,10 @@ export const ListCheckSummariesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCheckSummariesInput" }) as any as S.Schema<ListCheckSummariesInput>;
 export type CheckStatusCount = number;
 export type AccountSummary = { [key in CheckStatus]?: number };
-export const AccountSummary = /*@__PURE__*/ S.Record(CheckStatus, S.Number.pipe(S.optional));
+export const AccountSummary = /*@__PURE__*/ S.Record(
+  CheckStatus,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface CheckSummary {
   Id?: string;
   Name?: string;
@@ -4785,7 +4794,10 @@ export const ChoiceUpdate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChoiceUpdate" }) as any as S.Schema<ChoiceUpdate>;
 export type ChoiceUpdates = { [key: string]: ChoiceUpdate | undefined };
-export const ChoiceUpdates = /*@__PURE__*/ S.Record(S.String, ChoiceUpdate.pipe(S.optional));
+export const ChoiceUpdates = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ChoiceUpdate.pipe(S.optional),
+);
 export interface UpdateAnswerInput {
   WorkloadId: string;
   LensAlias: string;
@@ -4902,7 +4914,10 @@ export const UpdateIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct(
   identifier: "UpdateIntegrationResponse",
 }) as any as S.Schema<UpdateIntegrationResponse>;
 export type PillarNotes = { [key: string]: string | undefined };
-export const PillarNotes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PillarNotes = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface UpdateLensReviewInput {
   WorkloadId: string;
   LensAlias: string;

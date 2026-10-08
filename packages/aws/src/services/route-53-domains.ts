@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://route53domains.amazonaws.com/doc/2014-05-15/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("https://route53domains.amazonaws.com/doc/2014-05-15/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Route 53 Domains",
   serviceShapeName: "Route53Domains_v20140515",
 });
-const auth = T.AwsAuthSigv4({ name: "route53domains" });
-const ver = T.ServiceVersion("2014-05-15");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "route53domains" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-05-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,56 +79,65 @@ const rules = T.EndpointResolver((p, _) => {
 export class DnssecLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<DnssecLimitExceeded>()(
     "DnssecLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DomainLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<DomainLimitExceeded>()(
     "DomainLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DomainNotFound
   extends /*@__PURE__*/ S.TaggedError<DomainNotFound>()(
     "DomainNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "InvalidInput", message: { includes: "not found in account" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidInput",
+      message: { includes: "not found in account" },
+    }),
   ).pipe(C.withNotFoundError) {}
 export class DuplicateRequest
   extends /*@__PURE__*/ S.TaggedError<DuplicateRequest>()(
     "DuplicateRequest",
-    { requestId: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      requestId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
   extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OperationLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<OperationLimitExceeded>()(
     "OperationLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class TLDInMaintenance
   extends /*@__PURE__*/ S.TaggedError<TLDInMaintenance>()(
     "TLDInMaintenance",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), tld: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      tld: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TLDRulesViolation
   extends /*@__PURE__*/ S.TaggedError<TLDRulesViolation>()(
     "TLDRulesViolation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedTLD
   extends /*@__PURE__*/ S.TaggedError<UnsupportedTLD>()(
     "UnsupportedTLD",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export type Password = string | redacted.Redacted<string>;

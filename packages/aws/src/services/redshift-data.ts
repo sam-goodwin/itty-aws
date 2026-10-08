@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Redshift Data", serviceShapeName: "RedshiftData" });
-const auth = T.AwsAuthSigv4({ name: "redshift-data" });
-const ver = T.ServiceVersion("2019-12-20");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Redshift Data",
+  serviceShapeName: "RedshiftData",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "redshift-data" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-12-20");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,62 +76,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class ActiveSessionsExceededException
   extends /*@__PURE__*/ S.TaggedError<ActiveSessionsExceededException>()(
     "ActiveSessionsExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ActiveStatementsExceededException
   extends /*@__PURE__*/ S.TaggedError<ActiveStatementsExceededException>()(
     "ActiveStatementsExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ActiveWaitingRequestsExceededException
   extends /*@__PURE__*/ S.TaggedError<ActiveWaitingRequestsExceededException>()(
     "ActiveWaitingRequestsExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BatchExecuteStatementException
   extends /*@__PURE__*/ S.TaggedError<BatchExecuteStatementException>()(
     "BatchExecuteStatementException",
-    { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), StatementId: S.String },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DatabaseConnectionException
   extends /*@__PURE__*/ S.TaggedError<DatabaseConnectionException>()(
     "DatabaseConnectionException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ExecuteStatementException
   extends /*@__PURE__*/ S.TaggedError<ExecuteStatementException>()(
     "ExecuteStatementException",
-    { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), StatementId: S.String },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class QueryTimeoutException
   extends /*@__PURE__*/ S.TaggedError<QueryTimeoutException>()(
     "QueryTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()), ResourceId: S.String },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type StatementString = string;
 export type SqlList = string[];
@@ -537,12 +540,12 @@ export type Field =
       blobValue: Uint8Array;
     };
 export const Field = /*@__PURE__*/ S.Union([
-  S.Struct({ isNull: S.Boolean }),
-  S.Struct({ booleanValue: S.Boolean }),
-  S.Struct({ longValue: S.Number }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ blobValue: T.Blob }),
+  /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
 ]);
 export type FieldList = Field[];
 export const FieldList = /*@__PURE__*/ S.Array(Field);
@@ -581,7 +584,9 @@ export const GetStatementResultV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStatementResultV2Request",
 }) as any as S.Schema<GetStatementResultV2Request>;
 export type QueryRecords = { CSVRecords: string };
-export const QueryRecords = /*@__PURE__*/ S.Union([S.Struct({ CSVRecords: S.String })]);
+export const QueryRecords = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ CSVRecords: S.String }),
+]);
 export type FormattedSqlRecords = QueryRecords[];
 export const FormattedSqlRecords = /*@__PURE__*/ S.Array(QueryRecords);
 export interface GetStatementResultV2Response {

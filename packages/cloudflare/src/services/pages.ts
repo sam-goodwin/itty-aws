@@ -2079,7 +2079,7 @@ export type ProjectsCreateResponseLatestDeploymentEnvVarsValue =
   | ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText;
 export const ProjectsCreateResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
       ["type", "value"],
@@ -4207,7 +4207,7 @@ export type ProjectsGetResponseLatestDeploymentEnvVarsValue =
   | ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText;
 export const ProjectsGetResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
       ["type", "value"],
@@ -6662,7 +6662,7 @@ export type ProjectsListResultItemLatestDeploymentEnvVarsValue =
   | ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText
   | ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText;
 export const ProjectsListResultItemLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
       ["type", "value"],
@@ -8833,7 +8833,7 @@ export type ProjectsEditResponseLatestDeploymentEnvVarsValue =
   | ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText;
 export const ProjectsEditResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
       ["type", "value"],

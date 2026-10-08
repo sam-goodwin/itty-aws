@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Athena", serviceShapeName: "AmazonAthena" });
-const auth = T.AwsAuthSigv4({ name: "athena" });
-const ver = T.ServiceVersion("2017-05-18");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Athena", serviceShapeName: "AmazonAthena" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "athena" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-05-18");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -71,54 +71,65 @@ const rules = T.EndpointResolver((p, _) => {
 export class DataCatalogNotFound
   extends /*@__PURE__*/ S.TaggedError<DataCatalogNotFound>()(
     "DataCatalogNotFound",
-    { AthenaErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      AthenaErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "DataCatalog.*not found" },
     }),
   ).pipe(C.withNotFoundError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()("InternalServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    AthenaErrorCode: S.optional(S.String),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    AthenaErrorCode: /*@__PURE__*/ S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MetadataException
   extends /*@__PURE__*/ S.TaggedError<MetadataException>()("MetadataException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NamedQueryNotFound
   extends /*@__PURE__*/ S.TaggedError<NamedQueryNotFound>()(
     "NamedQueryNotFound",
-    { AthenaErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      AthenaErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "NamedQuery.*does not exist" },
     }),
   ).pipe(C.withNotFoundError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    ResourceName: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    ResourceName: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class SessionAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<SessionAlreadyExistsException>()(
     "SessionAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    Reason: S.optional(S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" })),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    Reason: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" }),
+    ),
   }) {}
 export class WorkGroupNotFound
   extends /*@__PURE__*/ S.TaggedError<WorkGroupNotFound>()(
     "WorkGroupNotFound",
-    { AthenaErrorCode: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    {
+      AthenaErrorCode: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "WorkGroup.*not found" },
     }),
@@ -561,7 +572,10 @@ export const DataCatalogType = S.String;
 export type KeyString = string;
 export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
-export const ParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateDataCatalogInput {
   Name: string;
   Type: DataCatalogType;
@@ -736,7 +750,10 @@ export type LogTypeValue = string;
 export type LogTypeValuesList = string[];
 export const LogTypeValuesList = /*@__PURE__*/ S.Array(S.String);
 export type LogTypesMap = { [key: string]: string[] | undefined };
-export const LogTypesMap = /*@__PURE__*/ S.Record(S.String, LogTypeValuesList.pipe(S.optional));
+export const LogTypesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ LogTypeValuesList.pipe(S.optional),
+);
 export interface CloudWatchLoggingConfiguration {
   Enabled: boolean;
   LogGroup?: string;
@@ -1482,7 +1499,7 @@ export const QueryRuntimeStatisticsRows = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryRuntimeStatisticsRows>;
 export type QueryStagePlanNodes = QueryStagePlanNode[];
 export const QueryStagePlanNodes = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<QueryStagePlanNode> => QueryStagePlanNode).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<QueryStagePlanNode> => QueryStagePlanNode).annotate({
     identifier: "QueryStagePlanNode",
   }),
 ) as any as S.Schema<QueryStagePlanNodes>;
@@ -1506,7 +1523,9 @@ export const QueryStagePlanNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryStagePlanNode" }) as any as S.Schema<QueryStagePlanNode>;
 export type QueryStages = QueryStage[];
 export const QueryStages = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<QueryStage> => QueryStage).annotate({ identifier: "QueryStage" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<QueryStage> => QueryStage).annotate({
+    identifier: "QueryStage",
+  }),
 ) as any as S.Schema<QueryStages>;
 export interface QueryStage {
   StageId?: number;

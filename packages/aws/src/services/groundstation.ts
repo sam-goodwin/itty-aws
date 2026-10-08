@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "GroundStation", serviceShapeName: "GroundStation" });
-const auth = T.AwsAuthSigv4({ name: "groundstation" });
-const ver = T.ServiceVersion("2019-05-23");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "GroundStation",
+  serviceShapeName: "GroundStation",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "groundstation" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-05-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,38 +76,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class DependencyException
   extends /*@__PURE__*/ S.TaggedError<DependencyException>()(
     "DependencyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), parameterName: S.optional(S.String) },
-    T.HttpError(531),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      parameterName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(531),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), parameterName: S.optional(S.String) },
-    T.HttpError(431),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      parameterName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(431),
   ) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), parameterName: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      parameterName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(434),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(434),
   ) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), parameterName: S.optional(S.String) },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      parameterName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export type Uuid = string;
 export interface CancelContactRequest {
@@ -269,7 +284,7 @@ export const KinesisDataStreamData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KinesisDataStreamData" }) as any as S.Schema<KinesisDataStreamData>;
 export type TelemetrySinkData = { kinesisDataStreamData: KinesisDataStreamData };
 export const TelemetrySinkData = /*@__PURE__*/ S.Union([
-  S.Struct({ kinesisDataStreamData: KinesisDataStreamData }),
+  /*@__PURE__*/ S.Struct({ kinesisDataStreamData: KinesisDataStreamData }),
 ]);
 export interface TelemetrySinkConfig {
   telemetrySinkType: TelemetrySinkType;
@@ -360,17 +375,17 @@ export type ConfigTypeData =
       telemetrySinkConfig: TelemetrySinkConfig;
     };
 export const ConfigTypeData = /*@__PURE__*/ S.Union([
-  S.Struct({ antennaDownlinkConfig: AntennaDownlinkConfig }),
-  S.Struct({ trackingConfig: TrackingConfig }),
-  S.Struct({ dataflowEndpointConfig: DataflowEndpointConfig }),
-  S.Struct({ antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig }),
-  S.Struct({ antennaUplinkConfig: AntennaUplinkConfig }),
-  S.Struct({ uplinkEchoConfig: UplinkEchoConfig }),
-  S.Struct({ s3RecordingConfig: S3RecordingConfig }),
-  S.Struct({ telemetrySinkConfig: TelemetrySinkConfig }),
+  /*@__PURE__*/ S.Struct({ antennaDownlinkConfig: AntennaDownlinkConfig }),
+  /*@__PURE__*/ S.Struct({ trackingConfig: TrackingConfig }),
+  /*@__PURE__*/ S.Struct({ dataflowEndpointConfig: DataflowEndpointConfig }),
+  /*@__PURE__*/ S.Struct({ antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig }),
+  /*@__PURE__*/ S.Struct({ antennaUplinkConfig: AntennaUplinkConfig }),
+  /*@__PURE__*/ S.Struct({ uplinkEchoConfig: UplinkEchoConfig }),
+  /*@__PURE__*/ S.Struct({ s3RecordingConfig: S3RecordingConfig }),
+  /*@__PURE__*/ S.Struct({ telemetrySinkConfig: TelemetrySinkConfig }),
 ]);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateConfigRequest {
   name: string;
   configData: ConfigTypeData;
@@ -512,7 +527,7 @@ export const UplinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UplinkConnectionDetails" }) as any as S.Schema<UplinkConnectionDetails>;
 export type UplinkDataflowDetails = { agentConnectionDetails: UplinkConnectionDetails };
 export const UplinkDataflowDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ agentConnectionDetails: UplinkConnectionDetails }),
+  /*@__PURE__*/ S.Struct({ agentConnectionDetails: UplinkConnectionDetails }),
 ]);
 export interface UplinkAwsGroundStationAgentEndpointDetails {
   name: string;
@@ -544,7 +559,7 @@ export const DownlinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownlinkConnectionDetails>;
 export type DownlinkDataflowDetails = { agentConnectionDetails: DownlinkConnectionDetails };
 export const DownlinkDataflowDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ agentConnectionDetails: DownlinkConnectionDetails }),
+  /*@__PURE__*/ S.Struct({ agentConnectionDetails: DownlinkConnectionDetails }),
 ]);
 export interface DownlinkAwsGroundStationAgentEndpointDetails {
   name: string;
@@ -655,8 +670,12 @@ export type CreateEndpointDetails =
       downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint;
     };
 export const CreateEndpointDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint }),
-  S.Struct({ downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint }),
+  /*@__PURE__*/ S.Struct({
+    uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint,
+  }),
+  /*@__PURE__*/ S.Struct({
+    downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint,
+  }),
 ]);
 export type CreateEndpointDetailsList = CreateEndpointDetails[];
 export const CreateEndpointDetailsList = /*@__PURE__*/ S.Array(CreateEndpointDetails);
@@ -796,8 +815,8 @@ export type AzElSegmentsData =
   | { s3Object: S3Object; azElData?: never }
   | { s3Object?: never; azElData: AzElSegments };
 export const AzElSegmentsData = /*@__PURE__*/ S.Union([
-  S.Struct({ s3Object: S3Object }),
-  S.Struct({ azElData: AzElSegments }),
+  /*@__PURE__*/ S.Struct({ s3Object: S3Object }),
+  /*@__PURE__*/ S.Struct({ azElData: AzElSegments }),
 ]);
 export interface AzElEphemeris {
   groundStation: string;
@@ -811,9 +830,9 @@ export type EphemerisData =
   | { tle?: never; oem: OEMEphemeris; azEl?: never }
   | { tle?: never; oem?: never; azEl: AzElEphemeris };
 export const EphemerisData = /*@__PURE__*/ S.Union([
-  S.Struct({ tle: TLEEphemeris }),
-  S.Struct({ oem: OEMEphemeris }),
-  S.Struct({ azEl: AzElEphemeris }),
+  /*@__PURE__*/ S.Struct({ tle: TLEEphemeris }),
+  /*@__PURE__*/ S.Struct({ oem: OEMEphemeris }),
+  /*@__PURE__*/ S.Struct({ azEl: AzElEphemeris }),
 ]);
 export interface CreateEphemerisRequest {
   satelliteId?: string;
@@ -856,9 +875,9 @@ export type KmsKey =
   | { kmsKeyArn?: never; kmsAliasArn: string; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn?: never; kmsAliasName: string };
 export const KmsKey = /*@__PURE__*/ S.Union([
-  S.Struct({ kmsKeyArn: S.String }),
-  S.Struct({ kmsAliasArn: S.String }),
-  S.Struct({ kmsAliasName: S.String }),
+  /*@__PURE__*/ S.Struct({ kmsKeyArn: S.String }),
+  /*@__PURE__*/ S.Struct({ kmsAliasArn: S.String }),
+  /*@__PURE__*/ S.Struct({ kmsAliasName: S.String }),
 ]);
 export interface CreateMissionProfileRequest {
   name: string;
@@ -1028,9 +1047,9 @@ export type ConfigDetails =
       s3RecordingDetails: S3RecordingDetails;
     };
 export const ConfigDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ endpointDetails: EndpointDetails }),
-  S.Struct({ antennaDemodDecodeDetails: AntennaDemodDecodeDetails }),
-  S.Struct({ s3RecordingDetails: S3RecordingDetails }),
+  /*@__PURE__*/ S.Struct({ endpointDetails: EndpointDetails }),
+  /*@__PURE__*/ S.Struct({ antennaDemodDecodeDetails: AntennaDemodDecodeDetails }),
+  /*@__PURE__*/ S.Struct({ s3RecordingDetails: S3RecordingDetails }),
 ]);
 export interface Source {
   configType?: ConfigCapabilityType;
@@ -1097,9 +1116,9 @@ export type ProgramTrackSettings =
   | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
   | { azEl?: never; oem?: never; tle: TleProgramTrackSettings };
 export const ProgramTrackSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ azEl: AzElProgramTrackSettings }),
-  S.Struct({ oem: OemProgramTrackSettings }),
-  S.Struct({ tle: TleProgramTrackSettings }),
+  /*@__PURE__*/ S.Struct({ azEl: AzElProgramTrackSettings }),
+  /*@__PURE__*/ S.Struct({ oem: OemProgramTrackSettings }),
+  /*@__PURE__*/ S.Struct({ tle: TleProgramTrackSettings }),
 ]);
 export interface TrackingOverrides {
   programTrackSettings?: ProgramTrackSettings;
@@ -1307,9 +1326,9 @@ export type EphemerisTypeDescription =
   | { tle?: never; oem: EphemerisDescription; azEl?: never }
   | { tle?: never; oem?: never; azEl: EphemerisDescription };
 export const EphemerisTypeDescription = /*@__PURE__*/ S.Union([
-  S.Struct({ tle: EphemerisDescription }),
-  S.Struct({ oem: EphemerisDescription }),
-  S.Struct({ azEl: EphemerisDescription }),
+  /*@__PURE__*/ S.Struct({ tle: EphemerisDescription }),
+  /*@__PURE__*/ S.Struct({ oem: EphemerisDescription }),
+  /*@__PURE__*/ S.Struct({ azEl: EphemerisDescription }),
 ]);
 export type EphemerisInvalidReason =
   | "METADATA_INVALID"
@@ -1738,7 +1757,9 @@ export const AzElEphemerisFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String }),
 ).annotate({ identifier: "AzElEphemerisFilter" }) as any as S.Schema<AzElEphemerisFilter>;
 export type EphemerisFilter = { azEl: AzElEphemerisFilter };
-export const EphemerisFilter = /*@__PURE__*/ S.Union([S.Struct({ azEl: AzElEphemerisFilter })]);
+export const EphemerisFilter = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ azEl: AzElEphemerisFilter }),
+]);
 export interface ListContactsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1997,8 +2018,8 @@ export type ReservationDetails =
   | { maintenance: MaintenanceReservationDetails; contact?: never }
   | { maintenance?: never; contact: ContactReservationDetails };
 export const ReservationDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ maintenance: MaintenanceReservationDetails }),
-  S.Struct({ contact: ContactReservationDetails }),
+  /*@__PURE__*/ S.Struct({ maintenance: MaintenanceReservationDetails }),
+  /*@__PURE__*/ S.Struct({ contact: ContactReservationDetails }),
 ]);
 export interface GroundStationReservationListItem {
   reservationType: ReservationType;
@@ -2281,7 +2302,10 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}))
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type SignatureMap = { [key: string]: boolean | undefined };
-export const SignatureMap = /*@__PURE__*/ S.Record(S.String, S.Boolean.pipe(S.optional));
+export const SignatureMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Boolean.pipe(S.optional),
+);
 export interface AggregateStatus {
   status: AgentStatus;
   signatureMap?: { [key: string]: boolean | undefined };

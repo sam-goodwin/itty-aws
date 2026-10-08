@@ -10,11 +10,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "QBusiness", serviceShapeName: "ExpertQ" });
-const auth = T.AwsAuthSigv4({ name: "qbusiness" });
-const ver = T.ServiceVersion("2023-11-27");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "QBusiness", serviceShapeName: "ExpertQ" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "qbusiness" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-11-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -63,72 +63,84 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExternalResourceException
   extends /*@__PURE__*/ S.TaggedError<ExternalResourceException>()(
     "ExternalResourceException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(424),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LicenseNotFoundException
   extends /*@__PURE__*/ S.TaggedError<LicenseNotFoundException>()(
     "LicenseNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MediaTooLargeException
   extends /*@__PURE__*/ S.TaggedError<MediaTooLargeException>()(
     "MediaTooLargeException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionFields).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFields).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ApplicationId = string;
 export type StatementId = string;
@@ -280,10 +292,12 @@ export type DocumentAttributeValue =
   | { stringValue?: never; stringListValue?: never; longValue: number; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue?: never; dateValue: Date };
 export const DocumentAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ stringListValue: DocumentAttributeStringListValue }),
-  S.Struct({ longValue: S.Number }),
-  S.Struct({ dateValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ stringListValue: DocumentAttributeStringListValue }),
+  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+  /*@__PURE__*/ S.Struct({
+    dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
 ]);
 export interface DocumentAttribute {
   name: string;
@@ -305,8 +319,8 @@ export const S3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3" }) as any as S.Schema<S3>;
 export type DocumentContent = { blob: Uint8Array; s3?: never } | { blob?: never; s3: S3 };
 export const DocumentContent = /*@__PURE__*/ S.Union([
-  S.Struct({ blob: T.Blob }),
-  S.Struct({ s3: S3 }),
+  /*@__PURE__*/ S.Struct({ blob: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3: S3 }),
 ]);
 export type ContentType =
   | "PDF"
@@ -361,8 +375,8 @@ export type Principal =
   | { user: PrincipalUser; group?: never }
   | { user?: never; group: PrincipalGroup };
 export const Principal = /*@__PURE__*/ S.Union([
-  S.Struct({ user: PrincipalUser }),
-  S.Struct({ group: PrincipalGroup }),
+  /*@__PURE__*/ S.Struct({ user: PrincipalUser }),
+  /*@__PURE__*/ S.Struct({ group: PrincipalGroup }),
 ]);
 export type Principals = Principal[];
 export const Principals = /*@__PURE__*/ S.Array(Principal);
@@ -648,11 +662,11 @@ export const PluginConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginConfiguration" }) as any as S.Schema<PluginConfiguration>;
 export type ChatModeConfiguration = { pluginConfiguration: PluginConfiguration };
 export const ChatModeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ pluginConfiguration: PluginConfiguration }),
+  /*@__PURE__*/ S.Struct({ pluginConfiguration: PluginConfiguration }),
 ]);
 export type AttributeFilters = AttributeFilter[];
 export const AttributeFilters = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
     identifier: "AttributeFilter",
   }),
 ) as any as S.Schema<AttributeFilters>;
@@ -720,7 +734,7 @@ export const ConversationSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversationSource" }) as any as S.Schema<ConversationSource>;
 export type CopyFromSource = { conversation: ConversationSource };
 export const CopyFromSource = /*@__PURE__*/ S.Union([
-  S.Struct({ conversation: ConversationSource }),
+  /*@__PURE__*/ S.Struct({ conversation: ConversationSource }),
 ]);
 export interface AttachmentInput {
   data?: Uint8Array;
@@ -753,7 +767,7 @@ export const ActionExecutionPayloadField = /*@__PURE__*/ S.suspend(() =>
 export type ActionExecutionPayload = { [key: string]: ActionExecutionPayloadField | undefined };
 export const ActionExecutionPayload = /*@__PURE__*/ S.Record(
   S.String,
-  ActionExecutionPayloadField.pipe(S.optional),
+  /*@__PURE__*/ ActionExecutionPayloadField.pipe(S.optional),
 );
 export type ActionPayloadFieldNameSeparator = string;
 export interface ActionExecutionEvent {
@@ -775,7 +789,10 @@ export const EndOfInputEvent = /*@__PURE__*/ S.suspend(() => S.Struct({})).annot
 export type AuthResponseKey = string;
 export type AuthResponseValue = string;
 export type AuthorizationResponseMap = { [key: string]: string | undefined };
-export const AuthorizationResponseMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AuthorizationResponseMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AuthChallengeResponseEvent {
   responseMap: { [key: string]: string | undefined };
 }
@@ -834,13 +851,13 @@ export type ChatInputStream =
       authChallengeResponseEvent: AuthChallengeResponseEvent;
     };
 export const ChatInputStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([
-    S.Struct({ configurationEvent: ConfigurationEvent }),
-    S.Struct({ textEvent: TextInputEvent }),
-    S.Struct({ attachmentEvent: AttachmentInputEvent }),
-    S.Struct({ actionExecutionEvent: ActionExecutionEvent }),
-    S.Struct({ endOfInputEvent: EndOfInputEvent }),
-    S.Struct({ authChallengeResponseEvent: AuthChallengeResponseEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ configurationEvent: ConfigurationEvent }),
+    /*@__PURE__*/ S.Struct({ textEvent: TextInputEvent }),
+    /*@__PURE__*/ S.Struct({ attachmentEvent: AttachmentInputEvent }),
+    /*@__PURE__*/ S.Struct({ actionExecutionEvent: ActionExecutionEvent }),
+    /*@__PURE__*/ S.Struct({ endOfInputEvent: EndOfInputEvent }),
+    /*@__PURE__*/ S.Struct({ authChallengeResponseEvent: AuthChallengeResponseEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<ChatInputStream, Error, never>>;
 export interface ChatInput {
@@ -962,9 +979,9 @@ export type SourceDetails =
       videoSourceDetails: VideoSourceDetails;
     };
 export const SourceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ imageSourceDetails: ImageSourceDetails }),
-  S.Struct({ audioSourceDetails: AudioSourceDetails }),
-  S.Struct({ videoSourceDetails: VideoSourceDetails }),
+  /*@__PURE__*/ S.Struct({ imageSourceDetails: ImageSourceDetails }),
+  /*@__PURE__*/ S.Struct({ audioSourceDetails: AudioSourceDetails }),
+  /*@__PURE__*/ S.Struct({ videoSourceDetails: VideoSourceDetails }),
 ]);
 export interface TextSegment {
   beginOffset?: number;
@@ -1011,7 +1028,9 @@ export const SourceAttribution = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceAttribution" }) as any as S.Schema<SourceAttribution>;
 export type SourceAttributions = SourceAttribution[];
-export const SourceAttributions = /*@__PURE__*/ S.Array(SourceAttribution).pipe(T.Sparse());
+export const SourceAttributions = /*@__PURE__*/ S.Array(SourceAttribution).pipe(
+  /*@__PURE__*/ T.Sparse(),
+);
 export interface MetadataEvent {
   conversationId?: string;
   userMessageId?: string;
@@ -1093,7 +1112,7 @@ export const ActionReviewPayloadField = /*@__PURE__*/ S.suspend(() =>
 export type ActionReviewPayload = { [key: string]: ActionReviewPayloadField | undefined };
 export const ActionReviewPayload = /*@__PURE__*/ S.Record(
   S.String,
-  ActionReviewPayloadField.pipe(S.optional),
+  /*@__PURE__*/ ActionReviewPayloadField.pipe(S.optional),
 );
 export interface ActionReviewEvent {
   conversationId?: string;
@@ -1194,12 +1213,12 @@ export type ChatOutputStream =
       authChallengeRequestEvent: AuthChallengeRequestEvent;
     };
 export const ChatOutputStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ textEvent: TextOutputEvent }),
-    S.Struct({ metadataEvent: MetadataEvent }),
-    S.Struct({ actionReviewEvent: ActionReviewEvent }),
-    S.Struct({ failedAttachmentEvent: FailedAttachmentEvent }),
-    S.Struct({ authChallengeRequestEvent: AuthChallengeRequestEvent }),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ textEvent: TextOutputEvent }),
+    /*@__PURE__*/ S.Struct({ metadataEvent: MetadataEvent }),
+    /*@__PURE__*/ S.Struct({ actionReviewEvent: ActionReviewEvent }),
+    /*@__PURE__*/ S.Struct({ failedAttachmentEvent: FailedAttachmentEvent }),
+    /*@__PURE__*/ S.Struct({ authChallengeRequestEvent: AuthChallengeRequestEvent }),
   ]),
 ) as any as S.Schema<stream.Stream<ChatOutputStream, Error, never>>;
 export interface ChatOutput {
@@ -1615,7 +1634,7 @@ export const ResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ResponseConfigurations = { [key in ResponseConfigurationType]?: ResponseConfiguration };
 export const ResponseConfigurations = /*@__PURE__*/ S.Record(
   ResponseConfigurationType,
-  ResponseConfiguration.pipe(S.optional),
+  /*@__PURE__*/ ResponseConfiguration.pipe(S.optional),
 );
 export interface CreateChatResponseConfigurationRequest {
   applicationId: string;
@@ -1692,7 +1711,9 @@ export type DataAccessorAuthenticationConfiguration = {
   idcTrustedTokenIssuerConfiguration: DataAccessorIdcTrustedTokenIssuerConfiguration;
 };
 export const DataAccessorAuthenticationConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ idcTrustedTokenIssuerConfiguration: DataAccessorIdcTrustedTokenIssuerConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    idcTrustedTokenIssuerConfiguration: DataAccessorIdcTrustedTokenIssuerConfiguration,
+  }),
 ]);
 export type DataAccessorExternalId = string;
 export type DataAccessorExternalIds = string[];
@@ -1935,10 +1956,12 @@ export type PluginAuthConfiguration =
       idcAuthConfiguration: IdcAuthConfiguration;
     };
 export const PluginAuthConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ basicAuthConfiguration: BasicAuthConfiguration }),
-  S.Struct({ oAuth2ClientCredentialConfiguration: OAuth2ClientCredentialConfiguration }),
-  S.Struct({ noAuthConfiguration: NoAuthConfiguration }),
-  S.Struct({ idcAuthConfiguration: IdcAuthConfiguration }),
+  /*@__PURE__*/ S.Struct({ basicAuthConfiguration: BasicAuthConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    oAuth2ClientCredentialConfiguration: OAuth2ClientCredentialConfiguration,
+  }),
+  /*@__PURE__*/ S.Struct({ noAuthConfiguration: NoAuthConfiguration }),
+  /*@__PURE__*/ S.Struct({ idcAuthConfiguration: IdcAuthConfiguration }),
 ]);
 export type PluginDescription = string;
 export type APISchemaType = "OPEN_API_V3" | (string & {});
@@ -1949,8 +1972,8 @@ export type APISchema =
   | { payload: string | redacted.Redacted<string>; s3?: never }
   | { payload?: never; s3: S3 };
 export const APISchema = /*@__PURE__*/ S.Union([
-  S.Struct({ payload: SensitiveString }),
-  S.Struct({ s3: S3 }),
+  /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ s3: S3 }),
 ]);
 export interface CustomPluginConfiguration {
   description: string;
@@ -2072,7 +2095,7 @@ export type StringAttributeValueBoosting = {
 };
 export const StringAttributeValueBoosting = /*@__PURE__*/ S.Record(
   S.String,
-  StringAttributeValueBoostingLevel.pipe(S.optional),
+  /*@__PURE__*/ StringAttributeValueBoostingLevel.pipe(S.optional),
 );
 export interface StringAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
@@ -2133,17 +2156,17 @@ export type DocumentAttributeBoostingConfiguration =
       stringListConfiguration: StringListAttributeBoostingConfiguration;
     };
 export const DocumentAttributeBoostingConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ numberConfiguration: NumberAttributeBoostingConfiguration }),
-  S.Struct({ stringConfiguration: StringAttributeBoostingConfiguration }),
-  S.Struct({ dateConfiguration: DateAttributeBoostingConfiguration }),
-  S.Struct({ stringListConfiguration: StringListAttributeBoostingConfiguration }),
+  /*@__PURE__*/ S.Struct({ numberConfiguration: NumberAttributeBoostingConfiguration }),
+  /*@__PURE__*/ S.Struct({ stringConfiguration: StringAttributeBoostingConfiguration }),
+  /*@__PURE__*/ S.Struct({ dateConfiguration: DateAttributeBoostingConfiguration }),
+  /*@__PURE__*/ S.Struct({ stringListConfiguration: StringListAttributeBoostingConfiguration }),
 ]);
 export type DocumentAttributeBoostingOverrideMap = {
   [key: string]: DocumentAttributeBoostingConfiguration | undefined;
 };
 export const DocumentAttributeBoostingOverrideMap = /*@__PURE__*/ S.Record(
   S.String,
-  DocumentAttributeBoostingConfiguration.pipe(S.optional),
+  /*@__PURE__*/ DocumentAttributeBoostingConfiguration.pipe(S.optional),
 );
 export interface NativeIndexConfiguration {
   indexId: string;
@@ -2168,8 +2191,8 @@ export type RetrieverConfiguration =
   | { nativeIndexConfiguration: NativeIndexConfiguration; kendraIndexConfiguration?: never }
   | { nativeIndexConfiguration?: never; kendraIndexConfiguration: KendraIndexConfiguration };
 export const RetrieverConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ nativeIndexConfiguration: NativeIndexConfiguration }),
-  S.Struct({ kendraIndexConfiguration: KendraIndexConfiguration }),
+  /*@__PURE__*/ S.Struct({ nativeIndexConfiguration: NativeIndexConfiguration }),
+  /*@__PURE__*/ S.Struct({ kendraIndexConfiguration: KendraIndexConfiguration }),
 ]);
 export interface CreateRetrieverRequest {
   applicationId: string;
@@ -2215,8 +2238,8 @@ export type SubscriptionPrincipal =
   | { user: string; group?: never }
   | { user?: never; group: string };
 export const SubscriptionPrincipal = /*@__PURE__*/ S.Union([
-  S.Struct({ user: S.String }),
-  S.Struct({ group: S.String }),
+  /*@__PURE__*/ S.Struct({ user: S.String }),
+  /*@__PURE__*/ S.Struct({ group: S.String }),
 ]);
 export interface CreateSubscriptionRequest {
   applicationId: string;
@@ -2327,8 +2350,8 @@ export type IdentityProviderConfiguration =
   | { samlConfiguration: SamlProviderConfiguration; openIDConnectConfiguration?: never }
   | { samlConfiguration?: never; openIDConnectConfiguration: OpenIDConnectProviderConfiguration };
 export const IdentityProviderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ samlConfiguration: SamlProviderConfiguration }),
-  S.Struct({ openIDConnectConfiguration: OpenIDConnectProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ samlConfiguration: SamlProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ openIDConnectConfiguration: OpenIDConnectProviderConfiguration }),
 ]);
 export type BrowserExtension = string;
 export type BrowserExtensionList = string[];
@@ -2966,8 +2989,8 @@ export type RuleConfiguration =
   | { contentBlockerRule: ContentBlockerRule; contentRetrievalRule?: never }
   | { contentBlockerRule?: never; contentRetrievalRule: ContentRetrievalRule };
 export const RuleConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ contentBlockerRule: ContentBlockerRule }),
-  S.Struct({ contentRetrievalRule: ContentRetrievalRule }),
+  /*@__PURE__*/ S.Struct({ contentBlockerRule: ContentBlockerRule }),
+  /*@__PURE__*/ S.Struct({ contentRetrievalRule: ContentRetrievalRule }),
 ]);
 export interface Rule {
   includedUsersAndGroups?: UsersAndGroups;
@@ -3666,7 +3689,7 @@ export const SamlConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SamlConfiguration" }) as any as S.Schema<SamlConfiguration>;
 export type WebExperienceAuthConfiguration = { samlConfiguration: SamlConfiguration };
 export const WebExperienceAuthConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ samlConfiguration: SamlConfiguration }),
+  /*@__PURE__*/ S.Struct({ samlConfiguration: SamlConfiguration }),
 ]);
 export interface GetWebExperienceResponse {
   applicationId?: string;
@@ -4841,7 +4864,7 @@ export const RetrieverContentSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RetrieverContentSource" }) as any as S.Schema<RetrieverContentSource>;
 export type ContentSource = { retriever: RetrieverContentSource };
 export const ContentSource = /*@__PURE__*/ S.Union([
-  S.Struct({ retriever: RetrieverContentSource }),
+  /*@__PURE__*/ S.Struct({ retriever: RetrieverContentSource }),
 ]);
 export type MaxResults = number;
 export interface SearchRelevantContentRequest {

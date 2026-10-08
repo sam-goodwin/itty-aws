@@ -11750,7 +11750,7 @@ export type UpdateDirectoryRequestAttributeMappingMap = {
 };
 export const UpdateDirectoryRequestAttributeMappingMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateDirectoryRequestAttributeMappingMap>;
 
 export interface UpdateDirectoryRequest {
@@ -12607,7 +12607,7 @@ export type UpdateSCIMDirectoryRequestAttributeMappingMap = {
 };
 export const UpdateSCIMDirectoryRequestAttributeMappingMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateSCIMDirectoryRequestAttributeMappingMap>;
 
 export interface UpdateSCIMDirectoryRequest {

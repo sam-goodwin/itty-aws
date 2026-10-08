@@ -25803,7 +25803,7 @@ export const AwsEmrClusterPropertiesApplicationsList = /*@__PURE__*/ S.Array(
 /** <p>A list of additional configurations to apply within a configuration object.</p> */
 export type ConfigurationConfigurationsList = Array<Configuration>;
 export const ConfigurationConfigurationsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Configuration),
+  /*@__PURE__*/ S.suspend(() => Configuration),
 ) as any as S.Schema<ConfigurationConfigurationsList>;
 
 /** <p>A set of properties specified within a configuration classification.</p> */
@@ -61897,7 +61897,7 @@ export const StartEc2InstanceRequest = /*@__PURE__*/ S.suspend(() =>
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusResult),
+  /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The current status of an async operation. */

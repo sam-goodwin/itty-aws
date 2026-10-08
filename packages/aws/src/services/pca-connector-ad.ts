@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Pca Connector Ad", serviceShapeName: "PcaConnectorAd" });
-const auth = T.AwsAuthSigv4({ name: "pca-connector-ad" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Pca Connector Ad",
+  serviceShapeName: "PcaConnectorAd",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "pca-connector-ad" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,61 +76,72 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String, ResourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: S.String,
+      ResourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String, ResourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: S.String,
+      ResourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: S.String,
       ResourceType: S.String,
       ServiceCode: S.String,
       QuotaCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      ServiceCode: S.optional(S.String),
-      QuotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ServiceCode: /*@__PURE__*/ S.optional(S.String),
+      QuotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      Reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DirectoryId = string;
 export type CertificateAuthorityArn = string;
@@ -146,7 +160,7 @@ export const VpcInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcInformation" }) as any as S.Schema<VpcInformation>;
 export type ClientToken = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateConnectorRequest {
   DirectoryId: string;
   CertificateAuthorityArn: string;
@@ -434,8 +448,8 @@ export type ApplicationPolicy =
   | { PolicyType: ApplicationPolicyType; PolicyObjectIdentifier?: never }
   | { PolicyType?: never; PolicyObjectIdentifier: string };
 export const ApplicationPolicy = /*@__PURE__*/ S.Union([
-  S.Struct({ PolicyType: ApplicationPolicyType }),
-  S.Struct({ PolicyObjectIdentifier: S.String }),
+  /*@__PURE__*/ S.Struct({ PolicyType: ApplicationPolicyType }),
+  /*@__PURE__*/ S.Struct({ PolicyObjectIdentifier: S.String }),
 ]);
 export type ApplicationPolicyList = ApplicationPolicy[];
 export const ApplicationPolicyList = /*@__PURE__*/ S.Array(ApplicationPolicy);
@@ -494,8 +508,8 @@ export type KeyUsageProperty =
   | { PropertyType: KeyUsagePropertyType; PropertyFlags?: never }
   | { PropertyType?: never; PropertyFlags: KeyUsagePropertyFlags };
 export const KeyUsageProperty = /*@__PURE__*/ S.Union([
-  S.Struct({ PropertyType: KeyUsagePropertyType }),
-  S.Struct({ PropertyFlags: KeyUsagePropertyFlags }),
+  /*@__PURE__*/ S.Struct({ PropertyType: KeyUsagePropertyType }),
+  /*@__PURE__*/ S.Struct({ PropertyFlags: KeyUsagePropertyFlags }),
 ]);
 export type PrivateKeyAlgorithm = "RSA" | "ECDH_P256" | "ECDH_P384" | "ECDH_P521" | (string & {});
 export const PrivateKeyAlgorithm = S.String;
@@ -748,9 +762,9 @@ export type TemplateDefinition =
   | { TemplateV2?: never; TemplateV3: TemplateV3; TemplateV4?: never }
   | { TemplateV2?: never; TemplateV3?: never; TemplateV4: TemplateV4 };
 export const TemplateDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ TemplateV2: TemplateV2 }),
-  S.Struct({ TemplateV3: TemplateV3 }),
-  S.Struct({ TemplateV4: TemplateV4 }),
+  /*@__PURE__*/ S.Struct({ TemplateV2: TemplateV2 }),
+  /*@__PURE__*/ S.Struct({ TemplateV3: TemplateV3 }),
+  /*@__PURE__*/ S.Struct({ TemplateV4: TemplateV4 }),
 ]);
 export interface CreateTemplateRequest {
   ConnectorArn: string;

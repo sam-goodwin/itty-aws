@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ConnectCampaignsV2",
   serviceShapeName: "AmazonConnectCampaignServiceV2",
 });
-const auth = T.AwsAuthSigv4({ name: "connect-campaigns" });
-const ver = T.ServiceVersion("2024-04-23");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "connect-campaigns" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2024-04-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,83 +79,101 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidCampaignStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidCampaignStateException>()(
     "InvalidCampaignStateException",
     {
       state: S.String,
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      xAmzErrorType: /*@__PURE__*/ S.optional(S.String).pipe(
+        /*@__PURE__*/ T.HttpHeader("x-amzn-ErrorType"),
+      ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type CampaignName = string;
 export type InstanceId = string;
@@ -189,7 +207,7 @@ export const AbandonmentRatePacingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AbandonmentRatePacingConfig>;
 export type PacingStrategy = { abandonmentRate: AbandonmentRatePacingConfig };
 export const PacingStrategy = /*@__PURE__*/ S.Union([
-  S.Struct({ abandonmentRate: AbandonmentRatePacingConfig }),
+  /*@__PURE__*/ S.Struct({ abandonmentRate: AbandonmentRatePacingConfig }),
 ]);
 export type PacingStrategyList = PacingStrategy[];
 export const PacingStrategyList = /*@__PURE__*/ S.Array(PacingStrategy);
@@ -232,10 +250,10 @@ export type TelephonyOutboundMode =
   | { progressive?: never; predictive?: never; agentless: AgentlessConfig; preview?: never }
   | { progressive?: never; predictive?: never; agentless?: never; preview: PreviewConfig };
 export const TelephonyOutboundMode = /*@__PURE__*/ S.Union([
-  S.Struct({ progressive: ProgressiveConfig }),
-  S.Struct({ predictive: PredictiveConfig }),
-  S.Struct({ agentless: AgentlessConfig }),
-  S.Struct({ preview: PreviewConfig }),
+  /*@__PURE__*/ S.Struct({ progressive: ProgressiveConfig }),
+  /*@__PURE__*/ S.Struct({ predictive: PredictiveConfig }),
+  /*@__PURE__*/ S.Struct({ agentless: AgentlessConfig }),
+  /*@__PURE__*/ S.Struct({ preview: PreviewConfig }),
 ]);
 export type ContactFlowId = string;
 export type SourcePhoneNumber = string;
@@ -283,7 +301,9 @@ export const TelephonyChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TelephonyChannelSubtypeConfig",
 }) as any as S.Schema<TelephonyChannelSubtypeConfig>;
 export type SmsOutboundMode = { agentless: AgentlessConfig };
-export const SmsOutboundMode = /*@__PURE__*/ S.Union([S.Struct({ agentless: AgentlessConfig })]);
+export const SmsOutboundMode = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ agentless: AgentlessConfig }),
+]);
 export type Arn = string;
 export interface SmsOutboundConfig {
   connectSourcePhoneNumberArn: string;
@@ -305,7 +325,9 @@ export const SmsChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SmsChannelSubtypeConfig" }) as any as S.Schema<SmsChannelSubtypeConfig>;
 export type EmailOutboundMode = { agentless: AgentlessConfig };
-export const EmailOutboundMode = /*@__PURE__*/ S.Union([S.Struct({ agentless: AgentlessConfig })]);
+export const EmailOutboundMode = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ agentless: AgentlessConfig }),
+]);
 export type EmailAddress = string | redacted.Redacted<string>;
 export type EmailDisplayName = string | redacted.Redacted<string>;
 export interface EmailOutboundConfig {
@@ -336,7 +358,7 @@ export const EmailChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmailChannelSubtypeConfig>;
 export type WhatsAppOutboundMode = { agentless: AgentlessConfig };
 export const WhatsAppOutboundMode = /*@__PURE__*/ S.Union([
-  S.Struct({ agentless: AgentlessConfig }),
+  /*@__PURE__*/ S.Struct({ agentless: AgentlessConfig }),
 ]);
 export interface WhatsAppOutboundConfig {
   connectSourcePhoneNumberArn: string;
@@ -384,8 +406,8 @@ export type Source =
   | { customerProfilesSegmentArn: string; eventTrigger?: never }
   | { customerProfilesSegmentArn?: never; eventTrigger: EventTrigger };
 export const Source = /*@__PURE__*/ S.Union([
-  S.Struct({ customerProfilesSegmentArn: S.String }),
-  S.Struct({ eventTrigger: EventTrigger }),
+  /*@__PURE__*/ S.Struct({ customerProfilesSegmentArn: S.String }),
+  /*@__PURE__*/ S.Struct({ eventTrigger: EventTrigger }),
 ]);
 export type Iso8601Duration = string;
 export interface Schedule {
@@ -436,9 +458,14 @@ export const TimeRange = /*@__PURE__*/ S.suspend(() =>
 export type TimeRangeList = TimeRange[];
 export const TimeRangeList = /*@__PURE__*/ S.Array(TimeRange);
 export type DailyHours = { [key: string]: TimeRange[] | undefined };
-export const DailyHours = /*@__PURE__*/ S.Record(S.String, TimeRangeList.pipe(S.optional));
+export const DailyHours = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TimeRangeList.pipe(S.optional),
+);
 export type OpenHours = { dailyHours: { [key: string]: TimeRange[] | undefined } };
-export const OpenHours = /*@__PURE__*/ S.Union([S.Struct({ dailyHours: DailyHours })]);
+export const OpenHours = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ dailyHours: DailyHours }),
+]);
 export type RestrictedPeriodName = string;
 export type Iso8601Date = string;
 export interface RestrictedPeriod {
@@ -453,7 +480,7 @@ export type RestrictedPeriodList = RestrictedPeriod[];
 export const RestrictedPeriodList = /*@__PURE__*/ S.Array(RestrictedPeriod);
 export type RestrictedPeriods = { restrictedPeriodList: RestrictedPeriod[] };
 export const RestrictedPeriods = /*@__PURE__*/ S.Union([
-  S.Struct({ restrictedPeriodList: RestrictedPeriodList }),
+  /*@__PURE__*/ S.Struct({ restrictedPeriodList: RestrictedPeriodList }),
 ]);
 export interface TimeWindow {
   openHours: OpenHours;
@@ -491,7 +518,7 @@ export type CommunicationLimitList = CommunicationLimit[];
 export const CommunicationLimitList = /*@__PURE__*/ S.Array(CommunicationLimit);
 export type CommunicationLimits = { communicationLimitsList: CommunicationLimit[] };
 export const CommunicationLimits = /*@__PURE__*/ S.Union([
-  S.Struct({ communicationLimitsList: CommunicationLimitList }),
+  /*@__PURE__*/ S.Struct({ communicationLimitsList: CommunicationLimitList }),
 ]);
 export type InstanceLimitsHandling = string;
 export interface CommunicationLimitsConfig {
@@ -509,7 +536,7 @@ export const CommunicationLimitsConfig = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateCampaignRequest {
   name: string;
   connectInstanceId: string;
@@ -725,9 +752,9 @@ export type IntegrationIdentifier =
   | { customerProfiles?: never; qConnect: QConnectIntegrationIdentifier; lambda?: never }
   | { customerProfiles?: never; qConnect?: never; lambda: LambdaIntegrationIdentifier };
 export const IntegrationIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ customerProfiles: CustomerProfilesIntegrationIdentifier }),
-  S.Struct({ qConnect: QConnectIntegrationIdentifier }),
-  S.Struct({ lambda: LambdaIntegrationIdentifier }),
+  /*@__PURE__*/ S.Struct({ customerProfiles: CustomerProfilesIntegrationIdentifier }),
+  /*@__PURE__*/ S.Struct({ qConnect: QConnectIntegrationIdentifier }),
+  /*@__PURE__*/ S.Struct({ lambda: LambdaIntegrationIdentifier }),
 ]);
 export interface DeleteConnectInstanceIntegrationRequest {
   connectInstanceId: string;
@@ -1112,7 +1139,10 @@ export const ListConnectInstanceIntegrationsRequest = /*@__PURE__*/ S.suspend(()
 export type EventType = string;
 export type ObjectTypeName = string;
 export type ObjectTypeNamesMap = { [key: string]: string | undefined };
-export const ObjectTypeNamesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ObjectTypeNamesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CustomerProfilesIntegrationSummary {
   domainArn: string;
   objectTypeNames: { [key: string]: string | undefined };
@@ -1141,9 +1171,9 @@ export type IntegrationSummary =
   | { customerProfiles?: never; qConnect: QConnectIntegrationSummary; lambda?: never }
   | { customerProfiles?: never; qConnect?: never; lambda: LambdaIntegrationSummary };
 export const IntegrationSummary = /*@__PURE__*/ S.Union([
-  S.Struct({ customerProfiles: CustomerProfilesIntegrationSummary }),
-  S.Struct({ qConnect: QConnectIntegrationSummary }),
-  S.Struct({ lambda: LambdaIntegrationSummary }),
+  /*@__PURE__*/ S.Struct({ customerProfiles: CustomerProfilesIntegrationSummary }),
+  /*@__PURE__*/ S.Struct({ qConnect: QConnectIntegrationSummary }),
+  /*@__PURE__*/ S.Struct({ lambda: LambdaIntegrationSummary }),
 ]);
 export type IntegrationSummaryList = IntegrationSummary[];
 export const IntegrationSummaryList = /*@__PURE__*/ S.Array(IntegrationSummary);
@@ -1224,9 +1254,9 @@ export type IntegrationConfig =
   | { customerProfiles?: never; qConnect: QConnectIntegrationConfig; lambda?: never }
   | { customerProfiles?: never; qConnect?: never; lambda: LambdaIntegrationConfig };
 export const IntegrationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ customerProfiles: CustomerProfilesIntegrationConfig }),
-  S.Struct({ qConnect: QConnectIntegrationConfig }),
-  S.Struct({ lambda: LambdaIntegrationConfig }),
+  /*@__PURE__*/ S.Struct({ customerProfiles: CustomerProfilesIntegrationConfig }),
+  /*@__PURE__*/ S.Struct({ qConnect: QConnectIntegrationConfig }),
+  /*@__PURE__*/ S.Struct({ lambda: LambdaIntegrationConfig }),
 ]);
 export interface PutConnectInstanceIntegrationRequest {
   connectInstanceId: string;
@@ -1290,7 +1320,7 @@ export type DestinationPhoneNumber = string | redacted.Redacted<string>;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface TelephonyChannelSubtypeParameters {
   destinationPhoneNumber: string | redacted.Redacted<string>;
   attributes: { [key: string]: string | undefined };
@@ -1363,10 +1393,10 @@ export type ChannelSubtypeParameters =
   | { telephony?: never; sms?: never; email: EmailChannelSubtypeParameters; whatsApp?: never }
   | { telephony?: never; sms?: never; email?: never; whatsApp: WhatsAppChannelSubtypeParameters };
 export const ChannelSubtypeParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ telephony: TelephonyChannelSubtypeParameters }),
-  S.Struct({ sms: SmsChannelSubtypeParameters }),
-  S.Struct({ email: EmailChannelSubtypeParameters }),
-  S.Struct({ whatsApp: WhatsAppChannelSubtypeParameters }),
+  /*@__PURE__*/ S.Struct({ telephony: TelephonyChannelSubtypeParameters }),
+  /*@__PURE__*/ S.Struct({ sms: SmsChannelSubtypeParameters }),
+  /*@__PURE__*/ S.Struct({ email: EmailChannelSubtypeParameters }),
+  /*@__PURE__*/ S.Struct({ whatsApp: WhatsAppChannelSubtypeParameters }),
 ]);
 export interface OutboundRequest {
   clientToken: string;

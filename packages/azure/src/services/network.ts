@@ -21201,7 +21201,7 @@ export const NetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_6 = /*
 /** A collection of references to network interfaces. */
 export type NetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6 = Array<NetworkInterface_6>;
 export const NetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_6),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_6),
 ) as any as S.Schema<NetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6>;
 
 /** List of next hop IP addresses for ECMP routing. Must contain between 2 and 64 IP addresses. */
@@ -21279,7 +21279,7 @@ export const RouteTablePropertiesFormatRoutesList_6 = /*@__PURE__*/ S.Array(
 /** A collection of references to subnets. */
 export type RouteTablePropertiesFormatSubnetsList_6 = Array<Subnet_6>;
 export const RouteTablePropertiesFormatSubnetsList_6 = /*@__PURE__*/ S.Array(
-  S.suspend(() => Subnet_6),
+  /*@__PURE__*/ S.suspend(() => Subnet_6),
 ) as any as S.Schema<RouteTablePropertiesFormatSubnetsList_6>;
 
 /** Route Table resource. */
@@ -21520,7 +21520,7 @@ export const PrivateEndpointTagsMap = /*@__PURE__*/ S.Record(
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_6 = Array<NetworkInterface_6>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_6 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_6),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_6),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_6>;
 
 /** Properties of the private endpoint. */
@@ -23368,7 +23368,7 @@ export const PrivateLinkServicePropertiesAccessMode = S.String;
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_5 = Array<NetworkInterface_6>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_5 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_6),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_6),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_5>;
 
 /** Provisioning states of a resource. */
@@ -34684,7 +34684,7 @@ export const Subnet_3 = /*@__PURE__*/ S.suspend(() =>
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_3 = Array<NetworkInterface_3>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_3 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_3),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_3),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_3>;
 
 /** Properties of the private endpoint. */
@@ -34910,7 +34910,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList_2 = /*@__PURE__*/ 
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_2 = Array<NetworkInterface_3>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_2 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_3),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_3),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_2>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -41306,13 +41306,13 @@ export const GetNetworkSecurityPerimeterOperationStatusRequest = /*@__PURE__*/ S
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusResult),
+  /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
+  /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
@@ -47338,7 +47338,7 @@ export const Subnet_2 = /*@__PURE__*/ S.suspend(() =>
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_2 = Array<NetworkInterface_2>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_2 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_2),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_2),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_2>;
 
 /** Properties of the private endpoint. */
@@ -48527,7 +48527,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList = /*@__PURE__*/ S.
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList = Array<NetworkInterface_2>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_2),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_2),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -49632,7 +49632,7 @@ export const NetworkInterfacePropertiesFormatVirtualMachine_5 =
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_5 = Array<NetworkInterface_5>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_5 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_5),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_5),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_5>;
 
 /** Properties of the private endpoint. */
@@ -50778,7 +50778,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList_4 = /*@__PURE__*/ 
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_4 = Array<NetworkInterface_5>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_4 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_5),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_5),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_4>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -51042,7 +51042,7 @@ export const NetworkSecurityGroupPropertiesFormatNetworkInterfacesList_5 = /*@__
 /** A collection of references to subnets. */
 export type NetworkSecurityGroupPropertiesFormatSubnetsList_5 = Array<Subnet_5>;
 export const NetworkSecurityGroupPropertiesFormatSubnetsList_5 = /*@__PURE__*/ S.Array(
-  S.suspend(() => Subnet_5),
+  /*@__PURE__*/ S.suspend(() => Subnet_5),
 ) as any as S.Schema<NetworkSecurityGroupPropertiesFormatSubnetsList_5>;
 
 /** Parameters that define the retention policy for flow log. */
@@ -51224,7 +51224,7 @@ export const RouteTablePropertiesFormatRoutesList_5 = /*@__PURE__*/ S.Array(
 /** A collection of references to subnets. */
 export type RouteTablePropertiesFormatSubnetsList_5 = Array<Subnet_5>;
 export const RouteTablePropertiesFormatSubnetsList_5 = /*@__PURE__*/ S.Array(
-  S.suspend(() => Subnet_5),
+  /*@__PURE__*/ S.suspend(() => Subnet_5),
 ) as any as S.Schema<RouteTablePropertiesFormatSubnetsList_5>;
 
 /** Route Table resource. */
@@ -53997,7 +53997,7 @@ export const Subnet_8 = /*@__PURE__*/ S.suspend(() =>
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_8 = Array<NetworkInterface_8>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_8 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_8),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_8),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_8>;
 
 /** Properties of the private endpoint. */
@@ -55232,7 +55232,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList_7 = /*@__PURE__*/ 
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_7 = Array<NetworkInterface_8>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_7 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_8),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_8),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_7>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -56699,7 +56699,7 @@ export const Subnet_7 = /*@__PURE__*/ S.suspend(() =>
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_7 = Array<NetworkInterface_7>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_7 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_7),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_7),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_7>;
 
 /** Properties of the private endpoint. */
@@ -57922,7 +57922,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList_6 = /*@__PURE__*/ 
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_6 = Array<NetworkInterface_7>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_6 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_7),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_7),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_6>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -62159,7 +62159,7 @@ export const NetworkInterfacePropertiesFormatVirtualMachine_4 =
 /** An array of references to the network interfaces created for this private endpoint. */
 export type PrivateEndpointPropertiesNetworkInterfacesList_4 = Array<NetworkInterface_4>;
 export const PrivateEndpointPropertiesNetworkInterfacesList_4 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_4),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_4),
 ) as any as S.Schema<PrivateEndpointPropertiesNetworkInterfacesList_4>;
 
 /** Properties of the private endpoint. */
@@ -62827,7 +62827,7 @@ export const PrivateLinkServicePropertiesIpConfigurationsList_3 = /*@__PURE__*/ 
 /** An array of references to the network interfaces created for this private link service. */
 export type PrivateLinkServicePropertiesNetworkInterfacesList_3 = Array<NetworkInterface_4>;
 export const PrivateLinkServicePropertiesNetworkInterfacesList_3 = /*@__PURE__*/ S.Array(
-  S.suspend(() => NetworkInterface_4),
+  /*@__PURE__*/ S.suspend(() => NetworkInterface_4),
 ) as any as S.Schema<PrivateLinkServicePropertiesNetworkInterfacesList_3>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -63091,7 +63091,7 @@ export const NetworkSecurityGroupPropertiesFormatNetworkInterfacesList_4 = /*@__
 /** A collection of references to subnets. */
 export type NetworkSecurityGroupPropertiesFormatSubnetsList_4 = Array<Subnet_4>;
 export const NetworkSecurityGroupPropertiesFormatSubnetsList_4 = /*@__PURE__*/ S.Array(
-  S.suspend(() => Subnet_4),
+  /*@__PURE__*/ S.suspend(() => Subnet_4),
 ) as any as S.Schema<NetworkSecurityGroupPropertiesFormatSubnetsList_4>;
 
 /** Parameters that define the retention policy for flow log. */
@@ -63268,7 +63268,7 @@ export const RouteTablePropertiesFormatRoutesList_4 = /*@__PURE__*/ S.Array(
 /** A collection of references to subnets. */
 export type RouteTablePropertiesFormatSubnetsList_4 = Array<Subnet_4>;
 export const RouteTablePropertiesFormatSubnetsList_4 = /*@__PURE__*/ S.Array(
-  S.suspend(() => Subnet_4),
+  /*@__PURE__*/ S.suspend(() => Subnet_4),
 ) as any as S.Schema<RouteTablePropertiesFormatSubnetsList_4>;
 
 /** Route Table resource. */

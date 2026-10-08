@@ -14292,7 +14292,7 @@ export const DeploymentRepMetadataMap = /*@__PURE__*/ S.Record(
 /** A list of deployments */
 export type DeploymentCollectionRepItemsList = Array<DeploymentRep>;
 export const DeploymentCollectionRepItemsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => DeploymentRep),
+  /*@__PURE__*/ S.suspend(() => DeploymentRep),
 ) as any as S.Schema<DeploymentCollectionRepItemsList>;
 
 /** The location and content type of related resources */

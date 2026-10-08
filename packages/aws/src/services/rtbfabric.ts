@@ -9,11 +9,11 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "RTBFabric", serviceShapeName: "RTBFabric" });
-const auth = T.AwsAuthSigv4({ name: "rtbfabric" });
-const ver = T.ServiceVersion("2023-05-15");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "RTBFabric", serviceShapeName: "RTBFabric" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "rtbfabric" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-05-15");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,44 +73,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type GatewayId = string;
 export type LinkId = string;
@@ -277,8 +277,8 @@ export type Action =
   | { noBid: NoBidAction; headerTag?: never }
   | { noBid?: never; headerTag: HeaderTagAction };
 export const Action = /*@__PURE__*/ S.Union([
-  S.Struct({ noBid: NoBidAction }),
-  S.Struct({ headerTag: HeaderTagAction }),
+  /*@__PURE__*/ S.Struct({ noBid: NoBidAction }),
+  /*@__PURE__*/ S.Struct({ headerTag: HeaderTagAction }),
 ]);
 export interface OpenRtbAttributeModuleParameters {
   filterType: FilterType;
@@ -309,9 +309,9 @@ export type ModuleParameters =
   | { noBid?: never; openRtbAttribute: OpenRtbAttributeModuleParameters; rateLimiter?: never }
   | { noBid?: never; openRtbAttribute?: never; rateLimiter: RateLimiterModuleParameters };
 export const ModuleParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ noBid: NoBidModuleParameters }),
-  S.Struct({ openRtbAttribute: OpenRtbAttributeModuleParameters }),
-  S.Struct({ rateLimiter: RateLimiterModuleParameters }),
+  /*@__PURE__*/ S.Struct({ noBid: NoBidModuleParameters }),
+  /*@__PURE__*/ S.Struct({ openRtbAttribute: OpenRtbAttributeModuleParameters }),
+  /*@__PURE__*/ S.Struct({ rateLimiter: RateLimiterModuleParameters }),
 ]);
 export interface ModuleConfiguration {
   version?: string;
@@ -417,7 +417,7 @@ export const AssociateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateInboundExternalLinkRequest {
   clientToken: string;
   gatewayId: string;
@@ -778,8 +778,8 @@ export type ManagedEndpointConfiguration =
   | { autoScalingGroups: AutoScalingGroupsConfiguration; eksEndpoints?: never }
   | { autoScalingGroups?: never; eksEndpoints: EksEndpointsConfiguration };
 export const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ autoScalingGroups: AutoScalingGroupsConfiguration }),
-  S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
+  /*@__PURE__*/ S.Struct({ autoScalingGroups: AutoScalingGroupsConfiguration }),
+  /*@__PURE__*/ S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
 ]);
 export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
 export const GatewayType = S.String;

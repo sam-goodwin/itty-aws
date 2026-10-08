@@ -8,12 +8,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://pi.amazonaws.com/doc/2018-02-27/");
-const svc = T.AwsApiService({ sdkId: "PI", serviceShapeName: "PerformanceInsightsv20180227" });
-const auth = T.AwsAuthSigv4({ name: "pi" });
-const ver = T.ServiceVersion("2018-02-27");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://pi.amazonaws.com/doc/2018-02-27/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "PI",
+  serviceShapeName: "PerformanceInsightsv20180227",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "pi" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-02-27");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -70,15 +73,15 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class InternalServiceError
   extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()("InternalServiceError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()("InvalidArgumentException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()("NotAuthorizedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type ServiceType = "RDS" | "DOCDB" | (string & {});
 export const ServiceType = S.String;
@@ -161,7 +164,10 @@ export const DimensionGroup = /*@__PURE__*/ S.suspend(() =>
 export type AdditionalMetricsList = string[];
 export const AdditionalMetricsList = /*@__PURE__*/ S.Array(S.String);
 export type MetricQueryFilterMap = { [key: string]: string | undefined };
-export const MetricQueryFilterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MetricQueryFilterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type MaxResults = number;
 export type NextToken = string;
 export interface DescribeDimensionKeysRequest {
@@ -197,7 +203,10 @@ export const DescribeDimensionKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDimensionKeysRequest",
 }) as any as S.Schema<DescribeDimensionKeysRequest>;
 export type DimensionMap = { [key: string]: string | undefined };
-export const DimensionMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DimensionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ResponsePartitionKey {
   Dimensions: { [key: string]: string | undefined };
 }
@@ -207,7 +216,10 @@ export const ResponsePartitionKey = /*@__PURE__*/ S.suspend(() =>
 export type ResponsePartitionKeyList = ResponsePartitionKey[];
 export const ResponsePartitionKeyList = /*@__PURE__*/ S.Array(ResponsePartitionKey);
 export type AdditionalMetricsMap = { [key: string]: number | undefined };
-export const AdditionalMetricsMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const AdditionalMetricsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export type MetricValuesList = number[];
 export const MetricValuesList = /*@__PURE__*/ S.Array(S.Number);
 export interface DimensionKeyDescription {
@@ -339,7 +351,10 @@ export type RecommendationList = Recommendation[];
 export const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
 export type DescriptiveString = string;
 export type DescriptiveMap = { [key: string]: string | undefined };
-export const DescriptiveMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const DescriptiveMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface PerformanceInsightsMetric {
   Metric?: string;
   DisplayName?: string;
@@ -398,7 +413,7 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 export type InsightList = Insight[];
 export const InsightList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Insight> => Insight).annotate({ identifier: "Insight" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Insight> => Insight).annotate({ identifier: "Insight" }),
 ) as any as S.Schema<InsightList>;
 export interface AnalysisReport {
   AnalysisReportId: string;
@@ -460,7 +475,7 @@ export const FeatureMetadata = /*@__PURE__*/ S.suspend(() =>
 export type FeatureMetadataMap = { [key: string]: FeatureMetadata | undefined };
 export const FeatureMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  FeatureMetadata.pipe(S.optional),
+  /*@__PURE__*/ FeatureMetadata.pipe(S.optional),
 );
 export interface GetResourceMetadataResponse {
   Identifier?: string;

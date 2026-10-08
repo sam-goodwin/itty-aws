@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cognito-identity.amazonaws.com/doc/2014-06-30/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cognito-identity.amazonaws.com/doc/2014-06-30/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cognito Identity",
   serviceShapeName: "AWSCognitoIdentityService",
 });
-const auth = T.AwsAuthSigv4({ name: "cognito-identity" });
-const ver = T.ServiceVersion("2014-06-30");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cognito-identity" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-06-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -94,66 +94,66 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DeveloperUserAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedError<DeveloperUserAlreadyRegisteredException>()(
     "DeveloperUserAlreadyRegisteredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExternalServiceException
   extends /*@__PURE__*/ S.TaggedError<ExternalServiceException>()(
     "ExternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()("InternalErrorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class InvalidIdentityPoolConfigurationException
   extends /*@__PURE__*/ S.TaggedError<InvalidIdentityPoolConfigurationException>()(
     "InvalidIdentityPoolConfigurationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type IdentityPoolName = string;
 export type IdentityPoolUnauthenticated = boolean;
@@ -161,7 +161,10 @@ export type ClassicFlow = boolean;
 export type IdentityProviderName = string;
 export type IdentityProviderId = string;
 export type IdentityProviders = { [key: string]: string | undefined };
-export const IdentityProviders = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const IdentityProviders = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DeveloperProviderName = string;
 export type ARNString = string;
 export type OIDCProviderList = string[];
@@ -188,7 +191,10 @@ export const SAMLProviderList = /*@__PURE__*/ S.Array(S.String);
 export type TagKeysType = string;
 export type TagValueType = string;
 export type IdentityPoolTagsType = { [key: string]: string | undefined };
-export const IdentityPoolTagsType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const IdentityPoolTagsType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateIdentityPoolInput {
   IdentityPoolName: string;
   AllowUnauthenticatedIdentities: boolean;
@@ -319,7 +325,10 @@ export const DescribeIdentityPoolInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIdentityPoolInput>;
 export type IdentityProviderToken = string | redacted.Redacted<string>;
 export type LoginsMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const LoginsMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const LoginsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface GetCredentialsForIdentityInput {
   IdentityId: string;
   Logins?: { [key: string]: string | redacted.Redacted<string> | undefined };
@@ -391,7 +400,7 @@ export const GetIdentityPoolRolesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIdentityPoolRolesInput>;
 export type RoleType = string;
 export type RolesMap = { [key: string]: string | undefined };
-export const RolesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RolesMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type RoleMappingType = "Token" | "Rules" | (string & {});
 export const RoleMappingType = S.String;
 
@@ -443,7 +452,10 @@ export const RoleMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoleMapping" }) as any as S.Schema<RoleMapping>;
 export type RoleMappingMap = { [key: string]: RoleMapping | undefined };
-export const RoleMappingMap = /*@__PURE__*/ S.Record(S.String, RoleMapping.pipe(S.optional));
+export const RoleMappingMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ RoleMapping.pipe(S.optional),
+);
 export interface GetIdentityPoolRolesResponse {
   IdentityPoolId?: string;
   Roles?: { [key: string]: string | undefined };
@@ -478,7 +490,10 @@ export const GetOpenIdTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export type PrincipalTagID = string;
 export type PrincipalTagValue = string;
 export type PrincipalTags = { [key: string]: string | undefined };
-export const PrincipalTags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PrincipalTags = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TokenDuration = number;
 export interface GetOpenIdTokenForDeveloperIdentityInput {
   IdentityPoolId: string;

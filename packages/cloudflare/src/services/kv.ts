@@ -214,7 +214,7 @@ export type NamespacesBulkGetResultWorkersKVBulkGetResultValues =
   | boolean
   | NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
 export const NamespacesBulkGetResultWorkersKVBulkGetResultValues = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], []]),
 );
 
 export interface NamespacesBulkGetResultWorkersKVBulkGetResult {
@@ -276,7 +276,7 @@ export type NamespacesBulkGetResult =
   | NamespacesBulkGetResultWorkersKVBulkGetResult
   | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata;
 export const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["values"], ["values"]]),
+  /*@__PURE__*/ T.UnionCases([["values"], ["values"]]),
 );
 
 export type BulkGetNamespacesResponse = NamespacesBulkGetResult;
@@ -860,7 +860,7 @@ export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues =
   | boolean
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], [], []]),
+  /*@__PURE__*/ T.UnionCases([[], [], [], []]),
 );
 
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResult {
@@ -908,7 +908,7 @@ export type NamespacesKeysBulkGetResult =
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResult
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata;
 export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["values"], ["values"]]),
+  /*@__PURE__*/ T.UnionCases([["values"], ["values"]]),
 );
 
 export type NamespacesKeysBulkGetResponse = NamespacesKeysBulkGetResult;

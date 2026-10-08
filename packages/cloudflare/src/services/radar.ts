@@ -60420,7 +60420,7 @@ export type CtSummaryResponseSummary0 =
   | CtSummaryResponseSummary0Case6
   | CtSummaryResponseSummary0Case7;
 export const CtSummaryResponseSummary0 = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [],
     ["rfc6962", "static"],
     ["gt_121d", "gt_16d_lte_31d", "gt_31d_lte_91d", "gt_3d_lte_16d", "gt_91d_lte_121d", "lte_3d"],
@@ -72195,7 +72195,7 @@ export type CtTimeseriesGroupsResponseSerie0 =
   | CtTimeseriesGroupsResponseSerie0Case6
   | CtTimeseriesGroupsResponseSerie0Case7;
 export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["timestamps"],
     ["rfc6962", "static"],
     ["gt_121d", "gt_16d_lte_31d", "gt_31d_lte_91d", "gt_3d_lte_16d", "gt_91d_lte_121d", "lte_3d"],

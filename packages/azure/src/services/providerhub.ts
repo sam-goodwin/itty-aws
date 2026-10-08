@@ -3285,7 +3285,7 @@ export const CustomRolloutStatusInputCompletedRegionsList = /*@__PURE__*/ S.Arra
 /** The error details. */
 export type ExtendedErrorInfoInputDetailsList = Array<ExtendedErrorInfoInput>;
 export const ExtendedErrorInfoInputDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ExtendedErrorInfoInput),
+  /*@__PURE__*/ S.suspend(() => ExtendedErrorInfoInput),
 ) as any as S.Schema<ExtendedErrorInfoInputDetailsList>;
 
 /** Error information. */
@@ -3541,7 +3541,7 @@ export const CustomRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
 /** The error details. */
 export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
 export const ExtendedErrorInfoDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ExtendedErrorInfo),
+  /*@__PURE__*/ S.suspend(() => ExtendedErrorInfo),
 ) as any as S.Schema<ExtendedErrorInfoDetailsList>;
 
 /** Error information. */

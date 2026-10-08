@@ -4312,7 +4312,7 @@ export const GroupWidgetDefinitionType = S.String;
 /** List of widget groups. */
 export type GroupWidgetDefinitionWidgetsList = Array<Widget>;
 export const GroupWidgetDefinitionWidgetsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Widget),
+  /*@__PURE__*/ S.suspend(() => Widget),
 ) as any as S.Schema<GroupWidgetDefinitionWidgetsList>;
 
 /** The group widget allows you to keep similar graphs together on your dashboard. Each group has a custom header, can hold one to many graphs, and is collapsible. */
@@ -8980,7 +8980,7 @@ export const LogsStringBuilderProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Ordered list of processors in this pipeline. */
 export type LogsPipelineProcessorProcessorsList = Array<LogsProcessor>;
 export const LogsPipelineProcessorProcessorsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => LogsProcessor),
+  /*@__PURE__*/ S.suspend(() => LogsProcessor),
 ) as any as S.Schema<LogsPipelineProcessorProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
@@ -10027,7 +10027,7 @@ export const MonitorOptionsSchedulingOptions = /*@__PURE__*/ S.suspend(() =>
 export type MonitorOptionsInputSilencedMap = { [key: string]: number | null | undefined };
 export const MonitorOptionsInputSilencedMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<MonitorOptionsInputSilencedMap>;
 
 /** Alerting time window options. */
@@ -10987,7 +10987,7 @@ export const MonitorOptionsRenotifyStatusesList = /*@__PURE__*/ S.Array(
 export type MonitorOptionsSilencedMap = { [key: string]: number | null | undefined };
 export const MonitorOptionsSilencedMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<MonitorOptionsSilencedMap>;
 
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
@@ -16854,7 +16854,7 @@ export const SyntheticsPlayingTab = S.Number;
 /** If this step includes a sub-test. [Subtests documentation](https://docs.datadoghq.com/synthetics/browser_tests/advanced_options/#subtests). */
 export type SyntheticsStepDetailSubTestStepDetailsList = Array<SyntheticsStepDetail>;
 export const SyntheticsStepDetailSubTestStepDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SyntheticsStepDetail),
+  /*@__PURE__*/ S.suspend(() => SyntheticsStepDetail),
 ) as any as S.Schema<SyntheticsStepDetailSubTestStepDetailsList>;
 
 /** Core Web Vitals attached to a browser test step. */
@@ -18719,7 +18719,7 @@ export const SLOHistoryMetricsSeriesMetadataUnit = /*@__PURE__*/ S.suspend(() =>
 export type SLOHistoryMetricsSeriesMetadataUnitList =
   Array<SLOHistoryMetricsSeriesMetadataUnit | null>;
 export const SLOHistoryMetricsSeriesMetadataUnitList = /*@__PURE__*/ S.Array(
-  S.NullOr(SLOHistoryMetricsSeriesMetadataUnit),
+  /*@__PURE__*/ S.NullOr(SLOHistoryMetricsSeriesMetadataUnit),
 ) as any as S.Schema<SLOHistoryMetricsSeriesMetadataUnitList>;
 
 /** Query metadata. */
@@ -20576,7 +20576,9 @@ export const MetricsQueryResponseGroupByList = /*@__PURE__*/ S.Array(
 
 /** Array of timeseries points. */
 export type Point = Array<number | null>;
-export const Point = /*@__PURE__*/ S.Array(S.NullOr(S.Number)) as any as S.Schema<Point>;
+export const Point = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.NullOr(S.Number),
+) as any as S.Schema<Point>;
 
 /** List of points of the timeseries in milliseconds. */
 export type MetricsQueryMetadataPointlistList = Array<Point>;
@@ -20616,7 +20618,7 @@ export const MetricsQueryUnit = /*@__PURE__*/ S.suspend(() =>
 /** Detailed information about the metric unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
 export type MetricsQueryMetadataUnitList = Array<MetricsQueryUnit | null>;
 export const MetricsQueryMetadataUnitList = /*@__PURE__*/ S.Array(
-  S.NullOr(MetricsQueryUnit),
+  /*@__PURE__*/ S.NullOr(MetricsQueryUnit),
 ) as any as S.Schema<MetricsQueryMetadataUnitList>;
 
 /** Object containing all metric names returned and their associated metadata. */

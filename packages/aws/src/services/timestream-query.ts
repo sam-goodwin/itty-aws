@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Timestream Query", serviceShapeName: "Timestream_20181101" });
-const auth = T.AwsAuthSigv4({ name: "timestream" });
-const ver = T.ServiceVersion("2018-11-01");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Timestream Query",
+  serviceShapeName: "Timestream_20181101",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "timestream" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -90,59 +93,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }), T.HttpError(403)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+      /*@__PURE__*/ T.HttpError(403),
+    ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidEndpointException
   extends /*@__PURE__*/ S.TaggedError<InvalidEndpointException>()(
     "InvalidEndpointException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(421),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(421),
   ) {}
 export class QueryExecutionException
   extends /*@__PURE__*/ S.TaggedError<QueryExecutionException>()(
     "QueryExecutionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ScheduledQueryArn: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ScheduledQueryArn: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TimestreamNotOnboarded
   extends /*@__PURE__*/ S.TaggedError<TimestreamNotOnboarded>()(
     "TimestreamNotOnboarded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "AccessDeniedException",
       message: { includes: "Only existing Timestream for LiveAnalytics customers" },
     }),
@@ -150,8 +156,8 @@ export class TimestreamNotOnboarded
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type QueryId = string;
 export interface CancelQueryRequest {
@@ -802,7 +808,9 @@ export const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColumnInfo" }) as any as S.Schema<ColumnInfo>;
 export type ColumnInfoList = ColumnInfo[];
 export const ColumnInfoList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ColumnInfo> => ColumnInfo).annotate({ identifier: "ColumnInfo" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<ColumnInfo> => ColumnInfo).annotate({
+    identifier: "ColumnInfo",
+  }),
 ) as any as S.Schema<ColumnInfoList>;
 export interface Type {
   ScalarType?: ScalarType;
@@ -904,7 +912,7 @@ export const TimeSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeSeriesDataPoint" }) as any as S.Schema<TimeSeriesDataPoint>;
 export type TimeSeriesDataPointList = TimeSeriesDataPoint[];
 export const TimeSeriesDataPointList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<TimeSeriesDataPoint> => TimeSeriesDataPoint).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<TimeSeriesDataPoint> => TimeSeriesDataPoint).annotate({
     identifier: "TimeSeriesDataPoint",
   }),
 ) as any as S.Schema<TimeSeriesDataPointList>;
@@ -928,7 +936,7 @@ export const Datum = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Datum" }) as any as S.Schema<Datum>;
 export type DatumList = Datum[];
 export const DatumList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
 ) as any as S.Schema<DatumList>;
 export interface Row {
   Data: Datum[];
@@ -938,7 +946,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 export type RowList = Row[];
 export const RowList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Row> => Row).annotate({ identifier: "Row" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Row> => Row).annotate({ identifier: "Row" }),
 );
 export interface QueryStatus {
   ProgressPercentage?: number;

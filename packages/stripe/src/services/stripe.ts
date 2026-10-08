@@ -51958,7 +51958,7 @@ export type CreateCoreAccountPersonTokenRequestMetadataMap = {
 };
 export const CreateCoreAccountPersonTokenRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateCoreAccountPersonTokenRequestMetadataMap>;
 
 /** The nationalities (countries) this person is associated with. */
@@ -53423,7 +53423,7 @@ export type CreateCoreAccountTokenRequestIdentityIndividualMetadataMap = {
 };
 export const CreateCoreAccountTokenRequestIdentityIndividualMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateCoreAccountTokenRequestIdentityIndividualMetadataMap>;
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
@@ -72311,7 +72311,7 @@ export const IssuingAuthorizationToken = S.Unknown as any as S.Schema<IssuingAut
 /** List of [transactions](https://docs.stripe.com/api/issuing/transactions) associated with this authorization. */
 export type IssuingAuthorizationTransactionsList = Array<IssuingTransaction>;
 export const IssuingAuthorizationTransactionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IssuingTransaction),
+  /*@__PURE__*/ S.suspend(() => IssuingTransaction),
 ) as any as S.Schema<IssuingAuthorizationTransactionsList>;
 
 /** The array of [ReceivedCredits](https://docs.stripe.com/api/treasury/received_credits) associated with this authorization */
@@ -149459,7 +149459,7 @@ export type UpdateCoreAccountRequestIdentityIndividualMetadataMap = {
 };
 export const UpdateCoreAccountRequestIdentityIndividualMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateCoreAccountRequestIdentityIndividualMetadataMap>;
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
@@ -149624,7 +149624,7 @@ export const UpdateCoreAccountRequestIncludeList = /*@__PURE__*/ S.Array(
 export type UpdateCoreAccountRequestMetadataMap = { [key: string]: string | null | undefined };
 export const UpdateCoreAccountRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateCoreAccountRequestMetadataMap>;
 
 export interface UpdateCoreAccountRequest {
@@ -150041,7 +150041,7 @@ export type UpdateCoreAccountPersonRequestMetadataMap = {
 };
 export const UpdateCoreAccountPersonRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateCoreAccountPersonRequestMetadataMap>;
 
 /** The nationalities (countries) this person is associated with. */
@@ -150194,7 +150194,7 @@ export type UpdateCoreEventDestinationRequestMetadataMap = {
 };
 export const UpdateCoreEventDestinationRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateCoreEventDestinationRequestMetadataMap>;
 
 /** New delivery target for the webhook endpoint. Live mode requires HTTPS; sandbox mode also supports HTTP. */

@@ -4411,7 +4411,7 @@ export type UpdateDataSourceRequestPropertiesMap = {
 };
 export const UpdateDataSourceRequestPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateDataSourceRequestPropertiesValue),
+  /*@__PURE__*/ S.NullOr(UpdateDataSourceRequestPropertiesValue),
 ) as any as S.Schema<UpdateDataSourceRequestPropertiesMap>;
 
 export interface UpdateDataSourceRequest {

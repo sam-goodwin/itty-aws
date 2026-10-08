@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "TaxSettings", serviceShapeName: "TaxSettings" });
-const auth = T.AwsAuthSigv4({ name: "tax" });
-const ver = T.ServiceVersion("2018-05-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "TaxSettings",
+  serviceShapeName: "TaxSettings",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "tax" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -88,54 +91,63 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: SensitiveString.pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class AttachmentUploadException
   extends /*@__PURE__*/ S.TaggedError<AttachmentUploadException>()(
     "AttachmentUploadException",
-    { message: SensitiveString.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CaseCreationLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CaseCreationLimitExceededException>()(
     "CaseCreationLimitExceededException",
-    { message: SensitiveString.pipe(T.ErrorMessage()) },
-    T.HttpError(413),
+    { message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: SensitiveString.pipe(T.ErrorMessage()),
-      errorCode: S.suspend(() => ValidationExceptionErrorCode).annotate({
+      message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      errorCode: /*@__PURE__*/ S.suspend(() => ValidationExceptionErrorCode).annotate({
         identifier: "ValidationExceptionErrorCode",
       }),
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type AccountIds = string[];
@@ -255,7 +267,7 @@ export const TaxExemptionDetails = /*@__PURE__*/ S.suspend(() =>
 export type TaxExemptionDetailsMap = { [key: string]: TaxExemptionDetails | undefined };
 export const TaxExemptionDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
-  TaxExemptionDetails.pipe(S.optional),
+  /*@__PURE__*/ TaxExemptionDetails.pipe(S.optional),
 );
 export interface BatchGetTaxExemptionsResponse {
   taxExemptionDetailsMap?: { [key: string]: TaxExemptionDetails | undefined };
@@ -1167,7 +1179,7 @@ export const AddressRoleType = S.String;
 export type AddressRoleMap = { [key in AddressRoleType]?: Jurisdiction };
 export const AddressRoleMap = /*@__PURE__*/ S.Record(
   AddressRoleType,
-  Jurisdiction.pipe(S.optional),
+  /*@__PURE__*/ Jurisdiction.pipe(S.optional),
 );
 export interface AccountMetaData {
   accountName?: string;

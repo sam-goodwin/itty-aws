@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "AccessAnalyzer", serviceShapeName: "AccessAnalyzer" });
-const auth = T.AwsAuthSigv4({ name: "access-analyzer" });
-const ver = T.ServiceVersion("2019-11-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "AccessAnalyzer",
+  serviceShapeName: "AccessAnalyzer",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "access-analyzer" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-11-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,70 +81,89 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(500), T.Retryable()),
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()), resourceId: S.String, resourceType: S.String },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(422), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(422), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
-      fieldList: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fieldList: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AnalyzerArn = string;
 export type Name = string;
@@ -364,7 +386,10 @@ export const EfsFileSystemConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type PolicyName = string;
 export type KmsKeyPolicy = string;
 export type KmsKeyPoliciesMap = { [key: string]: string | undefined };
-export const KmsKeyPoliciesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const KmsKeyPoliciesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type KmsGrantOperation = string;
 export type KmsGrantOperationsList = string[];
 export const KmsGrantOperationsList = /*@__PURE__*/ S.Array(S.String);
@@ -373,7 +398,10 @@ export type RetiringPrincipal = string;
 export type KmsConstraintsKey = string;
 export type KmsConstraintsValue = string;
 export type KmsConstraintsMap = { [key: string]: string | undefined };
-export const KmsConstraintsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const KmsConstraintsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface KmsGrantConstraints {
   encryptionContextEquals?: { [key: string]: string | undefined };
   encryptionContextSubset?: { [key: string]: string | undefined };
@@ -419,14 +447,14 @@ export type RdsDbClusterSnapshotAccountIdsList = string[];
 export const RdsDbClusterSnapshotAccountIdsList = /*@__PURE__*/ S.Array(S.String);
 export type RdsDbClusterSnapshotAttributeValue = { accountIds: string[] };
 export const RdsDbClusterSnapshotAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ accountIds: RdsDbClusterSnapshotAccountIdsList }),
+  /*@__PURE__*/ S.Struct({ accountIds: RdsDbClusterSnapshotAccountIdsList }),
 ]);
 export type RdsDbClusterSnapshotAttributesMap = {
   [key: string]: RdsDbClusterSnapshotAttributeValue | undefined;
 };
 export const RdsDbClusterSnapshotAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
-  RdsDbClusterSnapshotAttributeValue.pipe(S.optional),
+  /*@__PURE__*/ RdsDbClusterSnapshotAttributeValue.pipe(S.optional),
 );
 export type RdsDbClusterSnapshotKmsKeyId = string;
 export interface RdsDbClusterSnapshotConfiguration {
@@ -447,12 +475,12 @@ export type RdsDbSnapshotAccountIdsList = string[];
 export const RdsDbSnapshotAccountIdsList = /*@__PURE__*/ S.Array(S.String);
 export type RdsDbSnapshotAttributeValue = { accountIds: string[] };
 export const RdsDbSnapshotAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ accountIds: RdsDbSnapshotAccountIdsList }),
+  /*@__PURE__*/ S.Struct({ accountIds: RdsDbSnapshotAccountIdsList }),
 ]);
 export type RdsDbSnapshotAttributesMap = { [key: string]: RdsDbSnapshotAttributeValue | undefined };
 export const RdsDbSnapshotAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
-  RdsDbSnapshotAttributeValue.pipe(S.optional),
+  /*@__PURE__*/ RdsDbSnapshotAttributeValue.pipe(S.optional),
 );
 export type RdsDbSnapshotKmsKeyId = string;
 export interface RdsDbSnapshotConfiguration {
@@ -481,8 +509,8 @@ export type AclCanonicalId = string;
 export type AclUri = string;
 export type AclGrantee = { id: string; uri?: never } | { id?: never; uri: string };
 export const AclGrantee = /*@__PURE__*/ S.Union([
-  S.Struct({ id: S.String }),
-  S.Struct({ uri: S.String }),
+  /*@__PURE__*/ S.Struct({ id: S.String }),
+  /*@__PURE__*/ S.Struct({ uri: S.String }),
 ]);
 export interface S3BucketAclGrantConfiguration {
   permission: string;
@@ -523,8 +551,8 @@ export type NetworkOriginConfiguration =
   | { vpcConfiguration: VpcConfiguration; internetConfiguration?: never }
   | { vpcConfiguration?: never; internetConfiguration: InternetConfiguration };
 export const NetworkOriginConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ vpcConfiguration: VpcConfiguration }),
-  S.Struct({ internetConfiguration: InternetConfiguration }),
+  /*@__PURE__*/ S.Struct({ vpcConfiguration: VpcConfiguration }),
+  /*@__PURE__*/ S.Struct({ internetConfiguration: InternetConfiguration }),
 ]);
 export interface S3AccessPointConfiguration {
   accessPointPolicy?: string;
@@ -545,7 +573,7 @@ export type S3AccessPointConfigurationsMap = {
 };
 export const S3AccessPointConfigurationsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S3AccessPointConfiguration.pipe(S.optional),
+  /*@__PURE__*/ S3AccessPointConfiguration.pipe(S.optional),
 );
 export interface S3BucketConfiguration {
   bucketPolicy?: string;
@@ -594,7 +622,7 @@ export type S3ExpressDirectoryAccessPointConfigurationsMap = {
 };
 export const S3ExpressDirectoryAccessPointConfigurationsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S3ExpressDirectoryAccessPointConfiguration.pipe(S.optional),
+  /*@__PURE__*/ S3ExpressDirectoryAccessPointConfiguration.pipe(S.optional),
 );
 export interface S3ExpressDirectoryBucketConfiguration {
   bucketPolicy?: string;
@@ -852,23 +880,26 @@ export type Configuration =
       dynamodbTable: DynamodbTableConfiguration;
     };
 export const Configuration = /*@__PURE__*/ S.Union([
-  S.Struct({ ebsSnapshot: EbsSnapshotConfiguration }),
-  S.Struct({ ecrRepository: EcrRepositoryConfiguration }),
-  S.Struct({ iamRole: IamRoleConfiguration }),
-  S.Struct({ efsFileSystem: EfsFileSystemConfiguration }),
-  S.Struct({ kmsKey: KmsKeyConfiguration }),
-  S.Struct({ rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration }),
-  S.Struct({ rdsDbSnapshot: RdsDbSnapshotConfiguration }),
-  S.Struct({ secretsManagerSecret: SecretsManagerSecretConfiguration }),
-  S.Struct({ s3Bucket: S3BucketConfiguration }),
-  S.Struct({ snsTopic: SnsTopicConfiguration }),
-  S.Struct({ sqsQueue: SqsQueueConfiguration }),
-  S.Struct({ s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration }),
-  S.Struct({ dynamodbStream: DynamodbStreamConfiguration }),
-  S.Struct({ dynamodbTable: DynamodbTableConfiguration }),
+  /*@__PURE__*/ S.Struct({ ebsSnapshot: EbsSnapshotConfiguration }),
+  /*@__PURE__*/ S.Struct({ ecrRepository: EcrRepositoryConfiguration }),
+  /*@__PURE__*/ S.Struct({ iamRole: IamRoleConfiguration }),
+  /*@__PURE__*/ S.Struct({ efsFileSystem: EfsFileSystemConfiguration }),
+  /*@__PURE__*/ S.Struct({ kmsKey: KmsKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration }),
+  /*@__PURE__*/ S.Struct({ rdsDbSnapshot: RdsDbSnapshotConfiguration }),
+  /*@__PURE__*/ S.Struct({ secretsManagerSecret: SecretsManagerSecretConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3Bucket: S3BucketConfiguration }),
+  /*@__PURE__*/ S.Struct({ snsTopic: SnsTopicConfiguration }),
+  /*@__PURE__*/ S.Struct({ sqsQueue: SqsQueueConfiguration }),
+  /*@__PURE__*/ S.Struct({ s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration }),
+  /*@__PURE__*/ S.Struct({ dynamodbStream: DynamodbStreamConfiguration }),
+  /*@__PURE__*/ S.Struct({ dynamodbTable: DynamodbTableConfiguration }),
 ]);
 export type ConfigurationsMap = { [key: string]: Configuration | undefined };
-export const ConfigurationsMap = /*@__PURE__*/ S.Record(S.String, Configuration.pipe(S.optional));
+export const ConfigurationsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Configuration.pipe(S.optional),
+);
 export interface CreateAccessPreviewRequest {
   analyzerArn: string;
   configurations: { [key: string]: Configuration | undefined };
@@ -911,7 +942,10 @@ export const Criterion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
 export type FilterCriteriaMap = { [key: string]: Criterion | undefined };
-export const FilterCriteriaMap = /*@__PURE__*/ S.Record(S.String, Criterion.pipe(S.optional));
+export const FilterCriteriaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ Criterion.pipe(S.optional),
+);
 export interface InlineArchiveRule {
   ruleName: string;
   filter: { [key: string]: Criterion | undefined };
@@ -922,7 +956,7 @@ export const InlineArchiveRule = /*@__PURE__*/ S.suspend(() =>
 export type InlineArchiveRulesList = InlineArchiveRule[];
 export const InlineArchiveRulesList = /*@__PURE__*/ S.Array(InlineArchiveRule);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type AccountIdsList = string[];
 export const AccountIdsList = /*@__PURE__*/ S.Array(S.String);
 export type TagsList = { [key: string]: string | undefined }[];
@@ -994,8 +1028,8 @@ export type AnalyzerConfiguration =
   | { unusedAccess: UnusedAccessConfiguration; internalAccess?: never }
   | { unusedAccess?: never; internalAccess: InternalAccessConfiguration };
 export const AnalyzerConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ unusedAccess: UnusedAccessConfiguration }),
-  S.Struct({ internalAccess: InternalAccessConfiguration }),
+  /*@__PURE__*/ S.Struct({ unusedAccess: UnusedAccessConfiguration }),
+  /*@__PURE__*/ S.Struct({ internalAccess: InternalAccessConfiguration }),
 ]);
 export interface CreateAnalyzerRequest {
   analyzerName: string;
@@ -1379,9 +1413,15 @@ export const GetFindingRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/finding/{id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetFindingRequest" }) as any as S.Schema<GetFindingRequest>;
 export type PrincipalMap = { [key: string]: string | undefined };
-export const PrincipalMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PrincipalMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ConditionKeyMap = { [key: string]: string | undefined };
-export const ConditionKeyMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConditionKeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type FindingSourceType = string;
 export interface FindingSourceDetail {
   accessPointArn?: string;
@@ -1489,7 +1529,7 @@ export type RecommendedStep = {
   unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep;
 };
 export const RecommendedStep = /*@__PURE__*/ S.Union([
-  S.Struct({ unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep }),
+  /*@__PURE__*/ S.Struct({ unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep }),
 ]);
 export type RecommendedStepList = RecommendedStep[];
 export const RecommendedStepList = /*@__PURE__*/ S.Array(RecommendedStep);
@@ -1551,7 +1591,7 @@ export const ResourceTypeDetails = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypeStatisticsMap = { [key: string]: ResourceTypeDetails | undefined };
 export const ResourceTypeStatisticsMap = /*@__PURE__*/ S.Record(
   S.String,
-  ResourceTypeDetails.pipe(S.optional),
+  /*@__PURE__*/ ResourceTypeDetails.pipe(S.optional),
 );
 export interface ExternalAccessFindingsStatistics {
   resourceTypeStatistics?: { [key: string]: ResourceTypeDetails | undefined };
@@ -1588,7 +1628,7 @@ export type InternalAccessResourceTypeStatisticsMap = {
 };
 export const InternalAccessResourceTypeStatisticsMap = /*@__PURE__*/ S.Record(
   S.String,
-  InternalAccessResourceTypeDetails.pipe(S.optional),
+  /*@__PURE__*/ InternalAccessResourceTypeDetails.pipe(S.optional),
 );
 export interface InternalAccessFindingsStatistics {
   resourceTypeStatistics?: { [key: string]: InternalAccessResourceTypeDetails | undefined };
@@ -1620,7 +1660,7 @@ export const UnusedAccessTypeStatisticsList = /*@__PURE__*/ S.Array(UnusedAccess
 export type FindingAggregationAccountDetailsMap = { [key: string]: number | undefined };
 export const FindingAggregationAccountDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface FindingAggregationAccountDetails {
   account?: string;
@@ -1673,9 +1713,9 @@ export type FindingsStatistics =
       unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics;
     };
 export const FindingsStatistics = /*@__PURE__*/ S.Union([
-  S.Struct({ externalAccessFindingsStatistics: ExternalAccessFindingsStatistics }),
-  S.Struct({ internalAccessFindingsStatistics: InternalAccessFindingsStatistics }),
-  S.Struct({ unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics }),
+  /*@__PURE__*/ S.Struct({ externalAccessFindingsStatistics: ExternalAccessFindingsStatistics }),
+  /*@__PURE__*/ S.Struct({ internalAccessFindingsStatistics: InternalAccessFindingsStatistics }),
+  /*@__PURE__*/ S.Struct({ unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics }),
 ]);
 export type FindingsStatisticsList = FindingsStatistics[];
 export const FindingsStatisticsList = /*@__PURE__*/ S.Array(FindingsStatistics);
@@ -1850,12 +1890,12 @@ export type FindingDetails =
       unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails;
     };
 export const FindingDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ internalAccessDetails: InternalAccessDetails }),
-  S.Struct({ externalAccessDetails: ExternalAccessDetails }),
-  S.Struct({ unusedPermissionDetails: UnusedPermissionDetails }),
-  S.Struct({ unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails }),
-  S.Struct({ unusedIamRoleDetails: UnusedIamRoleDetails }),
-  S.Struct({ unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails }),
+  /*@__PURE__*/ S.Struct({ internalAccessDetails: InternalAccessDetails }),
+  /*@__PURE__*/ S.Struct({ externalAccessDetails: ExternalAccessDetails }),
+  /*@__PURE__*/ S.Struct({ unusedPermissionDetails: UnusedPermissionDetails }),
+  /*@__PURE__*/ S.Struct({ unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails }),
+  /*@__PURE__*/ S.Struct({ unusedIamRoleDetails: UnusedIamRoleDetails }),
+  /*@__PURE__*/ S.Struct({ unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails }),
 ]);
 export type FindingDetailsList = FindingDetails[];
 export const FindingDetailsList = /*@__PURE__*/ S.Array(FindingDetails);
@@ -2615,10 +2655,10 @@ export type PathElement =
   | { index?: never; key?: never; substring: Substring; value?: never }
   | { index?: never; key?: never; substring?: never; value: string };
 export const PathElement = /*@__PURE__*/ S.Union([
-  S.Struct({ index: S.Number }),
-  S.Struct({ key: S.String }),
-  S.Struct({ substring: Substring }),
-  S.Struct({ value: S.String }),
+  /*@__PURE__*/ S.Struct({ index: S.Number }),
+  /*@__PURE__*/ S.Struct({ key: S.String }),
+  /*@__PURE__*/ S.Struct({ substring: Substring }),
+  /*@__PURE__*/ S.Struct({ value: S.String }),
 ]);
 export type PathElementList = PathElement[];
 export const PathElementList = /*@__PURE__*/ S.Array(PathElement);

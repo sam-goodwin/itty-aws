@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Chime SDK Voice",
   serviceShapeName: "ChimeSDKTelephonyService",
 });
-const auth = T.AwsAuthSigv4({ name: "chime" });
-const ver = T.ServiceVersion("2022-08-03");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "chime" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-08-03");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,109 +79,133 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(403),
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
   extends /*@__PURE__*/ S.TaggedError<GoneException>()(
     "GoneException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(410),
+    /*@__PURE__*/ T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
   extends /*@__PURE__*/ S.TaggedError<ServiceFailureException>()(
     "ServiceFailureException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(503),
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottledClientException
   extends /*@__PURE__*/ S.TaggedError<ThrottledClientException>()(
     "ThrottledClientException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedClientException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedClientException>()(
     "UnauthorizedClientException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(401),
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
     {
-      Code: S.optional(S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" })),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(422),
+    /*@__PURE__*/ T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export type VoiceConnectorId = string;
 export type E164PhoneNumber = string | redacted.Redacted<string>;
@@ -633,13 +657,16 @@ export const CreateSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSipMediaApplicationResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SipHeadersMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const SipHeadersMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const SipHeadersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export type SMACreateCallArgumentsMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
 export const SMACreateCallArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface CreateSipMediaApplicationCallRequest {
   FromPhoneNumber: string | redacted.Redacted<string>;
@@ -3467,7 +3494,7 @@ export type SMAUpdateCallArgumentsMap = {
 };
 export const SMAUpdateCallArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface UpdateSipMediaApplicationCallRequest {
   SipMediaApplicationId: string;
@@ -3729,7 +3756,9 @@ export const CandidateAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CandidateAddress" }) as any as S.Schema<CandidateAddress>;
 export type CandidateAddressList = CandidateAddress[];
 export const CandidateAddressList = /*@__PURE__*/ S.Array(
-  CandidateAddress.pipe(T.XmlName("CandidateAddress")).annotate({ identifier: "CandidateAddress" }),
+  /*@__PURE__*/ CandidateAddress.pipe(/*@__PURE__*/ T.XmlName("CandidateAddress")).annotate({
+    identifier: "CandidateAddress",
+  }),
 );
 export interface ValidateE911AddressResponse {
   ValidationResult?: number;

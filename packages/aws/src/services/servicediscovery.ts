@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ServiceDiscovery",
   serviceShapeName: "Route53AutoNaming_v20170314",
 });
-const auth = T.AwsAuthSigv4({ name: "servicediscovery" });
-const ver = T.ServiceVersion("2017-03-14");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "servicediscovery" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-03-14");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,104 +76,107 @@ const rules = T.EndpointResolver((p, _) => {
 export class CustomHealthNotFound
   extends /*@__PURE__*/ S.TaggedError<CustomHealthNotFound>()(
     "CustomHealthNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRequest
   extends /*@__PURE__*/ S.TaggedError<DuplicateRequest>()(
     "DuplicateRequest",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      DuplicateOperationId: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      DuplicateOperationId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InstanceNotFound
   extends /*@__PURE__*/ S.TaggedError<InstanceNotFound>()(
     "InstanceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
   extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NamespaceAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<NamespaceAlreadyExists>()(
     "NamespaceAlreadyExists",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      CreatorRequestId: S.optional(S.String),
-      NamespaceId: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      CreatorRequestId: /*@__PURE__*/ S.optional(S.String),
+      NamespaceId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class NamespaceNotFound
   extends /*@__PURE__*/ S.TaggedError<NamespaceNotFound>()(
     "NamespaceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotFound
   extends /*@__PURE__*/ S.TaggedError<OperationNotFound>()(
     "OperationNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()(
     "RequestLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceInUse
   extends /*@__PURE__*/ S.TaggedError<ResourceInUse>()(
     "ResourceInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class ResourceLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceeded>()(
     "ResourceLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ServiceAlreadyExists>()(
     "ServiceAlreadyExists",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      CreatorRequestId: S.optional(S.String),
-      ServiceId: S.optional(S.String),
-      ServiceArn: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      CreatorRequestId: /*@__PURE__*/ S.optional(S.String),
+      ServiceId: /*@__PURE__*/ S.optional(S.String),
+      ServiceArn: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ServiceAttributesLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceAttributesLimitExceededException>()(
     "ServiceAttributesLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceNotFound
   extends /*@__PURE__*/ S.TaggedError<ServiceNotFound>()(
     "ServiceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type NamespaceNameHttp = string;
 export type ResourceId = string;
@@ -501,7 +504,7 @@ export type DiscoverMaxResults = number;
 export type AttrKey = string;
 export type AttrValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type HealthStatusFilter =
   | "HEALTHY"
   | "UNHEALTHY"
@@ -617,7 +620,9 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceOwner: S.optional(S.String), Instance: S.optional(Instance) }),
 ).annotate({ identifier: "GetInstanceResponse" }) as any as S.Schema<GetInstanceResponse>;
 export type InstanceIdList = string[];
-export const InstanceIdList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("InstanceId")));
+export const InstanceIdList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstanceId")),
+);
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetInstancesHealthStatusRequest {
@@ -639,7 +644,7 @@ export const GetInstancesHealthStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export type InstanceHealthStatusMap = { [key: string]: HealthStatus | undefined };
 export const InstanceHealthStatusMap = /*@__PURE__*/ S.Record(
   S.String,
-  HealthStatus.pipe(S.optional),
+  /*@__PURE__*/ HealthStatus.pipe(S.optional),
 );
 export interface GetInstancesHealthStatusResponse {
   Status?: { [key: string]: HealthStatus | undefined };
@@ -746,7 +751,7 @@ export const OperationTargetType = S.String;
 export type OperationTargetsMap = { [key in OperationTargetType]?: string };
 export const OperationTargetsMap = /*@__PURE__*/ S.Record(
   OperationTargetType,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface Operation {
   Id?: string;
@@ -804,7 +809,10 @@ export const GetServiceAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetServiceAttributesRequest>;
 export type ServiceAttributeValue = string;
 export type ServiceAttributesMap = { [key: string]: string | undefined };
-export const ServiceAttributesMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ServiceAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ServiceAttributes {
   ServiceArn?: string;
   ResourceOwner?: string;
@@ -851,7 +859,9 @@ export const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceSummary" }) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
 export const InstanceSummaryList = /*@__PURE__*/ S.Array(
-  InstanceSummary.pipe(T.XmlName("InstanceSummary")).annotate({ identifier: "InstanceSummary" }),
+  /*@__PURE__*/ InstanceSummary.pipe(/*@__PURE__*/ T.XmlName("InstanceSummary")).annotate({
+    identifier: "InstanceSummary",
+  }),
 );
 export interface ListInstancesResponse {
   ResourceOwner?: string;
@@ -870,7 +880,9 @@ export const NamespaceFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const FilterValues = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
+);
 export type FilterCondition = "EQ" | "IN" | "BETWEEN" | "BEGINS_WITH" | (string & {});
 export const FilterCondition = S.String;
 
@@ -888,7 +900,9 @@ export const NamespaceFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceFilter" }) as any as S.Schema<NamespaceFilter>;
 export type NamespaceFilters = NamespaceFilter[];
 export const NamespaceFilters = /*@__PURE__*/ S.Array(
-  NamespaceFilter.pipe(T.XmlName("item")).annotate({ identifier: "NamespaceFilter" }),
+  /*@__PURE__*/ NamespaceFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "NamespaceFilter",
+  }),
 );
 export interface ListNamespacesRequest {
   NextToken?: string;
@@ -958,7 +972,9 @@ export const OperationFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationFilter" }) as any as S.Schema<OperationFilter>;
 export type OperationFilters = OperationFilter[];
 export const OperationFilters = /*@__PURE__*/ S.Array(
-  OperationFilter.pipe(T.XmlName("item")).annotate({ identifier: "OperationFilter" }),
+  /*@__PURE__*/ OperationFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "OperationFilter",
+  }),
 );
 export interface ListOperationsRequest {
   NextToken?: string;
@@ -981,7 +997,9 @@ export const OperationSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationSummary" }) as any as S.Schema<OperationSummary>;
 export type OperationSummaryList = OperationSummary[];
 export const OperationSummaryList = /*@__PURE__*/ S.Array(
-  OperationSummary.pipe(T.XmlName("OperationSummary")).annotate({ identifier: "OperationSummary" }),
+  /*@__PURE__*/ OperationSummary.pipe(/*@__PURE__*/ T.XmlName("OperationSummary")).annotate({
+    identifier: "OperationSummary",
+  }),
 );
 export interface ListOperationsResponse {
   Operations?: OperationSummary[];
@@ -1007,7 +1025,9 @@ export const ServiceFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceFilter" }) as any as S.Schema<ServiceFilter>;
 export type ServiceFilters = ServiceFilter[];
 export const ServiceFilters = /*@__PURE__*/ S.Array(
-  ServiceFilter.pipe(T.XmlName("item")).annotate({ identifier: "ServiceFilter" }),
+  /*@__PURE__*/ ServiceFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+    identifier: "ServiceFilter",
+  }),
 );
 export interface ListServicesRequest {
   NextToken?: string;

@@ -226,7 +226,7 @@ export const PrivateGroupChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type AddGroupDmUserResponseBody = PrivateChannelResponse | PrivateGroupChannelResponse;
 export const AddGroupDmUserResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
     [
       "id",
@@ -1218,7 +1218,7 @@ export type ApplicationCommandSubcommandOptionOptionsItem =
   | ApplicationCommandStringOption
   | ApplicationCommandUserOption;
 export const ApplicationCommandSubcommandOptionOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -1359,7 +1359,7 @@ export type ApplicationCommandUpdateRequestOptionsItem =
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
 export const ApplicationCommandUpdateRequestOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -2152,7 +2152,7 @@ export type ApplicationCommandSubcommandOptionResponseOptionsItem =
   | ApplicationCommandStringOptionResponse
   | ApplicationCommandUserOptionResponse;
 export const ApplicationCommandSubcommandOptionResponseOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -2347,7 +2347,7 @@ export type ApplicationCommandResponseOptionsItem =
   | ApplicationCommandSubcommandOptionResponse
   | ApplicationCommandUserOptionResponse;
 export const ApplicationCommandResponseOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -2893,7 +2893,7 @@ export type CreateApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
 export const CreateApplicationCommandRequestOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -3163,7 +3163,7 @@ export type DefaultKeywordListUpsertRequestActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const DefaultKeywordListUpsertRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3249,7 +3249,7 @@ export type KeywordUpsertRequestActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const KeywordUpsertRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3329,7 +3329,7 @@ export type MLSpamUpsertRequestActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const MLSpamUpsertRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3381,7 +3381,7 @@ export type MentionSpamUpsertRequestActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const MentionSpamUpsertRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3446,7 +3446,7 @@ export type UserProfileUpsertRequestActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const UserProfileUpsertRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3527,7 +3527,7 @@ export type CreateAutoModerationRuleRequestBody =
   | MentionSpamUpsertRequest
   | UserProfileUpsertRequest;
 export const CreateAutoModerationRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "name",
       "event_type",
@@ -3677,7 +3677,7 @@ export type DefaultKeywordRuleResponseActionsItem =
   | QuarantineUserActionResponse
   | UserCommunicationDisabledActionResponse;
 export const DefaultKeywordRuleResponseActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3760,7 +3760,7 @@ export type KeywordRuleResponseActionsItem =
   | QuarantineUserActionResponse
   | UserCommunicationDisabledActionResponse;
 export const KeywordRuleResponseActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3848,7 +3848,7 @@ export type MLSpamRuleResponseActionsItem =
   | QuarantineUserActionResponse
   | UserCommunicationDisabledActionResponse;
 export const MLSpamRuleResponseActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3906,7 +3906,7 @@ export type MentionSpamRuleResponseActionsItem =
   | QuarantineUserActionResponse
   | UserCommunicationDisabledActionResponse;
 export const MentionSpamRuleResponseActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -3977,7 +3977,7 @@ export type UserProfileRuleResponseActionsItem =
   | QuarantineUserActionResponse
   | UserCommunicationDisabledActionResponse;
 export const UserProfileRuleResponseActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -4066,7 +4066,7 @@ export type CreateAutoModerationRuleResponseBody =
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
 export const CreateAutoModerationRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -4162,7 +4162,9 @@ export const CreateGuildInviteRequestRoleIdsCase1List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateGuildInviteRequestRoleIdsCase1List>;
 
 export type CreateGuildInviteRequestRoleIds = string | CreateGuildInviteRequestRoleIdsCase1List;
-export const CreateGuildInviteRequestRoleIds = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const CreateGuildInviteRequestRoleIds = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type CreateGuildInviteRequestTargetUserIdsCase1List = Array<string>;
 export const CreateGuildInviteRequestTargetUserIdsCase1List = /*@__PURE__*/ S.Array(
@@ -4174,7 +4176,7 @@ export type CreateGuildInviteRequestTargetUserIds =
   | string
   | CreateGuildInviteRequestTargetUserIdsCase1List;
 export const CreateGuildInviteRequestTargetUserIds = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CreateGuildInviteRequest {
@@ -4205,7 +4207,7 @@ export const CreateGuildInviteRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateChannelInviteRequestBody = CreateGroupDMInviteRequest | CreateGuildInviteRequest;
 export const CreateChannelInviteRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["max_age"],
     [
       "max_age",
@@ -4853,7 +4855,7 @@ export type CreateChannelInviteResponseBody =
   | GroupDMInviteResponse
   | GuildInviteResponse;
 export const CreateChannelInviteResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "code",
@@ -4940,7 +4942,7 @@ export const CreateDmRequestAccessTokensList = /*@__PURE__*/ S.Array(
 export type CreateDmRequestNicksMap = { [key: string]: string | null | undefined };
 export const CreateDmRequestNicksMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateDmRequestNicksMap>;
 
 export interface CreateDmRequest {
@@ -4958,7 +4960,7 @@ export const CreateDmRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDmResponseBody = PrivateChannelResponse | PrivateGroupChannelResponse;
 export const CreateDmResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "type", "last_message_id", "flags", "last_pin_timestamp", "recipients"],
     [
       "id",
@@ -5075,7 +5077,7 @@ export type CreateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
 export const CreateGuildApplicationCommandRequestOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -5297,7 +5299,7 @@ export const CreateOrUpdateThreadTagRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateGuildChannelRequestAvailableTagsList =
   Array<CreateOrUpdateThreadTagRequest | null>;
 export const CreateGuildChannelRequestAvailableTagsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CreateOrUpdateThreadTagRequest),
+  /*@__PURE__*/ S.NullOr(CreateOrUpdateThreadTagRequest),
 ) as any as S.Schema<CreateGuildChannelRequestAvailableTagsList>;
 
 export interface CreateGuildChannelRequest {
@@ -5466,7 +5468,7 @@ export const GuildChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateGuildEmojiRequestRolesList = Array<string | null>;
 export const CreateGuildEmojiRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateGuildEmojiRequestRolesList>;
 
 export interface CreateGuildEmojiRequest {
@@ -5679,7 +5681,7 @@ export type CreateGuildScheduledEventRequestBody =
   | StageScheduledEventCreateRequest
   | StageScheduledEventCreateRequest;
 export const CreateGuildScheduledEventRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "name",
       "description",
@@ -5958,7 +5960,7 @@ export type CreateGuildScheduledEventResponseBody =
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
 export const CreateGuildScheduledEventResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -6413,7 +6415,7 @@ export type InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesL
   Array<ApplicationCommandOptionIntegerChoice | null>;
 export const InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(ApplicationCommandOptionIntegerChoice),
+    /*@__PURE__*/ S.NullOr(ApplicationCommandOptionIntegerChoice),
   ) as any as S.Schema<InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesList>;
 
 export interface InteractionApplicationCommandAutocompleteCallbackIntegerData {
@@ -6434,7 +6436,7 @@ export type InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesLi
   Array<ApplicationCommandOptionNumberChoice | null>;
 export const InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(ApplicationCommandOptionNumberChoice),
+    /*@__PURE__*/ S.NullOr(ApplicationCommandOptionNumberChoice),
   ) as any as S.Schema<InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesList>;
 
 export interface InteractionApplicationCommandAutocompleteCallbackNumberData {
@@ -6455,7 +6457,7 @@ export type InteractionApplicationCommandAutocompleteCallbackStringDataChoicesLi
   Array<ApplicationCommandOptionStringChoice | null>;
 export const InteractionApplicationCommandAutocompleteCallbackStringDataChoicesList =
   /*@__PURE__*/ S.Array(
-    S.NullOr(ApplicationCommandOptionStringChoice),
+    /*@__PURE__*/ S.NullOr(ApplicationCommandOptionStringChoice),
   ) as any as S.Schema<InteractionApplicationCommandAutocompleteCallbackStringDataChoicesList>;
 
 export interface InteractionApplicationCommandAutocompleteCallbackStringData {
@@ -6477,7 +6479,7 @@ export type ApplicationCommandAutocompleteCallbackRequestData =
   | InteractionApplicationCommandAutocompleteCallbackNumberData
   | InteractionApplicationCommandAutocompleteCallbackStringData;
 export const ApplicationCommandAutocompleteCallbackRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["choices"], ["choices"], ["choices"]]),
+  /*@__PURE__*/ T.UnionCases([["choices"], ["choices"], ["choices"]]),
 );
 
 export interface ApplicationCommandAutocompleteCallbackRequest {
@@ -6618,17 +6620,17 @@ export type MessageAllowedMentionsRequestParseList = Array<
   AllowedMentionTypes | (string & {}) | null
 >;
 export const MessageAllowedMentionsRequestParseList = /*@__PURE__*/ S.Array(
-  S.NullOr(AllowedMentionTypes),
+  /*@__PURE__*/ S.NullOr(AllowedMentionTypes),
 ) as any as S.Schema<MessageAllowedMentionsRequestParseList>;
 
 export type MessageAllowedMentionsRequestUsersList = Array<string | null>;
 export const MessageAllowedMentionsRequestUsersList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<MessageAllowedMentionsRequestUsersList>;
 
 export type MessageAllowedMentionsRequestRolesList = Array<string | null>;
 export const MessageAllowedMentionsRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<MessageAllowedMentionsRequestRolesList>;
 
 export interface MessageAllowedMentionsRequest {
@@ -6781,7 +6783,7 @@ export type MentionableSelectComponentForMessageRequestDefaultValuesItem =
   | ChannelSelectDefaultValue;
 export const MentionableSelectComponentForMessageRequestDefaultValuesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "id"],
       ["type", "id"],
     ]),
@@ -6947,7 +6949,7 @@ export type ActionRowComponentForMessageRequestComponentsItem =
   | StringSelectComponentForMessageRequest
   | UserSelectComponentForMessageRequest;
 export const ActionRowComponentForMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "custom_id", "style", "label", "disabled", "url", "sku_id", "emoji"],
     [
       "type",
@@ -7137,7 +7139,7 @@ export type SectionComponentForMessageRequestAccessory =
   | ButtonComponentForMessageRequest
   | ThumbnailComponentForMessageRequest;
 export const SectionComponentForMessageRequestAccessory = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "custom_id", "style", "label", "disabled", "url", "sku_id", "emoji"],
     ["type", "id", "description", "spoiler", "media"],
   ]),
@@ -7188,7 +7190,7 @@ export type ContainerComponentForMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const ContainerComponentForMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "spoiler", "file"],
     ["type", "id", "items"],
@@ -7232,7 +7234,7 @@ export type IncomingWebhookInteractionRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const IncomingWebhookInteractionRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -7590,7 +7592,7 @@ export type MentionableSelectComponentForModalRequestDefaultValuesItem =
   | ChannelSelectDefaultValue;
 export const MentionableSelectComponentForModalRequestDefaultValuesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "id"],
       ["type", "id"],
     ]),
@@ -7766,7 +7768,7 @@ export type LabelComponentForModalRequestComponent =
   | TextInputComponentForModalRequest
   | UserSelectComponentForModalRequest;
 export const LabelComponentForModalRequestComponent = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "id",
@@ -7869,7 +7871,7 @@ export type ModalInteractionCallbackRequestDataComponentsItem =
   | LabelComponentForModalRequest
   | TextDisplayComponentForMessageRequest;
 export const ModalInteractionCallbackRequestDataComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "label", "description", "component"],
     ["type", "id", "content"],
@@ -7961,7 +7963,7 @@ export type IncomingWebhookUpdateForInteractionCallbackRequestPartialComponentsI
   | TextDisplayComponentForMessageRequest;
 export const IncomingWebhookUpdateForInteractionCallbackRequestPartialComponentsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["type", "id", "components"],
       ["type", "id", "accent_color", "components", "spoiler"],
       ["type", "id", "spoiler", "file"],
@@ -8036,7 +8038,7 @@ export type CreateInteractionResponseRequestBody =
   | SocialLayerSKUPurchaseEligibilityInteractionCallbackRequest
   | UpdateMessageInteractionCallbackRequest;
 export const CreateInteractionResponseRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "data"],
     ["type", "data"],
     ["type"],
@@ -8470,7 +8472,7 @@ export type MentionableSelectComponentResponseDefaultValuesItem =
   | ChannelSelectDefaultValueResponse
   | ChannelSelectDefaultValueResponse;
 export const MentionableSelectComponentResponseDefaultValuesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id"],
     ["type", "id"],
   ]),
@@ -8654,7 +8656,7 @@ export type ActionRowComponentResponseComponentsItem =
   | TextInputComponentResponse
   | UserSelectComponentResponse;
 export const ActionRowComponentResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "custom_id", "style", "label", "disabled", "emoji", "url", "sku_id"],
     [
       "type",
@@ -8850,7 +8852,7 @@ export type SectionComponentResponseAccessory =
   | ButtonComponentResponse
   | ThumbnailComponentResponse;
 export const SectionComponentResponseAccessory = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "custom_id", "style", "label", "disabled", "emoji", "url", "sku_id"],
     ["type", "id", "media", "description", "spoiler"],
   ]),
@@ -8896,7 +8898,7 @@ export type ContainerComponentResponseComponentsItem =
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
 export const ContainerComponentResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "file", "name", "size", "spoiler"],
     ["type", "id", "items"],
@@ -8987,7 +8989,7 @@ export type MessageResponseComponentsItem =
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
 export const MessageResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "file", "name", "size", "spoiler"],
@@ -9028,7 +9030,7 @@ export const StandardStickerResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
 export const MessageResponseStickersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "name", "tags", "type", "format_type", "description", "available", "guild_id", "user"],
     ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
   ]),
@@ -9138,7 +9140,9 @@ export const MessageInteractionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessageInteractionResponse>;
 
 export type MessageResponseNonce = number | string;
-export const MessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const MessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type MessageReferenceType = 0;
 export const MessageReferenceType = S.Number;
@@ -9382,7 +9386,7 @@ export type ResolvedObjectsResponseChannelsValue =
   | PrivateGroupChannelResponse
   | ThreadResponse;
 export const ResolvedObjectsResponseChannelsValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -9689,7 +9693,7 @@ export type ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata 
   | MessageComponentInteractionMetadataResponse;
 export const ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [
         "id",
         "type",
@@ -9738,7 +9742,7 @@ export type MessageResponseInteractionMetadata =
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
 export const MessageResponseInteractionMetadata = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -9796,7 +9800,7 @@ export type MinimalContentMessageResponseComponentsItem =
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
 export const MinimalContentMessageResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "file", "name", "size", "spoiler"],
@@ -9817,7 +9821,7 @@ export type MinimalContentMessageResponseStickersItem =
   | GuildStickerResponse
   | StandardStickerResponse;
 export const MinimalContentMessageResponseStickersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "name", "tags", "type", "format_type", "description", "available", "guild_id", "user"],
     ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
   ]),
@@ -9963,7 +9967,7 @@ export type BasicMessageResponseComponentsItem =
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
 export const BasicMessageResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "file", "name", "size", "spoiler"],
@@ -9981,7 +9985,7 @@ export const BasicMessageResponseComponentsList = /*@__PURE__*/ S.Array(
 
 export type BasicMessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
 export const BasicMessageResponseStickersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "name", "tags", "type", "format_type", "description", "available", "guild_id", "user"],
     ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
   ]),
@@ -9998,7 +10002,9 @@ export const BasicMessageResponseStickerItemsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BasicMessageResponseStickerItemsList>;
 
 export type BasicMessageResponseNonce = number | string;
-export const BasicMessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const BasicMessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type BasicMessageResponseMentionChannelsList = Array<MessageMentionChannelResponse>;
 export const BasicMessageResponseMentionChannelsList = /*@__PURE__*/ S.Array(
@@ -10010,7 +10016,7 @@ export type BasicMessageResponseInteractionMetadata =
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
 export const BasicMessageResponseInteractionMetadata = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -10255,7 +10261,7 @@ export type InteractionCallbackResponseResource =
   | LaunchActivityInteractionCallbackResponse
   | CreateMessageInteractionCallbackResponse;
 export const InteractionCallbackResponseResource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "message"],
     ["type", "activity_instance"],
     ["type", "message"],
@@ -10416,7 +10422,7 @@ export type CreateLobbyMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const CreateLobbyMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -10478,7 +10484,9 @@ export const MessageReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageReferenceRequest" }) as any as S.Schema<MessageReferenceRequest>;
 
 export type CreateLobbyMessageRequestNonce = number | string;
-export const CreateLobbyMessageRequestNonce = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const CreateLobbyMessageRequestNonce = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface CreateLobbyMessageRequest {
   lobby_id: string;
@@ -10577,7 +10585,7 @@ export type CreateMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const CreateMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -10599,7 +10607,9 @@ export const CreateMessageRequestAttachmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateMessageRequestAttachmentsList>;
 
 export type CreateMessageRequestNonce = number | string;
-export const CreateMessageRequestNonce = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const CreateMessageRequestNonce = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface CreateMessageRequest {
   channel_id: string;
@@ -10753,7 +10763,7 @@ export type BaseCreateMessageCreateRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const BaseCreateMessageCreateRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -10842,7 +10852,7 @@ export type CreateThreadRequestBody =
   | CreateForumThreadRequest
   | CreateTextThreadWithoutMessageRequest;
 export const CreateThreadRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name", "auto_archive_duration", "rate_limit_per_user", "applied_tags", "message"],
     ["name", "auto_archive_duration", "rate_limit_per_user", "type", "invitable"],
   ]),
@@ -11169,7 +11179,7 @@ export type DeleteChannelResponseBody =
   | PrivateGroupChannelResponse
   | ThreadResponse;
 export const DeleteChannelResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -12252,7 +12262,7 @@ export type IncomingWebhookRequestPartialComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const IncomingWebhookRequestPartialComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -12326,7 +12336,7 @@ export type IncomingWebhookUpdateRequestPartialComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const IncomingWebhookUpdateRequestPartialComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -12375,7 +12385,7 @@ export type ExecuteWebhookRequestBody =
   | IncomingWebhookRequestPartial
   | IncomingWebhookUpdateRequestPartial;
 export const ExecuteWebhookRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "content",
       "embeds",
@@ -12830,7 +12840,7 @@ export const PrivateChannelLocation = /*@__PURE__*/ S.suspend(() =>
 
 export type EmbeddedActivityInstanceLocation = GuildChannelLocation | PrivateChannelLocation;
 export const EmbeddedActivityInstanceLocation = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "kind", "channel_id", "guild_id"],
     ["id", "kind", "channel_id"],
   ]),
@@ -13031,7 +13041,7 @@ export type GetAutoModerationRuleResponseBody =
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
 export const GetAutoModerationRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -13157,7 +13167,7 @@ export type GetChannelResponseBody =
   | PrivateGroupChannelResponse
   | ThreadResponse;
 export const GetChannelResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -13232,14 +13242,14 @@ export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List = Array<string | null>;
 export const GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List>;
 
 export type GetCurrentUserApplicationEntitlementsRequestSkuIds =
   | string
   | GetCurrentUserApplicationEntitlementsRequestSkuIdsCase1List;
 export const GetCurrentUserApplicationEntitlementsRequestSkuIds = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface GetCurrentUserApplicationEntitlementsRequest {
@@ -13295,11 +13305,13 @@ export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetEntitlementsRequestSkuIdsCase1List = Array<string | null>;
 export const GetEntitlementsRequestSkuIdsCase1List = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<GetEntitlementsRequestSkuIdsCase1List>;
 
 export type GetEntitlementsRequestSkuIds = string | GetEntitlementsRequestSkuIdsCase1List;
-export const GetEntitlementsRequestSkuIds = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const GetEntitlementsRequestSkuIds = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface GetEntitlementsRequest {
   application_id: string;
@@ -13741,7 +13753,7 @@ export type GuildJoinRequestResponseFormResponsesItem =
   | TermsFormFieldResponse
   | ParagraphFormFieldResponse;
 export const GuildJoinRequestResponseFormResponsesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["field_type", "label", "description", "required", "choices", "response"],
     ["field_type", "label", "description", "required", "placeholder", "response"],
     ["field_type", "label", "description", "required", "values", "response"],
@@ -14014,7 +14026,7 @@ export type GetGuildScheduledEventResponseBody =
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
 export const GetGuildScheduledEventResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -14355,7 +14367,7 @@ export type GetGuildWebhooksResponseBodyItem =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const GetGuildWebhooksResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -15123,7 +15135,7 @@ export const GetStickerRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetStickerResponseBody = GuildStickerResponse | StandardStickerResponse;
 export const GetStickerResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "name", "tags", "type", "format_type", "description", "available", "guild_id", "user"],
     ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
   ]),
@@ -15218,7 +15230,7 @@ export type GetWebhookResponseBody =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const GetWebhookResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -15268,7 +15280,7 @@ export type GetWebhookByTokenResponseBody =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const GetWebhookByTokenResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -15371,7 +15383,7 @@ export type InviteResolveResponseBody =
   | GroupDMInviteResponse
   | GuildInviteResponse;
 export const InviteResolveResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "code",
@@ -15577,7 +15589,7 @@ export type ListAutoModerationRulesResponseBodyItem =
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
 export const ListAutoModerationRulesResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -15649,7 +15661,7 @@ export const ListAutoModerationRulesResponseBodyItem = /*@__PURE__*/ S.Unknown.p
 export type ListAutoModerationRulesResponseBodyList =
   Array<ListAutoModerationRulesResponseBodyItem | null>;
 export const ListAutoModerationRulesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.NullOr(ListAutoModerationRulesResponseBodyItem),
+  /*@__PURE__*/ S.NullOr(ListAutoModerationRulesResponseBodyItem),
 ) as any as S.Schema<ListAutoModerationRulesResponseBodyList>;
 
 export type ListAutoModerationRulesResponse = ListAutoModerationRulesResponseBodyList;
@@ -15675,7 +15687,7 @@ export type ListChannelInvitesResponseBodyItem =
   | GroupDMInviteResponse
   | GuildInviteResponse;
 export const ListChannelInvitesResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "code",
@@ -15731,7 +15743,7 @@ export const ListChannelInvitesResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
 
 export type ListChannelInvitesResponseBodyList = Array<ListChannelInvitesResponseBodyItem | null>;
 export const ListChannelInvitesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.NullOr(ListChannelInvitesResponseBodyItem),
+  /*@__PURE__*/ S.NullOr(ListChannelInvitesResponseBodyItem),
 ) as any as S.Schema<ListChannelInvitesResponseBodyList>;
 
 export type ListChannelInvitesResponse = ListChannelInvitesResponseBodyList;
@@ -15757,7 +15769,7 @@ export type ListChannelWebhooksResponseBodyItem =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const ListChannelWebhooksResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -16106,7 +16118,7 @@ export type GuildAuditLogResponseIntegrationsItem =
   | PartialExternalConnectionIntegrationResponse
   | PartialExternalConnectionIntegrationResponse;
 export const GuildAuditLogResponseIntegrationsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "type", "name", "account", "application_id"],
     ["id", "type", "name", "account"],
     ["id", "type", "name", "account"],
@@ -16123,7 +16135,7 @@ export type GuildAuditLogResponseWebhooksItem =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const GuildAuditLogResponseWebhooksItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -16162,7 +16174,7 @@ export type GuildAuditLogResponseGuildScheduledEventsItem =
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
 export const GuildAuditLogResponseGuildScheduledEventsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -16252,7 +16264,7 @@ export type GuildAuditLogResponseAutoModerationRulesItem =
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
 export const GuildAuditLogResponseAutoModerationRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -16324,7 +16336,7 @@ export const GuildAuditLogResponseAutoModerationRulesItem = /*@__PURE__*/ S.Unkn
 export type GuildAuditLogResponseAutoModerationRulesList =
   Array<GuildAuditLogResponseAutoModerationRulesItem | null>;
 export const GuildAuditLogResponseAutoModerationRulesList = /*@__PURE__*/ S.Array(
-  S.NullOr(GuildAuditLogResponseAutoModerationRulesItem),
+  /*@__PURE__*/ S.NullOr(GuildAuditLogResponseAutoModerationRulesItem),
 ) as any as S.Schema<GuildAuditLogResponseAutoModerationRulesList>;
 
 export interface GuildAuditLogResponse {
@@ -16390,7 +16402,7 @@ export type ListGuildChannelsResponseBodyItem =
   | PrivateGroupChannelResponse
   | ThreadResponse;
 export const ListGuildChannelsResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -16600,7 +16612,7 @@ export type ListGuildIntegrationsResponseBodyItem =
   | ExternalConnectionIntegrationResponse
   | GuildSubscriptionIntegrationResponse;
 export const ListGuildIntegrationsResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "name", "account", "enabled", "id", "application", "scopes", "user"],
     [
       "type",
@@ -16648,7 +16660,7 @@ export type ListGuildInvitesResponseBodyItem =
   | GroupDMInviteResponse
   | GuildInviteResponse;
 export const ListGuildInvitesResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "code",
@@ -16704,7 +16716,7 @@ export const ListGuildInvitesResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
 
 export type ListGuildInvitesResponseBodyList = Array<ListGuildInvitesResponseBodyItem | null>;
 export const ListGuildInvitesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.NullOr(ListGuildInvitesResponseBodyItem),
+  /*@__PURE__*/ S.NullOr(ListGuildInvitesResponseBodyItem),
 ) as any as S.Schema<ListGuildInvitesResponseBodyList>;
 
 export type ListGuildInvitesResponse = ListGuildInvitesResponseBodyList;
@@ -16815,7 +16827,7 @@ export type ListGuildScheduledEventsResponseBodyItem =
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
 export const ListGuildScheduledEventsResponseBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -17505,14 +17517,14 @@ export const PollExpireRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PreviewPruneGuildRequestIncludeRolesCase1List = Array<string | null>;
 export const PreviewPruneGuildRequestIncludeRolesCase1List = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<PreviewPruneGuildRequestIncludeRolesCase1List>;
 
 export type PreviewPruneGuildRequestIncludeRoles =
   | string
   | PreviewPruneGuildRequestIncludeRolesCase1List;
 export const PreviewPruneGuildRequestIncludeRoles = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface PreviewPruneGuildRequest {
@@ -17543,7 +17555,9 @@ export const PruneGuildRequestIncludeRolesCase1List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PruneGuildRequestIncludeRolesCase1List>;
 
 export type PruneGuildRequestIncludeRoles = string | PruneGuildRequestIncludeRolesCase1List;
-export const PruneGuildRequestIncludeRoles = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const PruneGuildRequestIncludeRoles = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface PruneGuildRequest {
   guild_id: string;
@@ -17711,7 +17725,7 @@ export type RevokeInviteResponseBody =
   | GroupDMInviteResponse
   | GuildInviteResponse;
 export const RevokeInviteResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "code",
@@ -17954,7 +17968,7 @@ export type SearchMessageResponseComponentsItem =
   | SeparatorComponentResponse
   | TextDisplayComponentResponse;
 export const SearchMessageResponseComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "file", "name", "size", "spoiler"],
@@ -17972,7 +17986,7 @@ export const SearchMessageResponseComponentsList = /*@__PURE__*/ S.Array(
 
 export type SearchMessageResponseStickersItem = GuildStickerResponse | StandardStickerResponse;
 export const SearchMessageResponseStickersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "name", "tags", "type", "format_type", "description", "available", "guild_id", "user"],
     ["id", "name", "tags", "type", "format_type", "description", "pack_id", "sort_value"],
   ]),
@@ -17989,7 +18003,9 @@ export const SearchMessageResponseStickerItemsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchMessageResponseStickerItemsList>;
 
 export type SearchMessageResponseNonce = number | string;
-export const SearchMessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SearchMessageResponseNonce = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type SearchMessageResponseMentionChannelsList = Array<MessageMentionChannelResponse>;
 export const SearchMessageResponseMentionChannelsList = /*@__PURE__*/ S.Array(
@@ -18001,7 +18017,7 @@ export type SearchMessageResponseInteractionMetadata =
   | MessageComponentInteractionMetadataResponse
   | ModalSubmitInteractionMetadataResponse;
 export const SearchMessageResponseInteractionMetadata = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -18201,7 +18217,9 @@ export const SearchThreadRequestTagCase1List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchThreadRequestTagCase1List>;
 
 export type SearchThreadRequestTag = string | SearchThreadRequestTagCase1List;
-export const SearchThreadRequestTag = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+export const SearchThreadRequestTag = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type ThreadSortingMode =
   | "relevance"
@@ -18474,7 +18492,7 @@ export type UpdateApplicationRequestIntegrationTypesConfigMap = {
 };
 export const UpdateApplicationRequestIntegrationTypesConfigMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ApplicationIntegrationTypeConfiguration),
+  /*@__PURE__*/ S.NullOr(ApplicationIntegrationTypeConfiguration),
 ) as any as S.Schema<UpdateApplicationRequestIntegrationTypesConfigMap>;
 
 export type UpdateApplicationRequestEventWebhooksTypesList = Array<ActionTypes | (string & {})>;
@@ -18557,7 +18575,7 @@ export type UpdateApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
 export const UpdateApplicationCommandRequestOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -18722,7 +18740,7 @@ export type ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap = 
 export const ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<ApplicationRoleConnectionsMetadataItemRequestNameLocalizationsMap>;
 
 export type ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap = {
@@ -18731,7 +18749,7 @@ export type ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalization
 export const ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(S.String),
+    /*@__PURE__*/ S.NullOr(S.String),
   ) as any as S.Schema<ApplicationRoleConnectionsMetadataItemRequestDescriptionLocalizationsMap>;
 
 export interface ApplicationRoleConnectionsMetadataItemRequest {
@@ -18835,7 +18853,7 @@ export type DefaultKeywordListUpsertRequestPartialActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const DefaultKeywordListUpsertRequestPartialActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -18890,7 +18908,7 @@ export type KeywordUpsertRequestPartialActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const KeywordUpsertRequestPartialActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -18944,7 +18962,7 @@ export type MLSpamUpsertRequestPartialActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const MLSpamUpsertRequestPartialActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -18998,7 +19016,7 @@ export type MentionSpamUpsertRequestPartialActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const MentionSpamUpsertRequestPartialActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -19053,7 +19071,7 @@ export type UserProfileUpsertRequestPartialActionsItem =
   | QuarantineUserAction
   | UserCommunicationDisabledAction;
 export const UserProfileUpsertRequestPartialActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "metadata"],
     ["type", "metadata"],
     ["type", "metadata"],
@@ -19109,7 +19127,7 @@ export type UpdateAutoModerationRuleRequestBody =
   | MentionSpamUpsertRequestPartial
   | UserProfileUpsertRequestPartial;
 export const UpdateAutoModerationRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "name",
       "event_type",
@@ -19191,7 +19209,7 @@ export type UpdateAutoModerationRuleResponseBody =
   | MentionSpamRuleResponse
   | UserProfileRuleResponse;
 export const UpdateAutoModerationRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -19412,7 +19430,7 @@ export type UpdateChannelRequestBody =
   | UpdateGuildChannelRequestPartial
   | UpdateThreadRequestPartial;
 export const UpdateChannelRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["name"],
     ["name", "icon"],
     [
@@ -19471,7 +19489,7 @@ export type UpdateChannelResponseBody =
   | PrivateGroupChannelResponse
   | ThreadResponse;
 export const UpdateChannelResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "type",
@@ -19546,7 +19564,7 @@ export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateGuildRequestFeaturesList = Array<string | null>;
 export const UpdateGuildRequestFeaturesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateGuildRequestFeaturesList>;
 
 export interface UpdateGuildRequest {
@@ -19739,7 +19757,7 @@ export type UpdateGuildApplicationCommandRequestOptionsItem =
   | ApplicationCommandSubcommandOption
   | ApplicationCommandUserOption;
 export const UpdateGuildApplicationCommandRequestOptionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "type",
       "name",
@@ -19889,7 +19907,7 @@ export const UpdateGuildApplicationCommandRequest = /*@__PURE__*/ S.suspend(() =
 
 export type UpdateGuildEmojiRequestRolesList = Array<string | null>;
 export const UpdateGuildEmojiRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateGuildEmojiRequestRolesList>;
 
 export interface UpdateGuildEmojiRequest {
@@ -19926,7 +19944,7 @@ export const UpdateGuildIncidentActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateGuildMemberRequestRolesList = Array<string | null>;
 export const UpdateGuildMemberRequestRolesList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateGuildMemberRequestRolesList>;
 
 export interface UpdateGuildMemberRequest {
@@ -20053,7 +20071,7 @@ export type UpdateGuildScheduledEventRequestBody =
   | StageScheduledEventPatchRequestPartial
   | StageScheduledEventPatchRequestPartial;
 export const UpdateGuildScheduledEventRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "status",
       "name",
@@ -20122,7 +20140,7 @@ export type UpdateGuildScheduledEventResponseBody =
   | StageScheduledEventResponse
   | VoiceScheduledEventResponse;
 export const UpdateGuildScheduledEventResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "guild_id",
@@ -20418,7 +20436,7 @@ export type UpdateMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const UpdateMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -20497,7 +20515,7 @@ export type UpdateMyApplicationRequestIntegrationTypesConfigMap = {
 };
 export const UpdateMyApplicationRequestIntegrationTypesConfigMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ApplicationIntegrationTypeConfiguration),
+  /*@__PURE__*/ S.NullOr(ApplicationIntegrationTypeConfiguration),
 ) as any as S.Schema<UpdateMyApplicationRequestIntegrationTypesConfigMap>;
 
 export type UpdateMyApplicationRequestEventWebhooksTypesList = Array<ActionTypes | (string & {})>;
@@ -20597,7 +20615,7 @@ export type UpdateOriginalWebhookMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const UpdateOriginalWebhookMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],
@@ -20793,7 +20811,7 @@ export type UpdateWebhookResponseBody =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const UpdateWebhookResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -20849,7 +20867,7 @@ export type UpdateWebhookByTokenResponseBody =
   | ChannelFollowerWebhookResponse
   | GuildIncomingWebhookResponse;
 export const UpdateWebhookByTokenResponseBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["application_id", "avatar", "channel_id", "guild_id", "id", "name", "type", "user"],
     [
       "application_id",
@@ -20899,7 +20917,7 @@ export type UpdateWebhookMessageRequestComponentsItem =
   | SeparatorComponentForMessageRequest
   | TextDisplayComponentForMessageRequest;
 export const UpdateWebhookMessageRequestComponentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["type", "id", "components"],
     ["type", "id", "accent_color", "components", "spoiler"],
     ["type", "id", "spoiler", "file"],

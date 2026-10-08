@@ -7,11 +7,11 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "EKS", serviceShapeName: "AWSWesleyFrontend" });
-const auth = T.AwsAuthSigv4({ name: "eks" });
-const ver = T.ServiceVersion("2017-11-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "EKS", serviceShapeName: "AWSWesleyFrontend" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "eks" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-11-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,139 +75,147 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClientException
   extends /*@__PURE__*/ S.TaggedError<ClientException>()(
     "ClientException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      fargateProfileName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      fargateProfileName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
-    { clusterName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    {
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      fargateProfileName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      fargateProfileName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourcePropagationDelayException
   extends /*@__PURE__*/ S.TaggedError<ResourcePropagationDelayException>()(
     "ResourcePropagationDelayException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(428),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(428),
   ) {}
 export class ServerException
   extends /*@__PURE__*/ S.TaggedError<ServerException>()(
     "ServerException",
     {
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      addonName: S.optional(S.String),
-      subscriptionId: S.optional(S.String),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      addonName: /*@__PURE__*/ S.optional(S.String),
+      subscriptionId: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { clusterName: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    {
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedAvailabilityZoneException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedAvailabilityZoneException>()(
     "UnsupportedAvailabilityZoneException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      clusterName: S.optional(S.String),
-      nodegroupName: S.optional(S.String),
-      validZones: S.optional(S.suspend(() => StringList).annotate({ identifier: "StringList" })),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      clusterName: /*@__PURE__*/ S.optional(S.String),
+      nodegroupName: /*@__PURE__*/ S.optional(S.String),
+      validZones: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => StringList).annotate({ identifier: "StringList" }),
+      ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface ActivateCertificateAuthorityRequest {
   clusterName: string;
@@ -572,7 +580,10 @@ export const AssociateEncryptionConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type RequiredClaimsKey = string;
 export type RequiredClaimsValue = string;
 export type RequiredClaimsMap = { [key: string]: string | undefined };
-export const RequiredClaimsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RequiredClaimsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface OidcIdentityProviderConfigRequest {
   identityProviderConfigName: string;
   issuerUrl: string;
@@ -600,7 +611,7 @@ export const OidcIdentityProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AssociateIdentityProviderConfigRequest {
   clusterName: string;
   oidc: OidcIdentityProviderConfigRequest;
@@ -1924,7 +1935,10 @@ export const CreateEksAnywhereSubscriptionResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "CreateEksAnywhereSubscriptionResponse",
 }) as any as S.Schema<CreateEksAnywhereSubscriptionResponse>;
 export type FargateProfileLabel = { [key: string]: string | undefined };
-export const FargateProfileLabel = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FargateProfileLabel = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface FargateProfileSelector {
   namespace?: string;
   labels?: { [key: string]: string | undefined };
@@ -2088,7 +2102,7 @@ export const RemoteAccessConfig = /*@__PURE__*/ S.suspend(() =>
 export type LabelKey = string;
 export type LabelValue = string;
 export type LabelsMap = { [key: string]: string | undefined };
-export const LabelsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LabelsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type TaintKey = string;
 export type TaintValue = string;
 export type TaintEffect = "NO_SCHEDULE" | "NO_EXECUTE" | "PREFER_NO_SCHEDULE" | (string & {});
@@ -3513,7 +3527,10 @@ export const InsightStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(InsightStatusValue), reason: S.optional(S.String) }),
 ).annotate({ identifier: "InsightStatus" }) as any as S.Schema<InsightStatus>;
 export type AdditionalInfoMap = { [key: string]: string | undefined };
-export const AdditionalInfoMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AdditionalInfoMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface InsightResourceDetail {
   insightStatus?: InsightStatus;
   kubernetesResourceUri?: string;

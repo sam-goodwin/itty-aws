@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://gamelift.amazonaws.com/doc/");
-const svc = T.AwsApiService({ sdkId: "GameLift", serviceShapeName: "GameLift" });
-const auth = T.AwsAuthSigv4({ name: "gamelift" });
-const ver = T.ServiceVersion("2015-10-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://gamelift.amazonaws.com/doc/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "GameLift", serviceShapeName: "GameLift" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "gamelift" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-10-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,72 +73,72 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class FleetCapacityExceededException
   extends /*@__PURE__*/ S.TaggedError<FleetCapacityExceededException>()(
     "FleetCapacityExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class GameSessionFullException
   extends /*@__PURE__*/ S.TaggedError<GameSessionFullException>()("GameSessionFullException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()("InternalServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidFleetStatusException
   extends /*@__PURE__*/ S.TaggedError<InvalidFleetStatusException>()(
     "InvalidFleetStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidGameSessionStatusException
   extends /*@__PURE__*/ S.TaggedError<InvalidGameSessionStatusException>()(
     "InvalidGameSessionStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()("NotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class NotReadyException
   extends /*@__PURE__*/ S.TaggedError<NotReadyException>()("NotReadyException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OutOfCapacityException
   extends /*@__PURE__*/ S.TaggedError<OutOfCapacityException>()("OutOfCapacityException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TaggingFailedException
   extends /*@__PURE__*/ S.TaggedError<TaggingFailedException>()("TaggingFailedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TerminalRoutingStrategyException
   extends /*@__PURE__*/ S.TaggedError<TerminalRoutingStrategyException>()(
     "TerminalRoutingStrategyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()("UnauthorizedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class UnsupportedRegionException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedRegionException>()("UnsupportedRegionException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type MatchmakingIdStringModel = string;
 export type PlayerId = string | redacted.Redacted<string>;
@@ -2546,7 +2546,10 @@ export const CreatePlayerSessionOutput = /*@__PURE__*/ S.suspend(() =>
 export type PlayerIdList = (string | redacted.Redacted<string>)[];
 export const PlayerIdList = /*@__PURE__*/ S.Array(SensitiveString);
 export type PlayerDataMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const PlayerDataMap = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const PlayerDataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface CreatePlayerSessionsInput {
   GameSessionId?: string;
   PlayerIds?: (string | redacted.Redacted<string>)[];
@@ -3447,7 +3450,7 @@ export const LocationalDeployment = /*@__PURE__*/ S.suspend(() =>
 export type LocationalDeployments = { [key: string]: LocationalDeployment | undefined };
 export const LocationalDeployments = /*@__PURE__*/ S.Record(
   S.String,
-  LocationalDeployment.pipe(S.optional),
+  /*@__PURE__*/ LocationalDeployment.pipe(S.optional),
 );
 export interface DescribeFleetDeploymentOutput {
   FleetDeployment?: FleetDeployment;
@@ -4140,7 +4143,7 @@ export const PlayerAttributeStringList = /*@__PURE__*/ S.Array(S.String);
 export type PlayerAttributeStringDoubleMap = { [key: string]: number | undefined };
 export const PlayerAttributeStringDoubleMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface AttributeValue {
   S?: string;
@@ -4157,9 +4160,12 @@ export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 export type PlayerAttributeMap = { [key: string]: AttributeValue | undefined };
-export const PlayerAttributeMap = /*@__PURE__*/ S.Record(S.String, AttributeValue.pipe(S.optional));
+export const PlayerAttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ AttributeValue.pipe(S.optional),
+);
 export type LatencyMap = { [key: string]: number | undefined };
-export const LatencyMap = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const LatencyMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export interface Player {
   PlayerId?: string | redacted.Redacted<string>;
   PlayerAttributes?: { [key: string]: AttributeValue | undefined };

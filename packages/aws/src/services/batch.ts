@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://batch.amazonaws.com/doc/2016-08-10/");
-const svc = T.AwsApiService({ sdkId: "Batch", serviceShapeName: "AWSBatchV20160810" });
-const auth = T.AwsAuthSigv4({ name: "batch" });
-const ver = T.ServiceVersion("2016-08-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://batch.amazonaws.com/doc/2016-08-10/");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Batch",
+  serviceShapeName: "AWSBatchV20160810",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "batch" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-08-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,20 +79,23 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClientException
   extends /*@__PURE__*/ S.TaggedError<ClientException>()(
     "ClientException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ComputeEnvironmentBeingModified
   extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentBeingModified>()(
     "ComputeEnvironmentBeingModified",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "ClientException", message: { includes: "is being modified" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ClientException",
+      message: { includes: "is being modified" },
+    }),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ComputeEnvironmentInUse
   extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentInUse>()(
     "ComputeEnvironmentInUse",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ClientException",
       message: { includes: "found existing JobQueue relationship" },
     }),
@@ -97,8 +103,8 @@ export class ComputeEnvironmentInUse
 export class ComputeEnvironmentNotFound
   extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentNotFound>()(
     "ComputeEnvironmentNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ClientException",
       message: { matches: "compute-environment/.* does not exist" },
     }),
@@ -106,8 +112,8 @@ export class ComputeEnvironmentNotFound
 export class ComputeEnvironmentNotValid
   extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentNotValid>()(
     "ComputeEnvironmentNotValid",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ClientException",
       message: { matches: "must be (created and )?valid before attaching" },
     }),
@@ -115,20 +121,26 @@ export class ComputeEnvironmentNotValid
 export class JobQueueAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<JobQueueAlreadyExists>()(
     "JobQueueAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "ClientException", message: { includes: "already exists" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ClientException",
+      message: { includes: "already exists" },
+    }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class JobQueueBeingModified
   extends /*@__PURE__*/ S.TaggedError<JobQueueBeingModified>()(
     "JobQueueBeingModified",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({ from: "ClientException", message: { includes: "is being modified" } }),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ClientException",
+      message: { includes: "is being modified" },
+    }),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class JobQueueNotFound
   extends /*@__PURE__*/ S.TaggedError<JobQueueNotFound>()(
     "JobQueueNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ClientException",
       message: { matches: "job-queue/.* does not exist" },
     }),
@@ -136,8 +148,8 @@ export class JobQueueNotFound
 export class ServerException
   extends /*@__PURE__*/ S.TaggedError<ServerException>()(
     "ServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export interface CancelJobRequest {
   jobId?: string;
@@ -213,7 +225,7 @@ export type CRAllocationStrategy =
 export const CRAllocationStrategy = S.String;
 
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type UserdataType = "EKS_BOOTSTRAP_SH" | "EKS_NODEADM" | (string & {});
 export const UserdataType = S.String;
 
@@ -378,7 +390,10 @@ export const ManagedInstancesProvider = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagrisTagsMap = { [key: string]: string | undefined };
-export const TagrisTagsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagrisTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ComputeResource {
   type?: CRType;
   allocationStrategy?: CRAllocationStrategy;
@@ -1188,7 +1203,10 @@ export const DescribeJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeJobDefinitionsRequest",
 }) as any as S.Schema<DescribeJobDefinitionsRequest>;
 export type ParametersMap = { [key: string]: string | undefined };
-export const ParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type RetryAction = "RETRY" | "EXIT" | (string & {});
 export const RetryAction = S.String;
 
@@ -1397,7 +1415,7 @@ export const LogDriver = S.String;
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
 export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface Secret {
   name?: string;
@@ -1531,7 +1549,7 @@ export const FirelensConfigurationType = S.String;
 export type FirelensConfigurationOptionsMap = { [key: string]: string | undefined };
 export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface FirelensConfiguration {
   type?: FirelensConfigurationType;
@@ -1650,9 +1668,12 @@ export const EksContainerEnvironmentVariables = /*@__PURE__*/ S.Array(
 );
 export type Quantity = string;
 export type EksLimits = { [key: string]: string | undefined };
-export const EksLimits = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EksLimits = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type EksRequests = { [key: string]: string | undefined };
-export const EksRequests = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EksRequests = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface EksContainerResourceRequirements {
   limits?: { [key: string]: string | undefined };
   requests?: { [key: string]: string | undefined };
@@ -1770,9 +1791,15 @@ export const EksVolume = /*@__PURE__*/ S.suspend(() =>
 export type EksVolumes = EksVolume[];
 export const EksVolumes = /*@__PURE__*/ S.Array(EksVolume);
 export type EksLabelsMap = { [key: string]: string | undefined };
-export const EksLabelsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EksLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EksAnnotationsMap = { [key: string]: string | undefined };
-export const EksAnnotationsMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EksAnnotationsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface EksMetadata {
   labels?: { [key: string]: string | undefined };
   annotations?: { [key: string]: string | undefined };
@@ -2344,7 +2371,10 @@ export const NodeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nodeIndex: S.optional(S.Number), isMainNode: S.optional(S.Boolean) }),
 ).annotate({ identifier: "NodeDetails" }) as any as S.Schema<NodeDetails>;
 export type ArrayJobStatusSummary = { [key: string]: number | undefined };
-export const ArrayJobStatusSummary = /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const ArrayJobStatusSummary = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.Number.pipe(S.optional),
+);
 export interface ArrayPropertiesDetail {
   statusSummary?: { [key: string]: number | undefined };
   statusSummaryLastUpdatedAt?: number;
@@ -3216,7 +3246,7 @@ export type FrontOfQuotaSharesJobSummaryMap = {
 };
 export const FrontOfQuotaSharesJobSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
-  FrontOfQuotaShareJobSummaryList.pipe(S.optional),
+  /*@__PURE__*/ FrontOfQuotaShareJobSummaryList.pipe(S.optional),
 );
 export interface FrontOfQuotaSharesDetail {
   quotaShares?: { [key: string]: FrontOfQuotaShareJobSummary[] | undefined };

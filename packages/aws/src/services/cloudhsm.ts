@@ -6,11 +6,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "CloudHSM", serviceShapeName: "CloudHsmFrontendService" });
-const auth = T.AwsAuthSigv4({ name: "cloudhsm" });
-const ver = T.ServiceVersion("2014-05-30");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudHSM",
+  serviceShapeName: "CloudHsmFrontendService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudhsm" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2014-05-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,18 +72,18 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class CloudHsmInternalException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmInternalException>()("CloudHsmInternalException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    retryable: S.optional(S.Boolean),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    retryable: /*@__PURE__*/ S.optional(S.Boolean),
   }) {}
 export class CloudHsmServiceException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmServiceException>()("CloudHsmServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    retryable: S.optional(S.Boolean),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    retryable: /*@__PURE__*/ S.optional(S.Boolean),
   }) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()("InvalidRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    retryable: S.optional(S.Boolean),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    retryable: /*@__PURE__*/ S.optional(S.Boolean),
   }) {}
 export type TagKey = string;
 export type TagValue = string;

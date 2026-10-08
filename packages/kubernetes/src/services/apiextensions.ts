@@ -370,14 +370,14 @@ export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllO
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
   /*@__PURE__*/ S.Array(
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   /*@__PURE__*/ S.Array(
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap = {
@@ -386,7 +386,7 @@ export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependenciesMap = {
@@ -424,7 +424,7 @@ export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneO
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
   /*@__PURE__*/ S.Array(
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap = {
@@ -433,7 +433,7 @@ export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatt
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap = {
@@ -442,7 +442,7 @@ export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProp
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
+    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =

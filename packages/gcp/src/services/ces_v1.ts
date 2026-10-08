@@ -12,12 +12,12 @@ export type { GcpOpError, GcpOpContext };
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
@@ -25,12 +25,12 @@ export class BadRequest
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
@@ -38,12 +38,12 @@ export class Conflict
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
@@ -51,12 +51,12 @@ export class Forbidden
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
-      code: S.optional(S.Number),
+      code: /*@__PURE__*/ S.optional(S.Number),
       message: S.String,
-      status: S.optional(S.String),
-      reason: S.optional(S.String),
-      domain: S.optional(S.String),
-      details: S.optional(S.Array(S.Unknown)),
+      status: /*@__PURE__*/ S.optional(S.String),
+      reason: /*@__PURE__*/ S.optional(S.String),
+      domain: /*@__PURE__*/ S.optional(S.String),
+      details: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.Array(S.Unknown)),
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
@@ -235,12 +235,12 @@ export const AppToolExecutionModeEnum = S.String;
 export type Ces_SchemaMap = { [key: string]: Ces_Schema | undefined };
 export const Ces_SchemaMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => Ces_Schema),
+  /*@__PURE__*/ S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaMap>;
 
 export type Ces_SchemaList = Array<Ces_Schema>;
 export const Ces_SchemaList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Ces_Schema),
+  /*@__PURE__*/ S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaList>;
 
 export type Ces_SchemaTypeEnum =
@@ -5050,7 +5050,9 @@ export type ConversationSourceEnum =
 export const ConversationSourceEnum = S.String;
 
 export type SpanList = Array<Span>;
-export const SpanList = /*@__PURE__*/ S.Array(S.suspend(() => Span)) as any as S.Schema<SpanList>;
+export const SpanList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.suspend(() => Span),
+) as any as S.Schema<SpanList>;
 
 /** A span is a unit of work or a single operation during the request processing. */
 export interface Span {
@@ -7005,7 +7007,7 @@ export const TurnCompletedEvent = /*@__PURE__*/ S.suspend(() =>
 
 export type StreamChatAiAssistantResponseList = Array<StreamChatAiAssistantResponse>;
 export const StreamChatAiAssistantResponseList = /*@__PURE__*/ S.Array(
-  S.suspend(() => StreamChatAiAssistantResponse),
+  /*@__PURE__*/ S.suspend(() => StreamChatAiAssistantResponse),
 ) as any as S.Schema<StreamChatAiAssistantResponseList>;
 
 /** A compacted replay of an in-flight turn: everything needed to render the turn's visible output so far, plus the position live events continue from. */

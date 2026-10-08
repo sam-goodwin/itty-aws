@@ -353,7 +353,7 @@ export type RecordsBatchRequestPatchesItem =
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id"],
     ["id"],
     ["id"],
@@ -1702,7 +1702,7 @@ export type RecordsBatchRequestPostsItem =
   | RecordsBatchRequestPostsItemTLSARecord
   | RecordsBatchRequestPostsItemURIRecord;
 export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "name",
@@ -1923,7 +1923,7 @@ export type RecordsBatchRequestPutsItem =
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id"],
     ["id"],
     ["id"],
@@ -3307,7 +3307,7 @@ export type RecordsBatchResponseDeletesItem =
   | RecordsBatchResponseDeletesItemTLSARecord
   | RecordsBatchResponseDeletesItemURIRecord;
 export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
@@ -4674,7 +4674,7 @@ export type RecordsBatchResponsePatchesItem =
   | RecordsBatchResponsePatchesItemTLSARecord
   | RecordsBatchResponsePatchesItemURIRecord;
 export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
@@ -6033,7 +6033,7 @@ export type RecordsBatchResponsePostsItem =
   | RecordsBatchResponsePostsItemTLSARecord
   | RecordsBatchResponsePostsItemURIRecord;
 export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
@@ -7379,7 +7379,7 @@ export type RecordsBatchResponsePutsItem =
   | RecordsBatchResponsePutsItemTLSARecord
   | RecordsBatchResponsePutsItemURIRecord;
 export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
@@ -7479,7 +7479,7 @@ export type RecordsCreateRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4Only", "ipv6Only"],
     ["flattenCname", "ipv4Only", "ipv6Only"],
   ]),
@@ -7588,7 +7588,7 @@ export type RecordsCreateRequestData =
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsCreateRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["flags", "tag", "value"],
     ["algorithm", "certificate", "keyTag", "type"],
     ["algorithm", "flags", "protocol", "publicKey"],
@@ -9407,7 +9407,7 @@ export type RecordsCreateResult =
   | RecordsCreateResultTLSARecord
   | RecordsCreateResultURIRecord;
 export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -10123,7 +10123,7 @@ export type CreateSettingsAccountNameserverSetResult =
   | CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponse
   | CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponse;
 export const CreateSettingsAccountNameserverSetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
   ]),
@@ -12850,7 +12850,7 @@ export type RecordsGetResult =
   | RecordsGetResultTLSARecord
   | RecordsGetResultURIRecord;
 export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -13665,7 +13665,7 @@ export type GetSettingsAccountNameserverSetResult =
   | GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponse
   | GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponse;
 export const GetSettingsAccountNameserverSetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
   ]),
@@ -13761,7 +13761,7 @@ export type SettingsZoneGetResponseNameservers =
   | SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomSet;
 export const SettingsZoneGetResponseNameservers = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
 );
 
 export type SettingsZoneGetResponseSoa = SettingsAccountGetResponseZoneDefaultsSoa;
@@ -16214,7 +16214,7 @@ export type RecordsListResultItem =
   | RecordsListResultItemTLSARecord
   | RecordsListResultItemURIRecord;
 export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -16981,7 +16981,7 @@ export type ListSettingsAccountNameserverSetsResultItem =
   | ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetStandardResponse
   | ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponse;
 export const ListSettingsAccountNameserverSetsResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
     ["id", "advanced", "createdOn", "ipSet", "nameservers"],
   ]),
@@ -17287,7 +17287,7 @@ export type RecordsEditRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsEditRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4Only", "ipv6Only"],
     ["flattenCname", "ipv4Only", "ipv6Only"],
   ]),
@@ -17396,7 +17396,7 @@ export type RecordsEditRequestData =
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsEditRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["flags", "tag", "value"],
     ["algorithm", "certificate", "keyTag", "type"],
     ["algorithm", "flags", "protocol", "publicKey"],
@@ -19153,7 +19153,7 @@ export type RecordsEditResult =
   | RecordsEditResultTLSARecord
   | RecordsEditResultURIRecord;
 export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -19927,7 +19927,7 @@ export type SettingsZoneEditRequestNameservers =
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet;
 export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
 );
 
 export type SettingsZoneEditRequestSoa = SettingsAccountEditRequestZoneDefaultsSoa;
@@ -20046,7 +20046,7 @@ export type SettingsZoneEditResponseNameservers =
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet;
 export const SettingsZoneEditResponseNameservers = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
+  /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
 );
 
 export type SettingsZoneEditResponseSoa = SettingsAccountGetResponseZoneDefaultsSoa;
@@ -21782,7 +21782,7 @@ export type RecordsScanListResultItem =
   | RecordsScanListResultItemTLSARecord
   | RecordsScanListResultItemURIRecord;
 export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -23412,7 +23412,7 @@ export type RecordsScanReviewRequestAcceptsItem =
   | RecordsScanReviewRequestAcceptsItemTLSARecord
   | RecordsScanReviewRequestAcceptsItemURIRecord;
 export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "name",
@@ -24863,7 +24863,7 @@ export type RecordsScanReviewResponseAcceptsItem =
   | RecordsScanReviewResponseAcceptsItemTLSARecord
   | RecordsScanReviewResponseAcceptsItemURIRecord;
 export const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
     ["id", "createdOn", "meta", "modifiedOn", "proxiable", "commentModifiedOn", "tagsModifiedOn"],
@@ -24983,7 +24983,7 @@ export type RecordsUpdateRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["ipv4Only", "ipv6Only"],
     ["flattenCname", "ipv4Only", "ipv6Only"],
   ]),
@@ -25092,7 +25092,7 @@ export type RecordsUpdateRequestData =
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsUpdateRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["flags", "tag", "value"],
     ["algorithm", "certificate", "keyTag", "type"],
     ["algorithm", "flags", "protocol", "publicKey"],
@@ -26849,7 +26849,7 @@ export type RecordsUpdateResult =
   | RecordsUpdateResultTLSARecord
   | RecordsUpdateResultURIRecord;
 export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",

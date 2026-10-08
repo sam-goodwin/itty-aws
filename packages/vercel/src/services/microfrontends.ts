@@ -8683,7 +8683,7 @@ export type GetMicrofrontendsInGroupResponseProjectsItemTargetsMap = {
 };
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(GetMicrofrontendsInGroupResponseProjectsItemTargetsValue),
+  /*@__PURE__*/ S.NullOr(GetMicrofrontendsInGroupResponseProjectsItemTargetsValue),
 ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsMap>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTier = "priority";

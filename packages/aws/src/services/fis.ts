@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "fis", serviceShapeName: "FaultInjectionSimulator" });
-const auth = T.AwsAuthSigv4({ name: "fis" });
-const ver = T.ServiceVersion("2020-12-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "fis",
+  serviceShapeName: "FaultInjectionSimulator",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "fis" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-12-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,34 +75,40 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }), T.HttpError(409)),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+      /*@__PURE__*/ T.HttpError(409),
+    ),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-      T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
+      /*@__PURE__*/ T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ServiceQuotaExceededException", httpResponseCode: 402 }),
-      T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({
+        code: "ServiceQuotaExceededException",
+        httpResponseCode: 402,
+      }),
+      /*@__PURE__*/ T.HttpError(402),
     ),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(
-      T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-      T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
@@ -128,7 +137,7 @@ export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ExperimentTemplateTargetFilterPath = string;
 export type ExperimentTemplateTargetFilterValue = string;
 export type ExperimentTemplateTargetFilterValues = string[];
@@ -152,7 +161,7 @@ export type ExperimentTemplateTargetParameterValue = string;
 export type ExperimentTemplateTargetParameterMap = { [key: string]: string | undefined };
 export const ExperimentTemplateTargetParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface CreateExperimentTemplateTargetInput {
   resourceType: string;
@@ -179,7 +188,7 @@ export type CreateExperimentTemplateTargetInputMap = {
 };
 export const CreateExperimentTemplateTargetInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateExperimentTemplateTargetInput.pipe(S.optional),
+  /*@__PURE__*/ CreateExperimentTemplateTargetInput.pipe(S.optional),
 );
 export type ExperimentTemplateActionName = string;
 export type ActionId = string;
@@ -189,13 +198,13 @@ export type ExperimentTemplateActionParameter = string;
 export type ExperimentTemplateActionParameterMap = { [key: string]: string | undefined };
 export const ExperimentTemplateActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ExperimentTemplateActionTargetName = string;
 export type ExperimentTemplateActionTargetMap = { [key: string]: string | undefined };
 export const ExperimentTemplateActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ExperimentTemplateActionStartAfter = string;
 export type ExperimentTemplateActionStartAfterList = string[];
@@ -223,7 +232,7 @@ export type CreateExperimentTemplateActionInputMap = {
 };
 export const CreateExperimentTemplateActionInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  CreateExperimentTemplateActionInput.pipe(S.optional),
+  /*@__PURE__*/ CreateExperimentTemplateActionInput.pipe(S.optional),
 );
 export type RoleArn = string;
 export type CloudWatchLogGroupArn = string;
@@ -404,7 +413,7 @@ export const ExperimentTemplateTarget = /*@__PURE__*/ S.suspend(() =>
 export type ExperimentTemplateTargetMap = { [key: string]: ExperimentTemplateTarget | undefined };
 export const ExperimentTemplateTargetMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExperimentTemplateTarget.pipe(S.optional),
+  /*@__PURE__*/ ExperimentTemplateTarget.pipe(S.optional),
 );
 export interface ExperimentTemplateAction {
   actionId?: string;
@@ -425,7 +434,7 @@ export const ExperimentTemplateAction = /*@__PURE__*/ S.suspend(() =>
 export type ExperimentTemplateActionMap = { [key: string]: ExperimentTemplateAction | undefined };
 export const ExperimentTemplateActionMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExperimentTemplateAction.pipe(S.optional),
+  /*@__PURE__*/ ExperimentTemplateAction.pipe(S.optional),
 );
 export interface ExperimentTemplateStopCondition {
   source?: string;
@@ -717,7 +726,7 @@ export const ActionParameter = /*@__PURE__*/ S.suspend(() =>
 export type ActionParameterMap = { [key: string]: ActionParameter | undefined };
 export const ActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  ActionParameter.pipe(S.optional),
+  /*@__PURE__*/ ActionParameter.pipe(S.optional),
 );
 export type ActionTargetName = string;
 export interface ActionTarget {
@@ -727,7 +736,10 @@ export const ActionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceType: S.optional(S.String) }),
 ).annotate({ identifier: "ActionTarget" }) as any as S.Schema<ActionTarget>;
 export type ActionTargetMap = { [key: string]: ActionTarget | undefined };
-export const ActionTargetMap = /*@__PURE__*/ S.Record(S.String, ActionTarget.pipe(S.optional));
+export const ActionTargetMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ActionTarget.pipe(S.optional),
+);
 export interface Action {
   id?: string;
   arn?: string;
@@ -821,7 +833,7 @@ export type ExperimentTargetParameterValue = string;
 export type ExperimentTargetParameterMap = { [key: string]: string | undefined };
 export const ExperimentTargetParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ExperimentTarget {
   resourceType?: string;
@@ -844,7 +856,7 @@ export const ExperimentTarget = /*@__PURE__*/ S.suspend(() =>
 export type ExperimentTargetMap = { [key: string]: ExperimentTarget | undefined };
 export const ExperimentTargetMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExperimentTarget.pipe(S.optional),
+  /*@__PURE__*/ ExperimentTarget.pipe(S.optional),
 );
 export type ExperimentActionName = string;
 export type ExperimentActionDescription = string;
@@ -853,13 +865,13 @@ export type ExperimentActionParameter = string;
 export type ExperimentActionParameterMap = { [key: string]: string | undefined };
 export const ExperimentActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ExperimentActionTargetName = string;
 export type ExperimentActionTargetMap = { [key: string]: string | undefined };
 export const ExperimentActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type ExperimentActionStartAfter = string;
 export type ExperimentActionStartAfterList = string[];
@@ -912,7 +924,7 @@ export const ExperimentAction = /*@__PURE__*/ S.suspend(() =>
 export type ExperimentActionMap = { [key: string]: ExperimentAction | undefined };
 export const ExperimentActionMap = /*@__PURE__*/ S.Record(
   S.String,
-  ExperimentAction.pipe(S.optional),
+  /*@__PURE__*/ ExperimentAction.pipe(S.optional),
 );
 export interface ExperimentStopCondition {
   source?: string;
@@ -1299,7 +1311,7 @@ export type TargetResourceTypeParameterMap = {
 };
 export const TargetResourceTypeParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  TargetResourceTypeParameter.pipe(S.optional),
+  /*@__PURE__*/ TargetResourceTypeParameter.pipe(S.optional),
 );
 export interface TargetResourceType {
   resourceType?: string;
@@ -1388,7 +1400,10 @@ export const ListExperimentResolvedTargetsRequest = /*@__PURE__*/ S.suspend(() =
 export type TargetInformationKey = string;
 export type TargetInformationValue = string;
 export type TargetInformationMap = { [key: string]: string | undefined };
-export const TargetInformationMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TargetInformationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ResolvedTarget {
   resourceType?: string;
   targetName?: string;
@@ -1780,7 +1795,7 @@ export type UpdateExperimentTemplateTargetInputMap = {
 };
 export const UpdateExperimentTemplateTargetInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateExperimentTemplateTargetInput.pipe(S.optional),
+  /*@__PURE__*/ UpdateExperimentTemplateTargetInput.pipe(S.optional),
 );
 export interface UpdateExperimentTemplateActionInputItem {
   actionId?: string;
@@ -1805,7 +1820,7 @@ export type UpdateExperimentTemplateActionInputMap = {
 };
 export const UpdateExperimentTemplateActionInputMap = /*@__PURE__*/ S.Record(
   S.String,
-  UpdateExperimentTemplateActionInputItem.pipe(S.optional),
+  /*@__PURE__*/ UpdateExperimentTemplateActionInputItem.pipe(S.optional),
 );
 export interface UpdateExperimentTemplateLogConfigurationInput {
   cloudWatchLogsConfiguration?: ExperimentTemplateCloudWatchLogsLogConfigurationInput;

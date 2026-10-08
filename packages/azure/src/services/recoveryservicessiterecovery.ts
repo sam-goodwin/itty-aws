@@ -814,7 +814,7 @@ export const TaskTypeDetails = /*@__PURE__*/ S.suspend(() =>
 /** The child tasks. */
 export type GroupTaskDetailsChildTasksList = Array<ASRTask>;
 export const GroupTaskDetailsChildTasksList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ASRTask),
+  /*@__PURE__*/ S.suspend(() => ASRTask),
 ) as any as S.Schema<GroupTaskDetailsChildTasksList>;
 
 /** This class represents the group task details when parent child relationship exists in the drill down. */

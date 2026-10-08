@@ -1018,7 +1018,7 @@ export const GetAlertSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of the items */
 export type AlertsSummaryGroupItemValuesList = Array<AlertsSummaryGroupItem>;
 export const AlertsSummaryGroupItemValuesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AlertsSummaryGroupItem),
+  /*@__PURE__*/ S.suspend(() => AlertsSummaryGroupItem),
 ) as any as S.Schema<AlertsSummaryGroupItemValuesList>;
 
 /** Alerts summary group item */

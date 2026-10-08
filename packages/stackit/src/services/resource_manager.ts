@@ -750,7 +750,7 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateLabels = { [key: string]: string | null | undefined };
 export const UpdateLabels = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateLabels>;
 
 export interface PartialUpdateFolderRequest {

@@ -1970,7 +1970,7 @@ export const CacheConfigPatch = /*@__PURE__*/ S.suspend(() =>
 export type ConfigPatchLabelsMap = { [key: string]: string | null | undefined };
 export const ConfigPatchLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<ConfigPatchLabelsMap>;
 
 /** Defines the type of the log sink. For Grafana Loki, this must be set to `loki`. */

@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "QuickSight", serviceShapeName: "QuickSight_20180401" });
-const auth = T.AwsAuthSigv4({ name: "quicksight" });
-const ver = T.ServiceVersion("2018-04-01");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "QuickSight",
+  serviceShapeName: "QuickSight_20180401",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "quicksight" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-04-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,110 +78,153 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(401),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ConcurrentUpdatingException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentUpdatingException>()(
     "ConcurrentUpdatingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CustomerManagedKeyUnavailableException
   extends /*@__PURE__*/ S.TaggedError<CustomerManagedKeyUnavailableException>()(
     "CustomerManagedKeyUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DomainNotWhitelistedException
   extends /*@__PURE__*/ S.TaggedError<DomainNotWhitelistedException>()(
     "DomainNotWhitelistedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class IdentityTypeNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<IdentityTypeNotSupportedException>()(
     "IdentityTypeNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidDataSetParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidDataSetParameterValueException>()(
     "InvalidDataSetParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ExceptionResourceType).annotate({ identifier: "ExceptionResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
       ),
-      RequestId: S.optional(S.String),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PreconditionNotMetException
   extends /*@__PURE__*/ S.TaggedError<PreconditionNotMetException>()(
     "PreconditionNotMetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QuickSightSubscriptionRequired
   extends /*@__PURE__*/ S.TaggedError<QuickSightSubscriptionRequired>()(
     "QuickSightSubscriptionRequired",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ExceptionResourceType).annotate({ identifier: "ExceptionResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
       ),
-      RequestId: S.optional(S.String),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.SyntheticError({
+    /*@__PURE__*/ T.SyntheticError({
       from: "ResourceNotFoundException",
       message: { includes: "Directory information" },
     }),
@@ -186,68 +232,89 @@ export class QuickSightSubscriptionRequired
 export class QuickSightUserNotFoundException
   extends /*@__PURE__*/ S.TaggedError<QuickSightUserNotFoundException>()(
     "QuickSightUserNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceExistsException>()(
     "ResourceExistsException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ExceptionResourceType).annotate({ identifier: "ExceptionResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
       ),
-      RequestId: S.optional(S.String),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ExceptionResourceType).annotate({ identifier: "ExceptionResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
       ),
-      RequestId: S.optional(S.String),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ResourceType: S.optional(
-        S.suspend(() => ExceptionResourceType).annotate({ identifier: "ExceptionResourceType" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceType: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
       ),
-      RequestId: S.optional(S.String),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(503),
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class SessionLifetimeInMinutesInvalidException
   extends /*@__PURE__*/ S.TaggedError<SessionLifetimeInMinutesInvalidException>()(
     "SessionLifetimeInMinutesInvalidException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedPricingPlanException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedPricingPlanException>()(
     "UnsupportedPricingPlanException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class UnsupportedUserEditionException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedUserEditionException>()(
     "UnsupportedUserEditionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RequestId: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export type AwsAccountId = string;
 export type TopicId = string;
@@ -288,7 +355,10 @@ export const AggType = S.String;
 export type AggFunctionParamKey = string;
 export type AggFunctionParamValue = string;
 export type AggFunctionParamMap = { [key: string]: string | undefined };
-export const AggFunctionParamMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AggFunctionParamMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TopicTimeGranularity =
   | "SECOND"
   | "MINUTE"
@@ -718,7 +788,9 @@ export const VisualRole = S.String;
 
 export type TopicVisuals = TopicVisual[];
 export const TopicVisuals = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<TopicVisual> => TopicVisual).annotate({ identifier: "TopicVisual" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<TopicVisual> => TopicVisual).annotate({
+    identifier: "TopicVisual",
+  }),
 ) as any as S.Schema<TopicVisuals>;
 export interface TopicVisual {
   VisualId?: string;
@@ -1345,7 +1417,7 @@ export type AuthorizationCodeGrantCredentialsDetails = {
   AuthorizationCodeGrantDetails: AuthorizationCodeGrantDetails;
 };
 export const AuthorizationCodeGrantCredentialsDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ AuthorizationCodeGrantDetails: AuthorizationCodeGrantDetails }),
+  /*@__PURE__*/ S.Struct({ AuthorizationCodeGrantDetails: AuthorizationCodeGrantDetails }),
 ]);
 export interface AuthorizationCodeGrantMetadata {
   BaseEndpoint: string;
@@ -1380,7 +1452,7 @@ export type ClientCredentialsDetails = {
   ClientCredentialsGrantDetails: ClientCredentialsGrantDetails;
 };
 export const ClientCredentialsDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ ClientCredentialsGrantDetails: ClientCredentialsGrantDetails }),
+  /*@__PURE__*/ S.Struct({ ClientCredentialsGrantDetails: ClientCredentialsGrantDetails }),
 ]);
 export interface ClientCredentialsGrantMetadata {
   BaseEndpoint: string;
@@ -1481,12 +1553,12 @@ export type AuthenticationMetadata =
       IamConnectionMetadata: IAMConnectionMetadata;
     };
 export const AuthenticationMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ AuthorizationCodeGrantMetadata: AuthorizationCodeGrantMetadata }),
-  S.Struct({ ClientCredentialsGrantMetadata: ClientCredentialsGrantMetadata }),
-  S.Struct({ BasicAuthConnectionMetadata: BasicAuthConnectionMetadata }),
-  S.Struct({ ApiKeyConnectionMetadata: APIKeyConnectionMetadata }),
-  S.Struct({ NoneConnectionMetadata: NoneConnectionMetadata }),
-  S.Struct({ IamConnectionMetadata: IAMConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ AuthorizationCodeGrantMetadata: AuthorizationCodeGrantMetadata }),
+  /*@__PURE__*/ S.Struct({ ClientCredentialsGrantMetadata: ClientCredentialsGrantMetadata }),
+  /*@__PURE__*/ S.Struct({ BasicAuthConnectionMetadata: BasicAuthConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ ApiKeyConnectionMetadata: APIKeyConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ NoneConnectionMetadata: NoneConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ IamConnectionMetadata: IAMConnectionMetadata }),
 ]);
 export interface AuthConfig {
   AuthenticationType: ConnectionAuthType;
@@ -1624,8 +1696,8 @@ export type CustomPromptInput =
   | { ExistingPrompt: CustomPromptProfile; NewPrompt?: never }
   | { ExistingPrompt?: never; NewPrompt: CustomPromptInputParameters };
 export const CustomPromptInput = /*@__PURE__*/ S.Union([
-  S.Struct({ ExistingPrompt: CustomPromptProfile }),
-  S.Struct({ NewPrompt: CustomPromptInputParameters }),
+  /*@__PURE__*/ S.Struct({ ExistingPrompt: CustomPromptProfile }),
+  /*@__PURE__*/ S.Struct({ NewPrompt: CustomPromptInputParameters }),
 ]);
 export interface CreateAgentRequest {
   Spaces?: string[];
@@ -1725,7 +1797,7 @@ export const DecimalParameterList = /*@__PURE__*/ S.Array(DecimalParameter);
 export type SensitiveTimestamp = Date;
 export type SensitiveTimestampList = Date[];
 export const SensitiveTimestampList = /*@__PURE__*/ S.Array(
-  S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
 );
 export interface DateTimeParameter {
   Name: string;
@@ -3911,7 +3983,7 @@ export type DecimalDefaultValueList = number[];
 export const DecimalDefaultValueList = /*@__PURE__*/ S.Array(S.Number);
 export type DateTimeDefaultValueList = Date[];
 export const DateTimeDefaultValueList = /*@__PURE__*/ S.Array(
-  S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
 );
 export interface CustomParameterValues {
   StringValues?: (string | redacted.Redacted<string>)[];
@@ -6407,8 +6479,8 @@ export type GeocodePreferenceValue =
   | { GeocoderHierarchy: GeocoderHierarchy; Coordinate?: never }
   | { GeocoderHierarchy?: never; Coordinate: Coordinate };
 export const GeocodePreferenceValue = /*@__PURE__*/ S.Union([
-  S.Struct({ GeocoderHierarchy: GeocoderHierarchy }),
-  S.Struct({ Coordinate: Coordinate }),
+  /*@__PURE__*/ S.Struct({ GeocoderHierarchy: GeocoderHierarchy }),
+  /*@__PURE__*/ S.Struct({ Coordinate: Coordinate }),
 ]);
 export interface GeocodePreference {
   RequestKey: GeocoderHierarchy;
@@ -9861,7 +9933,7 @@ export type HierarchyValuesList = (string | redacted.Redacted<string>)[];
 export const HierarchyValuesList = /*@__PURE__*/ S.Array(SensitiveString);
 export type HierarchyFilterNodeList = HierarchyFilterNode[];
 export const HierarchyFilterNodeList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<HierarchyFilterNode> => HierarchyFilterNode).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<HierarchyFilterNode> => HierarchyFilterNode).annotate({
     identifier: "HierarchyFilterNode",
   }),
 ) as any as S.Schema<HierarchyFilterNodeList>;
@@ -10507,8 +10579,8 @@ export type ImageSource =
   | { PublicUrl: string; S3Uri?: never }
   | { PublicUrl?: never; S3Uri: string };
 export const ImageSource = /*@__PURE__*/ S.Union([
-  S.Struct({ PublicUrl: S.String }),
-  S.Struct({ S3Uri: S.String }),
+  /*@__PURE__*/ S.Struct({ PublicUrl: S.String }),
+  /*@__PURE__*/ S.Struct({ S3Uri: S.String }),
 ]);
 export interface ImageConfiguration {
   Source?: ImageSource;
@@ -11457,7 +11529,7 @@ export const DefaultCategoryEffect = S.String;
 export type DefaultCategoryEffectsMap = { [key: string]: DefaultCategoryEffect | undefined };
 export const DefaultCategoryEffectsMap = /*@__PURE__*/ S.Record(
   S.String,
-  DefaultCategoryEffect.pipe(S.optional),
+  /*@__PURE__*/ DefaultCategoryEffect.pipe(S.optional),
 );
 export interface Governance {
   DefaultCategoryEffects?: { [key: string]: DefaultCategoryEffect | undefined };
@@ -11947,14 +12019,17 @@ export type PhysicalTable =
       FileSource: FileSource;
     };
 export const PhysicalTable = /*@__PURE__*/ S.Union([
-  S.Struct({ RelationalTable: RelationalTable }),
-  S.Struct({ CustomSql: CustomSql }),
-  S.Struct({ S3Source: S3Source }),
-  S.Struct({ SaaSTable: SaaSTable }),
-  S.Struct({ FileSource: FileSource }),
+  /*@__PURE__*/ S.Struct({ RelationalTable: RelationalTable }),
+  /*@__PURE__*/ S.Struct({ CustomSql: CustomSql }),
+  /*@__PURE__*/ S.Struct({ S3Source: S3Source }),
+  /*@__PURE__*/ S.Struct({ SaaSTable: SaaSTable }),
+  /*@__PURE__*/ S.Struct({ FileSource: FileSource }),
 ]);
 export type PhysicalTableMap = { [key: string]: PhysicalTable | undefined };
-export const PhysicalTableMap = /*@__PURE__*/ S.Record(S.String, PhysicalTable.pipe(S.optional));
+export const PhysicalTableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ PhysicalTable.pipe(S.optional),
+);
 export type LogicalTableId = string;
 export type LogicalTableAlias = string;
 export type TransformOperationAlias = string;
@@ -12297,7 +12372,7 @@ export const DecimalDatasetParameterValueList = /*@__PURE__*/ S.Array(S.Number);
 export type DateTimeDatasetParameterDefaultValue = Date;
 export type DateTimeDatasetParameterValueList = Date[];
 export const DateTimeDatasetParameterValueList = /*@__PURE__*/ S.Array(
-  S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
 );
 export type IntegerDatasetParameterDefaultValue = number;
 export type IntegerDatasetParameterValueList = number[];
@@ -12412,14 +12487,14 @@ export type TransformOperation =
       OverrideDatasetParameterOperation: OverrideDatasetParameterOperation;
     };
 export const TransformOperation = /*@__PURE__*/ S.Union([
-  S.Struct({ ProjectOperation: ProjectOperation }),
-  S.Struct({ FilterOperation: FilterOperation }),
-  S.Struct({ CreateColumnsOperation: CreateColumnsOperation }),
-  S.Struct({ RenameColumnOperation: RenameColumnOperation }),
-  S.Struct({ CastColumnTypeOperation: CastColumnTypeOperation }),
-  S.Struct({ TagColumnOperation: TagColumnOperation }),
-  S.Struct({ UntagColumnOperation: UntagColumnOperation }),
-  S.Struct({ OverrideDatasetParameterOperation: OverrideDatasetParameterOperation }),
+  /*@__PURE__*/ S.Struct({ ProjectOperation: ProjectOperation }),
+  /*@__PURE__*/ S.Struct({ FilterOperation: FilterOperation }),
+  /*@__PURE__*/ S.Struct({ CreateColumnsOperation: CreateColumnsOperation }),
+  /*@__PURE__*/ S.Struct({ RenameColumnOperation: RenameColumnOperation }),
+  /*@__PURE__*/ S.Struct({ CastColumnTypeOperation: CastColumnTypeOperation }),
+  /*@__PURE__*/ S.Struct({ TagColumnOperation: TagColumnOperation }),
+  /*@__PURE__*/ S.Struct({ UntagColumnOperation: UntagColumnOperation }),
+  /*@__PURE__*/ S.Struct({ OverrideDatasetParameterOperation: OverrideDatasetParameterOperation }),
 ]);
 export type TransformOperationList = TransformOperation[];
 export const TransformOperationList = /*@__PURE__*/ S.Array(TransformOperation);
@@ -12476,7 +12551,10 @@ export const LogicalTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogicalTable" }) as any as S.Schema<LogicalTable>;
 export type LogicalTableMap = { [key: string]: LogicalTable | undefined };
-export const LogicalTableMap = /*@__PURE__*/ S.Record(S.String, LogicalTable.pipe(S.optional));
+export const LogicalTableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ LogicalTable.pipe(S.optional),
+);
 export type DataSetImportMode = "SPICE" | "DIRECT_QUERY" | (string & {});
 export const DataSetImportMode = S.String;
 
@@ -12514,7 +12592,10 @@ export const FieldFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.optional(S.String), columns: S.optional(FolderColumnList) }),
 ).annotate({ identifier: "FieldFolder" }) as any as S.Schema<FieldFolder>;
 export type FieldFolderMap = { [key: string]: FieldFolder | undefined };
-export const FieldFolderMap = /*@__PURE__*/ S.Record(S.String, FieldFolder.pipe(S.optional));
+export const FieldFolderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FieldFolder.pipe(S.optional),
+);
 export type RowLevelPermissionPolicy = "GRANT_ACCESS" | "DENY_ACCESS" | (string & {});
 export const RowLevelPermissionPolicy = S.String;
 
@@ -12757,7 +12838,10 @@ export const SourceTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PhysicalTableId: S.optional(S.String), DataSet: S.optional(ParentDataSet) }),
 ).annotate({ identifier: "SourceTable" }) as any as S.Schema<SourceTable>;
 export type SourceTableMap = { [key: string]: SourceTable | undefined };
-export const SourceTableMap = /*@__PURE__*/ S.Record(S.String, SourceTable.pipe(S.optional));
+export const SourceTableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SourceTable.pipe(S.optional),
+);
 export interface ImportTableOperationSource {
   SourceTableId: string;
   ColumnIdMappings?: DataSetColumnIdMapping[];
@@ -13053,7 +13137,10 @@ export const TransformStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransformStep" }) as any as S.Schema<TransformStep>;
 export type TransformStepMap = { [key: string]: TransformStep | undefined };
-export const TransformStepMap = /*@__PURE__*/ S.Record(S.String, TransformStep.pipe(S.optional));
+export const TransformStepMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ TransformStep.pipe(S.optional),
+);
 export type DestinationTableAlias = string;
 export interface DestinationTableSource {
   TransformOperationId: string;
@@ -13071,7 +13158,7 @@ export const DestinationTable = /*@__PURE__*/ S.suspend(() =>
 export type DestinationTableMap = { [key: string]: DestinationTable | undefined };
 export const DestinationTableMap = /*@__PURE__*/ S.Record(
   S.String,
-  DestinationTable.pipe(S.optional),
+  /*@__PURE__*/ DestinationTable.pipe(S.optional),
 );
 export interface DataPrepConfiguration {
   SourceTableMap: { [key: string]: SourceTable | undefined };
@@ -13162,7 +13249,10 @@ export const SemanticTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SemanticTable" }) as any as S.Schema<SemanticTable>;
 export type SemanticTableMap = { [key: string]: SemanticTable | undefined };
-export const SemanticTableMap = /*@__PURE__*/ S.Record(S.String, SemanticTable.pipe(S.optional));
+export const SemanticTableMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SemanticTable.pipe(S.optional),
+);
 export type DataSetDescriptiveText = string | redacted.Redacted<string>;
 export interface DataSetSemanticDescription {
   Text: string | redacted.Redacted<string>;
@@ -15256,43 +15346,43 @@ export type DataSourceParameters =
       FMKBParameters: FMKBParameters;
     };
 export const DataSourceParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ AmazonElasticsearchParameters: AmazonElasticsearchParameters }),
-  S.Struct({ AthenaParameters: AthenaParameters }),
-  S.Struct({ AuroraParameters: AuroraParameters }),
-  S.Struct({ AuroraPostgreSqlParameters: AuroraPostgreSqlParameters }),
-  S.Struct({ AwsIotAnalyticsParameters: AwsIotAnalyticsParameters }),
-  S.Struct({ JiraParameters: JiraParameters }),
-  S.Struct({ MariaDbParameters: MariaDbParameters }),
-  S.Struct({ MySqlParameters: MySqlParameters }),
-  S.Struct({ OracleParameters: OracleParameters }),
-  S.Struct({ PostgreSqlParameters: PostgreSqlParameters }),
-  S.Struct({ PrestoParameters: PrestoParameters }),
-  S.Struct({ RdsParameters: RdsParameters }),
-  S.Struct({ RedshiftParameters: RedshiftParameters }),
-  S.Struct({ S3Parameters: S3Parameters }),
-  S.Struct({ S3TablesParameters: S3TablesParameters }),
-  S.Struct({ S3KnowledgeBaseParameters: S3KnowledgeBaseParameters }),
-  S.Struct({ ServiceNowParameters: ServiceNowParameters }),
-  S.Struct({ SnowflakeParameters: SnowflakeParameters }),
-  S.Struct({ SparkParameters: SparkParameters }),
-  S.Struct({ SqlServerParameters: SqlServerParameters }),
-  S.Struct({ TeradataParameters: TeradataParameters }),
-  S.Struct({ TwitterParameters: TwitterParameters }),
-  S.Struct({ AmazonOpenSearchParameters: AmazonOpenSearchParameters }),
-  S.Struct({ ExasolParameters: ExasolParameters }),
-  S.Struct({ DatabricksParameters: DatabricksParameters }),
-  S.Struct({ StarburstParameters: StarburstParameters }),
-  S.Struct({ TrinoParameters: TrinoParameters }),
-  S.Struct({ BigQueryParameters: BigQueryParameters }),
-  S.Struct({ ImpalaParameters: ImpalaParameters }),
-  S.Struct({ CustomConnectionParameters: CustomConnectionParameters }),
-  S.Struct({ WebCrawlerParameters: WebCrawlerParameters }),
-  S.Struct({ ConfluenceParameters: ConfluenceParameters }),
-  S.Struct({ QBusinessParameters: QBusinessParameters }),
-  S.Struct({ SharePointParameters: SharePointParameters }),
-  S.Struct({ GoogleDriveParameters: GoogleDriveParameters }),
-  S.Struct({ OneDriveParameters: OneDriveParameters }),
-  S.Struct({ FMKBParameters: FMKBParameters }),
+  /*@__PURE__*/ S.Struct({ AmazonElasticsearchParameters: AmazonElasticsearchParameters }),
+  /*@__PURE__*/ S.Struct({ AthenaParameters: AthenaParameters }),
+  /*@__PURE__*/ S.Struct({ AuroraParameters: AuroraParameters }),
+  /*@__PURE__*/ S.Struct({ AuroraPostgreSqlParameters: AuroraPostgreSqlParameters }),
+  /*@__PURE__*/ S.Struct({ AwsIotAnalyticsParameters: AwsIotAnalyticsParameters }),
+  /*@__PURE__*/ S.Struct({ JiraParameters: JiraParameters }),
+  /*@__PURE__*/ S.Struct({ MariaDbParameters: MariaDbParameters }),
+  /*@__PURE__*/ S.Struct({ MySqlParameters: MySqlParameters }),
+  /*@__PURE__*/ S.Struct({ OracleParameters: OracleParameters }),
+  /*@__PURE__*/ S.Struct({ PostgreSqlParameters: PostgreSqlParameters }),
+  /*@__PURE__*/ S.Struct({ PrestoParameters: PrestoParameters }),
+  /*@__PURE__*/ S.Struct({ RdsParameters: RdsParameters }),
+  /*@__PURE__*/ S.Struct({ RedshiftParameters: RedshiftParameters }),
+  /*@__PURE__*/ S.Struct({ S3Parameters: S3Parameters }),
+  /*@__PURE__*/ S.Struct({ S3TablesParameters: S3TablesParameters }),
+  /*@__PURE__*/ S.Struct({ S3KnowledgeBaseParameters: S3KnowledgeBaseParameters }),
+  /*@__PURE__*/ S.Struct({ ServiceNowParameters: ServiceNowParameters }),
+  /*@__PURE__*/ S.Struct({ SnowflakeParameters: SnowflakeParameters }),
+  /*@__PURE__*/ S.Struct({ SparkParameters: SparkParameters }),
+  /*@__PURE__*/ S.Struct({ SqlServerParameters: SqlServerParameters }),
+  /*@__PURE__*/ S.Struct({ TeradataParameters: TeradataParameters }),
+  /*@__PURE__*/ S.Struct({ TwitterParameters: TwitterParameters }),
+  /*@__PURE__*/ S.Struct({ AmazonOpenSearchParameters: AmazonOpenSearchParameters }),
+  /*@__PURE__*/ S.Struct({ ExasolParameters: ExasolParameters }),
+  /*@__PURE__*/ S.Struct({ DatabricksParameters: DatabricksParameters }),
+  /*@__PURE__*/ S.Struct({ StarburstParameters: StarburstParameters }),
+  /*@__PURE__*/ S.Struct({ TrinoParameters: TrinoParameters }),
+  /*@__PURE__*/ S.Struct({ BigQueryParameters: BigQueryParameters }),
+  /*@__PURE__*/ S.Struct({ ImpalaParameters: ImpalaParameters }),
+  /*@__PURE__*/ S.Struct({ CustomConnectionParameters: CustomConnectionParameters }),
+  /*@__PURE__*/ S.Struct({ WebCrawlerParameters: WebCrawlerParameters }),
+  /*@__PURE__*/ S.Struct({ ConfluenceParameters: ConfluenceParameters }),
+  /*@__PURE__*/ S.Struct({ QBusinessParameters: QBusinessParameters }),
+  /*@__PURE__*/ S.Struct({ SharePointParameters: SharePointParameters }),
+  /*@__PURE__*/ S.Struct({ GoogleDriveParameters: GoogleDriveParameters }),
+  /*@__PURE__*/ S.Struct({ OneDriveParameters: OneDriveParameters }),
+  /*@__PURE__*/ S.Struct({ FMKBParameters: FMKBParameters }),
 ]);
 export type DbUsername = string;
 export type Password = string;
@@ -15470,7 +15560,7 @@ export const MicrosoftPurviewProviderConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MicrosoftPurviewProviderConfig>;
 export type ProviderConfig = { MicrosoftPurview: MicrosoftPurviewProviderConfig };
 export const ProviderConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ MicrosoftPurview: MicrosoftPurviewProviderConfig }),
+  /*@__PURE__*/ S.Struct({ MicrosoftPurview: MicrosoftPurviewProviderConfig }),
 ]);
 export interface CreateDlpSettingRequest {
   AwsAccountId: string;
@@ -15794,7 +15884,10 @@ export type IdentityName = string;
 export type IdentityNameList = string[];
 export const IdentityNameList = /*@__PURE__*/ S.Array(S.String);
 export type IdentityMap = { [key: string]: string[] | undefined };
-export const IdentityMap = /*@__PURE__*/ S.Record(S.String, IdentityNameList.pipe(S.optional));
+export const IdentityMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ IdentityNameList.pipe(S.optional),
+);
 export interface CreateIAMPolicyAssignmentRequest {
   AwsAccountId: string;
   AssignmentName: string;
@@ -16068,7 +16161,7 @@ export type CreateLimitsProfileRequestResourceLimitsMap = {
 };
 export const CreateLimitsProfileRequestResourceLimitsMap = /*@__PURE__*/ S.Record(
   ResourceType,
-  ProfileLimitValue.pipe(S.optional),
+  /*@__PURE__*/ ProfileLimitValue.pipe(S.optional),
 );
 export type CreateLimitsProfileRequestClientTokenString = string;
 export interface CreateLimitsProfileRequest {
@@ -17229,7 +17322,10 @@ export const ComparativeOrder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComparativeOrder" }) as any as S.Schema<ComparativeOrder>;
 export type TypeParameters = { [key: string]: string | undefined };
-export const TypeParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TypeParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface SemanticType {
   TypeName?: string;
   SubTypeName?: string;
@@ -17409,7 +17505,7 @@ export const NamedEntityAggType = S.String;
 export type AggregationFunctionParameters = { [key: string]: string | undefined };
 export const AggregationFunctionParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface NamedEntityDefinitionMetric {
   Aggregation?: NamedEntityAggType;
@@ -19509,7 +19605,7 @@ export type ReadAuthorizationCodeGrantCredentialsDetails = {
   ReadAuthorizationCodeGrantDetails: ReadAuthorizationCodeGrantDetails;
 };
 export const ReadAuthorizationCodeGrantCredentialsDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ ReadAuthorizationCodeGrantDetails: ReadAuthorizationCodeGrantDetails }),
+  /*@__PURE__*/ S.Struct({ ReadAuthorizationCodeGrantDetails: ReadAuthorizationCodeGrantDetails }),
 ]);
 export interface ReadAuthorizationCodeGrantMetadata {
   BaseEndpoint: string;
@@ -19542,7 +19638,7 @@ export type ReadClientCredentialsDetails = {
   ReadClientCredentialsGrantDetails: ReadClientCredentialsGrantDetails;
 };
 export const ReadClientCredentialsDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ ReadClientCredentialsGrantDetails: ReadClientCredentialsGrantDetails }),
+  /*@__PURE__*/ S.Struct({ ReadClientCredentialsGrantDetails: ReadClientCredentialsGrantDetails }),
 ]);
 export interface ReadClientCredentialsGrantMetadata {
   BaseEndpoint: string;
@@ -19643,12 +19739,12 @@ export type ReadAuthenticationMetadata =
       IamConnectionMetadata: ReadIamConnectionMetadata;
     };
 export const ReadAuthenticationMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ AuthorizationCodeGrantMetadata: ReadAuthorizationCodeGrantMetadata }),
-  S.Struct({ ClientCredentialsGrantMetadata: ReadClientCredentialsGrantMetadata }),
-  S.Struct({ BasicAuthConnectionMetadata: ReadBasicAuthConnectionMetadata }),
-  S.Struct({ ApiKeyConnectionMetadata: ReadAPIKeyConnectionMetadata }),
-  S.Struct({ NoneConnectionMetadata: ReadNoneConnectionMetadata }),
-  S.Struct({ IamConnectionMetadata: ReadIamConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ AuthorizationCodeGrantMetadata: ReadAuthorizationCodeGrantMetadata }),
+  /*@__PURE__*/ S.Struct({ ClientCredentialsGrantMetadata: ReadClientCredentialsGrantMetadata }),
+  /*@__PURE__*/ S.Struct({ BasicAuthConnectionMetadata: ReadBasicAuthConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ ApiKeyConnectionMetadata: ReadAPIKeyConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ NoneConnectionMetadata: ReadNoneConnectionMetadata }),
+  /*@__PURE__*/ S.Struct({ IamConnectionMetadata: ReadIamConnectionMetadata }),
 ]);
 export interface ReadAuthConfig {
   AuthenticationType: ConnectionAuthType;
@@ -22965,17 +23061,23 @@ export const DescribeIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
 export type CIDR = string;
 export type IpRestrictionRuleDescription = string;
 export type IpRestrictionRuleMap = { [key: string]: string | undefined };
-export const IpRestrictionRuleMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const IpRestrictionRuleMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type VpcId = string;
 export type VpcIdRestrictionRuleDescription = string;
 export type VpcIdRestrictionRuleMap = { [key: string]: string | undefined };
-export const VpcIdRestrictionRuleMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const VpcIdRestrictionRuleMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type VpcEndpointId = string;
 export type VpcEndpointIdRestrictionRuleDescription = string;
 export type VpcEndpointIdRestrictionRuleMap = { [key: string]: string | undefined };
 export const VpcEndpointIdRestrictionRuleMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface DescribeIpRestrictionResponse {
   AwsAccountId?: string;
@@ -23241,7 +23343,7 @@ export const DescribeLimitsProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResourceLimitsMap = { [key in ResourceType]?: ProfileLimitValue };
 export const ResourceLimitsMap = /*@__PURE__*/ S.Record(
   ResourceType,
-  ProfileLimitValue.pipe(S.optional),
+  /*@__PURE__*/ ProfileLimitValue.pipe(S.optional),
 );
 export interface LimitsProfile {
   profileId: string;
@@ -23635,7 +23737,7 @@ export const SpaceQuickSightResourceType = S.String;
 
 export type SpaceQuickSightResourceDetails = { resourceArn: string };
 export const SpaceQuickSightResourceDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ resourceArn: S.String }),
+  /*@__PURE__*/ S.Struct({ resourceArn: S.String }),
 ]);
 export interface SpaceQuickSightResource {
   resourceType: SpaceQuickSightResourceType;
@@ -25182,9 +25284,9 @@ export type UserIdentifier =
   | { UserName?: never; Email: string | redacted.Redacted<string>; UserArn?: never }
   | { UserName?: never; Email?: never; UserArn: string };
 export const UserIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ UserName: SensitiveString }),
-  S.Struct({ Email: SensitiveString }),
-  S.Struct({ UserArn: S.String }),
+  /*@__PURE__*/ S.Struct({ UserName: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ Email: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ UserArn: S.String }),
 ]);
 export type Region = string;
 export interface GetIdentityContextRequest {
@@ -25869,7 +25971,7 @@ export const ListDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type RowLevelPermissionDataSetMap = { [key: string]: RowLevelPermissionDataSet | undefined };
 export const RowLevelPermissionDataSetMap = /*@__PURE__*/ S.Record(
   S.String,
-  RowLevelPermissionDataSet.pipe(S.optional),
+  /*@__PURE__*/ RowLevelPermissionDataSet.pipe(S.optional),
 );
 export interface DataSetSummary {
   Arn?: string;
@@ -27679,8 +27781,8 @@ export type UserIndexCapacityFilter =
   | { userNameOrEmail: UserNameOrEmailFilter; totalCapacityBytes?: never }
   | { userNameOrEmail?: never; totalCapacityBytes: CapacityBytesRangeFilter };
 export const UserIndexCapacityFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ userNameOrEmail: UserNameOrEmailFilter }),
-  S.Struct({ totalCapacityBytes: CapacityBytesRangeFilter }),
+  /*@__PURE__*/ S.Struct({ userNameOrEmail: UserNameOrEmailFilter }),
+  /*@__PURE__*/ S.Struct({ totalCapacityBytes: CapacityBytesRangeFilter }),
 ]);
 export type UserIndexCapacityFilters = UserIndexCapacityFilter[];
 export const UserIndexCapacityFilters = /*@__PURE__*/ S.Array(UserIndexCapacityFilter);

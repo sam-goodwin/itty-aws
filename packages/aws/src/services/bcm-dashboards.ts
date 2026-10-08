@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "BCM Dashboards",
   serviceShapeName: "AWSBCMDashboardsService",
 });
-const auth = T.AwsAuthSigv4({ name: "bcm-dashboards" });
-const ver = T.ServiceVersion("2025-08-18");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bcm-dashboards" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2025-08-18");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -58,44 +58,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DashboardName = string;
 export type Description = string;
@@ -154,7 +154,9 @@ export type GroupDefinitions = GroupDefinition[];
 export const GroupDefinitions = /*@__PURE__*/ S.Array(GroupDefinition);
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"
@@ -371,11 +373,11 @@ export type QueryParameters =
       reservationUtilization: ReservationUtilizationQuery;
     };
 export const QueryParameters = /*@__PURE__*/ S.Union([
-  S.Struct({ costAndUsage: CostAndUsageQuery }),
-  S.Struct({ savingsPlansCoverage: SavingsPlansCoverageQuery }),
-  S.Struct({ savingsPlansUtilization: SavingsPlansUtilizationQuery }),
-  S.Struct({ reservationCoverage: ReservationCoverageQuery }),
-  S.Struct({ reservationUtilization: ReservationUtilizationQuery }),
+  /*@__PURE__*/ S.Struct({ costAndUsage: CostAndUsageQuery }),
+  /*@__PURE__*/ S.Struct({ savingsPlansCoverage: SavingsPlansCoverageQuery }),
+  /*@__PURE__*/ S.Struct({ savingsPlansUtilization: SavingsPlansUtilizationQuery }),
+  /*@__PURE__*/ S.Struct({ reservationCoverage: ReservationCoverageQuery }),
+  /*@__PURE__*/ S.Struct({ reservationUtilization: ReservationUtilizationQuery }),
 ]);
 export type VisualType = "LINE" | "BAR" | "STACK" | (string & {});
 export const VisualType = S.String;
@@ -389,7 +391,7 @@ export const GraphDisplayConfig = /*@__PURE__*/ S.suspend(() =>
 export type GraphDisplayConfigMap = { [key: string]: GraphDisplayConfig | undefined };
 export const GraphDisplayConfigMap = /*@__PURE__*/ S.Record(
   S.String,
-  GraphDisplayConfig.pipe(S.optional),
+  /*@__PURE__*/ GraphDisplayConfig.pipe(S.optional),
 );
 export interface TableDisplayConfigStruct {}
 export const TableDisplayConfigStruct = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -399,8 +401,8 @@ export type DisplayConfig =
   | { graph: { [key: string]: GraphDisplayConfig | undefined }; table?: never }
   | { graph?: never; table: TableDisplayConfigStruct };
 export const DisplayConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ graph: GraphDisplayConfigMap }),
-  S.Struct({ table: TableDisplayConfigStruct }),
+  /*@__PURE__*/ S.Struct({ graph: GraphDisplayConfigMap }),
+  /*@__PURE__*/ S.Struct({ table: TableDisplayConfigStruct }),
 ]);
 export interface WidgetConfig {
   queryParameters: QueryParameters;

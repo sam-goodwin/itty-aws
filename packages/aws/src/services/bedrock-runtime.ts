@@ -10,14 +10,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock Runtime",
   serviceShapeName: "AmazonBedrockFrontendService",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock" });
-const ver = T.ServiceVersion("2023-09-30");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-09-30");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,82 +79,82 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ModelErrorException
   extends /*@__PURE__*/ S.TaggedError<ModelErrorException>()(
     "ModelErrorException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      originalStatusCode: S.optional(S.Number),
-      resourceName: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      originalStatusCode: /*@__PURE__*/ S.optional(S.Number),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(424),
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ModelNotReadyException
   extends /*@__PURE__*/ S.TaggedError<ModelNotReadyException>()(
     "ModelNotReadyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ModelStreamErrorException
   extends /*@__PURE__*/ S.TaggedError<ModelStreamErrorException>()(
     "ModelStreamErrorException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      originalStatusCode: S.optional(S.Number),
-      originalMessage: S.optional(S.String),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      originalStatusCode: /*@__PURE__*/ S.optional(S.Number),
+      originalMessage: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(424),
+    /*@__PURE__*/ T.HttpError(424),
   ) {}
 export class ModelTimeoutException
   extends /*@__PURE__*/ S.TaggedError<ModelTimeoutException>()(
     "ModelTimeoutException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(408),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type GuardrailIdentifier = string;
 export type GuardrailVersion = string;
@@ -181,7 +181,9 @@ export type GuardrailImageFormat = "png" | "jpeg" | (string & {});
 export const GuardrailImageFormat = S.String;
 
 export type GuardrailImageSource = { bytes: Uint8Array };
-export const GuardrailImageSource = /*@__PURE__*/ S.Union([S.Struct({ bytes: T.Blob })]);
+export const GuardrailImageSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+]);
 export interface GuardrailImageBlock {
   format: GuardrailImageFormat;
   source: GuardrailImageSource;
@@ -193,8 +195,8 @@ export type GuardrailContentBlock =
   | { text: GuardrailTextBlock; image?: never }
   | { text?: never; image: GuardrailImageBlock };
 export const GuardrailContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: GuardrailTextBlock }),
-  S.Struct({ image: GuardrailImageBlock }),
+  /*@__PURE__*/ S.Struct({ text: GuardrailTextBlock }),
+  /*@__PURE__*/ S.Struct({ image: GuardrailImageBlock }),
 ]);
 export type GuardrailContentBlockList = GuardrailContentBlock[];
 export const GuardrailContentBlockList = /*@__PURE__*/ S.Array(GuardrailContentBlock);
@@ -774,13 +776,15 @@ export type GuardrailAutomatedReasoningFinding =
       noTranslations: GuardrailAutomatedReasoningNoTranslationsFinding;
     };
 export const GuardrailAutomatedReasoningFinding = /*@__PURE__*/ S.Union([
-  S.Struct({ valid: GuardrailAutomatedReasoningValidFinding }),
-  S.Struct({ invalid: GuardrailAutomatedReasoningInvalidFinding }),
-  S.Struct({ satisfiable: GuardrailAutomatedReasoningSatisfiableFinding }),
-  S.Struct({ impossible: GuardrailAutomatedReasoningImpossibleFinding }),
-  S.Struct({ translationAmbiguous: GuardrailAutomatedReasoningTranslationAmbiguousFinding }),
-  S.Struct({ tooComplex: GuardrailAutomatedReasoningTooComplexFinding }),
-  S.Struct({ noTranslations: GuardrailAutomatedReasoningNoTranslationsFinding }),
+  /*@__PURE__*/ S.Struct({ valid: GuardrailAutomatedReasoningValidFinding }),
+  /*@__PURE__*/ S.Struct({ invalid: GuardrailAutomatedReasoningInvalidFinding }),
+  /*@__PURE__*/ S.Struct({ satisfiable: GuardrailAutomatedReasoningSatisfiableFinding }),
+  /*@__PURE__*/ S.Struct({ impossible: GuardrailAutomatedReasoningImpossibleFinding }),
+  /*@__PURE__*/ S.Struct({
+    translationAmbiguous: GuardrailAutomatedReasoningTranslationAmbiguousFinding,
+  }),
+  /*@__PURE__*/ S.Struct({ tooComplex: GuardrailAutomatedReasoningTooComplexFinding }),
+  /*@__PURE__*/ S.Struct({ noTranslations: GuardrailAutomatedReasoningNoTranslationsFinding }),
 ]);
 export type GuardrailAutomatedReasoningFindingList = GuardrailAutomatedReasoningFinding[];
 export const GuardrailAutomatedReasoningFindingList = /*@__PURE__*/ S.Array(
@@ -931,8 +935,8 @@ export type ImageSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
 export const ImageSource = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ s3Location: S3Location }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
 ]);
 export interface ErrorBlock {
   message?: string;
@@ -962,7 +966,9 @@ export type DocumentFormat =
 export const DocumentFormat = S.String;
 
 export type DocumentContentBlock = { text: string };
-export const DocumentContentBlock = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const DocumentContentBlock = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+]);
 export type DocumentContentBlocks = DocumentContentBlock[];
 export const DocumentContentBlocks = /*@__PURE__*/ S.Array(DocumentContentBlock);
 export type DocumentSource =
@@ -971,10 +977,10 @@ export type DocumentSource =
   | { bytes?: never; s3Location?: never; text: string; content?: never }
   | { bytes?: never; s3Location?: never; text?: never; content: DocumentContentBlock[] };
 export const DocumentSource = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ s3Location: S3Location }),
-  S.Struct({ text: S.String }),
-  S.Struct({ content: DocumentContentBlocks }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ content: DocumentContentBlocks }),
 ]);
 export interface CitationsConfig {
   enabled: boolean;
@@ -1015,8 +1021,8 @@ export type VideoSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
 export const VideoSource = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ s3Location: S3Location }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
 ]);
 export interface VideoBlock {
   format: VideoFormat;
@@ -1048,8 +1054,8 @@ export type AudioSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
 export const AudioSource = /*@__PURE__*/ S.Union([
-  S.Struct({ bytes: T.Blob }),
-  S.Struct({ s3Location: S3Location }),
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+  /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
 ]);
 export interface AudioBlock {
   format: AudioFormat;
@@ -1145,12 +1151,12 @@ export type ToolResultContentBlock =
       searchResult: SearchResultBlock;
     };
 export const ToolResultContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ json: S.Any }),
-  S.Struct({ text: S.String }),
-  S.Struct({ image: ImageBlock }),
-  S.Struct({ document: DocumentBlock }),
-  S.Struct({ video: VideoBlock }),
-  S.Struct({ searchResult: SearchResultBlock }),
+  /*@__PURE__*/ S.Struct({ json: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ image: ImageBlock }),
+  /*@__PURE__*/ S.Struct({ document: DocumentBlock }),
+  /*@__PURE__*/ S.Struct({ video: VideoBlock }),
+  /*@__PURE__*/ S.Struct({ searchResult: SearchResultBlock }),
 ]);
 export type ToolResultContentBlocks = ToolResultContentBlock[];
 export const ToolResultContentBlocks = /*@__PURE__*/ S.Array(ToolResultContentBlock);
@@ -1195,7 +1201,9 @@ export type GuardrailConverseImageFormat = "png" | "jpeg" | (string & {});
 export const GuardrailConverseImageFormat = S.String;
 
 export type GuardrailConverseImageSource = { bytes: Uint8Array };
-export const GuardrailConverseImageSource = /*@__PURE__*/ S.Union([S.Struct({ bytes: T.Blob })]);
+export const GuardrailConverseImageSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
+]);
 export interface GuardrailConverseImageBlock {
   format: GuardrailConverseImageFormat;
   source: GuardrailConverseImageSource;
@@ -1209,8 +1217,8 @@ export type GuardrailConverseContentBlock =
   | { text: GuardrailConverseTextBlock; image?: never }
   | { text?: never; image: GuardrailConverseImageBlock };
 export const GuardrailConverseContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: GuardrailConverseTextBlock }),
-  S.Struct({ image: GuardrailConverseImageBlock }),
+  /*@__PURE__*/ S.Struct({ text: GuardrailConverseTextBlock }),
+  /*@__PURE__*/ S.Struct({ image: GuardrailConverseImageBlock }),
 ]);
 export type CachePointType = "default" | (string & {});
 export const CachePointType = S.String;
@@ -1236,15 +1244,19 @@ export type ReasoningContentBlock =
   | { reasoningText: ReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
 export const ReasoningContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ reasoningText: ReasoningTextBlock }),
-  S.Struct({ redactedContent: T.Blob }),
+  /*@__PURE__*/ S.Struct({ reasoningText: ReasoningTextBlock }),
+  /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
 ]);
 export type CitationGeneratedContent = { text: string };
-export const CitationGeneratedContent = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const CitationGeneratedContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+]);
 export type CitationGeneratedContentList = CitationGeneratedContent[];
 export const CitationGeneratedContentList = /*@__PURE__*/ S.Array(CitationGeneratedContent);
 export type CitationSourceContent = { text: string };
-export const CitationSourceContent = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const CitationSourceContent = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+]);
 export type CitationSourceContentList = CitationSourceContent[];
 export const CitationSourceContentList = /*@__PURE__*/ S.Array(CitationSourceContent);
 export interface WebLocation {
@@ -1339,11 +1351,11 @@ export type CitationLocation =
       searchResultLocation: SearchResultLocation;
     };
 export const CitationLocation = /*@__PURE__*/ S.Union([
-  S.Struct({ web: WebLocation }),
-  S.Struct({ documentChar: DocumentCharLocation }),
-  S.Struct({ documentPage: DocumentPageLocation }),
-  S.Struct({ documentChunk: DocumentChunkLocation }),
-  S.Struct({ searchResultLocation: SearchResultLocation }),
+  /*@__PURE__*/ S.Struct({ web: WebLocation }),
+  /*@__PURE__*/ S.Struct({ documentChar: DocumentCharLocation }),
+  /*@__PURE__*/ S.Struct({ documentPage: DocumentPageLocation }),
+  /*@__PURE__*/ S.Struct({ documentChunk: DocumentChunkLocation }),
+  /*@__PURE__*/ S.Struct({ searchResultLocation: SearchResultLocation }),
 ]);
 export interface Citation {
   title?: string;
@@ -1618,20 +1630,20 @@ export type ContentBlock =
       toolRemoval: ToolRemovalBlock;
     };
 export const ContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ image: ImageBlock }),
-  S.Struct({ document: DocumentBlock }),
-  S.Struct({ video: VideoBlock }),
-  S.Struct({ audio: AudioBlock }),
-  S.Struct({ toolUse: ToolUseBlock }),
-  S.Struct({ toolResult: ToolResultBlock }),
-  S.Struct({ guardContent: GuardrailConverseContentBlock }),
-  S.Struct({ cachePoint: CachePointBlock }),
-  S.Struct({ reasoningContent: ReasoningContentBlock }),
-  S.Struct({ citationsContent: CitationsContentBlock }),
-  S.Struct({ searchResult: SearchResultBlock }),
-  S.Struct({ toolAddition: ToolAdditionBlock }),
-  S.Struct({ toolRemoval: ToolRemovalBlock }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ image: ImageBlock }),
+  /*@__PURE__*/ S.Struct({ document: DocumentBlock }),
+  /*@__PURE__*/ S.Struct({ video: VideoBlock }),
+  /*@__PURE__*/ S.Struct({ audio: AudioBlock }),
+  /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlock }),
+  /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlock }),
+  /*@__PURE__*/ S.Struct({ guardContent: GuardrailConverseContentBlock }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ reasoningContent: ReasoningContentBlock }),
+  /*@__PURE__*/ S.Struct({ citationsContent: CitationsContentBlock }),
+  /*@__PURE__*/ S.Struct({ searchResult: SearchResultBlock }),
+  /*@__PURE__*/ S.Struct({ toolAddition: ToolAdditionBlock }),
+  /*@__PURE__*/ S.Struct({ toolRemoval: ToolRemovalBlock }),
 ]);
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
@@ -1650,9 +1662,9 @@ export type SystemContentBlock =
   | { text?: never; guardContent: GuardrailConverseContentBlock; cachePoint?: never }
   | { text?: never; guardContent?: never; cachePoint: CachePointBlock };
 export const SystemContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ guardContent: GuardrailConverseContentBlock }),
-  S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ guardContent: GuardrailConverseContentBlock }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
 ]);
 export type SystemContentBlocks = SystemContentBlock[];
 export const SystemContentBlocks = /*@__PURE__*/ S.Array(SystemContentBlock);
@@ -1673,7 +1685,7 @@ export const InferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InferenceConfiguration" }) as any as S.Schema<InferenceConfiguration>;
 export type ToolInputSchema = { json: any };
-export const ToolInputSchema = /*@__PURE__*/ S.Union([S.Struct({ json: S.Any })]);
+export const ToolInputSchema = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
 export interface ToolSpecification {
   name: string;
   description?: string;
@@ -1699,9 +1711,9 @@ export type Tool =
   | { toolSpec?: never; systemTool: SystemTool; cachePoint?: never }
   | { toolSpec?: never; systemTool?: never; cachePoint: CachePointBlock };
 export const Tool = /*@__PURE__*/ S.Union([
-  S.Struct({ toolSpec: ToolSpecification }),
-  S.Struct({ systemTool: SystemTool }),
-  S.Struct({ cachePoint: CachePointBlock }),
+  /*@__PURE__*/ S.Struct({ toolSpec: ToolSpecification }),
+  /*@__PURE__*/ S.Struct({ systemTool: SystemTool }),
+  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
 ]);
 export type Tools = Tool[];
 export const Tools = /*@__PURE__*/ S.Array(Tool);
@@ -1724,9 +1736,9 @@ export type ToolChoice =
   | { auto?: never; any: AnyToolChoice; tool?: never }
   | { auto?: never; any?: never; tool: SpecificToolChoice };
 export const ToolChoice = /*@__PURE__*/ S.Union([
-  S.Struct({ auto: AutoToolChoice }),
-  S.Struct({ any: AnyToolChoice }),
-  S.Struct({ tool: SpecificToolChoice }),
+  /*@__PURE__*/ S.Struct({ auto: AutoToolChoice }),
+  /*@__PURE__*/ S.Struct({ any: AnyToolChoice }),
+  /*@__PURE__*/ S.Struct({ tool: SpecificToolChoice }),
 ]);
 export interface ToolConfiguration {
   tools: Tool[];
@@ -1751,16 +1763,21 @@ export const GuardrailConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuardrailConfiguration" }) as any as S.Schema<GuardrailConfiguration>;
 export type PromptVariableValues = { text: string };
-export const PromptVariableValues = /*@__PURE__*/ S.Union([S.Struct({ text: S.String })]);
+export const PromptVariableValues = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+]);
 export type PromptVariableMap = { [key: string]: PromptVariableValues | undefined };
 export const PromptVariableMap = /*@__PURE__*/ S.Record(
   S.String,
-  PromptVariableValues.pipe(S.optional),
+  /*@__PURE__*/ PromptVariableValues.pipe(S.optional),
 );
 export type AdditionalModelResponseFieldPaths = string[];
 export const AdditionalModelResponseFieldPaths = /*@__PURE__*/ S.Array(S.String);
 export type RequestMetadata = { [key: string]: string | undefined };
-export const RequestMetadata = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RequestMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type PerformanceConfigLatency = "standard" | "optimized" | (string & {});
 export const PerformanceConfigLatency = S.String;
 
@@ -1792,7 +1809,7 @@ export const JsonSchemaDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JsonSchemaDefinition" }) as any as S.Schema<JsonSchemaDefinition>;
 export type OutputFormatStructure = { jsonSchema: JsonSchemaDefinition };
 export const OutputFormatStructure = /*@__PURE__*/ S.Union([
-  S.Struct({ jsonSchema: JsonSchemaDefinition }),
+  /*@__PURE__*/ S.Struct({ jsonSchema: JsonSchemaDefinition }),
 ]);
 export interface OutputFormat {
   type: OutputFormatType;
@@ -1850,7 +1867,7 @@ export const ConverseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ConverseRequest" }) as any as S.Schema<ConverseRequest>;
 export type ConverseOutput = { message: Message };
-export const ConverseOutput = /*@__PURE__*/ S.Union([S.Struct({ message: Message })]);
+export const ConverseOutput = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ message: Message })]);
 export type StopReason =
   | "end_turn"
   | "tool_use"
@@ -1902,12 +1919,12 @@ export const ModelOutputs = /*@__PURE__*/ S.Array(S.String);
 export type GuardrailAssessmentMap = { [key: string]: GuardrailAssessment | undefined };
 export const GuardrailAssessmentMap = /*@__PURE__*/ S.Record(
   S.String,
-  GuardrailAssessment.pipe(S.optional),
+  /*@__PURE__*/ GuardrailAssessment.pipe(S.optional),
 );
 export type GuardrailAssessmentListMap = { [key: string]: GuardrailAssessment[] | undefined };
 export const GuardrailAssessmentListMap = /*@__PURE__*/ S.Record(
   S.String,
-  GuardrailAssessmentList.pipe(S.optional),
+  /*@__PURE__*/ GuardrailAssessmentList.pipe(S.optional),
 );
 export interface GuardrailTraceAssessment {
   modelOutput?: string[];
@@ -2059,9 +2076,9 @@ export type ContentBlockStart =
   | { toolUse?: never; toolResult: ToolResultBlockStart; image?: never }
   | { toolUse?: never; toolResult?: never; image: ImageBlockStart };
 export const ContentBlockStart = /*@__PURE__*/ S.Union([
-  S.Struct({ toolUse: ToolUseBlockStart }),
-  S.Struct({ toolResult: ToolResultBlockStart }),
-  S.Struct({ image: ImageBlockStart }),
+  /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlockStart }),
+  /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlockStart }),
+  /*@__PURE__*/ S.Struct({ image: ImageBlockStart }),
 ]);
 export type NonNegativeInteger = number;
 export interface ContentBlockStartEvent {
@@ -2079,8 +2096,8 @@ export const ToolUseBlockDelta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToolUseBlockDelta" }) as any as S.Schema<ToolUseBlockDelta>;
 export type ToolResultBlockDelta = { text: string; json?: never } | { text?: never; json: any };
 export const ToolResultBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ json: S.Any }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ json: S.Any }),
 ]);
 export type ToolResultBlocksDelta = ToolResultBlockDelta[];
 export const ToolResultBlocksDelta = /*@__PURE__*/ S.Array(ToolResultBlockDelta);
@@ -2089,9 +2106,9 @@ export type ReasoningContentBlockDelta =
   | { text?: never; redactedContent: Uint8Array; signature?: never }
   | { text?: never; redactedContent?: never; signature: string };
 export const ReasoningContentBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ redactedContent: T.Blob }),
-  S.Struct({ signature: S.String }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
+  /*@__PURE__*/ S.Struct({ signature: S.String }),
 ]);
 export interface CitationSourceContentDelta {
   text?: string;
@@ -2174,12 +2191,12 @@ export type ContentBlockDelta =
       image: ImageBlockDelta;
     };
 export const ContentBlockDelta = /*@__PURE__*/ S.Union([
-  S.Struct({ text: S.String }),
-  S.Struct({ toolUse: ToolUseBlockDelta }),
-  S.Struct({ toolResult: ToolResultBlocksDelta }),
-  S.Struct({ reasoningContent: ReasoningContentBlockDelta }),
-  S.Struct({ citation: CitationsDelta }),
-  S.Struct({ image: ImageBlockDelta }),
+  /*@__PURE__*/ S.Struct({ text: S.String }),
+  /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlockDelta }),
+  /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlocksDelta }),
+  /*@__PURE__*/ S.Struct({ reasoningContent: ReasoningContentBlockDelta }),
+  /*@__PURE__*/ S.Struct({ citation: CitationsDelta }),
+  /*@__PURE__*/ S.Struct({ image: ImageBlockDelta }),
 ]);
 export interface ContentBlockDeltaEvent {
   delta: ContentBlockDelta;
@@ -2382,35 +2399,37 @@ export type ConverseStreamOutput =
       serviceUnavailableException: ServiceUnavailableException;
     };
 export const ConverseStreamOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ messageStart: MessageStartEvent }),
-    S.Struct({ contentBlockStart: ContentBlockStartEvent }),
-    S.Struct({ contentBlockDelta: ContentBlockDeltaEvent }),
-    S.Struct({ contentBlockStop: ContentBlockStopEvent }),
-    S.Struct({ messageStop: MessageStopEvent }),
-    S.Struct({ metadata: ConverseStreamMetadataEvent }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ messageStart: MessageStartEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStart: ContentBlockStartEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockDelta: ContentBlockDeltaEvent }),
+    /*@__PURE__*/ S.Struct({ contentBlockStop: ContentBlockStopEvent }),
+    /*@__PURE__*/ S.Struct({ messageStop: MessageStopEvent }),
+    /*@__PURE__*/ S.Struct({ metadata: ConverseStreamMetadataEvent }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      modelStreamErrorException: S.suspend(() => ModelStreamErrorException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelStreamErrorException: /*@__PURE__*/ S.suspend(() => ModelStreamErrorException).annotate({
         identifier: "ModelStreamErrorException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      serviceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),
@@ -2448,8 +2467,8 @@ export type CountTokensInput =
   | { invokeModel: InvokeModelTokensRequest; converse?: never }
   | { invokeModel?: never; converse: ConverseTokensRequest };
 export const CountTokensInput = /*@__PURE__*/ S.Union([
-  S.Struct({ invokeModel: InvokeModelTokensRequest }),
-  S.Struct({ converse: ConverseTokensRequest }),
+  /*@__PURE__*/ S.Struct({ invokeModel: InvokeModelTokensRequest }),
+  /*@__PURE__*/ S.Struct({ converse: ConverseTokensRequest }),
 ]);
 export interface CountTokensRequest {
   modelId: string;
@@ -2508,7 +2527,7 @@ export const AsyncInvokeS3OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsyncInvokeS3OutputDataConfig>;
 export type AsyncInvokeOutputDataConfig = { s3OutputDataConfig: AsyncInvokeS3OutputDataConfig };
 export const AsyncInvokeOutputDataConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ s3OutputDataConfig: AsyncInvokeS3OutputDataConfig }),
+  /*@__PURE__*/ S.Struct({ s3OutputDataConfig: AsyncInvokeS3OutputDataConfig }),
 ]);
 export interface GetAsyncInvokeResponse {
   invocationArn: string;
@@ -2540,7 +2559,7 @@ export const GuardrailChecksRole = S.String;
 export type GuardrailChecksTextContent = string | redacted.Redacted<string>;
 export type GuardrailChecksContentBlock = { text: string | redacted.Redacted<string> };
 export const GuardrailChecksContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
 ]);
 export type GuardrailChecksContentBlockList = GuardrailChecksContentBlock[];
 export const GuardrailChecksContentBlockList = /*@__PURE__*/ S.Array(GuardrailChecksContentBlock);
@@ -2902,7 +2921,7 @@ export const BidirectionalInputPayloadPart = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BidirectionalInputPayloadPart>;
 export type InvokeModelWithBidirectionalStreamInput = { chunk: BidirectionalInputPayloadPart };
 export const InvokeModelWithBidirectionalStreamInput = /*@__PURE__*/ T.InputEventStream(
-  S.Union([S.Struct({ chunk: BidirectionalInputPayloadPart })]),
+  /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ chunk: BidirectionalInputPayloadPart })]),
 ) as any as S.Schema<stream.Stream<InvokeModelWithBidirectionalStreamInput, Error, never>>;
 export interface InvokeModelWithBidirectionalStreamRequest {
   modelId: string;
@@ -2998,35 +3017,37 @@ export type InvokeModelWithBidirectionalStreamOutput =
       serviceUnavailableException: ServiceUnavailableException;
     };
 export const InvokeModelWithBidirectionalStreamOutput = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ chunk: BidirectionalOutputPayloadPart }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ chunk: BidirectionalOutputPayloadPart }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      modelStreamErrorException: S.suspend(() => ModelStreamErrorException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelStreamErrorException: /*@__PURE__*/ S.suspend(() => ModelStreamErrorException).annotate({
         identifier: "ModelStreamErrorException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      modelTimeoutException: S.suspend(() => ModelTimeoutException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelTimeoutException: /*@__PURE__*/ S.suspend(() => ModelTimeoutException).annotate({
         identifier: "ModelTimeoutException",
       }),
     }),
-    S.Struct({
-      serviceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),
@@ -3154,35 +3175,37 @@ export type ResponseStream =
       serviceUnavailableException: ServiceUnavailableException;
     };
 export const ResponseStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ chunk: PayloadPart }),
-    S.Struct({
-      internalServerException: S.suspend(() => InternalServerException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ chunk: PayloadPart }),
+    /*@__PURE__*/ S.Struct({
+      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
         identifier: "InternalServerException",
       }),
     }),
-    S.Struct({
-      modelStreamErrorException: S.suspend(() => ModelStreamErrorException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelStreamErrorException: /*@__PURE__*/ S.suspend(() => ModelStreamErrorException).annotate({
         identifier: "ModelStreamErrorException",
       }),
     }),
-    S.Struct({
-      validationException: S.suspend(() => ValidationException).annotate({
+    /*@__PURE__*/ S.Struct({
+      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      throttlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),
-    S.Struct({
-      modelTimeoutException: S.suspend(() => ModelTimeoutException).annotate({
+    /*@__PURE__*/ S.Struct({
+      modelTimeoutException: /*@__PURE__*/ S.suspend(() => ModelTimeoutException).annotate({
         identifier: "ModelTimeoutException",
       }),
     }),
-    S.Struct({
-      serviceUnavailableException: S.suspend(() => ServiceUnavailableException).annotate({
+    /*@__PURE__*/ S.Struct({
+      serviceUnavailableException: /*@__PURE__*/ S.suspend(
+        () => ServiceUnavailableException,
+      ).annotate({
         identifier: "ServiceUnavailableException",
       }),
     }),

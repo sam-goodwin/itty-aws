@@ -113,7 +113,7 @@ export const CategoryExpenses = /*@__PURE__*/ S.suspend(() =>
 /** Detailed categories view of all the transactions that fall into the `BANK_PENALTIES` credit category within the given time window, across all the accounts in the report. */
 export type BankPenaltiesIndicatorsCategoryDetailsList = Array<CategoryExpenses | null>;
 export const BankPenaltiesIndicatorsCategoryDetailsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CategoryExpenses),
+  /*@__PURE__*/ S.NullOr(CategoryExpenses),
 ) as any as S.Schema<BankPenaltiesIndicatorsCategoryDetailsList>;
 
 /** A monetary amount with its associated currency information, supporting both official and unofficial currency codes. */
@@ -152,7 +152,7 @@ export const MonthlySummary = /*@__PURE__*/ S.suspend(() =>
 /** The monthly summaries of the transactions that fall into the `BANK_PENALTIES` credit category within the given time window, across all the accounts in the report. */
 export type BankPenaltiesIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
 export const BankPenaltiesIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  S.NullOr(MonthlySummary),
+  /*@__PURE__*/ S.NullOr(MonthlySummary),
 ) as any as S.Schema<BankPenaltiesIndicatorsMonthlySummariesList>;
 
 /** Insights into bank penalties and fees, including overdraft fees, NSF fees, and other bank-imposed charges. */
@@ -198,7 +198,7 @@ export const GamblingIndicatorsTopMerchantsList = /*@__PURE__*/ S.Array(
 /** The monthly summaries of the transactions that fall into the `GAMBLING` category within the given time window, across all the accounts in the report. */
 export type GamblingIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
 export const GamblingIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  S.NullOr(MonthlySummary),
+  /*@__PURE__*/ S.NullOr(MonthlySummary),
 ) as any as S.Schema<GamblingIndicatorsMonthlySummariesList>;
 
 /** Insights into gambling-related transactions, including frequency, amounts, and top merchants. */
@@ -238,7 +238,7 @@ export const GamblingIndicators = /*@__PURE__*/ S.suspend(() =>
 /** Detailed categories view of all the transactions that fall into the `LOAN_DISBURSEMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanDisbursementsIndicatorsCategoryDetailsList = Array<CategoryExpenses | null>;
 export const LoanDisbursementsIndicatorsCategoryDetailsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CategoryExpenses),
+  /*@__PURE__*/ S.NullOr(CategoryExpenses),
 ) as any as S.Schema<LoanDisbursementsIndicatorsCategoryDetailsList>;
 
 /** Up to 3 top service providers that the user had the most transactions for in the given time window, in descending order of total spend. If the user has not received money from any provider in the given time window, this list will be empty. */
@@ -250,7 +250,7 @@ export const LoanDisbursementsIndicatorsTopProvidersList = /*@__PURE__*/ S.Array
 /** The monthly summaries of the transactions that fall into the `LOAN_DISBURSEMENTS` category within the given time window, across all the accounts in the report. */
 export type LoanDisbursementsIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
 export const LoanDisbursementsIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  S.NullOr(MonthlySummary),
+  /*@__PURE__*/ S.NullOr(MonthlySummary),
 ) as any as S.Schema<LoanDisbursementsIndicatorsMonthlySummariesList>;
 
 /** Insights into loan disbursement transactions received by the user, tracking incoming funds from loan providers. */
@@ -295,7 +295,7 @@ export const LoanDisbursementsIndicators = /*@__PURE__*/ S.suspend(() =>
 /** Detailed categories view of all the transactions that fall into the `LOAN_PAYMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanPaymentsIndicatorsCategoryDetailsList = Array<CategoryExpenses | null>;
 export const LoanPaymentsIndicatorsCategoryDetailsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CategoryExpenses),
+  /*@__PURE__*/ S.NullOr(CategoryExpenses),
 ) as any as S.Schema<LoanPaymentsIndicatorsCategoryDetailsList>;
 
 /** Up to 3 top service providers that the user had the most transactions for in the given time window, in descending order of total spend. If the user has not spent money on any provider in the given time window, this list will be empty. */
@@ -307,7 +307,7 @@ export const LoanPaymentsIndicatorsTopProvidersList = /*@__PURE__*/ S.Array(
 /** The monthly summaries of the transactions that fall into the `LOAN_PAYMENTS` credit category within the given time window, across all the accounts in the report. */
 export type LoanPaymentsIndicatorsMonthlySummariesList = Array<MonthlySummary | null>;
 export const LoanPaymentsIndicatorsMonthlySummariesList = /*@__PURE__*/ S.Array(
-  S.NullOr(MonthlySummary),
+  /*@__PURE__*/ S.NullOr(MonthlySummary),
 ) as any as S.Schema<LoanPaymentsIndicatorsMonthlySummariesList>;
 
 /** Insights into loan payment transactions made by the user, tracking outgoing payments to loan providers. */
@@ -368,7 +368,7 @@ export const NegativeBalanceOccurrence = /*@__PURE__*/ S.suspend(() =>
 /** The summary of the negative balance occurrences for this account. If the user has not had a negative balance in the account in the given time window, this list will be empty. */
 export type NegativeBalanceInsightsOccurrencesList = Array<NegativeBalanceOccurrence | null>;
 export const NegativeBalanceInsightsOccurrencesList = /*@__PURE__*/ S.Array(
-  S.NullOr(NegativeBalanceOccurrence),
+  /*@__PURE__*/ S.NullOr(NegativeBalanceOccurrence),
 ) as any as S.Schema<NegativeBalanceInsightsOccurrencesList>;
 
 /** Insights into negative balance occurrences, including frequency, duration, and minimum balance details. */
@@ -415,7 +415,7 @@ export const AmountWithCurrencyWithMonthlyAverage = AmountWithCurrency;
 /** The primary credit categories of the expenses within the given time window, across all the accounts in the report. The categories are sorted in descending order by the total value spent. See the [category taxonomy](https://plaid.com/documents/credit-category-taxonomy.csv) for a full listing of category IDs. */
 export type ExpenditureSummaryTopCategoriesList = Array<CategoryExpenses | null>;
 export const ExpenditureSummaryTopCategoriesList = /*@__PURE__*/ S.Array(
-  S.NullOr(CategoryExpenses),
+  /*@__PURE__*/ S.NullOr(CategoryExpenses),
 ) as any as S.Schema<ExpenditureSummaryTopCategoriesList>;
 
 /** Summary statistics for a specific expenditure category, including total amount, monthly average, and percentage of income. */
@@ -449,7 +449,7 @@ export const ExpenditureSummary = /*@__PURE__*/ S.suspend(() =>
 /** Up to 3 top categories of expenses in this group. */
 export type OutlierTransactionsInsightsTopCategoriesList = Array<CategoryExpenses | null>;
 export const OutlierTransactionsInsightsTopCategoriesList = /*@__PURE__*/ S.Array(
-  S.NullOr(CategoryExpenses),
+  /*@__PURE__*/ S.NullOr(CategoryExpenses),
 ) as any as S.Schema<OutlierTransactionsInsightsTopCategoriesList>;
 
 /** Insights into unusually large transactions that exceed typical spending patterns for the account. */
@@ -9298,7 +9298,7 @@ export const ClientUserIdentityAddressesList = /*@__PURE__*/ S.Array(
 /** The user's ID numbers. */
 export type ClientUserIdentityIdNumbersList = Array<UserIDNumber | null>;
 export const ClientUserIdentityIdNumbersList = /*@__PURE__*/ S.Array(
-  S.NullOr(UserIDNumber),
+  /*@__PURE__*/ S.NullOr(UserIDNumber),
 ) as any as S.Schema<ClientUserIdentityIdNumbersList>;
 
 /** The identity fields associated with a user. For a user to be eligible for a Plaid Check Consumer Report, all fields are required except `id_number`. Providing a partial SSN is strongly recommended, and improves the accuracy of matching user records during compliance processes such as file disclosure, dispute, or security freeze requests. If creating a report that will be shared with GSEs such as Fannie or Freddie, a full Social Security Number must be provided via the `id_number` field. */
@@ -11268,7 +11268,7 @@ export const BetaEwaReportV1GetResponseEwaScoresList = /*@__PURE__*/ S.Array(
 export type EwaAttributes = { [key: string]: number | null | undefined };
 export const EwaAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<EwaAttributes>;
 
 /** BetaEwaReportV1GetResponse defines the response schema for `/beta/ewa_report/v1/get` */
@@ -15531,7 +15531,7 @@ export const CraCreditProfileLendScore = /*@__PURE__*/ S.suspend(() =>
 /** The LendScore results for the credit profile report. */
 export type CraCreditProfileReportLendScoresList = Array<CraCreditProfileLendScore | null>;
 export const CraCreditProfileReportLendScoresList = /*@__PURE__*/ S.Array(
-  S.NullOr(CraCreditProfileLendScore),
+  /*@__PURE__*/ S.NullOr(CraCreditProfileLendScore),
 ) as any as S.Schema<CraCreditProfileReportLendScoresList>;
 
 /** A map of cash flow attributes, where the key is a string, and the value is a string, float, int, or boolean. The specific list of attributes will depend on the cash flow attributes version used. For a full list of all ~2,000 attributes, contact your account manager. */
@@ -15868,7 +15868,7 @@ export const CraReportGetProductAttributes = /*@__PURE__*/ S.Record(
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetQualifyResponseProductErrorsList = Array<PlaidError | null>;
 export const CraReportGetQualifyResponseProductErrorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(PlaidError),
+  /*@__PURE__*/ S.NullOr(PlaidError),
 ) as any as S.Schema<CraReportGetQualifyResponseProductErrorsList>;
 
 /** Qualify data returned by `/cra/report/get`. */
@@ -15994,7 +15994,7 @@ export const CraReportGetIncomeInsightsAttributes = /*@__PURE__*/ S.suspend(() =
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetIncomeInsightsResponseProductErrorsList = Array<PlaidError | null>;
 export const CraReportGetIncomeInsightsResponseProductErrorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(PlaidError),
+  /*@__PURE__*/ S.NullOr(PlaidError),
 ) as any as S.Schema<CraReportGetIncomeInsightsResponseProductErrorsList>;
 
 /** Income Insights data returned by `/cra/report/get`. */
@@ -16111,7 +16111,7 @@ export const CraReportGetHomeLendingAttributesIncomeByCategoriesList = /*@__PURE
 export type CraReportGetHomeLendingIncomeSourcesIncomeProvidersList =
   Array<CraBankIncomeIncomeProvider | null>;
 export const CraReportGetHomeLendingIncomeSourcesIncomeProvidersList = /*@__PURE__*/ S.Array(
-  S.NullOr(CraBankIncomeIncomeProvider),
+  /*@__PURE__*/ S.NullOr(CraBankIncomeIncomeProvider),
 ) as any as S.Schema<CraReportGetHomeLendingIncomeSourcesIncomeProvidersList>;
 
 /** Summary of the income sources backing the Home Lending report. */
@@ -16160,7 +16160,7 @@ export const CraReportGetHomeLendingAttributes = /*@__PURE__*/ S.suspend(() =>
 /** Product-level errors. Non-empty when this product failed to generate; empty on success. */
 export type CraReportGetHomeLendingResponseProductErrorsList = Array<PlaidError | null>;
 export const CraReportGetHomeLendingResponseProductErrorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(PlaidError),
+  /*@__PURE__*/ S.NullOr(PlaidError),
 ) as any as S.Schema<CraReportGetHomeLendingResponseProductErrorsList>;
 
 /** Home Lending data returned by `/cra/report/get`. */
@@ -18434,7 +18434,7 @@ export const PayrollIncomeAccountData = /*@__PURE__*/ S.suspend(() =>
 
 export type PayrollItemAccountsList = Array<PayrollIncomeAccountData | null>;
 export const PayrollItemAccountsList = /*@__PURE__*/ S.Array(
-  S.NullOr(PayrollIncomeAccountData),
+  /*@__PURE__*/ S.NullOr(PayrollIncomeAccountData),
 ) as any as S.Schema<PayrollItemAccountsList>;
 
 /** An object representing the deduction line items for the pay period */
@@ -19389,7 +19389,7 @@ export const DocumentRiskSignal = /*@__PURE__*/ S.suspend(() =>
 /** Array of attributes that indicate whether or not there is fraud risk with a document */
 export type SingleDocumentRiskSignalRiskSignalsList = Array<DocumentRiskSignal | null>;
 export const SingleDocumentRiskSignalRiskSignalsList = /*@__PURE__*/ S.Array(
-  S.NullOr(DocumentRiskSignal),
+  /*@__PURE__*/ S.NullOr(DocumentRiskSignal),
 ) as any as S.Schema<SingleDocumentRiskSignalRiskSignalsList>;
 
 /** A summary across all risk signals associated with a document */
@@ -19434,7 +19434,7 @@ export const MultiDocumentRiskSignalDocumentReferencesList = /*@__PURE__*/ S.Arr
 /** Array of attributes that indicate whether or not there is fraud risk with a set of documents */
 export type MultiDocumentRiskSignalRiskSignalsList = Array<DocumentRiskSignal | null>;
 export const MultiDocumentRiskSignalRiskSignalsList = /*@__PURE__*/ S.Array(
-  S.NullOr(DocumentRiskSignal),
+  /*@__PURE__*/ S.NullOr(DocumentRiskSignal),
 ) as any as S.Schema<MultiDocumentRiskSignalRiskSignalsList>;
 
 /** Object containing risk signals and relevant metadata for a set of uploaded documents */
@@ -23207,7 +23207,7 @@ export const PartnerEndCustomerOAuthInstitutionEnvironments = /*@__PURE__*/ S.su
 /** The errors encountered while registering the end customer's application with the institutions. */
 export type PartnerEndCustomerOAuthInstitutionErrorsList = Array<PlaidError | null>;
 export const PartnerEndCustomerOAuthInstitutionErrorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(PlaidError),
+  /*@__PURE__*/ S.NullOr(PlaidError),
 ) as any as S.Schema<PartnerEndCustomerOAuthInstitutionErrorsList>;
 
 /** The OAuth registration information for an institution. */

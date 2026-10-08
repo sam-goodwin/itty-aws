@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock",
   serviceShapeName: "AmazonBedrockControlPlaneService",
 });
-const auth = T.AwsAuthSigv4({ name: "bedrock" });
-const ver = T.ServiceVersion("2023-04-20");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "bedrock" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-04-20");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,62 +76,65 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(503),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AdvancedPromptOptimizationJobIdentifier = string;
 export type AdvancedPromptOptimizationJobIdentifiers = string[];
@@ -357,7 +360,7 @@ export type AdditionalModelRequestFieldsValue = unknown;
 export type AdditionalModelRequestFields = { [key: string]: any | undefined };
 export const AdditionalModelRequestFields = /*@__PURE__*/ S.Record(
   S.String,
-  S.Any.pipe(S.optional),
+  /*@__PURE__*/ S.Any.pipe(S.optional),
 );
 export interface ModelConfiguration {
   modelId: string;
@@ -674,7 +677,9 @@ export const S3DataSource = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.St
   identifier: "S3DataSource",
 }) as any as S.Schema<S3DataSource>;
 export type ModelDataSource = { s3DataSource: S3DataSource };
-export const ModelDataSource = /*@__PURE__*/ S.Union([S.Struct({ s3DataSource: S3DataSource })]);
+export const ModelDataSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ s3DataSource: S3DataSource }),
+]);
 export type ModelPackageArn = string;
 export interface ModelPackageArnDataSource {
   modelPackageArn: string;
@@ -686,7 +691,7 @@ export const ModelPackageArnDataSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelPackageArnDataSource>;
 export type CustomModelDataSource = { modelPackageArnDataSource: ModelPackageArnDataSource };
 export const CustomModelDataSource = /*@__PURE__*/ S.Union([
-  S.Struct({ modelPackageArnDataSource: ModelPackageArnDataSource }),
+  /*@__PURE__*/ S.Struct({ modelPackageArnDataSource: ModelPackageArnDataSource }),
 ]);
 export type RoleArn = string;
 export interface CreateCustomModelRequest {
@@ -782,7 +787,9 @@ export const EvaluationTaskType = S.String;
 
 export type EvaluationDatasetName = string | redacted.Redacted<string>;
 export type EvaluationDatasetLocation = { s3Uri: string };
-export const EvaluationDatasetLocation = /*@__PURE__*/ S.Union([S.Struct({ s3Uri: S.String })]);
+export const EvaluationDatasetLocation = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ s3Uri: S.String }),
+]);
 export interface EvaluationDataset {
   name: string | redacted.Redacted<string>;
   datasetLocation?: EvaluationDatasetLocation;
@@ -820,7 +827,7 @@ export type BedrockEvaluatorModels = BedrockEvaluatorModel[];
 export const BedrockEvaluatorModels = /*@__PURE__*/ S.Array(BedrockEvaluatorModel);
 export type EvaluatorModelConfig = { bedrockEvaluatorModels: BedrockEvaluatorModel[] };
 export const EvaluatorModelConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ bedrockEvaluatorModels: BedrockEvaluatorModels }),
+  /*@__PURE__*/ S.Struct({ bedrockEvaluatorModels: BedrockEvaluatorModels }),
 ]);
 export type MetricName = string | redacted.Redacted<string>;
 export type CustomMetricInstructions = string;
@@ -829,8 +836,8 @@ export type RatingScaleItemValue =
   | { stringValue: string; floatValue?: never }
   | { stringValue?: never; floatValue: number };
 export const RatingScaleItemValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ floatValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ floatValue: S.Number }),
 ]);
 export interface RatingScaleItem {
   definition: string;
@@ -853,7 +860,7 @@ export type AutomatedEvaluationCustomMetricSource = {
   customMetricDefinition: CustomMetricDefinition;
 };
 export const AutomatedEvaluationCustomMetricSource = /*@__PURE__*/ S.Union([
-  S.Struct({ customMetricDefinition: CustomMetricDefinition }),
+  /*@__PURE__*/ S.Struct({ customMetricDefinition: CustomMetricDefinition }),
 ]);
 export type AutomatedEvaluationCustomMetrics = AutomatedEvaluationCustomMetricSource[];
 export const AutomatedEvaluationCustomMetrics = /*@__PURE__*/ S.Array(
@@ -948,8 +955,8 @@ export type EvaluationConfig =
   | { automated: AutomatedEvaluationConfig; human?: never }
   | { automated?: never; human: HumanEvaluationConfig };
 export const EvaluationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ automated: AutomatedEvaluationConfig }),
-  S.Struct({ human: HumanEvaluationConfig }),
+  /*@__PURE__*/ S.Struct({ automated: AutomatedEvaluationConfig }),
+  /*@__PURE__*/ S.Struct({ human: HumanEvaluationConfig }),
 ]);
 export type EvaluationBedrockModelIdentifier = string;
 export type EvaluationModelInferenceParams = string | redacted.Redacted<string>;
@@ -987,8 +994,8 @@ export type EvaluationModelConfig =
   | { bedrockModel: EvaluationBedrockModel; precomputedInferenceSource?: never }
   | { bedrockModel?: never; precomputedInferenceSource: EvaluationPrecomputedInferenceSource };
 export const EvaluationModelConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ bedrockModel: EvaluationBedrockModel }),
-  S.Struct({ precomputedInferenceSource: EvaluationPrecomputedInferenceSource }),
+  /*@__PURE__*/ S.Struct({ bedrockModel: EvaluationBedrockModel }),
+  /*@__PURE__*/ S.Struct({ precomputedInferenceSource: EvaluationPrecomputedInferenceSource }),
 ]);
 export type EvaluationModelConfigs = EvaluationModelConfig[];
 export const EvaluationModelConfigs = /*@__PURE__*/ S.Array(EvaluationModelConfig);
@@ -1007,7 +1014,7 @@ export const FilterAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterAttribute" }) as any as S.Schema<FilterAttribute>;
 export type RetrievalFilterList = RetrievalFilter[];
 export const RetrievalFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
+  /*@__PURE__*/ S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
 ) as any as S.Schema<RetrievalFilterList>;
 export type RetrievalFilter =
   | {
@@ -1206,22 +1213,26 @@ export type RetrievalFilter =
       orAll: RetrievalFilter[];
     };
 export const RetrievalFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ equals: FilterAttribute }),
-  S.Struct({ notEquals: FilterAttribute }),
-  S.Struct({ greaterThan: FilterAttribute }),
-  S.Struct({ greaterThanOrEquals: FilterAttribute }),
-  S.Struct({ lessThan: FilterAttribute }),
-  S.Struct({ lessThanOrEquals: FilterAttribute }),
-  S.Struct({ in: FilterAttribute }),
-  S.Struct({ notIn: FilterAttribute }),
-  S.Struct({ startsWith: FilterAttribute }),
-  S.Struct({ listContains: FilterAttribute }),
-  S.Struct({ stringContains: FilterAttribute }),
-  S.Struct({
-    andAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({ equals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ greaterThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThan: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ lessThanOrEquals: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ in: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ notIn: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ startsWith: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ listContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({ stringContains: FilterAttribute }),
+  /*@__PURE__*/ S.Struct({
+    andAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
-  S.Struct({
-    orAll: S.suspend(() => RetrievalFilterList).annotate({ identifier: "RetrievalFilterList" }),
+  /*@__PURE__*/ S.Struct({
+    orAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
   }),
 ]) as any as S.Schema<RetrievalFilter>;
 export type AttributeType = "STRING" | "NUMBER" | "BOOLEAN" | "STRING_LIST" | (string & {});
@@ -1278,8 +1289,8 @@ export type RerankingMetadataSelectiveModeConfiguration =
   | { fieldsToInclude: FieldForReranking[]; fieldsToExclude?: never }
   | { fieldsToInclude?: never; fieldsToExclude: FieldForReranking[] };
 export const RerankingMetadataSelectiveModeConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ fieldsToInclude: FieldsForReranking }),
-  S.Struct({ fieldsToExclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToInclude: FieldsForReranking }),
+  /*@__PURE__*/ S.Struct({ fieldsToExclude: FieldsForReranking }),
 ]);
 export interface MetadataConfigurationForReranking {
   selectionMode: RerankingMetadataSelectionMode;
@@ -1531,8 +1542,8 @@ export type KnowledgeBaseConfig =
   | { retrieveConfig: RetrieveConfig; retrieveAndGenerateConfig?: never }
   | { retrieveConfig?: never; retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration };
 export const KnowledgeBaseConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ retrieveConfig: RetrieveConfig }),
-  S.Struct({ retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration }),
+  /*@__PURE__*/ S.Struct({ retrieveConfig: RetrieveConfig }),
+  /*@__PURE__*/ S.Struct({ retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration }),
 ]);
 export type EvaluationPrecomputedRagSourceIdentifier = string;
 export interface EvaluationPrecomputedRetrieveSourceConfig {
@@ -1561,8 +1572,8 @@ export type EvaluationPrecomputedRagSourceConfig =
       retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig;
     };
 export const EvaluationPrecomputedRagSourceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({ retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }),
+  /*@__PURE__*/ S.Struct({
     retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig,
   }),
 ]);
@@ -1573,8 +1584,8 @@ export type RAGConfig =
       precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig;
     };
 export const RAGConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ knowledgeBaseConfig: KnowledgeBaseConfig }),
-  S.Struct({ precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig }),
+  /*@__PURE__*/ S.Struct({ knowledgeBaseConfig: KnowledgeBaseConfig }),
+  /*@__PURE__*/ S.Struct({ precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig }),
 ]);
 export type RagConfigs = RAGConfig[];
 export const RagConfigs = /*@__PURE__*/ S.Array(RAGConfig);
@@ -1582,8 +1593,8 @@ export type EvaluationInferenceConfig =
   | { models: EvaluationModelConfig[]; ragConfigs?: never }
   | { models?: never; ragConfigs: RAGConfig[] };
 export const EvaluationInferenceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ models: EvaluationModelConfigs }),
-  S.Struct({ ragConfigs: RagConfigs }),
+  /*@__PURE__*/ S.Struct({ models: EvaluationModelConfigs }),
+  /*@__PURE__*/ S.Struct({ ragConfigs: RagConfigs }),
 ]);
 export interface EvaluationOutputDataConfig {
   s3Uri: string;
@@ -2089,7 +2100,7 @@ export type InferenceProfileDescription = string | redacted.Redacted<string>;
 export type InferenceProfileModelSourceArn = string;
 export type InferenceProfileModelSource = { copyFrom: string };
 export const InferenceProfileModelSource = /*@__PURE__*/ S.Union([
-  S.Struct({ copyFrom: S.String }),
+  /*@__PURE__*/ S.Struct({ copyFrom: S.String }),
 ]);
 export interface CreateInferenceProfileRequest {
   inferenceProfileName: string;
@@ -2157,7 +2168,9 @@ export const SageMakerEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SageMakerEndpoint" }) as any as S.Schema<SageMakerEndpoint>;
 export type EndpointConfig = { sageMaker: SageMakerEndpoint };
-export const EndpointConfig = /*@__PURE__*/ S.Union([S.Struct({ sageMaker: SageMakerEndpoint })]);
+export const EndpointConfig = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ sageMaker: SageMakerEndpoint }),
+]);
 export type AcceptEula = boolean;
 export type EndpointName = string;
 export interface CreateMarketplaceModelEndpointRequest {
@@ -2265,9 +2278,14 @@ export const CustomizationType = S.String;
 
 export type UsePromptResponse = boolean;
 export type InvocationLogSource = { s3Uri: string };
-export const InvocationLogSource = /*@__PURE__*/ S.Union([S.Struct({ s3Uri: S.String })]);
+export const InvocationLogSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ s3Uri: S.String }),
+]);
 export type RequestMetadataMap = { [key: string]: string | undefined };
-export const RequestMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RequestMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface RequestMetadataBaseFilters {
   equals?: { [key: string]: string | undefined };
   notEquals?: { [key: string]: string | undefined };
@@ -2295,10 +2313,10 @@ export type RequestMetadataFilters =
   | { equals?: never; notEquals?: never; andAll: RequestMetadataBaseFilters[]; orAll?: never }
   | { equals?: never; notEquals?: never; andAll?: never; orAll: RequestMetadataBaseFilters[] };
 export const RequestMetadataFilters = /*@__PURE__*/ S.Union([
-  S.Struct({ equals: RequestMetadataMap }),
-  S.Struct({ notEquals: RequestMetadataMap }),
-  S.Struct({ andAll: RequestMetadataFiltersList }),
-  S.Struct({ orAll: RequestMetadataFiltersList }),
+  /*@__PURE__*/ S.Struct({ equals: RequestMetadataMap }),
+  /*@__PURE__*/ S.Struct({ notEquals: RequestMetadataMap }),
+  /*@__PURE__*/ S.Struct({ andAll: RequestMetadataFiltersList }),
+  /*@__PURE__*/ S.Struct({ orAll: RequestMetadataFiltersList }),
 ]);
 export interface InvocationLogsConfig {
   usePromptResponse?: boolean;
@@ -2342,7 +2360,7 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 export type ModelCustomizationHyperParameters = { [key: string]: string | undefined };
 export const ModelCustomizationHyperParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type TeacherModelIdentifier = string;
 export interface TeacherModelConfig {
@@ -2369,7 +2387,9 @@ export const LambdaGraderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambdaArn: S.String }),
 ).annotate({ identifier: "LambdaGraderConfig" }) as any as S.Schema<LambdaGraderConfig>;
 export type GraderConfig = { lambdaGrader: LambdaGraderConfig };
-export const GraderConfig = /*@__PURE__*/ S.Union([S.Struct({ lambdaGrader: LambdaGraderConfig })]);
+export const GraderConfig = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ lambdaGrader: LambdaGraderConfig }),
+]);
 export type EpochCount = number;
 export type RFTBatchSize = number;
 export type RFTLearningRate = number;
@@ -2416,8 +2436,8 @@ export type CustomizationConfig =
   | { distillationConfig: DistillationConfig; rftConfig?: never }
   | { distillationConfig?: never; rftConfig: RFTConfig };
 export const CustomizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ distillationConfig: DistillationConfig }),
-  S.Struct({ rftConfig: RFTConfig }),
+  /*@__PURE__*/ S.Struct({ distillationConfig: DistillationConfig }),
+  /*@__PURE__*/ S.Struct({ rftConfig: RFTConfig }),
 ]);
 export interface CreateModelCustomizationJobRequest {
   jobName: string;
@@ -2538,7 +2558,7 @@ export type ModelInvocationJobInputDataConfig = {
   s3InputDataConfig: ModelInvocationJobS3InputDataConfig;
 };
 export const ModelInvocationJobInputDataConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ s3InputDataConfig: ModelInvocationJobS3InputDataConfig }),
+  /*@__PURE__*/ S.Struct({ s3InputDataConfig: ModelInvocationJobS3InputDataConfig }),
 ]);
 export interface ModelInvocationJobS3OutputDataConfig {
   s3Uri: string;
@@ -2558,7 +2578,7 @@ export type ModelInvocationJobOutputDataConfig = {
   s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig;
 };
 export const ModelInvocationJobOutputDataConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig }),
+  /*@__PURE__*/ S.Struct({ s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig }),
 ]);
 export type ModelInvocationJobTimeoutDurationInHours = number;
 export type ModelInvocationType = "InvokeModel" | "Converse" | (string & {});
@@ -3324,9 +3344,9 @@ export type AutomatedReasoningPolicyTypeValueAnnotation =
       deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue;
     };
 export const AutomatedReasoningPolicyTypeValueAnnotation = /*@__PURE__*/ S.Union([
-  S.Struct({ addTypeValue: AutomatedReasoningPolicyAddTypeValue }),
-  S.Struct({ updateTypeValue: AutomatedReasoningPolicyUpdateTypeValue }),
-  S.Struct({ deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue }),
+  /*@__PURE__*/ S.Struct({ addTypeValue: AutomatedReasoningPolicyAddTypeValue }),
+  /*@__PURE__*/ S.Struct({ updateTypeValue: AutomatedReasoningPolicyUpdateTypeValue }),
+  /*@__PURE__*/ S.Struct({ deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue }),
 ]);
 export type AutomatedReasoningPolicyTypeValueAnnotationList =
   AutomatedReasoningPolicyTypeValueAnnotation[];
@@ -3665,23 +3685,25 @@ export type AutomatedReasoningPolicyAnnotation =
       ingestContent: AutomatedReasoningPolicyIngestContentAnnotation;
     };
 export const AutomatedReasoningPolicyAnnotation = /*@__PURE__*/ S.Union([
-  S.Struct({ addType: AutomatedReasoningPolicyAddTypeAnnotation }),
-  S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeAnnotation }),
-  S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeAnnotation }),
-  S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableAnnotation }),
-  S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableAnnotation }),
-  S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableAnnotation }),
-  S.Struct({ addRule: AutomatedReasoningPolicyAddRuleAnnotation }),
-  S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleAnnotation }),
-  S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleAnnotation }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeAnnotation }),
+  /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeAnnotation }),
+  /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeAnnotation }),
+  /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableAnnotation }),
+  /*@__PURE__*/ S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableAnnotation }),
+  /*@__PURE__*/ S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableAnnotation }),
+  /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleAnnotation }),
+  /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleAnnotation }),
+  /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleAnnotation }),
+  /*@__PURE__*/ S.Struct({
     addRuleFromNaturalLanguage: AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation,
   }),
-  S.Struct({ updateFromRulesFeedback: AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
+    updateFromRulesFeedback: AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation,
+  }),
+  /*@__PURE__*/ S.Struct({
     updateFromScenarioFeedback: AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation,
   }),
-  S.Struct({ ingestContent: AutomatedReasoningPolicyIngestContentAnnotation }),
+  /*@__PURE__*/ S.Struct({ ingestContent: AutomatedReasoningPolicyIngestContentAnnotation }),
 ]);
 export type AutomatedReasoningPolicyAnnotationList = AutomatedReasoningPolicyAnnotation[];
 export const AutomatedReasoningPolicyAnnotationList = /*@__PURE__*/ S.Array(
@@ -4076,22 +4098,22 @@ export type AutomatedReasoningPolicyMutation =
       deleteRule: AutomatedReasoningPolicyDeleteRuleMutation;
     };
 export const AutomatedReasoningPolicyMutation = /*@__PURE__*/ S.Union([
-  S.Struct({ addType: AutomatedReasoningPolicyAddTypeMutation }),
-  S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeMutation }),
-  S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeMutation }),
-  S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableMutation }),
-  S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableMutation }),
-  S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableMutation }),
-  S.Struct({ addRule: AutomatedReasoningPolicyAddRuleMutation }),
-  S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleMutation }),
-  S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleMutation }),
+  /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeMutation }),
+  /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeMutation }),
+  /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeMutation }),
+  /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableMutation }),
+  /*@__PURE__*/ S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableMutation }),
+  /*@__PURE__*/ S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableMutation }),
+  /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleMutation }),
+  /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleMutation }),
+  /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleMutation }),
 ]);
 export type AutomatedReasoningPolicyBuildStepContext =
   | { planning: AutomatedReasoningPolicyPlanning; mutation?: never }
   | { planning?: never; mutation: AutomatedReasoningPolicyMutation };
 export const AutomatedReasoningPolicyBuildStepContext = /*@__PURE__*/ S.Union([
-  S.Struct({ planning: AutomatedReasoningPolicyPlanning }),
-  S.Struct({ mutation: AutomatedReasoningPolicyMutation }),
+  /*@__PURE__*/ S.Struct({ planning: AutomatedReasoningPolicyPlanning }),
+  /*@__PURE__*/ S.Struct({ mutation: AutomatedReasoningPolicyMutation }),
 ]);
 export type AutomatedReasoningPolicyDefinitionElement =
   | {
@@ -4110,9 +4132,9 @@ export type AutomatedReasoningPolicyDefinitionElement =
       policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule;
     };
 export const AutomatedReasoningPolicyDefinitionElement = /*@__PURE__*/ S.Union([
-  S.Struct({ policyDefinitionVariable: AutomatedReasoningPolicyDefinitionVariable }),
-  S.Struct({ policyDefinitionType: AutomatedReasoningPolicyDefinitionType }),
-  S.Struct({ policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule }),
+  /*@__PURE__*/ S.Struct({ policyDefinitionVariable: AutomatedReasoningPolicyDefinitionVariable }),
+  /*@__PURE__*/ S.Struct({ policyDefinitionType: AutomatedReasoningPolicyDefinitionType }),
+  /*@__PURE__*/ S.Struct({ policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule }),
 ]);
 export type AutomatedReasoningPolicyBuildMessageType = "INFO" | "WARNING" | "ERROR" | (string & {});
 export const AutomatedReasoningPolicyBuildMessageType = S.String;
@@ -4325,7 +4347,7 @@ export type AutomatedReasoningPolicyRuleReportMap = {
 };
 export const AutomatedReasoningPolicyRuleReportMap = /*@__PURE__*/ S.Record(
   S.String,
-  AutomatedReasoningPolicyRuleReport.pipe(S.optional),
+  /*@__PURE__*/ AutomatedReasoningPolicyRuleReport.pipe(S.optional),
 );
 export interface AutomatedReasoningPolicyVariableReport {
   policyVariable: string | redacted.Redacted<string>;
@@ -4350,7 +4372,7 @@ export type AutomatedReasoningPolicyVariableReportMap = {
 };
 export const AutomatedReasoningPolicyVariableReportMap = /*@__PURE__*/ S.Record(
   S.String,
-  AutomatedReasoningPolicyVariableReport.pipe(S.optional),
+  /*@__PURE__*/ AutomatedReasoningPolicyVariableReport.pipe(S.optional),
 );
 export type AutomatedReasoningPolicyStatementText = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyLineNumberList = number[];
@@ -4395,7 +4417,7 @@ export type AutomatedReasoningPolicyAnnotatedContent = {
   line: AutomatedReasoningPolicyAnnotatedLine;
 };
 export const AutomatedReasoningPolicyAnnotatedContent = /*@__PURE__*/ S.Union([
-  S.Struct({ line: AutomatedReasoningPolicyAnnotatedLine }),
+  /*@__PURE__*/ S.Struct({ line: AutomatedReasoningPolicyAnnotatedLine }),
 ]);
 export type AutomatedReasoningPolicyAnnotatedContentList =
   AutomatedReasoningPolicyAnnotatedContent[];
@@ -4541,14 +4563,14 @@ export type AutomatedReasoningPolicyBuildResultAssets =
       fidelityReport: AutomatedReasoningPolicyFidelityReport;
     };
 export const AutomatedReasoningPolicyBuildResultAssets = /*@__PURE__*/ S.Union([
-  S.Struct({ policyDefinition: AutomatedReasoningPolicyDefinition }),
-  S.Struct({ qualityReport: AutomatedReasoningPolicyDefinitionQualityReport }),
-  S.Struct({ buildLog: AutomatedReasoningPolicyBuildLog }),
-  S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCases }),
-  S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarios }),
-  S.Struct({ assetManifest: AutomatedReasoningPolicyBuildResultAssetManifest }),
-  S.Struct({ document: AutomatedReasoningPolicySourceDocument }),
-  S.Struct({ fidelityReport: AutomatedReasoningPolicyFidelityReport }),
+  /*@__PURE__*/ S.Struct({ policyDefinition: AutomatedReasoningPolicyDefinition }),
+  /*@__PURE__*/ S.Struct({ qualityReport: AutomatedReasoningPolicyDefinitionQualityReport }),
+  /*@__PURE__*/ S.Struct({ buildLog: AutomatedReasoningPolicyBuildLog }),
+  /*@__PURE__*/ S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCases }),
+  /*@__PURE__*/ S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarios }),
+  /*@__PURE__*/ S.Struct({ assetManifest: AutomatedReasoningPolicyBuildResultAssetManifest }),
+  /*@__PURE__*/ S.Struct({ document: AutomatedReasoningPolicySourceDocument }),
+  /*@__PURE__*/ S.Struct({ fidelityReport: AutomatedReasoningPolicyFidelityReport }),
 ]);
 export interface GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse {
   policyArn: string;
@@ -4943,13 +4965,15 @@ export type AutomatedReasoningCheckFinding =
       noTranslations: AutomatedReasoningCheckNoTranslationsFinding;
     };
 export const AutomatedReasoningCheckFinding = /*@__PURE__*/ S.Union([
-  S.Struct({ valid: AutomatedReasoningCheckValidFinding }),
-  S.Struct({ invalid: AutomatedReasoningCheckInvalidFinding }),
-  S.Struct({ satisfiable: AutomatedReasoningCheckSatisfiableFinding }),
-  S.Struct({ impossible: AutomatedReasoningCheckImpossibleFinding }),
-  S.Struct({ translationAmbiguous: AutomatedReasoningCheckTranslationAmbiguousFinding }),
-  S.Struct({ tooComplex: AutomatedReasoningCheckTooComplexFinding }),
-  S.Struct({ noTranslations: AutomatedReasoningCheckNoTranslationsFinding }),
+  /*@__PURE__*/ S.Struct({ valid: AutomatedReasoningCheckValidFinding }),
+  /*@__PURE__*/ S.Struct({ invalid: AutomatedReasoningCheckInvalidFinding }),
+  /*@__PURE__*/ S.Struct({ satisfiable: AutomatedReasoningCheckSatisfiableFinding }),
+  /*@__PURE__*/ S.Struct({ impossible: AutomatedReasoningCheckImpossibleFinding }),
+  /*@__PURE__*/ S.Struct({
+    translationAmbiguous: AutomatedReasoningCheckTranslationAmbiguousFinding,
+  }),
+  /*@__PURE__*/ S.Struct({ tooComplex: AutomatedReasoningCheckTooComplexFinding }),
+  /*@__PURE__*/ S.Struct({ noTranslations: AutomatedReasoningCheckNoTranslationsFinding }),
 ]);
 export type AutomatedReasoningCheckFindingList = AutomatedReasoningCheckFinding[];
 export const AutomatedReasoningCheckFindingList = /*@__PURE__*/ S.Array(
@@ -7997,7 +8021,7 @@ export type AutomatedReasoningPolicyGenerateFidelityReportContent = {
   documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
 };
 export const AutomatedReasoningPolicyGenerateFidelityReportContent = /*@__PURE__*/ S.Union([
-  S.Struct({ documents: AutomatedReasoningPolicyGenerateFidelityReportDocumentList }),
+  /*@__PURE__*/ S.Struct({ documents: AutomatedReasoningPolicyGenerateFidelityReportDocumentList }),
 ]);
 export type AutomatedReasoningPolicyIterativeRefinementDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
@@ -8043,12 +8067,16 @@ export type AutomatedReasoningPolicyWorkflowTypeContent =
       iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent;
     };
 export const AutomatedReasoningPolicyWorkflowTypeContent = /*@__PURE__*/ S.Union([
-  S.Struct({ documents: AutomatedReasoningPolicyBuildWorkflowDocumentList }),
-  S.Struct({ policyRepairAssets: AutomatedReasoningPolicyBuildWorkflowRepairContent }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({ documents: AutomatedReasoningPolicyBuildWorkflowDocumentList }),
+  /*@__PURE__*/ S.Struct({
+    policyRepairAssets: AutomatedReasoningPolicyBuildWorkflowRepairContent,
+  }),
+  /*@__PURE__*/ S.Struct({
     generateFidelityReportContent: AutomatedReasoningPolicyGenerateFidelityReportContent,
   }),
-  S.Struct({ iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent }),
+  /*@__PURE__*/ S.Struct({
+    iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent,
+  }),
 ]);
 export interface AutomatedReasoningPolicyBuildWorkflowSource {
   policyDefinition?: AutomatedReasoningPolicyDefinition;

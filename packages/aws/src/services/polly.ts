@@ -10,12 +10,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://polly.amazonaws.com/doc/v1");
-const svc = T.AwsApiService({ sdkId: "Polly", serviceShapeName: "Parrot_v1" });
-const auth = T.AwsAuthSigv4({ name: "polly" });
-const ver = T.ServiceVersion("2016-06-10");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://polly.amazonaws.com/doc/v1");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Polly", serviceShapeName: "Parrot_v1" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "polly" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-06-10");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,165 +73,172 @@ const rules = T.EndpointResolver((p, _) => {
 export class EngineNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<EngineNotSupportedException>()(
     "EngineNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLexiconException
   extends /*@__PURE__*/ S.TaggedError<InvalidLexiconException>()(
     "InvalidLexiconException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3BucketException
   extends /*@__PURE__*/ S.TaggedError<InvalidS3BucketException>()(
     "InvalidS3BucketException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3KeyException
   extends /*@__PURE__*/ S.TaggedError<InvalidS3KeyException>()(
     "InvalidS3KeyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSampleRateException
   extends /*@__PURE__*/ S.TaggedError<InvalidSampleRateException>()(
     "InvalidSampleRateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicArnException
   extends /*@__PURE__*/ S.TaggedError<InvalidSnsTopicArnException>()(
     "InvalidSnsTopicArnException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSsmlException
   extends /*@__PURE__*/ S.TaggedError<InvalidSsmlException>()(
     "InvalidSsmlException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTaskIdException
   extends /*@__PURE__*/ S.TaggedError<InvalidTaskIdException>()(
     "InvalidTaskIdException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LanguageNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<LanguageNotSupportedException>()(
     "LanguageNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LexiconNotFoundException
   extends /*@__PURE__*/ S.TaggedError<LexiconNotFoundException>()(
     "LexiconNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class LexiconSizeExceededException
   extends /*@__PURE__*/ S.TaggedError<LexiconSizeExceededException>()(
     "LexiconSizeExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MarksNotSupportedForFormatException
   extends /*@__PURE__*/ S.TaggedError<MarksNotSupportedForFormatException>()(
     "MarksNotSupportedForFormatException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaxLexemeLengthExceededException
   extends /*@__PURE__*/ S.TaggedError<MaxLexemeLengthExceededException>()(
     "MaxLexemeLengthExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaxLexiconsNumberExceededException
   extends /*@__PURE__*/ S.TaggedError<MaxLexiconsNumberExceededException>()(
     "MaxLexiconsNumberExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
   extends /*@__PURE__*/ S.TaggedError<ServiceFailureException>()(
     "ServiceFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      quotaCode: S.suspend(() => QuotaCode).annotate({ identifier: "QuotaCode" }),
-      serviceCode: S.suspend(() => ServiceCode).annotate({ identifier: "ServiceCode" }),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      quotaCode: /*@__PURE__*/ S.suspend(() => QuotaCode).annotate({ identifier: "QuotaCode" }),
+      serviceCode: /*@__PURE__*/ S.suspend(() => ServiceCode).annotate({
+        identifier: "ServiceCode",
+      }),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class SsmlMarksNotSupportedForTextTypeException
   extends /*@__PURE__*/ S.TaggedError<SsmlMarksNotSupportedForTextTypeException>()(
     "SsmlMarksNotSupportedForTextTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SynthesisTaskNotFoundException
   extends /*@__PURE__*/ S.TaggedError<SynthesisTaskNotFoundException>()(
     "SynthesisTaskNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TextLengthExceededException
   extends /*@__PURE__*/ S.TaggedError<TextLengthExceededException>()(
     "TextLengthExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      throttlingReasons: S.optional(
-        S.suspend(() => ThrottlingReasonList).annotate({ identifier: "ThrottlingReasonList" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      throttlingReasons: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
       ),
     },
-    T.all(T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }), T.HttpError(400)),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      /*@__PURE__*/ T.HttpError(400),
+    ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedPlsAlphabetException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedPlsAlphabetException>()(
     "UnsupportedPlsAlphabetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedPlsLanguageException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedPlsLanguageException>()(
     "UnsupportedPlsLanguageException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      reason: S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type LexiconName = string;
 export interface DeleteLexiconInput {
@@ -706,7 +713,10 @@ export type StartSpeechSynthesisStreamActionStream =
   | { TextEvent: TextEvent; CloseStreamEvent?: never }
   | { TextEvent?: never; CloseStreamEvent: CloseStreamEvent };
 export const StartSpeechSynthesisStreamActionStream = /*@__PURE__*/ T.InputEventStream(
-  S.Union([S.Struct({ TextEvent: TextEvent }), S.Struct({ CloseStreamEvent: CloseStreamEvent })]),
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ TextEvent: TextEvent }),
+    /*@__PURE__*/ S.Struct({ CloseStreamEvent: CloseStreamEvent }),
+  ]),
 ) as any as S.Schema<stream.Stream<StartSpeechSynthesisStreamActionStream, Error, never>>;
 export interface StartSpeechSynthesisStreamInput {
   Engine: Engine;
@@ -836,26 +846,28 @@ export type StartSpeechSynthesisStreamEventStream =
       ThrottlingException: ThrottlingException;
     };
 export const StartSpeechSynthesisStreamEventStream = /*@__PURE__*/ T.EventStream(
-  S.Union([
-    S.Struct({ AudioEvent: AudioEvent }),
-    S.Struct({ StreamClosedEvent: StreamClosedEvent }),
-    S.Struct({
-      ValidationException: S.suspend(() => ValidationException).annotate({
+  /*@__PURE__*/ S.Union([
+    /*@__PURE__*/ S.Struct({ AudioEvent: AudioEvent }),
+    /*@__PURE__*/ S.Struct({ StreamClosedEvent: StreamClosedEvent }),
+    /*@__PURE__*/ S.Struct({
+      ValidationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
         identifier: "ValidationException",
       }),
     }),
-    S.Struct({
-      ServiceQuotaExceededException: S.suspend(() => ServiceQuotaExceededException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceQuotaExceededException: /*@__PURE__*/ S.suspend(
+        () => ServiceQuotaExceededException,
+      ).annotate({
         identifier: "ServiceQuotaExceededException",
       }),
     }),
-    S.Struct({
-      ServiceFailureException: S.suspend(() => ServiceFailureException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ServiceFailureException: /*@__PURE__*/ S.suspend(() => ServiceFailureException).annotate({
         identifier: "ServiceFailureException",
       }),
     }),
-    S.Struct({
-      ThrottlingException: S.suspend(() => ThrottlingException).annotate({
+    /*@__PURE__*/ S.Struct({
+      ThrottlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
         identifier: "ThrottlingException",
       }),
     }),

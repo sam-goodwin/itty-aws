@@ -281,7 +281,7 @@ export type AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
 export const AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -600,7 +600,7 @@ export type AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
 export const AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4429,7 +4429,7 @@ export type GetAccountResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const GetAccountResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetAccountResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5832,7 +5832,7 @@ export type NetAppAccountIdentityUserAssignedIdentitiesMap = {
 };
 export const NetAppAccountIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<NetAppAccountIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8265,7 +8265,7 @@ export type UpdateAccountRequestIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateAccountRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentityInput),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UpdateAccountRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8331,7 +8331,7 @@ export type UpdateAccountResponseIdentityUserAssignedIdentitiesMap = {
 };
 export const UpdateAccountResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UserAssignedIdentity),
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UpdateAccountResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

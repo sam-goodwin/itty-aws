@@ -36,12 +36,12 @@ export const ArchiveNodesClearRepositoriesMeteringRequest = /*@__PURE__*/ S.susp
 
 export type TypesErrorCauseRootCauseList = Array<TypesErrorCause>;
 export const TypesErrorCauseRootCauseList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesErrorCause),
+  /*@__PURE__*/ S.suspend(() => TypesErrorCause),
 ) as any as S.Schema<TypesErrorCauseRootCauseList>;
 
 export type TypesErrorCauseSuppressedList = Array<TypesErrorCause>;
 export const TypesErrorCauseSuppressedList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesErrorCause),
+  /*@__PURE__*/ S.suspend(() => TypesErrorCause),
 ) as any as S.Schema<TypesErrorCauseSuppressedList>;
 
 /** Cause and details about a request failure. This class defines the properties common to all error types. Additional details are also provided, that depend on the error type. */
@@ -2460,7 +2460,7 @@ export const GlobalSearchTypesHitScore = S.Unknown as any as S.Schema<GlobalSear
 
 export type GlobalExplainExplanationDetailDetailsList = Array<GlobalExplainExplanationDetail>;
 export const GlobalExplainExplanationDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalExplainExplanationDetail),
+  /*@__PURE__*/ S.suspend(() => GlobalExplainExplanationDetail),
 ) as any as S.Schema<GlobalExplainExplanationDetailDetailsList>;
 
 export interface GlobalExplainExplanationDetail {
@@ -3373,7 +3373,7 @@ export const GlobalSearchTypesAggregationProfileDebug = /*@__PURE__*/ S.suspend(
 export type GlobalSearchTypesAggregationProfileChildrenList =
   Array<GlobalSearchTypesAggregationProfile>;
 export const GlobalSearchTypesAggregationProfileChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesAggregationProfile),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesAggregationProfile),
 ) as any as S.Schema<GlobalSearchTypesAggregationProfileChildrenList>;
 
 export interface GlobalSearchTypesAggregationProfile {
@@ -3437,7 +3437,7 @@ export const GlobalSearchTypesDfsStatisticsProfileDebugMap = /*@__PURE__*/ S.Rec
 export type GlobalSearchTypesDfsStatisticsProfileChildrenList =
   Array<GlobalSearchTypesDfsStatisticsProfile>;
 export const GlobalSearchTypesDfsStatisticsProfileChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesDfsStatisticsProfile),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesDfsStatisticsProfile),
 ) as any as S.Schema<GlobalSearchTypesDfsStatisticsProfileChildrenList>;
 
 export interface GlobalSearchTypesDfsStatisticsProfile {
@@ -3521,7 +3521,7 @@ export const GlobalSearchTypesKnnQueryProfileResultDebugMap = /*@__PURE__*/ S.Re
 export type GlobalSearchTypesKnnQueryProfileResultChildrenList =
   Array<GlobalSearchTypesKnnQueryProfileResult>;
 export const GlobalSearchTypesKnnQueryProfileResultChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesKnnQueryProfileResult),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesKnnQueryProfileResult),
 ) as any as S.Schema<GlobalSearchTypesKnnQueryProfileResultChildrenList>;
 
 export interface GlobalSearchTypesKnnQueryProfileResult {
@@ -3555,7 +3555,7 @@ export const GlobalSearchTypesDfsKnnProfileQueryList = /*@__PURE__*/ S.Array(
 export type GlobalSearchTypesKnnCollectorResultChildrenList =
   Array<GlobalSearchTypesKnnCollectorResult>;
 export const GlobalSearchTypesKnnCollectorResultChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesKnnCollectorResult),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesKnnCollectorResult),
 ) as any as S.Schema<GlobalSearchTypesKnnCollectorResultChildrenList>;
 
 export interface GlobalSearchTypesKnnCollectorResult {
@@ -3663,7 +3663,7 @@ export const GlobalSearchTypesFetchProfileDebug = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalSearchTypesFetchProfileChildrenList = Array<GlobalSearchTypesFetchProfile>;
 export const GlobalSearchTypesFetchProfileChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesFetchProfile),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesFetchProfile),
 ) as any as S.Schema<GlobalSearchTypesFetchProfileChildrenList>;
 
 export interface GlobalSearchTypesFetchProfile {
@@ -3689,7 +3689,7 @@ export const GlobalSearchTypesFetchProfile = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalSearchTypesCollectorChildrenList = Array<GlobalSearchTypesCollector>;
 export const GlobalSearchTypesCollectorChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesCollector),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesCollector),
 ) as any as S.Schema<GlobalSearchTypesCollectorChildrenList>;
 
 export interface GlobalSearchTypesCollector {
@@ -3765,7 +3765,7 @@ export const GlobalSearchTypesQueryBreakdown = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalSearchTypesQueryProfileChildrenList = Array<GlobalSearchTypesQueryProfile>;
 export const GlobalSearchTypesQueryProfileChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesQueryProfile),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesQueryProfile),
 ) as any as S.Schema<GlobalSearchTypesQueryProfileChildrenList>;
 
 export interface GlobalSearchTypesQueryProfile {
@@ -3850,12 +3850,12 @@ export type TypesAggregationsAggregationContainerAggregationsMap = {
 };
 export const TypesAggregationsAggregationContainerAggregationsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesAggregationsAggregationContainer),
+  /*@__PURE__*/ S.suspend(() => TypesAggregationsAggregationContainer),
 ) as any as S.Schema<TypesAggregationsAggregationContainerAggregationsMap>;
 
 export type TypesQueryDslBoolQueryFilterCase1List = Array<TypesQueryDslQueryContainer>;
 export const TypesQueryDslBoolQueryFilterCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesQueryDslBoolQueryFilterCase1List>;
 
 /** The clause (query) must appear in matching documents. However, unlike `must`, the score of the query will be ignored. */
@@ -3871,7 +3871,7 @@ export const TypesMinimumShouldMatch = S.Unknown as any as S.Schema<TypesMinimum
 
 export type TypesQueryDslBoolQueryMustCase1List = Array<TypesQueryDslQueryContainer>;
 export const TypesQueryDslBoolQueryMustCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesQueryDslBoolQueryMustCase1List>;
 
 /** The clause (query) must appear in matching documents and will contribute to the score. */
@@ -3882,7 +3882,7 @@ export const TypesQueryDslBoolQueryMust = S.Unknown as any as S.Schema<TypesQuer
 
 export type TypesQueryDslBoolQueryMustNotCase1List = Array<TypesQueryDslQueryContainer>;
 export const TypesQueryDslBoolQueryMustNotCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesQueryDslBoolQueryMustNotCase1List>;
 
 /** The clause (query) must not appear in the matching documents. Because scoring is ignored, a score of `0` is returned for all documents. */
@@ -3894,7 +3894,7 @@ export const TypesQueryDslBoolQueryMustNot =
 
 export type TypesQueryDslBoolQueryShouldCase1List = Array<TypesQueryDslQueryContainer>;
 export const TypesQueryDslBoolQueryShouldCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesQueryDslBoolQueryShouldCase1List>;
 
 /** The clause (query) should appear in the matching document. */
@@ -4055,7 +4055,7 @@ export const TypesQueryDslConstantScoreQuery = /*@__PURE__*/ S.suspend(() =>
 /** One or more query clauses. Returned documents must match one or more of these queries. If a document matches multiple queries, Elasticsearch uses the highest relevance score. */
 export type TypesQueryDslDisMaxQueryQueriesList = Array<TypesQueryDslQueryContainer>;
 export const TypesQueryDslDisMaxQueryQueriesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesQueryDslDisMaxQueryQueriesList>;
 
 export interface TypesQueryDslDisMaxQuery {
@@ -4553,7 +4553,7 @@ export const TypesQueryDslGeoShapeQuery = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalSearchTypesFieldCollapseInnerHitsCase1List = Array<GlobalSearchTypesInnerHits>;
 export const GlobalSearchTypesFieldCollapseInnerHitsCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => GlobalSearchTypesInnerHits),
+  /*@__PURE__*/ S.suspend(() => GlobalSearchTypesInnerHits),
 ) as any as S.Schema<GlobalSearchTypesFieldCollapseInnerHitsCase1List>;
 
 /** The number of inner hits and their sort order */
@@ -5132,7 +5132,7 @@ export const TypesQueryDslIdsQuery = /*@__PURE__*/ S.suspend(() =>
 /** An array of rules to match. */
 export type TypesQueryDslIntervalsAnyOfIntervalsList = Array<TypesQueryDslIntervalsContainer>;
 export const TypesQueryDslIntervalsAnyOfIntervalsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslIntervalsContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslIntervalsContainer),
 ) as any as S.Schema<TypesQueryDslIntervalsAnyOfIntervalsList>;
 
 export interface TypesQueryDslIntervalsFilter {
@@ -5530,7 +5530,7 @@ export const TypesQueryVectorBuilder = /*@__PURE__*/ S.suspend(() =>
 
 export type TypesKnnQueryFilterCase1List = Array<TypesQueryDslQueryContainer>;
 export const TypesKnnQueryFilterCase1List = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslQueryContainer),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslQueryContainer),
 ) as any as S.Schema<TypesKnnQueryFilterCase1List>;
 
 /** Filters for the kNN search query */
@@ -6872,7 +6872,7 @@ export const TypesQueryDslSpanMultiTermQuery = /*@__PURE__*/ S.suspend(() =>
 /** Array of one or more other span type queries. */
 export type TypesQueryDslSpanNearQueryClausesList = Array<TypesQueryDslSpanQuery>;
 export const TypesQueryDslSpanNearQueryClausesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslSpanQuery),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslSpanQuery),
 ) as any as S.Schema<TypesQueryDslSpanNearQueryClausesList>;
 
 export interface TypesQueryDslSpanNearQuery {
@@ -6930,7 +6930,7 @@ export const TypesQueryDslSpanNotQuery = /*@__PURE__*/ S.suspend(() =>
 /** Array of one or more other span type queries. */
 export type TypesQueryDslSpanOrQueryClausesList = Array<TypesQueryDslSpanQuery>;
 export const TypesQueryDslSpanOrQueryClausesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesQueryDslSpanQuery),
+  /*@__PURE__*/ S.suspend(() => TypesQueryDslSpanQuery),
 ) as any as S.Schema<TypesQueryDslSpanOrQueryClausesList>;
 
 export interface TypesQueryDslSpanOrQuery {
@@ -25976,7 +25976,7 @@ export type TypesMappingBinaryPropertyPropertiesMap = {
 };
 export const TypesMappingBinaryPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingBinaryPropertyPropertiesMap>;
 
 export type TypesMappingBinaryPropertyFieldsMap = {
@@ -25984,7 +25984,7 @@ export type TypesMappingBinaryPropertyFieldsMap = {
 };
 export const TypesMappingBinaryPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingBinaryPropertyFieldsMap>;
 
 export type TypesMappingSyntheticSourceKeepEnum = "none" | "arrays" | "all";
@@ -26055,7 +26055,7 @@ export type TypesMappingBooleanPropertyPropertiesMap = {
 };
 export const TypesMappingBooleanPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingBooleanPropertyPropertiesMap>;
 
 export type TypesMappingBooleanPropertyFieldsMap = {
@@ -26063,7 +26063,7 @@ export type TypesMappingBooleanPropertyFieldsMap = {
 };
 export const TypesMappingBooleanPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingBooleanPropertyFieldsMap>;
 
 export type IndicesTypesNumericFielddataFormat = "array" | "disabled";
@@ -26142,7 +26142,7 @@ export type TypesMappingDynamicPropertyPropertiesMap = {
 };
 export const TypesMappingDynamicPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDynamicPropertyPropertiesMap>;
 
 export type TypesMappingDynamicPropertyFieldsMap = {
@@ -26150,7 +26150,7 @@ export type TypesMappingDynamicPropertyFieldsMap = {
 };
 export const TypesMappingDynamicPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDynamicPropertyFieldsMap>;
 
 export type TypesMappingDynamicPropertyType = "{dynamic_type}";
@@ -26280,13 +26280,13 @@ export type TypesMappingJoinPropertyPropertiesMap = {
 };
 export const TypesMappingJoinPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingJoinPropertyPropertiesMap>;
 
 export type TypesMappingJoinPropertyFieldsMap = { [key: string]: TypesMappingProperty | undefined };
 export const TypesMappingJoinPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingJoinPropertyFieldsMap>;
 
 export type TypesMappingJoinPropertyRelationsValueCase1List = Array<string>;
@@ -26349,7 +26349,7 @@ export type TypesMappingKeywordPropertyPropertiesMap = {
 };
 export const TypesMappingKeywordPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingKeywordPropertyPropertiesMap>;
 
 export type TypesMappingKeywordPropertyFieldsMap = {
@@ -26357,7 +26357,7 @@ export type TypesMappingKeywordPropertyFieldsMap = {
 };
 export const TypesMappingKeywordPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingKeywordPropertyFieldsMap>;
 
 export type TypesMappingKeywordPropertyType = "keyword";
@@ -26427,7 +26427,7 @@ export type TypesMappingMatchOnlyTextPropertyFieldsMap = {
 };
 export const TypesMappingMatchOnlyTextPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingMatchOnlyTextPropertyFieldsMap>;
 
 /** Metadata about the field. */
@@ -26470,7 +26470,7 @@ export type TypesMappingPercolatorPropertyPropertiesMap = {
 };
 export const TypesMappingPercolatorPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPercolatorPropertyPropertiesMap>;
 
 export type TypesMappingPercolatorPropertyFieldsMap = {
@@ -26478,7 +26478,7 @@ export type TypesMappingPercolatorPropertyFieldsMap = {
 };
 export const TypesMappingPercolatorPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPercolatorPropertyFieldsMap>;
 
 export type TypesMappingPercolatorPropertyType = "percolator";
@@ -26520,7 +26520,7 @@ export type TypesMappingRankFeaturePropertyPropertiesMap = {
 };
 export const TypesMappingRankFeaturePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankFeaturePropertyPropertiesMap>;
 
 export type TypesMappingRankFeaturePropertyFieldsMap = {
@@ -26528,7 +26528,7 @@ export type TypesMappingRankFeaturePropertyFieldsMap = {
 };
 export const TypesMappingRankFeaturePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankFeaturePropertyFieldsMap>;
 
 export type TypesMappingRankFeaturePropertyType = "rank_feature";
@@ -26572,7 +26572,7 @@ export type TypesMappingRankFeaturesPropertyPropertiesMap = {
 };
 export const TypesMappingRankFeaturesPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankFeaturesPropertyPropertiesMap>;
 
 export type TypesMappingRankFeaturesPropertyFieldsMap = {
@@ -26580,7 +26580,7 @@ export type TypesMappingRankFeaturesPropertyFieldsMap = {
 };
 export const TypesMappingRankFeaturesPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankFeaturesPropertyFieldsMap>;
 
 export type TypesMappingRankFeaturesPropertyType = "rank_features";
@@ -26624,7 +26624,7 @@ export type TypesMappingSearchAsYouTypePropertyPropertiesMap = {
 };
 export const TypesMappingSearchAsYouTypePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingSearchAsYouTypePropertyPropertiesMap>;
 
 export type TypesMappingSearchAsYouTypePropertyFieldsMap = {
@@ -26632,7 +26632,7 @@ export type TypesMappingSearchAsYouTypePropertyFieldsMap = {
 };
 export const TypesMappingSearchAsYouTypePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingSearchAsYouTypePropertyFieldsMap>;
 
 export type TypesMappingSearchAsYouTypePropertyType = "search_as_you_type";
@@ -26696,13 +26696,13 @@ export type TypesMappingTextPropertyPropertiesMap = {
 };
 export const TypesMappingTextPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingTextPropertyPropertiesMap>;
 
 export type TypesMappingTextPropertyFieldsMap = { [key: string]: TypesMappingProperty | undefined };
 export const TypesMappingTextPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingTextPropertyFieldsMap>;
 
 export interface IndicesTypesFielddataFrequencyFilter {
@@ -26795,7 +26795,7 @@ export type TypesMappingVersionPropertyPropertiesMap = {
 };
 export const TypesMappingVersionPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingVersionPropertyPropertiesMap>;
 
 export type TypesMappingVersionPropertyFieldsMap = {
@@ -26803,7 +26803,7 @@ export type TypesMappingVersionPropertyFieldsMap = {
 };
 export const TypesMappingVersionPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingVersionPropertyFieldsMap>;
 
 export type TypesMappingVersionPropertyType = "version";
@@ -26851,7 +26851,7 @@ export type TypesMappingWildcardPropertyPropertiesMap = {
 };
 export const TypesMappingWildcardPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingWildcardPropertyPropertiesMap>;
 
 export type TypesMappingWildcardPropertyFieldsMap = {
@@ -26859,7 +26859,7 @@ export type TypesMappingWildcardPropertyFieldsMap = {
 };
 export const TypesMappingWildcardPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingWildcardPropertyFieldsMap>;
 
 export type TypesMappingWildcardPropertyType = "wildcard";
@@ -26909,7 +26909,7 @@ export type TypesMappingDateNanosPropertyPropertiesMap = {
 };
 export const TypesMappingDateNanosPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDateNanosPropertyPropertiesMap>;
 
 export type TypesMappingDateNanosPropertyFieldsMap = {
@@ -26917,7 +26917,7 @@ export type TypesMappingDateNanosPropertyFieldsMap = {
 };
 export const TypesMappingDateNanosPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDateNanosPropertyFieldsMap>;
 
 export type TypesMappingDateNanosPropertyType = "date_nanos";
@@ -26981,13 +26981,13 @@ export type TypesMappingDatePropertyPropertiesMap = {
 };
 export const TypesMappingDatePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDatePropertyPropertiesMap>;
 
 export type TypesMappingDatePropertyFieldsMap = { [key: string]: TypesMappingProperty | undefined };
 export const TypesMappingDatePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDatePropertyFieldsMap>;
 
 export type TypesMappingDatePropertyType = "date";
@@ -27055,7 +27055,7 @@ export type TypesMappingAggregateMetricDoublePropertyPropertiesMap = {
 };
 export const TypesMappingAggregateMetricDoublePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingAggregateMetricDoublePropertyPropertiesMap>;
 
 export type TypesMappingAggregateMetricDoublePropertyFieldsMap = {
@@ -27063,7 +27063,7 @@ export type TypesMappingAggregateMetricDoublePropertyFieldsMap = {
 };
 export const TypesMappingAggregateMetricDoublePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingAggregateMetricDoublePropertyFieldsMap>;
 
 export type TypesMappingAggregateMetricDoublePropertyType = "aggregate_metric_double";
@@ -27118,7 +27118,7 @@ export type TypesMappingDenseVectorPropertyPropertiesMap = {
 };
 export const TypesMappingDenseVectorPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDenseVectorPropertyPropertiesMap>;
 
 export type TypesMappingDenseVectorPropertyFieldsMap = {
@@ -27126,7 +27126,7 @@ export type TypesMappingDenseVectorPropertyFieldsMap = {
 };
 export const TypesMappingDenseVectorPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDenseVectorPropertyFieldsMap>;
 
 export type TypesMappingDenseVectorPropertyType = "dense_vector";
@@ -27262,7 +27262,7 @@ export type TypesMappingFlattenedPropertyPropertiesMap = {
 };
 export const TypesMappingFlattenedPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFlattenedPropertyPropertiesMap>;
 
 export type TypesMappingFlattenedPropertyFieldsMap = {
@@ -27270,7 +27270,7 @@ export type TypesMappingFlattenedPropertyFieldsMap = {
 };
 export const TypesMappingFlattenedPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFlattenedPropertyFieldsMap>;
 
 export type TypesMappingPreserveLeafArrays = "lossy" | "exact";
@@ -27343,7 +27343,7 @@ export type TypesMappingNestedPropertyPropertiesMap = {
 };
 export const TypesMappingNestedPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingNestedPropertyPropertiesMap>;
 
 export type TypesMappingNestedPropertyFieldsMap = {
@@ -27351,7 +27351,7 @@ export type TypesMappingNestedPropertyFieldsMap = {
 };
 export const TypesMappingNestedPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingNestedPropertyFieldsMap>;
 
 export type TypesMappingNestedPropertyType = "nested";
@@ -27403,7 +27403,7 @@ export type TypesMappingObjectPropertyPropertiesMap = {
 };
 export const TypesMappingObjectPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingObjectPropertyPropertiesMap>;
 
 export type TypesMappingObjectPropertyFieldsMap = {
@@ -27411,7 +27411,7 @@ export type TypesMappingObjectPropertyFieldsMap = {
 };
 export const TypesMappingObjectPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingObjectPropertyFieldsMap>;
 
 export type TypesMappingSubobjects = "true" | "false";
@@ -27464,7 +27464,7 @@ export type TypesMappingPassthroughObjectPropertyPropertiesMap = {
 };
 export const TypesMappingPassthroughObjectPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPassthroughObjectPropertyPropertiesMap>;
 
 export type TypesMappingPassthroughObjectPropertyFieldsMap = {
@@ -27472,7 +27472,7 @@ export type TypesMappingPassthroughObjectPropertyFieldsMap = {
 };
 export const TypesMappingPassthroughObjectPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPassthroughObjectPropertyFieldsMap>;
 
 export type TypesMappingPassthroughObjectPropertyType = "passthrough";
@@ -27524,7 +27524,7 @@ export type TypesMappingRankVectorPropertyPropertiesMap = {
 };
 export const TypesMappingRankVectorPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankVectorPropertyPropertiesMap>;
 
 export type TypesMappingRankVectorPropertyFieldsMap = {
@@ -27532,7 +27532,7 @@ export type TypesMappingRankVectorPropertyFieldsMap = {
 };
 export const TypesMappingRankVectorPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingRankVectorPropertyFieldsMap>;
 
 export type TypesMappingRankVectorPropertyType = "rank_vectors";
@@ -27653,7 +27653,7 @@ export type TypesMappingSemanticTextPropertyFieldsMap = {
 };
 export const TypesMappingSemanticTextPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingSemanticTextPropertyFieldsMap>;
 
 export interface TypesMappingSemanticTextProperty {
@@ -27696,7 +27696,7 @@ export type TypesMappingSparseVectorPropertyPropertiesMap = {
 };
 export const TypesMappingSparseVectorPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingSparseVectorPropertyPropertiesMap>;
 
 export type TypesMappingSparseVectorPropertyFieldsMap = {
@@ -27704,7 +27704,7 @@ export type TypesMappingSparseVectorPropertyFieldsMap = {
 };
 export const TypesMappingSparseVectorPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingSparseVectorPropertyFieldsMap>;
 
 export type TypesMappingSparseVectorPropertyType = "sparse_vector";
@@ -27751,7 +27751,7 @@ export type TypesMappingCompletionPropertyPropertiesMap = {
 };
 export const TypesMappingCompletionPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingCompletionPropertyPropertiesMap>;
 
 export type TypesMappingCompletionPropertyFieldsMap = {
@@ -27759,7 +27759,7 @@ export type TypesMappingCompletionPropertyFieldsMap = {
 };
 export const TypesMappingCompletionPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingCompletionPropertyFieldsMap>;
 
 export type TypesMappingSuggestContextPrecision = number | string;
@@ -27845,7 +27845,7 @@ export type TypesMappingConstantKeywordPropertyPropertiesMap = {
 };
 export const TypesMappingConstantKeywordPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingConstantKeywordPropertyPropertiesMap>;
 
 export type TypesMappingConstantKeywordPropertyFieldsMap = {
@@ -27853,7 +27853,7 @@ export type TypesMappingConstantKeywordPropertyFieldsMap = {
 };
 export const TypesMappingConstantKeywordPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingConstantKeywordPropertyFieldsMap>;
 
 export type TypesMappingConstantKeywordPropertyType = "constant_keyword";
@@ -27897,7 +27897,7 @@ export type TypesMappingCountedKeywordPropertyPropertiesMap = {
 };
 export const TypesMappingCountedKeywordPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingCountedKeywordPropertyPropertiesMap>;
 
 export type TypesMappingCountedKeywordPropertyFieldsMap = {
@@ -27905,7 +27905,7 @@ export type TypesMappingCountedKeywordPropertyFieldsMap = {
 };
 export const TypesMappingCountedKeywordPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingCountedKeywordPropertyFieldsMap>;
 
 export type TypesMappingCountedKeywordPropertyType = "counted_keyword";
@@ -27949,7 +27949,7 @@ export type TypesMappingFieldAliasPropertyPropertiesMap = {
 };
 export const TypesMappingFieldAliasPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFieldAliasPropertyPropertiesMap>;
 
 export type TypesMappingFieldAliasPropertyFieldsMap = {
@@ -27957,7 +27957,7 @@ export type TypesMappingFieldAliasPropertyFieldsMap = {
 };
 export const TypesMappingFieldAliasPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFieldAliasPropertyFieldsMap>;
 
 export type TypesMappingFieldAliasPropertyType = "alias";
@@ -28001,7 +28001,7 @@ export type TypesMappingHistogramPropertyPropertiesMap = {
 };
 export const TypesMappingHistogramPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingHistogramPropertyPropertiesMap>;
 
 export type TypesMappingHistogramPropertyFieldsMap = {
@@ -28009,7 +28009,7 @@ export type TypesMappingHistogramPropertyFieldsMap = {
 };
 export const TypesMappingHistogramPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingHistogramPropertyFieldsMap>;
 
 export type TypesMappingHistogramPropertyType = "histogram";
@@ -28055,7 +28055,7 @@ export type TypesMappingExponentialHistogramPropertyPropertiesMap = {
 };
 export const TypesMappingExponentialHistogramPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingExponentialHistogramPropertyPropertiesMap>;
 
 export type TypesMappingExponentialHistogramPropertyFieldsMap = {
@@ -28063,7 +28063,7 @@ export type TypesMappingExponentialHistogramPropertyFieldsMap = {
 };
 export const TypesMappingExponentialHistogramPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingExponentialHistogramPropertyFieldsMap>;
 
 export type TypesMappingExponentialHistogramPropertyType = "exponential_histogram";
@@ -28107,13 +28107,13 @@ export type TypesMappingIpPropertyPropertiesMap = {
 };
 export const TypesMappingIpPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIpPropertyPropertiesMap>;
 
 export type TypesMappingIpPropertyFieldsMap = { [key: string]: TypesMappingProperty | undefined };
 export const TypesMappingIpPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIpPropertyFieldsMap>;
 
 export type TypesMappingIpPropertyType = "ip";
@@ -28174,7 +28174,7 @@ export type TypesMappingMurmur3HashPropertyPropertiesMap = {
 };
 export const TypesMappingMurmur3HashPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingMurmur3HashPropertyPropertiesMap>;
 
 export type TypesMappingMurmur3HashPropertyFieldsMap = {
@@ -28182,7 +28182,7 @@ export type TypesMappingMurmur3HashPropertyFieldsMap = {
 };
 export const TypesMappingMurmur3HashPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingMurmur3HashPropertyFieldsMap>;
 
 export type TypesMappingMurmur3HashPropertyType = "murmur3";
@@ -28230,7 +28230,7 @@ export type TypesMappingTokenCountPropertyPropertiesMap = {
 };
 export const TypesMappingTokenCountPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingTokenCountPropertyPropertiesMap>;
 
 export type TypesMappingTokenCountPropertyFieldsMap = {
@@ -28238,7 +28238,7 @@ export type TypesMappingTokenCountPropertyFieldsMap = {
 };
 export const TypesMappingTokenCountPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingTokenCountPropertyFieldsMap>;
 
 export type TypesMappingTokenCountPropertyType = "token_count";
@@ -28296,7 +28296,7 @@ export type TypesMappingGeoPointPropertyPropertiesMap = {
 };
 export const TypesMappingGeoPointPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingGeoPointPropertyPropertiesMap>;
 
 export type TypesMappingGeoPointPropertyFieldsMap = {
@@ -28304,7 +28304,7 @@ export type TypesMappingGeoPointPropertyFieldsMap = {
 };
 export const TypesMappingGeoPointPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingGeoPointPropertyFieldsMap>;
 
 export type TypesMappingGeoPointPropertyType = "geo_point";
@@ -28369,7 +28369,7 @@ export type TypesMappingGeoShapePropertyPropertiesMap = {
 };
 export const TypesMappingGeoShapePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingGeoShapePropertyPropertiesMap>;
 
 export type TypesMappingGeoShapePropertyFieldsMap = {
@@ -28377,7 +28377,7 @@ export type TypesMappingGeoShapePropertyFieldsMap = {
 };
 export const TypesMappingGeoShapePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingGeoShapePropertyFieldsMap>;
 
 export type TypesMappingGeoOrientation =
@@ -28452,7 +28452,7 @@ export type TypesMappingPointPropertyPropertiesMap = {
 };
 export const TypesMappingPointPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPointPropertyPropertiesMap>;
 
 export type TypesMappingPointPropertyFieldsMap = {
@@ -28460,7 +28460,7 @@ export type TypesMappingPointPropertyFieldsMap = {
 };
 export const TypesMappingPointPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingPointPropertyFieldsMap>;
 
 export type TypesMappingPointPropertyType = "point";
@@ -28514,7 +28514,7 @@ export type TypesMappingShapePropertyPropertiesMap = {
 };
 export const TypesMappingShapePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingShapePropertyPropertiesMap>;
 
 export type TypesMappingShapePropertyFieldsMap = {
@@ -28522,7 +28522,7 @@ export type TypesMappingShapePropertyFieldsMap = {
 };
 export const TypesMappingShapePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingShapePropertyFieldsMap>;
 
 export type TypesMappingShapePropertyType = "shape";
@@ -28579,7 +28579,7 @@ export type TypesMappingByteNumberPropertyPropertiesMap = {
 };
 export const TypesMappingByteNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingByteNumberPropertyPropertiesMap>;
 
 export type TypesMappingByteNumberPropertyFieldsMap = {
@@ -28587,7 +28587,7 @@ export type TypesMappingByteNumberPropertyFieldsMap = {
 };
 export const TypesMappingByteNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingByteNumberPropertyFieldsMap>;
 
 export type TypesMappingByteNumberPropertyType = "byte";
@@ -28655,7 +28655,7 @@ export type TypesMappingDoubleNumberPropertyPropertiesMap = {
 };
 export const TypesMappingDoubleNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDoubleNumberPropertyPropertiesMap>;
 
 export type TypesMappingDoubleNumberPropertyFieldsMap = {
@@ -28663,7 +28663,7 @@ export type TypesMappingDoubleNumberPropertyFieldsMap = {
 };
 export const TypesMappingDoubleNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDoubleNumberPropertyFieldsMap>;
 
 export type TypesMappingDoubleNumberPropertyType = "double";
@@ -28731,7 +28731,7 @@ export type TypesMappingFloatNumberPropertyPropertiesMap = {
 };
 export const TypesMappingFloatNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFloatNumberPropertyPropertiesMap>;
 
 export type TypesMappingFloatNumberPropertyFieldsMap = {
@@ -28739,7 +28739,7 @@ export type TypesMappingFloatNumberPropertyFieldsMap = {
 };
 export const TypesMappingFloatNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFloatNumberPropertyFieldsMap>;
 
 export type TypesMappingFloatNumberPropertyType = "float";
@@ -28807,7 +28807,7 @@ export type TypesMappingHalfFloatNumberPropertyPropertiesMap = {
 };
 export const TypesMappingHalfFloatNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingHalfFloatNumberPropertyPropertiesMap>;
 
 export type TypesMappingHalfFloatNumberPropertyFieldsMap = {
@@ -28815,7 +28815,7 @@ export type TypesMappingHalfFloatNumberPropertyFieldsMap = {
 };
 export const TypesMappingHalfFloatNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingHalfFloatNumberPropertyFieldsMap>;
 
 export type TypesMappingHalfFloatNumberPropertyType = "half_float";
@@ -28883,7 +28883,7 @@ export type TypesMappingIntegerNumberPropertyPropertiesMap = {
 };
 export const TypesMappingIntegerNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIntegerNumberPropertyPropertiesMap>;
 
 export type TypesMappingIntegerNumberPropertyFieldsMap = {
@@ -28891,7 +28891,7 @@ export type TypesMappingIntegerNumberPropertyFieldsMap = {
 };
 export const TypesMappingIntegerNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIntegerNumberPropertyFieldsMap>;
 
 export type TypesMappingIntegerNumberPropertyType = "integer";
@@ -28959,7 +28959,7 @@ export type TypesMappingLongNumberPropertyPropertiesMap = {
 };
 export const TypesMappingLongNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingLongNumberPropertyPropertiesMap>;
 
 export type TypesMappingLongNumberPropertyFieldsMap = {
@@ -28967,7 +28967,7 @@ export type TypesMappingLongNumberPropertyFieldsMap = {
 };
 export const TypesMappingLongNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingLongNumberPropertyFieldsMap>;
 
 export type TypesMappingLongNumberPropertyType = "long";
@@ -29035,7 +29035,7 @@ export type TypesMappingScaledFloatNumberPropertyPropertiesMap = {
 };
 export const TypesMappingScaledFloatNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingScaledFloatNumberPropertyPropertiesMap>;
 
 export type TypesMappingScaledFloatNumberPropertyFieldsMap = {
@@ -29043,7 +29043,7 @@ export type TypesMappingScaledFloatNumberPropertyFieldsMap = {
 };
 export const TypesMappingScaledFloatNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingScaledFloatNumberPropertyFieldsMap>;
 
 export type TypesMappingScaledFloatNumberPropertyType = "scaled_float";
@@ -29113,7 +29113,7 @@ export type TypesMappingShortNumberPropertyPropertiesMap = {
 };
 export const TypesMappingShortNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingShortNumberPropertyPropertiesMap>;
 
 export type TypesMappingShortNumberPropertyFieldsMap = {
@@ -29121,7 +29121,7 @@ export type TypesMappingShortNumberPropertyFieldsMap = {
 };
 export const TypesMappingShortNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingShortNumberPropertyFieldsMap>;
 
 export type TypesMappingShortNumberPropertyType = "short";
@@ -29189,7 +29189,7 @@ export type TypesMappingUnsignedLongNumberPropertyPropertiesMap = {
 };
 export const TypesMappingUnsignedLongNumberPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingUnsignedLongNumberPropertyPropertiesMap>;
 
 export type TypesMappingUnsignedLongNumberPropertyFieldsMap = {
@@ -29197,7 +29197,7 @@ export type TypesMappingUnsignedLongNumberPropertyFieldsMap = {
 };
 export const TypesMappingUnsignedLongNumberPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingUnsignedLongNumberPropertyFieldsMap>;
 
 export type TypesMappingUnsignedLongNumberPropertyType = "unsigned_long";
@@ -29265,7 +29265,7 @@ export type TypesMappingDateRangePropertyPropertiesMap = {
 };
 export const TypesMappingDateRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDateRangePropertyPropertiesMap>;
 
 export type TypesMappingDateRangePropertyFieldsMap = {
@@ -29273,7 +29273,7 @@ export type TypesMappingDateRangePropertyFieldsMap = {
 };
 export const TypesMappingDateRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDateRangePropertyFieldsMap>;
 
 export type TypesMappingDateRangePropertyType = "date_range";
@@ -29329,7 +29329,7 @@ export type TypesMappingDoubleRangePropertyPropertiesMap = {
 };
 export const TypesMappingDoubleRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDoubleRangePropertyPropertiesMap>;
 
 export type TypesMappingDoubleRangePropertyFieldsMap = {
@@ -29337,7 +29337,7 @@ export type TypesMappingDoubleRangePropertyFieldsMap = {
 };
 export const TypesMappingDoubleRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingDoubleRangePropertyFieldsMap>;
 
 export type TypesMappingDoubleRangePropertyType = "double_range";
@@ -29391,7 +29391,7 @@ export type TypesMappingFloatRangePropertyPropertiesMap = {
 };
 export const TypesMappingFloatRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFloatRangePropertyPropertiesMap>;
 
 export type TypesMappingFloatRangePropertyFieldsMap = {
@@ -29399,7 +29399,7 @@ export type TypesMappingFloatRangePropertyFieldsMap = {
 };
 export const TypesMappingFloatRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingFloatRangePropertyFieldsMap>;
 
 export type TypesMappingFloatRangePropertyType = "float_range";
@@ -29453,7 +29453,7 @@ export type TypesMappingIntegerRangePropertyPropertiesMap = {
 };
 export const TypesMappingIntegerRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIntegerRangePropertyPropertiesMap>;
 
 export type TypesMappingIntegerRangePropertyFieldsMap = {
@@ -29461,7 +29461,7 @@ export type TypesMappingIntegerRangePropertyFieldsMap = {
 };
 export const TypesMappingIntegerRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIntegerRangePropertyFieldsMap>;
 
 export type TypesMappingIntegerRangePropertyType = "integer_range";
@@ -29515,7 +29515,7 @@ export type TypesMappingIpRangePropertyPropertiesMap = {
 };
 export const TypesMappingIpRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIpRangePropertyPropertiesMap>;
 
 export type TypesMappingIpRangePropertyFieldsMap = {
@@ -29523,7 +29523,7 @@ export type TypesMappingIpRangePropertyFieldsMap = {
 };
 export const TypesMappingIpRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIpRangePropertyFieldsMap>;
 
 export type TypesMappingIpRangePropertyType = "ip_range";
@@ -29577,7 +29577,7 @@ export type TypesMappingLongRangePropertyPropertiesMap = {
 };
 export const TypesMappingLongRangePropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingLongRangePropertyPropertiesMap>;
 
 export type TypesMappingLongRangePropertyFieldsMap = {
@@ -29585,7 +29585,7 @@ export type TypesMappingLongRangePropertyFieldsMap = {
 };
 export const TypesMappingLongRangePropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingLongRangePropertyFieldsMap>;
 
 export type TypesMappingLongRangePropertyType = "long_range";
@@ -29639,7 +29639,7 @@ export type TypesMappingIcuCollationPropertyPropertiesMap = {
 };
 export const TypesMappingIcuCollationPropertyPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIcuCollationPropertyPropertiesMap>;
 
 export type TypesMappingIcuCollationPropertyFieldsMap = {
@@ -29647,7 +29647,7 @@ export type TypesMappingIcuCollationPropertyFieldsMap = {
 };
 export const TypesMappingIcuCollationPropertyFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesMappingProperty),
+  /*@__PURE__*/ S.suspend(() => TypesMappingProperty),
 ) as any as S.Schema<TypesMappingIcuCollationPropertyFieldsMap>;
 
 export type TypesMappingIcuCollationPropertyType = "icu_collation_keyword";
@@ -48627,7 +48627,7 @@ export const TypesGetStats = /*@__PURE__*/ S.suspend(() =>
 export type TypesIndexingStatsTypesMap = { [key: string]: TypesIndexingStats | undefined };
 export const TypesIndexingStatsTypesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesIndexingStats),
+  /*@__PURE__*/ S.suspend(() => TypesIndexingStats),
 ) as any as S.Schema<TypesIndexingStatsTypesMap>;
 
 export interface TypesIndexingStats {
@@ -48776,7 +48776,7 @@ export const TypesRequestCacheStats = /*@__PURE__*/ S.suspend(() =>
 export type TypesSearchStatsGroupsMap = { [key: string]: TypesSearchStats | undefined };
 export const TypesSearchStatsGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => TypesSearchStats),
+  /*@__PURE__*/ S.suspend(() => TypesSearchStats),
 ) as any as S.Schema<TypesSearchStatsGroupsMap>;
 
 export interface TypesSearchStats {
@@ -49123,7 +49123,7 @@ export type IndicesStatsShardStatsIndicesMap = {
 };
 export const IndicesStatsShardStatsIndicesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => IndicesStatsShardStats),
+  /*@__PURE__*/ S.suspend(() => IndicesStatsShardStats),
 ) as any as S.Schema<IndicesStatsShardStatsIndicesMap>;
 
 export interface IndicesStatsShardStats {
@@ -55025,7 +55025,7 @@ export const IngestGetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesAppendProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesAppendProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesAppendProcessorOnFailureList>;
 
 export type IngestTypesAppendProcessorValueCase1List = Array<unknown>;
@@ -55083,7 +55083,7 @@ export const IngestTypesAppendProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesAttachmentProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesAttachmentProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesAttachmentProcessorOnFailureList>;
 
 /** Array of properties to select to be stored. Can be `content`, `title`, `name`, `author`, `keywords`, `date`, `content_type`, `content_length`, `language`. */
@@ -55146,7 +55146,7 @@ export const IngestTypesAttachmentProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesBytesProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesBytesProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesBytesProcessorOnFailureList>;
 
 export interface IngestTypesBytesProcessor {
@@ -55185,7 +55185,7 @@ export const IngestTypesBytesProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesCefProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesCefProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesCefProcessorOnFailureList>;
 
 export interface IngestTypesCefProcessor {
@@ -55228,7 +55228,7 @@ export const IngestTypesCefProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesCircleProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesCircleProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesCircleProcessorOnFailureList>;
 
 export type IngestTypesShapeType = "geo_shape" | "shape";
@@ -55276,7 +55276,7 @@ export const IngestTypesCircleProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesCommunityIDProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesCommunityIDProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesCommunityIDProcessorOnFailureList>;
 
 export interface IngestTypesCommunityIDProcessor {
@@ -55339,7 +55339,7 @@ export const IngestTypesCommunityIDProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesConvertProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesConvertProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesConvertProcessorOnFailureList>;
 
 export type IngestTypesConvertType =
@@ -55392,7 +55392,7 @@ export const IngestTypesConvertProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesCsvProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesCsvProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesCsvProcessorOnFailureList>;
 
 export interface IngestTypesCsvProcessor {
@@ -55441,7 +55441,7 @@ export const IngestTypesCsvProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesDateProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesDateProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesDateProcessorOnFailureList>;
 
 /** An array of the expected date formats. Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. */
@@ -55493,7 +55493,7 @@ export const IngestTypesDateProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesDateIndexNameProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesDateIndexNameProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesDateIndexNameProcessorOnFailureList>;
 
 /** An array of the expected date formats for parsing dates / timestamps in the document being preprocessed. Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. */
@@ -55550,7 +55550,7 @@ export const IngestTypesDateIndexNameProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesDissectProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesDissectProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesDissectProcessorOnFailureList>;
 
 export interface IngestTypesDissectProcessor {
@@ -55592,7 +55592,7 @@ export const IngestTypesDissectProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesDotExpanderProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesDotExpanderProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesDotExpanderProcessorOnFailureList>;
 
 export interface IngestTypesDotExpanderProcessor {
@@ -55631,7 +55631,7 @@ export const IngestTypesDotExpanderProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesDropProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesDropProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesDropProcessorOnFailureList>;
 
 export interface IngestTypesDropProcessor {
@@ -55659,7 +55659,7 @@ export const IngestTypesDropProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesEnrichProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesEnrichProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesEnrichProcessorOnFailureList>;
 
 export type TypesGeoShapeRelation = "intersects" | "disjoint" | "within" | "contains";
@@ -55713,7 +55713,7 @@ export const IngestTypesEnrichProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesFailProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesFailProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesFailProcessorOnFailureList>;
 
 export interface IngestTypesFailProcessor {
@@ -55744,7 +55744,7 @@ export const IngestTypesFailProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesFingerprintProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesFingerprintProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesFingerprintProcessorOnFailureList>;
 
 export type IngestTypesFingerprintDigest = "MD5" | "SHA-1" | "SHA-256" | "SHA-512" | "MurmurHash3";
@@ -55792,7 +55792,7 @@ export const IngestTypesFingerprintProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesForeachProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesForeachProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesForeachProcessorOnFailureList>;
 
 export interface IngestTypesForeachProcessor {
@@ -55831,7 +55831,7 @@ export const IngestTypesForeachProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesIpLocationProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesIpLocationProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesIpLocationProcessorOnFailureList>;
 
 /** Controls what properties are added to the `target_field` based on the IP location lookup. */
@@ -55888,7 +55888,7 @@ export const IngestTypesIpLocationProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesGeoGridProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesGeoGridProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesGeoGridProcessorOnFailureList>;
 
 export type IngestTypesGeoGridTileType = "geotile" | "geohex" | "geohash";
@@ -55951,7 +55951,7 @@ export const IngestTypesGeoGridProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesGeoIpProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesGeoIpProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesGeoIpProcessorOnFailureList>;
 
 /** Controls what properties are added to the `target_field` based on the geoip lookup. */
@@ -56008,7 +56008,7 @@ export const IngestTypesGeoIpProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesGrokProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesGrokProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesGrokProcessorOnFailureList>;
 
 /** A map of pattern-name and pattern tuples defining custom patterns to be used by the current processor. Patterns matching existing names will override the pre-existing definition. */
@@ -56070,7 +56070,7 @@ export const IngestTypesGrokProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesGsubProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesGsubProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesGsubProcessorOnFailureList>;
 
 export interface IngestTypesGsubProcessor {
@@ -56113,7 +56113,7 @@ export const IngestTypesGsubProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesHtmlStripProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesHtmlStripProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesHtmlStripProcessorOnFailureList>;
 
 export interface IngestTypesHtmlStripProcessor {
@@ -56152,7 +56152,7 @@ export const IngestTypesHtmlStripProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesInferenceProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesInferenceProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesInferenceProcessorOnFailureList>;
 
 /** Maps the document field names to the known field names of the model. This mapping takes precedence over any default mappings provided in the model configuration. */
@@ -56284,7 +56284,7 @@ export const IngestTypesInferenceProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesJoinProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesJoinProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesJoinProcessorOnFailureList>;
 
 export interface IngestTypesJoinProcessor {
@@ -56321,7 +56321,7 @@ export const IngestTypesJoinProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesJsonProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesJsonProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesJsonProcessorOnFailureList>;
 
 export type IngestTypesJsonProcessorConflictStrategy = "replace" | "merge";
@@ -56367,7 +56367,7 @@ export const IngestTypesJsonProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesKeyValueProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesKeyValueProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesKeyValueProcessorOnFailureList>;
 
 /** List of keys to exclude from document. */
@@ -56442,7 +56442,7 @@ export const IngestTypesKeyValueProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesLowercaseProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesLowercaseProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesLowercaseProcessorOnFailureList>;
 
 export interface IngestTypesLowercaseProcessor {
@@ -56482,7 +56482,7 @@ export const IngestTypesLowercaseProcessor = /*@__PURE__*/ S.suspend(() =>
 export type IngestTypesNetworkDirectionProcessorOnFailureList =
   Array<IngestTypesProcessorContainer>;
 export const IngestTypesNetworkDirectionProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesNetworkDirectionProcessorOnFailureList>;
 
 /** List of internal networks. Supports IPv4 and IPv6 addresses and ranges in CIDR notation. Also supports the named ranges listed below. These may be constructed with template snippets. Must specify only one of internal_networks or internal_networks_field. */
@@ -56536,7 +56536,7 @@ export const IngestTypesNetworkDirectionProcessor = /*@__PURE__*/ S.suspend(() =
 /** Handle failures for the processor. */
 export type IngestTypesPipelineProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesPipelineProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesPipelineProcessorOnFailureList>;
 
 export interface IngestTypesPipelineProcessor {
@@ -56572,7 +56572,7 @@ export const IngestTypesPipelineProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesRedactProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesRedactProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesRedactProcessorOnFailureList>;
 
 /** A list of grok expressions to match and redact named captures with */
@@ -56638,7 +56638,7 @@ export const IngestTypesRedactProcessor = /*@__PURE__*/ S.suspend(() =>
 export type IngestTypesRegisteredDomainProcessorOnFailureList =
   Array<IngestTypesProcessorContainer>;
 export const IngestTypesRegisteredDomainProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesRegisteredDomainProcessorOnFailureList>;
 
 export interface IngestTypesRegisteredDomainProcessor {
@@ -56677,7 +56677,7 @@ export const IngestTypesRegisteredDomainProcessor = /*@__PURE__*/ S.suspend(() =
 /** Handle failures for the processor. */
 export type IngestTypesRemoveProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesRemoveProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesRemoveProcessorOnFailureList>;
 
 export interface IngestTypesRemoveProcessor {
@@ -56716,7 +56716,7 @@ export const IngestTypesRemoveProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesRenameProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesRenameProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesRenameProcessorOnFailureList>;
 
 export interface IngestTypesRenameProcessor {
@@ -56755,7 +56755,7 @@ export const IngestTypesRenameProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesRerouteProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesRerouteProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesRerouteProcessorOnFailureList>;
 
 export type IngestTypesRerouteProcessorDatasetCase1List = Array<string>;
@@ -56818,7 +56818,7 @@ export const IngestTypesRerouteProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesScriptProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesScriptProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesScriptProcessorOnFailureList>;
 
 /** Object containing parameters for the script. */
@@ -56867,7 +56867,7 @@ export const IngestTypesScriptProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesSetProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesSetProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesSetProcessorOnFailureList>;
 
 export interface IngestTypesSetProcessor {
@@ -56913,7 +56913,7 @@ export const IngestTypesSetProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesSetSecurityUserProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesSetSecurityUserProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesSetSecurityUserProcessorOnFailureList>;
 
 /** Controls what user related properties are added to the field. */
@@ -56955,7 +56955,7 @@ export const IngestTypesSetSecurityUserProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesSortProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesSortProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesSortProcessorOnFailureList>;
 
 export interface IngestTypesSortProcessor {
@@ -56992,7 +56992,7 @@ export const IngestTypesSortProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesSplitProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesSplitProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesSplitProcessorOnFailureList>;
 
 export interface IngestTypesSplitProcessor {
@@ -57037,7 +57037,7 @@ export const IngestTypesSplitProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesTerminateProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesTerminateProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesTerminateProcessorOnFailureList>;
 
 export interface IngestTypesTerminateProcessor {
@@ -57067,7 +57067,7 @@ export const IngestTypesTerminateProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesTrimProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesTrimProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesTrimProcessorOnFailureList>;
 
 export interface IngestTypesTrimProcessor {
@@ -57104,7 +57104,7 @@ export const IngestTypesTrimProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesUppercaseProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesUppercaseProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesUppercaseProcessorOnFailureList>;
 
 export interface IngestTypesUppercaseProcessor {
@@ -57143,7 +57143,7 @@ export const IngestTypesUppercaseProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesUrlDecodeProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesUrlDecodeProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesUrlDecodeProcessorOnFailureList>;
 
 export interface IngestTypesUrlDecodeProcessor {
@@ -57182,7 +57182,7 @@ export const IngestTypesUrlDecodeProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesUriPartsProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesUriPartsProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesUriPartsProcessorOnFailureList>;
 
 export interface IngestTypesUriPartsProcessor {
@@ -57227,7 +57227,7 @@ export const IngestTypesUriPartsProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Handle failures for the processor. */
 export type IngestTypesUserAgentProcessorOnFailureList = Array<IngestTypesProcessorContainer>;
 export const IngestTypesUserAgentProcessorOnFailureList = /*@__PURE__*/ S.Array(
-  S.suspend(() => IngestTypesProcessorContainer),
+  /*@__PURE__*/ S.suspend(() => IngestTypesProcessorContainer),
 ) as any as S.Schema<IngestTypesUserAgentProcessorOnFailureList>;
 
 export type IngestTypesUserAgentProperty = "name" | "os" | "device" | "original" | "version";
@@ -67765,7 +67765,7 @@ export const MlPutTrainedModelEnsembleFeatureNamesList = /*@__PURE__*/ S.Array(
 
 export type MlPutTrainedModelEnsembleTrainedModelsList = Array<MlPutTrainedModelTrainedModel>;
 export const MlPutTrainedModelEnsembleTrainedModelsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => MlPutTrainedModelTrainedModel),
+  /*@__PURE__*/ S.suspend(() => MlPutTrainedModelTrainedModel),
 ) as any as S.Schema<MlPutTrainedModelEnsembleTrainedModelsList>;
 
 export interface MlPutTrainedModelEnsemble {
@@ -81124,12 +81124,12 @@ export const SecurityTypesRoleMappingRoleTemplatesList = /*@__PURE__*/ S.Array(
 
 export type SecurityTypesRoleMappingRuleAnyList = Array<SecurityTypesRoleMappingRule>;
 export const SecurityTypesRoleMappingRuleAnyList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SecurityTypesRoleMappingRule),
+  /*@__PURE__*/ S.suspend(() => SecurityTypesRoleMappingRule),
 ) as any as S.Schema<SecurityTypesRoleMappingRuleAnyList>;
 
 export type SecurityTypesRoleMappingRuleAllList = Array<SecurityTypesRoleMappingRule>;
 export const SecurityTypesRoleMappingRuleAllList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SecurityTypesRoleMappingRule),
+  /*@__PURE__*/ S.suspend(() => SecurityTypesRoleMappingRule),
 ) as any as S.Schema<SecurityTypesRoleMappingRuleAllList>;
 
 export type SecurityTypesRoleMappingRuleFieldValueCase1List = Array<TypesFieldValue>;
@@ -83542,7 +83542,7 @@ export type SecurityQueryApiKeysApiKeyAggregationContainerAggregationsMap = {
 };
 export const SecurityQueryApiKeysApiKeyAggregationContainerAggregationsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => SecurityQueryApiKeysApiKeyAggregationContainer),
+  /*@__PURE__*/ S.suspend(() => SecurityQueryApiKeysApiKeyAggregationContainer),
 ) as any as S.Schema<SecurityQueryApiKeysApiKeyAggregationContainerAggregationsMap>;
 
 /** Returns documents that match a provided text, number, date or boolean value. The provided text is analyzed before matching. */
@@ -90367,7 +90367,7 @@ export const WatcherTypesConditionContainer = /*@__PURE__*/ S.suspend(() =>
 
 export type TypesTransformContainerChainList = Array<TypesTransformContainer>;
 export const TypesTransformContainerChainList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TypesTransformContainer),
+  /*@__PURE__*/ S.suspend(() => TypesTransformContainer),
 ) as any as S.Schema<TypesTransformContainerChainList>;
 
 export type TypesScriptTransformParamsMap = { [key: string]: unknown | undefined };
@@ -91010,7 +91010,7 @@ export type WatcherTypesChainInputInputsItemMap = {
 };
 export const WatcherTypesChainInputInputsItemMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => WatcherTypesInputContainer),
+  /*@__PURE__*/ S.suspend(() => WatcherTypesInputContainer),
 ) as any as S.Schema<WatcherTypesChainInputInputsItemMap>;
 
 export type WatcherTypesChainInputInputsList = Array<WatcherTypesChainInputInputsItemMap>;
@@ -91875,7 +91875,7 @@ export type WatcherTypesExecutionResultInputChainMap = {
 };
 export const WatcherTypesExecutionResultInputChainMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => WatcherTypesExecutionResultInput),
+  /*@__PURE__*/ S.suspend(() => WatcherTypesExecutionResultInput),
 ) as any as S.Schema<WatcherTypesExecutionResultInputChainMap>;
 
 export interface WatcherTypesExecutionResultInput {

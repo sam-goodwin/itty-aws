@@ -298,7 +298,7 @@ export type AiGatewayVirtualModelConfigInferenceRegionProvidersMap = {
 };
 export const AiGatewayVirtualModelConfigInferenceRegionProvidersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AiGatewayVirtualModelConfigInferenceRegionProvidersValue),
+  /*@__PURE__*/ S.NullOr(AiGatewayVirtualModelConfigInferenceRegionProvidersValue),
 ) as any as S.Schema<AiGatewayVirtualModelConfigInferenceRegionProvidersMap>;
 
 /** Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`. */
@@ -379,7 +379,7 @@ export const AiGatewayEvaluationFallbackConditionCase1 = /*@__PURE__*/ S.suspend
 export type AiGatewayEvaluationFallbackConditionCase2AnyList =
   Array<AiGatewayEvaluationFallbackCondition>;
 export const AiGatewayEvaluationFallbackConditionCase2AnyList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AiGatewayEvaluationFallbackCondition),
+  /*@__PURE__*/ S.suspend(() => AiGatewayEvaluationFallbackCondition),
 ) as any as S.Schema<AiGatewayEvaluationFallbackConditionCase2AnyList>;
 
 export interface AiGatewayEvaluationFallbackConditionCase2 {
@@ -396,7 +396,7 @@ export const AiGatewayEvaluationFallbackConditionCase2 = /*@__PURE__*/ S.suspend
 export type AiGatewayEvaluationFallbackConditionCase3AllList =
   Array<AiGatewayEvaluationFallbackCondition>;
 export const AiGatewayEvaluationFallbackConditionCase3AllList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AiGatewayEvaluationFallbackCondition),
+  /*@__PURE__*/ S.suspend(() => AiGatewayEvaluationFallbackCondition),
 ) as any as S.Schema<AiGatewayEvaluationFallbackConditionCase3AllList>;
 
 export interface AiGatewayEvaluationFallbackConditionCase3 {
@@ -413,7 +413,7 @@ export const AiGatewayEvaluationFallbackConditionCase3 = /*@__PURE__*/ S.suspend
 export type AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList =
   Array<AiGatewayEvaluationFallbackCondition>;
 export const AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AiGatewayEvaluationFallbackCondition),
+  /*@__PURE__*/ S.suspend(() => AiGatewayEvaluationFallbackCondition),
 ) as any as S.Schema<AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList>;
 
 export interface AiGatewayEvaluationFallbackConditionCase4AtLeast {

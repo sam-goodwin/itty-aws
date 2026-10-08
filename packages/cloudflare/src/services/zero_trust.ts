@@ -1558,7 +1558,7 @@ export type DlpEmailRulesBulkEditResponseConditionsItemValue =
   | string
   | DlpEmailRulesBulkEditResponseConditionsItemValueCase0List;
 export const DlpEmailRulesBulkEditResponseConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesBulkEditResponseConditionsItem {
@@ -4421,7 +4421,7 @@ export type AccessApplicationsCreateRequestOauthConfiguration =
   | AccessApplicationsCreateRequestOauthConfigurationAccessEndUserProps
   | AccessApplicationsCreateRequestOauthConfigurationSelfHostedApplication;
 export const AccessApplicationsCreateRequestOauthConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["dynamicClientRegistration", "enabled", "grant"],
     ["dynamicClientRegistration", "enabled", "grant"],
   ]),
@@ -4751,7 +4751,7 @@ export type AccessApplicationsCreateRequestDestinationsAccessEndUserPropsItem =
   | AccessApplicationsCreateRequestDestinationsAccessEndUserPropsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsCreateRequestDestinationsAccessEndUserPropsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -5145,7 +5145,7 @@ export type AccessApplicationsCreateRequestDestinationsSelfHostedApplicationItem
   | AccessApplicationsCreateRequestDestinationsSelfHostedApplicationItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateRequestDestinationsSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -5181,7 +5181,7 @@ export type AccessApplicationsCreateRequestDestinations =
   | AccessApplicationsCreateRequestDestinationsAccessEndUserPropsList
   | AccessApplicationsCreateRequestDestinationsSelfHostedApplicationList;
 export const AccessApplicationsCreateRequestDestinations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AccessApplicationsCreateRequestSelfHostedDomainsList = Array<unknown>;
@@ -5345,7 +5345,7 @@ export type AccessApplicationsCreateRequestMfaConfig =
   | AccessApplicationsCreateRequestMfaConfigSelfHostedApplication
   | AccessApplicationsCreateRequestMfaConfigInfrastructureApplication;
 export const AccessApplicationsCreateRequestMfaConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
   ]),
@@ -6292,7 +6292,7 @@ export type AccessPoliciesCreateRequestIncludeItem =
   | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -6639,7 +6639,7 @@ export type AccessPoliciesCreateRequestExcludeItem =
   | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -6986,7 +6986,7 @@ export type AccessPoliciesCreateRequestRequireItem =
   | AccessPoliciesCreateRequestRequireItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateRequestRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -7099,7 +7099,7 @@ export type AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicati
   | InlineAccessPolicy;
 export const AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [],
       ["id", "accountId", "precedence"],
       [
@@ -7462,7 +7462,7 @@ export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -7855,7 +7855,7 @@ export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -8246,7 +8246,7 @@ export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -8339,7 +8339,7 @@ export type AccessApplicationsCreateForAccountRequestPolicies =
   | AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicationList
   | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationList;
 export const AccessApplicationsCreateForAccountRequestPolicies = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AccessApplicationsCreateRequestScimConfigAuthenticationSCIMConfigAuthenticationHTTPBasicScheme =
@@ -8587,7 +8587,7 @@ export type AccessApplicationsCreateRequestScimConfigAuthenticationAccessSCIMCon
   | AccessApplicationsCreateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -8615,7 +8615,7 @@ export type AccessApplicationsCreateRequestScimConfigAuthentication =
   | AccessApplicationsCreateRequestScimConfigAuthenticationAccessSCIMConfigAuthenticationAccessServiceToken
   | AccessApplicationsCreateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateRequestScimConfigAuthentication = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["password", "scheme", "user"],
     ["token", "scheme"],
     ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -9070,7 +9070,7 @@ export type AccessApplicationsCreateRequestSaasApp =
   | AccessApplicationsCreateRequestSaasAppSAMLSaaSApp
   | AccessApplicationsCreateRequestSaasAppOIDCSaaSApp;
 export const AccessApplicationsCreateRequestSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -9668,7 +9668,7 @@ export type AccessApplicationsCreateRequestTargetCriteria =
   | AccessApplicationsCreateRequestTargetCriteriaInfrastructureApplicationList
   | AccessApplicationsCreateRequestTargetCriteriaBrowserRDPApplicationList;
 export const AccessApplicationsCreateRequestTargetCriteria = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CreateAccessApplicationForAccountRequest {
@@ -10228,7 +10228,7 @@ export type AccessApplicationsCreateResultEndUserApplicationDestinationsItem =
   | AccessApplicationsCreateResultEndUserApplicationDestinationsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultEndUserApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -10789,7 +10789,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationDestinationsItem 
   | AccessApplicationsCreateResultSelfHostedApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultSelfHostedApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -11412,7 +11412,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -11761,7 +11761,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -12147,7 +12147,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -12526,7 +12526,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthent
   | AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -12555,7 +12555,7 @@ export type AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthent
   | AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultSelfHostedApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -13265,7 +13265,7 @@ export type AccessApplicationsCreateResultSaaSApplicationPoliciesItemExcludeItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSaaSApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -13614,7 +13614,7 @@ export type AccessApplicationsCreateResultSaaSApplicationPoliciesItemIncludeItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSaaSApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -14000,7 +14000,7 @@ export type AccessApplicationsCreateResultSaaSApplicationPoliciesItemRequireItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSaaSApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -14520,7 +14520,7 @@ export type AccessApplicationsCreateResultSaaSApplicationSaasApp =
   | AccessApplicationsCreateResultSaaSApplicationSaasAppSAMLSaaSApp
   | AccessApplicationsCreateResultSaaSApplicationSaasAppOIDCSaaSApp;
 export const AccessApplicationsCreateResultSaaSApplicationSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -14802,7 +14802,7 @@ export type AccessApplicationsCreateResultSaaSApplicationScimConfigAuthenticatio
   | AccessApplicationsCreateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -14831,7 +14831,7 @@ export type AccessApplicationsCreateResultSaaSApplicationScimConfigAuthenticatio
   | AccessApplicationsCreateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultSaaSApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -15486,7 +15486,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationDestinationsItem 
   | AccessApplicationsCreateResultBrowserSSHApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultBrowserSSHApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -16040,7 +16040,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -16389,7 +16389,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -16775,7 +16775,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserSSHApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -17154,7 +17154,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -17183,7 +17183,7 @@ export type AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultBrowserSSHApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -17927,7 +17927,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationDestinationsItem 
   | AccessApplicationsCreateResultBrowserVNCApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultBrowserVNCApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -18481,7 +18481,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -18830,7 +18830,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -19216,7 +19216,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserVNCApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -19595,7 +19595,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -19624,7 +19624,7 @@ export type AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultBrowserVNCApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -20380,7 +20380,7 @@ export type AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemExcl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -20729,7 +20729,7 @@ export type AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemIncl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -21115,7 +21115,7 @@ export type AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemRequ
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultAppLauncherApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -21790,7 +21790,7 @@ export type AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -22139,7 +22139,7 @@ export type AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -22526,7 +22526,7 @@ export type AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -23182,7 +23182,7 @@ export type AccessApplicationsCreateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserIsolationPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -23531,7 +23531,7 @@ export type AccessApplicationsCreateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserIsolationPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -23918,7 +23918,7 @@ export type AccessApplicationsCreateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserIsolationPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -24574,7 +24574,7 @@ export type AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -24923,7 +24923,7 @@ export type AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -25310,7 +25310,7 @@ export type AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -25928,7 +25928,7 @@ export type AccessApplicationsCreateResultBookmarkApplicationPoliciesItemExclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBookmarkApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -26277,7 +26277,7 @@ export type AccessApplicationsCreateResultBookmarkApplicationPoliciesItemInclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBookmarkApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -26663,7 +26663,7 @@ export type AccessApplicationsCreateResultBookmarkApplicationPoliciesItemRequire
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBookmarkApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -27536,7 +27536,7 @@ export type AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemE
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -27885,7 +27885,7 @@ export type AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -28270,7 +28270,7 @@ export type AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemR
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultInfrastructureApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -29150,7 +29150,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationDestinationsItem 
   | AccessApplicationsCreateResultBrowserRDPApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultBrowserRDPApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -29704,7 +29704,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -30053,7 +30053,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -30439,7 +30439,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultBrowserRDPApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -30818,7 +30818,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -30847,7 +30847,7 @@ export type AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthent
   | AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultBrowserRDPApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -31515,7 +31515,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationDestinationsItem =
   | AccessApplicationsCreateResultMcpServerApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultMcpServerApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -32032,7 +32032,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationPoliciesItemExclud
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -32381,7 +32381,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationPoliciesItemInclud
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -32767,7 +32767,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationPoliciesItemRequir
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -33145,7 +33145,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthenti
   | AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -33174,7 +33174,7 @@ export type AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthenti
   | AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultMcpServerApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -33776,7 +33776,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationDestinations
   | AccessApplicationsCreateResultMcpServerPortalApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -34299,7 +34299,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -34648,7 +34648,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -35034,7 +35034,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -35413,7 +35413,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAu
   | AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -35442,7 +35442,7 @@ export type AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAu
   | AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsCreateResultMcpServerPortalApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -35666,7 +35666,7 @@ export type AccessApplicationsCreateResult =
   | AccessApplicationsCreateResultMcpServerApplication
   | AccessApplicationsCreateResultMcpServerPortalApplication;
 export const AccessApplicationsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "oauthConfiguration",
       "type",
@@ -35967,7 +35967,7 @@ export type AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplicationI
   | InlineAccessPolicy;
 export const AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [],
       ["id", "accountId", "precedence"],
       [
@@ -36011,7 +36011,7 @@ export type AccessApplicationsCreateForZoneRequestPolicies =
   | AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplicationList
   | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationList;
 export const AccessApplicationsCreateForZoneRequestPolicies = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface CreateAccessApplicationForZoneRequest {
@@ -36317,7 +36317,7 @@ export type AccessApplicationsPoliciesCreateForAccountRequestConnectionRules =
   | AccessApplicationsPoliciesCreateRequestConnectionRulesAccessAppPolicyRequest
   | AccessApplicationsPoliciesCreateRequestConnectionRulesCase1;
 export const AccessApplicationsPoliciesCreateForAccountRequestConnectionRules =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["rdp"], ["ssh"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["rdp"], ["ssh"]]));
 
 export type AccessApplicationsPoliciesCreateRequestMfaConfigAccessAppPolicyRequestAllowedAuthenticatorsItem =
   | "totp"
@@ -36400,7 +36400,7 @@ export type AccessApplicationsPoliciesCreateForAccountRequestMfaConfig =
   | AccessApplicationsPoliciesCreateRequestMfaConfigCase1;
 export const AccessApplicationsPoliciesCreateForAccountRequestMfaConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
       ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ]),
@@ -36726,7 +36726,7 @@ export type AccessApplicationsPoliciesCreateRequestIncludeItem =
   | AccessApplicationsPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -37075,7 +37075,7 @@ export type AccessApplicationsPoliciesCreateRequestExcludeItem =
   | AccessApplicationsPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -37424,7 +37424,7 @@ export type AccessApplicationsPoliciesCreateRequestRequireItem =
   | AccessApplicationsPoliciesCreateRequestRequireItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateRequestRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -37951,7 +37951,7 @@ export type AccessApplicationsPoliciesCreateResultCase0ExcludeItem =
   | AccessApplicationsPoliciesCreateResultCase0ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase0ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -38297,7 +38297,7 @@ export type AccessApplicationsPoliciesCreateResultCase0IncludeItem =
   | AccessApplicationsPoliciesCreateResultCase0IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase0IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -38679,7 +38679,7 @@ export type AccessApplicationsPoliciesCreateResultCase0RequireItem =
   | AccessApplicationsPoliciesCreateResultCase0RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase0RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -39143,7 +39143,7 @@ export type AccessApplicationsPoliciesCreateResultCase1ExcludeItem =
   | AccessApplicationsPoliciesCreateResultCase1ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase1ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -39489,7 +39489,7 @@ export type AccessApplicationsPoliciesCreateResultCase1IncludeItem =
   | AccessApplicationsPoliciesCreateResultCase1IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase1IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -39870,7 +39870,7 @@ export type AccessApplicationsPoliciesCreateResultCase1RequireItem =
   | AccessApplicationsPoliciesCreateResultCase1RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResultCase1RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -39953,7 +39953,7 @@ export type AccessApplicationsPoliciesCreateForAccountResult =
   | AccessApplicationsPoliciesCreateResultCase0
   | AccessApplicationsPoliciesCreateResultCase1;
 export const AccessApplicationsPoliciesCreateForAccountResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -40004,13 +40004,13 @@ export type AccessApplicationsPoliciesCreateForZoneRequestConnectionRules =
   | AccessApplicationsPoliciesCreateRequestConnectionRulesAccessAppPolicyRequest
   | AccessApplicationsPoliciesCreateRequestConnectionRulesCase1;
 export const AccessApplicationsPoliciesCreateForZoneRequestConnectionRules =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["rdp"], ["ssh"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["rdp"], ["ssh"]]));
 
 export type AccessApplicationsPoliciesCreateForZoneRequestMfaConfig =
   | AccessApplicationsPoliciesCreateRequestMfaConfigAccessAppPolicyRequest
   | AccessApplicationsPoliciesCreateRequestMfaConfigCase1;
 export const AccessApplicationsPoliciesCreateForZoneRequestMfaConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
   ]),
@@ -40091,7 +40091,7 @@ export type AccessApplicationsPoliciesCreateForZoneResult =
   | AccessApplicationsPoliciesCreateResultCase0
   | AccessApplicationsPoliciesCreateResultCase1;
 export const AccessApplicationsPoliciesCreateForZoneResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -40460,7 +40460,7 @@ export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeIt
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -40920,7 +40920,7 @@ export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeIt
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -41312,7 +41312,7 @@ export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireIt
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -41416,7 +41416,7 @@ export type AccessApplicationsPolicyTestsCreateRequestPoliciesItem =
   | string
   | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [],
     [
       "decision",
@@ -42054,7 +42054,7 @@ export type AccessGroupsCreateRequestIncludeItem =
   | AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -42426,7 +42426,7 @@ export type AccessGroupsCreateResponseExcludeItem =
   | AccessGroupsCreateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -42769,7 +42769,7 @@ export type AccessGroupsCreateResponseIncludeItem =
   | AccessGroupsCreateResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -43112,7 +43112,7 @@ export type AccessGroupsCreateResponseRequireItem =
   | AccessGroupsCreateResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -43908,7 +43908,7 @@ export type AccessPoliciesCreateResponseExcludeItem =
   | AccessPoliciesCreateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -44253,7 +44253,7 @@ export type AccessPoliciesCreateResponseIncludeItem =
   | AccessPoliciesCreateResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -44632,7 +44632,7 @@ export type AccessPoliciesCreateResponseRequireItem =
   | AccessPoliciesCreateResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -45412,7 +45412,7 @@ export type CreateCasbPostureRemediationsJobResponseCreatedItemAssetFieldsItemVa
   | number
   | boolean;
 export const CreateCasbPostureRemediationsJobResponseCreatedItemAssetFieldsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface CreateCasbPostureRemediationsJobResponseCreatedItemAssetFieldsItem {
   /** Field name. */
@@ -46413,7 +46413,7 @@ export type DevicesPoliciesCustomCreateRequestExcludeItem =
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomCreateRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -46513,7 +46513,7 @@ export type DevicesPoliciesCustomCreateRequestIncludeItem =
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomCreateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -46761,7 +46761,7 @@ export type DevicesPoliciesCustomCreateResponseExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomCreateResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -46896,7 +46896,7 @@ export type DevicesPoliciesCustomCreateResponseIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomCreateResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -47861,7 +47861,7 @@ export type DevicesPostureCreateRequestInput =
   | DevicesPostureCreateRequestInputSentineloneS2sInput
   | DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureCreateRequestInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -48684,7 +48684,7 @@ export type DevicesPostureCreateResponseInput =
   | DevicesPostureCreateResponseInputSentineloneS2sInput
   | DevicesPostureCreateResponseInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureCreateResponseInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -49091,7 +49091,7 @@ export type DexCommandsCreateRequestCommandsItemArgs =
   | DexCommandsCreateRequestCommandsItemArgsPCAPArgs
   | DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs;
 export const DexCommandsCreateRequestCommandsItemArgs = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["testAllRoutes"],
     ["maxFileSizeMb", "packetSizeBytes", "timeLimitMin"],
     ["interfaces"],
@@ -49781,7 +49781,7 @@ export type DlpDatasetsVersionsCreateRequestBodyItem =
   | DlpDatasetsVersionsCreateRequestBodyItemExistingColumn
   | DlpDatasetsVersionsCreateRequestBodyItemNewColumn;
 export const DlpDatasetsVersionsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["entryId", "headerName", "numCells"],
     ["entryName", "headerName", "numCells"],
   ]),
@@ -50102,7 +50102,7 @@ export type DlpEmailAccountMappingCreateRequestAuthRequirements =
   | DlpEmailAccountMappingCreateRequestAuthRequirementsCase0
   | DlpEmailAccountMappingCreateRequestAuthRequirementsType;
 export const DlpEmailAccountMappingCreateRequestAuthRequirements = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
     key: "type",
     values: ["Org", "NoAuth"],
   }),
@@ -50177,7 +50177,7 @@ export type DlpEmailAccountMappingCreateResponseAuthRequirements =
   | DlpEmailAccountMappingCreateResponseAuthRequirementsCase0
   | DlpEmailAccountMappingCreateResponseAuthRequirementsType;
 export const DlpEmailAccountMappingCreateResponseAuthRequirements = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
     key: "type",
     values: ["Org", "NoAuth"],
   }),
@@ -50237,7 +50237,7 @@ export type DlpEmailRulesCreateRequestConditionsItemValue =
   | string
   | DlpEmailRulesCreateRequestConditionsItemValueCase0List;
 export const DlpEmailRulesCreateRequestConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesCreateRequestConditionsItem {
@@ -50323,7 +50323,7 @@ export type DlpEmailRulesCreateResponseConditionsItemValue =
   | string
   | DlpEmailRulesCreateResponseConditionsItemValueCase0List;
 export const DlpEmailRulesCreateResponseConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesCreateResponseConditionsItem {
@@ -50577,7 +50577,7 @@ export type DlpEntriesPredefinedCreateResponseVariant =
   | DlpEntriesPredefinedCreateResponseVariantCase0
   | DlpEntriesPredefinedCreateResponseVariantCase1;
 export const DlpEntriesPredefinedCreateResponseVariant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -50714,7 +50714,7 @@ export type DlpProfilesCustomCreateRequestEntriesItem =
   | DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry
   | DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntry;
 export const DlpProfilesCustomCreateRequestEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["enabled", "name", "pattern", "description"],
     ["enabled", "name", "words"],
   ]),
@@ -50984,7 +50984,7 @@ export type DlpProfilesCustomCreateResultCustomProfileEntriesItemPredefinedEntry
   | DlpProfilesCustomCreateResultCustomProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomCreateResultCustomProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -51161,7 +51161,7 @@ export type DlpProfilesCustomCreateResultCustomProfileEntriesItem =
   | DlpProfilesCustomCreateResultCustomProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesCustomCreateResultCustomProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomCreateResultCustomProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -51376,7 +51376,7 @@ export type DlpProfilesCustomCreateResultCustomProfileSharedEntriesItemPredefine
   | DlpProfilesCustomCreateResultCustomProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomCreateResultCustomProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -51561,7 +51561,7 @@ export type DlpProfilesCustomCreateResultCustomProfileSharedEntriesItem =
   | DlpProfilesCustomCreateResultCustomProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomCreateResultCustomProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -51835,7 +51835,7 @@ export type DlpProfilesCustomCreateResultPredefinedProfileEntriesItemPredefinedE
   | DlpProfilesCustomCreateResultPredefinedProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomCreateResultPredefinedProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -52017,7 +52017,7 @@ export type DlpProfilesCustomCreateResultPredefinedProfileEntriesItem =
   | DlpProfilesCustomCreateResultPredefinedProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomCreateResultPredefinedProfileEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -52279,7 +52279,7 @@ export type DlpProfilesCustomCreateResultIntegrationProfileEntriesItemPredefined
   | DlpProfilesCustomCreateResultIntegrationProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomCreateResultIntegrationProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -52463,7 +52463,7 @@ export type DlpProfilesCustomCreateResultIntegrationProfileEntriesItem =
   | DlpProfilesCustomCreateResultIntegrationProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomCreateResultIntegrationProfileEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -52670,7 +52670,7 @@ export type DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItemPred
   | DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -52857,7 +52857,7 @@ export type DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItem =
   | DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomCreateResultIntegrationProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -52947,7 +52947,7 @@ export type DlpProfilesCustomCreateResult =
   | DlpProfilesCustomCreateResultPredefinedProfile
   | DlpProfilesCustomCreateResultIntegrationProfile;
 export const DlpProfilesCustomCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -53880,7 +53880,7 @@ export type GatewayProxyEndpointsCreateResult =
   | GatewayProxyEndpointsCreateResultIP
   | GatewayProxyEndpointsCreateResultIdentity;
 export const GatewayProxyEndpointsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["ips", "name", "id", "createdAt", "kind", "subdomain", "updatedAt"],
       ["kind", "name", "id", "createdAt", "subdomain", "updatedAt"],
@@ -55684,7 +55684,7 @@ export type IdentityProvidersCreateRequestConfig =
   | IdentityProvidersCreateRequestConfigAccessCloudflare
   | IdentityProvidersCreateRequestConfigAccessPasskeys;
 export const IdentityProvidersCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "claims",
       "clientId",
@@ -58054,7 +58054,7 @@ export type IdentityProvidersCreateResult =
   | IdentityProvidersCreateResultAccessCloudflare
   | IdentityProvidersCreateResultAccessPasskeys;
 export const IdentityProvidersCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "config",
       "name",
@@ -61210,7 +61210,7 @@ export type DevicesPoliciesCustomDeleteResultItemExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomDeleteResultItemExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -61323,7 +61323,7 @@ export type DevicesPoliciesCustomDeleteResultItemIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomDeleteResultItemIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -61925,7 +61925,7 @@ export type DlpEmailRulesDeleteResponseConditionsItemValue =
   | string
   | DlpEmailRulesDeleteResponseConditionsItemValueCase0List;
 export const DlpEmailRulesDeleteResponseConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesDeleteResponseConditionsItem {
@@ -64341,7 +64341,7 @@ export type AccessApplicationsGetResultEndUserApplicationDestinationsItem =
   | AccessApplicationsGetResultEndUserApplicationDestinationsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultEndUserApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -64899,7 +64899,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationDestinationsItem =
   | AccessApplicationsGetResultSelfHostedApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultSelfHostedApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -65453,7 +65453,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -65802,7 +65802,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemIncludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -66188,7 +66188,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemRequireI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -66566,7 +66566,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthentica
   | AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -66595,7 +66595,7 @@ export type AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthentica
   | AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultSelfHostedApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -67287,7 +67287,7 @@ export type AccessApplicationsGetResultSaaSApplicationPoliciesItemExcludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSaaSApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -67636,7 +67636,7 @@ export type AccessApplicationsGetResultSaaSApplicationPoliciesItemIncludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSaaSApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -68022,7 +68022,7 @@ export type AccessApplicationsGetResultSaaSApplicationPoliciesItemRequireItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSaaSApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -68494,7 +68494,7 @@ export type AccessApplicationsGetResultSaaSApplicationSaasApp =
   | AccessApplicationsGetResultSaaSApplicationSaasAppSAMLSaaSApp
   | AccessApplicationsGetResultSaaSApplicationSaasAppOIDCSaaSApp;
 export const AccessApplicationsGetResultSaaSApplicationSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -68776,7 +68776,7 @@ export type AccessApplicationsGetResultSaaSApplicationScimConfigAuthenticationAc
   | AccessApplicationsGetResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -68805,7 +68805,7 @@ export type AccessApplicationsGetResultSaaSApplicationScimConfigAuthentication =
   | AccessApplicationsGetResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultSaaSApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -69457,7 +69457,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationDestinationsItem =
   | AccessApplicationsGetResultBrowserSSHApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultBrowserSSHApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -70011,7 +70011,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemExcludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -70360,7 +70360,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemIncludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -70746,7 +70746,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemRequireI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserSSHApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -71124,7 +71124,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -71153,7 +71153,7 @@ export type AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultBrowserSSHApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -71892,7 +71892,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationDestinationsItem =
   | AccessApplicationsGetResultBrowserVNCApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultBrowserVNCApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -72446,7 +72446,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemExcludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -72795,7 +72795,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemIncludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -73181,7 +73181,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemRequireI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserVNCApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -73559,7 +73559,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -73588,7 +73588,7 @@ export type AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultBrowserVNCApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -74317,7 +74317,7 @@ export type AccessApplicationsGetResultAppLauncherApplicationPoliciesItemExclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultAppLauncherApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -74666,7 +74666,7 @@ export type AccessApplicationsGetResultAppLauncherApplicationPoliciesItemInclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultAppLauncherApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -75052,7 +75052,7 @@ export type AccessApplicationsGetResultAppLauncherApplicationPoliciesItemRequire
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultAppLauncherApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -75724,7 +75724,7 @@ export type AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -76073,7 +76073,7 @@ export type AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -76460,7 +76460,7 @@ export type AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -77116,7 +77116,7 @@ export type AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -77465,7 +77465,7 @@ export type AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -77852,7 +77852,7 @@ export type AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPol
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -78508,7 +78508,7 @@ export type AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPo
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -78857,7 +78857,7 @@ export type AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPo
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -79244,7 +79244,7 @@ export type AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPo
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -79862,7 +79862,7 @@ export type AccessApplicationsGetResultBookmarkApplicationPoliciesItemExcludeIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBookmarkApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -80211,7 +80211,7 @@ export type AccessApplicationsGetResultBookmarkApplicationPoliciesItemIncludeIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBookmarkApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -80597,7 +80597,7 @@ export type AccessApplicationsGetResultBookmarkApplicationPoliciesItemRequireIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBookmarkApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -81465,7 +81465,7 @@ export type AccessApplicationsGetResultInfrastructureApplicationPoliciesItemExcl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultInfrastructureApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -81814,7 +81814,7 @@ export type AccessApplicationsGetResultInfrastructureApplicationPoliciesItemIncl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultInfrastructureApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -82199,7 +82199,7 @@ export type AccessApplicationsGetResultInfrastructureApplicationPoliciesItemRequ
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultInfrastructureApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -83070,7 +83070,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationDestinationsItem =
   | AccessApplicationsGetResultBrowserRDPApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultBrowserRDPApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -83624,7 +83624,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemExcludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -83973,7 +83973,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemIncludeI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -84359,7 +84359,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemRequireI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultBrowserRDPApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -84737,7 +84737,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -84766,7 +84766,7 @@ export type AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthentica
   | AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultBrowserRDPApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -85426,7 +85426,7 @@ export type AccessApplicationsGetResultMcpServerApplicationDestinationsItem =
   | AccessApplicationsGetResultMcpServerApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultMcpServerApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -85943,7 +85943,7 @@ export type AccessApplicationsGetResultMcpServerApplicationPoliciesItemExcludeIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -86292,7 +86292,7 @@ export type AccessApplicationsGetResultMcpServerApplicationPoliciesItemIncludeIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -86678,7 +86678,7 @@ export type AccessApplicationsGetResultMcpServerApplicationPoliciesItemRequireIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -87056,7 +87056,7 @@ export type AccessApplicationsGetResultMcpServerApplicationScimConfigAuthenticat
   | AccessApplicationsGetResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -87085,7 +87085,7 @@ export type AccessApplicationsGetResultMcpServerApplicationScimConfigAuthenticat
   | AccessApplicationsGetResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultMcpServerApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -87684,7 +87684,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationDestinationsIte
   | AccessApplicationsGetResultMcpServerPortalApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsGetResultMcpServerPortalApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -88205,7 +88205,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemExc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -88554,7 +88554,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemInc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -88940,7 +88940,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemReq
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultMcpServerPortalApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -89319,7 +89319,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthe
   | AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -89348,7 +89348,7 @@ export type AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthe
   | AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsGetResultMcpServerPortalApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -89570,7 +89570,7 @@ export type AccessApplicationsGetResult =
   | AccessApplicationsGetResultMcpServerApplication
   | AccessApplicationsGetResultMcpServerPortalApplication;
 export const AccessApplicationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "oauthConfiguration",
       "type",
@@ -90322,7 +90322,7 @@ export type AccessApplicationsPoliciesGetResultCase0ExcludeItem =
   | AccessApplicationsPoliciesGetResultCase0ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase0ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -90668,7 +90668,7 @@ export type AccessApplicationsPoliciesGetResultCase0IncludeItem =
   | AccessApplicationsPoliciesGetResultCase0IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase0IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -91049,7 +91049,7 @@ export type AccessApplicationsPoliciesGetResultCase0RequireItem =
   | AccessApplicationsPoliciesGetResultCase0RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase0RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -91511,7 +91511,7 @@ export type AccessApplicationsPoliciesGetResultCase1ExcludeItem =
   | AccessApplicationsPoliciesGetResultCase1ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase1ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -91857,7 +91857,7 @@ export type AccessApplicationsPoliciesGetResultCase1IncludeItem =
   | AccessApplicationsPoliciesGetResultCase1IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase1IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -92237,7 +92237,7 @@ export type AccessApplicationsPoliciesGetResultCase1RequireItem =
   | AccessApplicationsPoliciesGetResultCase1RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResultCase1RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -92320,7 +92320,7 @@ export type AccessApplicationsPoliciesGetForAccountResult =
   | AccessApplicationsPoliciesGetResultCase0
   | AccessApplicationsPoliciesGetResultCase1;
 export const AccessApplicationsPoliciesGetForAccountResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -92397,7 +92397,7 @@ export type AccessApplicationsPoliciesGetForZoneResult =
   | AccessApplicationsPoliciesGetResultCase0
   | AccessApplicationsPoliciesGetResultCase1;
 export const AccessApplicationsPoliciesGetForZoneResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -93093,7 +93093,7 @@ export type AccessGroupsGetResponseExcludeItem =
   | AccessGroupsGetResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsGetResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -93435,7 +93435,7 @@ export type AccessGroupsGetResponseIncludeItem =
   | AccessGroupsGetResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsGetResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -93777,7 +93777,7 @@ export type AccessGroupsGetResponseRequireItem =
   | AccessGroupsGetResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsGetResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -94423,7 +94423,7 @@ export type AccessPoliciesGetResponseExcludeItem =
   | AccessPoliciesGetResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesGetResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -94766,7 +94766,7 @@ export type AccessPoliciesGetResponseIncludeItem =
   | AccessPoliciesGetResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesGetResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -95143,7 +95143,7 @@ export type AccessPoliciesGetResponseRequireItem =
   | AccessPoliciesGetResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesGetResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -98170,7 +98170,7 @@ export type DevicesPoliciesCustomGetResponseExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomGetResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -98280,7 +98280,7 @@ export type DevicesPoliciesCustomGetResponseIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomGetResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -98498,7 +98498,7 @@ export type DevicesPoliciesCustomExcludesGetResultItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomExcludesGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -98629,7 +98629,7 @@ export type DevicesPoliciesCustomIncludesGetResultItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomIncludesGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -98694,7 +98694,7 @@ export type DevicesPoliciesDefaultGetResponseExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultGetResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -98804,7 +98804,7 @@ export type DevicesPoliciesDefaultGetResponseIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultGetResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -99002,7 +99002,7 @@ export type DevicesPoliciesDefaultExcludesGetResultItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultExcludesGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -99126,7 +99126,7 @@ export type DevicesPoliciesDefaultIncludesGetResultItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultIncludesGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -99863,7 +99863,7 @@ export type DevicesPostureGetResponseInput =
   | DevicesPostureGetResponseInputSentineloneS2sInput
   | DevicesPostureGetResponseInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureGetResponseInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -101665,7 +101665,7 @@ export type DexWarpChangeEventsGetResultItem =
   | DexWarpChangeEventsGetResultItemDigitalExperienceMonitoringWARPToggleChangeEvent
   | DexWarpChangeEventsGetResultItemDigitalExperienceMonitoringWARPConfigChangeEvent;
 export const DexWarpChangeEventsGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "accountName",
       "accountTag",
@@ -101917,7 +101917,7 @@ export type GetDlpCustomEntryResultCase2Variant =
   | GetDlpCustomEntryResultCase2VariantCase0
   | GetDlpCustomEntryResultCase2VariantCase1;
 export const GetDlpCustomEntryResultCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -102182,7 +102182,7 @@ export type GetDlpCustomEntryResult =
   | GetDlpCustomEntryResultCase5
   | GetDlpCustomEntryResultCase6;
 export const GetDlpCustomEntryResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -102672,7 +102672,7 @@ export type DlpEmailAccountMappingGetResponseAuthRequirements =
   | DlpEmailAccountMappingGetResponseAuthRequirementsCase0
   | DlpEmailAccountMappingGetResponseAuthRequirementsType;
 export const DlpEmailAccountMappingGetResponseAuthRequirements = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
+  /*@__PURE__*/ T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]], {
     key: "type",
     values: ["Org", "NoAuth"],
   }),
@@ -102747,7 +102747,7 @@ export type DlpEmailRulesGetResponseConditionsItemValue =
   | string
   | DlpEmailRulesGetResponseConditionsItemValueCase0List;
 export const DlpEmailRulesGetResponseConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesGetResponseConditionsItem {
@@ -103010,7 +103010,7 @@ export type GetDlpEntriesIntegrationResultCase2Variant =
   | GetDlpEntriesIntegrationResultCase2VariantCase0
   | GetDlpEntriesIntegrationResultCase2VariantCase1;
 export const GetDlpEntriesIntegrationResultCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -103283,7 +103283,7 @@ export type GetDlpEntriesIntegrationResult =
   | GetDlpEntriesIntegrationResultCase5
   | GetDlpEntriesIntegrationResultCase6;
 export const GetDlpEntriesIntegrationResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -103604,7 +103604,7 @@ export type GetDlpEntriesPredefinedResultCase2Variant =
   | GetDlpEntriesPredefinedResultCase2VariantCase0
   | GetDlpEntriesPredefinedResultCase2VariantCase1;
 export const GetDlpEntriesPredefinedResultCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -103877,7 +103877,7 @@ export type GetDlpEntriesPredefinedResult =
   | GetDlpEntriesPredefinedResultCase5
   | GetDlpEntriesPredefinedResultCase6;
 export const GetDlpEntriesPredefinedResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -104181,7 +104181,7 @@ export type DlpEntriesGetResultCase2Variant =
   | DlpEntriesGetResultCase2VariantCase0
   | DlpEntriesGetResultCase2VariantCase1;
 export const DlpEntriesGetResultCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -104432,7 +104432,7 @@ export type DlpEntriesGetResult =
   | DlpEntriesGetResultCase5
   | DlpEntriesGetResultCase6;
 export const DlpEntriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -104754,7 +104754,7 @@ export type DlpProfilesGetResultCustomProfileEntriesItemPredefinedEntryVariant =
   | DlpProfilesGetResultCustomProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesGetResultCustomProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -104928,7 +104928,7 @@ export type DlpProfilesGetResultCustomProfileEntriesItem =
   | DlpProfilesGetResultCustomProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesGetResultCustomProfileEntriesItemWordListEntry;
 export const DlpProfilesGetResultCustomProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -105135,7 +105135,7 @@ export type DlpProfilesGetResultCustomProfileSharedEntriesItemPredefinedEntryVar
   | DlpProfilesGetResultCustomProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesGetResultCustomProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -105311,7 +105311,7 @@ export type DlpProfilesGetResultCustomProfileSharedEntriesItem =
   | DlpProfilesGetResultCustomProfileSharedEntriesItemDocumentFingerprintEntry
   | DlpProfilesGetResultCustomProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesGetResultCustomProfileSharedEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -105573,7 +105573,7 @@ export type DlpProfilesGetResultPredefinedProfileEntriesItemPredefinedEntryVaria
   | DlpProfilesGetResultPredefinedProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesGetResultPredefinedProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -105749,7 +105749,7 @@ export type DlpProfilesGetResultPredefinedProfileEntriesItem =
   | DlpProfilesGetResultPredefinedProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesGetResultPredefinedProfileEntriesItemWordListEntry;
 export const DlpProfilesGetResultPredefinedProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -106003,7 +106003,7 @@ export type DlpProfilesGetResultIntegrationProfileEntriesItemPredefinedEntryVari
   | DlpProfilesGetResultIntegrationProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesGetResultIntegrationProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -106179,7 +106179,7 @@ export type DlpProfilesGetResultIntegrationProfileEntriesItem =
   | DlpProfilesGetResultIntegrationProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesGetResultIntegrationProfileEntriesItemWordListEntry;
 export const DlpProfilesGetResultIntegrationProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -106381,7 +106381,7 @@ export type DlpProfilesGetResultIntegrationProfileSharedEntriesItemPredefinedEnt
   | DlpProfilesGetResultIntegrationProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesGetResultIntegrationProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -106560,7 +106560,7 @@ export type DlpProfilesGetResultIntegrationProfileSharedEntriesItem =
   | DlpProfilesGetResultIntegrationProfileSharedEntriesItemDocumentFingerprintEntry
   | DlpProfilesGetResultIntegrationProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesGetResultIntegrationProfileSharedEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -106649,7 +106649,7 @@ export type DlpProfilesGetResult =
   | DlpProfilesGetResultPredefinedProfile
   | DlpProfilesGetResultIntegrationProfile;
 export const DlpProfilesGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -106898,7 +106898,7 @@ export type DlpProfilesCustomGetResultCustomProfileEntriesItemPredefinedEntryVar
   | DlpProfilesCustomGetResultCustomProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomGetResultCustomProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -107074,7 +107074,7 @@ export type DlpProfilesCustomGetResultCustomProfileEntriesItem =
   | DlpProfilesCustomGetResultCustomProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesCustomGetResultCustomProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomGetResultCustomProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -107287,7 +107287,7 @@ export type DlpProfilesCustomGetResultCustomProfileSharedEntriesItemPredefinedEn
   | DlpProfilesCustomGetResultCustomProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomGetResultCustomProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -107468,7 +107468,7 @@ export type DlpProfilesCustomGetResultCustomProfileSharedEntriesItem =
   | DlpProfilesCustomGetResultCustomProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomGetResultCustomProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -107737,7 +107737,7 @@ export type DlpProfilesCustomGetResultPredefinedProfileEntriesItemPredefinedEntr
   | DlpProfilesCustomGetResultPredefinedProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomGetResultPredefinedProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -107915,7 +107915,7 @@ export type DlpProfilesCustomGetResultPredefinedProfileEntriesItem =
   | DlpProfilesCustomGetResultPredefinedProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesCustomGetResultPredefinedProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomGetResultPredefinedProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -108176,7 +108176,7 @@ export type DlpProfilesCustomGetResultIntegrationProfileEntriesItemPredefinedEnt
   | DlpProfilesCustomGetResultIntegrationProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomGetResultIntegrationProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -108355,7 +108355,7 @@ export type DlpProfilesCustomGetResultIntegrationProfileEntriesItem =
   | DlpProfilesCustomGetResultIntegrationProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesCustomGetResultIntegrationProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomGetResultIntegrationProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -108560,7 +108560,7 @@ export type DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItemPredefi
   | DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -108747,7 +108747,7 @@ export type DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItem =
   | DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomGetResultIntegrationProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -108836,7 +108836,7 @@ export type DlpProfilesCustomGetResult =
   | DlpProfilesCustomGetResultPredefinedProfile
   | DlpProfilesCustomGetResultIntegrationProfile;
 export const DlpProfilesCustomGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -109056,7 +109056,7 @@ export type DlpProfilesPredefinedGetResponseEntriesItemPredefinedEntryVariant =
   | DlpProfilesPredefinedGetResponseEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesPredefinedGetResponseEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -109230,7 +109230,7 @@ export type DlpProfilesPredefinedGetResponseEntriesItem =
   | DlpProfilesPredefinedGetResponseEntriesItemDocumentFingerprintEntry
   | DlpProfilesPredefinedGetResponseEntriesItemWordListEntry;
 export const DlpProfilesPredefinedGetResponseEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -110543,7 +110543,7 @@ export type GatewayProxyEndpointsGetResult =
   | GatewayProxyEndpointsGetResultIP
   | GatewayProxyEndpointsGetResultIdentity;
 export const GatewayProxyEndpointsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["ips", "name", "id", "createdAt", "kind", "subdomain", "updatedAt"],
       ["kind", "name", "id", "createdAt", "subdomain", "updatedAt"],
@@ -113183,7 +113183,7 @@ export type IdentityProvidersGetResult =
   | IdentityProvidersGetResultAccessCloudflare
   | IdentityProvidersGetResultAccessPasskeys;
 export const IdentityProvidersGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "config",
       "name",
@@ -115043,7 +115043,7 @@ export type TunnelsWarpConnectorConfigurationsGetResponseConfig =
   | TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshAwsConfig
   | TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshLocalConfig;
 export const TunnelsWarpConnectorConfigurationsGetResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
+  /*@__PURE__*/ T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
 );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -116451,7 +116451,7 @@ export type AccessApplicationsPoliciesListResultItemCase0ExcludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase0ExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -116798,7 +116798,7 @@ export type AccessApplicationsPoliciesListResultItemCase0IncludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase0IncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -117181,7 +117181,7 @@ export type AccessApplicationsPoliciesListResultItemCase0RequireItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase0RequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -117646,7 +117646,7 @@ export type AccessApplicationsPoliciesListResultItemCase1ExcludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase1ExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -117993,7 +117993,7 @@ export type AccessApplicationsPoliciesListResultItemCase1IncludeItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase1IncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -118375,7 +118375,7 @@ export type AccessApplicationsPoliciesListResultItemCase1RequireItem =
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemCase1RequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -118458,7 +118458,7 @@ export type AccessApplicationsPoliciesListForAccountResultItem =
   | AccessApplicationsPoliciesListResultItemCase0
   | AccessApplicationsPoliciesListResultItemCase1;
 export const AccessApplicationsPoliciesListForAccountResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -118544,7 +118544,7 @@ export type AccessApplicationsPoliciesListForZoneResultItem =
   | AccessApplicationsPoliciesListResultItemCase0
   | AccessApplicationsPoliciesListResultItemCase1;
 export const AccessApplicationsPoliciesListForZoneResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -119111,7 +119111,7 @@ export type AccessApplicationsListResultItemEndUserApplicationDestinationsItem =
   | AccessApplicationsListResultItemEndUserApplicationDestinationsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemEndUserApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -119673,7 +119673,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationDestinationsIte
   | AccessApplicationsListResultItemSelfHostedApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemSelfHostedApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -120231,7 +120231,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -120580,7 +120580,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemInc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -120966,7 +120966,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemReq
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -121345,7 +121345,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthe
   | AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -121374,7 +121374,7 @@ export type AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthe
   | AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemSelfHostedApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -122071,7 +122071,7 @@ export type AccessApplicationsListResultItemSaaSApplicationPoliciesItemExcludeIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSaaSApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -122420,7 +122420,7 @@ export type AccessApplicationsListResultItemSaaSApplicationPoliciesItemIncludeIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSaaSApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -122806,7 +122806,7 @@ export type AccessApplicationsListResultItemSaaSApplicationPoliciesItemRequireIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSaaSApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -123290,7 +123290,7 @@ export type AccessApplicationsListResultItemSaaSApplicationSaasApp =
   | AccessApplicationsListResultItemSaaSApplicationSaasAppSAMLSaaSApp
   | AccessApplicationsListResultItemSaaSApplicationSaasAppOIDCSaaSApp;
 export const AccessApplicationsListResultItemSaaSApplicationSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -123572,7 +123572,7 @@ export type AccessApplicationsListResultItemSaaSApplicationScimConfigAuthenticat
   | AccessApplicationsListResultItemSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -123601,7 +123601,7 @@ export type AccessApplicationsListResultItemSaaSApplicationScimConfigAuthenticat
   | AccessApplicationsListResultItemSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemSaaSApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -124259,7 +124259,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationDestinationsIte
   | AccessApplicationsListResultItemBrowserSSHApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemBrowserSSHApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -124817,7 +124817,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemExc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -125166,7 +125166,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemInc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -125552,7 +125552,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemReq
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserSSHApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -125931,7 +125931,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -125960,7 +125960,7 @@ export type AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemBrowserSSHApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -126706,7 +126706,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationDestinationsIte
   | AccessApplicationsListResultItemBrowserVNCApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemBrowserVNCApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -127264,7 +127264,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemExc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -127613,7 +127613,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemInc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -127999,7 +127999,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemReq
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserVNCApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -128378,7 +128378,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -128407,7 +128407,7 @@ export type AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemBrowserVNCApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -129145,7 +129145,7 @@ export type AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemEx
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -129494,7 +129494,7 @@ export type AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemIn
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -129880,7 +129880,7 @@ export type AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemRe
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemAppLauncherApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -130555,7 +130555,7 @@ export type AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -130904,7 +130904,7 @@ export type AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -131291,7 +131291,7 @@ export type AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -131950,7 +131950,7 @@ export type AccessApplicationsListResultItemBrowserIsolationPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserIsolationPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -132299,7 +132299,7 @@ export type AccessApplicationsListResultItemBrowserIsolationPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserIsolationPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -132686,7 +132686,7 @@ export type AccessApplicationsListResultItemBrowserIsolationPermissionsApplicati
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserIsolationPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -133345,7 +133345,7 @@ export type AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicat
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -133694,7 +133694,7 @@ export type AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicat
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -134081,7 +134081,7 @@ export type AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicat
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -134702,7 +134702,7 @@ export type AccessApplicationsListResultItemBookmarkApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBookmarkApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -135051,7 +135051,7 @@ export type AccessApplicationsListResultItemBookmarkApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBookmarkApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -135437,7 +135437,7 @@ export type AccessApplicationsListResultItemBookmarkApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBookmarkApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -136321,7 +136321,7 @@ export type AccessApplicationsListResultItemInfrastructureApplicationPoliciesIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemInfrastructureApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -136670,7 +136670,7 @@ export type AccessApplicationsListResultItemInfrastructureApplicationPoliciesIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemInfrastructureApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -137055,7 +137055,7 @@ export type AccessApplicationsListResultItemInfrastructureApplicationPoliciesIte
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemInfrastructureApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -137940,7 +137940,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationDestinationsIte
   | AccessApplicationsListResultItemBrowserRDPApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemBrowserRDPApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -138498,7 +138498,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemExc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -138847,7 +138847,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemInc
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -139233,7 +139233,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemReq
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemBrowserRDPApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -139612,7 +139612,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -139641,7 +139641,7 @@ export type AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthe
   | AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemBrowserRDPApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -140311,7 +140311,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationDestinationsItem
   | AccessApplicationsListResultItemMcpServerApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemMcpServerApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -140832,7 +140832,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationPoliciesItemExcl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -141181,7 +141181,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationPoliciesItemIncl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -141567,7 +141567,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationPoliciesItemRequ
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -141946,7 +141946,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthen
   | AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -141975,7 +141975,7 @@ export type AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthen
   | AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemMcpServerApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -142580,7 +142580,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationDestinatio
   | AccessApplicationsListResultItemMcpServerPortalApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -143103,7 +143103,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -143452,7 +143452,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -143838,7 +143838,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesIt
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -144217,7 +144217,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationScimConfig
   | AccessApplicationsListResultItemMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -144246,7 +144246,7 @@ export type AccessApplicationsListResultItemMcpServerPortalApplicationScimConfig
   | AccessApplicationsListResultItemMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsListResultItemMcpServerPortalApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -144474,7 +144474,7 @@ export type AccessApplicationsListResultItem =
   | AccessApplicationsListResultItemMcpServerApplication
   | AccessApplicationsListResultItemMcpServerPortalApplication;
 export const AccessApplicationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "oauthConfiguration",
       "type",
@@ -145567,7 +145567,7 @@ export type AccessGroupsListResultItemExcludeItem =
   | AccessGroupsListResultItemExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsListResultItemExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -145910,7 +145910,7 @@ export type AccessGroupsListResultItemIncludeItem =
   | AccessGroupsListResultItemIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsListResultItemIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -146253,7 +146253,7 @@ export type AccessGroupsListResultItemRequireItem =
   | AccessGroupsListResultItemRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsListResultItemRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -147360,7 +147360,7 @@ export type AccessPoliciesListResultItemExcludeItem =
   | AccessPoliciesListResultItemExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesListResultItemExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -147705,7 +147705,7 @@ export type AccessPoliciesListResultItemIncludeItem =
   | AccessPoliciesListResultItemIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesListResultItemIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -148084,7 +148084,7 @@ export type AccessPoliciesListResultItemRequireItem =
   | AccessPoliciesListResultItemRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesListResultItemRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -151066,7 +151066,7 @@ export type ListCasbPostureRemediationsJobsResultItemAssetFieldsItemValue =
   | number
   | boolean;
 export const ListCasbPostureRemediationsJobsResultItemAssetFieldsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export interface ListCasbPostureRemediationsJobsResultItemAssetFieldsItem {
   /** Field name. */
@@ -152001,7 +152001,7 @@ export type DevicesPoliciesCustomListResultItemExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomListResultItemExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -152112,7 +152112,7 @@ export type DevicesPoliciesCustomListResultItemIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomListResultItemIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -153106,7 +153106,7 @@ export type DevicesPostureListResultItemInput =
   | DevicesPostureListResultItemInputSentineloneS2sInput
   | DevicesPostureListResultItemInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureListResultItemInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -155270,7 +155270,7 @@ export type ListDlpCustomEntriesResultItemCase2Variant =
   | ListDlpCustomEntriesResultItemCase2VariantCase0
   | ListDlpCustomEntriesResultItemCase2VariantCase1;
 export const ListDlpCustomEntriesResultItemCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -155489,7 +155489,7 @@ export type ListDlpCustomEntriesResultItem =
   | ListDlpCustomEntriesResultItemCase5
   | ListDlpCustomEntriesResultItemCase6;
 export const ListDlpCustomEntriesResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -155989,7 +155989,7 @@ export type DlpEmailRulesListResultItemConditionsItemValue =
   | string
   | DlpEmailRulesListResultItemConditionsItemValueCase0List;
 export const DlpEmailRulesListResultItemConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesListResultItemConditionsItem {
@@ -156229,7 +156229,7 @@ export type DlpEntriesListResultItemCase2Variant =
   | DlpEntriesListResultItemCase2VariantCase0
   | DlpEntriesListResultItemCase2VariantCase1;
 export const DlpEntriesListResultItemCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -156448,7 +156448,7 @@ export type DlpEntriesListResultItem =
   | DlpEntriesListResultItemCase5
   | DlpEntriesListResultItemCase6;
 export const DlpEntriesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -156707,7 +156707,7 @@ export type ListDlpEntriesIntegrationResultItemCase2Variant =
   | ListDlpEntriesIntegrationResultItemCase2VariantCase0
   | ListDlpEntriesIntegrationResultItemCase2VariantCase1;
 export const ListDlpEntriesIntegrationResultItemCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -156926,7 +156926,7 @@ export type ListDlpEntriesIntegrationResultItem =
   | ListDlpEntriesIntegrationResultItemCase5
   | ListDlpEntriesIntegrationResultItemCase6;
 export const ListDlpEntriesIntegrationResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -157187,7 +157187,7 @@ export type ListDlpEntriesPredefinedResultItemCase2Variant =
   | ListDlpEntriesPredefinedResultItemCase2VariantCase0
   | ListDlpEntriesPredefinedResultItemCase2VariantCase1;
 export const ListDlpEntriesPredefinedResultItemCase2Variant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -157406,7 +157406,7 @@ export type ListDlpEntriesPredefinedResultItem =
   | ListDlpEntriesPredefinedResultItemCase5
   | ListDlpEntriesPredefinedResultItemCase6;
 export const ListDlpEntriesPredefinedResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -157718,7 +157718,7 @@ export type DlpProfilesListResultItemCustomProfileEntriesItemPredefinedEntryVari
   | DlpProfilesListResultItemCustomProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesListResultItemCustomProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -157894,7 +157894,7 @@ export type DlpProfilesListResultItemCustomProfileEntriesItem =
   | DlpProfilesListResultItemCustomProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesListResultItemCustomProfileEntriesItemWordListEntry;
 export const DlpProfilesListResultItemCustomProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -158107,7 +158107,7 @@ export type DlpProfilesListResultItemCustomProfileSharedEntriesItemPredefinedEnt
   | DlpProfilesListResultItemCustomProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesListResultItemCustomProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -158286,7 +158286,7 @@ export type DlpProfilesListResultItemCustomProfileSharedEntriesItem =
   | DlpProfilesListResultItemCustomProfileSharedEntriesItemDocumentFingerprintEntry
   | DlpProfilesListResultItemCustomProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesListResultItemCustomProfileSharedEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -158552,7 +158552,7 @@ export type DlpProfilesListResultItemPredefinedProfileEntriesItemPredefinedEntry
   | DlpProfilesListResultItemPredefinedProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesListResultItemPredefinedProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -158729,7 +158729,7 @@ export type DlpProfilesListResultItemPredefinedProfileEntriesItem =
   | DlpProfilesListResultItemPredefinedProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesListResultItemPredefinedProfileEntriesItemWordListEntry;
 export const DlpProfilesListResultItemPredefinedProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -158988,7 +158988,7 @@ export type DlpProfilesListResultItemIntegrationProfileEntriesItemPredefinedEntr
   | DlpProfilesListResultItemIntegrationProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesListResultItemIntegrationProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -159166,7 +159166,7 @@ export type DlpProfilesListResultItemIntegrationProfileEntriesItem =
   | DlpProfilesListResultItemIntegrationProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesListResultItemIntegrationProfileEntriesItemWordListEntry;
 export const DlpProfilesListResultItemIntegrationProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -159370,7 +159370,7 @@ export type DlpProfilesListResultItemIntegrationProfileSharedEntriesItemPredefin
   | DlpProfilesListResultItemIntegrationProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesListResultItemIntegrationProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -159557,7 +159557,7 @@ export type DlpProfilesListResultItemIntegrationProfileSharedEntriesItem =
   | DlpProfilesListResultItemIntegrationProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesListResultItemIntegrationProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -159646,7 +159646,7 @@ export type DlpProfilesListResultItem =
   | DlpProfilesListResultItemPredefinedProfile
   | DlpProfilesListResultItemIntegrationProfile;
 export const DlpProfilesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -159886,7 +159886,7 @@ export type GatewayAppTypesListResultItem =
   | GatewayAppTypesListResultItemZeroTrustGatewayApplication
   | GatewayAppTypesListResultItemZeroTrustGatewayApplicationType;
 export const GatewayAppTypesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["id", "applicationTypeId", "createdAt", "name"],
     ["id", "createdAt", "description", "name"],
   ]),
@@ -160692,7 +160692,7 @@ export type GatewayProxyEndpointsListResultItem =
   | GatewayProxyEndpointsListResultItemIP
   | GatewayProxyEndpointsListResultItemIdentity;
 export const GatewayProxyEndpointsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["ips", "name", "id", "createdAt", "kind", "subdomain", "updatedAt"],
       ["kind", "name", "id", "createdAt", "subdomain", "updatedAt"],
@@ -163712,7 +163712,7 @@ export type IdentityProvidersListResultItem =
   | IdentityProvidersListResultItemAccessCloudflare
   | IdentityProvidersListResultItemAccessPasskeys;
 export const IdentityProvidersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "config",
       "name",
@@ -165918,7 +165918,7 @@ export type TunnelsListResultItem =
   | TunnelsListResultItemCloudflareTunnel
   | TunnelsListResultItemTunnelWARPConnectorTunnel;
 export const TunnelsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountTag",
@@ -166643,7 +166643,7 @@ export type DevicesPoliciesCustomEditRequestExcludeItem =
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomEditRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -166719,7 +166719,7 @@ export type DevicesPoliciesCustomEditRequestIncludeItem =
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomEditRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -166921,7 +166921,7 @@ export type DevicesPoliciesCustomEditResponseExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomEditResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -167031,7 +167031,7 @@ export type DevicesPoliciesCustomEditResponseIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomEditResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -167239,7 +167239,7 @@ export type DevicesPoliciesDefaultEditRequestExcludeItem =
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultEditRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -167315,7 +167315,7 @@ export type DevicesPoliciesDefaultEditRequestIncludeItem =
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultEditRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -167462,7 +167462,7 @@ export type DevicesPoliciesDefaultEditResponseExcludeItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultEditResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -167572,7 +167572,7 @@ export type DevicesPoliciesDefaultEditResponseIncludeItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultEditResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -168957,7 +168957,7 @@ export type GatewayProxyEndpointsEditResult =
   | GatewayProxyEndpointsEditResultIP
   | GatewayProxyEndpointsEditResultIdentity;
 export const GatewayProxyEndpointsEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["ips", "name", "id", "createdAt", "kind", "subdomain", "updatedAt"],
       ["kind", "name", "id", "createdAt", "subdomain", "updatedAt"],
@@ -170002,7 +170002,7 @@ export type DevicesPoliciesCustomExcludesUpdateRequestBodyItem =
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomExcludesUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170051,7 +170051,7 @@ export type DevicesPoliciesCustomExcludesUpdateResultItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomExcludesUpdateResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170200,7 +170200,7 @@ export type DevicesPoliciesCustomIncludesUpdateRequestBodyItem =
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomIncludesUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170249,7 +170249,7 @@ export type DevicesPoliciesCustomIncludesUpdateResultItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesCustomIncludesUpdateResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170290,7 +170290,7 @@ export type DevicesPoliciesDefaultExcludesUpdateRequestBodyItem =
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultExcludesUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170333,7 +170333,7 @@ export type DevicesPoliciesDefaultExcludesUpdateResultItem =
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultExcludesUpdateResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170480,7 +170480,7 @@ export type DevicesPoliciesDefaultIncludesUpdateRequestBodyItem =
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultIncludesUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170523,7 +170523,7 @@ export type DevicesPoliciesDefaultIncludesUpdateResultItem =
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
   | DevicesPoliciesCustomCreateResponseIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
 export const DevicesPoliciesDefaultIncludesUpdateResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["address", "description"],
     ["host", "description"],
   ]),
@@ -170891,7 +170891,7 @@ export type DlpProfilesPredefinedUpdateResponseEntriesItemPredefinedEntryVariant
   | DlpProfilesPredefinedUpdateResponseEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesPredefinedUpdateResponseEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -171065,7 +171065,7 @@ export type DlpProfilesPredefinedUpdateResponseEntriesItem =
   | DlpProfilesPredefinedUpdateResponseEntriesItemDocumentFingerprintEntry
   | DlpProfilesPredefinedUpdateResponseEntriesItemWordListEntry;
 export const DlpProfilesPredefinedUpdateResponseEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -172673,7 +172673,7 @@ export type TunnelsWarpConnectorConfigurationsUpdateResponseConfig =
   | TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshAwsConfig
   | TunnelsWarpConnectorConfigurationsUpdateResponseConfigTunnelMeshLocalConfig;
 export const TunnelsWarpConnectorConfigurationsUpdateResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
+  /*@__PURE__*/ T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
 );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -175883,7 +175883,7 @@ export type AccessApplicationsUpdateRequestOauthConfiguration =
   | AccessApplicationsUpdateRequestOauthConfigurationAccessEndUserProps
   | AccessApplicationsUpdateRequestOauthConfigurationSelfHostedApplication;
 export const AccessApplicationsUpdateRequestOauthConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["dynamicClientRegistration", "enabled", "grant"],
     ["dynamicClientRegistration", "enabled", "grant"],
   ]),
@@ -176213,7 +176213,7 @@ export type AccessApplicationsUpdateRequestDestinationsAccessEndUserPropsItem =
   | AccessApplicationsUpdateRequestDestinationsAccessEndUserPropsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateRequestDestinationsAccessEndUserPropsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -176607,7 +176607,7 @@ export type AccessApplicationsUpdateRequestDestinationsSelfHostedApplicationItem
   | AccessApplicationsUpdateRequestDestinationsSelfHostedApplicationItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateRequestDestinationsSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -176643,7 +176643,7 @@ export type AccessApplicationsUpdateRequestDestinations =
   | AccessApplicationsUpdateRequestDestinationsAccessEndUserPropsList
   | AccessApplicationsUpdateRequestDestinationsSelfHostedApplicationList;
 export const AccessApplicationsUpdateRequestDestinations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AccessApplicationsUpdateRequestSelfHostedDomainsList = Array<unknown>;
@@ -176807,7 +176807,7 @@ export type AccessApplicationsUpdateRequestMfaConfig =
   | AccessApplicationsUpdateRequestMfaConfigSelfHostedApplication
   | AccessApplicationsUpdateRequestMfaConfigInfrastructureApplication;
 export const AccessApplicationsUpdateRequestMfaConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
   ]),
@@ -177030,7 +177030,7 @@ export type AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicati
   | InlineAccessPolicy;
 export const AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [],
       ["id", "accountId", "precedence"],
       [
@@ -177393,7 +177393,7 @@ export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -177786,7 +177786,7 @@ export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -178177,7 +178177,7 @@ export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItem
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -178270,7 +178270,7 @@ export type AccessApplicationsUpdateForAccountRequestPolicies =
   | AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicationList
   | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationList;
 export const AccessApplicationsUpdateForAccountRequestPolicies = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AccessApplicationsUpdateRequestScimConfigAuthenticationSCIMConfigAuthenticationHTTPBasicScheme =
@@ -178518,7 +178518,7 @@ export type AccessApplicationsUpdateRequestScimConfigAuthenticationAccessSCIMCon
   | AccessApplicationsUpdateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -178546,7 +178546,7 @@ export type AccessApplicationsUpdateRequestScimConfigAuthentication =
   | AccessApplicationsUpdateRequestScimConfigAuthenticationAccessSCIMConfigAuthenticationAccessServiceToken
   | AccessApplicationsUpdateRequestScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateRequestScimConfigAuthentication = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["password", "scheme", "user"],
     ["token", "scheme"],
     ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -178952,7 +178952,7 @@ export type AccessApplicationsUpdateRequestSaasApp =
   | AccessApplicationsUpdateRequestSaasAppSAMLSaaSApp
   | AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp;
 export const AccessApplicationsUpdateRequestSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -179521,7 +179521,7 @@ export type AccessApplicationsUpdateRequestTargetCriteria =
   | AccessApplicationsUpdateRequestTargetCriteriaInfrastructureApplicationList
   | AccessApplicationsUpdateRequestTargetCriteriaBrowserRDPApplicationList;
 export const AccessApplicationsUpdateRequestTargetCriteria = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface UpdateAccessApplicationForAccountRequest {
@@ -180073,7 +180073,7 @@ export type AccessApplicationsUpdateResultEndUserApplicationDestinationsItem =
   | AccessApplicationsUpdateResultEndUserApplicationDestinationsItemAccessEndUserAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultEndUserApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["uri", "overrides", "type"],
         ["type", "workerId", "overrides"],
@@ -180634,7 +180634,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationDestinationsItem 
   | AccessApplicationsUpdateResultSelfHostedApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultSelfHostedApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -181188,7 +181188,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -181537,7 +181537,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -181923,7 +181923,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -182302,7 +182302,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -182331,7 +182331,7 @@ export type AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultSelfHostedApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -183026,7 +183026,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationPoliciesItemExcludeItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSaaSApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -183375,7 +183375,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationPoliciesItemIncludeItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSaaSApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -183761,7 +183761,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationPoliciesItemRequireItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSaaSApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -184244,7 +184244,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationSaasApp =
   | AccessApplicationsUpdateResultSaaSApplicationSaasAppSAMLSaaSApp
   | AccessApplicationsUpdateResultSaaSApplicationSaasAppOIDCSaaSApp;
 export const AccessApplicationsUpdateResultSaaSApplicationSaasApp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "authType",
       "consumerServiceUrl",
@@ -184526,7 +184526,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthenticatio
   | AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -184555,7 +184555,7 @@ export type AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthenticatio
   | AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultSaaSApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -185210,7 +185210,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationDestinationsItem 
   | AccessApplicationsUpdateResultBrowserSSHApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -185764,7 +185764,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -186113,7 +186113,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -186499,7 +186499,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -186878,7 +186878,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -186907,7 +186907,7 @@ export type AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultBrowserSSHApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -187651,7 +187651,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationDestinationsItem 
   | AccessApplicationsUpdateResultBrowserVNCApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -188205,7 +188205,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -188554,7 +188554,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -188940,7 +188940,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -189319,7 +189319,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -189348,7 +189348,7 @@ export type AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultBrowserVNCApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -190084,7 +190084,7 @@ export type AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemExcl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -190433,7 +190433,7 @@ export type AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemIncl
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -190819,7 +190819,7 @@ export type AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemRequ
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultAppLauncherApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -191494,7 +191494,7 @@ export type AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -191843,7 +191843,7 @@ export type AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -192230,7 +192230,7 @@ export type AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -192886,7 +192886,7 @@ export type AccessApplicationsUpdateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserIsolationPermissionsApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -193235,7 +193235,7 @@ export type AccessApplicationsUpdateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserIsolationPermissionsApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -193622,7 +193622,7 @@ export type AccessApplicationsUpdateResultBrowserIsolationPermissionsApplication
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserIsolationPermissionsApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -194278,7 +194278,7 @@ export type AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -194627,7 +194627,7 @@ export type AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -195014,7 +195014,7 @@ export type AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicatio
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -195632,7 +195632,7 @@ export type AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemExclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -195981,7 +195981,7 @@ export type AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemInclude
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -196367,7 +196367,7 @@ export type AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemRequire
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -197240,7 +197240,7 @@ export type AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemE
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -197589,7 +197589,7 @@ export type AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemI
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -197974,7 +197974,7 @@ export type AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemR
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultInfrastructureApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -198854,7 +198854,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationDestinationsItem 
   | AccessApplicationsUpdateResultBrowserRDPApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -199408,7 +199408,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemExclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -199757,7 +199757,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemInclu
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -200143,7 +200143,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemRequi
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -200522,7 +200522,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -200551,7 +200551,7 @@ export type AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthent
   | AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultBrowserRDPApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -201219,7 +201219,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationDestinationsItem =
   | AccessApplicationsUpdateResultMcpServerApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultMcpServerApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -201736,7 +201736,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemExclud
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -202085,7 +202085,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemInclud
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -202471,7 +202471,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemRequir
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -202849,7 +202849,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthenti
   | AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -202878,7 +202878,7 @@ export type AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthenti
   | AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultMcpServerApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -203480,7 +203480,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationDestinations
   | AccessApplicationsUpdateResultMcpServerPortalApplicationDestinationsItemAllPreviewWorkersDestination;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationDestinationsItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["overrides", "type", "uri"],
         ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
@@ -204003,7 +204003,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -204352,7 +204352,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -204738,7 +204738,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItem
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationPoliciesItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["group"],
       ["anyValidServiceToken"],
       ["authContext"],
@@ -205117,7 +205117,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAu
   | AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["password", "scheme", "user"],
         ["token", "scheme"],
@@ -205146,7 +205146,7 @@ export type AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAu
   | AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAuthenticationAccessSCIMConfigMultiAuthenticationList;
 export const AccessApplicationsUpdateResultMcpServerPortalApplicationScimConfigAuthentication =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["password", "scheme", "user"],
       ["token", "scheme"],
       ["authorizationUrl", "clientId", "clientSecret", "scheme", "tokenUrl", "scopes"],
@@ -205370,7 +205370,7 @@ export type AccessApplicationsUpdateResult =
   | AccessApplicationsUpdateResultMcpServerApplication
   | AccessApplicationsUpdateResultMcpServerPortalApplication;
 export const AccessApplicationsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "oauthConfiguration",
       "type",
@@ -205671,7 +205671,7 @@ export type AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplicationI
   | InlineAccessPolicy;
 export const AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       [],
       ["id", "accountId", "precedence"],
       [
@@ -205715,7 +205715,7 @@ export type AccessApplicationsUpdateForZoneRequestPolicies =
   | AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplicationList
   | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationList;
 export const AccessApplicationsUpdateForZoneRequestPolicies = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface UpdateAccessApplicationForZoneRequest {
@@ -206024,7 +206024,7 @@ export type AccessApplicationsPoliciesUpdateForAccountRequestConnectionRules =
   | AccessApplicationsPoliciesUpdateRequestConnectionRulesAccessAppPolicyRequest
   | AccessApplicationsPoliciesUpdateRequestConnectionRulesCase1;
 export const AccessApplicationsPoliciesUpdateForAccountRequestConnectionRules =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["rdp"], ["ssh"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["rdp"], ["ssh"]]));
 
 export type AccessApplicationsPoliciesUpdateRequestMfaConfigAccessAppPolicyRequestAllowedAuthenticatorsItem =
   | "totp"
@@ -206107,7 +206107,7 @@ export type AccessApplicationsPoliciesUpdateForAccountRequestMfaConfig =
   | AccessApplicationsPoliciesUpdateRequestMfaConfigCase1;
 export const AccessApplicationsPoliciesUpdateForAccountRequestMfaConfig =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
+    /*@__PURE__*/ T.UnionCases([
       ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
       ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ]),
@@ -206433,7 +206433,7 @@ export type AccessApplicationsPoliciesUpdateRequestIncludeItem =
   | AccessApplicationsPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -206782,7 +206782,7 @@ export type AccessApplicationsPoliciesUpdateRequestExcludeItem =
   | AccessApplicationsPoliciesUpdateRequestExcludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateRequestExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -207131,7 +207131,7 @@ export type AccessApplicationsPoliciesUpdateRequestRequireItem =
   | AccessApplicationsPoliciesUpdateRequestRequireItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateRequestRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -207661,7 +207661,7 @@ export type AccessApplicationsPoliciesUpdateResultCase0ExcludeItem =
   | AccessApplicationsPoliciesUpdateResultCase0ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase0ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -208007,7 +208007,7 @@ export type AccessApplicationsPoliciesUpdateResultCase0IncludeItem =
   | AccessApplicationsPoliciesUpdateResultCase0IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase0IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -208389,7 +208389,7 @@ export type AccessApplicationsPoliciesUpdateResultCase0RequireItem =
   | AccessApplicationsPoliciesUpdateResultCase0RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase0RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -208853,7 +208853,7 @@ export type AccessApplicationsPoliciesUpdateResultCase1ExcludeItem =
   | AccessApplicationsPoliciesUpdateResultCase1ExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase1ExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -209199,7 +209199,7 @@ export type AccessApplicationsPoliciesUpdateResultCase1IncludeItem =
   | AccessApplicationsPoliciesUpdateResultCase1IncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase1IncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -209580,7 +209580,7 @@ export type AccessApplicationsPoliciesUpdateResultCase1RequireItem =
   | AccessApplicationsPoliciesUpdateResultCase1RequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResultCase1RequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -209663,7 +209663,7 @@ export type AccessApplicationsPoliciesUpdateForAccountResult =
   | AccessApplicationsPoliciesUpdateResultCase0
   | AccessApplicationsPoliciesUpdateResultCase1;
 export const AccessApplicationsPoliciesUpdateForAccountResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -209714,13 +209714,13 @@ export type AccessApplicationsPoliciesUpdateForZoneRequestConnectionRules =
   | AccessApplicationsPoliciesUpdateRequestConnectionRulesAccessAppPolicyRequest
   | AccessApplicationsPoliciesUpdateRequestConnectionRulesCase1;
 export const AccessApplicationsPoliciesUpdateForZoneRequestConnectionRules =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["rdp"], ["ssh"]]));
+  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["rdp"], ["ssh"]]));
 
 export type AccessApplicationsPoliciesUpdateForZoneRequestMfaConfig =
   | AccessApplicationsPoliciesUpdateRequestMfaConfigAccessAppPolicyRequest
   | AccessApplicationsPoliciesUpdateRequestMfaConfigCase1;
 export const AccessApplicationsPoliciesUpdateForZoneRequestMfaConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
     ["allowedAuthenticators", "mfaDisabled", "sessionDuration"],
   ]),
@@ -209808,7 +209808,7 @@ export type AccessApplicationsPoliciesUpdateForZoneResult =
   | AccessApplicationsPoliciesUpdateResultCase0
   | AccessApplicationsPoliciesUpdateResultCase1;
 export const AccessApplicationsPoliciesUpdateForZoneResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "id",
       "accountId",
@@ -210410,7 +210410,7 @@ export type AccessGroupsUpdateRequestIncludeItem =
   | AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -210787,7 +210787,7 @@ export type AccessGroupsUpdateResponseExcludeItem =
   | AccessGroupsUpdateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -211130,7 +211130,7 @@ export type AccessGroupsUpdateResponseIncludeItem =
   | AccessGroupsUpdateResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -211473,7 +211473,7 @@ export type AccessGroupsUpdateResponseRequireItem =
   | AccessGroupsUpdateResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -211987,7 +211987,7 @@ export type AccessPoliciesUpdateRequestIncludeItem =
   | AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule
   | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateRequestIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -212633,7 +212633,7 @@ export type AccessPoliciesUpdateResponseExcludeItem =
   | AccessPoliciesUpdateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -212978,7 +212978,7 @@ export type AccessPoliciesUpdateResponseIncludeItem =
   | AccessPoliciesUpdateResponseIncludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateResponseIncludeItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -213357,7 +213357,7 @@ export type AccessPoliciesUpdateResponseRequireItem =
   | AccessPoliciesUpdateResponseRequireItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateResponseRequireItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["group"],
     ["anyValidServiceToken"],
     ["authContext"],
@@ -215106,7 +215106,7 @@ export type DevicesPostureUpdateRequestInput =
   | DevicesPostureUpdateRequestInputSentineloneS2sInput
   | DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureUpdateRequestInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -215926,7 +215926,7 @@ export type DevicesPostureUpdateResponseInput =
   | DevicesPostureUpdateResponseInputSentineloneS2sInput
   | DevicesPostureUpdateResponseInputTeamsDevicesCustomS2sInputRequest;
 export const DevicesPostureUpdateResponseInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
     ["id", "operatingSystem"],
     ["operatingSystem", "domain"],
@@ -216515,7 +216515,7 @@ export type DlpEmailRulesUpdateRequestConditionsItemValue =
   | string
   | DlpEmailRulesUpdateRequestConditionsItemValueCase0List;
 export const DlpEmailRulesUpdateRequestConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesUpdateRequestConditionsItem {
@@ -216605,7 +216605,7 @@ export type DlpEmailRulesUpdateResponseConditionsItemValue =
   | string
   | DlpEmailRulesUpdateResponseConditionsItemValueCase0List;
 export const DlpEmailRulesUpdateResponseConditionsItemValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
+  /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export interface DlpEmailRulesUpdateResponseConditionsItem {
@@ -216828,7 +216828,7 @@ export type DlpEntriesUpdateResultPredefinedEntryVariant =
   | DlpEntriesUpdateResultPredefinedEntryVariantCase0
   | DlpEntriesUpdateResultPredefinedEntryVariantCase1;
 export const DlpEntriesUpdateResultPredefinedEntryVariant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -216991,7 +216991,7 @@ export type DlpEntriesUpdateResult =
   | DlpEntriesUpdateResultDocumentFingerprintEntry
   | DlpEntriesUpdateResultWordListEntry;
 export const DlpEntriesUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -217244,7 +217244,7 @@ export type DlpEntriesPredefinedUpdateResponseVariant =
   | DlpEntriesPredefinedUpdateResponseVariantCase0
   | DlpEntriesPredefinedUpdateResponseVariantCase1;
 export const DlpEntriesPredefinedUpdateResponseVariant = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       ["topicType", "type", "description"],
       ["type", "description"],
@@ -217385,7 +217385,7 @@ export type DlpProfilesCustomUpdateRequestEntriesItem =
   | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithID
   | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry;
 export const DlpProfilesCustomUpdateRequestEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     ["enabled", "entryId", "name", "pattern", "description"],
     ["enabled", "name", "pattern", "description"],
   ]),
@@ -217655,7 +217655,7 @@ export type DlpProfilesCustomUpdateResultCustomProfileEntriesItemPredefinedEntry
   | DlpProfilesCustomUpdateResultCustomProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomUpdateResultCustomProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -217832,7 +217832,7 @@ export type DlpProfilesCustomUpdateResultCustomProfileEntriesItem =
   | DlpProfilesCustomUpdateResultCustomProfileEntriesItemDocumentFingerprintEntry
   | DlpProfilesCustomUpdateResultCustomProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomUpdateResultCustomProfileEntriesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -218047,7 +218047,7 @@ export type DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItemPredefine
   | DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -218232,7 +218232,7 @@ export type DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItem =
   | DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomUpdateResultCustomProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -218506,7 +218506,7 @@ export type DlpProfilesCustomUpdateResultPredefinedProfileEntriesItemPredefinedE
   | DlpProfilesCustomUpdateResultPredefinedProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomUpdateResultPredefinedProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -218688,7 +218688,7 @@ export type DlpProfilesCustomUpdateResultPredefinedProfileEntriesItem =
   | DlpProfilesCustomUpdateResultPredefinedProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomUpdateResultPredefinedProfileEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -218950,7 +218950,7 @@ export type DlpProfilesCustomUpdateResultIntegrationProfileEntriesItemPredefined
   | DlpProfilesCustomUpdateResultIntegrationProfileEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomUpdateResultIntegrationProfileEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -219134,7 +219134,7 @@ export type DlpProfilesCustomUpdateResultIntegrationProfileEntriesItem =
   | DlpProfilesCustomUpdateResultIntegrationProfileEntriesItemWordListEntry;
 export const DlpProfilesCustomUpdateResultIntegrationProfileEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -219341,7 +219341,7 @@ export type DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItemPred
   | DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItemPredefinedEntryVariantCase1;
 export const DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItemPredefinedEntryVariant =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         ["topicType", "type", "description"],
         ["type", "description"],
@@ -219528,7 +219528,7 @@ export type DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItem =
   | DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItemWordListEntry;
 export const DlpProfilesCustomUpdateResultIntegrationProfileSharedEntriesItem =
   /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases(
+    /*@__PURE__*/ T.UnionCases(
       [
         [
           "id",
@@ -219618,7 +219618,7 @@ export type DlpProfilesCustomUpdateResult =
   | DlpProfilesCustomUpdateResultPredefinedProfile
   | DlpProfilesCustomUpdateResultIntegrationProfile;
 export const DlpProfilesCustomUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases(
+  /*@__PURE__*/ T.UnionCases(
     [
       [
         "id",
@@ -221703,7 +221703,7 @@ export type IdentityProvidersUpdateRequestConfig =
   | IdentityProvidersCreateRequestConfigAccessCloudflare
   | IdentityProvidersCreateRequestConfigAccessPasskeys;
 export const IdentityProvidersUpdateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "claims",
       "clientId",
@@ -223966,7 +223966,7 @@ export type IdentityProvidersUpdateResult =
   | IdentityProvidersUpdateResultAccessCloudflare
   | IdentityProvidersUpdateResultAccessPasskeys;
 export const IdentityProvidersUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "config",
       "name",

@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cost Explorer",
   serviceShapeName: "AWSInsightsIndexService",
 });
-const auth = T.AwsAuthSigv4({ name: "ce" });
-const ver = T.ServiceVersion("2017-10-25");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ce" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-25");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -170,14 +170,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AnalysisNotFoundException
   extends /*@__PURE__*/ S.TaggedError<AnalysisNotFoundException>()(
     "AnalysisNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AnomalyMonitorAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<AnomalyMonitorAlreadyExists>()(
     "AnomalyMonitorAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "same monitor name as an existing monitor" },
     }),
@@ -185,8 +185,8 @@ export class AnomalyMonitorAlreadyExists
 export class AnomalySubscriptionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<AnomalySubscriptionAlreadyExists>()(
     "AnomalySubscriptionAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "same subscription name as an existing subscription" },
     }),
@@ -194,51 +194,54 @@ export class AnomalySubscriptionAlreadyExists
 export class BackfillLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<BackfillLimitExceededException>()(
     "BackfillLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BillExpirationException
   extends /*@__PURE__*/ S.TaggedError<BillExpirationException>()("BillExpirationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class BillingViewHealthStatusException
   extends /*@__PURE__*/ S.TaggedError<BillingViewHealthStatusException>()(
     "BillingViewHealthStatusException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class DataUnavailableException
   extends /*@__PURE__*/ S.TaggedError<DataUnavailableException>()("DataUnavailableException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class GenerationExistsException
   extends /*@__PURE__*/ S.TaggedError<GenerationExistsException>()(
     "GenerationExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()("InvalidNextTokenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class RequestChangedException
   extends /*@__PURE__*/ S.TaggedError<RequestChangedException>()("RequestChangedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RightsizingRecommendationNotEnabled
   extends /*@__PURE__*/ S.TaggedError<RightsizingRecommendationNotEnabled>()(
     "RightsizingRecommendationNotEnabled",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "AccessDeniedException",
       message: { includes: "opt-in only feature" },
     }),
@@ -246,31 +249,34 @@ export class RightsizingRecommendationNotEnabled
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), ResourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnknownMonitorException
   extends /*@__PURE__*/ S.TaggedError<UnknownMonitorException>()(
     "UnknownMonitorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnknownSubscriptionException
   extends /*@__PURE__*/ S.TaggedError<UnknownSubscriptionException>()(
     "UnknownSubscriptionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnresolvableUsageUnitException
   extends /*@__PURE__*/ S.TaggedError<UnresolvableUsageUnitException>()(
     "UnresolvableUsageUnitException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type YearMonthDay = string;
 export type MonitorType = "DIMENSIONAL" | "CUSTOM" | (string & {});
@@ -286,7 +292,9 @@ export const MonitorDimension = S.String;
 
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+    identifier: "Expression",
+  }),
 ) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"
@@ -965,7 +973,7 @@ export type NonNegativeLong = number;
 export type ApproximateUsageRecordsPerService = { [key: string]: number | undefined };
 export const ApproximateUsageRecordsPerService = /*@__PURE__*/ S.Record(
   S.String,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface DateInterval {
   Start: string;
@@ -1255,7 +1263,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 export type Metrics = { [key: string]: MetricValue | undefined };
-export const Metrics = /*@__PURE__*/ S.Record(S.String, MetricValue.pipe(S.optional));
+export const Metrics = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ MetricValue.pipe(S.optional));
 export type Key = string;
 export type Keys = string[];
 export const Keys = /*@__PURE__*/ S.Array(S.String);
@@ -1288,7 +1296,7 @@ export const ResultsByTime = /*@__PURE__*/ S.Array(ResultByTime);
 export type AttributeType = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DimensionValuesWithAttributes {
   Value?: string;
   Attributes?: { [key: string]: string | undefined };
@@ -1358,7 +1366,7 @@ export const ComparisonMetricValue = /*@__PURE__*/ S.suspend(() =>
 export type ComparisonMetrics = { [key: string]: ComparisonMetricValue | undefined };
 export const ComparisonMetrics = /*@__PURE__*/ S.Record(
   S.String,
-  ComparisonMetricValue.pipe(S.optional),
+  /*@__PURE__*/ ComparisonMetricValue.pipe(S.optional),
 );
 export interface CostAndUsageComparison {
   CostAndUsageSelector?: Expression;

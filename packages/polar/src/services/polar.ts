@@ -3747,7 +3747,7 @@ export type CheckoutsCreateRequestCustomFieldDataMap = {
 };
 export const CheckoutsCreateRequestCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CheckoutsCreateRequestCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CheckoutsCreateRequestCustomFieldDataValue),
 ) as any as S.Schema<CheckoutsCreateRequestCustomFieldDataMap>;
 
 export type AddressInputCountry =
@@ -4495,7 +4495,7 @@ export type CheckoutCustomFieldDataMap = {
 };
 export const CheckoutCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CheckoutCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CheckoutCustomFieldDataValue),
 ) as any as S.Schema<CheckoutCustomFieldDataMap>;
 
 export type CheckoutStatus = "open" | "expired" | "confirmed" | "succeeded" | "failed";
@@ -5364,7 +5364,7 @@ export type CheckoutsUpdateRequestCustomFieldDataMap = {
 };
 export const CheckoutsUpdateRequestCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CheckoutsUpdateRequestCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CheckoutsUpdateRequestCustomFieldDataValue),
 ) as any as S.Schema<CheckoutsUpdateRequestCustomFieldDataMap>;
 
 export type CheckoutsUpdateRequestMetadataValue = string | number | number | boolean;
@@ -5518,7 +5518,7 @@ export type ConfirmCheckoutsClientRequestCustomFieldDataMap = {
 };
 export const ConfirmCheckoutsClientRequestCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ConfirmCheckoutsClientRequestCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(ConfirmCheckoutsClientRequestCustomFieldDataValue),
 ) as any as S.Schema<ConfirmCheckoutsClientRequestCustomFieldDataMap>;
 
 export interface ConfirmCheckoutsClientRequest {
@@ -5588,7 +5588,7 @@ export type CheckoutPublicConfirmedCustomFieldDataMap = {
 };
 export const CheckoutPublicConfirmedCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CheckoutPublicConfirmedCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CheckoutPublicConfirmedCustomFieldDataValue),
 ) as any as S.Schema<CheckoutPublicConfirmedCustomFieldDataMap>;
 
 export type CheckoutPublicConfirmedPaymentProcessorMetadataMap = {
@@ -10598,7 +10598,7 @@ export type CustomerStateSubscriptionCustomFieldDataMap = {
 };
 export const CustomerStateSubscriptionCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CustomerStateSubscriptionCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CustomerStateSubscriptionCustomFieldDataValue),
 ) as any as S.Schema<CustomerStateSubscriptionCustomFieldDataMap>;
 
 export type CustomerStateSubscriptionStatus = "active" | "trialing";
@@ -16171,7 +16171,7 @@ export type CheckoutPublicCustomFieldDataMap = {
 };
 export const CheckoutPublicCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(CheckoutPublicCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(CheckoutPublicCustomFieldDataValue),
 ) as any as S.Schema<CheckoutPublicCustomFieldDataMap>;
 
 export type CheckoutPublicPaymentProcessorMetadataMap = { [key: string]: string | undefined };
@@ -20548,7 +20548,7 @@ export type OrdersCreateRequestCustomFieldDataMap = {
 };
 export const OrdersCreateRequestCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(OrdersCreateRequestCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(OrdersCreateRequestCustomFieldDataValue),
 ) as any as S.Schema<OrdersCreateRequestCustomFieldDataMap>;
 
 export type OrdersCreateRequestMetadataValue = string | number | number | boolean;
@@ -20607,7 +20607,7 @@ export type OrderCustomFieldDataMap = {
 };
 export const OrderCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(OrderCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(OrderCustomFieldDataValue),
 ) as any as S.Schema<OrderCustomFieldDataMap>;
 
 export type OrderCustomerTaxIdList = Array<unknown>;
@@ -23954,7 +23954,7 @@ export type SubscriptionCustomFieldDataMap = {
 };
 export const SubscriptionCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(SubscriptionCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(SubscriptionCustomFieldDataValue),
 ) as any as S.Schema<SubscriptionCustomFieldDataMap>;
 
 export type SubscriptionCustomerTaxIdList = Array<unknown>;
@@ -24677,7 +24677,7 @@ export type UpdateCheckoutsClientRequestCustomFieldDataMap = {
 };
 export const UpdateCheckoutsClientRequestCustomFieldDataMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(UpdateCheckoutsClientRequestCustomFieldDataValue),
+  /*@__PURE__*/ S.NullOr(UpdateCheckoutsClientRequestCustomFieldDataValue),
 ) as any as S.Schema<UpdateCheckoutsClientRequestCustomFieldDataMap>;
 
 export interface UpdateCheckoutsClientRequest {

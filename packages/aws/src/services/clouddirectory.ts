@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudDirectory",
   serviceShapeName: "AmazonCloudDirectory_20170111",
 });
-const auth = T.AwsAuthSigv4({ name: "clouddirectory" });
-const ver = T.ServiceVersion("2017-01-11");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "clouddirectory" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-01-11");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,214 +79,216 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BatchWriteException
   extends /*@__PURE__*/ S.TaggedError<BatchWriteException>()("BatchWriteException", {
-    Index: S.optional(S.Number),
-    Type: S.optional(
-      S.suspend(() => BatchWriteExceptionType).annotate({ identifier: "BatchWriteExceptionType" }),
+    Index: /*@__PURE__*/ S.optional(S.Number),
+    Type: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => BatchWriteExceptionType).annotate({
+        identifier: "BatchWriteExceptionType",
+      }),
     ),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CannotListParentOfRootException
   extends /*@__PURE__*/ S.TaggedError<CannotListParentOfRootException>()(
     "CannotListParentOfRootException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadyExistsException>()(
     "DirectoryAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DirectoryDeletedException
   extends /*@__PURE__*/ S.TaggedError<DirectoryDeletedException>()(
     "DirectoryDeletedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryNotDisabledException
   extends /*@__PURE__*/ S.TaggedError<DirectoryNotDisabledException>()(
     "DirectoryNotDisabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<DirectoryNotEnabledException>()(
     "DirectoryNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<FacetAlreadyExistsException>()(
     "FacetAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class FacetInUseException
   extends /*@__PURE__*/ S.TaggedError<FacetInUseException>()(
     "FacetInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetNotFoundException
   extends /*@__PURE__*/ S.TaggedError<FacetNotFoundException>()(
     "FacetNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetValidationException
   extends /*@__PURE__*/ S.TaggedError<FacetValidationException>()(
     "FacetValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IncompatibleSchemaException
   extends /*@__PURE__*/ S.TaggedError<IncompatibleSchemaException>()(
     "IncompatibleSchemaException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IndexedAttributeMissingException
   extends /*@__PURE__*/ S.TaggedError<IndexedAttributeMissingException>()(
     "IndexedAttributeMissingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidArnException
   extends /*@__PURE__*/ S.TaggedError<InvalidArnException>()(
     "InvalidArnException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAttachmentException
   extends /*@__PURE__*/ S.TaggedError<InvalidAttachmentException>()(
     "InvalidAttachmentException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFacetUpdateException
   extends /*@__PURE__*/ S.TaggedError<InvalidFacetUpdateException>()(
     "InvalidFacetUpdateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRuleException
   extends /*@__PURE__*/ S.TaggedError<InvalidRuleException>()(
     "InvalidRuleException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSchemaDocException
   extends /*@__PURE__*/ S.TaggedError<InvalidSchemaDocException>()(
     "InvalidSchemaDocException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTaggingRequestException
   extends /*@__PURE__*/ S.TaggedError<InvalidTaggingRequestException>()(
     "InvalidTaggingRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LinkNameAlreadyInUseException
   extends /*@__PURE__*/ S.TaggedError<LinkNameAlreadyInUseException>()(
     "LinkNameAlreadyInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotIndexException
   extends /*@__PURE__*/ S.TaggedError<NotIndexException>()(
     "NotIndexException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotNodeException
   extends /*@__PURE__*/ S.TaggedError<NotNodeException>()(
     "NotNodeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotPolicyException
   extends /*@__PURE__*/ S.TaggedError<NotPolicyException>()(
     "NotPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ObjectAlreadyDetachedException
   extends /*@__PURE__*/ S.TaggedError<ObjectAlreadyDetachedException>()(
     "ObjectAlreadyDetachedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ObjectNotDetachedException
   extends /*@__PURE__*/ S.TaggedError<ObjectNotDetachedException>()(
     "ObjectNotDetachedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RetryableConflictException
   extends /*@__PURE__*/ S.TaggedError<RetryableConflictException>()(
     "RetryableConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class SchemaAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<SchemaAlreadyExistsException>()(
     "SchemaAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SchemaAlreadyPublishedException
   extends /*@__PURE__*/ S.TaggedError<SchemaAlreadyPublishedException>()(
     "SchemaAlreadyPublishedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class StillContainsLinksException
   extends /*@__PURE__*/ S.TaggedError<StillContainsLinksException>()(
     "StillContainsLinksException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedIndexTypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedIndexTypeException>()(
     "UnsupportedIndexTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type FacetName = string;
@@ -348,11 +350,13 @@ export type TypedAttributeValue =
       DatetimeValue: Date;
     };
 export const TypedAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ StringValue: S.String }),
-  S.Struct({ BinaryValue: T.Blob }),
-  S.Struct({ BooleanValue: S.Boolean }),
-  S.Struct({ NumberValue: S.String }),
-  S.Struct({ DatetimeValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ BinaryValue: T.Blob }),
+  /*@__PURE__*/ S.Struct({ BooleanValue: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ NumberValue: S.String }),
+  /*@__PURE__*/ S.Struct({
+    DatetimeValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
 ]);
 export interface AttributeKeyAndValue {
   Key: AttributeKey;
@@ -868,7 +872,7 @@ export const BatchListObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 export type LinkNameToObjectIdentifierMap = { [key: string]: string | undefined };
 export const LinkNameToObjectIdentifierMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface BatchListObjectChildrenResponse {
   Children?: { [key: string]: string | undefined };
@@ -1597,7 +1601,10 @@ export const RuleType = S.String;
 export type RuleParameterKey = string;
 export type RuleParameterValue = string;
 export type RuleParameterMap = { [key: string]: string | undefined };
-export const RuleParameterMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RuleParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface Rule {
   Type?: RuleType;
   Parameters?: { [key: string]: string | undefined };
@@ -1606,7 +1613,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(RuleType), Parameters: S.optional(RuleParameterMap) }),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 export type RuleMap = { [key: string]: Rule | undefined };
-export const RuleMap = /*@__PURE__*/ S.Record(S.String, Rule.pipe(S.optional));
+export const RuleMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Rule.pipe(S.optional));
 export interface FacetAttributeDefinition {
   Type: FacetAttributeType;
   DefaultValue?: TypedAttributeValue;
@@ -2763,7 +2770,7 @@ export const ListObjectParentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ObjectIdentifierToLinkNameMap = { [key: string]: string | undefined };
 export const ObjectIdentifierToLinkNameMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ListObjectParentsResponse {
   Parents?: { [key: string]: string | undefined };

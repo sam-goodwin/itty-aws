@@ -769,7 +769,7 @@ export type GetResult =
   | GetResultSuperBotFightModeLikelyConfiguration
   | GetResultSubscriptionConfiguration;
 export const GetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "aiBotsMigrationOptOut",
       "aiBotsProtection",
@@ -1040,7 +1040,7 @@ export type UpdateRequestStaleZoneConfiguration =
   | UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration
   | UpdateRequestStaleZoneConfigurationSubscriptionConfiguration;
 export const UpdateRequestStaleZoneConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "optimizeWordpress",
       "sbfmDefinitelyAutomated",
@@ -1749,7 +1749,7 @@ export type UpdateResult =
   | UpdateResultSuperBotFightModeLikelyConfiguration
   | UpdateResultSubscriptionConfiguration;
 export const UpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
+  /*@__PURE__*/ T.UnionCases([
     [
       "aiBotsMigrationOptOut",
       "aiBotsProtection",

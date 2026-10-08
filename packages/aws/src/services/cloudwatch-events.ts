@@ -9,12 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
-const svc = T.AwsApiService({ sdkId: "CloudWatch Events", serviceShapeName: "AWSEvents" });
-const auth = T.AwsAuthSigv4({ name: "events" });
-const ver = T.ServiceVersion("2015-10-07");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudWatch Events",
+  serviceShapeName: "AWSEvents",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "events" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2015-10-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,50 +83,50 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class IllegalStatusException
   extends /*@__PURE__*/ S.TaggedError<IllegalStatusException>()("IllegalStatusException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()("InternalException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidEventPatternException
   extends /*@__PURE__*/ S.TaggedError<InvalidEventPatternException>()(
     "InvalidEventPatternException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()("InvalidStateException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ManagedRuleException
   extends /*@__PURE__*/ S.TaggedError<ManagedRuleException>()("ManagedRuleException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OperationDisabledException
   extends /*@__PURE__*/ S.TaggedError<OperationDisabledException>()("OperationDisabledException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PolicyLengthExceededException
   extends /*@__PURE__*/ S.TaggedError<PolicyLengthExceededException>()(
     "PolicyLengthExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()("ResourceNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type EventSourceName = string;
 export interface ActivateEventSourceRequest {
@@ -1471,7 +1474,10 @@ export type TargetInput = string;
 export type TargetInputPath = string;
 export type InputTransformerPathKey = string;
 export type TransformerPaths = { [key: string]: string | undefined };
-export const TransformerPaths = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TransformerPaths = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TransformerInput = string;
 export interface InputTransformer {
   InputPathsMap?: { [key: string]: string | undefined };
@@ -1654,10 +1660,16 @@ export type PathParameterList = string[];
 export const PathParameterList = /*@__PURE__*/ S.Array(S.String);
 export type HeaderValue = string;
 export type HeaderParametersMap = { [key: string]: string | undefined };
-export const HeaderParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HeaderParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type QueryStringValue = string;
 export type QueryStringParametersMap = { [key: string]: string | undefined };
-export const QueryStringParametersMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const QueryStringParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface HttpParameters {
   PathParameterValues?: string[];
   HeaderParameters?: { [key: string]: string | undefined };

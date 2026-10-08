@@ -6902,7 +6902,7 @@ export const AlertingFileExportGroupsList = /*@__PURE__*/ S.Array(
 
 export type TimeIntervalTimeIntervalsList = Array<TimeInterval>;
 export const TimeIntervalTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TimeInterval),
+  /*@__PURE__*/ S.suspend(() => TimeInterval),
 ) as any as S.Schema<TimeIntervalTimeIntervalsList>;
 
 export interface TimeInterval {
@@ -7016,7 +7016,7 @@ export const RouteExportMuteTimeIntervalsList = /*@__PURE__*/ S.Array(
 
 export type RouteExportRoutesList = Array<RouteExport>;
 export const RouteExportRoutesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => RouteExport),
+  /*@__PURE__*/ S.suspend(() => RouteExport),
 ) as any as S.Schema<RouteExportRoutesList>;
 
 /** RouteExport is the provisioned file export of definitions.Route. This is needed to hide fields that aren't useable in provisioning file format. An alternative would be to define a custom MarshalJSON and MarshalYAML that excludes them. */

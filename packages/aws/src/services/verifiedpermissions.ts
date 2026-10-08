@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "VerifiedPermissions",
   serviceShapeName: "VerifiedPermissions",
 });
-const auth = T.AwsAuthSigv4({ name: "verifiedpermissions" });
-const ver = T.ServiceVersion("2021-12-01");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "verifiedpermissions" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2021-12-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -80,73 +80,83 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resources: S.suspend(() => ResourceConflictList).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resources: /*@__PURE__*/ S.suspend(() => ResourceConflictList).annotate({
         identifier: "ResourceConflictList",
       }),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(406),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(406),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       resourceId: S.String,
-      resourceType: S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      resourceType: /*@__PURE__*/ S.suspend(() => ResourceType).annotate({
+        identifier: "ResourceType",
+      }),
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      resourceId: S.optional(S.String),
-      resourceType: S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceId: /*@__PURE__*/ S.optional(S.String),
+      resourceType: /*@__PURE__*/ S.suspend(() => ResourceType).annotate({
+        identifier: "ResourceType",
+      }),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      serviceCode: S.optional(S.String),
-      quotaCode: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      serviceCode: /*@__PURE__*/ S.optional(S.String),
+      quotaCode: /*@__PURE__*/ S.optional(S.String),
     },
-    T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+    /*@__PURE__*/ T.all(
+      /*@__PURE__*/ T.HttpError(429),
+      /*@__PURE__*/ T.Retryable({ throttling: true }),
+    ),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type PolicyStoreId = string;
 export type PolicyId = string;
@@ -209,8 +219,8 @@ export type PolicyDefinitionDetail =
   | { static: StaticPolicyDefinitionDetail; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinitionDetail };
 export const PolicyDefinitionDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ static: StaticPolicyDefinitionDetail }),
-  S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionDetail }),
+  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionDetail }),
+  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionDetail }),
 ]);
 export type TimestampFormat = Date;
 export type PolicyName = string;
@@ -271,12 +281,12 @@ export type LongAttribute = number;
 export type StringAttribute = string | redacted.Redacted<string>;
 export type SetAttribute = AttributeValue[];
 export const SetAttribute = /*@__PURE__*/ S.Array(
-  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 ) as any as S.Schema<SetAttribute>;
 export type RecordAttribute = { [key: string]: AttributeValue | undefined };
 export const RecordAttribute = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 ) as any as S.Schema<RecordAttribute>;
@@ -406,23 +416,27 @@ export type AttributeValue =
       duration: string | redacted.Redacted<string>;
     };
 export const AttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ boolean: S.Boolean }),
-  S.Struct({ entityIdentifier: EntityIdentifier }),
-  S.Struct({ long: S.Number }),
-  S.Struct({ string: SensitiveString }),
-  S.Struct({ set: S.suspend(() => SetAttribute).annotate({ identifier: "SetAttribute" }) }),
-  S.Struct({
-    record: S.suspend(() => RecordAttribute).annotate({ identifier: "RecordAttribute" }),
+  /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
+  /*@__PURE__*/ S.Struct({ long: S.Number }),
+  /*@__PURE__*/ S.Struct({ string: SensitiveString }),
+  /*@__PURE__*/ S.Struct({
+    set: /*@__PURE__*/ S.suspend(() => SetAttribute).annotate({ identifier: "SetAttribute" }),
   }),
-  S.Struct({ ipaddr: SensitiveString }),
-  S.Struct({ decimal: SensitiveString }),
-  S.Struct({ datetime: SensitiveString }),
-  S.Struct({ duration: SensitiveString }),
+  /*@__PURE__*/ S.Struct({
+    record: /*@__PURE__*/ S.suspend(() => RecordAttribute).annotate({
+      identifier: "RecordAttribute",
+    }),
+  }),
+  /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
 ]) as any as S.Schema<AttributeValue>;
 export type EntityAttributes = { [key: string]: AttributeValue | undefined };
 export const EntityAttributes = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -430,12 +444,12 @@ export type ParentList = EntityIdentifier[];
 export const ParentList = /*@__PURE__*/ S.Array(EntityIdentifier);
 export type CedarTagSetAttribute = CedarTagValue[];
 export const CedarTagSetAttribute = /*@__PURE__*/ S.Array(
-  S.suspend(() => CedarTagValue).annotate({ identifier: "CedarTagValue" }),
+  /*@__PURE__*/ S.suspend(() => CedarTagValue).annotate({ identifier: "CedarTagValue" }),
 ) as any as S.Schema<CedarTagSetAttribute>;
 export type CedarTagRecordAttribute = { [key: string]: CedarTagValue | undefined };
 export const CedarTagRecordAttribute = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => CedarTagValue)
+  /*@__PURE__*/ S.suspend(() => CedarTagValue)
     .annotate({ identifier: "CedarTagValue" })
     .pipe(S.optional),
 ) as any as S.Schema<CedarTagRecordAttribute>;
@@ -561,27 +575,29 @@ export type CedarTagValue =
       duration: string | redacted.Redacted<string>;
     };
 export const CedarTagValue = /*@__PURE__*/ S.Union([
-  S.Struct({ boolean: S.Boolean }),
-  S.Struct({ entityIdentifier: EntityIdentifier }),
-  S.Struct({ long: S.Number }),
-  S.Struct({ string: SensitiveString }),
-  S.Struct({
-    set: S.suspend(() => CedarTagSetAttribute).annotate({ identifier: "CedarTagSetAttribute" }),
+  /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
+  /*@__PURE__*/ S.Struct({ long: S.Number }),
+  /*@__PURE__*/ S.Struct({ string: SensitiveString }),
+  /*@__PURE__*/ S.Struct({
+    set: /*@__PURE__*/ S.suspend(() => CedarTagSetAttribute).annotate({
+      identifier: "CedarTagSetAttribute",
+    }),
   }),
-  S.Struct({
-    record: S.suspend(() => CedarTagRecordAttribute).annotate({
+  /*@__PURE__*/ S.Struct({
+    record: /*@__PURE__*/ S.suspend(() => CedarTagRecordAttribute).annotate({
       identifier: "CedarTagRecordAttribute",
     }),
   }),
-  S.Struct({ ipaddr: SensitiveString }),
-  S.Struct({ decimal: SensitiveString }),
-  S.Struct({ datetime: SensitiveString }),
-  S.Struct({ duration: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
 ]) as any as S.Schema<CedarTagValue>;
 export type EntityCedarTags = { [key: string]: CedarTagValue | undefined };
 export const EntityCedarTags = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => CedarTagValue)
+  /*@__PURE__*/ S.suspend(() => CedarTagValue)
     .annotate({ identifier: "CedarTagValue" })
     .pipe(S.optional),
 );
@@ -606,8 +622,8 @@ export type EntitiesDefinition =
   | { entityList: EntityItem[]; cedarJson?: never }
   | { entityList?: never; cedarJson: string | redacted.Redacted<string> };
 export const EntitiesDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ entityList: EntityList }),
-  S.Struct({ cedarJson: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ entityList: EntityList }),
+  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
 ]);
 export type ActionType = string | redacted.Redacted<string>;
 export type ActionId = string | redacted.Redacted<string>;
@@ -621,7 +637,7 @@ export const ActionIdentifier = /*@__PURE__*/ S.suspend(() =>
 export type ContextMap = { [key: string]: AttributeValue | undefined };
 export const ContextMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => AttributeValue)
+  /*@__PURE__*/ S.suspend(() => AttributeValue)
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
@@ -629,8 +645,8 @@ export type ContextDefinition =
   | { contextMap: { [key: string]: AttributeValue | undefined }; cedarJson?: never }
   | { contextMap?: never; cedarJson: string | redacted.Redacted<string> };
 export const ContextDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ contextMap: ContextMap }),
-  S.Struct({ cedarJson: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ contextMap: ContextMap }),
+  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
 ]);
 export interface BatchIsAuthorizedInputItem {
   principal?: EntityIdentifier;
@@ -839,8 +855,8 @@ export type OpenIdConnectTokenSelection =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfiguration; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfiguration };
 export const OpenIdConnectTokenSelection = /*@__PURE__*/ S.Union([
-  S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfiguration }),
-  S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfiguration }),
+  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfiguration }),
+  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfiguration }),
 ]);
 export interface OpenIdConnectConfiguration {
   issuer: string;
@@ -868,8 +884,8 @@ export type Configuration =
       openIdConnectConfiguration: OpenIdConnectConfiguration;
     };
 export const Configuration = /*@__PURE__*/ S.Union([
-  S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }),
-  S.Struct({ openIdConnectConfiguration: OpenIdConnectConfiguration }),
+  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }),
+  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfiguration }),
 ]);
 export type PrincipalEntityType = string | redacted.Redacted<string>;
 export interface CreateIdentitySourceInput {
@@ -930,8 +946,8 @@ export type PolicyDefinition =
   | { static: StaticPolicyDefinition; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinition };
 export const PolicyDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ static: StaticPolicyDefinition }),
-  S.Struct({ templateLinked: TemplateLinkedPolicyDefinition }),
+  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinition }),
+  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinition }),
 ]);
 export interface CreatePolicyInput {
   clientToken?: string;
@@ -993,7 +1009,10 @@ export type KmsKey = string;
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContext = { [key: string]: string | undefined };
-export const EncryptionContext = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EncryptionContext = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface KmsEncryptionSettings {
   key: string;
   encryptionContext?: { [key: string]: string | undefined };
@@ -1005,13 +1024,13 @@ export type EncryptionSettings =
   | { kmsEncryptionSettings: KmsEncryptionSettings; default?: never }
   | { kmsEncryptionSettings?: never; default: Record<string, never> };
 export const EncryptionSettings = /*@__PURE__*/ S.Union([
-  S.Struct({ kmsEncryptionSettings: KmsEncryptionSettings }),
-  S.Struct({ default: S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ kmsEncryptionSettings: KmsEncryptionSettings }),
+  /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
 ]);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreatePolicyStoreInput {
   clientToken?: string;
   validationSettings: ValidationSettings;
@@ -1264,8 +1283,8 @@ export type OpenIdConnectTokenSelectionDetail =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail };
 export const OpenIdConnectTokenSelectionDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail }),
-  S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail }),
+  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail }),
+  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail }),
 ]);
 export interface OpenIdConnectConfigurationDetail {
   issuer: string;
@@ -1293,8 +1312,8 @@ export type ConfigurationDetail =
       openIdConnectConfiguration: OpenIdConnectConfigurationDetail;
     };
 export const ConfigurationDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail }),
-  S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationDetail }),
+  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail }),
+  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationDetail }),
 ]);
 export interface GetIdentitySourceOutput {
   createdDate: Date;
@@ -1373,8 +1392,8 @@ export type EncryptionState =
   | { kmsEncryptionState: KmsEncryptionState; default?: never }
   | { kmsEncryptionState?: never; default: Record<string, never> };
 export const EncryptionState = /*@__PURE__*/ S.Union([
-  S.Struct({ kmsEncryptionState: KmsEncryptionState }),
-  S.Struct({ default: S.Struct({}) }),
+  /*@__PURE__*/ S.Struct({ kmsEncryptionState: KmsEncryptionState }),
+  /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
 ]);
 export type CedarVersion = "CEDAR_2" | "CEDAR_4" | (string & {});
 export const CedarVersion = S.String;
@@ -1654,8 +1673,8 @@ export type OpenIdConnectTokenSelectionItem =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem };
 export const OpenIdConnectTokenSelectionItem = /*@__PURE__*/ S.Union([
-  S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem }),
-  S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem }),
+  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem }),
+  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem }),
 ]);
 export interface OpenIdConnectConfigurationItem {
   issuer: string;
@@ -1683,8 +1702,8 @@ export type ConfigurationItem =
       openIdConnectConfiguration: OpenIdConnectConfigurationItem;
     };
 export const ConfigurationItem = /*@__PURE__*/ S.Union([
-  S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem }),
-  S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationItem }),
+  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem }),
+  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationItem }),
 ]);
 export interface IdentitySourceItem {
   createdDate: Date;
@@ -1722,8 +1741,8 @@ export type EntityReference =
   | { unspecified: boolean; identifier?: never }
   | { unspecified?: never; identifier: EntityIdentifier };
 export const EntityReference = /*@__PURE__*/ S.Union([
-  S.Struct({ unspecified: S.Boolean }),
-  S.Struct({ identifier: EntityIdentifier }),
+  /*@__PURE__*/ S.Struct({ unspecified: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ identifier: EntityIdentifier }),
 ]);
 export interface PolicyFilter {
   principal?: EntityReference;
@@ -1779,8 +1798,8 @@ export type PolicyDefinitionItem =
   | { static: StaticPolicyDefinitionItem; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinitionItem };
 export const PolicyDefinitionItem = /*@__PURE__*/ S.Union([
-  S.Struct({ static: StaticPolicyDefinitionItem }),
-  S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionItem }),
+  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionItem }),
+  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionItem }),
 ]);
 export interface PolicyItem {
   policyStoreId: string;
@@ -1959,7 +1978,9 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
 export type SchemaDefinition = { cedarJson: string | redacted.Redacted<string> };
-export const SchemaDefinition = /*@__PURE__*/ S.Union([S.Struct({ cedarJson: SensitiveString })]);
+export const SchemaDefinition = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
+]);
 export interface PutSchemaInput {
   policyStoreId: string;
   definition: SchemaDefinition;
@@ -2064,8 +2085,8 @@ export type UpdateOpenIdConnectTokenSelection =
   | { accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration };
 export const UpdateOpenIdConnectTokenSelection = /*@__PURE__*/ S.Union([
-  S.Struct({ accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration }),
-  S.Struct({ identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration }),
+  /*@__PURE__*/ S.Struct({ accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration }),
+  /*@__PURE__*/ S.Struct({ identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration }),
 ]);
 export interface UpdateOpenIdConnectConfiguration {
   issuer: string;
@@ -2093,8 +2114,8 @@ export type UpdateConfiguration =
       openIdConnectConfiguration: UpdateOpenIdConnectConfiguration;
     };
 export const UpdateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration }),
-  S.Struct({ openIdConnectConfiguration: UpdateOpenIdConnectConfiguration }),
+  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration }),
+  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: UpdateOpenIdConnectConfiguration }),
 ]);
 export interface UpdateIdentitySourceInput {
   policyStoreId: string;
@@ -2139,7 +2160,7 @@ export const UpdateStaticPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStaticPolicyDefinition>;
 export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
 export const UpdatePolicyDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ static: UpdateStaticPolicyDefinition }),
+  /*@__PURE__*/ S.Struct({ static: UpdateStaticPolicyDefinition }),
 ]);
 export interface UpdatePolicyInput {
   policyStoreId: string;

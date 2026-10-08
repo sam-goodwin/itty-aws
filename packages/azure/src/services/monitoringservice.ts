@@ -155,7 +155,7 @@ export type AzureMonitorWorkspacesCreateOrUpdateRequestIdentityUserAssignedIdent
 export const AzureMonitorWorkspacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<AzureMonitorWorkspacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -460,7 +460,7 @@ export type AzureMonitorWorkspacesCreateOrUpdateResponseIdentityUserAssignedIden
 export const AzureMonitorWorkspacesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<AzureMonitorWorkspacesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -947,7 +947,7 @@ export type GetAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap = 
 export const GetAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<GetAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1987,7 +1987,7 @@ export type AzureMonitorWorkspaceResourceIdentityUserAssignedIdentitiesMap = {
 export const AzureMonitorWorkspaceResourceIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<AzureMonitorWorkspaceResourceIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2766,7 +2766,7 @@ export type UpdateAzureMonitorWorkspaceRequestIdentityUserAssignedIdentitiesMap 
 export const UpdateAzureMonitorWorkspaceRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentityInput),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
   ) as any as S.Schema<UpdateAzureMonitorWorkspaceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2834,7 +2834,7 @@ export type UpdateAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap
 export const UpdateAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.NullOr(UserAssignedIdentity),
+    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
   ) as any as S.Schema<UpdateAzureMonitorWorkspaceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

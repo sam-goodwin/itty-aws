@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "CloudHSM V2", serviceShapeName: "BaldrApiService" });
-const auth = T.AwsAuthSigv4({ name: "cloudhsm" });
-const ver = T.ServiceVersion("2017-04-28");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CloudHSM V2",
+  serviceShapeName: "BaldrApiService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloudhsm" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-04-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -79,35 +82,35 @@ const rules = T.EndpointResolver((p, _) => {
 export class CloudHsmAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmAccessDeniedException>()(
     "CloudHsmAccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class CloudHsmInternalFailureException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmInternalFailureException>()(
     "CloudHsmInternalFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class CloudHsmInvalidRequestException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmInvalidRequestException>()(
     "CloudHsmInvalidRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmResourceLimitExceededException>()(
     "CloudHsmResourceLimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmResourceNotFoundException>()(
     "CloudHsmResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class CloudHsmServiceException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmServiceException>()("CloudHsmServiceException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CloudHsmTagException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmTagException>()("CloudHsmTagException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type Region = string;
 export type BackupId = string;
@@ -263,7 +266,10 @@ export const ClusterState = S.String;
 
 export type StateMessage = string;
 export type ExternalSubnetMapping = { [key: string]: string | undefined };
-export const ExternalSubnetMapping = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ExternalSubnetMapping = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type VpcId = string;
 export type Cert = string;
 export interface Certificates {
@@ -465,7 +471,7 @@ export type Field = string;
 export type Strings = string[];
 export const Strings = /*@__PURE__*/ S.Array(S.String);
 export type Filters = { [key: string]: string[] | undefined };
-export const Filters = /*@__PURE__*/ S.Record(S.String, Strings.pipe(S.optional));
+export const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Strings.pipe(S.optional));
 export interface DescribeBackupsRequest {
   NextToken?: string;
   MaxResults?: number;

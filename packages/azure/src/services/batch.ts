@@ -2345,7 +2345,7 @@ export const AllocationState = S.String;
 /** Additional details about the error. */
 export type AutoScaleRunErrorDetailsList = Array<AutoScaleRunError>;
 export const AutoScaleRunErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AutoScaleRunError),
+  /*@__PURE__*/ S.suspend(() => AutoScaleRunError),
 ) as any as S.Schema<AutoScaleRunErrorDetailsList>;
 
 /** An error that occurred when autoscaling a pool. */
@@ -2403,7 +2403,7 @@ export const PoolPropertiesApplicationPackagesList = /*@__PURE__*/ S.Array(
 /** Additional details about the error. */
 export type ResizeErrorDetailsList = Array<ResizeError>;
 export const ResizeErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ResizeError),
+  /*@__PURE__*/ S.suspend(() => ResizeError),
 ) as any as S.Schema<ResizeErrorDetailsList>;
 
 /** An error that occurred when resizing a pool. */

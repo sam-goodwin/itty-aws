@@ -7,12 +7,12 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://waf.amazonaws.com/doc/2019-07-29/");
-const svc = T.AwsApiService({ sdkId: "WAFV2", serviceShapeName: "AWSWAF_20190729" });
-const auth = T.AwsAuthSigv4({ name: "wafv2" });
-const ver = T.ServiceVersion("2019-07-29");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://waf.amazonaws.com/doc/2019-07-29/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "WAFV2", serviceShapeName: "AWSWAF_20190729" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wafv2" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-07-29");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -69,112 +69,114 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class WAFAssociatedItemException
   extends /*@__PURE__*/ S.TaggedError<WAFAssociatedItemException>()("WAFAssociatedItemException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class WAFConfigurationWarningException
   extends /*@__PURE__*/ S.TaggedError<WAFConfigurationWarningException>()(
     "WAFConfigurationWarningException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFDuplicateItemException
   extends /*@__PURE__*/ S.TaggedError<WAFDuplicateItemException>()("WAFDuplicateItemException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class WAFExpiredManagedRuleGroupVersionException
   extends /*@__PURE__*/ S.TaggedError<WAFExpiredManagedRuleGroupVersionException>()(
     "WAFExpiredManagedRuleGroupVersionException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFFeatureNotIncludedInPricingPlanException
   extends /*@__PURE__*/ S.TaggedError<WAFFeatureNotIncludedInPricingPlanException>()(
     "WAFFeatureNotIncludedInPricingPlanException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      DisallowedFeatures: S.optional(
-        S.suspend(() => DisallowedFeatures).annotate({ identifier: "DisallowedFeatures" }),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      DisallowedFeatures: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => DisallowedFeatures).annotate({
+          identifier: "DisallowedFeatures",
+        }),
       ),
     },
   ) {}
 export class WAFInternalErrorException
   extends /*@__PURE__*/ S.TaggedError<WAFInternalErrorException>()("WAFInternalErrorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class WAFInvalidOperationException
   extends /*@__PURE__*/ S.TaggedError<WAFInvalidOperationException>()(
     "WAFInvalidOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFInvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<WAFInvalidParameterException>()(
     "WAFInvalidParameterException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      Field: S.optional(
-        S.suspend(() => ParameterExceptionField).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Field: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ParameterExceptionField).annotate({
           identifier: "ParameterExceptionField",
         }),
       ),
-      Parameter: S.optional(S.String),
-      Reason: S.optional(S.String),
+      Parameter: /*@__PURE__*/ S.optional(S.String),
+      Reason: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
 export class WAFInvalidPermissionPolicyException
   extends /*@__PURE__*/ S.TaggedError<WAFInvalidPermissionPolicyException>()(
     "WAFInvalidPermissionPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFInvalidResourceException
   extends /*@__PURE__*/ S.TaggedError<WAFInvalidResourceException>()(
     "WAFInvalidResourceException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFLimitsExceededException
   extends /*@__PURE__*/ S.TaggedError<WAFLimitsExceededException>()("WAFLimitsExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    SourceType: S.optional(S.String),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    SourceType: /*@__PURE__*/ S.optional(S.String),
   }) {}
 export class WAFLogDestinationPermissionIssueException
   extends /*@__PURE__*/ S.TaggedError<WAFLogDestinationPermissionIssueException>()(
     "WAFLogDestinationPermissionIssueException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFNonexistentItemException
   extends /*@__PURE__*/ S.TaggedError<WAFNonexistentItemException>()(
     "WAFNonexistentItemException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFOptimisticLockException
   extends /*@__PURE__*/ S.TaggedError<WAFOptimisticLockException>()("WAFOptimisticLockException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class WAFServiceLinkedRoleErrorException
   extends /*@__PURE__*/ S.TaggedError<WAFServiceLinkedRoleErrorException>()(
     "WAFServiceLinkedRoleErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFSubscriptionNotFoundException
   extends /*@__PURE__*/ S.TaggedError<WAFSubscriptionNotFoundException>()(
     "WAFSubscriptionNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFTagOperationException
   extends /*@__PURE__*/ S.TaggedError<WAFTagOperationException>()("WAFTagOperationException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class WAFTagOperationInternalErrorException
   extends /*@__PURE__*/ S.TaggedError<WAFTagOperationInternalErrorException>()(
     "WAFTagOperationInternalErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class WAFUnavailableEntityException
   extends /*@__PURE__*/ S.TaggedError<WAFUnavailableEntityException>()(
     "WAFUnavailableEntityException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class WAFUnsupportedAggregateKeyTypeException
   extends /*@__PURE__*/ S.TaggedError<WAFUnsupportedAggregateKeyTypeException>()(
     "WAFUnsupportedAggregateKeyTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type ResourceArn = string;
 export interface AssociateWebACLRequest {
@@ -1091,7 +1093,9 @@ export const RateBasedStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateBasedStatement" }) as any as S.Schema<RateBasedStatement>;
 export type Statements = Statement[];
 export const Statements = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<Statement> => Statement).annotate({ identifier: "Statement" }),
+  /*@__PURE__*/ S.suspend((): S.Schema<Statement> => Statement).annotate({
+    identifier: "Statement",
+  }),
 ) as any as S.Schema<Statements>;
 export interface AndStatement {
   Statements: Statement[];
@@ -1732,7 +1736,7 @@ export const CustomResponseBody = /*@__PURE__*/ S.suspend(() =>
 export type CustomResponseBodies = { [key: string]: CustomResponseBody | undefined };
 export const CustomResponseBodies = /*@__PURE__*/ S.Record(
   S.String,
-  CustomResponseBody.pipe(S.optional),
+  /*@__PURE__*/ CustomResponseBody.pipe(S.optional),
 );
 export type BlockchainChain = "BASE" | "SOLANA" | "BASE_SEPOLIA" | "SOLANA_DEVNET" | (string & {});
 export const BlockchainChain = S.String;
@@ -1902,7 +1906,7 @@ export type RequestBody = {
 };
 export const RequestBody = /*@__PURE__*/ S.Record(
   AssociatedResourceType,
-  RequestBodyAssociatedResourceTypeConfig.pipe(S.optional),
+  /*@__PURE__*/ RequestBodyAssociatedResourceTypeConfig.pipe(S.optional),
 );
 export interface AssociationConfig {
   RequestBody?: { [key: string]: RequestBodyAssociatedResourceTypeConfig | undefined };
@@ -2497,7 +2501,7 @@ export const ManagedRuleSetVersion = /*@__PURE__*/ S.suspend(() =>
 export type PublishedVersions = { [key: string]: ManagedRuleSetVersion | undefined };
 export const PublishedVersions = /*@__PURE__*/ S.Record(
   S.String,
-  ManagedRuleSetVersion.pipe(S.optional),
+  /*@__PURE__*/ ManagedRuleSetVersion.pipe(S.optional),
 );
 export interface ManagedRuleSet {
   Name: string;
@@ -3807,7 +3811,7 @@ export const VersionToPublish = /*@__PURE__*/ S.suspend(() =>
 export type VersionsToPublish = { [key: string]: VersionToPublish | undefined };
 export const VersionsToPublish = /*@__PURE__*/ S.Record(
   S.String,
-  VersionToPublish.pipe(S.optional),
+  /*@__PURE__*/ VersionToPublish.pipe(S.optional),
 );
 export interface PutManagedRuleSetVersionsRequest {
   Name: string;

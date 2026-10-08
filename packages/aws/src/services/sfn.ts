@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://swf.amazonaws.com/doc/2015-07-20/");
-const svc = T.AwsApiService({ sdkId: "SFN", serviceShapeName: "AWSStepFunctions" });
-const auth = T.AwsAuthSigv4({ name: "states" });
-const ver = T.ServiceVersion("2016-11-23");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://swf.amazonaws.com/doc/2015-07-20/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SFN", serviceShapeName: "AWSStepFunctions" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "states" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-11-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -85,158 +85,166 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ActivityAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ActivityAlreadyExists>()("ActivityAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class ActivityDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<ActivityDoesNotExist>()("ActivityDoesNotExist", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ActivityLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ActivityLimitExceeded>()("ActivityLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class ActivityWorkerLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ActivityWorkerLimitExceeded>()(
     "ActivityWorkerLimitExceeded",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExecutionAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ExecutionAlreadyExists>()("ExecutionAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class ExecutionDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<ExecutionDoesNotExist>()("ExecutionDoesNotExist", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ExecutionLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ExecutionLimitExceeded>()("ExecutionLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class ExecutionNotRedrivable
   extends /*@__PURE__*/ S.TaggedError<ExecutionNotRedrivable>()("ExecutionNotRedrivable", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidArn
   extends /*@__PURE__*/ S.TaggedError<InvalidArn>()("InvalidArn", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidDefinition
   extends /*@__PURE__*/ S.TaggedError<InvalidDefinition>()("InvalidDefinition", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidEncryptionConfiguration
   extends /*@__PURE__*/ S.TaggedError<InvalidEncryptionConfiguration>()(
     "InvalidEncryptionConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidExecutionInput
   extends /*@__PURE__*/ S.TaggedError<InvalidExecutionInput>()("InvalidExecutionInput", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidLoggingConfiguration
   extends /*@__PURE__*/ S.TaggedError<InvalidLoggingConfiguration>()(
     "InvalidLoggingConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InvalidName
   extends /*@__PURE__*/ S.TaggedError<InvalidName>()("InvalidName", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidOutput
   extends /*@__PURE__*/ S.TaggedError<InvalidOutput>()("InvalidOutput", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidToken
   extends /*@__PURE__*/ S.TaggedError<InvalidToken>()("InvalidToken", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidTracingConfiguration
   extends /*@__PURE__*/ S.TaggedError<InvalidTracingConfiguration>()(
     "InvalidTracingConfiguration",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class KmsAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<KmsAccessDeniedException>()("KmsAccessDeniedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class KmsInvalidStateException
   extends /*@__PURE__*/ S.TaggedError<KmsInvalidStateException>()("KmsInvalidStateException", {
-    kmsKeyState: S.optional(S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" })),
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    kmsKeyState: /*@__PURE__*/ S.optional(
+      /*@__PURE__*/ S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" }),
+    ),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class KmsThrottlingException
   extends /*@__PURE__*/ S.TaggedError<KmsThrottlingException>()("KmsThrottlingException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class MissingRequiredParameter
   extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameter>()("MissingRequiredParameter", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ResourceNotFound
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()(
     "ResourceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class StateMachineAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<StateMachineAlreadyExists>()("StateMachineAlreadyExists", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class StateMachineDeleting
   extends /*@__PURE__*/ S.TaggedError<StateMachineDeleting>()("StateMachineDeleting", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class StateMachineDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<StateMachineDoesNotExist>()("StateMachineDoesNotExist", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class StateMachineLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<StateMachineLimitExceeded>()("StateMachineLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class StateMachineTypeNotSupported
   extends /*@__PURE__*/ S.TaggedError<StateMachineTypeNotSupported>()(
     "StateMachineTypeNotSupported",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class TaskDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<TaskDoesNotExist>()("TaskDoesNotExist", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TaskTimedOut
   extends /*@__PURE__*/ S.TaggedError<TaskTimedOut>()("TaskTimedOut", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyTags
   extends /*@__PURE__*/ S.TaggedError<TooManyTags>()(
     "TooManyTags",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), resourceName: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      resourceName: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      reason: S.optional(
-        S.suspend(() => ValidationExceptionReason).annotate({
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reason: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type TagKey = string;
@@ -702,7 +710,7 @@ export type VariableReferences = {
 };
 export const VariableReferences = /*@__PURE__*/ S.Record(
   S.String,
-  VariableNameList.pipe(S.optional),
+  /*@__PURE__*/ VariableNameList.pipe(S.optional),
 );
 export interface DescribeStateMachineOutput {
   stateMachineArn: string;
@@ -1283,7 +1291,10 @@ export const StateEnteredEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StateEnteredEventDetails" }) as any as S.Schema<StateEnteredEventDetails>;
 export type VariableValue = string | redacted.Redacted<string>;
 export type AssignedVariables = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const AssignedVariables = /*@__PURE__*/ S.Record(S.String, SensitiveString.pipe(S.optional));
+export const AssignedVariables = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
+);
 export interface AssignedVariablesDetails {
   truncated?: boolean;
 }

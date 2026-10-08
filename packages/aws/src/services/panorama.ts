@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Panorama",
   serviceShapeName: "OmniCloudServiceLambda",
 });
-const auth = T.AwsAuthSigv4({ name: "panorama" });
-const ver = T.ServiceVersion("2019-07-24");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "panorama" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2019-07-24");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -76,85 +76,89 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: S.String,
       ResourceType: S.String,
-      ErrorId: S.optional(S.String),
-      ErrorArguments: S.optional(
-        S.suspend(() => ConflictExceptionErrorArgumentList).annotate({
+      ErrorId: /*@__PURE__*/ S.optional(S.String),
+      ErrorArguments: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ConflictExceptionErrorArgumentList).annotate({
           identifier: "ConflictExceptionErrorArgumentList",
         }),
       ),
     },
-    T.HttpError(409),
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      RetryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
     },
-    T.HttpError(500),
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceId: S.String,
       ResourceType: S.String,
     },
-    T.HttpError(404),
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      ResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      ResourceId: /*@__PURE__*/ S.optional(S.String),
+      ResourceType: /*@__PURE__*/ S.optional(S.String),
       QuotaCode: S.String,
       ServiceCode: S.String,
     },
-    T.HttpError(402),
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      message: S.String.pipe(T.ErrorMessage()),
-      Reason: S.optional(S.String),
-      ErrorId: S.optional(S.String),
-      ErrorArguments: S.optional(
-        S.suspend(() => ValidationExceptionErrorArgumentList).annotate({
+      message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Reason: /*@__PURE__*/ S.optional(S.String),
+      ErrorId: /*@__PURE__*/ S.optional(S.String),
+      ErrorArguments: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionErrorArgumentList).annotate({
           identifier: "ValidationExceptionErrorArgumentList",
         }),
       ),
-      Fields: S.optional(
-        S.suspend(() => ValidationExceptionFieldList).annotate({
+      Fields: /*@__PURE__*/ S.optional(
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
     },
-    T.HttpError(400),
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ApplicationInstanceName = string;
 export type Description = string;
 export type ManifestPayloadData = string;
 export type ManifestPayload = { PayloadData: string };
-export const ManifestPayload = /*@__PURE__*/ S.Union([S.Struct({ PayloadData: S.String })]);
+export const ManifestPayload = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ PayloadData: S.String }),
+]);
 export type ManifestOverridesPayloadData = string;
 export type ManifestOverridesPayload = { PayloadData: string };
 export const ManifestOverridesPayload = /*@__PURE__*/ S.Union([
-  S.Struct({ PayloadData: S.String }),
+  /*@__PURE__*/ S.Struct({ PayloadData: S.String }),
 ]);
 export type ApplicationInstanceId = string;
 export type RuntimeRoleArn = string;
@@ -162,7 +166,7 @@ export type DefaultRuntimeContextDevice = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateApplicationInstanceRequest {
   Name?: string;
   Description?: string;
@@ -263,7 +267,7 @@ export type TemplateParametersMap = {
 };
 export const TemplateParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  SensitiveString.pipe(S.optional),
+  /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type JobResourceType = string;
 export interface JobResourceTags {

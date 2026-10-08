@@ -7,12 +7,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://swf.amazonaws.com/doc/2012-01-25");
-const svc = T.AwsApiService({ sdkId: "SWF", serviceShapeName: "SimpleWorkflowService" });
-const auth = T.AwsAuthSigv4({ name: "swf" });
-const ver = T.ServiceVersion("2012-01-25");
-const proto = T.AwsProtocolsAwsJson1_0();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://swf.amazonaws.com/doc/2012-01-25");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SWF",
+  serviceShapeName: "SimpleWorkflowService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "swf" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2012-01-25");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -85,50 +88,50 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class DefaultUndefinedFault
   extends /*@__PURE__*/ S.TaggedError<DefaultUndefinedFault>()("DefaultUndefinedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class DomainAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<DomainAlreadyExistsFault>()("DomainAlreadyExistsFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class DomainDeprecatedFault
   extends /*@__PURE__*/ S.TaggedError<DomainDeprecatedFault>()("DomainDeprecatedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededFault
   extends /*@__PURE__*/ S.TaggedError<LimitExceededFault>()("LimitExceededFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class OperationNotPermittedFault
   extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedFault>()("OperationNotPermittedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TooManyTagsFault
   extends /*@__PURE__*/ S.TaggedError<TooManyTagsFault>()(
     "TooManyTagsFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TypeAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<TypeAlreadyExistsFault>()("TypeAlreadyExistsFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAlreadyExistsError) {}
 export class TypeDeprecatedFault
   extends /*@__PURE__*/ S.TaggedError<TypeDeprecatedFault>()("TypeDeprecatedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class TypeNotDeprecatedFault
   extends /*@__PURE__*/ S.TaggedError<TypeNotDeprecatedFault>()("TypeNotDeprecatedFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class UnknownResourceFault
   extends /*@__PURE__*/ S.TaggedError<UnknownResourceFault>()("UnknownResourceFault", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class WorkflowExecutionAlreadyStartedFault
   extends /*@__PURE__*/ S.TaggedError<WorkflowExecutionAlreadyStartedFault>()(
     "WorkflowExecutionAlreadyStartedFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export type DomainName = string;
 export interface ExecutionTimeFilter {

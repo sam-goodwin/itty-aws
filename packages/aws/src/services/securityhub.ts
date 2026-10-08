@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "SecurityHub", serviceShapeName: "SecurityHubAPIService" });
-const auth = T.AwsAuthSigv4({ name: "securityhub" });
-const ver = T.ServiceVersion("2018-10-26");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "SecurityHub",
+  serviceShapeName: "SecurityHubAPIService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "securityhub" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-10-26");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,92 +76,137 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(403),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(500),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidAccessException
   extends /*@__PURE__*/ S.TaggedError<InvalidAccessException>()(
     "InvalidAccessException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(401),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class OrganizationalUnitNotFoundException
   extends /*@__PURE__*/ S.TaggedError<OrganizationalUnitNotFoundException>()(
     "OrganizationalUnitNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotFoundException
   extends /*@__PURE__*/ S.TaggedError<OrganizationNotFoundException>()(
     "OrganizationNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(409),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(404),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(402),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(429),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), Code: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      Code: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type NonEmptyString = string;
 export interface AcceptAdministratorInvitationRequest {
@@ -246,7 +294,7 @@ export const BatchDisableStandardsRequest = /*@__PURE__*/ S.suspend(() =>
 export type StandardsInputParameterMap = { [key: string]: string | undefined };
 export const StandardsInputParameterMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type StandardsStatus =
   | "PENDING"
@@ -593,7 +641,7 @@ export const VerificationState = S.String;
 export type TypeList = string[];
 export const TypeList = /*@__PURE__*/ S.Array(S.String);
 export type FieldMap = { [key: string]: string | undefined };
-export const FieldMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FieldMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type WorkflowStatus = "NEW" | "NOTIFIED" | "RESOLVED" | "SUPPRESSED" | (string & {});
 export const WorkflowStatus = S.String;
 
@@ -704,9 +752,9 @@ export type Target =
   | { AccountId?: never; OrganizationalUnitId: string; RootId?: never }
   | { AccountId?: never; OrganizationalUnitId?: never; RootId: string };
 export const Target = /*@__PURE__*/ S.Union([
-  S.Struct({ AccountId: S.String }),
-  S.Struct({ OrganizationalUnitId: S.String }),
-  S.Struct({ RootId: S.String }),
+  /*@__PURE__*/ S.Struct({ AccountId: S.String }),
+  /*@__PURE__*/ S.Struct({ OrganizationalUnitId: S.String }),
+  /*@__PURE__*/ S.Struct({ RootId: S.String }),
 ]);
 export interface ConfigurationPolicyAssociation {
   Target?: Target;
@@ -922,14 +970,14 @@ export type ParameterValue =
       EnumList: string[];
     };
 export const ParameterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ Integer: S.Number }),
-  S.Struct({ IntegerList: IntegerList }),
-  S.Struct({ Double: S.Number }),
-  S.Struct({ String: S.String }),
-  S.Struct({ StringList: StringList }),
-  S.Struct({ Boolean: S.Boolean }),
-  S.Struct({ Enum: S.String }),
-  S.Struct({ EnumList: StringList }),
+  /*@__PURE__*/ S.Struct({ Integer: S.Number }),
+  /*@__PURE__*/ S.Struct({ IntegerList: IntegerList }),
+  /*@__PURE__*/ S.Struct({ Double: S.Number }),
+  /*@__PURE__*/ S.Struct({ String: S.String }),
+  /*@__PURE__*/ S.Struct({ StringList: StringList }),
+  /*@__PURE__*/ S.Struct({ Boolean: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ Enum: S.String }),
+  /*@__PURE__*/ S.Struct({ EnumList: StringList }),
 ]);
 export interface ParameterConfiguration {
   ValueType?: ParameterValueType;
@@ -939,7 +987,10 @@ export const ParameterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValueType: S.optional(ParameterValueType), Value: S.optional(ParameterValue) }),
 ).annotate({ identifier: "ParameterConfiguration" }) as any as S.Schema<ParameterConfiguration>;
 export type Parameters = { [key: string]: ParameterConfiguration | undefined };
-export const Parameters = /*@__PURE__*/ S.Record(S.String, ParameterConfiguration.pipe(S.optional));
+export const Parameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ParameterConfiguration.pipe(S.optional),
+);
 export type AlphaNumericNonEmptyString = string;
 export type SecurityControlsProvider = "AWS" | "Azure" | (string & {});
 export const SecurityControlsProvider = S.String;
@@ -12039,7 +12090,7 @@ export const CreateActionTargetResponse = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ClientToken = string;
 export interface CreateAggregatorV2Request {
   RegionLinkingMode?: string;
@@ -12335,7 +12386,7 @@ export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompositeFilter" }) as any as S.Schema<CompositeFilter>;
 export type CompositeFilterList = CompositeFilter[];
 export const CompositeFilterList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<CompositeFilter> => CompositeFilter).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<CompositeFilter> => CompositeFilter).annotate({
     identifier: "CompositeFilter",
   }),
 ) as any as S.Schema<CompositeFilterList>;
@@ -12351,7 +12402,7 @@ export const OcsfFindingFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OcsfFindingFilters" }) as any as S.Schema<OcsfFindingFilters>;
 export type Criteria = { OcsfFindingCriteria: OcsfFindingFilters };
 export const Criteria = /*@__PURE__*/ S.Union([
-  S.Struct({ OcsfFindingCriteria: OcsfFindingFilters }),
+  /*@__PURE__*/ S.Struct({ OcsfFindingCriteria: OcsfFindingFilters }),
 ]);
 export type AutomationRulesActionTypeV2 =
   | "FINDING_FIELDS_UPDATE"
@@ -12483,7 +12534,9 @@ export const SecurityHubPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecurityHubPolicy" }) as any as S.Schema<SecurityHubPolicy>;
 export type Policy = { SecurityHub: SecurityHubPolicy };
-export const Policy = /*@__PURE__*/ S.Union([S.Struct({ SecurityHub: SecurityHubPolicy })]);
+export const Policy = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ SecurityHub: SecurityHubPolicy }),
+]);
 export interface CreateConfigurationPolicyRequest {
   Name?: string;
   Description?: string;
@@ -12561,7 +12614,7 @@ export const AzureProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureProviderConfiguration>;
 export type CspmProviderConfiguration = { Azure: AzureProviderConfiguration };
 export const CspmProviderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Azure: AzureProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ Azure: AzureProviderConfiguration }),
 ]);
 export interface CreateConnectorRequest {
   Name?: string;
@@ -12631,9 +12684,9 @@ export type ProviderConfiguration =
   | { JiraCloud?: never; ServiceNow: ServiceNowProviderConfiguration; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureProviderConfiguration };
 export const ProviderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ JiraCloud: JiraCloudProviderConfiguration }),
-  S.Struct({ ServiceNow: ServiceNowProviderConfiguration }),
-  S.Struct({ Azure: AzureProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowProviderConfiguration }),
+  /*@__PURE__*/ S.Struct({ Azure: AzureProviderConfiguration }),
 ]);
 export interface CreateConnectorV2Request {
   Name?: string;
@@ -13520,7 +13573,10 @@ export const FeatureDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureDetail" }) as any as S.Schema<FeatureDetail>;
 export type Features = { [key: string]: FeatureDetail | undefined };
-export const Features = /*@__PURE__*/ S.Record(S.String, FeatureDetail.pipe(S.optional));
+export const Features = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ FeatureDetail.pipe(S.optional),
+);
 export interface DescribeSecurityHubV2Response {
   HubV2Arn?: string;
   SubscribedAt?: string;
@@ -14163,7 +14219,9 @@ export const AzureDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AzureDetail" }) as any as S.Schema<AzureDetail>;
 export type CspmProviderDetail = { Azure: AzureDetail };
-export const CspmProviderDetail = /*@__PURE__*/ S.Union([S.Struct({ Azure: AzureDetail })]);
+export const CspmProviderDetail = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ Azure: AzureDetail }),
+]);
 export interface GetConnectorResponse {
   ConnectorArn?: string;
   ConnectorId: string;
@@ -14259,9 +14317,9 @@ export type ProviderDetail =
   | { JiraCloud?: never; ServiceNow: ServiceNowDetail; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureDetail };
 export const ProviderDetail = /*@__PURE__*/ S.Union([
-  S.Struct({ JiraCloud: JiraCloudDetail }),
-  S.Struct({ ServiceNow: ServiceNowDetail }),
-  S.Struct({ Azure: AzureDetail }),
+  /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudDetail }),
+  /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowDetail }),
+  /*@__PURE__*/ S.Struct({ Azure: AzureDetail }),
 ]);
 export interface GetConnectorV2Response {
   ConnectorArn?: string;
@@ -14654,7 +14712,9 @@ export const FindingsTrendsCompositeFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FindingsTrendsCompositeFilter>;
 export type FindingsTrendsCompositeFilterList = FindingsTrendsCompositeFilter[];
 export const FindingsTrendsCompositeFilterList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<FindingsTrendsCompositeFilter> => FindingsTrendsCompositeFilter).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<FindingsTrendsCompositeFilter> => FindingsTrendsCompositeFilter,
+  ).annotate({
     identifier: "FindingsTrendsCompositeFilter",
   }),
 ) as any as S.Schema<FindingsTrendsCompositeFilterList>;
@@ -14983,7 +15043,7 @@ export const UnusedPermissionsRecommendationStep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnusedPermissionsRecommendationStep>;
 export type RecommendationStep = { UnusedPermissions: UnusedPermissionsRecommendationStep };
 export const RecommendationStep = /*@__PURE__*/ S.Union([
-  S.Struct({ UnusedPermissions: UnusedPermissionsRecommendationStep }),
+  /*@__PURE__*/ S.Struct({ UnusedPermissions: UnusedPermissionsRecommendationStep }),
 ]);
 export type RecommendationSteps = RecommendationStep[];
 export const RecommendationSteps = /*@__PURE__*/ S.Array(RecommendationStep);
@@ -15539,7 +15599,9 @@ export const ResourcesCompositeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcesCompositeFilter" }) as any as S.Schema<ResourcesCompositeFilter>;
 export type ResourcesCompositeFilterList = ResourcesCompositeFilter[];
 export const ResourcesCompositeFilterList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<ResourcesCompositeFilter> => ResourcesCompositeFilter).annotate({
+  /*@__PURE__*/ S.suspend(
+    (): S.Schema<ResourcesCompositeFilter> => ResourcesCompositeFilter,
+  ).annotate({
     identifier: "ResourcesCompositeFilter",
   }),
 ) as any as S.Schema<ResourcesCompositeFilterList>;
@@ -15640,7 +15702,7 @@ export const ResourcesTrendsCompositeFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesTrendsCompositeFilter>;
 export type ResourcesTrendsCompositeFilterList = ResourcesTrendsCompositeFilter[];
 export const ResourcesTrendsCompositeFilterList = /*@__PURE__*/ S.Array(
-  S.suspend(
+  /*@__PURE__*/ S.suspend(
     (): S.Schema<ResourcesTrendsCompositeFilter> => ResourcesTrendsCompositeFilter,
   ).annotate({ identifier: "ResourcesTrendsCompositeFilter" }),
 ) as any as S.Schema<ResourcesTrendsCompositeFilterList>;
@@ -16130,14 +16192,14 @@ export type ConfigurationOptions =
       EnumList: EnumListConfigurationOptions;
     };
 export const ConfigurationOptions = /*@__PURE__*/ S.Union([
-  S.Struct({ Integer: IntegerConfigurationOptions }),
-  S.Struct({ IntegerList: IntegerListConfigurationOptions }),
-  S.Struct({ Double: DoubleConfigurationOptions }),
-  S.Struct({ String: StringConfigurationOptions }),
-  S.Struct({ StringList: StringListConfigurationOptions }),
-  S.Struct({ Boolean: BooleanConfigurationOptions }),
-  S.Struct({ Enum: EnumConfigurationOptions }),
-  S.Struct({ EnumList: EnumListConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ Integer: IntegerConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ IntegerList: IntegerListConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ Double: DoubleConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ String: StringConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ StringList: StringListConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ Boolean: BooleanConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ Enum: EnumConfigurationOptions }),
+  /*@__PURE__*/ S.Struct({ EnumList: EnumListConfigurationOptions }),
 ]);
 export interface ParameterDefinition {
   Description?: string;
@@ -16152,7 +16214,7 @@ export const ParameterDefinition = /*@__PURE__*/ S.suspend(() =>
 export type ParameterDefinitions = { [key: string]: ParameterDefinition | undefined };
 export const ParameterDefinitions = /*@__PURE__*/ S.Record(
   S.String,
-  ParameterDefinition.pipe(S.optional),
+  /*@__PURE__*/ ParameterDefinition.pipe(S.optional),
 );
 export interface SecurityControlDefinition {
   SecurityControlId?: string;
@@ -17335,7 +17397,7 @@ export const AzureUpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureUpdateConfiguration" }) as any as S.Schema<AzureUpdateConfiguration>;
 export type CspmProviderUpdateConfiguration = { Azure: AzureUpdateConfiguration };
 export const CspmProviderUpdateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Azure: AzureUpdateConfiguration }),
+  /*@__PURE__*/ S.Struct({ Azure: AzureUpdateConfiguration }),
 ]);
 export interface UpdateConnectorRequest {
   ConnectorId: string;
@@ -17389,9 +17451,9 @@ export type ProviderUpdateConfiguration =
   | { JiraCloud?: never; ServiceNow: ServiceNowUpdateConfiguration; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureUpdateConfiguration };
 export const ProviderUpdateConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ JiraCloud: JiraCloudUpdateConfiguration }),
-  S.Struct({ ServiceNow: ServiceNowUpdateConfiguration }),
-  S.Struct({ Azure: AzureUpdateConfiguration }),
+  /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudUpdateConfiguration }),
+  /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowUpdateConfiguration }),
+  /*@__PURE__*/ S.Struct({ Azure: AzureUpdateConfiguration }),
 ]);
 export interface UpdateConnectorV2Request {
   ConnectorId: string;

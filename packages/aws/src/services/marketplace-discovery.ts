@@ -7,14 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Discovery",
   serviceShapeName: "AWSMarketplaceDiscovery",
 });
-const auth = T.AwsAuthSigv4({ name: "aws-marketplace" });
-const ver = T.ServiceVersion("2026-02-05");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aws-marketplace" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2026-02-05");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -51,8 +51,8 @@ const rules = T.EndpointResolver((p, _) => {
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type Locale = string;
 export type ListingId = string;
@@ -222,8 +222,8 @@ export type PromotionalMedia =
   | { embeddedImage: PromotionalEmbeddedImage; embeddedVideo?: never }
   | { embeddedImage?: never; embeddedVideo: PromotionalEmbeddedVideo };
 export const PromotionalMedia = /*@__PURE__*/ S.Union([
-  S.Struct({ embeddedImage: PromotionalEmbeddedImage }),
-  S.Struct({ embeddedVideo: PromotionalEmbeddedVideo }),
+  /*@__PURE__*/ S.Struct({ embeddedImage: PromotionalEmbeddedImage }),
+  /*@__PURE__*/ S.Struct({ embeddedVideo: PromotionalEmbeddedVideo }),
 ]);
 export type PromotionalMediaList = PromotionalMedia[];
 export const PromotionalMediaList = /*@__PURE__*/ S.Array(PromotionalMedia);
@@ -749,8 +749,8 @@ export type PriceIncrease =
   | { fixedPercentage: FixedPercentage; percentageRange?: never }
   | { fixedPercentage?: never; percentageRange: PercentageRange };
 export const PriceIncrease = /*@__PURE__*/ S.Union([
-  S.Struct({ fixedPercentage: FixedPercentage }),
-  S.Struct({ percentageRange: PercentageRange }),
+  /*@__PURE__*/ S.Struct({ fixedPercentage: FixedPercentage }),
+  /*@__PURE__*/ S.Struct({ percentageRange: PercentageRange }),
 ]);
 export interface PaymentScheduleEntry {
   chargeDateOffset: string;
@@ -776,7 +776,7 @@ export const PaymentScheduleTermTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentScheduleTermTemplate>;
 export type TermTemplate = { paymentScheduleTermTemplate: PaymentScheduleTermTemplate };
 export const TermTemplate = /*@__PURE__*/ S.Union([
-  S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
+  /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: PaymentScheduleTermTemplate }),
 ]);
 export type TermTemplateList = TermTemplate[];
 export const TermTemplateList = /*@__PURE__*/ S.Array(TermTemplate);
@@ -1065,19 +1065,19 @@ export type OfferTerm =
       netPaymentTerm: NetPaymentTerm;
     };
 export const OfferTerm = /*@__PURE__*/ S.Union([
-  S.Struct({ byolPricingTerm: ByolPricingTerm }),
-  S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
-  S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
-  S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
-  S.Struct({ legalTerm: LegalTerm }),
-  S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
-  S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
-  S.Struct({ renewalTerm: RenewalTerm }),
-  S.Struct({ supportTerm: SupportTerm }),
-  S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
-  S.Struct({ validityTerm: ValidityTerm }),
-  S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
-  S.Struct({ netPaymentTerm: NetPaymentTerm }),
+  /*@__PURE__*/ S.Struct({ byolPricingTerm: ByolPricingTerm }),
+  /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
+  /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
+  /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
+  /*@__PURE__*/ S.Struct({ legalTerm: LegalTerm }),
+  /*@__PURE__*/ S.Struct({ paymentScheduleTerm: PaymentScheduleTerm }),
+  /*@__PURE__*/ S.Struct({ recurringPaymentTerm: RecurringPaymentTerm }),
+  /*@__PURE__*/ S.Struct({ renewalTerm: RenewalTerm }),
+  /*@__PURE__*/ S.Struct({ supportTerm: SupportTerm }),
+  /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
+  /*@__PURE__*/ S.Struct({ validityTerm: ValidityTerm }),
+  /*@__PURE__*/ S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
+  /*@__PURE__*/ S.Struct({ netPaymentTerm: NetPaymentTerm }),
 ]);
 export type OfferTermsList = OfferTerm[];
 export const OfferTermsList = /*@__PURE__*/ S.Array(OfferTerm);
@@ -1771,20 +1771,26 @@ export type FulfillmentOption =
       sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption;
     };
 export const FulfillmentOption = /*@__PURE__*/ S.Union([
-  S.Struct({ amazonMachineImageFulfillmentOption: AmazonMachineImageFulfillmentOption }),
-  S.Struct({ apiFulfillmentOption: ApiFulfillmentOption }),
-  S.Struct({ cloudFormationFulfillmentOption: CloudFormationFulfillmentOption }),
-  S.Struct({ containerFulfillmentOption: ContainerFulfillmentOption }),
-  S.Struct({ helmFulfillmentOption: HelmFulfillmentOption }),
-  S.Struct({ eksAddOnFulfillmentOption: EksAddOnFulfillmentOption }),
-  S.Struct({
+  /*@__PURE__*/ S.Struct({
+    amazonMachineImageFulfillmentOption: AmazonMachineImageFulfillmentOption,
+  }),
+  /*@__PURE__*/ S.Struct({ apiFulfillmentOption: ApiFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({ cloudFormationFulfillmentOption: CloudFormationFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({ containerFulfillmentOption: ContainerFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({ helmFulfillmentOption: HelmFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: EksAddOnFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({
     ec2ImageBuilderComponentFulfillmentOption: Ec2ImageBuilderComponentFulfillmentOption,
   }),
-  S.Struct({ dataExchangeFulfillmentOption: DataExchangeFulfillmentOption }),
-  S.Struct({ professionalServicesFulfillmentOption: ProfessionalServicesFulfillmentOption }),
-  S.Struct({ saasFulfillmentOption: SaasFulfillmentOption }),
-  S.Struct({ sageMakerAlgorithmFulfillmentOption: SageMakerAlgorithmFulfillmentOption }),
-  S.Struct({ sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: DataExchangeFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({
+    professionalServicesFulfillmentOption: ProfessionalServicesFulfillmentOption,
+  }),
+  /*@__PURE__*/ S.Struct({ saasFulfillmentOption: SaasFulfillmentOption }),
+  /*@__PURE__*/ S.Struct({
+    sageMakerAlgorithmFulfillmentOption: SageMakerAlgorithmFulfillmentOption,
+  }),
+  /*@__PURE__*/ S.Struct({ sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption }),
 ]);
 export type FulfillmentOptionsList = FulfillmentOption[];
 export const FulfillmentOptionsList = /*@__PURE__*/ S.Array(FulfillmentOption);
@@ -1990,7 +1996,7 @@ export const ListingFacetList = /*@__PURE__*/ S.Array(ListingFacet);
 export type TypeToFacetMap = { [key in SearchFacetType]?: ListingFacet[] };
 export const TypeToFacetMap = /*@__PURE__*/ S.Record(
   SearchFacetType,
-  ListingFacetList.pipe(S.optional),
+  /*@__PURE__*/ ListingFacetList.pipe(S.optional),
 );
 export interface SearchFacetsOutput {
   totalResults: number;

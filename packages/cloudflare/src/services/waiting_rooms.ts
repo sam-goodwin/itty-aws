@@ -1932,7 +1932,7 @@ export type RulesEditRequestPosition =
   | RulesEditRequestPositionBefore
   | RulesEditRequestPositionAfter;
 export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["index"], ["before"], ["after"]]),
+  /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
 export interface PatchRuleRequest {

@@ -8,11 +8,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "CodeCatalyst", serviceShapeName: "CodeCatalyst" });
-const auth = T.AwsAuthSigv4({ name: "CodeCatalyst" });
-const ver = T.ServiceVersion("2022-09-28");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "CodeCatalyst",
+  serviceShapeName: "CodeCatalyst",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "CodeCatalyst" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2022-09-28");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { UseFIPS = false, Region, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,

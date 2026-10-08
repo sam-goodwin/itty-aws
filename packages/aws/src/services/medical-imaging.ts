@@ -9,11 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "Medical Imaging", serviceShapeName: "AHIGatewayService" });
-const auth = T.AwsAuthSigv4({ name: "medical-imaging" });
-const ver = T.ServiceVersion("2023-07-19");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "Medical Imaging",
+  serviceShapeName: "AHIGatewayService",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "medical-imaging" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2023-07-19");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -75,56 +78,56 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotAcceptableException
   extends /*@__PURE__*/ S.TaggedError<NotAcceptableException>()(
     "NotAcceptableException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(406),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(406),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DatastoreId = string;
 export type ImageSetId = string;
@@ -275,7 +278,7 @@ export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type KmsKeyArn = string;
 export type LambdaArn = string;
 export type LosslessStorageFormat = "HTJ2K" | "JPEG_2000_LOSSLESS" | (string & {});
@@ -467,7 +470,9 @@ export type ImportConfiguration = {
   dicomJsonMetadataImportConfiguration: DicomJsonMetadataImportConfiguration;
 };
 export const ImportConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ dicomJsonMetadataImportConfiguration: DicomJsonMetadataImportConfiguration }),
+  /*@__PURE__*/ S.Struct({
+    dicomJsonMetadataImportConfiguration: DicomJsonMetadataImportConfiguration,
+  }),
 ]);
 export interface DICOMImportJobProperties {
   jobId: string;
@@ -946,15 +951,19 @@ export type SearchByAttributeValue =
       isPrimary: boolean;
     };
 export const SearchByAttributeValue = /*@__PURE__*/ S.Union([
-  S.Struct({ DICOMPatientId: SensitiveString }),
-  S.Struct({ DICOMAccessionNumber: SensitiveString }),
-  S.Struct({ DICOMStudyId: SensitiveString }),
-  S.Struct({ DICOMStudyInstanceUID: SensitiveString }),
-  S.Struct({ DICOMSeriesInstanceUID: SensitiveString }),
-  S.Struct({ createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-  S.Struct({ updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-  S.Struct({ DICOMStudyDateAndTime: DICOMStudyDateAndTime }),
-  S.Struct({ isPrimary: S.Boolean }),
+  /*@__PURE__*/ S.Struct({ DICOMPatientId: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ DICOMAccessionNumber: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ DICOMStudyId: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ DICOMStudyInstanceUID: SensitiveString }),
+  /*@__PURE__*/ S.Struct({ DICOMSeriesInstanceUID: SensitiveString }),
+  /*@__PURE__*/ S.Struct({
+    createdAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
+  /*@__PURE__*/ S.Struct({
+    updatedAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+  }),
+  /*@__PURE__*/ S.Struct({ DICOMStudyDateAndTime: DICOMStudyDateAndTime }),
+  /*@__PURE__*/ S.Struct({ isPrimary: S.Boolean }),
 ]);
 export type SearchByAttributeValues = SearchByAttributeValue[];
 export const SearchByAttributeValues = /*@__PURE__*/ S.Array(SearchByAttributeValue);
@@ -1194,8 +1203,8 @@ export type MetadataUpdates =
   | { DICOMUpdates: DICOMUpdates; revertToVersionId?: never }
   | { DICOMUpdates?: never; revertToVersionId: string };
 export const MetadataUpdates = /*@__PURE__*/ S.Union([
-  S.Struct({ DICOMUpdates: DICOMUpdates }),
-  S.Struct({ revertToVersionId: S.String }),
+  /*@__PURE__*/ S.Struct({ DICOMUpdates: DICOMUpdates }),
+  /*@__PURE__*/ S.Struct({ revertToVersionId: S.String }),
 ]);
 export interface UpdateImageSetMetadataRequest {
   datastoreId: string;

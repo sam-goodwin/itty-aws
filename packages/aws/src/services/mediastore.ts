@@ -6,12 +6,15 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("https://mediastore.amazonaws.com/doc/2017-09-01");
-const svc = T.AwsApiService({ sdkId: "MediaStore", serviceShapeName: "MediaStore_20170901" });
-const auth = T.AwsAuthSigv4({ name: "mediastore" });
-const ver = T.ServiceVersion("2017-09-01");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("https://mediastore.amazonaws.com/doc/2017-09-01");
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MediaStore",
+  serviceShapeName: "MediaStore_20170901",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mediastore" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-09-01");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -72,28 +75,28 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ContainerInUseException
   extends /*@__PURE__*/ S.TaggedError<ContainerInUseException>()("ContainerInUseException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class ContainerNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ContainerNotFoundException>()("ContainerNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class CorsPolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<CorsPolicyNotFoundException>()(
     "CorsPolicyNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()("InternalServerError", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class PolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedError<PolicyNotFoundException>()("PolicyNotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type ContainerName = string;
 export type TagKey = string;

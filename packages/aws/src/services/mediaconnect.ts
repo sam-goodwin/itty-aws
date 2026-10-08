@@ -7,11 +7,14 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({ sdkId: "MediaConnect", serviceShapeName: "MediaConnect" });
-const auth = T.AwsAuthSigv4({ name: "mediaconnect" });
-const ver = T.ServiceVersion("2018-11-14");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const svc = /*@__PURE__*/ T.AwsApiService({
+  sdkId: "MediaConnect",
+  serviceShapeName: "MediaConnect",
+});
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "mediaconnect" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-14");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -73,92 +76,92 @@ const rules = T.EndpointResolver((p, _) => {
 export class AddFlowOutputs420Exception
   extends /*@__PURE__*/ S.TaggedError<AddFlowOutputs420Exception>()(
     "AddFlowOutputs420Exception",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(409), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(409), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class CreateBridge420Exception
   extends /*@__PURE__*/ S.TaggedError<CreateBridge420Exception>()(
     "CreateBridge420Exception",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class CreateFlow420Exception
   extends /*@__PURE__*/ S.TaggedError<CreateFlow420Exception>()(
     "CreateFlow420Exception",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class CreateGateway420Exception
   extends /*@__PURE__*/ S.TaggedError<CreateGateway420Exception>()(
     "CreateGateway420Exception",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GrantFlowEntitlements420Exception
   extends /*@__PURE__*/ S.TaggedError<GrantFlowEntitlements420Exception>()(
     "GrantFlowEntitlements420Exception",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(500), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(500), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RouterInputServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<RouterInputServiceQuotaExceededException>()(
     "RouterInputServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class RouterNetworkInterfaceServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<RouterNetworkInterfaceServiceQuotaExceededException>()(
     "RouterNetworkInterfaceServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class RouterOutputServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<RouterOutputServiceQuotaExceededException>()(
     "RouterOutputServiceQuotaExceededException",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.HttpError(420),
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(420),
   ) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(503), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(503), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.all(T.HttpError(429), T.Retryable()),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.all(/*@__PURE__*/ T.HttpError(429), /*@__PURE__*/ T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export type BridgeArn = string;
 export type Protocol =
@@ -559,7 +562,10 @@ export type MediaStreamType = "video" | "audio" | "ancillary-data" | (string & {
 export const MediaStreamType = S.String;
 
 export type __mapOfString = { [key: string]: string | undefined };
-export const __mapOfString = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const __mapOfString = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AddMediaStreamRequest {
   Attributes?: MediaStreamAttributesRequest;
   ClockRate?: number;
@@ -862,8 +868,8 @@ export type FlowTransitEncryptionKeyConfiguration =
   | { SecretsManager: SecretsManagerEncryptionKeyConfiguration; Automatic?: never }
   | { SecretsManager?: never; Automatic: AutomaticEncryptionKeyConfiguration };
 export const FlowTransitEncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
-  S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
 ]);
 export interface FlowTransitEncryption {
   EncryptionKeyType?: FlowTransitEncryptionKeyType;
@@ -1742,10 +1748,10 @@ export type RouterInputProtocolConfiguration =
   | { Rist?: never; SrtListener?: never; SrtCaller: SrtCallerRouterInputConfiguration; Rtp?: never }
   | { Rist?: never; SrtListener?: never; SrtCaller?: never; Rtp: RtpRouterInputConfiguration };
 export const RouterInputProtocolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Rist: RistRouterInputConfiguration }),
-  S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
-  S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
-  S.Struct({ Rtp: RtpRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rist: RistRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rtp: RtpRouterInputConfiguration }),
 ]);
 export type RouterInputProtocol = "RTP" | "RIST" | "SRT_CALLER" | "SRT_LISTENER" | (string & {});
 export const RouterInputProtocol = S.String;
@@ -1781,8 +1787,8 @@ export type MediaLiveTransitEncryptionKeyConfiguration =
   | { SecretsManager: SecretsManagerEncryptionKeyConfiguration; Automatic?: never }
   | { SecretsManager?: never; Automatic: AutomaticEncryptionKeyConfiguration };
 export const MediaLiveTransitEncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
-  S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
 ]);
 export interface MediaLiveTransitEncryption {
   EncryptionKeyType?: MediaLiveTransitEncryptionKeyType;
@@ -1835,10 +1841,10 @@ export type FailoverRouterInputProtocolConfiguration =
   | { Rist?: never; SrtListener?: never; SrtCaller: SrtCallerRouterInputConfiguration; Rtp?: never }
   | { Rist?: never; SrtListener?: never; SrtCaller?: never; Rtp: RtpRouterInputConfiguration };
 export const FailoverRouterInputProtocolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Rist: RistRouterInputConfiguration }),
-  S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
-  S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
-  S.Struct({ Rtp: RtpRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rist: RistRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rtp: RtpRouterInputConfiguration }),
 ]);
 export type FailoverRouterInputProtocolConfigurationList =
   FailoverRouterInputProtocolConfiguration[];
@@ -1896,8 +1902,8 @@ export type MergeRouterInputProtocolConfiguration =
   | { Rtp: RtpRouterInputConfiguration; Rist?: never }
   | { Rtp?: never; Rist: RistRouterInputConfiguration };
 export const MergeRouterInputProtocolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Rtp: RtpRouterInputConfiguration }),
-  S.Struct({ Rist: RistRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rtp: RtpRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rist: RistRouterInputConfiguration }),
 ]);
 export type MergeRouterInputProtocolConfigurationList = MergeRouterInputProtocolConfiguration[];
 export const MergeRouterInputProtocolConfigurationList = /*@__PURE__*/ S.Array(
@@ -1960,11 +1966,11 @@ export type RouterInputConfiguration =
       Merge: MergeRouterInputConfiguration;
     };
 export const RouterInputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Standard: StandardRouterInputConfiguration }),
-  S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputConfiguration }),
-  S.Struct({ Failover: FailoverRouterInputConfiguration }),
-  S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputConfiguration }),
-  S.Struct({ Merge: MergeRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Standard: StandardRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Failover: FailoverRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Merge: MergeRouterInputConfiguration }),
 ]);
 export type RouterInputTier = "INPUT_100" | "INPUT_50" | "INPUT_20" | (string & {});
 export const RouterInputTier = S.String;
@@ -1990,8 +1996,8 @@ export type RouterInputTransitEncryptionKeyConfiguration =
   | { SecretsManager: SecretsManagerEncryptionKeyConfiguration; Automatic?: never }
   | { SecretsManager?: never; Automatic: AutomaticEncryptionKeyConfiguration };
 export const RouterInputTransitEncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
-  S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
+  /*@__PURE__*/ S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
 ]);
 export interface RouterInputTransitEncryption {
   EncryptionKeyType?: RouterInputTransitEncryptionKeyType;
@@ -2125,11 +2131,11 @@ export type RouterInputStreamDetails =
       Merge: MergeRouterInputStreamDetails;
     };
 export const RouterInputStreamDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ Standard: StandardRouterInputStreamDetails }),
-  S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputStreamDetails }),
-  S.Struct({ Failover: FailoverRouterInputStreamDetails }),
-  S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputStreamDetails }),
-  S.Struct({ Merge: MergeRouterInputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ Standard: StandardRouterInputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ Failover: FailoverRouterInputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ Merge: MergeRouterInputStreamDetails }),
 ]);
 export type MaintenanceType = "PREFERRED_DAY_TIME" | "DEFAULT" | (string & {});
 export const MaintenanceType = S.String;
@@ -2162,8 +2168,8 @@ export type MaintenanceConfiguration =
   | { PreferredDayTime: PreferredDayTimeMaintenanceConfiguration; Default?: never }
   | { PreferredDayTime?: never; Default: DefaultMaintenanceConfiguration };
 export const MaintenanceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ PreferredDayTime: PreferredDayTimeMaintenanceConfiguration }),
-  S.Struct({ Default: DefaultMaintenanceConfiguration }),
+  /*@__PURE__*/ S.Struct({ PreferredDayTime: PreferredDayTimeMaintenanceConfiguration }),
+  /*@__PURE__*/ S.Struct({ Default: DefaultMaintenanceConfiguration }),
 ]);
 export type MaintenanceScheduleType = "WINDOW" | (string & {});
 export const MaintenanceScheduleType = S.String;
@@ -2184,7 +2190,7 @@ export const WindowMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WindowMaintenanceSchedule>;
 export type MaintenanceSchedule = { Window: WindowMaintenanceSchedule };
 export const MaintenanceSchedule = /*@__PURE__*/ S.Union([
-  S.Struct({ Window: WindowMaintenanceSchedule }),
+  /*@__PURE__*/ S.Struct({ Window: WindowMaintenanceSchedule }),
 ]);
 export type RouterContentQualityAnalysisType = "CONTENT_LEVEL" | (string & {});
 export const RouterContentQualityAnalysisType = S.String;
@@ -2246,7 +2252,7 @@ export type RouterContentQualityAnalysisConfiguration = {
   ContentLevel: ContentQualityAnalysisFeatureConfiguration;
 };
 export const RouterContentQualityAnalysisConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ ContentLevel: ContentQualityAnalysisFeatureConfiguration }),
+  /*@__PURE__*/ S.Struct({ ContentLevel: ContentQualityAnalysisFeatureConfiguration }),
 ]);
 export interface RouterInput {
   Name: string;
@@ -2434,8 +2440,8 @@ export type RouterNetworkInterfaceConfiguration =
   | { Public: PublicRouterNetworkInterfaceConfiguration; Vpc?: never }
   | { Public?: never; Vpc: VpcRouterNetworkInterfaceConfiguration };
 export const RouterNetworkInterfaceConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Public: PublicRouterNetworkInterfaceConfiguration }),
-  S.Struct({ Vpc: VpcRouterNetworkInterfaceConfiguration }),
+  /*@__PURE__*/ S.Struct({ Public: PublicRouterNetworkInterfaceConfiguration }),
+  /*@__PURE__*/ S.Struct({ Vpc: VpcRouterNetworkInterfaceConfiguration }),
 ]);
 export interface RouterNetworkInterface {
   Name: string;
@@ -2594,7 +2600,7 @@ export const PublicTlsEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicTlsEncryptionConfiguration>;
 export type TlsEncryptionConfiguration = { Public: PublicTlsEncryptionConfiguration };
 export const TlsEncryptionConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Public: PublicTlsEncryptionConfiguration }),
+  /*@__PURE__*/ S.Struct({ Public: PublicTlsEncryptionConfiguration }),
 ]);
 export interface TlsEncryption {
   EncryptionType?: TlsEncryptionType;
@@ -2720,11 +2726,11 @@ export type RouterOutputProtocolConfiguration =
       Rtp: RtpRouterOutputConfiguration;
     };
 export const RouterOutputProtocolConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Rist: RistRouterOutputConfiguration }),
-  S.Struct({ SrtListener: SrtListenerRouterOutputConfiguration }),
-  S.Struct({ RtmpPush: RtmpPushRouterOutputConfiguration }),
-  S.Struct({ SrtCaller: SrtCallerRouterOutputConfiguration }),
-  S.Struct({ Rtp: RtpRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rist: RistRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtListener: SrtListenerRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ RtmpPush: RtmpPushRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ SrtCaller: SrtCallerRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Rtp: RtpRouterOutputConfiguration }),
 ]);
 export type RouterOutputProtocol =
   | "RTP"
@@ -2817,9 +2823,9 @@ export type RouterOutputConfiguration =
       MediaLiveInput: MediaLiveInputRouterOutputConfiguration;
     };
 export const RouterOutputConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ Standard: StandardRouterOutputConfiguration }),
-  S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputConfiguration }),
-  S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ Standard: StandardRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputConfiguration }),
+  /*@__PURE__*/ S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputConfiguration }),
 ]);
 export type RouterOutputRoutedState = "ROUTED" | "ROUTING" | "UNROUTED" | (string & {});
 export const RouterOutputRoutedState = S.String;
@@ -2877,9 +2883,9 @@ export type RouterOutputStreamDetails =
       MediaLiveInput: MediaLiveInputRouterOutputStreamDetails;
     };
 export const RouterOutputStreamDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ Standard: StandardRouterOutputStreamDetails }),
-  S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputStreamDetails }),
-  S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ Standard: StandardRouterOutputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputStreamDetails }),
+  /*@__PURE__*/ S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputStreamDetails }),
 ]);
 export type FabricLatencyMode = "BALANCED" | "LOW_LATENCY" | (string & {});
 export const FabricLatencyMode = S.String;
@@ -4829,7 +4835,7 @@ export const GetRouterInputSourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRouterInputSourceMetadataRequest>;
 export type RouterInputMetadata = { TransportStreamMediaInfo: TransportMediaInfo };
 export const RouterInputMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ TransportStreamMediaInfo: TransportMediaInfo }),
+  /*@__PURE__*/ S.Struct({ TransportStreamMediaInfo: TransportMediaInfo }),
 ]);
 export interface RouterInputSourceMetadataDetails {
   SourceMetadataMessages: RouterInputMessage[];
@@ -5350,11 +5356,11 @@ export type RouterInputFilter =
       InputTypes: RouterInputType[];
     };
 export const RouterInputFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ NameContains: StringList }),
-  S.Struct({ RegionNames: StringList }),
-  S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
-  S.Struct({ RoutingScopes: RoutingScopeList }),
-  S.Struct({ InputTypes: RouterInputTypeList }),
+  /*@__PURE__*/ S.Struct({ NameContains: StringList }),
+  /*@__PURE__*/ S.Struct({ RegionNames: StringList }),
+  /*@__PURE__*/ S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
+  /*@__PURE__*/ S.Struct({ RoutingScopes: RoutingScopeList }),
+  /*@__PURE__*/ S.Struct({ InputTypes: RouterInputTypeList }),
 ]);
 export type RouterInputFilterList = RouterInputFilter[];
 export const RouterInputFilterList = /*@__PURE__*/ S.Array(RouterInputFilter);
@@ -5451,9 +5457,9 @@ export type RouterNetworkInterfaceFilter =
     }
   | { RegionNames?: never; NetworkInterfaceTypes?: never; NameContains: string[] };
 export const RouterNetworkInterfaceFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ RegionNames: StringList }),
-  S.Struct({ NetworkInterfaceTypes: RouterNetworkInterfaceTypeList }),
-  S.Struct({ NameContains: StringList }),
+  /*@__PURE__*/ S.Struct({ RegionNames: StringList }),
+  /*@__PURE__*/ S.Struct({ NetworkInterfaceTypes: RouterNetworkInterfaceTypeList }),
+  /*@__PURE__*/ S.Struct({ NameContains: StringList }),
 ]);
 export type RouterNetworkInterfaceFilterList = RouterNetworkInterfaceFilter[];
 export const RouterNetworkInterfaceFilterList = /*@__PURE__*/ S.Array(RouterNetworkInterfaceFilter);
@@ -5591,12 +5597,12 @@ export type RouterOutputFilter =
       NameContains: string[];
     };
 export const RouterOutputFilter = /*@__PURE__*/ S.Union([
-  S.Struct({ RegionNames: StringList }),
-  S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
-  S.Struct({ RoutingScopes: RoutingScopeList }),
-  S.Struct({ OutputTypes: RouterOutputTypeList }),
-  S.Struct({ RoutedInputArns: RouterInputArnList }),
-  S.Struct({ NameContains: StringList }),
+  /*@__PURE__*/ S.Struct({ RegionNames: StringList }),
+  /*@__PURE__*/ S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
+  /*@__PURE__*/ S.Struct({ RoutingScopes: RoutingScopeList }),
+  /*@__PURE__*/ S.Struct({ OutputTypes: RouterOutputTypeList }),
+  /*@__PURE__*/ S.Struct({ RoutedInputArns: RouterInputArnList }),
+  /*@__PURE__*/ S.Struct({ NameContains: StringList }),
 ]);
 export type RouterOutputFilterList = RouterOutputFilter[];
 export const RouterOutputFilterList = /*@__PURE__*/ S.Array(RouterOutputFilter);

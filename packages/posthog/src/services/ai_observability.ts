@@ -1866,7 +1866,7 @@ export const TraceNodeKindEnum = S.String;
 
 export type TraceNodeChildrenList = Array<TraceNode>;
 export const TraceNodeChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => TraceNode),
+  /*@__PURE__*/ S.suspend(() => TraceNode),
 ) as any as S.Schema<TraceNodeChildrenList>;
 
 export interface TraceNode {

@@ -398,7 +398,7 @@ export const CreatableProjectGalleryItem = /*@__PURE__*/ S.suspend(() =>
 /** Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload. */
 export type CreatableProjectGalleryItemsList = Array<CreatableProjectGalleryItem | null>;
 export const CreatableProjectGalleryItemsList = /*@__PURE__*/ S.Array(
-  S.NullOr(CreatableProjectGalleryItem),
+  /*@__PURE__*/ S.NullOr(CreatableProjectGalleryItem),
 ) as any as S.Schema<CreatableProjectGalleryItemsList>;
 
 export interface CreatableProject {
@@ -609,7 +609,7 @@ export const GalleryImage = /*@__PURE__*/ S.suspend(() =>
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectGalleryList = Array<GalleryImage | null>;
 export const ProjectGalleryList = /*@__PURE__*/ S.Array(
-  S.NullOr(GalleryImage),
+  /*@__PURE__*/ S.NullOr(GalleryImage),
 ) as any as S.Schema<ProjectGalleryList>;
 
 export type ProjectMonetizationStatus = "monetized" | "demonetized" | "force-demonetized";

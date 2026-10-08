@@ -9,15 +9,15 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://cognito-idp.amazonaws.com/doc/2016-04-18/");
-const svc = T.AwsApiService({
+const ns = /*@__PURE__*/ T.XmlNamespace("http://cognito-idp.amazonaws.com/doc/2016-04-18/");
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cognito Identity Provider",
   serviceShapeName: "AWSCognitoIdentityProviderService",
 });
-const auth = T.AwsAuthSigv4({ name: "cognito-idp" });
-const ver = T.ServiceVersion("2016-04-18");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cognito-idp" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2016-04-18");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -94,352 +94,355 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AliasExistsException
   extends /*@__PURE__*/ S.TaggedError<AliasExistsException>()(
     "AliasExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CodeDeliveryFailureException
   extends /*@__PURE__*/ S.TaggedError<CodeDeliveryFailureException>()(
     "CodeDeliveryFailureException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CodeMismatchException
   extends /*@__PURE__*/ S.TaggedError<CodeMismatchException>()(
     "CodeMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DeviceKeyExistsException
   extends /*@__PURE__*/ S.TaggedError<DeviceKeyExistsException>()(
     "DeviceKeyExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateProviderException
   extends /*@__PURE__*/ S.TaggedError<DuplicateProviderException>()(
     "DuplicateProviderException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class EnableSoftwareTokenMFAException
   extends /*@__PURE__*/ S.TaggedError<EnableSoftwareTokenMFAException>()(
     "EnableSoftwareTokenMFAException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExpiredCodeException
   extends /*@__PURE__*/ S.TaggedError<ExpiredCodeException>()(
     "ExpiredCodeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FeatureUnavailableInTierException
   extends /*@__PURE__*/ S.TaggedError<FeatureUnavailableInTierException>()(
     "FeatureUnavailableInTierException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GroupExistsException
   extends /*@__PURE__*/ S.TaggedError<GroupExistsException>()(
     "GroupExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()("InternalErrorException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()("InternalServerException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class InvalidEmailRoleAccessPolicyException
   extends /*@__PURE__*/ S.TaggedError<InvalidEmailRoleAccessPolicyException>()(
     "InvalidEmailRoleAccessPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaResponseException
   extends /*@__PURE__*/ S.TaggedError<InvalidLambdaResponseException>()(
     "InvalidLambdaResponseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOAuthFlowException
   extends /*@__PURE__*/ S.TaggedError<InvalidOAuthFlowException>()(
     "InvalidOAuthFlowException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()), reasonCode: S.optional(S.String) },
-    T.HttpError(400),
+    {
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      reasonCode: /*@__PURE__*/ S.optional(S.String),
+    },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPasswordException
   extends /*@__PURE__*/ S.TaggedError<InvalidPasswordException>()(
     "InvalidPasswordException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSmsRoleAccessPolicyException
   extends /*@__PURE__*/ S.TaggedError<InvalidSmsRoleAccessPolicyException>()(
     "InvalidSmsRoleAccessPolicyException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSmsRoleTrustRelationshipException
   extends /*@__PURE__*/ S.TaggedError<InvalidSmsRoleTrustRelationshipException>()(
     "InvalidSmsRoleTrustRelationshipException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidUserPoolConfigurationException
   extends /*@__PURE__*/ S.TaggedError<InvalidUserPoolConfigurationException>()(
     "InvalidUserPoolConfigurationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ManagedLoginBrandingExistsException
   extends /*@__PURE__*/ S.TaggedError<ManagedLoginBrandingExistsException>()(
     "ManagedLoginBrandingExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MFAMethodNotFoundException
   extends /*@__PURE__*/ S.TaggedError<MFAMethodNotFoundException>()(
     "MFAMethodNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class OperationNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<OperationNotEnabledException>()(
     "OperationNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PasswordHistoryPolicyViolationException
   extends /*@__PURE__*/ S.TaggedError<PasswordHistoryPolicyViolationException>()(
     "PasswordHistoryPolicyViolationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PasswordResetRequiredException
   extends /*@__PURE__*/ S.TaggedError<PasswordResetRequiredException>()(
     "PasswordResetRequiredException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionNotMetException
   extends /*@__PURE__*/ S.TaggedError<PreconditionNotMetException>()(
     "PreconditionNotMetException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RefreshTokenReuseException
   extends /*@__PURE__*/ S.TaggedError<RefreshTokenReuseException>()(
     "RefreshTokenReuseException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ScopeDoesNotExistException
   extends /*@__PURE__*/ S.TaggedError<ScopeDoesNotExistException>()(
     "ScopeDoesNotExistException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SoftwareTokenMFANotFoundException
   extends /*@__PURE__*/ S.TaggedError<SoftwareTokenMFANotFoundException>()(
     "SoftwareTokenMFANotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TermsExistsException
   extends /*@__PURE__*/ S.TaggedError<TermsExistsException>()(
     "TermsExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TierChangeNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<TierChangeNotAllowedException>()(
     "TierChangeNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(403),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class TooManyFailedAttemptsException
   extends /*@__PURE__*/ S.TaggedError<TooManyFailedAttemptsException>()(
     "TooManyFailedAttemptsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(429),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(401),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnexpectedLambdaException
   extends /*@__PURE__*/ S.TaggedError<UnexpectedLambdaException>()(
     "UnexpectedLambdaException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedIdentityProviderException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedIdentityProviderException>()(
     "UnsupportedIdentityProviderException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedTokenTypeException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedTokenTypeException>()(
     "UnsupportedTokenTypeException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedUserStateException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedUserStateException>()(
     "UnsupportedUserStateException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UserImportInProgressException
   extends /*@__PURE__*/ S.TaggedError<UserImportInProgressException>()(
     "UserImportInProgressException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UserLambdaValidationException
   extends /*@__PURE__*/ S.TaggedError<UserLambdaValidationException>()(
     "UserLambdaValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UsernameExistsException
   extends /*@__PURE__*/ S.TaggedError<UsernameExistsException>()(
     "UsernameExistsException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UserNotConfirmedException
   extends /*@__PURE__*/ S.TaggedError<UserNotConfirmedException>()(
     "UserNotConfirmedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UserNotFoundException
   extends /*@__PURE__*/ S.TaggedError<UserNotFoundException>()(
     "UserNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UserPoolAddOnNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<UserPoolAddOnNotEnabledException>()(
     "UserPoolAddOnNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UserPoolTaggingException
   extends /*@__PURE__*/ S.TaggedError<UserPoolTaggingException>()(
     "UserPoolTaggingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnChallengeNotFoundException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnChallengeNotFoundException>()(
     "WebAuthnChallengeNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnClientMismatchException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnClientMismatchException>()(
     "WebAuthnClientMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnConfigurationMissingException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnConfigurationMissingException>()(
     "WebAuthnConfigurationMissingException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnCredentialNotSupportedException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnCredentialNotSupportedException>()(
     "WebAuthnCredentialNotSupportedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnNotEnabledException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnNotEnabledException>()(
     "WebAuthnNotEnabledException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnOriginNotAllowedException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnOriginNotAllowedException>()(
     "WebAuthnOriginNotAllowedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WebAuthnRelyingPartyMismatchException
   extends /*@__PURE__*/ S.TaggedError<WebAuthnRelyingPartyMismatchException>()(
     "WebAuthnRelyingPartyMismatchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type UserPoolIdType = string;
 export type CustomAttributeNameType = string;
@@ -564,7 +567,10 @@ export const AdminAddUserToGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminAddUserToGroupResponse",
 }) as any as S.Schema<AdminAddUserToGroupResponse>;
 export type ClientMetadataType = { [key: string]: string | undefined };
-export const ClientMetadataType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ClientMetadataType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AdminConfirmSignUpRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -922,7 +928,10 @@ export type AuthFlowType =
 export const AuthFlowType = S.String;
 
 export type AuthParametersType = { [key: string]: string | undefined };
-export const AuthParametersType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AuthParametersType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AnalyticsMetadataType {
   AnalyticsEndpointId?: string;
 }
@@ -998,7 +1007,10 @@ export type ChallengeNameType =
 export const ChallengeNameType = S.String;
 
 export type ChallengeParametersType = { [key: string]: string | undefined };
-export const ChallengeParametersType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ChallengeParametersType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type TokenModelType = string | redacted.Redacted<string>;
 export type IntegerType = number;
 export interface NewDeviceMetadataType {
@@ -1310,7 +1322,10 @@ export const AdminResetUserPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminResetUserPasswordResponse",
 }) as any as S.Schema<AdminResetUserPasswordResponse>;
 export type ChallengeResponsesType = { [key: string]: string | undefined };
-export const ChallengeResponsesType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ChallengeResponsesType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AdminRespondToAuthChallengeRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -1725,17 +1740,26 @@ export type IdentityProviderTypeType =
 export const IdentityProviderTypeType = S.String;
 
 export type ProviderDetailsType = { [key: string]: string | undefined };
-export const ProviderDetailsType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProviderDetailsType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AttributeMappingKeyType = string;
 export type AttributeMappingType = { [key: string]: string | undefined };
-export const AttributeMappingType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AttributeMappingType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type IdpIdentifierType = string;
 export type IdpIdentifiersListType = string[];
 export const IdpIdentifiersListType = /*@__PURE__*/ S.Array(S.String);
 export type AcrMappingKeyType = string;
 export type AcrValueType = string;
 export type AcrMappingType = { [key: string]: string | undefined };
-export const AcrMappingType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const AcrMappingType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateIdentityProviderRequest {
   UserPoolId: string;
   ProviderName: string;
@@ -1943,7 +1967,7 @@ export const TermsEnforcementType = S.String;
 export type LanguageIdType = string;
 export type LinkUrlType = string;
 export type LinksType = { [key: string]: string | undefined };
-export const LinksType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LinksType = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateTermsRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -2336,7 +2360,10 @@ export const SmsConfigurationType = /*@__PURE__*/ S.suspend(() =>
 export type TagKeysType = string;
 export type TagValueType = string;
 export type UserPoolTagsType = { [key: string]: string | undefined };
-export const UserPoolTagsType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const UserPoolTagsType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type AdminCreateUserUnusedAccountValidityDaysType = number;
 export type SmsInviteMessageType = string;
 export type EmailInviteMessageType = string;
@@ -2458,7 +2485,7 @@ export const AcrLevelConfigType = /*@__PURE__*/ S.suspend(() =>
 export type AcrConfigurationType = { [key: string]: AcrLevelConfigType | undefined };
 export const AcrConfigurationType = /*@__PURE__*/ S.Record(
   S.String,
-  AcrLevelConfigType.pipe(S.optional),
+  /*@__PURE__*/ AcrLevelConfigType.pipe(S.optional),
 );
 export interface CreateUserPoolRequest {
   PoolName: string;
@@ -3732,7 +3759,10 @@ export type LimitClass = "API_CATEGORY" | (string & {});
 export const LimitClass = S.String;
 
 export type StringToStringMapType = { [key: string]: string | undefined };
-export const StringToStringMapType = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringToStringMapType = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface LimitDefinitionType {
   LimitClass: LimitClass;
   Attributes: { [key: string]: string | undefined };

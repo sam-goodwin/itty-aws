@@ -6412,7 +6412,7 @@ export const JSONSchema7Type = S.Unknown as any as S.Schema<JSONSchema7Type>;
 export type JSONSchema7Object = { [key: string]: JSONSchema7Type2 | undefined };
 export const JSONSchema7Object = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => JSONSchema7Type2),
+  /*@__PURE__*/ S.suspend(() => JSONSchema7Type2),
 ) as any as S.Schema<JSONSchema7Object>;
 
 /** Primitive type */
@@ -6421,7 +6421,7 @@ export const JSONSchema7Type2 = S.Unknown as any as S.Schema<JSONSchema7Type2>;
 
 export type JSONSchema7EnumList = Array<JSONSchema7Type2 | null>;
 export const JSONSchema7EnumList = /*@__PURE__*/ S.Array(
-  S.NullOr(JSONSchema7Type2),
+  /*@__PURE__*/ S.NullOr(JSONSchema7Type2),
 ) as any as S.Schema<JSONSchema7EnumList>;
 
 export type JSONSchema7ItemsCase1List = Array<JSONSchema7Definition>;
@@ -6603,7 +6603,7 @@ export const AnswerPartValue = S.Unknown as any as S.Schema<AnswerPartValue>;
 export type RecordStringAnswerPartValue = { [key: string]: AnswerPartValue | null | undefined };
 export const RecordStringAnswerPartValue = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(AnswerPartValue),
+  /*@__PURE__*/ S.NullOr(AnswerPartValue),
 ) as any as S.Schema<RecordStringAnswerPartValue>;
 
 export interface QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUploadedDocument {

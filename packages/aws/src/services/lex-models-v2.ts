@@ -9,14 +9,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Lex Models V2",
   serviceShapeName: "LexModelBuildingServiceV2",
 });
-const auth = T.AwsAuthSigv4({ name: "lex" });
-const ver = T.ServiceVersion("2020-08-07");
-const proto = T.AwsProtocolsRestJson1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lex" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2020-08-07");
+const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -78,47 +78,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(409),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(500),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(412),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(412),
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(404),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(402),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
-      retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      retryAfterSeconds: /*@__PURE__*/ S.optional(S.Number).pipe(
+        /*@__PURE__*/ T.HttpHeader("Retry-After"),
+      ),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
-    T.HttpError(429),
+    /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.HttpError(400),
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Id = string;
 export type BotVersion = string;
@@ -393,7 +395,7 @@ export type SessionTTL = number;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type BotType = "Bot" | "BotNetwork" | (string & {});
 export const BotType = S.String;
 
@@ -520,7 +522,7 @@ export const BotAliasLocaleSettings = /*@__PURE__*/ S.suspend(() =>
 export type BotAliasLocaleSettingsMap = { [key: string]: BotAliasLocaleSettings | undefined };
 export const BotAliasLocaleSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
-  BotAliasLocaleSettings.pipe(S.optional),
+  /*@__PURE__*/ BotAliasLocaleSettings.pipe(S.optional),
 );
 export type CloudWatchLogGroupArn = string;
 export type LogPrefix = string;
@@ -1004,7 +1006,7 @@ export const BotVersionLocaleDetails = /*@__PURE__*/ S.suspend(() =>
 export type BotVersionLocaleSpecification = { [key: string]: BotVersionLocaleDetails | undefined };
 export const BotVersionLocaleSpecification = /*@__PURE__*/ S.Record(
   S.String,
-  BotVersionLocaleDetails.pipe(S.optional),
+  /*@__PURE__*/ BotVersionLocaleDetails.pipe(S.optional),
 );
 export interface CreateBotVersionRequest {
   botId: string;
@@ -1265,7 +1267,7 @@ export const SlotValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlotValue" }) as any as S.Schema<SlotValue>;
 export type SlotValues = SlotValueOverride[];
 export const SlotValues = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<SlotValueOverride> => SlotValueOverride).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<SlotValueOverride> => SlotValueOverride).annotate({
     identifier: "SlotValueOverride",
   }),
 ) as any as S.Schema<SlotValues>;
@@ -1284,7 +1286,7 @@ export const SlotValueOverride = /*@__PURE__*/ S.suspend(() =>
 export type SlotValueOverrideMap = { [key: string]: SlotValueOverride | undefined };
 export const SlotValueOverrideMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<SlotValueOverride> => SlotValueOverride)
+  /*@__PURE__*/ S.suspend((): S.Schema<SlotValueOverride> => SlotValueOverride)
     .annotate({ identifier: "SlotValueOverride" })
     .pipe(S.optional),
 );
@@ -1296,7 +1298,7 @@ export const IntentOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), slots: S.optional(SlotValueOverrideMap) }),
 ).annotate({ identifier: "IntentOverride" }) as any as S.Schema<IntentOverride>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DialogState {
   dialogAction?: DialogAction;
   intent?: IntentOverride;
@@ -1526,7 +1528,7 @@ export type PromptAttemptsSpecificationMap = {
 };
 export const PromptAttemptsSpecificationMap = /*@__PURE__*/ S.Record(
   PromptAttempt,
-  PromptAttemptSpecification.pipe(S.optional),
+  /*@__PURE__*/ PromptAttemptSpecification.pipe(S.optional),
 );
 export interface PromptSpecification {
   messageGroups: MessageGroup[];
@@ -1941,9 +1943,15 @@ export type ConditionOperator = string;
 export type ConditionKey = string;
 export type ConditionValue = string;
 export type ConditionKeyValueMap = { [key: string]: string | undefined };
-export const ConditionKeyValueMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConditionKeyValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ConditionMap = { [key: string]: { [key: string]: string | undefined } | undefined };
-export const ConditionMap = /*@__PURE__*/ S.Record(S.String, ConditionKeyValueMap.pipe(S.optional));
+export const ConditionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ ConditionKeyValueMap.pipe(S.optional),
+);
 export interface CreateResourcePolicyStatementRequest {
   resourceArn: string;
   statementId: string;
@@ -2134,7 +2142,7 @@ export const Specifications = /*@__PURE__*/ S.suspend(() =>
 export type SubSlotSpecificationMap = { [key: string]: Specifications | undefined };
 export const SubSlotSpecificationMap = /*@__PURE__*/ S.Record(
   S.String,
-  Specifications.pipe(S.optional),
+  /*@__PURE__*/ Specifications.pipe(S.optional),
 );
 export interface SubSlotSetting {
   expression?: string;
@@ -6668,7 +6676,7 @@ export const ListTestExecutionResultItemsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TestResultMatchStatusCountMap = { [key in TestResultMatchStatus]?: number };
 export const TestResultMatchStatusCountMap = /*@__PURE__*/ S.Record(
   TestResultMatchStatus,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface OverallTestResultItem {
   multiTurnConversation: boolean;
@@ -6923,7 +6931,7 @@ export const RuntimeHintDetails = /*@__PURE__*/ S.suspend(() =>
 export type SlotHintsSlotMap = { [key: string]: RuntimeHintDetails | undefined };
 export const SlotHintsSlotMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<RuntimeHintDetails> => RuntimeHintDetails)
+  /*@__PURE__*/ S.suspend((): S.Schema<RuntimeHintDetails> => RuntimeHintDetails)
     .annotate({ identifier: "RuntimeHintDetails" })
     .pipe(S.optional),
 ) as any as S.Schema<SlotHintsSlotMap>;
@@ -6932,7 +6940,7 @@ export type SlotHintsIntentMap = {
 };
 export const SlotHintsIntentMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => SlotHintsSlotMap)
+  /*@__PURE__*/ S.suspend(() => SlotHintsSlotMap)
     .annotate({ identifier: "SlotHintsSlotMap" })
     .pipe(S.optional),
 );
@@ -6972,7 +6980,7 @@ export const UserTurnInputSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserTurnInputSpecification>;
 export type UserTurnSlotOutputList = UserTurnSlotOutput[];
 export const UserTurnSlotOutputList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<UserTurnSlotOutput> => UserTurnSlotOutput).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<UserTurnSlotOutput> => UserTurnSlotOutput).annotate({
     identifier: "UserTurnSlotOutput",
   }),
 ) as any as S.Schema<UserTurnSlotOutputList>;
@@ -6995,7 +7003,7 @@ export const UserTurnSlotOutput = /*@__PURE__*/ S.suspend(() =>
 export type UserTurnSlotOutputMap = { [key: string]: UserTurnSlotOutput | undefined };
 export const UserTurnSlotOutputMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend((): S.Schema<UserTurnSlotOutput> => UserTurnSlotOutput)
+  /*@__PURE__*/ S.suspend((): S.Schema<UserTurnSlotOutput> => UserTurnSlotOutput)
     .annotate({ identifier: "UserTurnSlotOutput" })
     .pipe(S.optional),
 ) as any as S.Schema<UserTurnSlotOutputMap>;

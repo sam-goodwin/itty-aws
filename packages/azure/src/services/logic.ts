@@ -3832,7 +3832,7 @@ export const ErrorResponseCode = S.String;
 /** The error message details. */
 export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
 export const ExtendedErrorInfoDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ExtendedErrorInfo),
+  /*@__PURE__*/ S.suspend(() => ExtendedErrorInfo),
 ) as any as S.Schema<ExtendedErrorInfoDetailsList>;
 
 /** The extended error info. */
@@ -8068,7 +8068,7 @@ export const SwaggerSchemaType = S.String;
 export type SwaggerSchemaPropertiesMap = { [key: string]: SwaggerSchema | undefined };
 export const SwaggerSchemaPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => SwaggerSchema),
+  /*@__PURE__*/ S.suspend(() => SwaggerSchema),
 ) as any as S.Schema<SwaggerSchemaPropertiesMap>;
 
 /** The object required properties. */
@@ -8080,7 +8080,7 @@ export const SwaggerSchemaRequiredList = /*@__PURE__*/ S.Array(
 /** The schemas which must pass validation when this schema is used. */
 export type SwaggerSchemaAllOfList = Array<SwaggerSchema>;
 export const SwaggerSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.suspend(() => SwaggerSchema),
+  /*@__PURE__*/ S.suspend(() => SwaggerSchema),
 ) as any as S.Schema<SwaggerSchemaAllOfList>;
 
 /** The vendor extensions. */
@@ -8174,7 +8174,7 @@ export type SwaggerCustomDynamicPropertiesParametersMap = {
 };
 export const SwaggerCustomDynamicPropertiesParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.suspend(() => SwaggerCustomDynamicProperties),
+  /*@__PURE__*/ S.suspend(() => SwaggerCustomDynamicProperties),
 ) as any as S.Schema<SwaggerCustomDynamicPropertiesParametersMap>;
 
 /** The swagger custom dynamic properties. */
@@ -8932,13 +8932,13 @@ export const ListWorkflowRunActionExpressionTracesRequest = /*@__PURE__*/ S.susp
 /** The sub expressions. */
 export type ExpressionSubexpressionsList = Array<Expression>;
 export const ExpressionSubexpressionsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Expression),
+  /*@__PURE__*/ S.suspend(() => Expression),
 ) as any as S.Schema<ExpressionSubexpressionsList>;
 
 /** The error details. */
 export type AzureResourceErrorInfoDetailsList = Array<AzureResourceErrorInfo>;
 export const AzureResourceErrorInfoDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AzureResourceErrorInfo),
+  /*@__PURE__*/ S.suspend(() => AzureResourceErrorInfo),
 ) as any as S.Schema<AzureResourceErrorInfoDetailsList>;
 
 /** The azure resource error info. */

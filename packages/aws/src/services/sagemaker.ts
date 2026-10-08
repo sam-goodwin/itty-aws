@@ -9,12 +9,12 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const ns = T.XmlNamespace("http://sagemaker.amazonaws.com/doc/2017-05-13/");
-const svc = T.AwsApiService({ sdkId: "SageMaker", serviceShapeName: "SageMaker" });
-const auth = T.AwsAuthSigv4({ name: "sagemaker" });
-const ver = T.ServiceVersion("2017-07-24");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const ns = /*@__PURE__*/ T.XmlNamespace("http://sagemaker.amazonaws.com/doc/2017-05-13/");
+const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SageMaker", serviceShapeName: "SageMaker" });
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sagemaker" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-07-24");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -81,13 +81,13 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export class EndpointAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<EndpointAlreadyExists>()(
     "EndpointAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Cannot create already existing endpoint" },
     }),
@@ -95,8 +95,8 @@ export class EndpointAlreadyExists
 export class EndpointConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<EndpointConfigAlreadyExists>()(
     "EndpointConfigAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Cannot create already existing endpoint configuration" },
     }),
@@ -104,8 +104,8 @@ export class EndpointConfigAlreadyExists
 export class EndpointConfigNotFound
   extends /*@__PURE__*/ S.TaggedError<EndpointConfigNotFound>()(
     "EndpointConfigNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Could not find endpoint configuration" },
     }),
@@ -113,8 +113,8 @@ export class EndpointConfigNotFound
 export class EndpointNotFound
   extends /*@__PURE__*/ S.TaggedError<EndpointNotFound>()(
     "EndpointNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: 'Could not find endpoint "' },
     }),
@@ -122,8 +122,8 @@ export class EndpointNotFound
 export class ModelAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<ModelAlreadyExists>()(
     "ModelAlreadyExists",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Cannot create already existing model" },
     }),
@@ -131,23 +131,23 @@ export class ModelAlreadyExists
 export class ModelNotFound
   extends /*@__PURE__*/ S.TaggedError<ModelNotFound>()(
     "ModelNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Could not find model" },
     }),
   ).pipe(C.withNotFoundError) {}
 export class ResourceInUse
   extends /*@__PURE__*/ S.TaggedError<ResourceInUse>()("ResourceInUse", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class ResourceLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceeded>()("ResourceLimitExceeded", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withThrottlingError) {}
 export class ResourceNotFound
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()("ResourceNotFound", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
 export type AssociationEntityArn = string;
 export type AssociationEdgeType =
@@ -790,7 +790,10 @@ export type ProductId = string;
 export type EnvironmentKey = string;
 export type EnvironmentValue = string;
 export type EnvironmentMap = { [key: string]: string | undefined };
-export const EnvironmentMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const EnvironmentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DataInputConfig = string;
 export interface ModelInput {
   DataInputConfig?: string;
@@ -1362,7 +1365,7 @@ export const BatchDescribeModelPackageSummary = /*@__PURE__*/ S.suspend(() =>
 export type ModelPackageSummaries = { [key: string]: BatchDescribeModelPackageSummary | undefined };
 export const ModelPackageSummaries = /*@__PURE__*/ S.Record(
   S.String,
-  BatchDescribeModelPackageSummary.pipe(S.optional),
+  /*@__PURE__*/ BatchDescribeModelPackageSummary.pipe(S.optional),
 );
 export interface BatchDescribeModelPackageError_ {
   ErrorCode?: string;
@@ -1378,7 +1381,7 @@ export type BatchDescribeModelPackageErrorMap = {
 };
 export const BatchDescribeModelPackageErrorMap = /*@__PURE__*/ S.Record(
   S.String,
-  BatchDescribeModelPackageError_.pipe(S.optional),
+  /*@__PURE__*/ BatchDescribeModelPackageError_.pipe(S.optional),
 );
 export interface BatchDescribeModelPackageOutput {
   ModelPackageSummaries?: {
@@ -1620,7 +1623,10 @@ export const ActionStatus = S.String;
 
 export type StringParameterValue = string;
 export type LineageEntityParameters = { [key: string]: string | undefined };
-export const LineageEntityParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LineageEntityParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type MetadataPropertyValue = string;
 export interface MetadataProperties {
   CommitId?: string;
@@ -1693,7 +1699,7 @@ export const AIBenchmarkEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AIBenchmarkEndpoint" }) as any as S.Schema<AIBenchmarkEndpoint>;
 export type AIBenchmarkTarget = { Endpoint: AIBenchmarkEndpoint };
 export const AIBenchmarkTarget = /*@__PURE__*/ S.Union([
-  S.Struct({ Endpoint: AIBenchmarkEndpoint }),
+  /*@__PURE__*/ S.Struct({ Endpoint: AIBenchmarkEndpoint }),
 ]);
 export type AIMlflowResourceArn = string;
 export type AIMlflowExperimentName = string;
@@ -1775,7 +1781,9 @@ export const AIModelSourceS3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Uri: S.optional(S.String) }),
 ).annotate({ identifier: "AIModelSourceS3" }) as any as S.Schema<AIModelSourceS3>;
 export type AIModelSource = { S3: AIModelSourceS3 };
-export const AIModelSource = /*@__PURE__*/ S.Union([S.Struct({ S3: AIModelSourceS3 })]);
+export const AIModelSource = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ S3: AIModelSourceS3 }),
+]);
 export interface AIRecommendationOutputConfig {
   S3OutputLocation?: string;
   ModelPackageGroupIdentifier?: string;
@@ -1930,8 +1938,8 @@ export type AIAdapterSource =
   | { ModelPackageArns: AIAdapterModelPackageEntry[]; S3Uris?: never }
   | { ModelPackageArns?: never; S3Uris: AIAdapterS3Entry[] };
 export const AIAdapterSource = /*@__PURE__*/ S.Union([
-  S.Struct({ ModelPackageArns: AIAdapterModelPackageEntryList }),
-  S.Struct({ S3Uris: AIAdapterS3EntryList }),
+  /*@__PURE__*/ S.Struct({ ModelPackageArns: AIAdapterModelPackageEntryList }),
+  /*@__PURE__*/ S.Struct({ S3Uris: AIAdapterS3EntryList }),
 ]);
 export interface CreateAIRecommendationJobRequest {
   AIRecommendationJobName?: string;
@@ -1998,10 +2006,10 @@ export type AIWorkloadInputDataConfigList = AIWorkloadInputDataConfig[];
 export const AIWorkloadInputDataConfigList = /*@__PURE__*/ S.Array(AIWorkloadInputDataConfig);
 export type AIDatasetConfig = { InputDataConfig: AIWorkloadInputDataConfig[] };
 export const AIDatasetConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ InputDataConfig: AIWorkloadInputDataConfigList }),
+  /*@__PURE__*/ S.Struct({ InputDataConfig: AIWorkloadInputDataConfigList }),
 ]);
 export type WorkloadSpec = { Inline: string };
-export const WorkloadSpec = /*@__PURE__*/ S.Union([S.Struct({ Inline: S.String })]);
+export const WorkloadSpec = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ Inline: S.String })]);
 export interface AIWorkloadConfigs {
   WorkloadSpec?: WorkloadSpec;
 }
@@ -2418,7 +2426,10 @@ export const TrainingSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrainingSpecification" }) as any as S.Schema<TrainingSpecification>;
 export type HyperParameterKey = string;
 export type HyperParameters = { [key: string]: string | undefined };
-export const HyperParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HyperParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type S3DataType =
   | "ManifestFile"
   | "S3Prefix"
@@ -2672,7 +2683,10 @@ export const BatchStrategy = S.String;
 export type TransformEnvironmentKey = string;
 export type TransformEnvironmentValue = string;
 export type TransformEnvironmentMap = { [key: string]: string | undefined };
-export const TransformEnvironmentMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TransformEnvironmentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface TransformS3DataSource {
   S3DataType?: S3DataType;
   S3Uri?: string;
@@ -3108,7 +3122,7 @@ export const CustomImageContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
 export type CustomImageContainerEnvironmentVariables = { [key: string]: string | undefined };
 export const CustomImageContainerEnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface ContainerConfig {
   ContainerArguments?: string[];
@@ -3190,7 +3204,10 @@ export const ArtifactSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactSource" }) as any as S.Schema<ArtifactSource>;
 export type ArtifactPropertyValue = string;
 export type ArtifactProperties = { [key: string]: string | undefined };
-export const ArtifactProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ArtifactProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CreateArtifactRequest {
   ArtifactName?: string;
   Source?: ArtifactSource;
@@ -3504,14 +3521,14 @@ export type FillingTransformationValue = string;
 export type FillingTransformationMap = { [key in FillingType]?: string };
 export const FillingTransformationMap = /*@__PURE__*/ S.Record(
   FillingType,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type FillingTransformations = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
 export const FillingTransformations = /*@__PURE__*/ S.Record(
   S.String,
-  FillingTransformationMap.pipe(S.optional),
+  /*@__PURE__*/ FillingTransformationMap.pipe(S.optional),
 );
 export type AggregationTransformationValue =
   | "sum"
@@ -3527,7 +3544,7 @@ export type AggregationTransformations = {
 };
 export const AggregationTransformations = /*@__PURE__*/ S.Record(
   S.String,
-  AggregationTransformationValue.pipe(S.optional),
+  /*@__PURE__*/ AggregationTransformationValue.pipe(S.optional),
 );
 export interface TimeSeriesTransformations {
   Filling?: { [key: string]: { [key: string]: string | undefined } | undefined };
@@ -3631,7 +3648,7 @@ export type TextGenerationHyperParameterValue = string;
 export type TextGenerationHyperParameters = { [key: string]: string | undefined };
 export const TextGenerationHyperParameters = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface TextGenerationJobConfig {
   CompletionCriteria?: AutoMLJobCompletionCriteria;
@@ -3684,11 +3701,11 @@ export type AutoMLProblemTypeConfig =
       TextGenerationJobConfig: TextGenerationJobConfig;
     };
 export const AutoMLProblemTypeConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ ImageClassificationJobConfig: ImageClassificationJobConfig }),
-  S.Struct({ TextClassificationJobConfig: TextClassificationJobConfig }),
-  S.Struct({ TimeSeriesForecastingJobConfig: TimeSeriesForecastingJobConfig }),
-  S.Struct({ TabularJobConfig: TabularJobConfig }),
-  S.Struct({ TextGenerationJobConfig: TextGenerationJobConfig }),
+  /*@__PURE__*/ S.Struct({ ImageClassificationJobConfig: ImageClassificationJobConfig }),
+  /*@__PURE__*/ S.Struct({ TextClassificationJobConfig: TextClassificationJobConfig }),
+  /*@__PURE__*/ S.Struct({ TimeSeriesForecastingJobConfig: TimeSeriesForecastingJobConfig }),
+  /*@__PURE__*/ S.Struct({ TabularJobConfig: TabularJobConfig }),
+  /*@__PURE__*/ S.Struct({ TextGenerationJobConfig: TextGenerationJobConfig }),
 ]);
 export interface EmrServerlessComputeConfig {
   ExecutionRoleARN?: string;
@@ -3800,9 +3817,9 @@ export type ClusterInstanceStorageConfig =
   | { EbsVolumeConfig?: never; FsxLustreConfig: ClusterFsxLustreConfig; FsxOpenZfsConfig?: never }
   | { EbsVolumeConfig?: never; FsxLustreConfig?: never; FsxOpenZfsConfig: ClusterFsxOpenZfsConfig };
 export const ClusterInstanceStorageConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ EbsVolumeConfig: ClusterEbsVolumeConfig }),
-  S.Struct({ FsxLustreConfig: ClusterFsxLustreConfig }),
-  S.Struct({ FsxOpenZfsConfig: ClusterFsxOpenZfsConfig }),
+  /*@__PURE__*/ S.Struct({ EbsVolumeConfig: ClusterEbsVolumeConfig }),
+  /*@__PURE__*/ S.Struct({ FsxLustreConfig: ClusterFsxLustreConfig }),
+  /*@__PURE__*/ S.Struct({ FsxOpenZfsConfig: ClusterFsxOpenZfsConfig }),
 ]);
 export type ClusterInstanceStorageConfigs = ClusterInstanceStorageConfig[];
 export const ClusterInstanceStorageConfigs = /*@__PURE__*/ S.Array(ClusterInstanceStorageConfig);
@@ -3891,7 +3908,10 @@ export type ImageReleaseVersion = string;
 export type ClusterKubernetesLabelKey = string;
 export type ClusterKubernetesLabelValue = string;
 export type ClusterKubernetesLabels = { [key: string]: string | undefined };
-export const ClusterKubernetesLabels = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ClusterKubernetesLabels = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type ClusterKubernetesTaintKey = string;
 export type ClusterKubernetesTaintValue = string;
 export type ClusterKubernetesTaintEffect =
@@ -4703,7 +4723,10 @@ export const MonitoringContainerArguments = /*@__PURE__*/ S.Array(S.String);
 export type ProcessingEnvironmentKey = string;
 export type ProcessingEnvironmentValue = string;
 export type MonitoringEnvironmentMap = { [key: string]: string | undefined };
-export const MonitoringEnvironmentMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MonitoringEnvironmentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DataQualityAppSpecification {
   ImageUri?: string;
   ContainerEntrypoint?: string[];
@@ -5552,9 +5575,9 @@ export type CustomFileSystemConfig =
       S3FileSystemConfig: S3FileSystemConfig;
     };
 export const CustomFileSystemConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ EFSFileSystemConfig: EFSFileSystemConfig }),
-  S.Struct({ FSxLustreFileSystemConfig: FSxLustreFileSystemConfig }),
-  S.Struct({ S3FileSystemConfig: S3FileSystemConfig }),
+  /*@__PURE__*/ S.Struct({ EFSFileSystemConfig: EFSFileSystemConfig }),
+  /*@__PURE__*/ S.Struct({ FSxLustreFileSystemConfig: FSxLustreFileSystemConfig }),
+  /*@__PURE__*/ S.Struct({ S3FileSystemConfig: S3FileSystemConfig }),
 ]);
 export type CustomFileSystemConfigs = CustomFileSystemConfig[];
 export const CustomFileSystemConfigs = /*@__PURE__*/ S.Array(CustomFileSystemConfig);
@@ -6671,7 +6694,9 @@ export const VectorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Dimension: S.optional(S.Number) }),
 ).annotate({ identifier: "VectorConfig" }) as any as S.Schema<VectorConfig>;
 export type CollectionConfig = { VectorConfig: VectorConfig };
-export const CollectionConfig = /*@__PURE__*/ S.Union([S.Struct({ VectorConfig: VectorConfig })]);
+export const CollectionConfig = /*@__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Struct({ VectorConfig: VectorConfig }),
+]);
 export interface FeatureDefinition {
   FeatureName?: string;
   FeatureType?: FeatureType;
@@ -7364,7 +7389,7 @@ export type HyperParameterTrainingJobEnvironmentValue = string;
 export type HyperParameterTrainingJobEnvironmentMap = { [key: string]: string | undefined };
 export const HyperParameterTrainingJobEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface HyperParameterTrainingJobDefinition {
   DefinitionName?: string;
@@ -8907,7 +8932,10 @@ export const ModelMetrics = /*@__PURE__*/ S.suspend(() =>
 export type CustomerMetadataKey = string;
 export type CustomerMetadataValue = string;
 export type CustomerMetadataMap = { [key: string]: string | undefined };
-export const CustomerMetadataMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CustomerMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface FileSource {
   ContentType?: string;
   ContentDigest?: string;
@@ -9774,7 +9802,7 @@ export type OptimizationJobMaxInstanceCount = number;
 export type OptimizationJobEnvironmentVariables = { [key: string]: string | undefined };
 export const OptimizationJobEnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type OptimizationContainerImage = string;
 export interface ModelQuantizationConfig {
@@ -9863,10 +9891,10 @@ export type OptimizationConfig =
       ModelSpeculativeDecodingConfig: ModelSpeculativeDecodingConfig;
     };
 export const OptimizationConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ ModelQuantizationConfig: ModelQuantizationConfig }),
-  S.Struct({ ModelCompilationConfig: ModelCompilationConfig }),
-  S.Struct({ ModelShardingConfig: ModelShardingConfig }),
-  S.Struct({ ModelSpeculativeDecodingConfig: ModelSpeculativeDecodingConfig }),
+  /*@__PURE__*/ S.Struct({ ModelQuantizationConfig: ModelQuantizationConfig }),
+  /*@__PURE__*/ S.Struct({ ModelCompilationConfig: ModelCompilationConfig }),
+  /*@__PURE__*/ S.Struct({ ModelShardingConfig: ModelShardingConfig }),
+  /*@__PURE__*/ S.Struct({ ModelSpeculativeDecodingConfig: ModelSpeculativeDecodingConfig }),
 ]);
 export type OptimizationConfigs = OptimizationConfig[];
 export const OptimizationConfigs = /*@__PURE__*/ S.Array(OptimizationConfig);
@@ -9964,7 +9992,10 @@ export const PartnerAppMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
 export type PartnerAppAdminUserList = string[];
 export const PartnerAppAdminUserList = /*@__PURE__*/ S.Array(S.String);
 export type PartnerAppArguments = { [key: string]: string | undefined };
-export const PartnerAppArguments = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PartnerAppArguments = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type GroupNamePattern = string;
 export type AssignedGroupPatternsList = string[];
 export const AssignedGroupPatternsList = /*@__PURE__*/ S.Array(S.String);
@@ -10466,7 +10497,10 @@ export const AppSpecification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppSpecification" }) as any as S.Schema<AppSpecification>;
 export type ProcessingEnvironmentMap = { [key: string]: string | undefined };
-export const ProcessingEnvironmentMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProcessingEnvironmentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface ExperimentConfig {
   ExperimentName?: string;
   TrialName?: string;
@@ -10686,9 +10720,9 @@ export type CustomFileSystem =
   | { EFSFileSystem?: never; FSxLustreFileSystem: FSxLustreFileSystem; S3FileSystem?: never }
   | { EFSFileSystem?: never; FSxLustreFileSystem?: never; S3FileSystem: S3FileSystem };
 export const CustomFileSystem = /*@__PURE__*/ S.Union([
-  S.Struct({ EFSFileSystem: EFSFileSystem }),
-  S.Struct({ FSxLustreFileSystem: FSxLustreFileSystem }),
-  S.Struct({ S3FileSystem: S3FileSystem }),
+  /*@__PURE__*/ S.Struct({ EFSFileSystem: EFSFileSystem }),
+  /*@__PURE__*/ S.Struct({ FSxLustreFileSystem: FSxLustreFileSystem }),
+  /*@__PURE__*/ S.Struct({ S3FileSystem: S3FileSystem }),
 ]);
 export type CustomFileSystems = CustomFileSystem[];
 export const CustomFileSystems = /*@__PURE__*/ S.Array(CustomFileSystem);
@@ -10846,10 +10880,16 @@ export const AlgorithmSpecification = /*@__PURE__*/ S.suspend(() =>
 export type ConfigKey = string;
 export type ConfigValue = string;
 export type HookParameters = { [key: string]: string | undefined };
-export const HookParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const HookParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type CollectionName = string;
 export type CollectionParameters = { [key: string]: string | undefined };
-export const CollectionParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const CollectionParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface CollectionConfiguration {
   CollectionName?: string;
   CollectionParameters?: { [key: string]: string | undefined };
@@ -10878,7 +10918,10 @@ export const DebugHookConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DebugHookConfig" }) as any as S.Schema<DebugHookConfig>;
 export type RuleConfigurationName = string;
 export type RuleParameters = { [key: string]: string | undefined };
-export const RuleParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const RuleParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface DebugRuleConfiguration {
   RuleConfigurationName?: string;
   LocalPath?: string;
@@ -10910,7 +10953,10 @@ export const TensorBoardOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TensorBoardOutputConfig" }) as any as S.Schema<TensorBoardOutputConfig>;
 export type ProfilingIntervalInMilliseconds = number;
 export type ProfilingParameters = { [key: string]: string | undefined };
-export const ProfilingParameters = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ProfilingParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type DisableProfiler = boolean;
 export interface ProfilerConfig {
   S3OutputPath?: string;
@@ -10953,7 +10999,10 @@ export const ProfilerRuleConfigurations = /*@__PURE__*/ S.Array(ProfilerRuleConf
 export type TrainingEnvironmentKey = string;
 export type TrainingEnvironmentValue = string;
 export type TrainingEnvironmentMap = { [key: string]: string | undefined };
-export const TrainingEnvironmentMap = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const TrainingEnvironmentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export type EnableRemoteDebug = boolean;
 export interface RemoteDebugConfig {
   EnableRemoteDebug?: boolean;
@@ -11270,13 +11319,13 @@ export type TrialComponentParameterValue =
   | { StringValue: string; NumberValue?: never }
   | { StringValue?: never; NumberValue: number };
 export const TrialComponentParameterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ StringValue: S.String }),
-  S.Struct({ NumberValue: S.Number }),
+  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+  /*@__PURE__*/ S.Struct({ NumberValue: S.Number }),
 ]);
 export type TrialComponentParameters = { [key: string]: TrialComponentParameterValue | undefined };
 export const TrialComponentParameters = /*@__PURE__*/ S.Record(
   S.String,
-  TrialComponentParameterValue.pipe(S.optional),
+  /*@__PURE__*/ TrialComponentParameterValue.pipe(S.optional),
 );
 export type TrialComponentKey128 = string;
 export type MediaType = string;
@@ -11291,7 +11340,7 @@ export const TrialComponentArtifact = /*@__PURE__*/ S.suspend(() =>
 export type TrialComponentArtifacts = { [key: string]: TrialComponentArtifact | undefined };
 export const TrialComponentArtifacts = /*@__PURE__*/ S.Record(
   S.String,
-  TrialComponentArtifact.pipe(S.optional),
+  /*@__PURE__*/ TrialComponentArtifact.pipe(S.optional),
 );
 export interface CreateTrialComponentRequest {
   TrialComponentName?: string;
@@ -11374,7 +11423,7 @@ export type AuthenticationRequestExtraParamsValue = string;
 export type AuthenticationRequestExtraParams = { [key: string]: string | undefined };
 export const AuthenticationRequestExtraParams = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface OidcConfig {
   ClientId?: string;
@@ -12728,7 +12777,7 @@ export const AIRecommendationOptimizationType = S.String;
 export type AIRecommendationOptimizationConfigMap = { [key: string]: string | undefined };
 export const AIRecommendationOptimizationConfigMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String.pipe(S.optional),
+  /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export interface AIRecommendationOptimizationDetail {
   OptimizationType?: AIRecommendationOptimizationType;
@@ -13463,7 +13512,7 @@ export type AutoMLInferenceContainerDefinitions = {
 };
 export const AutoMLInferenceContainerDefinitions = /*@__PURE__*/ S.Record(
   AutoMLProcessingUnit,
-  AutoMLContainerDefinitions.pipe(S.optional),
+  /*@__PURE__*/ AutoMLContainerDefinitions.pipe(S.optional),
 );
 export interface AutoMLCandidate {
   CandidateName?: string;
@@ -13695,8 +13744,8 @@ export type AutoMLProblemTypeResolvedAttributes =
       TextGenerationResolvedAttributes: TextGenerationResolvedAttributes;
     };
 export const AutoMLProblemTypeResolvedAttributes = /*@__PURE__*/ S.Union([
-  S.Struct({ TabularResolvedAttributes: TabularResolvedAttributes }),
-  S.Struct({ TextGenerationResolvedAttributes: TextGenerationResolvedAttributes }),
+  /*@__PURE__*/ S.Struct({ TabularResolvedAttributes: TabularResolvedAttributes }),
+  /*@__PURE__*/ S.Struct({ TextGenerationResolvedAttributes: TextGenerationResolvedAttributes }),
 ]);
 export interface AutoMLResolvedAttributes {
   AutoMLJobObjective?: AutoMLJobObjective;
@@ -13902,7 +13951,7 @@ export type ActiveClusterOperationCount = number;
 export type ActiveOperations = { [key in ActiveClusterOperationName]?: number };
 export const ActiveOperations = /*@__PURE__*/ S.Record(
   ActiveClusterOperationName,
-  S.Number.pipe(S.optional),
+  /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface ClusterKubernetesConfigDetails {
   CurrentLabels?: { [key: string]: string | undefined };
@@ -14440,12 +14489,12 @@ export type EventMetadata =
       SlurmHealth: SlurmHealthMetadata;
     };
 export const EventMetadata = /*@__PURE__*/ S.Union([
-  S.Struct({ Cluster: ClusterMetadata }),
-  S.Struct({ InstanceGroup: InstanceGroupMetadata }),
-  S.Struct({ InstanceGroupScaling: InstanceGroupScalingMetadata }),
-  S.Struct({ Instance: InstanceMetadata }),
-  S.Struct({ DatabaseConfiguration: DatabaseConfigurationMetadata }),
-  S.Struct({ SlurmHealth: SlurmHealthMetadata }),
+  /*@__PURE__*/ S.Struct({ Cluster: ClusterMetadata }),
+  /*@__PURE__*/ S.Struct({ InstanceGroup: InstanceGroupMetadata }),
+  /*@__PURE__*/ S.Struct({ InstanceGroupScaling: InstanceGroupScalingMetadata }),
+  /*@__PURE__*/ S.Struct({ Instance: InstanceMetadata }),
+  /*@__PURE__*/ S.Struct({ DatabaseConfiguration: DatabaseConfigurationMetadata }),
+  /*@__PURE__*/ S.Struct({ SlurmHealth: SlurmHealthMetadata }),
 ]);
 export interface EventDetails {
   EventMetadata?: EventMetadata;
@@ -14659,7 +14708,7 @@ export const SchedulerConfigComponent = S.String;
 export type StatusDetailsMap = { [key in SchedulerConfigComponent]?: SchedulerResourceStatus };
 export const StatusDetailsMap = /*@__PURE__*/ S.Record(
   SchedulerConfigComponent,
-  SchedulerResourceStatus.pipe(S.optional),
+  /*@__PURE__*/ SchedulerResourceStatus.pipe(S.optional),
 );
 export interface DescribeClusterSchedulerConfigResponse {
   ClusterSchedulerConfigArn: string;
@@ -20771,8 +20820,8 @@ export type MetricSpecification =
   | { Predefined: PredefinedMetricSpecification; Customized?: never }
   | { Predefined?: never; Customized: CustomizedMetricSpecification };
 export const MetricSpecification = /*@__PURE__*/ S.Union([
-  S.Struct({ Predefined: PredefinedMetricSpecification }),
-  S.Struct({ Customized: CustomizedMetricSpecification }),
+  /*@__PURE__*/ S.Struct({ Predefined: PredefinedMetricSpecification }),
+  /*@__PURE__*/ S.Struct({ Customized: CustomizedMetricSpecification }),
 ]);
 export interface TargetTrackingScalingPolicyConfiguration {
   MetricSpecification?: MetricSpecification;
@@ -20788,7 +20837,7 @@ export const TargetTrackingScalingPolicyConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetTrackingScalingPolicyConfiguration>;
 export type ScalingPolicy = { TargetTracking: TargetTrackingScalingPolicyConfiguration };
 export const ScalingPolicy = /*@__PURE__*/ S.Union([
-  S.Struct({ TargetTracking: TargetTrackingScalingPolicyConfiguration }),
+  /*@__PURE__*/ S.Struct({ TargetTracking: TargetTrackingScalingPolicyConfiguration }),
 ]);
 export type ScalingPolicies = ScalingPolicy[];
 export const ScalingPolicies = /*@__PURE__*/ S.Array(ScalingPolicy);
@@ -25635,7 +25684,10 @@ export const InferenceComponentMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "InferenceComponentMetadata",
 }) as any as S.Schema<InferenceComponentMetadata>;
 export type MapString2048 = { [key: string]: string | undefined };
-export const MapString2048 = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const MapString2048 = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface AssociationInfo {
   SourceArn?: string;
   DestinationArn?: string;
@@ -27029,7 +27081,10 @@ export const LineageType = S.String;
 export type QueryLineageTypes = LineageType[];
 export const QueryLineageTypes = /*@__PURE__*/ S.Array(LineageType);
 export type QueryProperties = { [key: string]: string | undefined };
-export const QueryProperties = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const QueryProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.String.pipe(S.optional),
+);
 export interface QueryFilters {
   Types?: string[];
   LineageTypes?: LineageType[];
@@ -27244,7 +27299,7 @@ export type NestedFiltersList = NestedFilters[];
 export const NestedFiltersList = /*@__PURE__*/ S.Array(NestedFilters);
 export type SearchExpressionList = SearchExpression[];
 export const SearchExpressionList = /*@__PURE__*/ S.Array(
-  S.suspend((): S.Schema<SearchExpression> => SearchExpression).annotate({
+  /*@__PURE__*/ S.suspend((): S.Schema<SearchExpression> => SearchExpression).annotate({
     identifier: "SearchExpression",
   }),
 ) as any as S.Schema<SearchExpressionList>;
@@ -29695,7 +29750,7 @@ export const ModelVariantAction = S.String;
 export type ModelVariantActionMap = { [key: string]: ModelVariantAction | undefined };
 export const ModelVariantActionMap = /*@__PURE__*/ S.Record(
   S.String,
-  ModelVariantAction.pipe(S.optional),
+  /*@__PURE__*/ ModelVariantAction.pipe(S.optional),
 );
 export type InferenceExperimentStopDesiredState = "Completed" | "Cancelled" | (string & {});
 export const InferenceExperimentStopDesiredState = S.String;

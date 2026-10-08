@@ -139,7 +139,7 @@ export type ArtifactQueryResponseBodyMap = {
 };
 export const ArtifactQueryResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(ArtifactQueryResponseBodyValue),
+  /*@__PURE__*/ S.NullOr(ArtifactQueryResponseBodyValue),
 ) as any as S.Schema<ArtifactQueryResponseBodyMap>;
 
 export type ArtifactQueryResponse = ArtifactQueryResponseBodyMap;

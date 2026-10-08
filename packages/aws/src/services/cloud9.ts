@@ -8,14 +8,14 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-const svc = T.AwsApiService({
+const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cloud9",
   serviceShapeName: "AWSCloud9WorkspaceManagementService",
 });
-const auth = T.AwsAuthSigv4({ name: "cloud9" });
-const ver = T.ServiceVersion("2017-09-23");
-const proto = T.AwsProtocolsAwsJson1_1();
-const rules = T.EndpointResolver((p, _) => {
+const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "cloud9" });
+const ver = /*@__PURE__*/ T.ServiceVersion("2017-09-23");
+const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
+const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
   const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -74,54 +74,54 @@ const rules = T.EndpointResolver((p, _) => {
 
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()("BadRequestException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class ConcurrentAccessException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentAccessException>()("ConcurrentAccessException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()("ConflictException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()("ForbiddenException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      className: S.optional(S.String),
-      code: S.optional(S.Number),
+      message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+      className: /*@__PURE__*/ S.optional(S.String),
+      code: /*@__PURE__*/ S.optional(S.Number),
     },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedError<NotFoundException>()("NotFoundException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+    className: /*@__PURE__*/ S.optional(S.String),
+    code: /*@__PURE__*/ S.optional(S.Number),
   }) {}
 export type EnvironmentName = string;
 export type EnvironmentDescription = string | redacted.Redacted<string>;

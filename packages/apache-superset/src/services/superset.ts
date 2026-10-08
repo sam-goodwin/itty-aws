@@ -481,7 +481,7 @@ export const AnnotationLayerOpacity = S.String;
 export type AnnotationLayerOverridesMap = { [key: string]: unknown | null | undefined };
 export const AnnotationLayerOverridesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<AnnotationLayerOverridesMap>;
 
 /** Type of source for annotation data */
@@ -714,7 +714,7 @@ export const ChartDataPostProcessingOperation = /*@__PURE__*/ S.suspend(() =>
 /** Post processing operations to be applied to the result set. Operations are applied to the result set in sequential order. */
 export type ChartDataQueryObjectPostProcessingList = Array<ChartDataPostProcessingOperation | null>;
 export const ChartDataQueryObjectPostProcessingList = /*@__PURE__*/ S.Array(
-  S.NullOr(ChartDataPostProcessingOperation),
+  /*@__PURE__*/ S.NullOr(ChartDataPostProcessingOperation),
 ) as any as S.Schema<ChartDataQueryObjectPostProcessingList>;
 
 export type ChartDataQueryObjectResultType =
@@ -1494,13 +1494,13 @@ export const CreateDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Current active dashboard tabs */
 export type CreateDashboardPermalinkRequestActiveTabsList = Array<string | null>;
 export const CreateDashboardPermalinkRequestActiveTabsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.String),
+  /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateDashboardPermalinkRequestActiveTabsList>;
 
 /** URL Parameters */
 export type CreateDashboardPermalinkRequestUrlParamsList = Array<unknown | null>;
 export const CreateDashboardPermalinkRequestUrlParamsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<CreateDashboardPermalinkRequestUrlParamsList>;
 
 export interface CreateDashboardPermalinkRequest {
@@ -2082,7 +2082,7 @@ export const CreateExploreFormDataResponse = /*@__PURE__*/ S.suspend(() =>
 /** URL Parameters */
 export type CreateExplorePermalinkRequestUrlParamsList = Array<unknown | null>;
 export const CreateExplorePermalinkRequestUrlParamsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<CreateExplorePermalinkRequestUrlParamsList>;
 
 export interface CreateExplorePermalinkRequest {
@@ -3849,7 +3849,7 @@ export const CreateSecurityGuestTokenRequestRlsList = /*@__PURE__*/ S.Array(
 export type User2AttributesMap = { [key: string]: unknown | null | undefined };
 export const User2AttributesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<User2AttributesMap>;
 
 export interface User2 {
@@ -4124,7 +4124,7 @@ export const CreateSqllabFormatSqlResponse = /*@__PURE__*/ S.suspend(() =>
 /** URL Parameters */
 export type CreateSqllabPermalinkRequestUrlParamsList = Array<unknown | null>;
 export const CreateSqllabPermalinkRequestUrlParamsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<CreateSqllabPermalinkRequestUrlParamsList>;
 
 export interface CreateSqllabPermalinkRequest {
@@ -16002,17 +16002,17 @@ export const PutCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PutDashboardRequestEditorsList = Array<number | null>;
 export const PutDashboardRequestEditorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<PutDashboardRequestEditorsList>;
 
 export type PutDashboardRequestTagsList = Array<number | null>;
 export const PutDashboardRequestTagsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<PutDashboardRequestTagsList>;
 
 export type PutDashboardRequestViewersList = Array<number | null>;
 export const PutDashboardRequestViewersList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<PutDashboardRequestViewersList>;
 
 export interface PutDashboardRequest {
@@ -16068,17 +16068,17 @@ export const PutDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DashboardRestApiPutEditorsList = Array<number | null>;
 export const DashboardRestApiPutEditorsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<DashboardRestApiPutEditorsList>;
 
 export type DashboardRestApiPutTagsList = Array<number | null>;
 export const DashboardRestApiPutTagsList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<DashboardRestApiPutTagsList>;
 
 export type DashboardRestApiPutViewersList = Array<number | null>;
 export const DashboardRestApiPutViewersList = /*@__PURE__*/ S.Array(
-  S.NullOr(S.Number),
+  /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<DashboardRestApiPutViewersList>;
 
 export interface DashboardRestApiPut {
@@ -16590,7 +16590,7 @@ export const PutDatasetRequestEditorsList = /*@__PURE__*/ S.Array(
 
 export type FolderChildrenList = Array<Folder>;
 export const FolderChildrenList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Folder),
+  /*@__PURE__*/ S.suspend(() => Folder),
 ) as any as S.Schema<FolderChildrenList>;
 
 export type FolderType = "metric" | "column" | "folder";
@@ -20117,7 +20117,7 @@ export type ValidateDatabaseParametersRequestCatalogMap = {
 };
 export const ValidateDatabaseParametersRequestCatalogMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<ValidateDatabaseParametersRequestCatalogMap>;
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
@@ -20132,7 +20132,7 @@ export type ValidateDatabaseParametersRequestParametersMap = {
 };
 export const ValidateDatabaseParametersRequestParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.NullOr(S.Unknown),
+  /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<ValidateDatabaseParametersRequestParametersMap>;
 
 export interface DatabaseSSHTunnelValidation {

@@ -404,7 +404,7 @@ export const BackupInstanceResourceGuardOperationRequestsList = /*@__PURE__*/ S.
 /** Additional related Errors */
 export type UserFacingErrorDetailsList = Array<UserFacingError>;
 export const UserFacingErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => UserFacingError),
+  /*@__PURE__*/ S.suspend(() => UserFacingError),
 ) as any as S.Schema<UserFacingErrorDetailsList>;
 
 /** Any Key value pairs that can be provided to the client for additional verbose information. */
@@ -3170,7 +3170,7 @@ export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
 /** The error details. */
 export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Error),
+  /*@__PURE__*/ S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
 
 /** The resource management error response. */
