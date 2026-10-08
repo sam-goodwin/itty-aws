@@ -17,8 +17,8 @@
  * `Schema.Literal<"x">`-style type usages remain precise.
  *
  * Runtime behaviour is identical. Every override aliases the exact same
- * runtime value from `effect/Schema`, except {@link suspend}, which builds
- * the same AST lazily (see there).
+ * runtime value from `effect/Schema`, except `suspend`, `Array` and
+ * `Record`, which build the same schema lazily (see "Lazy schemas").
  */
 export * from "effect/Schema";
 
@@ -30,8 +30,8 @@ export type AnyFn = (...args: any[]) => any;
 export const optional: AnyFn = S.optional as AnyFn;
 export const Struct: AnyFn = S.Struct as AnyFn;
 export const suspend: AnyFn = (f: () => S.Top) => lazySuspend(f);
-export const Array: AnyFn = S.Array as AnyFn;
-export const Record: AnyFn = S.Record as AnyFn;
+export const Array: AnyFn = (item: S.Top) => lazyArray(item);
+export const Record: AnyFn = (key: S.Top, value: S.Top) => lazyRecord(key, value);
 export const Union: AnyFn = S.Union as AnyFn;
 export const Literal: AnyFn = S.Literal as AnyFn;
 export const Literals: AnyFn = S.Literals as AnyFn;
@@ -53,78 +53,92 @@ export const Any: any = S.Any;
 // overridden — they flow through `export *` with real types so cast targets and
 // typed error classes stay precise.
 
-//#region Lazy suspend
+//#region Lazy schemas
 
 /**
- * `S.suspend(f)` with its AST built on first `.ast` access instead of at
+ * Schemas whose real Effect schema is built on first use instead of at
  * import.
  *
- * A service module declares every schema as a top-level
- * `S.suspend(() => …).annotate({ identifier })` const, and importing it
- * constructs all of them: EC2 has 2,575, Elasticsearch 3,272. Effect's
- * `suspend` allocates a schema function object, a `Suspend` AST node and a
- * wrapper closure, and `.annotate` copies them again: about 550 bytes per
- * schema. This keeps one small object holding the thunk (and any
- * annotations added before the AST exists): about 180 bytes.
+ * A service module declares every schema as a top-level const, and
+ * importing it constructs all of them: EC2 has 2,575 `S.suspend(…)` and
+ * 784 `S.Array(…)` consts, Elasticsearch 3,272 and 2,265. An Effect schema
+ * is a function object plus an AST node (a `suspend` also a wrapper
+ * closure), and `.annotate` copies both: about 550 bytes per suspend, more
+ * for an array whose item it forces. A lazy schema is one small object
+ * holding how to build the real one and any annotations added before then:
+ * about 180 bytes.
  *
- * The object inherits Effect's own schema prototype, so `pipe`, `annotate`,
- * `make`, `isSchema` and every combinator behave as for any schema. Its AST
- * is built by `S.suspend(f).annotate(annotations)` on first access and
- * memoized, so it is the same AST as before and its identity is stable.
+ * It inherits Effect's own schema prototype, so `pipe`, `annotate`, `make`,
+ * `isSchema` and every combinator see a schema. On first use of `.ast` (or
+ * of an own member such as an array's `value`) it builds the real schema —
+ * `build().annotate(annotations)`, exactly what eager code would have made —
+ * and copies the real schema's own properties onto itself, so from then on
+ * it IS that schema: same AST (memoized, stable identity), same rebuild
+ * options for later `.annotate` / `.check` calls.
  */
-const SchemaProto: object = Object.getPrototypeOf(S.suspend(() => S.String));
-const thunkKey = Symbol.for("@distilled.cloud/core/schema/thunk");
+const SchemaProto: object = Object.getPrototypeOf(S.String);
+const buildKey = Symbol.for("@distilled.cloud/core/schema/build");
 const annotationsKey = Symbol.for("@distilled.cloud/core/schema/annotations");
 
 type Annotations = Record<string, unknown>;
 
 interface LazySchema {
-  readonly [thunkKey]: () => S.Top;
-  readonly [annotationsKey]?: Annotations;
+  [buildKey]?: () => S.Top;
+  [annotationsKey]?: Annotations;
 }
 
-const LazySuspendProto: object = Object.create(SchemaProto, {
-  ast: {
-    configurable: true,
-    get(this: LazySchema) {
-      const annotations = this[annotationsKey];
-      const eager = S.suspend(this[thunkKey]);
-      const ast = (annotations ? eager.annotate(annotations) : eager).ast;
-      Object.defineProperty(this, "ast", {
-        value: ast,
-        writable: true,
-        enumerable: true,
-        configurable: true,
-      });
-      return ast;
-    },
+/** Build the real schema and become it. */
+const force = (self: LazySchema): void => {
+  const build = self[buildKey];
+  if (!build) return;
+  const annotations = self[annotationsKey];
+  const real = annotations ? build().annotate(annotations) : build();
+  delete self[buildKey];
+  delete self[annotationsKey];
+  Object.defineProperties(self, Object.getOwnPropertyDescriptors(real));
+};
+
+/** Members a built schema carries as own properties (array item, record key/value). */
+const forwarded = (name: string): PropertyDescriptor => ({
+  configurable: true,
+  get(this: LazySchema & Record<string, unknown>) {
+    if (!this[buildKey]) return undefined;
+    force(this);
+    return this[name];
   },
+});
+
+const LazyProto: object = Object.create(SchemaProto, {
+  ast: forwarded("ast"),
+  value: forwarded("value"),
+  key: forwarded("key"),
   annotate: {
     configurable: true,
     writable: true,
     value(this: LazySchema, annotations: Annotations) {
-      // Once the AST exists, annotate like any schema (a rebuilt copy).
-      if (Object.hasOwn(this, "ast")) {
-        return (SchemaProto as { annotate: Function }).annotate.call(this, annotations);
-      }
+      const build = this[buildKey];
+      // Once built, annotate like any schema (a rebuilt copy).
+      if (!build) return (SchemaProto as { annotate: Function }).annotate.call(this, annotations);
       const previous = this[annotationsKey];
-      return makeLazy(this[thunkKey], previous ? { ...previous, ...annotations } : annotations);
+      return lazy(build, previous ? { ...previous, ...annotations } : annotations);
     },
   },
 });
 
-const makeLazy = (f: () => S.Top, annotations?: Annotations): S.Top => {
-  const self = Object.create(LazySuspendProto);
-  self[thunkKey] = f;
+// Effect detects schemas by this key on the prototype; if a future Effect
+// moves it, build eagerly.
+const supported = (SchemaProto as Record<string, unknown>)["~effect/Schema/Schema"] !== undefined;
+
+const lazy = (build: () => S.Top, annotations?: Annotations): S.Top => {
+  if (!supported) return annotations ? build().annotate(annotations) : build();
+  const self = Object.create(LazyProto);
+  self[buildKey] = build;
   if (annotations) self[annotationsKey] = annotations;
   return self;
 };
 
-const lazySuspend = (f: () => S.Top): S.Top =>
-  // Effect detects schemas by this key on the prototype; if a future Effect
-  // moves it, fall back to the eager `S.suspend`.
-  (SchemaProto as Record<string, unknown>)["~effect/Schema/Schema"] === undefined
-    ? S.suspend(f)
-    : makeLazy(f);
+const lazySuspend = (f: () => S.Top): S.Top => lazy(() => S.suspend(f));
+const lazyArray = (item: S.Top): S.Top => lazy(() => S.Array(item));
+const lazyRecord = (key: S.Top, value: S.Top): S.Top => lazy(() => S.Record(key as any, value));
 
 //#endregion
