@@ -629,21 +629,21 @@ export type CreateMonitorError =
  * You can also create a monitor with probes using this command. For each probe, you
  * define the following:
  *
- * - `source`—The subnet IDs where the probes will be created.
+ * - `source`--The subnet IDs where the probes will be created.
  *
- * - `destination`— The target destination IP address for the
+ * - `destination`-- The target destination IP address for the
  * probe.
  *
- * - `destinationPort`—Required only if the protocol is
+ * - `destinationPort`--Required only if the protocol is
  * `TCP`.
  *
- * - `protocol`—The communication protocol between the source and
+ * - `protocol`--The communication protocol between the source and
  * destination. This will be either `TCP` or `ICMP`.
  *
- * - `packetSize`—The size of the packets. This must be a number between
+ * - `packetSize`--The size of the packets. This must be a number between
  * `56` and `8500`.
  *
- * - (Optional) `tags` —Key-value pairs created and assigned to the
+ * - (Optional) `tags` --Key-value pairs created and assigned to the
  * probe.
  */
 export const createMonitor: API.OperationMethod<
@@ -1020,21 +1020,21 @@ export type UpdateProbeError =
  * You can update the following para create a monitor with probes using this command. For
  * each probe, you define the following:
  *
- * - `state`—The state of the probe.
+ * - `state`--The state of the probe.
  *
- * - `destination`— The target destination IP address for the
+ * - `destination`-- The target destination IP address for the
  * probe.
  *
- * - `destinationPort`—Required only if the protocol is
+ * - `destinationPort`--Required only if the protocol is
  * `TCP`.
  *
- * - `protocol`—The communication protocol between the source and
+ * - `protocol`--The communication protocol between the source and
  * destination. This will be either `TCP` or `ICMP`.
  *
- * - `packetSize`—The size of the packets. This must be a number between
+ * - `packetSize`--The size of the packets. This must be a number between
  * `56` and `8500`.
  *
- * - (Optional) `tags` —Key-value pairs created and assigned to the
+ * - (Optional) `tags` --Key-value pairs created and assigned to the
  * probe.
  */
 export const updateProbe: API.OperationMethod<

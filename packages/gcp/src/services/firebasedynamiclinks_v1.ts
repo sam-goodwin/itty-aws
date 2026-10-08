@@ -162,11 +162,11 @@ export const SocialMetaTagInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Android related attributes to the Dynamic Link. */
 export interface AndroidInfo {
-  /** If specified, this overrides the ‘link’ parameter on Android. */
+  /** If specified, this overrides the 'link' parameter on Android. */
   androidLink?: string;
   /** Link to open on Android if the app is not installed. */
   androidFallbackLink?: string;
-  /** Minimum version code for the Android app. If the installed app’s version code is lower, then the user is taken to the Play Store. */
+  /** Minimum version code for the Android app. If the installed app's version code is lower, then the user is taken to the Play Store. */
   androidMinPackageVersionCode?: string;
   /** Android package name of the app. */
   androidPackageName?: string;
@@ -192,7 +192,7 @@ export interface IosInfo {
   iosIpadBundleId?: string;
   /** Link to open on iOS if the app is not installed. */
   iosFallbackLink?: string;
-  /** Custom (destination) scheme to use for iOS. By default, we’ll use the bundle ID as the custom scheme. Developer can override this behavior using this param. */
+  /** Custom (destination) scheme to use for iOS. By default, we'll use the bundle ID as the custom scheme. Developer can override this behavior using this param. */
   iosCustomScheme?: string;
   /** If specified, this overrides the ios_fallback_link value on iPads. */
   iosIpadFallbackLink?: string;

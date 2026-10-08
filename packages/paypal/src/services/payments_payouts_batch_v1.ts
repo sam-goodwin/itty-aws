@@ -535,7 +535,7 @@ export const AlternateNotificationMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata for Venmo transactions. */
 export interface ApplicationContext {
-  /** This attribute controls the privacy of a payout transaction in recipient’s feed. PUBLIC, FRIENDS_ONLY & PRIVATE are the values that can be used. PUBLIC - The payment displays on the recipient's public Venmo feed. FRIENDS_ONLY - The payment displays only to the recipient's Venmo friends. PRIVATE - The payment displays only on the recipient's personal feed. Defaults to `PRIVATE` if left blank. */
+  /** This attribute controls the privacy of a payout transaction in recipient's feed. PUBLIC, FRIENDS_ONLY & PRIVATE are the values that can be used. PUBLIC - The payment displays on the recipient's public Venmo feed. FRIENDS_ONLY - The payment displays only to the recipient's Venmo friends. PRIVATE - The payment displays only on the recipient's personal feed. Defaults to `PRIVATE` if left blank. */
   social_feed_privacy?: string;
   /** Link to a Holler sticker. For Venmo recipients, the sticker displays with the payout message. The maximum URL length is 151. */
   holler_url?: string;

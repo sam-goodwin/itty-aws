@@ -87,7 +87,7 @@ export const CreateTasksRunRequestImportedMcpServersList = /*@__PURE__*/ S.Array
   ImportedMcpServer,
 ) as any as S.Schema<CreateTasksRunRequestImportedMcpServersList>;
 
-/** One desktop-only MCP server relayed into the run — a name only, never configuration. */
+/** One desktop-only MCP server relayed into the run -- a name only, never configuration. */
 export interface RelayedMcpServer {
   name: string;
 }
@@ -97,7 +97,7 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelayedMcpServer" }) as any as S.Schema<RelayedMcpServer>;
 
-/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CreateTasksRunRequestRelayedMcpServersList = Array<RelayedMcpServer>;
 export const CreateTasksRunRequestRelayedMcpServersList = /*@__PURE__*/ S.Array(
   RelayedMcpServer,
@@ -160,7 +160,7 @@ export interface CreateTasksRunRequest {
   task_id: string;
   /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
   imported_mcp_servers?: CreateTasksRunRequestImportedMcpServersList | null;
-  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: CreateTasksRunRequestRelayedMcpServersList | null;
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
@@ -1033,7 +1033,7 @@ export interface CreateTasksRunsPeersMessageRequest {
   task_id: string;
   id: string;
   target_run_id: string;
-  /** Plain-text message body (max 16000 chars). Delivered to the peer below a server-composed provenance envelope; send short summaries, never raw file dumps — use artifact_ids for files. */
+  /** Plain-text message body (max 16000 chars). Delivered to the peer below a server-composed provenance envelope; send short summaries, never raw file dumps -- use artifact_ids for files. */
   content: string;
   /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
   artifact_ids?: CreateTasksRunsPeersMessageRequestArtifactIdsList;
@@ -1062,7 +1062,7 @@ export type ResultEnum = "accepted" | "target_finished" | "rejected";
 export const ResultEnum = S.String;
 
 export interface TaskRunPeerMessageResponse {
-  /** Send outcome: 'accepted' (queued for delivery — not a delivery confirmation), 'target_finished' (the peer's workflow is gone), or 'rejected' (throttled or invalid). * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
+  /** Send outcome: 'accepted' (queued for delivery -- not a delivery confirmation), 'target_finished' (the peer's workflow is gone), or 'rejected' (throttled or invalid). * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
   result: ResultEnum;
   /** Human-readable explanation of the result. */
   detail: string;
@@ -1315,7 +1315,7 @@ export const GetTasksRunsPeerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One peer agent run visible to the requesting run (agent peer messaging). */
 export interface TaskRunPeer {
-  /** The peer run's id — the address send_agent_message targets. */
+  /** The peer run's id -- the address send_agent_message targets. */
   run_id: string;
   /** Id of the peer run's parent task. */
   task_id: string;
@@ -2365,7 +2365,7 @@ export type CreateTasksRunsCommandError =
   | NotFound
   | Conflict
   | PosthogOpError;
-/** Send command to task run Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, set_config_option, mcp_response, side_question, native Pi RPC commands, and Pi queue operations. Retry loop: a 503 is transient (sandbox_not_ready means the command arrived before the live run's command channel came up; agent_session_not_ready means an approval was rejected before execution while the agent starts) — retry it until the request you are answering expires. A 502 (agent server unreachable) or 504 (agent server timed out) means delivery is unknown; retry only when the command method is safe to retry. A 409 run_ended is final: the run is over and its sandbox is gone. HTTP 200 preserves JSON-RPC errors; permission acceptance requires result.resolved=true. */
+/** Send command to task run Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, set_config_option, mcp_response, side_question, native Pi RPC commands, and Pi queue operations. Retry loop: a 503 is transient (sandbox_not_ready means the command arrived before the live run's command channel came up; agent_session_not_ready means an approval was rejected before execution while the agent starts) -- retry it until the request you are answering expires. A 502 (agent server unreachable) or 504 (agent server timed out) means delivery is unknown; retry only when the command method is safe to retry. A 409 run_ended is final: the run is over and its sandbox is gone. HTTP 200 preserves JSON-RPC errors; permission acceptance requires result.resolved=true. */
 export const createTasksRunsCommand: API.OperationMethod<
   CreateTasksRunsCommandRequest,
   TaskRunCommandResponse,
@@ -2380,7 +2380,7 @@ export const createTasksRunsCommand: API.OperationMethod<
 }));
 
 export type CreateTasksRunsPeersMessageError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Send a message to a peer agent run Relay a message from this run to a peer agent run. The body is delivered below a server-composed provenance envelope as a queued (non-steer) turn; attachments are copied into the target run's own artifact storage. `accepted` means queued for delivery, never delivered — the sandbox handoff happens later inside the target's workflow. */
+/** Send a message to a peer agent run Relay a message from this run to a peer agent run. The body is delivered below a server-composed provenance envelope as a queued (non-steer) turn; attachments are copied into the target run's own artifact storage. `accepted` means queued for delivery, never delivered -- the sandbox handoff happens later inside the target's workflow. */
 export const createTasksRunsPeersMessage: API.OperationMethod<
   CreateTasksRunsPeersMessageRequest,
   TaskRunPeerMessageResponse,
@@ -2480,7 +2480,7 @@ export const getTasksRunsConnectionToken: API.OperationMethod<
 }));
 
 export type GetTasksRunsLogError = Forbidden | NotFound | PosthogOpError;
-/** Get task run logs Fetch the logs for a task run as JSONL. If the run resumes from another (state.resume_from_run_id), each ancestor's log is concatenated first (oldest ancestor → ... → this run) so resume consumers see a single continuous history. */
+/** Get task run logs Fetch the logs for a task run as JSONL. If the run resumes from another (state.resume_from_run_id), each ancestor's log is concatenated first (oldest ancestor -> ... -> this run) so resume consumers see a single continuous history. */
 export const getTasksRunsLog: API.OperationMethod<
   GetTasksRunsLogRequest,
   GetTasksRunsLogResponse,
@@ -2540,7 +2540,7 @@ export const getTasksRunsSessionLog: API.OperationMethod<
 }));
 
 export type GetTasksRunsStreamError = Forbidden | NotFound | PosthogOpError;
-/** Server-Sent Events stream of task run events. Events carry an `id:` line (a Redis stream id, or a synthetic `log-<n>` id during backlog replay) usable as a resume cursor. The server caps each connection at 900 seconds: it emits `event: end` with `data: {"type": "rotated"}` and closes. This does NOT mean the run finished — reconnect with the `Last-Event-ID` header set to the last received event id to resume. Only treat the stream as complete when the run itself reaches a terminal status. Resume guarantees cover mirrored events only: on runs where live mirroring is presence-gated, events produced while no viewer was connected are not in the live stream. Reload the run's session logs to recover the agent's output; run-state and progress frames are not in those logs, so refetch the run itself for its current state. On runs with durable backlog serving, a connection without `Last-Event-ID` first replays history from the run log under synthetic `log-<n>` event ids, then attaches the live stream, skipping live entries the backlog already covered. Reconnecting with a `log-<n>` id resumes the backlog replay from that point; reconnecting with a Redis id resumes the live stream, may re-deliver a few events already served as backlog frames, and falls back to a full backlog replay when the resume point was trimmed or the stream expired. Runs whose log exceeds the backlog byte cap skip the replay and serve only the recent live window. When the backlog is temporarily unavailable (a storage read failure, or a worker at its concurrent replay budget), the stream emits an `event: error` frame and closes; reconnect with the same cursor to retry. Treat delivery as at-least-once across reconnects. `?start=latest` consumers must also carry `Last-Event-ID` across reconnects: reconnecting without it re-resolves to the then-current latest event, silently skipping anything published while disconnected. **SDK consumers**: do not call the generated fetch wrapper for this path — it will buffer the entire stream. Use the URL builder (`getTasksRunsStreamRetrieveUrl`) with a streaming `fetch`/`EventSource`-style consumer and the `Last-Event-ID` header instead. */
+/** Server-Sent Events stream of task run events. Events carry an `id:` line (a Redis stream id, or a synthetic `log-<n>` id during backlog replay) usable as a resume cursor. The server caps each connection at 900 seconds: it emits `event: end` with `data: {"type": "rotated"}` and closes. This does NOT mean the run finished -- reconnect with the `Last-Event-ID` header set to the last received event id to resume. Only treat the stream as complete when the run itself reaches a terminal status. Resume guarantees cover mirrored events only: on runs where live mirroring is presence-gated, events produced while no viewer was connected are not in the live stream. Reload the run's session logs to recover the agent's output; run-state and progress frames are not in those logs, so refetch the run itself for its current state. On runs with durable backlog serving, a connection without `Last-Event-ID` first replays history from the run log under synthetic `log-<n>` event ids, then attaches the live stream, skipping live entries the backlog already covered. Reconnecting with a `log-<n>` id resumes the backlog replay from that point; reconnecting with a Redis id resumes the live stream, may re-deliver a few events already served as backlog frames, and falls back to a full backlog replay when the resume point was trimmed or the stream expired. Runs whose log exceeds the backlog byte cap skip the replay and serve only the recent live window. When the backlog is temporarily unavailable (a storage read failure, or a worker at its concurrent replay budget), the stream emits an `event: error` frame and closes; reconnect with the same cursor to retry. Treat delivery as at-least-once across reconnects. `?start=latest` consumers must also carry `Last-Event-ID` across reconnects: reconnecting without it re-resolves to the then-current latest event, silently skipping anything published while disconnected. **SDK consumers**: do not call the generated fetch wrapper for this path -- it will buffer the entire stream. Use the URL builder (`getTasksRunsStreamRetrieveUrl`) with a streaming `fetch`/`EventSource`-style consumer and the `Last-Event-ID` header instead. */
 export const getTasksRunsStream: API.OperationMethod<
   GetTasksRunsStreamRequest,
   GetTasksRunsStreamResponse,

@@ -236,7 +236,7 @@ export interface ResourcePoolSnapshot {
   /** (optional) A comment to add more information about a snapshot */
   comment?: string | null;
   createdAt?: string;
-  /** Represents the user-visible data size at the time of the snapshot in Gibibytes (e.g. what’s in the snapshot) */
+  /** Represents the user-visible data size at the time of the snapshot in Gibibytes (e.g. what's in the snapshot) */
   logicalSizeGigabytes?: number;
   /** ID of the Resource Pool of the Snapshot */
   resourcePoolId?: string;

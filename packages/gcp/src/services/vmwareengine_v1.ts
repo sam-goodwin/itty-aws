@@ -318,7 +318,7 @@ export const NetworkPeering = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProjectsLocationsNetworkPeeringsRequest {
   /** Required. The resource name of the location to create the new network peering in. This value is always `global`, because `NetworkPeering` is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global` */
   parent: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The user-provided identifier of the new `NetworkPeering`. This identifier must be unique among `NetworkPeering` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
   networkPeeringId?: string;
@@ -405,7 +405,7 @@ export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
 export interface CreateProjectsLocationsNetworkPoliciesRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The resource name of the location (region) to create the new network policy in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1` */
   parent: string;
@@ -513,7 +513,7 @@ export const ExternalAccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalAccessRule" }) as any as S.Schema<ExternalAccessRule>;
 
 export interface CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The resource name of the network policy to create a new external access firewall rule in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy` */
   parent: string;
@@ -772,7 +772,7 @@ export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the location to create the new private cloud in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a` */
   parent: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -977,7 +977,7 @@ export interface CreateProjectsLocationsPrivateCloudsClustersRequest {
   requestId?: string;
   /** Required. The resource name of the private cloud to create a new cluster in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   parent: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
   clusterId?: string;
@@ -1047,7 +1047,7 @@ export interface CreateProjectsLocationsPrivateCloudsExternalAddressesRequest {
   requestId?: string;
   /** Required. The user-provided identifier of the `ExternalAddress` to be created. This identifier must be unique among `ExternalAddress` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
   externalAddressId?: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The resource name of the private cloud to create a new external IP address in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   parent: string;
@@ -1343,7 +1343,7 @@ export const PrivateConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateConnection" }) as any as S.Schema<PrivateConnection>;
 
 export interface CreateProjectsLocationsPrivateConnectionsRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The resource name of the location to create the new private connection in. Private connection is a regional resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1` */
   parent: string;
@@ -1439,7 +1439,7 @@ export const VmwareEngineNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareEngineNetwork" }) as any as S.Schema<VmwareEngineNetwork>;
 
 export interface CreateProjectsLocationsVmwareEngineNetworksRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. The resource name of the location to create the new VMware Engine network in. A VMware Engine network of type `LEGACY` is a regional resource, and a VMware Engine network of type `STANDARD` is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global` */
   parent: string;
@@ -4033,7 +4033,7 @@ export const MigrateManagementVmsProjectsLocationsPrivateCloudsRequest = /*@__PU
 export interface MountDatastoreRequest {
   /** Required. The datastore mount configuration. */
   datastoreMountConfig?: DatastoreMountConfig;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Optional. If set to true, the colocation requirement will be ignored. If set to false, the colocation requirement will be enforced. If not set, the colocation requirement will be enforced. Colocation requirement is the requirement that the cluster must be in the same region/zone of datastore(regional/zonal datastore). */
   ignoreColocation?: boolean;
@@ -4097,7 +4097,7 @@ export const PatchProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend((
 export interface PatchProjectsLocationsNetworkPeeringsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `NetworkPeering` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -4125,7 +4125,7 @@ export interface PatchProjectsLocationsNetworkPoliciesRequest {
   requestId?: string;
   /** Output only. Identifier. The resource name of this network policy. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy` */
   name: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. Field mask is used to specify the fields to be overwritten in the `NetworkPolicy` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -4147,7 +4147,7 @@ export const PatchProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesRequest>;
 
 export interface PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the// request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the// request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Output only. The resource name of this external access rule. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
   name: string;
@@ -4184,7 +4184,7 @@ export interface PatchProjectsLocationsPrivateCloudsRequest {
   updateMask?: string;
   /** Output only. Identifier. The resource name of this private cloud. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   name: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Request body */
   body?: PrivateCloud;
@@ -4210,7 +4210,7 @@ export interface PatchProjectsLocationsPrivateCloudsClustersRequest {
   updateMask?: string;
   /** Output only. Identifier. The resource name of this cluster. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
   name: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Request body */
   body?: Cluster;
@@ -4236,7 +4236,7 @@ export interface PatchProjectsLocationsPrivateCloudsExternalAddressesRequest {
   name: string;
   /** Required. Field mask is used to specify the fields to be overwritten in the `ExternalAddress` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Request body */
   body?: ExternalAddress;
@@ -4362,7 +4362,7 @@ export const PatchProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ 
 export interface PatchProjectsLocationsPrivateConnectionsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Output only. The resource name of the private connection. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
   name: string;
@@ -4388,7 +4388,7 @@ export const PatchProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.s
 export interface PatchProjectsLocationsVmwareEngineNetworksRequest {
   /** Output only. Identifier. The resource name of the VMware Engine network. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network` */
   name: string;
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Required. Field mask is used to specify the fields to be overwritten in the VMware Engine network resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. Only the following fields can be updated: `description`. */
   updateMask?: string;
@@ -4788,7 +4788,7 @@ export const UndeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.sus
 
 /** Unmount Datastore Request messag */
 export interface UnmountDatastoreRequest {
-  /** Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`, validates and executes the request. */
+  /** Optional. If set to `true`, only validates the request but doesn't execute the request. If set to `false`, validates and executes the request. */
   validateOnly?: boolean;
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;

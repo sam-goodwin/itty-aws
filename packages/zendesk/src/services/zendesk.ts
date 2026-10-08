@@ -859,7 +859,7 @@ export interface AutocompleteUsersRequest {
   include?: string;
   /** Number of results to return. */
   per_page?: number;
-  /** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — search all users across all brands (no brand filtering applied). * 0 — restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id — if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
+  /** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- search all users across all brands (no brand filtering applied). * 0 -- restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id -- if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
   brand_id?: AutocompleteUsersRequestBrandId;
 }
 export const AutocompleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2577,7 +2577,7 @@ export interface CountUsersRequest {
   role__?: CountUsersRequestRoleList;
   /** For custom roles which is available on the Enterprise plan and above. You can only filter by one role ID per request */
   permission_set?: number;
-  /** When brand separation is enabled, scopes the count to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — count all users across all brands (no brand filtering applied). * 0 — count only account-scoped (brand-less) users. * A numeric brand id — if the brand has user separation enabled, count end users belonging to that brand plus all agents and admins (who are account-level and always included). If the brand does not have user separation enabled, the request falls back to account scope (0). */
+  /** When brand separation is enabled, scopes the count to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- count all users across all brands (no brand filtering applied). * 0 -- count only account-scoped (brand-less) users. * A numeric brand id -- if the brand has user separation enabled, count end users belonging to that brand plus all agents and admins (who are account-level and always included). If the brand does not have user separation enabled, the request falls back to account scope (0). */
   brand_id?: CountUsersRequestBrandId;
 }
 export const CountUsersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5105,7 +5105,7 @@ export const ItamAssetResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItamAssetResponse" }) as any as S.Schema<ItamAssetResponse>;
 
-/** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` — see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
+/** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` -- see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
 export type ItamAssetTypeInputPhotoMap = { [key: string]: unknown | undefined };
 export const ItamAssetTypeInputPhotoMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5121,7 +5121,7 @@ export interface ItamAssetTypeInput {
   name: string;
   /** The id of the parent asset type within the hierarchy tree. If omitted on create, defaults to the base asset type. Cannot be changed after the asset type is created. */
   parent_id?: string | null;
-  /** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` — see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
+  /** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` -- see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
   photo?: ItamAssetTypeInputPhotoMap | null;
 }
 export const ItamAssetTypeInput = /*@__PURE__*/ S.suspend(() =>
@@ -11663,7 +11663,7 @@ export interface DestroyManyUsersRequest {
   ids?: string;
   /** External Id of the users to delete. Comma separated */
   external_ids?: string;
-  /** Scopes the deletion of users matched by `external_ids` to a specific brand or to account-scoped (brand-less) users. Only applicable when the account has brand separation enabled (`brand_user_separation_eap`); ignored otherwise so existing numeric callers continue to behave as before. Accepted values: * `0` — restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id — restrict to that brand. Brands without `user_separation` enabled collapse to account scope (`0`). Rejected with `400 Bad Request`: * `all` — cross-brand deletion is not supported on this endpoint. * Any other non-numeric string. * A numeric brand id that does not exist on the account. * Combining `brand_id` with `ids` (use `external_ids` instead — `ids` are globally unique so brand scoping is meaningless). When `external_ids` is provided without `brand_id`, the request defaults to account scope (`0`). When forwarded to the bulk-delete background job, the resolved brand id is always passed as an Integer (`0` for account scope; the brand id otherwise) for backward compatibility with existing job consumers. */
+  /** Scopes the deletion of users matched by `external_ids` to a specific brand or to account-scoped (brand-less) users. Only applicable when the account has brand separation enabled (`brand_user_separation_eap`); ignored otherwise so existing numeric callers continue to behave as before. Accepted values: * `0` -- restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id -- restrict to that brand. Brands without `user_separation` enabled collapse to account scope (`0`). Rejected with `400 Bad Request`: * `all` -- cross-brand deletion is not supported on this endpoint. * Any other non-numeric string. * A numeric brand id that does not exist on the account. * Combining `brand_id` with `ids` (use `external_ids` instead -- `ids` are globally unique so brand scoping is meaningless). When `external_ids` is provided without `brand_id`, the request defaults to account scope (`0`). When forwarded to the bulk-delete background job, the resolved brand id is always passed as an Integer (`0` for account scope; the brand id otherwise) for backward compatibility with existing job consumers. */
   brand_id?: DestroyManyUsersRequestBrandId;
 }
 export const DestroyManyUsersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15596,7 +15596,7 @@ export interface GetManyUsersRequest {
   external_ids?: string;
   /** If true, returns inactive or deleted users. */
   include_deleted?: boolean;
-  /** When brand separation is enabled and `external_ids` is provided, scopes the lookup to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Omitting `brand_id` always uses account scope (0), regardless of account or Agent Workspace defaults. Accepted values when used with `external_ids`: * 0 — restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id — if the brand has user separation enabled, return only users belonging to that brand; account-scoped agents and admins are excluded. If the brand does not have user separation enabled, the request resolves to account scope (0), including account-scoped agents and end users. * "all" — invalid for `show_many` lookups. When `ids` is provided instead of `external_ids`, numeric brand scopes are accepted but filtering is not applied because user IDs are globally unique. `brand_id=all` is rejected consistently with the other many-user endpoints. */
+  /** When brand separation is enabled and `external_ids` is provided, scopes the lookup to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Omitting `brand_id` always uses account scope (0), regardless of account or Agent Workspace defaults. Accepted values when used with `external_ids`: * 0 -- restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id -- if the brand has user separation enabled, return only users belonging to that brand; account-scoped agents and admins are excluded. If the brand does not have user separation enabled, the request resolves to account scope (0), including account-scoped agents and end users. * "all" -- invalid for `show_many` lookups. When `ids` is provided instead of `external_ids`, numeric brand scopes are accepted but filtering is not applied because user IDs are globally unique. `brand_id=all` is rejected consistently with the other many-user endpoints. */
   brand_id?: number;
   /** Sideloads to include in the response. Accepts a comma-separated list of values. See [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints). */
   include?: string;
@@ -24952,7 +24952,7 @@ export interface ListUsersRequest {
   include_boundary_indicators?: boolean;
   /** When true, includes cursor values for each item in the cursor pagination response. Only valid with cursor pagination (page[size], page[after], page[before]). */
   include_item_cursors?: boolean;
-  /** When brand separation is enabled, scopes the listing to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — return all users across all brands (no brand filtering applied). * 0 — return only account-scoped (brand-less) users. * A numeric brand id — if the brand has user separation enabled, return end users belonging to that brand plus all agents and admins (who are account-level and always included). If the brand does not have user separation enabled, the request falls back to account scope (0). */
+  /** When brand separation is enabled, scopes the listing to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- return all users across all brands (no brand filtering applied). * 0 -- return only account-scoped (brand-less) users. * A numeric brand id -- if the brand has user separation enabled, return end users belonging to that brand plus all agents and admins (who are account-level and always included). If the brand does not have user separation enabled, the request falls back to account scope (0). */
   brand_id?: ListUsersRequestBrandId;
 }
 export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -25492,7 +25492,7 @@ export const PostAutocompleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 export type PostAutocompleteUserRequestBrandIdCase0 = "all";
 export const PostAutocompleteUserRequestBrandIdCase0 = S.String;
 
-/** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — search all users across all brands (no brand filtering applied). * 0 — restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id — if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
+/** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- search all users across all brands (no brand filtering applied). * 0 -- restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id -- if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
 export type PostAutocompleteUserRequestBrandId = PostAutocompleteUserRequestBrandIdCase0 | number;
 export const PostAutocompleteUserRequestBrandId =
   S.Unknown as any as S.Schema<PostAutocompleteUserRequestBrandId>;
@@ -25504,7 +25504,7 @@ export interface PostAutocompleteUserRequest {
   filter?: string;
   /** Number of results to return. */
   per_page?: number;
-  /** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — search all users across all brands (no brand filtering applied). * 0 — restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id — if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
+  /** When brand separation is enabled, scopes the autocomplete results to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- search all users across all brands (no brand filtering applied). * 0 -- restrict the autocomplete results to account-scoped (brand-less) users only. * A numeric brand id -- if the brand has user separation enabled, autocomplete returns only end users belonging to that brand. Agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
   brand_id?: PostAutocompleteUserRequestBrandId;
   /** Field ID for lookup relationship autocomplete */
   field_id?: number;
@@ -26712,7 +26712,7 @@ export interface SearchUsersRequest {
   query?: string;
   /** The `external_id` parameter does not support the search syntax. It only accepts ids. */
   external_id?: string;
-  /** When brand separation is enabled, scopes the search to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" — search all users across all brands (no brand filtering applied). * 0 — restrict the search to account-scoped (brand-less) users only. * A numeric brand id — if the brand has user separation enabled, search returns only end users belonging to that brand. Unlike the list, count, and show_many endpoints, agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
+  /** When brand separation is enabled, scopes the search to users belonging to the specified brand. Only applicable when the account has brand separation enabled. Accepted values: * "all" -- search all users across all brands (no brand filtering applied). * 0 -- restrict the search to account-scoped (brand-less) users only. * A numeric brand id -- if the brand has user separation enabled, search returns only end users belonging to that brand. Unlike the list, count, and show_many endpoints, agents and admins are not included in the results when filtering by a specific brand. If the brand does not have user separation enabled, the request falls back to account scope (0). */
   brand_id?: SearchUsersRequestBrandId;
   /** A comma-separated list of sideloads to include in the response. */
   include?: string;
@@ -28534,7 +28534,7 @@ export const UpdateItamAssetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateItamAssetRequest" }) as any as S.Schema<UpdateItamAssetRequest>;
 
-/** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` — see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
+/** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` -- see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
 export type UpdateItamAssetTypeRequestAssetTypePhotoMap = { [key: string]: unknown | undefined };
 export const UpdateItamAssetTypeRequestAssetTypePhotoMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -28548,7 +28548,7 @@ export interface UpdateItamAssetTypeRequestAssetType {
   external_id?: string | null;
   /** A unique display name for the asset type */
   name?: string;
-  /** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` — see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
+  /** Sets or removes the asset type's icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` -- see the "Adding a photo" code sample. Pass `null` to remove the existing icon via a normal JSON request. */
   photo?: UpdateItamAssetTypeRequestAssetTypePhotoMap | null;
 }
 export const UpdateItamAssetTypeRequestAssetType = /*@__PURE__*/ S.suspend(() =>
@@ -29044,7 +29044,7 @@ export interface UpdateManyUsersRequest {
   ids?: string;
   /** External Id of the users to update. Comma separated */
   external_ids?: string;
-  /** Scopes the bulk update of users matched by `external_ids` to a specific brand or to account-scoped (brand-less) users. Only applicable when the account has brand separation enabled (`brand_user_separation_eap`). Ignored otherwise so existing numeric callers continue to behave as before. Accepted values: * 0 — restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id — restrict to that brand. Brands without `user_separation` enabled collapse to account scope (0). Rejected with "400 Bad Request": * "all" — cross-brand bulk update is not supported on this endpoint. * Any other non-numeric string. * A numeric brand id that does not exist on the account. * Combining `brand_id` with `ids` (use `external_ids` instead — `ids` are globally unique so brand scoping is meaningless). When `external_ids` is provided without `brand_id`, the request defaults to account scope (0). */
+  /** Scopes the bulk update of users matched by `external_ids` to a specific brand or to account-scoped (brand-less) users. Only applicable when the account has brand separation enabled (`brand_user_separation_eap`). Ignored otherwise so existing numeric callers continue to behave as before. Accepted values: * 0 -- restrict the lookup to account-scoped (brand-less) users only. * A numeric brand id -- restrict to that brand. Brands without `user_separation` enabled collapse to account scope (0). Rejected with "400 Bad Request": * "all" -- cross-brand bulk update is not supported on this endpoint. * Any other non-numeric string. * A numeric brand id that does not exist on the account. * Combining `brand_id` with `ids` (use `external_ids` instead -- `ids` are globally unique so brand scoping is meaningless). When `external_ids` is provided without `brand_id`, the request defaults to account scope (0). */
   brand_id?: number;
   body: UpdateManyUsersRequestBody;
 }
@@ -31197,7 +31197,7 @@ export const createItamAsset: API.OperationMethod<
 }));
 
 export type CreateItamAssetTypeError = UnprocessableEntity | ZendeskOpError;
-/** Create Asset Type Creates an asset type. To set an icon at the same time, send a `multipart/form-data` request instead of JSON — see the "Create asset type with a photo" code sample. #### Allowed For * Admins */
+/** Create Asset Type Creates an asset type. To set an icon at the same time, send a `multipart/form-data` request instead of JSON -- see the "Create asset type with a photo" code sample. #### Allowed For * Admins */
 export const createItamAssetType: API.OperationMethod<
   CreateItamAssetTypeRequest,
   ItamAssetTypeResponseOutput,
@@ -33335,7 +33335,7 @@ export const executeView: API.OperationMethod<
 }));
 
 export type ExportAuditLogsError = ZendeskOpError;
-/** Export Audit Logs #### Allowed For * Admins on accounts that have audit log access #### Limits This endpoint's rate limit is different from the account-wide rate limit. The rate limit is one request per minute per account. When this limit is reached, you'll get a `429 Too Many Requests` response code. ##### Headers API responses include usage limit information in the headers for this endpoint. ``` Zendesk-RateLimit-audit-logs-export: total={number}; remaining={number}; resets={number} ``` Within this header, “Total” signifies the initial allocation, “Remaining” indicates the remaining allowance for the current interval, and “Resets” denotes the wait time in seconds before the limit refreshes. You can see the Total, and Interval values in the below table. ##### Details The rate limit is one request per minute per account. If you exceed this, you'll receive the following error: "Rate limit for Audit log CSV Export exceeded. Please wait 1 minute and try again." */
+/** Export Audit Logs #### Allowed For * Admins on accounts that have audit log access #### Limits This endpoint's rate limit is different from the account-wide rate limit. The rate limit is one request per minute per account. When this limit is reached, you'll get a `429 Too Many Requests` response code. ##### Headers API responses include usage limit information in the headers for this endpoint. ``` Zendesk-RateLimit-audit-logs-export: total={number}; remaining={number}; resets={number} ``` Within this header, "Total" signifies the initial allocation, "Remaining" indicates the remaining allowance for the current interval, and "Resets" denotes the wait time in seconds before the limit refreshes. You can see the Total, and Interval values in the below table. ##### Details The rate limit is one request per minute per account. If you exceed this, you'll receive the following error: "Rate limit for Audit log CSV Export exceeded. Please wait 1 minute and try again." */
 export const exportAuditLogs: API.OperationMethod<
   ExportAuditLogsRequest,
   ExportAuditLogsResponse,
@@ -33410,7 +33410,7 @@ export const exportIncrementalSkilBasedRoutingAttributeValue: API.OperationMetho
 }));
 
 export type ExportIncrementalSkilBasedRoutingInstanceValueError = ZendeskOpError;
-/** Incremental Instance Values Export Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`, with associate type events listed alongside unassociate type events based on the unassociate event’s timestamp. #### Allowed For * Admins #### Parameters Optional */
+/** Incremental Instance Values Export Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`, with associate type events listed alongside unassociate type events based on the unassociate event's timestamp. #### Allowed For * Admins #### Parameters Optional */
 export const exportIncrementalSkilBasedRoutingInstanceValue: API.OperationMethod<
   ExportIncrementalSkilBasedRoutingInstanceValueRequest,
   IncrementalSkillBasedRouting,
@@ -34280,7 +34280,7 @@ export const getManyOrganizations: API.OperationMethod<
 }));
 
 export type GetManyTicketFieldsError = ZendeskOpError;
-/** Show Many Ticket Fields Returns multiple ticket fields in a single request. Provide either: - `ids` — a comma-separated list of ticket field IDs, or - `keys` — a comma-separated list of ticket field keys Up to 100 values are accepted. The response payload matches the List Ticket Fields [response format](/api-reference/ticketing/tickets/ticket_fields/#example-responses). #### Sideloads The following sideloads are supported: #### Allowed For * Anyone */
+/** Show Many Ticket Fields Returns multiple ticket fields in a single request. Provide either: - `ids` -- a comma-separated list of ticket field IDs, or - `keys` -- a comma-separated list of ticket field keys Up to 100 values are accepted. The response payload matches the List Ticket Fields [response format](/api-reference/ticketing/tickets/ticket_fields/#example-responses). #### Sideloads The following sideloads are supported: #### Allowed For * Anyone */
 export const getManyTicketFields: API.OperationMethod<
   GetManyTicketFieldsRequest,
   TicketFieldsShowManyResponse,
@@ -38284,7 +38284,7 @@ export const recoverSuspendedTickets: API.OperationMethod<
 }));
 
 export type RedactChatCommentError = Conflict | ZendeskOpError;
-/** Redact Chat Comment Permanently removes words or strings from a chat ticket's comment. Wrap `<redact>` tags around the content in the chat comment you want redacted. Example: ```json { "text": "My ID number is <redact>847564</redact>!" } ``` The characters contained in the tag will be replaced by the ▇ symbol. **Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace). **Limitations**: - Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a `Retry-After` header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI. #### Allowed For - Agents [Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents. #### Request Body Properties To get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response: ```http Status 200 OK { "audits": [ "events": [ { "id": 1932802680168, "type": "ChatStartedEvent", "value": { "visitor_id": "10502823-16EkM3T6VNq7KMd", "chat_id": "2109.10502823.Sjuj2YrBpXwei", "history": [ { "chat_index": 0, "type": "ChatMessage", "message": "My ID number is 847564!" } ] } } ] ] } ``` */
+/** Redact Chat Comment Permanently removes words or strings from a chat ticket's comment. Wrap `<redact>` tags around the content in the chat comment you want redacted. Example: ```json { "text": "My ID number is <redact>847564</redact>!" } ``` The characters contained in the tag will be replaced by the U+2587 symbol. **Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace). **Limitations**: - Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a `Retry-After` header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI. #### Allowed For - Agents [Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents. #### Request Body Properties To get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response: ```http Status 200 OK { "audits": [ "events": [ { "id": 1932802680168, "type": "ChatStartedEvent", "value": { "visitor_id": "10502823-16EkM3T6VNq7KMd", "chat_id": "2109.10502823.Sjuj2YrBpXwei", "history": [ { "chat_index": 0, "type": "ChatMessage", "message": "My ID number is 847564!" } ] } } ] ] } ``` */
 export const redactChatComment: API.OperationMethod<
   RedactChatCommentRequest,
   TicketChatCommentRedactionResponse,
@@ -38329,7 +38329,7 @@ export const redactCommentAttachment: API.OperationMethod<
 }));
 
 export type RedactStringInCommentError = ZendeskOpError;
-/** Redact String in Comment Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `'{"text": "987-65-4320"}'`. The characters of the word or string are replaced by the ▇ symbol. If the comment was made by email, the endpoint also attempts to redact the string from the original email retained by Zendesk for audit purposes. **Note**: If you use the rich text editor, support for redacting formatted text (bold, italics, hyperlinks) is limited. Redaction is permanent. You can't undo the redaction or see *what* was removed. Once a ticket is closed, you can no longer redact strings from its comments. To use this endpoint, the "Agents can delete tickets" option must be enabled in the Zendesk Support admin interface at **Admin** > **Settings** > **Agents**. #### Allowed For * Agents */
+/** Redact String in Comment Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `'{"text": "987-65-4320"}'`. The characters of the word or string are replaced by the U+2587 symbol. If the comment was made by email, the endpoint also attempts to redact the string from the original email retained by Zendesk for audit purposes. **Note**: If you use the rich text editor, support for redacting formatted text (bold, italics, hyperlinks) is limited. Redaction is permanent. You can't undo the redaction or see *what* was removed. Once a ticket is closed, you can no longer redact strings from its comments. To use this endpoint, the "Agents can delete tickets" option must be enabled in the Zendesk Support admin interface at **Admin** > **Settings** > **Agents**. #### Allowed For * Agents */
 export const redactStringInComment: API.OperationMethod<
   RedactStringInCommentRequest,
   TicketCommentResponse,
@@ -38344,7 +38344,7 @@ export const redactStringInComment: API.OperationMethod<
 }));
 
 export type RedactTicketCommentInAgentWorkspaceError = Conflict | ZendeskOpError;
-/** Redact Ticket Comment In Agent Workspace Redaction allows you to permanently remove words, strings, or attachments from a ticket comment. In the `html_body` of the comment, wrap the content you want redacted in `<redact>` tags. Example: ```json { "html_body": "<div class=\"zd-comment\" dir=\"auto\">My ID number is <redact>847564</redact>!</div>", "ticket_id":100 } ``` The characters in the redact tag will be replaced by the ▇ symbol. To redact HTML elements such inline images, anchor tags, and links, add the `redact` tag attribute to the element as well as the `<redact>` tag to inner text, if any. Example: `<a href="http://example.com" redact><redact>some link</redact></a>` The `redact` attribute only redacts the tag. Any inner text will be left behind if not enclosed in a `<redact>` tag. Redaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it. This endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus: - Redaction of comments in closed tickets - Redaction of comments in archived tickets - Redaction of formatted text (bold, italics, hyperlinks) **Limitations**: - When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed. - Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a `Retry-After` header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI. **Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated. #### Allowed For - Agents [Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content. #### Request Body Properties */
+/** Redact Ticket Comment In Agent Workspace Redaction allows you to permanently remove words, strings, or attachments from a ticket comment. In the `html_body` of the comment, wrap the content you want redacted in `<redact>` tags. Example: ```json { "html_body": "<div class=\"zd-comment\" dir=\"auto\">My ID number is <redact>847564</redact>!</div>", "ticket_id":100 } ``` The characters in the redact tag will be replaced by the U+2587 symbol. To redact HTML elements such inline images, anchor tags, and links, add the `redact` tag attribute to the element as well as the `<redact>` tag to inner text, if any. Example: `<a href="http://example.com" redact><redact>some link</redact></a>` The `redact` attribute only redacts the tag. Any inner text will be left behind if not enclosed in a `<redact>` tag. Redaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it. This endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus: - Redaction of comments in closed tickets - Redaction of comments in archived tickets - Redaction of formatted text (bold, italics, hyperlinks) **Limitations**: - When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed. - Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a `Retry-After` header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI. **Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated. #### Allowed For - Agents [Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content. #### Request Body Properties */
 export const redactTicketCommentInAgentWorkspace: API.OperationMethod<
   RedactTicketCommentInAgentWorkspaceRequest,
   TicketCommentResponse,
@@ -39439,7 +39439,7 @@ export const updateItamAsset: API.OperationMethod<
 }));
 
 export type UpdateItamAssetTypeError = UnprocessableEntity | ZendeskOpError;
-/** Update Asset Type Updates an existing asset type. All fields are optional. Your request should include only the properties you want to change. The update will fail if you attempt to change the asset type's `parent_id`, the asset type's `name` isn't unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types. To set an icon, send a `multipart/form-data` request instead of JSON — see the "Adding a photo to an asset type" code sample. To remove an existing icon, send `"photo": null` in a normal JSON request. #### Allowed For * Admins */
+/** Update Asset Type Updates an existing asset type. All fields are optional. Your request should include only the properties you want to change. The update will fail if you attempt to change the asset type's `parent_id`, the asset type's `name` isn't unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types. To set an icon, send a `multipart/form-data` request instead of JSON -- see the "Adding a photo to an asset type" code sample. To remove an existing icon, send `"photo": null` in a normal JSON request. #### Allowed For * Admins */
 export const updateItamAssetType: API.OperationMethod<
   UpdateItamAssetTypeRequest,
   ItamAssetTypeResponseOutput,
@@ -39484,7 +39484,7 @@ export const updateItamLocation: API.OperationMethod<
 }));
 
 export type UpdateItamStatusError = UnprocessableEntity | ZendeskOpError;
-/** Update Asset Status Updates an existing status. Standard (system-defined) statuses cannot be modified. `category` cannot be changed after the status is created — it can only be set on create. #### Allowed For * Admins */
+/** Update Asset Status Updates an existing status. Standard (system-defined) statuses cannot be modified. `category` cannot be changed after the status is created -- it can only be set on create. #### Allowed For * Admins */
 export const updateItamStatus: API.OperationMethod<
   UpdateItamStatusRequest,
   ItamAssetStatusResponse,

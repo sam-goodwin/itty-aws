@@ -2335,11 +2335,11 @@ export interface RiskScenario {
   isSensitive: boolean | null;
   /** Represents the probability of an incident occurring due to this risk or vulnerability, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater likelihood. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
   likelihood: number | null;
-  /** Represents the potential severity of harm to your organization’s operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
+  /** Represents the potential severity of harm to your organization's operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
   impact: number | null;
   /** Represents the adjusted probability of this risk being exploited or affecting operations after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
   residualLikelihood: number | null;
-  /** Represents the adjusted severity of harm to your organization’s operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
+  /** Represents the adjusted severity of harm to your organization's operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. A value of `null` indicates that no score has been assigned. */
   residualImpact: number | null;
   /** The list of categories this risk scenario belongs to. */
   categories: RiskScenarioCategoriesList;
@@ -3364,11 +3364,11 @@ export interface CreateRiskScenarioRequest {
   isSensitive?: boolean;
   /** Represents the probability of an incident occurring due to this risk or vulnerability, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater likelihood. The range can be customized in the Risk Management settings. */
   likelihood?: number;
-  /** Represents the potential severity of harm to your organization’s operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. */
+  /** Represents the potential severity of harm to your organization's operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. */
   impact?: number;
   /** Represents the adjusted probability of this risk being exploited or affecting operations after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
   residualLikelihood?: number;
-  /** Represents the adjusted severity of harm to your organization’s operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
+  /** Represents the adjusted severity of harm to your organization's operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
   residualImpact?: number;
   /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
   categories?: CreateRiskScenarioRequestCategoriesList;
@@ -3420,7 +3420,7 @@ export interface CreateRiskScenarioControlRequest {
   riskScenarioId: string;
   /** Control to associate with the risk scenario. Accepts Vanta control shorthands (e.g. `"A.12.2.1"`), custom-control shorthand names, or object IDs. */
   controlId: string;
-  /** `TREATMENT_PLAN` for a control that is part of the risk's treatment plan. Omit (or pass `"EXISTING"`) to associate the control without a treatment-plan designation — the default "existing control" relationship. */
+  /** `TREATMENT_PLAN` for a control that is part of the risk's treatment plan. Omit (or pass `"EXISTING"`) to associate the control without a treatment-plan designation -- the default "existing control" relationship. */
   controlType?: RiskScenarioControlType | (string & {});
 }
 export const CreateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6661,11 +6661,11 @@ export interface QuestionnaireResponseWithoutViewerPermissions {
   isPendingAnswerGeneration: boolean;
   /** Where the current answer has came from - AI: generated by Vanta AI - Manual: written in by a user - Original questionnaire: included in the original import - Answer library: the answer was found in a matching question in the knowledge center - Resource: the answer was found in a matching excerpt from a document in the knowledge center */
   originType?: QuestionnaireResponseOriginType;
-  /** JSON Schema describing the expected answer format for this question. Prefer `answerPartsSchema` + `answerPartsValues` — those mirror the apps/web GraphQL surface and let clients render against the canonical composite schema. */
+  /** JSON Schema describing the expected answer format for this question. Prefer `answerPartsSchema` + `answerPartsValues` -- those mirror the apps/web GraphQL surface and let clients render against the canonical composite schema. */
   answerSchema?: string;
-  /** Composite JSONSchema7 built from the response's stored answer parts (via `toCompositeSchema`). Mirrors the GraphQL `answerPartsSchema` field. Absent when the response has no stored parts — clients fall back to the legacy `answerSchema` field. */
+  /** Composite JSONSchema7 built from the response's stored answer parts (via `toCompositeSchema`). Mirrors the GraphQL `answerPartsSchema` field. Absent when the response has no stored parts -- clients fall back to the legacy `answerSchema` field. */
   answerPartsSchema?: JSONSchema7;
-  /** Flat map of part-id → current value (via `toAnswerPartsValues`). Same key set as `answerPartsSchema.properties`, which each question defines for itself. Absent when the response has no stored parts. */
+  /** Flat map of part-id -> current value (via `toAnswerPartsValues`). Same key set as `answerPartsSchema.properties`, which each question defines for itself. Absent when the response has no stored parts. */
   answerPartsValues?: RecordStringAnswerPartValue;
   /** Evidence documents attached to support this questionnaire response */
   attachedEvidence?: QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList;
@@ -13284,11 +13284,11 @@ export interface UpdateRiskScenarioRequest {
   isSensitive?: boolean;
   /** Represents the probability of an incident occurring due to this risk or vulnerability, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater likelihood. The range can be customized in the Risk Management settings. */
   likelihood?: number;
-  /** Represents the potential severity of harm to your organization’s operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. */
+  /** Represents the potential severity of harm to your organization's operations if this risk is exploited, expressed as a numerical score. Defaults to a range of 1-5, where higher values indicate greater impact. The range can be customized in the Risk Management settings. */
   impact?: number;
   /** Represents the adjusted probability of this risk being exploited or affecting operations after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
   residualLikelihood?: number;
-  /** Represents the adjusted severity of harm to your organization’s operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
+  /** Represents the adjusted severity of harm to your organization's operations if this risk is exploited after implementing risk treatments, such as controls or mitigations. Expressed as a numerical score, defaulting to a range of 1-5. The range can be customized in the Risk Management settings. */
   residualImpact?: number;
   /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
   categories?: UpdateRiskScenarioRequestCategoriesList;
@@ -15611,7 +15611,7 @@ export const getIssue: API.OperationMethod<
 }));
 
 export type GetKnowledgeBaseResourceError = VantaOpError;
-/** Get Knowledge Base resource Fetch a single Knowledge Base resource (FILE or URL) by id. Returns the same `type`-discriminated union as the list endpoint, so callers can branch on `type` without knowing the kind ahead of time. Returns 404 when the resource does not exist in the domain or — for FILE rows — when the underlying uploaded document has been deleted. */
+/** Get Knowledge Base resource Fetch a single Knowledge Base resource (FILE or URL) by id. Returns the same `type`-discriminated union as the list endpoint, so callers can branch on `type` without knowing the kind ahead of time. Returns 404 when the resource does not exist in the domain or -- for FILE rows -- when the underlying uploaded document has been deleted. */
 export const getKnowledgeBaseResource: API.OperationMethod<
   GetKnowledgeBaseResourceRequest,
   GetKnowledgeBaseResourceResponse,
@@ -16503,7 +16503,7 @@ export const listImportableIdpGroups: API.OperationMethod<
 }));
 
 export type ListKnowledgeBaseResourcesError = VantaOpError;
-/** List Knowledge Base resources List Knowledge Base resources (documents and webpages) in a single paginated response. Each entry is a discriminated union on `type` — "FILE" entries carry a `fileUrl` (presigned S3 URL, valid for one hour), "URL" entries carry the resource's `url` and `includeSubPages`. Supports full-text search, type filtering, tag filtering (OR within a category, AND across categories), and date-range filters on last-updated and expiration. Resources are returned most-recently-updated first. */
+/** List Knowledge Base resources List Knowledge Base resources (documents and webpages) in a single paginated response. Each entry is a discriminated union on `type` -- "FILE" entries carry a `fileUrl` (presigned S3 URL, valid for one hour), "URL" entries carry the resource's `url` and `includeSubPages`. Supports full-text search, type filtering, tag filtering (OR within a category, AND across categories), and date-range filters on last-updated and expiration. Resources are returned most-recently-updated first. */
 export const listKnowledgeBaseResources: API.OperationMethod<
   ListKnowledgeBaseResourcesRequest,
   PaginatedResponseTrustKnowledgeBaseResourceOutput,
@@ -17223,7 +17223,7 @@ export const removeTrustCenterViewer: API.OperationMethod<
 }));
 
 export type ReplaceDocumentResourceFileError = VantaOpError;
-/** Replace document resource file Replace the underlying file on a document (FILE-type) resource with a new multipart upload. Other resource fields (title, description, visibility, tags, owner, etc.) are unchanged — use PATCH for those. Returns 404 for an unknown id or a URL-type resource. Example: send `multipart/form-data` with a single `file` field (the new document binary). */
+/** Replace document resource file Replace the underlying file on a document (FILE-type) resource with a new multipart upload. Other resource fields (title, description, visibility, tags, owner, etc.) are unchanged -- use PATCH for those. Returns 404 for an unknown id or a URL-type resource. Example: send `multipart/form-data` with a single `file` field (the new document binary). */
 export const replaceDocumentResourceFile: API.OperationMethod<
   ReplaceDocumentResourceFileRequest,
   KnowledgeBaseDocumentResourceOutput,
@@ -17568,7 +17568,7 @@ export const updateRiskScenario: API.OperationMethod<
 }));
 
 export type UpdateRiskScenarioControlError = VantaOpError;
-/** Change a risk scenario control's controlType Change the `controlType` on an existing risk-scenario / control association. Body: `{ controlType }`. The server atomically moves the resolved control between the treatment-plan and existing-control sets in a single update — there is no intermediate unlinked state. `PATCH { "controlType": "EXISTING" }` removes the control from the treatment plan but keeps it linked as an existing control; use `DELETE` to unlink it entirely. Returns 404 if the control is not currently associated with the scenario. Setting the `controlType` it already has is a 200 no-op. */
+/** Change a risk scenario control's controlType Change the `controlType` on an existing risk-scenario / control association. Body: `{ controlType }`. The server atomically moves the resolved control between the treatment-plan and existing-control sets in a single update -- there is no intermediate unlinked state. `PATCH { "controlType": "EXISTING" }` removes the control from the treatment plan but keeps it linked as an existing control; use `DELETE` to unlink it entirely. Returns 404 if the control is not currently associated with the scenario. Setting the `controlType` it already has is a 200 no-op. */
 export const updateRiskScenarioControl: API.OperationMethod<
   UpdateRiskScenarioControlRequest,
   RiskScenarioControl,
@@ -17793,7 +17793,7 @@ export const updateVendorFinding: API.OperationMethod<
 }));
 
 export type UpdateWebpageResourceError = VantaOpError;
-/** Update webpage resource Apply a partial update to a webpage (URL-type) resource. Omitted fields are left untouched. `description`, `ownerAssignment`, and `expirationDate` accept `null` to clear. The resource URL is not updatable here — recreate the resource if the URL needs to change. Returns 404 for an unknown id or a FILE-type resource. */
+/** Update webpage resource Apply a partial update to a webpage (URL-type) resource. Omitted fields are left untouched. `description`, `ownerAssignment`, and `expirationDate` accept `null` to clear. The resource URL is not updatable here -- recreate the resource if the URL needs to change. Returns 404 for an unknown id or a FILE-type resource. */
 export const updateWebpageResource: API.OperationMethod<
   UpdateWebpageResourceRequest,
   KnowledgeBaseWebpageResourceOutput,
@@ -17943,7 +17943,7 @@ export const upsertTrustCenterControlsInCategoryOrder: API.OperationMethod<
 }));
 
 export type UpsertTrustCenterDataCollectedError = VantaOpError;
-/** Set Trust Center data collected Replaces all data-collected disclosures on a Trust Center with the provided list. This is a full replacement — any existing disclosures not included in the request body will be removed. To add or remove a single entry, first GET the current list, modify it, then PUT the updated list back. */
+/** Set Trust Center data collected Replaces all data-collected disclosures on a Trust Center with the provided list. This is a full replacement -- any existing disclosures not included in the request body will be removed. To add or remove a single entry, first GET the current list, modify it, then PUT the updated list back. */
 export const upsertTrustCenterDataCollected: API.OperationMethod<
   UpsertTrustCenterDataCollectedRequest,
   ArrayResponseTrustCenterDataCollected,
@@ -18003,7 +18003,7 @@ export const verifyAnswerLibraryEntryRoute: API.OperationMethod<
 }));
 
 export type VerifyKnowledgeBaseResourceError = VantaOpError;
-/** Verify Knowledge Base resource Mark a Knowledge Base resource (FILE or URL) as verified. Stamps `lastVerifiedAt` to the current time and resets `expiresAt` forward by the domain's configured review cadence; the resource's content (title, description, file or url, tags, owner) is left unchanged. Caller does not need to know the resource type — the persisted `resourceType` is used. Returns 404 when the id is unknown in the domain or — for FILE rows — when the underlying uploaded document has been deleted. */
+/** Verify Knowledge Base resource Mark a Knowledge Base resource (FILE or URL) as verified. Stamps `lastVerifiedAt` to the current time and resets `expiresAt` forward by the domain's configured review cadence; the resource's content (title, description, file or url, tags, owner) is left unchanged. Caller does not need to know the resource type -- the persisted `resourceType` is used. Returns 404 when the id is unknown in the domain or -- for FILE rows -- when the underlying uploaded document has been deleted. */
 export const verifyKnowledgeBaseResource: API.OperationMethod<
   VerifyKnowledgeBaseResourceRequest,
   VerifyKnowledgeBaseResourceResponse,

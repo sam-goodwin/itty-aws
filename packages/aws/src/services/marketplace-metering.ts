@@ -547,15 +547,15 @@ export type RegisterUsageError =
  * the second. A minimum of 1 minute of usage applies to tasks that are short
  * lived. For example, if a customer has a 10 node Amazon ECS or Amazon EKS cluster and a service configured as a Daemon Set, then Amazon ECS or Amazon EKS will launch a task on all 10 cluster nodes
  * and the customer will be charged for 10 tasks. Software metering
- * is handled by the Amazon Web Services Marketplace metering control plane—your software is
+ * is handled by the Amazon Web Services Marketplace metering control plane--your software is
  * not required to perform metering-specific actions other than to call
  * `RegisterUsage` to commence metering.
  * The Amazon Web Services Marketplace metering control plane will also bill customers for
  * running ECS tasks and Amazon EKS pods, regardless of the customer's
  * subscription state, which removes the need for your software to run entitlement
  * checks at runtime. For containers, `RegisterUsage` should be called
- * immediately at launch. If you don’t register the container within the first 6 hours
- * of the launch, Amazon Web Services Marketplace Metering Service doesn’t provide any metering
+ * immediately at launch. If you don't register the container within the first 6 hours
+ * of the launch, Amazon Web Services Marketplace Metering Service doesn't provide any metering
  * guarantees for previous months. Metering will continue, however, for the
  * current month forward until the container ends. `RegisterUsage` is
  * for metering paid hourly container products.

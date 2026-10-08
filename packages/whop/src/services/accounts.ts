@@ -471,7 +471,7 @@ export type AccountOpengraphImageVariant = "white" | "black" | "orange";
 export const AccountOpengraphImageVariant = S.String;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -629,7 +629,7 @@ export const AccountPaymentControlsRestrictedPaymentMethodsList = /*@__PURE__*/ 
   AccountPaymentControlsRestrictedPaymentMethodsItem,
 ) as any as S.Schema<AccountPaymentControlsRestrictedPaymentMethodsList>;
 
-/** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show — still clearing, or held for a reason that isn't named here. */
+/** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show -- still clearing, or held for a reason that isn't named here. */
 export type AccountPaymentControlsUndatedPendingReason =
   | "kyc_incomplete"
   | "pending_information_request"
@@ -678,7 +678,7 @@ export interface AccountPaymentControls {
   /** Automatic refund settings for resolution center cases. */
   resolution_center_auto_refund: AccountResolutionCenterAutoRefundControl;
   restricted_payment_methods: AccountPaymentControlsRestrictedPaymentMethodsList;
-  /** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show — still clearing, or held for a reason that isn't named here. */
+  /** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show -- still clearing, or held for a reason that isn't named here. */
   undated_pending_reason: AccountPaymentControlsUndatedPendingReason | null;
   /** How the account's balance automatically withdraws. */
   withdrawal_schedule: AccountWithdrawalScheduleControl;
@@ -729,7 +729,7 @@ export const AccountRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.A
   S.String,
 ) as any as S.Schema<AccountRecommendedActionBlockedCapabilitiesList>;
 
-/** Always optional — never blocking */
+/** Always optional -- never blocking */
 export type AccountRecommendedActionStatus = "optional";
 export const AccountRecommendedActionStatus = S.String;
 
@@ -749,7 +749,7 @@ export interface AccountRecommendedAction {
   impact_score: number | null;
   /** Why this action was recommended, or `null` */
   reasoning: string | null;
-  /** Always optional — never blocking */
+  /** Always optional -- never blocking */
   status: AccountRecommendedActionStatus;
   /** Headline for the recommendation */
   title: string;
@@ -840,11 +840,11 @@ export const AccountRequiredActionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccountRequiredActionsList>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -877,7 +877,7 @@ export interface AccountPartnerReward {
   id: string;
   /** Qualifying USD volume required to earn this reward. */
   qualification_amount: Money;
-  /** Qualifying USD volume for the reward’s activity accumulated by this account since attribution, calculated using the fulfillment rules. */
+  /** Qualifying USD volume for the reward's activity accumulated by this account since attribution, calculated using the fulfillment rules. */
   qualification_progress: Money;
   /** Activity that qualifies this account for the reward. */
   qualification_type: AccountPartnerRewardQualificationType;
@@ -1565,7 +1565,7 @@ export interface Account {
   /** Whether the account shows users in the user directory. */
   show_user_directory: boolean;
   social_links: AccountSocialLinksList;
-  /** Whether the account settles on stablecoin rails — its balance is held on-chain as USDT and paid out over crypto, rather than as fiat cash. */
+  /** Whether the account settles on stablecoin rails -- its balance is held on-chain as USDT and paid out over crypto, rather than as fiat cash. */
   stablecoin_rails: boolean;
   /** Whether the account can operate on Whop: `active` or `suspended`. Computed on `list`, `retrieve`, `me`, and `suspend`; `null` otherwise. */
   status: string | null;
@@ -1597,7 +1597,7 @@ export interface Account {
   use_logo_as_opengraph_image_fallback: boolean;
   /** Account identity verification status for the `individual` (KYC) and `business` (KYB) profiles. Each is `null` until created, otherwise a `status` of `not_started`, `pending`, `manual_review`, `approved`, or `rejected`. */
   verification: unknown;
-  /** Lifetime volume through the account — sales plus transfers received — normalized to USD. Computed only on `list` for callers with `stats:read` on the account; `null` otherwise. */
+  /** Lifetime volume through the account -- sales plus transfers received -- normalized to USD. Computed only on `list` for callers with `stats:read` on the account; `null` otherwise. */
   volume_usd: number | null;
   /** Account primary crypto wallet, or `null` if none has been provisioned. */
   wallet: AccountWallet | null;
@@ -1815,7 +1815,7 @@ export type FormCompanyRequestFoundersItemRolesItem =
   | "director";
 export const FormCompanyRequestFoundersItemRolesItem = S.String;
 
-/** Officer roles held by the member — one member can hold several. Required (at least one role) for every member when `entity_type` is `c_corp`; ignored for LLCs. Across all members every role must be covered; `president`, `secretary` and `treasurer` may each be held by only one member, while `director` may repeat. */
+/** Officer roles held by the member -- one member can hold several. Required (at least one role) for every member when `entity_type` is `c_corp`; ignored for LLCs. Across all members every role must be covered; `president`, `secretary` and `treasurer` may each be held by only one member, while `director` may repeat. */
 export type FormCompanyRequestFoundersItemRolesList = Array<
   FormCompanyRequestFoundersItemRolesItem | (string & {})
 >;
@@ -1837,7 +1837,7 @@ export interface FormCompanyRequestFoundersItem {
   ownership_percentage?: number;
   /** Phone number in E.164 format, for example `+12125550100`. */
   phone: string;
-  /** Officer roles held by the member — one member can hold several. Required (at least one role) for every member when `entity_type` is `c_corp`; ignored for LLCs. Across all members every role must be covered; `president`, `secretary` and `treasurer` may each be held by only one member, while `director` may repeat. */
+  /** Officer roles held by the member -- one member can hold several. Required (at least one role) for every member when `entity_type` is `c_corp`; ignored for LLCs. Across all members every role must be covered; `president`, `secretary` and `treasurer` may each be held by only one member, while `director` may repeat. */
   roles?: FormCompanyRequestFoundersItemRolesList;
   /** The founder's US Social Security Number. Leave empty if the founder is not a US resident. Non-US founders can request expedited EIN processing via the `expedite_ein` option. */
   ssn?: string;
@@ -1859,7 +1859,7 @@ export const FormCompanyRequestFoundersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FormCompanyRequestFoundersItem",
 }) as any as S.Schema<FormCompanyRequestFoundersItem>;
 
-/** The company's founders. Exactly one must be marked `is_primary` — the responsible party for the filing. */
+/** The company's founders. Exactly one must be marked `is_primary` -- the responsible party for the filing. */
 export type FormCompanyRequestFoundersList = Array<FormCompanyRequestFoundersItem>;
 export const FormCompanyRequestFoundersList = /*@__PURE__*/ S.Array(
   FormCompanyRequestFoundersItem,
@@ -1902,7 +1902,7 @@ export interface FormCompanyRequest {
   expedite_ein?: boolean;
   /** Two-letter code of the US state (or `DC`) to form the company in. We recommend `WY` because Wyoming formations are completed the same day. */
   formation_state: FormCompanyRequestFormationState | (string & {});
-  /** The company's founders. Exactly one must be marked `is_primary` — the responsible party for the filing. */
+  /** The company's founders. Exactly one must be marked `is_primary` -- the responsible party for the filing. */
   founders: FormCompanyRequestFoundersList;
   /** Industry group, from the Whop business taxonomy. Valid values are listed on [business types and industries glossary](/api-reference/beta/accounts/account#business-types-and-industries-glossary). */
   industry_group: string;
@@ -2529,20 +2529,20 @@ export const GetAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S.su
   identifier: "GetAccountPreferencesResponseAdsPaymentMethods",
 }) as any as S.Schema<GetAccountPreferencesResponseAdsPaymentMethods>;
 
-/** Where the integration stands. `requires_shop_domain` means no shop domain is configured — set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
+/** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
 export type GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus =
   | "connected"
   | "not_connected"
   | "requires_shop_domain";
 export const GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
 
-/** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer — Shopify, WooCommerce, a custom checkout, or no connected store — by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad — no destination URL changes are needed. */
+/** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
 export interface GetAccountPreferencesResponseAdsTripleWhaleIntegration {
   /** The leading characters of the stored Data-In API key, followed by asterisks. The full key is never returned. `null` when no key is stored. */
   masked_api_key: string | null;
   /** The shop domain spend is reported for, such as `acme.myshopify.com` or a custom domain for a non-Shopify store. This is the explicit `shop_domain` if one was set, otherwise a connected Shopify store's domain. `null` when neither is present. */
   shop_domain: string | null;
-  /** Where the integration stands. `requires_shop_domain` means no shop domain is configured — set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
+  /** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
   status: GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus;
 }
 export const GetAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(() =>
@@ -2615,11 +2615,11 @@ export interface GetAccountPreferencesResponse {
   ads_reporting_currency: string;
   /** IANA timezone (e.g. `America/New_York`) used to interpret campaign start/end times and to bucket reports. Defaults to `America/New_York` until explicitly overridden. */
   ads_scheduling_timezone: string;
-  /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer — Shopify, WooCommerce, a custom checkout, or no connected store — by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad — no destination URL changes are needed. */
+  /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
   ads_triple_whale_integration: GetAccountPreferencesResponseAdsTripleWhaleIntegration;
   /** Whether incoming funds are automatically moved to the account's cards balance. `false` when the account has no cards balance. */
   cards_auto_top_up: boolean;
-  /** Whether Whop Card notifications reach this account's team. `true` by default, including when the account has no cards balance. Set it to `false` to stop every card email and push notification for the account — application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. */
+  /** Whether Whop Card notifications reach this account's team. `true` by default, including when the account has no cards balance. Set it to `false` to stop every card email and push notification for the account -- application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. */
   cards_notifications: boolean;
   /** Whether Whop assembles and files the evidence response when this account's payments are disputed. Off by default; enabling it also opts the account into the success fee charged only on disputes it wins. */
   dispute_fighter_enabled: boolean;
@@ -4670,7 +4670,7 @@ export const UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType = S.Stri
 
 /** Optional second method charged if the primary fails. Any pairing is allowed (two cards, card+balance, balance+card); omit it to run on a single method. Must differ from the primary. */
 export interface UpdateAccountPreferencesRequestAdsPaymentMethodsBackup {
-  /** The funding source ID: a Whop balance (`ldgr_`) for `platform_balance`, or a payment method (`payt_`) for `card`. Optional for `platform_balance` — defaults to the account's default Whop balance. Required for `card`. */
+  /** The funding source ID: a Whop balance (`ldgr_`) for `platform_balance`, or a payment method (`payt_`) for `card`. Optional for `platform_balance` -- defaults to the account's default Whop balance. Required for `card`. */
   id?: string;
   /** The funding source kind. */
   type: UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType | (string & {});
@@ -4691,7 +4691,7 @@ export type UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType =
 export const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType = S.String;
 
 export interface UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary {
-  /** The funding source ID: a Whop balance (`ldgr_`) for `platform_balance`, or a payment method (`payt_`) for `card`. Optional for `platform_balance` — defaults to the account's default Whop balance. Required for `card`. */
+  /** The funding source ID: a Whop balance (`ldgr_`) for `platform_balance`, or a payment method (`payt_`) for `card`. Optional for `platform_balance` -- defaults to the account's default Whop balance. Required for `card`. */
   id?: string;
   /** The funding source kind. */
   type: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType | (string & {});
@@ -4720,11 +4720,11 @@ export const UpdateAccountPreferencesRequestAdsPaymentMethods = /*@__PURE__*/ S.
   identifier: "UpdateAccountPreferencesRequestAdsPaymentMethods",
 }) as any as S.Schema<UpdateAccountPreferencesRequestAdsPaymentMethods>;
 
-/** Connects or disconnects the Triple Whale integration, or changes the shop it reports to. Requires the `ad_campaign:create` scope on your API key. Connecting requires a shop domain to report spend against — either an explicit `shop_domain` (required for any merchant without a connected Shopify store, e.g. WooCommerce, a custom checkout, or a white-label platform's merchant) or a Shopify store connected on the Fulfillment page. */
+/** Connects or disconnects the Triple Whale integration, or changes the shop it reports to. Requires the `ad_campaign:create` scope on your API key. Connecting requires a shop domain to report spend against -- either an explicit `shop_domain` (required for any merchant without a connected Shopify store, e.g. WooCommerce, a custom checkout, or a white-label platform's merchant) or a Shopify store connected on the Fulfillment page. */
 export interface UpdateAccountPreferencesRequestAdsTripleWhaleIntegration {
   /** A Triple Whale Data-In API key with the `Ads: Write` scope, validated against Triple Whale before it is stored. Pass `null` to disconnect. Connecting for the first time backfills the account's existing ad spend. Required unless you are only changing `shop_domain` on an already connected integration, in which case the stored key is reused. */
   api_key?: string | Redacted.Redacted<string> | null;
-  /** The exact shop domain configured in Triple Whale's Settings → Store (for Shopify this is the `.myshopify.com` domain; for a custom sales platform it's whatever domain Triple Whale assigned when the shop was set up there). A leading `https://` and trailing `/` are stripped, and what remains must be a bare hostname with no path or spaces. Validated against Triple Whale — the API key must have access to it — before it is stored. Changing it on a connected integration backfills the account's ad spend onto the new shop. Omit to fall back to a connected Shopify store's domain; there is no way to clear a stored value, only to overwrite it with a new domain. */
+  /** The exact shop domain configured in Triple Whale's Settings -> Store (for Shopify this is the `.myshopify.com` domain; for a custom sales platform it's whatever domain Triple Whale assigned when the shop was set up there). A leading `https://` and trailing `/` are stripped, and what remains must be a bare hostname with no path or spaces. Validated against Triple Whale -- the API key must have access to it -- before it is stored. Changing it on a connected integration backfills the account's ad spend onto the new shop. Omit to fall back to a connected Shopify store's domain; there is no way to clear a stored value, only to overwrite it with a new domain. */
   shop_domain?: string;
 }
 export const UpdateAccountPreferencesRequestAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(
@@ -4757,13 +4757,13 @@ export interface UpdateAccountPreferencesRequest {
   ads_payment_methods?: UpdateAccountPreferencesRequestAdsPaymentMethods;
   /** Lowercase ISO currency code, such as `usd` or `eur`, used to display ad spend and stats. Defaults to `usd`. Requires the `ad_campaign:create` scope on your API key. */
   ads_reporting_currency?: string;
-  /** IANA timezone (e.g. `America/New_York`) used to interpret campaign start/end times and to bucket reports. Cannot be cleared once set — pass a new value to change it. Requires the `ad_campaign:create` scope on your API key. */
+  /** IANA timezone (e.g. `America/New_York`) used to interpret campaign start/end times and to bucket reports. Cannot be cleared once set -- pass a new value to change it. Requires the `ad_campaign:create` scope on your API key. */
   ads_scheduling_timezone?: string;
-  /** Connects or disconnects the Triple Whale integration, or changes the shop it reports to. Requires the `ad_campaign:create` scope on your API key. Connecting requires a shop domain to report spend against — either an explicit `shop_domain` (required for any merchant without a connected Shopify store, e.g. WooCommerce, a custom checkout, or a white-label platform's merchant) or a Shopify store connected on the Fulfillment page. */
+  /** Connects or disconnects the Triple Whale integration, or changes the shop it reports to. Requires the `ad_campaign:create` scope on your API key. Connecting requires a shop domain to report spend against -- either an explicit `shop_domain` (required for any merchant without a connected Shopify store, e.g. WooCommerce, a custom checkout, or a white-label platform's merchant) or a Shopify store connected on the Fulfillment page. */
   ads_triple_whale_integration?: UpdateAccountPreferencesRequestAdsTripleWhaleIntegration;
   /** Whether incoming funds are automatically moved to the account's cards balance. Requires a cards balance on the account and the `payout:account:update` scope on your API key. */
   cards_auto_top_up?: boolean;
-  /** Whether Whop Card notifications reach this account's team. Set it to `false` to stop every card email and push notification for the account — application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. Requires a cards balance on the account and the `payout:account:update` scope on your API key. */
+  /** Whether Whop Card notifications reach this account's team. Set it to `false` to stop every card email and push notification for the account -- application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. Requires a cards balance on the account and the `payout:account:update` scope on your API key. */
   cards_notifications?: boolean;
   /** Whether Whop assembles and files the evidence response when this account's payments are disputed. Off by default; enabling it also opts the account into the success fee charged only on disputes it wins. Requires the `payment:dispute` scope on your API key. */
   dispute_fighter_enabled?: boolean;
@@ -5001,20 +5001,20 @@ export const UpdateAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S
   identifier: "UpdateAccountPreferencesResponseAdsPaymentMethods",
 }) as any as S.Schema<UpdateAccountPreferencesResponseAdsPaymentMethods>;
 
-/** Where the integration stands. `requires_shop_domain` means no shop domain is configured — set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
+/** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
 export type UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus =
   | "connected"
   | "not_connected"
   | "requires_shop_domain";
 export const UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
 
-/** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer — Shopify, WooCommerce, a custom checkout, or no connected store — by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad — no destination URL changes are needed. */
+/** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
 export interface UpdateAccountPreferencesResponseAdsTripleWhaleIntegration {
   /** The leading characters of the stored Data-In API key, followed by asterisks. The full key is never returned. `null` when no key is stored. */
   masked_api_key: string | null;
   /** The shop domain spend is reported for, such as `acme.myshopify.com` or a custom domain for a non-Shopify store. This is the explicit `shop_domain` if one was set, otherwise a connected Shopify store's domain. `null` when neither is present. */
   shop_domain: string | null;
-  /** Where the integration stands. `requires_shop_domain` means no shop domain is configured — set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
+  /** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
   status: UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus;
 }
 export const UpdateAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(
@@ -5088,11 +5088,11 @@ export interface UpdateAccountPreferencesResponse {
   ads_reporting_currency: string;
   /** IANA timezone (e.g. `America/New_York`) used to interpret campaign start/end times and to bucket reports. Defaults to `America/New_York` until explicitly overridden. */
   ads_scheduling_timezone: string;
-  /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer — Shopify, WooCommerce, a custom checkout, or no connected store — by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad — no destination URL changes are needed. */
+  /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
   ads_triple_whale_integration: UpdateAccountPreferencesResponseAdsTripleWhaleIntegration;
   /** Whether incoming funds are automatically moved to the account's cards balance. `false` when the account has no cards balance. */
   cards_auto_top_up: boolean;
-  /** Whether Whop Card notifications reach this account's team. `true` by default, including when the account has no cards balance. Set it to `false` to stop every card email and push notification for the account — application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. */
+  /** Whether Whop Card notifications reach this account's team. `true` by default, including when the account has no cards balance. Set it to `false` to stop every card email and push notification for the account -- application status, verification and action-required alerts, card-ready alerts, declines, large charges, and cashback summaries. Cardholder onboarding invitations still send, because they carry the only link an invited cardholder can onboard with. Requesting a card is rejected while notifications are off, since the request reaches nobody. Cards on personal accounts are unaffected. */
   cards_notifications: boolean;
   /** Whether Whop assembles and files the evidence response when this account's payments are disputed. Off by default; enabling it also opts the account into the success fee charged only on disputes it wins. */
   dispute_fighter_enabled: boolean;
@@ -5313,7 +5313,7 @@ export const transferAccountOwnership: API.OperationMethod<
 }));
 
 export type UpdateAccountError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** Update Account Updates an account. User tokens can update business accounts; Account API keys can update connected accounts. The reserved id `me` — accepted on Retrieve Account — resolves to the requesting account, which an Account API key cannot edit, so updates must name the connected account by its `biz_` id. */
+/** Update Account Updates an account. User tokens can update business accounts; Account API keys can update connected accounts. The reserved id `me` -- accepted on Retrieve Account -- resolves to the requesting account, which an Account API key cannot edit, so updates must name the connected account by its `biz_` id. */
 export const updateAccount: API.OperationMethod<
   UpdateAccountRequest,
   Account,

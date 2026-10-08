@@ -243,7 +243,7 @@ export type CreateSupportChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create support channel [Legacy API — https://docs.whop.com/api-reference] Open a new support channel between a company team member and a customer. Returns the existing channel if one already exists for that user. Required permissions: - `support_chat:create` */
+/** Create support channel [Legacy API -- https://docs.whop.com/api-reference] Open a new support channel between a company team member and a customer. Returns the existing channel if one already exists for that user. Required permissions: - `support_chat:create` */
 export const createSupportChannel: API.OperationMethod<
   CreateSupportChannelRequest,
   SupportChannel,
@@ -263,7 +263,7 @@ export type GetSupportChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve support channel [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing support channel. Required permissions: - `support_chat:read` */
+/** Retrieve support channel [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing support channel. Required permissions: - `support_chat:read` */
 export const getSupportChannel: API.OperationMethod<
   GetSupportChannelRequest,
   SupportChannel,
@@ -283,7 +283,7 @@ export type ListSupportChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List support channels [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of support channels for a specific company, with optional filtering by resolution status and custom sorting. Required permissions: - `support_chat:read` */
+/** List support channels [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of support channels for a specific company, with optional filtering by resolution status and custom sorting. Required permissions: - `support_chat:read` */
 export const listSupportChannel: API.PaginatedOperationMethod<
   ListSupportChannelRequest,
   ListSupportChannelResponse,

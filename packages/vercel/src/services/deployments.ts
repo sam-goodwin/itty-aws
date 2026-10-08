@@ -6458,7 +6458,7 @@ export const CancelDeploymentResponseServicesList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseServicesItem,
 ) as any as S.Schema<CancelDeploymentResponseServicesList>;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CancelDeploymentResponseSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -6629,7 +6629,7 @@ export interface CancelDeploymentResponse {
   services?: CancelDeploymentResponseServicesList;
   /** flag to indicate if the deployment was deleted by retention policy */
   softDeletedByRetention?: boolean;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: CancelDeploymentResponseSource;
   status: CancelDeploymentResponseStatus;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
@@ -13704,7 +13704,7 @@ export const CreateDeploymentResponseBodyCase1ServicesList = /*@__PURE__*/ S.Arr
   CreateDeploymentResponseBodyCase1ServicesItem,
 ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesList>;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CreateDeploymentResponseBodyCase1Source =
   | "api-trigger-git-deploy"
   | "cli"
@@ -13862,7 +13862,7 @@ export interface CreateDeploymentResponseBodyCase1 {
   services?: CreateDeploymentResponseBodyCase1ServicesList;
   /** flag to indicate if the deployment was deleted by retention policy */
   softDeletedByRetention?: boolean;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: CreateDeploymentResponseBodyCase1Source;
   status: CreateDeploymentResponseBodyCase1Status;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
@@ -20377,7 +20377,7 @@ export const GetDeploymentResponseBodyCase1ServicesList = /*@__PURE__*/ S.Array(
   GetDeploymentResponseBodyCase1ServicesItem,
 ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesList>;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetDeploymentResponseBodyCase1Source =
   | "api-trigger-git-deploy"
   | "cli"
@@ -20535,7 +20535,7 @@ export interface GetDeploymentResponseBodyCase1 {
   services?: GetDeploymentResponseBodyCase1ServicesList;
   /** flag to indicate if the deployment was deleted by retention policy */
   softDeletedByRetention?: boolean;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: GetDeploymentResponseBodyCase1Source;
   status: GetDeploymentResponseBodyCase1Status;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
@@ -21567,7 +21567,7 @@ export const GetDeploymentResponseBodyCase2RegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetDeploymentResponseBodyCase2RegionsList>;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetDeploymentResponseBodyCase2Source =
   | "api-trigger-git-deploy"
   | "cli"
@@ -21684,7 +21684,7 @@ export interface GetDeploymentResponseBodyCase2 {
   regions: GetDeploymentResponseBodyCase2RegionsList;
   /** flag to indicate if the deployment was deleted by retention policy */
   softDeletedByRetention?: boolean;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: GetDeploymentResponseBodyCase2Source;
   status: GetDeploymentResponseBodyCase2Status;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
@@ -23272,7 +23272,7 @@ export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRules
     UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem,
   ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList>;
 
-/** Claim rules applied after the resource’s own rules when this deployment mints a resource token. Reserved claims cannot be set. */
+/** Claim rules applied after the resource's own rules when this deployment mints a resource token. Reserved claims cannot be set. */
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1 {
   kind: string;
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
@@ -23390,7 +23390,7 @@ export const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileResponse" }) as any as S.Schema<UploadFileResponse>;
 
 export type CancelDeploymentError = BadRequest | Forbidden | NotFound | VercelOpError;
-/** Cancel a deployment Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success. */
+/** Cancel a deployment Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors -- without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success. */
 export const cancelDeployment: API.OperationMethod<
   CancelDeploymentRequest,
   CancelDeploymentResponse,
@@ -23411,7 +23411,7 @@ export type CreateDeploymentError =
   | NotFound
   | Conflict
   | VercelOpError;
-/** Create a new deployment Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`. */
+/** Create a new deployment Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA -- or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` -> `INITIALIZING` -> `BUILDING` before reaching `READY` or `ERROR`. */
 export const createDeployment: API.OperationMethod<
   CreateDeploymentRequest,
   CreateDeploymentResponse,

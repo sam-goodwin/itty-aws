@@ -11668,7 +11668,7 @@ export type UpdateBuildSourceRequestGitRuntime =
   | "rust";
 export const UpdateBuildSourceRequestGitRuntime = S.String;
 
-/** Region for the build. Honored only when this PATCH performs an image→build transition; rejected on a pure build patch (the cluster is pinned for an existing build), and must match the prior build region when switching back to build after time as an external image. Defaults to "oregon" for first-time builds. */
+/** Region for the build. Honored only when this PATCH performs an image->build transition; rejected on a pure build patch (the cluster is pinned for an existing build), and must match the prior build region when switching back to build after time as an external image. Defaults to "oregon" for first-time builds. */
 export type UpdateBuildSourceRequestGitRegion =
   | "frankfurt"
   | "oregon"
@@ -11688,7 +11688,7 @@ export interface UpdateBuildSourceRequestGit {
   runtime?: UpdateBuildSourceRequestGitRuntime | (string & {});
   /** Optional reference to the registry credential for this build. Omit the field to leave the stored credential unchanged; send an empty string to clear it. */
   registryCredentialId?: string;
-  /** Region for the build. Honored only when this PATCH performs an image→build transition; rejected on a pure build patch (the cluster is pinned for an existing build), and must match the prior build region when switching back to build after time as an external image. Defaults to "oregon" for first-time builds. */
+  /** Region for the build. Honored only when this PATCH performs an image->build transition; rejected on a pure build patch (the cluster is pinned for an existing build), and must match the prior build region when switching back to build after time as an external image. Defaults to "oregon" for first-time builds. */
   region?: UpdateBuildSourceRequestGitRegion | (string & {});
   repoUrl?: string;
   rootDir?: string;
@@ -11710,7 +11710,7 @@ export const UpdateBuildSourceRequestGit = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBuildSourceRequestGit",
 }) as any as S.Schema<UpdateBuildSourceRequestGit>;
 
-/** Patch shape for a build source's image identity. Unset fields are left unchanged on the underlying image reference. ownerId is intentionally omitted — a build source's owner is fixed at creation, and changing the image's owner would amount to a different identity. */
+/** Patch shape for a build source's image identity. Unset fields are left unchanged on the underlying image reference. ownerId is intentionally omitted -- a build source's owner is fixed at creation, and changing the image's owner would amount to a different identity. */
 export interface UpdateBuildSourceRequestImage {
   imageUrl?: string;
   /** Optional reference to the registry credential passed to the image repository to retrieve this image. Omit the field to leave the stored credential unchanged; send an empty string to clear it. */
@@ -11729,7 +11729,7 @@ export interface UpdateBuildSourceRequest {
   buildSourceId: string;
   name?: string;
   git?: UpdateBuildSourceRequestGit;
-  /** Patch shape for a build source's image identity. Unset fields are left unchanged on the underlying image reference. ownerId is intentionally omitted — a build source's owner is fixed at creation, and changing the image's owner would amount to a different identity. */
+  /** Patch shape for a build source's image identity. Unset fields are left unchanged on the underlying image reference. ownerId is intentionally omitted -- a build source's owner is fixed at creation, and changing the image's owner would amount to a different identity. */
   image?: UpdateBuildSourceRequestImage;
 }
 export const UpdateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>

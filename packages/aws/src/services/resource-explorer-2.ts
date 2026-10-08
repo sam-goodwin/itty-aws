@@ -1755,7 +1755,7 @@ export type ListResourcesError =
   | ValidationException
   | CommonErrors;
 /**
- * Returns a list of resources and their details that match the specified criteria. This query must use a view. If you don’t explicitly specify a view, then Resource Explorer uses the default view for the Amazon Web Services Region in which you call this operation.
+ * Returns a list of resources and their details that match the specified criteria. This query must use a view. If you don't explicitly specify a view, then Resource Explorer uses the default view for the Amazon Web Services Region in which you call this operation.
  */
 export const listResources: API.PaginatedOperationMethod<
   ListResourcesInput,

@@ -62,7 +62,7 @@ export const LibEnum = S.String;
 export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
 export const SdkAssessmentSeverityEnum = S.String;
 
-/** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
+/** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner -- one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
 export type SdkAssessmentBannersList = Array<string>;
 export const SdkAssessmentBannersList = /*@__PURE__*/ S.Array(
   S.String,
@@ -154,11 +154,11 @@ export interface SdkAssessment {
   is_old?: boolean;
   /** True when this SDK must be replaced by a supported successor rather than upgraded in place. */
   migration_required?: boolean;
-  /** UI severity badge — 'none' when healthy, 'warning' when outdated, 'danger' when the majority of team SDKs are outdated. * `none` - none * `warning` - warning * `danger` - danger */
+  /** UI severity badge -- 'none' when healthy, 'warning' when outdated, 'danger' when the majority of team SDKs are outdated. * `none` - none * `warning` - warning * `danger` - danger */
   severity?: SdkAssessmentSeverityEnum;
-  /** Per-SDK programmatic summary (used for ranking/filtering). For user-facing copy, prefer releases[].status_reason (badge tooltip) and banners (top-level alert text) — those match the UI exactly. */
+  /** Per-SDK programmatic summary (used for ranking/filtering). For user-facing copy, prefer releases[].status_reason (badge tooltip) and banners (top-level alert text) -- those match the UI exactly. */
   reason?: string;
-  /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
+  /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner -- one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
   banners?: SdkAssessmentBannersList;
   /** Per-version assessment for all versions seen in the last 7 days. */
   releases?: SdkAssessmentReleasesList;
@@ -191,7 +191,7 @@ export const SdkHealthReportSdksList = /*@__PURE__*/ S.Array(
 export interface SdkHealthReport {
   /** 'healthy' when no SDKs need updating, 'needs_attention' otherwise. * `healthy` - healthy * `needs_attention` - needs_attention */
   overall_health?: OverallHealthEnum;
-  /** UI-level status — 'success' when healthy, 'warning' when some SDKs are outdated, 'danger' when the majority are outdated. * `success` - success * `warning` - warning * `danger` - danger */
+  /** UI-level status -- 'success' when healthy, 'warning' when some SDKs are outdated, 'danger' when the majority are outdated. * `success` - success * `warning` - warning * `danger` - danger */
   health?: SdkHealthReportHealthEnum;
   /** Number of SDKs that need updating. */
   needs_updating_count?: number;

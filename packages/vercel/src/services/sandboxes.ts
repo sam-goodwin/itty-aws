@@ -6270,7 +6270,7 @@ export type CreateSandboxesByNameForkV2Error =
   | Conflict
   | UnprocessableEntity
   | VercelOpError;
-/** Fork a named sandbox Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. */
+/** Fork a named sandbox Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and -- unlike the SDK-side fork -- environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. */
 export const createSandboxesByNameForkV2: API.OperationMethod<
   CreateSandboxesByNameForkV2Request,
   CreateSandboxesByNameForkV2Response,
@@ -6292,7 +6292,7 @@ export type CreateSandboxesByNameForkV3Error =
   | Conflict
   | UnprocessableEntity
   | VercelOpError;
-/** Fork a named sandbox Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot (`keepLastSnapshots: null` disables the limit). */
+/** Fork a named sandbox Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and -- unlike the SDK-side fork -- environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot (`keepLastSnapshots: null` disables the limit). */
 export const createSandboxesByNameForkV3: API.OperationMethod<
   CreateSandboxesByNameForkV3Request,
   CreateSandboxesByNameForkV3Response,

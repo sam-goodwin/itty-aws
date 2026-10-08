@@ -876,7 +876,7 @@ export interface ContextCacheContainerPropertiesInput {
   modelName: string;
   /** The AI provider associated with this container. */
   provider: AiProvider | (string & {});
-  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
+  /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
   timeToLive?: number;
 }
 export const ContextCacheContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
@@ -940,7 +940,7 @@ export interface ContextCacheContainerProperties {
   modelName: string;
   /** The AI provider associated with this container. */
   provider: AiProvider;
-  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
+  /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
   timeToLive?: number;
   /** The status of the last operation. */
   provisioningState?: ContextCacheProvisioningState;
@@ -5751,11 +5751,11 @@ export const LastAccessTimeTrackingPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "LastAccessTimeTrackingPolicy",
 }) as any as S.Schema<LastAccessTimeTrackingPolicy>;
 
-/** The properties of a storage account’s Blob service. */
+/** The properties of a storage account's Blob service. */
 export interface BlobServicePropertiesProperties {
   /** Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service. */
   cors?: CorsRules;
-  /** DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions. */
+  /** DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions. */
   defaultServiceVersion?: string;
   /** The blob service properties for blob soft delete. */
   deleteRetentionPolicy?: DeleteRetentionPolicy;
@@ -5800,7 +5800,7 @@ export interface GetBlobServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Blob service. */
+  /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesProperties;
   /** Sku name and tier. */
   sku?: Sku;
@@ -7679,7 +7679,7 @@ export const GetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend((
   identifier: "GetQueueServiceServicePropertiesRequest",
 }) as any as S.Schema<GetQueueServiceServicePropertiesRequest>;
 
-/** The properties of a storage account’s Queue service. */
+/** The properties of a storage account's Queue service. */
 export interface QueueServicePropertiesProperties {
   /** Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service. */
   cors?: CorsRules;
@@ -7701,7 +7701,7 @@ export interface GetQueueServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Queue service. */
+  /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
 export const GetQueueServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7787,7 +7787,7 @@ export interface GetStorageAccountCustomerInitiatedMigrationResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s ongoing or enqueued migration. */
+  /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationProperties;
 }
 export const GetStorageAccountCustomerInitiatedMigrationResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8019,7 +8019,7 @@ export const GetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend((
   identifier: "GetTableServiceServicePropertiesRequest",
 }) as any as S.Schema<GetTableServiceServicePropertiesRequest>;
 
-/** The properties of a storage account’s Table service. */
+/** The properties of a storage account's Table service. */
 export interface TableServicePropertiesProperties {
   /** Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service. */
   cors?: CorsRules;
@@ -8041,7 +8041,7 @@ export interface GetTableServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Table service. */
+  /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
 export const GetTableServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8386,7 +8386,7 @@ export const ListBlobServicesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListBlobServicesRequest" }) as any as S.Schema<ListBlobServicesRequest>;
 
-/** The properties of a storage account’s Blob service. */
+/** The properties of a storage account's Blob service. */
 export interface BlobServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8396,7 +8396,7 @@ export interface BlobServiceProperties {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Blob service. */
+  /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesProperties;
   /** Sku name and tier. */
   sku?: Sku;
@@ -9799,7 +9799,7 @@ export const ListQueueServicesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListQueueServicesRequest" }) as any as S.Schema<ListQueueServicesRequest>;
 
-/** The properties of a storage account’s Queue service. */
+/** The properties of a storage account's Queue service. */
 export interface QueueServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9809,7 +9809,7 @@ export interface QueueServiceProperties {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Queue service. */
+  /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
 export const QueueServiceProperties = /*@__PURE__*/ S.suspend(() =>
@@ -10627,7 +10627,7 @@ export const ListTableServicesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListTableServicesRequest" }) as any as S.Schema<ListTableServicesRequest>;
 
-/** The properties of a storage account’s Table service. */
+/** The properties of a storage account's Table service. */
 export interface TableServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -10637,7 +10637,7 @@ export interface TableServiceProperties {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Table service. */
+  /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
 export const TableServiceProperties = /*@__PURE__*/ S.suspend(() =>
@@ -11565,11 +11565,11 @@ export const RestorePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestorePolicyPropertiesInput",
 }) as any as S.Schema<RestorePolicyPropertiesInput>;
 
-/** The properties of a storage account’s Blob service. */
+/** The properties of a storage account's Blob service. */
 export interface BlobServicePropertiesPropertiesInput {
   /** Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service. */
   cors?: CorsRules;
-  /** DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions. */
+  /** DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions. */
   defaultServiceVersion?: string;
   /** The blob service properties for blob soft delete. */
   deleteRetentionPolicy?: DeleteRetentionPolicy;
@@ -11612,7 +11612,7 @@ export interface SetBlobServiceServicePropertiesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
-  /** The properties of a storage account’s Blob service. */
+  /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesPropertiesInput;
 }
 export const SetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11642,7 +11642,7 @@ export interface SetBlobServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Blob service. */
+  /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesProperties;
   /** Sku name and tier. */
   sku?: Sku;
@@ -11722,7 +11722,7 @@ export interface SetQueueServiceServicePropertiesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
-  /** The properties of a storage account’s Queue service. */
+  /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
 export const SetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11752,7 +11752,7 @@ export interface SetQueueServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Queue service. */
+  /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
 export const SetQueueServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11774,7 +11774,7 @@ export interface SetTableServiceServicePropertiesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
-  /** The properties of a storage account’s Table service. */
+  /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
 export const SetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11804,7 +11804,7 @@ export interface SetTableServiceServicePropertiesResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a storage account’s Table service. */
+  /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
 export const SetTableServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11874,7 +11874,7 @@ export interface StorageAccountsCustomerInitiatedMigrationRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
-  /** The properties of a storage account’s ongoing or enqueued migration. */
+  /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationPropertiesInput;
 }
 export const StorageAccountsCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12487,7 +12487,7 @@ export const UpdateContextCachResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ContextCacheContainerPropertiesUpdate {
   /** Container description. */
   description?: string;
-  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. */
+  /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. */
   timeToLive?: number;
 }
 export const ContextCacheContainerPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
@@ -13852,7 +13852,7 @@ export const GetBlobInventoryPolicy: API.OperationMethod<
 }));
 
 export type GetBlobServiceServicePropertiesError = AzureOpError;
-/** Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Gets the properties of a storage account's Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const GetBlobServiceServiceProperties: API.OperationMethod<
   GetBlobServiceServicePropertiesRequest,
   GetBlobServiceServicePropertiesResponse,
@@ -14092,7 +14092,7 @@ export const GetQueue: API.OperationMethod<
 }));
 
 export type GetQueueServiceServicePropertiesError = AzureOpError;
-/** Gets the properties of a storage account’s Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Gets the properties of a storage account's Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const GetQueueServiceServiceProperties: API.OperationMethod<
   GetQueueServiceServicePropertiesRequest,
   GetQueueServiceServicePropertiesResponse,
@@ -14167,7 +14167,7 @@ export const GetTable: API.OperationMethod<
 }));
 
 export type GetTableServiceServicePropertiesError = AzureOpError;
-/** Gets the properties of a storage account’s Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Gets the properties of a storage account's Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const GetTableServiceServiceProperties: API.OperationMethod<
   GetTableServiceServicePropertiesRequest,
   GetTableServiceServicePropertiesResponse,
@@ -14932,7 +14932,7 @@ export const SetBlobContainerLegalHold: API.OperationMethod<
 }));
 
 export type SetBlobServiceServicePropertiesError = AzureOpError;
-/** Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Sets the properties of a storage account's Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const SetBlobServiceServiceProperties: API.OperationMethod<
   SetBlobServiceServicePropertiesRequest,
   SetBlobServiceServicePropertiesResponse,
@@ -14962,7 +14962,7 @@ export const SetFileServiceServiceProperties: API.OperationMethod<
 }));
 
 export type SetQueueServiceServicePropertiesError = AzureOpError;
-/** Sets the properties of a storage account’s Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Sets the properties of a storage account's Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const SetQueueServiceServiceProperties: API.OperationMethod<
   SetQueueServiceServicePropertiesRequest,
   SetQueueServiceServicePropertiesResponse,
@@ -14977,7 +14977,7 @@ export const SetQueueServiceServiceProperties: API.OperationMethod<
 }));
 
 export type SetTableServiceServicePropertiesError = AzureOpError;
-/** Sets the properties of a storage account’s Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
+/** Sets the properties of a storage account's Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. */
 export const SetTableServiceServiceProperties: API.OperationMethod<
   SetTableServiceServicePropertiesRequest,
   SetTableServiceServicePropertiesResponse,
@@ -15082,7 +15082,7 @@ export const TestBlobAccessPointConnectionTestProposedConnection: API.OperationM
 }));
 
 export type TestConnectorExistingConnectionError = AzureOpError;
-/** This method is used to verify that the connection to the backing data store works. This API is designed to be used for monitoring and debugging purposes. From the caller’s perspective, this method does the following: Calls List on the backing data store, attempting to list up to one blob/object/etc. If the above succeeds, and if a blob/object/etc is found, calls Get on that object, attempting to download one byte. */
+/** This method is used to verify that the connection to the backing data store works. This API is designed to be used for monitoring and debugging purposes. From the caller's perspective, this method does the following: Calls List on the backing data store, attempting to list up to one blob/object/etc. If the above succeeds, and if a blob/object/etc is found, calls Get on that object, attempting to download one byte. */
 export const TestConnectorExistingConnection: API.OperationMethod<
   TestConnectorExistingConnectionRequest,
   TestConnectionResponse,

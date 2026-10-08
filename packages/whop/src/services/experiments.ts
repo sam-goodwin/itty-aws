@@ -37,7 +37,7 @@ export class NotFound
   ) {}
 
 export interface ActivateExperimentRequest {
-  /** The experiment identifier — the `expt_` id or the flag_key handle. */
+  /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
@@ -57,7 +57,7 @@ export const ActivateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivateExperimentRequest",
 }) as any as S.Schema<ActivateExperimentRequest>;
 
-/** Randomization unit — `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
+/** Randomization unit -- `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
 export type ExperimentBucketBy = "user" | "account" | "anonymous";
 export const ExperimentBucketBy = S.String;
 
@@ -87,7 +87,7 @@ export const ExperimentControl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExperimentControl" }) as any as S.Schema<ExperimentControl>;
 
-/** Lifecycle state. `draft` — not yet live; `active` — currently running; `paused` — traffic paused; `ended` — concluded. */
+/** Lifecycle state. `draft` -- not yet live; `active` -- currently running; `paused` -- traffic paused; `ended` -- concluded. */
 export type ExperimentStatus = "draft" | "active" | "paused" | "ended";
 export const ExperimentStatus = S.String;
 
@@ -135,14 +135,14 @@ export const ExperimentTargetingRulesItemConditionsList = /*@__PURE__*/ S.Array(
   ExperimentTargetingRulesItemConditionsItem,
 ) as any as S.Schema<ExperimentTargetingRulesItemConditionsList>;
 
-/** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. */
+/** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
 export type ExperimentTargetingRulesItemType = "include" | "exclude";
 export const ExperimentTargetingRulesItemType = S.String;
 
 export interface ExperimentTargetingRulesItem {
   /** Conditions within this rule, all of which must match. */
   conditions: ExperimentTargetingRulesItemConditionsList;
-  /** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. */
+  /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
   type?: ExperimentTargetingRulesItemType;
 }
 export const ExperimentTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -172,12 +172,12 @@ export const ExperimentVariantsItemRangesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentVariantsItemRangesList>;
 
 export interface ExperimentVariantsItem {
-  /** Treatment identifier. `control` is reserved — it is the implicit remainder. */
+  /** Treatment identifier. `control` is reserved -- it is the implicit remainder. */
   name: string;
   /** Granted bucket ranges (1% units, end-exclusive) recording this arm's allocation history. Server-managed; ranges are only ever appended, which is what keeps assignments permanent. */
   ranges?: ExperimentVariantsItemRangesList;
   related_resource?: ExperimentResourceReference | null;
-  /** Percentage of all users assigned to this treatment, 1–100. All weights together sum to at most 100; the remainder is control. */
+  /** Percentage of all users assigned to this treatment, 1-100. All weights together sum to at most 100; the remainder is control. */
   weight: number;
 }
 export const ExperimentVariantsItem = /*@__PURE__*/ S.suspend(() =>
@@ -200,7 +200,7 @@ export interface Experiment {
   account_id: string;
   /** Assignment hashes UTF-8 seed + subject ID with CRC32 modulo 100 and selects the stored end-exclusive range. */
   assignment_seed: string;
-  /** Randomization unit — `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
+  /** Randomization unit -- `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
   bucket_by?: ExperimentBucketBy | null;
   /** Revision of the serving configuration. Does not change the assignment seed. */
   configuration_revision: number;
@@ -226,14 +226,14 @@ export interface Experiment {
   related_resource: ExperimentResourceReference | null;
   /** When the experiment began collecting data, as an ISO 8601 timestamp. `null` for drafts. */
   started_at?: string | null;
-  /** Lifecycle state. `draft` — not yet live; `active` — currently running; `paused` — traffic paused; `ended` — concluded. */
+  /** Lifecycle state. `draft` -- not yet live; `active` -- currently running; `paused` -- traffic paused; `ended` -- concluded. */
   status: ExperimentStatus;
   /** Rules gating who is in the experiment at all. Conditions within a rule are AND-ed, rules are OR-ed, and `exclude` rules always win. Empty means everyone qualifies. */
   targeting_rules: ExperimentTargetingRulesList;
   updated_at: string | null;
   /** Treatment arms. Users outside every arm's allocation form the implicit `control` group. Weights only ever grow and arms are never removed, so a user moves from control into a treatment at most once. */
   variants: ExperimentVariantsList;
-  /** The treatment that won, set when the experiment was ended. Once set, every evaluation returns this arm to every caller regardless of targeting or allocation, and no further exposures are recorded. `null` means control won — an ended experiment with no winning arm evaluates to `control` for everyone. Always `null` for feature flags, which simply evaluate to disabled once ended. */
+  /** The treatment that won, set when the experiment was ended. Once set, every evaluation returns this arm to every caller regardless of targeting or allocation, and no further exposures are recorded. `null` means control won -- an ended experiment with no winning arm evaluates to `control` for everyone. Always `null` for feature flags, which simply evaluate to disabled once ended. */
   winning_arm?: string | null;
 }
 export const Experiment = /*@__PURE__*/ S.suspend(() =>
@@ -262,14 +262,14 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
 
-/** Randomization unit, and the only identity the assignment is keyed on — evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
+/** Randomization unit, and the only identity the assignment is keyed on -- evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
 export type CreateExperimentRequestBucketBy = "user" | "account" | "anonymous";
 export const CreateExperimentRequestBucketBy = S.String;
 
 export type CreateExperimentRequestControl = ExperimentControl;
 export const CreateExperimentRequestControl = ExperimentControl;
 
-/** Comparison to apply: `any`/`none` — inclusion/exclusion list; `eq`/`neq` — equality; `gt`/`gte`/`lt`/`lte` — numeric range. */
+/** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type CreateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "any"
   | "none"
@@ -281,7 +281,7 @@ export type CreateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "lte";
 export const CreateExperimentRequestTargetingRulesItemConditionsItemOperator = S.String;
 
-/** `user_id` — match on subject user ID; `account_id` — match on account ID (prefixed `biz_`); `property` — match on a named user property (requires `field`). */
+/** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
 export type CreateExperimentRequestTargetingRulesItemConditionsItemType =
   | "user_id"
   | "account_id"
@@ -291,9 +291,9 @@ export const CreateExperimentRequestTargetingRulesItemConditionsItemType = S.Str
 export interface CreateExperimentRequestTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Required when `type` is `property`. */
   field?: string | null;
-  /** Comparison to apply: `any`/`none` — inclusion/exclusion list; `eq`/`neq` — equality; `gt`/`gte`/`lt`/`lte` — numeric range. */
+  /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
   operator: CreateExperimentRequestTargetingRulesItemConditionsItemOperator | (string & {});
-  /** `user_id` — match on subject user ID; `account_id` — match on account ID (prefixed `biz_`); `property` — match on a named user property (requires `field`). */
+  /** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
   type: CreateExperimentRequestTargetingRulesItemConditionsItemType | (string & {});
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
@@ -316,14 +316,14 @@ export const CreateExperimentRequestTargetingRulesItemConditionsList = /*@__PURE
   CreateExperimentRequestTargetingRulesItemConditionsItem,
 ) as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsList>;
 
-/** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
+/** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type CreateExperimentRequestTargetingRulesItemType = "include" | "exclude";
 export const CreateExperimentRequestTargetingRulesItemType = S.String;
 
 export interface CreateExperimentRequestTargetingRulesItem {
   /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
   conditions: CreateExperimentRequestTargetingRulesItemConditionsList;
-  /** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
+  /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: CreateExperimentRequestTargetingRulesItemType | (string & {});
 }
 export const CreateExperimentRequestTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -368,14 +368,14 @@ export const CreateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
 export interface CreateExperimentRequest {
   /** Owning account tag or internal. Required; ownership cannot change. */
   account_id: string;
-  /** Randomization unit, and the only identity the assignment is keyed on — evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
+  /** Randomization unit, and the only identity the assignment is keyed on -- evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
   bucket_by?: CreateExperimentRequestBucketBy | (string & {});
   control?: ExperimentControl;
   /** When `true`, creates a binary feature flag rather than a full experiment. Feature flags expose the same evaluation API but do not collect metric results. Defaults to `false`. */
   feature_flag_only?: boolean;
   /** Developer-chosen handle referenced from code, used in evaluation and results calls. Interchangeable with the returned `expt_` id anywhere the API takes an experiment identifier. */
   flag_key: string;
-  /** Required for full experiments; rejected on feature flags. Structure it as "If we [change] for [cohort], then [measurable behavior] will [increase/decrease], resulting in [business outcome], because [evidence]. Created by [name]." Evidence should be something real — a baseline number, a funnel breakdown — not a guess, and [name] is you, not something to leave blank. */
+  /** Required for full experiments; rejected on feature flags. Structure it as "If we [change] for [cohort], then [measurable behavior] will [increase/decrease], resulting in [business outcome], because [evidence]. Created by [name]." Evidence should be something real -- a baseline number, a funnel breakdown -- not a guess, and [name] is you, not something to leave blank. */
   hypothesis?: string | null;
   /** Human-readable display name. Defaults to `flag_key` when omitted. */
   name?: string;
@@ -404,13 +404,13 @@ export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateExperimentRequest" }) as any as S.Schema<CreateExperimentRequest>;
 
 export interface EndExperimentRequest {
-  /** The experiment identifier — the `expt_` id or the flag_key handle. */
+  /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
   /** What you learned and why you chose this outcome. Required. */
   findings: string;
-  /** The treatment that won. Setting it rolls that arm out: every later evaluation returns it to every caller, ignoring targeting and allocation, and exposures stop being recorded. Omit it when control won — an ended experiment with no winning arm evaluates to `control` for everyone, so ending again without one also reverts a rollout recorded by mistake. Not accepted on feature flags, which evaluate to disabled once ended. */
+  /** The treatment that won. Setting it rolls that arm out: every later evaluation returns it to every caller, ignoring targeting and allocation, and exposures stop being recorded. Omit it when control won -- an ended experiment with no winning arm evaluates to `control` for everyone, so ending again without one also reverts a rollout recorded by mistake. Not accepted on feature flags, which evaluate to disabled once ended. */
   winning_arm?: string | null;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -445,7 +445,7 @@ export interface EvaluateExperimentExposuresRequest {
   subject?: EvaluateExperimentExposuresRequestSubject;
   /** Restricts batch evaluation to this related resource; omitted batches contain only unbound experiments. */
   related_resource?: ExperimentResourceReference;
-  /** Flag or experiment to evaluate — the flag_key handle or the `expt_` id. Omit to return all flags the caller qualifies for. */
+  /** Flag or experiment to evaluate -- the flag_key handle or the `expt_` id. Omit to return all flags the caller qualifies for. */
   flag_key?: string;
   /** Owning account ID or internal. Required when evaluating by flag_key or in a batch; optional for an expt_ ID. */
   account_id?: string;
@@ -517,7 +517,7 @@ export const EvaluateExperimentExposuresResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluateExperimentExposuresResponse>;
 
 export interface GetExperimentRequest {
-  /** The experiment identifier — the `expt_` id or the flag_key handle. */
+  /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
@@ -606,7 +606,7 @@ export const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExperimentsResponse" }) as any as S.Schema<ListExperimentsResponse>;
 
 export interface PauseExperimentRequest {
-  /** The experiment identifier — the `expt_` id or the flag_key handle. */
+  /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
@@ -624,7 +624,7 @@ export const PauseExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateExperimentRequestControl = ExperimentControl;
 export const UpdateExperimentRequestControl = ExperimentControl;
 
-/** Comparison to apply: `any`/`none` — inclusion/exclusion list; `eq`/`neq` — equality; `gt`/`gte`/`lt`/`lte` — numeric range. */
+/** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type UpdateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "any"
   | "none"
@@ -636,7 +636,7 @@ export type UpdateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "lte";
 export const UpdateExperimentRequestTargetingRulesItemConditionsItemOperator = S.String;
 
-/** `user_id` — match on subject user ID; `account_id` — match on account ID (prefixed `biz_`); `property` — match on a named user property (requires `field`). */
+/** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
 export type UpdateExperimentRequestTargetingRulesItemConditionsItemType =
   | "user_id"
   | "account_id"
@@ -646,9 +646,9 @@ export const UpdateExperimentRequestTargetingRulesItemConditionsItemType = S.Str
 export interface UpdateExperimentRequestTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Required when `type` is `property`. */
   field?: string | null;
-  /** Comparison to apply: `any`/`none` — inclusion/exclusion list; `eq`/`neq` — equality; `gt`/`gte`/`lt`/`lte` — numeric range. */
+  /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
   operator: UpdateExperimentRequestTargetingRulesItemConditionsItemOperator | (string & {});
-  /** `user_id` — match on subject user ID; `account_id` — match on account ID (prefixed `biz_`); `property` — match on a named user property (requires `field`). */
+  /** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
   type: UpdateExperimentRequestTargetingRulesItemConditionsItemType | (string & {});
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
@@ -671,14 +671,14 @@ export const UpdateExperimentRequestTargetingRulesItemConditionsList = /*@__PURE
   UpdateExperimentRequestTargetingRulesItemConditionsItem,
 ) as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsList>;
 
-/** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
+/** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type UpdateExperimentRequestTargetingRulesItemType = "include" | "exclude";
 export const UpdateExperimentRequestTargetingRulesItemType = S.String;
 
 export interface UpdateExperimentRequestTargetingRulesItem {
   /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
   conditions: UpdateExperimentRequestTargetingRulesItemConditionsList;
-  /** `include` — users matching this rule qualify; `exclude` — users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
+  /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: UpdateExperimentRequestTargetingRulesItemType | (string & {});
 }
 export const UpdateExperimentRequestTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -721,7 +721,7 @@ export const UpdateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateExperimentRequestVariantsList>;
 
 export interface UpdateExperimentRequest {
-  /** The experiment identifier — the `expt_` id or the flag_key handle. */
+  /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;

@@ -75,7 +75,7 @@ export const NotificationAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationAccount" }) as any as S.Schema<NotificationAccount>;
 
 export interface NotificationExperienceApp {
-  /** Icon image URL. Always present — the default app icon when none is uploaded. */
+  /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   icon_url: string;
   /** App ID, prefixed `app_`. */
   id: string;
@@ -147,7 +147,7 @@ export const NotificationTopicSummary = /*@__PURE__*/ S.suspend(() =>
 export interface Notification {
   /** Account the notification belongs to. `null` when the notification is not associated with an account. */
   account: NotificationAccount | null;
-  /** Image displayed alongside the notification — the sender's avatar, or the default notification image. */
+  /** Image displayed alongside the notification -- the sender's avatar, or the default notification image. */
   attachment_url: string;
   /** The body text of the notification displayed to the user. */
   content: string;
@@ -466,7 +466,7 @@ export const SendNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendNotificationResponse" }) as any as S.Schema<SendNotificationResponse>;
 
 export type GetNotificationError = NotFound | WhopOpError;
-/** Retrieve Notification Retrieves a single notification by id — either an `id` returned by List Notifications, or the ephemeral id delivered with a push/websocket event. Requires a user credential. */
+/** Retrieve Notification Retrieves a single notification by id -- either an `id` returned by List Notifications, or the ephemeral id delivered with a push/websocket event. Requires a user credential. */
 export const getNotification: API.OperationMethod<
   GetNotificationRequest,
   Notification,
@@ -496,7 +496,7 @@ export const listNotificationBadges: API.OperationMethod<
 }));
 
 export type ListNotificationsError = BadRequest | Forbidden | WhopOpError;
-/** List Notifications Lists the authenticated user's notifications, newest first. Requires a user credential — an account API key has no notification feed. Without filters the feed spans every experience the user belongs to plus the teams they are a member of. The `after` cursor is a notification `id` from a previous response; subsequent pages contain older notifications. */
+/** List Notifications Lists the authenticated user's notifications, newest first. Requires a user credential -- an account API key has no notification feed. Without filters the feed spans every experience the user belongs to plus the teams they are a member of. The `after` cursor is a notification `id` from a previous response; subsequent pages contain older notifications. */
 export const listNotifications: API.PaginatedOperationMethod<
   ListNotificationsRequest,
   ListNotificationsResponse,
@@ -523,7 +523,7 @@ export const listNotifications: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListNotificationTopicsError = BadRequest | WhopOpError;
-/** List Notification Topics Lists the platform's visible notification topics — the categories users can set notification preferences on. App-created topics are internal and not returned. */
+/** List Notification Topics Lists the platform's visible notification topics -- the categories users can set notification preferences on. App-created topics are internal and not returned. */
 export const listNotificationTopics: API.PaginatedOperationMethod<
   ListNotificationTopicsRequest,
   ListNotificationTopicsResponse,
@@ -550,7 +550,7 @@ export const listNotificationTopics: API.PaginatedOperationMethod<
 ) as any;
 
 export type ReadMarkNotificationError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
-/** Mark Notifications Read Marks the authenticated user's notifications as read: one experience's (`experience_id`) or everything (`all: true`) — exactly one of the two. Requires a user credential. Responds with the refreshed badge rows for the affected scope. */
+/** Mark Notifications Read Marks the authenticated user's notifications as read: one experience's (`experience_id`) or everything (`all: true`) -- exactly one of the two. Requires a user credential. Responds with the refreshed badge rows for the affected scope. */
 export const readMarkNotification: API.OperationMethod<
   ReadMarkNotificationRequest,
   ReadMarkNotificationResponse,

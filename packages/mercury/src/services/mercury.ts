@@ -834,7 +834,7 @@ export const TransactionMethodData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransactionMethodData" }) as any as S.Schema<TransactionMethodData>;
 
-/** A GL code allocation on a transaction — a GL code name paired with the amount allocated to it. When a transaction is fully categorized, the amounts across all allocations sum to the transaction total. */
+/** A GL code allocation on a transaction -- a GL code name paired with the amount allocated to it. When a transaction is fully categorized, the amounts across all allocations sum to the transaction total. */
 export interface GlAllocation {
   /** The amount allocated to this GL code */
   amount: number;

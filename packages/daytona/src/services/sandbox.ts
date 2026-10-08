@@ -162,9 +162,9 @@ export interface Sandbox2 {
   networkAllowList?: string;
   /** Comma-separated list of allowed domains for the sandbox */
   domainAllowList?: string;
-  /** Outbound proxy URL the sandbox HTTP(S) traffic is routed through. Applied via the HTTP(S)_PROXY environment variables (convenience routing); network-layer enforcement applies only when the sandbox also has a domainAllowList. Only returned on single-sandbox reads — never on list responses. */
+  /** Outbound proxy URL the sandbox HTTP(S) traffic is routed through. Applied via the HTTP(S)_PROXY environment variables (convenience routing); network-layer enforcement applies only when the sandbox also has a domainAllowList. Only returned on single-sandbox reads -- never on list responses. */
   outboundProxyUrl?: string;
-  /** OTel collector endpoint override for this sandbox. When set, sandbox OTel data is sent to this endpoint instead of the default collector and is not available in the Daytona analytics API or dashboard. Only returned on single-sandbox reads — never on list responses. */
+  /** OTel collector endpoint override for this sandbox. When set, sandbox OTel data is sent to this endpoint instead of the default collector and is not available in the Daytona analytics API or dashboard. Only returned on single-sandbox reads -- never on list responses. */
   otelEndpointOverride?: string;
   /** The target environment for the sandbox */
   target: string;
@@ -296,7 +296,7 @@ export const CreateSandboxRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CreateSandboxRequestLabelsMap>;
 
-/** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list — the scheduler tries each in order and pins the sandbox to the first that has capacity. */
+/** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list -- the scheduler tries each in order and pins the sandbox to the first that has capacity. */
 export type CreateSandboxRequestGpuTypeList = Array<GpuType | (string & {})>;
 export const CreateSandboxRequestGpuTypeList = /*@__PURE__*/ S.Array(
   GpuType,
@@ -372,7 +372,7 @@ export interface CreateSandboxRequest {
   cpu?: number;
   /** GPU units allocated to the sandbox */
   gpu?: number;
-  /** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list — the scheduler tries each in order and pins the sandbox to the first that has capacity. */
+  /** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list -- the scheduler tries each in order and pins the sandbox to the first that has capacity. */
   gpuType?: CreateSandboxRequestGpuTypeList;
   /** GPU-only. When true, the sandbox may be instantly terminated without notice to free GPU capacity for an on-demand (non-spot) GPU sandbox. Ignored / rejected when the sandbox requests no GPUs. */
   spot?: boolean;

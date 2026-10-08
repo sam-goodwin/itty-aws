@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   aiGatewayId: "ai_gateway_id",
   aiSearchModel: "ai_search_model",
@@ -474,7 +474,7 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemD
 export interface InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
     | (string & {});
@@ -942,7 +942,7 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem
 export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
     | (string & {});
@@ -1650,7 +1650,7 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBo
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection
     | (string & {});
@@ -2325,7 +2325,7 @@ export interface InstancesCreateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesCreateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
@@ -2371,7 +2371,7 @@ export const InstancesCreateRequestRetrievalOptionsBoostByItemDirection = S.Stri
 export interface InstancesCreateRequestRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesCreateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
 export const InstancesCreateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -2428,13 +2428,13 @@ export const InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptionsSource | (string & {});
@@ -2493,7 +2493,7 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSit
   ) as any as S.Schema<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesCreateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
@@ -2636,7 +2636,7 @@ export interface CreateInstanceRequest {
   customMetadata?: InstancesCreateRequestCustomMetadataList;
   embeddingModel?: string;
   fusionMethod?: InstancesCreateRequestFusionMethod | (string & {});
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod;
@@ -2868,7 +2868,7 @@ export interface InstancesCreateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesCreateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -2918,7 +2918,7 @@ export const InstancesCreateResponseRetrievalOptionsBoostByItemDirection = S.Str
 export interface InstancesCreateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesCreateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesCreateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -2979,13 +2979,13 @@ export const InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource 
 export interface InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -3035,7 +3035,7 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSi
   ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -3164,7 +3164,7 @@ export interface CreateInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: InstancesCreateResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -3358,7 +3358,7 @@ export interface NamespacesCreateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesCreateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -3476,7 +3476,7 @@ export interface NamespacesCreateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesCreateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -3678,7 +3678,7 @@ export interface NamespacesInstancesCreateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
@@ -3726,7 +3726,7 @@ export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirectio
 export interface NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
 export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -3790,13 +3790,13 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptio
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?:
@@ -3848,7 +3848,7 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsS
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
@@ -3976,7 +3976,7 @@ export interface CreateNamespaceInstanceRequest {
   customMetadata?: NamespacesInstancesCreateRequestCustomMetadataList;
   embeddingModel?: string;
   fusionMethod?: NamespacesInstancesCreateRequestFusionMethod | (string & {});
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod;
@@ -4194,7 +4194,7 @@ export interface NamespacesInstancesCreateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -4246,7 +4246,7 @@ export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirecti
 export interface NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -4313,13 +4313,13 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOpti
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -4369,7 +4369,7 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -4506,7 +4506,7 @@ export interface CreateNamespaceInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: NamespacesInstancesCreateResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -4944,7 +4944,7 @@ export interface InstancesDeleteResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -4994,7 +4994,7 @@ export const InstancesDeleteResponseRetrievalOptionsBoostByItemDirection = S.Str
 export interface InstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesDeleteResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -5055,13 +5055,13 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource 
 export interface InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -5111,7 +5111,7 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSi
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -5240,7 +5240,7 @@ export interface DeleteInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: InstancesDeleteResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -5511,7 +5511,7 @@ export interface NamespacesInstancesDeleteResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -5563,7 +5563,7 @@ export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirecti
 export interface NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -5630,13 +5630,13 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOpti
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -5686,7 +5686,7 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -5823,7 +5823,7 @@ export interface DeleteNamespaceInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: NamespacesInstancesDeleteResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -7730,7 +7730,7 @@ export interface NamespacesListResultItemPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesListResultItemPublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -8245,7 +8245,7 @@ export interface InstancesReadResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -8295,7 +8295,7 @@ export const InstancesReadResponseRetrievalOptionsBoostByItemDirection = S.Strin
 export interface InstancesReadResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesReadResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -8356,13 +8356,13 @@ export const InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource = 
 export interface InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -8412,7 +8412,7 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSite
   ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesReadResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -8540,7 +8540,7 @@ export interface ReadInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: InstancesReadResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -8703,7 +8703,7 @@ export interface NamespacesReadResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesReadResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -8926,7 +8926,7 @@ export interface NamespacesInstancesReadResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -8978,7 +8978,7 @@ export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection
 export interface NamespacesInstancesReadResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -9042,13 +9042,13 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOption
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -9098,7 +9098,7 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSp
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -9233,7 +9233,7 @@ export interface ReadNamespaceInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: NamespacesInstancesReadResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -9423,7 +9423,7 @@ export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection 
 export interface InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection | (string & {});
 }
 export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem = /*@__PURE__*/ S.suspend(
@@ -9644,9 +9644,9 @@ export interface SearchInstanceRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   aiSearchOptions?: InstancesSearchRequestAiSearchOptions;
-  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
+  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'...'}, {type:'image_url', image_url:{url:'...'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
   messages?: InstancesSearchRequestMessagesList;
-  /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
+  /** A simple text query string. Alternative to 'messages' -- provide either this or 'messages', not both. */
   query?: string;
 }
 export const SearchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9824,7 +9824,7 @@ export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection
 export interface NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection | (string & {});
 }
 export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem = /*@__PURE__*/ S.suspend(
@@ -10051,9 +10051,9 @@ export interface SearchNamespaceRequest {
   accountId: string;
   name: string;
   aiSearchOptions: NamespacesSearchRequestAiSearchOptions;
-  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
+  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'...'}, {type:'image_url', image_url:{url:'...'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
   messages?: NamespacesSearchRequestMessagesList;
-  /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
+  /** A simple text query string. Alternative to 'messages' -- provide either this or 'messages', not both. */
   query?: string;
 }
 export const SearchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10255,7 +10255,7 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem
 export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection
     | (string & {});
@@ -10503,9 +10503,9 @@ export interface SearchNamespaceInstanceRequest {
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   aiSearchOptions?: NamespacesInstancesSearchRequestAiSearchOptions;
-  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
+  /** OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'...'}, {type:'image_url', image_url:{url:'...'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities. */
   messages?: NamespacesInstancesSearchRequestMessagesList;
-  /** A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
+  /** A simple text query string. Alternative to 'messages' -- provide either this or 'messages', not both. */
   query?: string;
 }
 export const SearchNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11056,7 +11056,7 @@ export interface InstancesUpdateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
@@ -11102,7 +11102,7 @@ export const InstancesUpdateRequestRetrievalOptionsBoostByItemDirection = S.Stri
 export interface InstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesUpdateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
 export const InstancesUpdateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -11159,13 +11159,13 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource | (string & {});
@@ -11213,7 +11213,7 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSit
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
@@ -11535,7 +11535,7 @@ export interface InstancesUpdateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -11585,7 +11585,7 @@ export const InstancesUpdateResponseRetrievalOptionsBoostByItemDirection = S.Str
 export interface InstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const InstancesUpdateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
@@ -11646,13 +11646,13 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource 
 export interface InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -11702,7 +11702,7 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSi
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -11831,7 +11831,7 @@ export interface UpdateInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: InstancesUpdateResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
@@ -11976,7 +11976,7 @@ export interface NamespacesUpdateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -12100,7 +12100,7 @@ export interface NamespacesUpdateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
@@ -12302,7 +12302,7 @@ export interface NamespacesInstancesUpdateRequestPublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
@@ -12350,7 +12350,7 @@ export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirectio
 export interface NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
 export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -12414,13 +12414,13 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptio
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?:
@@ -12472,7 +12472,7 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsS
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
@@ -12822,7 +12822,7 @@ export interface NamespacesInstancesUpdateResponsePublicEndpointParams {
   chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
-  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true. */
+  /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
@@ -12874,7 +12874,7 @@ export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirecti
 export interface NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists. */
   field: string;
-  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
+  /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
 export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
@@ -12941,13 +12941,13 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOpti
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
   /** Maximum number of pages to crawl (1-100000). */
   limit?: number | null;
-  /** Maximum content age in seconds to accept (0–604800). */
+  /** Maximum content age in seconds to accept (0-604800). */
   maxAge?: number | null;
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -12997,7 +12997,7 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
   contentSelector?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
   /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
   includeHeaders?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
@@ -13134,7 +13134,7 @@ export interface UpdateNamespaceInstanceResponse {
   enable?: boolean | null;
   engineVersion?: number | null;
   fusionMethod?: NamespacesInstancesUpdateResponseFusionMethod | null;
-  /** Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
+  /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;

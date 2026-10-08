@@ -916,7 +916,7 @@ export interface IssuesAndPullRequestsRequest {
   page?: number;
   /** Set to `true` to use advanced search. Example: `http://api.github.com/search/issues?q={query}&advanced_search=true` */
   advanced_search?: string;
-  /** The type of search to perform on issues. When not specified, the default is lexical search. - `semantic` — performs a pure semantic (vector) search using embedding-based understanding. - `hybrid` — combines semantic search with lexical search for best results. Semantic and hybrid search require authentication and are rate limited to 10 requests per minute. Only applies to issue searches (`/search/issues`). */
+  /** The type of search to perform on issues. When not specified, the default is lexical search. - `semantic` -- performs a pure semantic (vector) search using embedding-based understanding. - `hybrid` -- combines semantic search with lexical search for best results. Semantic and hybrid search require authentication and are rate limited to 10 requests per minute. Only applies to issue searches (`/search/issues`). */
   search_type?: IssuesAndPullRequestsRequestSearchType | (string & {});
 }
 export const IssuesAndPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>

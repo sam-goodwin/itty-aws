@@ -2258,7 +2258,7 @@ export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   postId?: string;
   /** Required. Identifier of the attachment. */
   attachmentId: string;
-  /** Required. Identifier of the student’s submission. */
+  /** Required. Identifier of the student's submission. */
   submissionId: string;
   /** Required. Identifier of the course. */
   courseId: string;
@@ -2683,7 +2683,7 @@ export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   itemId?: string;
   /** Required. Identifier of the attachment. */
   attachmentId: string;
-  /** Required. Identifier of the student’s submission. */
+  /** Required. Identifier of the student's submission. */
   submissionId: string;
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
@@ -2790,7 +2790,7 @@ export const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(()
 export interface GradingPeriod {
   /** Output only. System generated grading period ID. Read-only. */
   id?: string;
-  /** Required. Title of the grading period. For example, “Semester 1”. */
+  /** Required. Title of the grading period. For example, "Semester 1". */
   title?: string;
   /** Required. Start date, in UTC, of the grading period. Inclusive. */
   startDate?: Classroom_Date;

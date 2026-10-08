@@ -223,7 +223,7 @@ export const BountySubmissionCaptureClipsList = /*@__PURE__*/ S.Array(
   BountyCaptureClip,
 ) as any as S.Schema<BountySubmissionCaptureClipsList>;
 
-/** How the work arrived when it came in through the API in one shot, informational only — read the work from `deliverable_urls`, `files`, and `capture_clips` directly. `null` for submissions whose proof is a livestream recording, including ones that attached links or files on submit. */
+/** How the work arrived when it came in through the API in one shot, informational only -- read the work from `deliverable_urls`, `files`, and `capture_clips` directly. `null` for submissions whose proof is a livestream recording, including ones that attached links or files on submit. */
 export type BountySubmissionDeliverableType = "content_url" | "media" | "data_capture";
 export const BountySubmissionDeliverableType = S.String;
 
@@ -272,7 +272,7 @@ export type BountySubmissionLivestreamFeedRecordingStatus =
 export const BountySubmissionLivestreamFeedRecordingStatus = S.String;
 
 export interface BountySubmissionLivestreamFeed {
-  /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live — a feed with a `started_at` and no `ended_at` is streaming right now. */
+  /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live -- a feed with a `started_at` and no `ended_at` is streaming right now. */
   ended_at: string | null;
   /** Livestream feed ID. */
   id: string;
@@ -301,12 +301,12 @@ export const BountySubmissionLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
   identifier: "BountySubmissionLivestreamFeed",
 }) as any as S.Schema<BountySubmissionLivestreamFeed>;
 
-/** Lifecycle state. `in_progress` submissions are active attempts that have not submitted proof yet; `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. `null` when the attempt ended without proof, taking it out of the public lifecycle — those attempts are absent from every public list and read. */
+/** Lifecycle state. `in_progress` submissions are active attempts that have not submitted proof yet; `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. `null` when the attempt ended without proof, taking it out of the public lifecycle -- those attempts are absent from every public list and read. */
 export type BountySubmissionStatus = "in_progress" | "submitted" | "approved" | "denied";
 export const BountySubmissionStatus = S.String;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -354,7 +354,7 @@ export interface BountySubmission {
   country: string | null;
   /** When the submission was created, as an ISO 8601 timestamp. */
   created_at: string;
-  /** How the work arrived when it came in through the API in one shot, informational only — read the work from `deliverable_urls`, `files`, and `capture_clips` directly. `null` for submissions whose proof is a livestream recording, including ones that attached links or files on submit. */
+  /** How the work arrived when it came in through the API in one shot, informational only -- read the work from `deliverable_urls`, `files`, and `capture_clips` directly. `null` for submissions whose proof is a livestream recording, including ones that attached links or files on submit. */
   deliverable_type: BountySubmissionDeliverableType | null;
   deliverable_urls: BountySubmissionDeliverableUrlsList | null;
   /** Why the submission was denied, when a presentable reason exists. Always `null` unless `status` is `denied`. */
@@ -376,7 +376,7 @@ export interface BountySubmission {
   site: string | null;
   /** Capture metadata: station or position within the site. `null` unless capture metadata was provided. */
   station: string | null;
-  /** Lifecycle state. `in_progress` submissions are active attempts that have not submitted proof yet; `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. `null` when the attempt ended without proof, taking it out of the public lifecycle — those attempts are absent from every public list and read. */
+  /** Lifecycle state. `in_progress` submissions are active attempts that have not submitted proof yet; `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. `null` when the attempt ended without proof, taking it out of the public lifecycle -- those attempts are absent from every public list and read. */
   status: BountySubmissionStatus | null;
   /** When proof was submitted for review, as an ISO 8601 timestamp. `null` while the attempt is in progress. */
   submitted_at: string | null;
@@ -419,7 +419,7 @@ export const BountySubmission = /*@__PURE__*/ S.suspend(() =>
 export interface GetBountySubmissionRequest {
   /** The bounty submission to act on (`btys_` tag). */
   id: string;
-  /** Read the submission as this account (`biz_` tag), scoping the lookup to its bounties rather than the caller's own work. Requires read access to the account. Without it the lookup covers only what the credential owns — the submissions the caller authored plus those on bounties they posted. */
+  /** Read the submission as this account (`biz_` tag), scoping the lookup to its bounties rather than the caller's own work. Requires read access to the account. Without it the lookup covers only what the credential owns -- the submissions the caller authored plus those on bounties they posted. */
   account_id?: string;
 }
 export const GetBountySubmissionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -571,7 +571,7 @@ export const SubmitBountySubmissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitBountySubmissionRequest>;
 
 export type CancelBountySubmissionError = Forbidden | NotFound | WhopOpError;
-/** Cancel Bounty Submission Cancels the caller's own active attempt on a bounty and discards any accumulated capture clips. Only the worker who started the attempt can cancel it — account API keys cannot. */
+/** Cancel Bounty Submission Cancels the caller's own active attempt on a bounty and discards any accumulated capture clips. Only the worker who started the attempt can cancel it -- account API keys cannot. */
 export const cancelBountySubmission: API.OperationMethod<
   CancelBountySubmissionRequest,
   CancelBountySubmissionResponse,
@@ -591,7 +591,7 @@ export type CreateBountySubmissionError =
   | NotFound
   | Conflict
   | WhopOpError;
-/** Create Bounty Submission Creates a submission on a workforce bounty. Include a `deliverable` payload — any combination of links and uploaded files, with at least one of the two — and the submission goes straight to review; create is the only step. For `data_capture` bounties, omit the deliverable: this starts a claimed attempt whose proof accumulates server-side, and the separate submit endpoint sends it to review once complete. Requires a user credential — account API keys cannot author submissions. */
+/** Create Bounty Submission Creates a submission on a workforce bounty. Include a `deliverable` payload -- any combination of links and uploaded files, with at least one of the two -- and the submission goes straight to review; create is the only step. For `data_capture` bounties, omit the deliverable: this starts a claimed attempt whose proof accumulates server-side, and the separate submit endpoint sends it to review once complete. Requires a user credential -- account API keys cannot author submissions. */
 export const createBountySubmission: API.OperationMethod<
   CreateBountySubmissionRequest,
   BountySubmission,
@@ -606,7 +606,7 @@ export const createBountySubmission: API.OperationMethod<
 }));
 
 export type GetBountySubmissionError = NotFound | WhopOpError;
-/** Retrieve Bounty Submission Retrieves one bounty submission the credential can see — one the caller authored, or one on a bounty they posted or their account owns. Reading another member's work on an account's bounty takes `account_id`, the same way the list does. */
+/** Retrieve Bounty Submission Retrieves one bounty submission the credential can see -- one the caller authored, or one on a bounty they posted or their account owns. Reading another member's work on an account's bounty takes `account_id`, the same way the list does. */
 export const getBountySubmission: API.OperationMethod<
   GetBountySubmissionRequest,
   BountySubmission,
@@ -621,7 +621,7 @@ export const getBountySubmission: API.OperationMethod<
 }));
 
 export type ListBountySubmissionsError = BadRequest | Forbidden | WhopOpError;
-/** List Bounty Submissions Lists bounty submissions visible to the credential — for a user token, the submissions they authored plus those on bounties they posted; for an account API key, the submissions on the account's bounties. For the anonymous view of one bounty's reviewed work, use the submissions list under the bounty instead. */
+/** List Bounty Submissions Lists bounty submissions visible to the credential -- for a user token, the submissions they authored plus those on bounties they posted; for an account API key, the submissions on the account's bounties. For the anonymous view of one bounty's reviewed work, use the submissions list under the bounty instead. */
 export const listBountySubmissions: API.PaginatedOperationMethod<
   ListBountySubmissionsRequest,
   ListBountySubmissionsResponse,
@@ -653,7 +653,7 @@ export type SubmitBountySubmissionError =
   | NotFound
   | Conflict
   | WhopOpError;
-/** Submit Bounty Submission Submits a claimed attempt for review. A livestream attempt needs an ended proof stream and can attach an optional `deliverable` — links, files, and a caption in any combination; if the attempt already went to review when its stream ended, the payload attaches to it once, until reviewers start voting. A data capture attempt instead needs enough validated clip time and takes no payload. Only the worker who started the attempt can submit it — account API keys cannot. */
+/** Submit Bounty Submission Submits a claimed attempt for review. A livestream attempt needs an ended proof stream and can attach an optional `deliverable` -- links, files, and a caption in any combination; if the attempt already went to review when its stream ended, the payload attaches to it once, until reviewers start voting. A data capture attempt instead needs enough validated clip time and takes no payload. Only the worker who started the attempt can submit it -- account API keys cannot. */
 export const submitBountySubmission: API.OperationMethod<
   SubmitBountySubmissionRequest,
   BountySubmission,

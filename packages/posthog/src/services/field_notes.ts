@@ -406,7 +406,7 @@ export const UpdateFieldNotesPartialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFieldNotesPartialRequest>;
 
 export type CreateFieldNoteError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const createFieldNote: API.OperationMethod<
   CreateFieldNoteRequest,
   FieldNote,
@@ -421,7 +421,7 @@ export const createFieldNote: API.OperationMethod<
 }));
 
 export type FieldNotesDestroyError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const fieldNotesDestroy: API.OperationMethod<
   FieldNotesDestroyRequest,
   FieldNotesDestroyResponse,
@@ -436,7 +436,7 @@ export const fieldNotesDestroy: API.OperationMethod<
 }));
 
 export type GetFieldNoteError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const getFieldNote: API.OperationMethod<
   GetFieldNoteRequest,
   FieldNote,
@@ -451,7 +451,7 @@ export const getFieldNote: API.OperationMethod<
 }));
 
 export type ListFieldNotesError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const listFieldNotes: API.OperationMethod<
   ListFieldNotesRequest,
   PaginatedFieldNoteList,
@@ -466,7 +466,7 @@ export const listFieldNotes: API.OperationMethod<
 }));
 
 export type UpdateFieldNoteError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const updateFieldNote: API.OperationMethod<
   UpdateFieldNoteRequest,
   FieldNote,
@@ -481,7 +481,7 @@ export const updateFieldNote: API.OperationMethod<
 }));
 
 export type UpdateFieldNotesPartialError = PosthogOpError;
-/** Create, read, update, and resolve toolbar field notes — UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
+/** Create, read, update, and resolve toolbar field notes -- UI feedback a user points at on their own site, surfaced to coding agents over MCP. */
 export const updateFieldNotesPartial: API.OperationMethod<
   UpdateFieldNotesPartialRequest,
   FieldNote,

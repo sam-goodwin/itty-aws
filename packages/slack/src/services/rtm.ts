@@ -116,7 +116,7 @@ export const StartRtmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartRtmResponse" }) as any as S.Schema<StartRtmResponse>;
 
 export type ConnectRtmError = SlackOpError;
-/** Starts a Real Time Messaging session. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `migration_in_progress` — Team is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. See https://docs.slack.dev/reference/methods/rtm.connect */
+/** Starts a Real Time Messaging session. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `migration_in_progress` -- Team is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. See https://docs.slack.dev/reference/methods/rtm.connect */
 export const connectRtm: API.OperationMethod<
   ConnectRtmRequest,
   ConnectRtmResponse,
@@ -131,7 +131,7 @@ export const connectRtm: API.OperationMethod<
 }));
 
 export type StartRtmError = SlackOpError;
-/** Deprecated: Starts a Real Time Messaging session. Use rtm.connect instead. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `method_deprecated` — `rtm.start` is deprecated. Please use `rtm.connect` instead of `rtm.start`. Read https://docs.slack.dev/changelog/2021-10-rtm-start-to-stop for more info. - `migration_in_progress` — Workspace is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. - `rtm_connect_required` — `rtm.start` is deprecated. Please use `rtm.connect` instead of `rtm.start`. Read https://docs.slack.dev/changelog/2021-10-rtm-start-to-stop for more info. See https://docs.slack.dev/reference/methods/rtm.start */
+/** Deprecated: Starts a Real Time Messaging session. Use rtm.connect instead. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `method_deprecated` -- `rtm.start` is deprecated. Please use `rtm.connect` instead of `rtm.start`. Read https://docs.slack.dev/changelog/2021-10-rtm-start-to-stop for more info. - `migration_in_progress` -- Workspace is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. - `rtm_connect_required` -- `rtm.start` is deprecated. Please use `rtm.connect` instead of `rtm.start`. Read https://docs.slack.dev/changelog/2021-10-rtm-start-to-stop for more info. See https://docs.slack.dev/reference/methods/rtm.start */
 export const startRtm: API.OperationMethod<
   StartRtmRequest,
   StartRtmResponse,

@@ -1733,7 +1733,7 @@ export type CreateAssessmentTargetError =
  * Creates a new assessment target using the ARN of the resource group that is generated
  * by CreateResourceGroup. If resourceGroupArn is not specified, all EC2
  * instances in the current AWS account and region are included in the assessment target. If
- * the service-linked role isn’t already registered, this action also creates and
+ * the service-linked role isn't already registered, this action also creates and
  * registers a service-linked role to grant Amazon Inspector access to AWS Services needed to
  * perform security assessments. You can create up to 50 assessment targets per AWS account.
  * You can run up to 500 concurrent agents per AWS account. For more information, see
@@ -1771,7 +1771,7 @@ export type CreateAssessmentTemplateError =
   | CommonErrors;
 /**
  * Creates an assessment template for the assessment target that is specified by the ARN
- * of the assessment target. If the service-linked role isn’t already registered, this action also creates and
+ * of the assessment target. If the service-linked role isn't already registered, this action also creates and
  * registers a service-linked role to grant Amazon Inspector access to AWS Services needed to
  * perform security assessments.
  */

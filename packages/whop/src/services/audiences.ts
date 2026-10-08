@@ -30,7 +30,7 @@ export class Conflict
 export interface AddAudiencePeopleRequest {
   /** Audience ID, prefixed `adaud_`. */
   id: string;
-  /** The new customer CSV — a file id (`file_...`) returned by `POST /files`. Its headers must match the audience's saved column mapping. */
+  /** The new customer CSV -- a file id (`file_...`) returned by `POST /files`. Its headers must match the audience's saved column mapping. */
   file_id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -215,13 +215,13 @@ export type AudienceEngagementRule =
   | AudienceEngagementFacebookPageRule;
 export const AudienceEngagementRule = S.Unknown as any as S.Schema<AudienceEngagementRule>;
 
-/** Exclude anyone matching any exclusion rule. Supply 0–10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
+/** Exclude anyone matching any exclusion rule. Supply 0-10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
 export type AudienceEngagementExcludeList = Array<AudienceEngagementRule>;
 export const AudienceEngagementExcludeList = /*@__PURE__*/ S.Array(
   AudienceEngagementRule,
 ) as any as S.Schema<AudienceEngagementExcludeList>;
 
-/** Match any inclusion rule. Supply 1–10 rules. Video rules must share a retention window and cannot be combined with other sources. */
+/** Match any inclusion rule. Supply 1-10 rules. Video rules must share a retention window and cannot be combined with other sources. */
 export type AudienceEngagementIncludeList = Array<AudienceEngagementRule>;
 export const AudienceEngagementIncludeList = /*@__PURE__*/ S.Array(
   AudienceEngagementRule,
@@ -232,9 +232,9 @@ export type AudienceEngagementPlatform = "meta";
 export const AudienceEngagementPlatform = S.String;
 
 export interface AudienceEngagement {
-  /** Exclude anyone matching any exclusion rule. Supply 0–10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
+  /** Exclude anyone matching any exclusion rule. Supply 0-10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
   exclude: AudienceEngagementExcludeList;
-  /** Match any inclusion rule. Supply 1–10 rules. Video rules must share a retention window and cannot be combined with other sources. */
+  /** Match any inclusion rule. Supply 1-10 rules. Video rules must share a retention window and cannot be combined with other sources. */
   include: AudienceEngagementIncludeList;
   /** Ad platform that maintains membership. */
   platform: AudienceEngagementPlatform;
@@ -329,7 +329,7 @@ export interface Audience {
   source_type: AudienceSourceType;
   /** Current state of audience creation. For engagement audiences, `ready` means the rules were created on Meta; membership may still be populating. `syncing` means Whop is sending matched rows to connected ad accounts. When status is `partial` or `failed`, `error_message` explains what went wrong. */
   status: AudienceStatus;
-  /** Total members detected in the source — CSV rows for uploaded lists, matching people for automatic audiences. Always 0 for lookalikes and engagement audiences. */
+  /** Total members detected in the source -- CSV rows for uploaded lists, matching people for automatic audiences. Always 0 for lookalikes and engagement audiences. */
   total_rows: number;
   /** When the audience was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
@@ -374,7 +374,7 @@ export interface CreateAudienceRequestColumnMapping {
   first_name?: string;
   /** CSV header for last names. */
   last_name?: string;
-  /** CSV header for each customer's lifetime value — a non-negative number, currency symbols allowed. When mapped, Meta creates the audience as value-based, so lookalikes built from it favor people similar to the highest-value customers. */
+  /** CSV header for each customer's lifetime value -- a non-negative number, currency symbols allowed. When mapped, Meta creates the audience as value-based, so lookalikes built from it favor people similar to the highest-value customers. */
   ltv?: string;
   /** CSV header for phone numbers. */
   phone?: string;
@@ -440,17 +440,17 @@ export interface CreateAudienceRequest {
   auto_refresh?: boolean;
   /** CSV audiences only. Maps supported identity fields to CSV column headers. Map at least one of `email` or `phone`. */
   column_mapping?: CreateAudienceRequestColumnMapping;
-  /** Lookalikes only. Number of lookalike audiences to create (1–6). */
+  /** Lookalikes only. Number of lookalike audiences to create (1-6). */
   count?: number;
   /** Rules for membership based on social engagement. Requires a connected social account with advertising access. */
   engagement?: CreateAudienceRequestEngagement;
-  /** CSV audiences only. The uploaded customer CSV — a file id (`file_...`) returned by `POST /files`. */
+  /** CSV audiences only. The uploaded customer CSV -- a file id (`file_...`) returned by `POST /files`. */
   file_id?: string;
-  /** Filter audiences only. The People filters that define membership, keyed exactly as `GET /people` accepts them — for example `{"os": "iOS", "country": "US"}`. Activity dates `event_from` and `event_to` are inclusive and remain fixed on refresh. Use `event_within_days`, `first_seen_within_days` or `last_seen_within_days` for a rolling window. Source values are canonical source paths (`whop:<campaign>:<group>:<ad>`, `ext:<platform>:...`, `referrer:<domain>`, `direct`), exact or with a trailing `:*` wildcard. */
+  /** Filter audiences only. The People filters that define membership, keyed exactly as `GET /people` accepts them -- for example `{"os": "iOS", "country": "US"}`. Activity dates `event_from` and `event_to` are inclusive and remain fixed on refresh. Use `event_within_days`, `first_seen_within_days` or `last_seen_within_days` for a rolling window. Source values are canonical source paths (`whop:<campaign>:<group>:<ad>`, `ext:<platform>:...`, `referrer:<domain>`, `direct`), exact or with a trailing `:*` wildcard. */
   filters?: unknown;
   /** Audience display name. Required for custom audiences; lookalike names are generated from the source audience. */
   name?: string;
-  /** Lookalikes only. Total similarity reach as a whole percent (1–20), sliced evenly across `count` — must be divisible by `count`. For example, 3 audiences at 6% creates 0–2%, 2–4%, and 4–6% bands. */
+  /** Lookalikes only. Total similarity reach as a whole percent (1-20), sliced evenly across `count` -- must be divisible by `count`. For example, 3 audiences at 6% creates 0-2%, 2-4%, and 4-6% bands. */
   percentage?: number;
   /** Lookalikes only. The ready custom audience (`adaud_`) to build from; uploaded and People audiences need at least 100 matched people. Meta validates engagement audience eligibility when creating the lookalike. */
   source_audience_id?: string;
@@ -587,7 +587,7 @@ export const ListAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAudienceRequest {
   /** Audience ID, prefixed `adaud_`. */
   id: string;
-  /** Replaces the People filters that define membership. The whole definition is replaced rather than merged, so send every filter you want to keep — a filter you leave out stops applying. Keys and values are the ones `GET /people` accepts, such as an `os` of `iOS` or a `country` of `US`, and at least one filter is required. Date filters must be rolling windows — `first_seen_within_days` or `last_seen_within_days` — so the audience re-anchors every time it rebuilds; fixed dates such as `first_seen_after` are rejected, as is `audience_id`. An array value holds at most 500 items, and each value at most 10 KB. Only an audience with a `source_type` of `people_filter` and `auto_refresh` of `true` accepts filters: an uploaded list has no filters to replace, and with auto refresh off the audience keeps the people it matched when it was built, so create a new audience instead. */
+  /** Replaces the People filters that define membership. The whole definition is replaced rather than merged, so send every filter you want to keep -- a filter you leave out stops applying. Keys and values are the ones `GET /people` accepts, such as an `os` of `iOS` or a `country` of `US`, and at least one filter is required. Date filters must be rolling windows -- `first_seen_within_days` or `last_seen_within_days` -- so the audience re-anchors every time it rebuilds; fixed dates such as `first_seen_after` are rejected, as is `audience_id`. An array value holds at most 500 items, and each value at most 10 KB. Only an audience with a `source_type` of `people_filter` and `auto_refresh` of `true` accepts filters: an uploaded list has no filters to replace, and with auto refresh off the audience keeps the people it matched when it was built, so create a new audience instead. */
   filters?: unknown;
   /** New audience display name. A blank value is ignored rather than clearing the name. */
   name?: string;

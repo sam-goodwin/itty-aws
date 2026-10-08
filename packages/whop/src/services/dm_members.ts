@@ -218,7 +218,7 @@ export type CreateDmMemberError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create dm member [Legacy API — https://docs.whop.com/api-reference] Add a new user to an existing DM channel. Only an admin of the channel can add members. Required permissions (one of): - `dms:message:manage` - `support_chat:message:create` */
+/** Create dm member [Legacy API -- https://docs.whop.com/api-reference] Add a new user to an existing DM channel. Only an admin of the channel can add members. Required permissions (one of): - `dms:message:manage` - `support_chat:message:create` */
 export const createDmMember: API.OperationMethod<
   CreateDmMemberRequest,
   DmMember,
@@ -238,7 +238,7 @@ export type DeleteDmMemberError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete dm member [Legacy API — https://docs.whop.com/api-reference] Remove a user from a DM channel. An admin can remove any member, and a member can remove themselves. Required permissions (one of): - `dms:read` - `support_chat:read` */
+/** Delete dm member [Legacy API -- https://docs.whop.com/api-reference] Remove a user from a DM channel. An admin can remove any member, and a member can remove themselves. Required permissions (one of): - `dms:read` - `support_chat:read` */
 export const deleteDmMember: API.OperationMethod<
   DeleteDmMemberRequest,
   DeleteDmMemberResponse,
@@ -258,7 +258,7 @@ export type GetDmMemberError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve dm member [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing DM member. Required permissions (one of): - `dms:read` - `support_chat:read` */
+/** Retrieve dm member [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing DM member. Required permissions (one of): - `dms:read` - `support_chat:read` */
 export const getDmMember: API.OperationMethod<
   GetDmMemberRequest,
   DmMember,
@@ -278,7 +278,7 @@ export type ListDmMemberError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List dm members [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of members in a specific DM channel, sorted by the date they were added. Required permissions (one of): - `dms:read` - `support_chat:read` */
+/** List dm members [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of members in a specific DM channel, sorted by the date they were added. Required permissions (one of): - `dms:read` - `support_chat:read` */
 export const listDmMember: API.PaginatedOperationMethod<
   ListDmMemberRequest,
   ListDmMemberResponse,
@@ -310,7 +310,7 @@ export type UpdateDmMemberError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update dm member [Legacy API — https://docs.whop.com/api-reference] Update a DM channel member's settings, such as their notification preferences or membership status. Required permissions (one of): - `dms:read` - `support_chat:read` */
+/** Update dm member [Legacy API -- https://docs.whop.com/api-reference] Update a DM channel member's settings, such as their notification preferences or membership status. Required permissions (one of): - `dms:read` - `support_chat:read` */
 export const updateDmMember: API.OperationMethod<
   UpdateDmMemberRequest,
   DmMember,

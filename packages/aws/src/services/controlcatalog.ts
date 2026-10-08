@@ -592,7 +592,7 @@ export type ListCommonControlsError =
 /**
  * Returns a paginated list of common controls from the Amazon Web Services Control Catalog.
  *
- * You can apply an optional filter to see common controls that have a specific objective. If you don’t provide a filter, the operation returns all common controls.
+ * You can apply an optional filter to see common controls that have a specific objective. If you don't provide a filter, the operation returns all common controls.
  */
 export const listCommonControls: API.PaginatedOperationMethod<
   ListCommonControlsRequest,
@@ -734,7 +734,7 @@ export type ListObjectivesError =
 /**
  * Returns a paginated list of objectives from the Control Catalog.
  *
- * You can apply an optional filter to see the objectives that belong to a specific domain. If you don’t provide a filter, the operation returns all objectives.
+ * You can apply an optional filter to see the objectives that belong to a specific domain. If you don't provide a filter, the operation returns all objectives.
  */
 export const listObjectives: API.PaginatedOperationMethod<
   ListObjectivesRequest,

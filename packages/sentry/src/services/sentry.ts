@@ -17037,7 +17037,7 @@ export interface GetProjectEventAttachmentRequest {
   event_id: string;
   /** The numeric ID of the attachment, as returned from the attachments list endpoint. */
   attachment_id: string;
-  /** If this parameter is present, the response will be a binary file download instead of JSON metadata. The value does not matter — any value (including empty) triggers the download. Depending on where the attachment is stored, the response may be a redirect to the storage service, so clients must follow redirects. */
+  /** If this parameter is present, the response will be a binary file download instead of JSON metadata. The value does not matter -- any value (including empty) triggers the download. Depending on where the attachment is stored, the response may be a redirect to the storage service, so clients must follow redirects. */
   download?: string;
 }
 export const GetProjectEventAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -20706,7 +20706,7 @@ export const ListOrganizationEventsResponseMetaIngestion = /*@__PURE__*/ S.suspe
   identifier: "ListOrganizationEventsResponseMetaIngestion",
 }) as any as S.Schema<ListOrganizationEventsResponseMetaIngestion>;
 
-/** Meta envelope emitted by `handle_results_with_meta` and the empty-projects short-circuit. Every key is optional because the path that emits it depends on flags (`standard_meta`, debug, dataset) — the no-projects path only carries `tips`, the standard path carries everything below. */
+/** Meta envelope emitted by `handle_results_with_meta` and the empty-projects short-circuit. Every key is optional because the path that emits it depends on flags (`standard_meta`, debug, dataset) -- the no-projects path only carries `tips`, the standard path carries everything below. */
 export interface ListOrganizationEventsResponseMeta {
   fields?: ListOrganizationEventsResponseMetaFieldsMap;
   units?: ListOrganizationEventsResponseMetaUnitsMap;
@@ -20745,7 +20745,7 @@ export const ListOrganizationEventsResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListOrganizationEventsResponse {
   data: ListOrganizationEventsResponseDataList;
-  /** Meta envelope emitted by `handle_results_with_meta` and the empty-projects short-circuit. Every key is optional because the path that emits it depends on flags (`standard_meta`, debug, dataset) — the no-projects path only carries `tips`, the standard path carries everything below. */
+  /** Meta envelope emitted by `handle_results_with_meta` and the empty-projects short-circuit. Every key is optional because the path that emits it depends on flags (`standard_meta`, debug, dataset) -- the no-projects path only carries `tips`, the standard path carries everything below. */
   meta: ListOrganizationEventsResponseMeta;
 }
 export const ListOrganizationEventsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -22166,7 +22166,7 @@ export interface ListOrganizationIssueIntegrationsRequest {
   issue_id: string;
   /** A pointer to the last object fetched and its sort order; used to retrieve the next or previous results. */
   cursor?: string;
-  /** The maximum number of integrations to return per page (1–100). */
+  /** The maximum number of integrations to return per page (1-100). */
   per_page?: number;
 }
 export const ListOrganizationIssueIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -26419,7 +26419,7 @@ export interface ListOrganizationReposRequest {
   expand?: ListOrganizationReposRequestExpandList;
   /** A pointer to the last object fetched and its sort order; used to retrieve the next or previous results. */
   cursor?: string;
-  /** The maximum number of repositories to return per page (1–100). */
+  /** The maximum number of repositories to return per page (1-100). */
   per_page?: number;
 }
 export const ListOrganizationReposRequest = /*@__PURE__*/ S.suspend(() =>

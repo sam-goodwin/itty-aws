@@ -757,7 +757,7 @@ export const UpdateCompanyRequestSocialLinksItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCompanyRequestSocialLinksItem",
 }) as any as S.Schema<UpdateCompanyRequestSocialLinksItem>;
 
-/** The social media links to display on the company's store page. Pass the full list of desired social links — any existing links not included will be removed. */
+/** The social media links to display on the company's store page. Pass the full list of desired social links -- any existing links not included will be removed. */
 export type UpdateCompanyRequestSocialLinksList = Array<UpdateCompanyRequestSocialLinksItem>;
 export const UpdateCompanyRequestSocialLinksList = /*@__PURE__*/ S.Array(
   UpdateCompanyRequestSocialLinksItem,
@@ -782,7 +782,7 @@ export interface UpdateCompanyRequest {
   route?: string | null;
   /** Whether Whop sends transactional emails (receipts, renewals, cancelations) to customers on behalf of this company. */
   send_customer_emails?: boolean | null;
-  /** The social media links to display on the company's store page. Pass the full list of desired social links — any existing links not included will be removed. */
+  /** The social media links to display on the company's store page. Pass the full list of desired social links -- any existing links not included will be removed. */
   social_links?: UpdateCompanyRequestSocialLinksList | null;
   /** The target audience for this company (e.g., 'beginner day traders aged 18-25 looking to learn options'). */
   target_audience?: string | null;
@@ -812,7 +812,7 @@ export type CreateApiKeyCompanyError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create child company API key [Legacy API — https://docs.whop.com/api-reference] Create an API key for a connected account (child company) owned by a parent company. */
+/** Create child company API key [Legacy API -- https://docs.whop.com/api-reference] Create an API key for a connected account (child company) owned by a parent company. */
 export const createApiKeyCompany: API.OperationMethod<
   CreateApiKeyCompanyRequest,
   CreateApiKeyCompanyResponse,
@@ -832,7 +832,7 @@ export type CreateCompanyError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create company [Legacy API — https://docs.whop.com/api-reference] Create a new company. Pass parent_company_id to create a connected account under a platform, or omit it to create a company for the current user. Required permissions: - `company:create` - `company:basic:read` */
+/** Create company [Legacy API -- https://docs.whop.com/api-reference] Create a new company. Pass parent_company_id to create a connected account under a platform, or omit it to create a company for the current user. Required permissions: - `company:create` - `company:basic:read` */
 export const createCompany: API.OperationMethod<
   CreateCompanyRequest,
   Company,
@@ -847,7 +847,7 @@ export const createCompany: API.OperationMethod<
 }));
 
 export type GetCompanyError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve company [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing company. Required permissions: - `company:basic:read` */
+/** Retrieve company [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing company. Required permissions: - `company:basic:read` */
 export const getCompany: API.OperationMethod<
   GetCompanyRequest,
   Company,
@@ -867,7 +867,7 @@ export type ListCompanyError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List companies [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of companies. When parent_company_id is provided, lists connected accounts under that platform. When omitted, lists companies the current user has access to. Required permissions: - `company:basic:read` */
+/** List companies [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of companies. When parent_company_id is provided, lists connected accounts under that platform. When omitted, lists companies the current user has access to. Required permissions: - `company:basic:read` */
 export const listCompany: API.PaginatedOperationMethod<
   ListCompanyRequest,
   ListCompanyResponse,
@@ -899,7 +899,7 @@ export type UpdateCompanyError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update company [Legacy API — https://docs.whop.com/api-reference] Update a company's title, description, logo, and other settings. Required permissions: - `company:update` - `company:basic:read` */
+/** Update company [Legacy API -- https://docs.whop.com/api-reference] Update a company's title, description, logo, and other settings. Required permissions: - `company:update` - `company:basic:read` */
 export const updateCompany: API.OperationMethod<
   UpdateCompanyRequest,
   Company,

@@ -99,7 +99,7 @@ export interface CreateOauthGrantRequest {
   consent_shown?: boolean;
   /** OIDC nonce, echoed into the resulting ID token. Required when `requested_scopes` includes `openid`. */
   nonce?: string;
-  /** Where to send the user once they have consented. Must match one of the app's registered redirect URIs exactly — it is compared as a string, not normalized. */
+  /** Where to send the user once they have consented. Must match one of the app's registered redirect URIs exactly -- it is compared as a string, not normalized. */
   redirect_uri: string;
   /** The permissions the app is asking for, for example `member:basic:read`. `GET /api_keys/permissions` names and describes each one. Granting adds to whatever the user already granted this app rather than replacing it. */
   requested_scopes: CreateOauthGrantRequestRequestedScopesList;
@@ -142,9 +142,9 @@ export interface OauthGrant {
   created_at: string;
   /** Grant ID, prefixed `oag_`. */
   id: string;
-  /** Where to send the user to finish the flow: the `redirect_uri` you supplied with the authorization `code` appended, and `state` when you supplied one. Its scheme, host, port, and path come back exactly as sent — never re-cased or re-encoded — because the client matches them against its registered URI. Returned only once, on create: the code is single-use and expires 10 minutes after it is issued, so redirect immediately. */
+  /** Where to send the user to finish the flow: the `redirect_uri` you supplied with the authorization `code` appended, and `state` when you supplied one. Its scheme, host, port, and path come back exactly as sent -- never re-cased or re-encoded -- because the client matches them against its registered URI. Returned only once, on create: the code is single-use and expires 10 minutes after it is issued, so redirect immediately. */
   redirect_url?: string;
-  /** When the grant was revoked, as an ISO 8601 timestamp, or `null` while it is still in force. A revoked grant authorizes nothing — treat its `scopes` as no longer granted. */
+  /** When the grant was revoked, as an ISO 8601 timestamp, or `null` while it is still in force. A revoked grant authorizes nothing -- treat its `scopes` as no longer granted. */
   revoked_at: string | null;
   scopes: OauthGrantScopesList;
 }
@@ -559,7 +559,7 @@ export const UserEarnings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserEarnings" }) as any as S.Schema<UserEarnings>;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -628,7 +628,7 @@ export const SocialAccountScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SocialAccountScopesList>;
 
 export interface SocialAccount {
-  /** Why this social account currently can't be used for advertising — a failed share or a Meta-side restriction. Null when the account is healthy. */
+  /** Why this social account currently can't be used for advertising -- a failed share or a Meta-side restriction. Null when the account is healthy. */
   error: string | null;
   /** The platform-specific ID for this social account. */
   external_id: string | null;
@@ -691,11 +691,11 @@ export const UserStaffAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserStaffAccess" }) as any as S.Schema<UserStaffAccess>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -1430,7 +1430,7 @@ export const UserRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.Arra
   S.String,
 ) as any as S.Schema<UserRecommendedActionBlockedCapabilitiesList>;
 
-/** Always optional — never blocking */
+/** Always optional -- never blocking */
 export type UserRecommendedActionStatus = "optional";
 export const UserRecommendedActionStatus = S.String;
 
@@ -1454,7 +1454,7 @@ export interface UserRecommendedAction {
   impact_score: number | null;
   /** Why this action was recommended, or `null` */
   reasoning: string | null;
-  /** Always optional — never blocking */
+  /** Always optional -- never blocking */
   status: UserRecommendedActionStatus;
   /** Headline for the recommendation */
   title: string;
@@ -1692,7 +1692,7 @@ export interface UpdateUserPreferencesRequest {
   bounty_worker_onboarding_dismissed?: boolean;
   /** Whether investigation mode is enabled for the user. Only meaningful for staff users with investigation access. */
   investigation_enabled?: boolean;
-  /** Records the user's acceptance of Whop's terms and policies. Only `true` is accepted — the server stamps `terms_accepted_at` and acceptance cannot be withdrawn here. */
+  /** Records the user's acceptance of Whop's terms and policies. Only `true` is accepted -- the server stamps `terms_accepted_at` and acceptance cannot be withdrawn here. */
   terms_accepted?: boolean;
 }
 export const UpdateUserPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1721,7 +1721,7 @@ export const checkUserAccess: API.OperationMethod<
 }));
 
 export type CreateOauthGrantError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
-/** Authorize an App Completes the OAuth authorization step for the authenticated user: records their consent for the scopes an app asked for and mints the authorization code to hand back to it. Returns the grant, plus a `redirect_url` carrying that code — the one and only time it is returned. Exchange the code at `POST /oauth/token` with the verifier for `code_challenge`. Requires a user session, because consent has to come from the account holder: an API key or an OAuth token is refused, so an app can never authorize itself. Send an `Idempotency-Key` to make a retry safe — a replay returns the original `redirect_url` and its code rather than issuing a second one. */
+/** Authorize an App Completes the OAuth authorization step for the authenticated user: records their consent for the scopes an app asked for and mints the authorization code to hand back to it. Returns the grant, plus a `redirect_url` carrying that code -- the one and only time it is returned. Exchange the code at `POST /oauth/token` with the verifier for `code_challenge`. Requires a user session, because consent has to come from the account holder: an API key or an OAuth token is refused, so an app can never authorize itself. Send an `Idempotency-Key` to make a retry safe -- a replay returns the original `redirect_url` and its code rather than issuing a second one. */
 export const createOauthGrant: API.OperationMethod<
   CreateOauthGrantRequest,
   OauthGrant,
@@ -1756,7 +1756,7 @@ export type CreatePasskeyChallengeError =
   | NotFound
   | Conflict
   | WhopOpError;
-/** Create Challenge Mints the challenge a browser needs to run a WebAuthn ceremony against the authenticated user's own passkeys. A `registration` challenge enrolls a new passkey; a `deletion` challenge is bound to the one passkey named by `passkey_id` and proves the user still holds it. Challenges are single-use and expire 5 minutes after they are issued, so send a fresh `Idempotency-Key` per ceremony — a replayed key returns the original challenge, which may already have expired. Requires a user session. */
+/** Create Challenge Mints the challenge a browser needs to run a WebAuthn ceremony against the authenticated user's own passkeys. A `registration` challenge enrolls a new passkey; a `deletion` challenge is bound to the one passkey named by `passkey_id` and proves the user still holds it. Challenges are single-use and expire 5 minutes after they are issued, so send a fresh `Idempotency-Key` per ceremony -- a replayed key returns the original challenge, which may already have expired. Requires a user session. */
 export const createPasskeyChallenge: API.OperationMethod<
   CreatePasskeyChallengeRequest,
   CreatePasskeyChallengeResponse,
@@ -1771,7 +1771,7 @@ export const createPasskeyChallenge: API.OperationMethod<
 }));
 
 export type DeletePasskeyError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** Delete Deletes one of the authenticated user's own passkeys. The request body carries a WebAuthn assertion from the passkey being deleted, so possession of the credential is proven before it is removed: mint a `deletion` challenge for it first, run the ceremony with that passkey, and send the result here. Deleting the user's last passkey is allowed — their other step-up factors remain. Requires a user session. */
+/** Delete Deletes one of the authenticated user's own passkeys. The request body carries a WebAuthn assertion from the passkey being deleted, so possession of the credential is proven before it is removed: mint a `deletion` challenge for it first, run the ceremony with that passkey, and send the result here. Deleting the user's last passkey is allowed -- their other step-up factors remain. Requires a user session. */
 export const deletePasskey: API.OperationMethod<
   DeletePasskeyRequest,
   DeletePasskeyResponse,
@@ -1786,7 +1786,7 @@ export const deletePasskey: API.OperationMethod<
 }));
 
 export type GetUserError = NotFound | WhopOpError;
-/** Retrieve User Retrieves a user by `user_` tag or username, or the authenticated user with the reserved id `me`. Profiles include linked social accounts — reading your own profile returns every linked account, other profiles only what is public on Whop (the primary Discord and the X account). The self-only fields are populated only when the id is `me`: `email` (email-read scope), `staff` (Whop staff only, staff-read scope), `balance` and `earnings_usd` (balance-read scope), and the opt-in `balance_history`. They are always `null` when addressing a user by tag or username. */
+/** Retrieve User Retrieves a user by `user_` tag or username, or the authenticated user with the reserved id `me`. Profiles include linked social accounts -- reading your own profile returns every linked account, other profiles only what is public on Whop (the primary Discord and the X account). The self-only fields are populated only when the id is `me`: `email` (email-read scope), `staff` (Whop staff only, staff-read scope), `balance` and `earnings_usd` (balance-read scope), and the opt-in `balance_history`. They are always `null` when addressing a user by tag or username. */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetUserRequest,
@@ -1797,7 +1797,7 @@ export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, Wh
   }));
 
 export type GetUserPreferencesError = WhopOpError;
-/** Retrieve Retrieves the authenticated user's settings document. Addressed only as `me` — the document always belongs to the session user. */
+/** Retrieve Retrieves the authenticated user's settings document. Addressed only as `me` -- the document always belongs to the session user. */
 export const getUserPreferences: API.OperationMethod<
   GetUserPreferencesRequest,
   UserPreferences,
@@ -1812,7 +1812,7 @@ export const getUserPreferences: API.OperationMethod<
 }));
 
 export type ListOauthGrantsError = BadRequest | Forbidden | WhopOpError;
-/** List OAuth Grants Lists the authenticated user's own OAuth grants — one per app they have authorized, per account they authorized it for. The list is always the caller's own; there is no parameter for reading another user's grants. Requires a user session: an API key or an OAuth token is refused, so an app can never enumerate the other apps a user has authorized. */
+/** List OAuth Grants Lists the authenticated user's own OAuth grants -- one per app they have authorized, per account they authorized it for. The list is always the caller's own; there is no parameter for reading another user's grants. Requires a user session: an API key or an OAuth token is refused, so an app can never enumerate the other apps a user has authorized. */
 export const listOauthGrants: API.PaginatedOperationMethod<
   ListOauthGrantsRequest,
   ListOauthGrantsResponse,
@@ -1866,7 +1866,7 @@ export const listPasskeys: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListUserNotificationExperiencePreferencesError = WhopOpError;
-/** List Experiences Lists the authenticated user's per-experience notification levels. Experiences the user never set a level for are omitted — their effective level is `all`. */
+/** List Experiences Lists the authenticated user's per-experience notification levels. Experiences the user never set a level for are omitted -- their effective level is `all`. */
 export const listUserNotificationExperiencePreferences: API.PaginatedOperationMethod<
   ListUserNotificationExperiencePreferencesRequest,
   ListUserNotificationExperiencePreferencesResponse,
@@ -1962,7 +1962,7 @@ export const listUsers: API.PaginatedOperationMethod<
 ) as any;
 
 export type SetUserNotificationPreferencesError = BadRequest | NotFound | WhopOpError;
-/** Set Sets the authenticated user's notification preferences. Each preference is addressed by `scope`, not by id, so a scope read back from either list endpoint can be sent straight here. A scope naming an experience with no topic sets that experience's level, and accepts all three levels. Any other scope sets a topic override, which is binary — `all` or `nothing`. A topic override with no `channel` applies to every delivery channel. `level: null` clears the preference. Preferences are stored as overrides, so clearing one means the scope inherits its default again rather than being switched off. The batch is applied in one transaction: if any entry is rejected, none are written. Experience levels are applied before topic overrides, because setting a level replaces every topic preference for that experience — so an override sent alongside a level wins. The response reports what each scope now resolves to, in the order the entries were sent. */
+/** Set Sets the authenticated user's notification preferences. Each preference is addressed by `scope`, not by id, so a scope read back from either list endpoint can be sent straight here. A scope naming an experience with no topic sets that experience's level, and accepts all three levels. Any other scope sets a topic override, which is binary -- `all` or `nothing`. A topic override with no `channel` applies to every delivery channel. `level: null` clears the preference. Preferences are stored as overrides, so clearing one means the scope inherits its default again rather than being switched off. The batch is applied in one transaction: if any entry is rejected, none are written. Experience levels are applied before topic overrides, because setting a level replaces every topic preference for that experience -- so an override sent alongside a level wins. The response reports what each scope now resolves to, in the order the entries were sent. */
 export const setUserNotificationPreferences: API.OperationMethod<
   SetUserNotificationPreferencesRequest,
   SetUserNotificationPreferencesResponse,

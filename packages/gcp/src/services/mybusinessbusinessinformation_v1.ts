@@ -1283,7 +1283,7 @@ export const PatchLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SearchChainsRequest {
   /** The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500. */
   pageSize?: number;
-  /** Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "沃尔玛" */
+  /** Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "U+6C83U+5C14U+739B" */
   chainName?: string;
 }
 export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>

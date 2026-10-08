@@ -396,7 +396,7 @@ export interface ListFilesResponseBodyItem {
   /** Not defined for directories */
   xetHash?: string;
   mtime?: string;
-  /** Sub-millisecond remainder of mtime, in nanoseconds (0–999_999) */
+  /** Sub-millisecond remainder of mtime, in nanoseconds (0-999_999) */
   mtimeNanos?: number;
   uploadedAt: string;
   contentType?: string;
@@ -568,7 +568,7 @@ export interface ListPathsInfoResponseBodyItem {
   /** Not defined for directories */
   xetHash?: string;
   mtime?: string;
-  /** Sub-millisecond remainder of mtime, in nanoseconds (0–999_999) */
+  /** Sub-millisecond remainder of mtime, in nanoseconds (0-999_999) */
   mtimeNanos?: number;
   uploadedAt: string;
   contentType?: string;
@@ -621,7 +621,7 @@ export const RegistryTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegistryTokenResponse {
   /** EdDSA JWT signed by the moon JWT key, carrying `access[]`. */
   token: string;
-  /** Identical to `token` — Docker Distribution v2 accepts either field. */
+  /** Identical to `token` -- Docker Distribution v2 accepts either field. */
   access_token: string | Redacted.Redacted<string>;
   /** JWT lifetime in seconds. */
   expires_in: number;

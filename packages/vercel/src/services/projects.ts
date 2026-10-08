@@ -1167,7 +1167,7 @@ export const CreateProjectResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectResponseAnalytics>;
 
 export interface CreateProjectResponseBlobs {
-  /** Marks the team-level, Vercel-managed default blob project (`vercel-blob-default-project`) that orphan blob stores are scoped to when connected without an explicit project. Set only by internal storage flows and immutable after creation — guards rely on it to protect the connected stores from being lost when the project is deleted or transferred. */
+  /** Marks the team-level, Vercel-managed default blob project (`vercel-blob-default-project`) that orphan blob stores are scoped to when connected without an explicit project. Set only by internal storage flows and immutable after creation -- guards rely on it to protect the connected stores from being lost when the project is deleted or transferred. */
   isDefaultApp?: boolean;
 }
 export const CreateProjectResponseBlobs = /*@__PURE__*/ S.suspend(() =>
@@ -1257,7 +1257,7 @@ export const CreateProjectResponseCreatorCase0ViaCase0App = /*@__PURE__*/ S.susp
 export type CreateProjectResponseCreatorCase0ViaCase0Type = "app";
 export const CreateProjectResponseCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface CreateProjectResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: CreateProjectResponseCreatorCase0ViaCase0Type;
@@ -1287,7 +1287,7 @@ export const CreateProjectResponseCreatorCase0ViaCase1Integration = /*@__PURE__*
 export type CreateProjectResponseCreatorCase0ViaCase1Type = "integration";
 export const CreateProjectResponseCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface CreateProjectResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: CreateProjectResponseCreatorCase0ViaCase1Type;
@@ -1819,7 +1819,7 @@ export const CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironme
     CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -3527,7 +3527,7 @@ export interface CreateProjectResponseLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -6747,14 +6747,14 @@ export const CreateProjectResponseRollbackDescription = /*@__PURE__*/ S.suspend(
 export type CreateProjectResponseRollingReleaseGateAction = "pause" | "rollback";
 export const CreateProjectResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type CreateProjectResponseRollingReleaseGateChecksItemExcludePathsList = Array<string>;
 export const CreateProjectResponseRollingReleaseGateChecksItemExcludePathsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateProjectResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type CreateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList = Array<number>;
 export const CreateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   /*@__PURE__*/ S.Array(
@@ -6767,9 +6767,9 @@ export const CreateProjectResponseRollingReleaseGateChecksItemType = S.String;
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface CreateProjectResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: CreateProjectResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: CreateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -6805,7 +6805,7 @@ export interface CreateProjectResponseRollingReleaseGate {
   action: CreateProjectResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: CreateProjectResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -11594,7 +11594,7 @@ export const GetProjectResponseCreatorCase0ViaCase0App =
 export type GetProjectResponseCreatorCase0ViaCase0Type = "app";
 export const GetProjectResponseCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectResponseCreatorCase0ViaCase0Type;
@@ -11616,7 +11616,7 @@ export const GetProjectResponseCreatorCase0ViaCase1Integration =
 export type GetProjectResponseCreatorCase0ViaCase1Type = "integration";
 export const GetProjectResponseCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectResponseCreatorCase0ViaCase1Type;
@@ -12095,7 +12095,7 @@ export const GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironments
     GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -13726,7 +13726,7 @@ export interface GetProjectResponseLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -16846,13 +16846,13 @@ export const GetProjectResponseRollbackDescription = CreateProjectResponseRollba
 export type GetProjectResponseRollingReleaseGateAction = "pause" | "rollback";
 export const GetProjectResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetProjectResponseRollingReleaseGateChecksItemExcludePathsList = Array<string>;
 export const GetProjectResponseRollingReleaseGateChecksItemExcludePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetProjectResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList = Array<number>;
 export const GetProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   /*@__PURE__*/ S.Array(
@@ -16865,9 +16865,9 @@ export const GetProjectResponseRollingReleaseGateChecksItemType = S.String;
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetProjectResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: GetProjectResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: GetProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -16903,7 +16903,7 @@ export interface GetProjectResponseRollingReleaseGate {
   action: GetProjectResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: GetProjectResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -20188,7 +20188,7 @@ export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0App =
 export type GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0Type = "app";
 export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0Type;
@@ -20210,7 +20210,7 @@ export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Integration =
 export type GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Type = "integration";
 export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Type;
@@ -21591,7 +21591,7 @@ export interface GetProjectsResponseBodyCase0ItemLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -21813,7 +21813,7 @@ export const GetProjectsResponseBodyCase0ItemResourceConfig = /*@__PURE__*/ S.su
 export type GetProjectsResponseBodyCase0ItemRollingReleaseGateAction = "pause" | "rollback";
 export const GetProjectsResponseBodyCase0ItemRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludePathsList =
@@ -21821,7 +21821,7 @@ export const GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExclude
     S.String,
   ) as any as S.Schema<GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -21835,9 +21835,9 @@ export const GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemType = 
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -21876,7 +21876,7 @@ export interface GetProjectsResponseBodyCase0ItemRollingReleaseGate {
   action: GetProjectsResponseBodyCase0ItemRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -23719,7 +23719,7 @@ export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0App =
 export type GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0Type = "app";
 export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0Type;
@@ -23742,7 +23742,7 @@ export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1Integra
 export type GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1Type = "integration";
 export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1Type;
@@ -25175,7 +25175,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -25403,7 +25403,7 @@ export const GetProjectsResponseBodyCase1ProjectsItemResourceConfig = /*@__PURE_
 export type GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateAction = "pause" | "rollback";
 export const GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludePathsList =
@@ -25411,7 +25411,7 @@ export const GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksIte
     S.String,
   ) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -25426,9 +25426,9 @@ export const GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksIte
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -25468,7 +25468,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGate {
   action: GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -27459,7 +27459,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0App =
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0Type = "app";
 export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0Type;
@@ -27482,7 +27482,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Integra
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Type = "integration";
 export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Type;
@@ -28015,7 +28015,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentS
     GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -29763,7 +29763,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -33646,7 +33646,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemRollbackDescription =
 export type GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateAction = "pause" | "rollback";
 export const GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludePathsList =
@@ -33654,7 +33654,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksIte
     S.String,
   ) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -33669,9 +33669,9 @@ export const GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksIte
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -33711,7 +33711,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGate {
   action: GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -37513,7 +37513,7 @@ export const UpdateMicrofrontendsResponseCreatorCase0ViaCase0App =
 export type UpdateMicrofrontendsResponseCreatorCase0ViaCase0Type = "app";
 export const UpdateMicrofrontendsResponseCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UpdateMicrofrontendsResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateMicrofrontendsResponseCreatorCase0ViaCase0Type;
@@ -37535,7 +37535,7 @@ export const UpdateMicrofrontendsResponseCreatorCase0ViaCase1Integration =
 export type UpdateMicrofrontendsResponseCreatorCase0ViaCase1Type = "integration";
 export const UpdateMicrofrontendsResponseCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UpdateMicrofrontendsResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateMicrofrontendsResponseCreatorCase0ViaCase1Type;
@@ -38044,7 +38044,7 @@ export const UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEn
     UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -39684,7 +39684,7 @@ export interface UpdateMicrofrontendsResponseLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -43023,7 +43023,7 @@ export const UpdateMicrofrontendsResponseRollbackDescription =
 export type UpdateMicrofrontendsResponseRollingReleaseGateAction = "pause" | "rollback";
 export const UpdateMicrofrontendsResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePathsList =
@@ -43031,7 +43031,7 @@ export const UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePath
     S.String,
   ) as any as S.Schema<UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -43045,9 +43045,9 @@ export const UpdateMicrofrontendsResponseRollingReleaseGateChecksItemType = S.St
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface UpdateMicrofrontendsResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -43086,7 +43086,7 @@ export interface UpdateMicrofrontendsResponseRollingReleaseGate {
   action: UpdateMicrofrontendsResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: UpdateMicrofrontendsResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -46041,7 +46041,7 @@ export const UpdateProjectResponseCreatorCase0ViaCase0App =
 export type UpdateProjectResponseCreatorCase0ViaCase0Type = "app";
 export const UpdateProjectResponseCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UpdateProjectResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateProjectResponseCreatorCase0ViaCase0Type;
@@ -46063,7 +46063,7 @@ export const UpdateProjectResponseCreatorCase0ViaCase1Integration =
 export type UpdateProjectResponseCreatorCase0ViaCase1Type = "integration";
 export const UpdateProjectResponseCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UpdateProjectResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateProjectResponseCreatorCase0ViaCase1Type;
@@ -46554,7 +46554,7 @@ export const UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironme
     UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -48153,7 +48153,7 @@ export interface UpdateProjectResponseLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -51331,14 +51331,14 @@ export const UpdateProjectResponseRollbackDescription = CreateProjectResponseRol
 export type UpdateProjectResponseRollingReleaseGateAction = "pause" | "rollback";
 export const UpdateProjectResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type UpdateProjectResponseRollingReleaseGateChecksItemExcludePathsList = Array<string>;
 export const UpdateProjectResponseRollingReleaseGateChecksItemExcludePathsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateProjectResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type UpdateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList = Array<number>;
 export const UpdateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   /*@__PURE__*/ S.Array(
@@ -51351,9 +51351,9 @@ export const UpdateProjectResponseRollingReleaseGateChecksItemType = S.String;
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface UpdateProjectResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: UpdateProjectResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: UpdateProjectResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -51389,7 +51389,7 @@ export interface UpdateProjectResponseRollingReleaseGate {
   action: UpdateProjectResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: UpdateProjectResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -53456,7 +53456,7 @@ export const UploadProjectAvatarResponseCreatorCase0ViaCase0App =
 export type UploadProjectAvatarResponseCreatorCase0ViaCase0Type = "app";
 export const UploadProjectAvatarResponseCreatorCase0ViaCase0Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UploadProjectAvatarResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UploadProjectAvatarResponseCreatorCase0ViaCase0Type;
@@ -53478,7 +53478,7 @@ export const UploadProjectAvatarResponseCreatorCase0ViaCase1Integration =
 export type UploadProjectAvatarResponseCreatorCase0ViaCase1Type = "integration";
 export const UploadProjectAvatarResponseCreatorCase0ViaCase1Type = S.String;
 
-/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal. */
+/** Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance -- those live on `auth.token`, not on the principal. */
 export interface UploadProjectAvatarResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UploadProjectAvatarResponseCreatorCase0ViaCase1Type;
@@ -53987,7 +53987,7 @@ export const UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnv
     UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
   ) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -55624,7 +55624,7 @@ export interface UploadProjectAvatarResponseLinkCase7 {
   gitCredentialId: string;
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`) of the owner. */
+  /** Origin namespace id (`ns_...`) of the owner. */
   ownerId: string;
   productionBranch: string;
   repo: string;
@@ -58949,14 +58949,14 @@ export const UploadProjectAvatarResponseRollbackDescription =
 export type UploadProjectAvatarResponseRollingReleaseGateAction = "pause" | "rollback";
 export const UploadProjectAvatarResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludePathsList = Array<string>;
 export const UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludePathsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -58970,9 +58970,9 @@ export const UploadProjectAvatarResponseRollingReleaseGateChecksItemType = S.Str
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface UploadProjectAvatarResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -59010,7 +59010,7 @@ export interface UploadProjectAvatarResponseRollingReleaseGate {
   action: UploadProjectAvatarResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: UploadProjectAvatarResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;

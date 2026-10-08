@@ -8797,10 +8797,10 @@ export type GetMatchesError =
  *
  * - FullName
  *
- * For example, two or more profiles—with spelling mistakes such as **John Doe** and **Jhn Doe**, or different casing
+ * For example, two or more profiles--with spelling mistakes such as **John Doe** and **Jhn Doe**, or different casing
  * email addresses such as **JOHN_DOE@ANYCOMPANY.COM** and
  * **johndoe@anycompany.com**, or different phone number
- * formats such as **555-010-0000** and **+1-555-010-0000**—can be detected as belonging to the same customer **John Doe** and merged into a unified profile.
+ * formats such as **555-010-0000** and **+1-555-010-0000**--can be detected as belonging to the same customer **John Doe** and merged into a unified profile.
  */
 export const getMatches: API.OperationMethod<
   GetMatchesRequest,
@@ -8928,8 +8928,8 @@ export type GetProfileObjectTypeTemplateError =
 /**
  * Returns the template information for a specific object type.
  *
- * A template is a predefined ProfileObjectType, such as “Salesforce-Account” or
- * “Salesforce-Contact.” When a user sends a ProfileObject, using the PutProfileObject API,
+ * A template is a predefined ProfileObjectType, such as "Salesforce-Account" or
+ * "Salesforce-Contact." When a user sends a ProfileObject, using the PutProfileObject API,
  * with an ObjectTypeName that matches one of the TemplateIds, it uses the mappings from the
  * template.
  */
@@ -10850,7 +10850,7 @@ export type UpdateDomainError =
  * Updates the properties of a domain, including creating or selecting a dead letter queue
  * or an encryption key.
  *
- * After a domain is created, the name can’t be changed.
+ * After a domain is created, the name can't be changed.
  *
  * Use this API or CreateDomain to
  * enable identity

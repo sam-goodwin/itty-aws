@@ -7305,12 +7305,12 @@ export type CreateStorageLensGroupError = CommonErrors;
  * Creates a new S3 Storage Lens group and associates it with the specified Amazon Web Services account ID. An
  * S3 Storage Lens group is a custom grouping of objects based on prefix, suffix, object tags,
  * object size, object age, or a combination of these filters. For each Storage Lens group
- * that you’ve created, you can also optionally add Amazon Web Services resource tags. For more information
+ * that you've created, you can also optionally add Amazon Web Services resource tags. For more information
  * about S3 Storage Lens groups, see Working with S3 Storage Lens
  * groups.
  *
  * To use this operation, you must have the permission to perform the
- * `s3:CreateStorageLensGroup` action. If you’re trying to create a Storage Lens
+ * `s3:CreateStorageLensGroup` action. If you're trying to create a Storage Lens
  * group with Amazon Web Services resource tags, you must also have permission to perform the
  * `s3:TagResource` action. For more information about the required Storage Lens
  * Groups permissions, see Setting account permissions to use S3 Storage Lens groups.
@@ -7865,7 +7865,7 @@ export type DeletePublicAccessBlockError = CommonErrors;
  *
  * Removes the `PublicAccessBlock` configuration for an Amazon Web Services account. This
  * operation might be restricted when the account is managed by organization-level Block
- * Public Access policies. You’ll get an Access Denied (403) error when the account is managed
+ * Public Access policies. You'll get an Access Denied (403) error when the account is managed
  * by organization-level Block Public Access policies. Organization-level policies override
  * account-level settings, preventing direct account-level modifications. For more
  * information, see Using Amazon S3 block
@@ -10132,7 +10132,7 @@ export type SubmitMultiRegionAccessPointRoutesError = CommonErrors;
  * When the routing configuration is changed, any in-progress operations (uploads, copies,
  * deletes, and so on) to formerly active Regions will continue to run to their final
  * completion state (success or failure). The routing configurations of any Regions that
- * aren’t specified remain unchanged.
+ * aren't specified remain unchanged.
  *
  * Updated routing configurations might not be immediately applied. It can take up to 2
  * minutes for your changes to take effect.

@@ -1399,7 +1399,7 @@ export const ConnectConnectorCreateResultAppTokens = /*@__PURE__*/ S.suspend(() 
 export type ConnectConnectorCreateResultCreatedByCase0Type = "user";
 export const ConnectConnectorCreateResultCreatedByCase0Type = S.String;
 
-/** Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
+/** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
 export interface ConnectConnectorCreateResultCreatedByCase0 {
   /** Vercel user ID. */
   id: string;
@@ -1432,7 +1432,7 @@ export const ConnectConnectorCreateResultCreatedByCase1Environment =
 export type ConnectConnectorCreateResultCreatedByCase1Type = "project";
 export const ConnectConnectorCreateResultCreatedByCase1Type = S.String;
 
-/** Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
+/** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
 export interface ConnectConnectorCreateResultCreatedByCase1 {
   /** Deployment environment of the project principal. */
   environment: ConnectConnectorCreateResultCreatedByCase1Environment;
@@ -1686,7 +1686,7 @@ export interface ConnectConnectorCreateResult {
   icon?: string;
   /** Stable `scl_` connector ID. Use this value directly in `{connector}`. */
   id: string;
-  /** Whether the connector is known to have been edited since the app package it publishes to the provider was last built, so that package no longer matches it. Absent when it was not computed, or when the connector type publishes no such package. Derived on every read rather than marked at edit time, so reverting an edit clears it. Only reported by connector types that publish a package a user has to re-publish by hand — Microsoft Teams today. */
+  /** Whether the connector is known to have been edited since the app package it publishes to the provider was last built, so that package no longer matches it. Absent when it was not computed, or when the connector type publishes no such package. Derived on every read rather than marked at edit time, so reverting an edit clears it. Only reported by connector types that publish a package a user has to re-publish by hand -- Microsoft Teams today. */
   knownStale?: boolean;
   /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
   managed?: ConnectConnectorCreateResultManaged;
@@ -1963,7 +1963,7 @@ export const CreateConnectorAuthorizationRequestRequest = /*@__PURE__*/ S.suspen
 export interface CreateConnectorAuthorizationRequestResponseConnector {
   /** Provider-facing display name when the connector type exposes one, falling back to the stored connector name. */
   displayName: string;
-  /** Client id (e.g. `scl_…`). */
+  /** Client id (e.g. `scl_...`). */
   id: string;
   /** The connector's own name: the operator-given client name, falling back to the client type's name for legacy rows without one. */
   name: string;
@@ -2131,7 +2131,7 @@ export const ConnectConnectorAppTokens = /*@__PURE__*/ S.suspend(() =>
 export type ConnectConnectorCreatedByCase0Type = "user";
 export const ConnectConnectorCreatedByCase0Type = S.String;
 
-/** Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
+/** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
 export interface ConnectConnectorCreatedByCase0 {
   /** Vercel user ID. */
   id: string;
@@ -2164,7 +2164,7 @@ export const ConnectConnectorCreatedByCase1Environment =
 export type ConnectConnectorCreatedByCase1Type = "project";
 export const ConnectConnectorCreatedByCase1Type = S.String;
 
-/** Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
+/** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
 export interface ConnectConnectorCreatedByCase1 {
   /** Deployment environment of the project principal. */
   environment: ConnectConnectorCreatedByCase1Environment;
@@ -2371,7 +2371,7 @@ export interface ConnectConnector {
   icon?: string;
   /** Stable `scl_` connector ID. Use this value directly in `{connector}`. */
   id: string;
-  /** Whether the connector is known to have been edited since the app package it publishes to the provider was last built, so that package no longer matches it. Absent when it was not computed, or when the connector type publishes no such package. Derived on every read rather than marked at edit time, so reverting an edit clears it. Only reported by connector types that publish a package a user has to re-publish by hand — Microsoft Teams today. */
+  /** Whether the connector is known to have been edited since the app package it publishes to the provider was last built, so that package no longer matches it. Absent when it was not computed, or when the connector type publishes no such package. Derived on every read rather than marked at edit time, so reverting an edit clears it. Only reported by connector types that publish a package a user has to re-publish by hand -- Microsoft Teams today. */
   knownStale?: boolean;
   /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
   managed?: ConnectConnectorCreateResultManaged;

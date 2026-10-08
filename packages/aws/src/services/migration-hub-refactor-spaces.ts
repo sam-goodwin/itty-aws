@@ -1649,7 +1649,7 @@ export type CreateServiceError =
  * function endpoint.
  *
  * If an Amazon Web Services resource is launched in a service VPC, and you want it to be
- * accessible to all of an environment’s services with VPCs and routes, apply the
+ * accessible to all of an environment's services with VPCs and routes, apply the
  * `RefactorSpacesSecurityGroup` to the resource. Alternatively, to add more
  * cross-account constraints, apply your own security group.
  */
@@ -2190,7 +2190,7 @@ export type ListTagsForResourceError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists the tags of a resource. The caller account must be the same as the resource’s
+ * Lists the tags of a resource. The caller account must be the same as the resource's
  * `OwnerAccountId`. Listing tags in other accounts is not supported.
  */
 export const listTagsForResource: API.OperationMethod<
@@ -2249,11 +2249,11 @@ export type TagResourceError =
   | CommonErrors;
 /**
  * Removes the tags of a given resource. Tags are metadata which can be used to manage a
- * resource. To tag a resource, the caller account must be the same as the resource’s
+ * resource. To tag a resource, the caller account must be the same as the resource's
  * `OwnerAccountId`. Tagging resources in other accounts is not supported.
  *
  * Amazon Web Services Migration Hub Refactor Spaces does not propagate tags to orchestrated resources, such as an
- * environment’s transit gateway.
+ * environment's transit gateway.
  */
 export const tagResource: API.OperationMethod<
   TagResourceRequest,
@@ -2276,7 +2276,7 @@ export type UntagResourceError =
   | CommonErrors;
 /**
  * Adds to or modifies the tags of the given resource. Tags are metadata which can be used to
- * manage a resource. To untag a resource, the caller account must be the same as the resource’s
+ * manage a resource. To untag a resource, the caller account must be the same as the resource's
  * `OwnerAccountId`. Untagging resources across accounts is not supported.
  */
 export const untagResource: API.OperationMethod<

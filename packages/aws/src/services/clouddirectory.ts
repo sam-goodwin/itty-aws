@@ -5910,7 +5910,7 @@ export type UpdateLinkAttributesError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates a given typed link’s attributes. Attributes to be updated must not contribute to the typed link’s identity, as defined by its `IdentityAttributeOrder`.
+ * Updates a given typed link's attributes. Attributes to be updated must not contribute to the typed link's identity, as defined by its `IdentityAttributeOrder`.
  */
 export const updateLinkAttributes: API.OperationMethod<
   UpdateLinkAttributesRequest,

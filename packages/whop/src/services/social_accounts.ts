@@ -45,7 +45,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** The platform to connect the social account on. Use `meta_business` to connect Meta Business assets, which is how Facebook Pages and Instagram accounts are connected — there is no separate `instagram` value. Use `tiktok` for TikTok accounts, `snapchat` for Snapchat Public Profiles, or `linkedin` to connect the authenticated user’s LinkedIn profile. */
+/** The platform to connect the social account on. Use `meta_business` to connect Meta Business assets, which is how Facebook Pages and Instagram accounts are connected -- there is no separate `instagram` value. Use `tiktok` for TikTok accounts, `snapchat` for Snapchat Public Profiles, or `linkedin` to connect the authenticated user's LinkedIn profile. */
 export type ConnectSocialAccountRequestPlatform =
   | "meta_business"
   | "tiktok"
@@ -56,7 +56,7 @@ export const ConnectSocialAccountRequestPlatform = S.String;
 export type ConnectSocialAccountRequestScopesItem = "advertise";
 export const ConnectSocialAccountRequestScopesItem = S.String;
 
-/** The connection purpose. For `meta_business` and `snapchat`, `advertise` is required and connects company advertising assets. For `linkedin`, omit scopes to connect the authenticated user’s profile; advertising is not supported. For `tiktok`, omit scopes to connect the authenticated user’s profile, or pass `advertise` to connect company advertising assets. Profile connections still request the platform permissions needed to read the profile. */
+/** The connection purpose. For `meta_business` and `snapchat`, `advertise` is required and connects company advertising assets. For `linkedin`, omit scopes to connect the authenticated user's profile; advertising is not supported. For `tiktok`, omit scopes to connect the authenticated user's profile, or pass `advertise` to connect company advertising assets. Profile connections still request the platform permissions needed to read the profile. */
 export type ConnectSocialAccountRequestScopesList = Array<
   ConnectSocialAccountRequestScopesItem | (string & {})
 >;
@@ -67,11 +67,11 @@ export const ConnectSocialAccountRequestScopesList = /*@__PURE__*/ S.Array(
 export interface ConnectSocialAccountRequest {
   /** The Account (biz_ identifier) to connect the social account for. An account-scoped API key may omit this to default to its own account. Omit for user profile connections. */
   account_id?: string;
-  /** The platform to connect the social account on. Use `meta_business` to connect Meta Business assets, which is how Facebook Pages and Instagram accounts are connected — there is no separate `instagram` value. Use `tiktok` for TikTok accounts, `snapchat` for Snapchat Public Profiles, or `linkedin` to connect the authenticated user’s LinkedIn profile. */
+  /** The platform to connect the social account on. Use `meta_business` to connect Meta Business assets, which is how Facebook Pages and Instagram accounts are connected -- there is no separate `instagram` value. Use `tiktok` for TikTok accounts, `snapchat` for Snapchat Public Profiles, or `linkedin` to connect the authenticated user's LinkedIn profile. */
   platform: ConnectSocialAccountRequestPlatform | (string & {});
   /** Where to send the user once they finish connecting their accounts. Any `http` or `https` URL. If the connection fails, the user is redirected with a `social_account_error` query param. */
   redirect_url: string;
-  /** The connection purpose. For `meta_business` and `snapchat`, `advertise` is required and connects company advertising assets. For `linkedin`, omit scopes to connect the authenticated user’s profile; advertising is not supported. For `tiktok`, omit scopes to connect the authenticated user’s profile, or pass `advertise` to connect company advertising assets. Profile connections still request the platform permissions needed to read the profile. */
+  /** The connection purpose. For `meta_business` and `snapchat`, `advertise` is required and connects company advertising assets. For `linkedin`, omit scopes to connect the authenticated user's profile; advertising is not supported. For `tiktok`, omit scopes to connect the authenticated user's profile, or pass `advertise` to connect company advertising assets. Profile connections still request the platform permissions needed to read the profile. */
   scopes?: ConnectSocialAccountRequestScopesList;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -100,14 +100,14 @@ export const ConnectSocialAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectSocialAccountResponse",
 }) as any as S.Schema<ConnectSocialAccountResponse>;
 
-/** The platform to create the social account on. `facebook` requires the account's `banner_image`, `logo`, and `description`, and `tiktok` requires its `logo`; configure them with [Update Account](/api-reference/beta/accounts/update-account). The account is returned before the platform has created it — its `id` is usable right away, and the rest of the profile fills in once provisioning finishes. */
+/** The platform to create the social account on. `facebook` requires the account's `banner_image`, `logo`, and `description`, and `tiktok` requires its `logo`; configure them with [Update Account](/api-reference/beta/accounts/update-account). The account is returned before the platform has created it -- its `id` is usable right away, and the rest of the profile fills in once provisioning finishes. */
 export type CreateSocialAccountRequestPlatform = "facebook" | "tiktok";
 export const CreateSocialAccountRequestPlatform = S.String;
 
 export interface CreateSocialAccountRequest {
   /** The Account (biz_ identifier) to create the social account for. An account-scoped API key may omit this to default to its own account. Account API keys cannot update their own account's branding through Update Account; use a user-authenticated path. */
   account_id?: string;
-  /** The platform to create the social account on. `facebook` requires the account's `banner_image`, `logo`, and `description`, and `tiktok` requires its `logo`; configure them with [Update Account](/api-reference/beta/accounts/update-account). The account is returned before the platform has created it — its `id` is usable right away, and the rest of the profile fills in once provisioning finishes. */
+  /** The platform to create the social account on. `facebook` requires the account's `banner_image`, `logo`, and `description`, and `tiktok` requires its `logo`; configure them with [Update Account](/api-reference/beta/accounts/update-account). The account is returned before the platform has created it -- its `id` is usable right away, and the rest of the profile fills in once provisioning finishes. */
   platform: CreateSocialAccountRequestPlatform | (string & {});
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -182,7 +182,7 @@ export const SocialAccountScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SocialAccountScopesList>;
 
 export interface SocialAccount {
-  /** Why this social account currently can't be used for advertising — a failed share or a Meta-side restriction. Null when the account is healthy. */
+  /** Why this social account currently can't be used for advertising -- a failed share or a Meta-side restriction. Null when the account is healthy. */
   error: string | null;
   /** The platform-specific ID for this social account. */
   external_id: string | null;
@@ -543,7 +543,7 @@ export type SocialAccountPostCallToAction =
   | "view_instagram_profile";
 export const SocialAccountPostCallToAction = S.String;
 
-/** Ways this post can't be used on an ad. `lead_form_ineligible`: post can't be used in lead form ads. `promotion_ineligible`: the platform won't promote this post at all — always present when that's true, alongside a reason code when one is identified. `copyrighted_music`: post uses music the platform does not allow for ads. `messenger_destination`, `instagram_destination`, `whatsapp_destination`: the post's own button opens that chat app, so the post can only run in an ad group that sends people to the same one — always accompanied by `lead_form_ineligible`. Empty when the post has no restrictions. */
+/** Ways this post can't be used on an ad. `lead_form_ineligible`: post can't be used in lead form ads. `promotion_ineligible`: the platform won't promote this post at all -- always present when that's true, alongside a reason code when one is identified. `copyrighted_music`: post uses music the platform does not allow for ads. `messenger_destination`, `instagram_destination`, `whatsapp_destination`: the post's own button opens that chat app, so the post can only run in an ad group that sends people to the same one -- always accompanied by `lead_form_ineligible`. Empty when the post has no restrictions. */
 export type SocialAccountPostRestrictionsItem =
   | "lead_form_ineligible"
   | "promotion_ineligible"
@@ -569,7 +569,7 @@ export interface SocialAccountPost {
   embed_url: string | null;
   /** The platform's own identifier for the post or media. Use it to reference the post on an ad. */
   id: string;
-  /** The URL of the post's media — the image for image posts, the playable video file for video posts. Null for TikTok, which exposes no raw file (use embed_url). Meta URLs are signed and expire after roughly 24 hours, so don't store them. */
+  /** The URL of the post's media -- the image for image posts, the playable video file for video posts. Null for TikTok, which exposes no raw file (use embed_url). Meta URLs are signed and expire after roughly 24 hours, so don't store them. */
   media_url: string | null;
   restrictions: SocialAccountPostRestrictionsList;
   /** Poster image for video posts (always set for TikTok, which is video-only); null for image posts, where media_url is already the image. */
@@ -746,7 +746,7 @@ export const RefreshSocialAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshSocialAccountRequest>;
 
 export type ConnectSocialAccountError = BadRequest | Conflict | WhopOpError;
-/** Connect a Social Account Starts an OAuth connection flow and returns an authorize_url where the user can connect a social account. LinkedIn supports personal profiles only, with scopes omitted. TikTok connects the authenticated user’s profile when scopes are omitted or company advertising assets with advertise. Meta Business and Snapchat support advertising connections only and require advertise. Personal profile connections must be completed in a browser signed in as the initiating Whop user. */
+/** Connect a Social Account Starts an OAuth connection flow and returns an authorize_url where the user can connect a social account. LinkedIn supports personal profiles only, with scopes omitted. TikTok connects the authenticated user's profile when scopes are omitted or company advertising assets with advertise. Meta Business and Snapchat support advertising connections only and require advertise. Personal profile connections must be completed in a browser signed in as the initiating Whop user. */
 export const connectSocialAccount: API.OperationMethod<
   ConnectSocialAccountRequest,
   ConnectSocialAccountResponse,
@@ -791,7 +791,7 @@ export const deleteSocialAccount: API.OperationMethod<
 }));
 
 export type ListSocialAccountLeadFormsError = BadRequest | NotFound | WhopOpError;
-/** List Social Account Lead Forms Lists the active lead (instant) forms that already exist on a connected Facebook page, so an ad can reuse one as its `lead_gen_form_id` instead of authoring a new form. Every active form comes back in a single response — the list is not paginated. */
+/** List Social Account Lead Forms Lists the active lead (instant) forms that already exist on a connected Facebook page, so an ad can reuse one as its `lead_gen_form_id` instead of authoring a new form. Every active form comes back in a single response -- the list is not paginated. */
 export const listSocialAccountLeadForms: API.OperationMethod<
   ListSocialAccountLeadFormsRequest,
   ListSocialAccountLeadFormsResponse,

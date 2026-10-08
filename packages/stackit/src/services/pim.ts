@@ -325,7 +325,7 @@ export type CurrencyCodes = "EUR" | "USD" | "GBP";
 export const CurrencyCodes = S.String;
 
 /** Prices' currency symbol */
-export type CurrencySymbols = "€" | "$";
+export type CurrencySymbols = "\u20ac" | "$";
 export const CurrencySymbols = S.String;
 
 export interface Price {
@@ -763,7 +763,7 @@ export interface GetSKUResponse {
   language?: string;
   /** Name of license */
   licenseName?: string | null;
-  /** State of the SKU following the mandatory product‘s maturity model progress (e.g. `beta`, `ga`) */
+  /** State of the SKU following the mandatory product's maturity model progress (e.g. `beta`, `ga`) */
   maturityModelState: string | null;
   /** Metric of service */
   metric?: string | null;
@@ -914,7 +914,7 @@ export interface GetSTAXSKUResponse {
   language?: string;
   /** Name of license */
   licenseName?: string | null;
-  /** State of the SKU following the mandatory product‘s maturity model progress (e.g. `beta`, `ga`) */
+  /** State of the SKU following the mandatory product's maturity model progress (e.g. `beta`, `ga`) */
   maturityModelState: string | null;
   /** Metric of service */
   metric?: string | null;
@@ -1287,7 +1287,7 @@ export interface PublicSKU {
   language?: string;
   /** Name of license */
   licenseName?: string | null;
-  /** State of the SKU following the mandatory product‘s maturity model progress (e.g. `beta`, `ga`) */
+  /** State of the SKU following the mandatory product's maturity model progress (e.g. `beta`, `ga`) */
   maturityModelState: string | null;
   /** Metric of service */
   metric?: string | null;
@@ -1604,7 +1604,7 @@ export interface SearchSKUsRequest {
   leadTimeInWorkDays?: number | null;
   /** Location */
   location?: string | null;
-  /** State of the SKU following the mandatory product‘s maturity model progress (e.g. `beta`, `ga`) */
+  /** State of the SKU following the mandatory product's maturity model progress (e.g. `beta`, `ga`) */
   maturityModelState?: string;
   /** Storage maxIOPerSec */
   maxIOPerSec?: number;

@@ -1055,7 +1055,7 @@ export type CreateDonationRequestPaymentMethod =
 export const CreateDonationRequestPaymentMethod =
   S.Unknown as any as S.Schema<CreateDonationRequestPaymentMethod>;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreateDonationRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -1079,62 +1079,62 @@ export const ShopperName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShopperName" }) as any as S.Schema<ShopperName>;
 
-/** Length of time that the cardholder has had the account with the 3DS Requestor. Allowed values: * **01** — No account * **02** — Created during this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+/** Length of time that the cardholder has had the account with the 3DS Requestor. Allowed values: * **01** -- No account * **02** -- Created during this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
 export type AcctInfoChAccAgeInd = "01" | "02" | "03" | "04" | "05";
 export const AcctInfoChAccAgeInd = S.String;
 
-/** Length of time since the cardholder’s account information with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Allowed values: * **01** — Changed during this transaction * **02** — Less than 30 days * **03** — 30–60 days * **04** — More than 60 days */
+/** Length of time since the cardholder's account information with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Allowed values: * **01** -- Changed during this transaction * **02** -- Less than 30 days * **03** -- 30-60 days * **04** -- More than 60 days */
 export type AcctInfoChAccChangeInd = "01" | "02" | "03" | "04";
 export const AcctInfoChAccChangeInd = S.String;
 
-/** Indicates the length of time since the cardholder’s account with the 3DS Requestor had a password change or account reset. Allowed values: * **01** — No change * **02** — Changed during this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+/** Indicates the length of time since the cardholder's account with the 3DS Requestor had a password change or account reset. Allowed values: * **01** -- No change * **02** -- Changed during this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
 export type AcctInfoChAccPwChangeInd = "01" | "02" | "03" | "04" | "05";
 export const AcctInfoChAccPwChangeInd = S.String;
 
-/** Indicates the length of time that the payment account was enrolled in the cardholder’s account with the 3DS Requestor. Allowed values: * **01** — No account (guest checkout) * **02** — During this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+/** Indicates the length of time that the payment account was enrolled in the cardholder's account with the 3DS Requestor. Allowed values: * **01** -- No account (guest checkout) * **02** -- During this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
 export type AcctInfoPaymentAccInd = "01" | "02" | "03" | "04" | "05";
 export const AcctInfoPaymentAccInd = S.String;
 
-/** Indicates when the shipping address used for this transaction was first used with the 3DS Requestor. Allowed values: * **01** — This transaction * **02** — Less than 30 days * **03** — 30–60 days * **04** — More than 60 days */
+/** Indicates when the shipping address used for this transaction was first used with the 3DS Requestor. Allowed values: * **01** -- This transaction * **02** -- Less than 30 days * **03** -- 30-60 days * **04** -- More than 60 days */
 export type AcctInfoShipAddressUsageInd = "01" | "02" | "03" | "04";
 export const AcctInfoShipAddressUsageInd = S.String;
 
-/** Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction. Allowed values: * **01** — Account Name identical to shipping Name * **02** — Account Name different to shipping Name */
+/** Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction. Allowed values: * **01** -- Account Name identical to shipping Name * **02** -- Account Name different to shipping Name */
 export type AcctInfoShipNameIndicator = "01" | "02";
 export const AcctInfoShipNameIndicator = S.String;
 
-/** Indicates whether the 3DS Requestor has experienced suspicious activity (including previous fraud) on the cardholder account. Allowed values: * **01** — No suspicious activity has been observed * **02** — Suspicious activity has been observed */
+/** Indicates whether the 3DS Requestor has experienced suspicious activity (including previous fraud) on the cardholder account. Allowed values: * **01** -- No suspicious activity has been observed * **02** -- Suspicious activity has been observed */
 export type AcctInfoSuspiciousAccActivity = "01" | "02";
 export const AcctInfoSuspiciousAccActivity = S.String;
 
 export interface AcctInfo {
-  /** Length of time that the cardholder has had the account with the 3DS Requestor. Allowed values: * **01** — No account * **02** — Created during this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+  /** Length of time that the cardholder has had the account with the 3DS Requestor. Allowed values: * **01** -- No account * **02** -- Created during this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
   chAccAgeInd?: AcctInfoChAccAgeInd | (string & {});
-  /** Date that the cardholder’s account with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Format: **YYYYMMDD** */
+  /** Date that the cardholder's account with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Format: **YYYYMMDD** */
   chAccChange?: string;
-  /** Length of time since the cardholder’s account information with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Allowed values: * **01** — Changed during this transaction * **02** — Less than 30 days * **03** — 30–60 days * **04** — More than 60 days */
+  /** Length of time since the cardholder's account information with the 3DS Requestor was last changed, including Billing or Shipping address, new payment account, or new user(s) added. Allowed values: * **01** -- Changed during this transaction * **02** -- Less than 30 days * **03** -- 30-60 days * **04** -- More than 60 days */
   chAccChangeInd?: AcctInfoChAccChangeInd | (string & {});
-  /** Date that cardholder’s account with the 3DS Requestor had a password change or account reset. Format: **YYYYMMDD** */
+  /** Date that cardholder's account with the 3DS Requestor had a password change or account reset. Format: **YYYYMMDD** */
   chAccPwChange?: string;
-  /** Indicates the length of time since the cardholder’s account with the 3DS Requestor had a password change or account reset. Allowed values: * **01** — No change * **02** — Changed during this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+  /** Indicates the length of time since the cardholder's account with the 3DS Requestor had a password change or account reset. Allowed values: * **01** -- No change * **02** -- Changed during this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
   chAccPwChangeInd?: AcctInfoChAccPwChangeInd | (string & {});
   /** Date that the cardholder opened the account with the 3DS Requestor. Format: **YYYYMMDD** */
   chAccString?: string;
   /** Number of purchases with this cardholder account during the previous six months. Max length: 4 characters. */
   nbPurchaseAccount?: string;
-  /** String that the payment account was enrolled in the cardholder’s account with the 3DS Requestor. Format: **YYYYMMDD** */
+  /** String that the payment account was enrolled in the cardholder's account with the 3DS Requestor. Format: **YYYYMMDD** */
   paymentAccAge?: string;
-  /** Indicates the length of time that the payment account was enrolled in the cardholder’s account with the 3DS Requestor. Allowed values: * **01** — No account (guest checkout) * **02** — During this transaction * **03** — Less than 30 days * **04** — 30–60 days * **05** — More than 60 days */
+  /** Indicates the length of time that the payment account was enrolled in the cardholder's account with the 3DS Requestor. Allowed values: * **01** -- No account (guest checkout) * **02** -- During this transaction * **03** -- Less than 30 days * **04** -- 30-60 days * **05** -- More than 60 days */
   paymentAccInd?: AcctInfoPaymentAccInd | (string & {});
   /** Number of Add Card attempts in the last 24 hours. Max length: 3 characters. */
   provisionAttemptsDay?: string;
   /** String when the shipping address used for this transaction was first used with the 3DS Requestor. Format: **YYYYMMDD** */
   shipAddressUsage?: string;
-  /** Indicates when the shipping address used for this transaction was first used with the 3DS Requestor. Allowed values: * **01** — This transaction * **02** — Less than 30 days * **03** — 30–60 days * **04** — More than 60 days */
+  /** Indicates when the shipping address used for this transaction was first used with the 3DS Requestor. Allowed values: * **01** -- This transaction * **02** -- Less than 30 days * **03** -- 30-60 days * **04** -- More than 60 days */
   shipAddressUsageInd?: AcctInfoShipAddressUsageInd | (string & {});
-  /** Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction. Allowed values: * **01** — Account Name identical to shipping Name * **02** — Account Name different to shipping Name */
+  /** Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction. Allowed values: * **01** -- Account Name identical to shipping Name * **02** -- Account Name different to shipping Name */
   shipNameIndicator?: AcctInfoShipNameIndicator | (string & {});
-  /** Indicates whether the 3DS Requestor has experienced suspicious activity (including previous fraud) on the cardholder account. Allowed values: * **01** — No suspicious activity has been observed * **02** — Suspicious activity has been observed */
+  /** Indicates whether the 3DS Requestor has experienced suspicious activity (including previous fraud) on the cardholder account. Allowed values: * **01** -- No suspicious activity has been observed * **02** -- Suspicious activity has been observed */
   suspiciousAccActivity?: AcctInfoSuspiciousAccActivity | (string & {});
   /** Number of transactions (successful and abandoned) for this cardholder account with the 3DS Requestor across all payment accounts in the previous 24 hours. Max length: 3 characters. */
   txnActivityDay?: string;
@@ -1162,11 +1162,11 @@ export const AcctInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AcctInfo" }) as any as S.Schema<AcctInfo>;
 
-/** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** — Not applicable * **02** — Credit * **03** — Debit */
+/** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** -- Not applicable * **02** -- Credit * **03** -- Debit */
 export type ThreeDS2RequestFieldsAcctType = "01" | "02" | "03";
 export const ThreeDS2RequestFieldsAcctType = S.String;
 
-/** Indicates whether the cardholder shipping Address and cardholder billing address are the same. Allowed values: * **Y** — Shipping Address matches Billing Address. * **N** — Shipping Address does not match Billing Address. */
+/** Indicates whether the cardholder shipping Address and cardholder billing address are the same. Allowed values: * **Y** -- Shipping Address matches Billing Address. * **N** -- Shipping Address does not match Billing Address. */
 export type ThreeDS2RequestFieldsAddrMatch = "Y" | "N";
 export const ThreeDS2RequestFieldsAddrMatch = S.String;
 
@@ -1212,7 +1212,7 @@ export const DeviceRenderOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceRenderOptions" }) as any as S.Schema<DeviceRenderOptions>;
 
 export interface Phone {
-  /** Country code. Length: 1–3 digits. */
+  /** Country code. Length: 1-3 digits. */
   cc?: string;
   /** Subscriber number. Length: 4-15 digits. */
   subscriber?: string;
@@ -1243,7 +1243,7 @@ export const SDKEphemPubKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SDKEphemPubKey" }) as any as S.Schema<SDKEphemPubKey>;
 
-/** Mechanism used by the Cardholder to authenticate to the 3DS Requestor. Allowed values: * **01** — No 3DS Requestor authentication occurred (for example, cardholder “logged in” as guest). * **02** — Login to the cardholder account at the 3DS Requestor system using 3DS Requestor’s own credentials. * **03** — Login to the cardholder account at the 3DS Requestor system using federated ID. * **04** — Login to the cardholder account at the 3DS Requestor system using issuer credentials. * **05** — Login to the cardholder account at the 3DS Requestor system using third-party authentication. * **06** — Login to the cardholder account at the 3DS Requestor system using FIDO Authenticator. */
+/** Mechanism used by the Cardholder to authenticate to the 3DS Requestor. Allowed values: * **01** -- No 3DS Requestor authentication occurred (for example, cardholder "logged in" as guest). * **02** -- Login to the cardholder account at the 3DS Requestor system using 3DS Requestor's own credentials. * **03** -- Login to the cardholder account at the 3DS Requestor system using federated ID. * **04** -- Login to the cardholder account at the 3DS Requestor system using issuer credentials. * **05** -- Login to the cardholder account at the 3DS Requestor system using third-party authentication. * **06** -- Login to the cardholder account at the 3DS Requestor system using FIDO Authenticator. */
 export type ThreeDSRequestorAuthenticationInfoThreeDSReqAuthMethod =
   | "01"
   | "02"
@@ -1256,7 +1256,7 @@ export const ThreeDSRequestorAuthenticationInfoThreeDSReqAuthMethod = S.String;
 export interface ThreeDSRequestorAuthenticationInfo {
   /** Data that documents and supports a specific authentication process. Maximum length: 2048 bytes. */
   threeDSReqAuthData?: string;
-  /** Mechanism used by the Cardholder to authenticate to the 3DS Requestor. Allowed values: * **01** — No 3DS Requestor authentication occurred (for example, cardholder “logged in” as guest). * **02** — Login to the cardholder account at the 3DS Requestor system using 3DS Requestor’s own credentials. * **03** — Login to the cardholder account at the 3DS Requestor system using federated ID. * **04** — Login to the cardholder account at the 3DS Requestor system using issuer credentials. * **05** — Login to the cardholder account at the 3DS Requestor system using third-party authentication. * **06** — Login to the cardholder account at the 3DS Requestor system using FIDO Authenticator. */
+  /** Mechanism used by the Cardholder to authenticate to the 3DS Requestor. Allowed values: * **01** -- No 3DS Requestor authentication occurred (for example, cardholder "logged in" as guest). * **02** -- Login to the cardholder account at the 3DS Requestor system using 3DS Requestor's own credentials. * **03** -- Login to the cardholder account at the 3DS Requestor system using federated ID. * **04** -- Login to the cardholder account at the 3DS Requestor system using issuer credentials. * **05** -- Login to the cardholder account at the 3DS Requestor system using third-party authentication. * **06** -- Login to the cardholder account at the 3DS Requestor system using FIDO Authenticator. */
   threeDSReqAuthMethod?: ThreeDSRequestorAuthenticationInfoThreeDSReqAuthMethod | (string & {});
   /** Date and time in UTC of the cardholder authentication. Format: YYYYMMDDHHMM */
   threeDSReqAuthTimestamp?: string;
@@ -1271,7 +1271,7 @@ export const ThreeDSRequestorAuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThreeDSRequestorAuthenticationInfo",
 }) as any as S.Schema<ThreeDSRequestorAuthenticationInfo>;
 
-/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
 export type ThreeDS2RequestFieldsThreeDSRequestorChallengeInd =
   | "01"
   | "02"
@@ -1281,7 +1281,7 @@ export type ThreeDS2RequestFieldsThreeDSRequestorChallengeInd =
   | "06";
 export const ThreeDS2RequestFieldsThreeDSRequestorChallengeInd = S.String;
 
-/** Mechanism used by the Cardholder to previously authenticate to the 3DS Requestor. Allowed values: * **01** — Frictionless authentication occurred by ACS. * **02** — Cardholder challenge occurred by ACS. * **03** — AVS verified. * **04** — Other issuer methods. */
+/** Mechanism used by the Cardholder to previously authenticate to the 3DS Requestor. Allowed values: * **01** -- Frictionless authentication occurred by ACS. * **02** -- Cardholder challenge occurred by ACS. * **03** -- AVS verified. * **04** -- Other issuer methods. */
 export type ThreeDSRequestorPriorAuthenticationInfoThreeDSReqPriorAuthMethod =
   | "01"
   | "02"
@@ -1292,7 +1292,7 @@ export const ThreeDSRequestorPriorAuthenticationInfoThreeDSReqPriorAuthMethod = 
 export interface ThreeDSRequestorPriorAuthenticationInfo {
   /** Data that documents and supports a specific authentication process. Maximum length: 2048 bytes. */
   threeDSReqPriorAuthData?: string;
-  /** Mechanism used by the Cardholder to previously authenticate to the 3DS Requestor. Allowed values: * **01** — Frictionless authentication occurred by ACS. * **02** — Cardholder challenge occurred by ACS. * **03** — AVS verified. * **04** — Other issuer methods. */
+  /** Mechanism used by the Cardholder to previously authenticate to the 3DS Requestor. Allowed values: * **01** -- Frictionless authentication occurred by ACS. * **02** -- Cardholder challenge occurred by ACS. * **03** -- AVS verified. * **04** -- Other issuer methods. */
   threeDSReqPriorAuthMethod?:
     | ThreeDSRequestorPriorAuthenticationInfoThreeDSReqPriorAuthMethod
     | (string & {});
@@ -1314,7 +1314,7 @@ export const ThreeDSRequestorPriorAuthenticationInfo = /*@__PURE__*/ S.suspend((
   identifier: "ThreeDSRequestorPriorAuthenticationInfo",
 }) as any as S.Schema<ThreeDSRequestorPriorAuthenticationInfo>;
 
-/** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** — Goods/Service Purchase * **03** — Check Acceptance * **10** — Account Funding * **11** — Quasi-Cash Transaction * **28** — Prepaid Activation and Load */
+/** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** -- Goods/Service Purchase * **03** -- Check Acceptance * **10** -- Account Funding * **11** -- Quasi-Cash Transaction * **28** -- Prepaid Activation and Load */
 export type ThreeDS2RequestFieldsTransType = "01" | "03" | "10" | "11" | "28";
 export const ThreeDS2RequestFieldsTransType = S.String;
 
@@ -1328,15 +1328,15 @@ export type ThreeDS2RequestFieldsTransactionType =
 export const ThreeDS2RequestFieldsTransactionType = S.String;
 
 export interface ThreeDS2RequestFields {
-  /** Additional information about the cardholder’s account provided by the 3DS Requestor. */
+  /** Additional information about the cardholder's account provided by the 3DS Requestor. */
   acctInfo?: AcctInfo;
-  /** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** — Not applicable * **02** — Credit * **03** — Debit */
+  /** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** -- Not applicable * **02** -- Credit * **03** -- Debit */
   acctType?: ThreeDS2RequestFieldsAcctType | (string & {});
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). The acquiring BIN enrolled for 3D Secure 2. This string should match the value that you will use in the authorisation. Use 123456 on the Test platform. */
   acquirerBIN?: string;
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). The merchantId that is enrolled for 3D Secure 2 by the merchant's acquirer. This string should match the value that you will use in the authorisation. Use 123456 on the Test platform. */
   acquirerMerchantID?: string;
-  /** Indicates whether the cardholder shipping Address and cardholder billing address are the same. Allowed values: * **Y** — Shipping Address matches Billing Address. * **N** — Shipping Address does not match Billing Address. */
+  /** Indicates whether the cardholder shipping Address and cardholder billing address are the same. Allowed values: * **Y** -- Shipping Address matches Billing Address. * **N** -- Shipping Address does not match Billing Address. */
   addrMatch?: ThreeDS2RequestFieldsAddrMatch | (string & {});
   /** If set to true, you will only perform the [3D Secure 2 authentication](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only), and not the payment authorisation. */
   authenticationOnly?: boolean;
@@ -1360,7 +1360,7 @@ export interface ThreeDS2RequestFields {
   payTokenInd?: boolean;
   /** Indicates the type of payment for which an authentication is requested (message extension) */
   paymentAuthenticationUseCase?: string;
-  /** Indicates the maximum number of authorisations permitted for instalment payments. Length: 1–3 characters. */
+  /** Indicates the maximum number of authorisations permitted for instalment payments. Length: 1-3 characters. */
   purchaseInstalData?: string;
   /** Date after which no further authorisations shall be performed. Format: YYYYMMDD */
   recurringExpiry?: string;
@@ -1382,7 +1382,7 @@ export interface ThreeDS2RequestFields {
   threeDSRequestorAuthenticationInd?: string;
   /** Information about how the 3DS Requestor authenticated the cardholder before or during the transaction */
   threeDSRequestorAuthenticationInfo?: ThreeDSRequestorAuthenticationInfo;
-  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
   threeDSRequestorChallengeInd?: ThreeDS2RequestFieldsThreeDSRequestorChallengeInd | (string & {});
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only) for Visa. Unique 3D Secure requestor identifier assigned by the Directory Server when you enrol for 3D Secure 2. */
   threeDSRequestorID?: string;
@@ -1392,7 +1392,7 @@ export interface ThreeDS2RequestFields {
   threeDSRequestorPriorAuthenticationInfo?: ThreeDSRequestorPriorAuthenticationInfo;
   /** URL of the (customer service) website that will be shown to the shopper in case of technical errors during the 3D Secure 2 process. */
   threeDSRequestorURL?: string;
-  /** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** — Goods/Service Purchase * **03** — Check Acceptance * **10** — Account Funding * **11** — Quasi-Cash Transaction * **28** — Prepaid Activation and Load */
+  /** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** -- Goods/Service Purchase * **03** -- Check Acceptance * **10** -- Account Funding * **11** -- Quasi-Cash Transaction * **28** -- Prepaid Activation and Load */
   transType?: ThreeDS2RequestFieldsTransType | (string & {});
   /** Identify the type of the transaction being authenticated. */
   transactionType?: ThreeDS2RequestFieldsTransactionType | (string & {});
@@ -1491,7 +1491,7 @@ export interface CreateDonationRequest {
   origin?: string;
   /** The type and required details of a payment method to use. When `donationToken` is provided, the payment method is derived from the token and this field becomes optional. If you are [PCI compliant](https://docs.adyen.com/development-resources/pci-dss-compliance-guide), and make donations using raw card details, you must explicitly provide the payment method details. */
   paymentMethod?: CreateDonationRequestPaymentMethod;
-  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: CreateDonationRequestRecurringProcessingModel | (string & {});
   /** Specifies the redirect method (GET or POST) when redirecting back from the issuer. */
   redirectFromIssuerMethod?: string;
@@ -2105,7 +2105,7 @@ export const PaymentValidationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentValidationsResponse",
 }) as any as S.Schema<PaymentValidationsResponse>;
 
-/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** – The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** – The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** – Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** – The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** – There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** – The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** – The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** – Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** – Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** – Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** – Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** – Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
+/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** - The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** - The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** - Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** - The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** - There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** - The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** - The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** - Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** - Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** - Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** - Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** - Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
 export type PaymentResponseResultCode =
   | "AuthenticationFinished"
   | "AuthenticationNotRequired"
@@ -2180,7 +2180,7 @@ export type ThreeDS2ResultExemptionIndicator =
   | "transactionRiskAnalysis";
 export const ThreeDS2ResultExemptionIndicator = S.String;
 
-/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
 export type ThreeDS2ResultThreeDSRequestorChallengeInd = "01" | "02" | "03" | "04" | "05" | "06";
 export const ThreeDS2ResultThreeDSRequestorChallengeInd = S.String;
 
@@ -2201,7 +2201,7 @@ export interface ThreeDS2Result {
   messageVersion?: string;
   /** Risk score calculated by Cartes Bancaires Directory Server (DS). */
   riskScore?: string;
-  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
   threeDSRequestorChallengeInd?: ThreeDS2ResultThreeDSRequestorChallengeInd;
   /** The `threeDSServerTransID` value as defined in the 3D Secure 2 specification. */
   threeDSServerTransID?: string;
@@ -2260,7 +2260,7 @@ export interface PaymentResponse {
   refusalReason?: string;
   /** Code that specifies the refusal reason. For more information, see [Authorisation refusal reasons](https://docs.adyen.com/development-resources/refusal-reasons). */
   refusalReasonCode?: string;
-  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** – The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** – The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** – Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** – The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** – There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** – The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** – The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** – Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** – Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** – Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** – Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** – Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
+  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** - The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** - The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** - Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** - The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** - There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** - The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** - The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** - Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** - Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** - Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** - Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** - Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
   resultCode?: PaymentResponseResultCode;
   /** Response of the 3D Secure 2 authentication. */
   threeDS2ResponseData?: ThreeDS2ResponseData;
@@ -2514,7 +2514,7 @@ export type CheckoutForwardRequestCardType = "scheme";
 export const CheckoutForwardRequestCardType = S.String;
 
 export interface CheckoutForwardRequestCard {
-  /** The [card verification code](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid) (1-20 characters). Depending on the card brand, it is also known as: * CVV2/CVC2 – length: 3 digits * CID – length: 4 digits */
+  /** The [card verification code](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid) (1-20 characters). Depending on the card brand, it is also known as: * CVV2/CVC2 - length: 3 digits * CID - length: 4 digits */
   cvc?: string;
   /** The encrypted card number. */
   encryptedCardNumber?: string;
@@ -2809,14 +2809,14 @@ export const CreateOrdersCancelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrdersCancelRequest",
 }) as any as S.Schema<CreateOrdersCancelRequest>;
 
-/** The result of the cancellation request. Possible values: * **Received** – Indicates the cancellation has successfully been received by Adyen, and will be processed. */
+/** The result of the cancellation request. Possible values: * **Received** - Indicates the cancellation has successfully been received by Adyen, and will be processed. */
 export type CancelOrderResponseResultCode = "Received";
 export const CancelOrderResponseResultCode = S.String;
 
 export interface CancelOrderResponse {
   /** A unique reference of the cancellation request. */
   pspReference: string;
-  /** The result of the cancellation request. Possible values: * **Received** – Indicates the cancellation has successfully been received by Adyen, and will be processed. */
+  /** The result of the cancellation request. Possible values: * **Received** - Indicates the cancellation has successfully been received by Adyen, and will be processed. */
   resultCode: CancelOrderResponseResultCode;
 }
 export const CancelOrderResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2861,7 +2861,7 @@ export interface CheckoutBankAccount {
   countryCode?: string;
   /** The [International Bank Account Number](https://en.wikipedia.org/wiki/International_Bank_Account_Number) (IBAN). */
   iban?: string;
-  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * χ12 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
+  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * U+03C712 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
   ownerName?: string;
   /** The bank account holder's tax ID. */
   taxId?: string;
@@ -3810,7 +3810,7 @@ export interface AchDetails {
   encryptedBankAccountNumber?: string;
   /** Encrypted location id. The bank routing number of the account. The field value is `nil` in most cases. */
   encryptedBankLocationId?: string;
-  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * χ12 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
+  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * U+03C712 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
   ownerName?: string;
   /** This is the `recurringDetailReference` returned in the response when you created the token. */
   recurringDetailReference?: string;
@@ -4340,7 +4340,7 @@ export interface DragonpayDetails {
   issuer: string;
   /** Base64-encoded JSON object containing SDK related parameters required by the SDK */
   sdkData?: string;
-  /** The shopper’s email address. */
+  /** The shopper's email address. */
   shopperEmail?: string;
   /** **dragonpay** */
   type: DragonpayDetailsType | (string & {});
@@ -4428,7 +4428,7 @@ export interface EftDetails {
   bankLocationId?: string;
   /** The checkout attempt identifier. */
   checkoutAttemptId?: string;
-  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * χ12 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
+  /** The name of the bank account holder. If you submit a name with non-Latin characters, we automatically replace some of them with corresponding Latin characters to meet the FATF recommendations. For example: * U+03C712 is converted to ch12. * üA is converted to euA. * Peter Møller is converted to Peter Mller, because banks don't accept 'ø'. After replacement, the ownerName must have at least three alphanumeric characters (A-Z, a-z, 0-9), and at least one of them must be a valid Latin character (A-Z, a-z). For example: * John17 - allowed. * J17 - allowed. * 171 - not allowed. * John-7 - allowed. > If provided details don't match the required format, the response returns the error message: 203 'Invalid bank account holder name'. */
   ownerName?: string;
   /** This is the `recurringDetailReference` returned in the response when you created the token. */
   recurringDetailReference?: string;
@@ -6007,7 +6007,7 @@ export const PlatformChargebackLogic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlatformChargebackLogic" }) as any as S.Schema<PlatformChargebackLogic>;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreatePaymentRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -6047,7 +6047,7 @@ export const CreatePaymentRequestShopperInteraction = S.String;
 export interface ShopperTaxInfo {
   /** The two-character [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code associated with the provided tax identification number. Currently used only for Indian PA-CB tax verification, when applicable. */
   taxCountryCode: string;
-  /** The shopper’s tax identification number. */
+  /** The shopper's tax identification number. */
   taxIdentificationNumber: string;
 }
 export const ShopperTaxInfo = /*@__PURE__*/ S.suspend(() =>
@@ -6293,7 +6293,7 @@ export interface CreatePaymentRequest {
   recurringExpiry?: string;
   /** Minimum number of days between authorisations. Only for 3D Secure 2. */
   recurringFrequency?: string;
-  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: CreatePaymentRequestRecurringProcessingModel | (string & {});
   /** Specifies the redirect method (GET or POST) when redirecting back from the issuer. */
   redirectFromIssuerMethod?: string;
@@ -6807,7 +6807,7 @@ export const CreatePaymentLinkRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CreatePaymentLinkRequestMetadataMap>;
 
-/** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** – A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** - A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreatePaymentLinkRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -6822,7 +6822,7 @@ export type CreatePaymentLinkRequestRequiredShopperFieldsItem =
   | "telephoneNumber";
 export const CreatePaymentLinkRequestRequiredShopperFieldsItem = S.String;
 
-/** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** – The address where to send the invoice. * **deliveryAddress** – The address where the purchased goods should be delivered. * **shopperEmail** – The shopper's email address. * **shopperName** – The shopper's full name. * **telephoneNumber** – The shopper's phone number. */
+/** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** - The address where to send the invoice. * **deliveryAddress** - The address where the purchased goods should be delivered. * **shopperEmail** - The shopper's email address. * **shopperName** - The shopper's full name. * **telephoneNumber** - The shopper's phone number. */
 export type CreatePaymentLinkRequestRequiredShopperFieldsList = Array<
   CreatePaymentLinkRequestRequiredShopperFieldsItem | (string & {})
 >;
@@ -6836,14 +6836,14 @@ export const CreatePaymentLinkRequestSplitsList = /*@__PURE__*/ S.Array(
   Split,
 ) as any as S.Schema<CreatePaymentLinkRequestSplitsList>;
 
-/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
+/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
 export type CreatePaymentLinkRequestStorePaymentMethodMode =
   | "askForConsent"
   | "disabled"
   | "enabled";
 export const CreatePaymentLinkRequestStorePaymentMethodMode = S.String;
 
-/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
 export type CheckoutSessionThreeDS2RequestDataThreeDSRequestorChallengeInd =
   | "01"
   | "02"
@@ -6858,7 +6858,7 @@ export interface CheckoutSessionThreeDS2RequestData {
   homePhone?: Phone;
   /** The mobile phone number provided by the cardholder. The phone number must consist of a country code, followed by the number. If the value you provide does not follow the guidelines, we do not submit it for authentication. > Required for Visa and JCB transactions that require 3D Secure 2 authentication, if you did not include the `shopperEmail`, and did not send the shopper's phone number in `telephoneNumber`. */
   mobilePhone?: Phone;
-  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
   threeDSRequestorChallengeInd?:
     | CheckoutSessionThreeDS2RequestDataThreeDSRequestorChallengeInd
     | (string & {});
@@ -6925,11 +6925,11 @@ export interface CreatePaymentLinkRequest {
   metadata?: CreatePaymentLinkRequestMetadataMap;
   /** Dictates the behavior of how a potential chargeback should be booked when using Adyen Platforms. */
   platformChargebackLogic?: PlatformChargebackLogic;
-  /** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** – A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** - A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: CreatePaymentLinkRequestRecurringProcessingModel | (string & {});
   /** A reference that is used to uniquely identify the payment in future communications about the payment status. */
   reference: string;
-  /** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** – The address where to send the invoice. * **deliveryAddress** – The address where the purchased goods should be delivered. * **shopperEmail** – The shopper's email address. * **shopperName** – The shopper's full name. * **telephoneNumber** – The shopper's phone number. */
+  /** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** - The address where to send the invoice. * **deliveryAddress** - The address where the purchased goods should be delivered. * **shopperEmail** - The shopper's email address. * **shopperName** - The shopper's full name. * **telephoneNumber** - The shopper's phone number. */
   requiredShopperFields?: CreatePaymentLinkRequestRequiredShopperFieldsList;
   /** Website URL used for redirection after payment is completed. If provided, a **Continue** button will be shown on the payment page. If shoppers select the button, they are redirected to the specified URL. */
   returnUrl?: string;
@@ -6957,7 +6957,7 @@ export interface CreatePaymentLinkRequest {
   splits?: CreatePaymentLinkRequestSplitsList;
   /** The physical store, for which this payment is processed. */
   store?: string;
-  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
+  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
   storePaymentMethodMode?: CreatePaymentLinkRequestStorePaymentMethodMode | (string & {});
   /** The shopper's telephone number. The phone number must include a plus sign (+) and a country code (1-3 digits), followed by the number (4-15 digits). If the value you provide does not follow the guidelines, we do not submit it for authentication. > Required for Visa and JCB transactions that require 3D Secure 2 authentication, if you did not include the `shopperEmail`. */
   telephoneNumber?: string;
@@ -7048,7 +7048,7 @@ export const PaymentLinkResponseMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PaymentLinkResponseMetadataMap>;
 
-/** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** – A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** - A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type PaymentLinkResponseRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -7063,7 +7063,7 @@ export type PaymentLinkResponseRequiredShopperFieldsItem =
   | "telephoneNumber";
 export const PaymentLinkResponseRequiredShopperFieldsItem = S.String;
 
-/** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** – The address where to send the invoice. * **deliveryAddress** – The address where the purchased goods should be delivered. * **shopperEmail** – The shopper's email address. * **shopperName** – The shopper's full name. * **telephoneNumber** – The shopper's phone number. */
+/** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** - The address where to send the invoice. * **deliveryAddress** - The address where the purchased goods should be delivered. * **shopperEmail** - The shopper's email address. * **shopperName** - The shopper's full name. * **telephoneNumber** - The shopper's phone number. */
 export type PaymentLinkResponseRequiredShopperFieldsList =
   Array<PaymentLinkResponseRequiredShopperFieldsItem>;
 export const PaymentLinkResponseRequiredShopperFieldsList = /*@__PURE__*/ S.Array(
@@ -7085,7 +7085,7 @@ export type PaymentLinkResponseStatus =
   | "paymentPending";
 export const PaymentLinkResponseStatus = S.String;
 
-/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
+/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
 export type PaymentLinkResponseStorePaymentMethodMode = "askForConsent" | "disabled" | "enabled";
 export const PaymentLinkResponseStorePaymentMethodMode = S.String;
 
@@ -7136,11 +7136,11 @@ export interface PaymentLinkResponse {
   metadata?: PaymentLinkResponseMetadataMap;
   /** Dictates the behavior of how a potential chargeback should be booked when using Adyen Platforms. */
   platformChargebackLogic?: PlatformChargebackLogic;
-  /** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** – A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when `storePaymentMethodMode` is set to **askForConsent** or **enabled**. Possible values: * **Subscription** - A transaction for a fixed or variable amount, which follows a fixed schedule. * **CardOnFile** - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * **UnscheduledCardOnFile** - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or has variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: PaymentLinkResponseRecurringProcessingModel;
   /** A reference that is used to uniquely identify the payment in future communications about the payment status. */
   reference: string;
-  /** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** – The address where to send the invoice. * **deliveryAddress** – The address where the purchased goods should be delivered. * **shopperEmail** – The shopper's email address. * **shopperName** – The shopper's full name. * **telephoneNumber** – The shopper's phone number. */
+  /** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** - The address where to send the invoice. * **deliveryAddress** - The address where the purchased goods should be delivered. * **shopperEmail** - The shopper's email address. * **shopperName** - The shopper's full name. * **telephoneNumber** - The shopper's phone number. */
   requiredShopperFields?: PaymentLinkResponseRequiredShopperFieldsList;
   /** Website URL used for redirection after payment is completed. If provided, a **Continue** button will be shown on the payment page. If shoppers select the button, they are redirected to the specified URL. */
   returnUrl?: string;
@@ -7170,7 +7170,7 @@ export interface PaymentLinkResponse {
   status: PaymentLinkResponseStatus;
   /** The physical store, for which this payment is processed. */
   store?: string;
-  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
+  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. When set to **askForConsent** or **enabled**, you must also include the `recurringProcessingModel` parameter. */
   storePaymentMethodMode?: PaymentLinkResponseStorePaymentMethodMode;
   /** The shopper's telephone number. The phone number must include a plus sign (+) and a country code (1-3 digits), followed by the number (4-15 digits). If the value you provide does not follow the guidelines, we do not submit it for authentication. > Required for Visa and JCB transactions that require 3D Secure 2 authentication, if you did not include the `shopperEmail`. */
   telephoneNumber?: string;
@@ -7601,7 +7601,7 @@ export interface StoredPaymentMethod {
   bankLocationId?: string;
   /** The brand of the card. */
   brand?: string;
-  /** The shopper’s Cash App Pay Cashtag. */
+  /** The shopper's Cash App Pay Cashtag. */
   cashtag?: string;
   /** The two-digit month when the card expires */
   expiryMonth?: string;
@@ -7615,7 +7615,7 @@ export interface StoredPaymentMethod {
   iban?: string;
   /** A unique identifier of this stored payment method. */
   id?: string;
-  /** The shopper’s issuer account label */
+  /** The shopper's issuer account label */
   label?: string;
   /** The last four digits of the PAN. */
   lastFour?: string;
@@ -7625,7 +7625,7 @@ export interface StoredPaymentMethod {
   networkTxReference?: string;
   /** The name of the bank account holder. */
   ownerName?: string;
-  /** The shopper’s email address. */
+  /** The shopper's email address. */
   shopperEmail?: string;
   /** The supported recurring processing models for this stored payment method. */
   supportedRecurringProcessingModels?: StoredPaymentMethodSupportedRecurringProcessingModelsList;
@@ -7714,7 +7714,7 @@ export const CreatePaymentMethodsBalanceRequestPaymentMethodMap = /*@__PURE__*/ 
   S.String,
 ) as any as S.Schema<CreatePaymentMethodsBalanceRequestPaymentMethodMap>;
 
-/** The type of recurring contract to be used. Possible values: * `ONECLICK` – Payment details can be used to initiate a one-click payment, where the shopper enters the [card security code (CVC/CVV)](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid). * `RECURRING` – Payment details can be used without the card security code to initiate [card-not-present transactions](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-not-present-cnp). * `ONECLICK,RECURRING` – Payment details can be used regardless of whether the shopper is on your site or not. * `PAYOUT` – Payment details can be used to [make a payout](https://docs.adyen.com/online-payments/online-payouts). * `EXTERNAL` - Use this when you store payment details and send the raw card number or network token directly in your API request. */
+/** The type of recurring contract to be used. Possible values: * `ONECLICK` - Payment details can be used to initiate a one-click payment, where the shopper enters the [card security code (CVC/CVV)](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid). * `RECURRING` - Payment details can be used without the card security code to initiate [card-not-present transactions](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-not-present-cnp). * `ONECLICK,RECURRING` - Payment details can be used regardless of whether the shopper is on your site or not. * `PAYOUT` - Payment details can be used to [make a payout](https://docs.adyen.com/online-payments/online-payouts). * `EXTERNAL` - Use this when you store payment details and send the raw card number or network token directly in your API request. */
 export type RecurringContract =
   | "ONECLICK"
   | "ONECLICK,RECURRING"
@@ -7732,7 +7732,7 @@ export type RecurringTokenService =
 export const RecurringTokenService = S.String;
 
 export interface Recurring {
-  /** The type of recurring contract to be used. Possible values: * `ONECLICK` – Payment details can be used to initiate a one-click payment, where the shopper enters the [card security code (CVC/CVV)](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid). * `RECURRING` – Payment details can be used without the card security code to initiate [card-not-present transactions](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-not-present-cnp). * `ONECLICK,RECURRING` – Payment details can be used regardless of whether the shopper is on your site or not. * `PAYOUT` – Payment details can be used to [make a payout](https://docs.adyen.com/online-payments/online-payouts). * `EXTERNAL` - Use this when you store payment details and send the raw card number or network token directly in your API request. */
+  /** The type of recurring contract to be used. Possible values: * `ONECLICK` - Payment details can be used to initiate a one-click payment, where the shopper enters the [card security code (CVC/CVV)](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-security-code-cvc-cvv-cid). * `RECURRING` - Payment details can be used without the card security code to initiate [card-not-present transactions](https://docs.adyen.com/payments-fundamentals/payment-glossary#card-not-present-cnp). * `ONECLICK,RECURRING` - Payment details can be used regardless of whether the shopper is on your site or not. * `PAYOUT` - Payment details can be used to [make a payout](https://docs.adyen.com/online-payments/online-payouts). * `EXTERNAL` - Use this when you store payment details and send the raw card number or network token directly in your API request. */
   contract?: RecurringContract | (string & {});
   /** A descriptive name for this detail. */
   recurringDetailName?: string;
@@ -7753,7 +7753,7 @@ export const Recurring = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recurring" }) as any as S.Schema<Recurring>;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreatePaymentMethodsBalanceRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -7774,11 +7774,11 @@ export const CreatePaymentMethodsBalanceRequestSplitsList = /*@__PURE__*/ S.Arra
   Split,
 ) as any as S.Schema<CreatePaymentMethodsBalanceRequestSplitsList>;
 
-/** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** — Not applicable * **02** — Credit * **03** — Debit */
+/** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** -- Not applicable * **02** -- Credit * **03** -- Debit */
 export type ThreeDS2RequestDataAcctType = "01" | "02" | "03";
 export const ThreeDS2RequestDataAcctType = S.String;
 
-/** Indicates whether the cardholder shipping address and cardholder billing address are the same. Allowed values: * **Y** — Shipping address matches billing address. * **N** — Shipping address does not match billing address. */
+/** Indicates whether the cardholder shipping address and cardholder billing address are the same. Allowed values: * **Y** -- Shipping address matches billing address. * **N** -- Shipping address does not match billing address. */
 export type ThreeDS2RequestDataAddrMatch = "Y" | "N";
 export const ThreeDS2RequestDataAddrMatch = S.String;
 
@@ -7790,7 +7790,7 @@ export type ThreeDS2RequestDataChallengeIndicator =
   | "requestChallengeAsMandate";
 export const ThreeDS2RequestDataChallengeIndicator = S.String;
 
-/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+/** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
 export type ThreeDS2RequestDataThreeDSRequestorChallengeInd =
   | "01"
   | "02"
@@ -7800,7 +7800,7 @@ export type ThreeDS2RequestDataThreeDSRequestorChallengeInd =
   | "06";
 export const ThreeDS2RequestDataThreeDSRequestorChallengeInd = S.String;
 
-/** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** — Goods/Service Purchase * **03** — Check Acceptance * **10** — Account Funding * **11** — Quasi-Cash Transaction * **28** — Prepaid Activation and Load */
+/** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** -- Goods/Service Purchase * **03** -- Check Acceptance * **10** -- Account Funding * **11** -- Quasi-Cash Transaction * **28** -- Prepaid Activation and Load */
 export type ThreeDS2RequestDataTransType = "01" | "03" | "10" | "11" | "28";
 export const ThreeDS2RequestDataTransType = S.String;
 
@@ -7814,15 +7814,15 @@ export type ThreeDS2RequestDataTransactionType =
 export const ThreeDS2RequestDataTransactionType = S.String;
 
 export interface ThreeDS2RequestData {
-  /** Additional information about the cardholder’s account provided by the 3DS Requestor. */
+  /** Additional information about the cardholder's account provided by the 3DS Requestor. */
   acctInfo?: AcctInfo;
-  /** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** — Not applicable * **02** — Credit * **03** — Debit */
+  /** Indicates the type of account. For example, for a multi-account card product. Length: 2 characters. Allowed values: * **01** -- Not applicable * **02** -- Credit * **03** -- Debit */
   acctType?: ThreeDS2RequestDataAcctType | (string & {});
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). The acquiring BIN enrolled for 3D Secure 2. This string should match the value that you will use in the authorisation. Use 123456 on the Test platform. */
   acquirerBIN?: string;
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). The merchantId that is enrolled for 3D Secure 2 by the merchant's acquirer. This string should match the value that you will use in the authorisation. Use 123456 on the Test platform. */
   acquirerMerchantID?: string;
-  /** Indicates whether the cardholder shipping address and cardholder billing address are the same. Allowed values: * **Y** — Shipping address matches billing address. * **N** — Shipping address does not match billing address. */
+  /** Indicates whether the cardholder shipping address and cardholder billing address are the same. Allowed values: * **Y** -- Shipping address matches billing address. * **N** -- Shipping address does not match billing address. */
   addrMatch?: ThreeDS2RequestDataAddrMatch | (string & {});
   /** If set to true, you will only perform the [3D Secure 2 authentication](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only), and not the payment authorisation. */
   authenticationOnly?: boolean;
@@ -7848,7 +7848,7 @@ export interface ThreeDS2RequestData {
   payTokenInd?: boolean;
   /** Indicates the type of payment for which an authentication is requested (message extension) */
   paymentAuthenticationUseCase?: string;
-  /** Indicates the maximum number of authorisations permitted for instalment payments. Length: 1–3 characters. */
+  /** Indicates the maximum number of authorisations permitted for instalment payments. Length: 1-3 characters. */
   purchaseInstalData?: string;
   /** Date after which no further authorisations shall be performed. Format: YYYYMMDD */
   recurringExpiry?: string;
@@ -7874,7 +7874,7 @@ export interface ThreeDS2RequestData {
   threeDSRequestorAuthenticationInd?: string;
   /** Information about how the 3DS Requestor authenticated the cardholder before or during the transaction */
   threeDSRequestorAuthenticationInfo?: ThreeDSRequestorAuthenticationInfo;
-  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** — No preference * **02** — No challenge requested * **03** — Challenge requested (3DS Requestor preference) * **04** — Challenge requested (Mandate) * **05** — No challenge (transactional risk analysis is already performed) * **06** — Data Only */
+  /** Indicates whether a challenge is requested for this transaction. Possible values: * **01** -- No preference * **02** -- No challenge requested * **03** -- Challenge requested (3DS Requestor preference) * **04** -- Challenge requested (Mandate) * **05** -- No challenge (transactional risk analysis is already performed) * **06** -- Data Only */
   threeDSRequestorChallengeInd?: ThreeDS2RequestDataThreeDSRequestorChallengeInd | (string & {});
   /** Required for [authentication-only integration](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only) for Visa. Unique 3D Secure requestor identifier assigned by the Directory Server when you enrol for 3D Secure 2. */
   threeDSRequestorID?: string;
@@ -7884,7 +7884,7 @@ export interface ThreeDS2RequestData {
   threeDSRequestorPriorAuthenticationInfo?: ThreeDSRequestorPriorAuthenticationInfo;
   /** URL of the (customer service) website that will be shown to the shopper in case of technical errors during the 3D Secure 2 process. */
   threeDSRequestorURL?: string;
-  /** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** — Goods/Service Purchase * **03** — Check Acceptance * **10** — Account Funding * **11** — Quasi-Cash Transaction * **28** — Prepaid Activation and Load */
+  /** Identifies the type of transaction being authenticated. Length: 2 characters. Allowed values: * **01** -- Goods/Service Purchase * **03** -- Check Acceptance * **10** -- Account Funding * **11** -- Quasi-Cash Transaction * **28** -- Prepaid Activation and Load */
   transType?: ThreeDS2RequestDataTransType | (string & {});
   /** Identify the type of the transaction being authenticated. */
   transactionType?: ThreeDS2RequestDataTransactionType | (string & {});
@@ -7988,7 +7988,7 @@ export interface CreatePaymentMethodsBalanceRequest {
   paymentMethod: CreatePaymentMethodsBalanceRequestPaymentMethodMap;
   /** The recurring settings for the payment. Use this property when you want to enable [recurring payments](https://docs.adyen.com/classic-integration/recurring-payments). */
   recurring?: Recurring;
-  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details or using stored payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?:
     | CreatePaymentMethodsBalanceRequestRecurringProcessingModel
     | (string & {});
@@ -8094,7 +8094,7 @@ export const BalanceCheckResponseAdditionalDataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<BalanceCheckResponseAdditionalDataMap>;
 
-/** The result of the cancellation request. Possible values: * **Success** – Indicates that the balance check was successful. * **NotEnoughBalance** – Commonly indicates that the card did not have enough balance to pay the amount in the request, or that the currency of the balance on the card did not match the currency of the requested amount. * **Failed** – Indicates that the balance check failed. */
+/** The result of the cancellation request. Possible values: * **Success** - Indicates that the balance check was successful. * **NotEnoughBalance** - Commonly indicates that the card did not have enough balance to pay the amount in the request, or that the currency of the balance on the card did not match the currency of the requested amount. * **Failed** - Indicates that the balance check failed. */
 export type BalanceCheckResponseResultCode = "Success" | "NotEnoughBalance" | "Failed";
 export const BalanceCheckResponseResultCode = S.String;
 
@@ -8109,7 +8109,7 @@ export interface BalanceCheckResponse {
   pspReference?: string;
   /** If the payment's authorisation is refused or an error occurs during authorisation, this field holds Adyen's mapped reason for the refusal or a description of the error. When a transaction fails, the authorisation response includes `resultCode` and `refusalReason` values. For more information, see [Refusal reasons](https://docs.adyen.com/development-resources/refusal-reasons). */
   refusalReason?: string;
-  /** The result of the cancellation request. Possible values: * **Success** – Indicates that the balance check was successful. * **NotEnoughBalance** – Commonly indicates that the card did not have enough balance to pay the amount in the request, or that the currency of the balance on the card did not match the currency of the requested amount. * **Failed** – Indicates that the balance check failed. */
+  /** The result of the cancellation request. Possible values: * **Success** - Indicates that the balance check was successful. * **NotEnoughBalance** - Commonly indicates that the card did not have enough balance to pay the amount in the request, or that the currency of the balance on the card did not match the currency of the requested amount. * **Failed** - Indicates that the balance check failed. */
   resultCode: BalanceCheckResponseResultCode;
   /** The maximum spendable balance for a single transaction. Applicable to some gift cards. */
   transactionLimit?: Amount;
@@ -8416,7 +8416,7 @@ export const PaymentDetailsResponseAdditionalDataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PaymentDetailsResponseAdditionalDataMap>;
 
-/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** – The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** – The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** – Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** – The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** – There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** – The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** – The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** – Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** – Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** – Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** – Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** – Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
+/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** - The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** - The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** - Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** - The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** - There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** - The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** - The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** - Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** - Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** - Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** - Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** - Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
 export type PaymentDetailsResponseResultCode =
   | "AuthenticationFinished"
   | "AuthenticationNotRequired"
@@ -8461,7 +8461,7 @@ export interface PaymentDetailsResponse {
   refusalReason?: string;
   /** Code that specifies the refusal reason. For more information, see [Authorisation refusal reasons](https://docs.adyen.com/development-resources/refusal-reasons). */
   refusalReasonCode?: string;
-  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** – The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** – The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** – Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** – The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** – There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** – The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** – The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** – Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** – Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** – Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** – Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** – Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
+  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **AuthenticationFinished** - The payment has been successfully authenticated with 3D Secure 2. Returned for 3D Secure 2 authentication-only transactions. * **AuthenticationNotRequired** - The transaction does not require 3D Secure authentication. Returned for [standalone authentication-only integrations](https://docs.adyen.com/online-payments/3d-secure/other-3ds-flows/authentication-only). * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Cancelled** - Indicates the payment has been cancelled (either by the shopper or the merchant) before processing was completed. This is a final state. * **ChallengeShopper** - The issuer requires further shopper interaction before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **Error** - There was an error when the payment was being processed. The reason is given in the `refusalReason` field. This is a final state. * **IdentifyShopper** - The issuer requires the shopper's device fingerprint before the payment can be authenticated. Returned for 3D Secure 2 transactions. * **PartiallyAuthorised** - The payment has been authorised for a partial amount. This happens for card payments when the merchant supports Partial Authorisations and the cardholder has insufficient funds. * **Pending** - Indicates that it is not possible to obtain the final status of the payment. This can happen if the systems providing final status information for the payment are unavailable, or if the shopper needs to take further action to complete the payment. * **PresentToShopper** - Indicates that the response contains additional information that you need to present to a shopper, so that they can use it to complete a payment. * **Received** - Indicates the payment has successfully been received by Adyen, and will be processed. This is the initial state for all payments. * **RedirectShopper** - Indicates the shopper should be redirected to an external web page or app to complete the authorisation. * **Refused** - Indicates the payment was refused. The reason is given in the `refusalReason` field. This is a final state. */
   resultCode?: PaymentDetailsResponseResultCode;
   /** The shopperLocale. */
   shopperLocale?: string;
@@ -8688,7 +8688,7 @@ export const CreateSessionRequestMetadataMap = /*@__PURE__*/ S.Record(
 export type CreateSessionRequestMode = "embedded" | "hosted";
 export const CreateSessionRequestMode = S.String;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreateSessionRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -8709,7 +8709,7 @@ export const CreateSessionRequestSplitsList = /*@__PURE__*/ S.Array(
 export type CreateSessionRequestStoreFiltrationMode = "exclusive" | "inclusive" | "skipFilter";
 export const CreateSessionRequestStoreFiltrationMode = S.String;
 
-/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
+/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
 export type CreateSessionRequestStorePaymentMethodMode = "askForConsent" | "disabled" | "enabled";
 export const CreateSessionRequestStorePaymentMethodMode = S.String;
 
@@ -8786,7 +8786,7 @@ export interface CreateSessionRequest {
   recurringExpiry?: string;
   /** Minimum number of days between authorisations. Only for 3D Secure 2. */
   recurringFrequency?: string;
-  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: CreateSessionRequestRecurringProcessingModel | (string & {});
   /** Specifies the redirect method (GET or POST) when redirecting back from the issuer. */
   redirectFromIssuerMethod?: string;
@@ -8830,7 +8830,7 @@ export interface CreateSessionRequest {
   storeFiltrationMode?: CreateSessionRequestStoreFiltrationMode | (string & {});
   /** When true and `shopperReference` is provided, the payment details will be stored for future [recurring payments](https://docs.adyen.com/online-payments/tokenization/#recurring-payment-types). */
   storePaymentMethod?: boolean;
-  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
+  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
   storePaymentMethodMode?: CreateSessionRequestStorePaymentMethodMode | (string & {});
   /** The shopper's telephone number. The phone number must include a plus sign (+) and a country code (1-3 digits), followed by the number (4-15 digits). If the value you provide does not follow the guidelines, we do not submit it for authentication. > Required for Visa and JCB transactions that require 3D Secure 2 authentication, if you did not include the `shopperEmail`. */
   telephoneNumber?: string;
@@ -8964,7 +8964,7 @@ export const CreateCheckoutSessionResponseMetadataMap = /*@__PURE__*/ S.Record(
 export type CreateCheckoutSessionResponseMode = "embedded" | "hosted";
 export const CreateCheckoutSessionResponseMode = S.String;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreateCheckoutSessionResponseRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -8992,7 +8992,7 @@ export type CreateCheckoutSessionResponseStoreFiltrationMode =
   | "skipFilter";
 export const CreateCheckoutSessionResponseStoreFiltrationMode = S.String;
 
-/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
+/** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
 export type CreateCheckoutSessionResponseStorePaymentMethodMode =
   | "askForConsent"
   | "disabled"
@@ -9072,7 +9072,7 @@ export interface CreateCheckoutSessionResponse {
   recurringExpiry?: string;
   /** Minimum number of days between authorisations. Only for 3D Secure 2. */
   recurringFrequency?: string;
-  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel?: CreateCheckoutSessionResponseRecurringProcessingModel;
   /** Specifies the redirect method (GET or POST) when redirecting back from the issuer. */
   redirectFromIssuerMethod?: string;
@@ -9116,7 +9116,7 @@ export interface CreateCheckoutSessionResponse {
   storeFiltrationMode?: CreateCheckoutSessionResponseStoreFiltrationMode;
   /** When true and `shopperReference` is provided, the payment details will be stored for future [recurring payments](https://docs.adyen.com/online-payments/tokenization/#recurring-payment-types). */
   storePaymentMethod?: boolean;
-  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** – No details will be stored (default). * **askForConsent** – If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** – If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
+  /** Indicates if the details of the payment method will be stored for the shopper. Possible values: * **disabled** - No details will be stored (default). * **askForConsent** - If the `shopperReference` is provided, the Drop-in/Component shows a checkbox where the shopper can select to store their payment details for card payments. * **enabled** - If the `shopperReference` is provided, the details will be stored without asking the shopper for consent. */
   storePaymentMethodMode?: CreateCheckoutSessionResponseStorePaymentMethodMode;
   /** The shopper's telephone number. The phone number must include a plus sign (+) and a country code (1-3 digits), followed by the number (4-15 digits). If the value you provide does not follow the guidelines, we do not submit it for authentication. > Required for Visa and JCB transactions that require 3D Secure 2 authentication, if you did not include the `shopperEmail`. */
   telephoneNumber?: string;
@@ -9249,7 +9249,7 @@ export const PaymentMethodToStore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentMethodToStore" }) as any as S.Schema<PaymentMethodToStore>;
 
-/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type CreateStoredPaymentMethodRequestRecurringProcessingModel =
   | "CardOnFile"
   | "Subscription"
@@ -9265,7 +9265,7 @@ export interface CreateStoredPaymentMethodRequest {
   opi?: OpiRequest;
   /** Contains the information required to store a payment method. */
   paymentMethod: PaymentMethodToStore;
-  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Required when creating a token to store payment details. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   recurringProcessingModel:
     | CreateStoredPaymentMethodRequestRecurringProcessingModel
     | (string & {});
@@ -9382,7 +9382,7 @@ export const TokenMandate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TokenMandate" }) as any as S.Schema<TokenMandate>;
 
-/** Defines a recurring payment type. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+/** Defines a recurring payment type. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
 export type StoredPaymentMethodResourceSupportedRecurringProcessingModelsList = Array<string>;
 export const StoredPaymentMethodResourceSupportedRecurringProcessingModelsList =
   /*@__PURE__*/ S.Array(
@@ -9432,11 +9432,11 @@ export interface StoredPaymentMethodResource {
   opi?: OpiResponse;
   /** The name of the bank account holder. */
   ownerName?: string;
-  /** The shopper’s email address. */
+  /** The shopper's email address. */
   shopperEmail?: string;
   /** Your reference to uniquely identify this shopper, for example user ID or account ID. The value is case-sensitive and must be at least three characters. > Your reference must not include personally identifiable information (PII) such as name or email address. */
   shopperReference?: string;
-  /** Defines a recurring payment type. Allowed values: * `Subscription` – A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` – With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` – An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
+  /** Defines a recurring payment type. Allowed values: * `Subscription` - A transaction for a fixed or variable amount, which follows a fixed schedule. * `CardOnFile` - With a card-on-file (CoF) transaction, card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process. Any subscription not following a fixed schedule is also considered a card-on-file transaction. * `UnscheduledCardOnFile` - An unscheduled card-on-file (UCoF) transaction is a transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount. */
   supportedRecurringProcessingModels?: StoredPaymentMethodResourceSupportedRecurringProcessingModelsList;
   /** The type of payment method. */
   type?: string;
@@ -9580,7 +9580,7 @@ export const SessionResultResponseAdditionalDataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SessionResultResponseAdditionalDataMap>;
 
-/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Received** – Indicates the payment request was successfully received by Adyen, and will be processed. This is the initial state for all payments. * **Pending** – The payment order was successfully received but the final status of the payment is not available yet. This is common for payment methods with an asynchronous flow. */
+/** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Received** - Indicates the payment request was successfully received by Adyen, and will be processed. This is the initial state for all payments. * **Pending** - The payment order was successfully received but the final status of the payment is not available yet. This is common for payment methods with an asynchronous flow. */
 export type PaymentResultCode = "Authorised" | "Received" | "Pending";
 export const PaymentResultCode = S.String;
 
@@ -9591,7 +9591,7 @@ export interface Payment {
   paymentMethod?: ResponsePaymentMethod;
   /** Adyen's 16-character reference associated with the transaction/request. This value is globally unique. Use this reference when you communicate with us about this request. */
   pspReference?: string;
-  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **Authorised** – The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Received** – Indicates the payment request was successfully received by Adyen, and will be processed. This is the initial state for all payments. * **Pending** – The payment order was successfully received but the final status of the payment is not available yet. This is common for payment methods with an asynchronous flow. */
+  /** The result of the payment. For more information, see [Result codes](https://docs.adyen.com/online-payments/payment-result-codes). Possible values: * **Authorised** - The payment was successfully authorised. This state serves as an indicator to proceed with the delivery of goods and services. This is a final state. * **Received** - Indicates the payment request was successfully received by Adyen, and will be processed. This is the initial state for all payments. * **Pending** - The payment order was successfully received but the final status of the payment is not available yet. This is common for payment methods with an asynchronous flow. */
   resultCode?: PaymentResultCode;
 }
 export const Payment = /*@__PURE__*/ S.suspend(() =>

@@ -2911,11 +2911,11 @@ export type DescribeAccountAttributesError = InsufficientPrivilegesException | C
 /**
  * Returns attributes related to Elastic Beanstalk that are associated with the calling Amazon Web Services account.
  *
- * The result currently has one set of attributes—resource quotas.
+ * The result currently has one set of attributes--resource quotas.
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -2944,7 +2944,7 @@ export type DescribeApplicationsError = CommonErrors;
  * access. For example, consider a case where a user only has permission to access two of three
  * applications. When the user calls the *DescribeApplications* action, the
  * response will only include the two applications that the user has permission to access
- * instead of all three applications. If the user doesn’t have access to any of the applications
+ * instead of all three applications. If the user doesn't have access to any of the applications
  * an empty result is returned.
  *
  * The *AWSElasticBeanstalkReadOnly* managed policy allows operators to
@@ -2973,7 +2973,7 @@ export type DescribeApplicationVersionsError = CommonErrors;
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -3005,7 +3005,7 @@ export type DescribeConfigurationOptionsError = TooManyBucketsException | Common
  * access. For example, consider a case where a user only has permission to access one of three
  * resources. When the user calls the this action, the
  * response will only include the one resource that the user has permission to access instead
- * of all three resources. If the user doesn’t have access to any of the resources an empty
+ * of all three resources. If the user doesn't have access to any of the resources an empty
  * result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3042,7 +3042,7 @@ export type DescribeConfigurationSettingsError = TooManyBucketsException | Commo
  * access. For example, consider a case where a user only has permission to access one of three
  * resources. When the user calls the this action, the
  * response will only include the one resource that the user has permission to access instead
- * of all three resources. If the user doesn’t have access to any of the resources an empty
+ * of all three resources. If the user doesn't have access to any of the resources an empty
  * result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3078,7 +3078,7 @@ export type DescribeEnvironmentHealthError =
  *
  * This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where
  * a user only has permission to access one of three environments. When the user calls this action, the response will only include the one environment that
- * the user has permission to access instead of all three environments. If the user doesn’t have access to any of the environments an empty result is
+ * the user has permission to access instead of all three environments. If the user doesn't have access to any of the environments an empty result is
  * returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3135,7 +3135,7 @@ export type DescribeEnvironmentManagedActionsError =
  *
  * This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where
  * a user only has permission to access one of three environments. When the user calls this action, the response will only include the one environment that
- * the user has permission to access instead of all three environments. If the user doesn’t have access to any of the environments an empty result is
+ * the user has permission to access instead of all three environments. If the user doesn't have access to any of the environments an empty result is
  * returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3181,7 +3181,7 @@ export type DescribeEnvironmentsError = CommonErrors;
  *
  * This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where
  * a user only has permission to access one of three environments. When the user calls the *DescribeEnvironments* action, the response
- * will only include the one environment that the user has permission to access instead of all three environments. If the user doesn’t have access to any of
+ * will only include the one environment that the user has permission to access instead of all three environments. If the user doesn't have access to any of
  * the environments an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3211,7 +3211,7 @@ export type DescribeEventsError = CommonErrors;
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -3248,7 +3248,7 @@ export type DescribeInstancesHealthError =
  *
  * This action only returns information about environments that the calling principle has IAM permissions to access. For example, consider a case where
  * a user only has permission to access one of three environments. When the user calls this action, the response will only include the one environment that
- * the user has permission to access instead of all three environments. If the user doesn’t have access to any of the environments an empty result is
+ * the user has permission to access instead of all three environments. If the user doesn't have access to any of the environments an empty result is
  * returned.
  *
  * The AWSElasticBeanstalkReadOnly
@@ -3282,7 +3282,7 @@ export type DescribePlatformVersionError =
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -3332,7 +3332,7 @@ export type ListAvailableSolutionStacksError = CommonErrors;
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -3361,7 +3361,7 @@ export type ListPlatformBranchesError = CommonErrors;
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer
@@ -3397,7 +3397,7 @@ export type ListPlatformVersionsError =
  *
  * This action only returns information about platform versions that the calling principle has IAM permissions to access. For example, consider a case
  * where a user only has permission to access one of ten platform versions. When the user calls the *ListPlatformVersions* action, the
- * response will only include the one platform version that the user has permission to access instead of all ten platform versions. If the user doesn’t have
+ * response will only include the one platform version that the user has permission to access instead of all ten platform versions. If the user doesn't have
  * access to any of the platform versions an empty result is returned.
  *
  * The *AWSElasticBeanstalkReadOnly* managed policy allows operators to view information about resources related to Elastic Beanstalk
@@ -3441,7 +3441,7 @@ export type ListTagsForResourceError =
  *
  * This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a
  * user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the
- * user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned.
+ * user has permission to access instead of all three resources. If the user doesn't have access to any of the resources an empty result is returned.
  *
  * The AWSElasticBeanstalkReadOnly
  * managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer

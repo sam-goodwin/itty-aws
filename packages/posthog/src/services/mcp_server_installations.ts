@@ -283,7 +283,7 @@ export const AvailableToolInputSchemaMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AvailableToolInputSchemaMap>;
 
-/** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only — policy may escalate them, never loosen them. */
+/** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only -- policy may escalate them, never loosen them. */
 export type AvailableToolAnnotationsMap = { [key: string]: unknown | undefined };
 export const AvailableToolAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -301,7 +301,7 @@ export interface AvailableTool {
   description: string;
   /** JSON Schema for the tool's arguments. */
   input_schema: AvailableToolInputSchemaMap;
-  /** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only — policy may escalate them, never loosen them. */
+  /** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only -- policy may escalate them, never loosen them. */
   annotations: AvailableToolAnnotationsMap;
   /** Effective gateway state. `needs_approval` tools are listed so callers can explain why a call would fail rather than pretending the capability is missing. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
   approval_state: MCPToolApprovalStateEnum;
@@ -876,7 +876,7 @@ export const getMcpServerInstallation: API.OperationMethod<
 }));
 
 export type GetMcpServerInstallationsAvailableToolError = PosthogOpError;
-/** Every tool the caller can currently reach, across all their connections. One request instead of one per connection: an agent surface resolving its tool list on each session cannot afford a fan-out. `do_not_use` and removed tools are omitted — an agent should not see what it cannot call — while `needs_approval` tools are listed with their state so the caller can explain the block rather than report the capability as missing. */
+/** Every tool the caller can currently reach, across all their connections. One request instead of one per connection: an agent surface resolving its tool list on each session cannot afford a fan-out. `do_not_use` and removed tools are omitted -- an agent should not see what it cannot call -- while `needs_approval` tools are listed with their state so the caller can explain the block rather than report the capability as missing. */
 export const getMcpServerInstallationsAvailableTool: API.OperationMethod<
   GetMcpServerInstallationsAvailableToolRequest,
   AvailableToolsResponse,
@@ -990,7 +990,7 @@ export const mcpServerInstallationsToolsRefreshCreate: API.OperationMethod<
 }));
 
 export type McpServerInstallationsUnshareCreateError = PosthogOpError;
-/** De-escalate a shared installation back to personal. Allowed for the credential owner OR a project admin (the reclaim path for shared credentials). The row always stays owned by the ORIGINAL owner — an admin unsharing someone else's install must not capture their credential. */
+/** De-escalate a shared installation back to personal. Allowed for the credential owner OR a project admin (the reclaim path for shared credentials). The row always stays owned by the ORIGINAL owner -- an admin unsharing someone else's install must not capture their credential. */
 export const mcpServerInstallationsUnshareCreate: API.OperationMethod<
   McpServerInstallationsUnshareCreateRequest,
   MCPServerInstallation,

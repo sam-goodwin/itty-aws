@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   lingeringSubscribe: "lingering_subscribe",
   maxTimeoutMs: "max_timeout_ms",
@@ -744,7 +744,7 @@ export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRelayResponse" }) as any as S.Schema<UpdateRelayResponse>;
 
 export type CreateRelayError = CloudflareOpError;
-/** Provisions a new MoQ relay instance. Auto-creates a publish+subscribe token and a subscribe-only token. Token values are included in the response (shown once). Config is always set to defaults (upstreams off) and cannot be supplied here — sending a non-empty `config` is rejected (21014); `null` or `{}` is accepted as absent. Use PUT to configure the relay after it exists. */
+/** Provisions a new MoQ relay instance. Auto-creates a publish+subscribe token and a subscribe-only token. Token values are included in the response (shown once). Config is always set to defaults (upstreams off) and cannot be supplied here -- sending a non-empty `config` is rejected (21014); `null` or `{}` is accepted as absent. Use PUT to configure the relay after it exists. */
 export const createRelay: API.OperationMethod<
   CreateRelayRequest,
   CreateRelayResponse,
@@ -774,7 +774,7 @@ export const createRelaysToken: API.OperationMethod<
 }));
 
 export type DeleteRelayError = CloudflareOpError;
-/** Soft-deletes a MoQ relay. The relay ID goes in the URL path — `DELETE /accounts/{account_id}/moq/relays/{relay_id}` — not the request body; there is no collection-level delete endpoint. */
+/** Soft-deletes a MoQ relay. The relay ID goes in the URL path -- `DELETE /accounts/{account_id}/moq/relays/{relay_id}` -- not the request body; there is no collection-level delete endpoint. */
 export const deleteRelay: API.OperationMethod<
   DeleteRelayRequest,
   DeleteRelayResponse,
@@ -869,7 +869,7 @@ export const rotateRelayToken: API.OperationMethod<
 }));
 
 export type UpdateRelayError = CloudflareOpError;
-/** Updates a relay's name and/or configuration. The relay ID goes in the URL path — `PUT /accounts/{account_id}/moq/relays/{relay_id}` — not the request body; there is no collection-level update endpoint. This is also the only way to set a relay's config (config cannot be set at create time). Partial updates: omitted fields are preserved; config sub-objects replace as whole objects when present. */
+/** Updates a relay's name and/or configuration. The relay ID goes in the URL path -- `PUT /accounts/{account_id}/moq/relays/{relay_id}` -- not the request body; there is no collection-level update endpoint. This is also the only way to set a relay's config (config cannot be set at create time). Partial updates: omitted fields are preserved; config sub-objects replace as whole objects when present. */
 export const updateRelay: API.OperationMethod<
   UpdateRelayRequest,
   UpdateRelayResponse,

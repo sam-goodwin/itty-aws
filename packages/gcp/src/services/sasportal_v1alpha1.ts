@@ -2339,7 +2339,7 @@ export const PatchNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PatchNodesNodesRequest" }) as any as S.Schema<PatchNodesNodesRequest>;
 
-/** Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. GCP Project, Organization Info, and caller’s GAIA ID should be retrieved from the RPC handler, and used as inputs to create a new SAS organization (if not exists) and a new SAS deployment. */
+/** Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. GCP Project, Organization Info, and caller's GAIA ID should be retrieved from the RPC handler, and used as inputs to create a new SAS organization (if not exists) and a new SAS deployment. */
 export interface SasPortalProvisionDeploymentRequest {
   /** Optional. If this field is set then a new deployment will be created under the organization specified by this id. */
   organizationId?: string;

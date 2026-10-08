@@ -4852,7 +4852,7 @@ export type CancelLifecycleExecutionError =
   | ServiceUnavailableException
   | CommonErrors;
 /**
- * Cancels a lifecycle execution – a single run of lifecycle actions that a
+ * Cancels a lifecycle execution - a single run of lifecycle actions that a
  * lifecycle policy or a StartResourceStateUpdate request
  * started. You can only cancel an execution that hasn't reached a
  * terminal state. Cancellation is asynchronous and doesn't undo
@@ -6074,7 +6074,7 @@ export type GetLifecycleExecutionError =
   | ServiceUnavailableException
   | CommonErrors;
 /**
- * Retrieves runtime information for a lifecycle execution – a single run of
+ * Retrieves runtime information for a lifecycle execution - a single run of
  * lifecycle actions that a lifecycle policy or a
  * StartResourceStateUpdate request started.
  */

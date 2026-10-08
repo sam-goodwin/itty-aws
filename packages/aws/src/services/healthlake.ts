@@ -2022,7 +2022,7 @@ export type ListFHIRDatastoresError =
   | ValidationException
   | CommonErrors;
 /**
- * List all FHIR-enabled data stores in a user’s account, regardless of data store status.
+ * List all FHIR-enabled data stores in a user's account, regardless of data store status.
  */
 export const listFHIRDatastores: API.PaginatedOperationMethod<
   ListFHIRDatastoresRequest,

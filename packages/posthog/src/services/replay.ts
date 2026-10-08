@@ -55,7 +55,7 @@ export interface CreateSessionRecordingPlaylistRequest {
   pinned?: boolean;
   /** Set to true to soft-delete the playlist. */
   deleted?: boolean;
-  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
+  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes -- omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
   type?: SessionRecordingPlaylistPlaylistTypeEnum | (string & {}) | null;
@@ -171,7 +171,7 @@ export interface SessionRecordingPlaylistOutput {
   created_by?: UserBasic | null;
   /** Set to true to soft-delete the playlist. */
   deleted?: boolean;
-  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
+  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes -- omitting filters will be treated as removing them. */
   filters?: unknown;
   last_modified_at?: string;
   last_modified_by?: UserBasic | null;
@@ -217,7 +217,7 @@ export interface CreateSessionRecordingPlaylistsRecordingRequest {
   pinned?: boolean;
   /** Set to true to soft-delete the playlist. */
   deleted?: boolean;
-  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
+  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes -- omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
   type?: SessionRecordingPlaylistPlaylistTypeEnum | (string & {}) | null;
@@ -629,7 +629,7 @@ export const SessionRecordingBulkDeleteResponseFailedIdsList = /*@__PURE__*/ S.A
 ) as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
 
 export interface SessionRecordingBulkDeleteResponse {
-  /** True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips. */
+  /** True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed -- compare deleted_count to total_requested to detect skips. */
   success: boolean;
   /** Number of recordings that were deleted. */
   deleted_count: number;
@@ -723,7 +723,7 @@ export interface UpdateSessionRecordingPlaylistRequest {
   pinned?: boolean;
   /** Set to true to soft-delete the playlist. */
   deleted?: boolean;
-  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
+  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes -- omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
   type?: SessionRecordingPlaylistPlaylistTypeEnum | (string & {}) | null;
@@ -768,7 +768,7 @@ export interface UpdateSessionRecordingPlaylistsPartialRequest {
   pinned?: boolean;
   /** Set to true to soft-delete the playlist. */
   deleted?: boolean;
-  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them. */
+  /** JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes -- omitting filters will be treated as removing them. */
   filters?: unknown;
   /** Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after. * `collection` - Collection * `filters` - Filters */
   type?: SessionRecordingPlaylistPlaylistTypeEnum | (string & {}) | null;
@@ -902,7 +902,7 @@ export const getSessionRecordingPlaylistsRecording: API.OperationMethod<
 }));
 
 export type ListSessionRecordingPlaylistsError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Override list to include synthetic playlists. Synthetics have no DB row, so we compute each one's position in the merged sort and split the requested page between synthetics and a DB queryset slice. The merge/rank/sort is all in-memory, so each phase is wrapped in a span and the input sizes are recorded as span attributes — a slow response on a team with many playlists then shows up as a wide span against a large db_count. */
+/** Override list to include synthetic playlists. Synthetics have no DB row, so we compute each one's position in the merged sort and split the requested page between synthetics and a DB queryset slice. The merge/rank/sort is all in-memory, so each phase is wrapped in a span and the input sizes are recorded as span attributes -- a slow response on a team with many playlists then shows up as a wide span against a large db_count. */
 export const listSessionRecordingPlaylists: API.OperationMethod<
   ListSessionRecordingPlaylistsRequest,
   PaginatedSessionRecordingPlaylistListOutput,

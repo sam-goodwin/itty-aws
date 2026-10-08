@@ -6452,7 +6452,7 @@ export type AdminResetUserPasswordError =
   | UserNotFoundException
   | CommonErrors;
 /**
- * Begins the password reset process. Sets the requested user’s account into a
+ * Begins the password reset process. Sets the requested user's account into a
  * `RESET_REQUIRED` status, and sends them a password-reset code. Your user
  * pool also sends the user a notification with a reset code and the information that their
  * password has been reset. At sign-in, your application or the managed login session

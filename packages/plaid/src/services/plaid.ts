@@ -534,17 +534,17 @@ export const AccountInsights = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountInsights" }) as any as S.Schema<AccountInsights>;
 
-/** The user object allows you to provide additional information about the user to be appended to the Asset Report. All fields are optional. The `first_name`, `last_name`, and `ssn` fields are required if you would like the Report to be eligible for Fannie Mae's Day 1 Certainty™ program. */
+/** The user object allows you to provide additional information about the user to be appended to the Asset Report. All fields are optional. The `first_name`, `last_name`, and `ssn` fields are required if you would like the Report to be eligible for Fannie Mae's Day 1 Certainty(TM) program. */
 export interface AssetReportUser {
   /** An identifier you determine and submit for the user. */
   client_user_id?: string | null;
-  /** The user's first name. Required for the Fannie Mae Day 1 Certainty™ program. */
+  /** The user's first name. Required for the Fannie Mae Day 1 Certainty(TM) program. */
   first_name?: string | null;
   /** The user's middle name */
   middle_name?: string | null;
-  /** The user's last name. Required for the Fannie Mae Day 1 Certainty™ program. */
+  /** The user's last name. Required for the Fannie Mae Day 1 Certainty(TM) program. */
   last_name?: string | null;
-  /** The user's Social Security Number. Required for the Fannie Mae Day 1 Certainty™ program. Format: "ddd-dd-dddd" */
+  /** The user's Social Security Number. Required for the Fannie Mae Day 1 Certainty(TM) program. Format: "ddd-dd-dddd" */
   ssn?: string | null;
   /** The user's phone number, in E.164 format: +{countrycode}{number}. For example: "+14151234567". Phone numbers provided in other formats will be parsed on a best-effort basis. */
   phone_number?: string | null;
@@ -887,7 +887,7 @@ export const HoldingTaxLot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HoldingTaxLot" }) as any as S.Schema<HoldingTaxLot>;
 
-/** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding — either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
+/** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding -- either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
 export type AssetReportInvestmentHoldingTaxLotsList = Array<HoldingTaxLot>;
 export const AssetReportInvestmentHoldingTaxLotsList = /*@__PURE__*/ S.Array(
   HoldingTaxLot,
@@ -915,7 +915,7 @@ export interface AssetReportInvestmentHolding {
   iso_currency_code: string | null;
   /** The unofficial currency code associated with the holding. Always `null` if `iso_currency_code` is non-`null`. Unofficial currency codes are used for currencies that do not have official ISO currency codes, such as cryptocurrencies and the currencies of certain countries. See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `unofficial_currency_code`s. */
   unofficial_currency_code: string | null;
-  /** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding — either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
+  /** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding -- either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
   tax_lots?: AssetReportInvestmentHoldingTaxLotsList;
 }
 export const AssetReportInvestmentHolding = /*@__PURE__*/ S.suspend(() =>
@@ -14762,7 +14762,7 @@ export const CraVoaReportAccountOwnersList = /*@__PURE__*/ S.Array(
   Owner,
 ) as any as S.Schema<CraVoaReportAccountOwnersList>;
 
-/** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding — either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
+/** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding -- either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
 export type BaseReportInvestmentHoldingTaxLotsList = Array<HoldingTaxLot>;
 export const BaseReportInvestmentHoldingTaxLotsList = /*@__PURE__*/ S.Array(
   HoldingTaxLot,
@@ -14788,7 +14788,7 @@ export interface BaseReportInvestmentHolding {
   iso_currency_code: string | null;
   /** The unofficial currency code associated with the holding. Always `null` if `iso_currency_code` is non-`null`. Unofficial currency codes are used for currencies that do not have official ISO currency codes, such as cryptocurrencies and the currencies of certain countries. See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `unofficial_currency_code`s. */
   unofficial_currency_code: string | null;
-  /** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding — either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
+  /** Per-lot acquisition data for this holding. This field is absent when lot-level data is not available for the holding -- either the institution does not provide it, or the report was generated before lot-level data was supported. Refresh the report if you expect lots. */
   tax_lots?: BaseReportInvestmentHoldingTaxLotsList;
 }
 export const BaseReportInvestmentHolding = /*@__PURE__*/ S.suspend(() =>
@@ -35617,7 +35617,7 @@ export const AuthVerifyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthVerifyResponse" }) as any as S.Schema<AuthVerifyResponse>;
 
 export type AssetReportAuditCopyCreateError = PlaidOpError;
-/** Create Asset Report Audit Copy Plaid can provide an Audit Copy of any Asset Report directly to a participating third party on your behalf. For example, Plaid can supply an Audit Copy directly to the GSEs on your behalf if you participate in Fannie Mae's Day 1 Certainty™ program or utilize Freddie Mac's Loan Product Advisor® (LPA®) Asset and Income Modeler (AIM). An Audit Copy contains the same underlying data as the Asset Report. To grant access to an Audit Copy, use the `/asset_report/audit_copy/create` endpoint to create an `audit_copy_token` and then pass that token to the third party who needs access. Each third party has its own `auditor_id`, for example `fannie_mae`. You'll need to create a separate Audit Copy for each third party to whom you want to grant access to the Report. */
+/** Create Asset Report Audit Copy Plaid can provide an Audit Copy of any Asset Report directly to a participating third party on your behalf. For example, Plaid can supply an Audit Copy directly to the GSEs on your behalf if you participate in Fannie Mae's Day 1 Certainty(TM) program or utilize Freddie Mac's Loan Product Advisor® (LPA®) Asset and Income Modeler (AIM). An Audit Copy contains the same underlying data as the Asset Report. To grant access to an Audit Copy, use the `/asset_report/audit_copy/create` endpoint to create an `audit_copy_token` and then pass that token to the third party who needs access. Each third party has its own `auditor_id`, for example `fannie_mae`. You'll need to create a separate Audit Copy for each third party to whom you want to grant access to the Report. */
 export const assetReportAuditCopyCreate: API.OperationMethod<
   AssetReportAuditCopyCreateRequest,
   AssetReportAuditCopyCreateResponse,
@@ -36412,7 +36412,7 @@ export const createWatchlistScreeningIndividualReview: API.OperationMethod<
 }));
 
 export type CreditAuditCopyTokenCreateError = PlaidOpError;
-/** Create Asset or Income Report Audit Copy Token Plaid can create an Audit Copy token of an Asset Report and/or Income Report to share with a participating Government-Sponsored Enterprise (GSE) if you participate in Fannie Mae's Day 1 Certainty™ program or utilize Freddie Mac's Loan Product Advisor® (LPA®) Asset and Income Modeler (AIM). An Audit Copy token contains the same underlying data as the Asset Report and/or Income Report (result of `/credit/payroll_income/get`). Use the `/credit/audit_copy_token/create` endpoint to create an `audit_copy_token` and then pass that token to the GSE who needs access. */
+/** Create Asset or Income Report Audit Copy Token Plaid can create an Audit Copy token of an Asset Report and/or Income Report to share with a participating Government-Sponsored Enterprise (GSE) if you participate in Fannie Mae's Day 1 Certainty(TM) program or utilize Freddie Mac's Loan Product Advisor® (LPA®) Asset and Income Modeler (AIM). An Audit Copy token contains the same underlying data as the Asset Report and/or Income Report (result of `/credit/payroll_income/get`). Use the `/credit/audit_copy_token/create` endpoint to create an `audit_copy_token` and then pass that token to the GSE who needs access. */
 export const creditAuditCopyTokenCreate: API.OperationMethod<
   CreditAuditCopyTokenCreateRequest,
   CreditAuditCopyTokenCreateResponse,

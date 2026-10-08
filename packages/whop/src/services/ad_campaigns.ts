@@ -190,7 +190,7 @@ export const AdCampaignObjective = S.String;
 export type AdCampaignPlatform = "meta" | "tiktok" | "google";
 export const AdCampaignPlatform = S.String;
 
-/** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+/** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdCampaignResultEvent =
   | "purchase"
   | "lead"
@@ -325,7 +325,7 @@ export interface AdCampaign {
   purchases: number;
   /** The number of unique people who saw this. */
   reach: number;
-  /** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+  /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
   result_event: AdCampaignResultEvent | null;
   /** The merchant-defined event name when result_event is custom; null for the standard events. */
   result_event_name: string | null;
@@ -552,7 +552,7 @@ export interface ListAdCampaignsRequest {
   status?: ListAdCampaignsRequestStatus | (string & {});
   /** Filter campaigns by a title or ID substring. */
   query?: string;
-  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, …) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
+  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, ...) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
   order?: ListAdCampaignsRequestOrder | (string & {});
   /** The sort direction. Defaults to desc. */
   direction?: ListAdCampaignsRequestDirection | (string & {});
@@ -758,7 +758,7 @@ export const deleteAdCampaign: API.OperationMethod<
 }));
 
 export type DuplicateAdCampaignError = BadRequest | NotFound | Conflict | WhopOpError;
-/** Duplicate an Ad Campaign Creates copies of the campaign in `duplicating` status and returns them; each copy transitions to `draft` once duplication completes. Poll each returned campaign until it leaves `duplicating` — a copy that could not be completed is deleted and returns 404. */
+/** Duplicate an Ad Campaign Creates copies of the campaign in `duplicating` status and returns them; each copy transitions to `draft` once duplication completes. Poll each returned campaign until it leaves `duplicating` -- a copy that could not be completed is deleted and returns 404. */
 export const duplicateAdCampaign: API.OperationMethod<
   DuplicateAdCampaignRequest,
   DuplicateAdCampaignResponse,

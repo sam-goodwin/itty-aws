@@ -111,7 +111,7 @@ export type TeamMemberStatus = "joined" | "pending";
 export const TeamMemberStatus = S.String;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -148,7 +148,7 @@ export interface TeamMember {
   created_at: string;
   /** The member's email address. For accepted members, `null` unless the caller holds the email read scope; for invites, the invited address. */
   email: string | null;
-  /** Team member ID — `ausr_` for accepted members, `ausri_` for pending invites. */
+  /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
   /** Whether this member is an agent (app-controlled account) rather than a human team member. Always `false` for invites. */
   is_agent: boolean;
@@ -177,7 +177,7 @@ export const TeamMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamMember" }) as any as S.Schema<TeamMember>;
 
 export interface DeleteTeamMemberRequest {
-  /** Team member ID — `ausr_` for accepted members, `ausri_` for pending invites. */
+  /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
 export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
@@ -196,7 +196,7 @@ export const DeleteTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamMemberResponse" }) as any as S.Schema<DeleteTeamMemberResponse>;
 
 export interface GetTeamMemberRequest {
-  /** Team member ID — `ausr_` for accepted members, `ausri_` for pending invites. */
+  /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
 export const GetTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
@@ -316,7 +316,7 @@ export type UpdateTeamMemberRequestRole =
 export const UpdateTeamMemberRequestRole = S.String;
 
 export interface UpdateTeamMemberRequest {
-  /** Team member ID — `ausr_` for accepted members, `ausri_` for pending invites. */
+  /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
   /** The system role to grant. The Partner role can only be granted to the account's attached, verified partner. */
   role: UpdateTeamMemberRequestRole | (string & {});
@@ -329,7 +329,7 @@ export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamMemberRequest" }) as any as S.Schema<UpdateTeamMemberRequest>;
 
 export type CreateTeamMemberError = BadRequest | Conflict | WhopOpError;
-/** Create Team Member Adds a member to an account's team with a system role. Identify them by exactly one of `user_id` or `email`. If the person has not yet accepted — or the email does not belong to a Whop account yet — an invitation is sent instead and the response is `202` with `{ "object": "team_member_invite", "invitation_sent": true }`. If they already have a pending invite, the request fails with a `400`. Custom roles cannot be granted via the API. Granting the `workforce` role is also allowed with the `bounty:create` scope. */
+/** Create Team Member Adds a member to an account's team with a system role. Identify them by exactly one of `user_id` or `email`. If the person has not yet accepted -- or the email does not belong to a Whop account yet -- an invitation is sent instead and the response is `202` with `{ "object": "team_member_invite", "invitation_sent": true }`. If they already have a pending invite, the request fails with a `400`. Custom roles cannot be granted via the API. Granting the `workforce` role is also allowed with the `bounty:create` scope. */
 export const createTeamMember: API.OperationMethod<
   CreateTeamMemberRequest,
   TeamMember,
@@ -401,7 +401,7 @@ export const listTeamMembers: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdateTeamMemberError = BadRequest | NotFound | WhopOpError;
-/** Update Team Member Changes a team member's system role. Requires a user session — account API keys cannot change member roles. The account owner's role cannot be changed, and you cannot change your own role. */
+/** Update Team Member Changes a team member's system role. Requires a user session -- account API keys cannot change member roles. The account owner's role cannot be changed, and you cannot change your own role. */
 export const updateTeamMember: API.OperationMethod<
   UpdateTeamMemberRequest,
   TeamMember,

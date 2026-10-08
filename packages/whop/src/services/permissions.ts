@@ -335,7 +335,7 @@ export const ListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPermissionsResponse" }) as any as S.Schema<ListPermissionsResponse>;
 
 export type ListPermissionsError = BadRequest | WhopOpError;
-/** Check Permissions Lists permission actions and whether the calling credential is granted each one for a resource. Answers for whichever identity authenticated the request — a user session, an OAuth token, or an account or app API key — so it never describes who else can reach the resource. */
+/** Check Permissions Lists permission actions and whether the calling credential is granted each one for a resource. Answers for whichever identity authenticated the request -- a user session, an OAuth token, or an account or app API key -- so it never describes who else can reach the resource. */
 export const listPermissions: API.OperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,

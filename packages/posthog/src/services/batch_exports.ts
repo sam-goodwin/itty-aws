@@ -1028,9 +1028,9 @@ export interface HogQLQueryModifiers {
   mergeFederatedAggregateJoins?: boolean | null;
   optimizeJoinedFilters?: boolean | null;
   optimizeProjections?: boolean | null;
-  /** HogQL parser backend; absent → `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
+  /** HogQL parser backend; absent -> `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
   parserMode?: ParserMode | (string & {}) | null;
-  /** Push an `id IN (SELECT person_id FROM <left table> WHERE …)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
+  /** Push an `id IN (SELECT person_id FROM <left table> WHERE ...)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
   personIdPushdown?: boolean | null;
   personsArgMaxVersion?: PersonsArgMaxVersion | (string & {}) | null;
   personsJoinMode?: PersonsJoinMode | (string & {}) | null;
@@ -1038,7 +1038,7 @@ export interface HogQLQueryModifiers {
   propertyGroupsMode?: PropertyGroupsMode | (string & {}) | null;
   pushDownPredicates?: boolean | null;
   s3TableUseInvalidColumns?: boolean | null;
-  /** Push a `session_id_v7 IN (SELECT … FROM events WHERE …)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
+  /** Push a `session_id_v7 IN (SELECT ... FROM events WHERE ...)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
   sessionIdPushdown?: boolean | null;
   /** Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap pre-aggregation that only materializes the columns referenced by the outer-WHERE session predicate)`. Useful when the breakdown/SELECT pulls in many session columns (e.g. `$channel_type`) but the filter only references one (e.g. `$entry_current_url`). */
   sessionPropertyPreAggregation?: boolean | null;
@@ -1185,7 +1185,7 @@ export const BatchExportDestinationConfig =
 export interface BatchExportDestinationOutput {
   /** A choice of supported BatchExportDestination types. * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum;
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here -- they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;
@@ -2062,7 +2062,7 @@ export const CreateBatchExportsRunTestStepRequestModel =
 export interface BatchExportDestination {
   /** A choice of supported BatchExportDestination types. * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum | (string & {});
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here -- they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;

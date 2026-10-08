@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   creationDate: "creation_date",
   customMetadata: "custom_metadata",
@@ -4434,7 +4434,7 @@ export interface UploadBucketObjectRequest {
   cfR2StorageClass?: BucketsObjectsUploadRequestCfR2StorageClass | (string & {});
   /** The key (name) to assign to the object. May contain slashes for path-like keys. Slashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded (i.e. `%2F`); other reserved characters should be percent-encoded as usual. */
   objectName: string;
-  /** The object content — sent verbatim as the request body. */
+  /** The object content -- sent verbatim as the request body. */
   body?: Blob | Uint8Array | ArrayBuffer | string;
   /** MIME type stored with the object. */
   contentType?: string;

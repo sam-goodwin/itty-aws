@@ -710,7 +710,7 @@ export type ArchiveAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Archive affiliate [Legacy API — https://docs.whop.com/api-reference] Archives an existing Affiliate Required permissions: - `affiliate:update` */
+/** Archive affiliate [Legacy API -- https://docs.whop.com/api-reference] Archives an existing Affiliate Required permissions: - `affiliate:update` */
 export const archiveAffiliate: API.OperationMethod<
   ArchiveAffiliateRequest,
   ArchiveAffiliateResponse,
@@ -730,7 +730,7 @@ export type CreateAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create affiliate [Legacy API — https://docs.whop.com/api-reference] Creates or finds an affiliate for a company and user. Required permissions: - `affiliate:create` */
+/** Create affiliate [Legacy API -- https://docs.whop.com/api-reference] Creates or finds an affiliate for a company and user. Required permissions: - `affiliate:create` */
 export const createAffiliate: API.OperationMethod<
   CreateAffiliateRequest,
   Affiliate,
@@ -750,7 +750,7 @@ export type CreateOverrideAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create override [Legacy API — https://docs.whop.com/api-reference] Creates a commission override for an affiliate. Required permissions: - `affiliate:create` */
+/** Create override [Legacy API -- https://docs.whop.com/api-reference] Creates a commission override for an affiliate. Required permissions: - `affiliate:create` */
 export const createOverrideAffiliate: API.OperationMethod<
   CreateOverrideAffiliateRequest,
   CreateOverrideAffiliateResponse,
@@ -770,7 +770,7 @@ export type DeleteOverrideAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete override [Legacy API — https://docs.whop.com/api-reference] Deletes an affiliate override. Required permissions: - `affiliate:update` */
+/** Delete override [Legacy API -- https://docs.whop.com/api-reference] Deletes an affiliate override. Required permissions: - `affiliate:update` */
 export const deleteOverrideAffiliate: API.OperationMethod<
   DeleteOverrideAffiliateRequest,
   DeleteOverrideAffiliateResponse,
@@ -790,7 +790,7 @@ export type GetAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve affiliate [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing affiliate. Required permissions: - `affiliate:basic:read` */
+/** Retrieve affiliate [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing affiliate. Required permissions: - `affiliate:basic:read` */
 export const getAffiliate: API.OperationMethod<
   GetAffiliateRequest,
   Affiliate,
@@ -810,7 +810,7 @@ export type GetOverrideAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve override [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of a specific affiliate override. Required permissions: - `affiliate:basic:read` */
+/** Retrieve override [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of a specific affiliate override. Required permissions: - `affiliate:basic:read` */
 export const getOverrideAffiliate: API.OperationMethod<
   GetOverrideAffiliateRequest,
   GetOverrideAffiliateResponse,
@@ -830,7 +830,7 @@ export type ListAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List affiliates [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of affiliates for the actor in context, with optional filtering by status, search, and sorting. Required permissions: - `affiliate:basic:read` */
+/** List affiliates [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of affiliates for the actor in context, with optional filtering by status, search, and sorting. Required permissions: - `affiliate:basic:read` */
 export const listAffiliate: API.PaginatedOperationMethod<
   ListAffiliateRequest,
   ListAffiliateResponse,
@@ -862,7 +862,7 @@ export type ListOverridesAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List overrides [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of overrides for an affiliate. Required permissions: - `affiliate:basic:read` */
+/** List overrides [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of overrides for an affiliate. Required permissions: - `affiliate:basic:read` */
 export const listOverridesAffiliate: API.PaginatedOperationMethod<
   ListOverridesAffiliateRequest,
   ListOverridesAffiliateResponse,
@@ -894,7 +894,7 @@ export type UnarchiveAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Unarchive affiliate [Legacy API — https://docs.whop.com/api-reference] Unarchives an existing Affiliate Required permissions: - `affiliate:update` */
+/** Unarchive affiliate [Legacy API -- https://docs.whop.com/api-reference] Unarchives an existing Affiliate Required permissions: - `affiliate:update` */
 export const unarchiveAffiliate: API.OperationMethod<
   UnarchiveAffiliateRequest,
   UnarchiveAffiliateResponse,
@@ -914,7 +914,7 @@ export type UpdateOverrideAffiliateError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update override [Legacy API — https://docs.whop.com/api-reference] Updates an existing affiliate override. Required permissions: - `affiliate:update` */
+/** Update override [Legacy API -- https://docs.whop.com/api-reference] Updates an existing affiliate override. Required permissions: - `affiliate:update` */
 export const updateOverrideAffiliate: API.OperationMethod<
   UpdateOverrideAffiliateRequest,
   UpdateOverrideAffiliateResponse,

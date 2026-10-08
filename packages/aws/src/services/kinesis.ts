@@ -3306,7 +3306,7 @@ export type CreateStreamError =
  *
  * You can create your data stream using either on-demand or provisioned capacity mode. Data streams with an on-demand mode require no capacity planning and automatically scale to handle gigabytes of write and read throughput per minute. With the on-demand mode, Kinesis Data Streams automatically manages the shards in order to provide the necessary throughput.
  *
- * If you'd still like to proactively scale your on-demand data stream’s capacity, you can unlock the warm throughput feature for on-demand data streams by enabling `MinimumThroughputBillingCommitment` for your account. Once your account has `MinimumThroughputBillingCommitment` enabled, you can specify the warm throughput in MiB per second that your stream can support in writes.
+ * If you'd still like to proactively scale your on-demand data stream's capacity, you can unlock the warm throughput feature for on-demand data streams by enabling `MinimumThroughputBillingCommitment` for your account. Once your account has `MinimumThroughputBillingCommitment` enabled, you can specify the warm throughput in MiB per second that your stream can support in writes.
  *
  * For the data streams with a provisioned mode, you must specify the number of shards for the data stream. Each shard can support reads up to five transactions per second, up to a maximum data read total of 2 MiB per second. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second. If the amount of data input increases or decreases, you can add or remove shards.
  *
@@ -3337,7 +3337,7 @@ export type CreateStreamError =
  * CreateStream has a limit of five transactions per second per
  * account.
  *
- * You can add tags to the stream when making a `CreateStream` request by setting the `Tags` parameter. If you pass the `Tags` parameter, in addition to having the `kinesis:CreateStream` permission, you must also have the `kinesis:AddTagsToStream` permission for the stream that will be created. The `kinesis:TagResource` permission won’t work to tag streams on creation. Tags will take effect from the `CREATING` status of the stream, but you can't make any updates to the tags until the stream is in `ACTIVE` state.
+ * You can add tags to the stream when making a `CreateStream` request by setting the `Tags` parameter. If you pass the `Tags` parameter, in addition to having the `kinesis:CreateStream` permission, you must also have the `kinesis:AddTagsToStream` permission for the stream that will be created. The `kinesis:TagResource` permission won't work to tag streams on creation. Tags will take effect from the `CREATING` status of the stream, but you can't make any updates to the tags until the stream is in `ACTIVE` state.
  */
 export const createStream: API.OperationMethod<
   CreateStreamInput,
@@ -5040,7 +5040,7 @@ export type UpdateAccountSettingsError =
 /**
  * Updates the account-level settings for Amazon Kinesis Data Streams.
  *
- * Updating account settings is a synchronous operation. Upon receiving the request, Kinesis Data Streams will return immediately with your account’s updated settings.
+ * Updating account settings is a synchronous operation. Upon receiving the request, Kinesis Data Streams will return immediately with your account's updated settings.
  *
  * **API limits**
  *
@@ -5220,7 +5220,7 @@ export type UpdateStreamModeError =
  * can choose between an **on-demand** capacity mode and a
  * **provisioned** capacity mode for your data stream.
  *
- * If you'd still like to proactively scale your on-demand data stream’s capacity, you can unlock the warm throughput feature for on-demand data streams by enabling `MinimumThroughputBillingCommitment` for your account. Once your account has `MinimumThroughputBillingCommitment` enabled, you can specify the warm throughput in MiB per second that your stream can support in writes.
+ * If you'd still like to proactively scale your on-demand data stream's capacity, you can unlock the warm throughput feature for on-demand data streams by enabling `MinimumThroughputBillingCommitment` for your account. Once your account has `MinimumThroughputBillingCommitment` enabled, you can specify the warm throughput in MiB per second that your stream can support in writes.
  */
 export const updateStreamMode: API.OperationMethod<
   UpdateStreamModeInput,
@@ -5261,12 +5261,12 @@ export type UpdateStreamRecordDistributionStrategyError =
  * following strategies at any time, and the change takes effect immediately without
  * downtime, data loss, or disruption to producer or consumer applications:
  *
- * - `AUTO` – Amazon Kinesis Data Streams distributes records evenly
+ * - `AUTO` - Amazon Kinesis Data Streams distributes records evenly
  * across shards using service-managed algorithms, and ignores any partition key
  * and `ExplicitHashKey` that a producer provides. Use this strategy for
  * stateless workloads that do not require partition-key ordering.
  *
- * - `USER_PARTITION_KEY` – Producers must provide a partition key, and
+ * - `USER_PARTITION_KEY` - Producers must provide a partition key, and
  * Amazon Kinesis Data Streams uses the partition key to determine shard placement.
  * Records that share a partition key are sent to the same shard. This is the
  * default strategy.

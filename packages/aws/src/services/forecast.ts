@@ -2952,23 +2952,23 @@ export type CreateExplainabilityError =
  *
  * - `ResourceArn` - The Arn of the predictor.
  *
- * - `TimePointGranularity` - Must be set to “ALL”.
+ * - `TimePointGranularity` - Must be set to "ALL".
  *
- * - `TimeSeriesGranularity` - Must be set to “ALL”.
+ * - `TimeSeriesGranularity` - Must be set to "ALL".
  *
  * Do not specify a value for the following parameters:
  *
  * - `DataSource` - Only valid when TimeSeriesGranularity is
- * “SPECIFIC”.
+ * "SPECIFIC".
  *
  * - `Schema` - Only valid when TimeSeriesGranularity is
- * “SPECIFIC”.
+ * "SPECIFIC".
  *
  * - `StartDateTime` - Only valid when TimePointGranularity is
- * “SPECIFIC”.
+ * "SPECIFIC".
  *
  * - `EndDateTime` - Only valid when TimePointGranularity is
- * “SPECIFIC”.
+ * "SPECIFIC".
  *
  * **CreateExplainability with a Forecast ARN**
  *
@@ -2980,11 +2980,11 @@ export type CreateExplainabilityError =
  *
  * - `ResourceArn` - The Arn of the forecast.
  *
- * - `TimePointGranularity` - Either “ALL” or “SPECIFIC”.
+ * - `TimePointGranularity` - Either "ALL" or "SPECIFIC".
  *
- * - `TimeSeriesGranularity` - Either “ALL” or “SPECIFIC”.
+ * - `TimeSeriesGranularity` - Either "ALL" or "SPECIFIC".
  *
- * If you set TimeSeriesGranularity to “SPECIFIC”, you must also provide the
+ * If you set TimeSeriesGranularity to "SPECIFIC", you must also provide the
  * following:
  *
  * - `DataSource` - The S3 location of the CSV file specifying your time
@@ -2993,7 +2993,7 @@ export type CreateExplainabilityError =
  * - `Schema` - The Schema defines the attributes and attribute types
  * listed in the Data Source.
  *
- * If you set TimePointGranularity to “SPECIFIC”, you must also provide the
+ * If you set TimePointGranularity to "SPECIFIC", you must also provide the
  * following:
  *
  * - `StartDateTime` - The first timestamp in the range of time
@@ -3404,7 +3404,7 @@ export type CreateWhatIfForecastExportError =
  * Exports a forecast created by the CreateWhatIfForecast operation to your
  * Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name will match the following conventions:
  *
- * `≈__`
+ * `~__`
  *
  * The component is in Java SimpleDateFormat
  * (yyyy-MM-ddTHH-mm-ssZ).

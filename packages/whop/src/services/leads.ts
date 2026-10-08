@@ -311,7 +311,7 @@ export const UpdateLeadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateLeadRequest" }) as any as S.Schema<UpdateLeadRequest>;
 
 export type CreateLeadError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Create lead [Legacy API — https://docs.whop.com/api-reference] Record a new lead for a company, capturing a potential customer's interest in a specific product. Required permissions: - `lead:manage` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
+/** Create lead [Legacy API -- https://docs.whop.com/api-reference] Record a new lead for a company, capturing a potential customer's interest in a specific product. Required permissions: - `lead:manage` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const createLead: API.OperationMethod<
   CreateLeadRequest,
   Lead,
@@ -326,7 +326,7 @@ export const createLead: API.OperationMethod<
 }));
 
 export type GetLeadError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve lead [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing lead. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
+/** Retrieve lead [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing lead. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const getLead: API.OperationMethod<GetLeadRequest, Lead, GetLeadError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetLeadRequest,
@@ -337,7 +337,7 @@ export const getLead: API.OperationMethod<GetLeadRequest, Lead, GetLeadError, Wh
   }));
 
 export type ListLeadError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List leads [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of leads for a company, with optional filtering by product and creation date. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
+/** List leads [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of leads for a company, with optional filtering by product and creation date. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const listLead: API.PaginatedOperationMethod<
   ListLeadRequest,
   ListLeadResponse,
@@ -364,7 +364,7 @@ export const listLead: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdateLeadError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Update lead [Legacy API — https://docs.whop.com/api-reference] Update the metadata or referrer information on an existing lead record. Required permissions: - `lead:manage` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
+/** Update lead [Legacy API -- https://docs.whop.com/api-reference] Update the metadata or referrer information on an existing lead record. Required permissions: - `lead:manage` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const updateLead: API.OperationMethod<
   UpdateLeadRequest,
   Lead,

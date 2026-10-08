@@ -49,7 +49,7 @@ export class NotFound
 export interface ArchiveContainerRequest {
   /** ID or name of the container */
   id: string;
-  /** Resource in the container’s filesystem to archive. */
+  /** Resource in the container's filesystem to archive. */
   path: string;
 }
 export const ArchiveContainerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1898,7 +1898,7 @@ export const ContainerLogsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerLogsResponse" }) as any as S.Schema<ContainerLogsResponse>;
 
 export interface ContainerPruneRequest {
-  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `until=<timestamp>` Prune containers created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine’s time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune containers with (or without, in case `label!=...` is used) the specified labels. */
+  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `until=<timestamp>` Prune containers created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine's time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune containers with (or without, in case `label!=...` is used) the specified labels. */
   filters?: string;
 }
 export const ContainerPruneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4890,7 +4890,7 @@ export interface ImageBuildRequest {
   t?: string;
   /** Extra hosts to add to /etc/hosts */
   extrahosts?: string;
-  /** A Git repository URI or HTTP/HTTPS context URI. If the URI points to a single text file, the file’s contents are placed into a file called `Dockerfile` and the image is built from that file. If the URI points to a tarball, the file is downloaded by the daemon and the contents therein used as the context for the build. If the URI points to a tarball and the `dockerfile` parameter is also specified, there must be a file with the corresponding path inside the tarball. */
+  /** A Git repository URI or HTTP/HTTPS context URI. If the URI points to a single text file, the file's contents are placed into a file called `Dockerfile` and the image is built from that file. If the URI points to a tarball, the file is downloaded by the daemon and the contents therein used as the context for the build. If the URI points to a tarball and the `dockerfile` parameter is also specified, there must be a file with the corresponding path inside the tarball. */
   remote?: string;
   /** Suppress verbose build output. */
   q?: boolean;
@@ -5583,7 +5583,7 @@ export const ImageLoadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
 }) as any as S.Schema<ImageLoadResponse>;
 
 export interface ImagePruneRequest {
-  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `dangling=<boolean>` When set to `true` (or `1`), prune only unused *and* untagged images. When set to `false` (or `0`), all unused images are pruned. - `until=<string>` Prune images created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine’s time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune images with (or without, in case `label!=...` is used) the specified labels. */
+  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `dangling=<boolean>` When set to `true` (or `1`), prune only unused *and* untagged images. When set to `false` (or `0`), all unused images are pruned. - `until=<string>` Prune images created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine's time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune images with (or without, in case `label!=...` is used) the specified labels. */
   filters?: string;
 }
 export const ImagePruneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7064,7 +7064,7 @@ export const NetworkInspectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkInspectResponse" }) as any as S.Schema<NetworkInspectResponse>;
 
 export interface NetworkPruneRequest {
-  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `until=<timestamp>` Prune networks created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine’s time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune networks with (or without, in case `label!=...` is used) the specified labels. */
+  /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `until=<timestamp>` Prune networks created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine's time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune networks with (or without, in case `label!=...` is used) the specified labels. */
   filters?: string;
 }
 export const NetworkPruneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7208,7 +7208,7 @@ export const PluginUpgradeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}))
 export interface PutContainerArchiveRequest {
   /** ID or name of the container */
   id: string;
-  /** Path to a directory in the container to extract the archive’s contents into. */
+  /** Path to a directory in the container to extract the archive's contents into. */
   path: string;
   /** If `1`, `true`, or `True` then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa. */
   noOverwriteDirNonDir?: string;
@@ -9634,7 +9634,7 @@ export const containerAttachWebsocket: API.OperationMethod<
 }));
 
 export type ContainerChangesError = NotFound | DockerOpError;
-/** Get changes on a container’s filesystem Returns which files in a container's filesystem have been added, deleted, or modified. The `Kind` of modification can be one of: - `0`: Modified ("C") - `1`: Added ("A") - `2`: Deleted ("D") */
+/** Get changes on a container's filesystem Returns which files in a container's filesystem have been added, deleted, or modified. The `Kind` of modification can be one of: - `0`: Modified ("C") - `1`: Added ("A") - `2`: Deleted ("D") */
 export const containerChanges: API.OperationMethod<
   ContainerChangesRequest,
   ContainerChangesResponse,
@@ -9694,7 +9694,7 @@ export const containerPrune: API.OperationMethod<
 }));
 
 export type ContainerStatsError = NotFound | DockerOpError;
-/** Get container stats based on resource usage This endpoint returns a live stream of a container’s resource usage statistics. The `precpu_stats` is the CPU statistic of the *previous* read, and is used to calculate the CPU usage percentage. It is not an exact copy of the `cpu_stats` field. If either `precpu_stats.online_cpus` or `cpu_stats.online_cpus` is nil then for compatibility with older daemons the length of the corresponding `cpu_usage.percpu_usage` array should be used. On a cgroup v2 host, the following fields are not set * `blkio_stats`: all fields other than `io_service_bytes_recursive` * `cpu_stats`: `cpu_usage.percpu_usage` * `memory_stats`: `max_usage` and `failcnt` Also, `memory_stats.stats` fields are incompatible with cgroup v1. To calculate the values shown by the `stats` command of the docker cli tool the following formulas can be used: * used_memory = `memory_stats.usage - memory_stats.stats.cache` (cgroups v1) * used_memory = `memory_stats.usage - memory_stats.stats.inactive_file` (cgroups v2) * available_memory = `memory_stats.limit` * Memory usage % = `(used_memory / available_memory) * 100.0` * cpu_delta = `cpu_stats.cpu_usage.total_usage - precpu_stats.cpu_usage.total_usage` * system_cpu_delta = `cpu_stats.system_cpu_usage - precpu_stats.system_cpu_usage` * number_cpus = `length(cpu_stats.cpu_usage.percpu_usage)` or `cpu_stats.online_cpus` * CPU usage % = `(cpu_delta / system_cpu_delta) * number_cpus * 100.0` */
+/** Get container stats based on resource usage This endpoint returns a live stream of a container's resource usage statistics. The `precpu_stats` is the CPU statistic of the *previous* read, and is used to calculate the CPU usage percentage. It is not an exact copy of the `cpu_stats` field. If either `precpu_stats.online_cpus` or `cpu_stats.online_cpus` is nil then for compatibility with older daemons the length of the corresponding `cpu_usage.percpu_usage` array should be used. On a cgroup v2 host, the following fields are not set * `blkio_stats`: all fields other than `io_service_bytes_recursive` * `cpu_stats`: `cpu_usage.percpu_usage` * `memory_stats`: `max_usage` and `failcnt` Also, `memory_stats.stats` fields are incompatible with cgroup v1. To calculate the values shown by the `stats` command of the docker cli tool the following formulas can be used: * used_memory = `memory_stats.usage - memory_stats.stats.cache` (cgroups v1) * used_memory = `memory_stats.usage - memory_stats.stats.inactive_file` (cgroups v2) * available_memory = `memory_stats.limit` * Memory usage % = `(used_memory / available_memory) * 100.0` * cpu_delta = `cpu_stats.cpu_usage.total_usage - precpu_stats.cpu_usage.total_usage` * system_cpu_delta = `cpu_stats.system_cpu_usage - precpu_stats.system_cpu_usage` * number_cpus = `length(cpu_stats.cpu_usage.percpu_usage)` or `cpu_stats.online_cpus` * CPU usage % = `(cpu_delta / system_cpu_delta) * number_cpus * 100.0` */
 export const containerStats: API.OperationMethod<
   ContainerStatsRequest,
   ContainerStatsResponse,

@@ -1048,7 +1048,7 @@ export type UpdatePromoCodeError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update promo code [Legacy API — https://docs.whop.com/api-reference] Update whether a promo code can be used at checkout. Required permissions: - `promo_code:update` - `access_pass:basic:read` */
+/** Update promo code [Legacy API -- https://docs.whop.com/api-reference] Update whether a promo code can be used at checkout. Required permissions: - `promo_code:update` - `access_pass:basic:read` */
 export const updatePromoCode: API.OperationMethod<
   UpdatePromoCodeRequest,
   LegacyPromoCode,

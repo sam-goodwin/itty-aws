@@ -585,7 +585,7 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateCredentialRequest" }) as any as S.Codec<CreateCredentialRequest>;
 
-/** A single capability a credential actually carries, as reported by responses that describe an existing credential. This set is a superset of `CredentialScope` (the requestable set) because a credential's scopes are not limited to what this API offers: the platform accepts additional scopes for customer-managed (`user`) credentials, so one may exist on your branch that was not issued through this endpoint. Responses must be able to report such a credential rather than fail to describe it — a client that rejected the value would, on rotate, discard the replacement secret after the rotation had already committed. Treat unknown values as opaque. */
+/** A single capability a credential actually carries, as reported by responses that describe an existing credential. This set is a superset of `CredentialScope` (the requestable set) because a credential's scopes are not limited to what this API offers: the platform accepts additional scopes for customer-managed (`user`) credentials, so one may exist on your branch that was not issued through this endpoint. Responses must be able to report such a credential rather than fail to describe it -- a client that rejected the value would, on rotate, discard the replacement secret after the rotation had already committed. Treat unknown values as opaque. */
 export type GrantedCredentialScope =
   | "storage:read"
   | "storage:write"
@@ -826,7 +826,7 @@ export const CreateOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateOrgApiKeyResponse" }) as any as S.Codec<CreateOrgApiKeyResponse>;
 
-/** Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is `logical_size_bytes`, which is enforced per branch. If a branch exceeds its `logical_size_bytes` quota, computes can still be started, but write operations will fail—allowing data to be deleted to free up space. Computes on other branches are not affected. Setting `logical_size_bytes` overrides any lower value set by the `neon.max_cluster_size` Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period. `logical_size_bytes` is also an exception—it reflects the total data stored in a branch and does not reset. A zero or empty quota value means “unlimited.” */
+/** Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is `logical_size_bytes`, which is enforced per branch. If a branch exceeds its `logical_size_bytes` quota, computes can still be started, but write operations will fail--allowing data to be deleted to free up space. Computes on other branches are not affected. Setting `logical_size_bytes` overrides any lower value set by the `neon.max_cluster_size` Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period. `logical_size_bytes` is also an exception--it reflects the total data stored in a branch and does not reset. A zero or empty quota value means "unlimited." */
 export interface ProjectQuota {
   /** The total amount of wall-clock time allowed to be spent by the project's compute endpoints. */
   active_time_seconds?: number;
@@ -836,7 +836,7 @@ export interface ProjectQuota {
   written_data_bytes?: number;
   /** Total amount of data transferred from all of a project's branches using the proxy. */
   data_transfer_bytes?: number;
-  /** Limit on the logical size of every project's branch. If a branch exceeds its `logical_size_bytes` quota, computes can still be started, but write operations will fail—allowing data to be deleted to free up space. Computes on other branches are not affected. Setting `logical_size_bytes` overrides any lower value set by the `neon.max_cluster_size` Postgres setting. */
+  /** Limit on the logical size of every project's branch. If a branch exceeds its `logical_size_bytes` quota, computes can still be started, but write operations will fail--allowing data to be deleted to free up space. Computes on other branches are not affected. Setting `logical_size_bytes` overrides any lower value set by the `neon.max_cluster_size` Postgres setting. */
   logical_size_bytes?: number;
 }
 export const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
@@ -1389,9 +1389,9 @@ export interface Branch {
   project_id: string;
   /** The `branch_id` of the parent branch */
   parent_id?: string;
-  /** The Log Sequence Number (LSN) on the parent branch from which this branch was created. When restoring a branch using the `POST /projects/{project_id}/branches/{branch_id}/restore` endpoint, this value isn’t finalized until all operations related to the restore have completed successfully. */
+  /** The Log Sequence Number (LSN) on the parent branch from which this branch was created. When restoring a branch using the `POST /projects/{project_id}/branches/{branch_id}/restore` endpoint, this value isn't finalized until all operations related to the restore have completed successfully. */
   parent_lsn?: string;
-  /** The point in time on the parent branch from which this branch was created. When restoring a branch using the `POST /projects/{project_id}/branches/{branch_id}/restore` endpoint, this value isn’t finalized until all operations related to the restore have completed successfully. After all the operations completed, this value might stay empty. */
+  /** The point in time on the parent branch from which this branch was created. When restoring a branch using the `POST /projects/{project_id}/branches/{branch_id}/restore` endpoint, this value isn't finalized until all operations related to the restore have completed successfully. After all the operations completed, this value might stay empty. */
   parent_timestamp?: string;
   /** The branch name */
   name: string;
@@ -2160,7 +2160,7 @@ export const CreateProjectBranchFunctionDeploymentRequest = /*@__PURE__*/ S.susp
 export type NeonFunctionDeploymentStatus = "pending" | "building" | "completed" | "failed";
 export const NeonFunctionDeploymentStatus = S.String;
 
-/** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned — they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
+/** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned -- they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
 export type NeonFunctionDeploymentEnvironmentList = Array<string>;
 export const NeonFunctionDeploymentEnvironmentList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2174,7 +2174,7 @@ export interface NeonFunctionDeployment {
   memory_mib: number;
   runtime: string;
   created_at: string;
-  /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned — they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
+  /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned -- they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
   environment?: NeonFunctionDeploymentEnvironmentList | null;
   /** Human-readable reason the deployment build failed. Present only when `status` is `failed`. */
   error?: string | null;
@@ -4532,7 +4532,7 @@ export interface StandardEmailServerResponse {
   port: number;
   /** Username for authenticating with the SMTP server. */
   username: string;
-  /** On GET, returned redacted (empty) for ordinary callers, while callers with project-credential read permission receive the stored password — do not assume this field is empty. Update (PATCH) responses always return it redacted (empty) regardless of permission. Provide a value on update to set or rotate the password. */
+  /** On GET, returned redacted (empty) for ordinary callers, while callers with project-credential read permission receive the stored password -- do not assume this field is empty. Update (PATCH) responses always return it redacted (empty) regardless of permission. Provide a value on update to set or rotate the password. */
   password: string | Redacted.Redacted<string>;
   /** Email address used as the From address on outgoing auth emails. */
   sender_email: string;
@@ -5202,7 +5202,7 @@ export const GetProjectBranchAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BranchAiGateway {
   /** Always `true` in 200 responses. Present for forward compatibility, mirroring BranchStorage.enabled. */
   enabled: boolean;
-  /** The AI-gateway endpoint root for this branch — an OpenAI-compatible base URL. No dialect path is included; clients append the route (e.g. `/ai-gateway/openai/v1/responses`) themselves. */
+  /** The AI-gateway endpoint root for this branch -- an OpenAI-compatible base URL. No dialect path is included; clients append the route (e.g. `/ai-gateway/openai/v1/responses`) themselves. */
   base_url: string;
 }
 export const BranchAiGateway = /*@__PURE__*/ S.suspend(() =>
@@ -6431,13 +6431,13 @@ export const ListProjectBranchCustomDomainsRequest = /*@__PURE__*/ S.suspend(() 
 export interface CustomDomain {
   /** The registered custom domain (normalized, lowercase). */
   domain: string;
-  /** The kind of branch entity the domain targets. Possible values: `function` (v1 supports only `function`). Not an `enum`: new values may ship in later spec versions — treat any undocumented value as unknown. */
+  /** The kind of branch entity the domain targets. Possible values: `function` (v1 supports only `function`). Not an `enum`: new values may ship in later spec versions -- treat any undocumented value as unknown. */
   entity_type: string;
   /** The target entity's identifier within the branch. For `function` this is the function slug. */
   entity_id: string;
   /** The hostname the customer must point their custom domain at with a CNAME record. Empty when the serving region has no custom-domains front door configured. This is the activation input: point DNS here and the domain goes live (see `status`) once a certificate is issued on the first request. */
   cname_target: string;
-  /** The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error` (a fixable problem — see `status_reason`). Not an `enum`: treat any undocumented value as unknown. May be absent briefly right after registration. */
+  /** The domain's current validity, computed by a background check: `pending` (still converging -- point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error` (a fixable problem -- see `status_reason`). Not an `enum`: treat any undocumented value as unknown. May be absent briefly right after registration. */
   status?: string;
   /** The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt). Not an `enum`. */
   dns_status?: string;
@@ -7359,7 +7359,7 @@ export interface QueryProjectBranchLogsRequest {
   body_contains?: string;
   /** Match records associated with this OpenTelemetry trace ID. W3C Trace Context defines a trace ID as 32 lowercase hex digits, and that is what is stored, so an uppercase value is rejected rather than silently matching nothing. */
   trace_id?: string;
-  /** Escape hatch for selections the structured filters cannot express: a raw LogQL expression, evaluated against this branch's log stream. Only stream selectors and line filters are accepted — no aggregations and no parser stages. Supplying this alongside any structured filter is rejected with `conflicting_filters` rather than silently ignoring one of them. `limit`, `sort_order`, and the time window still apply. This field passes the underlying query language through to the caller, so unlike the rest of this contract it may change as that backend changes. Prefer the structured filters where they suffice. */
+  /** Escape hatch for selections the structured filters cannot express: a raw LogQL expression, evaluated against this branch's log stream. Only stream selectors and line filters are accepted -- no aggregations and no parser stages. Supplying this alongside any structured filter is rejected with `conflicting_filters` rather than silently ignoring one of them. `limit`, `sort_order`, and the time window still apply. This field passes the underlying query language through to the caller, so unlike the rest of this contract it may change as that backend changes. Prefer the structured filters where they suffice. */
   logql?: string;
 }
 export const QueryProjectBranchLogsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7401,7 +7401,7 @@ export const ProjectBranchLogRecordAttributesMap = /*@__PURE__*/ S.Record(
 export interface ProjectBranchLogRecord {
   /** The OpenTelemetry record timestamp in UTC. */
   timestamp: string;
-  /** The OpenTelemetry log body rendered as text. A body that is already a string is returned verbatim. Any other OpenTelemetry `AnyValue` body — notably the structured key/value body that `storage` records always carry — is rendered as compact JSON with its keys sorted alphabetically, for example `{"bytes":1024,"operation":"GET","object_key":"a/b.png"}`. */
+  /** The OpenTelemetry log body rendered as text. A body that is already a string is returned verbatim. Any other OpenTelemetry `AnyValue` body -- notably the structured key/value body that `storage` records always carry -- is rendered as compact JSON with its keys sorted alphabetically, for example `{"bytes":1024,"operation":"GET","object_key":"a/b.png"}`. */
   message: string;
   source?: ProjectBranchLogSource;
   /** The Neon identifier of the service instance that emitted the record. */
@@ -7808,7 +7808,7 @@ export const RevealCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevealCredentialRequest" }) as any as S.Codec<RevealCredentialRequest>;
 
-/** The live secrets of an existing credential, recovered on demand by the reveal endpoint. `api_token` and `s3_secret_access_key` are the same values handed back once at issuance. The field set is deliberately narrower than `CreateCredentialResponse`: it carries only what reveal can actually recover. `token_id_short`, `scopes`, `principal_type`, `created_at` and `expires_at` are metadata, not secrets — read them from the list endpoint instead. No `branch_id` is returned. Reveal is scoped by `(project_id, token_id)`, so the branch in the request path authorizes the call but is not proven to be the branch the credential was issued on. Echoing it back would assert an anchor this endpoint never verified. For a credential's true anchor branch, read `branch_id` from the list endpoint, which is branch-exact. */
+/** The live secrets of an existing credential, recovered on demand by the reveal endpoint. `api_token` and `s3_secret_access_key` are the same values handed back once at issuance. The field set is deliberately narrower than `CreateCredentialResponse`: it carries only what reveal can actually recover. `token_id_short`, `scopes`, `principal_type`, `created_at` and `expires_at` are metadata, not secrets -- read them from the list endpoint instead. No `branch_id` is returned. Reveal is scoped by `(project_id, token_id)`, so the branch in the request path authorizes the call but is not proven to be the branch the credential was issued on. Echoing it back would assert an anchor this endpoint never verified. For a credential's true anchor branch, read `branch_id` from the list endpoint, which is branch-exact. */
 export interface CredentialSecret {
   /** Opaque credential id (e.g. nak_live_<32hex>). */
   token_id: string;
@@ -7991,7 +7991,7 @@ export const RotateCredentialResponseScopesList = /*@__PURE__*/ S.Array(
 export type RotateCredentialResponsePrincipalType = "user";
 export const RotateCredentialResponsePrincipalType = S.String;
 
-/** The replacement secret material for an existing credential, returned exactly once. `token_id`, `scopes`, `branch_id` and `created_at` are unchanged by the rotation — only `api_token` and `s3_secret_access_key` are new. */
+/** The replacement secret material for an existing credential, returned exactly once. `token_id`, `scopes`, `branch_id` and `created_at` are unchanged by the rotation -- only `api_token` and `s3_secret_access_key` are new. */
 export interface RotateCredentialResponse {
   /** Opaque credential id (e.g. nak_live_<32hex>), unchanged by the rotation. Doubles as the `AWS_ACCESS_KEY_ID` for SigV4. */
   token_id: string;
@@ -8114,7 +8114,7 @@ export const SetDefaultProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SetOrganizationSpendingLimitRequest {
   /** The Neon organization ID */
   org_id: string;
-  /** Monthly spending cap in cents. Must be positive. To remove a previously configured limit, send a DELETE request to the spending_limit endpoint — `0` and `null` are rejected here. The cap is alert-only: notifications fire at 80% and 100%, but computes are not suspended. Setting a cap below the period's already-accrued spend is permitted and will trigger the over-limit notification on the next worker run. */
+  /** Monthly spending cap in cents. Must be positive. To remove a previously configured limit, send a DELETE request to the spending_limit endpoint -- `0` and `null` are rejected here. The cap is alert-only: notifications fire at 80% and 100%, but computes are not suspended. Setting a cap below the period's already-accrued spend is permitted and will trigger the over-limit notification on the next worker run. */
   spending_limit_cents: number;
 }
 export const SetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9350,7 +9350,7 @@ export const countProjectBranches: API.OperationMethod<
 }));
 
 export type CreateApiKeyError = NeonOpError;
-/** Create API key Creates an API key. The `key_name` is a user-specified name for the key. Returns an `id` and `key`; the `key` is a randomly generated, 64-bit token required to access the Neon API. Store the key securely — it is only returned once. API keys can also be managed in the Neon Console. See [Manage API keys](https://neon.com/docs/manage/api-keys/). */
+/** Create API key Creates an API key. The `key_name` is a user-specified name for the key. Returns an `id` and `key`; the `key` is a randomly generated, 64-bit token required to access the Neon API. Store the key securely -- it is only returned once. API keys can also be managed in the Neon Console. See [Manage API keys](https://neon.com/docs/manage/api-keys/). */
 export const createApiKey: API.OperationMethod<
   CreateApiKeyRequest,
   ApiKeyCreateResponse,
@@ -9380,7 +9380,7 @@ export const createBranchNeonAuthNewUser: API.OperationMethod<
 }));
 
 export type CreateCredentialError = NeonOpError;
-/** Issue a scoped credential on the branch Issues a new scoped service credential anchored to the specified branch. The response carries `api_token` and `s3_secret_access_key` exactly once — they are not stored server-side. **Note**: This endpoint is currently in Beta. */
+/** Issue a scoped credential on the branch Issues a new scoped service credential anchored to the specified branch. The response carries `api_token` and `s3_secret_access_key` exactly once -- they are not stored server-side. **Note**: This endpoint is currently in Beta. */
 export const createCredential: API.OperationMethod<
   CreateCredentialRequest,
   CreateCredentialResponse,
@@ -9440,7 +9440,7 @@ export const createOrganizationInvitations: API.OperationMethod<
 }));
 
 export type CreateOrgApiKeyError = NeonOpError;
-/** Create organization API key Creates an API key for the specified organization. The `key_name` is a user-specified name for the key. Returns an `id` and `key`; the `key` is a randomly generated, 64-bit token required to access the Neon API. Store the key securely — it is only returned once. API keys can also be managed in the Neon Console. See [Manage API keys](https://neon.com/docs/manage/api-keys/). */
+/** Create organization API key Creates an API key for the specified organization. The `key_name` is a user-specified name for the key. Returns an `id` and `key`; the `key` is a randomly generated, 64-bit token required to access the Neon API. Store the key securely -- it is only returned once. API keys can also be managed in the Neon Console. See [Manage API keys](https://neon.com/docs/manage/api-keys/). */
 export const createOrgApiKey: API.OperationMethod<
   CreateOrgApiKeyRequest,
   CreateOrgApiKeyResponse,
@@ -9685,7 +9685,7 @@ export const deleteBranchNeonAuthUser: API.OperationMethod<
 }));
 
 export type DeleteOrganizationSpendingLimitError = NeonOpError;
-/** Remove organization spending limit Removes the configured monthly spending limit for the specified organization. Idempotent — removing an already-unset limit still succeeds. Available to organization admins on Launch and Scale plans only. */
+/** Remove organization spending limit Removes the configured monthly spending limit for the specified organization. Idempotent -- removing an already-unset limit still succeeds. Available to organization admins on Launch and Scale plans only. */
 export const deleteOrganizationSpendingLimit: API.OperationMethod<
   DeleteOrganizationSpendingLimitRequest,
   DeleteOrganizationSpendingLimitResponse,
@@ -11130,7 +11130,7 @@ export const presignProjectBranchBucketObject: API.OperationMethod<
 }));
 
 export type QueryProjectBranchLogsError = BadRequest | NotFound | NeonOpError;
-/** Query branch logs Returns logs emitted by services running on the specified branch, ordered by timestamp according to `sort_order`. All supplied filters are combined with `AND`: a record is returned only when it matches every filter. `minimum_severity` and `severity_text` are independent filters, so setting both requires a record to clear the severity floor *and* match the exact severity text. Supply `logql` instead of the structured filters to run a raw LogQL expression. Combining it with any structured filter is rejected rather than silently ignored; `limit`, `sort_order`, and the time window still apply, because those bound the query rather than form part of the expression. Give the window either as `since` — a duration ending at `end_time`, or at the current time when `end_time` is omitted — or as an explicit `start_time`. Supplying both is rejected. A single response holds at most 1,000 records. When `is_truncated` is `true`, pass the returned `next_cursor` back as `cursor` to fetch the next page, repeating the time range and every filter unchanged. If no time range is supplied, the query covers the previous hour. The maximum supported time range is seven days. `end_time` is exclusive. **Note**: This endpoint is currently in Private Beta. */
+/** Query branch logs Returns logs emitted by services running on the specified branch, ordered by timestamp according to `sort_order`. All supplied filters are combined with `AND`: a record is returned only when it matches every filter. `minimum_severity` and `severity_text` are independent filters, so setting both requires a record to clear the severity floor *and* match the exact severity text. Supply `logql` instead of the structured filters to run a raw LogQL expression. Combining it with any structured filter is rejected rather than silently ignored; `limit`, `sort_order`, and the time window still apply, because those bound the query rather than form part of the expression. Give the window either as `since` -- a duration ending at `end_time`, or at the current time when `end_time` is omitted -- or as an explicit `start_time`. Supplying both is rejected. A single response holds at most 1,000 records. When `is_truncated` is `true`, pass the returned `next_cursor` back as `cursor` to fetch the next page, repeating the time range and every filter unchanged. If no time range is supplied, the query covers the previous hour. The maximum supported time range is seven days. `end_time` is exclusive. **Note**: This endpoint is currently in Private Beta. */
 export const queryProjectBranchLogs: API.OperationMethod<
   QueryProjectBranchLogsRequest,
   ProjectBranchLogsQueryResponse,
@@ -11265,7 +11265,7 @@ export const restoreSnapshot: API.OperationMethod<
 }));
 
 export type RevealCredentialError = NotFound | Conflict | NeonOpError;
-/** Reveal a credential's secrets Returns the live `api_token` and `s3_secret_access_key` of an existing credential, so a credential whose issuance response was lost can be recovered without minting a new one. This is a POST with an explicit `/reveal` verb so the secrets never ride a GET, where they would land in access logs, browser history and proxy caches. Revoked and expired credentials return 404, as does a `token_id` that does not belong to this project. A credential issued before secret retrieval was supported has no recoverable secret and returns 409 — rotate it to obtain one. **Note**: This endpoint is currently in Beta. */
+/** Reveal a credential's secrets Returns the live `api_token` and `s3_secret_access_key` of an existing credential, so a credential whose issuance response was lost can be recovered without minting a new one. This is a POST with an explicit `/reveal` verb so the secrets never ride a GET, where they would land in access logs, browser history and proxy caches. Revoked and expired credentials return 404, as does a `token_id` that does not belong to this project. A credential issued before secret retrieval was supported has no recoverable secret and returns 409 -- rotate it to obtain one. **Note**: This endpoint is currently in Beta. */
 export const revealCredential: API.OperationMethod<
   RevealCredentialRequest,
   CredentialSecret,
@@ -11340,7 +11340,7 @@ export const revokePermissionFromProject: API.OperationMethod<
 }));
 
 export type RotateCredentialError = NeonOpError;
-/** Rotate a credential's secrets Replaces the secret material on an existing scoped credential in place. `token_id` is preserved — it is the `AWS_ACCESS_KEY_ID` for S3-compatible clients, so the access key id your application already holds keeps working and only the secret changes. This is the analog of resetting a Postgres password, not of issuing a second credential. The response carries the new `api_token` and `s3_secret_access_key` exactly once. Rotation is **not** idempotent: retrying after an ambiguous timeout mints another secret and supersedes the previous replacement, so a retry does not recover a lost response — it only invalidates the secret you did not receive. If you lose the response, issue a replacement credential and revoke this one. The old secret stops authenticating as soon as the rotation commits. Where a region caches credentials on its data-plane verifiers, a replica may briefly keep accepting the old secret — and rejecting the new one — until its cache entry expires; where it does not, the cutover is immediate apart from requests already in flight. Either way the changeover is not atomic across replicas, so retry an unexpected authentication failure right after rotating rather than treating the new secret as bad. `last_used_at` continues to report the logical credential's prior usage and says nothing about whether the new secret has been used yet. Only a live, unexpired, unrevoked customer-managed (`user`) credential on a live project and live branch is eligible. Anything else — including the platform-internal `function` and `system` credentials — is reported as not found, indistinguishable from an unknown `token_id`. **Note**: This endpoint is currently in Beta. */
+/** Rotate a credential's secrets Replaces the secret material on an existing scoped credential in place. `token_id` is preserved -- it is the `AWS_ACCESS_KEY_ID` for S3-compatible clients, so the access key id your application already holds keeps working and only the secret changes. This is the analog of resetting a Postgres password, not of issuing a second credential. The response carries the new `api_token` and `s3_secret_access_key` exactly once. Rotation is **not** idempotent: retrying after an ambiguous timeout mints another secret and supersedes the previous replacement, so a retry does not recover a lost response -- it only invalidates the secret you did not receive. If you lose the response, issue a replacement credential and revoke this one. The old secret stops authenticating as soon as the rotation commits. Where a region caches credentials on its data-plane verifiers, a replica may briefly keep accepting the old secret -- and rejecting the new one -- until its cache entry expires; where it does not, the cutover is immediate apart from requests already in flight. Either way the changeover is not atomic across replicas, so retry an unexpected authentication failure right after rotating rather than treating the new secret as bad. `last_used_at` continues to report the logical credential's prior usage and says nothing about whether the new secret has been used yet. Only a live, unexpired, unrevoked customer-managed (`user`) credential on a live project and live branch is eligible. Anything else -- including the platform-internal `function` and `system` credentials -- is reported as not found, indistinguishable from an unknown `token_id`. **Note**: This endpoint is currently in Beta. */
 export const rotateCredential: API.OperationMethod<
   RotateCredentialRequest,
   RotateCredentialResponse,
@@ -11355,7 +11355,7 @@ export const rotateCredential: API.OperationMethod<
 }));
 
 export type SendNeonAuthEmailProviderTestError = NeonOpError;
-/** Send test email using the saved email provider Sends a test email using the branch's already-saved custom SMTP configuration. Only the `recipient_email` is provided — the stored SMTP settings and password are used server-side, so the caller does not need to re-supply (or be able to read) the password. This avoids the GET response's masked password being sent back, which would fail SMTP authentication. Requires a configured custom SMTP provider on a Better Auth integration. A shared provider, a missing configuration, or a non-Better-Auth integration is rejected. */
+/** Send test email using the saved email provider Sends a test email using the branch's already-saved custom SMTP configuration. Only the `recipient_email` is provided -- the stored SMTP settings and password are used server-side, so the caller does not need to re-supply (or be able to read) the password. This avoids the GET response's masked password being sent back, which would fail SMTP authentication. Requires a configured custom SMTP provider on a Better Auth integration. A shared provider, a missing configuration, or a non-Better-Auth integration is rejected. */
 export const sendNeonAuthEmailProviderTest: API.OperationMethod<
   SendNeonAuthEmailProviderTestRequest,
   SendNeonAuthTestEmailResponse,
@@ -11580,7 +11580,7 @@ export const updateNeonAuthEmailAndPasswordConfig: API.OperationMethod<
 }));
 
 export type UpdateNeonAuthEmailProviderError = NeonOpError;
-/** Update email provider configuration Updates the email provider configuration for the specified branch's Neon Auth integration. The email provider handles transactional messages such as verification emails and password reset links. Partial `standard` updates — omitting fields to keep their stored values — are supported only for Better Auth integrations, which merge omitted fields server-side. Legacy Stack Auth integrations do not merge and require all six `standard` fields (`host`, `port`, `username`, `password`, `sender_email`, `sender_name`) on every update; a partial `standard` body is rejected with 400. */
+/** Update email provider configuration Updates the email provider configuration for the specified branch's Neon Auth integration. The email provider handles transactional messages such as verification emails and password reset links. Partial `standard` updates -- omitting fields to keep their stored values -- are supported only for Better Auth integrations, which merge omitted fields server-side. Legacy Stack Auth integrations do not merge and require all six `standard` fields (`host`, `port`, `username`, `password`, `sender_email`, `sender_name`) on every update; a partial `standard` body is rejected with 400. */
 export const updateNeonAuthEmailProvider: API.OperationMethod<
   UpdateNeonAuthEmailProviderRequest,
   UpdateNeonAuthEmailProviderResponse,
@@ -11745,7 +11745,7 @@ export const updateProjectBranchDatabase: API.OperationMethod<
 }));
 
 export type UpdateProjectBranchFunctionError = NeonOpError;
-/** Update a function Updates the function's mutable metadata — currently only the display `name`. A string sets the display name; `null` clears it, after which the function's `name` falls back to its slug. Leading and trailing whitespace is trimmed; a whitespace-only name is rejected. Acts only on a function owned by the branch: a slug that is only inherited from an ancestor branch returns 404 — rename it on the branch that owns it. Like every other change on a branch, a rename is isolated per branch: a branch forked before the rename keeps the name it had at fork time. **Note**: This endpoint is currently in Beta. */
+/** Update a function Updates the function's mutable metadata -- currently only the display `name`. A string sets the display name; `null` clears it, after which the function's `name` falls back to its slug. Leading and trailing whitespace is trimmed; a whitespace-only name is rejected. Acts only on a function owned by the branch: a slug that is only inherited from an ancestor branch returns 404 -- rename it on the branch that owns it. Like every other change on a branch, a rename is isolated per branch: a branch forked before the rename keeps the name it had at fork time. **Note**: This endpoint is currently in Beta. */
 export const updateProjectBranchFunction: API.OperationMethod<
   UpdateProjectBranchFunctionRequest,
   NeonFunctionResponse,

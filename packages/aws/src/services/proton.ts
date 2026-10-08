@@ -3853,7 +3853,7 @@ export type CreateTemplateSyncConfigError =
  * been registered with Proton. For more information, see CreateRepository.
  *
  * When a commit is pushed to your linked repository, Proton checks for changes to your repository template bundles. If it detects a template
- * bundle change, a new major or minor version of its template is created, if the version doesn’t already exist. For more information, see Template sync configurations in the Proton
+ * bundle change, a new major or minor version of its template is created, if the version doesn't already exist. For more information, see Template sync configurations in the Proton
  * User Guide.
  */
 export const createTemplateSyncConfig: API.OperationMethod<
@@ -3986,7 +3986,7 @@ export type DeleteEnvironmentAccountConnectionError =
 /**
  * In an environment account, delete an environment account connection.
  *
- * After you delete an environment account connection that’s in use by an Proton environment, Proton *can’t* manage the
+ * After you delete an environment account connection that's in use by an Proton environment, Proton *can't* manage the
  * environment infrastructure resources until a new environment account connection is accepted for the environment account and associated environment. You're
  * responsible for cleaning up provisioned resources that remain without an environment connection.
  *
@@ -5696,7 +5696,7 @@ export type RejectEnvironmentAccountConnectionError =
  * After you reject an environment account connection request, you *can't* accept or use the rejected environment account
  * connection.
  *
- * You *can’t* reject an environment account connection that's connected to an environment.
+ * You *can't* reject an environment account connection that's connected to an environment.
  *
  * For more information, see Environment account
  * connections in the *Proton User guide*.
@@ -5886,7 +5886,7 @@ export type UpdateEnvironmentError =
  * `environmentAccountConnectionId` parameter. You *can't* update or connect the environment to an environment account
  * connection if it *isn't* already associated with an environment connection.
  *
- * You can update either the `environmentAccountConnectionId` or `protonServiceRoleArn` parameter and value. You can’t update
+ * You can update either the `environmentAccountConnectionId` or `protonServiceRoleArn` parameter and value. You can't update
  * both.
  *
  * If the environment was configured for Amazon Web Services-managed provisioning, omit the `provisioningRepository` parameter.
@@ -5906,7 +5906,7 @@ export type UpdateEnvironmentError =
  * `CURRENT_VERSION`
  *
  * In this mode, the environment is deployed and updated with the new spec that you provide. Only requested parameters are updated.
- * *Don’t* include minor or major version parameters when you use this `deployment-type`.
+ * *Don't* include minor or major version parameters when you use this `deployment-type`.
  *
  * `MINOR_VERSION`
  *
@@ -6150,7 +6150,7 @@ export type UpdateServicePipelineError =
  * `CURRENT_VERSION`
  *
  * In this mode, the service pipeline is deployed and updated with the new spec that
- * you provide. Only requested parameters are updated. *Don’t* include
+ * you provide. Only requested parameters are updated. *Don't* include
  * major or minor version parameters when you use this `deployment-type`.
  *
  * `MINOR_VERSION`

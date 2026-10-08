@@ -8651,7 +8651,7 @@ export type CreateGUISessionAccessDetailsError =
   | UnauthenticatedException
   | CommonErrors;
 /**
- * Creates two URLs that are used to access a virtual computer’s graphical user interface
+ * Creates two URLs that are used to access a virtual computer's graphical user interface
  * (GUI) session. The primary URL initiates a web-based Amazon DCV session to the virtual
  * computer's application. The secondary URL initiates a web-based Amazon DCV session to the
  * virtual computer's operating session.
@@ -13237,8 +13237,8 @@ export type StartGUISessionError =
   | UnauthenticatedException
   | CommonErrors;
 /**
- * Initiates a graphical user interface (GUI) session that’s used to access a virtual
- * computer’s operating system and application. The session will be active for 1 hour. Use this
+ * Initiates a graphical user interface (GUI) session that's used to access a virtual
+ * computer's operating system and application. The session will be active for 1 hour. Use this
  * action to resume the session after it expires.
  */
 export const startGUISession: API.OperationMethod<
@@ -13357,7 +13357,7 @@ export type StopGUISessionError =
   | UnauthenticatedException
   | CommonErrors;
 /**
- * Terminates a web-based Amazon DCV session that’s used to access a virtual computer’s
+ * Terminates a web-based Amazon DCV session that's used to access a virtual computer's
  * operating system or application. The session will close and any unsaved data will be
  * lost.
  */

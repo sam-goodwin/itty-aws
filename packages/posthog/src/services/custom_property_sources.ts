@@ -149,15 +149,15 @@ export interface CustomPropertySource {
   created_at: string;
   created_by: number | null;
   updated_at: string | null;
-  /** Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable — including a view whose frequency is set on its data-modeling DAG. */
+  /** Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable -- including a view whose frequency is set on its data-modeling DAG. */
   sync_frequency_interval_seconds: number | null;
-  /** Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate — drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable. */
+  /** Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate -- drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable. */
   next_sync_at: string | null;
   /** Person and group sources only: the most recent sync/backfill run, or null if none yet. */
   latest_run: CustomPropertySyncRun | null;
   /** Table-bound person and group sources only: UUID of the warehouse source owning the schema, so the UI can link to the table. Null for account sources, view-bound sources, or when unavailable. */
   external_data_source: string | null;
-  /** Person and group sources only: what this source reads, as it is named in HogQL — the imported table, or the view. Null for account sources or when unavailable. */
+  /** Person and group sources only: what this source reads, as it is named in HogQL -- the imported table, or the view. Null for account sources or when unavailable. */
   table_name: string | null;
   /** View-bound person and group sources only: the materialized view's name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources. */
   saved_query_name: string | null;
@@ -543,7 +543,7 @@ export const listCustomPropertySourcesRuns: API.OperationMethod<
 }));
 
 export type SyncCustomPropertySourceError = PosthogOpError;
-/** Person and group sources only: run what this source reads now — an import for a table binding (a real, billable warehouse sync), a materialization for a view binding. The incremental person/group-property update runs off that run. */
+/** Person and group sources only: run what this source reads now -- an import for a table binding (a real, billable warehouse sync), a materialization for a view binding. The incremental person/group-property update runs off that run. */
 export const syncCustomPropertySource: API.OperationMethod<
   SyncCustomPropertySourceRequest,
   SyncCustomPropertySourceResponse,

@@ -18342,7 +18342,7 @@ export const GetProjectSdkKeysRequestSort = S.String;
 
 export interface GetProjectSdkKeysRequest {
   projectKey: string;
-  /** A queryfilter expression to apply to the list of SDK keys. Supports the following fields and operators: `kind` (`equals`, `anyOf`; values: "sdk", "mobile"), `active` (`equals`, `anyOf`; values: `true`, `false`), `environmentKey` (`equals`, `anyOf`; values: environment keys), `viewKey` (`equals`, `anyOf`; values: view key strings — returns only SDK keys linked to the specified view(s)), `name` (`equals` only; returns SDK keys whose name or key contains the value, matched case-insensitively). Example: `kind anyOf ["sdk","mobile"], environmentKey anyOf ["production","test"], viewKey equals my-view, name equals "production"`. */
+  /** A queryfilter expression to apply to the list of SDK keys. Supports the following fields and operators: `kind` (`equals`, `anyOf`; values: "sdk", "mobile"), `active` (`equals`, `anyOf`; values: `true`, `false`), `environmentKey` (`equals`, `anyOf`; values: environment keys), `viewKey` (`equals`, `anyOf`; values: view key strings -- returns only SDK keys linked to the specified view(s)), `name` (`equals` only; returns SDK keys whose name or key contains the value, matched case-insensitively). Example: `kind anyOf ["sdk","mobile"], environmentKey anyOf ["production","test"], viewKey equals my-view, name equals "production"`. */
   filter?: string;
   /** The number of SDK keys to return. Defaults to 20. Maximum is 100. */
   limit?: number;

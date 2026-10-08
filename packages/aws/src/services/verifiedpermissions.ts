@@ -2359,7 +2359,7 @@ export type CreateIdentitySourceError =
   | ValidationException
   | CommonErrors;
 /**
- * Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP).
+ * Adds an identity source to a policy store-an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP).
  *
  * After you create an identity source, you can use the identities provided by the IdP as proxies for the principal in authorization queries that use the IsAuthorizedWithToken or BatchIsAuthorizedWithToken API operations. These identities take the form of tokens that contain claims about the user, such as IDs, attributes and group memberships. Identity sources provide identity (ID) tokens and access tokens. Verified Permissions derives information about your user and session from token claims. Access tokens provide action `context` to your policies, and ID tokens provide principal `Attributes`.
  *

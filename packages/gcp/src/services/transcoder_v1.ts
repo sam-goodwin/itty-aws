@@ -965,7 +965,7 @@ export const NormalizedCoordinate = /*@__PURE__*/ S.suspend(() =>
 export interface Image {
   /** Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported. */
   uri?: string;
-  /** Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`. */
+  /** Normalized image resolution, based on output video resolution. Valid values: `0.0`-`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`. */
   resolution?: NormalizedCoordinate;
   /** Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`. */
   alpha?: number;
@@ -983,7 +983,7 @@ export const AnimationFadeFadeTypeEnum = S.String;
 
 /** Display overlay object with fade animation. */
 export interface AnimationFade {
-  /** Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
+  /** Normalized coordinates based on output video resolution. Valid values: `0.0`-`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
   xy?: NormalizedCoordinate;
   /** Required. Type of fade animation: `FADE_IN` or `FADE_OUT`. */
   fadeType?: AnimationFadeFadeTypeEnum | (string & {});
@@ -1005,7 +1005,7 @@ export const AnimationFade = /*@__PURE__*/ S.suspend(() =>
 export interface AnimationStatic {
   /** The time to start displaying the overlay object, in seconds. Default: 0 */
   startTimeOffset?: string;
-  /** Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
+  /** Normalized coordinates based on output video resolution. Valid values: `0.0`-`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
   xy?: NormalizedCoordinate;
 }
 export const AnimationStatic = /*@__PURE__*/ S.suspend(() =>

@@ -980,7 +980,7 @@ export interface WebAnalyticsRecapRequest {
   project_id: string;
   /** When true (default), include period-over-period change for each metric comparing against the prior equal-length period. Set to false to skip the comparison query. */
   compare?: boolean;
-  /** Lookback window in days (1–90). Defaults to 7. */
+  /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
 export const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1212,7 +1212,7 @@ export interface WebAnalyticsRecapResponse {
   pageviews: NumericMetric;
   /** Total sessions. */
   sessions: NumericMetric;
-  /** Bounce rate (0–100). */
+  /** Bounce rate (0-100). */
   bounce_rate: NumericMetric;
   /** Average session duration. */
   avg_session_duration: DurationMetric;
@@ -1270,7 +1270,7 @@ export interface WebAnalyticsWeeklyDigestRequest {
   project_id: string;
   /** When true (default), include period-over-period change for each metric comparing against the prior equal-length period. Set to false to skip the comparison query (faster). */
   compare?: boolean;
-  /** Lookback window in days (1–90). Defaults to 7. */
+  /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
 export const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1314,7 +1314,7 @@ export interface WeeklyDigestResponse {
   pageviews?: NumericMetric;
   /** Total sessions. */
   sessions?: NumericMetric;
-  /** Bounce rate (0–100). */
+  /** Bounce rate (0-100). */
   bounce_rate?: NumericMetric;
   /** Average session duration. */
   avg_session_duration?: DurationMetric;

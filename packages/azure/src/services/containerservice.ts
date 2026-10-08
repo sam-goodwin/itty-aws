@@ -231,7 +231,7 @@ export interface KubeletConfig {
   failSwapOn?: boolean;
   /** The maximum size (e.g. 10Mi) of container log file before it is rotated. */
   containerLogMaxSizeMB?: number;
-  /** The maximum number of container log files that can be present for a container. The number must be ≥ 2. */
+  /** The maximum number of container log files that can be present for a container. The number must be >= 2. */
   containerLogMaxFiles?: number;
   /** The maximum number of processes per pod. */
   podMaxPids?: number;
@@ -3387,7 +3387,7 @@ export const UpdateGroupAfterGatesList = /*@__PURE__*/ S.Array(
 export interface UpdateGroup {
   /** Name of the group. It must match a group name of an existing fleet member. */
   name: string;
-  /** The max number of upgrades that can run concurrently in this specific group. Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the group you want to tolerate at a time. Actual concurrency may be lower depending on stage-level concurrency limits or individual member conditions. Group maxConcurrency has a min value of "1". The max value is min(number of clusters in the group, the stage maxConcurrency). If no value is provided, defaults to 1. Accepts either: • A fixed count, e.g. "3" • A percentage, e.g. "25%" (range 1–100). Percentage is of the number of clusters in the group. Fractional results are rounded down. A minimum of 1 upgrade is enforced. Examples: • "3" --> up to 3 members from this group upgrade at once. • "100%" --> “all at once”, up to all members for this group upgrade at the same time. • "25%" --> up to 25% of the members in the group will be upgraded at the same time. */
+  /** The max number of upgrades that can run concurrently in this specific group. Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the group you want to tolerate at a time. Actual concurrency may be lower depending on stage-level concurrency limits or individual member conditions. Group maxConcurrency has a min value of "1". The max value is min(number of clusters in the group, the stage maxConcurrency). If no value is provided, defaults to 1. Accepts either: * A fixed count, e.g. "3" * A percentage, e.g. "25%" (range 1-100). Percentage is of the number of clusters in the group. Fractional results are rounded down. A minimum of 1 upgrade is enforced. Examples: * "3" --> up to 3 members from this group upgrade at once. * "100%" --> "all at once", up to all members for this group upgrade at the same time. * "25%" --> up to 25% of the members in the group will be upgraded at the same time. */
   maxConcurrency?: string;
   /** A list of Gates that will be created before this Group is executed. */
   beforeGates?: UpdateGroupBeforeGatesList;
@@ -3429,7 +3429,7 @@ export interface UpdateStage {
   groups?: UpdateStageGroupsList;
   /** The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified. */
   afterStageWaitInSeconds?: number;
-  /** The max number of upgrades that can run concurrently across all groups in this stage. Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the stage you want to tolerate at a time. Actual concurrency may be lower depending on group-level concurrency limits or individual member conditions. Stage maxConcurrency has a min value of "1". Accepts either: • A fixed count, e.g., "3" • A percentage, e.g., "25%" (range 1–100). Percentage is of the total number of clusters across all groups in the stage. Fractional results are rounded down. A minimum of 1 upgrade is enforced. Examples: • "3" --> up to 3 clusters from this stage upgrade at once (across all groups). • "100%" --> “all at once”; up to all clusters in this stage upgrade at the same time. • "25%" --> up to 25% of the stage’s total clusters upgrade at the same time. */
+  /** The max number of upgrades that can run concurrently across all groups in this stage. Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the stage you want to tolerate at a time. Actual concurrency may be lower depending on group-level concurrency limits or individual member conditions. Stage maxConcurrency has a min value of "1". Accepts either: * A fixed count, e.g., "3" * A percentage, e.g., "25%" (range 1-100). Percentage is of the total number of clusters across all groups in the stage. Fractional results are rounded down. A minimum of 1 upgrade is enforced. Examples: * "3" --> up to 3 clusters from this stage upgrade at once (across all groups). * "100%" --> "all at once"; up to all clusters in this stage upgrade at the same time. * "25%" --> up to 25% of the stage's total clusters upgrade at the same time. */
   maxConcurrency?: string;
   /** A list of Gates that will be created before this Stage is executed. */
   beforeGates?: UpdateStageBeforeGatesList;
@@ -6950,9 +6950,9 @@ export const SchedulerProfile = /*@__PURE__*/ S.suspend(() =>
 export interface ManagedClusterHostedSystemProfile {
   /** Whether to enable hosted system addons for the cluster. */
   enabled?: boolean;
-  /** The ID of the subnet that will be joined by system nodes managed and hosted by AKS for running critical system addons. This ID must be provided together with `nodeSubnetID` and `apiserverAccessProfile.subnetId`, and all three subnet IDs must belong to the same VNet. If you don’t specify it, AKS will create a subnet in the managed resource group using a default /26 CIDR. */
+  /** The ID of the subnet that will be joined by system nodes managed and hosted by AKS for running critical system addons. This ID must be provided together with `nodeSubnetID` and `apiserverAccessProfile.subnetId`, and all three subnet IDs must belong to the same VNet. If you don't specify it, AKS will create a subnet in the managed resource group using a default /26 CIDR. */
   systemNodeSubnetID?: string;
-  /** The ID of the subnet that will be joined by worker nodes managed by node auto provisioner for running workload pods in your tenant. This must be provided together with `systemNodeSubnetID` and `apiserverAccessProfile.subnetId`, and all three subnet IDs must be in the same VNet. If you don’t specify it, AKS will create a subnet in the managed resource group using a default /16 CIDR. */
+  /** The ID of the subnet that will be joined by worker nodes managed by node auto provisioner for running workload pods in your tenant. This must be provided together with `systemNodeSubnetID` and `apiserverAccessProfile.subnetId`, and all three subnet IDs must be in the same VNet. If you don't specify it, AKS will create a subnet in the managed resource group using a default /16 CIDR. */
   nodeSubnetID?: string;
 }
 export const ManagedClusterHostedSystemProfile = /*@__PURE__*/ S.suspend(() =>

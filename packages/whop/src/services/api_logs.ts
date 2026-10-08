@@ -37,7 +37,7 @@ export interface ListApiLogsRequest {
   http_method?: ListApiLogsRequestHttpMethod | (string & {});
   /** Only return requests that finished with this status. */
   status?: ListApiLogsRequestStatus | (string & {});
-  /** Only return requests made with this API key (apik_…). */
+  /** Only return requests made with this API key (apik_...). */
   api_key_id?: string;
   /** Only return requests that took at least this many milliseconds. */
   min_duration_ms?: number;
@@ -137,7 +137,7 @@ export const ListApiLogsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApiLogsResponse" }) as any as S.Schema<ListApiLogsResponse>;
 
 export type ListApiLogsError = Forbidden | WhopOpError;
-/** List Api Logs Lists the requests served by Whop's API with the account's API keys, newest first — every surface (GraphQL, REST, and native /api/v1), reads and failed requests included. */
+/** List Api Logs Lists the requests served by Whop's API with the account's API keys, newest first -- every surface (GraphQL, REST, and native /api/v1), reads and failed requests included. */
 export const listApiLogs: API.PaginatedOperationMethod<
   ListApiLogsRequest,
   ListApiLogsResponse,

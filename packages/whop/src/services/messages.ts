@@ -501,7 +501,7 @@ export type CreateMessageError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create message [Legacy API — https://docs.whop.com/api-reference] Send a new message in an experience chat, DM, or group chat channel. Supports text content, attachments, polls, and replies. Required permissions (one of): - `chat:message:create` - `dms:message:manage` - `livestream:chat:write` - `support_chat:message:create` */
+/** Create message [Legacy API -- https://docs.whop.com/api-reference] Send a new message in an experience chat, DM, or group chat channel. Supports text content, attachments, polls, and replies. Required permissions (one of): - `chat:message:create` - `dms:message:manage` - `livestream:chat:write` - `support_chat:message:create` */
 export const createMessage: API.OperationMethod<
   CreateMessageRequest,
   Message,
@@ -521,7 +521,7 @@ export type DeleteMessageError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete message [Legacy API — https://docs.whop.com/api-reference] Permanently delete a message from an experience chat, DM, or group chat channel. Only the message author or a channel admin can delete a message. Required permissions (one of): - `chat:message:create` and `chat:read` - `dms:message:manage` and `dms:read` - `livestream:chat:write` and `livestream:chat:read` - `support_chat:message:create` and `support_chat:read` */
+/** Delete message [Legacy API -- https://docs.whop.com/api-reference] Permanently delete a message from an experience chat, DM, or group chat channel. Only the message author or a channel admin can delete a message. Required permissions (one of): - `chat:message:create` and `chat:read` - `dms:message:manage` and `dms:read` - `livestream:chat:write` and `livestream:chat:read` - `support_chat:message:create` and `support_chat:read` */
 export const deleteMessage: API.OperationMethod<
   DeleteMessageRequest,
   DeleteMessageResponse,
@@ -536,7 +536,7 @@ export const deleteMessage: API.OperationMethod<
 }));
 
 export type GetMessageError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve message [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing message. Required permissions (one of): - `chat:read` - `dms:read` - `livestream:chat:read` - `support_chat:read` */
+/** Retrieve message [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing message. Required permissions (one of): - `chat:read` - `dms:read` - `livestream:chat:read` - `support_chat:read` */
 export const getMessage: API.OperationMethod<
   GetMessageRequest,
   Message,
@@ -556,7 +556,7 @@ export type ListMessageError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List messages [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of messages within a specific experience chat, DM, or group chat channel, sorted by creation time. Required permissions (one of): - `chat:read` - `dms:read` - `support_chat:read` */
+/** List messages [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of messages within a specific experience chat, DM, or group chat channel, sorted by creation time. Required permissions (one of): - `chat:read` - `dms:read` - `support_chat:read` */
 export const listMessage: API.PaginatedOperationMethod<
   ListMessageRequest,
   ListMessageResponse,
@@ -588,7 +588,7 @@ export type UpdateMessageError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update message [Legacy API — https://docs.whop.com/api-reference] Edit the content, attachments, or pinned status of an existing message in an experience chat, DM, or group chat channel. Required permissions (one of): - `chat:message:create` - `dms:message:manage` - `livestream:chat:write` - `support_chat:message:create` */
+/** Update message [Legacy API -- https://docs.whop.com/api-reference] Edit the content, attachments, or pinned status of an existing message in an experience chat, DM, or group chat channel. Required permissions (one of): - `chat:message:create` - `dms:message:manage` - `livestream:chat:write` - `support_chat:message:create` */
 export const updateMessage: API.OperationMethod<
   UpdateMessageRequest,
   Message,

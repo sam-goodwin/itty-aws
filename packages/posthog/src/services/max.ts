@@ -245,11 +245,11 @@ export type SandboxAttachedContextItemTypeEnum =
   | "text";
 export const SandboxAttachedContextItemTypeEnum = S.String;
 
-/** One typed attachment carried by a sandbox message. DEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
+/** One typed attachment carried by a sandbox message. DEPRECATED PATH -- do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
 export interface SandboxAttachedContextItem {
   /** Attachment kind. Entity types carry `id` (+ optional `name`); `text` and `instructions` carry `value`. `instructions` is the caller's own guidance and renders into the trusted context block; every other kind renders into the untrusted block, which tells the agent to read it as data. * `action` - action * `dashboard` - dashboard * `error_tracking_issue` - error_tracking_issue * `evaluation` - evaluation * `event` - event * `insight` - insight * `instructions` - instructions * `notebook` - notebook * `text` - text */
   type: SandboxAttachedContextItemTypeEnum | (string & {});
-  /** Entity identifier — integer for `dashboard`/`action`, string short_id/UUID otherwise. Absent for `text`. */
+  /** Entity identifier -- integer for `dashboard`/`action`, string short_id/UUID otherwise. Absent for `text`. */
   id?: unknown;
   /** Optional human-readable label rendered in the context block. */
   name?: string;
@@ -318,7 +318,7 @@ export const CreateConversationsOpenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConversationsOpenRequest",
 }) as any as S.Schema<CreateConversationsOpenRequest>;
 
-/** Response for `POST /conversations/{id}/open/` — the IDs the frontend opens SSE against. */
+/** Response for `POST /conversations/{id}/open/` -- the IDs the frontend opens SSE against. */
 export interface SandboxMessageResponse {
   /** The products/tasks Task backing the conversation. */
   task_id: string;
@@ -838,7 +838,7 @@ export const createConversationsAppendMessage: API.OperationMethod<
 }));
 
 export type CreateConversationsOpenError = BadRequest | PosthogOpError;
-/** Create-or-resume a sandbox conversation — the single sandbox session opener. With `content`, processes the turn (first message, in-progress follow-up, or terminal resume); without `content`, warms a sandbox that idles awaiting the first message. Returns the `(task, run)` handle the frontend opens SSE against. The conversation row is created on first use from the URL id. */
+/** Create-or-resume a sandbox conversation -- the single sandbox session opener. With `content`, processes the turn (first message, in-progress follow-up, or terminal resume); without `content`, warms a sandbox that idles awaiting the first message. Returns the `(task, run)` handle the frontend opens SSE against. The conversation row is created on first use from the URL id. */
 export const createConversationsOpen: API.OperationMethod<
   CreateConversationsOpenRequest,
   SandboxMessageResponse,

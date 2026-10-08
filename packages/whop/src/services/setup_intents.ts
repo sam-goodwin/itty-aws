@@ -60,7 +60,7 @@ export const CreateSetupIntentRequestPurpose = S.String;
 export interface CreateSetupIntentRequest {
   /** The account to save the payment method for, prefixed `biz_`. */
   account_id: string;
-  /** A confirmation token describing a payment method the buyer just supplied, collected by the payment elements in setup mode. Provide this or `payment_method_id`, not both. The buyer is resolved from the token's billing email, or from `email`, and may still have a step to complete — poll Retrieve setup status for what to do next. */
+  /** A confirmation token describing a payment method the buyer just supplied, collected by the payment elements in setup mode. Provide this or `payment_method_id`, not both. The buyer is resolved from the token's billing email, or from `email`, and may still have a step to complete -- poll Retrieve setup status for what to do next. */
   confirmation_token?: string | null;
   /** The currency the saved payment method will be used with, as a lowercase ISO 4217 code. Controls which currency-specific payment methods are available. Defaults to `usd`. */
   currency?: string | null;
@@ -105,7 +105,7 @@ export const SetupLastSetupError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetupLastSetupError" }) as any as S.Schema<SetupLastSetupError>;
 
 export interface PaymentInstrumentCard {
-  /** The network identifier (`visa`, `amex`, …), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
+  /** The network identifier (`visa`, `amex`, ...), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
   brand: string | null;
   /** The card's expiry month, 1 to 12. Null when the vault did not record it. */
   exp_month: number | null;
@@ -176,11 +176,11 @@ export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentInstrument {
   /** Card payments only: the card's network, last four, and issuer identification number. */
   card: PaymentInstrumentCard | null;
-  /** Buyer-facing instrument name — "Visa •••• 4242" when the card surfaced, else the method's own name ("Klarna"). */
+  /** Buyer-facing instrument name -- "Visa **** 4242" when the card surfaced, else the method's own name ("Klarna"). */
   display_name: string;
   /** The standard icon set: square and card shapes, each in light and dark colorways. */
   icons: PaymentMethodIcons;
-  /** Installment methods only: how many payments the charge splits into. Data, not copy — compose and translate the label client-side. */
+  /** Installment methods only: how many payments the charge splits into. Data, not copy -- compose and translate the label client-side. */
   installment_count: number | null;
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
@@ -328,12 +328,12 @@ export type PaymentMethodTypes =
   | "unknown";
 export const PaymentMethodTypes = S.String;
 
-/** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved — always branch on this.** `requires_action` — the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` — the processor is deciding. `succeeded` — the method is saved, and only this one means saved. `canceled` — abandoned or refused; see `last_setup_error`. */
+/** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` -- the processor is deciding. `succeeded` -- the method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error`. */
 export type SetupIntentStatus = "processing" | "succeeded" | "canceled" | "requires_action";
 export const SetupIntentStatus = S.String;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -366,13 +366,13 @@ export interface SetupIntent {
   account_id: string | null;
   /** The checkout configuration this setup was created through, prefixed `ch_`. Null for a setup created through this API rather than a hosted checkout. */
   checkout_configuration_id: string | null;
-  /** The credential a buyer's surface presents to poll this setup and set its return URL — hand it to the elements' `handleNextAction`. Only on setups created through this API, and always null in list responses — retrieve the setup intent for it. */
+  /** The credential a buyer's surface presents to poll this setup and set its return URL -- hand it to the elements' `handleNextAction`. Only on setups created through this API, and always null in list responses -- retrieve the setup intent for it. */
   client_secret: string | Redacted.Redacted<string> | null;
   /** When the setup intent was created, as an ISO 8601 timestamp. */
   created_at: string;
   /** Setup intent ID, prefixed `sint_`. */
   id: string;
-  /** Why the setup ended where it did, or `null` when nothing has failed. Present on `canceled` — a buyer who abandoned carries no code, one refused by the provider does. Dropped once the setup succeeds. */
+  /** Why the setup ended where it did, or `null` when nothing has failed. Present on `canceled` -- a buyer who abandoned carries no code, one refused by the provider does. Dropped once the setup succeeds. */
   last_setup_error: SetupLastSetupError | null;
   /** The buyer's member record on the account, prefixed `mber_`. Null without the member:basic:read permission, unless the caller is the buyer. */
   member_id: string | null;
@@ -386,7 +386,7 @@ export interface SetupIntent {
   payment_method_type: PaymentMethodTypes | null;
   /** Where the buyer lands after completing an off-site step, or `null` to leave them where they are. */
   return_url: string | null;
-  /** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved — always branch on this.** `requires_action` — the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` — the processor is deciding. `succeeded` — the method is saved, and only this one means saved. `canceled` — abandoned or refused; see `last_setup_error`. */
+  /** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` -- the processor is deciding. `succeeded` -- the method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error`. */
   status: SetupIntentStatus;
   /** True when the buyer completed 3D Secure while saving this payment method. */
   three_ds_verified: boolean;
@@ -439,9 +439,9 @@ export const GetStatusSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStatusSetupIntentRequest>;
 
 export interface PaymentNextActionRedirectData {
-  /** The widest the provider's page lays out usefully, in CSS pixels — cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
+  /** The widest the provider's page lays out usefully, in CSS pixels -- cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
   frame_max_width: number | null;
-  /** The provider's page for this payment, as an absolute URL — take the buyer there. */
+  /** The provider's page for this payment, as an absolute URL -- take the buyer there. */
   url: string;
 }
 export const PaymentNextActionRedirectData = /*@__PURE__*/ S.suspend(() =>
@@ -488,11 +488,11 @@ export type PaymentVoucherInstructionsKind = "voucher";
 export const PaymentVoucherInstructionsKind = S.String;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -509,7 +509,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentVoucher {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
-  /** The barcode's contents, when the voucher carries one — render it in the symbology named by `barcode_format`. */
+  /** The barcode's contents, when the voucher carries one -- render it in the symbology named by `barcode_format`. */
   barcode?: string;
   /** The symbology `barcode` is encoded in, such as `CODE_128`. */
   barcode_format?: string;
@@ -523,7 +523,7 @@ export interface PaymentVoucher {
   provider_logo?: string;
   /** The network the buyer pays at, such as OXXO. */
   provider_name?: string;
-  /** The voucher's number — what the buyer reads out or types at the counter to pay. */
+  /** The voucher's number -- what the buyer reads out or types at the counter to pay. */
   reference?: string;
 }
 export const PaymentVoucher = /*@__PURE__*/ S.suspend(() =>
@@ -568,7 +568,7 @@ export interface PaymentQr {
   expires_at?: string;
   /** An account key the buyer can pay to directly (Colombia's Bre-B llave), for apps that take a key instead of a scan. */
   key?: string;
-  /** The QR code's contents, ready to render as a scannable image — `qr_format` says how it is encoded. */
+  /** The QR code's contents, ready to render as a scannable image -- `qr_format` says how it is encoded. */
   qr_code?: string;
   /** How `qr_code` is encoded. */
   qr_format?: string;
@@ -598,9 +598,9 @@ export const PaymentQrInstructions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentQrInstructions" }) as any as S.Schema<PaymentQrInstructions>;
 
 export interface PaymentBankTransfer {
-  /** The account to send to, in the local scheme's format — `account_number_label` says what to call it. */
+  /** The account to send to, in the local scheme's format -- `account_number_label` says what to call it. */
   account_number?: string;
-  /** What to call `account_number` when showing it, in the local scheme's own terms — `CLABE` in Mexico, for example. */
+  /** What to call `account_number` when showing it, in the local scheme's own terms -- `CLABE` in Mexico, for example. */
   account_number_label?: string;
   /** Exactly what the buyer must send, in the charged currency. */
   amount?: Money;
@@ -610,9 +610,9 @@ export interface PaymentBankTransfer {
   bank_address?: string;
   /** The receiving branch, where the local system routes by branch. */
   bank_branch?: string;
-  /** The code that identifies the receiving bank — its code in the local clearing system, or its SWIFT/BIC on a transfer that crosses borders. */
+  /** The code that identifies the receiving bank -- its code in the local clearing system, or its SWIFT/BIC on a transfer that crosses borders. */
   bank_code?: string;
-  /** What to call `bank_code` when showing it, in the scheme's own terms — `SWIFT / BIC` on an international wire, for example. */
+  /** What to call `bank_code` when showing it, in the scheme's own terms -- `SWIFT / BIC` on an international wire, for example. */
   bank_code_label?: string;
   /** The receiving bank's name. */
   bank_name?: string;
@@ -620,7 +620,7 @@ export interface PaymentBankTransfer {
   beneficiary_document?: string;
   /** What kind of document `beneficiary_document` is, in the local system's own vocabulary. */
   beneficiary_document_type?: string;
-  /** Who the account belongs to — the name the buyer's bank may ask them to confirm. */
+  /** Who the account belongs to -- the name the buyer's bank may ask them to confirm. */
   beneficiary_name?: string;
   /** A hosted page with the complete, printable instructions. If you would rather not render the details yourself, send the buyer here. */
   document_url?: string;
@@ -680,7 +680,7 @@ export const PaymentBankTransferInstructions = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentBankTransferInstructions",
 }) as any as S.Schema<PaymentBankTransferInstructions>;
 
-/** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional — the rails behind these methods publish them unevenly — but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
+/** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional -- the rails behind these methods publish them unevenly -- but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
 export type PaymentInstructions =
   | PaymentVoucherInstructions
   | PaymentQrInstructions
@@ -697,7 +697,7 @@ export const PaymentNextActionDisplayInstructionsRenderList = /*@__PURE__*/ S.Ar
   PaymentNextActionDisplayInstructionsRenderItem,
 ) as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
 
-/** Always `display_instructions`: show the buyer `data` — what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
+/** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
 export type PaymentNextActionDisplayInstructionsType = "display_instructions";
 export const PaymentNextActionDisplayInstructionsType = S.String;
 
@@ -705,7 +705,7 @@ export interface PaymentNextActionDisplayInstructions {
   /** The instructions. `kind` picks the shape, and the details sit under the key named for it: `voucher`, `qr`, or `bank_transfer`. */
   data: PaymentInstructions;
   render: PaymentNextActionDisplayInstructionsRenderList;
-  /** Always `display_instructions`: show the buyer `data` — what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
+  /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
   type: PaymentNextActionDisplayInstructionsType;
 }
 export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =>
@@ -719,7 +719,7 @@ export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaymentNextActionDisplayInstructions>;
 
 export interface PaymentNextActionAwaitConfirmationData {
-  /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed — watch `status` for the failed attempt. */
+  /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed -- watch `status` for the failed attempt. */
   expires_at: string;
 }
 export const PaymentNextActionAwaitConfirmationData = /*@__PURE__*/ S.suspend(() =>
@@ -740,7 +740,7 @@ export const PaymentNextActionAwaitConfirmationRenderList = /*@__PURE__*/ S.Arra
   PaymentNextActionAwaitConfirmationRenderItem,
 ) as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
 
-/** Always `await_confirmation`: nothing to show — the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
+/** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
 export type PaymentNextActionAwaitConfirmationType = "await_confirmation";
 export const PaymentNextActionAwaitConfirmationType = S.String;
 
@@ -748,7 +748,7 @@ export interface PaymentNextActionAwaitConfirmation {
   /** How long the wait can last. */
   data: PaymentNextActionAwaitConfirmationData;
   render: PaymentNextActionAwaitConfirmationRenderList;
-  /** Always `await_confirmation`: nothing to show — the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
+  /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
   type: PaymentNextActionAwaitConfirmationType;
 }
 export const PaymentNextActionAwaitConfirmation = /*@__PURE__*/ S.suspend(() =>
@@ -768,14 +768,14 @@ export type PaymentNextAction =
   | PaymentNextActionAwaitConfirmation;
 export const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
 
-/** How far the setup has got. **A 200 means we answered, not that the method was saved — always branch on this.** `requires_action` — the buyer has a step outstanding; see `next_action`. `processing` — the buyer has done their part and the processor is deciding. `succeeded` — the payment method is saved, and only this one means saved. `canceled` — abandoned or refused; see `last_setup_error` to tell which. */
+/** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
 export type SetupStatusStatus = "processing" | "succeeded" | "canceled" | "requires_action";
 export const SetupStatusStatus = S.String;
 
 export interface SetupStatus {
   /** The setup this status describes, prefixed `sint_`. */
   id: string;
-  /** Why the setup ended where it did, or `null` when nothing has failed. Present on `canceled` — a buyer who abandoned carries no code, one refused by the provider does. */
+  /** Why the setup ended where it did, or `null` when nothing has failed. Present on `canceled` -- a buyer who abandoned carries no code, one refused by the provider does. */
   last_setup_error: SetupLastSetupError | null;
   /** What the buyer must do next while `status` is `requires_action`, otherwise `null`. `type` picks the shape and each variant carries only its own `data`, so switching on `type` gives you exactly that step's payload. */
   next_action: PaymentNextAction | null;
@@ -783,7 +783,7 @@ export interface SetupStatus {
   object: string;
   /** Where to send the buyer once the setup reaches a resting state, or `null` to leave them where they are. */
   return_url: string | null;
-  /** How far the setup has got. **A 200 means we answered, not that the method was saved — always branch on this.** `requires_action` — the buyer has a step outstanding; see `next_action`. `processing` — the buyer has done their part and the processor is deciding. `succeeded` — the payment method is saved, and only this one means saved. `canceled` — abandoned or refused; see `last_setup_error` to tell which. */
+  /** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
   status: SetupStatusStatus;
 }
 export const SetupStatus = /*@__PURE__*/ S.suspend(() =>
@@ -913,7 +913,7 @@ export const createSetupIntent: API.OperationMethod<
 }));
 
 export type GetSetupIntentError = Forbidden | NotFound | WhopOpError;
-/** Retrieve Setup Intent Returns one setup intent. Related records are ids — once `status` is `succeeded`, `payment_method_id` is the saved method to charge or retrieve. The buyer's own token may retrieve a setup intent that belongs to it. */
+/** Retrieve Setup Intent Returns one setup intent. Related records are ids -- once `status` is `succeeded`, `payment_method_id` is the saved method to charge or retrieve. The buyer's own token may retrieve a setup intent that belongs to it. */
 export const getSetupIntent: API.OperationMethod<
   GetSetupIntentRequest,
   SetupIntent,
@@ -943,7 +943,7 @@ export const getStatusSetupIntent: API.OperationMethod<
 }));
 
 export type ListSetupIntentsError = BadRequest | Forbidden | WhopOpError;
-/** List Setup Intents Lists setup intents newest first. An account API key lists its own account; a user token lists every account it can read, or one account with `account_id`. `client_secret` is always null on list rows — retrieve the setup intent for it. */
+/** List Setup Intents Lists setup intents newest first. An account API key lists its own account; a user token lists every account it can read, or one account with `account_id`. `client_secret` is always null on list rows -- retrieve the setup intent for it. */
 export const listSetupIntents: API.PaginatedOperationMethod<
   ListSetupIntentsRequest,
   ListSetupIntentsResponse,

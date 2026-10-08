@@ -2258,7 +2258,7 @@ export const GetCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
-  /** Required. Identifier of the student’s submission. */
+  /** Required. Identifier of the student's submission. */
   submissionId: string;
   /** Required. Identifier of the attachment. */
   attachmentId: string;
@@ -2681,7 +2681,7 @@ export const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetCoursesPostsAddOnAttachmentsRequest>;
 
 export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
-  /** Required. Identifier of the student’s submission. */
+  /** Required. Identifier of the student's submission. */
   submissionId: string;
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
@@ -2792,7 +2792,7 @@ export const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(()
 
 /** An individual grading period. Grading periods must not have overlapping date ranges and must be listed in chronological order. For example, if the end_date of a grading period is 2024-01-25, then the start_date of the next grading period must be 2024-01-26 or later. Each grading period must have a unique title within a course. */
 export interface GradingPeriod {
-  /** Required. Title of the grading period. For example, “Semester 1”. */
+  /** Required. Title of the grading period. For example, "Semester 1". */
   title?: string;
   /** Required. End date, in UTC, of the grading period. Inclusive. */
   endDate?: Classroom_Date;

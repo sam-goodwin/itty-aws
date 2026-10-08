@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   acId: "ac_id",
   accessClientId: "access_client_id",
@@ -114975,7 +114975,7 @@ export type TunnelsWarpConnectorConfigurationsGetResponseHaMode =
 export const TunnelsWarpConnectorConfigurationsGetResponseHaMode = S.String;
 
 export interface TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshAwsConfig {
-  /** Floating Network Resource ID — the secondary ENI that is moved between nodes on failover. */
+  /** Floating Network Resource ID -- the secondary ENI that is moved between nodes on failover. */
   fnrId: string;
 }
 export const TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshAwsConfig =
@@ -164644,7 +164644,7 @@ export const ListOrganizationsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResourceLibraryApplicationsRequest {
   accountId: string;
-  /** Return only the listed properties on each application, as a comma-separated list. Use this to keep responses small when you only need part of each application — for example populating a picker with `fields=id,name` instead of downloading every hostname and IP subnet. */
+  /** Return only the listed properties on each application, as a comma-separated list. Use this to keep responses small when you only need part of each application -- for example populating a picker with `fields=id,name` instead of downloading every hostname and IP subnet. */
   fields?: string;
   /** Filter applications using key:value format. Supported filter keys: */
   filter?: string;

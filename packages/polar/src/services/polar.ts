@@ -10244,7 +10244,7 @@ export interface CustomerTeamCreate {
   /** Optional owner member to create with the customer. If not provided, an owner member will be automatically created using the customer's email and name. */
   owner?: MemberOwnerCreate | null;
   type: string;
-  /** The email address of the team customer. Optional for team customers — if omitted, an owner with an email must be provided. */
+  /** The email address of the team customer. Optional for team customers -- if omitted, an owner with an email must be provided. */
   email?: string | null;
 }
 export const CustomerTeamCreate = /*@__PURE__*/ S.suspend(() =>
@@ -21872,7 +21872,7 @@ export const OrganizationDisputeSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationDisputeSettings",
 }) as any as S.Schema<OrganizationDisputeSettings>;
 
-/** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts — `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
+/** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationEmbedHostsList = Array<string>;
 export const OrganizationEmbedHostsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -22200,7 +22200,7 @@ export interface Organization {
   customer_portal_settings: OrganizationCustomerPortalSettings;
   /** Settings related to disputes */
   dispute_settings: OrganizationDisputeSettings;
-  /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts — `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
+  /** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
   embed_hosts: OrganizationEmbedHostsList;
   /** Two-letter country code (ISO 3166-1 alpha-2). */
   country?: OrganizationCountry | null;
@@ -22569,7 +22569,7 @@ export const OrganizationDisputeSettingsUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationDisputeSettingsUpdate",
 }) as any as S.Schema<OrganizationDisputeSettingsUpdate>;
 
-/** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts — `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
+/** Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts -- `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on. */
 export type OrganizationsUpdateRequestEmbedHostsList = Array<string>;
 export const OrganizationsUpdateRequestEmbedHostsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -23087,7 +23087,7 @@ export interface ProductCreateRecurring {
   recurring_interval: RecurringInterval | (string & {});
   /** Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. */
   recurring_interval_count?: number;
-  /** Optional meter cycle, independent of the billing interval. When set, overage settlement, meter resets and meter-credit grants run on this cadence rather than the billing interval — e.g. yearly billing with monthly credits. It must evenly divide the billing interval. If `None`, metered concerns follow the billing interval. **Once set, it can't be changed.** */
+  /** Optional meter cycle, independent of the billing interval. When set, overage settlement, meter resets and meter-credit grants run on this cadence rather than the billing interval -- e.g. yearly billing with monthly credits. It must evenly divide the billing interval. If `None`, metered concerns follow the billing interval. **Once set, it can't be changed.** */
   meter_interval?: RecurringInterval | (string & {}) | null;
   /** Number of meter interval units. Defaults to 1 when `meter_interval` is set. Ignored when `meter_interval` is `None`. */
   meter_interval_count?: number | null;

@@ -714,7 +714,7 @@ export const CreateNotebooksKernelCompleteRequest = /*@__PURE__*/ S.suspend(() =
 export interface NotebookKernelCompletion {
   /** The text that replaces `code[cursor_start:cursor_end]`. */
   text: string;
-  /** What the match names, as the kernel reports it: 'function', 'module', 'instance', … or blank. */
+  /** What the match names, as the kernel reports it: 'function', 'module', 'instance', ... or blank. */
   type: string;
 }
 export const NotebookKernelCompletion = /*@__PURE__*/ S.suspend(() =>
@@ -1032,7 +1032,7 @@ export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NotebookSQLV2Ref" }) as any as S.Schema<NotebookSQLV2Ref>;
 
-/** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+/** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs -- unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
 export type CreateNotebooksSqlV2RunRequestRefsMap = { [key: string]: NotebookSQLV2Ref | undefined };
 export const CreateNotebooksSqlV2RunRequestRefsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1053,13 +1053,13 @@ export interface CreateNotebooksSqlV2RunRequest {
   reuse_results?: boolean;
   /** ProseMirror node id of the SQLV2 node being run. */
   node_id: string;
-  /** Execution kind. 'hogql' is a SQL node — pushed to ClickHouse, or rerouted to the sandbox's DuckDB when it references a local frame; 'python' runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first. * `hogql` - hogql * `python` - python */
+  /** Execution kind. 'hogql' is a SQL node -- pushed to ClickHouse, or rerouted to the sandbox's DuckDB when it references a local frame; 'python' runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first. * `hogql` - hogql * `python` - python */
   node_type?: NotebookSQLV2NodeTypeEnum | (string & {});
-  /** The node's source — SQL for a hogql node, Python for a python node. Must not be blank. */
+  /** The node's source -- SQL for a hogql node, Python for a python node. Must not be blank. */
   code: string;
   /** Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview). */
   output_name?: string;
-  /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+  /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs -- unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
   refs?: CreateNotebooksSqlV2RunRequestRefsMap;
   /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
   variables?: CreateNotebooksSqlV2RunRequestVariablesList;
@@ -1705,7 +1705,7 @@ export const NotebookRunStatusResponseCellsList = /*@__PURE__*/ S.Array(
 export interface NotebookRunStatusResponse {
   /** Identifier of the whole-notebook run. */
   run_id: string;
-  /** Run state: 'running' (keep polling), or terminal — 'done', 'failed', or 'interrupted'. */
+  /** Run state: 'running' (keep polling), or terminal -- 'done', 'failed', or 'interrupted'. */
   status: string;
   /** Which surface started the run: 'ui' or 'mcp'. */
   trigger: string;
@@ -1895,7 +1895,7 @@ export const NotebookSQLV2RunStatusResponseRowsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NotebookSQLV2RunStatusResponseRowsList>;
 
 export interface NotebookSQLV2RunStatusResponse {
-  /** Run state: 'running' (keep polling), or terminal — 'done', 'failed', or 'interrupted'. */
+  /** Run state: 'running' (keep polling), or terminal -- 'done', 'failed', or 'interrupted'. */
   status: string;
   /** The result envelope once the run is 'done' or 'interrupted' (an interrupted run keeps the stdout/stderr captured before the stop); null while running and for failed runs. */
   result?: NotebookSQLV2Envelope | null;
@@ -2016,7 +2016,7 @@ export interface NotebookCellState {
   start: number;
   /** Offset just past the cell's source, in UTF-16 code units, excluding the blank lines that separate it from the next cell. */
   end: number;
-  /** Derived cell state: 'never_run', 'running', 'done', 'failed', 'interrupted', or 'stale' — stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed). */
+  /** Derived cell state: 'never_run', 'running', 'done', 'failed', 'interrupted', or 'stale' -- stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed). */
   status: string;
   /** node_ids of cells whose dataframes this cell's code references. */
   depends_on: NotebookCellStateDependsOnList;
@@ -2053,9 +2053,9 @@ export interface NotebookSQLV2StateResponse {
   title: string | null;
   /** Document version, the optimistic-concurrency baseline for edits. */
   version: number | null;
-  /** The full markdown source — prose and cell tags. Null for legacy rich-text notebooks, which carry their document in `content` instead. */
+  /** The full markdown source -- prose and cell tags. Null for legacy rich-text notebooks, which carry their document in `content` instead. */
   markdown: string | null;
-  /** Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks — their document is the `markdown` field. */
+  /** Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks -- their document is the `markdown` field. */
   content?: unknown;
   /** The notebook's kernel runtime state and compute config. */
   kernel: NotebookKernelState;
@@ -3512,7 +3512,7 @@ export const getNotebooksRecordingComment: API.OperationMethod<
 }));
 
 export type GetNotebooksRunError = PosthogOpError;
-/** Read a whole-notebook run: its state, which cell it is on, and one line per planned cell. Carries no result rows — fetch a cell's result from the cell run result endpoint. Flag-gated (revamped-py-notebooks). */
+/** Read a whole-notebook run: its state, which cell it is on, and one line per planned cell. Carries no result rows -- fetch a cell's result from the cell run result endpoint. Flag-gated (revamped-py-notebooks). */
 export const getNotebooksRun: API.OperationMethod<
   GetNotebooksRunRequest,
   NotebookRunStatusResponse,
@@ -3527,7 +3527,7 @@ export const getNotebooksRun: API.OperationMethod<
 }));
 
 export type GetNotebooksSqlV2RunError = PosthogOpError;
-/** Read a run's durable state: its status, and — once done or interrupted — the result envelope (columns, first rows, stdout/stderr, media, error). Poll until terminal. Requires notebook and query read access, including after a notebook feature flag is disabled. */
+/** Read a run's durable state: its status, and -- once done or interrupted -- the result envelope (columns, first rows, stdout/stderr, media, error). Poll until terminal. Requires notebook and query read access, including after a notebook feature flag is disabled. */
 export const getNotebooksSqlV2Run: API.OperationMethod<
   GetNotebooksSqlV2RunRequest,
   NotebookSQLV2RunStatusResponse,

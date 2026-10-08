@@ -2096,7 +2096,7 @@ export const updateWarehouseTablesPartial: API.OperationMethod<
 }));
 
 export type WarehouseTablesCreateFromUploadCreateError = PosthogOpError;
-/** Create a self-managed warehouse table from an uploaded file Turn a previously uploaded file into a self-managed warehouse table. The file already sits in PostHog's own bucket (see `upload_file`), so the table points straight at it and is read in place — no import pipeline and no recurring sync, the same shape as a linked S3/GCS bucket. The read location is always derived from the caller's own team, so a client-supplied `upload_id` can only resolve inside that team's folder, and the table carries no credential (reads fall back to the node role, never a user-supplied key). */
+/** Create a self-managed warehouse table from an uploaded file Turn a previously uploaded file into a self-managed warehouse table. The file already sits in PostHog's own bucket (see `upload_file`), so the table points straight at it and is read in place -- no import pipeline and no recurring sync, the same shape as a linked S3/GCS bucket. The read location is always derived from the caller's own team, so a client-supplied `upload_id` can only resolve inside that team's folder, and the table carries no credential (reads fall back to the node role, never a user-supplied key). */
 export const warehouseTablesCreateFromUploadCreate: API.OperationMethod<
   WarehouseTablesCreateFromUploadCreateRequest,
   TableOutput,
@@ -2130,7 +2130,7 @@ export type WarehouseTablesRefreshSchemaCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Refresh table schema from source Re-introspect a self-managed (manually linked) warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because PostHog serves a cached column snapshot until the table is refreshed. Not for tables managed by an external data source sync — those refresh on their own schedule. */
+/** Refresh table schema from source Re-introspect a self-managed (manually linked) warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because PostHog serves a cached column snapshot until the table is refreshed. Not for tables managed by an external data source sync -- those refresh on their own schedule. */
 export const warehouseTablesRefreshSchemaCreate: API.OperationMethod<
   WarehouseTablesRefreshSchemaCreateRequest,
   WarehouseTablesRefreshSchemaCreateResponse,

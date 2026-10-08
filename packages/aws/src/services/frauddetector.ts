@@ -3984,7 +3984,7 @@ export type GetEventPredictionError =
   | ValidationException
   | CommonErrors;
 /**
- * Evaluates an event against a detector version. If a version ID is not provided, the detector’s (`ACTIVE`) version is used.
+ * Evaluates an event against a detector version. If a version ID is not provided, the detector's (`ACTIVE`) version is used.
  */
 export const getEventPrediction: API.OperationMethod<
   GetEventPredictionRequest,
@@ -4467,7 +4467,7 @@ export type ListEventPredictionsError =
  * For example, the following filter lists all past predictions for `xyz` event type -
  * {
  * "eventType":{
- * "value": "xyz" }”
+ * "value": "xyz" }"
  * }
  *
  * This is a paginated API. If you provide a null `maxResults`, this action will retrieve a maximum of 10 records per page.
@@ -4907,7 +4907,7 @@ export type UpdateDetectorVersionStatusError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates the detector version’s status. You can perform the following promotions or
+ * Updates the detector version's status. You can perform the following promotions or
  * demotions using `UpdateDetectorVersionStatus`: `DRAFT` to `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
  */
 export const updateDetectorVersionStatus: API.OperationMethod<

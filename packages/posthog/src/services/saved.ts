@@ -35,7 +35,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
+/** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type CreateSavedRequestWidthsList = Array<number>;
 export const CreateSavedRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -54,7 +54,7 @@ export interface CreateSavedRequest {
   url: string;
   /** URL whose heatmap data is overlaid on the screenshot. Defaults to 'url' when omitted. */
   data_url?: string;
-  /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
+  /** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
   widths?: CreateSavedRequestWidthsList;
   /** Render mode: 'screenshot' (renders the page headlessly, default), 'iframe', or 'recording'. Only 'screenshot' generates image bytes. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
   type?: SavedHeatmapTypeEnum | (string & {});
@@ -445,7 +445,7 @@ export const SavedRegenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedRegenerateCreateRequest",
 }) as any as S.Schema<SavedRegenerateCreateRequest>;
 
-/** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
+/** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type UpdateSavedPartialRequestWidthsList = Array<number>;
 export const UpdateSavedPartialRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -461,7 +461,7 @@ export interface UpdateSavedPartialRequest {
   url?: string;
   /** URL whose heatmap data is overlaid on the screenshot. Defaults to 'url' when omitted. */
   data_url?: string;
-  /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
+  /** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
   widths?: UpdateSavedPartialRequestWidthsList;
   /** Render mode: 'screenshot' (renders the page headlessly, default), 'iframe', or 'recording'. Only 'screenshot' generates image bytes. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
   type?: SavedHeatmapTypeEnum | (string & {});

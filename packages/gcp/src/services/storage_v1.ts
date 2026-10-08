@@ -48,7 +48,7 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
-/** The policy's etag no longer matches the bucket's current IAM policy — another writer changed it concurrently (HTTP 412). Re-read the policy and retry. */
+/** The policy's etag no longer matches the bucket's current IAM policy -- another writer changed it concurrently (HTTP 412). Re-read the policy and retry. */
 export class IamPolicyEtagMismatch
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<IamPolicyEtagMismatch>()("IamPolicyEtagMismatch", {

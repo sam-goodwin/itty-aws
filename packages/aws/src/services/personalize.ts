@@ -3064,7 +3064,7 @@ export type CreateDataDeletionJobError =
  * Creates a batch job that deletes all
  * references to specific users from an Amazon Personalize dataset group in batches. You specify the users to delete in a CSV file of userIds in
  * an Amazon S3 bucket. After a job completes, Amazon Personalize no longer trains
- * on the users’ data and no longer considers the users when generating user segments.
+ * on the users' data and no longer considers the users when generating user segments.
  * For more information about creating a data deletion job, see Deleting users.
  *
  * - Your input file must be a CSV file with a single USER_ID column that lists the users IDs. For more information

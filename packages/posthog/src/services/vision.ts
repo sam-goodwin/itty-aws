@@ -88,9 +88,9 @@ export type VisionAlertDirectionEnum = "above" | "below";
 export const VisionAlertDirectionEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
-  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span ≥ 30 minutes on the local daily timeline (half-open [start, end)). */
+  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
-  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span ≥ 30 minutes locally. */
+  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
 export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
@@ -472,7 +472,7 @@ export type ScannerModelEnum =
   | "gemini-3.8-flash";
 export const ScannerModelEnum = S.String;
 
-/** The experiment a scanner watches. Scans derive their person-scoped exposure filter from this blob at query time, so it is the only place an experiment can enter a scanner's targeting — which is what lets the write-side access check and read-side redaction cover it. */
+/** The experiment a scanner watches. Scans derive their person-scoped exposure filter from this blob at query time, so it is the only place an experiment can enter a scanner's targeting -- which is what lets the write-side access check and read-side redaction cover it. */
 export interface ScannerExperimentTargeting {
   /** The experiment the scanner watches. */
   experiment_id: number;
@@ -505,7 +505,7 @@ export interface CreateVisionScannerRequest {
   creation_method?: ScannerCreationMethodEnum | (string & {}) | null;
   /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
   scanner_config: unknown;
-  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
+  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save -- the schedule controls time, not the user. */
   query?: unknown;
   /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
   sampling_rate?: number;
@@ -573,7 +573,7 @@ export interface ReplayScannerOutput {
   scanner_config: unknown;
   /** The current prompt condensed by AI into the one question the scanner answers about a session. Falls back to the prompt's first line when no question matches the current prompt. */
   prompt_question: string;
-  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
+  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save -- the schedule controls time, not the user. */
   query?: unknown;
   /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
   sampling_rate?: number;
@@ -882,7 +882,7 @@ export interface DraftScannerResponse {
   rationale: string;
   /** `RecordingsQuery` narrowing which sessions get scanned; null when the draft targets every session. */
   query: unknown;
-  /** Goal-based flow only: the quality pre-filter the draft chose for the goal. Null on the legacy flow, and null when the costing estimate failed — the wizard keeps its defaults. * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
+  /** Goal-based flow only: the quality pre-filter the draft chose for the goal. Null on the legacy flow, and null when the costing estimate failed -- the wizard keeps its defaults. * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
   sampling_mode: SamplingModeEnum | null;
   /** Goal-based flow only: the random sampling rate solved from `monthly_credit_budget`, 0..1. 1.0 when the budget covers every matching recording. Floored at the minimum rate, so a budget below that floor keeps the minimum. Null whenever `sampling_mode` is. */
   sampling_rate: number | null;
@@ -934,7 +934,7 @@ export const EstimateExperimentScope = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVisionScannersEstimateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to` are ignored — the estimate scans a recent window (`window_days` in the response) and scales it to 30 days. Omit to estimate against all recordings. */
+  /** Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to` are ignored -- the estimate scans a recent window (`window_days` in the response) and scales it to 30 days. Omit to estimate against all recordings. */
   query?: unknown;
   /** 0..1 downsample applied to matched sessions. Defaults to 1.0 (no downsampling). */
   sampling_rate?: number;
@@ -1142,13 +1142,13 @@ export const ObserveAlreadyScanned = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ObserveAlreadyScanned" }) as any as S.Schema<ObserveAlreadyScanned>;
 
-/** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
+/** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigOptionsTagsList = Array<string>;
 export const SignalScoutConfigOptionsTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutConfigOptionsTagsList>;
 
-/** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
+/** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigOptionsStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
@@ -1237,9 +1237,9 @@ export const SignalScoutConfigNetworkAccessEnum = S.String;
 export interface SignalScoutConfigOptions {
   /** Optional model id this scout's runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform's agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it. */
   model?: string | null;
-  /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
+  /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
   tags?: SignalScoutConfigOptionsTagsList;
-  /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
+  /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
   structured_output_schema?: SignalScoutConfigOptionsStructuredOutputSchemaMap | null;
   /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
   mcp_gateway_server_ids?: SignalScoutConfigOptionsMcpGatewayServerIdsList;
@@ -1251,7 +1251,7 @@ export interface SignalScoutConfigOptions {
   enabled?: boolean;
   /** Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. Defaults to true. */
   emit?: boolean;
-  /** Minutes between runs (30–43200). Defaults to 1440 (every 24 hours). */
+  /** Minutes between runs (30-43200). Defaults to 1440 (every 24 hours). */
   run_interval_minutes?: number;
   /** Destinations that receive each finding or report this scout emits. Empty by default. */
   output_destinations?: SignalScoutOutputDestinations;
@@ -1286,9 +1286,9 @@ export interface CreateVisionScannersScoutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   scanner_id: string;
-  /** Name shown wherever people identify this scout, written however you want it — spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout's skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead. */
+  /** Name shown wherever people identify this scout, written however you want it -- spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout's skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead. */
   display_name?: string;
-  /** Optional skill name for the scout — its permanent identifier, containing only lowercase letters, numbers, and hyphens. Omit it and one is generated from `display_name` (`My APM scout` becomes `my-apm-scout`), with a numeric suffix when that name is taken. Pass it to pick the identifier yourself, or to keep a client written before display names working unchanged. The `signals-scout-` prefix is optional. */
+  /** Optional skill name for the scout -- its permanent identifier, containing only lowercase letters, numbers, and hyphens. Omit it and one is generated from `display_name` (`My APM scout` becomes `my-apm-scout`), with a numeric suffix when that name is taken. Pass it to pick the identifier yourself, or to keep a client written before display names working unchanged. The `signals-scout-` prefix is optional. */
   name?: string;
   /** Short description of the signal or behavior this scout investigates. */
   description: string;
@@ -1378,7 +1378,7 @@ export const SignalScoutConfigPauseReasonEnum = S.String;
 export type SignalScoutConfigManagedByEnum = "team" | "background";
 export const SignalScoutConfigManagedByEnum = S.String;
 
-/** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
+/** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigStructuredOutputSchemaMap = { [key: string]: unknown | undefined };
 export const SignalScoutConfigStructuredOutputSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1403,7 +1403,7 @@ export const SignalScoutConfigWriteScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutConfigWriteScopesList>;
 
-/** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
+/** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigTagsList = Array<string>;
 export const SignalScoutConfigTagsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1430,19 +1430,19 @@ export interface SignalScoutConfig {
   enabled: boolean;
   /** Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically. * `active` - Active * `pending_pause` - Pending pause * `paused_by_system` - Paused by system * `paused_by_user` - Paused by user */
   status: SignalScoutConfigStatusEnum;
-  /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (PostHog retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`. * `no_output` - No output * `ignored` - Ignored * `repeated_failures` - Repeated failures * `retired` - Retired * `background_removed` - Background removed */
+  /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports -- no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (PostHog retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`. * `no_output` - No output * `ignored` - Ignored * `repeated_failures` - Repeated failures * `retired` - Retired * `background_removed` - Background removed */
   pause_reason: SignalScoutConfigPauseReasonEnum | null;
   /** Who controls this scout now. `team`: a person set it up or has changed it. `background`: PostHog runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`. * `team` - Team * `background` - Background */
   managed_by: SignalScoutConfigManagedByEnum;
   /** Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. */
   emit: boolean;
-  /** Minutes between runs (30–43200). The scout runs once this interval has elapsed since its last run. */
+  /** Minutes between runs (30-43200). The scout runs once this interval has elapsed since its last run. */
   run_interval_minutes: number;
   /** Optional five-field cron expression evaluated in the project timezone, e.g. '30 9 * * *'. Takes precedence over `run_interval_minutes` when set. Null means the rolling interval schedule. */
   run_cron_schedule: string | null;
   /** Destinations that receive each finding or report this scout emits. Empty when none is configured. */
   output_destinations: SignalScoutOutputDestinations;
-  /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
+  /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
   structured_output_schema: SignalScoutConfigStructuredOutputSchemaMap | null;
   /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers. * `trusted` - Trusted domains only * `full` - Full */
   network_access: SignalScoutConfigNetworkAccessEnum;
@@ -1458,20 +1458,20 @@ export interface SignalScoutConfig {
   last_run_at: string | null;
   /** How many of this scout's runs have failed in a row. Back to 0 after a successful run or any config edit. At the failure limit the scout pauses itself (`status` becomes `paused_by_system` with `pause_reason` `repeated_failures`) and retries about once a day; a successful retry resumes it, and so does setting `enabled=true`. */
   consecutive_failure_count: number;
-  /** When `status` last changed. For `pending_pause` this is when the warning was issued (an `ignored` warning pauses about a week later unless someone engages with the scout's reports — opening one counts; a `no_output` warning only flags the scout); for the paused statuses it is when the scout was paused. Null if the status never changed. */
+  /** When `status` last changed. For `pending_pause` this is when the warning was issued (an `ignored` warning pauses about a week later unless someone engages with the scout's reports -- opening one counts; a `no_output` warning only flags the scout); for the paused statuses it is when the scout was paused. Null if the status never changed. */
   status_changed_at: string | null;
   /** Who last moved `status`, when a person did it through this API. Null for a system transition such as an automatic pause, for a row whose status never changed, and for a caller that may not read member identities. Pair it with `status` to say who turned a scout off, instead of only when it went off. */
   status_changed_by: UserBasic | null;
   /** Whether this scout is exempt from the inactivity sweep, meaning both the `ignored` pause and the `no_output` quiet warning. Set it on watchdog scouts whose value is staying quiet. Only ever set explicitly: re-enabling a swept scout instead grants a fresh grace window before the sweep may judge it again. */
   auto_pause_exempt: boolean;
-  /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
+  /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
   tags?: SignalScoutConfigTagsList;
   /** The product that stood this scout up for one of its own objects. Null when a person created it. */
   source_product: string | null;
   /** Id of the owning object in `source_product`, e.g. a Replay Vision scanner id. */
   source_id: string | null;
   created_at: string;
-  /** When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it — the coordinator stamps `last_run_at` with a direct write — so this reads as when the scout was last tuned rather than when it last ran. */
+  /** When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it -- the coordinator stamps `last_run_at` with a direct write -- so this reads as when the scout was last tuned rather than when it last ran. */
   updated_at: string;
 }
 export const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1536,7 +1536,7 @@ export const CreateVisionScannersSuggestTagRequestTagsList = /*@__PURE__*/ S.Arr
 export interface CreateVisionScannersSuggestTagRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** The classifier's instruction prompt — the single dimension to categorize sessions by. */
+  /** The classifier's instruction prompt -- the single dimension to categorize sessions by. */
   prompt: string;
   /** The categories already configured, so suggestions never duplicate one the user has. */
   tags?: CreateVisionScannersSuggestTagRequestTagsList;
@@ -2217,7 +2217,7 @@ export const ScannerCreatorsResponseCreatorsList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
 
-/** Distinct creators across all scanners on the team — feeds the `Created by` filter dropdown. */
+/** Distinct creators across all scanners on the team -- feeds the `Created by` filter dropdown. */
 export interface ScannerCreatorsResponse {
   /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
   creators: ScannerCreatorsResponseCreatorsList;
@@ -2799,17 +2799,17 @@ export const GetVisionScannersScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
 export type SizeEnum = "small" | "medium" | "large";
 export const SizeEnum = S.String;
 
-/** One chart attached to a report — rendered in the inbox and referenceable from the summary. */
+/** One chart attached to a report -- rendered in the inbox and referenceable from the summary. */
 export interface ReportChart {
-  /** Stable slug for this chart within the report (lowercase letters, numbers, underscores, hyphens; must start with a letter or number). Reference it from `summary` as a markdown link with a `chart:` target — `[Daily signups](chart:signups-drop)` — to place the chart at that point in the body. A chart you don't reference still renders, below the summary. */
+  /** Stable slug for this chart within the report (lowercase letters, numbers, underscores, hyphens; must start with a letter or number). Reference it from `summary` as a markdown link with a `chart:` target -- `[Daily signups](chart:signups-drop)` -- to place the chart at that point in the body. A chart you don't reference still renders, below the summary. */
   chart_id: string;
   /** Short heading shown above the chart. */
   title: string;
-  /** The query node to render. `kind` must be `InsightVizNode` (an ad-hoc product analytics chart), `DataVisualizationNode` (a SQL series — a `HogQLQuery` source plus a `display`), or `SavedInsightNode` (an existing insight by `shortId`). Pin the window to absolute dates where the node supports it, so the reader sees the data you wrote about rather than whatever a relative range resolves to when they open the report. */
+  /** The query node to render. `kind` must be `InsightVizNode` (an ad-hoc product analytics chart), `DataVisualizationNode` (a SQL series -- a `HogQLQuery` source plus a `display`), or `SavedInsightNode` (an existing insight by `shortId`). Pin the window to absolute dates where the node supports it, so the reader sees the data you wrote about rather than whatever a relative range resolves to when they open the report. */
   query: unknown;
   /** Optional one-line note on what to look at in the chart. */
   caption?: string | null;
-  /** How much height the chart gets: `small` for a single number or a short series, `medium` for an ordinary graph, `large` when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong — the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side. * `small` - small * `medium` - medium * `large` - large */
+  /** How much height the chart gets: `small` for a single number or a short series, `medium` for an ordinary graph, `large` when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong -- the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side. * `small` - small * `medium` - medium * `large` - large */
   size?: SizeEnum | null;
 }
 export const ReportChart = /*@__PURE__*/ S.suspend(() =>
@@ -2970,7 +2970,7 @@ export const ScannerTypeStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScannerTypeStats" }) as any as S.Schema<ScannerTypeStats>;
 
-/** One `ScannerTypeStats` per scanner type — explicit fields give callers a typed shape, not `Record<string, …>`. */
+/** One `ScannerTypeStats` per scanner type -- explicit fields give callers a typed shape, not `Record<string, ...>`. */
 export interface ScannerStatsByType {
   monitor: ScannerTypeStats;
   classifier: ScannerTypeStats;
@@ -3977,7 +3977,7 @@ export interface UpdateVisionScannersPartialRequest {
   creation_method?: ScannerCreationMethodEnum | (string & {}) | null;
   /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
   scanner_config?: unknown;
-  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
+  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save -- the schedule controls time, not the user. */
   query?: unknown;
   /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
   sampling_rate?: number;
@@ -5013,7 +5013,7 @@ export const getVisionAlert: API.OperationMethod<
 }));
 
 export type GetVisionObservationError = PosthogOpError;
-/** Retrieve one observation. Any list filters passed along (status, tags, order_by, …) scope the `previous_observation_id`/`next_observation_id` navigation to the matching, identically-ordered set — so prev/next from a filtered table stays within that filtered list. */
+/** Retrieve one observation. Any list filters passed along (status, tags, order_by, ...) scope the `previous_observation_id`/`next_observation_id` navigation to the matching, identically-ordered set -- so prev/next from a filtered table stays within that filtered list. */
 export const getVisionObservation: API.OperationMethod<
   GetVisionObservationRequest,
   ReplayObservation,
@@ -5073,7 +5073,7 @@ export const getVisionScannersBackfill: API.OperationMethod<
 }));
 
 export type GetVisionScannersCreatorError = PosthogOpError;
-/** Distinct creators across the team's scanners — feeds the `Created by` filter dropdown. */
+/** Distinct creators across the team's scanners -- feeds the `Created by` filter dropdown. */
 export const getVisionScannersCreator: API.OperationMethod<
   GetVisionScannersCreatorRequest,
   ScannerCreatorsResponse,
@@ -5103,7 +5103,7 @@ export const getVisionScannersImpact: API.OperationMethod<
 }));
 
 export type GetVisionScannersObservationError = PosthogOpError;
-/** Retrieve one observation. Any list filters passed along (status, tags, order_by, …) scope the `previous_observation_id`/`next_observation_id` navigation to the matching, identically-ordered set — so prev/next from a filtered table stays within that filtered list. */
+/** Retrieve one observation. Any list filters passed along (status, tags, order_by, ...) scope the `previous_observation_id`/`next_observation_id` navigation to the matching, identically-ordered set -- so prev/next from a filtered table stays within that filtered list. */
 export const getVisionScannersObservation: API.OperationMethod<
   GetVisionScannersObservationRequest,
   ReplayObservation,
@@ -5178,7 +5178,7 @@ export const getVisionScannersSelfDrivingStat: API.OperationMethod<
 }));
 
 export type GetVisionScannersStatError = PosthogOpError;
-/** Team-wide scanner counts — independent of list filters, so the overview stays stable. */
+/** Team-wide scanner counts -- independent of list filters, so the overview stays stable. */
 export const getVisionScannersStat: API.OperationMethod<
   GetVisionScannersStatRequest,
   ScannerStatsResponse,
@@ -5639,7 +5639,7 @@ export const visionScannersObservationsRetryCreate: API.OperationMethod<
 }));
 
 export type VisionScannersWatchFeedRetrieveError = PosthogOpError;
-/** Succeeded observations in the window worth watching, ranked — feeds the What to watch tab. */
+/** Succeeded observations in the window worth watching, ranked -- feeds the What to watch tab. */
 export const visionScannersWatchFeedRetrieve: API.OperationMethod<
   VisionScannersWatchFeedRetrieveRequest,
   WatchFeedResponse,

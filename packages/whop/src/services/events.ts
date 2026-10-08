@@ -407,7 +407,7 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEventResponse" }) as any as S.Schema<CreateEventResponse>;
 
 export interface GetPulseRequest {
-  /** Filter to one or more types, comma separated — for example `purchase,card_spend`. These are the item's `type`, not its `event_name`: several types share the `ledger_line.created` event name. Omit for every type in the feed. Values outside the feed's own set are rejected. */
+  /** Filter to one or more types, comma separated -- for example `purchase,card_spend`. These are the item's `type`, not its `event_name`: several types share the `ledger_line.created` event name. Omit for every type in the feed. Values outside the feed's own set are rejected. */
   event?: string;
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -444,7 +444,7 @@ export type GetPulseResponseDataItemType =
   | "referral_bonus";
 export const GetPulseResponseDataItemType = S.String;
 
-/** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of — the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
+/** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
 export interface GetPulseResponseDataItemUser {
   /** City name. Omitted when unknown. */
   city?: string;
@@ -469,7 +469,7 @@ export interface GetPulseResponseDataItem {
   total_usd_amount?: number | null;
   /** What moved: a purchase, an affiliate commission, Whop card spend, ad spend, app revenue, an off-platform sale, a wallet deposit, a card load, a claimed drop, a transfer between accounts, or a referral bonus. */
   type: GetPulseResponseDataItemType;
-  /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of — the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
+  /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
   user?: GetPulseResponseDataItemUser;
 }
 export const GetPulseResponseDataItem = /*@__PURE__*/ S.suspend(() =>
@@ -538,7 +538,7 @@ export interface ListEventsRequest {
   before?: string;
   /** The order events are returned in by time. Defaults to desc (most recent first); asc reads a journey forwards from where it starts. after and before always page forwards and backwards through that order. */
   direction?: ListEventsRequestDirection | (string & {});
-  /** Full event names to filter by, comma-separated (payment.completed, pixel.lead, pixel.page, pixel.custom:<name>) — the same vocabulary the events / people metrics use. */
+  /** Full event names to filter by, comma-separated (payment.completed, pixel.lead, pixel.page, pixel.custom:<name>) -- the same vocabulary the events / people metrics use. */
   event?: string;
   /** Canonical source path, exact or with a trailing :* prefix (whop:<campaign>:*, ext:meta:*, referrer:<domain>, direct, unknown). Selects conversions credited to this source. */
   source?: string;
@@ -769,11 +769,11 @@ export const ListEventsResponseDataItemRelatedAudience = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListEventsResponseDataItemRelatedAudience>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -790,7 +790,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
-  /** The item's name as shown at checkout — the product title, else the plan title. */
+  /** The item's name as shown at checkout -- the product title, else the plan title. */
   label: string | null;
   /** The plan bought, prefixed `plan_`. Null when the plan has since been deleted. */
   plan_id: string | null;
@@ -1045,11 +1045,11 @@ export interface PixelValidation {
   /** False when the event lookup failed, meaning `host_events` and `last_seen_days` are incomplete. */
   firing_data_ok: boolean;
   host_events: PixelValidationHostEventsList;
-  /** Whether the pixel was seen. Without a `url` this answers for the whole account: true when it has sent events recently. With a `url` it answers for THAT page only — true when the page is hosted on Whop, when the page itself has sent events recently, or when the pixel was found in its source. Events the account sent from other pages do not make a given `url` installed. */
+  /** Whether the pixel was seen. Without a `url` this answers for the whole account: true when it has sent events recently. With a `url` it answers for THAT page only -- true when the page is hosted on Whop, when the page itself has sent events recently, or when the pixel was found in its source. Events the account sent from other pages do not make a given `url` installed. */
   installed: boolean;
   /** Event name to whole days since that event last fired, e.g. `{ "lead": 3 }`. Carries events that fired too long ago to count as installed, so you can prompt to re-check rather than report them missing. */
   last_fired_days: unknown;
-  /** Days since the pixel last sent an event, within a 30-day window. `null` when it hasn't sent one in that window — which includes a pixel installed moments ago. */
+  /** Days since the pixel last sent an event, within a 30-day window. `null` when it hasn't sent one in that window -- which includes a pixel installed moments ago. */
   last_seen_days: number | null;
   /** True when `url` is hosted on Whop, so no pixel snippet is required. */
   native_tracking: boolean;
@@ -1143,7 +1143,7 @@ export const listEvents: API.PaginatedOperationMethod<
 ) as any;
 
 export type ValidatePixelError = Forbidden | NotFound | Conflict | WhopOpError;
-/** Validate Pixel Checks whether the Whop pixel is installed for an account. Recent pixel events count as proof on their own, so an account that has sent data lately comes back installed without a `url`. Pass a `url` and events from that page settle it; conversion events are also read across the hostname because they commonly fire on a later confirmation page. If the requested page hasn't sent any events lately, it is fetched and read for the pixel and conversion events wired on it. `installed` is only true when the pixel was actually seen — in the account's events or in the page. */
+/** Validate Pixel Checks whether the Whop pixel is installed for an account. Recent pixel events count as proof on their own, so an account that has sent data lately comes back installed without a `url`. Pass a `url` and events from that page settle it; conversion events are also read across the hostname because they commonly fire on a later confirmation page. If the requested page hasn't sent any events lately, it is fetched and read for the pixel and conversion events wired on it. `installed` is only true when the pixel was actually seen -- in the account's events or in the page. */
 export const validatePixel: API.OperationMethod<
   ValidatePixelRequest,
   PixelValidation,

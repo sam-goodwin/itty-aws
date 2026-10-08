@@ -1742,7 +1742,7 @@ export type CreateTemplateError =
   | CommonErrors;
 /**
  * Creates an Active Directory compatible certificate template. The connectors issues certificates
- * using these templates based on the requester’s Active Directory group membership.
+ * using these templates based on the requester's Active Directory group membership.
  */
 export const createTemplate: API.OperationMethod<
   CreateTemplateRequest,

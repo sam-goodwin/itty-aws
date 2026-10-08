@@ -49,7 +49,7 @@ export const CreateExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "CreateExternalDataDestinationRequest",
 }) as any as S.Schema<CreateExternalDataDestinationRequest>;
 
-/** One source that writes to a destination. Shape only — never used to deserialize. */
+/** One source that writes to a destination. Shape only -- never used to deserialize. */
 export interface SyncedSource {
   /** The source's id. */
   id: string;
@@ -69,7 +69,7 @@ export const SyncedSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SyncedSource" }) as any as S.Schema<SyncedSource>;
 
-/** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured. */
+/** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
 export type ExternalDataDestinationSyncedSourcesList = Array<SyncedSource>;
 export const ExternalDataDestinationSyncedSourcesList = /*@__PURE__*/ S.Array(
   SyncedSource,
@@ -90,7 +90,7 @@ export interface ExternalDataDestination {
   created_at: string;
   created_by: number | null;
   updated_at: string | null;
-  /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured. */
+  /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
   synced_sources: ExternalDataDestinationSyncedSourcesList;
 }
 export const ExternalDataDestination = /*@__PURE__*/ S.suspend(() =>

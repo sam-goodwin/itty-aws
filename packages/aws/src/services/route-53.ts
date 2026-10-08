@@ -4661,7 +4661,7 @@ export type CreateReusableDelegationSetError =
  * that are assigned to the reusable delegation set, you can do one of the
  * following:
  *
- * - For small numbers of hosted zones—up to a few hundred—it's
+ * - For small numbers of hosted zones--up to a few hundred--it's
  * relatively easy to create reusable delegation sets until you get one that has
  * four name servers that don't overlap with any of the name servers in your hosted
  * zones.
@@ -5549,7 +5549,7 @@ export type GetHealthCheckStatusError = InvalidInput | NoSuchHealthCheck | Commo
 /**
  * Gets status of a specified health check.
  *
- * This API is intended for use during development to diagnose behavior. It doesn’t
+ * This API is intended for use during development to diagnose behavior. It doesn't
  * support production use-cases with high query rates that require immediate and
  * actionable responses.
  */

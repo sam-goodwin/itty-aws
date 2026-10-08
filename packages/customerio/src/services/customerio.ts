@@ -73,7 +73,7 @@ export const AddCollectionRequestBodyCase0DataList = /*@__PURE__*/ S.Array(
 export interface AddCollectionRequestBodyCase0 {
   /** An array of data objects that you want to reference in this collection. */
   data: AddCollectionRequestBodyCase0DataList;
-  /** The name of the collection. This is how you'll reference your collection in messages—`{{collection_name.data-property}}`. */
+  /** The name of the collection. This is how you'll reference your collection in messages--`{{collection_name.data-property}}`. */
   name: string;
 }
 export const AddCollectionRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -86,7 +86,7 @@ export const AddCollectionRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddCollectionRequestBodyCase0>;
 
 export interface AddCollectionRequestBodyCase1 {
-  /** The name of the collection. This is how you'll reference your collection in messages—`{{collection_name.data-property}}`. */
+  /** The name of the collection. This is how you'll reference your collection in messages--`{{collection_name.data-property}}`. */
   name: string;
   /** The URL for your CSV or JSON data. If your URL does not return a `Content-Type`, we use the file extension; otherwise, Customer.io assumes your data is JSON. */
   url: string;
@@ -204,7 +204,7 @@ export const BroadcastActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BroadcastActionLinksRequest>;
 
 export interface BroadcastActionLinksResponseLinksItemLink {
-  /** The link destination—a URL, mailto, etc. */
+  /** The link destination--a URL, mailto, etc. */
   href?: string;
   /** The ID of the link. */
   id?: number;
@@ -433,7 +433,7 @@ export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrac
     S.Number,
   ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
@@ -441,7 +441,7 @@ export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineCli
     S.Number,
   ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
@@ -565,9 +565,9 @@ export interface BroadcastActionMetricsResponseLanguageVariantsValueSeries {
   human_opened?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList;
@@ -655,7 +655,7 @@ export const BroadcastActionMetricsResponseLanguageVariantsValueSeries = /*@__PU
 export interface BroadcastActionMetricsResponseLanguageVariantsValue {
   /** Whether this is the default variant. Exactly one variant per multi-language message is the default, and it always has an empty `language`. */
   default?: boolean;
-  /** The language code for this variant, such as `es` or `fr-CA`. Empty for the default variant—the one that people fall back to when no other variant matches their language. */
+  /** The language code for this variant, such as `es` or `fr-CA`. Empty for the default variant--the one that people fall back to when no other variant matches their language. */
   language?: string;
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: BroadcastActionMetricsResponseLanguageVariantsValueSeries;
@@ -751,13 +751,13 @@ export const BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList = /*@__
   S.Number,
 ) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const BroadcastActionMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -864,9 +864,9 @@ export interface BroadcastActionMetricsResponseMetricSeries {
   human_opened?: BroadcastActionMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: BroadcastActionMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: BroadcastActionMetricsResponseMetricSeriesOpenedList;
@@ -1474,7 +1474,7 @@ export interface BroadcastMessagesRequest {
   start_ts?: number;
   /** The ending timestamp for your query. */
   end_ts?: number;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const BroadcastMessagesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1491,7 +1491,7 @@ export const BroadcastMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/messages", code: 200 })),
 ).annotate({ identifier: "BroadcastMessagesRequest" }) as any as S.Schema<BroadcastMessagesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export interface BroadcastMessagesResponseMessagesItemCustomerIdentifiers {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
   cio_id: string;
@@ -1621,7 +1621,7 @@ export interface BroadcastMessagesResponseMessagesItem {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -1629,7 +1629,7 @@ export interface BroadcastMessagesResponseMessagesItem {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -1797,13 +1797,13 @@ export const BroadcastMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__
   S.Number,
 ) as any as S.Schema<BroadcastMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const BroadcastMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BroadcastMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const BroadcastMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -1907,9 +1907,9 @@ export interface BroadcastMetricsResponseMetricSeries {
   human_opened?: BroadcastMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: BroadcastMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: BroadcastMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: BroadcastMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: BroadcastMetricsResponseMetricSeriesOpenedList;
@@ -2204,7 +2204,7 @@ export interface CampaignActionMetricsRequest {
   action_id: number;
   /** Send `2`. We recommend version 2: it takes an explicit window (`start`, `end`, and `res`) in the time zone you pass as `tz`. Any other value, including leaving the parameter off, uses version 1: a window derived from `period` and `steps`, always in Eastern time. */
   version?: CampaignActionMetricsRequestVersion | (string & {});
-  /** **Version 2.** Required when you send `version=2`. Sets the increment for each point in the series—hourly, daily, weekly, or monthly. */
+  /** **Version 2.** Required when you send `version=2`. Sets the increment for each point in the series--hourly, daily, weekly, or monthly. */
   res?: CampaignActionMetricsRequestRes | (string & {});
   /** **Version 2.** Required when you send `version=2`. The unix timestamp for the beginning of your metrics. */
   start?: number;
@@ -2328,7 +2328,7 @@ export const CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrack
     S.Number,
   ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
@@ -2336,7 +2336,7 @@ export const CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClic
     S.Number,
   ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
@@ -2460,9 +2460,9 @@ export interface CampaignActionMetricsResponseLanguageVariantsValueSeries {
   human_opened?: CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList;
@@ -2550,7 +2550,7 @@ export const CampaignActionMetricsResponseLanguageVariantsValueSeries = /*@__PUR
 export interface CampaignActionMetricsResponseLanguageVariantsValue {
   /** Whether this is the default variant. Exactly one variant per multi-language message is the default, and it always has an empty `language`. */
   default?: boolean;
-  /** The language code for this variant, such as `es` or `fr-CA`. Empty for the default variant—the one that people fall back to when no other variant matches their language. */
+  /** The language code for this variant, such as `es` or `fr-CA`. Empty for the default variant--the one that people fall back to when no other variant matches their language. */
   language?: string;
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: CampaignActionMetricsResponseLanguageVariantsValueSeries;
@@ -2646,13 +2646,13 @@ export const CampaignActionMetricsResponseMetricSeriesLinkUntrackedList = /*@__P
   S.Number,
 ) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const CampaignActionMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const CampaignActionMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -2758,9 +2758,9 @@ export interface CampaignActionMetricsResponseMetricSeries {
   human_opened?: CampaignActionMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: CampaignActionMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: CampaignActionMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: CampaignActionMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: CampaignActionMetricsResponseMetricSeriesOpenedList;
@@ -2889,7 +2889,7 @@ export interface CampaignJourneyMetricsRequest {
   start: number;
   /** The unix timestamp for the end of your journey metrics report. */
   end: number;
-  /** Determines the increment for journey metrics—hourly, daily, weekly, or monthly. */
+  /** Determines the increment for journey metrics--hourly, daily, weekly, or monthly. */
   resolution: CampaignJourneyMetricsRequestResolution | (string & {});
 }
 export const CampaignJourneyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3126,7 +3126,7 @@ export interface CampaignMetricsRequest {
   campaign_id: number;
   /** Send `2`. We recommend version 2: it takes an explicit window (`start`, `end`, and `res`) in the time zone you pass as `tz`. Any other value, including leaving the parameter off, uses version 1: a window derived from `period` and `steps`, always in Eastern time. */
   version?: CampaignMetricsRequestVersion | (string & {});
-  /** **Version 2.** Required when you send `version=2`. Sets the increment for each point in the series—hourly, daily, weekly, or monthly. */
+  /** **Version 2.** Required when you send `version=2`. Sets the increment for each point in the series--hourly, daily, weekly, or monthly. */
   res?: CampaignMetricsRequestRes | (string & {});
   /** **Version 2.** Required when you send `version=2`. The unix timestamp for the beginning of your metrics. */
   start?: number;
@@ -3227,13 +3227,13 @@ export const CampaignMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*
   S.Number,
 ) as any as S.Schema<CampaignMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const CampaignMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CampaignMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const CampaignMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -3337,9 +3337,9 @@ export interface CampaignMetricsResponseMetricSeries {
   human_opened?: CampaignMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: CampaignMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: CampaignMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: CampaignMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: CampaignMetricsResponseMetricSeriesOpenedList;
@@ -3780,7 +3780,7 @@ export interface CreateEmailRequestTransformersAccessibility {
   add_role_to_tables?: boolean;
   /** Add a `<title>` tag to `<head>` using the email subject line (creates or replaces if empty). */
   add_title_to_head?: boolean;
-  /** Add `alt` attribute to VML elements (used by Outlook’s Word rendering engine), derived from the element’s text content. */
+  /** Add `alt` attribute to VML elements (used by Outlook's Word rendering engine), derived from the element's text content. */
   add_vml_alt_text?: boolean;
   /** Enable accessibility fixes. */
   enabled?: boolean;
@@ -3814,7 +3814,7 @@ export const CreateEmailRequestTransformersAccessibility = /*@__PURE__*/ S.suspe
 export interface CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes {
   /** Add redundant HTML `height` attributes alongside inlined CSS `height` on `<table>`, `<td>`, `<th>`, and `<img>` elements. Only applies to `px` values (and `%` on table elements). Needed for email clients that ignore CSS height. */
   apply_height_attributes?: boolean;
-  /** Add redundant HTML attributes on table elements (`<table>`, `<th>`, `<tr>`, `<td>`, `<caption>`, `<colgroup>`, `<col>`, `<thead>`, `<tbody>`, `<tfoot>`): `background-color` → `bgcolor`, `background-image` → `background`, `text-align` → `align`, `vertical-align` → `valign`. */
+  /** Add redundant HTML attributes on table elements (`<table>`, `<th>`, `<tr>`, `<td>`, `<caption>`, `<colgroup>`, `<col>`, `<thead>`, `<tbody>`, `<tfoot>`): `background-color` -> `bgcolor`, `background-image` -> `background`, `text-align` -> `align`, `vertical-align` -> `valign`. */
   apply_table_element_attributes?: boolean;
   /** Add redundant HTML `width` attributes alongside inlined CSS `width` on `<table>`, `<td>`, `<th>`, and `<img>` elements. Only applies to `px` values (and `%` on table elements). Needed for email clients that ignore CSS width (for example, older Outlook). */
   apply_width_attributes?: boolean;
@@ -3889,7 +3889,7 @@ export const CreateEmailRequestTransformersCssVariables = /*@__PURE__*/ S.suspen
   identifier: "CreateEmailRequestTransformersCssVariables",
 }) as any as S.Schema<CreateEmailRequestTransformersCssVariables>;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export interface CreateEmailRequestTransformersEncodeEntities {
   /** Enable HTML entity encoding. */
   enabled?: boolean;
@@ -3981,7 +3981,7 @@ export const CreateEmailRequestTransformersFormatter = /*@__PURE__*/ S.suspend((
   identifier: "CreateEmailRequestTransformersFormatter",
 }) as any as S.Schema<CreateEmailRequestTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export interface CreateEmailRequestTransformersPreventWidows {
   /** Enable widow word prevention. */
   enabled?: boolean;
@@ -4024,7 +4024,7 @@ export const CreateEmailRequestTransformersRemoveUnusedCssWhitelistList = /*@__P
   S.String,
 ) as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList;
@@ -4096,13 +4096,13 @@ export interface CreateEmailRequestTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: CreateEmailRequestTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: CreateEmailRequestTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailRequestTransformersUrlParameters;
@@ -4224,7 +4224,7 @@ export type CreateEmailResponseEmailTransformersCssVariables =
 export const CreateEmailResponseEmailTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type CreateEmailResponseEmailTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const CreateEmailResponseEmailTransformersEncodeEntities =
@@ -4311,7 +4311,7 @@ export const CreateEmailResponseEmailTransformersFormatter = /*@__PURE__*/ S.sus
   identifier: "CreateEmailResponseEmailTransformersFormatter",
 }) as any as S.Schema<CreateEmailResponseEmailTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailResponseEmailTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const CreateEmailResponseEmailTransformersPreventWidows =
@@ -4337,7 +4337,7 @@ export const CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList =
     S.String,
   ) as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailResponseEmailTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList;
@@ -4398,13 +4398,13 @@ export interface CreateEmailResponseEmailTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: CreateEmailResponseEmailTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: CreateEmailResponseEmailTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailResponseEmailTransformersUrlParameters;
@@ -4540,7 +4540,7 @@ export type CreateEmailTranslationRequestTransformersCssVariables =
 export const CreateEmailTranslationRequestTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type CreateEmailTranslationRequestTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const CreateEmailTranslationRequestTransformersEncodeEntities =
@@ -4636,7 +4636,7 @@ export const CreateEmailTranslationRequestTransformersFormatter = /*@__PURE__*/ 
   identifier: "CreateEmailTranslationRequestTransformersFormatter",
 }) as any as S.Schema<CreateEmailTranslationRequestTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailTranslationRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const CreateEmailTranslationRequestTransformersPreventWidows =
@@ -4662,7 +4662,7 @@ export const CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistLi
     S.String,
   ) as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList;
@@ -4724,13 +4724,13 @@ export interface CreateEmailTranslationRequestTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: CreateEmailTranslationRequestTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: CreateEmailTranslationRequestTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailTranslationRequestTransformersUrlParameters;
@@ -4855,7 +4855,7 @@ export type CreateEmailTranslationResponseEmailTranslationTransformersCssVariabl
 export const CreateEmailTranslationResponseEmailTranslationTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const CreateEmailTranslationResponseEmailTranslationTransformersEncodeEntities =
@@ -4955,7 +4955,7 @@ export const CreateEmailTranslationResponseEmailTranslationTransformersFormatter
     identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatter",
   }) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailTranslationResponseEmailTranslationTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const CreateEmailTranslationResponseEmailTranslationTransformersPreventWidows =
@@ -4982,7 +4982,7 @@ export const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnu
     S.String,
   ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList;
@@ -5049,13 +5049,13 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: CreateEmailTranslationResponseEmailTranslationTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters;
@@ -5335,7 +5335,7 @@ export const CreateNewsletterRequestBodyCase0RecipientsSegment = /*@__PURE__*/ S
   identifier: "CreateNewsletterRequestBodyCase0RecipientsSegment",
 }) as any as S.Schema<CreateNewsletterRequestBodyCase0RecipientsSegment>;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase0Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase0RecipientsAndList;
@@ -5398,7 +5398,7 @@ export interface CreateNewsletterRequestBodyCase0 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase0RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase0Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -5488,7 +5488,7 @@ export type CreateNewsletterRequestBodyCase1RecipientsSegment =
 export const CreateNewsletterRequestBodyCase1RecipientsSegment =
   CreateNewsletterRequestBodyCase0RecipientsSegment;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase1Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase1RecipientsAndList;
@@ -5539,7 +5539,7 @@ export interface CreateNewsletterRequestBodyCase1 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase1RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase1Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -5623,7 +5623,7 @@ export type CreateNewsletterRequestBodyCase2RecipientsSegment =
 export const CreateNewsletterRequestBodyCase2RecipientsSegment =
   CreateNewsletterRequestBodyCase0RecipientsSegment;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase2Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase2RecipientsAndList;
@@ -5674,7 +5674,7 @@ export interface CreateNewsletterRequestBodyCase2 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase2RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase2Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -5761,7 +5761,7 @@ export type CreateNewsletterRequestBodyCase3RecipientsSegment =
 export const CreateNewsletterRequestBodyCase3RecipientsSegment =
   CreateNewsletterRequestBodyCase0RecipientsSegment;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase3Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase3RecipientsAndList;
@@ -5796,7 +5796,7 @@ export const CreateNewsletterRequestBodyCase3TagIdsList = /*@__PURE__*/ S.Array(
 export interface CreateNewsletterRequestBodyCase3 {
   /** The channel type for the one-time send. */
   type: CreateNewsletterRequestBodyCase3Type;
-  /** JSON body content for the in-app message, as a stringified JSON object—a JSON string, not a nested object. It supports these fields: - `message_id`—string, an identifier for the message - `carta_content`—string, the message content markup from our in-app editor - `display`—object; `mode` (`modal`, `overlay`, `inline`, or `tooltip`) and `value` (the position for modals: `top`, `center`, or `bottom`; the position ID for inline messages). Tooltips take a `tooltip_target` CSS selector instead of `value` - `priority`—integer, delivery order for queued messages: `1` (low), `5` (medium), or `10` (high) - `expiration`—object; if omitted, the message expires after 30 days (60 maximum). Set `type` (`relative` or `absolute`), `unit`, and `value` - `persistent`—boolean, keep the message visible across pages and sessions until your audience dismisses it - `attributes`—object, custom key-value string pairs delivered with the message - `route_rules` and `excluded_route_rules`—objects keyed by platform (`web`, `ios`, or `android`), each holding an array of [page rules](/messaging/channels/in-app/send-in-app-message/#page-rule) with an `operator` (`contains` or `equals`), a `value` (`*` is a wildcard), and an `order` (integer). You can only set page rules when you create a message, and platforms you don't set rules for won't show the message */
+  /** JSON body content for the in-app message, as a stringified JSON object--a JSON string, not a nested object. It supports these fields: - `message_id`--string, an identifier for the message - `carta_content`--string, the message content markup from our in-app editor - `display`--object; `mode` (`modal`, `overlay`, `inline`, or `tooltip`) and `value` (the position for modals: `top`, `center`, or `bottom`; the position ID for inline messages). Tooltips take a `tooltip_target` CSS selector instead of `value` - `priority`--integer, delivery order for queued messages: `1` (low), `5` (medium), or `10` (high) - `expiration`--object; if omitted, the message expires after 30 days (60 maximum). Set `type` (`relative` or `absolute`), `unit`, and `value` - `persistent`--boolean, keep the message visible across pages and sessions until your audience dismisses it - `attributes`--object, custom key-value string pairs delivered with the message - `route_rules` and `excluded_route_rules`--objects keyed by platform (`web`, `ios`, or `android`), each holding an array of [page rules](/messaging/channels/in-app/send-in-app-message/#page-rule) with an `operator` (`contains` or `equals`), a `value` (`*` is a wildcard), and an `order` (integer). You can only set page rules when you create a message, and platforms you don't set rules for won't show the message */
   body_json: string;
   /** The name of the one-time send. */
   name: string;
@@ -5812,7 +5812,7 @@ export interface CreateNewsletterRequestBodyCase3 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase3RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase3Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -5905,7 +5905,7 @@ export type CreateNewsletterRequestBodyCase4RecipientsSegment =
 export const CreateNewsletterRequestBodyCase4RecipientsSegment =
   CreateNewsletterRequestBodyCase0RecipientsSegment;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase4Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase4RecipientsAndList;
@@ -5960,7 +5960,7 @@ export interface CreateNewsletterRequestBodyCase4 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase4RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase4Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -6046,7 +6046,7 @@ export type CreateNewsletterRequestBodyCase5RecipientsSegment =
 export const CreateNewsletterRequestBodyCase5RecipientsSegment =
   CreateNewsletterRequestBodyCase0RecipientsSegment;
 
-/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+/** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
 export interface CreateNewsletterRequestBodyCase5Recipients {
   /** An array of conditions that must all be true. */
   and?: CreateNewsletterRequestBodyCase5RecipientsAndList;
@@ -6081,7 +6081,7 @@ export const CreateNewsletterRequestBodyCase5TagIdsList = /*@__PURE__*/ S.Array(
 export interface CreateNewsletterRequestBodyCase5 {
   /** The channel type for the one-time send. */
   type: CreateNewsletterRequestBodyCase5Type;
-  /** JSON body content for the inbox message, as a stringified JSON object. The fields you include depend on how you [set up your inbox](/journeys/channels/in-app/inbox/setup/): - `topics`—array, topics your audience can filter by in their inbox - `type`—string, context that helps render the inbox message - `properties`—object, your message info like the title, body, link, and image - `expiration`—object; if omitted, the message expires after 30 days. Otherwise set `type` (`relative` or `absolute`), `unit` (`seconds`, `minutes`, `hours`, or `days`; relative only), and `value` (number of units, or a unix timestamp if absolute) */
+  /** JSON body content for the inbox message, as a stringified JSON object. The fields you include depend on how you [set up your inbox](/journeys/channels/in-app/inbox/setup/): - `topics`--array, topics your audience can filter by in their inbox - `type`--string, context that helps render the inbox message - `properties`--object, your message info like the title, body, link, and image - `expiration`--object; if omitted, the message expires after 30 days. Otherwise set `type` (`relative` or `absolute`), `unit` (`seconds`, `minutes`, `hours`, or `days`; relative only), and `value` (number of units, or a unix timestamp if absolute) */
   body_json: string;
   /** The name of the one-time send. */
   name: string;
@@ -6097,7 +6097,7 @@ export interface CreateNewsletterRequestBodyCase5 {
   rate_limit_time_period?: CreateNewsletterRequestBodyCase5RateLimitTimePeriod | (number & {});
   /** A URL pointing to a CSV of recipients, used instead of the `recipients` filter. Customer.io resolves the file in the background, so this request can't also send or schedule. Poll [Get a one-time send](/integrations/api/app/tag/newsletters/getNewsletters/) until `recipient_file_status` is `done`, then call [send](/integrations/api/app/tag/send-messages/sendNewsletter/) or [schedule](/integrations/api/app/tag/send-messages/scheduleNewsletter/). */
   recipient_file_url?: string;
-  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys—like `not` alongside `and`—is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment—and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself—`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
+  /** Filter conditions that define the one-time send's recipients. In `recipients`, you can combine `segment` and `attribute` conditions with `and`, `or`, and `not` operators. This endpoint enforces a strict shape: * The outermost object must be a single `and` array. * Every operator or condition object takes exactly **one** key: `and`, `or`, `not`, `segment`, or `attribute`. An object with two keys--like `not` alongside `and`--is rejected with an "Invalid filter spec" error. * Segment conditions must be wrapped in an `or` array, even for a single segment--and `or` arrays can contain only segment conditions. * To exclude segments, `not` must contain an `or` of segment conditions and sit as its own item inside the `and` array. * Attribute conditions sit directly in the `and` array, unwrapped. To negate an attribute condition, set `inverse: true` on the attribute itself--`not` can't contain attribute conditions. The email example on this operation shows or-wrapped segments combined with a negated attribute; for the common "include segment A, exclude segment B" pattern, see the **include one segment, exclude another** request example. See [Format API-triggered broadcasts](/messaging/send/broadcasts/api-triggered-data-format/#overriding-recipients) for general operator behavior. */
   recipients?: CreateNewsletterRequestBodyCase5Recipients;
   /** A Unix timestamp indicating when to send the one-time send. The time must be in the future. You cannot set both `send_now` and `scheduled_at`. */
   scheduled_at?: number;
@@ -6862,7 +6862,7 @@ export const CreateSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/v1/snippets", code: 200 })),
 ).annotate({ identifier: "CreateSnippetRequest" }) as any as S.Schema<CreateSnippetRequest>;
 
-/** describes a piece of reusable content. You must provide a name for the snippet and the `value`—the content that appears in messages that use the snippet. */
+/** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export interface CreateSnippetResponseSnippet {
   /** The name of the snippet, must be unique. */
   name: string;
@@ -6882,7 +6882,7 @@ export const CreateSnippetResponseSnippet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSnippetResponseSnippet>;
 
 export interface CreateSnippetResponse {
-  /** describes a piece of reusable content. You must provide a name for the snippet and the `value`—the content that appears in messages that use the snippet. */
+  /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
   snippet?: CreateSnippetResponseSnippet;
 }
 export const CreateSnippetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7078,7 +7078,7 @@ export const CreateWebhookResponseEventsList = /*@__PURE__*/ S.Array(
   CreateWebhookResponseEventsItem,
 ) as any as S.Schema<CreateWebhookResponseEventsList>;
 
-/** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+/** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type CreateWebhookResponseType = "webhook" | "js";
 export const CreateWebhookResponseType = S.String;
 
@@ -7095,7 +7095,7 @@ export interface CreateWebhookResponse {
   full_resolution?: boolean;
   /** The identifier for the webhook. */
   id?: number;
-  /** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+  /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
   type?: CreateWebhookResponseType;
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
@@ -7230,7 +7230,7 @@ export const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).
 }) as any as S.Schema<DeleteFolderResponse>;
 
 export interface DeleteManSegmentRequest {
-  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard—go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
+  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
 export const DeleteManSegmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7466,7 +7466,7 @@ export const EndLiveNotificationRequestContentStateCase1 = /*@__PURE__*/ S.suspe
 export interface EndLiveNotificationRequestContentStateCase2 {
   /** Primary status line. */
   title: string;
-  /** Countdown target, in whole seconds since 1970 UTC. A time in the future renders a live countdown; omit it to render no timer. The countdown does not clear itself when it reaches zero — it rests at \"0:00\" until you send an update with a finished title and no endTime. */
+  /** Countdown target, in whole seconds since 1970 UTC. A time in the future renders a live countdown; omit it to render no timer. The countdown does not clear itself when it reaches zero -- it rests at \"0:00\" until you send an update with a finished title and no endTime. */
   endTime?: number;
   /** Secondary line under the title. */
   statusMessage?: string;
@@ -7856,7 +7856,7 @@ export const ExportDeliveriesDataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportDeliveriesDataResponse",
 }) as any as S.Schema<ExportDeliveriesDataResponse>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemAttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase0AndItemAttributeOperator = S.String;
 
@@ -7864,7 +7864,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemAttributeOperator = S.Str
 export interface ExportPeopleDataRequestFiltersCase0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase0AndItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -7907,7 +7907,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0 =
     identifier: "ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0",
   }) as any as S.Schema<ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -7918,7 +7918,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attri
 export interface ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -7989,7 +7989,7 @@ export type ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8000,7 +8000,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attrib
 export interface ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -8068,7 +8068,7 @@ export type ExportPeopleDataRequestFiltersCase0AndItemNotCase2 =
 export const ExportPeopleDataRequestFiltersCase0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemNotCase3AttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase0AndItemNotCase3AttributeOperator = S.String;
 
@@ -8076,7 +8076,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemNotCase3AttributeOperator
 export interface ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase0AndItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8125,7 +8125,7 @@ export type ExportPeopleDataRequestFiltersCase0AndItemOrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8135,7 +8135,7 @@ export const ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1AttributeOpera
 export interface ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8235,7 +8235,7 @@ export type ExportPeopleDataRequestFiltersCase1OrItemAndItemCase0 =
 export const ExportPeopleDataRequestFiltersCase1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8245,7 +8245,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1AttributeOpera
 export interface ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8287,7 +8287,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemAndList = /*@__PURE__*/ S.
   ExportPeopleDataRequestFiltersCase1OrItemAndItem,
 ) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase1OrItemAttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase1OrItemAttributeOperator = S.String;
 
@@ -8295,7 +8295,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemAttributeOperator = S.Stri
 export interface ExportPeopleDataRequestFiltersCase1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase1OrItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8322,7 +8322,7 @@ export type ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase0 =
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8333,7 +8333,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attrib
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -8402,7 +8402,7 @@ export type ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8413,7 +8413,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribu
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -8481,7 +8481,7 @@ export type ExportPeopleDataRequestFiltersCase1OrItemNotCase2 =
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase1OrItemNotCase3AttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3AttributeOperator = S.String;
 
@@ -8489,7 +8489,7 @@ export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3AttributeOperator 
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase1OrItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8584,7 +8584,7 @@ export type ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8595,7 +8595,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribut
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1AttributeOperator
     | (string & {});
@@ -8640,7 +8640,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndList = /*@__PURE_
   ExportPeopleDataRequestFiltersCase2Case0AndItemAndItem,
 ) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemAttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemAttributeOperator = S.String;
 
@@ -8648,7 +8648,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemAttributeOperator = 
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase2Case0AndItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -8676,7 +8676,7 @@ export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase0 
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8687,7 +8687,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -8759,7 +8759,7 @@ export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8770,7 +8770,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1A
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -8840,7 +8840,7 @@ export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase2 =
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -8850,7 +8850,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3AttributeOpe
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3AttributeOperator
     | (string & {});
@@ -8901,7 +8901,7 @@ export type ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -8911,7 +8911,7 @@ export const ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1AttributeOperator
     | (string & {});
@@ -9018,7 +9018,7 @@ export type ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -9028,7 +9028,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1AttributeOperator
     | (string & {});
@@ -9073,7 +9073,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndList = /*@__PURE__
   ExportPeopleDataRequestFiltersCase2Case1OrItemAndItem,
 ) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemAttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemAttributeOperator = S.String;
 
@@ -9081,7 +9081,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemAttributeOperator = S
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase2Case1OrItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -9108,7 +9108,7 @@ export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -9119,7 +9119,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1A
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -9190,7 +9190,7 @@ export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -9201,7 +9201,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1At
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -9271,7 +9271,7 @@ export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase2 =
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -9281,7 +9281,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3AttributeOper
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -9330,7 +9330,7 @@ export type ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase0 =
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -9340,7 +9340,7 @@ export const ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1AttributeO
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1AttributeOperator
     | (string & {});
@@ -9446,7 +9446,7 @@ export type ExportPeopleDataRequestFiltersCase2Case2 =
 export const ExportPeopleDataRequestFiltersCase2Case2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase2Case3AttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase2Case3AttributeOperator = S.String;
 
@@ -9454,7 +9454,7 @@ export const ExportPeopleDataRequestFiltersCase2Case3AttributeOperator = S.Strin
 export interface ExportPeopleDataRequestFiltersCase2Case3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase2Case3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -9502,7 +9502,7 @@ export type ExportPeopleDataRequestFiltersCase3 =
 export const ExportPeopleDataRequestFiltersCase3 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase4AttributeOperator = "eq" | "exists";
 export const ExportPeopleDataRequestFiltersCase4AttributeOperator = S.String;
 
@@ -9510,7 +9510,7 @@ export const ExportPeopleDataRequestFiltersCase4AttributeOperator = S.String;
 export interface ExportPeopleDataRequestFiltersCase4Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: ExportPeopleDataRequestFiltersCase4AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -9668,7 +9668,7 @@ export interface GetArchivedMessageResponseArchivedMessage {
   from?: string;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** [Also known as "preview text"](/journeys/channels/email/headers/custom-preheader-text/), this is the small block of text shown in an email inbox next to or underneath the subject line. */
   preheader_text?: string;
@@ -11333,7 +11333,7 @@ export interface GetCampaignMessagesRequest {
   start_ts?: number;
   /** The ending timestamp for your query. */
   end_ts?: number;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const GetCampaignMessagesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11352,7 +11352,7 @@ export const GetCampaignMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCampaignMessagesRequest",
 }) as any as S.Schema<GetCampaignMessagesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetCampaignMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetCampaignMessagesResponseMessagesItemCustomerIdentifiers =
@@ -11402,7 +11402,7 @@ export interface GetCampaignMessagesResponseMessagesItem {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -11410,7 +11410,7 @@ export interface GetCampaignMessagesResponseMessagesItem {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -12606,7 +12606,7 @@ export type GetEmailResponseEmailTransformersCssVariables =
 export const GetEmailResponseEmailTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type GetEmailResponseEmailTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const GetEmailResponseEmailTransformersEncodeEntities =
@@ -12689,7 +12689,7 @@ export const GetEmailResponseEmailTransformersFormatter = /*@__PURE__*/ S.suspen
   identifier: "GetEmailResponseEmailTransformersFormatter",
 }) as any as S.Schema<GetEmailResponseEmailTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailResponseEmailTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const GetEmailResponseEmailTransformersPreventWidows =
@@ -12714,7 +12714,7 @@ export const GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = /*@
   S.String,
 ) as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetEmailResponseEmailTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList;
@@ -12772,13 +12772,13 @@ export interface GetEmailResponseEmailTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: GetEmailResponseEmailTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: GetEmailResponseEmailTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetEmailResponseEmailTransformersUrlParameters;
@@ -12943,7 +12943,7 @@ export type GetEmailTranslationResponseEmailTranslationTransformersCssVariables 
 export const GetEmailTranslationResponseEmailTranslationTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type GetEmailTranslationResponseEmailTranslationTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const GetEmailTranslationResponseEmailTranslationTransformersEncodeEntities =
@@ -13043,7 +13043,7 @@ export const GetEmailTranslationResponseEmailTranslationTransformersFormatter =
     identifier: "GetEmailTranslationResponseEmailTranslationTransformersFormatter",
   }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailTranslationResponseEmailTranslationTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const GetEmailTranslationResponseEmailTranslationTransformersPreventWidows =
@@ -13070,7 +13070,7 @@ export const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnused
     S.String,
   ) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList;
@@ -13137,13 +13137,13 @@ export interface GetEmailTranslationResponseEmailTranslationTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: GetEmailTranslationResponseEmailTranslationTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetEmailTranslationResponseEmailTranslationTransformersUrlParameters;
@@ -13337,7 +13337,7 @@ export const GetImportResponseImportIdentifier = S.String;
 export type GetImportResponseImportPeopleToProcess = "all" | "only_new" | "only_existing";
 export const GetImportResponseImportPeopleToProcess = S.String;
 
-/** The state of the import—whether your import is being processed, fully completed (`imported`), or if it failed. */
+/** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
 export type GetImportResponseImportState =
   | "preprocessing"
   | "preprocessed"
@@ -13372,7 +13372,7 @@ export interface GetImportResponseImport {
   identifier?: GetImportResponseImportIdentifier;
   /** A friendly name for your import. This helps you identify your import. */
   name?: string;
-  /** The object type an object belongs to—like "Companies" or "Accounts". Only applies to object imports. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Only applies to object imports. */
   object_type_id?: string;
   /** Returned for people and event imports, even if you imported using the field `data_to_process`. This field will be deprecated soon. */
   people_to_process?: GetImportResponseImportPeopleToProcess;
@@ -13380,7 +13380,7 @@ export interface GetImportResponseImport {
   rows_imported?: number;
   /** The total number of importable rows we found in the CSV. */
   rows_to_import?: number;
-  /** The state of the import—whether your import is being processed, fully completed (`imported`), or if it failed. */
+  /** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
   state?: GetImportResponseImportState;
   /** The type of import. */
   type?: GetImportResponseImportType;
@@ -13435,7 +13435,7 @@ export interface GetInboxPreviewCaptureRequest {
   client_id: string;
   /** The image to return. */
   variant?: GetInboxPreviewCaptureRequestVariant | (string & {});
-  /** Only applies when `variant` is `screenshot`. Match this to a key in that tile's `screenshots` object from [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/)—most devices only have `default`, but some carry extra vendor-defined captures, like an image-blocking render. */
+  /** Only applies when `variant` is `screenshot`. Match this to a key in that tile's `screenshots` object from [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/)--most devices only have `default`, but some carry extra vendor-defined captures, like an image-blocking render. */
   key?: string;
 }
 export const GetInboxPreviewCaptureRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13480,7 +13480,7 @@ export interface GetInboxPreviewCreditsResponseCreditsItem {
   credits_original?: number;
   /** Credits left to spend from this tier. */
   credits_remaining?: number;
-  /** When this pool's credits expire, if ever. Expiry is set per pool, not per tier—a purchased pool typically doesn't expire, but a free pool support granted can carry an expiration date. The monthly allowance's `expires_at` also reads `null` when Customer.io can't resolve your current billing period; that's a transient read issue, not a sign the allowance never expires. */
+  /** When this pool's credits expire, if ever. Expiry is set per pool, not per tier--a purchased pool typically doesn't expire, but a free pool support granted can carry an expiration date. The monthly allowance's `expires_at` also reads `null` when Customer.io can't resolve your current billing period; that's a transient read issue, not a sign the allowance never expires. */
   expires_at?: number | null;
   /** The credit tier this pool belongs to. The [`free` tier](/accounts/billing/inbox-previews/) covers two kinds of pools, the monthly allowance of 25 credits every account gets and any free pools Customer.io support has granted. Because of that, `free` can appear more than once in the response. The `paid` tier covers credits purchased for the account. */
   tier?: GetInboxPreviewCreditsResponseCreditsItemTier;
@@ -13571,7 +13571,7 @@ export const GetInboxPreviewJobResponsePreviewsItemError = /*@__PURE__*/ S.suspe
   identifier: "GetInboxPreviewJobResponsePreviewsItemError",
 }) as any as S.Schema<GetInboxPreviewJobResponsePreviewsItemError>;
 
-/** Capture URLs keyed by image name—the full-size screenshot under `default`, plus a key per extra image the device renders. This is the only place the full-size URL appears; `thumbnail` and `full_thumbnail` are reduced variants. Omitted unless the render completed. */
+/** Capture URLs keyed by image name--the full-size screenshot under `default`, plus a key per extra image the device renders. This is the only place the full-size URL appears; `thumbnail` and `full_thumbnail` are reduced variants. Omitted unless the render completed. */
 export type GetInboxPreviewJobResponsePreviewsItemScreenshotsMap = {
   [key: string]: string | undefined;
 };
@@ -13606,7 +13606,7 @@ export interface GetInboxPreviewJobResponsePreviewsItem {
   full_thumbnail?: string;
   /** Operating system the client runs on. */
   os?: string;
-  /** Capture URLs keyed by image name—the full-size screenshot under `default`, plus a key per extra image the device renders. This is the only place the full-size URL appears; `thumbnail` and `full_thumbnail` are reduced variants. Omitted unless the render completed. */
+  /** Capture URLs keyed by image name--the full-size screenshot under `default`, plus a key per extra image the device renders. This is the only place the full-size URL appears; `thumbnail` and `full_thumbnail` are reduced variants. Omitted unless the render completed. */
   screenshots?: GetInboxPreviewJobResponsePreviewsItemScreenshotsMap;
   /** The vendor's own status for this device's render. Only `Complete` and `Bounced` are terminal. */
   status?: GetInboxPreviewJobResponsePreviewsItemStatus;
@@ -13642,7 +13642,7 @@ export interface GetInboxPreviewJobResponse {
   client_ids?: GetInboxPreviewJobResponseClientIdsList;
   /** When you submitted the preview job. */
   created_at?: number;
-  /** `true` once every device has settled, for the email in the path—a multi-language run reports each of its emails separately, so this doesn't reflect the whole run when it covers more than one. Poll this field, and see the endpoint description for how often, and for when to give up. */
+  /** `true` once every device has settled, for the email in the path--a multi-language run reports each of its emails separately, so this doesn't reflect the whole run when it covers more than one. Poll this field, and see the endpoint description for how often, and for when to give up. */
   is_processed?: boolean;
   /** The batch label provided when you sent an email for previews. Empty if none was given. */
   name?: string;
@@ -13654,11 +13654,11 @@ export interface GetInboxPreviewJobResponse {
   total_previews_bounced?: number;
   /** Previews served from an earlier run's screenshot. Not charged, and not counted in `total_previews_succeeded`. */
   total_previews_cached?: number;
-  /** How many previews show a screenshot you can fetch, counted from the tiles themselves. This is the progress count to compare against `total_previews_requested`—`total_previews_succeeded` alone reads `0` on a fully cached run. It isn't the completion signal; `is_processed` is. Because a tile can be served by an earlier screenshot of the same content while this run's own render is still in flight, this can reach `total_previews_requested` before the run finishes. */
+  /** How many previews show a screenshot you can fetch, counted from the tiles themselves. This is the progress count to compare against `total_previews_requested`--`total_previews_succeeded` alone reads `0` on a fully cached run. It isn't the completion signal; `is_processed` is. Because a tile can be served by an earlier screenshot of the same content while this run's own render is still in flight, this can reach `total_previews_requested` before the run finishes. */
   total_previews_ready?: number;
   /** Previews requested in the job, for the email in the path. On a settled run, this is normally `total_previews_cached` + `total_previews_succeeded` + `total_previews_bounced`. */
   total_previews_requested?: number;
-  /** Previews this run generated itself, excluding cached ones. A fully cached run reports `0` here even though every tile is `Complete`—compare `total_previews_ready` against `total_previews_requested` instead to track progress. */
+  /** Previews this run generated itself, excluding cached ones. A fully cached run reports `0` here even though every tile is `Complete`--compare `total_previews_ready` against `total_previews_requested` instead to track progress. */
   total_previews_succeeded?: number;
   /** When the job's status was last updated. */
   updated_at?: number;
@@ -13714,7 +13714,7 @@ export interface GetLiveNotificationResponseLastDelivery {
   id?: string;
   /** The lifecycle operation the delivery carried. */
   operation?: GetLiveNotificationResponseLastDeliveryOperation;
-  /** Where the operation originated—the API or the device. */
+  /** Where the operation originated--the API or the device. */
   source?: string;
   /** The delivery's status. */
   status?: GetLiveNotificationResponseLastDeliveryStatus;
@@ -13748,7 +13748,7 @@ export interface GetLiveNotificationResponse {
   last_delivery?: GetLiveNotificationResponseLastDelivery | null;
   /** The activity's reverse-DNS type identifier. */
   notification_type?: string;
-  /** The device platform—`ios` or `android`. */
+  /** The device platform--`ios` or `android`. */
   platform?: string;
   /** When the activity started (unix timestamp). */
   started_at?: number;
@@ -13774,7 +13774,7 @@ export const GetLiveNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMessageRequest {
   /** The identifier of a message. */
   message_id: string;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const GetMessageRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13784,7 +13784,7 @@ export const GetMessageRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/v1/messages/{message_id}", code: 200 })),
 ).annotate({ identifier: "GetMessageRequest" }) as any as S.Schema<GetMessageRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetMessageResponseMessageCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetMessageResponseMessageCustomerIdentifiers =
@@ -13832,7 +13832,7 @@ export interface GetMessageResponseMessage {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -13840,7 +13840,7 @@ export interface GetMessageResponseMessage {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -14111,13 +14111,13 @@ export const GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList = /*@__PU
   S.Number,
 ) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const GetNewsletterMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -14223,9 +14223,9 @@ export interface GetNewsletterMetricsResponseMetricSeries {
   human_opened?: GetNewsletterMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: GetNewsletterMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: GetNewsletterMetricsResponseMetricSeriesOpenedList;
@@ -14353,7 +14353,7 @@ export interface GetNewsletterMsgMetaRequest {
   start_ts?: number;
   /** The ending timestamp for your query. */
   end_ts?: number;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const GetNewsletterMsgMetaRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14370,7 +14370,7 @@ export const GetNewsletterMsgMetaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNewsletterMsgMetaRequest",
 }) as any as S.Schema<GetNewsletterMsgMetaRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetNewsletterMsgMetaResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetNewsletterMsgMetaResponseMessagesItemCustomerIdentifiers =
@@ -14418,7 +14418,7 @@ export interface GetNewsletterMsgMetaResponseMessagesItem {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -14426,7 +14426,7 @@ export interface GetNewsletterMsgMetaResponseMessagesItem {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -14735,7 +14735,7 @@ export interface GetNewsletterVariantResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -14853,7 +14853,7 @@ export interface GetNewsletterVariantTranslationResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -14974,7 +14974,7 @@ export interface GetNewsletterVariantTranslationTestResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -15042,7 +15042,7 @@ export type GetObjectAttributesRequestIdType = "object_id" | "cio_object_id";
 export const GetObjectAttributesRequestIdType = S.String;
 
 export interface GetObjectAttributesRequest {
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
   object_type_id: number;
   /** The `object_id` or `cio_object_id` of an object, depending on the `id_type` specified in query params. `id_type` defaults to `object_id`. */
   object_id: string;
@@ -15103,7 +15103,7 @@ export interface GetObjectAttributesResponseObject {
   attributes?: GetObjectAttributesResponseObjectAttributesMap;
   /** Identifies an object. */
   identifiers?: GetObjectAttributesResponseObjectIdentifiers;
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   object_type_id?: string;
   /** The epoch timestamps when corresponding attributes were set on the object. */
   timestamps?: GetObjectAttributesResponseObjectTimestampsMap;
@@ -15135,7 +15135,7 @@ export type GetObjectRelationshipsRequestIdType = "object_id" | "cio_object_id";
 export const GetObjectRelationshipsRequestIdType = S.String;
 
 export interface GetObjectRelationshipsRequest {
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
   object_type_id: number;
   /** The `object_id` or `cio_object_id` of an object, depending on the `id_type` specified in query params. `id_type` defaults to `object_id`. */
   object_id: string;
@@ -15188,7 +15188,7 @@ export interface GetObjectRelationshipsResponseCioRelationshipsItem {
   identifiers?: GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers;
   /** If true, the object is disabled. */
   object_type_disabled?: boolean;
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   object_type_id?: string;
 }
 export const GetObjectRelationshipsResponseCioRelationshipsItem = /*@__PURE__*/ S.suspend(() =>
@@ -15223,7 +15223,7 @@ export const GetObjectRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectRelationshipsResponse",
 }) as any as S.Schema<GetObjectRelationshipsResponse>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
 export type GetObjectsFilterRequestFilterCase0AndItemObjectAttributeOperator = "eq" | "exists";
 export const GetObjectsFilterRequestFilterCase0AndItemObjectAttributeOperator = S.String;
 
@@ -15231,9 +15231,9 @@ export const GetObjectsFilterRequestFilterCase0AndItemObjectAttributeOperator = 
 export interface GetObjectsFilterRequestFilterCase0AndItemObjectAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
   operator: GetObjectsFilterRequestFilterCase0AndItemObjectAttributeOperator | (string & {});
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   type_id: string;
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -15281,7 +15281,7 @@ export const GetObjectsFilterRequestFilterCase0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectsFilterRequestFilterCase0",
 }) as any as S.Schema<GetObjectsFilterRequestFilterCase0>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
 export type GetObjectsFilterRequestFilterCase1OrItemObjectAttributeOperator = "eq" | "exists";
 export const GetObjectsFilterRequestFilterCase1OrItemObjectAttributeOperator = S.String;
 
@@ -15289,9 +15289,9 @@ export const GetObjectsFilterRequestFilterCase1OrItemObjectAttributeOperator = S
 export interface GetObjectsFilterRequestFilterCase1OrItemObjectAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
   operator: GetObjectsFilterRequestFilterCase1OrItemObjectAttributeOperator | (string & {});
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   type_id: string;
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -15338,7 +15338,7 @@ export const GetObjectsFilterRequestFilterCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectsFilterRequestFilterCase1",
 }) as any as S.Schema<GetObjectsFilterRequestFilterCase1>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
 export type GetObjectsFilterRequestFilterCase2NotObjectAttributeOperator = "eq" | "exists";
 export const GetObjectsFilterRequestFilterCase2NotObjectAttributeOperator = S.String;
 
@@ -15346,9 +15346,9 @@ export const GetObjectsFilterRequestFilterCase2NotObjectAttributeOperator = S.St
 export interface GetObjectsFilterRequestFilterCase2NotObjectAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
   operator: GetObjectsFilterRequestFilterCase2NotObjectAttributeOperator | (string & {});
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   type_id: string;
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -15389,7 +15389,7 @@ export const GetObjectsFilterRequestFilterCase2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectsFilterRequestFilterCase2",
 }) as any as S.Schema<GetObjectsFilterRequestFilterCase2>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
 export type GetObjectsFilterRequestFilterCase3ObjectAttributeOperator = "eq" | "exists";
 export const GetObjectsFilterRequestFilterCase3ObjectAttributeOperator = S.String;
 
@@ -15397,9 +15397,9 @@ export const GetObjectsFilterRequestFilterCase3ObjectAttributeOperator = S.Strin
 export interface GetObjectsFilterRequestFilterCase3ObjectAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
   operator: GetObjectsFilterRequestFilterCase3ObjectAttributeOperator | (string & {});
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   type_id: string;
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -15550,7 +15550,7 @@ export const GetObjectTypesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetOptoutsRequest {
   /** Filter for a specific sender on any channel. For SMS, this is a sender phone number (E.164), an alphanumeric sender ID, or a messaging-service SID; for WhatsApp, it's the sender phone number. */
   from?: string;
-  /** A pagination cursor—a base64-encoded value returned in the `next` property of the previous page. Omit this parameter to return the first page; pass the previous page's `next` value to return the following page. */
+  /** A pagination cursor--a base64-encoded value returned in the `next` property of the previous page. Omit this parameter to return the first page; pass the previous page's `next` value to return the following page. */
   start?: string;
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
@@ -15629,7 +15629,7 @@ export const GetOptoutsResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetPeopleByIdRequestIdType = "id" | "email" | "phone" | "cio_id";
 export const GetPeopleByIdRequestIdType = S.String;
 
-/** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter—`id` values by default. */
+/** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter--`id` values by default. */
 export type GetPeopleByIdRequestIdsList = Array<string>;
 export const GetPeopleByIdRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -15638,7 +15638,7 @@ export const GetPeopleByIdRequestIdsList = /*@__PURE__*/ S.Array(
 export interface GetPeopleByIdRequest {
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
   id_type?: GetPeopleByIdRequestIdType | (string & {});
-  /** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter—`id` values by default. */
+  /** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter--`id` values by default. */
   ids: GetPeopleByIdRequestIdsList;
 }
 export const GetPeopleByIdRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15677,7 +15677,7 @@ export const GetPeopleByIdResponseCustomersItemCustomerAttributes = /*@__PURE__*
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform = "ios" | "android";
 export const GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform = S.String;
 
-/** The delivery status of the last message sent to the device—sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
+/** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesLastStatus =
   | ""
   | "bounced"
@@ -15691,11 +15691,11 @@ export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushE
   | "false";
 export const GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushEnabled = S.String;
 
-/** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+/** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes {
-  /** The delivery status of the last message sent to the device—sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
+  /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
   _last_status?: GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesLastStatus;
-  /** The app that the device belongs to—the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
+  /** The app that the device belongs to--the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
   app_identifier?: string;
   /** The version of your app that a customer uses. You might target app versions to let people know when they need to update, or expose them to new features when they do. */
   app_version?: string;
@@ -15736,7 +15736,7 @@ export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItem {
   id: string;
   /** The device/messaging platform. */
   platform: GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform;
-  /** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+  /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
   attributes?: GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes;
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
@@ -15759,7 +15759,7 @@ export const GetPeopleByIdResponseCustomersItemCustomerDevicesList = /*@__PURE__
   GetPeopleByIdResponseCustomersItemCustomerDevicesItem,
 ) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerDevicesList>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPeopleByIdResponseCustomersItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetPeopleByIdResponseCustomersItemCustomerIdentifiers =
@@ -15807,7 +15807,7 @@ export interface GetPeopleByIdResponseCustomersItemCustomer {
   devices?: GetPeopleByIdResponseCustomersItemCustomerDevicesList;
   /** The customer ID referenced in the request. */
   id?: string;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** The epoch timestamps when corresponding attributes were set on the customer profile. */
   timestamps?: GetPeopleByIdResponseCustomersItemCustomerTimestamps;
@@ -15897,7 +15897,7 @@ export const GetPeopleEmailResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetPeopleEmailResponse" }) as any as S.Schema<GetPeopleEmailResponse>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemAttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase0AndItemAttributeOperator = S.String;
 
@@ -15905,7 +15905,7 @@ export const GetPeopleFilterRequestFilterCase0AndItemAttributeOperator = S.Strin
 export interface GetPeopleFilterRequestFilterCase0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase0AndItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -15932,7 +15932,7 @@ export type GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase0 =
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -15943,7 +15943,7 @@ export const GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribu
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -16012,7 +16012,7 @@ export type GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase0 =
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16023,7 +16023,7 @@ export const GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribut
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -16091,7 +16091,7 @@ export type GetPeopleFilterRequestFilterCase0AndItemNotCase2 =
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase3AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase3AttributeOperator = S.String;
 
@@ -16099,7 +16099,7 @@ export const GetPeopleFilterRequestFilterCase0AndItemNotCase3AttributeOperator =
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase0AndItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16148,7 +16148,7 @@ export type GetPeopleFilterRequestFilterCase0AndItemOrItemCase0 =
 export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemOrItemCase1AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1AttributeOperator = S.String;
 
@@ -16156,7 +16156,7 @@ export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1AttributeOperato
 export interface GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase0AndItemOrItemCase1AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16256,7 +16256,7 @@ export type GetPeopleFilterRequestFilterCase1OrItemAndItemCase0 =
 export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase1OrItemAndItemCase1AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1AttributeOperator = S.String;
 
@@ -16264,7 +16264,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1AttributeOperato
 export interface GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase1OrItemAndItemCase1AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16306,7 +16306,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemAndList = /*@__PURE__*/ S.Ar
   GetPeopleFilterRequestFilterCase1OrItemAndItem,
 ) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase1OrItemAttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase1OrItemAttributeOperator = S.String;
 
@@ -16314,7 +16314,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemAttributeOperator = S.String
 export interface GetPeopleFilterRequestFilterCase1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase1OrItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16341,7 +16341,7 @@ export type GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase0 =
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16352,7 +16352,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribut
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -16421,7 +16421,7 @@ export type GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase0 =
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16431,7 +16431,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -16499,7 +16499,7 @@ export type GetPeopleFilterRequestFilterCase1OrItemNotCase2 =
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase3AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase3AttributeOperator = S.String;
 
@@ -16507,7 +16507,7 @@ export const GetPeopleFilterRequestFilterCase1OrItemNotCase3AttributeOperator = 
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase1OrItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16602,7 +16602,7 @@ export type GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16612,7 +16612,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1AttributeO
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1AttributeOperator
     | (string & {});
@@ -16657,7 +16657,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemAndList = /*@__PURE__*
   GetPeopleFilterRequestFilterCase2Case0AndItemAndItem,
 ) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemAttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase2Case0AndItemAttributeOperator = S.String;
 
@@ -16665,7 +16665,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemAttributeOperator = S.
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase2Case0AndItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16692,7 +16692,7 @@ export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16703,7 +16703,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1At
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -16774,7 +16774,7 @@ export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16785,7 +16785,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Att
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -16855,7 +16855,7 @@ export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase2 =
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -16865,7 +16865,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3AttributeOpera
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -16914,7 +16914,7 @@ export type GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -16924,7 +16924,7 @@ export const GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1AttributeOp
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1AttributeOperator
     | (string & {});
@@ -17031,7 +17031,7 @@ export type GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -17041,7 +17041,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1AttributeOp
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1AttributeOperator
     | (string & {});
@@ -17086,7 +17086,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemAndList = /*@__PURE__*/
   GetPeopleFilterRequestFilterCase2Case1OrItemAndItem,
 ) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemAttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase2Case1OrItemAttributeOperator = S.String;
 
@@ -17094,7 +17094,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemAttributeOperator = S.S
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase2Case1OrItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -17121,7 +17121,7 @@ export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -17132,7 +17132,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Att
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -17203,7 +17203,7 @@ export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -17214,7 +17214,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attr
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -17284,7 +17284,7 @@ export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase2 =
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3AttributeOperator = S.String;
 
@@ -17292,7 +17292,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3AttributeOperat
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -17341,7 +17341,7 @@ export type GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase0 =
 export const GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -17351,7 +17351,7 @@ export const GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1AttributeOpe
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1AttributeOperator
     | (string & {});
@@ -17456,7 +17456,7 @@ export type GetPeopleFilterRequestFilterCase2Case2 =
 export const GetPeopleFilterRequestFilterCase2Case2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase2Case3AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase2Case3AttributeOperator = S.String;
 
@@ -17464,7 +17464,7 @@ export const GetPeopleFilterRequestFilterCase2Case3AttributeOperator = S.String;
 export interface GetPeopleFilterRequestFilterCase2Case3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase2Case3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -17512,7 +17512,7 @@ export type GetPeopleFilterRequestFilterCase3 =
 export const GetPeopleFilterRequestFilterCase3 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase4AttributeOperator = "eq" | "exists";
 export const GetPeopleFilterRequestFilterCase4AttributeOperator = S.String;
 
@@ -17520,7 +17520,7 @@ export const GetPeopleFilterRequestFilterCase4AttributeOperator = S.String;
 export interface GetPeopleFilterRequestFilterCase4Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: GetPeopleFilterRequestFilterCase4AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -17756,7 +17756,7 @@ export const GetPersonActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPersonActivitiesRequest",
 }) as any as S.Schema<GetPersonActivitiesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonActivitiesResponseActivitiesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetPersonActivitiesResponseActivitiesItemCustomerIdentifiers =
@@ -17942,7 +17942,7 @@ export const GetPersonActivitiesResponseActivitiesItemType = S.String;
 export interface GetPersonActivitiesResponseActivitiesItem {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   data?: GetPersonActivitiesResponseActivitiesItemData;
   /** The message ID. */
@@ -18022,7 +18022,7 @@ export const GetPersonAttributesResponseCustomerAttributes =
 export type GetPersonAttributesResponseCustomerDevicesItemPlatform = "ios" | "android";
 export const GetPersonAttributesResponseCustomerDevicesItemPlatform = S.String;
 
-/** The delivery status of the last message sent to the device—sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
+/** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
 export type GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus =
   | ""
   | "bounced"
@@ -18034,11 +18034,11 @@ export const GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus 
 export type GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled = "true" | "false";
 export const GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled = S.String;
 
-/** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+/** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface GetPersonAttributesResponseCustomerDevicesItemAttributes {
-  /** The delivery status of the last message sent to the device—sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
+  /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
   _last_status?: GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus;
-  /** The app that the device belongs to—the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
+  /** The app that the device belongs to--the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
   app_identifier?: string;
   /** The version of your app that a customer uses. You might target app versions to let people know when they need to update, or expose them to new features when they do. */
   app_version?: string;
@@ -18075,7 +18075,7 @@ export interface GetPersonAttributesResponseCustomerDevicesItem {
   id: string;
   /** The device/messaging platform. */
   platform: GetPersonAttributesResponseCustomerDevicesItemPlatform;
-  /** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+  /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
   attributes?: GetPersonAttributesResponseCustomerDevicesItemAttributes;
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
@@ -18098,7 +18098,7 @@ export const GetPersonAttributesResponseCustomerDevicesList = /*@__PURE__*/ S.Ar
   GetPersonAttributesResponseCustomerDevicesItem,
 ) as any as S.Schema<GetPersonAttributesResponseCustomerDevicesList>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonAttributesResponseCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetPersonAttributesResponseCustomerIdentifiers =
@@ -18118,7 +18118,7 @@ export interface GetPersonAttributesResponseCustomer {
   devices?: GetPersonAttributesResponseCustomerDevicesList;
   /** The customer ID referenced in the request. */
   id?: string;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** The epoch timestamps when corresponding attributes were set on the customer profile. */
   timestamps?: GetPeopleByIdResponseCustomersItemCustomerTimestamps;
@@ -18525,7 +18525,7 @@ export const GetPersonSubscriptionPreferencesResponseCustomerHeader = /*@__PURE_
   identifier: "GetPersonSubscriptionPreferencesResponseCustomerHeader",
 }) as any as S.Schema<GetPersonSubscriptionPreferencesResponseCustomerHeader>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonSubscriptionPreferencesResponseCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetPersonSubscriptionPreferencesResponseCustomerIdentifiers =
@@ -18565,7 +18565,7 @@ export interface GetPersonSubscriptionPreferencesResponseCustomer {
   header?: GetPersonSubscriptionPreferencesResponseCustomerHeader;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** A list of all subscription preferences for the customer. */
   topics?: GetPersonSubscriptionPreferencesResponseCustomerTopicsList;
@@ -18657,7 +18657,7 @@ export const GetPublishStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPublishStatusResponse" }) as any as S.Schema<GetPublishStatusResponse>;
 
 export interface GetSegmentRequest {
-  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard—go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
+  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
 export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -18739,7 +18739,7 @@ export const GetSegmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentResponse" }) as any as S.Schema<GetSegmentResponse>;
 
 export interface GetSegmentCountRequest {
-  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard—go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
+  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
 export const GetSegmentCountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -18762,7 +18762,7 @@ export const GetSegmentCountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentCountResponse" }) as any as S.Schema<GetSegmentCountResponse>;
 
 export interface GetSegmentDependenciesRequest {
-  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard—go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
+  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
 export const GetSegmentDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -18824,7 +18824,7 @@ export const GetSegmentDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSegmentDependenciesResponse>;
 
 export interface GetSegmentMembershipRequest {
-  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard—go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
+  /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -18841,7 +18841,7 @@ export const GetSegmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSegmentMembershipRequest",
 }) as any as S.Schema<GetSegmentMembershipRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetSegmentMembershipResponseBodyCase0IdentifiersItem =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const GetSegmentMembershipResponseBodyCase0IdentifiersItem =
@@ -19050,7 +19050,7 @@ export const GetSenderUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSenderUsageResponse" }) as any as S.Schema<GetSenderUsageResponse>;
 
 export interface GetSubscriptionCenterTokenRequest {
-  /** The identifier for a person in your workspace—the same value you'd use as an `id` or `email` to identify a person in Customer.io. */
+  /** The identifier for a person in your workspace--the same value you'd use as an `id` or `email` to identify a person in Customer.io. */
   customer_id: string;
 }
 export const GetSubscriptionCenterTokenRequest = /*@__PURE__*/ S.suspend(() =>
@@ -19233,7 +19233,7 @@ export interface GetTransactionalResponseMessage {
   created_at?: number;
   /** A description of the transactional message. */
   description?: string;
-  /** If true, message contents are not retained in delivery history—you cannot recall the exact contents of the message. */
+  /** If true, message contents are not retained in delivery history--you cannot recall the exact contents of the message. */
   hide_message_body?: boolean;
   /** The identifier Customer.io assigned to the transactional message */
   id?: number;
@@ -19736,13 +19736,13 @@ export const GetVariantMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE_
   S.Number,
 ) as any as S.Schema<GetVariantMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const GetVariantMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<GetVariantMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type GetVariantMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const GetVariantMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -19847,9 +19847,9 @@ export interface GetVariantMetricsResponseMetricSeries {
   human_opened?: GetVariantMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: GetVariantMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: GetVariantMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: GetVariantMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: GetVariantMetricsResponseMetricSeriesOpenedList;
@@ -20072,7 +20072,7 @@ export type GetVersionResponseNodeTransformersCssVariables =
 export const GetVersionResponseNodeTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type GetVersionResponseNodeTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const GetVersionResponseNodeTransformersEncodeEntities =
@@ -20157,7 +20157,7 @@ export const GetVersionResponseNodeTransformersFormatter = /*@__PURE__*/ S.suspe
   identifier: "GetVersionResponseNodeTransformersFormatter",
 }) as any as S.Schema<GetVersionResponseNodeTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetVersionResponseNodeTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const GetVersionResponseNodeTransformersPreventWidows =
@@ -20182,7 +20182,7 @@ export const GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList = /*
   S.String,
 ) as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetVersionResponseNodeTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList;
@@ -20242,13 +20242,13 @@ export interface GetVersionResponseNodeTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: GetVersionResponseNodeTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: GetVersionResponseNodeTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetVersionResponseNodeTransformersUrlParameters;
@@ -20447,7 +20447,7 @@ export const GetWebhookResponseEventsList = /*@__PURE__*/ S.Array(
   GetWebhookResponseEventsItem,
 ) as any as S.Schema<GetWebhookResponseEventsList>;
 
-/** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+/** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type GetWebhookResponseType = "webhook" | "js";
 export const GetWebhookResponseType = S.String;
 
@@ -20464,7 +20464,7 @@ export interface GetWebhookResponse {
   full_resolution?: boolean;
   /** The identifier for the webhook. */
   id?: number;
-  /** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+  /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
   type?: GetWebhookResponseType;
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
@@ -20482,7 +20482,7 @@ export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetWebhookResponse" }) as any as S.Schema<GetWebhookResponse>;
 
-/** The type of identifier you want to use to identify people in your sheet—`id` or `email`. At least one column in the CSV must contain an identifier. */
+/** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
 export type ImportRequestImportCase0Identifier = "id" | "email";
 export const ImportRequestImportCase0Identifier = S.String;
 
@@ -20498,7 +20498,7 @@ export const ImportRequestImportCase0DataToProcess = S.String;
 export interface ImportRequestImportCase0 {
   /** The URL or path to the CSV file you want to import. */
   data_file_url: string;
-  /** The type of identifier you want to use to identify people in your sheet—`id` or `email`. At least one column in the CSV must contain an identifier. */
+  /** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
   identifier: ImportRequestImportCase0Identifier | (string & {});
   /** A friendly name for your import. This helps you identify your import. */
   name: string;
@@ -20520,7 +20520,7 @@ export const ImportRequestImportCase0 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImportRequestImportCase0" }) as any as S.Schema<ImportRequestImportCase0>;
 
-/** The type of identifier you want to use to identify people in your sheet—`id` or `email`. At least one column in the CSV must contain an identifier. */
+/** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
 export type ImportRequestImportCase1Identifier = "id" | "email";
 export const ImportRequestImportCase1Identifier = S.String;
 
@@ -20536,7 +20536,7 @@ export const ImportRequestImportCase1DataToProcess = S.String;
 export interface ImportRequestImportCase1 {
   /** The URL or path to the CSV file you want to import. */
   data_file_url: string;
-  /** The type of identifier you want to use to identify people in your sheet—`id` or `email`. At least one column in the CSV must contain an identifier. */
+  /** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
   identifier: ImportRequestImportCase1Identifier | (string & {});
   /** A friendly name for your import. This helps you identify your import. */
   name: string;
@@ -20558,7 +20558,7 @@ export const ImportRequestImportCase1 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImportRequestImportCase1" }) as any as S.Schema<ImportRequestImportCase1>;
 
-/** The type of identifier used to identify the person in each relationship—`id`, `email`, or `cio_id`. */
+/** The type of identifier used to identify the person in each relationship--`id`, `email`, or `cio_id`. */
 export type ImportRequestImportCase2Identifier = "id" | "email" | "cio_id";
 export const ImportRequestImportCase2Identifier = S.String;
 
@@ -20574,7 +20574,7 @@ export const ImportRequestImportCase2DataToProcess = S.String;
 export interface ImportRequestImportCase2 {
   /** The URL or path to the CSV file you want to import. */
   data_file_url: string;
-  /** The type of identifier used to identify the person in each relationship—`id`, `email`, or `cio_id`. */
+  /** The type of identifier used to identify the person in each relationship--`id`, `email`, or `cio_id`. */
   identifier: ImportRequestImportCase2Identifier | (string & {});
   /** A friendly name for your import. This helps you identify your import. */
   name: string;
@@ -20610,7 +20610,7 @@ export interface ImportRequestImportCase3 {
   data_file_url: string;
   /** A friendly name for your import. This helps you identify your import. */
   name: string;
-  /** The object type an object belongs to—like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   object_type_id: string;
   /** The type of import. */
   type: ImportRequestImportCase3Type;
@@ -20658,7 +20658,7 @@ export const ImportResponseImportIdentifier = S.String;
 export type ImportResponseImportPeopleToProcess = "all" | "only_new" | "only_existing";
 export const ImportResponseImportPeopleToProcess = S.String;
 
-/** The state of the import—whether your import is being processed, fully completed (`imported`), or if it failed. */
+/** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
 export type ImportResponseImportState =
   | "preprocessing"
   | "preprocessed"
@@ -20690,7 +20690,7 @@ export interface ImportResponseImport {
   identifier?: ImportResponseImportIdentifier;
   /** A friendly name for your import. This helps you identify your import. */
   name?: string;
-  /** The object type an object belongs to—like "Companies" or "Accounts". Only applies to object imports. */
+  /** The object type an object belongs to--like "Companies" or "Accounts". Only applies to object imports. */
   object_type_id?: string;
   /** Returned for people and event imports, even if you imported using the field `data_to_process`. This field will be deprecated soon. */
   people_to_process?: ImportResponseImportPeopleToProcess;
@@ -20698,7 +20698,7 @@ export interface ImportResponseImport {
   rows_imported?: number;
   /** The total number of importable rows we found in the CSV. */
   rows_to_import?: number;
-  /** The state of the import—whether your import is being processed, fully completed (`imported`), or if it failed. */
+  /** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
   state?: ImportResponseImportState;
   /** The type of import. */
   type?: ImportResponseImportType;
@@ -20969,7 +20969,7 @@ export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/v1/activities", code: 200 })),
 ).annotate({ identifier: "ListActivitiesRequest" }) as any as S.Schema<ListActivitiesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type ListActivitiesResponseActivitiesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const ListActivitiesResponseActivitiesItemCustomerIdentifiers =
@@ -21132,7 +21132,7 @@ export const ListActivitiesResponseActivitiesItemType = S.String;
 export interface ListActivitiesResponseActivitiesItem {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   data?: ListActivitiesResponseActivitiesItemData;
   /** The message ID. */
@@ -22928,7 +22928,7 @@ export type ListEmailTranslationsResponseEmailTranslationsItemTransformersCssVar
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersEncodeEntities =
@@ -23030,7 +23030,7 @@ export const ListEmailTranslationsResponseEmailTranslationsItemTransformersForma
     identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter",
   }) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersPreventWidows =
@@ -23057,7 +23057,7 @@ export const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemov
     S.String,
   ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList;
@@ -23124,13 +23124,13 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformers 
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters;
@@ -23463,7 +23463,7 @@ export interface ListInboxPreviewJobsResponsePreviewJobsItem {
   is_processed?: boolean;
   /** The batch label provided when the job was submitted. */
   name?: string;
-  /** How many email nodes the run covers—more than one for a multi-language run. Under a `node_id` filter, how many of them matched. */
+  /** How many email nodes the run covers--more than one for a multi-language run. Under a `node_id` filter, how many of them matched. */
   node_count?: number;
   /** The email node the run covers, or the first of them when it covers several. Under a `node_id` filter, this is the matched node. */
   node_id?: string;
@@ -23473,11 +23473,11 @@ export interface ListInboxPreviewJobsResponsePreviewJobsItem {
   total_previews_bounced?: number;
   /** Previews served from an earlier run's screenshot. Not charged, and not counted in `total_previews_succeeded`. */
   total_previews_cached?: number;
-  /** `total_previews_cached` + `total_previews_succeeded`, from the counters stored on the run. The cached half is final as soon as the run exists; the succeeded half counts only nodes that have settled, so a run still generating reads low until `is_processed` is `true`. This list can't see a tile served by an earlier screenshot of the same content, so it can read lower than [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/) reports for the same run—poll the run for the authoritative count. */
+  /** `total_previews_cached` + `total_previews_succeeded`, from the counters stored on the run. The cached half is final as soon as the run exists; the succeeded half counts only nodes that have settled, so a run still generating reads low until `is_processed` is `true`. This list can't see a tile served by an earlier screenshot of the same content, so it can read lower than [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/) reports for the same run--poll the run for the authoritative count. */
   total_previews_ready?: number;
   /** Previews requested across the counted nodes. On a settled run, this is normally `total_previews_cached` + `total_previews_succeeded` + `total_previews_bounced`. */
   total_previews_requested?: number;
-  /** Previews this run generated itself, as stored when each node settled. Excludes cached ones, and counts only nodes that have settled—so a run still generating reads `0` here even once some devices are done. */
+  /** Previews this run generated itself, as stored when each node settled. Excludes cached ones, and counts only nodes that have settled--so a run still generating reads `0` here even once some devices are done. */
   total_previews_succeeded?: number;
   /** When the job's status was last updated. */
   updated_at?: number;
@@ -23567,7 +23567,7 @@ export interface ListMessagesRequest {
   start_ts?: number;
   /** The ending timestamp for your query. */
   end_ts?: number;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const ListMessagesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -23586,7 +23586,7 @@ export const ListMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/v1/messages", code: 200 })),
 ).annotate({ identifier: "ListMessagesRequest" }) as any as S.Schema<ListMessagesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type ListMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const ListMessagesResponseMessagesItemCustomerIdentifiers =
@@ -23634,7 +23634,7 @@ export interface ListMessagesResponseMessagesItem {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -23642,7 +23642,7 @@ export interface ListMessagesResponseMessagesItem {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -23899,7 +23899,7 @@ export interface ListNewsletterVariantsResponseContentsItem {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -24137,7 +24137,7 @@ export const ListSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/snippets", code: 200 })),
 ).annotate({ identifier: "ListSnippetsRequest" }) as any as S.Schema<ListSnippetsRequest>;
 
-/** describes a piece of reusable content. You must provide a name for the snippet and the `value`—the content that appears in messages that use the snippet. */
+/** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export type ListSnippetsResponseSnippetsItem = CreateSnippetResponseSnippet;
 export const ListSnippetsResponseSnippetsItem = CreateSnippetResponseSnippet;
 
@@ -24444,7 +24444,7 @@ export const ListWebhooksResponseReportingWebhooksItemEventsList = /*@__PURE__*/
   ListWebhooksResponseReportingWebhooksItemEventsItem,
 ) as any as S.Schema<ListWebhooksResponseReportingWebhooksItemEventsList>;
 
-/** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+/** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type ListWebhooksResponseReportingWebhooksItemType = "webhook" | "js";
 export const ListWebhooksResponseReportingWebhooksItemType = S.String;
 
@@ -24461,7 +24461,7 @@ export interface ListWebhooksResponseReportingWebhooksItem {
   full_resolution?: boolean;
   /** The identifier for the webhook. */
   id?: number;
-  /** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+  /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
   type?: ListWebhooksResponseReportingWebhooksItemType;
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
@@ -24845,7 +24845,7 @@ export interface PreviewEmailResponse {
   node_id?: string;
   /** Always `"EMAIL"`. */
   node_type?: PreviewEmailResponseNodeType;
-  /** The plain-text part a recipient would get—your plain text version with HTML tags stripped, or text generated from the final HTML if the email doesn't have one. Omitted when empty. */
+  /** The plain-text part a recipient would get--your plain text version with HTML tags stripped, or text generated from the final HTML if the email doesn't have one. Omitted when empty. */
   plaintext_body?: string;
   /** Evaluated preheader text. Omitted when the email doesn't include preheaders. */
   preheader_text?: string;
@@ -24970,7 +24970,7 @@ export const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RestoreVersionRequest" }) as any as S.Schema<RestoreVersionRequest>;
 
-/** The nodes whose content was rolled back. Always just the email node itself—component dependencies aren't restored. */
+/** The nodes whose content was rolled back. Always just the email node itself--component dependencies aren't restored. */
 export type RestoreVersionResponseRestoredNodeIdsList = Array<string>;
 export const RestoreVersionResponseRestoredNodeIdsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -24979,7 +24979,7 @@ export const RestoreVersionResponseRestoredNodeIdsList = /*@__PURE__*/ S.Array(
 export interface RestoreVersionResponse {
   /** The UUID of the restored email node. */
   node_id?: string;
-  /** The nodes whose content was rolled back. Always just the email node itself—component dependencies aren't restored. */
+  /** The nodes whose content was rolled back. Always just the email node itself--component dependencies aren't restored. */
   restored_node_ids?: RestoreVersionResponseRestoredNodeIdsList;
   /** The UUID of the version that was restored. */
   version_id?: string;
@@ -25002,14 +25002,14 @@ export const ReviewEmailRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/review", code: 200 })),
 ).annotate({ identifier: "ReviewEmailRequest" }) as any as S.Schema<ReviewEmailRequest>;
 
-/** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) — its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
+/** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) -- its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
 export type ReviewEmailResponseChecksValueStatus = "complete" | "degraded" | "error" | "skipped";
 export const ReviewEmailResponseChecksValueStatus = S.String;
 
 export interface ReviewEmailResponseChecksValue {
   /** Present when `status` is `degraded` or `error`. Explains what was missing or what failed. */
   error?: string;
-  /** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) — its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
+  /** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) -- its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
   status?: ReviewEmailResponseChecksValueStatus;
 }
 export const ReviewEmailResponseChecksValue = /*@__PURE__*/ S.suspend(() =>
@@ -25096,7 +25096,7 @@ export const ReviewEmailResponseScoreCounts = /*@__PURE__*/ S.suspend(() =>
 export interface ReviewEmailResponseScore {
   /** Finding counts by severity across all checks. */
   counts?: ReviewEmailResponseScoreCounts;
-  /** 0–100 readiness estimate. Starts at 100 and is reduced per failing finding. An error drops the score to 60 or below; fix all errors to make sure your recipients get your email and you follow compliance requirements. See **findings** to locate errors. */
+  /** 0-100 readiness estimate. Starts at 100 and is reduced per failing finding. An error drops the score to 60 or below; fix all errors to make sure your recipients get your email and you follow compliance requirements. See **findings** to locate errors. */
   score?: number;
 }
 export const ReviewEmailResponseScore = /*@__PURE__*/ S.suspend(() =>
@@ -25838,9 +25838,9 @@ export const SendPushRequestTransactionalMessageId =
 export type SendPushRequestCustomDevicePlatform = "ios" | "android";
 export const SendPushRequestCustomDevicePlatform = S.String;
 
-/** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+/** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface SendPushRequestCustomDeviceAttributes {
-  /** The app that the device belongs to—the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
+  /** The app that the device belongs to--the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
   app_identifier?: string;
   /** The version of your app that a customer uses. You might target app versions to let people know when they need to update, or expose them to new features when they do. */
   app_version?: string;
@@ -25875,7 +25875,7 @@ export interface SendPushRequestCustomDevice {
   platform: SendPushRequestCustomDevicePlatform | (string & {});
   /** The device token. */
   token: string;
-  /** Attributes that you can reference to segment your audience—like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
+  /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
   attributes?: SendPushRequestCustomDeviceAttributes;
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
@@ -26026,23 +26026,23 @@ export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1
 export interface SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1 {
   /** The body of your push notification. */
   body?: string;
-  /** The name of the launch image file you want to display. When a user launches your app, they'll see this image or storyboard file rather than your app’s normal launch image. */
+  /** The name of the launch image file you want to display. When a user launches your app, they'll see this image or storyboard file rather than your app's normal launch image. */
   launch_image?: string;
   /** An array of replacement value strings for variables in your message text. Each %@ character in the loc-key is replaced by a value from this array, in the order they appear in the message body. */
   loc_args?: SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList;
-  /** The key for a localized message string in your app’s Localizable.strings file. */
+  /** The key for a localized message string in your app's Localizable.strings file. */
   loc_key?: string;
   /** Additional information that explains the purpose of the notification. */
   subtitle?: string;
   /** An array of replacement value strings for variables in your subtitle string. Each %@ character in the subtitle-loc-key is replaced by a value from this array, in the order they appear in the subtitle string. */
   subtitle_loc_args?: SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1SubtitleLocArgsList;
-  /** The key for a localized subtitle string in your app’s Localizable.strings file. */
+  /** The key for a localized subtitle string in your app's Localizable.strings file. */
   subtitle_loc_key?: string;
   /** The title of your push notification. */
   title?: string;
   /** An array of replacement value strings for variables in your title string. Each %@ character in the title-loc-key is replaced by a value from this array, in the order they appear in the title string. */
   title_loc_args?: SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1TitleLocArgsList;
-  /** The key for a localized title string in your app’s Localizable.strings files. */
+  /** The key for a localized title string in your app's Localizable.strings files. */
   title_loc_key?: string;
 }
 export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1 =
@@ -26092,7 +26092,7 @@ export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsInterrupti
 export interface SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsSoundCase1 {
   /** 1 indicates critical. 0 is not critical. */
   critical?: number;
-  /** The name of a sound file in your app’s main bundle or in the Library/Sounds folder of your app’s container directory. Use “default” to play the system sound. */
+  /** The name of a sound file in your app's main bundle or in the Library/Sounds folder of your app's container directory. Use "default" to play the system sound. */
   name?: string;
   /** The volume for a critical alert between 0 and 1, where 0 is silent and 1 is full volume. */
   volume?: number;
@@ -26119,7 +26119,7 @@ export interface SendPushRequestCustomPayloadIosCase0MessageApnsPayloadAps {
   alert?: SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlert;
   /** The number you want to display on your app's icon. Set to 0 to remove the current badge, if any. */
   badge?: number;
-  /** The notification’s type. This string must correspond to the identifier of one of the `UNNotificationCategory` objects you register at launch time. */
+  /** The notification's type. This string must correspond to the identifier of one of the `UNNotificationCategory` objects you register at launch time. */
   category?: string;
   /** The background notification flag. Use `1` without an `alert` to perform a silent update. `0` indicates a normal push notification. */
   content_available?: number;
@@ -26276,23 +26276,23 @@ export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList =
 export interface SendPushRequestCustomPayloadIosCase1ApsAlertCase1 {
   /** The body of your push notification. */
   body?: string;
-  /** The name of the launch image file you want to display. When a user launches your app, they'll see this image or storyboard file rather than your app’s normal launch image. */
+  /** The name of the launch image file you want to display. When a user launches your app, they'll see this image or storyboard file rather than your app's normal launch image. */
   launch_image?: string;
   /** An array of replacement value strings for variables in your message text. Each %@ character in the loc-key is replaced by a value from this array, in the order they appear in the message body. */
   loc_args?: SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList;
-  /** The key for a localized message string in your app’s Localizable.strings file. */
+  /** The key for a localized message string in your app's Localizable.strings file. */
   loc_key?: string;
   /** Additional information that explains the purpose of the notification. */
   subtitle?: string;
   /** An array of replacement value strings for variables in your subtitle string. Each %@ character in the subtitle-loc-key is replaced by a value from this array, in the order they appear in the subtitle string. */
   subtitle_loc_args?: SendPushRequestCustomPayloadIosCase1ApsAlertCase1SubtitleLocArgsList;
-  /** The key for a localized subtitle string in your app’s Localizable.strings file. */
+  /** The key for a localized subtitle string in your app's Localizable.strings file. */
   subtitle_loc_key?: string;
   /** The title of your push notification. */
   title?: string;
   /** An array of replacement value strings for variables in your title string. Each %@ character in the title-loc-key is replaced by a value from this array, in the order they appear in the title string. */
   title_loc_args?: SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList;
-  /** The key for a localized title string in your app’s Localizable.strings files. */
+  /** The key for a localized title string in your app's Localizable.strings files. */
   title_loc_key?: string;
 }
 export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -26352,7 +26352,7 @@ export interface SendPushRequestCustomPayloadIosCase1Aps {
   alert?: SendPushRequestCustomPayloadIosCase1ApsAlert;
   /** The number you want to display on your app's icon. Set to 0 to remove the current badge, if any. */
   badge?: number;
-  /** The notification’s type. This string must correspond to the identifier of one of the `UNNotificationCategory` objects you register at launch time. */
+  /** The notification's type. This string must correspond to the identifier of one of the `UNNotificationCategory` objects you register at launch time. */
   category?: string;
   /** The background notification flag. Use `1` without an `alert` to perform a silent update. `0` indicates a normal push notification. */
   content_available?: number;
@@ -26465,7 +26465,7 @@ export const SendPushRequestMessageDataMap = /*@__PURE__*/ S.Record(
 export type SendPushRequestSound = "default" | "none";
 export const SendPushRequestSound = S.String;
 
-/** The devices you want to send this push to—`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
+/** The devices you want to send this push to--`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
 export type SendPushRequestTo = "all" | "last_used" | "$device_token";
 export const SendPushRequestTo = S.String;
 
@@ -26504,7 +26504,7 @@ export interface SendPushRequest {
   sound?: SendPushRequestSound | (string & {});
   /** The title for your notification. This overrides the title of the transactional template (referenced by `transactional_message_id`). */
   title?: string;
-  /** The devices you want to send this push to—`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
+  /** The devices you want to send this push to--`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
   to?: SendPushRequestTo | (string & {});
 }
 export const SendPushRequest = /*@__PURE__*/ S.suspend(() =>
@@ -26751,7 +26751,7 @@ export const StartLiveNotificationRequestAttributesCase2 = /*@__PURE__*/ S.suspe
   identifier: "StartLiveNotificationRequestAttributesCase2",
 }) as any as S.Schema<StartLiveNotificationRequestAttributesCase2>;
 
-/** Static fields used to create the activity—an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
+/** Static fields used to create the activity--an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
 export type StartLiveNotificationRequestAttributes =
   | StartLiveNotificationRequestAttributesCase0Map
   | StartLiveNotificationRequestAttributesCase1
@@ -26780,7 +26780,7 @@ export type StartLiveNotificationRequestContentStateCase2 =
 export const StartLiveNotificationRequestContentStateCase2 =
   EndLiveNotificationRequestContentStateCase2;
 
-/** The initial dynamic content for the activity—the status, score, or ETA the device renders. Send the complete state on every call; partial updates aren't supported. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Date fields are epoch seconds. */
+/** The initial dynamic content for the activity--the status, score, or ETA the device renders. Send the complete state on every call; partial updates aren't supported. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Date fields are epoch seconds. */
 export type StartLiveNotificationRequestContentState =
   | StartLiveNotificationRequestContentStateCase0Map
   | EndLiveNotificationRequestContentStateCase1
@@ -26845,21 +26845,21 @@ export const StartLiveNotificationRequestPushPayload = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<StartLiveNotificationRequestPushPayload>;
 
 export interface StartLiveNotificationRequest {
-  /** Static fields used to create the activity—an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
+  /** Static fields used to create the activity--an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
   attributes: StartLiveNotificationRequestAttributes;
-  /** The initial dynamic content for the activity—the status, score, or ETA the device renders. Send the complete state on every call; partial updates aren't supported. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Date fields are epoch seconds. */
+  /** The initial dynamic content for the activity--the status, score, or ETA the device renders. Send the complete state on every call; partial updates aren't supported. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Date fields are epoch seconds. */
   content_state: StartLiveNotificationRequestContentState;
   /** Identifies the profile you want to start the activity for. You must provide exactly one of `id`, `email`, `phone`, or `internal` (our internal identifier, `cio_` followed by an alphanumeric string). You cannot target anonymous profiles. */
   identifiers: StartLiveNotificationRequestIdentifiers;
   /** The reverse-DNS identifier of the activity type, like `io.customer.livenotifications.segments`. Must match a type your app registered with the SDK. */
   notification_type: string;
-  /** The identifier of the app to start the activity on—a bundle ID on iOS or a package name on Android. This only matters when your workspace has multiple apps: set it to target a device belonging to that app, or omit it to target the workspace's default app. Workspaces without multiple apps ignore this field. If you provide a value that doesn't match an app in your workspace, the request fails with a `400`. */
+  /** The identifier of the app to start the activity on--a bundle ID on iOS or a package name on Android. This only matters when your workspace has multiple apps: set it to target a device belonging to that app, or omit it to target the workspace's default app. Workspaces without multiple apps ignore this field. If you provide a value that doesn't match an app in your workspace, the request fails with a `400`. */
   app_identifier?: string;
   /** A link to open when the person taps the activity. */
   deep_link?: string;
   /** The device token identifying the device to start the activity on. */
   device_id?: string;
-  /** A unix timestamp (in seconds) for when the activity should expire. Must be no more than 6 hours in the future—values outside the range between now and that 6-hour maximum are rejected with a `400`. If you omit it (or pass `0`), the activity expires 6 hours after it starts. */
+  /** A unix timestamp (in seconds) for when the activity should expire. Must be no more than 6 hours in the future--values outside the range between now and that 6-hour maximum are rejected with a `400`. If you omit it (or pass `0`), the activity expires 6 hours after it starts. */
   expiration?: number;
   /** The device platform. */
   platform?: StartLiveNotificationRequestPlatform | (string & {});
@@ -26901,7 +26901,7 @@ export const SubmitInboxPreviewRequestClientIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubmitInboxPreviewRequestClientIdsList>;
 
-/** Liquid variables to render with, as a JSON object—any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
+/** Liquid variables to render with, as a JSON object--any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
 export type SubmitInboxPreviewRequestSampleDataMap = { [key: string]: unknown | undefined };
 export const SubmitInboxPreviewRequestSampleDataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -26917,7 +26917,7 @@ export interface SubmitInboxPreviewRequest {
   lax_mode?: boolean;
   /** A label for the batch of previews, shown in [preview history](/integrations/api/app/tag/design-studio-emails/listInboxPreviewJobs/). */
   name?: string;
-  /** Liquid variables to render with, as a JSON object—any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
+  /** Liquid variables to render with, as a JSON object--any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
   sample_data?: SubmitInboxPreviewRequestSampleDataMap;
 }
 export const SubmitInboxPreviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -26935,7 +26935,7 @@ export const SubmitInboxPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitInboxPreviewRequest>;
 
 export interface SubmitInboxPreviewResponse {
-  /** `true` when this call returned an existing run instead of starting a new one, and you weren't charged a second time for it. This happens for an identical request (same email, content, and devices) submitted again on the same UTC day, an identical request from the day before that's still processing, or a concurrent identical request that got there first. The run may belong to another client in your workspace, including the Journeys UI—`created_at` is that run's, and a `name` you send is applied to it. */
+  /** `true` when this call returned an existing run instead of starting a new one, and you weren't charged a second time for it. This happens for an identical request (same email, content, and devices) submitted again on the same UTC day, an identical request from the day before that's still processing, or a concurrent identical request that got there first. The run may belong to another client in your workspace, including the Journeys UI--`created_at` is that run's, and a `name` you send is applied to it. */
   replayed?: boolean;
   /** ID of the preview job. Check when it's complete with [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/). */
   run_id?: number;
@@ -27199,7 +27199,7 @@ export interface TransactionalMessagesRequest {
   start_ts?: number;
   /** The ending timestamp for your query. */
   end_ts?: number;
-  /** If true, the response includes `tracked_responses` for each message—an object containing tracked response option names for in-app survey responses. */
+  /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
 export const TransactionalMessagesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -27219,7 +27219,7 @@ export const TransactionalMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransactionalMessagesRequest",
 }) as any as S.Schema<TransactionalMessagesRequest>;
 
-/** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+/** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type TransactionalMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
 export const TransactionalMessagesResponseMessagesItemCustomerIdentifiers =
@@ -27269,7 +27269,7 @@ export interface TransactionalMessagesResponseMessagesItem {
   created?: number;
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
-  /** Identifiers for the person in a response—`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
+  /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
   customer_identifiers?: BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
   /** An identifier in the format `id:timestamp` where the id is for the object you're working with (Automations, Deliveries, Exports, Identities, One-time sends, Segments, and Templates), and the timestamp is the last time the object was updated. */
   deduplicate_id?: string;
@@ -27277,7 +27277,7 @@ export interface TransactionalMessagesResponseMessagesItem {
   failure_message?: string | null;
   /** If true message contents are not retained by Customer.io. */
   forgotten?: boolean;
-  /** The identifier for a delivery—the instance of a message intended for an individual recipient. */
+  /** The identifier for a delivery--the instance of a message intended for an individual recipient. */
   id?: string;
   /** The identifier of the message template used to create a message. */
   message_template_id?: number;
@@ -27436,13 +27436,13 @@ export const TransactionalMetricsResponseMetricSeriesLinkUntrackedList = /*@__PU
   S.Number,
 ) as any as S.Schema<TransactionalMetricsResponseMetricSeriesLinkUntrackedList>;
 
-/** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+/** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalMetricsResponseMetricSeriesMachineClickedList = Array<number>;
 export const TransactionalMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TransactionalMetricsResponseMetricSeriesMachineClickedList>;
 
-/** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+/** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type TransactionalMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
 export const TransactionalMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -27548,9 +27548,9 @@ export interface TransactionalMetricsResponseMetricSeries {
   human_opened?: TransactionalMetricsResponseMetricSeriesHumanOpenedList;
   /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
   link_untracked?: TransactionalMetricsResponseMetricSeriesLinkUntrackedList;
-  /** The number of `clicked` emails attributed to machines—security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
+  /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: TransactionalMetricsResponseMetricSeriesMachineClickedList;
-  /** The number of emails delivered with open tracking inactive for any reason—including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
+  /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
   open_untracked?: TransactionalMetricsResponseMetricSeriesOpenUntrackedList;
   /** The number of `opened` messages. */
   opened?: TransactionalMetricsResponseMetricSeriesOpenedList;
@@ -27672,7 +27672,7 @@ export const TriggerBroadcastRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerBroadcastRequestBodyCase0",
 }) as any as S.Schema<TriggerBroadcastRequestBodyCase0>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttributeOperator =
   | "eq"
   | "exists";
@@ -27682,7 +27682,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttributeOper
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -27710,7 +27710,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndIte
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -27721,7 +27721,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndIt
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -27796,7 +27796,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItem
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -27807,7 +27807,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrIte
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -27881,7 +27881,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase2 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -27892,7 +27892,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attri
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3AttributeOperator
     | (string & {});
@@ -27946,7 +27946,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase0 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -27957,7 +27957,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1At
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1AttributeOperator
     | (string & {});
@@ -28062,7 +28062,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase0 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28073,7 +28073,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1At
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1AttributeOperator
     | (string & {});
@@ -28120,7 +28120,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndList = /*@_
   TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItem,
 ) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttributeOperator =
   | "eq"
   | "exists";
@@ -28130,7 +28130,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttributeOpera
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -28158,7 +28158,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItem
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28169,7 +28169,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndIte
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -28244,7 +28244,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemC
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28255,7 +28255,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItem
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -28328,7 +28328,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase2 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -28339,7 +28339,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attrib
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3AttributeOperator
     | (string & {});
@@ -28437,7 +28437,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCa
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28448,7 +28448,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemC
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1AttributeOperator
     | (string & {});
@@ -28497,7 +28497,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndList 
     TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItem,
   ) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttributeOperator =
   | "eq"
   | "exists";
@@ -28508,7 +28508,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribut
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttributeOperator
     | (string & {});
@@ -28538,7 +28538,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0A
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28549,7 +28549,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -28624,7 +28624,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1O
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28635,7 +28635,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -28709,7 +28709,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase2 
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -28720,7 +28720,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3AttributeOperator
     | (string & {});
@@ -28775,7 +28775,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCas
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28786,7 +28786,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCa
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1AttributeOperator
     | (string & {});
@@ -28898,7 +28898,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCas
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -28909,7 +28909,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCa
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1AttributeOperator
     | (string & {});
@@ -28958,7 +28958,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndList =
     TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItem,
   ) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndList>;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttributeOperator =
   | "eq"
   | "exists";
@@ -28968,7 +28968,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttributeOperator
     | (string & {});
@@ -28998,7 +28998,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0An
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -29009,7 +29009,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0A
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1AttributeOperator
     | (string & {});
@@ -29084,7 +29084,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1Or
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -29095,7 +29095,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1O
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1AttributeOperator
     | (string & {});
@@ -29169,7 +29169,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase2 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3AttributeOperator =
   | "eq"
   | "exists";
@@ -29180,7 +29180,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3A
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3AttributeOperator
     | (string & {});
@@ -29234,7 +29234,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase0 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1AttributeOperator =
   | "eq"
   | "exists";
@@ -29245,7 +29245,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCas
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator:
     | TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1AttributeOperator
     | (string & {});
@@ -29356,7 +29356,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case2 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case2 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case3AttributeOperator = "eq" | "exists";
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case3AttributeOperator = S.String;
 
@@ -29364,7 +29364,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case3AttributeOperat
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: TriggerBroadcastRequestBodyCase1RecipientsCase2Case3AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -29413,7 +29413,7 @@ export type TriggerBroadcastRequestBodyCase1RecipientsCase3 =
 export const TriggerBroadcastRequestBodyCase1RecipientsCase3 =
   ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0;
 
-/** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+/** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase4AttributeOperator = "eq" | "exists";
 export const TriggerBroadcastRequestBodyCase1RecipientsCase4AttributeOperator = S.String;
 
@@ -29421,7 +29421,7 @@ export const TriggerBroadcastRequestBodyCase1RecipientsCase4AttributeOperator = 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute {
   /** The name of the attribute you want to filter against. */
   field: string;
-  /** Determine how to evaluate criteria against the field—`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
+  /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
   operator: TriggerBroadcastRequestBodyCase1RecipientsCase4AttributeOperator | (string & {});
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
@@ -29640,7 +29640,7 @@ export type TriggerBroadcastRequestBodyCase4PerUserDataItem =
 export const TriggerBroadcastRequestBodyCase4PerUserDataItem =
   S.Unknown as any as S.Schema<TriggerBroadcastRequestBodyCase4PerUserDataItem>;
 
-/** The people you want to send a broadcast to, with custom data to personalize each message. Each person must already exist in your workspace—a broadcast trigger can't create people. */
+/** The people you want to send a broadcast to, with custom data to personalize each message. Each person must already exist in your workspace--a broadcast trigger can't create people. */
 export type TriggerBroadcastRequestBodyCase4PerUserDataList =
   Array<TriggerBroadcastRequestBodyCase4PerUserDataItem>;
 export const TriggerBroadcastRequestBodyCase4PerUserDataList = /*@__PURE__*/ S.Array(
@@ -29656,7 +29656,7 @@ export const TriggerBroadcastRequestBodyCase4DataMap = /*@__PURE__*/ S.Record(
 
 /** An array of JSON objects containing `id` or `email` keys and a `data` key. Each object represents a person you want to send the broadcast to and data you want to personalize their message with using liquid. */
 export interface TriggerBroadcastRequestBodyCase4 {
-  /** The people you want to send a broadcast to, with custom data to personalize each message. Each person must already exist in your workspace—a broadcast trigger can't create people. */
+  /** The people you want to send a broadcast to, with custom data to personalize each message. Each person must already exist in your workspace--a broadcast trigger can't create people. */
   per_user_data: TriggerBroadcastRequestBodyCase4PerUserDataList;
   /** Contains information you want to use to populate your broadcast. */
   data?: TriggerBroadcastRequestBodyCase4DataMap;
@@ -31975,7 +31975,7 @@ export const UpdateCollectionRequestBodyCase0DataList = /*@__PURE__*/ S.Array(
 export interface UpdateCollectionRequestBodyCase0 {
   /** An array of data objects that you want to reference in this collection. */
   data?: UpdateCollectionRequestBodyCase0DataList;
-  /** The name of the collection. This is how you'll reference your collection in messages—`{{collection_name.data-property}}`. */
+  /** The name of the collection. This is how you'll reference your collection in messages--`{{collection_name.data-property}}`. */
   name?: string;
 }
 export const UpdateCollectionRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -31988,7 +31988,7 @@ export const UpdateCollectionRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCollectionRequestBodyCase0>;
 
 export interface UpdateCollectionRequestBodyCase1 {
-  /** The name of the collection. This is how you'll reference your collection in messages—`{{collection_name.data-property}}`. */
+  /** The name of the collection. This is how you'll reference your collection in messages--`{{collection_name.data-property}}`. */
   name?: string;
   /** The URL for your CSV or JSON data. If your URL does not return a `Content-Type`, we use the file extension; otherwise, Customer.io assumes your data is JSON. */
   url?: string;
@@ -32221,7 +32221,7 @@ export type UpdateEmailRequestTransformersCssVariables = CreateEmailRequestTrans
 export const UpdateEmailRequestTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type UpdateEmailRequestTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const UpdateEmailRequestTransformersEncodeEntities =
@@ -32306,7 +32306,7 @@ export const UpdateEmailRequestTransformersFormatter = /*@__PURE__*/ S.suspend((
   identifier: "UpdateEmailRequestTransformersFormatter",
 }) as any as S.Schema<UpdateEmailRequestTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const UpdateEmailRequestTransformersPreventWidows =
@@ -32331,7 +32331,7 @@ export const UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList = /*@__P
   S.String,
 ) as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface UpdateEmailRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList;
@@ -32389,13 +32389,13 @@ export interface UpdateEmailRequestTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: UpdateEmailRequestTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: UpdateEmailRequestTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: UpdateEmailRequestTransformersUrlParameters;
@@ -32516,7 +32516,7 @@ export type UpdateEmailTranslationRequestTransformersCssVariables =
 export const UpdateEmailTranslationRequestTransformersCssVariables =
   CreateEmailRequestTransformersCssVariables;
 
-/** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+/** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export type UpdateEmailTranslationRequestTransformersEncodeEntities =
   CreateEmailRequestTransformersEncodeEntities;
 export const UpdateEmailTranslationRequestTransformersEncodeEntities =
@@ -32612,7 +32612,7 @@ export const UpdateEmailTranslationRequestTransformersFormatter = /*@__PURE__*/ 
   identifier: "UpdateEmailTranslationRequestTransformersFormatter",
 }) as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatter>;
 
-/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+/** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailTranslationRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
 export const UpdateEmailTranslationRequestTransformersPreventWidows =
@@ -32638,7 +32638,7 @@ export const UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistLi
     S.String,
   ) as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
 
-/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+/** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface UpdateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
   backend_markers?: UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList;
@@ -32700,13 +32700,13 @@ export interface UpdateEmailTranslationRequestTransformers {
   css_inliner?: CreateEmailRequestTransformersCssInliner;
   /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
   css_variables?: CreateEmailRequestTransformersCssVariables;
-  /** Encodes special characters (for example, `©`, `™`, and `—`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
+  /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
   encode_entities?: CreateEmailRequestTransformersEncodeEntities;
   /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
   formatter?: UpdateEmailTranslationRequestTransformersFormatter;
-  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a “widow”). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
+  /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
   prevent_widows?: CreateEmailRequestTransformersPreventWidows;
-  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail’s 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
+  /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
   remove_unused_css?: UpdateEmailTranslationRequestTransformersRemoveUnusedCss;
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: UpdateEmailTranslationRequestTransformersUrlParameters;
@@ -33009,7 +33009,7 @@ export const UpdateNewsletterTestTranslationRequestBodyCase3 = /*@__PURE__*/ S.s
   identifier: "UpdateNewsletterTestTranslationRequestBodyCase3",
 }) as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase3>;
 
-/** You can't update in-app message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
+/** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export interface UpdateNewsletterTestTranslationRequestBodyCase4 {}
 export const UpdateNewsletterTestTranslationRequestBodyCase4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -33017,7 +33017,7 @@ export const UpdateNewsletterTestTranslationRequestBodyCase4 = /*@__PURE__*/ S.s
   identifier: "UpdateNewsletterTestTranslationRequestBodyCase4",
 }) as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase4>;
 
-/** You can't update inbox message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
+/** You can't update inbox message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
 export type UpdateNewsletterTestTranslationRequestBodyCase5 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 export const UpdateNewsletterTestTranslationRequestBodyCase5 =
@@ -33092,7 +33092,7 @@ export interface UpdateNewsletterTestTranslationResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -33202,13 +33202,13 @@ export const UpdateNewsletterVariantRequestBodyCase3 = /*@__PURE__*/ S.suspend((
   identifier: "UpdateNewsletterVariantRequestBodyCase3",
 }) as any as S.Schema<UpdateNewsletterVariantRequestBodyCase3>;
 
-/** You can't update in-app message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
+/** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export type UpdateNewsletterVariantRequestBodyCase4 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 export const UpdateNewsletterVariantRequestBodyCase4 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 
-/** You can't update inbox message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
+/** You can't update inbox message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
 export type UpdateNewsletterVariantRequestBodyCase5 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 export const UpdateNewsletterVariantRequestBodyCase5 =
@@ -33280,7 +33280,7 @@ export interface UpdateNewsletterVariantResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -33390,13 +33390,13 @@ export const UpdateNewsletterVariantTranslationRequestBodyCase3 = /*@__PURE__*/ 
   identifier: "UpdateNewsletterVariantTranslationRequestBodyCase3",
 }) as any as S.Schema<UpdateNewsletterVariantTranslationRequestBodyCase3>;
 
-/** You can't update in-app message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
+/** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase4 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 export const UpdateNewsletterVariantTranslationRequestBodyCase4 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 
-/** You can't update inbox message content through the API—you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
+/** You can't update inbox message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase5 =
   UpdateNewsletterTestTranslationRequestBodyCase4;
 export const UpdateNewsletterVariantTranslationRequestBodyCase5 =
@@ -33468,7 +33468,7 @@ export interface UpdateNewsletterVariantTranslationResponseContent {
   from_id?: number;
   /** A JSON string containing header objects with `name` and `value`. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: string;
-  /** The identifier of a one-time send variant—a language in a multi-language one-time send or a test in an A/B test. */
+  /** The identifier of a one-time send variant--a language in a multi-language one-time send or a test in an A/B test. */
   id?: number;
   /** The language variant for your message. If you don't use our [localization feature](/journeys/channels/localization/getting-started), or this is the default message, this value is an empty string. */
   language?: string;
@@ -33599,12 +33599,12 @@ export const UpdateSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "PUT", uri: "/v1/snippets", code: 200 })),
 ).annotate({ identifier: "UpdateSnippetsRequest" }) as any as S.Schema<UpdateSnippetsRequest>;
 
-/** describes a piece of reusable content. You must provide a name for the snippet and the `value`—the content that appears in messages that use the snippet. */
+/** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export type UpdateSnippetsResponseSnippet = CreateSnippetResponseSnippet;
 export const UpdateSnippetsResponseSnippet = CreateSnippetResponseSnippet;
 
 export interface UpdateSnippetsResponse {
-  /** describes a piece of reusable content. You must provide a name for the snippet and the `value`—the content that appears in messages that use the snippet. */
+  /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
   snippet?: CreateSnippetResponseSnippet;
 }
 export const UpdateSnippetsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -34108,7 +34108,7 @@ export const UpdateWebhookResponseEventsList = /*@__PURE__*/ S.Array(
   UpdateWebhookResponseEventsItem,
 ) as any as S.Schema<UpdateWebhookResponseEventsList>;
 
-/** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+/** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type UpdateWebhookResponseType = "webhook" | "js";
 export const UpdateWebhookResponseType = S.String;
 
@@ -34125,7 +34125,7 @@ export interface UpdateWebhookResponse {
   full_resolution?: boolean;
   /** The identifier for the webhook. */
   id?: number;
-  /** The type of webhook—`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
+  /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
   type?: UpdateWebhookResponseType;
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
@@ -34294,7 +34294,7 @@ export const campaignActionLinks: API.OperationMethod<
 }));
 
 export type CampaignActionMetricsError = BadRequest | NotFound | CustomerioOpError;
-/** Get automation action metrics Returns metrics for an individual action, both in total and as a series of counts, oldest first—the 0-index of any result is the oldest point in the window. **We recommend version 2. Send `version=2`.** It accepts an explicit `start`, `end`, and `res`, reported in the `tz` you choose. Without it, the endpoint answers with version 1 behavior instead: a window built from `period` and `steps`, always in Eastern time. Version 1 can't return fewer than 2 steps of any period. `?period=days&steps=1` means two days—the 48 hours before the request—and `?period=days&steps=0` returns the maximum for the period, the same as `?period=days&steps=45`. **Multi-language messages** If the action is a [multi-language](/messaging/channels/localization/getting-started/) message, you can retrieve metrics for a single language variant or all language variants. To retrieve metrics for a single language variant, pass the `id` of the action. To retrieve aggregate metrics and a breakdown for each language variant, pass the `multi_language_branch_action_id`, which is the same for each variant of a message. You can get both ids from the [List automation actions](/integrations/api/app/tag/automations/listCampaignActions/) endpoint. If you pass the `multi_language_branch_action_id`, then the `metric` object shows the *total* across every variant. The `language_variants` object shows a breakdown for each language variant. If you want to get the sum of all metrics across all of an automation's actions, you can use each action id of a multi-language message, like you would for other types of actions. */
+/** Get automation action metrics Returns metrics for an individual action, both in total and as a series of counts, oldest first--the 0-index of any result is the oldest point in the window. **We recommend version 2. Send `version=2`.** It accepts an explicit `start`, `end`, and `res`, reported in the `tz` you choose. Without it, the endpoint answers with version 1 behavior instead: a window built from `period` and `steps`, always in Eastern time. Version 1 can't return fewer than 2 steps of any period. `?period=days&steps=1` means two days--the 48 hours before the request--and `?period=days&steps=0` returns the maximum for the period, the same as `?period=days&steps=45`. **Multi-language messages** If the action is a [multi-language](/messaging/channels/localization/getting-started/) message, you can retrieve metrics for a single language variant or all language variants. To retrieve metrics for a single language variant, pass the `id` of the action. To retrieve aggregate metrics and a breakdown for each language variant, pass the `multi_language_branch_action_id`, which is the same for each variant of a message. You can get both ids from the [List automation actions](/integrations/api/app/tag/automations/listCampaignActions/) endpoint. If you pass the `multi_language_branch_action_id`, then the `metric` object shows the *total* across every variant. The `language_variants` object shows a breakdown for each language variant. If you want to get the sum of all metrics across all of an automation's actions, you can use each action id of a multi-language message, like you would for other types of actions. */
 export const campaignActionMetrics: API.OperationMethod<
   CampaignActionMetricsRequest,
   CampaignActionMetricsResponse,
@@ -34339,7 +34339,7 @@ export const campaignLinkMetrics: API.OperationMethod<
 }));
 
 export type CampaignMetricsError = BadRequest | NotFound | CustomerioOpError;
-/** Get automation metrics Returns metrics for an individual automation as a series of counts, oldest first—the 0-index of any result is the oldest point in the window. **We recommend version 2. Send `version=2`.** It accepts an explicit `start`, `end`, and `res`, reported in the `tz` you choose. Without it, the endpoint answers with version 1 behavior instead: a window built from `period` and `steps`, always in Eastern time. Version 1 can't return fewer than 2 steps of any period. `?period=days&steps=1` means two days—the 48 hours before the request—and `?period=days&steps=0` returns the maximum for the period, the same as `?period=days&steps=45`. */
+/** Get automation metrics Returns metrics for an individual automation as a series of counts, oldest first--the 0-index of any result is the oldest point in the window. **We recommend version 2. Send `version=2`.** It accepts an explicit `start`, `end`, and `res`, reported in the `tz` you choose. Without it, the endpoint answers with version 1 behavior instead: a window built from `period` and `steps`, always in Eastern time. Version 1 can't return fewer than 2 steps of any period. `?period=days&steps=1` means two days--the 48 hours before the request--and `?period=days&steps=0` returns the maximum for the period, the same as `?period=days&steps=45`. */
 export const campaignMetrics: API.OperationMethod<
   CampaignMetricsRequest,
   CampaignMetricsResponse,
@@ -34508,7 +34508,7 @@ export type CreateNewsletterLanguageVariantError =
   | NotFound
   | UnprocessableEntity
   | CustomerioOpError;
-/** Add a translation to a one-time send Add a language variant to a one-time send (referred to as a "newsletter" in our APIs). If you omit optional fields, the values from the default template are copied over untranslated. Make sure you translate all aspects of your default template. You can't add language variants to a one-time send that has already been sent. You can't manage emails created with the drag-and-drop editor or Design Studio via this endpoint—use [Create an email translation](/integrations/api/app/tag/design-studio/createEmailTranslation/) for Design Studio emails. If it has A/B tests, use [Add a translation to a one-time send test group](/integrations/api/app/tag/newsletter-variants/createNewsletterTestLanguageVariant/) instead. */
+/** Add a translation to a one-time send Add a language variant to a one-time send (referred to as a "newsletter" in our APIs). If you omit optional fields, the values from the default template are copied over untranslated. Make sure you translate all aspects of your default template. You can't add language variants to a one-time send that has already been sent. You can't manage emails created with the drag-and-drop editor or Design Studio via this endpoint--use [Create an email translation](/integrations/api/app/tag/design-studio/createEmailTranslation/) for Design Studio emails. If it has A/B tests, use [Add a translation to a one-time send test group](/integrations/api/app/tag/newsletter-variants/createNewsletterTestLanguageVariant/) instead. */
 export const createNewsletterLanguageVariant: API.OperationMethod<
   CreateNewsletterLanguageVariantRequest,
   CreateNewsletterLanguageVariantResponse,
@@ -35022,7 +35022,7 @@ export const getCampaigns: API.OperationMethod<
 }));
 
 export type GetChannelsError = CustomerioOpError;
-/** List subscription channels Returns a list of subscription channels available in your workspace. Channels represent the delivery methods that people can subscribe to or unsubscribe from—email, SMS, push, etc. If you haven't set up channel options in your subscription center, this endpoint returns an empty array. */
+/** List subscription channels Returns a list of subscription channels available in your workspace. Channels represent the delivery methods that people can subscribe to or unsubscribe from--email, SMS, push, etc. If you haven't set up channel options in your subscription center, this endpoint returns an empty array. */
 export const getChannels: API.OperationMethod<
   GetChannelsRequest,
   GetChannelsResponse,
@@ -35187,7 +35187,7 @@ export const getFolder: API.OperationMethod<
 }));
 
 export type GetImportError = CustomerioOpError;
-/** Retrieve a bulk import This endpoint returns information about an "import"—a CSV file containing a group of people or events you uploaded to using `v1/imports` endpoint. You can use this endpoint to check to status of imports, or find out how many rows you successfully imported from a CSV file. */
+/** Retrieve a bulk import This endpoint returns information about an "import"--a CSV file containing a group of people or events you uploaded to using `v1/imports` endpoint. You can use this endpoint to check to status of imports, or find out how many rows you successfully imported from a CSV file. */
 export const getImport: API.OperationMethod<
   GetImportRequest,
   GetImportResponse,
@@ -35262,7 +35262,7 @@ export const getLiveNotification: API.OperationMethod<
 }));
 
 export type GetMessageError = NotFound | CustomerioOpError;
-/** Get a message Return a information about, and metrics for, a delivery—the instance of a message intended for an individual recipient person. */
+/** Get a message Return a information about, and metrics for, a delivery--the instance of a message intended for an individual recipient person. */
 export const getMessage: API.OperationMethod<
   GetMessageRequest,
   GetMessageResponse,
@@ -35397,7 +35397,7 @@ export const getNewsletterVariantTranslationTest: API.OperationMethod<
 }));
 
 export type GetObjectAttributesError = CustomerioOpError;
-/** Get Object Attributes Get a list of attributes for an object. Attributes are things you know about an object—like an account name, billing date, etc. */
+/** Get Object Attributes Get a list of attributes for an object. Attributes are things you know about an object--like an account name, billing date, etc. */
 export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesRequest,
   GetObjectAttributesResponse,
@@ -35457,7 +35457,7 @@ export const getObjectTypes: API.OperationMethod<
 }));
 
 export type GetOptoutsError = CustomerioOpError;
-/** List opt-outs in the workspace Return a workspace-wide list of opt-outs across all channels. Each entry represents a person and the senders/channels (SMS or WhatsApp) they've opted out of. A person opts out of a specific sender on a specific channel—for example, a person can opt out of SMS messages from one sender number while continuing to receive messages from another. An entry's presence in the `optouts` array means the person is opted out of that sender/channel. Use the `from` parameter to filter for a specific sender. Use the `start` parameter with the `next` value from the previous response to paginate through results. **Note**: SMS sender values are stored normalized (trimmed and lowercased). For alphanumeric SMS senders and messaging-service SIDs, the response recovers the original casing from your workspace's Twilio sender identities. E.164 phone numbers are unaffected. */
+/** List opt-outs in the workspace Return a workspace-wide list of opt-outs across all channels. Each entry represents a person and the senders/channels (SMS or WhatsApp) they've opted out of. A person opts out of a specific sender on a specific channel--for example, a person can opt out of SMS messages from one sender number while continuing to receive messages from another. An entry's presence in the `optouts` array means the person is opted out of that sender/channel. Use the `from` parameter to filter for a specific sender. Use the `start` parameter with the `next` value from the previous response to paginate through results. **Note**: SMS sender values are stored normalized (trimmed and lowercased). For alphanumeric SMS senders and messaging-service SIDs, the response recovers the original casing from your workspace's Twilio sender identities. E.164 phone numbers are unaffected. */
 export const getOptouts: API.OperationMethod<
   GetOptoutsRequest,
   GetOptoutsResponse,
@@ -35627,7 +35627,7 @@ export type GetPublishStatusError =
   | Conflict
   | UnprocessableEntity
   | CustomerioOpError;
-/** Get publish status Check the status of a multi-language publish that returned `"status": "pending"`. Pass the `publish_id` from the [Publish an email](/integrations/api/app/tag/design-studio-emails/publishEmail/) response. When the publish is still running, the response returns `"status": "pending"`; when it finishes, it returns `"status": "done"` with the template version mappings. If the publish fails, this endpoint returns an error rather than a status. You get the same error a single-language publish returns inline—a `422` for liquid errors, a `409` when the destination automation is backfilling, and so on. */
+/** Get publish status Check the status of a multi-language publish that returned `"status": "pending"`. Pass the `publish_id` from the [Publish an email](/integrations/api/app/tag/design-studio-emails/publishEmail/) response. When the publish is still running, the response returns `"status": "pending"`; when it finishes, it returns `"status": "done"` with the template version mappings. If the publish fails, this endpoint returns an error rather than a status. You get the same error a single-language publish returns inline--a `422` for liquid errors, a `409` when the destination automation is backfilling, and so on. */
 export const getPublishStatus: API.OperationMethod<
   GetPublishStatusRequest,
   GetPublishStatusResponse,
@@ -35732,7 +35732,7 @@ export const getSenderUsage: API.OperationMethod<
 }));
 
 export type GetSubscriptionCenterTokenError = BadRequest | CustomerioOpError;
-/** Generate a subscription center token Generates a signed token and URL for a person's standalone subscription center page. The token is valid for 24 hours. Use the returned `url` to link people to a hosted subscription center page where they can manage their subscription preferences outside of a message. This is useful when you want to provide a direct link to the subscription center—for example, in your app's account settings or in a custom email. The `customer_id` path parameter is the person's identifier (e.g. an email address or customer ID) as it appears in Customer.io. The identifier must match an existing person in your workspace. */
+/** Generate a subscription center token Generates a signed token and URL for a person's standalone subscription center page. The token is valid for 24 hours. Use the returned `url` to link people to a hosted subscription center page where they can manage their subscription preferences outside of a message. This is useful when you want to provide a direct link to the subscription center--for example, in your app's account settings or in a custom email. The `customer_id` path parameter is the person's identifier (e.g. an email address or customer ID) as it appears in Customer.io. The identifier must match an existing person in your workspace. */
 export const getSubscriptionCenterToken: API.OperationMethod<
   GetSubscriptionCenterTokenRequest,
   GetSubscriptionCenterTokenResponse,
@@ -35762,7 +35762,7 @@ export const getSuppression: API.OperationMethod<
 }));
 
 export type GetSuppressionByTypeError = CustomerioOpError;
-/** Get ESP-suppressed emails by type Find addresses suppressed by the Email Service Provider (ESP) for a particular reason—bounces, blocks, spam reports, or invalid email addresses. You can get up to 1000 addresses per request. Use the `offset` parameter to get addresses beyond the first 1000. If you have multiple sending domains, we recommend querying for each domain separately, as an email address may be suppressed on multiple domains. **Note**: If you have a large number of suppressions, consider using the [Get ESP-suppressed emails by domain](/integrations/api/app/tag/esp-suppression/getDomainSuppressionsByType/) endpoint. It's more performant for large datasets. */
+/** Get ESP-suppressed emails by type Find addresses suppressed by the Email Service Provider (ESP) for a particular reason--bounces, blocks, spam reports, or invalid email addresses. You can get up to 1000 addresses per request. Use the `offset` parameter to get addresses beyond the first 1000. If you have multiple sending domains, we recommend querying for each domain separately, as an email address may be suppressed on multiple domains. **Note**: If you have a large number of suppressions, consider using the [Get ESP-suppressed emails by domain](/integrations/api/app/tag/esp-suppression/getDomainSuppressionsByType/) endpoint. It's more performant for large datasets. */
 export const getSuppressionByType: API.OperationMethod<
   GetSuppressionByTypeRequest,
   GetSuppressionByTypeResponse,
@@ -35837,7 +35837,7 @@ export const getTransactionalVariant: API.OperationMethod<
 }));
 
 export type GetVariantLinksError = NotFound | CustomerioOpError;
-/** Get click metrics for links in one-time send variants Returns link click metrics for an individual one-time send (referred to as a "newsletter" in our APIs) variant—an individual language in a multi-language one-time send or a message in an A/B test. Unless you specify otherwise, the response contains data for the maximum period by days (45 days). You cannot request fewer than 2 steps of any period (2 hours, 2 days, 2 weeks, or 2 months). For instance, `?period=days&steps=1` means two days - the 48 hours before the API request was made. `?period=days&steps=0` returns the same as the maximum of the period - `?period=days&steps=45`. See the `steps` parameter below for the maximum count of each period. */
+/** Get click metrics for links in one-time send variants Returns link click metrics for an individual one-time send (referred to as a "newsletter" in our APIs) variant--an individual language in a multi-language one-time send or a message in an A/B test. Unless you specify otherwise, the response contains data for the maximum period by days (45 days). You cannot request fewer than 2 steps of any period (2 hours, 2 days, 2 weeks, or 2 months). For instance, `?period=days&steps=1` means two days - the 48 hours before the API request was made. `?period=days&steps=0` returns the same as the maximum of the period - `?period=days&steps=45`. See the `steps` parameter below for the maximum count of each period. */
 export const getVariantLinks: API.OperationMethod<
   GetVariantLinksRequest,
   GetVariantLinksResponse,
@@ -35852,7 +35852,7 @@ export const getVariantLinks: API.OperationMethod<
 }));
 
 export type GetVariantMetricsError = NotFound | CustomerioOpError;
-/** Get metrics for a test or translation variant of a one-time send Returns a metrics for an individual one-time send (referred to as a "newsletter" in our APIs) variant—either an individual language in a multi-language one-time send or a message in an A/B test. This endpoint returns metrics both in total and in `steps` (days, weeks, etc) over a `period` of time. Stepped `series` metrics are arranged from oldest to newest (i.e. the 0-index for any result is the oldest period/step). You cannot request fewer than 2 steps of any period (2 hours, 2 days, 2 weeks, or 2 months). For instance, `?period=days&steps=1` means two days - the 48 hours before the API request was made. `?period=days&steps=0` returns the same as the maximum of the period - `?period=days&steps=45`. See the `steps` parameter below for the maximum count of each period. */
+/** Get metrics for a test or translation variant of a one-time send Returns a metrics for an individual one-time send (referred to as a "newsletter" in our APIs) variant--either an individual language in a multi-language one-time send or a message in an A/B test. This endpoint returns metrics both in total and in `steps` (days, weeks, etc) over a `period` of time. Stepped `series` metrics are arranged from oldest to newest (i.e. the 0-index for any result is the oldest period/step). You cannot request fewer than 2 steps of any period (2 hours, 2 days, 2 weeks, or 2 months). For instance, `?period=days&steps=1` means two days - the 48 hours before the API request was made. `?period=days&steps=0` returns the same as the maximum of the period - `?period=days&steps=45`. See the `steps` parameter below for the maximum count of each period. */
 export const getVariantMetrics: API.OperationMethod<
   GetVariantMetricsRequest,
   GetVariantMetricsResponse,
@@ -36002,7 +36002,7 @@ export const listBroadcastTriggers: API.OperationMethod<
 }));
 
 export type ListCampaignActionsError = BadRequest | NotFound | CustomerioOpError;
-/** List automation actions Returns the operations in an automation workflow. Each object in the response represents an action or 'tile' in the automation builder. This endpoint returns up to 10 `actions` at a time. If there is another page of results, the response will include a `next` string. Pass this string as the `start` parameter to get the next page of results. You get the actions that have content, like messages, attribute updates, and events—not delays or flow control blocks like t/f branches. If a message block contains multiple languages, this endpoint returns an object for each language variant. Each language variant includes the `multi_language_branch_action_id` property with the same value. Use this id to retrieve metrics for each language variant in a single request through [Get automation action metrics](/integrations/api/app/tag/automations/campaignActionMetrics/). */
+/** List automation actions Returns the operations in an automation workflow. Each object in the response represents an action or 'tile' in the automation builder. This endpoint returns up to 10 `actions` at a time. If there is another page of results, the response will include a `next` string. Pass this string as the `start` parameter to get the next page of results. You get the actions that have content, like messages, attribute updates, and events--not delays or flow control blocks like t/f branches. If a message block contains multiple languages, this endpoint returns an object for each language variant. Each language variant includes the `multi_language_branch_action_id` property with the same value. Use this id to retrieve metrics for each language variant in a single request through [Get automation action metrics](/integrations/api/app/tag/automations/campaignActionMetrics/). */
 export const listCampaignActions: API.OperationMethod<
   ListCampaignActionsRequest,
   ListCampaignActionsResponse,
@@ -36122,7 +36122,7 @@ export const listInboxPreviewClients: API.OperationMethod<
 }));
 
 export type ListInboxPreviewJobsError = BadRequest | NotFound | CustomerioOpError;
-/** List inbox preview history Returns a paginated history of inbox preview jobs across your workspace, or for a single email when you pass `node_id`. Only lists runs recent enough for their screenshots to still be viewable—an older run won't appear here even though it still exists. */
+/** List inbox preview history Returns a paginated history of inbox preview jobs across your workspace, or for a single email when you pass `node_id`. Only lists runs recent enough for their screenshots to still be viewable--an older run won't appear here even though it still exists. */
 export const listInboxPreviewJobs: API.OperationMethod<
   ListInboxPreviewJobsRequest,
   ListInboxPreviewJobsResponse,
@@ -36167,7 +36167,7 @@ export const listNewsletters: API.OperationMethod<
 }));
 
 export type ListNewsletterVariantsError = NotFound | CustomerioOpError;
-/** List one-time send variants Returns a one-time send's content variants (a one-time send is referred to as a "newsletter" in our APIs)—these are either different languages in a multi-language one-time send or A/B tests. */
+/** List one-time send variants Returns a one-time send's content variants (a one-time send is referred to as a "newsletter" in our APIs)--these are either different languages in a multi-language one-time send or A/B tests. */
 export const listNewsletterVariants: API.OperationMethod<
   ListNewsletterVariantsRequest,
   ListNewsletterVariantsResponse,
@@ -36227,7 +36227,7 @@ export const listSnippets: API.OperationMethod<
 }));
 
 export type ListTransactionalError = CustomerioOpError;
-/** List transactional messages Returns a list of your transactional messages—the transactional IDs that you use to trigger an individual transactional delivery. This endpoint does not return information about deliveries (instances of a message sent to a person) themselves. */
+/** List transactional messages Returns a list of your transactional messages--the transactional IDs that you use to trigger an individual transactional delivery. This endpoint does not return information about deliveries (instances of a message sent to a person) themselves. */
 export const listTransactional: API.OperationMethod<
   ListTransactionalRequest,
   ListTransactionalResponse,
@@ -36352,7 +36352,7 @@ export const publishEmail: API.OperationMethod<
 }));
 
 export type RenderEmailError = BadRequest | NotFound | CustomerioOpError;
-/** Render an email Returns email-ready HTML. Use this endpoint to inspect your compiled markup. Liquid tags are left intact—`{{customer.first_name}}` stays in the output as written. To evaluate liquid against real profile data instead, use [Preview an email](/integrations/api/app/tag/design-studio-emails/previewEmail/). The render, preview, review, link, and publish endpoints share a rate limit of 5 requests per second per workspace. */
+/** Render an email Returns email-ready HTML. Use this endpoint to inspect your compiled markup. Liquid tags are left intact--`{{customer.first_name}}` stays in the output as written. To evaluate liquid against real profile data instead, use [Preview an email](/integrations/api/app/tag/design-studio-emails/previewEmail/). The render, preview, review, link, and publish endpoints share a rate limit of 5 requests per second per workspace. */
 export const renderEmail: API.OperationMethod<
   RenderEmailRequest,
   RenderEmailResponse,
@@ -36382,7 +36382,7 @@ export const restoreVersion: API.OperationMethod<
 }));
 
 export type ReviewEmailError = BadRequest | NotFound | CustomerioOpError;
-/** Review an email Checks an email's saved content for errors and suggests how to improve accessibility, styling, and more. This runs the same process as the [*Review* panel in Design Studio](/messaging/design-studio/emails/qa-in-design-studio/) and returns a readiness score, a status per check, and how to fix issues. This endpoint reviews **a single translation** based on the `:id` you pass. Call this endpoint for each language variant to review each translation. **Checks** - `liquid` — Liquid syntax: broken tags, invalid filters, unclosed blocks. Does not report missing variables; use the [preview endpoint](/integrations/api/app/tag/design-studio-emails/previewEmail/) with sample data to validate variable resolution. - `failed-components` — Custom components that fail to compile. Always `skipped` on the API; it's a browser-runtime-only signal. - `source` — Raw markup the editor stores, before liquid rendering. Checks for reserved internal HTML attributes, multiple root elements, and design-token clashes. - `links` — Broken URLs, validated over HTTP (capped at 100 links per review). - `images` — Broken image URLs and missing alt text (capped at 100 images per review). - `accessibility` — WCAG accessibility issues. - `spam` — SpamAssassin score. - `unsubscribe` — Presence of an unsubscribe link. - `implied-links` — Bare URLs or email addresses that should be wrapped in `<a>` tags. - `html-clip` — Gmail's 102 KB clipping threshold. - `preheader` — Preheader text presence and quality. The render, preview, review, link, and publish endpoints share a rate limit of 5 requests per second per workspace. */
+/** Review an email Checks an email's saved content for errors and suggests how to improve accessibility, styling, and more. This runs the same process as the [*Review* panel in Design Studio](/messaging/design-studio/emails/qa-in-design-studio/) and returns a readiness score, a status per check, and how to fix issues. This endpoint reviews **a single translation** based on the `:id` you pass. Call this endpoint for each language variant to review each translation. **Checks** - `liquid` -- Liquid syntax: broken tags, invalid filters, unclosed blocks. Does not report missing variables; use the [preview endpoint](/integrations/api/app/tag/design-studio-emails/previewEmail/) with sample data to validate variable resolution. - `failed-components` -- Custom components that fail to compile. Always `skipped` on the API; it's a browser-runtime-only signal. - `source` -- Raw markup the editor stores, before liquid rendering. Checks for reserved internal HTML attributes, multiple root elements, and design-token clashes. - `links` -- Broken URLs, validated over HTTP (capped at 100 links per review). - `images` -- Broken image URLs and missing alt text (capped at 100 images per review). - `accessibility` -- WCAG accessibility issues. - `spam` -- SpamAssassin score. - `unsubscribe` -- Presence of an unsubscribe link. - `implied-links` -- Bare URLs or email addresses that should be wrapped in `<a>` tags. - `html-clip` -- Gmail's 102 KB clipping threshold. - `preheader` -- Preheader text presence and quality. The render, preview, review, link, and publish endpoints share a rate limit of 5 requests per second per workspace. */
 export const reviewEmail: API.OperationMethod<
   ReviewEmailRequest,
   ReviewEmailResponse,
@@ -36557,7 +36557,7 @@ export type SubmitInboxPreviewError =
   | Conflict
   | UnprocessableEntity
   | CustomerioOpError;
-/** Send for inbox previews Initiate one or more inbox previews for an email. This uses inbox preview credits; check your balance with [Get preview credit balance](/integrations/api/app/tag/design-studio-emails/getInboxPreviewCredits/). [**Learn how billing for inbox previews work before you call this endpoint.**](/accounts/billing/inbox-previews/) Use [List emails](/integrations/api/app/tag/design-studio-emails/listEmails/) to get your email's ID. If the email has translations, call [List email translations](/integrations/api/app/tag/design-studio-emails/listEmailTranslations/) to get the ID of the language variant you want a preview of. You can retrieve client IDs from [List inbox preview options](/integrations/api/app/tag/design-studio-emails/listInboxPreviewClients/). This call does not return the preview file. It returns a `run_id`; poll [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/) with it, then fetch each tile's capture URL from that response. Submitting the same email, content, and devices again on the same UTC day returns the existing run instead of starting a new one, with `replayed` set to `true` and no second charge. The same happens the next day if that run is still processing, or if a concurrent identical request gets there first. Resubmitting a stuck run is safe and free—it hands you the same run back rather than starting a second one. */
+/** Send for inbox previews Initiate one or more inbox previews for an email. This uses inbox preview credits; check your balance with [Get preview credit balance](/integrations/api/app/tag/design-studio-emails/getInboxPreviewCredits/). [**Learn how billing for inbox previews work before you call this endpoint.**](/accounts/billing/inbox-previews/) Use [List emails](/integrations/api/app/tag/design-studio-emails/listEmails/) to get your email's ID. If the email has translations, call [List email translations](/integrations/api/app/tag/design-studio-emails/listEmailTranslations/) to get the ID of the language variant you want a preview of. You can retrieve client IDs from [List inbox preview options](/integrations/api/app/tag/design-studio-emails/listInboxPreviewClients/). This call does not return the preview file. It returns a `run_id`; poll [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/) with it, then fetch each tile's capture URL from that response. Submitting the same email, content, and devices again on the same UTC day returns the existing run instead of starting a new one, with `replayed` set to `true` and no second charge. The same happens the next day if that run is still processing, or if a concurrent identical request gets there first. Resubmitting a stuck run is safe and free--it hands you the same run back rather than starting a second one. */
 export const submitInboxPreview: API.OperationMethod<
   SubmitInboxPreviewRequest,
   SubmitInboxPreviewResponse,
@@ -36632,7 +36632,7 @@ export const transactionalMetrics: API.OperationMethod<
 }));
 
 export type TriggerBroadcastError = NotFound | UnprocessableEntity | CustomerioOpError;
-/** Send an API-triggered broadcast Trigger a broadcast (not a one-time send) and optionally provide data to populate liquid placeholders in the message. The shape of the request depends on how you define your audience: default (the recipients set in the UI), custom filter conditions, a list of emails, a list of customer IDs, a map of users, or a data file. **You can only trigger broadcasts to send to people you've already added to your workspace.** A broadcast cannot add or identify new people. If you reference people who don't exist in your broadcast audience, the broadcast will fail by default. You can override this behavior by setting the `email_ignore_missing` and/or `id_ignore_missing` flags to `true`. The broadcast will skip over any people who don't exist in your workspace and send to the remaining recipients. You can reference properties in the `data` object in your broadcast using liquid—`{{trigger.<property_in_data_obj>}}`. By default, we send your broadcast as soon as you trigger it. Set `scheduled_at` to send it at a future time instead. You can [cancel the trigger](/integrations/api/app/tag/send-messages/cancelBroadcastTrigger/) to stop a scheduled send before it starts sending. You can't change a trigger's `scheduled_at` value later; if you need to reschedule your broadcast, you must cancel the trigger and re-trigger the broadcast with the new timestamp. If your broadcast produces a `422` error, you can [get more information about the errors](/integrations/api/app/tag/broadcasts/broadcastErrors/) to see what went wrong. **This endpoint is rate-limited to one request every 10 seconds.** After exceeding this, you'll receive a status of `429`. Learn more about [API-triggered broadcast limits](/integrations/api/app/tag/send-messages/) above. Broadcasts are optimized to send messages to a large audience and not for one-to-one interactions. Use our [transactional API](/integrations/api/app/tag/send-messages/sendEmail/) or [event-triggered automations](/journeys/send/campaigns/triggers/#event-trigger) to respond to your audience on an individual, one-to-one basis. */
+/** Send an API-triggered broadcast Trigger a broadcast (not a one-time send) and optionally provide data to populate liquid placeholders in the message. The shape of the request depends on how you define your audience: default (the recipients set in the UI), custom filter conditions, a list of emails, a list of customer IDs, a map of users, or a data file. **You can only trigger broadcasts to send to people you've already added to your workspace.** A broadcast cannot add or identify new people. If you reference people who don't exist in your broadcast audience, the broadcast will fail by default. You can override this behavior by setting the `email_ignore_missing` and/or `id_ignore_missing` flags to `true`. The broadcast will skip over any people who don't exist in your workspace and send to the remaining recipients. You can reference properties in the `data` object in your broadcast using liquid--`{{trigger.<property_in_data_obj>}}`. By default, we send your broadcast as soon as you trigger it. Set `scheduled_at` to send it at a future time instead. You can [cancel the trigger](/integrations/api/app/tag/send-messages/cancelBroadcastTrigger/) to stop a scheduled send before it starts sending. You can't change a trigger's `scheduled_at` value later; if you need to reschedule your broadcast, you must cancel the trigger and re-trigger the broadcast with the new timestamp. If your broadcast produces a `422` error, you can [get more information about the errors](/integrations/api/app/tag/broadcasts/broadcastErrors/) to see what went wrong. **This endpoint is rate-limited to one request every 10 seconds.** After exceeding this, you'll receive a status of `429`. Learn more about [API-triggered broadcast limits](/integrations/api/app/tag/send-messages/) above. Broadcasts are optimized to send messages to a large audience and not for one-to-one interactions. Use our [transactional API](/integrations/api/app/tag/send-messages/sendEmail/) or [event-triggered automations](/journeys/send/campaigns/triggers/#event-trigger) to respond to your audience on an individual, one-to-one basis. */
 export const triggerBroadcast: API.OperationMethod<
   TriggerBroadcastRequest,
   TriggerBroadcastResponse,
@@ -36767,7 +36767,7 @@ export const updateCollection: API.OperationMethod<
 }));
 
 export type UpdateCollectionContentsError = NotFound | CustomerioOpError;
-/** Update the contents of a collection Replace the contents of a collection (the `data` from when you created or updated a collection). The request is a free-form object containing the keys you want to reference from the collection and the corresponding values. This request replaces the current contents of the collection entirely. If you don't want to update the contents directly—you want to change the `name` or data `url` for your collection, use the [update a collection](/integrations/api/app/tag/collections/updateCollection/) endpoint. **Note**: A collection cannot be more than 10 MB in size. No individual row in the collection can be more than 10 KB. */
+/** Update the contents of a collection Replace the contents of a collection (the `data` from when you created or updated a collection). The request is a free-form object containing the keys you want to reference from the collection and the corresponding values. This request replaces the current contents of the collection entirely. If you don't want to update the contents directly--you want to change the `name` or data `url` for your collection, use the [update a collection](/integrations/api/app/tag/collections/updateCollection/) endpoint. **Note**: A collection cannot be more than 10 MB in size. No individual row in the collection can be more than 10 KB. */
 export const updateCollectionContents: API.OperationMethod<
   UpdateCollectionContentsRequest,
   UpdateCollectionContentsResponse,
@@ -36857,7 +36857,7 @@ export const updateFolder: API.OperationMethod<
 }));
 
 export type UpdateLiveNotificationError = BadRequest | NotFound | CustomerioOpError;
-/** Update a live notification Push a new content state to a running activity, referenced by its `instance_id`. The device re-renders the activity from the state you send. Send the **full** content state on every update, not just the fields that changed—the platforms don't support partial updates. `push_payload` is optional on updates, whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include a `push_payload.alert`, it must contain both a `title` and a `body`. */
+/** Update a live notification Push a new content state to a running activity, referenced by its `instance_id`. The device re-renders the activity from the state you send. Send the **full** content state on every update, not just the fields that changed--the platforms don't support partial updates. `push_payload` is optional on updates, whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include a `push_payload.alert`, it must contain both a `title` and a `body`. */
 export const updateLiveNotification: API.OperationMethod<
   UpdateLiveNotificationRequest,
   UpdateLiveNotificationResponse,
@@ -36872,7 +36872,7 @@ export const updateLiveNotification: API.OperationMethod<
 }));
 
 export type UpdateNewsletterTestTranslationError = BadRequest | NotFound | CustomerioOpError;
-/** Update a translation in a one-time send test group Update the translation of a one-time send (referred to as a "newsletter" in our APIs) variant in an A/B test. You can retrieve a list of `test_group_ids` from [List a one-time send's A/B test groups](/integrations/api/app/tag/newsletter-variants/getNewsletterTestGroups/). **NOTE**: You cannot manage content made with Design Studio with this endpoint. Use the [Design Studio APIs](/integrations/api/app/tag/design-studio/) instead. You also can't update in-app or inbox message content through the API—change it in the message editor. */
+/** Update a translation in a one-time send test group Update the translation of a one-time send (referred to as a "newsletter" in our APIs) variant in an A/B test. You can retrieve a list of `test_group_ids` from [List a one-time send's A/B test groups](/integrations/api/app/tag/newsletter-variants/getNewsletterTestGroups/). **NOTE**: You cannot manage content made with Design Studio with this endpoint. Use the [Design Studio APIs](/integrations/api/app/tag/design-studio/) instead. You also can't update in-app or inbox message content through the API--change it in the message editor. */
 export const updateNewsletterTestTranslation: API.OperationMethod<
   UpdateNewsletterTestTranslationRequest,
   UpdateNewsletterTestTranslationResponse,
@@ -36887,7 +36887,7 @@ export const updateNewsletterTestTranslation: API.OperationMethod<
 }));
 
 export type UpdateNewsletterVariantError = BadRequest | NotFound | CustomerioOpError;
-/** Update a one-time send variant Update the content of a one-time send (referred to as a "newsletter" in our APIs): the default message, a test variant in an A/B test group, or a translation. For an email, you can also update the envelope: from address, subject line, etc. **NOTE**: You cannot manage content made with the drag-and-drop editor via API, and you cannot use this endpoint to update Design Studio emails. You can, however, [manage Design Studio content with other endpoints](/integrations/api/app/tag/design-studio/). You also can't update in-app or inbox message content through the API—use the message editor instead. */
+/** Update a one-time send variant Update the content of a one-time send (referred to as a "newsletter" in our APIs): the default message, a test variant in an A/B test group, or a translation. For an email, you can also update the envelope: from address, subject line, etc. **NOTE**: You cannot manage content made with the drag-and-drop editor via API, and you cannot use this endpoint to update Design Studio emails. You can, however, [manage Design Studio content with other endpoints](/integrations/api/app/tag/design-studio/). You also can't update in-app or inbox message content through the API--use the message editor instead. */
 export const updateNewsletterVariant: API.OperationMethod<
   UpdateNewsletterVariantRequest,
   UpdateNewsletterVariantResponse,
@@ -36902,7 +36902,7 @@ export const updateNewsletterVariant: API.OperationMethod<
 }));
 
 export type UpdateNewsletterVariantTranslationError = BadRequest | NotFound | CustomerioOpError;
-/** Update a translation of a one-time send Update the translation of a one-time send (referred to as a "newsletter" in our APIs) variant. If it includes A/B tests, use [Update a translation in a one-time send test group](/integrations/api/app/tag/newsletter-variants/updateNewsletterTestTranslation/). **NOTE**: You cannot manage content made with Design Studio with this endpoint. Use the [Design Studio APIs](/integrations/api/app/tag/design-studio/) instead. You also can't update in-app or inbox message content through the API—change it in the message editor. */
+/** Update a translation of a one-time send Update the translation of a one-time send (referred to as a "newsletter" in our APIs) variant. If it includes A/B tests, use [Update a translation in a one-time send test group](/integrations/api/app/tag/newsletter-variants/updateNewsletterTestTranslation/). **NOTE**: You cannot manage content made with Design Studio with this endpoint. Use the [Design Studio APIs](/integrations/api/app/tag/design-studio/) instead. You also can't update in-app or inbox message content through the API--change it in the message editor. */
 export const updateNewsletterVariantTranslation: API.OperationMethod<
   UpdateNewsletterVariantTranslationRequest,
   UpdateNewsletterVariantTranslationResponse,

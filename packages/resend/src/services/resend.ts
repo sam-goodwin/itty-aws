@@ -79,14 +79,14 @@ export const Email = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Email" }) as any as S.Schema<Email>;
 
-/** The API key can have full access to Resend’s API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails. */
+/** The API key can have full access to Resend's API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails. */
 export type CreateApiKeyRequestPermission = "full_access" | "sending_access";
 export const CreateApiKeyRequestPermission = S.String;
 
 export interface CreateApiKeyRequest {
   /** The API key name. */
   name: string;
-  /** The API key can have full access to Resend’s API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails. */
+  /** The API key can have full access to Resend's API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails. */
   permission?: CreateApiKeyRequestPermission | (string & {});
   /** Restrict an API key to send emails only from a specific domain. Only used when the permission is sending_access. */
   domain_id?: string;
@@ -134,7 +134,7 @@ export interface AutomationStep {
   key: string;
   /** The type of automation step. */
   type: AutomationStepType | (string & {});
-  /** Configuration for the step. Shape depends on `type`: - **trigger**: `{ event_name: string }` - **send_email**: `{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }` - **delay**: `{ duration: string }` — a human-readable duration (e.g. `"30 minutes"`) - **wait_for_event**: `{ event_name: string, timeout?: string, filter_rule?: object }` — `timeout` is a human-readable duration (e.g. `"1 hour"`) - **condition**: A rule tree with `type` (`rule`, `and`, `or`), `field`, `operator`, and `value` - **contact_update**: `{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }` - **contact_delete**: `{}` - **add_to_segment**: `{ segment_id: string }` */
+  /** Configuration for the step. Shape depends on `type`: - **trigger**: `{ event_name: string }` - **send_email**: `{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }` - **delay**: `{ duration: string }` -- a human-readable duration (e.g. `"30 minutes"`) - **wait_for_event**: `{ event_name: string, timeout?: string, filter_rule?: object }` -- `timeout` is a human-readable duration (e.g. `"1 hour"`) - **condition**: A rule tree with `type` (`rule`, `and`, `or`), `field`, `operator`, and `value` - **contact_update**: `{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }` - **contact_delete**: `{}` - **add_to_segment**: `{ segment_id: string }` */
   config: unknown;
 }
 export const AutomationStep = /*@__PURE__*/ S.suspend(() =>
@@ -642,9 +642,9 @@ export const CreateEmailRequestAttachmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateEmailRequestAttachmentsList>;
 
 export interface Tag {
-  /** The name of the email tag. It can only contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
+  /** The name of the email tag. It can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
   name?: string;
-  /** The value of the email tag.It can only contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
+  /** The value of the email tag.It can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
   value?: string;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>

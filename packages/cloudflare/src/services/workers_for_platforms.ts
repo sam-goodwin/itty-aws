@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   allowedDestinationAddresses: "allowed_destination_addresses",
   allowedSenderAddresses: "allowed_sender_addresses",
@@ -1823,7 +1823,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType
 export interface DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType;
@@ -3188,7 +3188,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNam
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType;
@@ -4609,7 +4609,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   scenario: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem =
@@ -5801,7 +5801,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIS
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType;
@@ -7324,7 +7324,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
     | (string & {});
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem =
@@ -8280,7 +8280,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNa
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType;
@@ -9708,7 +9708,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   scenario: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem =

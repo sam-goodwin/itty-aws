@@ -129,7 +129,7 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentRead
   | "READY";
 export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -160,7 +160,7 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymen
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget | null;
@@ -196,7 +196,7 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentRea
   | "READY";
 export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -227,7 +227,7 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployme
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentTarget | null;
@@ -290,7 +290,7 @@ export interface ApproveRollingReleaseStageResponseRollingRelease {
   advancementType: ApproveRollingReleaseStageResponseRollingReleaseAdvancementType;
   /** The canary deployment being rolled out */
   canaryDeployment: ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment | null;
-  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active. */
+  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document -- use for dashboard display when linear shift is active. */
   currentCanaryPercentage?: number;
   /** The current deployment receiving production traffic */
   currentDeployment: ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment | null;
@@ -386,7 +386,7 @@ export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadySta
   | "READY";
 export const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -417,7 +417,7 @@ export interface CompleteRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget | null;
@@ -453,7 +453,7 @@ export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadySt
   | "READY";
 export const CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -484,7 +484,7 @@ export interface CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget | null;
@@ -544,7 +544,7 @@ export interface CompleteRollingReleaseResponseRollingRelease {
   advancementType: CompleteRollingReleaseResponseRollingReleaseAdvancementType;
   /** The canary deployment being rolled out */
   canaryDeployment: CompleteRollingReleaseResponseRollingReleaseCanaryDeployment | null;
-  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active. */
+  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document -- use for dashboard display when linear shift is active. */
   currentCanaryPercentage?: number;
   /** The current deployment receiving production traffic */
   currentDeployment: CompleteRollingReleaseResponseRollingReleaseCurrentDeployment | null;
@@ -671,7 +671,7 @@ export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState =
   | "READY";
 export const GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -702,7 +702,7 @@ export interface GetRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: GetRollingReleaseResponseRollingReleaseCanaryDeploymentTarget | null;
@@ -735,7 +735,7 @@ export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState =
   | "READY";
 export const GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -766,7 +766,7 @@ export interface GetRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget | null;
@@ -824,7 +824,7 @@ export interface GetRollingReleaseResponseRollingRelease {
   advancementType: GetRollingReleaseResponseRollingReleaseAdvancementType;
   /** The canary deployment being rolled out */
   canaryDeployment: GetRollingReleaseResponseRollingReleaseCanaryDeployment | null;
-  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active. */
+  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document -- use for dashboard display when linear shift is active. */
   currentCanaryPercentage?: number;
   /** The current deployment receiving production traffic */
   currentDeployment: GetRollingReleaseResponseRollingReleaseCurrentDeployment | null;
@@ -1022,7 +1022,7 @@ export const GetRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetRollingReleaseConfigResponseRollingReleaseGateAction = "pause" | "rollback";
 export const GetRollingReleaseConfigResponseRollingReleaseGateAction = S.String;
 
-/** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+/** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
@@ -1030,7 +1030,7 @@ export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeP
     S.String,
   ) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList>;
 
-/** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+/** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
 export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -1044,9 +1044,9 @@ export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType = S
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetRollingReleaseConfigResponseRollingReleaseGateChecksItem {
-  /** Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
+  /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
   excludePaths?: GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList;
-  /** Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
+  /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
   excludeStatusCodes?: GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList;
   /** Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted. */
   ingestWatermarkSeconds?: number;
@@ -1085,7 +1085,7 @@ export interface GetRollingReleaseConfigResponseRollingReleaseGate {
   action: GetRollingReleaseConfigResponseRollingReleaseGateAction;
   /** The checks to evaluate. An empty array means nothing is evaluated. */
   checks: GetRollingReleaseConfigResponseRollingReleaseGateChecksList;
-  /** When true, a tripped gate is only reported — {@link action} is not taken. */
+  /** When true, a tripped gate is only reported -- {@link action} is not taken. */
   dryRun: boolean;
   /** Whether automated gating is enabled for this project's rollouts. */
   enabled: boolean;
@@ -1216,7 +1216,7 @@ export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState 
   | "READY";
 export const StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -1247,7 +1247,7 @@ export interface StartRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: StartRollingReleaseResponseRollingReleaseCanaryDeploymentTarget | null;
@@ -1281,7 +1281,7 @@ export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState
   | "READY";
 export const StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
 
-/** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+/** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
   | "cli"
@@ -1312,7 +1312,7 @@ export interface StartRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
   readyState: StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState;
   readyStateAt?: number;
-  /** Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. */
+  /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
   source?: StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource;
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget | null;
@@ -1372,7 +1372,7 @@ export interface StartRollingReleaseResponseRollingRelease {
   advancementType: StartRollingReleaseResponseRollingReleaseAdvancementType;
   /** The canary deployment being rolled out */
   canaryDeployment: StartRollingReleaseResponseRollingReleaseCanaryDeployment | null;
-  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active. */
+  /** When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document -- use for dashboard display when linear shift is active. */
   currentCanaryPercentage?: number;
   /** The current deployment receiving production traffic */
   currentDeployment: StartRollingReleaseResponseRollingReleaseCurrentDeployment | null;
@@ -1535,7 +1535,7 @@ export const completeRollingRelease: API.OperationMethod<
 }));
 
 export type DeleteRollingReleaseConfigError = BadRequest | Forbidden | NotFound | VercelOpError;
-/** Delete rolling release configuration Disable Rolling Releases for a project means that future deployments will not undergo a rolling release. Changing the config never alters a rollout that's already in-flight—it only affects the next production deployment. If you want to also stop the current rollout, call this endpoint to disable the feature, and then call either the /complete or /abort endpoint. */
+/** Delete rolling release configuration Disable Rolling Releases for a project means that future deployments will not undergo a rolling release. Changing the config never alters a rollout that's already in-flight--it only affects the next production deployment. If you want to also stop the current rollout, call this endpoint to disable the feature, and then call either the /complete or /abort endpoint. */
 export const deleteRollingReleaseConfig: API.OperationMethod<
   DeleteRollingReleaseConfigRequest,
   DeleteRollingReleaseConfigResponse,

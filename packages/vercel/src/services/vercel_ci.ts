@@ -209,7 +209,7 @@ export const GetVercelCiInvocationResponseInvocationSetupConclusion = /*@__PURE_
   identifier: "GetVercelCiInvocationResponseInvocationSetupConclusion",
 }) as any as S.Schema<GetVercelCiInvocationResponseInvocationSetupConclusion>;
 
-/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
 export type GetVercelCiInvocationResponseInvocationRunConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 export const GetVercelCiInvocationResponseInvocationRunConclusion =
@@ -233,7 +233,7 @@ export interface GetVercelCiInvocationResponseInvocation {
   completed?: GetVercelCiInvocationResponseInvocationCompleted;
   /** The terminal setup result. Omitted while invocation setup is still running. */
   setupConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
-  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
   runConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
   status: string;
 }
@@ -458,7 +458,7 @@ export type GetVercelCiInvocationTreeResponseInvocationSetupConclusion =
 export const GetVercelCiInvocationTreeResponseInvocationSetupConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 
-/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
 export type GetVercelCiInvocationTreeResponseInvocationRunConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 export const GetVercelCiInvocationTreeResponseInvocationRunConclusion =
@@ -482,7 +482,7 @@ export interface GetVercelCiInvocationTreeResponseInvocation {
   completed?: GetVercelCiInvocationResponseInvocationCompleted;
   /** The terminal setup result. Omitted while invocation setup is still running. */
   setupConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
-  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
   runConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
   status: string;
 }
@@ -1421,7 +1421,7 @@ export type ListVercelCiInvocationAttemptsResponseAttemptsItemSetupConclusion =
 export const ListVercelCiInvocationAttemptsResponseAttemptsItemSetupConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 
-/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
 export type ListVercelCiInvocationAttemptsResponseAttemptsItemRunConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 export const ListVercelCiInvocationAttemptsResponseAttemptsItemRunConclusion =
@@ -1445,7 +1445,7 @@ export interface ListVercelCiInvocationAttemptsResponseAttemptsItem {
   completed?: GetVercelCiInvocationResponseInvocationCompleted;
   /** The terminal setup result. Omitted while invocation setup is still running. */
   setupConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
-  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
   runConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
   status: string;
 }
@@ -1664,7 +1664,7 @@ export type ListVercelCiInvocationsResponseInvocationsItemSetupConclusion =
 export const ListVercelCiInvocationsResponseInvocationsItemSetupConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 
-/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+/** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
 export type ListVercelCiInvocationsResponseInvocationsItemRunConclusion =
   GetVercelCiInvocationResponseInvocationSetupConclusion;
 export const ListVercelCiInvocationsResponseInvocationsItemRunConclusion =
@@ -1688,7 +1688,7 @@ export interface ListVercelCiInvocationsResponseInvocationsItem {
   completed?: GetVercelCiInvocationResponseInvocationCompleted;
   /** The terminal setup result. Omitted while invocation setup is still running. */
   setupConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
-  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job → "failed"; any (non-cascade) skipped job → "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
+  /** The aggregate outcome of every job in the invocation. Omitted while jobs are still running. Any failed job -> "failed"; any (non-cascade) skipped job -> "skipped"; else "succeeded". Present on completed invocations written after the field shipped; absent on older rows. */
   runConclusion?: GetVercelCiInvocationResponseInvocationSetupConclusion;
   status: string;
 }

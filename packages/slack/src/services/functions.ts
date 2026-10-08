@@ -449,7 +449,7 @@ export const SetDistributionsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetDistributionsPermissionsResponse>;
 
 export type AddDistributionsPermissionsError = SlackOpError;
-/** Grant users access to a custom slack function if its permission_type is set to named_entities Required scopes — configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the permissions on this resource. - `function_not_found` — This function does not exist. - `invalid_permission_type` — This function requires permission_type to be set as named_entities before adding users. - `user_not_found` — One or more of the named entities was not found. - `app_not_found` — This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.add */
+/** Grant users access to a custom slack function if its permission_type is set to named_entities Required scopes -- configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the permissions on this resource. - `function_not_found` -- This function does not exist. - `invalid_permission_type` -- This function requires permission_type to be set as named_entities before adding users. - `user_not_found` -- One or more of the named entities was not found. - `app_not_found` -- This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.add */
 export const addDistributionsPermissions: API.OperationMethod<
   AddDistributionsPermissionsRequest,
   AddDistributionsPermissionsResponse,
@@ -464,7 +464,7 @@ export const addDistributionsPermissions: API.OperationMethod<
 }));
 
 export type CompleteErrorError = SlackOpError;
-/** Signal that a function failed to complete Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `function_execution_not_found` — The specified function execution cannot be found. - `access_denied` — This actor does not have access to this function execution. - `execution_not_in_running_state` — The function execution is no longer in a state to be completed. See https://docs.slack.dev/reference/methods/functions.completeError */
+/** Signal that a function failed to complete Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `function_execution_not_found` -- The specified function execution cannot be found. - `access_denied` -- This actor does not have access to this function execution. - `execution_not_in_running_state` -- The function execution is no longer in a state to be completed. See https://docs.slack.dev/reference/methods/functions.completeError */
 export const completeError: API.OperationMethod<
   CompleteErrorRequest,
   CompleteErrorResponse,
@@ -479,7 +479,7 @@ export const completeError: API.OperationMethod<
 }));
 
 export type CompleteSuccessError = SlackOpError;
-/** Signal the successful completion of a function Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `function_execution_not_found` — The specified function execution cannot be found. - `access_denied` — This actor does not have access to this function execution. - `execution_not_in_running_state` — The function execution is no longer in a state to be completed. - `parameter_validation_failed` — There were problems when validating the outputs against the Function parameters. See API response for more details. See https://docs.slack.dev/reference/methods/functions.completeSuccess */
+/** Signal the successful completion of a function Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `function_execution_not_found` -- The specified function execution cannot be found. - `access_denied` -- This actor does not have access to this function execution. - `execution_not_in_running_state` -- The function execution is no longer in a state to be completed. - `parameter_validation_failed` -- There were problems when validating the outputs against the Function parameters. See API response for more details. See https://docs.slack.dev/reference/methods/functions.completeSuccess */
 export const completeSuccess: API.OperationMethod<
   CompleteSuccessRequest,
   CompleteSuccessResponse,
@@ -494,7 +494,7 @@ export const completeSuccess: API.OperationMethod<
 }));
 
 export type ExportWorkflowsStepsResponseError = SlackOpError;
-/** Download form responses of a workflow Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the functions on this team. - `workflows_export_csv_not_enabled` — Downloading form responses is not allowed. Admin pref needs to be enabled. - `unknown_workflow_id` — The passed in workflow_id is invalid. - `unknown_step_id` — The passed in step_id is invalid. - `invalid_arguments` — The arguments passed in are invalid. - `unknown_app_id` — The passed in workflow_app_id is invalid. See https://docs.slack.dev/reference/methods/functions.workflows.steps.responses.export */
+/** Download form responses of a workflow Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the functions on this team. - `workflows_export_csv_not_enabled` -- Downloading form responses is not allowed. Admin pref needs to be enabled. - `unknown_workflow_id` -- The passed in workflow_id is invalid. - `unknown_step_id` -- The passed in step_id is invalid. - `invalid_arguments` -- The arguments passed in are invalid. - `unknown_app_id` -- The passed in workflow_app_id is invalid. See https://docs.slack.dev/reference/methods/functions.workflows.steps.responses.export */
 export const exportWorkflowsStepsResponse: API.OperationMethod<
   ExportWorkflowsStepsResponseRequest,
   ExportWorkflowsStepsResponseResponse,
@@ -509,7 +509,7 @@ export const exportWorkflowsStepsResponse: API.OperationMethod<
 }));
 
 export type ListDistributionsPermissionsError = SlackOpError;
-/** List the access type of a custom slack function and include the users, team or org ids with access if its permission_type is set to named_entities Required scopes — configuration: `app_configurations:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the permissions on this resource. - `function_not_found` — This function does not exist. - `user_not_found` — One or more of the named entities was not found. - `app_not_found` — This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.list */
+/** List the access type of a custom slack function and include the users, team or org ids with access if its permission_type is set to named_entities Required scopes -- configuration: `app_configurations:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the permissions on this resource. - `function_not_found` -- This function does not exist. - `user_not_found` -- One or more of the named entities was not found. - `app_not_found` -- This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.list */
 export const listDistributionsPermissions: API.OperationMethod<
   ListDistributionsPermissionsRequest,
   ListDistributionsPermissionsResponse,
@@ -524,7 +524,7 @@ export const listDistributionsPermissions: API.OperationMethod<
 }));
 
 export type ListWorkflowsStepsError = SlackOpError;
-/** List the steps of a specific function of a workflow's versions Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the functions on this team. - `unknown_workflow_id` — The passed in workflow_id is invalid. - `unknown_function_id` — The passed in function_id is invalid. - `invalid_arguments` — The arguments passed in are invalid. - `unknown_app_id` — The passed in workflow_app_id is invalid. - `missing_step_ids` — The passed in workflow is missing step IDs - `cannot_fetch_versions` — Encountered unexpected error while trying to fetch versions See https://docs.slack.dev/reference/methods/functions.workflows.steps.list */
+/** List the steps of a specific function of a workflow's versions Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the functions on this team. - `unknown_workflow_id` -- The passed in workflow_id is invalid. - `unknown_function_id` -- The passed in function_id is invalid. - `invalid_arguments` -- The arguments passed in are invalid. - `unknown_app_id` -- The passed in workflow_app_id is invalid. - `missing_step_ids` -- The passed in workflow is missing step IDs - `cannot_fetch_versions` -- Encountered unexpected error while trying to fetch versions See https://docs.slack.dev/reference/methods/functions.workflows.steps.list */
 export const listWorkflowsSteps: API.OperationMethod<
   ListWorkflowsStepsRequest,
   ListWorkflowsStepsResponse,
@@ -539,7 +539,7 @@ export const listWorkflowsSteps: API.OperationMethod<
 }));
 
 export type RemoveDistributionsPermissionsError = SlackOpError;
-/** Revoke user access to a custom slack function if permission_type set to named_entities Required scopes — configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the permissions on this resource. - `function_not_found` — This function does not exist. - `user_not_found` — One or more of the named entities was not found. - `invalid_permission_type` — This function requires permission_type to be set as named_entities before adding users. - `app_not_found` — This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.remove */
+/** Revoke user access to a custom slack function if permission_type set to named_entities Required scopes -- configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the permissions on this resource. - `function_not_found` -- This function does not exist. - `user_not_found` -- One or more of the named entities was not found. - `invalid_permission_type` -- This function requires permission_type to be set as named_entities before adding users. - `app_not_found` -- This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.remove */
 export const removeDistributionsPermissions: API.OperationMethod<
   RemoveDistributionsPermissionsRequest,
   RemoveDistributionsPermissionsResponse,
@@ -554,7 +554,7 @@ export const removeDistributionsPermissions: API.OperationMethod<
 }));
 
 export type SetDistributionsPermissionsError = SlackOpError;
-/** Set the access type of a custom slack function and define the users, team or org ids to be granted access if permission_type is set to named_entities Required scopes — configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` — This method does not exist. - `access_denied` — This actor does not have access to the permissions on this resource. - `function_not_found` — This function does not exist. - `invalid_named_entities` — One or more of the named entities was not found - `invalid_permission_type` — This function requires permission_type to be set as named_entities before adding users. - `user_not_found` — One or more of the named entities was not found. - `app_not_found` — This app does not exist. - `permission_type_required` — `permission_type` is a required input. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.set */
+/** Set the access type of a custom slack function and define the users, team or org ids to be granted access if permission_type is set to named_entities Required scopes -- configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the permissions on this resource. - `function_not_found` -- This function does not exist. - `invalid_named_entities` -- One or more of the named entities was not found - `invalid_permission_type` -- This function requires permission_type to be set as named_entities before adding users. - `user_not_found` -- One or more of the named entities was not found. - `app_not_found` -- This app does not exist. - `permission_type_required` -- `permission_type` is a required input. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.set */
 export const setDistributionsPermissions: API.OperationMethod<
   SetDistributionsPermissionsRequest,
   SetDistributionsPermissionsResponse,

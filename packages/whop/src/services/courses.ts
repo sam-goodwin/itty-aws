@@ -604,7 +604,7 @@ export type CreateCourseError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create course [Legacy API — https://docs.whop.com/api-reference] Create a new course within an experience, with optional chapters, lessons, and a certificate. Required permissions: - `courses:update` */
+/** Create course [Legacy API -- https://docs.whop.com/api-reference] Create a new course within an experience, with optional chapters, lessons, and a certificate. Required permissions: - `courses:update` */
 export const createCourse: API.OperationMethod<
   CreateCourseRequest,
   Course,
@@ -624,7 +624,7 @@ export type DeleteCourseError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete course [Legacy API — https://docs.whop.com/api-reference] Permanently delete a course and all of its chapters, lessons, and student progress. Required permissions: - `courses:update` */
+/** Delete course [Legacy API -- https://docs.whop.com/api-reference] Permanently delete a course and all of its chapters, lessons, and student progress. Required permissions: - `courses:update` */
 export const deleteCourse: API.OperationMethod<
   DeleteCourseRequest,
   DeleteCourseResponse,
@@ -639,7 +639,7 @@ export const deleteCourse: API.OperationMethod<
 }));
 
 export type GetCourseError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve course [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing course. Required permissions: - `courses:read` */
+/** Retrieve course [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing course. Required permissions: - `courses:read` */
 export const getCourse: API.OperationMethod<
   GetCourseRequest,
   Course,
@@ -654,7 +654,7 @@ export const getCourse: API.OperationMethod<
 }));
 
 export type ListCourseError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List courses [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of courses, filtered by either an experience or a company. Required permissions: - `courses:read` */
+/** List courses [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of courses, filtered by either an experience or a company. Required permissions: - `courses:read` */
 export const listCourse: API.PaginatedOperationMethod<
   ListCourseRequest,
   ListCourseResponse,
@@ -686,7 +686,7 @@ export type UpdateCourseError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update course [Legacy API — https://docs.whop.com/api-reference] Update a course's title, description, visibility, thumbnail, or chapter ordering. Required permissions: - `courses:update` */
+/** Update course [Legacy API -- https://docs.whop.com/api-reference] Update a course's title, description, visibility, thumbnail, or chapter ordering. Required permissions: - `courses:update` */
 export const updateCourse: API.OperationMethod<
   UpdateCourseRequest,
   Course,

@@ -443,7 +443,7 @@ export interface StorefrontAccount {
   id: string;
   /** Account logo image URL. `null` when the account has not set one. */
   logo_url: string | null;
-  /** Account public route identifier — the `whop.com/{route}` storefront path. */
+  /** Account public route identifier -- the `whop.com/{route}` storefront path. */
   route: string;
   /** Account display name. */
   title: string;
@@ -822,7 +822,7 @@ export type AddFreeDaysMembershipError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Add free days membership [Legacy API — https://docs.whop.com/api-reference] Add free days to extend a membership's current billing period, expiration date, or Stripe trial. Required permissions: - `member:manage` - `member:email:read` - `member:basic:read` */
+/** Add free days membership [Legacy API -- https://docs.whop.com/api-reference] Add free days to extend a membership's current billing period, expiration date, or Stripe trial. Required permissions: - `member:manage` - `member:email:read` - `member:basic:read` */
 export const addFreeDaysMembership: API.OperationMethod<
   AddFreeDaysMembershipRequest,
   LegacyMembership,
@@ -897,7 +897,7 @@ export const inviteMembership: API.OperationMethod<
 }));
 
 export type ListMembershipsError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** List Memberships Lists every membership the caller can read: an account API key its account's; a user credential their own plus those of every account they manage. `account_id` and `user_id` only narrow that list — values outside the caller's reach return fewer results, not an error. */
+/** List Memberships Lists every membership the caller can read: an account API key its account's; a user credential their own plus those of every account they manage. `account_id` and `user_id` only narrow that list -- values outside the caller's reach return fewer results, not an error. */
 export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
@@ -1004,7 +1004,7 @@ export type UncancelMembershipError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Uncancel membership [Legacy API — https://docs.whop.com/api-reference] Reverse a pending cancellation for a membership that was scheduled to cancel at period end. Required permissions: - `member:manage` - `member:email:read` - `member:basic:read` */
+/** Uncancel membership [Legacy API -- https://docs.whop.com/api-reference] Reverse a pending cancellation for a membership that was scheduled to cancel at period end. Required permissions: - `member:manage` - `member:email:read` - `member:basic:read` */
 export const uncancelMembership: API.OperationMethod<
   UncancelMembershipRequest,
   LegacyMembership,
@@ -1019,7 +1019,7 @@ export const uncancelMembership: API.OperationMethod<
 }));
 
 export type UpdateMembershipError = BadRequest | Forbidden | WhopOpError;
-/** Update Membership Updates a membership: merge metadata key-value pairs, toggle `cancel_at_period_end` — `true` schedules the cancellation for the end of the current billing period, `false` reverses a pending one — or move future renewals to another of the customer's saved payment methods with `payment_method_id`. */
+/** Update Membership Updates a membership: merge metadata key-value pairs, toggle `cancel_at_period_end` -- `true` schedules the cancellation for the end of the current billing period, `false` reverses a pending one -- or move future renewals to another of the customer's saved payment methods with `payment_method_id`. */
 export const updateMembership: API.OperationMethod<
   UpdateMembershipRequest,
   Membership,

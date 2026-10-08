@@ -312,7 +312,7 @@ export interface CanvasesEditCreateRequest {
   prompt?: string;
   /** Optional new display name for the canvas. */
   name?: string;
-  /** Required optimistic-concurrency guard: the current_version_id the edits are based on (null when the canvas has never been published). Diff edits against a moved head are rejected with 409 version_conflict — they cannot be published unguarded. */
+  /** Required optimistic-concurrency guard: the current_version_id the edits are based on (null when the canvas has never been published). Diff edits against a moved head are rejected with 409 version_conflict -- they cannot be published unguarded. */
   expected_current_version_id: string | null;
 }
 export const CanvasesEditCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -345,13 +345,13 @@ export interface CanvasSummary {
   kind: CanvasKindEnum;
   /** Id of the channel the canvas belongs to. */
   channel_id: string;
-  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
+  /** Id of the live source version -- pass as expected_current_version_id on publish. Null before the first publish. */
   current_version_id: string | null;
   /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
   published_build_id: string | null;
   /** When the canvas was created. */
   created_at: string;
-  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas -- share this when pointing a user at it; never construct a canvas URL. */
   url: string;
 }
 export const CanvasSummary = /*@__PURE__*/ S.suspend(() =>
@@ -497,7 +497,7 @@ export interface CanvasPlacement {
   status: CanvasPlacementStatusEnum | (string & {});
   /** Id of the component canvas this placement renders. Required once the placement is live. */
   component?: string | null;
-  /** Component version to render: "latest" (the default — follows the component's published build) or a pinned source version id. */
+  /** Component version to render: "latest" (the default -- follows the component's published build) or a pinned source version id. */
   version?: string | null;
   /** Left edge, in grid columns (0-based). */
   x: number;
@@ -543,7 +543,7 @@ export interface CanvasPlacementChanges {
   status?: CanvasPlacementStatusEnum | (string & {});
   /** Id of the component canvas this placement renders. Required once the placement is live. */
   component?: string | null;
-  /** Component version to render: "latest" (the default — follows the component's published build) or a pinned source version id. */
+  /** Component version to render: "latest" (the default -- follows the component's published build) or a pinned source version id. */
   version?: string | null;
   /** Left edge, in grid columns (0-based). */
   x?: number;
@@ -615,7 +615,7 @@ export interface CanvasesLayoutPatchCreateRequest {
   operations: CanvasesLayoutPatchCreateRequestOperationsList;
   /** Short description of the change, stored on the appended version history entry. */
   prompt?: string;
-  /** Required optimistic-concurrency guard: the current_version_id the operations are based on (null when the canvas has no layout versions yet). A moved head is rejected with 409 version_conflict — patches cannot apply unguarded. */
+  /** Required optimistic-concurrency guard: the current_version_id the operations are based on (null when the canvas has no layout versions yet). A moved head is rejected with 409 version_conflict -- patches cannot apply unguarded. */
   expected_current_version_id: string | null;
 }
 export const CanvasesLayoutPatchCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -646,7 +646,7 @@ export const CanvasLayoutPlacementsList = /*@__PURE__*/ S.Array(
   CanvasPlacement,
 ) as any as S.Schema<CanvasLayoutPlacementsList>;
 
-/** A grid canvas's layout document — its entire 'source'. */
+/** A grid canvas's layout document -- its entire 'source'. */
 export interface CanvasLayout {
   /** Layout schema version. Currently always 1. * `1` - 1 */
   schemaVersion: CanvasLayoutSchemaVersionEnum | (number & {});
@@ -663,7 +663,7 @@ export const CanvasLayout = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CanvasLayout" }) as any as S.Schema<CanvasLayout>;
 
-/** Result of a successful layout publish or patch. The new version is live immediately — no build runs. */
+/** Result of a successful layout publish or patch. The new version is live immediately -- no build runs. */
 export interface CanvasLayoutPublishResponse {
   /** The canvas after the publish, including the new version pointer. */
   canvas: CanvasSummary;
@@ -810,7 +810,7 @@ export const CanvasComponentMeta = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CanvasComponentMeta" }) as any as S.Schema<CanvasComponentMeta>;
 
-/** A canvas's multi-file source project — the canonical write format for canvas source. */
+/** A canvas's multi-file source project -- the canonical write format for canvas source. */
 export interface CanvasSourceProject {
   /** Source-project schema version. Currently always 1. */
   schemaVersion: number;
@@ -826,7 +826,7 @@ export interface CanvasSourceProject {
   canvasSdkVersion?: string;
   /** Placement contract, required for (and only allowed on) component-kind canvases: the grid size the component takes and the JSON Schema of its per-placement config. */
   component?: CanvasComponentMeta;
-  /** Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins. */
+  /** Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL -- the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins. */
   capabilities?: CanvasCapabilities;
 }
 export const CanvasSourceProject = /*@__PURE__*/ S.suspend(() =>
@@ -987,9 +987,9 @@ export interface CanvasBuild {
   build_status: BuildStatusEnum;
   /** Structured diagnostics recorded by the build (errors explain a failed status). */
   diagnostics: CanvasBuildDiagnosticsList;
-  /** The frozen artifact manifest — present once the build is ready. */
+  /** The frozen artifact manifest -- present once the build is ready. */
   manifest?: CanvasArtifactManifest | null;
-  /** Hex SHA-256 over the manifest — the artifact's integrity anchor. Null until ready. */
+  /** Hex SHA-256 over the manifest -- the artifact's integrity anchor. Null until ready. */
   integrity: string | null;
   /** Signed URL for the ready build's entry HTML. Null until ready or when artifact delivery is unavailable. */
   artifact_url: string | null;
@@ -1066,9 +1066,9 @@ export interface CreateCanvaseRequest {
   name: string;
   /** Id of the channel the canvas belongs to. */
   channel_id: string;
-  /** What to create: 'freeform' (a standalone app), 'component' (a reusable widget for grids — its published project must declare a `component` placement contract), or 'grid' (a composition of components, edited through the layout endpoints). * `freeform` - freeform * `grid` - grid * `component` - component */
+  /** What to create: 'freeform' (a standalone app), 'component' (a reusable widget for grids -- its published project must declare a `component` placement contract), or 'grid' (a composition of components, edited through the layout endpoints). * `freeform` - freeform * `grid` - grid * `component` - component */
   kind?: CanvasKindEnum | (string & {});
-  /** Short prose describing the canvas. For components this is the store-search text agents match against — say what the widget shows and what its config controls. */
+  /** Short prose describing the canvas. For components this is the store-search text agents match against -- say what the widget shows and what its config controls. */
   description?: string;
   /** Canvas template identifier. */
   template_id?: string;
@@ -1149,7 +1149,7 @@ export interface Canvas {
   /** Whether the canvas is pinned to its channel. */
   pinned: boolean;
   pinned_at: string | null;
-  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
+  /** Id of the live source version -- pass as expected_current_version_id on publish. Null before the first publish. */
   current_version_id: string | null;
   /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
   published_build_id: string | null;
@@ -1158,7 +1158,7 @@ export interface Canvas {
   created_by: UserBasic;
   created_at: string;
   updated_at: string;
-  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas -- share this when pointing a user at it; never construct a canvas URL. */
   url: string;
 }
 export const Canvas = /*@__PURE__*/ S.suspend(() =>
@@ -1557,7 +1557,7 @@ export interface GetCanvasesBuildRequest {
   project_id: string;
   /** A UUID string identifying this canvas. */
   id: string;
-  /** "slim" returns only what rendering needs — the live build, the head version's builds, and anything still in flight — instead of the full recent-build history. Any other value (or none) returns the full window. */
+  /** "slim" returns only what rendering needs -- the live build, the head version's builds, and anything still in flight -- instead of the full recent-build history. Any other value (or none) returns the full window. */
   scope?: string;
   /** Include the retained ready build for this historical source version. */
   version_id?: string;
@@ -1932,13 +1932,13 @@ export const CanvasLayoutWithComponentsResponseComponentLifecyclesList = /*@__PU
   CanvasComponentLifecycle,
 ) as any as S.Schema<CanvasLayoutWithComponentsResponseComponentLifecyclesList>;
 
-/** The layout response, plus (when requested) the renderable build of every component the layout places — so a grid opens on one round trip instead of one builds fetch per placement. */
+/** The layout response, plus (when requested) the renderable build of every component the layout places -- so a grid opens on one round trip instead of one builds fetch per placement. */
 export interface CanvasLayoutWithComponentsResponse {
   /** Identity and version pointers for the canvas. */
   canvas: CanvasSummary;
   /** The layout document. A grid canvas with no versions yet returns the default empty layout. */
   layout: CanvasLayout;
-  /** The live layout version this document reflects — pass as expected_current_version_id when publishing or patching. Null before the first layout publish. */
+  /** The live layout version this document reflects -- pass as expected_current_version_id when publishing or patching. Null before the first layout publish. */
   current_version_id: string | null;
   /** One entry per distinct (component, pinned version) the layout's live placements reference, present only when the request passes include_components. Components the caller may not see are omitted. */
   component_lifecycles?: CanvasLayoutWithComponentsResponseComponentLifecyclesList;
@@ -1978,7 +1978,7 @@ export interface CanvasSourceResponse {
   canvas: CanvasSummary;
   /** The canvas's source project. Pre-relational single-file canvases are presented as a synthetic project. */
   project: CanvasSourceProject;
-  /** The live source version this project reflects — pass as expected_current_version_id when publishing an edit. Null before the first publish. */
+  /** The live source version this project reflects -- pass as expected_current_version_id when publishing an edit. Null before the first publish. */
   current_version_id: string | null;
 }
 export const CanvasSourceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2161,7 +2161,7 @@ export const GetCanvasesVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCanvasesVersionRequest",
 }) as any as S.Schema<GetCanvasesVersionRequest>;
 
-/** One entry of a canvas's source-version history (metadata only — fetch a version's files via `source?version_id=`). */
+/** One entry of a canvas's source-version history (metadata only -- fetch a version's files via `source?version_id=`). */
 export interface CanvasVersion {
   /** The version's id. */
   id: string;
@@ -2232,7 +2232,7 @@ export const CanvasViewResponseComponentLifecyclesList = /*@__PURE__*/ S.Array(
   CanvasComponentLifecycle,
 ) as any as S.Schema<CanvasViewResponseComponentLifecyclesList>;
 
-/** Everything a client needs to open a canvas, in one round trip. Replaces the record → builds → source waterfall: the record, the live build (with its signed artifact URL), and — only when there is nothing built to render — the head source project (freeform/component) or the layout document (grid). */
+/** Everything a client needs to open a canvas, in one round trip. Replaces the record -> builds -> source waterfall: the record, the live build (with its signed artifact URL), and -- only when there is nothing built to render -- the head source project (freeform/component) or the layout document (grid). */
 export interface CanvasViewResponse {
   /** The canvas record. */
   canvas: Canvas;
@@ -2240,7 +2240,7 @@ export interface CanvasViewResponse {
   published_build: CanvasBuild | null;
   /** Id of the source version the canvas's head points at. Null before the first publish. */
   current_version_id: string | null;
-  /** True while a build is queued or running — poll the builds endpoint until it settles. */
+  /** True while a build is queued or running -- poll the builds endpoint until it settles. */
   has_active_build: boolean;
   /** The head source project, present only when the canvas has no live build to render (the client-side fallback tier). Null otherwise, and always null for grid canvases. */
   source?: CanvasSourceProject | null;
@@ -2535,7 +2535,7 @@ export const canvasesDestroy: API.OperationMethod<
 }));
 
 export type CanvasesEditCreateError = BadRequest | Forbidden | Conflict | PosthogOpError;
-/** Publish file edits against the canvas's current source project. Diff-aware alternative to sending the complete project: operations replace text inside a file, write, delete, or rename files, applied in order to the head the caller read. `expected_current_version_id` is mandatory here — relative edits against an unverified base could silently merge into someone else's newer work. */
+/** Publish file edits against the canvas's current source project. Diff-aware alternative to sending the complete project: operations replace text inside a file, write, delete, or rename files, applied in order to the head the caller read. `expected_current_version_id` is mandatory here -- relative edits against an unverified base could silently merge into someone else's newer work. */
 export const canvasesEditCreate: API.OperationMethod<
   CanvasesEditCreateRequest,
   CanvasSourcePublishResponse,
@@ -2700,7 +2700,7 @@ export const createCanvasesPromote: API.OperationMethod<
 }));
 
 export type CreateCanvasesReportErrorError = NotFound | PosthogOpError;
-/** Report a runtime error observed while rendering a canvas build. Files the report in the authoring task's thread (deduped per build and error type) so the canvas's agent can be asked to fix it. Reports never start an agent run by themselves — dispatch is `request_fix`. Only the error class crosses the server; full messages and stacks stay client-side because rendering sessions can carry viewer data. */
+/** Report a runtime error observed while rendering a canvas build. Files the report in the authoring task's thread (deduped per build and error type) so the canvas's agent can be asked to fix it. Reports never start an agent run by themselves -- dispatch is `request_fix`. Only the error class crosses the server; full messages and stacks stay client-side because rendering sessions can carry viewer data. */
 export const createCanvasesReportError: API.OperationMethod<
   CreateCanvasesReportErrorRequest,
   CreateCanvasesReportErrorResponse,
@@ -2730,7 +2730,7 @@ export const createCanvasesRequestAgent: API.OperationMethod<
 }));
 
 export type CreateCanvasesRequestFixError = Forbidden | NotFound | Conflict | PosthogOpError;
-/** Wake the canvas's authoring agent to fix a failing build or runtime error. Starts (or signals) an agent run on the authoring task, instructed to stage the fix as a draft the user reviews and promotes. This is the human-initiated dispatch step behind error reports; it spends agent compute, so it never fires automatically, and only the authoring task's creator may dispatch — the run executes with their credentials. */
+/** Wake the canvas's authoring agent to fix a failing build or runtime error. Starts (or signals) an agent run on the authoring task, instructed to stage the fix as a draft the user reviews and promotes. This is the human-initiated dispatch step behind error reports; it spends agent compute, so it never fires automatically, and only the authoring task's creator may dispatch -- the run executes with their credentials. */
 export const createCanvasesRequestFix: API.OperationMethod<
   CreateCanvasesRequestFixRequest,
   CreateCanvasesRequestFixResponse,
@@ -2790,7 +2790,7 @@ export const getCanvasesAction: API.OperationMethod<
 }));
 
 export type GetCanvasesBuildError = PosthogOpError;
-/** Read the canvas's build lifecycle: live pointers plus recent builds. A publish queues a build; poll this until it is ready (the live pointer advances) or failed (fix the error diagnostics and publish again — the last good build stays live). Send the response's ETag back as If-None-Match to make the poll revalidate without a body. */
+/** Read the canvas's build lifecycle: live pointers plus recent builds. A publish queues a build; poll this until it is ready (the live pointer advances) or failed (fix the error diagnostics and publish again -- the last good build stays live). Send the response's ETag back as If-None-Match to make the poll revalidate without a body. */
 export const getCanvasesBuild: API.OperationMethod<
   GetCanvasesBuildRequest,
   CanvasBuildsResponse,
@@ -2880,7 +2880,7 @@ export const getCanvasesSource: API.OperationMethod<
 }));
 
 export type GetCanvasesStateError = Forbidden | PosthogOpError;
-/** Read the canvas's runtime key-value state (the ph.state store). Returns shared entries plus the authenticated user's own user-scoped entries — never another user's. */
+/** Read the canvas's runtime key-value state (the ph.state store). Returns shared entries plus the authenticated user's own user-scoped entries -- never another user's. */
 export const getCanvasesState: API.OperationMethod<
   GetCanvasesStateRequest,
   CanvasStateResponse,
@@ -2925,7 +2925,7 @@ export const getCanvasesVersion: API.OperationMethod<
 }));
 
 export type GetCanvasesViewError = PosthogOpError;
-/** Everything needed to open the canvas, in one round trip. Returns the record, the live build (with its signed artifact URL), and — only when there is nothing built to render — the head source project (freeform/component) or the layout document (grid). Send the response's ETag back as If-None-Match to revalidate without a body. */
+/** Everything needed to open the canvas, in one round trip. Returns the record, the live build (with its signed artifact URL), and -- only when there is nothing built to render -- the head source project (freeform/component) or the layout document (grid). Send the response's ETag back as If-None-Match to revalidate without a body. */
 export const getCanvasesView: API.OperationMethod<
   GetCanvasesViewRequest,
   CanvasViewResponse,

@@ -1796,7 +1796,7 @@ export interface MCAPriceSheetProperties {
   currency?: string;
   /** Currency in which charges are posted. */
   billingCurrency?: string;
-  /** Term length for Azure Savings Plan or Reservation term – one year or three years (P1Y or P3Y) */
+  /** Term length for Azure Savings Plan or Reservation term - one year or three years (P1Y or P3Y) */
   term?: string;
   /** Price type for a product. For example, an Azure resource with a pay-as-you-go rate with priceType as Consumption. Other price types include ReservedInstance and Savings Plan. */
   priceType?: string;

@@ -141,7 +141,7 @@ export const RemindersInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemindersInfoResponse" }) as any as S.Schema<RemindersInfoResponse>;
 
 export type AddReminderError = SlackOpError;
-/** Creates a reminder. Required scopes — user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_add_bot` — Reminders can't be sent to bots. - `cannot_add_others` — Guests can't set reminders for other team members. - `cannot_add_others_recurring` — Recurring reminders can't be set for other team members. - `cannot_add_profile_only_user` — Reminders can't be sent to profile only users. - `cannot_add_slackbot` — Reminders can't be sent to Slackbot. - `cannot_parse` — The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: `1458678068`, `20`, `in 5 minutes`, `tomorrow`, `at 3:30pm`, `on Tuesday`, or `next week`. - `missing_argument` — An argument is missing. - `user_not_found` — That user can't be found. See https://docs.slack.dev/reference/methods/reminders.add */
+/** Creates a reminder. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_add_bot` -- Reminders can't be sent to bots. - `cannot_add_others` -- Guests can't set reminders for other team members. - `cannot_add_others_recurring` -- Recurring reminders can't be set for other team members. - `cannot_add_profile_only_user` -- Reminders can't be sent to profile only users. - `cannot_add_slackbot` -- Reminders can't be sent to Slackbot. - `cannot_parse` -- The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: `1458678068`, `20`, `in 5 minutes`, `tomorrow`, `at 3:30pm`, `on Tuesday`, or `next week`. - `missing_argument` -- An argument is missing. - `user_not_found` -- That user can't be found. See https://docs.slack.dev/reference/methods/reminders.add */
 export const addReminder: API.OperationMethod<
   AddReminderRequest,
   AddReminderResponse,
@@ -156,7 +156,7 @@ export const addReminder: API.OperationMethod<
 }));
 
 export type CompleteReminderError = SlackOpError;
-/** Marks a reminder as complete. Required scopes — user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_complete_others` — Reminders for other team members can't be marked complete. - `cannot_complete_recurring` — Recurring reminders can't be marked complete. - `missing_argument` — An argument is missing. - `not_found` — That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.complete */
+/** Marks a reminder as complete. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_complete_others` -- Reminders for other team members can't be marked complete. - `cannot_complete_recurring` -- Recurring reminders can't be marked complete. - `missing_argument` -- An argument is missing. - `not_found` -- That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.complete */
 export const completeReminder: API.OperationMethod<
   CompleteReminderRequest,
   CompleteReminderResponse,
@@ -171,7 +171,7 @@ export const completeReminder: API.OperationMethod<
 }));
 
 export type DeleteReminderError = SlackOpError;
-/** Deletes a reminder. Required scopes — user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` — An argument is missing. - `not_found` — That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.delete */
+/** Deletes a reminder. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- An argument is missing. - `not_found` -- That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.delete */
 export const deleteReminder: API.OperationMethod<
   DeleteReminderRequest,
   DeleteReminderResponse,
@@ -186,7 +186,7 @@ export const deleteReminder: API.OperationMethod<
 }));
 
 export type ListRemindersError = SlackOpError;
-/** Lists all reminders created by or for a given user. Required scopes — user: `reminders:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` — An argument is missing. See https://docs.slack.dev/reference/methods/reminders.list */
+/** Lists all reminders created by or for a given user. Required scopes -- user: `reminders:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- An argument is missing. See https://docs.slack.dev/reference/methods/reminders.list */
 export const listReminders: API.OperationMethod<
   ListRemindersRequest,
   ListRemindersResponse,
@@ -201,7 +201,7 @@ export const listReminders: API.OperationMethod<
 }));
 
 export type RemindersInfoError = SlackOpError;
-/** Gets information about a reminder. Required scopes — user: `reminders:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` — An argument is missing. - `not_found` — That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.info */
+/** Gets information about a reminder. Required scopes -- user: `reminders:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- An argument is missing. - `not_found` -- That reminder can't be found. See https://docs.slack.dev/reference/methods/reminders.info */
 export const remindersInfo: API.OperationMethod<
   RemindersInfoRequest,
   RemindersInfoResponse,

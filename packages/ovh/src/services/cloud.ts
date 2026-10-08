@@ -4494,13 +4494,13 @@ export const CloudProjectAiGitCredentialsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudProjectAiGitCredentialsInput",
 }) as any as S.Schema<CloudProjectAiGitCredentialsInput>;
 
-/** AI Solutions S3™ compatible credentials */
+/** AI Solutions S3(TM) compatible credentials */
 export interface CloudProjectAiS3CredentialsInput {
-  /** S3™ compatible Access Key */
+  /** S3(TM) compatible Access Key */
   accessKey: string;
-  /** S3™ compatible Region */
+  /** S3(TM) compatible Region */
   region: string;
-  /** S3™ compatible Private Key */
+  /** S3(TM) compatible Private Key */
   secretKey: string | Redacted.Redacted<string>;
 }
 export const CloudProjectAiS3CredentialsInput = /*@__PURE__*/ S.suspend(() =>
@@ -4517,7 +4517,7 @@ export const CloudProjectAiS3CredentialsInput = /*@__PURE__*/ S.suspend(() =>
 export interface CloudProjectAiDataStoreCredentialsInput {
   /** Git data store credentials */
   git?: CloudProjectAiGitCredentialsInput | null;
-  /** S3™ compatible data store credentials */
+  /** S3(TM) compatible data store credentials */
   s3?: CloudProjectAiS3CredentialsInput | null;
 }
 export const CloudProjectAiDataStoreCredentialsInput = /*@__PURE__*/ S.suspend(() =>
@@ -15769,11 +15769,11 @@ export const CreateCloudProjectUserS3CredentialsRequest = /*@__PURE__*/ S.suspen
   identifier: "CreateCloudProjectUserS3CredentialsRequest",
 }) as any as S.Schema<CreateCloudProjectUserS3CredentialsRequest>;
 
-/** S3™ compatible credentials with secret */
+/** S3(TM) compatible credentials with secret */
 export interface CloudUserS3CredentialsWithSecret {
-  /** S3™ compatible access key */
+  /** S3(TM) compatible access key */
   access?: string;
-  /** S3™ compatible access key secret */
+  /** S3(TM) compatible access key secret */
   secret?: string | Redacted.Redacted<string>;
   /** Tenant id */
   tenantId?: string;
@@ -15815,9 +15815,9 @@ export const CreateCloudProjectUserS3CredentialsSecretRequest = /*@__PURE__*/ S.
   identifier: "CreateCloudProjectUserS3CredentialsSecretRequest",
 }) as any as S.Schema<CreateCloudProjectUserS3CredentialsSecretRequest>;
 
-/** S3™ compatible storage credentials secret only */
+/** S3(TM) compatible storage credentials secret only */
 export interface CloudUserS3CredentialsSecretOnly {
-  /** S3™ compatible access key secret */
+  /** S3(TM) compatible access key secret */
   secret?: string | Redacted.Redacted<string>;
 }
 export const CloudUserS3CredentialsSecretOnly = /*@__PURE__*/ S.suspend(() =>
@@ -22773,11 +22773,11 @@ export interface CloudProjectAiDataStoreAuth {
   accessKey?: string | null;
   /** Region of the datastore */
   region?: string | null;
-  /** S3™ compatible URL of the datastore */
+  /** S3(TM) compatible URL of the datastore */
   s3Url?: string | null;
   /** Secret key to the datastore */
   secretKey?: string | Redacted.Redacted<string> | null;
-  /** Swift (or S3™ compatible) Auth token */
+  /** Swift (or S3(TM) compatible) Auth token */
   token?: string | null;
   /** Swift storage URL */
   url?: string | null;
@@ -31533,9 +31533,9 @@ export const GetCloudProjectUserS3CredentialsRequest = /*@__PURE__*/ S.suspend((
   identifier: "GetCloudProjectUserS3CredentialsRequest",
 }) as any as S.Schema<GetCloudProjectUserS3CredentialsRequest>;
 
-/** S3™ compatible storage credentials */
+/** S3(TM) compatible storage credentials */
 export interface CloudUserS3Credentials {
-  /** S3™ compatible access key */
+  /** S3(TM) compatible access key */
   access?: string;
   /** Tenant id */
   tenantId?: string;
@@ -52478,7 +52478,7 @@ export const confirmCloudProjectTermination: API.OperationMethod<
 }));
 
 export type CopyCloudProjectRegionStorageObjectError = OvhOpError;
-/** Copy a S3™* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Copy a S3(TM)* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const copyCloudProjectRegionStorageObject: API.OperationMethod<
   CopyCloudProjectRegionStorageObjectRequest,
   CloudStorageCopyObjectOut,
@@ -52493,7 +52493,7 @@ export const copyCloudProjectRegionStorageObject: API.OperationMethod<
 }));
 
 export type CopyCloudProjectRegionStorageObjectVersionError = OvhOpError;
-/** Copy a specific version of a S3™* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Copy a specific version of a S3(TM)* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const copyCloudProjectRegionStorageObjectVersion: API.OperationMethod<
   CopyCloudProjectRegionStorageObjectVersionRequest,
   CloudStorageCopyObjectOut,
@@ -55284,7 +55284,7 @@ export const createCloudProjectUserRole: API.OperationMethod<
 }));
 
 export type CreateCloudProjectUserS3CredentialsError = OvhOpError;
-/** Create a new S3™* compatible storage credentials for an user <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Create a new S3(TM)* compatible storage credentials for an user <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createCloudProjectUserS3Credentials: API.OperationMethod<
   CreateCloudProjectUserS3CredentialsRequest,
   CloudUserS3CredentialsWithSecret,
@@ -55299,7 +55299,7 @@ export const createCloudProjectUserS3Credentials: API.OperationMethod<
 }));
 
 export type CreateCloudProjectUserS3CredentialsSecretError = OvhOpError;
-/** Display secret from a S3™* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Display secret from a S3(TM)* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createCloudProjectUserS3CredentialsSecret: API.OperationMethod<
   CreateCloudProjectUserS3CredentialsSecretRequest,
   CloudUserS3CredentialsSecretOnly,
@@ -55389,7 +55389,7 @@ export const createCloudProjectVrack: API.OperationMethod<
 }));
 
 export type CreateColdArchiveContainerOnRegionError = OvhOpError;
-/** Create S3™* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Create S3(TM)* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createColdArchiveContainerOnRegion: API.OperationMethod<
   CreateColdArchiveContainerOnRegionRequest,
   CloudColdArchiveContainer,
@@ -55494,7 +55494,7 @@ export const createNetworkLoadBalancerConfiguration: API.OperationMethod<
 }));
 
 export type CreatePresignedUrlOnRegionError = OvhOpError;
-/** Generate S3™* compatible presigned URLs to download or upload objects <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Generate S3(TM)* compatible presigned URLs to download or upload objects <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createPresignedUrlOnRegion: API.OperationMethod<
   CreatePresignedUrlOnRegionRequest,
   CloudStoragePresignedURL,
@@ -55509,7 +55509,7 @@ export const createPresignedUrlOnRegion: API.OperationMethod<
 }));
 
 export type CreateReplicationJobOnStorageContainerError = OvhOpError;
-/** Create replication job on S3™* compatible buckets <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Create replication job on S3(TM)* compatible buckets <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createReplicationJobOnStorageContainer: API.OperationMethod<
   CreateReplicationJobOnStorageContainerRequest,
   CloudStorageJobReplication,
@@ -55524,7 +55524,7 @@ export const createReplicationJobOnStorageContainer: API.OperationMethod<
 }));
 
 export type CreateStorageContainerOnRegionError = OvhOpError;
-/** Create S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Create S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createStorageContainerOnRegion: API.OperationMethod<
   CreateStorageContainerOnRegionRequest,
   CloudStorageContainer,
@@ -55539,7 +55539,7 @@ export const createStorageContainerOnRegion: API.OperationMethod<
 }));
 
 export type CreateStorageContainerPolicyOnRegionError = OvhOpError;
-/** Add S3™* compatible storage container policy <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Add S3(TM)* compatible storage container policy <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const createStorageContainerPolicyOnRegion: API.OperationMethod<
   CreateStorageContainerPolicyOnRegionRequest,
   CreateStorageContainerPolicyOnRegionResponse,
@@ -57005,7 +57005,7 @@ export const deleteCloudProjectNetworkPrivateSubnet: API.OperationMethod<
 }));
 
 export type DeleteCloudProjectRegionColdArchiveObjectError = OvhOpError;
-/** Delete S3™* compatible cold archive container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible cold archive container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteCloudProjectRegionColdArchiveObject: API.OperationMethod<
   DeleteCloudProjectRegionColdArchiveObjectRequest,
   DeleteCloudProjectRegionColdArchiveObjectResponse,
@@ -57438,7 +57438,7 @@ export const deleteCloudProjectUserRole: API.OperationMethod<
 }));
 
 export type DeleteCloudProjectUserS3CredentialsError = OvhOpError;
-/** Delete an S3™* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete an S3(TM)* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteCloudProjectUserS3Credentials: API.OperationMethod<
   DeleteCloudProjectUserS3CredentialsRequest,
   DeleteCloudProjectUserS3CredentialsResponse,
@@ -57483,7 +57483,7 @@ export const deleteCloudProjectVolumeSnapshot: API.OperationMethod<
 }));
 
 export type DeleteColdArchiveContainerOnRegionError = OvhOpError;
-/** Delete S3™* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteColdArchiveContainerOnRegion: API.OperationMethod<
   DeleteColdArchiveContainerOnRegionRequest,
   DeleteColdArchiveContainerOnRegionResponse,
@@ -57498,7 +57498,7 @@ export const deleteColdArchiveContainerOnRegion: API.OperationMethod<
 }));
 
 export type DeleteContainerLifecycleConfigurationError = OvhOpError;
-/** Delete S3™* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteContainerLifecycleConfiguration: API.OperationMethod<
   DeleteContainerLifecycleConfigurationRequest,
   DeleteContainerLifecycleConfigurationResponse,
@@ -57588,7 +57588,7 @@ export const deleteNetworkLoadBalancerConfiguration: API.OperationMethod<
 }));
 
 export type DeleteObjectOnContainerOnRegionError = OvhOpError;
-/** Delete S3™* compatible storage container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible storage container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteObjectOnContainerOnRegion: API.OperationMethod<
   DeleteObjectOnContainerOnRegionRequest,
   DeleteObjectOnContainerOnRegionResponse,
@@ -57603,7 +57603,7 @@ export const deleteObjectOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type DeleteObjectVersionOnContainerOnRegionError = OvhOpError;
-/** Delete S3™* compatible storage container object version <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible storage container object version <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deleteObjectVersionOnContainerOnRegion: API.OperationMethod<
   DeleteObjectVersionOnContainerOnRegionRequest,
   DeleteObjectVersionOnContainerOnRegionResponse,
@@ -57648,7 +57648,7 @@ export const detachCloudProjectVolume: API.OperationMethod<
 }));
 
 export type DeteteStorageContainerOnRegionError = OvhOpError;
-/** Delete S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Delete S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const deteteStorageContainerOnRegion: API.OperationMethod<
   DeteteStorageContainerOnRegionRequest,
   DeteteStorageContainerOnRegionResponse,
@@ -62091,7 +62091,7 @@ export const getCloudProjectUserRole: API.OperationMethod<
 }));
 
 export type GetCloudProjectUserS3CredentialsError = OvhOpError;
-/** Get details about an S3™* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get details about an S3(TM)* compatible storage credential <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getCloudProjectUserS3Credentials: API.OperationMethod<
   GetCloudProjectUserS3CredentialsRequest,
   CloudUserS3Credentials,
@@ -62151,7 +62151,7 @@ export const getCloudProjectVrack: API.OperationMethod<
 }));
 
 export type GetColdArchiveContainerOnRegionError = OvhOpError;
-/** Get S3™* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get S3(TM)* compatible cold archive container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getColdArchiveContainerOnRegion: API.OperationMethod<
   GetColdArchiveContainerOnRegionRequest,
   CloudColdArchiveContainer,
@@ -62181,7 +62181,7 @@ export const getColdArchiveContainersOnRegion: API.OperationMethod<
 }));
 
 export type GetContainerLifecycleConfigurationError = OvhOpError;
-/** Get S3™* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get S3(TM)* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getContainerLifecycleConfiguration: API.OperationMethod<
   GetContainerLifecycleConfigurationRequest,
   CloudStorageLifecycleConfiguration,
@@ -62391,7 +62391,7 @@ export const getNetworkLoadBalancerConfiguration: API.OperationMethod<
 }));
 
 export type GetObjectInformationOnContainerOnRegionError = OvhOpError;
-/** Get information about an object in a S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get information about an object in a S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getObjectInformationOnContainerOnRegion: API.OperationMethod<
   GetObjectInformationOnContainerOnRegionRequest,
   CloudStorageObject,
@@ -62406,7 +62406,7 @@ export const getObjectInformationOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type GetObjectsInformationOnContainerOnRegionError = OvhOpError;
-/** Get objects of S3™* compatible storage containers <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get objects of S3(TM)* compatible storage containers <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getObjectsInformationOnContainerOnRegion: API.OperationMethod<
   GetObjectsInformationOnContainerOnRegionRequest,
   GetObjectsInformationOnContainerOnRegionResponse,
@@ -62421,7 +62421,7 @@ export const getObjectsInformationOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type GetObjectVersionOnContainerOnRegionError = OvhOpError;
-/** Get information about an object in a S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get information about an object in a S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getObjectVersionOnContainerOnRegion: API.OperationMethod<
   GetObjectVersionOnContainerOnRegionRequest,
   CloudStorageObjectVersion,
@@ -62436,7 +62436,7 @@ export const getObjectVersionOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type GetObjectVersionsOnContainerOnRegionError = OvhOpError;
-/** Get versions of an object in a S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get versions of an object in a S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getObjectVersionsOnContainerOnRegion: API.OperationMethod<
   GetObjectVersionsOnContainerOnRegionRequest,
   GetObjectVersionsOnContainerOnRegionResponse,
@@ -62496,7 +62496,7 @@ export const getQuotas: API.OperationMethod<
 }));
 
 export type GetReplicationJobsOnStorageContainerError = OvhOpError;
-/** Get replication jobs on S3™* compatible buckets <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get replication jobs on S3(TM)* compatible buckets <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getReplicationJobsOnStorageContainer: API.OperationMethod<
   GetReplicationJobsOnStorageContainerRequest,
   GetReplicationJobsOnStorageContainerResponse,
@@ -62511,7 +62511,7 @@ export const getReplicationJobsOnStorageContainer: API.OperationMethod<
 }));
 
 export type GetStorageContainerOnRegionError = OvhOpError;
-/** Get S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getStorageContainerOnRegion: API.OperationMethod<
   GetStorageContainerOnRegionRequest,
   CloudStorageContainer,
@@ -62526,7 +62526,7 @@ export const getStorageContainerOnRegion: API.OperationMethod<
 }));
 
 export type GetStorageContainersOnRegionError = OvhOpError;
-/** Get S3™* compatible storage containers <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Get S3(TM)* compatible storage containers <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const getStorageContainersOnRegion: API.OperationMethod<
   GetStorageContainersOnRegionRequest,
   GetStorageContainersOnRegionResponse,
@@ -67998,7 +67998,7 @@ export const listCloudProjectUserRole: API.OperationMethod<
 }));
 
 export type ListCloudProjectUserS3CredentialsError = OvhOpError;
-/** List your S3™* compatible storage credentials <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** List your S3(TM)* compatible storage credentials <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const listCloudProjectUserS3Credentials: API.OperationMethod<
   ListCloudProjectUserS3CredentialsRequest,
   ListCloudProjectUserS3CredentialsResponse,
@@ -70183,7 +70183,7 @@ export const restoreCloudProjectRegionColdArchive: API.OperationMethod<
 }));
 
 export type RestoreCloudProjectRegionStorageObjectError = OvhOpError;
-/** Restore a S3™* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Restore a S3(TM)* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const restoreCloudProjectRegionStorageObject: API.OperationMethod<
   RestoreCloudProjectRegionStorageObjectRequest,
   RestoreCloudProjectRegionStorageObjectResponse,
@@ -70198,7 +70198,7 @@ export const restoreCloudProjectRegionStorageObject: API.OperationMethod<
 }));
 
 export type RestoreCloudProjectRegionStorageObjectVersionError = OvhOpError;
-/** Restore a specific version of a S3™* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Restore a specific version of a S3(TM)* object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const restoreCloudProjectRegionStorageObjectVersion: API.OperationMethod<
   RestoreCloudProjectRegionStorageObjectVersionRequest,
   RestoreCloudProjectRegionStorageObjectVersionResponse,
@@ -70408,7 +70408,7 @@ export const updateCloudProjectLab: API.OperationMethod<
 }));
 
 export type UpdateCloudProjectRegionColdArchivePolicyError = OvhOpError;
-/** Add S3™* compatible cold archive container policy <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Add S3(TM)* compatible cold archive container policy <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const updateCloudProjectRegionColdArchivePolicy: API.OperationMethod<
   UpdateCloudProjectRegionColdArchivePolicyRequest,
   UpdateCloudProjectRegionColdArchivePolicyResponse,
@@ -70423,7 +70423,7 @@ export const updateCloudProjectRegionColdArchivePolicy: API.OperationMethod<
 }));
 
 export type UpdateContainerLifecycleConfigurationError = OvhOpError;
-/** Update S3™* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Update S3(TM)* compatible storage container lifecycle configuration <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const updateContainerLifecycleConfiguration: API.OperationMethod<
   UpdateContainerLifecycleConfigurationRequest,
   CloudStorageLifecycleConfiguration,
@@ -70468,7 +70468,7 @@ export const updateNetworkLoadBalancer: API.OperationMethod<
 }));
 
 export type UpdateObjectOnContainerOnRegionError = OvhOpError;
-/** Update S3™* compatible storage container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Update S3(TM)* compatible storage container object <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const updateObjectOnContainerOnRegion: API.OperationMethod<
   UpdateObjectOnContainerOnRegionRequest,
   CloudStorageObject,
@@ -70483,7 +70483,7 @@ export const updateObjectOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type UpdateObjectVersionOnContainerOnRegionError = OvhOpError;
-/** Update S3™* compatible storage container object version <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Update S3(TM)* compatible storage container object version <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const updateObjectVersionOnContainerOnRegion: API.OperationMethod<
   UpdateObjectVersionOnContainerOnRegionRequest,
   CloudStorageObject,
@@ -70498,7 +70498,7 @@ export const updateObjectVersionOnContainerOnRegion: API.OperationMethod<
 }));
 
 export type UpdateStorageContainerOnRegionError = OvhOpError;
-/** Update S3™* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
+/** Update S3(TM)* compatible storage container <sup>*</sup> S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc. */
 export const updateStorageContainerOnRegion: API.OperationMethod<
   UpdateStorageContainerOnRegionRequest,
   CloudStorageContainer,

@@ -173,7 +173,7 @@ export type PaymentMethodTypes =
   | "unknown";
 export const PaymentMethodTypes = S.String;
 
-/** Payment method types explicitly disabled for checkout — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly disabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -182,7 +182,7 @@ export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisable
     PaymentMethodTypes,
   ) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList>;
 
-/** Payment method types explicitly enabled for checkout — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly enabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -193,9 +193,9 @@ export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabled
 
 /** Payment method overrides for this checkout. `null` uses the plan or platform defaults. */
 export interface CreateCheckoutConfigurationRequestPaymentMethodConfiguration {
-  /** Payment method types explicitly disabled for checkout — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly disabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   disabled?: CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList;
-  /** Payment method types explicitly enabled for checkout — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly enabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   enabled?: CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList;
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
@@ -213,7 +213,7 @@ export const CreateCheckoutConfigurationRequestPaymentMethodConfiguration = /*@_
   identifier: "CreateCheckoutConfigurationRequestPaymentMethodConfiguration",
 }) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfiguration>;
 
-/** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -222,7 +222,7 @@ export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDis
     PaymentMethodTypes,
   ) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList>;
 
-/** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -233,9 +233,9 @@ export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEna
 
 /** Payment method overrides for the inline plan. `null` uses platform defaults. */
 export interface CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration {
-  /** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   disabled?: CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList;
-  /** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   enabled?: CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList;
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
@@ -417,7 +417,7 @@ export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurat
     S.String,
   ) as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
 
-/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
   disabled?: CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList;
@@ -568,7 +568,7 @@ export interface CreateCheckoutConfigurationResponse {
   created_at: string;
   /** Currency used for setup-mode payment method availability; defaults to `usd` when omitted. */
   currency?: string | null;
-  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
   effective_payment_method_configuration?: CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration | null;
   /** Checkout configuration ID, prefixed `ch_`. */
   id: string;
@@ -669,7 +669,7 @@ export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration
     S.String,
   ) as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
 
-/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
   disabled?: GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList;
@@ -816,7 +816,7 @@ export interface GetCheckoutConfigurationResponse {
   created_at: string;
   /** Currency used for setup-mode payment method availability; defaults to `usd` when omitted. */
   currency?: string | null;
-  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
   effective_payment_method_configuration?: GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration | null;
   /** Checkout configuration ID, prefixed `ch_`. */
   id: string;
@@ -917,7 +917,7 @@ export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodCon
     S.String,
   ) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList>;
 
-/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+/** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
   disabled?: ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList;
@@ -1070,7 +1070,7 @@ export interface ListCheckoutConfigurationsResponseDataItem {
   created_at: string;
   /** Currency used for setup-mode payment method availability; defaults to `usd` when omitted. */
   currency?: string | null;
-  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
+  /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
   effective_payment_method_configuration?: ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration | null;
   /** Checkout configuration ID, prefixed `ch_`. */
   id: string;

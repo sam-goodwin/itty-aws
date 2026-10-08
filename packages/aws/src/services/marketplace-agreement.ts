@@ -2724,13 +2724,13 @@ export type GetAgreementTermsError =
  *
  * The details include:
  *
- * - `TermType` – The type of term, such as `LegalTerm`, `RenewalTerm`, or `ConfigurableUpfrontPricingTerm`.
+ * - `TermType` - The type of term, such as `LegalTerm`, `RenewalTerm`, or `ConfigurableUpfrontPricingTerm`.
  *
- * - `TermID` – The ID of the particular term, which is common between offer and agreement.
+ * - `TermID` - The ID of the particular term, which is common between offer and agreement.
  *
- * - `TermPayload` – The key information contained in the term, such as the EULA for `LegalTerm` or pricing and dimensions for various pricing terms, such as `ConfigurableUpfrontPricingTerm` or `UsageBasedPricingTerm`.
+ * - `TermPayload` - The key information contained in the term, such as the EULA for `LegalTerm` or pricing and dimensions for various pricing terms, such as `ConfigurableUpfrontPricingTerm` or `UsageBasedPricingTerm`.
  *
- * - `Configuration` – The buyer/acceptor's selection at the time of agreement creation, such as the number of units purchased for a dimension or setting the `EnableAutoRenew` flag.
+ * - `Configuration` - The buyer/acceptor's selection at the time of agreement creation, such as the number of units purchased for a dimension or setting the `EnableAutoRenew` flag.
  */
 export const getAgreementTerms: API.PaginatedOperationMethod<
   GetAgreementTermsInput,

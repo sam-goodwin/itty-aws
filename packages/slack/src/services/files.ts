@@ -359,7 +359,7 @@ export const FilesInfoResponseCommentsList = /*@__PURE__*/ S.Array(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface FilesInfoResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const FilesInfoResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -856,7 +856,7 @@ export const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileResponse" }) as any as S.Schema<UploadFileResponse>;
 
 export type AddRemoteError = SlackOpError;
-/** Adds a file from a remote service Required scopes — bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` — The uploaded image could not be processed - try passing a JPG or PNG - `bad_title` — The title provided is too long. - `bot_user_required` — bot user token is required - `invalid_external_id` — The external_id provided is too long. - `too_large` — The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.add */
+/** Adds a file from a remote service Required scopes -- bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` -- The uploaded image could not be processed - try passing a JPG or PNG - `bad_title` -- The title provided is too long. - `bot_user_required` -- bot user token is required - `invalid_external_id` -- The external_id provided is too long. - `too_large` -- The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.add */
 export const addRemote: API.OperationMethod<
   AddRemoteRequest,
   AddRemoteResponse,
@@ -871,7 +871,7 @@ export const addRemote: API.OperationMethod<
 }));
 
 export type CompleteUploadExternalError = SlackOpError;
-/** Finishes an upload started with files.getUploadURLExternal Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `access_denied` — User is not the owner of the file. - `channel_not_found` — Value passed for `channel_id` was invalid. - `file_not_found` — Could not find the file from the upload ticket. - `file_update_failed` — Failure occurred when attempting to update the file. - `invalid_blocks` — Provided blocks are in the incorrect format. - `invalid_channel` — Channel could not be found or channel specified is invalid. - `not_in_channel` — User/bot membership is required for the specified channel. - `posting_to_channel_denied` — User is not authorized to post to channel. - `channels_limit_exceeded` — Exceeded the channel limit. A maximum of 100 channels is allowed per request. - `file_type_not_allowed` — The file type is not permitted based on the team's allowed_file_upload_types preference. - `file_uploads_except_images_disabled` — Only image file uploads are permitted for this team. - `user_is_external_guest` — External guests cannot upload or share files. See https://docs.slack.dev/reference/methods/files.completeUploadExternal */
+/** Finishes an upload started with files.getUploadURLExternal Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `access_denied` -- User is not the owner of the file. - `channel_not_found` -- Value passed for `channel_id` was invalid. - `file_not_found` -- Could not find the file from the upload ticket. - `file_update_failed` -- Failure occurred when attempting to update the file. - `invalid_blocks` -- Provided blocks are in the incorrect format. - `invalid_channel` -- Channel could not be found or channel specified is invalid. - `not_in_channel` -- User/bot membership is required for the specified channel. - `posting_to_channel_denied` -- User is not authorized to post to channel. - `channels_limit_exceeded` -- Exceeded the channel limit. A maximum of 100 channels is allowed per request. - `file_type_not_allowed` -- The file type is not permitted based on the team's allowed_file_upload_types preference. - `file_uploads_except_images_disabled` -- Only image file uploads are permitted for this team. - `user_is_external_guest` -- External guests cannot upload or share files. See https://docs.slack.dev/reference/methods/files.completeUploadExternal */
 export const completeUploadExternal: API.OperationMethod<
   CompleteUploadExternalRequest,
   CompleteUploadExternalResponse,
@@ -886,7 +886,7 @@ export const completeUploadExternal: API.OperationMethod<
 }));
 
 export type DeleteCommentError = SlackOpError;
-/** Deletes an existing comment on a file. Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cant_delete` — The requested comment could not be deleted. - `file_deleted` — The requested file was previously deleted. - `file_not_found` — The requested file could not be found. See https://docs.slack.dev/reference/methods/files.comments.delete */
+/** Deletes an existing comment on a file. Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cant_delete` -- The requested comment could not be deleted. - `file_deleted` -- The requested file was previously deleted. - `file_not_found` -- The requested file could not be found. See https://docs.slack.dev/reference/methods/files.comments.delete */
 export const deleteComment: API.OperationMethod<
   DeleteCommentRequest,
   DeleteCommentResponse,
@@ -901,7 +901,7 @@ export const deleteComment: API.OperationMethod<
 }));
 
 export type DeleteFileError = SlackOpError;
-/** Deletes a file. Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `cant_delete_file` — Authenticated user does not have permission to delete this file. - `delete_not_allowed` — Error returned when the requested file does not support deletion; for example, when attempting to delete a canvas template. - `file_deleted` — The file has already been deleted. - `file_deleting_disabled` — This functionality is disabled. - `file_not_found` — The file does not exist, or is not visible to the calling user. See https://docs.slack.dev/reference/methods/files.delete */
+/** Deletes a file. Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `cant_delete_file` -- Authenticated user does not have permission to delete this file. - `delete_not_allowed` -- Error returned when the requested file does not support deletion; for example, when attempting to delete a canvas template. - `file_deleted` -- The file has already been deleted. - `file_deleting_disabled` -- This functionality is disabled. - `file_not_found` -- The file does not exist, or is not visible to the calling user. See https://docs.slack.dev/reference/methods/files.delete */
 export const deleteFile: API.OperationMethod<
   DeleteFileRequest,
   DeleteFileResponse,
@@ -916,7 +916,7 @@ export const deleteFile: API.OperationMethod<
 }));
 
 export type FilesInfoError = SlackOpError;
-/** Gets information about a file. Required scopes — bot: `files:read`; user: `files:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `access_denied` — Unable to access the file (slack connect) - `file_deleted` — The requested file has been deleted - `file_not_found` — Value passed for `file` was invalid - `canvas_globally_disabled` — Canvas is disabled for this team - `canvas_disabled_user_team` — Canvas is disabled on user's team for connected Channels - `canvas_disabled_file_team` — Canvas is disabled on file's team - `not_visible` — Do not have permission to view the file - `template_not_visible` — Do not have permissions to view this template - `slack_connect_canvas_sharing_blocked` — Admin has disabled sharing of Canvas links in all Slack Connect communications See https://docs.slack.dev/reference/methods/files.info */
+/** Gets information about a file. Required scopes -- bot: `files:read`; user: `files:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `access_denied` -- Unable to access the file (slack connect) - `file_deleted` -- The requested file has been deleted - `file_not_found` -- Value passed for `file` was invalid - `canvas_globally_disabled` -- Canvas is disabled for this team - `canvas_disabled_user_team` -- Canvas is disabled on user's team for connected Channels - `canvas_disabled_file_team` -- Canvas is disabled on file's team - `not_visible` -- Do not have permission to view the file - `template_not_visible` -- Do not have permissions to view this template - `slack_connect_canvas_sharing_blocked` -- Admin has disabled sharing of Canvas links in all Slack Connect communications See https://docs.slack.dev/reference/methods/files.info */
 export const filesInfo: API.PaginatedOperationMethod<
   FilesInfoRequest,
   FilesInfoResponse,
@@ -942,7 +942,7 @@ export const filesInfo: API.PaginatedOperationMethod<
 ) as any;
 
 export type GetUploadURLExternalError = SlackOpError;
-/** Gets a URL for an edge external file upload Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `alt_txt_too_large` — Description for the image is longer than the limit of 1000 character - `file_upload_size_restricted` — The size of provided file is too large, as the team has restricted uploads of large files. - `file_uploads_disabled` — Team has disabled all file uploads. - `missing_argument` — A required argument was not provided. Typically only occurs when the `length` provided is 0. - `snippet_too_large` — The provided `length` is too large to create a snippet, which are limited to 1MB. - `storage_limit_reached` — File storage limit has been reached. This occurs when free teams have uploaded 5GB of files. - `unknown_snippet_type` — The provided `snippet_type` is not a supported type. - `unknown_subtype` — The provided `subtype` is not a supported type. - `file_type_not_allowed` — The file type is not allowed. - `file_uploads_except_images_disabled` — File uploads except images are disabled. - `user_is_external_guest` — External guests cannot upload or share files. See https://docs.slack.dev/reference/methods/files.getUploadURLExternal */
+/** Gets a URL for an edge external file upload Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `alt_txt_too_large` -- Description for the image is longer than the limit of 1000 character - `file_upload_size_restricted` -- The size of provided file is too large, as the team has restricted uploads of large files. - `file_uploads_disabled` -- Team has disabled all file uploads. - `missing_argument` -- A required argument was not provided. Typically only occurs when the `length` provided is 0. - `snippet_too_large` -- The provided `length` is too large to create a snippet, which are limited to 1MB. - `storage_limit_reached` -- File storage limit has been reached. This occurs when free teams have uploaded 5GB of files. - `unknown_snippet_type` -- The provided `snippet_type` is not a supported type. - `unknown_subtype` -- The provided `subtype` is not a supported type. - `file_type_not_allowed` -- The file type is not allowed. - `file_uploads_except_images_disabled` -- File uploads except images are disabled. - `user_is_external_guest` -- External guests cannot upload or share files. See https://docs.slack.dev/reference/methods/files.getUploadURLExternal */
 export const getUploadURLExternal: API.OperationMethod<
   GetUploadURLExternalRequest,
   GetUploadURLExternalResponse,
@@ -957,7 +957,7 @@ export const getUploadURLExternal: API.OperationMethod<
 }));
 
 export type ListFilesError = SlackOpError;
-/** List files for a team, in a channel, or from a user with applied filters. Required scopes — bot: `files:read`; user: `files:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` — A required argument is missing. - `slack_connect_canvas_sharing_blocked` — Admin has disabled sharing of Canvas links in all Slack Connect communications - `user_not_found` — Value passed for `user` was invalid - `unknown_type` — Value passed for `types` was invalid See https://docs.slack.dev/reference/methods/files.list */
+/** List files for a team, in a channel, or from a user with applied filters. Required scopes -- bot: `files:read`; user: `files:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- A required argument is missing. - `slack_connect_canvas_sharing_blocked` -- Admin has disabled sharing of Canvas links in all Slack Connect communications - `user_not_found` -- Value passed for `user` was invalid - `unknown_type` -- Value passed for `types` was invalid See https://docs.slack.dev/reference/methods/files.list */
 export const listFiles: API.OperationMethod<
   ListFilesRequest,
   ListFilesResponse,
@@ -972,7 +972,7 @@ export const listFiles: API.OperationMethod<
 }));
 
 export type ListRemoteError = SlackOpError;
-/** Retrieve information about a remote file added to Slack Required scopes — bot: `remote_files:read`; user: `remote_files:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` — Value passed for `cursor` was not valid or is no longer valid. - `no_bot_user_for_app` — Cannot call the Remote Files endpoints unless app has associated bot user See https://docs.slack.dev/reference/methods/files.remote.list */
+/** Retrieve information about a remote file added to Slack Required scopes -- bot: `remote_files:read`; user: `remote_files:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Value passed for `cursor` was not valid or is no longer valid. - `no_bot_user_for_app` -- Cannot call the Remote Files endpoints unless app has associated bot user See https://docs.slack.dev/reference/methods/files.remote.list */
 export const listRemote: API.PaginatedOperationMethod<
   ListRemoteRequest,
   ListRemoteResponse,
@@ -998,7 +998,7 @@ export const listRemote: API.PaginatedOperationMethod<
 ) as any;
 
 export type RemoteInfoError = SlackOpError;
-/** Retrieve information about a remote file added to Slack Required scopes — bot: `remote_files:read`; user: `remote_files:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` — Value passed for `file` or `external_id` was invalid - `invalid_args` — Invalid arguments passed to endpoint - `no_bot_user_for_app` — Cannot call the Remote Files endpoints unless app has associated bot user - `too_many_ids` — The request specified both an external_id and a file, only one may be specified See https://docs.slack.dev/reference/methods/files.remote.info */
+/** Retrieve information about a remote file added to Slack Required scopes -- bot: `remote_files:read`; user: `remote_files:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` -- Value passed for `file` or `external_id` was invalid - `invalid_args` -- Invalid arguments passed to endpoint - `no_bot_user_for_app` -- Cannot call the Remote Files endpoints unless app has associated bot user - `too_many_ids` -- The request specified both an external_id and a file, only one may be specified See https://docs.slack.dev/reference/methods/files.remote.info */
 export const remoteInfo: API.OperationMethod<
   RemoteInfoRequest,
   RemoteInfoResponse,
@@ -1013,7 +1013,7 @@ export const remoteInfo: API.OperationMethod<
 }));
 
 export type RemoveRemoteError = SlackOpError;
-/** Remove a remote file. Required scopes — bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bot_user_required` — bot user token is required - `file_not_found` — Value passed for `file` or `external_id` was invalid - `file_under_review` — File passed is tombstoned for DLP review - `invalid_args` — Invalid arguments passed to endpoint - `too_many_ids` — The request specified both an external_id and a file, only one may be specified See https://docs.slack.dev/reference/methods/files.remote.remove */
+/** Remove a remote file. Required scopes -- bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bot_user_required` -- bot user token is required - `file_not_found` -- Value passed for `file` or `external_id` was invalid - `file_under_review` -- File passed is tombstoned for DLP review - `invalid_args` -- Invalid arguments passed to endpoint - `too_many_ids` -- The request specified both an external_id and a file, only one may be specified See https://docs.slack.dev/reference/methods/files.remote.remove */
 export const removeRemote: API.OperationMethod<
   RemoveRemoteRequest,
   RemoveRemoteResponse,
@@ -1028,7 +1028,7 @@ export const removeRemote: API.OperationMethod<
 }));
 
 export type RevokePublicURLError = SlackOpError;
-/** Revokes public/external sharing access for a file Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` — Value passed for `file` was invalid See https://docs.slack.dev/reference/methods/files.revokePublicURL */
+/** Revokes public/external sharing access for a file Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` -- Value passed for `file` was invalid See https://docs.slack.dev/reference/methods/files.revokePublicURL */
 export const revokePublicURL: API.OperationMethod<
   RevokePublicURLRequest,
   RevokePublicURLResponse,
@@ -1043,7 +1043,7 @@ export const revokePublicURL: API.OperationMethod<
 }));
 
 export type SharedPublicURLError = SlackOpError;
-/** Enables a file for public/external sharing. Required scopes — user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` — Value passed for `file` was invalid - `not_allowed` — Public sharing has been disabled for this team. You may see this error if you are creating an external link from a free or trial workspace. You can either upgrade to a [Paid Plan](https://app.slack.com/plans) or use `file.list` to get a `url_private_download` link, download the file with an application, and re-upload it somewhere it can be shared with users who are not members of your workspace. Be sure to pass the Slack [Bot token](/authentication/tokens#bot) to the request on the headers file when calling `url_private_download`. - `public_video_not_allowed` — Public sharing of videos is not available. A `Free` instance of Slack may encounter this error because free teams don't have the ability to share video files publicly. - `public_file_type_not_allowed` — Public sharing has been restricted for this file type. See https://docs.slack.dev/reference/methods/files.sharedPublicURL */
+/** Enables a file for public/external sharing. Required scopes -- user: `files:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `file_not_found` -- Value passed for `file` was invalid - `not_allowed` -- Public sharing has been disabled for this team. You may see this error if you are creating an external link from a free or trial workspace. You can either upgrade to a [Paid Plan](https://app.slack.com/plans) or use `file.list` to get a `url_private_download` link, download the file with an application, and re-upload it somewhere it can be shared with users who are not members of your workspace. Be sure to pass the Slack [Bot token](/authentication/tokens#bot) to the request on the headers file when calling `url_private_download`. - `public_video_not_allowed` -- Public sharing of videos is not available. A `Free` instance of Slack may encounter this error because free teams don't have the ability to share video files publicly. - `public_file_type_not_allowed` -- Public sharing has been restricted for this file type. See https://docs.slack.dev/reference/methods/files.sharedPublicURL */
 export const sharedPublicURL: API.OperationMethod<
   SharedPublicURLRequest,
   SharedPublicURLResponse,
@@ -1058,7 +1058,7 @@ export const sharedPublicURL: API.OperationMethod<
 }));
 
 export type ShareRemoteError = SlackOpError;
-/** Share a remote file into a channel. Required scopes — bot: `remote_files:share`; user: `remote_files:share` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `channel_not_found` — At least one of the values passed for `channels` was invalid. - `file_not_found` — No file with the requested ID found. - `invalid_args` — Invalid arguments passed to endpoint - `no_bot_user_for_app` — Cannot call the Remote Files endpoints unless app has associated bot user - `not_in_channel` — Authenticated user is not in at least one of the the provided channels. See https://docs.slack.dev/reference/methods/files.remote.share */
+/** Share a remote file into a channel. Required scopes -- bot: `remote_files:share`; user: `remote_files:share` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `channel_not_found` -- At least one of the values passed for `channels` was invalid. - `file_not_found` -- No file with the requested ID found. - `invalid_args` -- Invalid arguments passed to endpoint - `no_bot_user_for_app` -- Cannot call the Remote Files endpoints unless app has associated bot user - `not_in_channel` -- Authenticated user is not in at least one of the the provided channels. See https://docs.slack.dev/reference/methods/files.remote.share */
 export const shareRemote: API.OperationMethod<
   ShareRemoteRequest,
   ShareRemoteResponse,
@@ -1073,7 +1073,7 @@ export const shareRemote: API.OperationMethod<
 }));
 
 export type UpdateRemoteError = SlackOpError;
-/** Updates an existing remote file. Required scopes — bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` — The uploaded image could not be processed - try passing a JPG or PNG - `bot_user_required` — bot user token is required - `failed_to_unshare` — The file was either not found or it has been unshared already. - `file_not_found` — Could not find the file to update. - `invalid_title` — invalid title provided - `invalid_type` — invalid type provided - `invalid_url` — invalid url provided - `too_large` — The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.update */
+/** Updates an existing remote file. Required scopes -- bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` -- The uploaded image could not be processed - try passing a JPG or PNG - `bot_user_required` -- bot user token is required - `failed_to_unshare` -- The file was either not found or it has been unshared already. - `file_not_found` -- Could not find the file to update. - `invalid_title` -- invalid title provided - `invalid_type` -- invalid type provided - `invalid_url` -- invalid url provided - `too_large` -- The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.update */
 export const updateRemote: API.OperationMethod<
   UpdateRemoteRequest,
   UpdateRemoteResponse,
@@ -1088,7 +1088,7 @@ export const updateRemote: API.OperationMethod<
 }));
 
 export type UploadFileError = SlackOpError;
-/** Uploads or creates a file. Required scopes — bot: `files:write`; user: `files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `blocked_file_type` — Admin has disabled uploading this type of file - `channel_not_found` — At least one of the values passed for `channels` was invalid. - `invalid_channel` — One or more channels supplied are invalid - `malware_detected` — This file may contain a virus or other malware and can't be uploaded to Slack - `not_in_channel` — Authenticated user is not in the channel. - `post_contents_too_large` — File content is larger than 130kb. - `posting_to_general_channel_denied` — An admin has restricted posting to the #general channel. - `slack_connect_blocked_file_type` — File uploads with certain types are blocked in all Slack Connect communications - `slack_connect_clip_sharing_blocked` — Admin has disabled Clip sharing in Slack Connect channels - `slack_connect_file_upload_sharing_blocked` — Admin has disabled File uploads in all Slack Connect communications - `invalid_thread_ts` — Value passed to thread_ts was invalid - `method_deprecated` — This API is deprecated. Please refer to https://docs.slack.dev/changelog/2024-04-a-better-way-to-upload-files-is-here-to-stay See https://docs.slack.dev/reference/methods/files.upload */
+/** Uploads or creates a file. Required scopes -- bot: `files:write`; user: `files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `blocked_file_type` -- Admin has disabled uploading this type of file - `channel_not_found` -- At least one of the values passed for `channels` was invalid. - `invalid_channel` -- One or more channels supplied are invalid - `malware_detected` -- This file may contain a virus or other malware and can't be uploaded to Slack - `not_in_channel` -- Authenticated user is not in the channel. - `post_contents_too_large` -- File content is larger than 130kb. - `posting_to_general_channel_denied` -- An admin has restricted posting to the #general channel. - `slack_connect_blocked_file_type` -- File uploads with certain types are blocked in all Slack Connect communications - `slack_connect_clip_sharing_blocked` -- Admin has disabled Clip sharing in Slack Connect channels - `slack_connect_file_upload_sharing_blocked` -- Admin has disabled File uploads in all Slack Connect communications - `invalid_thread_ts` -- Value passed to thread_ts was invalid - `method_deprecated` -- This API is deprecated. Please refer to https://docs.slack.dev/changelog/2024-04-a-better-way-to-upload-files-is-here-to-stay See https://docs.slack.dev/reference/methods/files.upload */
 export const uploadFile: API.OperationMethod<
   UploadFileRequest,
   UploadFileResponse,

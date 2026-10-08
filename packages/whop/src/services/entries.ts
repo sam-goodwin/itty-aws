@@ -328,7 +328,7 @@ export type ApproveEntryError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Approve entry [Legacy API — https://docs.whop.com/api-reference] Approve a pending waitlist entry, triggering the checkout process to grant the user access to the plan. Required permissions: - `plan:waitlist:manage` */
+/** Approve entry [Legacy API -- https://docs.whop.com/api-reference] Approve a pending waitlist entry, triggering the checkout process to grant the user access to the plan. Required permissions: - `plan:waitlist:manage` */
 export const approveEntry: API.OperationMethod<
   ApproveEntryRequest,
   ApproveEntryResponse,
@@ -343,7 +343,7 @@ export const approveEntry: API.OperationMethod<
 }));
 
 export type DenyEntryError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Deny entry [Legacy API — https://docs.whop.com/api-reference] Deny a pending waitlist entry, preventing the user from gaining access to the plan. Required permissions: - `plan:waitlist:manage` - `plan:basic:read` - `member:email:read` */
+/** Deny entry [Legacy API -- https://docs.whop.com/api-reference] Deny a pending waitlist entry, preventing the user from gaining access to the plan. Required permissions: - `plan:waitlist:manage` - `plan:basic:read` - `member:email:read` */
 export const denyEntry: API.OperationMethod<
   DenyEntryRequest,
   Entry,
@@ -358,7 +358,7 @@ export const denyEntry: API.OperationMethod<
 }));
 
 export type GetEntryError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve entry [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing waitlist entry. Required permissions: - `plan:waitlist:read` - `member:email:read` */
+/** Retrieve entry [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing waitlist entry. Required permissions: - `plan:waitlist:read` - `member:email:read` */
 export const getEntry: API.OperationMethod<GetEntryRequest, Entry, GetEntryError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetEntryRequest,
@@ -369,7 +369,7 @@ export const getEntry: API.OperationMethod<GetEntryRequest, Entry, GetEntryError
   }));
 
 export type ListEntryError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List entries [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of waitlist entries for a company, with optional filtering by product, plan, status, and creation date. Required permissions: - `plan:waitlist:read` - `member:email:read` */
+/** List entries [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of waitlist entries for a company, with optional filtering by product, plan, status, and creation date. Required permissions: - `plan:waitlist:read` - `member:email:read` */
 export const listEntry: API.PaginatedOperationMethod<
   ListEntryRequest,
   ListEntryResponse,

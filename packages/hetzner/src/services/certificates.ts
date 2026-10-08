@@ -859,7 +859,7 @@ export const listCertificates: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdateCertificateError = HetznerOpError;
-/** Update a Certificate Updates the Certificate properties. Note: if the Certificate object changes during the request, the response will be a “conflict” error. */
+/** Update a Certificate Updates the Certificate properties. Note: if the Certificate object changes during the request, the response will be a "conflict" error. */
 export const updateCertificate: API.OperationMethod<
   UpdateCertificateRequest,
   UpdateCertificateResponse,

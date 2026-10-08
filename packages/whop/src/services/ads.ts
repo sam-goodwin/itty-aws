@@ -103,7 +103,7 @@ export const CreateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAdRequestCreativesItem",
 }) as any as S.Schema<CreateAdRequestCreativesItem>;
 
-/** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Entries with no format become a carousel's ordered cards, sharing the ad's copy — 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
+/** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Entries with no format become a carousel's ordered cards, sharing the ad's copy -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
 export type CreateAdRequestCreativesList = Array<CreateAdRequestCreativesItem>;
 export const CreateAdRequestCreativesList = /*@__PURE__*/ S.Array(
   CreateAdRequestCreativesItem,
@@ -378,7 +378,7 @@ export const CreateAdRequestMessagingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAdRequestMessagingConfig",
 }) as any as S.Schema<CreateAdRequestMessagingConfig>;
 
-/** The looping track a TikTok carousel ad plays — an MP3 you uploaded, no larger than 10MB. Required for TikTok carousels (image creatives); TikTok-only. */
+/** The looping track a TikTok carousel ad plays -- an MP3 you uploaded, no larger than 10MB. Required for TikTok carousels (image creatives); TikTok-only. */
 export interface CreateAdRequestMusic {
   /** Uploaded MP3 file ID, prefixed `file_`. */
   id: string;
@@ -414,7 +414,7 @@ export const CreateAdRequestSocialAccountsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAdRequestSocialAccountsItem",
 }) as any as S.Schema<CreateAdRequestSocialAccountsItem>;
 
-/** The social accounts the ad runs under — a connected Facebook page and, optionally, an Instagram profile. */
+/** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
 export type CreateAdRequestSocialAccountsList = Array<CreateAdRequestSocialAccountsItem>;
 export const CreateAdRequestSocialAccountsList = /*@__PURE__*/ S.Array(
   CreateAdRequestSocialAccountsItem,
@@ -449,29 +449,29 @@ export interface CreateAdRequest {
   ad_group_id?: string;
   /** The call-to-action button shown on the ad. */
   call_to_action?: CreateAdRequestCallToAction | (string & {});
-  /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Entries with no format become a carousel's ordered cards, sharing the ad's copy — 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
+  /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Entries with no format become a carousel's ordered cards, sharing the ad's copy -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
   creatives?: CreateAdRequestCreativesList;
   /** The description shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
   descriptions?: CreateAdRequestDescriptionsList;
-  /** Promote a post you already published instead of uploading creatives — a Facebook post or Instagram media id. Mutually exclusive with creatives. Pair with post_source. */
+  /** Promote a post you already published instead of uploading creatives -- a Facebook post or Instagram media id. Mutually exclusive with creatives. Pair with post_source. */
   existing_post_id?: string;
   /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
   headlines?: CreateAdRequestHeadlinesList;
   /** Instant lead form for the ad. Only allowed when the ad group's conversion_location is an instant-form destination (instant_forms, instant_forms_and_messenger, website_and_instant_forms). Mutually exclusive with lead_form_id. */
   lead_form?: CreateAdRequestLeadForm;
-  /** Use an existing instant form instead of creating one — the form's platform ID, from a form already on the ad's Facebook page. Only allowed when the ad group's conversion_location is an instant-form destination. Mutually exclusive with lead_form. */
+  /** Use an existing instant form instead of creating one -- the form's platform ID, from a form already on the ad's Facebook page. Only allowed when the ad group's conversion_location is an instant-form destination. Mutually exclusive with lead_form. */
   lead_form_id?: string;
   /** Click-to-message welcome copy: the greeting (message) and the ice-breaker prompt (keyword). */
   messaging_config?: CreateAdRequestMessagingConfig;
   /** Whether the ad can appear alongside other advertisers' ads in the same unit. Defaults to true. */
   multi_advertiser_ads?: boolean;
-  /** The looping track a TikTok carousel ad plays — an MP3 you uploaded, no larger than 10MB. Required for TikTok carousels (image creatives); TikTok-only. */
+  /** The looping track a TikTok carousel ad plays -- an MP3 you uploaded, no larger than 10MB. Required for TikTok carousels (image creatives); TikTok-only. */
   music?: CreateAdRequestMusic | null;
   /** Identifies the network that owns `existing_post_id`. The source is inferred from the ID shape when omitted. */
   post_source?: CreateAdRequestPostSource | (string & {});
   /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
   primary_texts?: CreateAdRequestPrimaryTextsList;
-  /** The social accounts the ad runs under — a connected Facebook page and, optionally, an Instagram profile. */
+  /** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
   social_accounts?: CreateAdRequestSocialAccountsList;
   /** The display name of the ad. */
   title?: string;
@@ -479,7 +479,7 @@ export interface CreateAdRequest {
   translations?: CreateAdRequestTranslations | null;
   /** The URL the ad links to. Query parameters are merged into url_parameters, so the stored URL is always bare. */
   url?: string;
-  /** Query parameters to append to the destination URL, keyed by parameter name. Merged with any query string on `url`. Whop adds its own click-attribution parameters; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network — Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
+  /** Query parameters to append to the destination URL, keyed by parameter name. Merged with any query string on `url`. Whop adds its own click-attribution parameters; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network -- Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
   url_parameters?: unknown;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -910,7 +910,7 @@ export const AdPrimaryTextsList = /*@__PURE__*/ S.Array(
   AdText,
 ) as any as S.Schema<AdPrimaryTextsList>;
 
-/** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+/** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdResultEvent =
   | "purchase"
   | "lead"
@@ -1009,7 +1009,7 @@ export interface Ad {
   /** Whether the ad is delivering right now, and if not, why. When several states apply at once, the highest-precedence one is returned. */
   delivery_status: AdDeliveryStatus;
   descriptions: AdDescriptionsList;
-  /** The post you pointed this ad at, when it promotes one you already published — a Facebook post, Instagram media, or TikTok video ID. `null` when the ad uses uploaded creatives. */
+  /** The post you pointed this ad at, when it promotes one you already published -- a Facebook post, Instagram media, or TikTok video ID. `null` when the ad uses uploaded creatives. */
   existing_post_id: string | null;
   /** Platform-reported impressions divided by reach. */
   frequency: number | null;
@@ -1037,7 +1037,7 @@ export interface Ad {
   music?: AdMusic | null;
   /** The ad platform this ad runs on. */
   platform: AdPlatform;
-  /** The post the ad network serves for this ad, as `pageID_postID` on Meta — the post Meta created for an uploaded creative, or the post being promoted. Use it to open the live post, or to promote the same post from another ad. `null` until the network has created the post. */
+  /** The post the ad network serves for this ad, as `pageID_postID` on Meta -- the post Meta created for an uploaded creative, or the post being promoted. Use it to open the live post, or to promote the same post from another ad. `null` until the network has created the post. */
   post_id: string | null;
   /** Identifies the network that owns `existing_post_id`; `null` when the ad uses uploaded creatives. */
   post_source: AdPostSource | null;
@@ -1050,7 +1050,7 @@ export interface Ad {
   purchases: number;
   /** The number of unique people who saw this. */
   reach: number;
-  /** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+  /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
   result_event: AdResultEvent | null;
   /** The merchant-defined event name when result_event is custom; null for the standard events. */
   result_event_name: string | null;
@@ -1085,7 +1085,7 @@ export interface Ad {
   updated_at: string;
   /** The URL the ad links to, without its query string. Parameters belong in `url_parameters`; any you send on `url` are moved there. */
   url: string | null;
-  /** Every query parameter appended to the URL, keyed by parameter name — including any you sent on `url` itself. Whop adds its own click-attribution parameters on top; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network — Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
+  /** Every query parameter appended to the URL, keyed by parameter name -- including any you sent on `url` itself. Whop adds its own click-attribution parameters on top; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network -- Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
   url_parameters: unknown;
   /** USD value attributed to view-content events. Sums the value sent with each event, normalized to USD; events without a value contribute 0. */
   viewed_content_value: number;
@@ -1306,7 +1306,7 @@ export interface ListAdsRequest {
   status?: ListAdsRequestStatus | (string & {});
   /** Filter ads by a title or ID substring. */
   query?: string;
-  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, …) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
+  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, ...) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
   order?: ListAdsRequestOrder | (string & {});
   /** The sort direction. Defaults to desc. */
   direction?: ListAdsRequestDirection | (string & {});
@@ -1465,7 +1465,7 @@ export const UpdateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAdRequestCreativesItem",
 }) as any as S.Schema<UpdateAdRequestCreativesItem>;
 
-/** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards — 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
+/** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
 export type UpdateAdRequestCreativesList = Array<UpdateAdRequestCreativesItem>;
 export const UpdateAdRequestCreativesList = /*@__PURE__*/ S.Array(
   UpdateAdRequestCreativesItem,
@@ -1686,7 +1686,7 @@ export const UpdateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
 export type UpdateAdRequestMessagingConfig = CreateAdRequestMessagingConfig;
 export const UpdateAdRequestMessagingConfig = CreateAdRequestMessagingConfig;
 
-/** The looping track a TikTok carousel ad plays — an MP3 you uploaded, no larger than 10MB. Omitted leaves the ad's music untouched. Null removes it before launch; a submitted carousel takes a replacement track instead. TikTok-only. */
+/** The looping track a TikTok carousel ad plays -- an MP3 you uploaded, no larger than 10MB. Omitted leaves the ad's music untouched. Null removes it before launch; a submitted carousel takes a replacement track instead. TikTok-only. */
 export type UpdateAdRequestMusic = CreateAdRequestMusic;
 export const UpdateAdRequestMusic = CreateAdRequestMusic;
 
@@ -1706,7 +1706,7 @@ export const UpdateAdRequestPrimaryTextsList = /*@__PURE__*/ S.Array(
 export type UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
 export const UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
 
-/** The social accounts the ad runs under — a connected Facebook page and, optionally, an Instagram profile. */
+/** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
 export type UpdateAdRequestSocialAccountsList = Array<CreateAdRequestSocialAccountsItem>;
 export const UpdateAdRequestSocialAccountsList = /*@__PURE__*/ S.Array(
   CreateAdRequestSocialAccountsItem,
@@ -1739,29 +1739,29 @@ export interface UpdateAdRequest {
   id: string;
   /** The call-to-action button shown on the ad. */
   call_to_action?: UpdateAdRequestCallToAction | (string & {});
-  /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards — 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
+  /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
   creatives?: UpdateAdRequestCreativesList;
   /** The description shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
   descriptions?: UpdateAdRequestDescriptionsList;
-  /** Promote a post you already published instead of uploading creatives — a Facebook post or Instagram media id. Mutually exclusive with creatives. Pair with post_source. */
+  /** Promote a post you already published instead of uploading creatives -- a Facebook post or Instagram media id. Mutually exclusive with creatives. Pair with post_source. */
   existing_post_id?: string;
   /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
   headlines?: UpdateAdRequestHeadlinesList;
   /** Instant lead form for the ad. Only allowed when the ad group's conversion_location is an instant-form destination (instant_forms, instant_forms_and_messenger, website_and_instant_forms). Mutually exclusive with lead_form_id. */
   lead_form?: UpdateAdRequestLeadForm;
-  /** Use an existing instant form instead of creating one — the form's platform ID, from a form already on the ad's Facebook page. Only allowed when the ad group's conversion_location is an instant-form destination. Mutually exclusive with lead_form. Replaces a stored lead_form. */
+  /** Use an existing instant form instead of creating one -- the form's platform ID, from a form already on the ad's Facebook page. Only allowed when the ad group's conversion_location is an instant-form destination. Mutually exclusive with lead_form. Replaces a stored lead_form. */
   lead_form_id?: string;
   /** Click-to-message welcome copy: the greeting (message) and the ice-breaker prompt (keyword). */
   messaging_config?: CreateAdRequestMessagingConfig;
   /** Whether the ad can appear alongside other advertisers' ads in the same unit. Defaults to true. */
   multi_advertiser_ads?: boolean;
-  /** The looping track a TikTok carousel ad plays — an MP3 you uploaded, no larger than 10MB. Omitted leaves the ad's music untouched. Null removes it before launch; a submitted carousel takes a replacement track instead. TikTok-only. */
+  /** The looping track a TikTok carousel ad plays -- an MP3 you uploaded, no larger than 10MB. Omitted leaves the ad's music untouched. Null removes it before launch; a submitted carousel takes a replacement track instead. TikTok-only. */
   music?: CreateAdRequestMusic | null;
   /** Identifies the network that owns `existing_post_id`. The source is inferred from the ID shape when omitted. */
   post_source?: UpdateAdRequestPostSource | (string & {});
   /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
   primary_texts?: UpdateAdRequestPrimaryTextsList;
-  /** The social accounts the ad runs under — a connected Facebook page and, optionally, an Instagram profile. */
+  /** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
   social_accounts?: UpdateAdRequestSocialAccountsList;
   /** The display name of the ad. */
   title?: string;
@@ -1769,7 +1769,7 @@ export interface UpdateAdRequest {
   translations?: UpdateAdRequestTranslations | null;
   /** The URL the ad links to. Query parameters are merged into url_parameters, so the stored URL is always bare. */
   url?: string;
-  /** Query parameters to append to the destination URL, keyed by parameter name. Merged with any query string on `url`. Whop adds its own click-attribution parameters; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network — Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
+  /** Query parameters to append to the destination URL, keyed by parameter name. Merged with any query string on `url`. Whop adds its own click-attribution parameters; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network -- Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
   url_parameters?: unknown;
 }
 export const UpdateAdRequest = /*@__PURE__*/ S.suspend(() =>

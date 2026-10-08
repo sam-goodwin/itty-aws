@@ -33,7 +33,7 @@ export const QuotaResourceLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaResourceLimit" }) as any as S.Schema<QuotaResourceLimit>;
 
-/** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false — they are never quota-enforced; only the combined `posthog_code_credits` is. */
+/** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false -- they are never quota-enforced; only the combined `posthog_code_credits` is. */
 export type QuotaLimitsResponseLimitedMap = { [key: string]: QuotaResourceLimit | undefined };
 export const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -41,7 +41,7 @@ export const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QuotaLimitsResponseLimitedMap>;
 
 export interface QuotaLimitsResponse {
-  /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false — they are never quota-enforced; only the combined `posthog_code_credits` is. */
+  /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false -- they are never quota-enforced; only the combined `posthog_code_credits` is. */
   limited: QuotaLimitsResponseLimitedMap;
   /** Whether the team's organization pays for PostHog Desktop usage: billing grants the `posthog_code_usage` product feature only on the Desktop usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Desktop behavior on this; an org unknown to billing reads as not paying. Always false for deactivated organizations. */
   code_usage_billing_active: boolean;

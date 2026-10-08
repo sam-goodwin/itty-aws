@@ -5037,7 +5037,7 @@ export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   | "TRAINING_CANCELLED";
 export const GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum = S.String;
 
-/** A revision of a QaScorecard. Modifying published scorecard fields would invalidate existing scorecard results — the questions may have changed, or the score weighting will make existing scores impossible to understand. So changes must create a new revision, rather than modifying the existing resource. */
+/** A revision of a QaScorecard. Modifying published scorecard fields would invalidate existing scorecard results -- the questions may have changed, or the score weighting will make existing scores impossible to understand. So changes must create a new revision, rather than modifying the existing resource. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. The timestamp that the revision was created. */
   createTime?: string;

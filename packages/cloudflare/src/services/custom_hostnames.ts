@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   bundleMethod: "bundle_method",
   certificateAuthority: "certificate_authority",
@@ -2748,7 +2748,7 @@ export const PutFallbackOriginResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutFallbackOriginResponse>;
 
 export type CreateCustomHostnameError = SaasQuotaNotAllocated | CloudflareOpError;
-/** Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods—http, txt, email—should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation). Enable bundling of certificates using the custom_cert_bundle field. The bundling process requires the following condition One certificate in the bundle must use an RSA, and the other must use an ECDSA. */
+/** Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods--http, txt, email--should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation). Enable bundling of certificates using the custom_cert_bundle field. The bundling process requires the following condition One certificate in the bundle must use an RSA, and the other must use an ECDSA. */
 export const createCustomHostname: API.OperationMethod<
   CreateCustomHostnameRequest,
   CreateCustomHostnameResponse,

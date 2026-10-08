@@ -102,7 +102,7 @@ export const CartDataItemList = /*@__PURE__*/ S.Array(
 
 /** Contains additional information about cart data. This field may only be used when calling batchinsert; it is not supported by batchupdate. Cart data reporting is only supported in SA360. [Learn more](https://support.google.com/sa360/topic/13425788) */
 export interface CartData {
-  /** The feed labels associated with the feed where your items are uploaded. For more information, please refer to ​​ https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in identifying the right offer details. */
+  /** The feed labels associated with the feed where your items are uploaded. For more information, please refer to  https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in identifying the right offer details. */
   merchantFeedLabel?: string;
   /** The Merchant Center ID where the items are uploaded. Providing Merchant Center ID reduces ambiguity in identifying the right offer details. */
   merchantId?: string;
@@ -7351,7 +7351,7 @@ export interface ReportPathToConversionCriteriaReportProperties {
   pivotOnInteractionPath?: boolean;
   /** Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window. */
   includeUnattributedCookieConversions?: boolean;
-  /** Include conversions that have no associated cookies and no exposures. It’s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
+  /** Include conversions that have no associated cookies and no exposures. It's therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
   includeUnattributedIPConversions?: boolean;
 }
 export const ReportPathToConversionCriteriaReportProperties = /*@__PURE__*/ S.suspend(() =>
@@ -7621,7 +7621,7 @@ export interface ReportFloodlightCriteriaReportProperties {
   includeAttributedIPConversions?: boolean;
   /** Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window. */
   includeUnattributedCookieConversions?: boolean;
-  /** Include conversions that have no associated cookies and no exposures. It’s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
+  /** Include conversions that have no associated cookies and no exposures. It's therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
   includeUnattributedIPConversions?: boolean;
 }
 export const ReportFloodlightCriteriaReportProperties = /*@__PURE__*/ S.suspend(() =>

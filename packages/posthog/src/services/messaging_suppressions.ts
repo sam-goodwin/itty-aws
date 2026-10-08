@@ -81,7 +81,7 @@ export const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ S.Array(
   MessageSuppression,
 ) as any as S.Schema<PaginatedMessageSuppressionResultsList>;
 
-/** OpenAPI shape for the paginated suppressions response. Declared so drf-spectacular emits the {count, next, previous, results} envelope on the generated client, rather than a bare array — which the frontend actually receives at runtime. */
+/** OpenAPI shape for the paginated suppressions response. Declared so drf-spectacular emits the {count, next, previous, results} envelope on the generated client, rather than a bare array -- which the frontend actually receives at runtime. */
 export interface PaginatedMessageSuppression {
   /** Total number of suppressed recipients for the team. */
   count: number;

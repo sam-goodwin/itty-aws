@@ -3668,8 +3668,8 @@ export type PublishPackageVersionError =
  *
  * The `unfinished` flag can be used to keep the package version in the
  * `Unfinished` state until all of its assets have been uploaded (see Package version status in the *CodeArtifact user guide*). To set
- * the package version’s status to `Published`, omit the `unfinished` flag
- * when uploading the final asset, or set the status using UpdatePackageVersionStatus. Once a package version’s status is set to
+ * the package version's status to `Published`, omit the `unfinished` flag
+ * when uploading the final asset, or set the status using UpdatePackageVersionStatus. Once a package version's status is set to
  * `Published`, it cannot change back to `Unfinished`.
  *
  * Only generic packages can be published using this API. For more information, see Using generic

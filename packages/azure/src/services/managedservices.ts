@@ -219,7 +219,7 @@ export const MarketplaceRegistrationDefinitionProperties = /*@__PURE__*/ S.suspe
   identifier: "MarketplaceRegistrationDefinitionProperties",
 }) as any as S.Schema<MarketplaceRegistrationDefinitionProperties>;
 
-/** The details for the Managed Services offer’s plan in Azure Marketplace. */
+/** The details for the Managed Services offer's plan in Azure Marketplace. */
 export interface Plan {
   /** Azure Marketplace plan name. */
   name: string;
@@ -242,7 +242,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 export interface MarketplaceRegistrationDefinition {
   /** The properties of the marketplace registration definition. */
   properties?: MarketplaceRegistrationDefinitionProperties;
-  /** The details for the Managed Services offer’s plan in Azure Marketplace. */
+  /** The details for the Managed Services offer's plan in Azure Marketplace. */
   plan?: Plan;
   /** The fully qualified path of the marketplace registration definition. */
   id?: string;
@@ -458,7 +458,7 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemData =
 export interface RegistrationAssignmentPropertiesRegistrationDefinition {
   /** The properties of the registration definition associated with the registration assignment. */
   properties?: RegistrationAssignmentPropertiesRegistrationDefinitionProperties;
-  /** The details for the Managed Services offer’s plan in Azure Marketplace. */
+  /** The details for the Managed Services offer's plan in Azure Marketplace. */
   plan?: Plan;
   /** The fully qualified path of the registration definition. */
   id?: string;
@@ -704,7 +704,7 @@ export const RegistrationDefinitionSystemData = /*@__PURE__*/ S.suspend(() =>
 export interface RegistrationDefinition {
   /** The properties of a registration definition. */
   properties?: RegistrationDefinitionProperties;
-  /** The details for the Managed Services offer’s plan in Azure Marketplace. */
+  /** The details for the Managed Services offer's plan in Azure Marketplace. */
   plan?: Plan;
   /** The fully qualified path of the registration definition. */
   id?: string;
@@ -1052,7 +1052,7 @@ export interface RegistrationDefinitionsCreateOrUpdateRequest {
   registrationDefinitionId: string;
   /** The properties of a registration definition. */
   properties?: RegistrationDefinitionPropertiesInput;
-  /** The details for the Managed Services offer’s plan in Azure Marketplace. */
+  /** The details for the Managed Services offer's plan in Azure Marketplace. */
   plan?: Plan;
 }
 export const RegistrationDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>

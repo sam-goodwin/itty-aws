@@ -67,7 +67,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   imageUrl?: string;
   /** The truthfulness rating as a human-readible short word or phrase. Corresponds to `ClaimReview.reviewRating.alternateName`. */
   textualRating?: string;
-  /** A numeric rating of this claim, in the range worstRating — bestRating inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`. */
+  /** A numeric rating of this claim, in the range worstRating -- bestRating inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`. */
   ratingValue?: number;
   /** For numeric ratings, the worst value possible in the scale from worst to best. Corresponds to `ClaimReview.reviewRating.worstRating`. */
   worstRating?: number;

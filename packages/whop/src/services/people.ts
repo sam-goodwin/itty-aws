@@ -527,7 +527,7 @@ export interface ListPeopleRequest {
   account_id?: string;
   /** Search people by name, email, phone, or whop user ID (case-insensitive substring match). */
   query?: string;
-  /** Only include people acquired from any of these sources — canonical paths (whop:<campaign>:<group>:<ad>, ext:<platform>:..., referrer:<domain>, direct, other), exact or with a trailing :* prefix. The same vocabulary the events / people metrics use. */
+  /** Only include people acquired from any of these sources -- canonical paths (whop:<campaign>:<group>:<ad>, ext:<platform>:..., referrer:<domain>, direct, other), exact or with a trailing :* prefix. The same vocabulary the events / people metrics use. */
   source?: ListPeopleRequestSourceList;
   /** Attribution model the source filter matches against (defaults to last_touch). */
   attribution_model?: ListPeopleRequestAttributionModel | (string & {});
@@ -557,7 +557,7 @@ export interface ListPeopleRequest {
   country?: string;
   /** true for customers only, false for people who have never purchased. */
   has_purchased?: boolean;
-  /** true for people who have an email address or phone number — the ones an ad platform can match. */
+  /** true for people who have an email address or phone number -- the ones an ad platform can match. */
   contactable?: boolean;
   /** Only include people first seen within this many days, as a rolling window. */
   first_seen_within_days?: number;
@@ -858,7 +858,7 @@ export const ListPeopleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPeopleResponse" }) as any as S.Schema<ListPeopleResponse>;
 
 export type GetPersonError = NotFound | WhopOpError;
-/** Retrieve Person Retrieves one person for an account. The identifier can be a person ID (prefixed `prsn_`), a user ID (prefixed `user_`), an email address, or a phone number — merged people resolve to the surviving profile. */
+/** Retrieve Person Retrieves one person for an account. The identifier can be a person ID (prefixed `prsn_`), a user ID (prefixed `user_`), an email address, or a phone number -- merged people resolve to the surviving profile. */
 export const getPerson: API.OperationMethod<
   GetPersonRequest,
   GetPersonResponse,
@@ -873,7 +873,7 @@ export const getPerson: API.OperationMethod<
 }));
 
 export type ListPeopleError = BadRequest | WhopOpError;
-/** List People Lists the people (visitors and customers) of an account: the identity-linked person profiles aggregated from every pixel, payment, and platform event — identities, purchases and LTV, geo/device profile, traffic sources, and first/last marketing touches. */
+/** List People Lists the people (visitors and customers) of an account: the identity-linked person profiles aggregated from every pixel, payment, and platform event -- identities, purchases and LTV, geo/device profile, traffic sources, and first/last marketing touches. */
 export const listPeople: API.PaginatedOperationMethod<
   ListPeopleRequest,
   ListPeopleResponse,

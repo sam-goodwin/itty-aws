@@ -7550,7 +7550,7 @@ export const get: API.OperationMethod<GetRequest, OrganizationFull, GetError, Gi
   }));
 
 export type GetApiInsightRouteStatsByActorError = GithubOpError;
-/** Get route stats by actor Get API request count statistics for an actor broken down by route within a specified time frame. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get route stats by actor Get API request count statistics for an actor broken down by route within a specified time frame. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightRouteStatsByActor: API.OperationMethod<
   GetApiInsightRouteStatsByActorRequest,
   GetApiInsightRouteStatsByActorResponse,
@@ -7565,7 +7565,7 @@ export const getApiInsightRouteStatsByActor: API.OperationMethod<
 }));
 
 export type GetApiInsightSubjectStatsError = GithubOpError;
-/** Get subject stats Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get subject stats Get API request statistics for all subjects within an organization within a specified time frame. Subjects can be users or GitHub Apps. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightSubjectStats: API.OperationMethod<
   GetApiInsightSubjectStatsRequest,
   GetApiInsightSubjectStatsResponse,
@@ -7580,7 +7580,7 @@ export const getApiInsightSubjectStats: API.OperationMethod<
 }));
 
 export type GetApiInsightSummaryStatsError = GithubOpError;
-/** Get summary stats Get overall statistics of API requests made within an organization by all users and apps within a specified time frame. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get summary stats Get overall statistics of API requests made within an organization by all users and apps within a specified time frame. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightSummaryStats: API.OperationMethod<
   GetApiInsightSummaryStatsRequest,
   ApiInsightsSummaryStats,
@@ -7595,7 +7595,7 @@ export const getApiInsightSummaryStats: API.OperationMethod<
 }));
 
 export type GetApiInsightSummaryStatsByActorError = GithubOpError;
-/** Get summary stats by actor Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get summary stats by actor Get overall statistics of API requests within the organization made by a specific actor. Actors can be GitHub App installations, OAuth apps or other tokens on behalf of a user. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightSummaryStatsByActor: API.OperationMethod<
   GetApiInsightSummaryStatsByActorRequest,
   ApiInsightsSummaryStats,
@@ -7610,7 +7610,7 @@ export const getApiInsightSummaryStatsByActor: API.OperationMethod<
 }));
 
 export type GetApiInsightSummaryStatsByUserError = GithubOpError;
-/** Get summary stats by user Get overall statistics of API requests within the organization for a user. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get summary stats by user Get overall statistics of API requests within the organization for a user. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightSummaryStatsByUser: API.OperationMethod<
   GetApiInsightSummaryStatsByUserRequest,
   ApiInsightsSummaryStats,
@@ -7625,7 +7625,7 @@ export const getApiInsightSummaryStatsByUser: API.OperationMethod<
 }));
 
 export type GetApiInsightTimeStatsError = GithubOpError;
-/** Get time stats Get the number of API requests and rate-limited requests made within an organization over a specified time period. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get time stats Get the number of API requests and rate-limited requests made within an organization over a specified time period. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightTimeStats: API.OperationMethod<
   GetApiInsightTimeStatsRequest,
   GetApiInsightTimeStatsResponse,
@@ -7640,7 +7640,7 @@ export const getApiInsightTimeStats: API.OperationMethod<
 }));
 
 export type GetApiInsightTimeStatsByActorError = GithubOpError;
-/** Get time stats by actor Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get time stats by actor Get the number of API requests and rate-limited requests made within an organization by a specific actor within a specified time period. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightTimeStatsByActor: API.OperationMethod<
   GetApiInsightTimeStatsByActorRequest,
   GetApiInsightTimeStatsByActorResponse,
@@ -7655,7 +7655,7 @@ export const getApiInsightTimeStatsByActor: API.OperationMethod<
 }));
 
 export type GetApiInsightTimeStatsByUserError = GithubOpError;
-/** Get time stats by user Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get time stats by user Get the number of API requests and rate-limited requests made within an organization by a specific user over a specified time period. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightTimeStatsByUser: API.OperationMethod<
   GetApiInsightTimeStatsByUserRequest,
   GetApiInsightTimeStatsByUserResponse,
@@ -7670,7 +7670,7 @@ export const getApiInsightTimeStatsByUser: API.OperationMethod<
 }));
 
 export type GetApiInsightUserStatsError = GithubOpError;
-/** Get user stats Get API usage statistics within an organization for a user broken down by the type of access. Under normal conditions, you can expect API data to appear within 4–6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
+/** Get user stats Get API usage statistics within an organization for a user broken down by the type of access. Under normal conditions, you can expect API data to appear within 4-6 hours after making a request. During incidents or periods of unusually high volume, it may take longer to show up. */
 export const getApiInsightUserStats: API.OperationMethod<
   GetApiInsightUserStatsRequest,
   GetApiInsightUserStatsResponse,

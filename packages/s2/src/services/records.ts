@@ -45,7 +45,7 @@ export const AppendRequestRecordsList = /*@__PURE__*/ S.Array(
 export interface AppendRequest {
   /** Stream name. */
   stream: string;
-  /** Defines the interpretation of record data (header name, header value, and body) with the JSON content type. Use `raw` (default) for efficient transmission and storage of Unicode data — storage will be in UTF-8. Use `base64` for safe transmission with efficient storage of binary data. */
+  /** Defines the interpretation of record data (header name, header value, and body) with the JSON content type. Use `raw` (default) for efficient transmission and storage of Unicode data -- storage will be in UTF-8. Use `base64` for safe transmission with efficient storage of binary data. */
   s2Format?: Format | (string & {});
   /** Encryption key material for append and read operations. Provide base64-encoded key when stream encryption is enabled. */
   s2EncryptionKey?: string;
@@ -138,7 +138,7 @@ export interface ReadRequest {
   until?: number;
   /** Duration in seconds to wait for new records. The default duration is 0 if there is a bound on `count`, `bytes`, or `until`, and otherwise infinite. Non-streaming reads are always bounded on `count` and `bytes`, so you can achieve long poll semantics by specifying a non-zero duration up to 60 seconds. In the context of an SSE or S2S streaming read, the duration will bound how much time can elapse between records throughout the lifetime of the session. */
   wait?: number;
-  /** Defines the interpretation of record data (header name, header value, and body) with the JSON content type. Use `raw` (default) for efficient transmission and storage of Unicode data — storage will be in UTF-8. Use `base64` for safe transmission with efficient storage of binary data. */
+  /** Defines the interpretation of record data (header name, header value, and body) with the JSON content type. Use `raw` (default) for efficient transmission and storage of Unicode data -- storage will be in UTF-8. Use `base64` for safe transmission with efficient storage of binary data. */
   s2Format?: Format | (string & {});
   /** Encryption key material for append and read operations. Provide base64-encoded key when stream encryption is enabled. */
   s2EncryptionKey?: string;

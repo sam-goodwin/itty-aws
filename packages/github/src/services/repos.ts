@@ -5285,7 +5285,7 @@ export interface CreateOrUpdateFileContentsRequest {
   content: string;
   /** **Required if you are updating a file**. The blob SHA of the file being replaced. */
   sha?: string;
-  /** The branch name. Default: the repository’s default branch. */
+  /** The branch name. Default: the repository's default branch. */
   branch?: string;
   /** The person that committed the file. Default: the authenticated user. */
   committer?: CreateOrUpdateFileContentsRequestCommitter;
@@ -6443,7 +6443,7 @@ export interface DeleteFileRequest {
   message: string;
   /** The blob SHA of the file being deleted. */
   sha: string;
-  /** The branch name. Default: the repository’s default branch */
+  /** The branch name. Default: the repository's default branch */
   branch?: string;
   /** object containing information about the committer. */
   committer?: DeleteFileRequestCommitter;
@@ -9305,7 +9305,7 @@ export interface GetContentRequest {
   repo: string;
   /** path parameter */
   path: string;
-  /** The name of the commit/branch/tag. Default: the repository’s default branch. */
+  /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
 export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10308,7 +10308,7 @@ export interface GetReadmeRequest {
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
-  /** The name of the commit/branch/tag. Default: the repository’s default branch. */
+  /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
 export const GetReadmeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10326,7 +10326,7 @@ export interface GetReadmeInDirectoryRequest {
   repo: string;
   /** The alternate path to look for a README file */
   dir: string;
-  /** The name of the commit/branch/tag. Default: the repository’s default branch. */
+  /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
 export const GetReadmeInDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11517,7 +11517,7 @@ export interface ListCommitsRequest {
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
-  /** SHA or branch to start listing commits from. Default: the repository’s default branch (usually `main`). */
+  /** SHA or branch to start listing commits from. Default: the repository's default branch (usually `main`). */
   sha?: string;
   /** Only commits containing this file path will be returned. */
   path?: string;
@@ -15981,7 +15981,7 @@ export const disableVulnerabilityAlerts: API.OperationMethod<
 }));
 
 export type DownloadTarballArchiveError = GithubOpError;
-/** Download a repository archive (tar) Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use the `Location` header to make a second `GET` request. > [!NOTE] > For private repositories, these links are temporary and expire after five minutes. */
+/** Download a repository archive (tar) Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository's default branch (usually `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use the `Location` header to make a second `GET` request. > [!NOTE] > For private repositories, these links are temporary and expire after five minutes. */
 export const downloadTarballArchive: API.OperationMethod<
   DownloadTarballArchiveRequest,
   DownloadTarballArchiveResponse,
@@ -15996,7 +15996,7 @@ export const downloadTarballArchive: API.OperationMethod<
 }));
 
 export type DownloadZipballArchiveError = GithubOpError;
-/** Download a repository archive (zip) Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use the `Location` header to make a second `GET` request. > [!NOTE] > For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect. */
+/** Download a repository archive (zip) Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository's default branch (usually `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use the `Location` header to make a second `GET` request. > [!NOTE] > For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect. */
 export const downloadZipballArchive: API.OperationMethod<
   DownloadZipballArchiveRequest,
   DownloadZipballArchiveResponse,

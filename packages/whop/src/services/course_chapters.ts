@@ -228,7 +228,7 @@ export type CreateCourseChapterError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create course chapter [Legacy API — https://docs.whop.com/api-reference] Create a new chapter within a course to organize lessons into sections. Required permissions: - `courses:update` */
+/** Create course chapter [Legacy API -- https://docs.whop.com/api-reference] Create a new chapter within a course to organize lessons into sections. Required permissions: - `courses:update` */
 export const createCourseChapter: API.OperationMethod<
   CreateCourseChapterRequest,
   CourseChapter,
@@ -248,7 +248,7 @@ export type DeleteCourseChapterError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete course chapter [Legacy API — https://docs.whop.com/api-reference] Permanently delete a chapter and all of its lessons from a course. Required permissions: - `courses:update` */
+/** Delete course chapter [Legacy API -- https://docs.whop.com/api-reference] Permanently delete a chapter and all of its lessons from a course. Required permissions: - `courses:update` */
 export const deleteCourseChapter: API.OperationMethod<
   DeleteCourseChapterRequest,
   DeleteCourseChapterResponse,
@@ -268,7 +268,7 @@ export type GetCourseChapterError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve course chapter [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing course chapter. Required permissions: - `courses:read` */
+/** Retrieve course chapter [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing course chapter. Required permissions: - `courses:read` */
 export const getCourseChapter: API.OperationMethod<
   GetCourseChapterRequest,
   CourseChapter,
@@ -288,7 +288,7 @@ export type ListCourseChapterError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List course chapters [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of chapters within a course, ordered by position. Required permissions: - `courses:read` */
+/** List course chapters [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of chapters within a course, ordered by position. Required permissions: - `courses:read` */
 export const listCourseChapter: API.PaginatedOperationMethod<
   ListCourseChapterRequest,
   ListCourseChapterResponse,
@@ -320,7 +320,7 @@ export type UpdateCourseChapterError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update course chapter [Legacy API — https://docs.whop.com/api-reference] Update a chapter's title within a course. Required permissions: - `courses:update` */
+/** Update course chapter [Legacy API -- https://docs.whop.com/api-reference] Update a chapter's title within a course. Required permissions: - `courses:update` */
 export const updateCourseChapter: API.OperationMethod<
   UpdateCourseChapterRequest,
   CourseChapter,

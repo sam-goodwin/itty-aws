@@ -1097,7 +1097,7 @@ export type SmartFilterSelectQuerySelectType = "query";
 export const SmartFilterSelectQuerySelectType = S.String;
 
 export interface SmartFilterAplQuery {
-  /** APL query that returns the list of options for the filter dropdown. The result must contain a `key` column and a `value` column — Axiom interprets each row as a `{ key, value }` pair for an option. Use `distinct` to collapse the source field to unique values, then `project` to expose the `key` and `value` columns. Example: ``` ['dataset-name'] | distinct field_name | project key=field_name, value=field_name ``` */
+  /** APL query that returns the list of options for the filter dropdown. The result must contain a `key` column and a `value` column -- Axiom interprets each row as a `{ key, value }` pair for an option. Use `distinct` to collapse the source field to unique values, then `project` to expose the `key` and `value` columns. Example: ``` ['dataset-name'] | distinct field_name | project key=field_name, value=field_name ``` */
   apl: string;
 }
 export const SmartFilterAplQuery = /*@__PURE__*/ S.suspend(() =>
@@ -1107,7 +1107,7 @@ export const SmartFilterAplQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmartFilterAplQuery" }) as any as S.Schema<SmartFilterAplQuery>;
 
 export interface SmartFilterNativeMplQuery {
-  /** MPL query that returns the list of options for the filter dropdown. The query must group by exactly one tag — Axiom uses each distinct value of that tag as both the key and the value of an option. Use `align using last` to simplify the query. Example: ``` dataset:metric | align using last | group by tag using count ``` */
+  /** MPL query that returns the list of options for the filter dropdown. The query must group by exactly one tag -- Axiom uses each distinct value of that tag as both the key and the value of an option. Use `align using last` to simplify the query. Example: ``` dataset:metric | align using last | group by tag using count ``` */
   mpl: string;
 }
 export const SmartFilterNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
@@ -1125,7 +1125,7 @@ export interface SmartFilterSelectQuery {
   id: string;
   name: string;
   active?: boolean;
-  /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results. */
+  /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before -- or independent of -- query results. */
   options?: SmartFilterSelectQueryOptions | null;
   type: SmartFilterSelectQueryType;
   selectType: SmartFilterSelectQuerySelectType;
@@ -1247,7 +1247,7 @@ export const DashboardRefreshTime = S.Number;
 export type SchemaVersion = 2;
 export const SchemaVersion = S.Number;
 
-/** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` — setting one clears the other. Use an empty string or omit to disable comparison. */
+/** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` -- setting one clears the other. Use an empty string or omit to disable comparison. */
 export type DashboardAgainst =
   | "-1h"
   | "-3h"
@@ -1272,9 +1272,9 @@ export interface Dashboard {
   layout: DashboardLayoutList;
   refreshTime: DashboardRefreshTime | (number & {});
   schemaVersion: SchemaVersion | (number & {});
-  /** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` — setting one clears the other. Use an empty string or omit to disable comparison. */
+  /** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` -- setting one clears the other. Use an empty string or omit to disable comparison. */
   against?: DashboardAgainst | (string & {});
-  /** Absolute or relative timestamp to compare against. Mutually exclusive with `against` — setting one clears the other. Accepts ISO 8601, `now-{duration}` (e.g. `now-1h`), or epoch milliseconds as a string. */
+  /** Absolute or relative timestamp to compare against. Mutually exclusive with `against` -- setting one clears the other. Accepts ISO 8601, `now-{duration}` (e.g. `now-1h`), or epoch milliseconds as a string. */
   againstTimestamp?: string;
   timeWindowStart: string;
   timeWindowEnd: string;

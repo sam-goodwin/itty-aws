@@ -284,7 +284,7 @@ export const SetAccessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetAccessResponse" }) as any as S.Schema<SetAccessResponse>;
 
 export type CreateCanvaseError = SlackOpError;
-/** Create canvas for a user Required scopes — bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` — Canvas is disabled on user's team - `restricted_action` — User does not have permission to perform this action. - `canvas_creation_failed` — Canvas was unable to be created. - `free_team_canvas_tab_already_exists` — Free teams are limited to one canvas tab per channel - `free_teams_cannot_create_standalone_canvases` — Free teams cannot create standalone canvases See https://docs.slack.dev/reference/methods/canvases.create */
+/** Create canvas for a user Required scopes -- bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `restricted_action` -- User does not have permission to perform this action. - `canvas_creation_failed` -- Canvas was unable to be created. - `free_team_canvas_tab_already_exists` -- Free teams are limited to one canvas tab per channel - `free_teams_cannot_create_standalone_canvases` -- Free teams cannot create standalone canvases See https://docs.slack.dev/reference/methods/canvases.create */
 export const createCanvase: API.OperationMethod<
   CreateCanvaseRequest,
   CreateCanvaseResponse,
@@ -299,7 +299,7 @@ export const createCanvase: API.OperationMethod<
 }));
 
 export type DeleteAccessError = SlackOpError;
-/** Remove access to a canvas for specified entities Required scopes — bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_not_found` — The canvas you wish to revoke permissions for is not available. - `restricted_action` — User does not have permission to perform this action. - `canvas_disabled_user_team` — Canvas is disabled on user's team. - `invalid_parameters` — One of user_ids and channel_ids must be defined. - `channel_not_found` — A channel could not be found. - `user_not_found` — A user could not be found. See https://docs.slack.dev/reference/methods/canvases.access.delete */
+/** Remove access to a canvas for specified entities Required scopes -- bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_not_found` -- The canvas you wish to revoke permissions for is not available. - `restricted_action` -- User does not have permission to perform this action. - `canvas_disabled_user_team` -- Canvas is disabled on user's team. - `invalid_parameters` -- One of user_ids and channel_ids must be defined. - `channel_not_found` -- A channel could not be found. - `user_not_found` -- A user could not be found. See https://docs.slack.dev/reference/methods/canvases.access.delete */
 export const deleteAccess: API.OperationMethod<
   DeleteAccessRequest,
   DeleteAccessResponse,
@@ -314,7 +314,7 @@ export const deleteAccess: API.OperationMethod<
 }));
 
 export type DeleteCanvaseError = SlackOpError;
-/** Deletes a canvas Required scopes — bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_deleting_disabled` — This functionality is disabled. - `canvas_not_found` — The canvas does not exist, or is not visible to the calling user. - `restricted_action` — User does not have permission to perform this action. See https://docs.slack.dev/reference/methods/canvases.delete */
+/** Deletes a canvas Required scopes -- bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_deleting_disabled` -- This functionality is disabled. - `canvas_not_found` -- The canvas does not exist, or is not visible to the calling user. - `restricted_action` -- User does not have permission to perform this action. See https://docs.slack.dev/reference/methods/canvases.delete */
 export const deleteCanvase: API.OperationMethod<
   DeleteCanvaseRequest,
   DeleteCanvaseResponse,
@@ -329,7 +329,7 @@ export const deleteCanvase: API.OperationMethod<
 }));
 
 export type EditCanvaseError = SlackOpError;
-/** Update an existing canvas Required scopes — bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_not_found` — The canvas you wish to apply changes to is not available. - `canvas_disabled_user_team` — Canvas is disabled on user's team - `free_teams_cannot_edit_standalone_canvases` — Free teams cannot edit standalone canvases - `restricted_action` — User does not have permission to perform this action. - `canvas_editing_failed` — The changes to the canvas failed to be applied. - `canvas_editing_locked` — Another edit to this canvas is currently in progress. Please retry after a short delay. - `canvas_too_large` — The canvas is too large to apply the requested changes. Reduce the size of the canvas or the edit and try again. See https://docs.slack.dev/reference/methods/canvases.edit */
+/** Update an existing canvas Required scopes -- bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_not_found` -- The canvas you wish to apply changes to is not available. - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `free_teams_cannot_edit_standalone_canvases` -- Free teams cannot edit standalone canvases - `restricted_action` -- User does not have permission to perform this action. - `canvas_editing_failed` -- The changes to the canvas failed to be applied. - `canvas_editing_locked` -- Another edit to this canvas is currently in progress. Please retry after a short delay. - `canvas_too_large` -- The canvas is too large to apply the requested changes. Reduce the size of the canvas or the edit and try again. See https://docs.slack.dev/reference/methods/canvases.edit */
 export const editCanvase: API.OperationMethod<
   EditCanvaseRequest,
   EditCanvaseResponse,
@@ -344,7 +344,7 @@ export const editCanvase: API.OperationMethod<
 }));
 
 export type GetContentError = SlackOpError;
-/** Get the content of a canvas as markdown (default) or HTML. Required scopes — bot: `canvases:read`; user: `canvases:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` — Canvas is disabled on user's team - `canvas_not_found` — The canvas does not exist, or is not visible to the calling user. See https://docs.slack.dev/reference/methods/canvases.getContent */
+/** Get the content of a canvas as markdown (default) or HTML. Required scopes -- bot: `canvases:read`; user: `canvases:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `canvas_not_found` -- The canvas does not exist, or is not visible to the calling user. See https://docs.slack.dev/reference/methods/canvases.getContent */
 export const getContent: API.OperationMethod<
   GetContentRequest,
   GetContentResponse,
@@ -359,7 +359,7 @@ export const getContent: API.OperationMethod<
 }));
 
 export type LookupSectionError = SlackOpError;
-/** Find sections matching the provided criteria Required scopes — bot: `canvases:read`; user: `canvases:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_deleted` — The canvas you wish to search is not available. - `canvas_disabled_user_team` — Canvas is disabled on user's team. - `canvas_not_found` — The canvas you wish to search for is not available. - `internal_error` — Something went wrong on our end, please try again. See https://docs.slack.dev/reference/methods/canvases.sections.lookup */
+/** Find sections matching the provided criteria Required scopes -- bot: `canvases:read`; user: `canvases:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_deleted` -- The canvas you wish to search is not available. - `canvas_disabled_user_team` -- Canvas is disabled on user's team. - `canvas_not_found` -- The canvas you wish to search for is not available. - `internal_error` -- Something went wrong on our end, please try again. See https://docs.slack.dev/reference/methods/canvases.sections.lookup */
 export const lookupSection: API.OperationMethod<
   LookupSectionRequest,
   LookupSectionResponse,
@@ -374,7 +374,7 @@ export const lookupSection: API.OperationMethod<
 }));
 
 export type SetAccessError = SlackOpError;
-/** Sets the access level to a canvas for specified entities Required scopes — bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` — Canvas is disabled on user's team - `canvas_not_found` — The canvas you wish to update permissions for is not available. - `channel_not_found` — A channel could not be found. - `failed_to_update_user_ids` — Failed to update the specified user_ids. - `invalid_parameters` — One of user_ids or channel_ids must be defined, but not both. - `restricted_action` — User does not have permission to perform this action. - `user_not_found` — A user could not be found. See https://docs.slack.dev/reference/methods/canvases.access.set */
+/** Sets the access level to a canvas for specified entities Required scopes -- bot: `canvases:write`; user: `canvases:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `canvas_not_found` -- The canvas you wish to update permissions for is not available. - `channel_not_found` -- A channel could not be found. - `failed_to_update_user_ids` -- Failed to update the specified user_ids. - `invalid_parameters` -- One of user_ids or channel_ids must be defined, but not both. - `restricted_action` -- User does not have permission to perform this action. - `user_not_found` -- A user could not be found. See https://docs.slack.dev/reference/methods/canvases.access.set */
 export const setAccess: API.OperationMethod<
   SetAccessRequest,
   SetAccessResponse,

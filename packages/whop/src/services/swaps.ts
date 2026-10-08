@@ -405,7 +405,7 @@ export const ListSwapsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSwapsResponse" }) as any as S.Schema<ListSwapsResponse>;
 
 export type CreateSwapError = BadRequest | Forbidden | Conflict | WhopOpError;
-/** Create Swap Swaps one token for another from the account's wallet, or converts between fiat currencies in the account's ledger at the mid-market rate. Crypto swaps finish in the background — check the swap for its status. */
+/** Create Swap Swaps one token for another from the account's wallet, or converts between fiat currencies in the account's ledger at the mid-market rate. Crypto swaps finish in the background -- check the swap for its status. */
 export const createSwap: API.OperationMethod<
   CreateSwapRequest,
   CreateSwapResponse,
@@ -420,7 +420,7 @@ export const createSwap: API.OperationMethod<
 }));
 
 export type CreateSwapQuoteError = BadRequest | Conflict | WhopOpError;
-/** Create Swap Quote Previews the price of a swap. Fiat pairs quote the in-ledger mid-market conversion — the same rate creating the swap fills at. No funds move and nothing is saved. */
+/** Create Swap Quote Previews the price of a swap. Fiat pairs quote the in-ledger mid-market conversion -- the same rate creating the swap fills at. No funds move and nothing is saved. */
 export const createSwapQuote: API.OperationMethod<
   CreateSwapQuoteRequest,
   CreateSwapQuoteResponse,
@@ -450,7 +450,7 @@ export const getSwap: API.OperationMethod<
 }));
 
 export type ListSwapsError = Forbidden | WhopOpError;
-/** List Swaps Retrieve the account's completed or pending swaps — currently just the latest one. */
+/** List Swaps Retrieve the account's completed or pending swaps -- currently just the latest one. */
 export const listSwaps: API.OperationMethod<
   ListSwapsRequest,
   ListSwapsResponse,

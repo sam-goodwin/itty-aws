@@ -240,7 +240,7 @@ export interface ChangeRequestsRejectCreateRequest {
   project_id: string;
   /** A UUID string identifying this change request. */
   id: string;
-  /** Reason for rejecting the change request. Required — recorded with the rejection vote and shown to the requester. */
+  /** Reason for rejecting the change request. Required -- recorded with the rejection vote and shown to the requester. */
   reason: string;
 }
 export const ChangeRequestsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>

@@ -6746,9 +6746,9 @@ export interface OsProfile {
   bootType?: string;
   /** Version of assembly present on device */
   assemblyVersion?: string;
-  /** OS type (“windows", “linux”) */
+  /** OS type ("windows", "linux") */
   osType?: string;
-  /** OS SKU (e.g., “ Microsoft Azure Linux ROE“, “Azure Stack HCI", "Microsoft Azure Linux 3.0") */
+  /** OS SKU (e.g., " Microsoft Azure Linux ROE", "Azure Stack HCI", "Microsoft Azure Linux 3.0") */
   osSku?: string;
   /** OS Version */
   osVersion?: string;

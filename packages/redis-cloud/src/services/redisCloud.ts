@@ -1505,7 +1505,7 @@ export interface CreateDatabaseRequest {
   port?: number;
   /** Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb. If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb. If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** Optional. If specified, redisVersion defines the Redis database version. If omitted, the Redis version will be set to the default version (available in 'GET /subscriptions/redis-versions') */
   redisVersion?: string;
@@ -1800,7 +1800,7 @@ export interface CreateFixedDatabaseRequest {
   protocol?: CreateFixedDatabaseRequestProtocol | (string & {});
   /** (Pay-as-you-go subscriptions only) Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** (Pay-as-you-go subscriptions only) Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb. If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** (Pay-as-you-go subscriptions only) Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb. If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** (Pay-as-you-go subscriptions only) Optional. Support Redis [OSS Cluster API](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#oss-cluster-api). Default: 'false' */
   supportOSSClusterApi?: boolean;
@@ -2516,7 +2516,7 @@ export const CreateRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).an
 export type CreateSubscriptionRequestDeploymentType = "single-region" | "active-active";
 export const CreateSubscriptionRequestDeploymentType = S.String;
 
-/** Optional. The payment method for the subscription. If set to ‘credit-card’, ‘paymentMethodId’ must be defined. Default: 'credit-card' */
+/** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscriptionRequestPaymentMethod = "credit-card" | "marketplace";
 export const CreateSubscriptionRequestPaymentMethod = S.String;
 
@@ -2583,7 +2583,7 @@ export const CustomerManagedKeyProperties = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionSpecProvider = "AWS" | "GCP";
 export const SubscriptionSpecProvider = S.String;
 
-/** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If ‘multipleAvailabilityZones’ is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
+/** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If 'multipleAvailabilityZones' is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
 export type SubscriptionRegionSpecPreferredAvailabilityZonesList = Array<string>;
 export const SubscriptionRegionSpecPreferredAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2623,7 +2623,7 @@ export interface SubscriptionRegionSpec {
   region: string;
   /** Optional. Support deployment on multiple availability zones within the selected region. Default for Active-Active: matches the region's multi-AZ capability (true on multi-AZ regions, false on non-multi-AZ regions). Default for Pro / single-region: `false`. */
   multipleAvailabilityZones?: boolean;
-  /** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If ‘multipleAvailabilityZones’ is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
+  /** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If 'multipleAvailabilityZones' is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
   preferredAvailabilityZones?: SubscriptionRegionSpecPreferredAvailabilityZonesList;
   networking?: SubscriptionRegionNetworkingSpec;
 }
@@ -2733,7 +2733,7 @@ export interface SubscriptionDatabaseSpec {
   port?: number;
   /** Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb.If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb.If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** Optional. Support Redis [OSS Cluster API](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#oss-cluster-api). Default: 'false' */
   supportOSSClusterApi?: boolean;
@@ -2800,9 +2800,9 @@ export interface CreateSubscriptionRequest {
   dryRun?: boolean;
   /** Optional. When 'single-region' or not set: Creates a single region subscription. When 'active-active': creates an Active-Active (multi-region) subscription. */
   deploymentType?: CreateSubscriptionRequestDeploymentType | (string & {});
-  /** Optional. The payment method for the subscription. If set to ‘credit-card’, ‘paymentMethodId’ must be defined. Default: 'credit-card' */
+  /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
   paymentMethod?: CreateSubscriptionRequestPaymentMethod | (string & {});
-  /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if ‘paymentMethod’ is ‘marketplace’, but required for all other account types. */
+  /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required for all other account types. */
   paymentMethodId?: number;
   /** Optional. Memory storage preference: either 'ram' or a combination of 'ram-and-flash' (also known as Auto Tiering). Default: 'ram' */
   memoryStorage?: CreateSubscriptionRequestMemoryStorage | (string & {});
@@ -2846,7 +2846,7 @@ export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct
   identifier: "CreateSubscriptionResponse",
 }) as any as S.Schema<CreateSubscriptionResponse>;
 
-/** Optional. The payment method for the subscription. If set to ‘credit-card’, ‘paymentMethodId’ must be defined. Default: 'credit-card' */
+/** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
 export const CreateSubscription1RequestPaymentMethod = S.String;
 
@@ -2855,9 +2855,9 @@ export interface CreateSubscription1Request {
   name: string;
   /** An Essentials plan ID. The plan describes the dataset size, cloud provider and region, and available database configuration options. Use GET /fixed/plans to get a list of available options. */
   planId: number;
-  /** Optional. The payment method for the subscription. If set to ‘credit-card’, ‘paymentMethodId’ must be defined. Default: 'credit-card' */
+  /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
   paymentMethod?: CreateSubscription1RequestPaymentMethod | (string & {});
-  /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if ‘paymentMethod’ is ‘marketplace’, but required for all other account types. */
+  /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required for all other account types. */
   paymentMethodId?: number;
 }
 export const CreateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
@@ -3291,7 +3291,7 @@ export interface DeleteFixedDatabaseByIDRequest {
   name?: string;
   /** (Pay-as-you-go subscriptions only) Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** (Pay-as-you-go subscriptions only) Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb. If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** (Pay-as-you-go subscriptions only) Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb. If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** (Pay-as-you-go subscriptions only) Optional. Support Redis [OSS Cluster API](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#oss-cluster-api). */
   supportOSSClusterApi?: boolean;
@@ -7212,7 +7212,7 @@ export interface UpdateCrdbLocalPropertiesRequest {
   dryRun?: boolean;
   /** Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb.If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb.If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** Optional. Support Redis [OSS Cluster API](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#oss-cluster-api). Default: 'false' */
   supportOSSClusterApi?: boolean;
@@ -7342,7 +7342,7 @@ export interface UpdateDatabaseRequest {
   name?: string;
   /** Optional. Total memory in GB, including replication and other overhead. You cannot set both datasetSizeInGb and totalMemoryInGb. */
   memoryLimitInGb?: number;
-  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If ‘replication’ is 'true', the database’s total memory will be twice as large as the datasetSizeInGb.If ‘replication’ is false, the database’s total memory will be the datasetSizeInGb value. */
+  /** Optional. The maximum amount of data in the dataset for this database in GB. You cannot set both datasetSizeInGb and totalMemoryInGb. If 'replication' is 'true', the database's total memory will be twice as large as the datasetSizeInGb.If 'replication' is false, the database's total memory will be the datasetSizeInGb value. */
   datasetSizeInGb?: number;
   /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
   respVersion?: UpdateDatabaseRequestRespVersion | (string & {});
@@ -7626,7 +7626,7 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSubscriptionRequest",
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
-/** Optional. The payment method for the subscription. If set to ‘credit-card’ , ‘paymentMethodId’ must be defined. */
+/** Optional. The payment method for the subscription. If set to 'credit-card' , 'paymentMethodId' must be defined. */
 export type UpdateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
 export const UpdateSubscription1RequestPaymentMethod = S.String;
 
@@ -7636,9 +7636,9 @@ export interface UpdateSubscription1Request {
   name?: string;
   /** Optional. An Essentials plan ID. The plan describes the dataset size, cloud provider and region, and available database configuration options. Use GET /fixed/plans/subscriptions/{subscriptionId} to get a list of compatible options for the specified subscription. */
   planId?: number;
-  /** Optional. The payment method for the subscription. If set to ‘credit-card’ , ‘paymentMethodId’ must be defined. */
+  /** Optional. The payment method for the subscription. If set to 'credit-card' , 'paymentMethodId' must be defined. */
   paymentMethod?: UpdateSubscription1RequestPaymentMethod | (string & {});
-  /** Optional. The payment method ID you'd like to use for this subscription. Must be a valid payment method ID for this account. Use GET /payment-methods to get a list of payment methods for your account. This value is optional if ‘paymentMethod’ is ‘marketplace’, but required if 'paymentMethod' is 'credit-card'. */
+  /** Optional. The payment method ID you'd like to use for this subscription. Must be a valid payment method ID for this account. Use GET /payment-methods to get a list of payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required if 'paymentMethod' is 'credit-card'. */
   paymentMethodId?: number;
 }
 export const UpdateSubscription1Request = /*@__PURE__*/ S.suspend(() =>

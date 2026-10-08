@@ -886,7 +886,7 @@ export interface CreateDedicatedServerFeatureIpmiAccessRequest {
   serviceName: string;
   /** IP to allow connection from for this IPMI session */
   ipToAllow?: string;
-  /** Public SSH key for Serial Over Lan SSH access | ⚠️ Starting 2024-08-27, SSH key name will no longer be accepted and only raw public SSH key will remain accepted */
+  /** Public SSH key for Serial Over Lan SSH access | U+26A0 Starting 2024-08-27, SSH key name will no longer be accepted and only raw public SSH key will remain accepted */
   sshKey?: string;
   /** Session access time to live in minutes */
   ttl: DedicatedServerCacheTTLEnum | (number & {});
@@ -10044,7 +10044,7 @@ export const revokeDedicatedServerSpla: API.OperationMethod<
 }));
 
 export type StartDedicatedServerInstallError = OvhOpError;
-/** Install or reinstall an operating system - Try 🆕 /dedicated/server/{serviceName}/reinstall route */
+/** Install or reinstall an operating system - Try U+1F195 /dedicated/server/{serviceName}/reinstall route */
 export const startDedicatedServerInstall: API.OperationMethod<
   StartDedicatedServerInstallRequest,
   DedicatedServerTask,

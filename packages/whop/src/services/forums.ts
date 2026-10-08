@@ -237,7 +237,7 @@ export const UpdateForumRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateForumRequest" }) as any as S.Schema<UpdateForumRequest>;
 
 export type GetForumError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve forum [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing forum. Required permissions: - `forum:read` */
+/** Retrieve forum [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing forum. Required permissions: - `forum:read` */
 export const getForum: API.OperationMethod<GetForumRequest, Forum, GetForumError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetForumRequest,
@@ -248,7 +248,7 @@ export const getForum: API.OperationMethod<GetForumRequest, Forum, GetForumError
   }));
 
 export type ListForumError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List forums [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of forums within a specific company, with optional filtering by product. Required permissions: - `forum:read` */
+/** List forums [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of forums within a specific company, with optional filtering by product. Required permissions: - `forum:read` */
 export const listForum: API.PaginatedOperationMethod<
   ListForumRequest,
   ListForumResponse,
@@ -280,7 +280,7 @@ export type UpdateForumError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update forum [Legacy API — https://docs.whop.com/api-reference] Update moderation and notification settings for a forum, such as who can post, who can comment, and email notification preferences. Required permissions: - `forum:moderate` */
+/** Update forum [Legacy API -- https://docs.whop.com/api-reference] Update moderation and notification settings for a forum, such as who can post, who can comment, and email notification preferences. Required permissions: - `forum:moderate` */
 export const updateForum: API.OperationMethod<
   UpdateForumRequest,
   Forum,

@@ -132,7 +132,7 @@ export const ViewsPushResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewsPushResponse" }) as any as S.Schema<ViewsPushResponse>;
 
 export type PublishViewError = SlackOpError;
-/** Publish a static view for a User. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` — Error returned when the given `external_id` has already be used. - `hash_conflict` — Error returned when the provided `hash` doesn't match the current stored value. - `missing_profile_id` — A profile id was not provided when trying to publish a view of type profile. - `not_allowed_token_type` — The type of token your app used when requesting this method is not allowed. - `not_enabled` — Error returned if a `home` view is published but the Home tab isn't enabled for the app. - `not_implemented` — The profile view experiment is not enabled for this user. - `view_too_large` — Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.publish */
+/** Publish a static view for a User. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `hash_conflict` -- Error returned when the provided `hash` doesn't match the current stored value. - `missing_profile_id` -- A profile id was not provided when trying to publish a view of type profile. - `not_allowed_token_type` -- The type of token your app used when requesting this method is not allowed. - `not_enabled` -- Error returned if a `home` view is published but the Home tab isn't enabled for the app. - `not_implemented` -- The profile view experiment is not enabled for this user. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.publish */
 export const publishView: API.OperationMethod<
   PublishViewRequest,
   PublishViewResponse,
@@ -147,7 +147,7 @@ export const publishView: API.OperationMethod<
 }));
 
 export type UpdateViewError = SlackOpError;
-/** Update an existing view. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` — Error returned when the given `external_id` has already be used. - `hash_conflict` — Error returned when the provided `hash` doesn't match the current stored value. - `not_found` — Error returned when the given `view_id` or `external_id` doesn't exist. - `view_too_large` — Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.update */
+/** Update an existing view. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `hash_conflict` -- Error returned when the provided `hash` doesn't match the current stored value. - `not_found` -- Error returned when the given `view_id` or `external_id` doesn't exist. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.update */
 export const updateView: API.OperationMethod<
   UpdateViewRequest,
   UpdateViewResponse,
@@ -162,7 +162,7 @@ export const updateView: API.OperationMethod<
 }));
 
 export type ViewsOpenError = SlackOpError;
-/** Open a view for a user. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` — Error returned when the given `external_id` has already be used. - `exchanged_trigger_id` — The trigger_id was already exchanged in a previous call. - `expired_trigger_id` — The trigger_id is expired. - `invalid_trigger_id` — The trigger_id is invalid. The expected format for the trigger_id argument is "132456.7890123.abcdef". - `view_too_large` — Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.open */
+/** Open a view for a user. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `exchanged_trigger_id` -- The trigger_id was already exchanged in a previous call. - `expired_trigger_id` -- The trigger_id is expired. - `invalid_trigger_id` -- The trigger_id is invalid. The expected format for the trigger_id argument is "132456.7890123.abcdef". - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.open */
 export const viewsOpen: API.OperationMethod<
   ViewsOpenRequest,
   ViewsOpenResponse,
@@ -177,7 +177,7 @@ export const viewsOpen: API.OperationMethod<
 }));
 
 export type ViewsPushError = SlackOpError;
-/** Push a view onto the stack of a root view. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` — Error returned when the given `external_id` has already be used. - `exchanged_trigger_id` — The trigger_id was already exchanged in a previous call. - `expired_trigger_id` — The trigger_id is expired. - `invalid_trigger_id` — The trigger_id is invalid. The expected format for the trigger_id argument is "132456.7890123.abcdef". - `not_found` — Error returned when the requested view can't be found. - `push_limit_reached` — Error returned when the max push limit has been reached for views. Currently the limit is 3. - `view_too_large` — Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.push */
+/** Push a view onto the stack of a root view. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `exchanged_trigger_id` -- The trigger_id was already exchanged in a previous call. - `expired_trigger_id` -- The trigger_id is expired. - `invalid_trigger_id` -- The trigger_id is invalid. The expected format for the trigger_id argument is "132456.7890123.abcdef". - `not_found` -- Error returned when the requested view can't be found. - `push_limit_reached` -- Error returned when the max push limit has been reached for views. Currently the limit is 3. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.push */
 export const viewsPush: API.OperationMethod<
   ViewsPushRequest,
   ViewsPushResponse,

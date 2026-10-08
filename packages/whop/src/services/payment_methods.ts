@@ -754,7 +754,7 @@ export const GetPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
 export type Direction = "asc" | "desc";
 export const Direction = S.String;
 
-/** How a payment method will be charged after the buyer leaves — the same vocabulary as a confirmation token's setup_future_usage. */
+/** How a payment method will be charged after the buyer leaves -- the same vocabulary as a confirmation token's setup_future_usage. */
 export type FutureUsageTypes = "off_session" | "on_session";
 export const FutureUsageTypes = S.String;
 
@@ -1087,7 +1087,7 @@ export type DeletePaymentMethodError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete payment method [Legacy API — https://docs.whop.com/api-reference] Delete a saved payment method. Cannot delete a payment method attached to an active subscription. Required permissions: - `member:payment_methods:manage` */
+/** Delete payment method [Legacy API -- https://docs.whop.com/api-reference] Delete a saved payment method. Cannot delete a payment method attached to an active subscription. Required permissions: - `member:payment_methods:manage` */
 export const deletePaymentMethod: API.OperationMethod<
   DeletePaymentMethodRequest,
   DeletePaymentMethodResponse,
@@ -1107,7 +1107,7 @@ export type GetPaymentMethodError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve payment method [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing payment method. Addresses a member's wallet when member_id or account_id is given, otherwise your own. Required permissions: - `member:payment_methods:read` */
+/** Retrieve payment method [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing payment method. Addresses a member's wallet when member_id or account_id is given, otherwise your own. Required permissions: - `member:payment_methods:read` */
 export const getPaymentMethod: API.OperationMethod<
   GetPaymentMethodRequest,
   GetPaymentMethodResponse,
@@ -1127,7 +1127,7 @@ export type ListPaymentMethodError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List payment methods [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of payment methods for a member or company, or for the authenticated user when neither is given, with optional filtering by creation date. A payment method is a stored representation of how a customer intends to pay, such as a card, bank account, or digital wallet. Required permissions: - `member:payment_methods:read` */
+/** List payment methods [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of payment methods for a member or company, or for the authenticated user when neither is given, with optional filtering by creation date. A payment method is a stored representation of how a customer intends to pay, such as a card, bank account, or digital wallet. Required permissions: - `member:payment_methods:read` */
 export const listPaymentMethod: API.PaginatedOperationMethod<
   ListPaymentMethodRequest,
   ListPaymentMethodResponse,

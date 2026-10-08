@@ -461,7 +461,7 @@ export type GetLedgerAccountError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve ledger account [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing ledger account. Required permissions: - `company:balance:read` - `payout:account:read` */
+/** Retrieve ledger account [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing ledger account. Required permissions: - `company:balance:read` - `payout:account:read` */
 export const getLedgerAccount: API.OperationMethod<
   GetLedgerAccountRequest,
   LedgerAccount,

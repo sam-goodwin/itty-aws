@@ -229,7 +229,7 @@ export const Currencies = S.String;
 
 /** Per-bucket ad performance for an ad campaign, ad group, or ad. Bucket grain is set by the `ad_report` query's `granularity` argument. */
 export interface AdReportBreakdownItemGranularityItem {
-  /** The bucket's start time as a real UTC instant. `(statDate, statHour)` resolved in the ad account's reporting timezone — render this in the viewer's local timezone. */
+  /** The bucket's start time as a real UTC instant. `(statDate, statHour)` resolved in the ad account's reporting timezone -- render this in the viewer's local timezone. */
   bucket_start: string;
   /** Clicks in this bucket. */
   clicks: number;
@@ -245,7 +245,7 @@ export interface AdReportBreakdownItemGranularityItem {
   result_label_key: ResultLabelKeys | null;
   /** Advertiser-defined label for the result when `resultLabelKey` is `custom`. */
   result_label_override: string | null;
-  /** Charged spend in this bucket in the requested reporting currency — the amount billed including platform fees, not the platform-side net spend. */
+  /** Charged spend in this bucket in the requested reporting currency -- the amount billed including platform fees, not the platform-side net spend. */
   spend: number;
   /** Currency of the `spend` value. */
   spend_currency: Currencies;
@@ -297,13 +297,13 @@ export interface AdReportBreakdownItemSummary {
   impressions: number;
   /** Unique users reached, deduplicated by the external ad platform. */
   reach: number;
-  /** Count of the campaign's primary optimization result (purchases, clicks, etc.) — see `resultLabelKey`. */
+  /** Count of the campaign's primary optimization result (purchases, clicks, etc.) -- see `resultLabelKey`. */
   result_count: number | null;
   /** The type of optimization result represented by `resultCount`. */
   result_label_key: ResultLabelKeys | null;
   /** Advertiser-defined label for the result when `resultLabelKey` is `custom`. */
   result_label_override: string | null;
-  /** Alias for `purchaseReturnOnAdSpend` — return on ad spend for purchases, as reported by the external ad platform. */
+  /** Alias for `purchaseReturnOnAdSpend` -- return on ad spend for purchases, as reported by the external ad platform. */
   return_on_ad_spend: number | null;
   /** Total spend over the date range in the requested reporting currency. */
   spend: number;
@@ -337,7 +337,7 @@ export interface AdReportBreakdownItem {
   granularity: AdReportBreakdownItemGranularityList | null;
   /** Tag of the entity (ad campaign, ad group, or ad). */
   id: string;
-  /** The entity level of this row — matches the `breakdown` arg. */
+  /** The entity level of this row -- matches the `breakdown` arg. */
   level: AdReportBreakdownLevels;
   /** Display name of the entity, when available. */
   name: string | null;
@@ -397,7 +397,7 @@ export type GetAdReportError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve ad report [Legacy API — https://docs.whop.com/api-reference] Performance report for a company, ad campaigns, ad groups, or ads. Always returns aggregate `summary` totals summed across the scope. Set `granularity` to additionally get a time series, or set `breakdown` (`campaign`/`ad_group`/`ad`) to additionally get per-entity rows inside the requested scope. Exactly one of `companyId`, `adCampaignIds`, `adGroupIds`, or `adIds` must be provided. Required permissions: - `ad_campaign:stats:read` */
+/** Retrieve ad report [Legacy API -- https://docs.whop.com/api-reference] Performance report for a company, ad campaigns, ad groups, or ads. Always returns aggregate `summary` totals summed across the scope. Set `granularity` to additionally get a time series, or set `breakdown` (`campaign`/`ad_group`/`ad`) to additionally get per-entity rows inside the requested scope. Exactly one of `companyId`, `adCampaignIds`, `adGroupIds`, or `adIds` must be provided. Required permissions: - `ad_campaign:stats:read` */
 export const getAdReport: API.OperationMethod<
   GetAdReportRequest,
   AdReport,

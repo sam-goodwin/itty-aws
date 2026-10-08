@@ -312,7 +312,7 @@ export interface ListDashboardTemplatesRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Optional. When not using `search`, results are sorted with featured templates first (`is_featured=true`), then by `template_name` (case-insensitive A–Z; `-template_name` for Z–A) or by `created_at` (`-created_at` for newest first). When `search` is set, order is featured first, then relevance rank, then case-insensitive name for ties. */
+  /** Optional. When not using `search`, results are sorted with featured templates first (`is_featured=true`), then by `template_name` (case-insensitive A-Z; `-template_name` for Z-A) or by `created_at` (`-created_at` for newest first). When `search` is set, order is featured first, then relevance rank, then case-insensitive name for ties. */
   ordering?: ListDashboardTemplatesRequestOrdering | (string & {});
   /** Optional. `global`: official templates only. `team`: this project's saved templates only (`scope=team` rows for the current project). `organization`: templates shared across all projects in this organization. `feature_flag`: feature-flag dashboard templates only. Omit for official, organization, and this project's templates (default dashboard template picker behavior). */
   scope?: ListDashboardTemplatesRequestScope | (string & {});
@@ -496,7 +496,7 @@ export type DashboardTemplatesCopyBetweenProjectsCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Copy a team template to this project Creates a new team-scoped template in the **target** project (URL) from a **team-scoped** source template in the same organization. Global and feature-flag templates return 400. Cross-organization or inaccessible sources return 404. Source and destination projects must differ (400 if equal). Conflicting `template_name` values on the destination are auto-suffixed with `(copy)`, `(copy 2)`, … */
+/** Copy a team template to this project Creates a new team-scoped template in the **target** project (URL) from a **team-scoped** source template in the same organization. Global and feature-flag templates return 400. Cross-organization or inaccessible sources return 404. Source and destination projects must differ (400 if equal). Conflicting `template_name` values on the destination are auto-suffixed with `(copy)`, `(copy 2)`, ... */
 export const dashboardTemplatesCopyBetweenProjectsCreate: API.OperationMethod<
   DashboardTemplatesCopyBetweenProjectsCreateRequest,
   DashboardTemplate,

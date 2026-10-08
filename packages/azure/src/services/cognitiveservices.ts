@@ -6797,7 +6797,7 @@ export const RaiEgressPolicyConfigRulesList = /*@__PURE__*/ S.Array(
 export interface RaiEgressPolicyConfig {
   /** The enforcement mode for egress rules. If omitted on create, the server defaults to Enforced. On subsequent GET requests, the server always returns the effective mode. */
   mode?: RaiEgressMode | (string & {});
-  /** The default action when no user-defined rules match. Deny blocks unmatched traffic; Allow permits it. Transform and Rewrite rules are always applied to their matched traffic regardless of this setting — defaultAction only governs traffic that does not match any rule. If omitted on create, the server defaults to Deny (fail-closed). On subsequent GET requests, the server always returns the effective value. */
+  /** The default action when no user-defined rules match. Deny blocks unmatched traffic; Allow permits it. Transform and Rewrite rules are always applied to their matched traffic regardless of this setting -- defaultAction only governs traffic that does not match any rule. If omitted on create, the server defaults to Deny (fail-closed). On subsequent GET requests, the server always returns the effective value. */
   defaultAction?: RaiEgressDefaultAction | (string & {});
   /** Description of the egress policy. */
   description?: string;

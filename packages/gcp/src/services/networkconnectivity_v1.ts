@@ -1823,7 +1823,7 @@ export interface CreateProjectsLocationsServiceConnectionPoliciesRequest {
   subnetworkMode?:
     | CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum
     | (string & {});
-  /** Optional. The space where we search for a free range to create a subnetwork. It can be narrow down or pick a different space. This is in standard CIDR format. If not specified, “10.0.0.0/8” is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork. */
+  /** Optional. The space where we search for a free range to create a subnetwork. It can be narrow down or pick a different space. This is in standard CIDR format. If not specified, "10.0.0.0/8" is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork. */
   "autoSubnetworkConfig.allocRangeSpace"?: StringList;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -3703,7 +3703,7 @@ export const RemoteTransportProfileSlaEnum = S.String;
 
 /** Message describing RemoteTransportProfile object. */
 export interface RemoteTransportProfile {
-  /** Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft Azure”. */
+  /** Output only. Name of the provider on the other end of this profile. E.g. "Amazon Web Services" or "Microsoft Azure". */
   provider?: string;
   /** Output only. Order state for this profile. */
   orderState?: RemoteTransportProfileOrderStateEnum;

@@ -3450,7 +3450,7 @@ export type DescribeApplicationAssignmentError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves a direct assignment of a user or group to an application. If the user doesn’t have a direct assignment to the application, the user may still have access to the application through a group. Therefore, don’t use this API to test access to an application for a user. Instead use ListApplicationAssignmentsForPrincipal.
+ * Retrieves a direct assignment of a user or group to an application. If the user doesn't have a direct assignment to the application, the user may still have access to the application through a group. Therefore, don't use this API to test access to an application for a user. Instead use ListApplicationAssignmentsForPrincipal.
  */
 export const describeApplicationAssignment: API.OperationMethod<
   DescribeApplicationAssignmentRequest,
@@ -4807,7 +4807,7 @@ export type PutApplicationAssignmentConfigurationError =
   | ValidationException
   | CommonErrors;
 /**
- * Configure how users gain access to an application. If `AssignmentsRequired` is `true` (default value), users don’t have access to the application unless an assignment is created using the CreateApplicationAssignment API. If `false`, all users have access to the application. If an assignment is created using CreateApplicationAssignment., the user retains access if `AssignmentsRequired` is set to `true`.
+ * Configure how users gain access to an application. If `AssignmentsRequired` is `true` (default value), users don't have access to the application unless an assignment is created using the CreateApplicationAssignment API. If `false`, all users have access to the application. If an assignment is created using CreateApplicationAssignment., the user retains access if `AssignmentsRequired` is set to `true`.
  */
 export const putApplicationAssignmentConfiguration: API.OperationMethod<
   PutApplicationAssignmentConfigurationRequest,
@@ -4887,7 +4887,7 @@ export type PutApplicationGrantError =
  *
  * - **Refresh token** - Enables application to request new access tokens to replace expiring or expired access tokens.
  *
- * - **Exchange token** - A grant that requests tokens from the authorization server by providing a ‘subject’ token with access scope authorizing trusted identity propagation to this application. To learn more, see RFC 8693.
+ * - **Exchange token** - A grant that requests tokens from the authorization server by providing a 'subject' token with access scope authorizing trusted identity propagation to this application. To learn more, see RFC 8693.
  *
  * - **Authorization server** - IAM Identity Center requests tokens.
  *

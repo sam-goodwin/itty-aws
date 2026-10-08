@@ -1573,7 +1573,7 @@ export type CreateInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create invoice [Legacy API — https://docs.whop.com/api-reference] Create an invoice for a customer. The invoice can be charged automatically using a stored payment method, or sent to the customer for manual payment. Required permissions: - `invoice:create` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
+/** Create invoice [Legacy API -- https://docs.whop.com/api-reference] Create an invoice for a customer. The invoice can be charged automatically using a stored payment method, or sent to the customer for manual payment. Required permissions: - `invoice:create` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
 export const createInvoice: API.OperationMethod<
   CreateInvoiceRequest,
   Invoice,
@@ -1593,7 +1593,7 @@ export type DeleteInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete invoice [Legacy API — https://docs.whop.com/api-reference] Delete a draft invoice. Required permissions: - `invoice:update` */
+/** Delete invoice [Legacy API -- https://docs.whop.com/api-reference] Delete a draft invoice. Required permissions: - `invoice:update` */
 export const deleteInvoice: API.OperationMethod<
   DeleteInvoiceRequest,
   DeleteInvoiceResponse,
@@ -1608,7 +1608,7 @@ export const deleteInvoice: API.OperationMethod<
 }));
 
 export type GetInvoiceError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve invoice [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing invoice. Required permissions: - `invoice:basic:read` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
+/** Retrieve invoice [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing invoice. Required permissions: - `invoice:basic:read` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
 export const getInvoice: API.OperationMethod<
   GetInvoiceRequest,
   Invoice,
@@ -1628,7 +1628,7 @@ export type ListInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List invoices [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of invoices for a company, with optional filtering by product, status, collection method, and creation date. Required permissions: - `invoice:basic:read` */
+/** List invoices [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of invoices for a company, with optional filtering by product, status, collection method, and creation date. Required permissions: - `invoice:basic:read` */
 export const listInvoice: API.PaginatedOperationMethod<
   ListInvoiceRequest,
   ListInvoiceResponse,
@@ -1660,7 +1660,7 @@ export type MarkPaidInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Mark paid invoice [Legacy API — https://docs.whop.com/api-reference] Mark an open invoice as paid when payment was collected outside of Whop. Required permissions: - `invoice:update` */
+/** Mark paid invoice [Legacy API -- https://docs.whop.com/api-reference] Mark an open invoice as paid when payment was collected outside of Whop. Required permissions: - `invoice:update` */
 export const markPaidInvoice: API.OperationMethod<
   MarkPaidInvoiceRequest,
   MarkPaidInvoiceResponse,
@@ -1680,7 +1680,7 @@ export type MarkUncollectibleInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Mark uncollectible invoice [Legacy API — https://docs.whop.com/api-reference] Mark an open invoice as uncollectible when payment is not expected. Required permissions: - `invoice:update` */
+/** Mark uncollectible invoice [Legacy API -- https://docs.whop.com/api-reference] Mark an open invoice as uncollectible when payment is not expected. Required permissions: - `invoice:update` */
 export const markUncollectibleInvoice: API.OperationMethod<
   MarkUncollectibleInvoiceRequest,
   MarkUncollectibleInvoiceResponse,
@@ -1700,7 +1700,7 @@ export type ResendInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Resend invoice [Legacy API — https://docs.whop.com/api-reference] Resend the notification email for an existing invoice to the customer. Required permissions: - `invoice:update` */
+/** Resend invoice [Legacy API -- https://docs.whop.com/api-reference] Resend the notification email for an existing invoice to the customer. Required permissions: - `invoice:update` */
 export const resendInvoice: API.OperationMethod<
   ResendInvoiceRequest,
   ResendInvoiceResponse,
@@ -1720,7 +1720,7 @@ export type UpdateInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update invoice [Legacy API — https://docs.whop.com/api-reference] Update a draft invoice's details. Required permissions: - `invoice:update` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
+/** Update invoice [Legacy API -- https://docs.whop.com/api-reference] Update a draft invoice's details. Required permissions: - `invoice:update` - `member:email:read` - `member:basic:read` - `payment:basic:read` */
 export const updateInvoice: API.OperationMethod<
   UpdateInvoiceRequest,
   Invoice,
@@ -1740,7 +1740,7 @@ export type VoidInvoiceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Void invoice [Legacy API — https://docs.whop.com/api-reference] Void an open invoice so it can no longer be paid. Voiding is permanent and cannot be undone. Required permissions: - `invoice:update` */
+/** Void invoice [Legacy API -- https://docs.whop.com/api-reference] Void an open invoice so it can no longer be paid. Voiding is permanent and cannot be undone. Required permissions: - `invoice:update` */
 export const voidInvoice: API.OperationMethod<
   VoidInvoiceRequest,
   VoidInvoiceResponse,

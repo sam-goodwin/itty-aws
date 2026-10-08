@@ -730,7 +730,7 @@ export interface PaginatedLoopDTOList {
   next?: string | null;
   previous?: string | null;
   results: PaginatedLoopDTOListResultsList;
-  /** Hard cap on non-deleted loops per project. Creating a loop beyond this returns a 429 with `error: loop_safety_limit`. Authoritative — read this rather than assuming a value. */
+  /** Hard cap on non-deleted loops per project. Creating a loop beyond this returns a 429 with `error: loop_safety_limit`. Authoritative -- read this rather than assuming a value. */
   max_loops_per_team?: number;
   /** Current number of non-deleted, user-facing loops in this project, counted against `max_loops_per_team`. At or above the cap, creation is blocked. */
   total_loop_count?: number;
@@ -926,7 +926,7 @@ export const UpdateLoopsSkillBundleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLoopsSkillBundleRequest>;
 
 export type CreateLoopError = PosthogOpError;
-/** Create a loop API for managing loops — named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
+/** Create a loop API for managing loops -- named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
 export const createLoop: API.OperationMethod<
   CreateLoopRequest,
   LoopDTO,
@@ -971,7 +971,7 @@ export const createLoopsRun: API.OperationMethod<
 }));
 
 export type GetLoopError = NotFound | PosthogOpError;
-/** Get a loop API for managing loops — named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
+/** Get a loop API for managing loops -- named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
 export const getLoop: API.OperationMethod<GetLoopRequest, LoopDTO, GetLoopError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetLoopRequest,

@@ -47,7 +47,7 @@ export const EmailTemplateDesignBody = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EmailTemplateDesignBody" }) as any as S.Schema<EmailTemplateDesignBody>;
 
-/** Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
+/** Design JSON for PostHog's visual email editor -- the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
 export interface EmailTemplateDesign {
   /** Highest htmlID suffix per element type, e.g. {"u_row": 1, "u_content_text": 2}. */
   counters?: unknown;
@@ -68,9 +68,9 @@ export interface EmailTemplate {
   subject?: string;
   /** Plain-text fallback body for clients that can't render the email. */
   text?: string;
-  /** Rendered email body — derived from the design at save time. The visual editor's save path supplies it directly; omit it otherwise. */
+  /** Rendered email body -- derived from the design at save time. The visual editor's save path supplies it directly; omit it otherwise. */
   html?: string;
-  /** Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
+  /** Design JSON for PostHog's visual email editor -- the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
   design?: EmailTemplateDesign;
 }
 export const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
@@ -83,9 +83,9 @@ export const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailTemplate" }) as any as S.Schema<EmailTemplate>;
 
 export interface MessageTemplateContent {
-  /** Templating language for the email content. Always 'liquid' — Liquid tags pass through verbatim. * `liquid` - liquid */
+  /** Templating language for the email content. Always 'liquid' -- Liquid tags pass through verbatim. * `liquid` - liquid */
   templating?: MessageTemplateContentTemplatingEnum | (string & {});
-  /** Email message content. Replaced as a whole on update — send the complete object. */
+  /** Email message content. Replaced as a whole on update -- send the complete object. */
   email?: EmailTemplate | null;
 }
 export const MessageTemplateContent = /*@__PURE__*/ S.suspend(() =>
@@ -355,7 +355,7 @@ export type EmailTemplateDesignOperationEnum =
 export const EmailTemplateDesignOperationEnum = S.String;
 
 export interface DesignOperation {
-  /** Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row. * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
+  /** Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) -- the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row. * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
   op: EmailTemplateDesignOperationEnum | (string & {});
   /** Target node id. Required for update_content/column/row, remove_content, remove_row, move_content. */
   id?: string;
@@ -363,7 +363,7 @@ export interface DesignOperation {
   column_id?: string;
   /** update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: '<p>Hi</p>'}} changes only the block's text. */
   patch?: unknown;
-  /** add_content only. A content block {type, values: {...}}; omit id and values._meta — they're assigned server-side. type is one of text, heading, button, image, divider, html, etc. */
+  /** add_content only. A content block {type, values: {...}}; omit id and values._meta -- they're assigned server-side. type is one of text, heading, button, image, divider, html, etc. */
   content?: unknown;
   /** add_row only. A full row {cells, columns: [{contents: [...], values}], values}; ids and Unlayer numbering are assigned server-side for the row and everything nested in it. */
   row?: unknown;
@@ -382,7 +382,7 @@ export const DesignOperation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DesignOperation" }) as any as S.Schema<DesignOperation>;
 
-/** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
+/** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
 export type UpdateMessagingTemplatesDesignPartialRequestOperationsList = Array<DesignOperation>;
 export const UpdateMessagingTemplatesDesignPartialRequestOperationsList = /*@__PURE__*/ S.Array(
   DesignOperation,
@@ -393,7 +393,7 @@ export interface UpdateMessagingTemplatesDesignPartialRequest {
   project_id: string;
   /** A UUID string identifying this message template. */
   id: string;
-  /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
+  /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
   operations?: UpdateMessagingTemplatesDesignPartialRequestOperationsList;
 }
 export const UpdateMessagingTemplatesDesignPartialRequest = /*@__PURE__*/ S.suspend(() =>

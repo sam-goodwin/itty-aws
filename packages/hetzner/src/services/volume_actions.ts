@@ -744,7 +744,7 @@ export const changeVolumeProtection: API.OperationMethod<
 }));
 
 export type DetachVolumeError = HetznerOpError;
-/** Detach Volume Detaches a Volume from the Server it’s attached to. You may attach it to a Server again at a later time. */
+/** Detach Volume Detaches a Volume from the Server it's attached to. You may attach it to a Server again at a later time. */
 export const detachVolume: API.OperationMethod<
   DetachVolumeRequest,
   DetachVolumeResponse,

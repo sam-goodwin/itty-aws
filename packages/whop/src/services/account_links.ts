@@ -87,7 +87,7 @@ export type CreateAccountLinkError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create account link [Legacy API — https://docs.whop.com/api-reference] Generate a URL that directs a sub-merchant to their account portal, such as the hosted payouts dashboard or the KYC onboarding flow. */
+/** Create account link [Legacy API -- https://docs.whop.com/api-reference] Generate a URL that directs a sub-merchant to their account portal, such as the hosted payouts dashboard or the KYC onboarding flow. */
 export const createAccountLink: API.OperationMethod<
   CreateAccountLinkRequest,
   AccountLink,

@@ -159,15 +159,15 @@ export interface GetMetricRequest {
   account_id?: string;
   /** The user this query concerns, for example user_AbC123. Available on metrics that support user subjects, such as account_balance. */
   user_id?: string;
-  /** Start of the range — a date (YYYY-MM-DD), expanded to the start of that day, or an ISO 8601 timestamp (for example 2026-07-16T16:37:00Z), used exactly. */
+  /** Start of the range -- a date (YYYY-MM-DD), expanded to the start of that day, or an ISO 8601 timestamp (for example 2026-07-16T16:37:00Z), used exactly. */
   from: string;
-  /** End of the range — a date (YYYY-MM-DD), expanded to the end of that day, or an ISO 8601 timestamp (for example 2026-07-17T16:37:00Z), used exactly. Funnel entry ranges cannot exceed 90 days. */
+  /** End of the range -- a date (YYYY-MM-DD), expanded to the end of that day, or an ISO 8601 timestamp (for example 2026-07-17T16:37:00Z), used exactly. Funnel entry ranges cannot exceed 90 days. */
   to: string;
   /** How wide each point is. Defaults to day. Snapshot metrics are day-only. Funnels support at most 2,000 first-entry cohort buckets. */
   interval?: GetMetricRequestInterval | (string & {});
-  /** Split the metric out by one of its properties — each point gets a breakdown array. For example breakdown_by=currency returns an entry for usd, an entry for eur, and so on. Funnels use a property of the first matched event, with at most 300 groups. experiment_id and variant require an exposure as step 1. For funnel source breakdowns, steps[1][source]=whop:* groups by campaign, whop:<campaign>:* by ad group, and whop:<campaign>:<group>:* by ad. See the metric catalog for supported breakdowns. */
+  /** Split the metric out by one of its properties -- each point gets a breakdown array. For example breakdown_by=currency returns an entry for usd, an entry for eur, and so on. Funnels use a property of the first matched event, with at most 300 groups. experiment_id and variant require an exposure as step 1. For funnel source breakdowns, steps[1][source]=whop:* groups by campaign, whop:<campaign>:* by ad group, and whop:<campaign>:<group>:* by ad. See the metric catalog for supported breakdowns. */
   breakdown_by?: string;
-  /** Display currency for money metrics — every amount is converted into this ISO currency using the exchange rate on each period's date. Defaults to usd. For the ads metrics (ad_spend, ad_delivery), pass the account's ads reporting currency to match the ad entity endpoints. On transaction metrics, it is ignored when you filter or break down by currency (those report the original transaction currency, unconverted). */
+  /** Display currency for money metrics -- every amount is converted into this ISO currency using the exchange rate on each period's date. Defaults to usd. For the ads metrics (ad_spend, ad_delivery), pass the account's ads reporting currency to match the ad entity endpoints. On transaction metrics, it is ignored when you filter or break down by currency (those report the original transaction currency, unconverted). */
   convert_to?: string;
   /** Select the source currency or asset on metrics that list currency. For transaction metrics, for example currency=eur, values are reported without conversion. For market_prices, use btc or xaut and convert_to=usd. Pair with breakdown_by=currency to split a metric by currency. */
   currency?: string;
@@ -179,11 +179,11 @@ export interface GetMetricRequest {
   card_network?: string;
   /** Filter disputes to a normalized reason, for example product_not_received. Pair with breakdown_by=dispute_reason to split dispute counts by reason. */
   dispute_reason?: string;
-  /** Filter to a single GMV source, for example payments — or, on the traffic metrics, a visit source (whop_ads, direct, or a utm_source value). Pair with breakdown_by=source to split by source. Available on metrics that list source. */
+  /** Filter to a single GMV source, for example payments -- or, on the traffic metrics, a visit source (whop_ads, direct, or a utm_source value). Pair with breakdown_by=source to split by source. Available on metrics that list source. */
   source?: string;
   /** Filter traffic metrics to one website hostname, for example shop.example.com. Pair with breakdown_by=hostname to split by website. */
   hostname?: string;
-  /** Filter traffic metrics to one page — a hostname plus normalized path, for example shop.example.com/pricing. Pair with breakdown_by=page to split by page. */
+  /** Filter traffic metrics to one page -- a hostname plus normalized path, for example shop.example.com/pricing. Pair with breakdown_by=page to split by page. */
   page?: string;
   /** Filter traffic metrics to one device type: desktop, mobile, tablet, or unknown. Pair with breakdown_by=device_type to split by device. */
   device_type?: string;
@@ -543,7 +543,7 @@ export const ListMetricsResponseDataItemBreakdownsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListMetricsResponseDataItemBreakdownsList>;
 
-/** The properties you can use with this metric — pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
+/** The properties you can use with this metric -- pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
 export type ListMetricsResponseDataItemPropertiesList = Array<string>;
 export const ListMetricsResponseDataItemPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -568,7 +568,7 @@ export interface ListMetricsResponseDataItem {
   key: string;
   /** Human-readable display name for the metric. */
   name: string;
-  /** The properties you can use with this metric — pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
+  /** The properties you can use with this metric -- pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
   properties: ListMetricsResponseDataItemPropertiesList;
   /** How to read the metric's values: count is an integer, currency is a decimal amount, and percent is a number where 1.6 means 1.6%. */
   unit: ListMetricsResponseDataItemUnit;

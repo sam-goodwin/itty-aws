@@ -46,7 +46,7 @@ export const GetDisputeAlertRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/dispute_alerts/{id}", code: 200 })),
 ).annotate({ identifier: "GetDisputeAlertRequest" }) as any as S.Schema<GetDisputeAlertRequest>;
 
-/** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) — refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment — nothing is left to act on. */
+/** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) -- refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment -- nothing is left to act on. */
 export type DisputeAlertType = "early_fraud_warning" | "dispute_alert" | "rapid_dispute_resolution";
 export const DisputeAlertType = S.String;
 
@@ -75,9 +75,9 @@ export interface DisputeAlert {
   product_id: string | null;
   /** When the issuer filed the report, as an ISO 8601 timestamp. Earlier than `created_at`, which is when Whop received it. */
   reported_at: string;
-  /** When the reported transaction was made, as an ISO 8601 timestamp — falls back to when the matched payment was made if the issuer's own report didn't carry one. Should not be `null` in practice; treat one as a data issue rather than expected behavior. */
+  /** When the reported transaction was made, as an ISO 8601 timestamp -- falls back to when the matched payment was made if the issuer's own report didn't carry one. Should not be `null` in practice; treat one as a data issue rather than expected behavior. */
   transaction_at: string | null;
-  /** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) — refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment — nothing is left to act on. */
+  /** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) -- refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment -- nothing is left to act on. */
   type: DisputeAlertType;
   /** When the alert was last changed, as an ISO 8601 timestamp. */
   updated_at: string;

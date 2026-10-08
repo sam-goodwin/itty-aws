@@ -446,7 +446,7 @@ export type PaymentMethodTypes =
   | "unknown";
 export const PaymentMethodTypes = S.String;
 
-/** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreatePlanRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -454,7 +454,7 @@ export const CreatePlanRequestPaymentMethodConfigurationDisabledList = /*@__PURE
   PaymentMethodTypes,
 ) as any as S.Schema<CreatePlanRequestPaymentMethodConfigurationDisabledList>;
 
-/** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreatePlanRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -464,9 +464,9 @@ export const CreatePlanRequestPaymentMethodConfigurationEnabledList = /*@__PURE_
 
 /** Explicit payment method configuration for the plan. When not provided, the account's defaults apply. Send at least one of `enabled` or `disabled`; an omitted one is empty. */
 export interface CreatePlanRequestPaymentMethodConfiguration {
-  /** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   disabled?: CreatePlanRequestPaymentMethodConfigurationDisabledList;
-  /** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   enabled?: CreatePlanRequestPaymentMethodConfigurationEnabledList;
   include_platform_defaults?: boolean;
 }
@@ -512,7 +512,7 @@ export interface CreatePlanRequest {
   initial_price?: number | null;
   /** Private notes visible only to the account owner. Not shown to customers. */
   internal_notes?: string | null;
-  /** Custom key-value pairs to store on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` (a checkout call-to-action button label — one of the product custom CTA values, e.g. `subscribe`, `get_offer`) and `custom_cta_url` (a URL the button links to; web or `tel:`) override the product's call to action for this plan and are validated on save. */
+  /** Custom key-value pairs to store on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` (a checkout call-to-action button label -- one of the product custom CTA values, e.g. `subscribe`, `get_offer`) and `custom_cta_url` (a URL the button links to; web or `tel:`) override the product's call to action for this plan and are validated on save. */
   metadata?: unknown | null;
   /** Override the default tax classification for this specific plan. */
   override_tax_type?: string;
@@ -753,11 +753,11 @@ export const CheckoutSessionPaymentMethodConfiguration = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CheckoutSessionPaymentMethodConfiguration>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -797,7 +797,7 @@ export const PlanVisibility = S.String;
 export interface Plan {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
-  /** Whether adaptive pricing is enabled for this plan. Raw setting — does not check processor compatibility or feature flags. */
+  /** Whether adaptive pricing is enabled for this plan. Raw setting -- does not check processor compatibility or feature flags. */
   adaptive_pricing_enabled: boolean;
   /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
   attributes: PlanAttributesMap | null;
@@ -820,7 +820,7 @@ export interface Plan {
   deletable: boolean | null;
   /** Customer-visible plan description. Maximum 1000 characters. `null` if no description is set. */
   description: string | null;
-  /** The configuration governing a checkout for this plan, resolved through every layer (the plan's own and the account's) — the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays the plan's own editable override. */
+  /** The configuration governing a checkout for this plan, resolved through every layer (the plan's own and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays the plan's own editable override. */
   effective_payment_method_configuration: CheckoutSessionPaymentMethodConfiguration | null;
   /** Access duration in days for expiration-based plans, such as 365 for a one-year pass. `null` for plans without an expiration. */
   expiration_days: number | null;
@@ -1073,7 +1073,7 @@ export const PlanListItemVisibility = S.String;
 export interface PlanListItem {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
-  /** Whether adaptive pricing is enabled for this plan. Raw setting — does not check processor compatibility or feature flags. */
+  /** Whether adaptive pricing is enabled for this plan. Raw setting -- does not check processor compatibility or feature flags. */
   adaptive_pricing_enabled: boolean;
   /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
   attributes: PlanListItemAttributesMap | null;
@@ -1267,7 +1267,7 @@ export const UpdatePlanRequestCustomFieldsList = /*@__PURE__*/ S.Array(
 export type UpdatePlanRequestImage = CreatePlanRequestImage;
 export const UpdatePlanRequestImage = CreatePlanRequestImage;
 
-/** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type UpdatePlanRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -1275,7 +1275,7 @@ export const UpdatePlanRequestPaymentMethodConfigurationDisabledList = /*@__PURE
   PaymentMethodTypes,
 ) as any as S.Schema<UpdatePlanRequestPaymentMethodConfigurationDisabledList>;
 
-/** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+/** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type UpdatePlanRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
@@ -1285,9 +1285,9 @@ export const UpdatePlanRequestPaymentMethodConfigurationEnabledList = /*@__PURE_
 
 /** Explicit payment method configuration for the plan. When not provided, the account's defaults apply. Send at least one of `enabled` or `disabled`; an omitted one is empty. */
 export interface UpdatePlanRequestPaymentMethodConfiguration {
-  /** Payment method types explicitly disabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   disabled?: UpdatePlanRequestPaymentMethodConfigurationDisabledList;
-  /** Payment method types explicitly enabled for this plan — the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
+  /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
   enabled?: UpdatePlanRequestPaymentMethodConfigurationEnabledList;
   include_platform_defaults?: boolean;
 }
@@ -1337,7 +1337,7 @@ export interface UpdatePlanRequest {
   initial_price?: number | null;
   /** Private notes visible only to the account owner. Not shown to customers. */
   internal_notes?: string | null;
-  /** Custom key-value pairs to store on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` (a checkout call-to-action button label — one of the product custom CTA values, e.g. `subscribe`, `get_offer`) and `custom_cta_url` (a URL the button links to; web or `tel:`) override the product's call to action for this plan and are validated on save. */
+  /** Custom key-value pairs to store on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` (a checkout call-to-action button label -- one of the product custom CTA values, e.g. `subscribe`, `get_offer`) and `custom_cta_url` (a URL the button links to; web or `tel:`) override the product's call to action for this plan and are validated on save. */
   metadata?: unknown | null;
   /** Whether to offer a retention discount when a customer attempts to cancel. */
   offer_cancel_discount?: boolean | null;

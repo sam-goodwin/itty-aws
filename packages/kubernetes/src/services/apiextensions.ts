@@ -712,7 +712,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   deprecated?: boolean;
   /** deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists. */
   deprecationWarning?: string;
-  /** name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true. */
+  /** name is the version name, e.g. "v1", "v2beta1", etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true. */
   name: string;
   /** schema describes the schema used for validation, pruning, and defaulting of this version of the custom resource. */
   schema?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation;

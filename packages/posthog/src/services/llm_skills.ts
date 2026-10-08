@@ -188,7 +188,7 @@ export const LLMSkillFileManifest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMSkillFileManifest" }) as any as S.Schema<LLMSkillFileManifest>;
 
-/** Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
+/** Bundled files manifest. Each entry carries path, content_type, and line/char counts -- no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
 export type LLMSkillFilesList = Array<LLMSkillFileManifest>;
 export const LLMSkillFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileManifest,
@@ -255,11 +255,11 @@ export interface LLMSkill {
   allowed_tools?: LLMSkillAllowedToolsList;
   /** Arbitrary key-value metadata. */
   metadata?: LLMSkillMetadataMap;
-  /** Server-owned classification — set by the producing system (the Signals harness stamps "scout"), not writable via the API. Empty for an ordinary skill. Groups skills into their own surface (e.g. the Scouts tab) independently of the skill name. */
+  /** Server-owned classification -- set by the producing system (the Signals harness stamps "scout"), not writable via the API. Empty for an ordinary skill. Groups skills into their own surface (e.g. the Scouts tab) independently of the skill name. */
   category?: string;
   /** Users who own this skill, seed-creator first. Ownership is keyed on the logical skill (not a version), so it's stable across edits. Prefer this over created_by to learn who to route reviews or questions to. Set via the owners field on create/update (a list of user UUIDs). Empty for scout sandbox fetches of skills that haven't opted into the report channel. */
   owners?: LLMSkillOwnersList;
-  /** Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
+  /** Bundled files manifest. Each entry carries path, content_type, and line/char counts -- no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
   files?: LLMSkillFilesList;
   /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
   outline?: LLMSkillOutlineList;
@@ -585,7 +585,7 @@ export interface ListLlmSkillsRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Filter skills by the ID of a user who owns them. Ownership is keyed on the logical skill, so this is stable across versions — unlike created_by_id, which tracks whoever published the latest version. */
+  /** Filter skills by the ID of a user who owns them. Ownership is keyed on the logical skill, so this is stable across versions -- unlike created_by_id, which tracks whoever published the latest version. */
   owner_id?: number;
   /** Optional substring filter applied to skill names and descriptions. */
   search?: string;
@@ -633,7 +633,7 @@ export const LLMSkillListSpecProblemsList = /*@__PURE__*/ S.Array(
   LLMSkillSpecProblem,
 ) as any as S.Schema<LLMSkillListSpecProblemsList>;
 
-/** List serializer that omits body and file manifest — progressive disclosure (Level 1). */
+/** List serializer that omits body and file manifest -- progressive disclosure (Level 1). */
 export interface LLMSkillList {
   id?: string;
   /** Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. */
@@ -648,7 +648,7 @@ export interface LLMSkillList {
   allowed_tools?: LLMSkillListAllowedToolsList;
   /** Arbitrary key-value metadata. */
   metadata?: LLMSkillListMetadataMap;
-  /** Server-owned classification — set by the producing system (the Signals harness stamps "scout"), not writable via the API. Empty for an ordinary skill. Groups skills into their own surface (e.g. the Scouts tab) independently of the skill name. */
+  /** Server-owned classification -- set by the producing system (the Signals harness stamps "scout"), not writable via the API. Empty for an ordinary skill. Groups skills into their own surface (e.g. the Scouts tab) independently of the skill name. */
   category?: string;
   /** Users who own this skill, seed-creator first. Ownership is keyed on the logical skill (not a version), so it's stable across edits. Prefer this over created_by to learn who to route reviews or questions to. Set via the owners field on create/update (a list of user UUIDs). Empty for scout sandbox fetches of skills that haven't opted into the report channel. */
   owners?: LLMSkillListOwnersList;
@@ -741,7 +741,7 @@ export const LlmSkillsImportCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LlmSkillsMarketplaceInstallCommandCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Roll the existing marketplace credential to issue a fresh token, replacing the old one (this invalidates any setup using the previous token). Ignored when no credential exists yet — the first call always mints one. Only affects this user's own credential. */
+  /** Roll the existing marketplace credential to issue a fresh token, replacing the old one (this invalidates any setup using the previous token). Ignored when no credential exists yet -- the first call always mints one. Only affects this user's own credential. */
   rotate?: boolean;
 }
 export const LlmSkillsMarketplaceInstallCommandCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1223,13 +1223,13 @@ export const LLMSkillFileEdit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMSkillFileEdit" }) as any as S.Schema<LLMSkillFileEdit>;
 
-/** Per-file find/replace updates. Each entry targets one existing file by path and applies sequential edits to its content. Non-targeted files carry forward unchanged. Cannot add, remove, or rename files — use 'files' for that. Mutually exclusive with files. */
+/** Per-file find/replace updates. Each entry targets one existing file by path and applies sequential edits to its content. Non-targeted files carry forward unchanged. Cannot add, remove, or rename files -- use 'files' for that. Mutually exclusive with files. */
 export type UpdateLlmSkillsNamePartialRequestFileEditsList = Array<LLMSkillFileEdit>;
 export const UpdateLlmSkillsNamePartialRequestFileEditsList = /*@__PURE__*/ S.Array(
   LLMSkillFileEdit,
 ) as any as S.Schema<UpdateLlmSkillsNamePartialRequestFileEditsList>;
 
-/** Replace the skill's owners with these user UUIDs (each a member of this project). Omit to leave owners unchanged; pass an empty list to clear them. Owners are keyed on the logical skill, so setting them is independent of the version being published — a body edit alone never changes ownership. */
+/** Replace the skill's owners with these user UUIDs (each a member of this project). Omit to leave owners unchanged; pass an empty list to clear them. Owners are keyed on the logical skill, so setting them is independent of the version being published -- a body edit alone never changes ownership. */
 export type UpdateLlmSkillsNamePartialRequestOwnersList = Array<string>;
 export const UpdateLlmSkillsNamePartialRequestOwnersList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1255,9 +1255,9 @@ export interface UpdateLlmSkillsNamePartialRequest {
   metadata?: UpdateLlmSkillsNamePartialRequestMetadataMap;
   /** Bundled files to include with this version. Replaces all files from the previous version. Mutually exclusive with file_edits. */
   files?: UpdateLlmSkillsNamePartialRequestFilesList;
-  /** Per-file find/replace updates. Each entry targets one existing file by path and applies sequential edits to its content. Non-targeted files carry forward unchanged. Cannot add, remove, or rename files — use 'files' for that. Mutually exclusive with files. */
+  /** Per-file find/replace updates. Each entry targets one existing file by path and applies sequential edits to its content. Non-targeted files carry forward unchanged. Cannot add, remove, or rename files -- use 'files' for that. Mutually exclusive with files. */
   file_edits?: UpdateLlmSkillsNamePartialRequestFileEditsList;
-  /** Replace the skill's owners with these user UUIDs (each a member of this project). Omit to leave owners unchanged; pass an empty list to clear them. Owners are keyed on the logical skill, so setting them is independent of the version being published — a body edit alone never changes ownership. */
+  /** Replace the skill's owners with these user UUIDs (each a member of this project). Omit to leave owners unchanged; pass an empty list to clear them. Owners are keyed on the logical skill, so setting them is independent of the version being published -- a body edit alone never changes ownership. */
   owners?: UpdateLlmSkillsNamePartialRequestOwnersList;
   /** Latest version you are editing from. Used for optimistic concurrency checks. Required when publishing content changes; optional for an owner-only update (when omitted, owners are replaced without a concurrency check). */
   base_version?: number;
@@ -1435,7 +1435,7 @@ export const llmSkillsMarketplaceInstallCommandCreate: API.OperationMethod<
 }));
 
 export type LlmSkillsMarketplaceInstallCommandRetrieveError = PosthogOpError;
-/** Report whether the user already has a marketplace credential, without minting one. The token is unrecoverable, so an existing credential returns its mask only — the UI shows "already connected, existing setups keep working" and offers an explicit rotate. */
+/** Report whether the user already has a marketplace credential, without minting one. The token is unrecoverable, so an existing credential returns its mask only -- the UI shows "already connected, existing setups keep working" and offers an explicit rotate. */
 export const llmSkillsMarketplaceInstallCommandRetrieve: API.OperationMethod<
   LlmSkillsMarketplaceInstallCommandRetrieveRequest,
   LLMSkillMarketplaceCommand,

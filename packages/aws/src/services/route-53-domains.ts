@@ -1713,10 +1713,10 @@ export type DeleteDomainError =
  * registration.
  *
  * To transfer the domain registration to another registrar, use the transfer process
- * that’s provided by the registrar to which you want to transfer the registration.
+ * that's provided by the registrar to which you want to transfer the registration.
  * Otherwise, the following apply:
  *
- * - You can’t get a refund for the cost of a deleted domain registration.
+ * - You can't get a refund for the cost of a deleted domain registration.
  *
  * - The registry for the top-level domain might hold the domain name for a brief
  * time before releasing it for other users to register (varies by registry).

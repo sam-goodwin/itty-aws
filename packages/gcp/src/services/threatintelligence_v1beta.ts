@@ -2207,7 +2207,7 @@ export const FindingDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FindingDetail" }) as any as S.Schema<FindingDetail>;
 
-/** A ‘stateless’ and a point in time event that a check produced a result of interest. */
+/** A 'stateless' and a point in time event that a check produced a result of interest. */
 export interface Finding {
   /** Output only. High-Precision Severity Analysis verdict for the finding. */
   severityAnalysis?: SeverityAnalysis;

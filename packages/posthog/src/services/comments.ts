@@ -251,7 +251,7 @@ export interface CommentOutput {
   version?: number;
   created_at?: string;
   item_id?: string | null;
-  /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH. */
+  /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only -- toggled via the /complete and /reopen actions, not via PATCH. */
   completed_at?: string | null;
   source_comment?: string | null;
 }

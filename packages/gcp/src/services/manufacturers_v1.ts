@@ -202,7 +202,7 @@ export interface Issue {
   description?: string;
   /** The destination this issue applies to. */
   destination?: string;
-  /** The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc. */
+  /** The server-generated type of the issue, for example, "INCORRECT_TEXT_FORMATTING", "IMAGE_NOT_SERVEABLE", etc. */
   type?: string;
   /** What needs to happen to resolve the issue. */
   resolution?: IssueResolutionEnum | (string & {});

@@ -226,7 +226,7 @@ export type CreateFeeMarkupError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create fee markup [Legacy API — https://docs.whop.com/api-reference] Create or update a fee markup for a company. If a markup for the specified fee type already exists, it will be updated with the new values. Required permissions: - `company:update_child_fees` */
+/** Create fee markup [Legacy API -- https://docs.whop.com/api-reference] Create or update a fee markup for a company. If a markup for the specified fee type already exists, it will be updated with the new values. Required permissions: - `company:update_child_fees` */
 export const createFeeMarkup: API.OperationMethod<
   CreateFeeMarkupRequest,
   FeeMarkup,
@@ -246,7 +246,7 @@ export type DeleteFeeMarkupError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete fee markup [Legacy API — https://docs.whop.com/api-reference] Delete a fee markup configuration for a company. This removes the custom fee override and reverts to the parent company's default fees. Required permissions: - `company:update_child_fees` */
+/** Delete fee markup [Legacy API -- https://docs.whop.com/api-reference] Delete a fee markup configuration for a company. This removes the custom fee override and reverts to the parent company's default fees. Required permissions: - `company:update_child_fees` */
 export const deleteFeeMarkup: API.OperationMethod<
   DeleteFeeMarkupRequest,
   DeleteFeeMarkupResponse,
@@ -266,7 +266,7 @@ export type ListFeeMarkupError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List fee markups [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of fee markups configured for a company. If the company is a platform account, returns the platform default markups. Required permissions: - `company:update_child_fees` */
+/** List fee markups [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of fee markups configured for a company. If the company is a platform account, returns the platform default markups. Required permissions: - `company:update_child_fees` */
 export const listFeeMarkup: API.PaginatedOperationMethod<
   ListFeeMarkupRequest,
   ListFeeMarkupResponse,

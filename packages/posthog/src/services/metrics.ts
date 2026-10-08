@@ -62,7 +62,7 @@ export const MetricAnomalyBodyCandidateKeysList = /*@__PURE__*/ S.Array(
 export interface MetricAnomalyBody {
   /** Exact metric name to characterize (e.g. 'metrics_rate_limiter_message_lag_seconds'). */
   metricName: string;
-  /** Start of the suspicious window (inclusive). ISO 8601 — e.g. when the alert fired or the graph started looking wrong. */
+  /** Start of the suspicious window (inclusive). ISO 8601 -- e.g. when the alert fired or the graph started looking wrong. */
   anomalyFrom: string;
   /** End of the suspicious window (exclusive). Defaults to now. */
   anomalyTo?: string;
@@ -152,7 +152,7 @@ export const MetricSeriesLabelsMap = /*@__PURE__*/ S.Record(
 export interface MetricQueryPoint {
   /** Bucket start as ISO 8601 timestamp. */
   time: string;
-  /** Aggregated value for the bucket. Null when the aggregate isn't representable (e.g. float overflow) — render as a gap. */
+  /** Aggregated value for the bucket. Null when the aggregate isn't representable (e.g. float overflow) -- render as a gap. */
   value: number | null;
 }
 export const MetricQueryPoint = /*@__PURE__*/ S.suspend(() =>
@@ -534,7 +534,7 @@ export const MetricQueryBodyClausesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetricQueryBodyClausesList>;
 
 export interface MetricQueryBody {
-  /** Exact metric name to query (e.g. 'http.server.duration'). Single-clause shorthand — mutually exclusive with 'clauses'. */
+  /** Exact metric name to query (e.g. 'http.server.duration'). Single-clause shorthand -- mutually exclusive with 'clauses'. */
   metricName?: string;
   /** Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from 'metric-names-list'. * `gauge` - gauge * `sum` - sum * `histogram` - histogram * `exponential_histogram` - exponential_histogram * `summary` - summary */
   metricType?: OtelMetricTypeEnum | (string & {}) | null;
@@ -611,13 +611,13 @@ export const MetricSamplesBodyFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetricSamplesBodyFiltersList>;
 
 export interface MetricSamplesBody {
-  /** Exact metric name to list raw emissions for (e.g. 'http.server.duration'). Omit to list emissions across all metric names — allowed only with traceId (the trace->metrics pivot). */
+  /** Exact metric name to list raw emissions for (e.g. 'http.server.duration'). Omit to list emissions across all metric names -- allowed only with traceId (the trace->metrics pivot). */
   metricName?: string;
   /** Lower bound (inclusive) for the sample window. ISO 8601. */
   dateFrom: string;
   /** Upper bound (exclusive) for the sample window. Defaults to now if omitted. */
   dateTo?: string;
-  /** Restrict to emissions on this trace (hex trace id, as the tracing product uses) — the reverse metric->trace pivot. Omit for all traces. */
+  /** Restrict to emissions on this trace (hex trace id, as the tracing product uses) -- the reverse metric->trace pivot. Omit for all traces. */
   traceId?: string;
   /** Restrict to emissions recorded on this span (hex span id). Requires traceId, since a span id is only unique within its trace. */
   spanId?: string;
@@ -1191,7 +1191,7 @@ export const createMetricsQuery: API.OperationMethod<
 }));
 
 export type CreateMetricsSampleError = PosthogOpError;
-/** Raw individual emissions for a metric (the events model), newest first — backs the Samples view and the metric->trace pivot. */
+/** Raw individual emissions for a metric (the events model), newest first -- backs the Samples view and the metric->trace pivot. */
 export const createMetricsSample: API.OperationMethod<
   CreateMetricsSampleRequest,
   MetricSamplesResponse,
@@ -1251,7 +1251,7 @@ export const getMetricsAttributeValue: API.OperationMethod<
 }));
 
 export type GetMetricsErrorSpikeError = PosthogOpError;
-/** Error Tracking issue spikes detected in a time window — backs the metrics chart's error-spike overlay (PoC). Team-wide: not yet scoped to the metric's own service. */
+/** Error Tracking issue spikes detected in a time window -- backs the metrics chart's error-spike overlay (PoC). Team-wide: not yet scoped to the metric's own service. */
 export const getMetricsErrorSpike: API.OperationMethod<
   GetMetricsErrorSpikeRequest,
   MetricErrorSpikesResponse,

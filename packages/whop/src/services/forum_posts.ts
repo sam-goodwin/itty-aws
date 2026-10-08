@@ -513,7 +513,7 @@ export type CreateForumPostError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create forum post [Legacy API — https://docs.whop.com/api-reference] Create a new forum post or comment within an experience. Supports text content, attachments, polls, paywalling, and pinning. Pass experience_id 'public' with an account_id to post to an account's public forum. Required permissions: - `forum:post:create` */
+/** Create forum post [Legacy API -- https://docs.whop.com/api-reference] Create a new forum post or comment within an experience. Supports text content, attachments, polls, paywalling, and pinning. Pass experience_id 'public' with an account_id to post to an account's public forum. Required permissions: - `forum:post:create` */
 export const createForumPost: API.OperationMethod<
   CreateForumPostRequest,
   ForumPost,
@@ -533,7 +533,7 @@ export type GetForumPostError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve forum post [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing forum post. Required permissions: - `forum:read` */
+/** Retrieve forum post [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing forum post. Required permissions: - `forum:read` */
 export const getForumPost: API.OperationMethod<
   GetForumPostRequest,
   ForumPost,
@@ -553,7 +553,7 @@ export type ListForumPostError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List forum posts [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of forum posts within a specific experience, with optional filtering by parent post or pinned status. Required permissions: - `forum:read` */
+/** List forum posts [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of forum posts within a specific experience, with optional filtering by parent post or pinned status. Required permissions: - `forum:read` */
 export const listForumPost: API.PaginatedOperationMethod<
   ListForumPostRequest,
   ListForumPostResponse,
@@ -585,7 +585,7 @@ export type UpdateForumPostError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update forum post [Legacy API — https://docs.whop.com/api-reference] Edit the content, attachments, pinned status, or visibility of an existing forum post or comment. */
+/** Update forum post [Legacy API -- https://docs.whop.com/api-reference] Edit the content, attachments, pinned status, or visibility of an existing forum post or comment. */
 export const updateForumPost: API.OperationMethod<
   UpdateForumPostRequest,
   ForumPost,

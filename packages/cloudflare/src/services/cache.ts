@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   endTs: "end_ts",
   modifiedOn: "modified_on",
@@ -2404,7 +2404,7 @@ export const SupportedRegionsOriginCloudRegionResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>;
 
 export type BulkDeleteOriginCloudRegionsError = CloudflareOpError;
-/** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */
+/** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently -- successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */
 export const bulkDeleteOriginCloudRegions: API.OperationMethod<
   BulkDeleteOriginCloudRegionsRequest,
   BulkDeleteOriginCloudRegionsResponse,
@@ -2419,7 +2419,7 @@ export const bulkDeleteOriginCloudRegions: API.OperationMethod<
 }));
 
 export type BulkPutOriginCloudRegionsError = CloudflareOpError;
-/** Upserts up to 100 IP-to-cloud-region mappings in a single request. Items in the request body are created or replaced; mappings not included in the request body are preserved unchanged (this is a merge operation, not a full collection replacement). Each item is validated independently — valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/origin/cloud_regions/supported_regions`. */
+/** Upserts up to 100 IP-to-cloud-region mappings in a single request. Items in the request body are created or replaced; mappings not included in the request body are preserved unchanged (this is a merge operation, not a full collection replacement). Each item is validated independently -- valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/origin/cloud_regions/supported_regions`. */
 export const bulkPutOriginCloudRegions: API.OperationMethod<
   BulkPutOriginCloudRegionsRequest,
   BulkPutOriginCloudRegionsResponse,
@@ -2653,7 +2653,7 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
 ) as any;
 
 export type OriginCloudRegionsBulkDeleteV1Error = CloudflareOpError;
-/** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */
+/** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently -- successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */
 export const originCloudRegionsBulkDeleteV1: API.OperationMethod<
   OriginCloudRegionsBulkDeleteV1Request,
   OriginCloudRegionsBulkDeleteV1Response,
@@ -2668,7 +2668,7 @@ export const originCloudRegionsBulkDeleteV1: API.OperationMethod<
 }));
 
 export type OriginCloudRegionsBulkEditV1Error = CloudflareOpError;
-/** Adds or updates up to 100 IP-to-cloud-region mappings in a single request. Each item is validated independently — valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`. */
+/** Adds or updates up to 100 IP-to-cloud-region mappings in a single request. Each item is validated independently -- valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`. */
 export const originCloudRegionsBulkEditV1: API.OperationMethod<
   OriginCloudRegionsBulkEditV1Request,
   OriginCloudRegionsBulkEditV1Response,
@@ -2683,7 +2683,7 @@ export const originCloudRegionsBulkEditV1: API.OperationMethod<
 }));
 
 export type OriginCloudRegionsCreateV1Error = CloudflareOpError;
-/** Adds a single IP-to-cloud-region mapping for the zone. The IP must be a valid IPv4 or IPv6 address and is normalized to canonical form before storage (RFC 5952 for IPv6). Returns 400 (code 1145) if a mapping for that IP already exists — use PATCH to update an existing entry. The vendor and region are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`. */
+/** Adds a single IP-to-cloud-region mapping for the zone. The IP must be a valid IPv4 or IPv6 address and is normalized to canonical form before storage (RFC 5952 for IPv6). Returns 400 (code 1145) if a mapping for that IP already exists -- use PATCH to update an existing entry. The vendor and region are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`. */
 export const originCloudRegionsCreateV1: API.OperationMethod<
   OriginCloudRegionsCreateV1Request,
   OriginCloudRegionsCreateV1Response,
@@ -2713,7 +2713,7 @@ export const originCloudRegionsDeleteV1: API.OperationMethod<
 }));
 
 export type OriginCloudRegionsEditV1Error = CloudflareOpError;
-/** Adds or updates a single IP-to-cloud-region mapping for the zone. Unlike POST, this operation is idempotent — if a mapping for the IP already exists it is overwritten. Returns the complete updated list of all mappings for the zone. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings. */
+/** Adds or updates a single IP-to-cloud-region mapping for the zone. Unlike POST, this operation is idempotent -- if a mapping for the IP already exists it is overwritten. Returns the complete updated list of all mappings for the zone. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings. */
 export const originCloudRegionsEditV1: API.OperationMethod<
   OriginCloudRegionsEditV1Request,
   OriginCloudRegionsEditV1Response,
@@ -2866,7 +2866,7 @@ export const purgeEnvironmentCache: API.OperationMethod<
 }));
 
 export type PutOriginCloudRegionError = Forbidden | CloudflareOpError;
-/** Creates a new IP-to-cloud-region mapping or replaces the existing mapping for the specified IP. PUT is idempotent — calling it repeatedly with the same body produces the same result. The IP path parameter is normalized to canonical form (RFC 5952 for IPv6) before storage. The vendor and region are validated against the list from `GET /zones/{zone_id}/origin/cloud_regions/supported_regions`. Returns 400 if the `origin_ip` in the body does not match the URL path parameter. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings. */
+/** Creates a new IP-to-cloud-region mapping or replaces the existing mapping for the specified IP. PUT is idempotent -- calling it repeatedly with the same body produces the same result. The IP path parameter is normalized to canonical form (RFC 5952 for IPv6) before storage. The vendor and region are validated against the list from `GET /zones/{zone_id}/origin/cloud_regions/supported_regions`. Returns 400 if the `origin_ip` in the body does not match the URL path parameter. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings. */
 export const putOriginCloudRegion: API.OperationMethod<
   PutOriginCloudRegionRequest,
   PutOriginCloudRegionResponse,

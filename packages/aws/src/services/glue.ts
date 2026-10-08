@@ -21768,7 +21768,7 @@ export type GetSchemaByDefinitionError =
   | InvalidInputException
   | CommonErrors;
 /**
- * Retrieves a schema by the `SchemaDefinition`. The schema definition is sent to the Schema Registry, canonicalized, and hashed. If the hash is matched within the scope of the `SchemaName` or ARN (or the default registry, if none is supplied), that schema’s metadata is returned. Otherwise, a 404 or NotFound error is returned. Schema versions in `Deleted` statuses will not be included in the results.
+ * Retrieves a schema by the `SchemaDefinition`. The schema definition is sent to the Schema Registry, canonicalized, and hashed. If the hash is matched within the scope of the `SchemaName` or ARN (or the default registry, if none is supplied), that schema's metadata is returned. Otherwise, a 404 or NotFound error is returned. Schema versions in `Deleted` statuses will not be included in the results.
  */
 export const getSchemaByDefinition: API.OperationMethod<
   GetSchemaByDefinitionInput,
@@ -24586,8 +24586,8 @@ export type StartImportLabelsTaskRunError =
  * After the `StartMLLabelingSetGenerationTaskRun` finishes, Glue machine learning
  * will have generated a series of questions for humans to answer. (Answering these questions is
  * often called 'labeling' in the machine learning workflows). In the case of the
- * `FindMatches` transform, these questions are of the form, “What is the correct
- * way to group these rows together into groups composed entirely of matching records?” After the
+ * `FindMatches` transform, these questions are of the form, "What is the correct
+ * way to group these rows together into groups composed entirely of matching records?" After the
  * labeling process is finished, users upload their answers/labels with a call to
  * `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun` finishes,
  * all future runs of the machine learning transform use the new and improved labels and perform
@@ -24743,8 +24743,8 @@ export type StartMLLabelingSetGenerationTaskRunError =
  * generated a "labeling set" or a set of questions for humans to answer.
  *
  * In the case of the `FindMatches` transform, these questions are of the form,
- * “What is the correct way to group these rows together into groups composed entirely of
- * matching records?”
+ * "What is the correct way to group these rows together into groups composed entirely of
+ * matching records?"
  *
  * After the labeling process is finished, you can upload your labels with a call to
  * `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun` finishes,

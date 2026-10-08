@@ -322,7 +322,7 @@ export const EvmUserOperation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EvmUserOperation" }) as any as S.Schema<EvmUserOperation>;
 
-/** Optional metadata as key-value pairs. Use this to store additional structured information on a resource, such as customer IDs, order references, or any application-specific data. Up to 10 key/value pairs may be provided. Keys and values are both strings. Keys must be ≤ 40 characters; values must be ≤ 500 characters. */
+/** Optional metadata as key-value pairs. Use this to store additional structured information on a resource, such as customer IDs, order references, or any application-specific data. Up to 10 key/value pairs may be provided. Keys and values are both strings. Keys must be <= 40 characters; values must be <= 500 characters. */
 export type Metadata = { [key: string]: string | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Metadata>;
 
@@ -343,7 +343,7 @@ export interface AuthorizeCoinbasePaymentSessionRequest {
   metadata?: Metadata;
   /** Optional customer-facing display data for this authorization, shown to the payer. Falls back to the session's `orderCode` when `referenceCode` is omitted. */
   customerDisplay?: OperationCustomerDisplay;
-  /** An optional merchant-provided internal identifier for this Coinbase authorization, from the merchant's own system—not visible to the payer. */
+  /** An optional merchant-provided internal identifier for this Coinbase authorization, from the merchant's own system--not visible to the payer. */
   externalReferenceId?: string;
 }
 export const AuthorizeCoinbasePaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -465,7 +465,7 @@ export interface Authorization {
   /** A human-readable message describing the outcome or status for display. Returned for x402 authorizations; omitted for other authorization flows unless documented otherwise. */
   message?: string;
   metadata?: Metadata;
-  /** A merchant-provided internal identifier for this authorization, from the merchant's own system—not visible to the payer. Present only when supplied on the authorization request. */
+  /** A merchant-provided internal identifier for this authorization, from the merchant's own system--not visible to the payer. Present only when supplied on the authorization request. */
   externalReferenceId?: string;
   /** Customer-facing display data for this authorization, shown to the payer. Present when supplied on the authorization request or when the session's `orderCode` fallback applies; otherwise omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -496,7 +496,7 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 
-/** A processed onchain payload containing the payload ID and the payer's signature or transaction hash. The `signature` value depends on the original payload `type`: - `eip3009` / `permit2` / `spend_permission` — a hex-encoded signature from `eth_signTypedData_v4`. - `erc20_approval` — a hex-encoded transaction hash from `eth_sendTransaction`. */
+/** A processed onchain payload containing the payload ID and the payer's signature or transaction hash. The `signature` value depends on the original payload `type`: - `eip3009` / `permit2` / `spend_permission` -- a hex-encoded signature from `eth_signTypedData_v4`. - `erc20_approval` -- a hex-encoded transaction hash from `eth_sendTransaction`. */
 export interface OnchainSignedPayload {
   /** The unique identifier of the signed payload. */
   payloadId?: string;
@@ -526,7 +526,7 @@ export interface AuthorizeWalletPaymentSessionRequest {
   metadata?: Metadata;
   /** Optional customer-facing display data for this authorization, shown to the payer. Falls back to the session's `orderCode` when `referenceCode` is omitted. */
   customerDisplay?: OperationCustomerDisplay;
-  /** An optional merchant-provided internal identifier for this wallet authorization, from the merchant's own system—not visible to the payer. */
+  /** An optional merchant-provided internal identifier for this wallet authorization, from the merchant's own system--not visible to the payer. */
   externalReferenceId?: string;
 }
 export const AuthorizeWalletPaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -619,7 +619,7 @@ export const TransfersAccount = /*@__PURE__*/ S.suspend(() =>
 export type PaymentSessionTarget = PaymentTargetWallet | TransfersAccount;
 export const PaymentSessionTarget = S.Unknown as any as S.Schema<PaymentSessionTarget>;
 
-/** Deadlines for each stage of the payment session lifecycle. All fields are optional; when omitted from a create request, the following defaults apply: `authorizationExpiresAt` = now + 1 day, `captureExpiresAt` = now + 7 days, `refundExpiresAt` = now + 30 days. Expiries must satisfy `authorizationExpiresAt` ≤ `captureExpiresAt` ≤ `refundExpiresAt`. The API returns a 400 error if this constraint is violated. Each deadline acts as a guard — after it passes, the corresponding action is rejected, but the session remains in its current status. No automatic state transitions occur; the merchant must take explicit action (e.g., cancel or void) to move the session to a terminal state. */
+/** Deadlines for each stage of the payment session lifecycle. All fields are optional; when omitted from a create request, the following defaults apply: `authorizationExpiresAt` = now + 1 day, `captureExpiresAt` = now + 7 days, `refundExpiresAt` = now + 30 days. Expiries must satisfy `authorizationExpiresAt` <= `captureExpiresAt` <= `refundExpiresAt`. The API returns a 400 error if this constraint is violated. Each deadline acts as a guard -- after it passes, the corresponding action is rejected, but the session remains in its current status. No automatic state transitions occur; the merchant must take explicit action (e.g., cancel or void) to move the session to a terminal state. */
 export interface PaymentExpiries {
   /** The UTC ISO 8601 timestamp after which authorization attempts are rejected. Defaults to now + 1 day if omitted. The session remains in its current pre-authorization status; the merchant must explicitly cancel the session. */
   authorizationExpiresAt?: string;
@@ -636,7 +636,7 @@ export const PaymentExpiries = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentExpiries" }) as any as S.Schema<PaymentExpiries>;
 
-/** The most recent meaningful event on the payment session. For session-level milestones the value is one of `created` or `canceled`. For action outcomes the value follows the pattern `{action}_{result}` — e.g. `authorization_succeeded`, `capture_pending`, `refund_failed`. */
+/** The most recent meaningful event on the payment session. For session-level milestones the value is one of `created` or `canceled`. For action outcomes the value follows the pattern `{action}_{result}` -- e.g. `authorization_succeeded`, `capture_pending`, `refund_failed`. */
 export type PaymentSessionStatus =
   | "created"
   | "canceled"
@@ -700,7 +700,7 @@ export interface Capture {
   finalCapture: boolean;
   error?: PaymentError;
   metadata?: Metadata;
-  /** A merchant-provided internal identifier for this capture, from the merchant's own system—not visible to the payer. A manual capture uses the caller-provided value; an auto-capture reuses the authorization's value and omits it when the authorization omitted it. It never falls back to `PaymentSession.externalReferenceId`. */
+  /** A merchant-provided internal identifier for this capture, from the merchant's own system--not visible to the payer. A manual capture uses the caller-provided value; an auto-capture reuses the authorization's value and omits it when the authorization omitted it. It never falls back to `PaymentSession.externalReferenceId`. */
   externalReferenceId?: string;
   /** Customer-facing display data for this capture, shown to the payer. A manual capture falls back to the session's `orderCode` when `referenceCode` is omitted; an auto-capture reuses the authorization's `referenceCode`. */
   customerDisplay?: OperationCustomerDisplay;
@@ -752,7 +752,7 @@ export interface Void {
   amount?: string;
   error?: PaymentError;
   metadata?: Metadata;
-  /** A merchant-provided internal identifier for this void, from the merchant's own system—not visible to the payer. Present only when supplied on the create void request. */
+  /** A merchant-provided internal identifier for this void, from the merchant's own system--not visible to the payer. Present only when supplied on the create void request. */
   externalReferenceId?: string;
   /** Customer-facing display data for this void, shown to the payer. Present when supplied on the create void request or when the session's `orderCode` fallback applies; otherwise omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -822,7 +822,7 @@ export interface Refund {
   reason?: string;
   error?: PaymentError;
   metadata?: Metadata;
-  /** A merchant-provided internal identifier for this refund, from the merchant's own system—not visible to the payer. Present only when supplied on the create refund request. */
+  /** A merchant-provided internal identifier for this refund, from the merchant's own system--not visible to the payer. Present only when supplied on the create refund request. */
   externalReferenceId?: string;
   /** Customer-facing display data for this refund, shown to the payer. Present when supplied on the create refund request or when the session's `orderCode` fallback applies; otherwise omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -871,7 +871,7 @@ export const PaymentRedirect = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentRedirect" }) as any as S.Schema<PaymentRedirect>;
 
-/** The amount to present to the payer, which may differ from the authoritative settlement amount and asset. Commonly used when the payer's local currency differs from the settlement currency (e.g., charging in USD but displaying the equivalent in CAD). Stored and returned as-is — no cross-validation is performed against the authoritative `amount` and `asset`. Both `amount` and `currency` must be provided together. */
+/** The amount to present to the payer, which may differ from the authoritative settlement amount and asset. Commonly used when the payer's local currency differs from the settlement currency (e.g., charging in USD but displaying the equivalent in CAD). Stored and returned as-is -- no cross-validation is performed against the authoritative `amount` and `asset`. Both `amount` and `currency` must be provided together. */
 export interface CustomerDisplayDisplayAmount {
   /** The display amount as a decimal string (e.g., `"1.37"`). */
   amount: string;
@@ -887,11 +887,11 @@ export const CustomerDisplayDisplayAmount = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerDisplayDisplayAmount",
 }) as any as S.Schema<CustomerDisplayDisplayAmount>;
 
-/** Merchant-provided display data shown to the payer during checkout. All fields are informational only — stored and returned as-is, with no effect on payment processing, settlement, or validation. */
+/** Merchant-provided display data shown to the payer during checkout. All fields are informational only -- stored and returned as-is, with no effect on payment processing, settlement, or validation. */
 export interface CustomerDisplay {
   /** The merchant name to display on the payment UI. When provided, this overrides the default name derived from the entity's profile. Useful when a merchant operates multiple storefronts or brands under a single entity. */
   merchantName?: string;
-  /** The amount to present to the payer, which may differ from the authoritative settlement amount and asset. Commonly used when the payer's local currency differs from the settlement currency (e.g., charging in USD but displaying the equivalent in CAD). Stored and returned as-is — no cross-validation is performed against the authoritative `amount` and `asset`. Both `amount` and `currency` must be provided together. */
+  /** The amount to present to the payer, which may differ from the authoritative settlement amount and asset. Commonly used when the payer's local currency differs from the settlement currency (e.g., charging in USD but displaying the equivalent in CAD). Stored and returned as-is -- no cross-validation is performed against the authoritative `amount` and `asset`. Both `amount` and `currency` must be provided together. */
   displayAmount?: CustomerDisplayDisplayAmount;
   /** A customer-visible code for the overall order. When omitted, CDP generates one and returns it. It must not contain personally identifiable information (PII) or payment credentials. */
   orderCode?: string;
@@ -904,7 +904,7 @@ export const CustomerDisplay = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomerDisplay" }) as any as S.Schema<CustomerDisplay>;
 
-/** Tracks the full lifecycle of a payment from creation through settlement. Typical flow: **Create** → **Authorize** (via payment method) → **Capture**. Optional: **Void** to release uncaptured funds, or **Refund** to return captured funds. */
+/** Tracks the full lifecycle of a payment from creation through settlement. Typical flow: **Create** -> **Authorize** (via payment method) -> **Capture**. Optional: **Void** to release uncaptured funds, or **Refund** to return captured funds. */
 export interface PaymentSession {
   /** The unique identifier of the payment session. */
   paymentSessionId?: string;
@@ -939,7 +939,7 @@ export interface PaymentSession {
   redirect?: PaymentRedirect;
   customerDisplay?: CustomerDisplay;
   metadata?: Metadata;
-  /** A merchant-provided internal identifier for this payment session, from the merchant's own system—not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
+  /** A merchant-provided internal identifier for this payment session, from the merchant's own system--not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
   externalReferenceId?: string;
   /** The reason the payment session was canceled. Only present when the session has been canceled. */
   cancellationReason?: string;
@@ -984,7 +984,7 @@ export interface CapturePaymentSessionRequest {
   /** When `true`, this capture is treated as the final one for the authorization. Any remaining capturable balance is released back to the payer immediately after the capture settles. When `false`, the remaining capturable balance stays held and is available for subsequent partial captures (subject to `captureExpiresAt`). Has no effect if `amount` equals the full capturable balance, since no remaining balance exists to release. */
   finalCapture: boolean;
   metadata?: Metadata;
-  /** An optional merchant-provided internal identifier for this manual capture, from the merchant's own system—not visible to the payer. */
+  /** An optional merchant-provided internal identifier for this manual capture, from the merchant's own system--not visible to the payer. */
   externalReferenceId?: string;
   /** Optional customer-facing display data for this manual capture, shown to the payer. Falls back to the session's `orderCode` when `referenceCode` is omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -1282,7 +1282,7 @@ export type IndividualInputOccupation =
   | "other";
 export const IndividualInputOccupation = S.String;
 
-/** Expected annual volume of activity on the account, expressed as a dollar range. Use the dollar-honest ids below: - `under_1k`: $0 – $1,000 - `1k_to_10k`: $1,000 – $10,000 - `10k_to_100k`: $10,000 – $100,000 - `100k_to_250k`: $100,000 – $250,000 - `250k_to_750k`: $250,000 – $750,000 - `750k_to_1_5m`: $750,000 – $1.5M - `1_5m_plus`: $1.5M+ */
+/** Expected annual volume of activity on the account, expressed as a dollar range. Use the dollar-honest ids below: - `under_1k`: $0 - $1,000 - `1k_to_10k`: $1,000 - $10,000 - `10k_to_100k`: $10,000 - $100,000 - `100k_to_250k`: $100,000 - $250,000 - `250k_to_750k`: $250,000 - $750,000 - `750k_to_1_5m`: $750,000 - $1.5M - `1_5m_plus`: $1.5M+ */
 export type IndividualInputExpectedVolume =
   | "under_1k"
   | "1k_to_10k"
@@ -1321,7 +1321,7 @@ export interface IndividualInput {
   employmentStatus?: IndividualInputEmploymentStatus | (string & {});
   /** Industry or occupation. */
   occupation?: IndividualInputOccupation | (string & {});
-  /** Expected annual volume of activity on the account, expressed as a dollar range. Use the dollar-honest ids below: - `under_1k`: $0 – $1,000 - `1k_to_10k`: $1,000 – $10,000 - `10k_to_100k`: $10,000 – $100,000 - `100k_to_250k`: $100,000 – $250,000 - `250k_to_750k`: $250,000 – $750,000 - `750k_to_1_5m`: $750,000 – $1.5M - `1_5m_plus`: $1.5M+ */
+  /** Expected annual volume of activity on the account, expressed as a dollar range. Use the dollar-honest ids below: - `under_1k`: $0 - $1,000 - `1k_to_10k`: $1,000 - $10,000 - `10k_to_100k`: $10,000 - $100,000 - `100k_to_250k`: $100,000 - $250,000 - `250k_to_750k`: $250,000 - $750,000 - `750k_to_1_5m`: $750,000 - $1.5M - `1_5m_plus`: $1.5M+ */
   expectedVolume?: IndividualInputExpectedVolume | (string & {});
 }
 export const IndividualInput = /*@__PURE__*/ S.suspend(() =>
@@ -1402,7 +1402,7 @@ export const CreateCustomerRequestTaxAttestationsList = /*@__PURE__*/ S.Array(
   UsW9Attestation,
 ) as any as S.Schema<CreateCustomerRequestTaxAttestationsList>;
 
-/** Compliance context for a request. Carries per-request compliance signals, such as the IP address of the individual (i.e., end-customer) that initiated the request. This object is request-only — it is never echoed back in responses. Inner fields are write-only. */
+/** Compliance context for a request. Carries per-request compliance signals, such as the IP address of the individual (i.e., end-customer) that initiated the request. This object is request-only -- it is never echoed back in responses. Inner fields are write-only. */
 export interface Compliance {
   /** IPv4 or IPv6 address of the individual (i.e., end-customer) that initiated this request. NOT the IP of the partner server making the API call. */
   requesterIpAddress?: string;
@@ -1518,7 +1518,7 @@ export const TermsOfServiceLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TermsOfServiceLanguagesList>;
 
-/** Metadata for one Terms of Service document a Customer may need to accept. Each entry represents one logical document (identified by `versionId`) that may be published in multiple languages — `languages` lists the BCP 47 language tags the document is available to view and accept in. An optional `deadline` records the end of a grace period: a future deadline is non-blocking `due`, an elapsed deadline is `past_due`, and no deadline means acceptance is required immediately with status `due`. `url` is the canonical, language-agnostic document URL; partners append `?lang=<tag>` (where `<tag>` is one of `languages`) to retrieve a specific translation, and omit the parameter to let the documentation site choose a default. This API does not serve Terms of Service body content; this schema describes metadata only. */
+/** Metadata for one Terms of Service document a Customer may need to accept. Each entry represents one logical document (identified by `versionId`) that may be published in multiple languages -- `languages` lists the BCP 47 language tags the document is available to view and accept in. An optional `deadline` records the end of a grace period: a future deadline is non-blocking `due`, an elapsed deadline is `past_due`, and no deadline means acceptance is required immediately with status `due`. `url` is the canonical, language-agnostic document URL; partners append `?lang=<tag>` (where `<tag>` is one of `languages`) to retrieve a specific translation, and omit the parameter to let the documentation site choose a default. This API does not serve Terms of Service body content; this schema describes metadata only. */
 export interface TermsOfService {
   /** Stable identifier for this Terms of Service document. Submit this value as `versionId` on a `TosAcceptance` to record acceptance. */
   versionId: string;
@@ -1583,7 +1583,7 @@ export const RequirementsMap = /*@__PURE__*/ S.Record(
   Requirement,
 ) as any as S.Schema<RequirementsMap>;
 
-/** Individual customer data returned on read — the `individual` object on Get / Create / Update Customer responses. Only contact-identity fields are echoed back; every other field accepted on the `IndividualInput` object (`address`, `ssnLast4`, `dateOfBirth`, `fullSsn`, `citizenship`, `phoneNumber`, and the CDD fields) is ingestion-only and never returned. */
+/** Individual customer data returned on read -- the `individual` object on Get / Create / Update Customer responses. Only contact-identity fields are echoed back; every other field accepted on the `IndividualInput` object (`address`, `ssnLast4`, `dateOfBirth`, `fullSsn`, `citizenship`, `phoneNumber`, and the CDD fields) is ingestion-only and never returned. */
 export interface Individual {
   /** First name (given name). */
   firstName?: string;
@@ -2054,7 +2054,7 @@ export const Person = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Person" }) as any as S.Schema<Person>;
 
-/** Compliance context for a disbursement request. Extends the base Compliance schema with recipient information required for travel rule obligations. This object is request-only — it is never echoed back in responses. */
+/** Compliance context for a disbursement request. Extends the base Compliance schema with recipient information required for travel rule obligations. This object is request-only -- it is never echoed back in responses. */
 export interface DisbursementCompliance {
   /** IPv4 or IPv6 address of the individual (i.e., end-customer) that initiated this request. NOT the IP of the partner server making the API call. */
   requesterIpAddress?: string;
@@ -2079,9 +2079,9 @@ export interface CreateDisbursementRequest {
   asset: string;
   /** Human-readable reason for the disbursement. */
   reason?: string;
-  /** A merchant-provided internal identifier for this disbursement, from the merchant's own system—not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
+  /** A merchant-provided internal identifier for this disbursement, from the merchant's own system--not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
   externalReferenceId?: string;
-  /** Optional customer-facing display data for this disbursement, shown to the payer. If `referenceCode` is omitted, one is auto-generated — disbursements have no payment session to fall back to, unlike every other action type. */
+  /** Optional customer-facing display data for this disbursement, shown to the payer. If `referenceCode` is omitted, one is auto-generated -- disbursements have no payment session to fall back to, unlike every other action type. */
   customerDisplay?: OperationCustomerDisplay;
   metadata?: Metadata;
   /** Compliance context for this disbursement. Carries recipient information required by some entity configurations to meet regulatory requirements. */
@@ -2125,7 +2125,7 @@ export interface Disbursement {
   status: PaymentActionStatus;
   /** Human-readable reason for the disbursement. */
   reason?: string;
-  /** A merchant-provided internal identifier for this disbursement, from the merchant's own system—not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
+  /** A merchant-provided internal identifier for this disbursement, from the merchant's own system--not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
   externalReferenceId?: string;
   /** Customer-facing display data for this disbursement, shown to the payer. Always present: if the create request omits `referenceCode`, one is auto-generated, since disbursements have no payment session to fall back to. */
   customerDisplay?: OperationCustomerDisplay;
@@ -2983,7 +2983,7 @@ export interface CreateOnrampOrderRequest {
   domain?: string;
   /** Optional [BCP-47](https://www.rfc-editor.org/info/bcp47) locale tag (e.g. `es-ES`, `pt-BR`, `en`) used to localize the hosted payment page. When provided, it is appended to the returned `paymentLink` URL and mapped to the closest locale supported by the Apple Pay and Google Pay buttons; unsupported locales fall back to the user's browser language. Any well-formed BCP-47 tag is accepted. */
   locale?: string;
-  /** Optional. A reusable token returned by a previous verified order. When provided, a returning user checking out to the same wallet is taken straight to the pay button, skipping OTP (best-effort — an invalid, expired, or different-wallet token still requires verification). */
+  /** Optional. A reusable token returned by a previous verified order. When provided, a returning user checking out to the same wallet is taken straight to the pay button, skipping OTP (best-effort -- an invalid, expired, or different-wallet token still requires verification). */
   userAuthToken?: string;
 }
 export const CreateOnrampOrderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3254,7 +3254,7 @@ export const CreateOnrampSessionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOnrampSessionResponse",
 }) as any as S.Schema<CreateOnrampSessionResponse>;
 
-/** Compliance context for a payment session request. Extends the base Compliance schema with buyer information required for travel rule obligations. This object is request-only — it is never echoed back in responses. */
+/** Compliance context for a payment session request. Extends the base Compliance schema with buyer information required for travel rule obligations. This object is request-only -- it is never echoed back in responses. */
 export interface PaymentSessionCompliance {
   /** IPv4 or IPv6 address of the individual (i.e., end-customer) that initiated this request. NOT the IP of the partner server making the API call. */
   requesterIpAddress?: string;
@@ -3279,7 +3279,7 @@ export interface CreatePaymentSessionRequest {
   redirect?: PaymentRedirect;
   /** When true, a capture is automatically created after a successful authorization. When false or omitted, the merchant must create captures manually via the captures endpoint. */
   autoCapture?: boolean;
-  /** A merchant-provided internal identifier for this payment session, from the merchant's own system—not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
+  /** A merchant-provided internal identifier for this payment session, from the merchant's own system--not visible to the payer. It must not contain personally identifiable information (PII) or payment credentials. */
   externalReferenceId?: string;
   customerDisplay?: CustomerDisplay;
   metadata?: Metadata;
@@ -7481,7 +7481,7 @@ export const SpendPermissionPayload = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpendPermissionPayload" }) as any as S.Schema<SpendPermissionPayload>;
 
-/** A single onchain payload the payer must process to complete an onchain payment option. Inspect `type` to determine how to handle the `data` field: - `eip3009` — pass `data` to `eth_signTypedData_v4`, return the signature. - `permit2` — pass `data` to `eth_signTypedData_v4`, return the signature. - `erc20_approval` — send `data` via `eth_sendTransaction`, return the transaction hash. - `spend_permission` — pass `data` to `eth_signTypedData_v4`, return the signature. */
+/** A single onchain payload the payer must process to complete an onchain payment option. Inspect `type` to determine how to handle the `data` field: - `eip3009` -- pass `data` to `eth_signTypedData_v4`, return the signature. - `permit2` -- pass `data` to `eth_signTypedData_v4`, return the signature. - `erc20_approval` -- send `data` via `eth_sendTransaction`, return the transaction hash. - `spend_permission` -- pass `data` to `eth_signTypedData_v4`, return the signature. */
 export type OnchainSignaturePayload =
   | EIP3009Payload
   | Permit2Payload
@@ -7529,7 +7529,7 @@ export const WalletAuthorizationOptionsResponseOptionsList = /*@__PURE__*/ S.Arr
   WalletAuthorizationOption,
 ) as any as S.Schema<WalletAuthorizationOptionsResponseOptionsList>;
 
-/** A machine-readable code indicating why this address has no eligible authorization option. The enum is closed — any value the server returns must be listed below. Adding a new code is a deliberate, coordinated API change; clients receiving an undocumented value should treat it as a server violating the spec. */
+/** A machine-readable code indicating why this address has no eligible authorization option. The enum is closed -- any value the server returns must be listed below. Adding a new code is a deliberate, coordinated API change; clients receiving an undocumented value should treat it as a server violating the spec. */
 export type IneligibleWalletAuthorizationAddressCode =
   | "insufficient_funds"
   | "superseded_by_preferred_option";
@@ -7568,9 +7568,9 @@ export const IneligibleWalletAuthorizationAddressFundsRequiredList = /*@__PURE__
 export interface IneligibleWalletAuthorizationAddress {
   /** The requested payer wallet address that has no eligible authorization option. */
   address: string;
-  /** A machine-readable code indicating why this address has no eligible authorization option. The enum is closed — any value the server returns must be listed below. Adding a new code is a deliberate, coordinated API change; clients receiving an undocumented value should treat it as a server violating the spec. */
+  /** A machine-readable code indicating why this address has no eligible authorization option. The enum is closed -- any value the server returns must be listed below. Adding a new code is a deliberate, coordinated API change; clients receiving an undocumented value should treat it as a server violating the spec. */
   code: IneligibleWalletAuthorizationAddressCode;
-  /** A human-readable, English-language description of why this address has no eligible authorization option. Suitable for surfacing in product UIs — does not contain personally identifiable information or internal infrastructure details. Clients that need localized strings should dispatch on `code` and provide their own translations. */
+  /** A human-readable, English-language description of why this address has no eligible authorization option. Suitable for surfacing in product UIs -- does not contain personally identifiable information or internal infrastructure details. Clients that need localized strings should dispatch on `code` and provide their own translations. */
   message: string;
   /** The funding options for this address, one entry per (network, asset) combination the payer could fund to become eligible. Only present when `code` is `insufficient_funds`, and honors the request's `network` and `asset` filters. May be an empty array. */
   fundsRequired?: IneligibleWalletAuthorizationAddressFundsRequiredList;
@@ -7664,7 +7664,7 @@ export const X402V2PaymentRequirementsExtraMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<X402V2PaymentRequirementsExtraMap>;
 
-/** The x402 v2 payment requirements. Uses CAIP-2 network identifiers and supports `exact`, `upto`, and `batch-settlement` schemes. Carries only the payment fields (no resource metadata — that is in the enclosing `x402V2PaymentPayload.resource`). */
+/** The x402 v2 payment requirements. Uses CAIP-2 network identifiers and supports `exact`, `upto`, and `batch-settlement` schemes. Carries only the payment fields (no resource metadata -- that is in the enclosing `x402V2PaymentPayload.resource`). */
 export interface X402V2PaymentRequirements {
   /** The scheme of the payment protocol to use. Supported schemes are `exact`, `upto`, and `batch-settlement`. */
   scheme: X402V2PaymentRequirementsScheme | (string & {});
@@ -7806,7 +7806,7 @@ export const X402DiscoveryResourceBundleSlugsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<X402DiscoveryResourceBundleSlugsList>;
 
-/** A single discovered x402 resource. Its fields come from three sources: - **x402 protocol** — negotiated from the resource's payment-required response: `resource`, `type`, `x402Version`, `accepts`, `extensions`. - **Provider-supplied** — metadata published by the resource owner: `description`, `serviceName`, `tags`. - **Coinbase-derived** — added during ingestion and curation: `iconUrl`, `quality`, `lastUpdated`, and (for Coinbase-curated endpoints only) `curated`, `skillUrl` (a Coinbase-authored SKILL.md), and `bundleSlugs`. */
+/** A single discovered x402 resource. Its fields come from three sources: - **x402 protocol** -- negotiated from the resource's payment-required response: `resource`, `type`, `x402Version`, `accepts`, `extensions`. - **Provider-supplied** -- metadata published by the resource owner: `description`, `serviceName`, `tags`. - **Coinbase-derived** -- added during ingestion and curation: `iconUrl`, `quality`, `lastUpdated`, and (for Coinbase-curated endpoints only) `curated`, `skillUrl` (a Coinbase-authored SKILL.md), and `bundleSlugs`. */
 export interface X402DiscoveryResource {
   /** The URL of the resource. */
   resource: string;
@@ -7822,7 +7822,7 @@ export interface X402DiscoveryResource {
   /** Map of x402 protocol extensions supported by the resource, keyed by extension name. */
   extensions?: X402DiscoveryResourceExtensionsMap;
   quality?: X402ResourceQuality;
-  /** Display name of the service this resource belongs to. This is a free-form label for grouping and presentation only — it is not a stable identifier, and two resources sharing the same `serviceName` are not guaranteed to belong to the same logical service. */
+  /** Display name of the service this resource belongs to. This is a free-form label for grouping and presentation only -- it is not a stable identifier, and two resources sharing the same `serviceName` are not guaranteed to belong to the same logical service. */
   serviceName?: string;
   /** Low-cardinality string labels associated with the resource for client-side filtering and display. Values are free-form (no controlled vocabulary) and case-sensitive. Order is not significant and duplicates are not expected. */
   tags?: X402DiscoveryResourceTagsList;
@@ -9220,7 +9220,7 @@ export interface ListTransfersRequest {
   createdAfter?: string;
   /** Filter transfers to those created at or before this datetime (inclusive). ISO 8601 format. */
   createdBefore?: string;
-  /** Filter transfers to those updated at or after this datetime (inclusive). ISO 8601 format. Useful for incremental sync — poll for transfers that changed state since your last check. */
+  /** Filter transfers to those updated at or after this datetime (inclusive). ISO 8601 format. Useful for incremental sync -- poll for transfers that changed state since your last check. */
   updatedAfter?: string;
   /** Filter transfers to those updated at or before this datetime (inclusive). ISO 8601 format. */
   updatedBefore?: string;
@@ -9593,7 +9593,7 @@ export interface LookupEndUserRequest {
   oauthProvider?: OAuth2ProviderType | (string & {});
   /** The OAuth subject (the `sub` claim from the provider's ID token). Must be provided together with oauthProvider. */
   oauthSubject?: string;
-  /** The E.164-formatted phone number to search for. Must be URL-encoded when passed as a query parameter (e.g. `+14155552671` → `%2B14155552671`). */
+  /** The E.164-formatted phone number to search for. Must be URL-encoded when passed as a query parameter (e.g. `+14155552671` -> `%2B14155552671`). */
   phoneNumber?: string;
   /** The ERC-55 checksummed Ethereum address to search for. Looks up a user by the address they authenticated with via Sign In With Ethereum (EIP-4361). */
   siweAddress?: string;
@@ -9701,7 +9701,7 @@ export interface RefundPaymentSessionRequest {
   /** The reason for the refund. */
   reason?: string;
   metadata?: Metadata;
-  /** An optional merchant-provided internal identifier for this refund, from the merchant's own system—not visible to the payer. */
+  /** An optional merchant-provided internal identifier for this refund, from the merchant's own system--not visible to the payer. */
   externalReferenceId?: string;
   /** Optional customer-facing display data for this refund, shown to the payer. Falls back to the session's `orderCode` when `referenceCode` is omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -9782,7 +9782,7 @@ export interface RequestLimitsUpgradeRequest {
   userIdType: OnrampUserIdType | (string & {});
   /** The interaction mode for the limit upgrade request. Defaults to `api`. */
   interactionMode?: OnrampLimitUpgradeInteractionMode | (string & {});
-  /** Populate the properties that correspond to the `fields` array from the user's `OnrampLimitUpgradeOption`. Required in `api` mode. Omit in `embedded` mode — the user enters their identity information on the Coinbase-hosted upgrade page (see `interactionMode`), so any value sent here is rejected. */
+  /** Populate the properties that correspond to the `fields` array from the user's `OnrampLimitUpgradeOption`. Required in `api` mode. Omit in `embedded` mode -- the user enters their identity information on the Coinbase-hosted upgrade page (see `interactionMode`), so any value sent here is rejected. */
   fields?: OnrampLimitUpgradeIdentityFields;
 }
 export const RequestLimitsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10092,7 +10092,7 @@ export interface SearchX402ResourcesRequest {
   scheme?: string;
   /** Filter results by the merchant's payment address. For EVM networks, provide a 0x-prefixed EVM address. For Solana networks, provide a base58-encoded address. */
   payTo?: string;
-  /** Filter results to resources whose URL contains this value (case-insensitive substring match against the resource URL). Useful for narrowing results to a specific domain, subdomain, or path segment. Combine with `query` to perform semantic search restricted to a URL subset. Tip: include enough of the URL to disambiguate (e.g. `api.example.com` rather than `example`) — a short substring may also match resources whose path contains the same string. */
+  /** Filter results to resources whose URL contains this value (case-insensitive substring match against the resource URL). Useful for narrowing results to a specific domain, subdomain, or path segment. Combine with `query` to perform semantic search restricted to a URL subset. Tip: include enough of the URL to disambiguate (e.g. `api.example.com` rather than `example`) -- a short substring may also match resources whose path contains the same string. */
   urlSubstring?: string;
   /** Filter results to resources with a USD price at or below this value. */
   maxUsdPrice?: string;
@@ -10961,7 +10961,7 @@ export const X402BatchSettlementRefundPayloadClaimsList = /*@__PURE__*/ S.Array(
   X402BatchSettlementClaim,
 ) as any as S.Schema<X402BatchSettlementRefundPayloadClaimsList>;
 
-/** A cooperative refund request. The client emits the minimal shape (just `channelConfig` and `voucher`, with an optional `amount`). A mediating server enriches the payload with `amount`, `refundNonce`, and `claims` before forwarding to the facilitator. Authorizer signatures are optional — the facilitator auto-signs when absent. Field presence determines which shape was sent; the facilitator dispatches accordingly. */
+/** A cooperative refund request. The client emits the minimal shape (just `channelConfig` and `voucher`, with an optional `amount`). A mediating server enriches the payload with `amount`, `refundNonce`, and `claims` before forwarding to the facilitator. Authorizer signatures are optional -- the facilitator auto-signs when absent. Field presence determines which shape was sent; the facilitator dispatches accordingly. */
 export interface X402BatchSettlementRefundPayload {
   /** The payload-type discriminator. Must be `"refund"` for both the client-emitted and server-enriched shape. */
   type: X402BatchSettlementRefundPayloadType;
@@ -11045,7 +11045,7 @@ export const X402BatchSettlementSettlePayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "X402BatchSettlementSettlePayload",
 }) as any as S.Schema<X402BatchSettlementSettlePayload>;
 
-/** The x402 protocol batch-settlement scheme payload for EVM networks. The `batch-settlement` scheme uses pre-funded payment channels with off-chain cumulative-ceiling vouchers, allowing servers to batch-claim accumulated value in a single on-chain transaction. The payload is a discriminated union on the `type` field with five variants: - `deposit`: client-initiated channel funding via ERC-3009. - `voucher`: client-side cumulative voucher against an already-funded channel. - `refund`: cooperative refund request. The client emits a minimal shape (just channelConfig + voucher, with an optional `amount`); a mediating server enriches it with `amount`, `refundNonce`, and `claims` before forwarding to the facilitator. Authorizer signatures are optional — the facilitator auto-signs when absent. - `claim`: server-to-facilitator request to batch on-chain voucher claims. - `settle`: server-to-facilitator request to transfer claimed funds to the receiver. For more details, see [batch-settlement specs](https://github.com/x402-foundation/x402/tree/main/specs/schemes/batch-settlement). */
+/** The x402 protocol batch-settlement scheme payload for EVM networks. The `batch-settlement` scheme uses pre-funded payment channels with off-chain cumulative-ceiling vouchers, allowing servers to batch-claim accumulated value in a single on-chain transaction. The payload is a discriminated union on the `type` field with five variants: - `deposit`: client-initiated channel funding via ERC-3009. - `voucher`: client-side cumulative voucher against an already-funded channel. - `refund`: cooperative refund request. The client emits a minimal shape (just channelConfig + voucher, with an optional `amount`); a mediating server enriches it with `amount`, `refundNonce`, and `claims` before forwarding to the facilitator. Authorizer signatures are optional -- the facilitator auto-signs when absent. - `claim`: server-to-facilitator request to batch on-chain voucher claims. - `settle`: server-to-facilitator request to transfer claimed funds to the receiver. For more details, see [batch-settlement specs](https://github.com/x402-foundation/x402/tree/main/specs/schemes/batch-settlement). */
 export type X402BatchSettlementEvmPayload =
   | X402BatchSettlementDepositPayload
   | X402BatchSettlementVoucherPayload
@@ -12057,7 +12057,7 @@ export type X402SupportedPaymentKindNetwork =
   | "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1";
 export const X402SupportedPaymentKindNetwork = S.String;
 
-/** The optional additional scheme-specific payment info. Common scheme-specific fields: - `exact` on Solana: `feePayer` — the base58-encoded Solana address that pays transaction fees. - `upto` on EVM: `name`, `version`, and `facilitatorAddress` — the EVM address of the facilitator that the client must bind into the Permit2 witness when constructing the payment payload. - `batch-settlement` on EVM: `name`, `version`, `receiverAuthorizer` (the EVM address authorized to sign claim batches), `withdrawDelay` (channel non-cooperative withdraw delay in seconds, 900–2,592,000), and optionally `assetTransferMethod` (e.g., `"eip3009"`). */
+/** The optional additional scheme-specific payment info. Common scheme-specific fields: - `exact` on Solana: `feePayer` -- the base58-encoded Solana address that pays transaction fees. - `upto` on EVM: `name`, `version`, and `facilitatorAddress` -- the EVM address of the facilitator that the client must bind into the Permit2 witness when constructing the payment payload. - `batch-settlement` on EVM: `name`, `version`, `receiverAuthorizer` (the EVM address authorized to sign claim batches), `withdrawDelay` (channel non-cooperative withdraw delay in seconds, 900-2,592,000), and optionally `assetTransferMethod` (e.g., `"eip3009"`). */
 export type X402SupportedPaymentKindExtraMap = { [key: string]: unknown | undefined };
 export const X402SupportedPaymentKindExtraMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -12071,7 +12071,7 @@ export interface X402SupportedPaymentKind {
   scheme: X402SupportedPaymentKindScheme;
   /** The network of the blockchain. The format corresponds to the `x402Version` of the enclosing `x402SupportedPaymentKind`: v1 uses human-readable names (see `X402V1Network`); v2 uses CAIP-2 chain IDs (see `X402V2Network`). */
   network: X402SupportedPaymentKindNetwork;
-  /** The optional additional scheme-specific payment info. Common scheme-specific fields: - `exact` on Solana: `feePayer` — the base58-encoded Solana address that pays transaction fees. - `upto` on EVM: `name`, `version`, and `facilitatorAddress` — the EVM address of the facilitator that the client must bind into the Permit2 witness when constructing the payment payload. - `batch-settlement` on EVM: `name`, `version`, `receiverAuthorizer` (the EVM address authorized to sign claim batches), `withdrawDelay` (channel non-cooperative withdraw delay in seconds, 900–2,592,000), and optionally `assetTransferMethod` (e.g., `"eip3009"`). */
+  /** The optional additional scheme-specific payment info. Common scheme-specific fields: - `exact` on Solana: `feePayer` -- the base58-encoded Solana address that pays transaction fees. - `upto` on EVM: `name`, `version`, and `facilitatorAddress` -- the EVM address of the facilitator that the client must bind into the Permit2 witness when constructing the payment payload. - `batch-settlement` on EVM: `name`, `version`, `receiverAuthorizer` (the EVM address authorized to sign claim batches), `withdrawDelay` (channel non-cooperative withdraw delay in seconds, 900-2,592,000), and optionally `assetTransferMethod` (e.g., `"eip3009"`). */
   extra?: X402SupportedPaymentKindExtraMap;
 }
 export const X402SupportedPaymentKind = /*@__PURE__*/ S.suspend(() =>
@@ -12665,7 +12665,7 @@ export interface VoidPaymentSessionRequest {
   /** The unique identifier of the payment session. */
   paymentSessionId: string;
   metadata?: Metadata;
-  /** An optional merchant-provided internal identifier for this void, from the merchant's own system—not visible to the payer. */
+  /** An optional merchant-provided internal identifier for this void, from the merchant's own system--not visible to the payer. */
   externalReferenceId?: string;
   /** Optional customer-facing display data for this void, shown to the payer. Falls back to the session's `orderCode` when `referenceCode` is omitted. */
   customerDisplay?: OperationCustomerDisplay;
@@ -12789,7 +12789,7 @@ export const authorizeX402PaymentSession: API.OperationMethod<
 }));
 
 export type CancelPaymentSessionError = CoinbaseOpError;
-/** Cancel a payment session Cancels a payment session before any funds have been authorized or captured. The session must be in `created` status. Cancel is blocked while any authorization action is pending. Once canceled, no further actions can be performed on the session. This is the only way to terminate a pre-authorization session — expiry deadlines block actions but do not automatically transition the session to a terminal state. */
+/** Cancel a payment session Cancels a payment session before any funds have been authorized or captured. The session must be in `created` status. Cancel is blocked while any authorization action is pending. Once canceled, no further actions can be performed on the session. This is the only way to terminate a pre-authorization session -- expiry deadlines block actions but do not automatically transition the session to a terminal state. */
 export const cancelPaymentSession: API.OperationMethod<
   CancelPaymentSessionRequest,
   PaymentSession,
@@ -12879,7 +12879,7 @@ export const createDelegationForEndUserAccount: API.OperationMethod<
 }));
 
 export type CreateDepositDestinationError = CoinbaseOpError;
-/** Create deposit destination Create a new deposit destination for an account. Two types are supported: - `crypto` (public): provisions a cryptocurrency address on the requested network. The returned `crypto.address` is the deposit address; funds sent to it are credited to the `target` account in the specified asset. For Customer-owned accounts, the Customer must have the `custodyCrypto` and `custodyStablecoin` capabilities enabled. - `fiat` (private-beta): provisions a bank account at a CDP banking partner. The server picks the account type (e.g. `us_bank`) and supported payment rails based on the account's eligibility; pass `fiat.paymentRail` to influence partner selection. The returned `fiat` object contains the bank account details the depositor needs to send funds. For Customer-owned accounts, the Customer must have the `custodyFiat` capability enabled. Requires account enablement — contact your Coinbase representative for access. Fields and behavior may change before general availability. For Customer-owned accounts not authorized for the required capabilities, the request is rejected with `customer_not_authorized` (HTTP 403). The created destination's `status` starts as `pending` for fiat (it becomes `active` once the partner provisioning callback completes) and `active` for crypto. */
+/** Create deposit destination Create a new deposit destination for an account. Two types are supported: - `crypto` (public): provisions a cryptocurrency address on the requested network. The returned `crypto.address` is the deposit address; funds sent to it are credited to the `target` account in the specified asset. For Customer-owned accounts, the Customer must have the `custodyCrypto` and `custodyStablecoin` capabilities enabled. - `fiat` (private-beta): provisions a bank account at a CDP banking partner. The server picks the account type (e.g. `us_bank`) and supported payment rails based on the account's eligibility; pass `fiat.paymentRail` to influence partner selection. The returned `fiat` object contains the bank account details the depositor needs to send funds. For Customer-owned accounts, the Customer must have the `custodyFiat` capability enabled. Requires account enablement -- contact your Coinbase representative for access. Fields and behavior may change before general availability. For Customer-owned accounts not authorized for the required capabilities, the request is rejected with `customer_not_authorized` (HTTP 403). The created destination's `status` starts as `pending` for fiat (it becomes `active` once the partner provisioning callback completes) and `active` for crypto. */
 export const createDepositDestination: API.OperationMethod<
   CreateDepositDestinationRequest2,
   CreateDepositDestinationResponse,
@@ -13014,7 +13014,7 @@ export const createFoundationAccount: API.OperationMethod<
 }));
 
 export type CreateOnrampOrderError = CoinbaseOpError;
-/** Create an onramp order Create a new Onramp order or get a quote for an Onramp order. Either `paymentAmount` or `purchaseAmount` must be provided. This API supports two modes: **Headless mode (standard)**: returns a seamless Apple Pay or Google Pay button that you integrate directly into your app. Your app collects and verifies the user's contact details before calling this endpoint — `phoneNumber`, `email`, `phoneNumberVerifiedAt`, and `agreementAcceptedAt` are required and enforced server-side. **Embedded mode**: returns a webview that collects and verifies the user's contact and identity information, then shows the payment screen. Omit both `phoneNumber` and `email` from the request to select this mode. Embedded mode requires account enablement; contact the Onramp team for access. Read more about the difference between the two modes in the [Headless Onramp overview](https://docs.cdp.coinbase.com/onramp/headless-onramp/overview). This API supports the `GUEST_CHECKOUT_APPLE_PAY` and `GUEST_CHECKOUT_GOOGLE_PAY` payment methods. For detailed integration instructions and to get access to this API, refer to the [Guest Checkout Onramp API docs](https://docs.cdp.coinbase.com/onramp/headless-onramp/overview). */
+/** Create an onramp order Create a new Onramp order or get a quote for an Onramp order. Either `paymentAmount` or `purchaseAmount` must be provided. This API supports two modes: **Headless mode (standard)**: returns a seamless Apple Pay or Google Pay button that you integrate directly into your app. Your app collects and verifies the user's contact details before calling this endpoint -- `phoneNumber`, `email`, `phoneNumberVerifiedAt`, and `agreementAcceptedAt` are required and enforced server-side. **Embedded mode**: returns a webview that collects and verifies the user's contact and identity information, then shows the payment screen. Omit both `phoneNumber` and `email` from the request to select this mode. Embedded mode requires account enablement; contact the Onramp team for access. Read more about the difference between the two modes in the [Headless Onramp overview](https://docs.cdp.coinbase.com/onramp/headless-onramp/overview). This API supports the `GUEST_CHECKOUT_APPLE_PAY` and `GUEST_CHECKOUT_GOOGLE_PAY` payment methods. For detailed integration instructions and to get access to this API, refer to the [Guest Checkout Onramp API docs](https://docs.cdp.coinbase.com/onramp/headless-onramp/overview). */
 export const createOnrampOrder: API.OperationMethod<
   CreateOnrampOrderRequest,
   CreateOnrampOrderResponse,
@@ -13044,7 +13044,7 @@ export const createOnrampSession: API.OperationMethod<
 }));
 
 export type CreatePaymentSessionError = CoinbaseOpError;
-/** Create a payment session Creates a payment session that defines what is being paid — amount, asset, and target. Optionally configure execution behavior, expiry deadlines, redirect URLs, and metadata. If expiry deadlines are omitted, sensible defaults are applied (1 day for authorization, 7 days for capture, 30 days for refund). Expiries must be in ascending order — see the `expiries` object for details and constraints. Returns the session in `created` status. Next step: call one of the authorization endpoints (wallet or Coinbase) to authorize the payment. */
+/** Create a payment session Creates a payment session that defines what is being paid -- amount, asset, and target. Optionally configure execution behavior, expiry deadlines, redirect URLs, and metadata. If expiry deadlines are omitted, sensible defaults are applied (1 day for authorization, 7 days for capture, 30 days for refund). Expiries must be in ascending order -- see the `expiries` object for details and constraints. Returns the session in `created` status. Next step: call one of the authorization endpoints (wallet or Coinbase) to authorize the payment. */
 export const createPaymentSession: API.OperationMethod<
   CreatePaymentSessionRequest,
   PaymentSession,
@@ -13149,7 +13149,7 @@ export const createX402DiscoveryMcp: API.OperationMethod<
 }));
 
 export type DeleteCustomerError = CoinbaseOpError;
-/** Delete a customer Initiates deletion of the customer and all associated data. This operation is idempotent — repeated calls for an already-deleted customer return 204. A 404 is returned only when no customer with the given ID exists for the caller's entity. */
+/** Delete a customer Initiates deletion of the customer and all associated data. This operation is idempotent -- repeated calls for an already-deleted customer return 204. A 404 is returned only when no customer with the given ID exists for the caller's entity. */
 export const deleteCustomer: API.OperationMethod<
   DeleteCustomerRequest,
   DeleteCustomerResponse,
@@ -13749,7 +13749,7 @@ export const getUserOperationWithEndUserAccount: API.OperationMethod<
 }));
 
 export type GetWalletAuthorizationOptionsError = CoinbaseOpError;
-/** Get wallet authorization options Returns the available wallet authorization options for a payment session. The session must be in `created` status. Provide one or more payer wallet addresses as query parameters. Each option specifies the currency, amount, network, and payloads the payer must sign to authorize the payment. Present the options to the payer and let them choose one, then call **Authorize Wallet** with the selected option. This is a stateless read operation — the session is not modified. If a requested address has no eligible authorization options (e.g. insufficient funds), it appears in `ineligibleAddresses` with a `code` and `message` instead of being absent from `options`. When an address is ineligible because of `insufficient_funds`, its `fundsRequired` array lists, per enabled (network, asset) combination, the current balance and required balance the payer needs to become eligible. */
+/** Get wallet authorization options Returns the available wallet authorization options for a payment session. The session must be in `created` status. Provide one or more payer wallet addresses as query parameters. Each option specifies the currency, amount, network, and payloads the payer must sign to authorize the payment. Present the options to the payer and let them choose one, then call **Authorize Wallet** with the selected option. This is a stateless read operation -- the session is not modified. If a requested address has no eligible authorization options (e.g. insufficient funds), it appears in `ineligibleAddresses` with a `code` and `message` instead of being absent from `options`. When an address is ineligible because of `insufficient_funds`, its `fundsRequired` array lists, per enabled (network, asset) combination, the current balance and required balance the payer needs to become eligible. */
 export const getWalletAuthorizationOptions: API.OperationMethod<
   GetWalletAuthorizationOptionsRequest,
   WalletAuthorizationOptionsResponse,
@@ -14229,7 +14229,7 @@ export const listTransfers: API.OperationMethod<
 }));
 
 export type ListWebhookSubscriptionEventsError = CoinbaseOpError;
-/** List webhook subscription events Retrieve webhook event delivery attempts for a specific subscription. Returns event deliveries in descending order by creation time (newest first), including delivery status, retry count, and response details. ### Use Cases - Debug webhook delivery failures and inspect response codes - Monitor delivery status and retry counts - Audit event delivery history for a subscription - Verify that expected events were sent to webhook URLs ### Filtering Use optional query parameters to narrow results: - `eventId` — find a specific event by ID - `minCreatedAt` / `maxCreatedAt` — filter by time range - `eventTypeNames` — filter by event type (comma-separated) **Note:** Results are limited to the 50 most recent events (newest first). No pagination is supported. */
+/** List webhook subscription events Retrieve webhook event delivery attempts for a specific subscription. Returns event deliveries in descending order by creation time (newest first), including delivery status, retry count, and response details. ### Use Cases - Debug webhook delivery failures and inspect response codes - Monitor delivery status and retry counts - Audit event delivery history for a subscription - Verify that expected events were sent to webhook URLs ### Filtering Use optional query parameters to narrow results: - `eventId` -- find a specific event by ID - `minCreatedAt` / `maxCreatedAt` -- filter by time range - `eventTypeNames` -- filter by event type (comma-separated) **Note:** Results are limited to the 50 most recent events (newest first). No pagination is supported. */
 export const listWebhookSubscriptionEvents: API.OperationMethod<
   ListWebhookSubscriptionEventsRequest,
   WebhookEventListResponse,

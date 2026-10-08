@@ -1214,7 +1214,7 @@ export interface CreateSurveysSummarizeResponseRequest {
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
-  /** Question UUID. Preferred over question_index — stable across question edits. */
+  /** Question UUID. Preferred over question_index -- stable across question edits. */
   question_id?: string;
   /** Zero-based question index. Omit to get the survey-wide headline instead. */
   question_index?: number;
@@ -1716,7 +1716,7 @@ export interface ListSurveysRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
+  /** Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
   /** Filter surveys by their current status. * `draft` - Draft * `running` - Running * `complete` - Complete */
   status?: ListSurveysRequestStatus | (string & {});
@@ -1820,7 +1820,7 @@ export const SurveyResponseAnswer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SurveyResponseAnswer" }) as any as S.Schema<SurveyResponseAnswer>;
 
-/** One entry per survey question that received a non-empty answer. Question text is already resolved — callers do not need to look up `$survey_response_<id>` keys. */
+/** One entry per survey question that received a non-empty answer. Question text is already resolved -- callers do not need to look up `$survey_response_<id>` keys. */
 export type SurveyResponseRowAnswersList = Array<SurveyResponseAnswer>;
 export const SurveyResponseRowAnswersList = /*@__PURE__*/ S.Array(
   SurveyResponseAnswer,
@@ -1866,7 +1866,7 @@ export interface SurveyResponseRow {
   session_id: string | null;
   /** Event timestamp when the response was sent (ISO 8601, UTC). */
   submitted_at: string;
-  /** One entry per survey question that received a non-empty answer. Question text is already resolved — callers do not need to look up `$survey_response_<id>` keys. */
+  /** One entry per survey question that received a non-empty answer. Question text is already resolved -- callers do not need to look up `$survey_response_<id>` keys. */
   answers: SurveyResponseRowAnswersList;
   /** Convenience fields extracted from the event properties (device, browser, geoip, iteration). */
   extra: SurveyResponseExtra;
@@ -1891,7 +1891,7 @@ export const SurveyResponsesListResultsList = /*@__PURE__*/ S.Array(
 export interface SurveyResponsesList {
   /** Survey response rows for the requested page. */
   results: SurveyResponsesListResultsList;
-  /** True if more rows exist beyond the current page — fetch the next page with offset + limit. */
+  /** True if more rows exist beyond the current page -- fetch the next page with offset + limit. */
   has_more: boolean;
   /** The limit applied to this query (echoed back for pagination). */
   limit: number;
@@ -2912,7 +2912,7 @@ export const listSurveys: API.OperationMethod<
 }));
 
 export type ListSurveysResponsesError = PosthogOpError;
-/** List survey responses for a specific survey, with question text resolved server-side so callers do not have to map opaque `$survey_response_<id>` keys. Each row carries `distinct_id`, `session_id`, `submitted_at`, and an `extra` block (device, browser, OS, geoip, current_url, iteration) so agents can cross-pivot to recordings, persons, or paths in a single follow-up call. For person properties at event time, follow up with `persons-get` using the returned `distinct_id` — keeps scopes scoped. Use `question_id` + `score_lte` to fetch NPS detractors and similar score-filtered cohorts. */
+/** List survey responses for a specific survey, with question text resolved server-side so callers do not have to map opaque `$survey_response_<id>` keys. Each row carries `distinct_id`, `session_id`, `submitted_at`, and an `extra` block (device, browser, OS, geoip, current_url, iteration) so agents can cross-pivot to recordings, persons, or paths in a single follow-up call. For person properties at event time, follow up with `persons-get` using the returned `distinct_id` -- keeps scopes scoped. Use `question_id` + `score_lte` to fetch NPS detractors and similar score-filtered cohorts. */
 export const listSurveysResponses: API.OperationMethod<
   ListSurveysResponsesRequest,
   SurveyResponsesList,
@@ -2991,7 +2991,7 @@ export const surveysGenerateTranslationsCreate: API.OperationMethod<
 }));
 
 export type SurveysLaunchError = PosthogOpError;
-/** Launch a survey by setting `start_date` to the current time. No-op if the survey is already launched (start_date set in the past) — returns the existing state unchanged. Does not affect archived surveys or surveys with an end_date in the past; unarchive or extend the end_date first. */
+/** Launch a survey by setting `start_date` to the current time. No-op if the survey is already launched (start_date set in the past) -- returns the existing state unchanged. Does not affect archived surveys or surveys with an end_date in the past; unarchive or extend the end_date first. */
 export const surveysLaunch: API.OperationMethod<
   SurveysLaunchRequest,
   Survey,

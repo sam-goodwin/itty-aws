@@ -216,7 +216,7 @@ export const PutAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutAliasRequestProperties>;
 
 export interface CreateAliasRequest {
-  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
+  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
   /** Put alias request properties. */
   properties?: PutAliasRequestProperties;
@@ -362,7 +362,7 @@ export const SubscriptionAliasResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionAliasResponse>;
 
 export interface DeleteAliasRequest {
-  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
+  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
 export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
@@ -414,7 +414,7 @@ export const EnabledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnabledSubscriptionId" }) as any as S.Schema<EnabledSubscriptionId>;
 
 export interface GetAliasRequest {
-  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
+  /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
 export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>

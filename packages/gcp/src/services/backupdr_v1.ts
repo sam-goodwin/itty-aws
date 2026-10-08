@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 
 export type { GcpOpError, GcpOpContext };
 
-/** The association references a backup plan that does not exist (HTTP 400: 'The request was invalid: backup plan … not found'). Not retryable. */
+/** The association references a backup plan that does not exist (HTTP 400: 'The request was invalid: backup plan ... not found'). Not retryable. */
 export class BackupPlanReferenceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BackupPlanReferenceNotFound>()("BackupPlanReferenceNotFound", {
@@ -23,7 +23,7 @@ export class BackupPlanReferenceNotFound
     [{ status: 400, message: { matches: "backup plan .* not found" } }],
   ) {}
 
-/** The association targets a workload resource that does not exist (HTTP 400: 'The request was invalid: resource … is not found'). Not retryable. */
+/** The association targets a workload resource that does not exist (HTTP 400: 'The request was invalid: resource ... is not found'). Not retryable. */
 export class BackupResourceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BackupResourceNotFound>()("BackupResourceNotFound", {
@@ -37,7 +37,7 @@ export class BackupResourceNotFound
     [{ status: 400, message: { matches: "resource .* is not found" } }],
   ) {}
 
-/** The backup plan references a backup vault that does not exist (HTTP 400: 'The request was invalid: backup vault "…" not found'). Not retryable. */
+/** The backup plan references a backup vault that does not exist (HTTP 400: 'The request was invalid: backup vault "..." not found'). Not retryable. */
 export class BackupVaultReferenceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BackupVaultReferenceNotFound>()("BackupVaultReferenceNotFound", {
@@ -530,7 +530,7 @@ export interface BackupRule {
   ruleId?: string;
   /** Optional. Defines a schedule that runs within the confines of a defined window of time. */
   standardSchedule?: StandardSchedule;
-  /** Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory trial. We recommend starting with a short duration of 3 days or less. */
+  /** Required. Configures the duration for which backup data will be kept. It is defined in "days". The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory trial. We recommend starting with a short duration of 3 days or less. */
   backupRetentionDays?: number;
 }
 export const BackupRule = /*@__PURE__*/ S.suspend(() =>
@@ -629,7 +629,7 @@ export interface BackupPlan {
   revisionId?: string;
   /** Output only. Identifier. The resource name of the `BackupPlan`. Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}` */
   name?: string;
-  /** Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is defined in “days”. This value should be greater than or equal to minimum enforced log retention duration of the backup vault. */
+  /** Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is defined in "days". This value should be greater than or equal to minimum enforced log retention duration of the backup vault. */
   logRetentionDays?: string;
   /** Output only. When the `BackupPlan` was last updated. */
   updateTime?: string;

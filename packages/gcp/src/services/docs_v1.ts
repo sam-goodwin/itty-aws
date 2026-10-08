@@ -4492,7 +4492,7 @@ export interface InlineObject {
   inlineObjectProperties?: InlineObjectProperties;
   /** The suggested insertion ID. If empty, then this is not a suggested insertion. */
   suggestedInsertionId?: string;
-  /** The ID of this inline object. Can be used to update an object’s properties. */
+  /** The ID of this inline object. Can be used to update an object's properties. */
   objectId?: string;
 }
 export const InlineObject = /*@__PURE__*/ S.suspend(() =>

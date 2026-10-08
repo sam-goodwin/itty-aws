@@ -143,7 +143,7 @@ export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Str
 export interface Location {
   /** The postal code this location refers to. Ex. "94043" */
   postalCode?: string;
-  /** 2-letter ISO region code for current content region. Ex. “US” Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1 */
+  /** 2-letter ISO region code for current content region. Ex. "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1 */
   regionCode?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
@@ -576,7 +576,7 @@ export interface Subscription {
   updateTime?: string;
   /** Optional. The timestamp when the user transaction was made with the Partner. Specify for the case of "bundle with choice", and it must be before the provision_time (when the user makes a selection). */
   purchaseTime?: string;
-  /** Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at the maximum. */
+  /** Required. Identifier of the end-user in partner's system. The value is restricted to 63 ASCII characters at the maximum. */
   partnerUserToken?: string;
   /** Identifier. Resource name of the subscription. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}". This is available for authorizeAddon, but otherwise is response only. */
   name?: string;
@@ -750,7 +750,7 @@ export const EntitleSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface Extension {
   /** Required. Specifies the period of access the subscription should grant. */
   duration?: Duration;
-  /** Required. Identifier of the end-user in partner’s system. */
+  /** Required. Identifier of the end-user in partner's system. */
   partnerUserToken?: string;
 }
 export const Extension = /*@__PURE__*/ S.suspend(() =>

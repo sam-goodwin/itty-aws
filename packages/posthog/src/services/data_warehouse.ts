@@ -102,7 +102,7 @@ export interface CreateDataWarehouseProvisionRequest {
   project_id: string;
   /** Name for the new database */
   database_name: string;
-  /** Schema name for the provisioning project's data in the warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Cannot be changed later. Required — the first project gets its own schema, and other projects pick theirs when they join. */
+  /** Schema name for the provisioning project's data in the warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Cannot be changed later. Required -- the first project gets its own schema, and other projects pick theirs when they join. */
   schema_name: string;
 }
 export const CreateDataWarehouseProvisionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1305,11 +1305,11 @@ export type WarehouseStatusResponseStateEnum =
 export const WarehouseStatusResponseStateEnum = S.String;
 
 export interface WarehouseConnection {
-  /** Connection host — the warehouse name is the SNI subdomain, e.g. my-warehouse.dw.us.postwh.com */
+  /** Connection host -- the warehouse name is the SNI subdomain, e.g. my-warehouse.dw.us.postwh.com */
   host: string;
   /** Postgres wire-protocol port */
   port: number;
-  /** Database to connect to — always 'ducklake' */
+  /** Database to connect to -- always 'ducklake' */
   database: string;
   /** Root database username */
   username: string;
@@ -1347,7 +1347,7 @@ export interface WarehouseStatusResponse {
   has_backfill: boolean;
   /** This project's per-environment table suffix (events_<suffix>). Null when the project still writes to the shared tables. */
   table_suffix: string | null;
-  /** Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet — show the onboarding screen in that case. */
+  /** Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet -- show the onboarding screen in that case. */
   team_onboarded: boolean;
   /** Schema this project's data lands in. Null when the project is not onboarded. */
   schema_name: string | null;
@@ -1626,7 +1626,7 @@ export const getDataWarehouseManagedWarehouseMonitoringTimeseries: API.Operation
 }));
 
 export type GetDataWarehouseManagedWarehouseSourceSchemaError = PosthogOpError;
-/** Get per-schema detail for one imported source Per-schema backfill and live import status for one source, for the Overview tab's drill-down modal — the main status endpoint only returns a per-source rollup. */
+/** Get per-schema detail for one imported source Per-schema backfill and live import status for one source, for the Overview tab's drill-down modal -- the main status endpoint only returns a per-source rollup. */
 export const getDataWarehouseManagedWarehouseSourceSchema: API.OperationMethod<
   GetDataWarehouseManagedWarehouseSourceSchemaRequest,
   ManagedWarehouseSourceSchemasResponse,

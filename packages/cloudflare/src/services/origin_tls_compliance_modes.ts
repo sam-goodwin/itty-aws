@@ -12,7 +12,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   modifiedOn: "modified_on",
 };
@@ -256,7 +256,7 @@ export const getOriginTlsComplianceMode: API.OperationMethod<
 }));
 
 export type PatchOriginTlsComplianceModeError = CloudflareOpError;
-/** Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge — the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
+/** Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge -- the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
 export const patchOriginTlsComplianceMode: API.OperationMethod<
   PatchOriginTlsComplianceModeRequest,
   PatchOriginTlsComplianceModeResponse,
@@ -271,7 +271,7 @@ export const patchOriginTlsComplianceMode: API.OperationMethod<
 }));
 
 export type PutOriginTlsComplianceModeError = CloudflareOpError;
-/** Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge — any modes not present in the request body are removed. The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
+/** Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge -- any modes not present in the request body are removed. The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
 export const putOriginTlsComplianceMode: API.OperationMethod<
   PutOriginTlsComplianceModeRequest,
   PutOriginTlsComplianceModeResponse,

@@ -46,7 +46,7 @@ export class NotFound
   ) {}
 
 export interface CancelPayoutRequest {
-  /** Payout ID, prefixed `wdrl_`, or the `cofr_` payout request ID returned by `POST /payouts` — both cancel the same payout. */
+  /** Payout ID, prefixed `wdrl_`, or the `cofr_` payout request ID returned by `POST /payouts` -- both cancel the same payout. */
   id: string;
   /** Owning account ID, prefixed `biz_`. Provide exactly one of `account_id` or `user_id`. */
   account_id?: string;
@@ -68,7 +68,7 @@ export const CancelPayoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CancelPayoutResponseFailure {
   /** Classified failure code from the maintained error catalog. */
   code: string | null;
-  /** The effective time of the reversal that put the funds back in the balance — `null` if they never left it or have not returned yet. Set only once the return is confirmed in the ledger; the ledger posting itself can land moments after this time. */
+  /** The effective time of the reversal that put the funds back in the balance -- `null` if they never left it or have not returned yet. Set only once the return is confirmed in the ledger; the ledger posting itself can land moments after this time. */
   funds_returned_at: string | null;
   /** Human-readable explanation of the failure. Callers holding `payout:destination:read` may receive text personalized to the destination; other callers get the generic catalog message. */
   message: string | null;
@@ -174,7 +174,7 @@ export interface CancelPayoutResponse {
   currency: string;
   /** The amount delivered in the destination currency, as a decimal string. Assigned when the payout is processed, so it is `null` before then and on payouts without a recorded conversion. */
   destination_amount: string | null;
-  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it — the `GET /payouts` row carrying this payout's id as `payout_request_id` — and is `null` only when no settlement payout exists. */
+  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it -- the `GET /payouts` row carrying this payout's id as `payout_request_id` -- and is `null` only when no settlement payout exists. */
   destination_currency: string | null;
   /** Estimated time the funds become available in the destination account. */
   estimated_arrival: string | null;
@@ -192,7 +192,7 @@ export interface CancelPayoutResponse {
   markup_fee: string;
   /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
   metadata: CancelPayoutResponseMetadataMap;
-  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing — most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
+  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing -- most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
   net_amount: string;
   /** Free-form notes attached by the payout creator, or `null` when none were provided. Maximum 255 characters. */
   notes: string | null;
@@ -211,7 +211,7 @@ export interface CancelPayoutResponse {
   statement_descriptor: string | null;
   /** Current payout status. */
   status: CancelPayoutResponseStatus;
-  /** The finest machine phase under `status` — for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
+  /** The finest machine phase under `status` -- for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
   status_detail: string;
   /** ACH trace number the recipient's bank can use to locate this payout. Assigned when the payout is submitted to the bank, so it is `null` before then and on payouts not sent over ACH. */
   trace_code: string | null;
@@ -246,7 +246,7 @@ export const CancelPayoutResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CancelPayoutResponse" }) as any as S.Schema<CancelPayoutResponse>;
 
-/** Key-value data to attach to the payout, echoed on every read and in webhook payloads. At most 50 keys, key names up to 40 characters, string values up to 500 characters. Never store secrets or regulated personal data here — webhook bodies are retained for delivery inspection. */
+/** Key-value data to attach to the payout, echoed on every read and in webhook payloads. At most 50 keys, key names up to 40 characters, string values up to 500 characters. Never store secrets or regulated personal data here -- webhook bodies are retained for delivery inspection. */
 export type CreatePayoutRequestMetadataMap = { [key: string]: string | undefined };
 export const CreatePayoutRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -260,13 +260,13 @@ export const CreatePayoutRequestSpeed = S.String;
 export interface CreatePayoutRequest {
   /** Account to pay out from, prefixed `biz_`. Provide exactly one of `account_id` or `user_id`. */
   account_id?: string;
-  /** Set to `true` to continue when the destination bank could not confirm the payout method account holder's name, or `false` to have the payout refused in that case so the account holder can correct the name or link their bank first. Omitting the field skips the warning gate — a client that cannot show the warning keeps its pre-gate behavior. */
+  /** Set to `true` to continue when the destination bank could not confirm the payout method account holder's name, or `false` to have the payout refused in that case so the account holder can correct the name or link their bank first. Omitting the field skips the warning gate -- a client that cannot show the warning keeps its pre-gate behavior. */
   acknowledge_bank_warning?: boolean;
   /** The amount to pay out in the specified currency. */
   amount: number;
-  /** The currency to pay out. Balances are held per currency and the payout draws only from the balance in this currency, so match the currency the funds arrived in — for example `cad` for an account funded by CAD transfers. When omitted, uses `usd` if that balance can cover a withdrawal, otherwise the account's only other funded currency. */
+  /** The currency to pay out. Balances are held per currency and the payout draws only from the balance in this currency, so match the currency the funds arrived in -- for example `cad` for an account funded by CAD transfers. When omitted, uses `usd` if that balance can cover a withdrawal, otherwise the account's only other funded currency. */
   currency?: string;
-  /** Key-value data to attach to the payout, echoed on every read and in webhook payloads. At most 50 keys, key names up to 40 characters, string values up to 500 characters. Never store secrets or regulated personal data here — webhook bodies are retained for delivery inspection. */
+  /** Key-value data to attach to the payout, echoed on every read and in webhook payloads. At most 50 keys, key names up to 40 characters, string values up to 500 characters. Never store secrets or regulated personal data here -- webhook bodies are retained for delivery inspection. */
   metadata?: CreatePayoutRequestMetadataMap;
   /** Free-form notes to attach to the payout, with a maximum of 255 characters. Omit or pass `null` for no notes. */
   notes?: string | null;
@@ -398,7 +398,7 @@ export interface CreatePayoutResponse {
   currency: string;
   /** The amount delivered in the destination currency, as a decimal string. Null until the payout settles; appears on the payout in GET /payouts once assigned. */
   destination_amount: string | null;
-  /** Currency the funds are delivered in, taken from the payout method. On a stablecoin payout it follows the settlement payout minted alongside it — the `GET /payouts` row carrying this payout's id as `payout_request_id` — and is `null` only when no settlement payout exists. */
+  /** Currency the funds are delivered in, taken from the payout method. On a stablecoin payout it follows the settlement payout minted alongside it -- the `GET /payouts` row carrying this payout's id as `payout_request_id` -- and is `null` only when no settlement payout exists. */
   destination_currency: string | null;
   /** Estimated time the funds become available in the destination account. Null until the payout settles. */
   estimated_arrival: string | null;
@@ -410,13 +410,13 @@ export interface CreatePayoutResponse {
   fee_amount: string;
   /** Who bore the payout fee: the account itself, or its parent platform. */
   fee_paid_by: CreatePayoutResponseFeePaidBy;
-  /** Payout ID, prefixed `wdrl_` — the id POST returns is the id GET /payouts lists. Conversion requests created before this version keep answering under their `cofr_` id. */
+  /** Payout ID, prefixed `wdrl_` -- the id POST returns is the id GET /payouts lists. Conversion requests created before this version keep answering under their `cofr_` id. */
   id: string;
   /** Whop's markup on the provider fee, in the payout currency, as a decimal string. `"0.0"` when none applies. */
   markup_fee: string;
   /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
   metadata: CreatePayoutResponseMetadataMap;
-  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing — most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
+  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing -- most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
   net_amount: string;
   /** Free-form notes attached by the payout creator, or `null` when none were provided. Maximum 255 characters. */
   notes: string | null;
@@ -435,9 +435,9 @@ export interface CreatePayoutResponse {
   statement_descriptor: string | null;
   /** Current payout status, in the same vocabulary as GET /payouts. */
   status: CreatePayoutResponseStatus;
-  /** The finest machine phase under `status` — for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
+  /** The finest machine phase under `status` -- for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
   status_detail: string;
-  /** ACH trace number the recipient's bank can use to locate this payout. Always `null` here — it is assigned when the payout is submitted to the bank, and appears on the payout in GET /payouts once it has been sent; payouts not sent over ACH never get one. */
+  /** ACH trace number the recipient's bank can use to locate this payout. Always `null` here -- it is assigned when the payout is submitted to the bank, and appears on the payout in GET /payouts once it has been sent; payouts not sent over ACH never get one. */
   trace_code: string | null;
 }
 export const CreatePayoutResponse = /*@__PURE__*/ S.suspend(() =>
@@ -470,7 +470,7 @@ export const CreatePayoutResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreatePayoutResponse" }) as any as S.Schema<CreatePayoutResponse>;
 
-/** The supported payout method's required field values, keyed by field id — list them with `GET /payouts/supported_methods?supported_payout_method_id=...`. Field ids are stable `fld_` identifiers you may hardcode; they never change for a given field. A Basis Theory token id may be passed in place of a raw value. For a U.S. bank routing-number field, a raw nine-digit value must also pass the ABA checksum. A validation failure returns the method's full required_fields schema alongside the error. Required whenever the account details are supplied directly. */
+/** The supported payout method's required field values, keyed by field id -- list them with `GET /payouts/supported_methods?supported_payout_method_id=...`. Field ids are stable `fld_` identifiers you may hardcode; they never change for a given field. A Basis Theory token id may be passed in place of a raw value. For a U.S. bank routing-number field, a raw nine-digit value must also pass the ABA checksum. A validation failure returns the method's full required_fields schema alongside the error. Required whenever the account details are supplied directly. */
 export type CreatePayoutMethodRequestFieldsMap = { [key: string]: string | undefined };
 export const CreatePayoutMethodRequestFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -482,7 +482,7 @@ export interface CreatePayoutMethodRequest {
   account_id?: string;
   /** Currency the supported payout method delivers payouts in. */
   destination_currency?: string;
-  /** The supported payout method's required field values, keyed by field id — list them with `GET /payouts/supported_methods?supported_payout_method_id=...`. Field ids are stable `fld_` identifiers you may hardcode; they never change for a given field. A Basis Theory token id may be passed in place of a raw value. For a U.S. bank routing-number field, a raw nine-digit value must also pass the ABA checksum. A validation failure returns the method's full required_fields schema alongside the error. Required whenever the account details are supplied directly. */
+  /** The supported payout method's required field values, keyed by field id -- list them with `GET /payouts/supported_methods?supported_payout_method_id=...`. Field ids are stable `fld_` identifiers you may hardcode; they never change for a given field. A Basis Theory token id may be passed in place of a raw value. For a U.S. bank routing-number field, a raw nine-digit value must also pass the ABA checksum. A validation failure returns the method's full required_fields schema alongside the error. Required whenever the account details are supplied directly. */
   fields?: CreatePayoutMethodRequestFieldsMap;
   /** Whether to make this the account's default payout method. */
   is_default?: boolean;
@@ -522,7 +522,7 @@ export const CreatePayoutMethodResponseBankVerificationState = S.String;
 export type CreatePayoutMethodResponseObject = "payout_method";
 export const CreatePayoutMethodResponseObject = S.String;
 
-/** Always `created` on create — no payout has used the method yet. */
+/** Always `created` on create -- no payout has used the method yet. */
 export type CreatePayoutMethodResponseStatus = "created" | "active" | "broken";
 export const CreatePayoutMethodResponseStatus = S.String;
 
@@ -598,7 +598,7 @@ export interface CreatePayoutMethodResponse {
   payer_name: string | null;
   /** Always null on create. */
   quote: unknown | null;
-  /** Always `created` on create — no payout has used the method yet. */
+  /** Always `created` on create -- no payout has used the method yet. */
   status: CreatePayoutMethodResponseStatus;
   /** Always `null` on create. */
   status_reason: string | null;
@@ -673,11 +673,11 @@ export const CreatePayoutQuoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePayoutQuoteRequest" }) as any as S.Schema<CreatePayoutQuoteRequest>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -867,7 +867,7 @@ export interface GetPayoutResponse {
   currency: string;
   /** The amount delivered in the destination currency, as a decimal string. Assigned when the payout is processed, so it is `null` before then and on payouts without a recorded conversion. */
   destination_amount: string | null;
-  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it — the `GET /payouts` row carrying this payout's id as `payout_request_id` — and is `null` only when no settlement payout exists. */
+  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it -- the `GET /payouts` row carrying this payout's id as `payout_request_id` -- and is `null` only when no settlement payout exists. */
   destination_currency: string | null;
   /** Estimated time the funds become available in the destination account. */
   estimated_arrival: string | null;
@@ -885,7 +885,7 @@ export interface GetPayoutResponse {
   markup_fee: string;
   /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
   metadata: GetPayoutResponseMetadataMap;
-  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing — most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
+  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing -- most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
   net_amount: string;
   /** Free-form notes attached by the payout creator, or `null` when none were provided. Maximum 255 characters. */
   notes: string | null;
@@ -904,7 +904,7 @@ export interface GetPayoutResponse {
   statement_descriptor: string | null;
   /** Current payout status. */
   status: GetPayoutResponseStatus;
-  /** The finest machine phase under `status` — for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
+  /** The finest machine phase under `status` -- for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
   status_detail: string;
   /** ACH trace number the recipient's bank can use to locate this payout. Assigned when the payout is submitted to the bank, so it is `null` before then and on payouts not sent over ACH. */
   trace_code: string | null;
@@ -953,7 +953,7 @@ export interface ListPayoutMethodsRequest {
   amount?: number;
   /** Currency code of the amount, for example `usd`. Only meaningful with amount or include_limits. */
   currency?: string;
-  /** When true, the response also carries limits — the live per-speed payout caps the account's payout requests are validated against, in the requested currency. Requires the payout:withdrawal:read scope. */
+  /** When true, the response also carries limits -- the live per-speed payout caps the account's payout requests are validated against, in the requested currency. Requires the payout:withdrawal:read scope. */
   include_limits?: boolean;
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -1175,7 +1175,7 @@ export interface ListPayoutMethodsResponseDataItem {
   quote: ListPayoutMethodsResponseDataItemQuote | null;
   /** Lifecycle status: `created` means saved but unused, `active` means a payout succeeded through it, `broken` means a payout failure disabled it; a later successful payout returns it to `active`. */
   status: ListPayoutMethodsResponseDataItemStatus;
-  /** Machine-readable code for why the method is `broken` — the newest disabling failure recorded through it, whether a payout error or a pre-payout rejection. `null` unless the method is broken, or when it was disabled without a recorded failure. */
+  /** Machine-readable code for why the method is `broken` -- the newest disabling failure recorded through it, whether a payout error or a pre-payout rejection. `null` unless the method is broken, or when it was disabled without a recorded failure. */
   status_reason: string | null;
   /** The supported payout method this saved method was created from. */
   supported_payout_method: ListPayoutMethodsResponseDataItemSupportedPayoutMethod | null;
@@ -1286,7 +1286,7 @@ export const ListPayoutMethodsResponseLimitsStandard = /*@__PURE__*/ S.suspend((
   identifier: "ListPayoutMethodsResponseLimitsStandard",
 }) as any as S.Schema<ListPayoutMethodsResponseLimitsStandard>;
 
-/** The live per-speed payout caps for the account in the requested currency — the numbers a payout request is validated against at submit time, so clients can cap an amount input at a value the request will accept. Only present when include_limits is true. */
+/** The live per-speed payout caps for the account in the requested currency -- the numbers a payout request is validated against at submit time, so clients can cap an amount input at a value the request will accept. Only present when include_limits is true. */
 export interface ListPayoutMethodsResponseLimits {
   /** The currency the caps are denominated in. */
   currency: string;
@@ -1326,7 +1326,7 @@ export const ListPayoutMethodsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListPayoutMethodsResponse {
   data: ListPayoutMethodsResponseDataList;
-  /** The live per-speed payout caps for the account in the requested currency — the numbers a payout request is validated against at submit time, so clients can cap an amount input at a value the request will accept. Only present when include_limits is true. */
+  /** The live per-speed payout caps for the account in the requested currency -- the numbers a payout request is validated against at submit time, so clients can cap an amount input at a value the request will accept. Only present when include_limits is true. */
   limits?: ListPayoutMethodsResponseLimits;
   page_info: ListPayoutMethodsResponsePageInfo;
 }
@@ -1361,7 +1361,7 @@ export interface ListPayoutsRequest {
   user_id?: string;
   /** Optional currency code filter, for example `usd`. */
   currency?: string;
-  /** Filter to payouts whose `status` reads this word, matching exactly what this version displays — `reversed` finds settled payouts the bank later returned. Requires Api-Version-Date 2026-08-21 or later. */
+  /** Filter to payouts whose `status` reads this word, matching exactly what this version displays -- `reversed` finds settled payouts the bank later returned. Requires Api-Version-Date 2026-08-21 or later. */
   status?: ListPayoutsRequestStatus | (string & {});
   /** Filter by how the payout was created. Payouts created before source tracking or through internal tooling carry no source and never match. */
   source?: ListPayoutsRequestSource | (string & {});
@@ -1493,7 +1493,7 @@ export interface ListPayoutsResponseDataItem {
   currency: string;
   /** The amount delivered in the destination currency, as a decimal string. Assigned when the payout is processed, so it is `null` before then and on payouts without a recorded conversion. */
   destination_amount: string | null;
-  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it — the `GET /payouts` row carrying this payout's id as `payout_request_id` — and is `null` only when no settlement payout exists. */
+  /** Currency the funds are delivered in, taken from the payout method when the payout is created. On a stablecoin payout it follows the settlement payout minted alongside it -- the `GET /payouts` row carrying this payout's id as `payout_request_id` -- and is `null` only when no settlement payout exists. */
   destination_currency: string | null;
   /** Estimated time the funds become available in the destination account. */
   estimated_arrival: string | null;
@@ -1511,7 +1511,7 @@ export interface ListPayoutsResponseDataItem {
   markup_fee: string;
   /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
   metadata: ListPayoutsResponseDataItemMetadataMap;
-  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing — most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
+  /** The planned net for the destination, in the payout currency: amount minus fee_amount minus markup_fee when fee_paid_by is `self`; equal to amount when the platform covers the fees. A payout that ends denied, canceled, or failed delivered nothing -- most keep the planned figure and `failure` says where the funds are, but a canceled stablecoin payout can report the settled outcome instead: `amount` carries what stayed in the balance, fees are zero because none were charged, and `net_amount` is 0 because nothing was delivered. */
   net_amount: string;
   /** Free-form notes attached by the payout creator, or `null` when none were provided. Maximum 255 characters. */
   notes: string | null;
@@ -1530,7 +1530,7 @@ export interface ListPayoutsResponseDataItem {
   statement_descriptor: string | null;
   /** Current payout status. */
   status: ListPayoutsResponseDataItemStatus;
-  /** The finest machine phase under `status` — for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
+  /** The finest machine phase under `status` -- for example `awaiting_provider_acceptance` vs `in_transit` under `processing`, or the stablecoin conversion phase under `requested`. Informational vocabulary: values can be added without a version bump; `status` is the versioned contract. */
   status_detail: string;
   /** ACH trace number the recipient's bank can use to locate this payout. Assigned when the payout is submitted to the bank, so it is `null` before then and on payouts not sent over ACH. */
   trace_code: string | null;
@@ -1717,7 +1717,7 @@ export const ListSupportedPayoutMethodsResponseDataItemRequiredFieldsItemOptions
   ) as any as S.Schema<ListSupportedPayoutMethodsResponseDataItemRequiredFieldsItemOptionsList>;
 
 export interface ListSupportedPayoutMethodsResponseDataItemRequiredFieldsItem {
-  /** Stable field ID (`fld_` + the semantic type), used as the field key when creating the payout method. Safe to hardcode — it never changes for a given field. */
+  /** Stable field ID (`fld_` + the semantic type), used as the field key when creating the payout method. Safe to hardcode -- it never changes for a given field. */
   id: string;
   /** How to collect the value: `text`, `options`, or `date`. */
   input_type: string;
@@ -1847,7 +1847,7 @@ export const UpdatePayoutMethodResponseBankVerificationState = S.String;
 export type UpdatePayoutMethodResponseObject = "payout_method";
 export const UpdatePayoutMethodResponseObject = S.String;
 
-/** `created` — saved, no payout has completed through it yet. `active` — a payout through it completed. `broken` — a payout through it failed with an error attributable to the method, and it no longer accepts payouts; a later successful payout returns it to `active`. */
+/** `created` -- saved, no payout has completed through it yet. `active` -- a payout through it completed. `broken` -- a payout through it failed with an error attributable to the method, and it no longer accepts payouts; a later successful payout returns it to `active`. */
 export type UpdatePayoutMethodResponseStatus = "created" | "active" | "broken";
 export const UpdatePayoutMethodResponseStatus = S.String;
 
@@ -1923,9 +1923,9 @@ export interface UpdatePayoutMethodResponse {
   payer_name: string | null;
   /** Always `null` after an update. */
   quote: unknown | null;
-  /** `created` — saved, no payout has completed through it yet. `active` — a payout through it completed. `broken` — a payout through it failed with an error attributable to the method, and it no longer accepts payouts; a later successful payout returns it to `active`. */
+  /** `created` -- saved, no payout has completed through it yet. `active` -- a payout through it completed. `broken` -- a payout through it failed with an error attributable to the method, and it no longer accepts payouts; a later successful payout returns it to `active`. */
   status: UpdatePayoutMethodResponseStatus;
-  /** Machine-readable code for why the method is `broken` — the newest failure recorded through it, whether a payout error or a pre-payout rejection. `null` unless the method is broken, or when it was disabled without a recorded failure. */
+  /** Machine-readable code for why the method is `broken` -- the newest failure recorded through it, whether a payout error or a pre-payout rejection. `null` unless the method is broken, or when it was disabled without a recorded failure. */
   status_reason: string | null;
   supported_payout_method: UpdatePayoutMethodResponseSupportedPayoutMethod | null;
   /** Why this method is unavailable: `destination_retired` means the payout provider stopped offering the destination. Whop may automatically remap an eligible method that was not linked through Plaid to a compatible replacement; otherwise, the account owner must re-add it. `null` means no unavailability reason is known. */
@@ -2035,7 +2035,7 @@ export const deletePayoutMethod: API.OperationMethod<
 }));
 
 export type GetPayoutError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** Retrieve Payout Fetches one payout by its `wdrl_` ID, or by the `cofr_` conversion request ID a stablecoin payout carries as `payout_request_id` — both ids answer with the same payout object. */
+/** Retrieve Payout Fetches one payout by its `wdrl_` ID, or by the `cofr_` conversion request ID a stablecoin payout carries as `payout_request_id` -- both ids answer with the same payout object. */
 export const getPayout: API.OperationMethod<
   GetPayoutRequest,
   GetPayoutResponse,

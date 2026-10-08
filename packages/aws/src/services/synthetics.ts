@@ -1843,7 +1843,7 @@ export type StopCanaryError =
  * it is not recorded in Synthetics as a completed run.
  *
  * You can use `StartCanary` to start it running again
- * with the canary’s current schedule at any point in the future.
+ * with the canary's current schedule at any point in the future.
  */
 export const stopCanary: API.OperationMethod<
   StopCanaryRequest,

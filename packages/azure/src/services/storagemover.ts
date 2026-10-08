@@ -1152,7 +1152,7 @@ export const JobDefinitionPropertiesConnectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
 
-/** Type of schedule — Monthly, Weekly, or Daily */
+/** Type of schedule -- Monthly, Weekly, or Daily */
 export type Frequency = "Monthly" | "Weekly" | "Daily" | "Onetime" | "None" | "Hourly";
 export const Frequency = S.String;
 
@@ -1188,7 +1188,7 @@ export const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ S.Array(
 
 /** Schedule information for the Job Definition. */
 export interface ScheduleInfo {
-  /** Type of schedule — Monthly, Weekly, or Daily */
+  /** Type of schedule -- Monthly, Weekly, or Daily */
   frequency?: Frequency | (string & {});
   /** Whether the schedule is currently active */
   isActive?: boolean;

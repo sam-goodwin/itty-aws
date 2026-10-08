@@ -64,7 +64,7 @@ export interface SuggestedRule {
   alias: string;
   /** Apply order; rules run sequentially, output feeds the next. */
   order: number;
-  /** How many of the sampled paths this rule rewrites — evidence the rule was validated on real traffic. */
+  /** How many of the sampled paths this rule rewrites -- evidence the rule was validated on real traffic. */
   match_count: number;
 }
 export const SuggestedRule = /*@__PURE__*/ S.suspend(() =>

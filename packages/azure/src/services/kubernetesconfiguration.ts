@@ -950,7 +950,7 @@ export interface OCIRepositoryRefDefinition {
   tag?: string | null;
   /** The semver range used to match against OCI repository tags. This takes precedence over tag. */
   semver?: string | null;
-  /** The image digest to pull from OCI repository, the value should be in the format ‘sha256:’. This takes precedence over semver. */
+  /** The image digest to pull from OCI repository, the value should be in the format 'sha256:'. This takes precedence over semver. */
   digest?: string | null;
 }
 export const OCIRepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>

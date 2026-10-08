@@ -678,7 +678,7 @@ export const ResultLabelsItemList = /*@__PURE__*/ S.Array(
 
 /** A custom search result. */
 export interface Result {
-  /** An abridged version of this search result’s URL, e.g. www.example.com. */
+  /** An abridged version of this search result's URL, e.g. www.example.com. */
   displayLink?: string;
   /** The title of the search result, in plain text. */
   title?: string;

@@ -362,7 +362,7 @@ export const AppElementsUsedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppElementsUsedList>;
 
 export interface AppIcon {
-  /** Icon image URL. Always present — the default app icon when none is uploaded. */
+  /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   url: string;
 }
 export const AppIcon = /*@__PURE__*/ S.suspend(() =>
@@ -486,7 +486,7 @@ export interface App {
   dashboard_path: string | null;
   /** The app's default API key. `null` when the app has no default key or the caller lacks the `developer:manage_api_key` permission; `secret_key` is additionally `null` unless the caller could have created the key themselves. */
   default_api_key: AppDefaultApiKey | null;
-  /** What the app has left to publish, and how a publish in flight is going — `status` is only ever `unpublished`, `publishing`, or `failed` here. `null` means there is nothing to report: the app is fully published, there is no working copy to publish from, or the caller cannot deploy this app. Tell those apart from the app's own `production_web_build`. */
+  /** What the app has left to publish, and how a publish in flight is going -- `status` is only ever `unpublished`, `publishing`, or `failed` here. `null` means there is nothing to report: the app is fully published, there is no working copy to publish from, or the caller cannot deploy this app. Tell those apart from the app's own `production_web_build`. */
   deployment: AppDeployment | null;
   /** Short description shown in listings and search results, or `null` if none has been set. */
   description: string | null;
@@ -514,7 +514,7 @@ export interface App {
   openapi_path: string | null;
   /** Full origin URL of the app's proxied domain, for example https://ab1c2d3e4f.apps.whop.com. */
   origin: string | null;
-  /** A short-lived signed pass scoping the caller to this app's gated preview hosts — every build preview and the live dev-server sandbox. Add it to a preview host as the `__whop_preview` query param (or `x-whop-preview-token` header). `null` unless the caller is a team member who can read the app's developer settings. */
+  /** A short-lived signed pass scoping the caller to this app's gated preview hosts -- every build preview and the live dev-server sandbox. Add it to a preview host as the `__whop_preview` query param (or `x-whop-preview-token` header). `null` unless the caller is a team member who can read the app's developer settings. */
   preview_token: string | null;
   previous_hosted_urls: AppPreviousHostedUrlsList;
   /** ID of the app's product listing on the Whop app store, or `null` when the app has no associated product. */
@@ -1156,7 +1156,7 @@ export const createApp: API.OperationMethod<CreateAppRequest, App, CreateAppErro
   }));
 
 export type DeleteAppError = Forbidden | NotFound | WhopOpError;
-/** Delete App Deletes an app. The app stops resolving within seconds — a website's site stops serving, and any claimed subdomain is reserved for a month before it can be claimed again. */
+/** Delete App Deletes an app. The app stops resolving within seconds -- a website's site stops serving, and any claimed subdomain is reserved for a month before it can be claimed again. */
 export const deleteApp: API.OperationMethod<
   DeleteAppRequest,
   DeleteAppResponse,
@@ -1171,7 +1171,7 @@ export const deleteApp: API.OperationMethod<
 }));
 
 export type DeployAppError = NotFound | Conflict | WhopOpError;
-/** Deploy App Builds the app's current source and ships it. Returns the run it started, so the caller can render progress from this response and then follow it on the app's `deployment` field. Only one deployment runs per app at a time — calling this while one is in flight reports that run rather than starting a second, and calling it with nothing to publish reports that instead of starting one. */
+/** Deploy App Builds the app's current source and ships it. Returns the run it started, so the caller can render progress from this response and then follow it on the app's `deployment` field. Only one deployment runs per app at a time -- calling this while one is in flight reports that run rather than starting a second, and calling it with nothing to publish reports that instead of starting one. */
 export const deployApp: API.OperationMethod<
   DeployAppRequest,
   AppDeployment,
@@ -1224,7 +1224,7 @@ export const listAppLogs: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListAppsError = BadRequest | WhopOpError;
-/** List Apps Lists apps on the Whop platform: the app store's live apps, or — with `account_id` and developer access to that account — every app the account owns. Requires authentication except for Whop's public app and website discovery lists. Public website discovery includes built official blueprints (verified apps with a product) and built, live community blueprints that Whop recommends. */
+/** List Apps Lists apps on the Whop platform: the app store's live apps, or -- with `account_id` and developer access to that account -- every app the account owns. Requires authentication except for Whop's public app and website discovery lists. Public website discovery includes built official blueprints (verified apps with a product) and built, live community blueprints that Whop recommends. */
 export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
@@ -1282,7 +1282,7 @@ export type UpdatePermissionsAppError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update requested permissions [Legacy API — https://docs.whop.com/api-reference] Updates the permission requirements for an app Required permissions: - `developer:update_app_authorization` */
+/** Update requested permissions [Legacy API -- https://docs.whop.com/api-reference] Updates the permission requirements for an app Required permissions: - `developer:update_app_authorization` */
 export const updatePermissionsApp: API.OperationMethod<
   UpdatePermissionsAppRequest,
   UpdatePermissionsAppResponse,

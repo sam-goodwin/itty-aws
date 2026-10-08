@@ -35,7 +35,7 @@ export class Conflict
     [{ status: 409 }],
   ) {}
 
-/** The project may no longer use this Data Catalog API because it moved to Dataplex Universal Catalog (HTTP 400 INVALID_ARGUMENT: 'Project … is not allowed to perform read/write operations due to Data Catalog deprecation.'). Not retryable. */
+/** The project may no longer use this Data Catalog API because it moved to Dataplex Universal Catalog (HTTP 400 INVALID_ARGUMENT: 'Project ... is not allowed to perform read/write operations due to Data Catalog deprecation.'). Not retryable. */
 export class DataCatalogDeprecated
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<DataCatalogDeprecated>()("DataCatalogDeprecated", {

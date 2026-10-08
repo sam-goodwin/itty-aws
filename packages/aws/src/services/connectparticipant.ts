@@ -845,7 +845,7 @@ export type CreateParticipantConnectionError =
  * `ParticipantToken` is used for invoking this API instead of
  * `ConnectionToken`.
  *
- * The participant token is valid for the lifetime of the participant – until they are
+ * The participant token is valid for the lifetime of the participant - until they are
  * part of a contact. For WebRTC participants, if they leave or are disconnected for 60
  * seconds, a new participant needs to be created using the CreateParticipant API.
  *

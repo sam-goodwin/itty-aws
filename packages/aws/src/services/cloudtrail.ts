@@ -4085,7 +4085,7 @@ export type GenerateQueryError =
  *
  * The prompt can be a question or a statement about the event data
  * in your event data store. For example, you can enter prompts like "What are my
- * top errors in the past month?" and “Give me a list of users that used SNS.”
+ * top errors in the past month?" and "Give me a list of users that used SNS."
  *
  * The prompt must be in English. For information about limitations, permissions, and supported Regions, see
  * Create CloudTrail Lake queries from natural language prompts
@@ -5346,7 +5346,7 @@ export type RegisterOrganizationDelegatedAdminError =
   | UnsupportedOperationException
   | CommonErrors;
 /**
- * Registers an organization’s member account as the CloudTrail delegated administrator.
+ * Registers an organization's member account as the CloudTrail delegated administrator.
  */
 export const registerOrganizationDelegatedAdmin: API.OperationMethod<
   RegisterOrganizationDelegatedAdminRequest,

@@ -86,17 +86,17 @@ export const DeviceIdentifierDeviceTypeEnum = S.String;
 
 /** Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
 export interface DeviceIdentifier {
-  /** The device manufacturer’s name. Matches the device's built-in value returned from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names). */
+  /** The device manufacturer's name. Matches the device's built-in value returned from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names). */
   manufacturer?: string;
   /** An identifier provided by OEMs, carried through the production and sales process. Only applicable to Chrome OS devices. */
   chromeOsAttestedDeviceId?: string;
-  /** The device’s second MEID number. */
+  /** The device's second MEID number. */
   meid2?: string;
-  /** The device’s second IMEI number. */
+  /** The device's second IMEI number. */
   imei2?: string;
-  /** The device’s IMEI number. Validated on input. */
+  /** The device's IMEI number. Validated on input. */
   imei?: string;
-  /** The device’s MEID number. */
+  /** The device's MEID number. */
   meid?: string;
   /** The type of the device */
   deviceType?: DeviceIdentifierDeviceTypeEnum | (string & {});
@@ -397,7 +397,7 @@ export interface Configuration {
   name?: string;
   /** Required. The email address that device users can contact to get help. Zero-touch enrollment shows this email address to device users before device provisioning. The value is validated on input. */
   contactEmail?: string;
-  /** A message, containing one or two sentences, to help device users get help or give them more details about what’s happening to their device. Zero-touch enrollment shows this message before the device is provisioned. */
+  /** A message, containing one or two sentences, to help device users get help or give them more details about what's happening to their device. Zero-touch enrollment shows this message before the device is provisioned. */
   customMessage?: string;
   /** The JSON-formatted EMM provisioning extras that are passed to the DPC. */
   dpcExtras?: string;
@@ -623,9 +623,9 @@ export interface DeviceClaim {
   additionalService?: DeviceClaimAdditionalServiceEnum;
   /** The ID of the Google Workspace account that owns the Chrome OS device. */
   googleWorkspaceCustomerId?: string;
-  /** The timestamp when the device was put into ‘vacation mode’. This value is present iff the device is in 'vacation mode'. */
+  /** The timestamp when the device was put into 'vacation mode'. This value is present iff the device is in 'vacation mode'. */
   vacationModeStartTime?: string;
-  /** The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in 'vacation mode'. */
+  /** The timestamp when the device will exit 'vacation mode'. This value is present iff the device is in 'vacation mode'. */
   vacationModeExpireTime?: string;
 }
 export const DeviceClaim = /*@__PURE__*/ S.suspend(() =>
@@ -1500,7 +1500,7 @@ export type ClaimAsyncPartnersDevicesError =
   | BadRequest
   | Conflict
   | GcpOpError;
-/** Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). */
+/** Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long-running batch operations](/zero-touch/guides/how-it-works#operations). */
 export const claimAsyncPartnersDevices: API.OperationMethod<
   ClaimAsyncPartnersDevicesRequest,
   Operation,
@@ -1930,7 +1930,7 @@ export type UnclaimAsyncPartnersDevicesError =
   | BadRequest
   | Conflict
   | GcpOpError;
-/** Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). */
+/** Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long-running batch operations](/zero-touch/guides/how-it-works#operations). */
 export const unclaimAsyncPartnersDevices: API.OperationMethod<
   UnclaimAsyncPartnersDevicesRequest,
   Operation,
@@ -1985,7 +1985,7 @@ export type UpdateMetadataAsyncPartnersDevicesError =
   | BadRequest
   | Conflict
   | GcpOpError;
-/** Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only. */
+/** Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long-running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only. */
 export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
   UpdateMetadataAsyncPartnersDevicesRequest,
   Operation,

@@ -99,7 +99,7 @@ export interface AiGatewayBudget {
   name?: string;
   quotaEntityId: string;
   refreshPeriod: AiGatewayBudgetRefreshPeriod;
-  /** The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_…` / `prj_…`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped). */
+  /** The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_...` / `prj_...`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped). */
   scopeId: string;
   scopeType: AiGatewayBudgetScopeType;
   /** Set when the row is inherited from the team's budget default. */

@@ -3307,7 +3307,7 @@ export type AssociateTrackerConsumerError =
  *
  * You can associate up to five geofence collections to each tracker resource.
  *
- * Currently not supported — Cross-account configurations, such as creating associations between a tracker resource in one account and a geofence collection in another account.
+ * Currently not supported -- Cross-account configurations, such as creating associations between a tracker resource in one account and a geofence collection in another account.
  */
 export const associateTrackerConsumer: API.OperationMethod<
   AssociateTrackerConsumerRequest,
@@ -4709,7 +4709,7 @@ export type GetMapStyleDescriptorError =
  *
  * Retrieves the map style descriptor from a map resource.
  *
- * The style descriptor contains speciﬁcations on how features render on a map. For example, what data to display, what order to display the data in, and the style for the data. Style descriptors follow the Mapbox Style Specification.
+ * The style descriptor contains speciU+FB01cations on how features render on a map. For example, what data to display, what order to display the data in, and the style for the data. Style descriptors follow the Mapbox Style Specification.
  */
 export const getMapStyleDescriptor: API.OperationMethod<
   GetMapStyleDescriptorRequest,

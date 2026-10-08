@@ -832,7 +832,7 @@ export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
   operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
+  /** Customer analytics account custom property -- the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
@@ -913,13 +913,13 @@ export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
   event_type: BehavioralEventSource | (string & {});
-  /** Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval */
+  /** Absolute or relative (e.g. -30d) lower date bound -- alternative to time_value/time_interval */
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
   /** Event name, or action id when event_type is 'actions' */
   key: string;
   label?: string | null;
-  /** Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators */
+  /** Match persons who did NOT satisfy the criterion. Not the same as a low count -- zero-occurrence persons never match count operators */
   negation?: boolean | null;
   /** Count comparison for performed_event_multiple, defaults to exact */
   operator?: PropertyOperator | (string & {}) | null;
@@ -928,7 +928,7 @@ export interface BehavioralPropertyFilter {
   time_interval?: TimeUnitType | (string & {}) | null;
   /** Relative time window size, paired with time_interval */
   time_value?: number | null;
-  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP */
+  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only -- not evaluable by flags or CDP */
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
@@ -1282,7 +1282,7 @@ export const ConversionGoalFilter1SchemaMapMap = /*@__PURE__*/ S.Record(
 export interface ConversionGoalFilter1 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -1438,7 +1438,7 @@ export const ConversionGoalFilter2SchemaMapMap = /*@__PURE__*/ S.Record(
 export interface ConversionGoalFilter2 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -1588,7 +1588,7 @@ export const ConversionGoalFilter3SchemaMapMap = /*@__PURE__*/ S.Record(
 export interface ConversionGoalFilter3 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -2308,7 +2308,7 @@ export interface Suggestion {
   id: string;
   /** Suggestion kind, e.g. connect_source / add_source_mapping */
   kind: string;
-  /** 'deterministic' or 'ai' — how this suggestion was produced */
+  /** 'deterministic' or 'ai' -- how this suggestion was produced */
   source: string;
   /** error/warning/info */
   severity: string;
@@ -2320,11 +2320,11 @@ export interface Suggestion {
   evidence: string;
   /** Capabilities this unblocks: cost, attribution, roas, cac */
   unlocks: SuggestionUnlocksList;
-  /** The operation that applies this suggestion, or null when there's nothing to automate. An object with an 'op' discriminator — see the ApplyOp union in setup_types. Pass it verbatim to apply_setup_ops; never hand-craft one. */
+  /** The operation that applies this suggestion, or null when there's nothing to automate. An object with an 'op' discriminator -- see the ApplyOp union in setup_types. Pass it verbatim to apply_setup_ops; never hand-craft one. */
   apply: unknown;
   /** Advice shown alongside the action. Mapping suggestions always carry a 'fix_platform_urls' entry, because a mapping is a workaround and correcting the ad platform's tracking template is the real fix. */
   also_recommended: SuggestionAlsoRecommendedList;
-  /** True only for high-confidence, reversible operations — what an 'apply all safe' button may include */
+  /** True only for high-confidence, reversible operations -- what an 'apply all safe' button may include */
   safe_to_batch: boolean;
   /** Ranking score; higher first. Unblocking actions dominate. */
   rank_score: number;
@@ -2367,7 +2367,7 @@ export const SetupPlanResponseSuggestionsList = /*@__PURE__*/ S.Array(
   Suggestion,
 ) as any as S.Schema<SetupPlanResponseSuggestionsList>;
 
-/** Suggestion ids that unblock this capability — the link from a blocked metric to its fixes */
+/** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
 export type CapabilityReadinessBlockedByList = Array<string>;
 export const CapabilityReadinessBlockedByList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2380,7 +2380,7 @@ export interface CapabilityReadiness {
   status: string;
   /** Why it's in that state, in plain English */
   explanation: string;
-  /** Suggestion ids that unblock this capability — the link from a blocked metric to its fixes */
+  /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
   blocked_by: CapabilityReadinessBlockedByList;
 }
 export const CapabilityReadiness = /*@__PURE__*/ S.suspend(() =>
@@ -2411,7 +2411,7 @@ export interface SetupPlanResponse {
   readiness: SetupPlanResponseReadinessList;
   /** Sub-services that failed. Their suggestions are missing, so do NOT present the plan as a complete clean bill of health when this is non-empty. */
   degraded: SetupPlanResponseDegradedList;
-  /** True when the campaign or UTM queries hit their row caps. Rates and totals are then top-N subtotals — present them as approximate rather than exact. */
+  /** True when the campaign or UTM queries hit their row caps. Rates and totals are then top-N subtotals -- present them as approximate rather than exact. */
   truncated: boolean;
   /** One-line summary of the plan */
   summary: string;
@@ -3381,9 +3381,9 @@ export interface HogQLQueryModifiers {
   mergeFederatedAggregateJoins?: boolean | null;
   optimizeJoinedFilters?: boolean | null;
   optimizeProjections?: boolean | null;
-  /** HogQL parser backend; absent → `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
+  /** HogQL parser backend; absent -> `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
   parserMode?: ParserMode | (string & {}) | null;
-  /** Push an `id IN (SELECT person_id FROM <left table> WHERE …)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
+  /** Push an `id IN (SELECT person_id FROM <left table> WHERE ...)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
   personIdPushdown?: boolean | null;
   personsArgMaxVersion?: PersonsArgMaxVersion | (string & {}) | null;
   personsJoinMode?: PersonsJoinMode | (string & {}) | null;
@@ -3391,7 +3391,7 @@ export interface HogQLQueryModifiers {
   propertyGroupsMode?: PropertyGroupsMode | (string & {}) | null;
   pushDownPredicates?: boolean | null;
   s3TableUseInvalidColumns?: boolean | null;
-  /** Push a `session_id_v7 IN (SELECT … FROM events WHERE …)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
+  /** Push a `session_id_v7 IN (SELECT ... FROM events WHERE ...)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
   sessionIdPushdown?: boolean | null;
   /** Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap pre-aggregation that only materializes the columns referenced by the outer-WHERE session predicate)`. Useful when the breakdown/SELECT pulls in many session columns (e.g. `$channel_type`) but the filter only references one (e.g. `$entry_current_url`). */
   sessionPropertyPreAggregation?: boolean | null;
@@ -3840,7 +3840,7 @@ export const MarketingAnalyticsTableQueryResponseWarningsList = /*@__PURE__*/ S.
 
 export interface MarketingAnalyticsTableQueryResponse {
   columns?: MarketingAnalyticsTableQueryResponseColumnsList | null;
-  /** ISO timestamp of the oldest precompute window backing this result — surfaced as "data as of X". */
+  /** ISO timestamp of the oldest precompute window backing this result -- surfaced as "data as of X". */
   dataComputedAt?: string | null;
   /** Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise. */
   error?: string | null;
@@ -3851,7 +3851,7 @@ export interface MarketingAnalyticsTableQueryResponse {
   /** Modifiers used when performing the query */
   modifiers?: HogQLQueryModifiers | null;
   offset?: number | null;
-  /** True when a conversion goal's precompute has not been warmed for this window yet — the UI shows a "computing" state rather than empty results. Marketing analytics serves exclusively from precompute. */
+  /** True when a conversion goal's precompute has not been warmed for this window yet -- the UI shows a "computing" state rather than empty results. Marketing analytics serves exclusively from precompute. */
   precomputeNotReady?: boolean | null;
   /** Query status indicates whether next to the provided data, a query is still running. */
   query_status?: QueryStatus | null;
@@ -3866,7 +3866,7 @@ export interface MarketingAnalyticsTableQueryResponse {
   types?: MarketingAnalyticsTableQueryResponseTypesList | null;
   /** Connector-synced data warehouse sources referenced by this query, if any. */
   used_data_warehouse_sources?: MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response -- so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
   warnings?: MarketingAnalyticsTableQueryResponseWarningsList | null;
 }
 export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4071,7 +4071,7 @@ export const ConversionRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionRecordingsResponse",
 }) as any as S.Schema<ConversionRecordingsResponse>;
 
-/** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan — never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
+/** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan -- never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
 export type MarketingAnalyticsApplySetupOpsCreateRequestOpsList = Array<unknown>;
 export const MarketingAnalyticsApplySetupOpsCreateRequestOpsList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -4084,7 +4084,7 @@ export const ApplySetupOpsSourceEnum = S.String;
 export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan — never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
+  /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan -- never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
   ops: MarketingAnalyticsApplySetupOpsCreateRequestOpsList;
   /** Where the request came from, recorded in the activity log * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
   source?: ApplySetupOpsSourceEnum | (string & {});
@@ -4111,7 +4111,7 @@ export const ApplySetupOpsResponseAppliedList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ApplySetupOpsResponseAppliedList>;
 
-/** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state — POST them back to undo. */
+/** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state -- POST them back to undo. */
 export type ApplySetupOpsResponseUndoOpsList = Array<unknown>;
 export const ApplySetupOpsResponseUndoOpsList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -4120,7 +4120,7 @@ export const ApplySetupOpsResponseUndoOpsList = /*@__PURE__*/ S.Array(
 export interface ApplySetupOpsResponse {
   /** The operations that were applied */
   applied: ApplySetupOpsResponseAppliedList;
-  /** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state — POST them back to undo. */
+  /** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state -- POST them back to undo. */
   undo_ops: ApplySetupOpsResponseUndoOpsList;
   /** The config as it now stands */
   marketing_analytics_config: unknown;
@@ -4633,7 +4633,7 @@ export interface MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   conversion_goal_id: string;
-  /** The fields to change, merged into the stored goal — anything you leave out is kept, and the goal keeps its position in the list. schema_map is merged key by key. The merged result must still match one of the ConversionGoalFilter shapes. Send `kind` only to change the goal's shape, in which case the goal is replaced rather than merged and the whole new shape is required. conversion_goal_id comes from the URL and any value sent is ignored. */
+  /** The fields to change, merged into the stored goal -- anything you leave out is kept, and the goal keeps its position in the list. schema_map is merged key by key. The merged result must still match one of the ConversionGoalFilter shapes. Send `kind` only to change the goal's shape, in which case the goal is replaced rather than merged and the whole new shape is required. conversion_goal_id comes from the URL and any value sent is ignored. */
   goal?: ConversionGoalPatch;
 }
 export const MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest = /*@__PURE__*/ S.suspend(
@@ -4686,7 +4686,7 @@ export const deleteMarketingAnalyticsConversionGoalDestroy: API.OperationMethod<
 }));
 
 export type GetMarketingAnalyticsConversionGoalError = PosthogOpError;
-/** List conversion goals Read the configured conversion goals for the current project — each with its kind, target, last-30d count, integrated vs non-integrated split, and a misconfiguration flag. Read-only. */
+/** List conversion goals Read the configured conversion goals for the current project -- each with its kind, target, last-30d count, integrated vs non-integrated split, and a misconfiguration flag. Read-only. */
 export const getMarketingAnalyticsConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsConversionGoalRequest,
   ConversionGoalsListResponse,
@@ -4701,7 +4701,7 @@ export const getMarketingAnalyticsConversionGoal: API.OperationMethod<
 }));
 
 export type GetMarketingAnalyticsDataSourceError = PosthogOpError;
-/** List marketing data sources Check the platform → data-warehouse side of every native marketing integration: connection state, sync recency, row counts, required-table status, and schema-mapping coverage. Read-only. */
+/** List marketing data sources Check the platform -> data-warehouse side of every native marketing integration: connection state, sync recency, row counts, required-table status, and schema-mapping coverage. Read-only. */
 export const getMarketingAnalyticsDataSource: API.OperationMethod<
   GetMarketingAnalyticsDataSourceRequest,
   DataSourceHealthResponse,
@@ -4746,7 +4746,7 @@ export const getMarketingAnalyticsExplainConversionGoal: API.OperationMethod<
 }));
 
 export type GetMarketingAnalyticsSetupPlanError = NotFound | PosthogOpError;
-/** Get the marketing analytics setup plan Rank everything wrong with a team's marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is 'what should I fix next': diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only. */
+/** Get the marketing analytics setup plan Rank everything wrong with a team's marketing analytics setup into concrete suggestions, each carrying the evidence behind it and -- where one exists -- an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is 'what should I fix next': diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only. */
 export const getMarketingAnalyticsSetupPlan: API.OperationMethod<
   GetMarketingAnalyticsSetupPlanRequest,
   SetupPlanResponse,
@@ -4835,7 +4835,7 @@ export const listMarketingAnalyticsConversionRecordings: API.OperationMethod<
 }));
 
 export type MarketingAnalyticsApplySetupOpsCreateError = BadRequest | NotFound | PosthogOpError;
-/** Apply setup operations Apply one or more setup operations from the setup plan, atomically. Either every operation lands or none does — a partially-applied batch has no well-defined undo. Returns `undo_ops`, computed from the pre-change state, which can be POSTed back to reverse the batch. Only send `apply` payloads returned by setup_plan. */
+/** Apply setup operations Apply one or more setup operations from the setup plan, atomically. Either every operation lands or none does -- a partially-applied batch has no well-defined undo. Returns `undo_ops`, computed from the pre-change state, which can be POSTed back to reverse the batch. Only send `apply` payloads returned by setup_plan. */
 export const marketingAnalyticsApplySetupOpsCreate: API.OperationMethod<
   MarketingAnalyticsApplySetupOpsCreateRequest,
   ApplySetupOpsResponse,

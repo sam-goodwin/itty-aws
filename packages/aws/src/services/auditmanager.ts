@@ -3477,12 +3477,12 @@ export type DeleteAssessmentReportError =
  * When you run the `DeleteAssessmentReport` operation, Audit Manager
  * attempts to delete the following data:
  *
- * - The specified assessment report that’s stored in your S3 bucket
+ * - The specified assessment report that's stored in your S3 bucket
  *
- * - The associated metadata that’s stored in Audit Manager
+ * - The associated metadata that's stored in Audit Manager
  *
- * If Audit Manager can’t access the assessment report in your S3 bucket, the report
- * isn’t deleted. In this event, the `DeleteAssessmentReport` operation doesn’t
+ * If Audit Manager can't access the assessment report in your S3 bucket, the report
+ * isn't deleted. In this event, the `DeleteAssessmentReport` operation doesn't
  * fail. Instead, it proceeds to delete the associated metadata only. You must then delete the
  * assessment report from the S3 bucket yourself.
  *
@@ -3523,7 +3523,7 @@ export type DeleteControlError =
  * Deletes a custom control in Audit Manager.
  *
  * When you invoke this operation, the custom control is deleted from any frameworks or
- * assessments that it’s currently part of. As a result, Audit Manager will stop
+ * assessments that it's currently part of. As a result, Audit Manager will stop
  * collecting evidence for that custom control in all of your assessments. This includes
  * assessments that you previously created before you deleted the custom control.
  */
@@ -3603,7 +3603,7 @@ export type DeregisterOrganizationAdminAccountError =
  * that the current delegated administrator account signs in to Audit Manager and
  * disables evidence finder first. Disabling evidence finder automatically deletes the
  * event data store that was created in their account when they enabled evidence finder. If
- * this task isn’t completed, the event data store remains in their account. In this case,
+ * this task isn't completed, the event data store remains in their account. In this case,
  * we recommend that the original delegated administrator goes to CloudTrail Lake
  * and manually deletes the
  * event data store.
@@ -3614,7 +3614,7 @@ export type DeregisterOrganizationAdminAccountError =
  * to incur storage costs from CloudTrail Lake if you don't delete it.
  *
  * When you deregister a delegated administrator account for Audit Manager, the data
- * for that account isn’t deleted. If you want to delete resource data for a delegated
+ * for that account isn't deleted. If you want to delete resource data for a delegated
  * administrator account, you must perform that task separately before you deregister the
  * account. Either, you can do this in the Audit Manager console. Or, you can use one of
  * the delete API operations that are provided by Audit Manager.
@@ -4167,7 +4167,7 @@ export type GetServicesInScopeError =
  * evidence.
  *
  * Audit Manager defines which Amazon Web Services services are in scope for an
- * assessment. Audit Manager infers this scope by examining the assessment’s controls and
+ * assessment. Audit Manager infers this scope by examining the assessment's controls and
  * their data sources, and then mapping this information to one or more of the corresponding
  * Amazon Web Services services that are in this list.
  *
@@ -4380,7 +4380,7 @@ export type ListControlDomainInsightsError =
  *
  * A control domain is listed only if at least one of the controls within that domain
  * collected evidence on the `lastUpdated` date of
- * `controlDomainInsights`. If this condition isn’t met, no data is listed
+ * `controlDomainInsights`. If this condition isn't met, no data is listed
  * for that control domain.
  */
 export const listControlDomainInsights: API.PaginatedOperationMethod<
@@ -4426,7 +4426,7 @@ export type ListControlDomainInsightsByAssessmentError =
  *
  * A control domain is listed only if at least one of the controls within that domain
  * collected evidence on the `lastUpdated` date of
- * `controlDomainInsights`. If this condition isn’t met, no data is listed
+ * `controlDomainInsights`. If this condition isn't met, no data is listed
  * for that domain.
  */
 export const listControlDomainInsightsByAssessment: API.PaginatedOperationMethod<

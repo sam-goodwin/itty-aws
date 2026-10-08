@@ -838,18 +838,18 @@ export const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__
 ) as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const CreateBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -1310,18 +1310,18 @@ export const CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsLis
   ) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -1838,18 +1838,18 @@ export const CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList =
   ) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -2292,18 +2292,18 @@ export const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList = /*@_
 ) as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const CreatePaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -2744,18 +2744,18 @@ export const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__
 ) as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const CreatePostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -3486,18 +3486,18 @@ export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvata
   ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList>;
 
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction =
   S.String;
 
@@ -5796,18 +5796,18 @@ export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvata
   ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList>;
 
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction =
   S.String;
 
@@ -7930,18 +7930,18 @@ export const ListDiscussionsResponseDiscussionsItemAuthor =
   S.Unknown as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthor>;
 
 export type ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction = S.String;
 
 export interface ListDiscussionsResponseDiscussionsItemTopReactionsItem {
@@ -8142,18 +8142,18 @@ export const PrStorageEstimateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrStorageEstimateResponse>;
 
 export type ReactToBlogCommentRequestReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReactToBlogCommentRequestReaction = S.String;
 
 export type ReactToBlogCommentRequestAction = "add" | "remove";
@@ -8184,18 +8184,18 @@ export const ReactToBlogCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct
 }) as any as S.Schema<ReactToBlogCommentResponse>;
 
 export type ReactToCommunityBlogCommentRequestReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReactToCommunityBlogCommentRequestReaction = S.String;
 
 export type ReactToCommunityBlogCommentRequestAction = "add" | "remove";
@@ -8237,18 +8237,18 @@ export type ReactToDiscussionCommentRequestRepoType = "models" | "spaces" | "dat
 export const ReactToDiscussionCommentRequestRepoType = S.String;
 
 export type ReactToDiscussionCommentRequestReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReactToDiscussionCommentRequestReaction = S.String;
 
 export type ReactToDiscussionCommentRequestAction = "add" | "remove";
@@ -8291,18 +8291,18 @@ export const ReactToDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToDiscussionCommentResponse>;
 
 export type ReactToPaperCommentRequestReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReactToPaperCommentRequestReaction = S.String;
 
 export type ReactToPaperCommentRequestAction = "add" | "remove";
@@ -8337,18 +8337,18 @@ export const ReactToPaperCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struc
 }) as any as S.Schema<ReactToPaperCommentResponse>;
 
 export type ReactToPostCommentRequestReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReactToPostCommentRequestReaction = S.String;
 
 export type ReactToPostCommentRequestAction = "add" | "remove";
@@ -8728,18 +8728,18 @@ export const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@_
 ) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -9201,18 +9201,18 @@ export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsLi
   ) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -9660,18 +9660,18 @@ export const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList = /*@
 ) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
@@ -10123,18 +10123,18 @@ export const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList = /*@_
 ) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const ReplyToPostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;

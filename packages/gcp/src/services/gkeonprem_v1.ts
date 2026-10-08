@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 
 export type { GcpOpError, GcpOpContext };
 
-/** The admin cluster fleet membership cannot be reached (HTTP 400 'Invalid resource state for "…/memberships/…": failed connecting to the cluster's control plane.' for VMware, 'could not fetch bare metal cluster version.' for bare metal): it does not exist or its Connect agent is offline. Not retryable until the admin cluster is registered and connected. */
+/** The admin cluster fleet membership cannot be reached (HTTP 400 'Invalid resource state for ".../memberships/...": failed connecting to the cluster's control plane.' for VMware, 'could not fetch bare metal cluster version.' for bare metal): it does not exist or its Connect agent is offline. Not retryable until the admin cluster is registered and connected. */
 export class AdminClusterUnreachable
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<AdminClusterUnreachable>()("AdminClusterUnreachable", {

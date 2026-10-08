@@ -139,11 +139,11 @@ export interface BulkCheckRequest {
   statements?: StatementTemplateList;
   /** Same configuration as in CheckRequest; all statement checks will use the same configuration. */
   returnRelationExtensions?: boolean;
-  /** If specified, will be used in any given template statement that doesn’t specify a target. */
+  /** If specified, will be used in any given template statement that doesn't specify a target. */
   defaultTarget?: Asset;
-  /** If specified, will be used in any given template statement that doesn’t specify a source. */
+  /** If specified, will be used in any given template statement that doesn't specify a source. */
   defaultSource?: Asset;
-  /** If specified, will be used in any given template statement that doesn’t specify a relation. */
+  /** If specified, will be used in any given template statement that doesn't specify a relation. */
   defaultRelation?: string;
 }
 export const BulkCheckRequest = /*@__PURE__*/ S.suspend(() =>

@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   abrLevel: "abr_level",
   allowedDestinationAddresses: "allowed_destination_addresses",
@@ -2239,7 +2239,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType =
 export interface BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType;
@@ -4297,7 +4297,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType 
 export interface BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType;
@@ -5707,7 +5707,7 @@ export interface BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem 
   scenario: BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem =
@@ -6819,7 +6819,7 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersOb
   kind?:
     | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -7237,7 +7237,7 @@ export interface ObservabilityQueriesCreateResponseParametersFiltersItemWorkersO
   type: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType;
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
   kind?: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafKind | null;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue | null;
 }
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -7733,7 +7733,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCas
   kind?:
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf =
@@ -7866,7 +7866,7 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWor
   kind?:
     | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -8071,7 +8071,7 @@ export interface CreateObservabilitySharedQueryRequest {
   timeframe: ObservabilitySharedQueriesCreateRequestTimeframe;
   /** When true, includes time-series data in the response. */
   chart?: boolean;
-  /** Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour — both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' — combining them returns a 400. */
+  /** Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour -- both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' -- combining them returns a 400. */
   chartType?: ObservabilitySharedQueriesCreateRequestChartType | (string & {});
   /** When true, includes a comparison dataset from the previous time period of equal length. */
   compare?: boolean;
@@ -8091,7 +8091,7 @@ export interface CreateObservabilitySharedQueryRequest {
   offsetBy?: number;
   /** Pagination direction: 'next' for forward, 'prev' for backward. */
   offsetDirection?: string;
-  /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
+  /** Query parameters defining what data to retrieve -- filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilitySharedQueriesCreateRequestParameters;
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries. */
   view?: ObservabilitySharedQueriesCreateRequestView | (string & {});
@@ -8264,7 +8264,7 @@ export interface CreatePreviewDeploymentMetadata {
   assets?: CreatePreviewDeploymentMetadataAssets;
   compatibilityDate?: string;
   compatibilityFlags?: CreatePreviewDeploymentMetadataCompatibilityFlagsList;
-  /** Version annotations (workers/message, workers/tag, …). */
+  /** Version annotations (workers/message, workers/tag, ...). */
   annotations?: unknown;
   /** Durable Object class migrations for this Preview's isolated namespaces. */
   migrations?: unknown;
@@ -8298,7 +8298,7 @@ export const CreatePreviewDeploymentMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePreviewDeploymentRequest {
   accountId: string;
   workerId: string;
-  /** Preview id (not name) — wrangler uses the resource id returned by createPreview. */
+  /** Preview id (not name) -- wrangler uses the resource id returned by createPreview. */
   previewId: string;
   /** JSON-encoded multipart `metadata` part. */
   metadata: CreatePreviewDeploymentMetadata;
@@ -12089,7 +12089,7 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationInfoItem {
   scenario: ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const ScriptsVersionsCreateResponseExportsReconciliationInfoItem = /*@__PURE__*/ S.suspend(
@@ -13663,7 +13663,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType = S
 export interface BetaWorkersVersionsGetResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType;
@@ -15024,7 +15024,7 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationInfoItem {
   scenario: BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const BetaWorkersVersionsGetResponseExportsReconciliationInfoItem = /*@__PURE__*/ S.suspend(
@@ -16048,7 +16048,7 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersI
   type: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType;
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
   kind?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind | null;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue | null;
 }
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -16806,7 +16806,7 @@ export interface ObservabilitySharedQueriesGetResponseDistribution {
   bucketBoundaries: ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList;
   /** Bucketing scheme used to derive the boundaries. 'log' produces geometric edges; 'linear' produces fixed-width edges. */
   bucketMode: ObservabilitySharedQueriesGetResponseDistributionBucketMode;
-  /** Value-range labels, one per matrix row (e.g. '50–100ms'). */
+  /** Value-range labels, one per matrix row (e.g. '50-100ms'). */
   buckets: ObservabilitySharedQueriesGetResponseDistributionBucketsList;
   /** Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'. */
   matrix: ObservabilitySharedQueriesGetResponseDistributionMatrixList;
@@ -18255,7 +18255,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNames
 export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType;
@@ -19668,7 +19668,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
   scenario: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem =
@@ -21434,7 +21434,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWor
   kind?:
     | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf =
@@ -21564,7 +21564,7 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilit
   kind?:
     | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf =
@@ -22528,7 +22528,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType 
 export interface BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType;
@@ -23899,7 +23899,7 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationInfoItem 
   scenario: BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const BetaWorkersVersionsListResultItemExportsReconciliationInfoItem =
@@ -25096,7 +25096,7 @@ export interface ObservabilityQueriesListResultItemParametersFiltersItemWorkersO
   type: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType;
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
   kind?: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafKind | null;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue | null;
 }
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -26615,7 +26615,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersIte
   kind?:
     | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf =
@@ -26746,7 +26746,7 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservab
   kind?:
     | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf =
@@ -28088,7 +28088,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchName
 export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
-  /** The user-chosen namespace name. Must exist before deploy — Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
+  /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace. */
   namespace: string;
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType;
@@ -29502,7 +29502,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
   scenario: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemScenario;
   /** The provisioned namespace the entry relates to, when applicable. */
   namespaceId?: string | null;
-  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first. */
+  /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem =
@@ -32955,7 +32955,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Fil
   kind?:
     | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf =
@@ -33088,7 +33088,7 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersO
   kind?:
     | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -33284,7 +33284,7 @@ export interface QueryObservabilityTelemetryRequest {
   timeframe: ObservabilitySharedQueriesCreateRequestTimeframe;
   /** When true, includes time-series data in the response. */
   chart?: boolean;
-  /** Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour — both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' — combining them returns a 400. */
+  /** Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour -- both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' -- combining them returns a 400. */
   chartType?: ObservabilityTelemetryQueryRequestChartType | (string & {});
   /** When true, includes a comparison dataset from the previous time period of equal length. */
   compare?: boolean;
@@ -33304,7 +33304,7 @@ export interface QueryObservabilityTelemetryRequest {
   offsetBy?: number;
   /** Pagination direction: 'next' for forward, 'prev' for backward. */
   offsetDirection?: string;
-  /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
+  /** Query parameters defining what data to retrieve -- filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilityTelemetryQueryRequestParameters;
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries. */
   view?: ObservabilityTelemetryQueryRequestView | (string & {});
@@ -33568,7 +33568,7 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersFiltersIte
   type: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType;
   /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
   kind?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafKind | null;
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue | null;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf =
@@ -34293,7 +34293,7 @@ export interface ObservabilityTelemetryQueryResponseDistribution {
   bucketBoundaries: ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList;
   /** Bucketing scheme used to derive the boundaries. 'log' produces geometric edges; 'linear' produces fixed-width edges. */
   bucketMode: ObservabilityTelemetryQueryResponseDistributionBucketMode;
-  /** Value-range labels, one per matrix row (e.g. '50–100ms'). */
+  /** Value-range labels, one per matrix row (e.g. '50-100ms'). */
   buckets: ObservabilityTelemetryQueryResponseDistributionBucketsList;
   /** Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'. */
   matrix: ObservabilityTelemetryQueryResponseDistributionMatrixList;
@@ -36461,7 +36461,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemW
   kind?:
     | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf =
@@ -36591,7 +36591,7 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabil
   kind?:
     | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
     | (string & {});
-  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  /** Comparison value. Must match actual values in your data -- verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
   value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
 }
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf =

@@ -275,7 +275,7 @@ export type GetCourseLessonInteractionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve course lesson interaction [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing course lesson interaction. Required permissions: - `courses:read` - `course_analytics:read` */
+/** Retrieve course lesson interaction [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing course lesson interaction. Required permissions: - `courses:read` - `course_analytics:read` */
 export const getCourseLessonInteraction: API.OperationMethod<
   GetCourseLessonInteractionRequest,
   CourseLessonInteraction,
@@ -295,7 +295,7 @@ export type ListCourseLessonInteractionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List course lesson interactions [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of lesson interactions, filtered by lesson, course, user, or completion status. Required permissions: - `courses:read` - `course_analytics:read` */
+/** List course lesson interactions [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of lesson interactions, filtered by lesson, course, user, or completion status. Required permissions: - `courses:read` - `course_analytics:read` */
 export const listCourseLessonInteraction: API.PaginatedOperationMethod<
   ListCourseLessonInteractionRequest,
   ListCourseLessonInteractionResponse,

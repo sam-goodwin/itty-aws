@@ -2699,42 +2699,42 @@ export const EmbedderSource = S.String;
 export type OverridePooling = "useModel" | "forceCls" | "forceMean";
 export const OverridePooling = S.String;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
 export type EmbeddingSettingsIndexingFragmentsMap = { [key: string]: unknown | undefined };
 export const EmbeddingSettingsIndexingFragmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<EmbeddingSettingsIndexingFragmentsMap>;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type EmbeddingSettingsSearchFragmentsMap = { [key: string]: unknown | undefined };
 export const EmbeddingSettingsSearchFragmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<EmbeddingSettingsSearchFragmentsMap>;
 
-/** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type EmbeddingSettingsHeadersMap = { [key: string]: string | undefined };
 export const EmbeddingSettingsHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<EmbeddingSettingsHeadersMap>;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - Only available for `indexingEmbedder`, not `searchEmbedder`. - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - Only available for `indexingEmbedder`, not `searchEmbedder`. - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
 export type SubEmbeddingSettingsIndexingFragmentsMap = { [key: string]: unknown | undefined };
 export const SubEmbeddingSettingsIndexingFragmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SubEmbeddingSettingsIndexingFragmentsMap>;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SubEmbeddingSettingsSearchFragmentsMap = { [key: string]: unknown | undefined };
 export const SubEmbeddingSettingsSearchFragmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SubEmbeddingSettingsSearchFragmentsMap>;
 
-/** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SubEmbeddingSettingsHeadersMap = { [key: string]: string | undefined };
 export const SubEmbeddingSettingsHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2744,30 +2744,30 @@ export const SubEmbeddingSettingsHeadersMap = /*@__PURE__*/ S.Record(
 /** Sub-embedder config for composite embedders. Used by `indexingEmbedder` (vectorize documents at index time) and `searchEmbedder` (vectorize queries at search time). Same fields as a top-level embedder, except no `binaryQuantized`, `distribution`, `documentTemplate`/`documentTemplateMaxBytes` for searchEmbedder. */
 export interface SubEmbeddingSettings {
   source?: EmbedderSource | (string & {}) | null;
-  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - 🏗️ Changing the value of this parameter always regenerates embeddings. */
+  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - U+1F3D7 Changing the value of this parameter always regenerates embeddings. */
   model?: string | null;
-  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   revision?: string | null;
   pooling?: OverridePooling | (string & {}) | null;
-  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - U+1F331 Changing the value of this parameter never regenerates embeddings */
   apiKey?: string | Redacted.Redacted<string> | null;
-  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - 🏗️ For `openAi`, changing the value of this parameter always regenerates embeddings - 🌱 For other sources, changing the value of this parameter never regenerates embeddings */
+  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - U+1F3D7 For `openAi`, changing the value of this parameter always regenerates embeddings - U+1F331 For other sources, changing the value of this parameter never regenerates embeddings */
   dimensions?: number | null;
-  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Only available for `indexingEmbedder`, not `searchEmbedder`. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
+  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Only available for `indexingEmbedder`, not `searchEmbedder`. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
   documentTemplate?: string | null;
-  /** Max size in bytes of the rendered document template. Longer output is truncated. - Only available for `indexingEmbedder`, not `searchEmbedder`. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - 🌱 When decreased, embeddings are never regenerated */
+  /** Max size in bytes of the rendered document template. Longer output is truncated. - Only available for `indexingEmbedder`, not `searchEmbedder`. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - U+1F331 When decreased, embeddings are never regenerated */
   documentTemplateMaxBytes?: number | null;
-  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - 🌱 When modified for `openAi``, embeddings are never regenerated - 🏗️ When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
+  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - U+1F331 When modified for `openAi``, embeddings are never regenerated - U+1F3D7 When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
   url?: string | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - Only available for `indexingEmbedder`, not `searchEmbedder`. - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - Only available for `indexingEmbedder`, not `searchEmbedder`. - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
   indexingFragments?: SubEmbeddingSettingsIndexingFragmentsMap | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
   searchFragments?: SubEmbeddingSettingsSearchFragmentsMap | null;
-  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   request?: unknown;
   /** Response template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{embedding}}"` where the embedding array is. - Mandatory for `rest`. */
   response?: unknown;
-  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
   headers?: SubEmbeddingSettingsHeadersMap | null;
 }
 export const SubEmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
@@ -2806,32 +2806,32 @@ export const DistributionShift = /*@__PURE__*/ S.suspend(() =>
 /** Embedder configuration for [AI-powered / hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). */
 export interface EmbeddingSettings {
   source?: EmbedderSource | (string & {}) | null;
-  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - 🏗️ Changing the value of this parameter always regenerates embeddings. */
+  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - U+1F3D7 Changing the value of this parameter always regenerates embeddings. */
   model?: string | null;
-  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   revision?: string | null;
   pooling?: OverridePooling | (string & {}) | null;
-  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - U+1F331 Changing the value of this parameter never regenerates embeddings */
   apiKey?: string | Redacted.Redacted<string> | null;
-  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - 🏗️ For `openAi`, changing the value of this parameter always regenerates embeddings - 🌱 For other sources, changing the value of this parameter never regenerates embeddings */
+  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - U+1F3D7 For `openAi`, changing the value of this parameter always regenerates embeddings - U+1F331 For other sources, changing the value of this parameter never regenerates embeddings */
   dimensions?: number | null;
-  /** When true, vectors are stored as 1-bit (smaller, faster, less precise). - Available for all sources. - Irreversible once enabled. - 🏗️ When set to true, embeddings are not regenerated, but they are binary quantized, which takes time. */
+  /** When true, vectors are stored as 1-bit (smaller, faster, less precise). - Available for all sources. - Irreversible once enabled. - U+1F3D7 When set to true, embeddings are not regenerated, but they are binary quantized, which takes time. */
   binaryQuantized?: boolean | null;
-  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
+  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
   documentTemplate?: string | null;
-  /** Max size in bytes of the rendered document template. Longer output is truncated. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - 🌱 When decreased, embeddings are never regenerated */
+  /** Max size in bytes of the rendered document template. Longer output is truncated. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - U+1F331 When decreased, embeddings are never regenerated */
   documentTemplateMaxBytes?: number | null;
-  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - 🌱 When modified for `openAi``, embeddings are never regenerated - 🏗️ When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
+  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - U+1F331 When modified for `openAi``, embeddings are never regenerated - U+1F3D7 When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
   url?: string | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
   indexingFragments?: EmbeddingSettingsIndexingFragmentsMap | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
   searchFragments?: EmbeddingSettingsSearchFragmentsMap | null;
-  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   request?: unknown;
   /** Response template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{embedding}}"` where the embedding array is. - Mandatory for `rest`. */
   response?: unknown;
-  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
   headers?: EmbeddingSettingsHeadersMap | null;
   searchEmbedder?: SubEmbeddingSettings | null;
   indexingEmbedder?: SubEmbeddingSettings | null;
@@ -3697,7 +3697,7 @@ export const GetembeddersRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/embedders", code: 200 })),
 ).annotate({ identifier: "GetembeddersRequest" }) as any as S.Schema<GetembeddersRequest>;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
 export type SettingEmbeddingSettingsInnerIndexingFragmentsMap = {
   [key: string]: unknown | undefined;
 };
@@ -3706,7 +3706,7 @@ export const SettingEmbeddingSettingsInnerIndexingFragmentsMap = /*@__PURE__*/ S
   S.Unknown,
 ) as any as S.Schema<SettingEmbeddingSettingsInnerIndexingFragmentsMap>;
 
-/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SettingEmbeddingSettingsInnerSearchFragmentsMap = {
   [key: string]: unknown | undefined;
 };
@@ -3715,7 +3715,7 @@ export const SettingEmbeddingSettingsInnerSearchFragmentsMap = /*@__PURE__*/ S.R
   S.Unknown,
 ) as any as S.Schema<SettingEmbeddingSettingsInnerSearchFragmentsMap>;
 
-/** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+/** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SettingEmbeddingSettingsInnerHeadersMap = { [key: string]: string | undefined };
 export const SettingEmbeddingSettingsInnerHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3725,32 +3725,32 @@ export const SettingEmbeddingSettingsInnerHeadersMap = /*@__PURE__*/ S.Record(
 /** Embedder configuration for [AI-powered / hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). */
 export interface SettingEmbeddingSettingsInner {
   source?: EmbedderSource | (string & {}) | null;
-  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - 🏗️ Changing the value of this parameter always regenerates embeddings. */
+  /** Model name. - Available for `openAi`, `huggingFace`, `ollama`. - Mandatory for `ollama`. - For `openAi`/`huggingFace` optional with defaults. - U+1F3D7 Changing the value of this parameter always regenerates embeddings. */
   model?: string | null;
-  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Model revision (e.g. Hugging Face commit SHA). - Only available for `huggingFace`. - If unset, latest is used. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   revision?: string | null;
   pooling?: OverridePooling | (string & {}) | null;
-  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** API key sent to the embedder. - If not set for source `openAi`, the key is read from the `OPENAI_API_KEY` then `MEILI_OPENAI_API_KEY` environment variables. - If not set for other sources, no bearer token is sent. - This setting is partially hidden when returned by the settings - U+1F331 Changing the value of this parameter never regenerates embeddings */
   apiKey?: string | Redacted.Redacted<string> | null;
-  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - 🏗️ For `openAi`, changing the value of this parameter always regenerates embeddings - 🌱 For other sources, changing the value of this parameter never regenerates embeddings */
+  /** Number of dimensions of the embedding vectors. - Available for `userProvided`, `openAi`, `ollama`, `rest`. - Mandatory for `userProvided`. - For `openAi`/`ollama`/`rest` inferred if omitted. - U+1F3D7 For `openAi`, changing the value of this parameter always regenerates embeddings - U+1F331 For other sources, changing the value of this parameter never regenerates embeddings */
   dimensions?: number | null;
-  /** When true, vectors are stored as 1-bit (smaller, faster, less precise). - Available for all sources. - Irreversible once enabled. - 🏗️ When set to true, embeddings are not regenerated, but they are binary quantized, which takes time. */
+  /** When true, vectors are stored as 1-bit (smaller, faster, less precise). - Available for all sources. - Irreversible once enabled. - U+1F3D7 When set to true, embeddings are not regenerated, but they are binary quantized, which takes time. */
   binaryQuantized?: boolean | null;
-  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
+  /** [Liquid template](https://shopify.github.io/liquid/) to build the text sent to the embedder for each document. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When modified, embeddings are regenerated for documents whose rendering through the template produces a different text. */
   documentTemplate?: string | null;
-  /** Max size in bytes of the rendered document template. Longer output is truncated. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - 🏗️ When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - 🌱 When decreased, embeddings are never regenerated */
+  /** Max size in bytes of the rendered document template. Longer output is truncated. - Available for `openAi`, `huggingFace`, `ollama`, `rest`. - U+1F3D7 When increased, embeddings are regenerated for documents whose rendering through the template produces a different text. - U+1F331 When decreased, embeddings are never regenerated */
   documentTemplateMaxBytes?: number | null;
-  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - 🌱 When modified for `openAi``, embeddings are never regenerated - 🏗️ When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
+  /** URL of the embedder API. - Mandatory for `rest`. Optional for `openAi` and `ollama`. - U+1F331 When modified for `openAi``, embeddings are never regenerated - U+1F3D7 When modified for `ollama` and `rest`, embeddings are always regenerated - If targetting URL resolving to a non-global IP (such as `localhost`), make sure that `--experimental-allowed-ip-networks` allows it. For details on how use this parameter, refer to [this documentation](https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch_at_launch#allow-requests-to-private-networks). */
   url?: string | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🏗️ When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - 🏗️ When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
   indexingFragments?: SettingEmbeddingSettingsInnerIndexingFragmentsMap | null;
-  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
   searchFragments?: SettingEmbeddingSettingsInnerSearchFragmentsMap | null;
-  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - 🏗️ Changing the value of this parameter always regenerates embeddings */
+  /** Request body template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{text}}"` for the input. - Mandatory for `rest`. - U+1F3D7 Changing the value of this parameter always regenerates embeddings */
   request?: unknown;
   /** Response template for `rest` embedder. See also [Configure a REST embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder) - Use `"{{embedding}}"` where the embedding array is. - Mandatory for `rest`. */
   response?: unknown;
-  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - 🌱 Changing the value of this parameter never regenerates embeddings */
+  /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
   headers?: SettingEmbeddingSettingsInnerHeadersMap | null;
   searchEmbedder?: SubEmbeddingSettings | null;
   indexingEmbedder?: SubEmbeddingSettings | null;
@@ -7768,7 +7768,7 @@ export interface SearchWithPostRequest {
   index_uid: string;
   /** Sets the search terms. Meilisearch returns documents that match this query. The query supports [prefix search](https://www.meilisearch.com/docs/learn/engine/prefix) and [typo tolerance](https://www.meilisearch.com/docs/learn/relevancy/typo_tolerance_settings). Meilisearch only considers the first ten words; terms are normalized (lowercase, accents ignored). Omit or leave empty for a placeholder search: no query terms are applied, so Meilisearch returns all searchable documents in the index, ordered by [ranking rules](https://www.meilisearch.com/docs/learn/relevancy/ranking_rules). Enclose terms in double quotes (`"`) for phrase search: only documents containing that exact sequence of words are returned (e.g. `"Winter Feast"`). Use a minus sign (`-`) before a word or phrase to exclude it from results. */
   q?: string | null;
-  /** Number of documents to skip at the start of the results. Use together with `limit` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination) (e.g. offset=20 and limit=20 returns results 21–40). This parameter is ignored when `page` or `hitsPerPage` is set; in that case the response includes `totalHits` and `totalPages` instead of `estimatedTotalHits`. */
+  /** Number of documents to skip at the start of the results. Use together with `limit` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination) (e.g. offset=20 and limit=20 returns results 21-40). This parameter is ignored when `page` or `hitsPerPage` is set; in that case the response includes `totalHits` and `totalPages` instead of `estimatedTotalHits`. */
   offset?: number;
   /** Maximum number of documents to return in the response. Use with `offset` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination). This parameter is ignored when `page` or `hitsPerPage` is set. The value cannot exceed the index [maxTotalHits](https://www.meilisearch.com/docs/reference/api/settings/update-pagination#body-max-total-hits-one-of-0) setting. */
   limit?: number;
@@ -7992,7 +7992,7 @@ export interface SearchWithUrlQueryRequest {
   index_uid: string;
   /** Sets the search terms. Meilisearch returns documents that match this query. The query supports [prefix search](https://www.meilisearch.com/docs/learn/engine/prefix) and [typo tolerance](https://www.meilisearch.com/docs/learn/relevancy/typo_tolerance_settings). Meilisearch only considers the first ten words; terms are normalized (lowercase, accents ignored). Omit or leave empty for a placeholder search: no query terms are applied, so Meilisearch returns all searchable documents in the index, ordered by [ranking rules](https://www.meilisearch.com/docs/learn/relevancy/ranking_rules). Enclose terms in double quotes (`"`) for phrase search: only documents containing that exact sequence of words are returned (e.g. `"Winter Feast"`). Use a minus sign (`-`) before a word or phrase to exclude it from results. */
   q?: string;
-  /** Number of documents to skip at the start of the results. Use together with `limit` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination) (e.g. offset=20 and limit=20 returns results 21–40). This parameter is ignored when `page` or `hitsPerPage` is set; in that case the response includes `totalHits` and `totalPages` instead of `estimatedTotalHits`. */
+  /** Number of documents to skip at the start of the results. Use together with `limit` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination) (e.g. offset=20 and limit=20 returns results 21-40). This parameter is ignored when `page` or `hitsPerPage` is set; in that case the response includes `totalHits` and `totalPages` instead of `estimatedTotalHits`. */
   offset?: number;
   /** Maximum number of documents to return in the response. Use with `offset` for [pagination](https://www.meilisearch.com/docs/guides/front_end/pagination). This parameter is ignored when `page` or `hitsPerPage` is set. The value cannot exceed the index [maxTotalHits](https://www.meilisearch.com/docs/reference/api/settings/update-pagination#body-max-total-hits-one-of-0) setting. */
   limit?: number;
@@ -8607,7 +8607,7 @@ export const cancelLogs: API.OperationMethod<
 }));
 
 export type CancelTasksError = BadRequest | MeilisearchOpError;
-/** Cancel tasks Cancel enqueued and/or processing [tasks](https://www.meilisearch.com/docs/learn/async/asynchronous_operations). You must provide at least one filter (e.g. `uids`, `indexUids`, `statuses`) to specify which tasks to cancel. **Note:** Task cancellation is atomic — either all matched tasks are canceled or none are. **Note:** Each filter parameter accepts `*` to match all values (e.g., `statuses=*`). **Tip:** You can cancel `taskCancelation` type tasks as long as they are `enqueued` or `processing`, because cancellation tasks are processed in reverse order of enqueueing. */
+/** Cancel tasks Cancel enqueued and/or processing [tasks](https://www.meilisearch.com/docs/learn/async/asynchronous_operations). You must provide at least one filter (e.g. `uids`, `indexUids`, `statuses`) to specify which tasks to cancel. **Note:** Task cancellation is atomic -- either all matched tasks are canceled or none are. **Note:** Each filter parameter accepts `*` to match all values (e.g., `statuses=*`). **Tip:** You can cancel `taskCancelation` type tasks as long as they are `enqueued` or `processing`, because cancellation tasks are processed in reverse order of enqueueing. */
 export const cancelTasks: API.OperationMethod<
   CancelTasksRequest,
   SummarizedTaskView,
@@ -9192,7 +9192,7 @@ export const deletesynonyms: API.OperationMethod<
 }));
 
 export type DeleteTasksError = BadRequest | NotFound | MeilisearchOpError;
-/** Delete tasks Permanently delete [tasks](https://docs.meilisearch.com/learn/advanced/asynchronous_operations.html) matching the given filters. You must provide at least one filter (e.g. `uids`, `indexUids`, `statuses`) to specify which tasks to delete. **Note:** Only finished tasks (`succeeded`, `failed`, or `canceled`) can be deleted. You cannot delete `enqueued` or `processing` tasks. **Note:** Task deletion is atomic — either all matched tasks are deleted or none are. **Note:** Each filter parameter accepts `*` to match all values (e.g., `statuses=*`). */
+/** Delete tasks Permanently delete [tasks](https://docs.meilisearch.com/learn/advanced/asynchronous_operations.html) matching the given filters. You must provide at least one filter (e.g. `uids`, `indexUids`, `statuses`) to specify which tasks to delete. **Note:** Only finished tasks (`succeeded`, `failed`, or `canceled`) can be deleted. You cannot delete `enqueued` or `processing` tasks. **Note:** Task deletion is atomic -- either all matched tasks are deleted or none are. **Note:** Each filter parameter accepts `*` to match all values (e.g., `statuses=*`). */
 export const deleteTasks: API.OperationMethod<
   DeleteTasksRequest,
   SummarizedTaskView,
@@ -9762,7 +9762,7 @@ export const getSettings: API.OperationMethod<
 }));
 
 export type GetSimilarError = NotFound | MeilisearchOpError;
-/** Get similar documents with GET Retrieve documents similar to a reference document identified by its id. > Useful for “more like this” or recommendations. */
+/** Get similar documents with GET Retrieve documents similar to a reference document identified by its id. > Useful for "more like this" or recommendations. */
 export const getSimilar: API.OperationMethod<
   GetSimilarRequest,
   GetSimilarResponse,
@@ -10208,7 +10208,7 @@ export const postRender: API.OperationMethod<
 }));
 
 export type PostSimilarError = NotFound | MeilisearchOpError;
-/** Get similar documents with POST Retrieve documents similar to a reference document identified by its id. > Useful for “more like this” or recommendations. */
+/** Get similar documents with POST Retrieve documents similar to a reference document identified by its id. > Useful for "more like this" or recommendations. */
 export const postSimilar: API.OperationMethod<
   PostSimilarRequest,
   PostSimilarResponse,
@@ -10673,7 +10673,7 @@ export const updateIndex: API.OperationMethod<
 }));
 
 export type UpdateNetworkError = MeilisearchOpError;
-/** Configure network topology Add or remove remote nodes from the network. Changes apply to the current instance’s view of the cluster. */
+/** Configure network topology Add or remove remote nodes from the network. Changes apply to the current instance's view of the cluster. */
 export const updateNetwork: API.OperationMethod<
   UpdateNetworkRequest,
   Network,

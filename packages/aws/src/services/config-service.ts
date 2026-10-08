@@ -5573,7 +5573,7 @@ export type DeleteConfigRuleError =
  * for the `AWS::Config::ResourceCompliance` resource type before deleting rules, and re-enable recording after the rules have been deleted.
  *
  * However, since deleting rules is an asynchronous process, it might take an hour or more to complete. During the time
- * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource’s history.
+ * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource's history.
  */
 export const deleteConfigRule: API.OperationMethod<
   DeleteConfigRuleRequest,
@@ -5659,7 +5659,7 @@ export type DeleteConformancePackError =
  * for the `AWS::Config::ResourceCompliance` resource type before deleting rules, and re-enable recording after the rules have been deleted.
  *
  * However, since deleting rules is an asynchronous process, it might take an hour or more to complete. During the time
- * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource’s history.
+ * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource's history.
  */
 export const deleteConformancePack: API.OperationMethod<
   DeleteConformancePackRequest,
@@ -5765,7 +5765,7 @@ export type DeleteOrganizationConfigRuleError =
  * for the `AWS::Config::ResourceCompliance` resource type before deleting rules, and re-enable recording after the rules have been deleted.
  *
  * However, since deleting rules is an asynchronous process, it might take an hour or more to complete. During the time
- * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource’s history.
+ * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource's history.
  */
 export const deleteOrganizationConfigRule: API.OperationMethod<
   DeleteOrganizationConfigRuleRequest,
@@ -5811,7 +5811,7 @@ export type DeleteOrganizationConformancePackError =
  * for the `AWS::Config::ResourceCompliance` resource type before deleting rules, and re-enable recording after the rules have been deleted.
  *
  * However, since deleting rules is an asynchronous process, it might take an hour or more to complete. During the time
- * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource’s history.
+ * when recording is disabled for `AWS::Config::ResourceCompliance`, rule evaluations will not be recorded in the associated resource's history.
  */
 export const deleteOrganizationConformancePack: API.OperationMethod<
   DeleteOrganizationConformancePackRequest,
@@ -7858,7 +7858,7 @@ export type PutAggregationAuthorizationError = InvalidParameterValueException | 
  *
  * **Tags are added at creation and cannot be updated with this operation**
  *
- * `PutAggregationAuthorization` is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different `tags` values,
+ * `PutAggregationAuthorization` is an idempotent API. Subsequent requests won't create a duplicate resource if one was already created. If a following request has different `tags` values,
  * Config will ignore these differences and treat it as an idempotent request of the previous. In this case, `tags` will not be updated, even if they are different.
  *
  * Use TagResource and UntagResource to update tags after creation.
@@ -7933,7 +7933,7 @@ export type PutConfigRuleError =
  *
  * **Tags are added at creation and cannot be updated with this operation**
  *
- * `PutConfigRule` is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different `tags` values,
+ * `PutConfigRule` is an idempotent API. Subsequent requests won't create a duplicate resource if one was already created. If a following request has different `tags` values,
  * Config will ignore these differences and treat it as an idempotent request of the previous. In this case, `tags` will not be updated, even if they are different.
  *
  * Use TagResource and UntagResource to update tags after creation.
@@ -7985,7 +7985,7 @@ export type PutConfigurationAggregatorError =
  *
  * **Tags are added at creation and cannot be updated with this operation**
  *
- * `PutConfigurationAggregator` is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different `tags` values,
+ * `PutConfigurationAggregator` is an idempotent API. Subsequent requests won't create a duplicate resource if one was already created. If a following request has different `tags` values,
  * Config will ignore these differences and treat it as an idempotent request of the previous. In this case, `tags` will not be updated, even if they are different.
  *
  * Use TagResource and UntagResource to update tags after creation.
@@ -8042,7 +8042,7 @@ export type PutConfigurationRecorderError =
  *
  * **Tags are added at creation and cannot be updated**
  *
- * `PutConfigurationRecorder` is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different tags values,
+ * `PutConfigurationRecorder` is an idempotent API. Subsequent requests won't create a duplicate resource if one was already created. If a following request has different tags values,
  * Config will ignore these differences and treat it as an idempotent request of the previous. In this case, tags will not be updated, even if they are different.
  *
  * Use TagResource and UntagResource to update tags after creation.
@@ -8630,7 +8630,7 @@ export type PutStoredQueryError =
  *
  * **Tags are added at creation and cannot be updated**
  *
- * `PutStoredQuery` is an idempotent API. Subsequent requests won’t create a duplicate resource if one was already created. If a following request has different `tags` values,
+ * `PutStoredQuery` is an idempotent API. Subsequent requests won't create a duplicate resource if one was already created. If a following request has different `tags` values,
  * Config will ignore these differences and treat it as an idempotent request of the previous. In this case, `tags` will not be updated, even if they are different.
  */
 export const putStoredQuery: API.OperationMethod<

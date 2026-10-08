@@ -71,7 +71,7 @@ export interface CreateTransferRequest {
   amount: number;
   /** Currency, such as `usd`. Required for ledger transfers. */
   currency?: string;
-  /** The recipient. Required for ledger and wallet_send (a user_/biz_/ldgr_ ID, or — for sends — an email). Omit for claim_link. */
+  /** The recipient. Required for ledger and wallet_send (a user_/biz_/ldgr_ ID, or -- for sends -- an email). Omit for claim_link. */
   destination_id?: string;
   /** claim_link only. Link expiry as an ISO 8601 timestamp. Defaults to 24 hours from creation. */
   expires_at?: string | null;
@@ -248,7 +248,7 @@ export type CreateTransferResponseBodyCase0Origin =
 export const CreateTransferResponseBodyCase0Origin =
   S.Unknown as any as S.Schema<CreateTransferResponseBodyCase0Origin>;
 
-/** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+/** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
 export type CreateTransferResponseBodyCase0Status = "processing" | "succeeded" | "failed";
 export const CreateTransferResponseBodyCase0Status = S.String;
 
@@ -286,7 +286,7 @@ export interface CreateTransferResponseBodyCase0 {
   origin: CreateTransferResponseBodyCase0Origin;
   /** Source ledger account ID. */
   origin_ledger_account_id: string;
-  /** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+  /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
   status: CreateTransferResponseBodyCase0Status;
 }
 export const CreateTransferResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -368,7 +368,7 @@ export const CreateTransferResponseBodyCase2Source = /*@__PURE__*/ S.suspend(() 
   identifier: "CreateTransferResponseBodyCase2Source",
 }) as any as S.Schema<CreateTransferResponseBodyCase2Source>;
 
-/** A newly funded claim link is always `pending` — it stays claimable until it is fully claimed, canceled, or expires. */
+/** A newly funded claim link is always `pending` -- it stays claimable until it is fully claimed, canceled, or expires. */
 export type CreateTransferResponseBodyCase2Status = "pending";
 export const CreateTransferResponseBodyCase2Status = S.String;
 
@@ -382,7 +382,7 @@ export interface CreateTransferResponseBodyCase2 {
   object: CreateTransferResponseBodyCase2Object;
   redeemable_count: number;
   source: CreateTransferResponseBodyCase2Source;
-  /** A newly funded claim link is always `pending` — it stays claimable until it is fully claimed, canceled, or expires. */
+  /** A newly funded claim link is always `pending` -- it stays claimable until it is fully claimed, canceled, or expires. */
   status: CreateTransferResponseBodyCase2Status;
 }
 export const CreateTransferResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
@@ -542,7 +542,7 @@ export type GetTransferResponseOrigin =
   | GetTransferResponseOriginCase1;
 export const GetTransferResponseOrigin = S.Unknown as any as S.Schema<GetTransferResponseOrigin>;
 
-/** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+/** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
 export type GetTransferResponseStatus = "processing" | "succeeded" | "failed";
 export const GetTransferResponseStatus = S.String;
 
@@ -579,7 +579,7 @@ export interface GetTransferResponse {
   origin: GetTransferResponseOrigin;
   /** Source ledger account ID. */
   origin_ledger_account_id: string;
-  /** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+  /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
   status: GetTransferResponseStatus;
 }
 export const GetTransferResponse = /*@__PURE__*/ S.suspend(() =>
@@ -664,7 +664,7 @@ export const ListTransferResponseDataItemMetadataMap = /*@__PURE__*/ S.Record(
 export type ListTransferResponseDataItemObject = "transfer";
 export const ListTransferResponseDataItemObject = S.String;
 
-/** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+/** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
 export type ListTransferResponseDataItemStatus = "processing" | "succeeded" | "failed";
 export const ListTransferResponseDataItemStatus = S.String;
 
@@ -698,7 +698,7 @@ export interface ListTransferResponseDataItem {
   object: ListTransferResponseDataItemObject;
   /** Source ledger account ID. */
   origin_ledger_account_id: string;
-  /** Transfer status. `processing` means the on-chain leg is still executing — subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
+  /** Transfer status. `processing` means the on-chain leg is still executing -- subscribe to `transfer.completed` and `transfer.failed`, or retrieve the transfer to check its current status. A `failed` transfer may be retried under the same ID and later resolve to `succeeded`. */
   status: ListTransferResponseDataItemStatus;
 }
 export const ListTransferResponseDataItem = /*@__PURE__*/ S.suspend(() =>

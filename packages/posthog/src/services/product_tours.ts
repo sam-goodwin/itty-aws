@@ -327,7 +327,7 @@ export interface ListProductToursRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
+  /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
 }
 export const ListProductToursRequest = /*@__PURE__*/ S.suspend(() =>

@@ -618,9 +618,9 @@ export interface HogQLQueryModifiers {
   mergeFederatedAggregateJoins?: boolean | null;
   optimizeJoinedFilters?: boolean | null;
   optimizeProjections?: boolean | null;
-  /** HogQL parser backend; absent → `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
+  /** HogQL parser backend; absent -> `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip. */
   parserMode?: ParserMode | (string & {}) | null;
-  /** Push an `id IN (SELECT person_id FROM <left table> WHERE …)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
+  /** Push an `id IN (SELECT person_id FROM <left table> WHERE ...)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query's left-table filters can reach. Applies only to a persons join from the query's own FROM table. */
   personIdPushdown?: boolean | null;
   personsArgMaxVersion?: PersonsArgMaxVersion | (string & {}) | null;
   personsJoinMode?: PersonsJoinMode | (string & {}) | null;
@@ -628,7 +628,7 @@ export interface HogQLQueryModifiers {
   propertyGroupsMode?: PropertyGroupsMode | (string & {}) | null;
   pushDownPredicates?: boolean | null;
   s3TableUseInvalidColumns?: boolean | null;
-  /** Push a `session_id_v7 IN (SELECT … FROM events WHERE …)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
+  /** Push a `session_id_v7 IN (SELECT ... FROM events WHERE ...)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter. */
   sessionIdPushdown?: boolean | null;
   /** Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap pre-aggregation that only materializes the columns referenced by the outer-WHERE session predicate)`. Useful when the breakdown/SELECT pulls in many session columns (e.g. `$channel_type`) but the filter only references one (e.g. `$entry_current_url`). */
   sessionPropertyPreAggregation?: boolean | null;
@@ -1111,7 +1111,7 @@ export interface AccountsTableQueryResponse {
   timings?: AccountsTableQueryResponseTimingsList | null;
   /** Connector-synced data warehouse sources referenced by this query, if any. */
   used_data_warehouse_sources?: AccountsTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response -- so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
   warnings?: AccountsTableQueryResponseWarningsList | null;
 }
 export const AccountsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2075,7 +2075,7 @@ export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
   operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
+  /** Customer analytics account custom property -- the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
@@ -2156,13 +2156,13 @@ export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
   event_type: BehavioralEventSource | (string & {});
-  /** Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval */
+  /** Absolute or relative (e.g. -30d) lower date bound -- alternative to time_value/time_interval */
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
   /** Event name, or action id when event_type is 'actions' */
   key: string;
   label?: string | null;
-  /** Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators */
+  /** Match persons who did NOT satisfy the criterion. Not the same as a low count -- zero-occurrence persons never match count operators */
   negation?: boolean | null;
   /** Count comparison for performed_event_multiple, defaults to exact */
   operator?: PropertyOperator | (string & {}) | null;
@@ -2171,7 +2171,7 @@ export interface BehavioralPropertyFilter {
   time_interval?: TimeUnitType | (string & {}) | null;
   /** Relative time window size, paired with time_interval */
   time_value?: number | null;
-  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP */
+  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only -- not evaluable by flags or CDP */
   type?: string;
   value: InlineBehavioralType | (string & {});
 }

@@ -2565,7 +2565,7 @@ export const disableServerBackup: API.OperationMethod<
 }));
 
 export type DisableServerRescueError = HetznerOpError;
-/** Disable Rescue Mode for a Server Disables the Hetzner Rescue System for a Server. This makes a Server start from its disks on next reboot. Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes. Disabling rescue mode will not reboot your Server — you will have to do this yourself. */
+/** Disable Rescue Mode for a Server Disables the Hetzner Rescue System for a Server. This makes a Server start from its disks on next reboot. Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes. Disabling rescue mode will not reboot your Server -- you will have to do this yourself. */
 export const disableServerRescue: API.OperationMethod<
   DisableServerRescueRequest,
   DisableServerRescueResponse,
@@ -2595,7 +2595,7 @@ export const enableServerBackup: API.OperationMethod<
 }));
 
 export type EnableServerRescueError = HetznerOpError;
-/** Enable Rescue Mode for a Server Enable the Hetzner Rescue System for this Server. The next time a Server with enabled rescue mode boots it will start a special minimal Linux distribution designed for repair and reinstall. In case a Server cannot boot on its own you can use this to access a Server’s disks. Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes. Enabling rescue mode will not [reboot](https://docs.hetzner.cloud/#server-actions-soft-reboot-a-server) your Server — you will have to do this yourself. */
+/** Enable Rescue Mode for a Server Enable the Hetzner Rescue System for this Server. The next time a Server with enabled rescue mode boots it will start a special minimal Linux distribution designed for repair and reinstall. In case a Server cannot boot on its own you can use this to access a Server's disks. Rescue Mode is automatically disabled when you first boot into it or if you do not use it for 60 minutes. Enabling rescue mode will not [reboot](https://docs.hetzner.cloud/#server-actions-soft-reboot-a-server) your Server -- you will have to do this yourself. */
 export const enableServerRescue: API.OperationMethod<
   EnableServerRescueRequest,
   EnableServerRescueResponse,
@@ -2767,7 +2767,7 @@ export const requestServerConsole: API.OperationMethod<
 }));
 
 export type ResetServerError = HetznerOpError;
-/** Reset a Server Cuts power to a Server and starts it again. This forcefully stops it without giving the Server operating system time to gracefully stop. This may lead to data loss, it’s equivalent to pulling the power cord and plugging it in again. Reset should only be used when reboot does not work. */
+/** Reset a Server Cuts power to a Server and starts it again. This forcefully stops it without giving the Server operating system time to gracefully stop. This may lead to data loss, it's equivalent to pulling the power cord and plugging it in again. Reset should only be used when reboot does not work. */
 export const resetServer: API.OperationMethod<
   ResetServerRequest,
   ResetServerResponse,

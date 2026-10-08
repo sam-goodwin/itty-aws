@@ -2804,7 +2804,7 @@ export type AssociateDatasetKmsKeyError =
  * encrypted data.
  *
  * Only the `default` dataset is supported. The `default` dataset
- * is implicit for every account in every Region — you do not need to create it before
+ * is implicit for every account in every Region -- you do not need to create it before
  * calling this operation.
  *
  * You can call `AssociateDatasetKmsKey` on a dataset that is already
@@ -3520,7 +3520,7 @@ export type GetDatasetError = ResourceNotFoundException | CommonErrors;
  * it.
  *
  * Only the `default` dataset is supported. The `default` dataset
- * is implicit for every account in every Region — you can call `GetDataset`
+ * is implicit for every account in every Region -- you can call `GetDataset`
  * for it without first creating it. If no customer managed KMS key has been associated
  * with the dataset, the response omits the `KmsKeyArn` field, indicating that
  * data is encrypted at rest using an Amazon Web Services owned key managed by

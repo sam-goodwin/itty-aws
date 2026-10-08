@@ -1552,7 +1552,7 @@ export type DeleteEdgeConfigurationError =
   | StreamEdgeConfigurationNotFoundException
   | CommonErrors;
 /**
- * An asynchronous API that deletes a stream’s existing edge configuration, as well as the corresponding media from the Edge Agent.
+ * An asynchronous API that deletes a stream's existing edge configuration, as well as the corresponding media from the Edge Agent.
  *
  * When you invoke this API, the sync status is set to `DELETING`. A deletion process starts, in which active edge jobs are stopped and all media is deleted from the edge device. The time to delete varies, depending on the total amount of stored media. If the deletion process fails, the sync status changes to `DELETE_FAILED`. You will need to re-try the deletion.
  *
@@ -1663,7 +1663,7 @@ export type DescribeEdgeConfigurationError =
   | StreamEdgeConfigurationNotFoundException
   | CommonErrors;
 /**
- * Describes a stream’s edge configuration that was set using the
+ * Describes a stream's edge configuration that was set using the
  * `StartEdgeConfigurationUpdate` API and the latest status of the edge
  * agent's recorder and uploader jobs. Use this API to get the status of the configuration
  * to determine if the configuration is in sync with the Edge Agent. Use this API to
@@ -2144,8 +2144,8 @@ export type StartEdgeConfigurationUpdateError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * An asynchronous API that updates a stream’s existing edge configuration.
- * The Kinesis Video Stream will sync the stream’s edge configuration with the Edge Agent IoT Greengrass
+ * An asynchronous API that updates a stream's existing edge configuration.
+ * The Kinesis Video Stream will sync the stream's edge configuration with the Edge Agent IoT Greengrass
  * component that runs on an IoT Hub Device, setup at your premise. The time to sync can vary
  * and depends on the connectivity of the Hub Device.
  * The `SyncStatus` will be updated as the edge configuration is acknowledged,
@@ -2155,7 +2155,7 @@ export type StartEdgeConfigurationUpdateError =
  * and the sync status will be set to `SYNCING`. You will have to wait for the sync status
  * to reach a terminal state such as: `IN_SYNC`, or `SYNC_FAILED`, before using this API again.
  * If you invoke this API during the syncing process, a `ResourceInUseException` will be thrown.
- * The connectivity of the stream’s edge configuration and the Edge Agent will be retried for 15 minutes. After 15 minutes,
+ * The connectivity of the stream's edge configuration and the Edge Agent will be retried for 15 minutes. After 15 minutes,
  * the status will transition into the `SYNC_FAILED` state.
  *
  * To move an edge configuration from one device to another, use DeleteEdgeConfiguration to delete

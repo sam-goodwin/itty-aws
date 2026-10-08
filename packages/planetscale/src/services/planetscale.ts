@@ -2301,7 +2301,7 @@ export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostgresBouncer" }) as any as S.Schema<PostgresBouncer>;
 
-/** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
+/** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching(TM) being enabled for the branch. */
 export type CreateBranchRequestSeedData = "last_successful_backup";
 export const CreateBranchRequestSeedData = S.String;
 
@@ -2361,7 +2361,7 @@ export interface CreateBranchRequest {
   restore_point?: string;
   /** For PostgreSQL backup restores and point-in-time recovery, the number of additional replicas from 0 to 8, subject to the target cluster size. 0 creates a single-node branch. If omitted, the target cluster size's minimum is used. */
   replicas?: number;
-  /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
+  /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching(TM) being enabled for the branch. */
   seed_data?: CreateBranchRequestSeedData | (string & {});
   /** The database cluster size. Required if a backup_id is provided (unless keyspace_cluster_sizes covers every keyspace), optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800 */
   cluster_size?: string;
@@ -8643,7 +8643,7 @@ export interface MysqlClusterResizeRequest {
   vtgate_target_cpu_utilization: number | null;
   /** The previous target CPU utilization for the vtgate cluster */
   previous_vtgate_target_cpu_utilization: number | null;
-  /** The SKU representing the vtgate cluster size: VTG_5, VTG_10,… */
+  /** The SKU representing the vtgate cluster size: VTG_5, VTG_10,... */
   vtgate_name: string;
   /** The SKU representing the vtgate cluster size for display */
   vtgate_display_name: string;
@@ -16253,7 +16253,7 @@ export interface PaginatedMysqlClusterResizeRequestDataItem {
   vtgate_target_cpu_utilization: number | null;
   /** The previous target CPU utilization for the vtgate cluster */
   previous_vtgate_target_cpu_utilization: number | null;
-  /** The SKU representing the vtgate cluster size: VTG_5, VTG_10,… */
+  /** The SKU representing the vtgate cluster size: VTG_5, VTG_10,... */
   vtgate_name: string;
   /** The SKU representing the vtgate cluster size for display */
   vtgate_display_name: string;
@@ -24974,7 +24974,7 @@ export interface UpdateBranchClusterConfigRequest {
   database: string;
   /** The name of the branch to configure */
   branch: string;
-  /** The new size of the database cluster: PS_10, PS_20,… */
+  /** The new size of the database cluster: PS_10, PS_20,... */
   cluster_size: string;
 }
 export const UpdateBranchClusterConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -25008,7 +25008,7 @@ export interface UpdateBranchResizeRequestRequest {
   database: string;
   /** The name of the branch */
   branch: string;
-  /** The size of the vtgate cluster: VTG_5, VTG_10,… */
+  /** The size of the vtgate cluster: VTG_5, VTG_10,... */
   vtgate_size?: string;
   /** The number of vtgates in an availability zone */
   vtgate_count?: number;
@@ -25437,7 +25437,7 @@ export interface UpdateKeyspaceResizeRequestRequest {
   branch: string;
   /** The name of the keyspace */
   keyspace: string;
-  /** The size of the keyspace cluster: PS_10, PS_20,… */
+  /** The size of the keyspace cluster: PS_10, PS_20,... */
   cluster_size?: string;
   /** The number of additional replicas beyond the included default */
   extra_replicas?: number;

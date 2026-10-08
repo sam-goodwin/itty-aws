@@ -256,11 +256,11 @@ export const GetFinancialReportResponseFxExcludedCurrenciesList = /*@__PURE__*/ 
 ) as any as S.Schema<GetFinancialReportResponseFxExcludedCurrenciesList>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -1886,7 +1886,7 @@ export interface LedgerActivity {
   resource: LedgerActivityResource | null;
   /** Source of this ledger activity. Platform markup fees use object platform_fee and the ledger activity ID. */
   source: LedgerActivitySource | null;
-  /** Dollar value of this movement as a decimal string, signed like `amount`. Converted from the posted amount at the rate that was live when the line posted — the same pricing the wallet balance chart and the financial reports use — so a crypto row carries its dollar value too. `null` for a currency Whop holds no exchange rate for. */
+  /** Dollar value of this movement as a decimal string, signed like `amount`. Converted from the posted amount at the rate that was live when the line posted -- the same pricing the wallet balance chart and the financial reports use -- so a crypto row carries its dollar value too. `null` for a currency Whop holds no exchange rate for. */
   usd_amount: string | null;
   /** Email of the customer associated with the payment. Requires member:email:read. */
   user_email?: string | null;
@@ -1957,7 +1957,7 @@ export const ListFinancialActivityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFinancialActivityResponse>;
 
 export type GetFinancialReportError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** Get Financial Report Returns a financial report — balance activity, income statement, or balance summary — for an account over a date range. */
+/** Get Financial Report Returns a financial report -- balance activity, income statement, or balance summary -- for an account over a date range. */
 export const getFinancialReport: API.OperationMethod<
   GetFinancialReportRequest,
   GetFinancialReportResponse,

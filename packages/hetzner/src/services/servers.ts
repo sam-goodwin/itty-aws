@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 export type { HetznerOpError, HetznerOpContext };
 
-/** The project has no remaining Server quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often a race after a delete — retry. */
+/** The project has no remaining Server quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often a race after a delete -- retry. */
 export class ServerLimitExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServerLimitExceeded>()("ServerLimitExceeded", {
@@ -20,7 +20,7 @@ export class ServerLimitExceeded
     [{ status: 403, message: { includes: "server limit" } }],
   ) {}
 
-/** The Server could not be placed (Hetzner `resource_unavailable` / `placement_error`, HTTP 412). Spread groups and location capacity recover — retry. */
+/** The Server could not be placed (Hetzner `resource_unavailable` / `placement_error`, HTTP 412). Spread groups and location capacity recover -- retry. */
 export class ServerPlacementError
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServerPlacementError>()("ServerPlacementError", {
@@ -3058,7 +3058,7 @@ export const getServer: API.OperationMethod<
 }));
 
 export type GetServerMetricsError = HetznerOpError;
-/** Get Metrics for a Server Get Metrics for specified Server. You must specify the type of metric to get: cpu, disk or network. You can also specify more than one type by comma separation, e.g. cpu,disk. Depending on the type you will get different time series data Note that the CPU value is not normalized to a fixed 0–100% scale. It is calculated per vCPU: a value of 100 represents full utilization on a 1-vCPU server, and 25% utilization on a 4-vCPU server. To calculate the overall CPU usage, divide the metric value by the number of vCPUs. Metrics are available for the last 30 days only. If you do not provide the step argument we will automatically adjust it so that a maximum of 200 samples are returned. We limit the number of samples returned to a maximum of 500 and will adjust the step parameter accordingly. */
+/** Get Metrics for a Server Get Metrics for specified Server. You must specify the type of metric to get: cpu, disk or network. You can also specify more than one type by comma separation, e.g. cpu,disk. Depending on the type you will get different time series data Note that the CPU value is not normalized to a fixed 0-100% scale. It is calculated per vCPU: a value of 100 represents full utilization on a 1-vCPU server, and 25% utilization on a 4-vCPU server. To calculate the overall CPU usage, divide the metric value by the number of vCPUs. Metrics are available for the last 30 days only. If you do not provide the step argument we will automatically adjust it so that a maximum of 200 samples are returned. We limit the number of samples returned to a maximum of 500 and will adjust the step parameter accordingly. */
 export const getServerMetrics: API.OperationMethod<
   GetServerMetricsRequest,
   GetServerMetricsResponse,
@@ -3099,7 +3099,7 @@ export const listServers: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdateServerError = HetznerOpError;
-/** Update a Server Updates a Server. You can update a Server’s name and a Server’s labels. Please note that Server names must be unique per Project and valid hostnames as per RFC 1123 (i.e. may only contain letters, digits, periods, and dashes). */
+/** Update a Server Updates a Server. You can update a Server's name and a Server's labels. Please note that Server names must be unique per Project and valid hostnames as per RFC 1123 (i.e. may only contain letters, digits, periods, and dashes). */
 export const updateServer: API.OperationMethod<
   UpdateServerRequest,
   UpdateServerResponse,

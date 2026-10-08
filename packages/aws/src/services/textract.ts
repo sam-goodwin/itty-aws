@@ -2044,7 +2044,7 @@ export type GetDocumentAnalysisError =
  * While processing a document with queries, look out for
  * `INVALID_REQUEST_PARAMETERS` output. This indicates that either the per
  * page query limit has been exceeded or that the operation is trying to query a page in
- * the document which doesn’t exist.
+ * the document which doesn't exist.
  *
  * Selection elements such as check boxes and option buttons (radio buttons) can be
  * detected in form data and in tables. A SELECTION_ELEMENT `Block` object contains

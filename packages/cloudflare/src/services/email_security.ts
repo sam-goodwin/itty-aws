@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   actionLog: "action_log",
   actionParams: "action_params",
@@ -441,7 +441,7 @@ export interface InvestigateBulkCreateRequestSearchParams {
   deliveryStatus?: InvestigateBulkCreateRequestSearchParamsDeliveryStatus | (string & {});
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean;
-  /** Match messages that mention this domain — sender domain, recipient domain, or a domain in a link. */
+  /** Match messages that mention this domain -- sender domain, recipient domain, or a domain in a link. */
   domain?: string;
   /** End of search date range. */
   end?: string;
@@ -669,7 +669,7 @@ export interface InvestigateBulkCreateResponseSearchParams {
   deliveryStatus?: InvestigateBulkCreateResponseSearchParamsDeliveryStatus | null;
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean | null;
-  /** Match messages that mention this domain — sender domain, recipient domain, or a domain in a link. */
+  /** Match messages that mention this domain -- sender domain, recipient domain, or a domain in a link. */
   domain?: string | null;
   /** End of search date range. */
   end?: string | null;
@@ -923,7 +923,7 @@ export interface InvestigateBulkCancelCreateResponseSearchParams {
   deliveryStatus?: InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus | null;
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean | null;
-  /** Match messages that mention this domain — sender domain, recipient domain, or a domain in a link. */
+  /** Match messages that mention this domain -- sender domain, recipient domain, or a domain in a link. */
   domain?: string | null;
   /** End of search date range. */
   end?: string | null;
@@ -1650,7 +1650,7 @@ export interface CreateSettingsDomainRequest {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const CreateSettingsDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2978,7 +2978,7 @@ export interface InvestigateBulkGetResponseSearchParams {
   deliveryStatus?: InvestigateBulkGetResponseSearchParamsDeliveryStatus | null;
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean | null;
-  /** Match messages that mention this domain — sender domain, recipient domain, or a domain in a link. */
+  /** Match messages that mention this domain -- sender domain, recipient domain, or a domain in a link. */
   domain?: string | null;
   /** End of search date range. */
   end?: string | null;
@@ -4899,7 +4899,7 @@ export interface InvestigateBulkListResultItemSearchParams {
   deliveryStatus?: InvestigateBulkListResultItemSearchParamsDeliveryStatus | null;
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean | null;
-  /** Match messages that mention this domain — sender domain, recipient domain, or a domain in a link. */
+  /** Match messages that mention this domain -- sender domain, recipient domain, or a domain in a link. */
   domain?: string | null;
   /** End of search date range. */
   end?: string | null;
@@ -5072,7 +5072,7 @@ export interface ListInvestigatesRequest {
   deliveryStatus?: InvestigateListRequestDeliveryStatus | (string & {});
   /** Whether to include only detections in search results. */
   detectionsOnly?: boolean;
-  /** Filter by a domain found in the email — sender domain, recipient domain, or a domain in a link. */
+  /** Filter by a domain found in the email -- sender domain, recipient domain, or a domain in a link. */
   domain?: string;
   /** The end of the search date range. Defaults to `now`. */
   end?: string;
@@ -5088,7 +5088,7 @@ export interface ListInvestigatesRequest {
   page?: number;
   /** The number of results per page. Maximum value is 1000. */
   perPage?: number;
-  /** Space-delimited term matched case-insensitively against message metadata — sender, recipient, subject, attachment names and hashes, and message ID. */
+  /** Space-delimited term matched case-insensitively against message metadata -- sender, recipient, subject, attachment names and hashes, and message ID. */
   query?: string;
   /** Filter by recipient. Matches an email address or a domain. */
   recipient?: string;
@@ -6731,11 +6731,11 @@ export interface ListSubmissionsRequest {
   requestedDisposition?: SubmissionsListRequestRequestedDisposition | (string & {});
   /** The beginning of the search date range. Defaults to `now - 30 days`. */
   start?: string;
-  /** Filter by review status — `escalated`, `reviewed`, or `unreviewed`. */
+  /** Filter by review status -- `escalated`, `reviewed`, or `unreviewed`. */
   status?: string;
   /** Filter by a specific submission ID. */
   submissionId?: string;
-  /** Filter by who created the submission — `TEAM` for security team members or `USER` for end users. */
+  /** Filter by who created the submission -- `TEAM` for security team members or `USER` for end users. */
   type?: SubmissionsListRequestType | (string & {});
 }
 export const ListSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7169,7 +7169,7 @@ export interface PatchSettingDomainRequest {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const PatchSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7865,11 +7865,11 @@ export interface SettingsAllowPoliciesBatchRequest {
   accountId: string;
   /** IDs of the allow policies to delete. */
   deletes: SettingsAllowPoliciesBatchRequestDeletesList;
-  /** Partial updates to apply — each entry carries the policy's ID and only the fields to change. */
+  /** Partial updates to apply -- each entry carries the policy's ID and only the fields to change. */
   patches: SettingsAllowPoliciesBatchRequestPatchesList;
   /** Allow policies to create. */
   posts: SettingsAllowPoliciesBatchRequestPostsList;
-  /** Full replacements to apply — each entry carries the policy's ID and every field of its new value. */
+  /** Full replacements to apply -- each entry carries the policy's ID and every field of its new value. */
   puts: SettingsAllowPoliciesBatchRequestPutsList;
 }
 export const SettingsAllowPoliciesBatchRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8272,11 +8272,11 @@ export interface SettingsBlockSendersBatchRequest {
   accountId: string;
   /** IDs of the blocked sender patterns to delete. */
   deletes: SettingsBlockSendersBatchRequestDeletesList;
-  /** Partial updates to apply — each entry carries the pattern's ID and only the fields to change. */
+  /** Partial updates to apply -- each entry carries the pattern's ID and only the fields to change. */
   patches: SettingsBlockSendersBatchRequestPatchesList;
   /** Blocked sender patterns to create. */
   posts: SettingsBlockSendersBatchRequestPostsList;
-  /** Full replacements to apply — each entry carries the pattern's ID and every field of its new value. */
+  /** Full replacements to apply -- each entry carries the pattern's ID and every field of its new value. */
   puts: SettingsBlockSendersBatchRequestPutsList;
 }
 export const SettingsBlockSendersBatchRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8629,11 +8629,11 @@ export interface SettingsContentPoliciesBatchRequest {
   accountId: string;
   /** IDs of the content policies to delete. */
   deletes: SettingsContentPoliciesBatchRequestDeletesList;
-  /** Partial updates to apply — each entry carries the policy's ID and only the fields to change. */
+  /** Partial updates to apply -- each entry carries the policy's ID and only the fields to change. */
   patches: SettingsContentPoliciesBatchRequestPatchesList;
   /** Content policies to create. */
   posts: SettingsContentPoliciesBatchRequestPostsList;
-  /** Full replacements to apply — each entry carries the policy's ID and every field of its new value. */
+  /** Full replacements to apply -- each entry carries the policy's ID and every field of its new value. */
   puts: SettingsContentPoliciesBatchRequestPutsList;
 }
 export const SettingsContentPoliciesBatchRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8919,7 +8919,7 @@ export interface SettingsDomainsBatchRequestPatchesItem {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const SettingsDomainsBatchRequestPatchesItem = /*@__PURE__*/ S.suspend(() =>
@@ -9027,7 +9027,7 @@ export interface SettingsDomainsBatchRequestPostsItem {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const SettingsDomainsBatchRequestPostsItem = /*@__PURE__*/ S.suspend(() =>
@@ -9133,7 +9133,7 @@ export interface SettingsDomainsBatchRequestPutsItem {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const SettingsDomainsBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
@@ -9170,11 +9170,11 @@ export interface SettingsDomainsBatchRequest {
   accountId: string;
   /** IDs of the domains to remove protection from. */
   deletes: SettingsDomainsBatchRequestDeletesList;
-  /** Partial updates to apply — each entry carries the domain's ID and only the fields to change. */
+  /** Partial updates to apply -- each entry carries the domain's ID and only the fields to change. */
   patches: SettingsDomainsBatchRequestPatchesList;
   /** Domains to add protection for. */
   posts: SettingsDomainsBatchRequestPostsList;
-  /** Full replacements to apply — each entry carries the domain's ID and every field of its new value. */
+  /** Full replacements to apply -- each entry carries the domain's ID and every field of its new value. */
   puts: SettingsDomainsBatchRequestPutsList;
 }
 export const SettingsDomainsBatchRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9894,11 +9894,11 @@ export interface SettingsTrustedDomainsBatchRequest {
   accountId: string;
   /** IDs of the trusted domain patterns to delete. */
   deletes: SettingsTrustedDomainsBatchRequestDeletesList;
-  /** Partial updates to apply — each entry carries the pattern's ID and only the fields to change. */
+  /** Partial updates to apply -- each entry carries the pattern's ID and only the fields to change. */
   patches: SettingsTrustedDomainsBatchRequestPatchesList;
   /** Trusted domain patterns to create. */
   posts: SettingsTrustedDomainsBatchRequestPostsList;
-  /** Full replacements to apply — each entry carries the pattern's ID and every field of its new value. */
+  /** Full replacements to apply -- each entry carries the pattern's ID and every field of its new value. */
   puts: SettingsTrustedDomainsBatchRequestPutsList;
 }
 export const SettingsTrustedDomainsBatchRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10053,7 +10053,7 @@ export interface UpdateSettingsDomainRequest {
   requireTlsInbound?: boolean;
   /** Require TLS on outbound connections. */
   requireTlsOutbound?: boolean;
-  /** The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
+  /** The mail transport hostname for MX/Inline delivery -- the MX record Cloudflare delivers email to (e.g. `mx.example.com`). */
   transport?: string;
 }
 export const UpdateSettingsDomainRequest = /*@__PURE__*/ S.suspend(() =>

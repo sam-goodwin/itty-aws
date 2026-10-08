@@ -178,7 +178,7 @@ export const CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.Stri
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
 export const CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
 
-/** Native Vercel checks — check definition and check run `source`. */
+/** Native Vercel checks -- check definition and check run `source`. */
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
@@ -400,7 +400,7 @@ export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.Stri
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
 export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
 
-/** Config-driven CI task — check run `source` only (no parent check). */
+/** Config-driven CI task -- check run `source` only (no parent check). */
 export interface CreateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
   invocationId: string;
@@ -426,7 +426,7 @@ export const CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.Stri
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
 export const CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
 
-/** CI sentinel — check run `source` only (no parent check). */
+/** CI sentinel -- check run `source` only (no parent check). */
 export interface CreateDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
@@ -911,7 +911,7 @@ export const GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
 
-/** Native Vercel checks — check definition and check run `source`. */
+/** Native Vercel checks -- check definition and check run `source`. */
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
@@ -1133,7 +1133,7 @@ export const GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
 export const GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
 
-/** Config-driven CI task — check run `source` only (no parent check). */
+/** Config-driven CI task -- check run `source` only (no parent check). */
 export interface GetDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
   invocationId: string;
@@ -1159,7 +1159,7 @@ export const GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
 export const GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
 
-/** CI sentinel — check run `source` only (no parent check). */
+/** CI sentinel -- check run `source` only (no parent check). */
 export interface GetDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
@@ -1525,7 +1525,7 @@ export const ListCheckRunsResponseRunsItemCase0SourceCase3Origin = S.String;
 export type ListCheckRunsResponseRunsItemCase0SourceCase3SubKind = "vercel-native-check";
 export const ListCheckRunsResponseRunsItemCase0SourceCase3SubKind = S.String;
 
-/** Native Vercel checks — check definition and check run `source`. */
+/** Native Vercel checks -- check definition and check run `source`. */
 export interface ListCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListCheckRunsResponseRunsItemCase0SourceCase3SubKind;
@@ -1741,7 +1741,7 @@ export const ListCheckRunsResponseRunsItemCase1SourceCase0Origin = S.String;
 export type ListCheckRunsResponseRunsItemCase1SourceCase0SubKind = "vercel-ci";
 export const ListCheckRunsResponseRunsItemCase1SourceCase0SubKind = S.String;
 
-/** Config-driven CI task — check run `source` only (no parent check). */
+/** Config-driven CI task -- check run `source` only (no parent check). */
 export interface ListCheckRunsResponseRunsItemCase1SourceCase0 {
   invocationAttempt?: number;
   invocationId: string;
@@ -1767,7 +1767,7 @@ export const ListCheckRunsResponseRunsItemCase1SourceCase1Origin = S.String;
 export type ListCheckRunsResponseRunsItemCase1SourceCase1SubKind = "vercel-ci-sentinel";
 export const ListCheckRunsResponseRunsItemCase1SourceCase1SubKind = S.String;
 
-/** CI sentinel — check run `source` only (no parent check). */
+/** CI sentinel -- check run `source` only (no parent check). */
 export interface ListCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListCheckRunsResponseRunsItemCase1SourceCase1SubKind;
@@ -1989,7 +1989,7 @@ export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin = S.S
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind = "vercel-native-check";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind = S.String;
 
-/** Native Vercel checks — check definition and check run `source`. */
+/** Native Vercel checks -- check definition and check run `source`. */
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind;
@@ -2212,7 +2212,7 @@ export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin = S.S
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind = "vercel-ci";
 export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind = S.String;
 
-/** Config-driven CI task — check run `source` only (no parent check). */
+/** Config-driven CI task -- check run `source` only (no parent check). */
 export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 {
   invocationAttempt?: number;
   invocationId: string;
@@ -2238,7 +2238,7 @@ export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin = S.S
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind = "vercel-ci-sentinel";
 export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind = S.String;
 
-/** CI sentinel — check run `source` only (no parent check). */
+/** CI sentinel -- check run `source` only (no parent check). */
 export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind;
@@ -2679,7 +2679,7 @@ export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.Stri
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
 
-/** Native Vercel checks — check definition and check run `source`. */
+/** Native Vercel checks -- check definition and check run `source`. */
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
@@ -2901,7 +2901,7 @@ export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.Stri
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
 export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
 
-/** Config-driven CI task — check run `source` only (no parent check). */
+/** Config-driven CI task -- check run `source` only (no parent check). */
 export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
   invocationId: string;
@@ -2927,7 +2927,7 @@ export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.Stri
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
 export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
 
-/** CI sentinel — check run `source` only (no parent check). */
+/** CI sentinel -- check run `source` only (no parent check). */
 export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;

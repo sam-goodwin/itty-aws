@@ -10775,7 +10775,7 @@ export const StreamConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the authenticator specific parameters */
 export interface AuthenticatorProfileTacRequest {
-  /** Determines whether the enrollment can be used more than once. To enable multi-use, the org-level authenticator’s configuration must allow multi-use. */
+  /** Determines whether the enrollment can be used more than once. To enable multi-use, the org-level authenticator's configuration must allow multi-use. */
   multiUse?: boolean;
   /** Time-to-live (TTL) in minutes. Specifies how long the TAC enrollment is valid after it's created and activated. The configured value must be between 10 minutes (`10`) and 10 days (`14400`), inclusive. The actual allowed range depends on the org-level authenticator configuration. */
   ttl?: string;
@@ -15957,7 +15957,7 @@ export const IdPCsr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IdPCsr" }) as any as S.Schema<IdPCsr>;
 
-/** Information about the fulfillment order that includes the factor’s make and model, the custom configuration of the factor, and inventory details. */
+/** Information about the fulfillment order that includes the factor's make and model, the custom configuration of the factor, and inventory details. */
 export interface FulfillmentDataOrderDetails {
   /** ID for the set of custom configurations of the requested factor */
   customizationId?: string;

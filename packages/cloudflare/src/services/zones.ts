@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   activatedOn: "activated_on",
   cacheByDeviceType: "cache_by_device_type",
@@ -4040,7 +4040,7 @@ export const ListEntitlementsResultItemFeature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEntitlementsResultItemFeature>;
 
 export interface ListEntitlementsResultItem {
-  /** Entitlement identifier — equal to the feature key. */
+  /** Entitlement identifier -- equal to the feature key. */
   id: string;
   /** Represents the allocation value for an entitlement. The shape of `value` depends on `type`: `bool` uses a boolean, `max_count` uses an integer, `enum_number` uses an array of numbers, `range` uses an object with `min` and `max` integer fields, and `string` uses a string. */
   allocation: ListEntitlementsResultItemAllocation;

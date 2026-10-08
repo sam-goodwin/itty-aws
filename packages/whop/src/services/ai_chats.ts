@@ -304,7 +304,7 @@ export type CreateAiChatError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create ai chat [Legacy API — https://docs.whop.com/api-reference] Create a new AI chat thread and send the first message to the AI agent. Required permissions: - `ai_chat:create` */
+/** Create ai chat [Legacy API -- https://docs.whop.com/api-reference] Create a new AI chat thread and send the first message to the AI agent. Required permissions: - `ai_chat:create` */
 export const createAiChat: API.OperationMethod<
   CreateAiChatRequest,
   AiChat,
@@ -324,7 +324,7 @@ export type DeleteAiChatError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete ai chat [Legacy API — https://docs.whop.com/api-reference] Delete an AI chat thread so it no longer appears in the user's chat list. Required permissions: - `ai_chat:delete` */
+/** Delete ai chat [Legacy API -- https://docs.whop.com/api-reference] Delete an AI chat thread so it no longer appears in the user's chat list. Required permissions: - `ai_chat:delete` */
 export const deleteAiChat: API.OperationMethod<
   DeleteAiChatRequest,
   DeleteAiChatResponse,
@@ -339,7 +339,7 @@ export const deleteAiChat: API.OperationMethod<
 }));
 
 export type GetAiChatError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve ai chat [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing AI chat. */
+/** Retrieve ai chat [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing AI chat. */
 export const getAiChat: API.OperationMethod<
   GetAiChatRequest,
   AiChat,
@@ -354,7 +354,7 @@ export const getAiChat: API.OperationMethod<
 }));
 
 export type ListAiChatError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List ai chats [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of AI chat threads for the current authenticated user. */
+/** List ai chats [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of AI chat threads for the current authenticated user. */
 export const listAiChat: API.PaginatedOperationMethod<
   ListAiChatRequest,
   ListAiChatResponse,
@@ -386,7 +386,7 @@ export type UpdateAiChatError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update ai chat [Legacy API — https://docs.whop.com/api-reference] Update an AI chat's title, notification preferences, or associated account context. Required permissions: - `ai_chat:update` */
+/** Update ai chat [Legacy API -- https://docs.whop.com/api-reference] Update an AI chat's title, notification preferences, or associated account context. Required permissions: - `ai_chat:update` */
 export const updateAiChat: API.OperationMethod<
   UpdateAiChatRequest,
   AiChat,

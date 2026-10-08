@@ -1070,7 +1070,7 @@ export interface CreateAccountRequestCompany {
   representative_declaration?: CreateAccountRequestCompanyRepresentativeDeclaration;
   /** The category identifying the legal structure of the company or legal entity. See [Business structure](/connect/identity-verification#business-structure) for more details. Pass an empty string to unset this value. */
   structure?: CreateAccountRequestCompanyStructure | (string & {});
-  /** The business ID number of the company, as appropriate for the company’s country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
+  /** The business ID number of the company, as appropriate for the company's country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
   tax_id?: string;
   /** The jurisdiction in which the `tax_id` is registered (Germany-based companies only). */
   tax_id_registrar?: string;
@@ -1195,7 +1195,7 @@ export const CreateAccountRequestDocumentsBankAccountOwnershipVerificationFilesL
     S.String,
   ) as any as S.Schema<CreateAccountRequestDocumentsBankAccountOwnershipVerificationFilesList>;
 
-/** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account’s primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
+/** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
 export interface CreateAccountRequestDocumentsBankAccountOwnershipVerification {
   /** One or more document ids returned by a [file upload](https://docs.stripe.com/api#create_file) with a `purpose` value of `account_requirement`. */
   files?: CreateAccountRequestDocumentsBankAccountOwnershipVerificationFilesList;
@@ -1368,7 +1368,7 @@ export const CreateAccountRequestDocumentsProofOfUltimateBeneficialOwnership =
 
 /** Documents that may be submitted to satisfy various informational requests. */
 export interface CreateAccountRequestDocuments {
-  /** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account’s primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
+  /** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
   bank_account_ownership_verification?: CreateAccountRequestDocumentsBankAccountOwnershipVerification;
   /** One or more documents that demonstrate proof of a company's license to operate. */
   company_license?: CreateAccountRequestDocumentsCompanyLicense;
@@ -1530,13 +1530,13 @@ export type CreateAccountRequestIndividualRelationshipPercentOwnership =
 export const CreateAccountRequestIndividualRelationshipPercentOwnership =
   S.Unknown as any as S.Schema<CreateAccountRequestIndividualRelationshipPercentOwnership>;
 
-/** Describes the person’s relationship to the account. */
+/** Describes the person's relationship to the account. */
 export interface CreateAccountRequestIndividualRelationship {
   /** Whether the person is a director of the account's legal entity. Directors are typically members of the governing board of the company, or responsible for ensuring the company meets its regulatory obligations. */
   director?: boolean;
   /** Whether the person has significant responsibility to control, manage, or direct the organization. */
   executive?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: CreateAccountRequestIndividualRelationshipPercentOwnership;
@@ -1636,7 +1636,7 @@ export interface CreateAccountRequestIndividual {
   political_exposure?: CreateAccountRequestIndividualPoliticalExposure | (string & {});
   /** The individual's registered address. */
   registered_address?: CreateAccountRequestBusinessProfileSupportAddress;
-  /** Describes the person’s relationship to the account. */
+  /** Describes the person's relationship to the account. */
   relationship?: CreateAccountRequestIndividualRelationship;
   /** The last four digits of the individual's Social Security Number (U.S. only). */
   ssn_last_4?: string;
@@ -1835,7 +1835,7 @@ export type CreateAccountRequestSettingsInvoicesHostedPaymentMethodSave =
   | "offer";
 export const CreateAccountRequestSettingsInvoicesHostedPaymentMethodSave = S.String;
 
-/** Settings specific to the account’s use of Invoices. */
+/** Settings specific to the account's use of Invoices. */
 export interface CreateAccountRequestSettingsInvoices {
   /** Whether to save the payment method after a payment is completed for a one-time invoice or a subscription invoice when the customer already has a default payment method on the hosted invoice page. */
   hosted_payment_method_save?:
@@ -2127,7 +2127,7 @@ export interface CreateAccountRequestSettings {
   card_issuing?: CreateAccountRequestSettingsCardIssuing;
   /** Settings specific to card charging on the account. */
   card_payments?: CreateAccountRequestSettingsCardPayments;
-  /** Settings specific to the account’s use of Invoices. */
+  /** Settings specific to the account's use of Invoices. */
   invoices?: CreateAccountRequestSettingsInvoices;
   /** Settings that apply across payment methods for charging on the account. */
   payments?: CreateAccountRequestSettingsPayments;
@@ -2206,7 +2206,7 @@ export interface CreateAccountRequest {
   email?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: CreateAccountRequestExpandList;
-  /** A card or bank account to attach to the account for receiving [payouts](/connect/bank-debit-card-payouts) (you won’t be able to use it for top-ups). You can provide either a token, like the ones returned by [Stripe.js](/js), or a dictionary, as documented in the `external_account` parameter for [bank account](/api#account_create_bank_account) creation. <br><br>By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](/api#account_create_bank_account) or [card creation](/api#account_create_card) APIs. After you create an [Account Link](/api/account_links) or [Account Session](/api/account_sessions), this property can only be updated for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. */
+  /** A card or bank account to attach to the account for receiving [payouts](/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [Stripe.js](/js), or a dictionary, as documented in the `external_account` parameter for [bank account](/api#account_create_bank_account) creation. <br><br>By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](/api#account_create_bank_account) or [card creation](/api#account_create_card) APIs. After you create an [Account Link](/api/account_links) or [Account Session](/api/account_sessions), this property can only be updated for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. */
   external_account?: string;
   /** A hash of account group type to tokens. These are account groups this account should be added to. */
   groups?: CreateAccountRequestGroups;
@@ -3407,7 +3407,7 @@ export const CashBalance = /*@__PURE__*/ S.suspend(() =>
 export type CardAccount = string | Account;
 export const CardAccount = S.Unknown as any as S.Schema<CardAccount>;
 
-/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
 export type CardAllowRedisplay = "always" | "limited" | "unspecified";
 export const CardAllowRedisplay = S.String;
 
@@ -3488,7 +3488,7 @@ export interface Card {
   address_zip: string | null;
   /** If `address_zip` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
   address_zip_check: string | null;
-  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
   allow_redisplay?: CardAllowRedisplay | null;
   /** A set of available payout methods for this card. Only values from this set should be passed as the `method` when creating a payout. */
   available_payout_methods?: CardAvailablePayoutMethodsList | null;
@@ -3512,7 +3512,7 @@ export interface Card {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint?: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string;
@@ -3661,7 +3661,7 @@ export const SourceTypeAlipay = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceTypeAlipay" }) as any as S.Schema<SourceTypeAlipay>;
 
-/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
 export type SourceAllowRedisplay = "always" | "limited" | "unspecified";
 export const SourceAllowRedisplay = S.String;
 
@@ -4269,7 +4269,7 @@ export interface Source {
   ach_debit?: SourceTypeAchDebit;
   acss_debit?: SourceTypeAcssDebit;
   alipay?: SourceTypeAlipay;
-  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
   allow_redisplay: SourceAllowRedisplay | null;
   /** A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for `single_use` sources. */
   amount: number | null;
@@ -4736,7 +4736,7 @@ export const PaymentMethodAcssDebit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentMethodAcssDebit" }) as any as S.Schema<PaymentMethodAcssDebit>;
 
-/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
 export type PaymentMethodAllowRedisplay = "always" | "limited" | "unspecified";
 export const PaymentMethodAllowRedisplay = S.String;
 
@@ -4960,7 +4960,7 @@ export interface PaymentMethodDetailsCardPresent {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -5704,7 +5704,7 @@ export interface SetupAttemptPaymentMethodDetailsCard {
   exp_month: number | null;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number | null;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint?: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -7837,7 +7837,7 @@ export interface PaymentMethodDetailsCard {
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
   extended_authorization?: PaymentFlowsPrivatePaymentMethodsCardDetailsApiResourceEnterpriseFeaturesExtendedAuthorizationExtendedAuthorization;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint?: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -8259,7 +8259,7 @@ export interface PaymentMethodDetailsInteracPresent {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -8520,7 +8520,7 @@ export const PaymentMethodDetailsNaverPay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodDetailsNaverPay>;
 
 export interface PaymentMethodDetailsNzBankAccount {
-  /** The name on the bank account. Only present if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod’s billing details. */
+  /** The name on the bank account. Only present if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod's billing details. */
   account_holder_name: string | null;
   /** The numeric code for the bank account's bank. */
   bank_code: string;
@@ -11423,9 +11423,9 @@ export interface PaymentIntentPaymentMethodOptionsCard {
   require_cvc_recollection?: boolean;
   /** Indicates that you intend to make future payments with this PaymentIntent's payment method. If you provide a Customer with the PaymentIntent, you can use this parameter to [attach the payment method](/payments/save-during-payment) to the Customer after the PaymentIntent is confirmed and the customer completes any required actions. If you don't provide a Customer, you can still [attach](/api/payment_methods/attach) the payment method to a Customer after the transaction completes. If the payment method is `card_present` and isn't a digital wallet, Stripe creates and attaches a [generated_card](/api/charges/object#charge_object-payment_method_details-card_present-generated_card) payment method representing the card to the Customer instead. When processing card payments, Stripe uses `setup_future_usage` to help you comply with regional legislation and network rules, such as [SCA](/strong-customer-authentication). */
   setup_future_usage?: PaymentIntentPaymentMethodOptionsCardSetupFutureUsage;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: string;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: string;
 }
 export const PaymentIntentPaymentMethodOptionsCard = /*@__PURE__*/ S.suspend(() =>
@@ -13258,7 +13258,7 @@ export interface PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetail
   exp_month: number | null;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number | null;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint?: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCardDetailsFunding | null;
@@ -15323,7 +15323,7 @@ export interface SetupIntent {
   allowed_payment_method_types: SetupIntentAllowedPaymentMethodTypesList | null;
   /** ID of the Connect application that created the SetupIntent. */
   application: SetupIntentApplication | null;
-  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
+  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
   attach_to_self?: boolean;
   /** Settings for dynamic payment methods compatible with this Setup Intent */
   automatic_payment_methods: PaymentFlowsAutomaticPaymentMethodsSetupIntent | null;
@@ -15480,7 +15480,7 @@ export const SetupAttemptSetupIntent = S.Unknown as any as S.Schema<SetupAttempt
 export interface SetupAttempt {
   /** The value of [application](https://docs.stripe.com/api/setup_intents/object#setup_intent_object-application) on the SetupIntent at the time of this confirmation. */
   application: SetupAttemptApplication | null;
-  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
+  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
   attach_to_self?: boolean;
   /** Time at which the object was created. Measured in seconds since the Unix epoch. */
   created: number;
@@ -15664,7 +15664,7 @@ export interface PaymentMethodCard {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint?: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string;
@@ -15758,7 +15758,7 @@ export interface PaymentMethodCardPresent {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -16024,7 +16024,7 @@ export interface PaymentMethodInteracPresent {
   exp_month: number;
   /** Four-digit number representing the card's expiration year. */
   exp_year: number;
-  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
   fingerprint: string | null;
   /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
   funding: string | null;
@@ -16167,7 +16167,7 @@ export const PaymentMethodNaverPay = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentMethodNaverPay" }) as any as S.Schema<PaymentMethodNaverPay>;
 
 export interface PaymentMethodNzBankAccount {
-  /** The name on the bank account. Only present if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod’s billing details. */
+  /** The name on the bank account. Only present if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod's billing details. */
   account_holder_name: string | null;
   /** The numeric code for the bank account's bank. */
   bank_code: string;
@@ -16528,7 +16528,7 @@ export interface PaymentMethod {
   affirm?: unknown;
   afterpay_clearpay?: unknown;
   alipay?: unknown;
-  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
   allow_redisplay?: PaymentMethodAllowRedisplay;
   alma?: unknown;
   amazon_pay?: unknown;
@@ -17266,7 +17266,7 @@ export const TransformQuantity = /*@__PURE__*/ S.suspend(() =>
 export type PriceType = "one_time" | "recurring";
 export const PriceType = S.String;
 
-/** Prices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of products. [Products](https://docs.stripe.com/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme. For example, you might have a single "gold" product that has prices for $10/month, $100/year, and €9 once. Related guides: [Set up a subscription](https://docs.stripe.com/billing/subscriptions/set-up-subscription), [create an invoice](https://docs.stripe.com/billing/invoices/create), and more about [products and prices](https://docs.stripe.com/products-prices/overview). */
+/** Prices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of products. [Products](https://docs.stripe.com/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme. For example, you might have a single "gold" product that has prices for $10/month, $100/year, and U+20AC9 once. Related guides: [Set up a subscription](https://docs.stripe.com/billing/subscriptions/set-up-subscription), [create an invoice](https://docs.stripe.com/billing/invoices/create), and more about [products and prices](https://docs.stripe.com/products-prices/overview). */
 export interface Price {
   /** Whether the price can be used for new purchases. */
   active: boolean;
@@ -17645,7 +17645,7 @@ export interface TaxRate {
   id: string;
   /** This specifies if the tax rate is inclusive or exclusive. */
   inclusive: boolean;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction: string | null;
   /** The level of the jurisdiction that imposes this tax rate. Will be `null` for manually defined tax rates. */
   jurisdiction_level: TaxRateJurisdictionLevel | null;
@@ -18101,7 +18101,7 @@ export const TransformUsage = /*@__PURE__*/ S.suspend(() =>
 export type PlanUsageType = "licensed" | "metered";
 export const PlanUsageType = S.String;
 
-/** You can now model subscriptions more flexibly using the [Prices API](https://docs.stripe.com/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration. Plans define the base price, currency, and billing cycle for recurring purchases of products. [Products](https://docs.stripe.com/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme. For example, you might have a single "gold" product that has plans for $10/month, $100/year, €9/month, and €90/year. Related guides: [Set up a subscription](https://docs.stripe.com/billing/subscriptions/set-up-subscription) and more about [products and prices](https://docs.stripe.com/products-prices/overview). */
+/** You can now model subscriptions more flexibly using the [Prices API](https://docs.stripe.com/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration. Plans define the base price, currency, and billing cycle for recurring purchases of products. [Products](https://docs.stripe.com/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme. For example, you might have a single "gold" product that has plans for $10/month, $100/year, U+20AC9/month, and U+20AC90/year. Related guides: [Set up a subscription](https://docs.stripe.com/billing/subscriptions/set-up-subscription) and more about [products and prices](https://docs.stripe.com/products-prices/overview). */
 export interface Plan {
   /** Whether the plan can be used for new purchases. */
   active: boolean;
@@ -19924,29 +19924,29 @@ export const InvoicePaymentMethodOptionsUsBankAccount = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvoicePaymentMethodOptionsUsBankAccount>;
 
 export interface InvoicesPaymentMethodOptions {
-  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
   acss_debit: InvoicePaymentMethodOptionsAcssDebit | null;
-  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
   bancontact: InvoicePaymentMethodOptionsBancontact | null;
-  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
   billie?: InvoicePaymentMethodOptionsBillie | null;
-  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
   blik?: unknown | null;
-  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
   card: InvoicePaymentMethodOptionsCard | null;
-  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
   customer_balance: InvoicePaymentMethodOptionsCustomerBalance | null;
-  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
   konbini: unknown | null;
-  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
   payto: InvoicePaymentMethodOptionsPayto | null;
-  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
   pix: InvoicePaymentMethodOptionsPix | null;
-  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
   sepa_debit: unknown | null;
-  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
   upi: InvoicePaymentMethodOptionsUpi | null;
-  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
   us_bank_account: InvoicePaymentMethodOptionsUsBankAccount | null;
 }
 export const InvoicesPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
@@ -20021,7 +20021,7 @@ export type InvoicesPaymentSettingsPaymentMethodTypesItem =
   | "wechat_pay";
 export const InvoicesPaymentSettingsPaymentMethodTypesItem = S.String;
 
-/** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+/** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type InvoicesPaymentSettingsPaymentMethodTypesList =
   Array<InvoicesPaymentSettingsPaymentMethodTypesItem>;
 export const InvoicesPaymentSettingsPaymentMethodTypesList = /*@__PURE__*/ S.Array(
@@ -20031,9 +20031,9 @@ export const InvoicesPaymentSettingsPaymentMethodTypesList = /*@__PURE__*/ S.Arr
 export interface InvoicesPaymentSettings {
   /** ID of the mandate to be used for this invoice. It must correspond to the payment method used to pay the invoice, including the invoice's default_payment_method or default_source, if set. */
   default_mandate: string | null;
-  /** Payment-method-specific configuration to provide to the invoice’s PaymentIntent. */
+  /** Payment-method-specific configuration to provide to the invoice's PaymentIntent. */
   payment_method_options: InvoicesPaymentMethodOptions | null;
-  /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+  /** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
   payment_method_types: InvoicesPaymentSettingsPaymentMethodTypesList | null;
 }
 export const InvoicesPaymentSettings = /*@__PURE__*/ S.suspend(() =>
@@ -20132,7 +20132,7 @@ export const InvoicesPaymentsInvoicePaymentStatusTransitions = /*@__PURE__*/ S.s
 
 /** Invoice Payments represent payments made against invoices. Invoice Payments can be accessed in two ways: 1. By expanding the `payments` field on the [Invoice](https://docs.stripe.com/api#invoice) resource. 2. By using the Invoice Payment retrieve and list endpoints. Invoice Payments include the mapping between payment objects, such as Payment Intent, and Invoices. This resource and its endpoints allows you to easily track if a payment is associated with a specific invoice and monitor the allocation details of the payments. */
 export interface InvoicePayment {
-  /** Amount that was actually paid for this invoice, in cents (or local equivalent). This field is null until the payment is `paid`. This amount can be less than the `amount_requested` if the PaymentIntent’s `amount_received` is not sufficient to pay all of the invoices that it is attached to. */
+  /** Amount that was actually paid for this invoice, in cents (or local equivalent). This field is null until the payment is `paid`. This amount can be less than the `amount_requested` if the PaymentIntent's `amount_received` is not sufficient to pay all of the invoices that it is attached to. */
   amount_paid: number | null;
   /** Amount intended to be paid toward this invoice, in cents (or local equivalent) */
   amount_requested: number;
@@ -20144,7 +20144,7 @@ export interface InvoicePayment {
   id: string;
   /** The invoice that was paid. */
   invoice: InvoicePaymentInvoice;
-  /** Stripe automatically creates a default InvoicePayment when the invoice is finalized, and keeps it synchronized with the invoice’s `amount_remaining`. The PaymentIntent associated with the default payment can’t be edited or canceled directly. */
+  /** Stripe automatically creates a default InvoicePayment when the invoice is finalized, and keeps it synchronized with the invoice's `amount_remaining`. The PaymentIntent associated with the default payment can't be edited or canceled directly. */
   is_default: boolean;
   /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
   livemode: boolean;
@@ -21158,7 +21158,7 @@ export type SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem =
   | "wechat_pay";
 export const SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem = S.String;
 
-/** The list of payment method types to provide to every invoice created by the subscription. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+/** The list of payment method types to provide to every invoice created by the subscription. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type SubscriptionsResourcePaymentSettingsPaymentMethodTypesList =
   Array<SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem>;
 export const SubscriptionsResourcePaymentSettingsPaymentMethodTypesList = /*@__PURE__*/ S.Array(
@@ -21174,7 +21174,7 @@ export const SubscriptionsResourcePaymentSettingsSaveDefaultPaymentMethod = S.St
 export interface SubscriptionsResourcePaymentSettings {
   /** Payment-method-specific configuration to provide to invoices created by the subscription. */
   payment_method_options: SubscriptionsResourcePaymentMethodOptions | null;
-  /** The list of payment method types to provide to every invoice created by the subscription. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+  /** The list of payment method types to provide to every invoice created by the subscription. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
   payment_method_types: SubscriptionsResourcePaymentSettingsPaymentMethodTypesList | null;
   /** Configure whether Stripe updates `subscription.default_payment_method` when payment succeeds. Defaults to `off`. */
   save_default_payment_method: SubscriptionsResourcePaymentSettingsSaveDefaultPaymentMethod | null;
@@ -23040,7 +23040,7 @@ export interface BankAccount {
   requirements?: ExternalAccountRequirements | null;
   /** The routing transit number for the bank account. */
   routing_number: string | null;
-  /** For bank accounts, possible values are `new`, `validated`, `verified`, `verification_failed`, `tokenized_account_number_deactivated` or `errored`. A bank account that hasn't had any activity or validation performed is `new`. If Stripe can determine that the bank account exists, its status will be `validated`. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be `verified`. If the verification failed for any reason, such as microdeposit failure, the status will be `verification_failed`. If the status is `tokenized_account_number_deactivated`, the account utilizes a tokenized account number which has been deactivated due to expiration or revocation. This account will need to be reverified to continue using it for money movement. If a payout sent to this bank account fails, we'll set the status to `errored` and will not continue to send [scheduled payouts](https://stripe.com/docs/payouts#payout-schedule) until the bank details are updated. For external accounts, possible values are `new`, `errored`, `verification_failed`, and `tokenized_account_number_deactivated`. If a payout fails, the status is set to `errored` and scheduled payouts are stopped until account details are updated. In the US and India, if we can't [verify the owner of the bank account](https://support.stripe.com/questions/bank-account-ownership-verification), we'll set the status to `verification_failed`. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply. */
+  /** For bank accounts, possible values are `new`, `validated`, `verified`, `verification_failed`, `tokenized_account_number_deactivated` or `errored`. A bank account that hasn't had any activity or validation performed is `new`. If Stripe can determine that the bank account exists, its status will be `validated`. Note that there often isn't enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be `verified`. If the verification failed for any reason, such as microdeposit failure, the status will be `verification_failed`. If the status is `tokenized_account_number_deactivated`, the account utilizes a tokenized account number which has been deactivated due to expiration or revocation. This account will need to be reverified to continue using it for money movement. If a payout sent to this bank account fails, we'll set the status to `errored` and will not continue to send [scheduled payouts](https://stripe.com/docs/payouts#payout-schedule) until the bank details are updated. For external accounts, possible values are `new`, `errored`, `verification_failed`, and `tokenized_account_number_deactivated`. If a payout fails, the status is set to `errored` and scheduled payouts are stopped until account details are updated. In the US and India, if we can't [verify the owner of the bank account](https://support.stripe.com/questions/bank-account-ownership-verification), we'll set the status to `verification_failed`. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply. */
   status: string;
 }
 export const BankAccount = /*@__PURE__*/ S.suspend(() =>
@@ -23349,7 +23349,7 @@ export interface PersonRelationship {
   executive: boolean | null;
   /** Whether the person is the legal guardian of the account's representative. */
   legal_guardian: boolean | null;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner: boolean | null;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership: number | null;
@@ -24649,7 +24649,7 @@ export interface CreateAccountPersonRequestRelationship {
   executive?: boolean;
   /** Whether the person is the legal guardian of the account's representative. */
   legal_guardian?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: CreateAccountPersonRequestRelationshipPercentOwnership;
@@ -24951,7 +24951,7 @@ export const CreateAccountRejectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAccountSessionRequestComponentsAccountManagementFeatures {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication?: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection?: boolean;
 }
 export const CreateAccountSessionRequestComponentsAccountManagementFeatures =
@@ -25014,7 +25014,7 @@ export interface CreateAccountSessionRequestComponentsBalancesFeatures {
   disable_stripe_user_authentication?: boolean;
   /** Whether to allow payout schedule to be changed. Defaults to `true` when `controller.losses.payments` is set to `stripe` for the account, otherwise `false`. */
   edit_payout_schedule?: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection?: boolean;
   /** Whether instant payouts are enabled for this component. */
   instant_payouts?: boolean;
@@ -25101,7 +25101,7 @@ export const CreateAccountSessionRequestComponentsDocuments =
 export interface CreateAccountSessionRequestComponentsFinancialAccountFeatures {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication?: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection?: boolean;
   /** Whether to allow sending money. */
   send_money?: boolean;
@@ -25173,7 +25173,7 @@ export const CreateAccountSessionRequestComponentsFinancialAccountTransactions =
 export interface CreateAccountSessionRequestComponentsInstantPayoutsPromotionFeatures {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication?: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection?: boolean;
   /** Whether instant payouts are enabled for this component. */
   instant_payouts?: boolean;
@@ -25549,7 +25549,7 @@ export const CreateAccountSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ConnectEmbeddedAccountFeaturesClaim {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection: boolean;
 }
 export const ConnectEmbeddedAccountFeaturesClaim = /*@__PURE__*/ S.suspend(() =>
@@ -25594,7 +25594,7 @@ export interface ConnectEmbeddedPayoutsFeatures {
   disable_stripe_user_authentication: boolean;
   /** Whether to allow payout schedule to be changed. Defaults to `true` when `controller.losses.payments` is set to `stripe` for the account, otherwise `false`. */
   edit_payout_schedule: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection: boolean;
   /** Whether to allow creation of instant payouts. The default value is `enabled` when Stripe is responsible for negative account balances, and `use_dashboard_rules` otherwise. */
   instant_payouts: boolean;
@@ -25668,7 +25668,7 @@ export const ConnectEmbeddedDisputesListConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ConnectEmbeddedFinancialAccountFeatures {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection: boolean;
   /** Whether to allow sending money. */
   send_money: boolean;
@@ -25729,7 +25729,7 @@ export const ConnectEmbeddedFinancialAccountTransactionsConfigClaim = /*@__PURE_
 export interface ConnectEmbeddedInstantPayoutsPromotionFeatures {
   /** Whether Stripe user authentication is disabled. This value can only be `true` for accounts where `controller.requirement_collection` is `application` for the account. The default value is the opposite of the `external_account_collection` value. For example, if you don't set `external_account_collection`, it defaults to `true` and `disable_stripe_user_authentication` defaults to `false`. */
   disable_stripe_user_authentication: boolean;
-  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you’re responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
+  /** Whether external account collection is enabled. This feature can only be `false` for accounts where you're responsible for collecting updated information when requirements are due or change, like Custom accounts. The default value for this feature is `true`. */
   external_account_collection: boolean;
   /** Whether to allow creation of instant payouts. The default value is `enabled` when Stripe is responsible for negative account balances, and `use_dashboard_rules` otherwise. */
   instant_payouts: boolean;
@@ -26921,7 +26921,7 @@ export const BalanceSettingsResourcePayments = /*@__PURE__*/ S.suspend(() =>
   identifier: "BalanceSettingsResourcePayments",
 }) as any as S.Schema<BalanceSettingsResourcePayments>;
 
-/** Options for customizing account balances and payout settings for a Stripe platform’s connected accounts. */
+/** Options for customizing account balances and payout settings for a Stripe platform's connected accounts. */
 export interface BalanceSettings {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: BalanceSettingsObject;
@@ -27653,7 +27653,7 @@ export interface CreateBillingMeterRequest {
   customer_mapping?: CreateBillingMeterRequestCustomerMapping;
   /** The default settings to aggregate a meter's events with. */
   default_aggregation: CreateBillingMeterRequestDefaultAggregation;
-  /** The meter’s name. Not visible to the customer. */
+  /** The meter's name. Not visible to the customer. */
   display_name: string;
   /** The name of the meter event to record usage for. Corresponds with the `event_name` field on meter events. */
   event_name: string;
@@ -27767,7 +27767,7 @@ export const BillingMeterEventPayloadMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<BillingMeterEventPayloadMap>;
 
-/** Meter events represent actions that customers take in your system. You can use meter events to bill a customer based on their usage. Meter events are associated with billing meters, which define both the contents of the event’s payload and how to aggregate those events. */
+/** Meter events represent actions that customers take in your system. You can use meter events to bill a customer based on their usage. Meter events are associated with billing meters, which define both the contents of the event's payload and how to aggregate those events. */
 export interface BillingMeterEvent {
   /** Time at which the object was created. Measured in seconds since the Unix epoch. */
   created: number;
@@ -28188,9 +28188,9 @@ export const CreateBillingPortalConfigurationRequestBusinessProfileHeadline =
 export interface CreateBillingPortalConfigurationRequestBusinessProfile {
   /** The messaging shown to customers in the portal. */
   headline?: CreateBillingPortalConfigurationRequestBusinessProfileHeadline;
-  /** A link to the business’s publicly available privacy policy. */
+  /** A link to the business's publicly available privacy policy. */
   privacy_policy_url?: string;
-  /** A link to the business’s publicly available terms of service. */
+  /** A link to the business's publicly available terms of service. */
   terms_of_service_url?: string;
 }
 export const CreateBillingPortalConfigurationRequestBusinessProfile = /*@__PURE__*/ S.suspend(() =>
@@ -28761,9 +28761,9 @@ export const BillingPortalConfigurationApplication =
 export interface PortalBusinessProfile {
   /** The messaging shown to customers in the portal. */
   headline: string | null;
-  /** A link to the business’s publicly available privacy policy. */
+  /** A link to the business's publicly available privacy policy. */
   privacy_policy_url: string | null;
-  /** A link to the business’s publicly available terms of service. */
+  /** A link to the business's publicly available terms of service. */
   terms_of_service_url: string | null;
 }
 export const PortalBusinessProfile = /*@__PURE__*/ S.suspend(() =>
@@ -29366,7 +29366,7 @@ export const CreateBillingPortalSessionRequestFlowData = /*@__PURE__*/ S.suspend
   identifier: "CreateBillingPortalSessionRequestFlowData",
 }) as any as S.Schema<CreateBillingPortalSessionRequestFlowData>;
 
-/** The IETF language tag of the locale customer portal is displayed in. If blank or auto, the customer’s `preferred_locales` or browser’s locale is used. */
+/** The IETF language tag of the locale customer portal is displayed in. If blank or auto, the customer's `preferred_locales` or browser's locale is used. */
 export type CreateBillingPortalSessionRequestLocale =
   | "auto"
   | "bg"
@@ -29428,7 +29428,7 @@ export interface CreateBillingPortalSessionRequest {
   expand?: CreateBillingPortalSessionRequestExpandList;
   /** Information about a specific flow for the customer to go through. See the [docs](https://docs.stripe.com/customer-management/portal-deep-links) to learn more about using customer portal deep links and flows. */
   flow_data?: CreateBillingPortalSessionRequestFlowData;
-  /** The IETF language tag of the locale customer portal is displayed in. If blank or auto, the customer’s `preferred_locales` or browser’s locale is used. */
+  /** The IETF language tag of the locale customer portal is displayed in. If blank or auto, the customer's `preferred_locales` or browser's locale is used. */
   locale?: CreateBillingPortalSessionRequestLocale | (string & {});
   /** The `on_behalf_of` account to use for this session. When specified, only subscriptions and invoices with this `on_behalf_of` account appear in the portal. For more information, see the [docs](https://docs.stripe.com/connect/separate-charges-and-transfers#settlement-merchant). Use the [Accounts API](https://docs.stripe.com/api/accounts/object#account_object-settings-branding) to modify the `on_behalf_of` account's branding settings, which the portal displays. */
   on_behalf_of?: string;
@@ -29646,7 +29646,7 @@ export const PortalFlowsFlow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PortalFlowsFlow" }) as any as S.Schema<PortalFlowsFlow>;
 
-/** The IETF language tag of the locale Customer Portal is displayed in. If blank or auto, the customer’s `preferred_locales` or browser’s locale is used. */
+/** The IETF language tag of the locale Customer Portal is displayed in. If blank or auto, the customer's `preferred_locales` or browser's locale is used. */
 export type BillingPortalSessionLocale =
   | "auto"
   | "bg"
@@ -29717,7 +29717,7 @@ export interface BillingPortalSession {
   id: string;
   /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
   livemode: boolean;
-  /** The IETF language tag of the locale Customer Portal is displayed in. If blank or auto, the customer’s `preferred_locales` or browser’s locale is used. */
+  /** The IETF language tag of the locale Customer Portal is displayed in. If blank or auto, the customer's `preferred_locales` or browser's locale is used. */
   locale: BillingPortalSessionLocale | null;
   /** String representing the object's type. Objects of the same type share the same value. */
   object: BillingPortalSessionObject;
@@ -30815,7 +30815,7 @@ export const CreateCheckoutSessionRequestInvoiceCreation = /*@__PURE__*/ S.suspe
   identifier: "CreateCheckoutSessionRequestInvoiceCreation",
 }) as any as S.Schema<CreateCheckoutSessionRequestInvoiceCreation>;
 
-/** When set, provides configuration for this item’s quantity to be adjusted by the customer during Checkout. */
+/** When set, provides configuration for this item's quantity to be adjusted by the customer during Checkout. */
 export interface CreateCheckoutSessionRequestLineItemsItemAdjustableQuantity {
   /** Set to true if the quantity can be adjusted to any non-negative integer. */
   enabled: boolean;
@@ -30998,7 +30998,7 @@ export const CreateCheckoutSessionRequestLineItemsItemTaxRatesList = /*@__PURE__
 ) as any as S.Schema<CreateCheckoutSessionRequestLineItemsItemTaxRatesList>;
 
 export interface CreateCheckoutSessionRequestLineItemsItem {
-  /** When set, provides configuration for this item’s quantity to be adjusted by the customer during Checkout. */
+  /** When set, provides configuration for this item's quantity to be adjusted by the customer during Checkout. */
   adjustable_quantity?: CreateCheckoutSessionRequestLineItemsItemAdjustableQuantity;
   /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. */
   metadata?: CreateCheckoutSessionRequestLineItemsItemMetadataMap;
@@ -31986,9 +31986,9 @@ export interface CreateCheckoutSessionRequestPaymentMethodOptionsCard {
   setup_future_usage?:
     | CreateCheckoutSessionRequestPaymentMethodOptionsCardSetupFutureUsage
     | (string & {});
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: string;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: string;
 }
 export const CreateCheckoutSessionRequestPaymentMethodOptionsCard = /*@__PURE__*/ S.suspend(() =>
@@ -33770,7 +33770,7 @@ export type CreateCheckoutSessionRequestSavedPaymentMethodOptionsAllowRedisplayF
 export const CreateCheckoutSessionRequestSavedPaymentMethodOptionsAllowRedisplayFiltersItem =
   S.String;
 
-/** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
+/** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with 'allow_redisplay: 'always' are shown in Checkout. */
 export type CreateCheckoutSessionRequestSavedPaymentMethodOptionsAllowRedisplayFiltersList = Array<
   CreateCheckoutSessionRequestSavedPaymentMethodOptionsAllowRedisplayFiltersItem | (string & {})
 >;
@@ -33793,7 +33793,7 @@ export const CreateCheckoutSessionRequestSavedPaymentMethodOptionsPaymentMethodS
 
 /** Controls saved payment method settings for the session. Only available in `payment` and `subscription` mode. */
 export interface CreateCheckoutSessionRequestSavedPaymentMethodOptions {
-  /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
+  /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with 'allow_redisplay: 'always' are shown in Checkout. */
   allow_redisplay_filters?: CreateCheckoutSessionRequestSavedPaymentMethodOptionsAllowRedisplayFiltersList;
   /** Enable customers to choose if they wish to remove their saved payment methods. Disabled by default. */
   payment_method_remove?:
@@ -34710,7 +34710,7 @@ export interface CreateCheckoutSessionRequest {
   custom_fields?: CreateCheckoutSessionRequestCustomFieldsList;
   /** Display additional text for your customers using custom text. You can't set this parameter if `ui_mode` is `elements`. */
   custom_text?: CreateCheckoutSessionRequestCustomText;
-  /** ID of an existing Customer, if one exists. In `payment` mode, the customer’s most recently saved card payment method will be used to prefill the email, name, card details, and billing address on the Checkout page. In `subscription` mode, the customer’s [default payment method](https://docs.stripe.com/api/customers/update#update_customer-invoice_settings-default_payment_method) will be used if it’s a card, otherwise the most recently saved card will be used. A valid billing address, billing name and billing email are required on the payment method for Checkout to prefill the customer's card details. If the Customer already has a valid [email](https://docs.stripe.com/api/customers/object#customer_object-email) set, the email will be prefilled and not editable in Checkout. If the Customer does not have a valid `email`, Checkout will set the email entered during the session on the Customer. If blank for Checkout Sessions in `subscription` mode or with `customer_creation` set as `always` in `payment` mode, Checkout will create a new Customer object based on information provided during the payment flow. You can set [`payment_intent_data.setup_future_usage`](https://docs.stripe.com/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage) to have Checkout automatically attach the payment method to the Customer you pass in for future reuse. */
+  /** ID of an existing Customer, if one exists. In `payment` mode, the customer's most recently saved card payment method will be used to prefill the email, name, card details, and billing address on the Checkout page. In `subscription` mode, the customer's [default payment method](https://docs.stripe.com/api/customers/update#update_customer-invoice_settings-default_payment_method) will be used if it's a card, otherwise the most recently saved card will be used. A valid billing address, billing name and billing email are required on the payment method for Checkout to prefill the customer's card details. If the Customer already has a valid [email](https://docs.stripe.com/api/customers/object#customer_object-email) set, the email will be prefilled and not editable in Checkout. If the Customer does not have a valid `email`, Checkout will set the email entered during the session on the Customer. If blank for Checkout Sessions in `subscription` mode or with `customer_creation` set as `always` in `payment` mode, Checkout will create a new Customer object based on information provided during the payment flow. You can set [`payment_intent_data.setup_future_usage`](https://docs.stripe.com/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage) to have Checkout automatically attach the payment method to the Customer you pass in for future reuse. */
   customer?: string;
   /** ID of an existing Account, if one exists. Has the same behavior as `customer`. */
   customer_account?: string;
@@ -35035,9 +35035,9 @@ export const PaymentPagesCheckoutSessionCheckoutAddressDetails = /*@__PURE__*/ S
 }) as any as S.Schema<PaymentPagesCheckoutSessionCheckoutAddressDetails>;
 
 export interface PaymentPagesCheckoutSessionCollectedInformation {
-  /** Customer’s business name for this Checkout Session */
+  /** Customer's business name for this Checkout Session */
   business_name: string | null;
-  /** Customer’s individual name for this Checkout Session */
+  /** Customer's individual name for this Checkout Session */
   individual_name: string | null;
   /** Shipping information for this Checkout Session. */
   shipping_details: PaymentPagesCheckoutSessionCheckoutAddressDetails | null;
@@ -35301,7 +35301,7 @@ export const CheckoutSessionCustomer = S.Unknown as any as S.Schema<CheckoutSess
 export type CheckoutSessionCustomerCreation = "always" | "if_required";
 export const CheckoutSessionCustomerCreation = S.String;
 
-/** The customer’s tax exempt status after a completed Checkout Session. */
+/** The customer's tax exempt status after a completed Checkout Session. */
 export type PaymentPagesCheckoutSessionCustomerDetailsTaxExempt = "exempt" | "none" | "reverse";
 export const PaymentPagesCheckoutSessionCustomerDetailsTaxExempt = S.String;
 
@@ -35442,7 +35442,7 @@ export const PaymentPagesCheckoutSessionTaxId = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentPagesCheckoutSessionTaxId",
 }) as any as S.Schema<PaymentPagesCheckoutSessionTaxId>;
 
-/** The customer’s tax IDs after a completed Checkout Session. */
+/** The customer's tax IDs after a completed Checkout Session. */
 export type PaymentPagesCheckoutSessionCustomerDetailsTaxIdsList =
   Array<PaymentPagesCheckoutSessionTaxId>;
 export const PaymentPagesCheckoutSessionCustomerDetailsTaxIdsList = /*@__PURE__*/ S.Array(
@@ -35462,9 +35462,9 @@ export interface PaymentPagesCheckoutSessionCustomerDetails {
   name: string | null;
   /** The customer's phone number after a completed Checkout Session. */
   phone: string | null;
-  /** The customer’s tax exempt status after a completed Checkout Session. */
+  /** The customer's tax exempt status after a completed Checkout Session. */
   tax_exempt: PaymentPagesCheckoutSessionCustomerDetailsTaxExempt | null;
-  /** The customer’s tax IDs after a completed Checkout Session. */
+  /** The customer's tax IDs after a completed Checkout Session. */
   tax_ids: PaymentPagesCheckoutSessionCustomerDetailsTaxIdsList | null;
 }
 export const PaymentPagesCheckoutSessionCustomerDetails = /*@__PURE__*/ S.suspend(() =>
@@ -37432,9 +37432,9 @@ export interface CheckoutCardPaymentMethodOptions {
   restrictions?: PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictions;
   /** Indicates that you intend to make future payments with this PaymentIntent's payment method. If you provide a Customer with the PaymentIntent, you can use this parameter to [attach the payment method](/payments/save-during-payment) to the Customer after the PaymentIntent is confirmed and the customer completes any required actions. If you don't provide a Customer, you can still [attach](/api/payment_methods/attach) the payment method to a Customer after the transaction completes. If the payment method is `card_present` and isn't a digital wallet, Stripe creates and attaches a [generated_card](/api/charges/object#charge_object-payment_method_details-card_present-generated_card) payment method representing the card to the Customer instead. When processing card payments, Stripe uses `setup_future_usage` to help you comply with regional legislation and network rules, such as [SCA](/strong-customer-authentication). */
   setup_future_usage?: CheckoutCardPaymentMethodOptionsSetupFutureUsage;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: string;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: string;
 }
 export const CheckoutCardPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
@@ -38536,7 +38536,7 @@ export type PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFi
 export const PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersItem =
   S.String;
 
-/** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
+/** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with 'allow_redisplay: 'always' are shown in Checkout. */
 export type PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersList =
   Array<PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersItem>;
 export const PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersList =
@@ -38557,7 +38557,7 @@ export type PaymentPagesCheckoutSessionSavedPaymentMethodOptionsPaymentMethodSav
 export const PaymentPagesCheckoutSessionSavedPaymentMethodOptionsPaymentMethodSave = S.String;
 
 export interface PaymentPagesCheckoutSessionSavedPaymentMethodOptions {
-  /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
+  /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with 'allow_redisplay: 'always' are shown in Checkout. */
   allow_redisplay_filters: PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersList | null;
   /** Enable customers to choose if they wish to remove their saved payment methods. Disabled by default. */
   payment_method_remove: PaymentPagesCheckoutSessionSavedPaymentMethodOptionsPaymentMethodRemove | null;
@@ -39150,7 +39150,7 @@ export interface CheckoutSession {
   total_details: PaymentPagesCheckoutSessionTotalDetails | null;
   /** The UI mode of the Session. Defaults to `hosted_page`. */
   ui_mode: CheckoutSessionUiMode | null;
-  /** The URL to the Checkout Session. Applies to Checkout Sessions with `ui_mode: hosted_page`. Redirect customers to this URL to take them to Checkout. If you’re using [Custom Domains](https://docs.stripe.com/payments/checkout/custom-domains), the URL will use your subdomain. Otherwise, it’ll use `checkout.stripe.com.` This value is only present when the session is active. */
+  /** The URL to the Checkout Session. Applies to Checkout Sessions with `ui_mode: hosted_page`. Redirect customers to this URL to take them to Checkout. If you're using [Custom Domains](https://docs.stripe.com/payments/checkout/custom-domains), the URL will use your subdomain. Otherwise, it'll use `checkout.stripe.com.` This value is only present when the session is active. */
   url: string | null;
   /** Wallet-specific configuration for this Checkout Session. */
   wallet_options: CheckoutSessionWalletOptions | null;
@@ -39356,7 +39356,7 @@ export const ClimateSupplierLocationsList = /*@__PURE__*/ S.Array(
   ClimateRemovalsLocation,
 ) as any as S.Schema<ClimateSupplierLocationsList>;
 
-/** String representing the object’s type. Objects of the same type share the same value. */
+/** String representing the object's type. Objects of the same type share the same value. */
 export type ClimateSupplierObject = "climate.supplier";
 export const ClimateSupplierObject = S.String;
 
@@ -39380,7 +39380,7 @@ export interface ClimateSupplier {
   locations: ClimateSupplierLocationsList;
   /** Name of this carbon removal supplier. */
   name: string;
-  /** String representing the object’s type. Objects of the same type share the same value. */
+  /** String representing the object's type. Objects of the same type share the same value. */
   object: ClimateSupplierObject;
   /** The scientific pathway used for carbon removal. */
   removal_pathway: ClimateSupplierRemovalPathway;
@@ -40808,9 +40808,9 @@ export const CreateCoreAccountRequestConfigurationMerchantKonbiniPayments = /*@_
 
 /** The Kana variation of statement_descriptor used for charges in Japan. Japanese statement descriptors have [special requirements](https://docs.stripe.com/get-started/account/statement-descriptors#set-japanese-statement-descriptors). */
 export interface CreateCoreAccountRequestConfigurationMerchantScriptStatementDescriptorKana {
-  /** The default text that appears on statements for non-card charges outside of Japan. For card charges, if you don’t set a statement_descriptor_prefix, this text is also used as the statement descriptor prefix. In that case, if concatenating the statement descriptor suffix causes the combined statement descriptor to exceed 22 characters, we truncate the statement_descriptor text to limit the full descriptor to 22 characters. For more information about statement descriptors and their requirements, see the Merchant Configuration settings documentation. */
+  /** The default text that appears on statements for non-card charges outside of Japan. For card charges, if you don't set a statement_descriptor_prefix, this text is also used as the statement descriptor prefix. In that case, if concatenating the statement descriptor suffix causes the combined statement descriptor to exceed 22 characters, we truncate the statement_descriptor text to limit the full descriptor to 22 characters. For more information about statement descriptors and their requirements, see the Merchant Configuration settings documentation. */
   descriptor?: string;
-  /** Default text that appears on statements for card charges outside of Japan, prefixing any dynamic statement_descriptor_suffix specified on the charge. To maximize space for the dynamic part of the descriptor, keep this text short. If you don’t specify this value, statement_descriptor is used as the prefix. For more information about statement descriptors and their requirements, see the Merchant Configuration settings documentation. */
+  /** Default text that appears on statements for card charges outside of Japan, prefixing any dynamic statement_descriptor_suffix specified on the charge. To maximize space for the dynamic part of the descriptor, keep this text short. If you don't specify this value, statement_descriptor is used as the prefix. For more information about statement descriptors and their requirements, see the Merchant Configuration settings documentation. */
   prefix?: string;
 }
 export const CreateCoreAccountRequestConfigurationMerchantScriptStatementDescriptorKana =
@@ -41160,7 +41160,7 @@ export type CreateCoreAccountRequestDefaultsResponsibilitiesFeesCollector =
   | "stripe";
 export const CreateCoreAccountRequestDefaultsResponsibilitiesFeesCollector = S.String;
 
-/** A value indicating who is responsible for losses when this Account can’t pay back negative balances from payments. */
+/** A value indicating who is responsible for losses when this Account can't pay back negative balances from payments. */
 export type CreateCoreAccountRequestDefaultsResponsibilitiesLossesCollector =
   | "application"
   | "stripe";
@@ -41170,7 +41170,7 @@ export const CreateCoreAccountRequestDefaultsResponsibilitiesLossesCollector = S
 export interface CreateCoreAccountRequestDefaultsResponsibilities {
   /** A value indicating the party responsible for collecting fees from this account. */
   fees_collector: CreateCoreAccountRequestDefaultsResponsibilitiesFeesCollector | (string & {});
-  /** A value indicating who is responsible for losses when this Account can’t pay back negative balances from payments. */
+  /** A value indicating who is responsible for losses when this Account can't pay back negative balances from payments. */
   losses_collector: CreateCoreAccountRequestDefaultsResponsibilitiesLossesCollector | (string & {});
 }
 export const CreateCoreAccountRequestDefaultsResponsibilities = /*@__PURE__*/ S.suspend(() =>
@@ -41253,11 +41253,11 @@ export const CreateCoreAccountRequestIdentityAttestationsPersonsProvidedOwnershi
 
 /** Attestation that all Persons with a specific Relationship value have been provided. */
 export interface CreateCoreAccountRequestIdentityAttestationsPersonsProvided {
-  /** Whether the company’s directors have been provided. Set this Boolean to true after creating all the company’s directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's directors have been provided. Set this Boolean to true after creating all the company's directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   directors?: boolean;
-  /** Whether the company’s executives have been provided. Set this Boolean to true after creating all the company’s executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's executives have been provided. Set this Boolean to true after creating all the company's executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   executives?: boolean;
-  /** Whether the company’s owners have been provided. Set this Boolean to true after creating all the company’s owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's owners have been provided. Set this Boolean to true after creating all the company's owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   owners?: boolean;
   /** Reason for why the company is exempt from providing ownership information. */
   ownership_exemption_reason?:
@@ -48283,11 +48283,11 @@ export const V2CoreAccountIdentityAttestationsPersonsProvidedOwnershipExemptionR
 
 /** Attestation that all Persons with a specific Relationship value have been provided. */
 export interface V2CoreAccountIdentityAttestationsPersonsProvided {
-  /** Whether the company’s directors have been provided. Set this Boolean to true after creating all the company’s directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's directors have been provided. Set this Boolean to true after creating all the company's directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   directors?: boolean;
-  /** Whether the company’s executives have been provided. Set this Boolean to true after creating all the company’s executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's executives have been provided. Set this Boolean to true after creating all the company's executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   executives?: boolean;
-  /** Whether the company’s owners have been provided. Set this Boolean to true after creating all the company’s owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's owners have been provided. Set this Boolean to true after creating all the company's owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   owners?: boolean;
   /** Reason for why the company is exempt from providing ownership information. */
   ownership_exemption_reason?: V2CoreAccountIdentityAttestationsPersonsProvidedOwnershipExemptionReason;
@@ -50203,7 +50203,7 @@ export const CreateCoreAccountCloseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCoreAccountCloseRequest",
 }) as any as S.Schema<CreateCoreAccountCloseRequest>;
 
-/** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don’t specify collection_options, the default value is currently_due. */
+/** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don't specify collection_options, the default value is currently_due. */
 export type CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptionsFields =
   | "currently_due"
   | "eventually_due";
@@ -50218,7 +50218,7 @@ export const CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptio
 
 /** Specifies the requirements that Stripe collects from v2/core/accounts in the Onboarding flow. */
 export interface CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptions {
-  /** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don’t specify collection_options, the default value is currently_due. */
+  /** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don't specify collection_options, the default value is currently_due. */
   fields?:
     | CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptionsFields
     | (string & {});
@@ -50245,7 +50245,7 @@ export const CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptio
 export interface CreateCoreAccountLinkRequestUseCaseAccountOnboarding {
   /** Specifies the requirements that Stripe collects from v2/core/accounts in the Onboarding flow. */
   collection_options?: CreateCoreAccountLinkRequestUseCaseAccountOnboardingCollectionOptions;
-  /** The URL the user will be redirected to if the AccountLink is expired, has been used, or is otherwise invalid. The URL you specify should attempt to generate a new AccountLink with the same parameters used to create the original AccountLink, then redirect the user to the new AccountLink’s URL so they can continue the flow. If a new AccountLink cannot be generated or the redirect fails you should display a useful error to the user. Please make sure to implement authentication before redirecting the user in case this URL is leaked to a third party. */
+  /** The URL the user will be redirected to if the AccountLink is expired, has been used, or is otherwise invalid. The URL you specify should attempt to generate a new AccountLink with the same parameters used to create the original AccountLink, then redirect the user to the new AccountLink's URL so they can continue the flow. If a new AccountLink cannot be generated or the redirect fails you should display a useful error to the user. Please make sure to implement authentication before redirecting the user in case this URL is leaked to a third party. */
   refresh_url: string;
   /** The URL that the user will be redirected to upon completing the linked flow. */
   return_url?: string;
@@ -50321,7 +50321,7 @@ export const CreateCoreAccountLinkRequestUseCaseAccountUpdate = /*@__PURE__*/ S.
 export type CreateCoreAccountLinkRequestUseCaseType = "account_onboarding" | "account_update";
 export const CreateCoreAccountLinkRequestUseCaseType = S.String;
 
-/** Specifies the Stripe-hosted flow for this Account Link. Set `type` and the matching options hash—for example, `account_onboarding`—to configure the flow, including which Account configurations to collect information for and any flow-specific collection or redirect options. */
+/** Specifies the Stripe-hosted flow for this Account Link. Set `type` and the matching options hash--for example, `account_onboarding`--to configure the flow, including which Account configurations to collect information for and any flow-specific collection or redirect options. */
 export interface CreateCoreAccountLinkRequestUseCase {
   /** Hash containing configuration options for an Account Link object that onboards a new account. */
   account_onboarding?: CreateCoreAccountLinkRequestUseCaseAccountOnboarding;
@@ -50343,7 +50343,7 @@ export const CreateCoreAccountLinkRequestUseCase = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCoreAccountLinkRequest {
   /** The ID of the Account to create link for. */
   account: string;
-  /** Specifies the Stripe-hosted flow for this Account Link. Set `type` and the matching options hash—for example, `account_onboarding`—to configure the flow, including which Account configurations to collect information for and any flow-specific collection or redirect options. */
+  /** Specifies the Stripe-hosted flow for this Account Link. Set `type` and the matching options hash--for example, `account_onboarding`--to configure the flow, including which Account configurations to collect information for and any flow-specific collection or redirect options. */
   use_case: CreateCoreAccountLinkRequestUseCase;
 }
 export const CreateCoreAccountLinkRequest = /*@__PURE__*/ S.suspend(() =>
@@ -50359,7 +50359,7 @@ export const CreateCoreAccountLinkRequest = /*@__PURE__*/ S.suspend(() =>
 export type V2CoreAccountLinkObject = "v2.core.account_link";
 export const V2CoreAccountLinkObject = S.String;
 
-/** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don’t specify collection_options, the default value is currently_due. */
+/** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don't specify collection_options, the default value is currently_due. */
 export type V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptionsFields =
   | "currently_due"
   | "eventually_due";
@@ -50374,7 +50374,7 @@ export const V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptionsFutureReq
 
 /** Specifies the requirements that Stripe collects from v2/core/accounts in the Onboarding flow. */
 export interface V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptions {
-  /** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don’t specify collection_options, the default value is currently_due. */
+  /** Specifies whether the platform collects only currently_due requirements (`currently_due`) or both currently_due and eventually_due requirements (`eventually_due`). If you don't specify collection_options, the default value is currently_due. */
   fields?: V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptionsFields;
   /** Specifies whether the platform collects future_requirements in addition to requirements in Connect Onboarding. The default value is `omit`. */
   future_requirements?: V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptionsFutureRequirements;
@@ -50395,7 +50395,7 @@ export const V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptions = /*@__P
 export interface V2CoreAccountLinkUseCaseAccountOnboarding {
   /** Specifies the requirements that Stripe collects from v2/core/accounts in the Onboarding flow. */
   collection_options?: V2CoreAccountLinkUseCaseAccountOnboardingCollectionOptions;
-  /** The URL the user will be redirected to if the AccountLink is expired, has been used, or is otherwise invalid. The URL you specify should attempt to generate a new AccountLink with the same parameters used to create the original AccountLink, then redirect the user to the new AccountLink’s URL so they can continue the flow. If a new AccountLink cannot be generated or the redirect fails you should display a useful error to the user. Please make sure to implement authentication before redirecting the user in case this URL is leaked to a third party. */
+  /** The URL the user will be redirected to if the AccountLink is expired, has been used, or is otherwise invalid. The URL you specify should attempt to generate a new AccountLink with the same parameters used to create the original AccountLink, then redirect the user to the new AccountLink's URL so they can continue the flow. If a new AccountLink cannot be generated or the redirect fails you should display a useful error to the user. Please make sure to implement authentication before redirecting the user in case this URL is leaked to a third party. */
   refresh_url: string;
   /** The URL that the user will be redirected to upon completing the linked flow. */
   return_url?: string;
@@ -52150,11 +52150,11 @@ export const CreateCoreAccountTokenRequestIdentityAttestationsPersonsProvidedOwn
 
 /** Attestation that all Persons with a specific Relationship value have been provided. */
 export interface CreateCoreAccountTokenRequestIdentityAttestationsPersonsProvided {
-  /** Whether the company’s directors have been provided. Set this Boolean to true after creating all the company’s directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's directors have been provided. Set this Boolean to true after creating all the company's directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   directors?: boolean;
-  /** Whether the company’s executives have been provided. Set this Boolean to true after creating all the company’s executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's executives have been provided. Set this Boolean to true after creating all the company's executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   executives?: boolean;
-  /** Whether the company’s owners have been provided. Set this Boolean to true after creating all the company’s owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's owners have been provided. Set this Boolean to true after creating all the company's owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   owners?: boolean;
   /** Reason for why the company is exempt from providing ownership information. */
   ownership_exemption_reason?:
@@ -55350,7 +55350,7 @@ export interface CreateCustomerRequest {
   expand?: CreateCustomerRequestExpandList;
   /** The customer's full name. This may be up to *150 characters*. */
   individual_name?: CreateCustomerRequestIndividualName;
-  /** The prefix for the customer used to generate unique invoice numbers. Must be 1–12 uppercase letters or numbers. */
+  /** The prefix for the customer used to generate unique invoice numbers. Must be 1-12 uppercase letters or numbers. */
   invoice_prefix?: string;
   /** Default invoice settings for this customer. */
   invoice_settings?: CreateCustomerRequestInvoiceSettings;
@@ -56741,9 +56741,9 @@ export const DisputeTransactionShippingAddress = Address;
 export interface DisputeVisaCompellingEvidence3DisputedTransaction {
   /** User Account ID used to log into business platform. Must be recognizable by the user. */
   customer_account_id: string | null;
-  /** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+  /** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
   customer_device_fingerprint: string | null;
-  /** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+  /** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
   customer_device_id: string | null;
   /** The email address of the customer. */
   customer_email_address: string | null;
@@ -56778,9 +56778,9 @@ export interface DisputeVisaCompellingEvidence3PriorUndisputedTransaction {
   charge: string;
   /** User Account ID used to log into business platform. Must be recognizable by the user. */
   customer_account_id: string | null;
-  /** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+  /** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
   customer_device_fingerprint: string | null;
-  /** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+  /** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
   customer_device_id: string | null;
   /** The email address of the customer. */
   customer_email_address: string | null;
@@ -58798,7 +58798,7 @@ export const ForwardedResponseDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ForwardedResponseDetails" }) as any as S.Schema<ForwardedResponseDetails>;
 
-/** Instructs Stripe to make a request on your behalf using the destination URL. The destination URL is activated by Stripe at the time of onboarding. Stripe verifies requests with your credentials provided during onboarding, and injects card details from the payment_method into the request. Stripe redacts all sensitive fields and headers, including authentication credentials and card numbers, before storing the request and response data in the forwarding Request object, which are subject to a 30-day retention period. You can provide a Stripe idempotency key to make sure that requests with the same key result in only one outbound request. The Stripe idempotency key provided should be unique and different from any idempotency keys provided on the underlying third-party request. Forwarding Requests are synchronous requests that return a response or time out according to Stripe’s limits. Related guide: [Forward card details to third-party API endpoints](https://docs.stripe.com/payments/forwarding). */
+/** Instructs Stripe to make a request on your behalf using the destination URL. The destination URL is activated by Stripe at the time of onboarding. Stripe verifies requests with your credentials provided during onboarding, and injects card details from the payment_method into the request. Stripe redacts all sensitive fields and headers, including authentication credentials and card numbers, before storing the request and response data in the forwarding Request object, which are subject to a 30-day retention period. You can provide a Stripe idempotency key to make sure that requests with the same key result in only one outbound request. The Stripe idempotency key provided should be unique and different from any idempotency keys provided on the underlying third-party request. Forwarding Requests are synchronous requests that return a response or time out according to Stripe's limits. Related guide: [Forward card details to third-party API endpoints](https://docs.stripe.com/payments/forwarding). */
 export interface ForwardingRequest {
   /** Time at which the object was created. Measured in seconds since the Unix epoch. */
   created: number;
@@ -58861,7 +58861,7 @@ export type CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedT
 export const CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesItem =
   S.String;
 
-/** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+/** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList = Array<
   CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesItem | (string & {})
 >;
@@ -58871,13 +58871,13 @@ export const CreateIdentityVerificationSessionRequestOptionsDocumentCase0Allowed
   ) as any as S.Schema<CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList>;
 
 export interface CreateIdentityVerificationSessionRequestOptionsDocumentCase0 {
-  /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+  /** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
   allowed_types?: CreateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList;
-  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document’s extracted name and date of birth. */
+  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document's extracted name and date of birth. */
   require_id_number?: boolean;
-  /** Disable image uploads, identity document images have to be captured using the device’s camera. */
+  /** Disable image uploads, identity document images have to be captured using the device's camera. */
   require_live_capture?: boolean;
-  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user’s face. [Learn more](https://docs.stripe.com/identity/selfie). */
+  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.stripe.com/identity/selfie). */
   require_matching_selfie?: boolean;
 }
 export const CreateIdentityVerificationSessionRequestOptionsDocumentCase0 = /*@__PURE__*/ S.suspend(
@@ -58904,7 +58904,7 @@ export type CreateIdentityVerificationSessionRequestOptionsDocument =
 export const CreateIdentityVerificationSessionRequestOptionsDocument =
   S.Unknown as any as S.Schema<CreateIdentityVerificationSessionRequestOptionsDocument>;
 
-/** A set of options for the session’s verification checks. */
+/** A set of options for the session's verification checks. */
 export interface CreateIdentityVerificationSessionRequestOptions {
   /** Options that apply to the [document check](https://docs.stripe.com/identity/verification-checks?type=document). */
   document?: CreateIdentityVerificationSessionRequestOptionsDocument;
@@ -58960,7 +58960,7 @@ export interface CreateIdentityVerificationSessionRequest {
   expand?: CreateIdentityVerificationSessionRequestExpandList;
   /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. */
   metadata?: CreateIdentityVerificationSessionRequestMetadataMap;
-  /** A set of options for the session’s verification checks. */
+  /** A set of options for the session's verification checks. */
   options?: CreateIdentityVerificationSessionRequestOptions;
   /** Details provided about the user being verified. These details might be shown to the user. */
   provided_details?: CreateIdentityVerificationSessionRequestProvidedDetails;
@@ -59270,7 +59270,7 @@ export type GelatoReportDocumentOptionsAllowedTypesItem =
   | "passport";
 export const GelatoReportDocumentOptionsAllowedTypesItem = S.String;
 
-/** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+/** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type GelatoReportDocumentOptionsAllowedTypesList =
   Array<GelatoReportDocumentOptionsAllowedTypesItem>;
 export const GelatoReportDocumentOptionsAllowedTypesList = /*@__PURE__*/ S.Array(
@@ -59278,13 +59278,13 @@ export const GelatoReportDocumentOptionsAllowedTypesList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GelatoReportDocumentOptionsAllowedTypesList>;
 
 export interface GelatoReportDocumentOptions {
-  /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+  /** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
   allowed_types?: GelatoReportDocumentOptionsAllowedTypesList;
-  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document’s extracted name and date of birth. */
+  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document's extracted name and date of birth. */
   require_id_number?: boolean;
-  /** Disable image uploads, identity document images have to be captured using the device’s camera. */
+  /** Disable image uploads, identity document images have to be captured using the device's camera. */
   require_live_capture?: boolean;
-  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user’s face. [Learn more](https://docs.stripe.com/identity/selfie). */
+  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.stripe.com/identity/selfie). */
   require_matching_selfie?: boolean;
 }
 export const GelatoReportDocumentOptions = /*@__PURE__*/ S.suspend(() =>
@@ -59466,7 +59466,7 @@ export type GelatoSessionDocumentOptionsAllowedTypesItem =
   | "passport";
 export const GelatoSessionDocumentOptionsAllowedTypesItem = S.String;
 
-/** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+/** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type GelatoSessionDocumentOptionsAllowedTypesList =
   Array<GelatoSessionDocumentOptionsAllowedTypesItem>;
 export const GelatoSessionDocumentOptionsAllowedTypesList = /*@__PURE__*/ S.Array(
@@ -59474,13 +59474,13 @@ export const GelatoSessionDocumentOptionsAllowedTypesList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<GelatoSessionDocumentOptionsAllowedTypesList>;
 
 export interface GelatoSessionDocumentOptions {
-  /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+  /** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
   allowed_types?: GelatoSessionDocumentOptionsAllowedTypesList;
-  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document’s extracted name and date of birth. */
+  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document's extracted name and date of birth. */
   require_id_number?: boolean;
-  /** Disable image uploads, identity document images have to be captured using the device’s camera. */
+  /** Disable image uploads, identity document images have to be captured using the device's camera. */
   require_live_capture?: boolean;
-  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user’s face. [Learn more](https://docs.stripe.com/identity/selfie). */
+  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.stripe.com/identity/selfie). */
   require_matching_selfie?: boolean;
 }
 export const GelatoSessionDocumentOptions = /*@__PURE__*/ S.suspend(() =>
@@ -59619,7 +59619,7 @@ export const GelatoVerifiedOutputsSex = S.String;
 export interface GelatoVerifiedOutputs {
   /** The user's verified address. */
   address: Address | null;
-  /** The user’s verified date of birth. */
+  /** The user's verified date of birth. */
   dob?: GelatoDataDocumentReportDateOfBirth | null;
   /** The user's verified email address */
   email: string | null;
@@ -59660,7 +59660,7 @@ export const GelatoVerifiedOutputs = /*@__PURE__*/ S.suspend(() =>
 export interface IdentityVerificationSession {
   /** A string to reference this user. This can be a customer ID, a session ID, or similar, and can be used to reconcile this verification with your internal systems. */
   client_reference_id: string | null;
-  /** The short-lived client secret used by Stripe.js to [show a verification modal](https://docs.stripe.com/js/identity/modal) inside your app. This client secret expires after 24 hours and can only be used once. Don’t store it, log it, embed it in a URL, or expose it to anyone other than the user. Make sure that you have TLS enabled on any page that includes the client secret. Refer to our docs on [passing the client secret to the frontend](https://docs.stripe.com/identity/verification-sessions#client-secret) to learn more. */
+  /** The short-lived client secret used by Stripe.js to [show a verification modal](https://docs.stripe.com/js/identity/modal) inside your app. This client secret expires after 24 hours and can only be used once. Don't store it, log it, embed it in a URL, or expose it to anyone other than the user. Make sure that you have TLS enabled on any page that includes the client secret. Refer to our docs on [passing the client secret to the frontend](https://docs.stripe.com/identity/verification-sessions#client-secret) to learn more. */
   client_secret: string | Redacted.Redacted<string> | null;
   /** Time at which the object was created. Measured in seconds since the Unix epoch. */
   created: number;
@@ -59676,7 +59676,7 @@ export interface IdentityVerificationSession {
   metadata: IdentityVerificationSessionMetadataMap;
   /** String representing the object's type. Objects of the same type share the same value. */
   object: IdentityVerificationSessionObject;
-  /** A set of options for the session’s verification checks. */
+  /** A set of options for the session's verification checks. */
   options: GelatoVerificationSessionOptions | null;
   /** Details provided about the user being verified. These details may be shown to the user. */
   provided_details?: CreateIdentityVerificationSessionRequestProvidedDetails | null;
@@ -59691,11 +59691,11 @@ export interface IdentityVerificationSession {
   status: IdentityVerificationSessionStatus;
   /** The type of [verification check](https://docs.stripe.com/identity/verification-checks) to be performed. */
   type: IdentityVerificationSessionType;
-  /** The short-lived URL that you use to redirect a user to Stripe to submit their identity information. This URL expires after 48 hours and can only be used once. Don’t store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on [verifying identity documents](https://docs.stripe.com/identity/verify-identity-documents?platform=web&type=redirect) to learn how to redirect users to Stripe. */
+  /** The short-lived URL that you use to redirect a user to Stripe to submit their identity information. This URL expires after 48 hours and can only be used once. Don't store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on [verifying identity documents](https://docs.stripe.com/identity/verify-identity-documents?platform=web&type=redirect) to learn how to redirect users to Stripe. */
   url: string | null;
   /** The configuration token of a verification flow from the dashboard. */
   verification_flow?: string;
-  /** The user’s verified data. */
+  /** The user's verified data. */
   verified_outputs?: GelatoVerifiedOutputs | null;
 }
 export const IdentityVerificationSession = /*@__PURE__*/ S.suspend(() =>
@@ -60025,7 +60025,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCas
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = S.String;
 
-/** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebit =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1;
@@ -60061,7 +60061,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCa
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = S.String;
 
-/** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontact =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1;
@@ -60194,7 +60194,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase0 
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = S.String;
 
-/** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1;
@@ -60204,7 +60204,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = S.String;
 
-/** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlik =
   | unknown
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1;
@@ -60315,7 +60315,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase0 =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1 = S.String;
 
-/** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCard =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1;
@@ -60369,7 +60369,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBala
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 = S.String;
 
-/** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalance =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1;
@@ -60379,7 +60379,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBala
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = S.String;
 
-/** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbini =
   | unknown
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1;
@@ -60441,7 +60441,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase0 =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = S.String;
 
-/** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPayto =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1;
@@ -60478,7 +60478,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase0 =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1 = S.String;
 
-/** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1;
@@ -60488,7 +60488,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = S.String;
 
-/** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebit =
   | unknown
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1;
@@ -60547,7 +60547,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase0 =
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = S.String;
 
-/** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpi =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1;
@@ -60685,38 +60685,38 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccoun
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 = S.String;
 
-/** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1;
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   S.Unknown as any as S.Schema<CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount>;
 
-/** Payment-method-specific configuration to provide to the invoice’s PaymentIntent. */
+/** Payment-method-specific configuration to provide to the invoice's PaymentIntent. */
 export interface CreateInvoiceRequestPaymentSettingsPaymentMethodOptions {
-  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
   acss_debit?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebit;
-  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
   bancontact?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontact;
-  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
   billie?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie;
-  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
   blik?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlik;
-  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
   card?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCard;
-  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
   customer_balance?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalance;
-  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
   konbini?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbini;
-  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
   payto?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPayto;
-  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
   pix?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix;
-  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
   sepa_debit?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebit;
-  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
   upi?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpi;
-  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
   us_bank_account?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount;
 }
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
@@ -60805,7 +60805,7 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodTypesCase0List = /*
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1 = "";
 export const CreateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1 = S.String;
 
-/** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+/** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type CreateInvoiceRequestPaymentSettingsPaymentMethodTypes =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodTypesCase0List
   | CreateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1;
@@ -60816,9 +60816,9 @@ export const CreateInvoiceRequestPaymentSettingsPaymentMethodTypes =
 export interface CreateInvoiceRequestPaymentSettings {
   /** ID of the mandate to be used for this invoice. It must correspond to the payment method used to pay the invoice, including the invoice's default_payment_method or default_source, if set. */
   default_mandate?: CreateInvoiceRequestPaymentSettingsDefaultMandate;
-  /** Payment-method-specific configuration to provide to the invoice’s PaymentIntent. */
+  /** Payment-method-specific configuration to provide to the invoice's PaymentIntent. */
   payment_method_options?: CreateInvoiceRequestPaymentSettingsPaymentMethodOptions;
-  /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+  /** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
   payment_method_types?: CreateInvoiceRequestPaymentSettingsPaymentMethodTypes;
 }
 export const CreateInvoiceRequestPaymentSettings = /*@__PURE__*/ S.suspend(() =>
@@ -61475,7 +61475,7 @@ export type CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxRateDataTa
   | "vat";
 export const CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxRateDataTaxType = S.String;
 
-/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
 export interface CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxRateData {
   /** Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
   country?: string;
@@ -61485,7 +61485,7 @@ export interface CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxRateD
   display_name: string;
   /** This specifies if the tax rate is inclusive or exclusive. */
   inclusive: boolean;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction?: string;
   /** The level of the jurisdiction that imposes this tax rate. */
   jurisdiction_level?:
@@ -61543,7 +61543,7 @@ export const CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxabilityRe
 export interface CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0Item {
   /** The amount, in cents (or local equivalent), of the tax. */
   amount: number;
-  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
   tax_rate_data: CreateInvoiceAddLineRequestLinesItemTaxAmountsCase0ItemTaxRateData;
   /** The reasoning behind this tax, for example, if the product is tax exempt. */
   taxability_reason?:
@@ -64791,7 +64791,7 @@ export type CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxRateDat
 export const CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxRateDataTaxType =
   S.String;
 
-/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
 export interface CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxRateData {
   /** Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
   country?: string;
@@ -64801,7 +64801,7 @@ export interface CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxRa
   display_name: string;
   /** This specifies if the tax rate is inclusive or exclusive. */
   inclusive: boolean;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction?: string;
   /** The level of the jurisdiction that imposes this tax rate. */
   jurisdiction_level?:
@@ -64859,7 +64859,7 @@ export const CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxabilit
 export interface CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0Item {
   /** The amount, in cents (or local equivalent), of the tax. */
   amount: number;
-  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
   tax_rate_data: CreateInvoiceUpdateLineRequestLinesItemTaxAmountsCase0ItemTaxRateData;
   /** The reasoning behind this tax, for example, if the product is tax exempt. */
   taxability_reason?:
@@ -66431,7 +66431,7 @@ export const IssuingCardholderObject = S.String;
 export type IssuingCardholderPreferredLocalesItem = "de" | "en" | "es" | "fr" | "it";
 export const IssuingCardholderPreferredLocalesItem = S.String;
 
-/** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+/** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
 export type IssuingCardholderPreferredLocalesList = Array<IssuingCardholderPreferredLocalesItem>;
 export const IssuingCardholderPreferredLocalesList = /*@__PURE__*/ S.Array(
   IssuingCardholderPreferredLocalesItem,
@@ -67539,7 +67539,7 @@ export interface IssuingCardholder {
   object: IssuingCardholderObject;
   /** The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://docs.stripe.com/issuing/3d-secure#when-is-3d-secure-applied) for more details. */
   phone_number: string | null;
-  /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+  /** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
   preferred_locales: IssuingCardholderPreferredLocalesList | null;
   requirements: IssuingCardholderRequirements;
   /** Rules that control spending across this cardholder's cards. Refer to our [documentation](https://docs.stripe.com/issuing/controls/spending-controls) for more details. */
@@ -69081,7 +69081,7 @@ export interface IssuingCard {
   id: string;
   /** The last 4 digits of the card number. */
   last4: string;
-  /** Stripe’s assessment of whether this card’s details have been compromised. If this property isn't null, cancel and reissue the card to prevent fraudulent activity risk. */
+  /** Stripe's assessment of whether this card's details have been compromised. If this property isn't null, cancel and reissue the card to prevent fraudulent activity risk. */
   latest_fraud_warning: IssuingCardFraudWarning | null;
   /** Rules that control the lifecycle of this card, such as automatic cancellation. Refer to our [documentation](/issuing/controls/lifecycle-controls) for more details. */
   lifecycle_controls: IssuingCardLifecycleControls | null;
@@ -69145,13 +69145,13 @@ export const IssuingCard = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssuingCard" }) as any as S.Schema<IssuingCard>;
 
-/** The cardholder’s billing address. */
+/** The cardholder's billing address. */
 export type CreateIssuingCardholderRequestBillingAddress = CreateIssuingCardRequestShippingAddress;
 export const CreateIssuingCardholderRequestBillingAddress = CreateIssuingCardRequestShippingAddress;
 
 /** The cardholder's billing address. */
 export interface CreateIssuingCardholderRequestBilling {
-  /** The cardholder’s billing address. */
+  /** The cardholder's billing address. */
   address: CreateIssuingCardRequestShippingAddress;
 }
 export const CreateIssuingCardholderRequestBilling = /*@__PURE__*/ S.suspend(() =>
@@ -69299,7 +69299,7 @@ export const CreateIssuingCardholderRequestMetadataMap = /*@__PURE__*/ S.Record(
 export type CreateIssuingCardholderRequestPreferredLocalesItem = "de" | "en" | "es" | "fr" | "it";
 export const CreateIssuingCardholderRequestPreferredLocalesItem = S.String;
 
-/** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+/** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
 export type CreateIssuingCardholderRequestPreferredLocalesList = Array<
   CreateIssuingCardholderRequestPreferredLocalesItem | (string & {})
 >;
@@ -70385,7 +70385,7 @@ export interface CreateIssuingCardholderRequest {
   name: string;
   /** The cardholder's phone number. This will be transformed to [E.164](https://en.wikipedia.org/wiki/E.164) if it is not provided in that format already. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://docs.stripe.com/issuing/3d-secure#when-is-3d-secure-applied) for more details. */
   phone_number?: string;
-  /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+  /** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
   preferred_locales?: CreateIssuingCardholderRequestPreferredLocalesList;
   /** Rules that control spending across this cardholder's cards. Refer to our [documentation](https://docs.stripe.com/issuing/controls/spending-controls) for more details. */
   spending_controls?: CreateIssuingCardholderRequestSpendingControls;
@@ -71862,7 +71862,7 @@ export const IssuingAuthorizationFuelData = /*@__PURE__*/ S.suspend(() =>
 export interface IssuingAuthorizationMerchantData {
   /** A categorization of the seller's type of business. See our [merchant categories guide](https://docs.stripe.com/issuing/merchant-categories) for a list of possible values. */
   category: string;
-  /** The merchant category code for the seller’s business */
+  /** The merchant category code for the seller's business */
   category_code: string;
   /** City where the seller is located */
   city: string | null;
@@ -72344,14 +72344,14 @@ export const IssuingAuthorizationTreasury = /*@__PURE__*/ S.suspend(() =>
   identifier: "IssuingAuthorizationTreasury",
 }) as any as S.Schema<IssuingAuthorizationTreasury>;
 
-/** Whether the cardholder provided an address first line and if it matched the cardholder’s `billing.address.line1`. */
+/** Whether the cardholder provided an address first line and if it matched the cardholder's `billing.address.line1`. */
 export type IssuingAuthorizationVerificationDataAddressLine1Check =
   | "match"
   | "mismatch"
   | "not_provided";
 export const IssuingAuthorizationVerificationDataAddressLine1Check = S.String;
 
-/** Whether the cardholder provided a postal code and if it matched the cardholder’s `billing.address.postal_code`. */
+/** Whether the cardholder provided a postal code and if it matched the cardholder's `billing.address.postal_code`. */
 export type IssuingAuthorizationVerificationDataAddressPostalCodeCheck =
   | "match"
   | "mismatch"
@@ -72384,11 +72384,11 @@ export const IssuingAuthorizationAuthenticationExemption = /*@__PURE__*/ S.suspe
   identifier: "IssuingAuthorizationAuthenticationExemption",
 }) as any as S.Schema<IssuingAuthorizationAuthenticationExemption>;
 
-/** Whether the cardholder provided a CVC and if it matched Stripe’s record. */
+/** Whether the cardholder provided a CVC and if it matched Stripe's record. */
 export type IssuingAuthorizationVerificationDataCvcCheck = "match" | "mismatch" | "not_provided";
 export const IssuingAuthorizationVerificationDataCvcCheck = S.String;
 
-/** Whether the cardholder provided an expiry date and if it matched Stripe’s record. */
+/** Whether the cardholder provided an expiry date and if it matched Stripe's record. */
 export type IssuingAuthorizationVerificationDataExpiryCheck = "match" | "mismatch" | "not_provided";
 export const IssuingAuthorizationVerificationDataExpiryCheck = S.String;
 
@@ -72413,15 +72413,15 @@ export const IssuingAuthorizationThreeDSecure = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssuingAuthorizationThreeDSecure>;
 
 export interface IssuingAuthorizationVerificationData {
-  /** Whether the cardholder provided an address first line and if it matched the cardholder’s `billing.address.line1`. */
+  /** Whether the cardholder provided an address first line and if it matched the cardholder's `billing.address.line1`. */
   address_line1_check: IssuingAuthorizationVerificationDataAddressLine1Check;
-  /** Whether the cardholder provided a postal code and if it matched the cardholder’s `billing.address.postal_code`. */
+  /** Whether the cardholder provided a postal code and if it matched the cardholder's `billing.address.postal_code`. */
   address_postal_code_check: IssuingAuthorizationVerificationDataAddressPostalCodeCheck;
   /** The exemption applied to this authorization. */
   authentication_exemption: IssuingAuthorizationAuthenticationExemption | null;
-  /** Whether the cardholder provided a CVC and if it matched Stripe’s record. */
+  /** Whether the cardholder provided a CVC and if it matched Stripe's record. */
   cvc_check: IssuingAuthorizationVerificationDataCvcCheck;
-  /** Whether the cardholder provided an expiry date and if it matched Stripe’s record. */
+  /** Whether the cardholder provided an expiry date and if it matched Stripe's record. */
   expiry_check: IssuingAuthorizationVerificationDataExpiryCheck;
   /** The postal code submitted as part of the authorization used for postal code verification. */
   postal_code: string | null;
@@ -73322,7 +73322,7 @@ export interface CreatePaymentIntentRequestAmountDetailsLineItemsCase0ItemPaymen
   image_url?: string;
   /** URL to the product page. Max length, 4096 characters. */
   product_url?: string;
-  /** Unique reference for this line item to correlate it with your system’s internal records. The field is displayed in the Klarna Consumer App if passed. */
+  /** Unique reference for this line item to correlate it with your system's internal records. The field is displayed in the Klarna Consumer App if passed. */
   reference?: string;
   /** Reference for the subscription this line item is for. */
   subscription_reference?: string;
@@ -74163,7 +74163,7 @@ export const CreatePaymentIntentRequestPaymentMethodDataNaverPay = /*@__PURE__*/
 
 /** If this is an nz_bank_account PaymentMethod, this hash contains details about the nz_bank_account payment method. */
 export interface CreatePaymentIntentRequestPaymentMethodDataNzBankAccount {
-  /** The name on the bank account. Only required if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod’s billing details. */
+  /** The name on the bank account. Only required if the account holder name is different from the name of the authorized signatory collected in the PaymentMethod's billing details. */
   account_holder_name?: string;
   /** The account number for the bank account. */
   account_number: string;
@@ -75577,7 +75577,7 @@ export type CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDesc
 export const CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
 export type CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana =
   | string
   | CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1;
@@ -75589,14 +75589,14 @@ export type CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDesc
 export const CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
 export type CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   | string
   | CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1;
 export const CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   S.Unknown as any as S.Schema<CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji>;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type CreatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -75687,7 +75687,7 @@ export const CreatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
 export interface CreatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | CreatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus
     | (string & {});
@@ -75777,9 +75777,9 @@ export interface CreatePaymentIntentRequestPaymentMethodOptionsCardCase0 {
   setup_future_usage?:
     | CreatePaymentIntentRequestPaymentMethodOptionsCardCase0SetupFutureUsage
     | (string & {});
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: CreatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji;
   /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
   three_d_secure?: CreatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure;
@@ -78750,7 +78750,7 @@ export const CreatePaymentIntentApplyCustomerBalanceRequestExpandList = /*@__PUR
 
 export interface CreatePaymentIntentApplyCustomerBalanceRequest {
   intent: string;
-  /** Amount that you intend to apply to this PaymentIntent from the customer’s cash balance. If the PaymentIntent was created by an Invoice, the full amount of the PaymentIntent is applied regardless of this parameter. A positive integer representing how much to charge in the [smallest currency unit](https://docs.stripe.com/currencies#zero-decimal) (for example, 100 cents to charge 1 USD or 100 to charge 100 JPY, a zero-decimal currency). The maximum amount is the amount of the PaymentIntent. When you omit the amount, it defaults to the remaining amount requested on the PaymentIntent. */
+  /** Amount that you intend to apply to this PaymentIntent from the customer's cash balance. If the PaymentIntent was created by an Invoice, the full amount of the PaymentIntent is applied regardless of this parameter. A positive integer representing how much to charge in the [smallest currency unit](https://docs.stripe.com/currencies#zero-decimal) (for example, 100 cents to charge 1 USD or 100 to charge 100 JPY, a zero-decimal currency). The maximum amount is the amount of the PaymentIntent. When you omit the amount, it defaults to the remaining amount requested on the PaymentIntent. */
   amount?: number;
   /** Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies). */
   currency?: string;
@@ -81594,7 +81594,7 @@ export type CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0Statem
 export const CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
 export type CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana =
   | string
   | CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1;
@@ -81606,14 +81606,14 @@ export type CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0Statem
 export const CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
 export type CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   | string
   | CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1;
 export const CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   S.Unknown as any as S.Schema<CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji>;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -81706,7 +81706,7 @@ export const CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0Three
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
 export interface CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0ThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus
     | (string & {});
@@ -81796,9 +81796,9 @@ export interface CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0 
   setup_future_usage?:
     | CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0SetupFutureUsage
     | (string & {});
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji;
   /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
   three_d_secure?: CreatePaymentIntentConfirmRequestPaymentMethodOptionsCardCase0ThreeDSecure;
@@ -85753,7 +85753,7 @@ export const CreatePaymentLinkRequestInvoiceCreation = /*@__PURE__*/ S.suspend((
   identifier: "CreatePaymentLinkRequestInvoiceCreation",
 }) as any as S.Schema<CreatePaymentLinkRequestInvoiceCreation>;
 
-/** When set, provides configuration for this item’s quantity to be adjusted by the customer during checkout. */
+/** When set, provides configuration for this item's quantity to be adjusted by the customer during checkout. */
 export interface CreatePaymentLinkRequestLineItemsItemAdjustableQuantity {
   /** Set to true if the quantity can be adjusted to any non-negative Integer. */
   enabled: boolean;
@@ -85914,7 +85914,7 @@ export const CreatePaymentLinkRequestLineItemsItemPriceData = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreatePaymentLinkRequestLineItemsItemPriceData>;
 
 export interface CreatePaymentLinkRequestLineItemsItem {
-  /** When set, provides configuration for this item’s quantity to be adjusted by the customer during checkout. */
+  /** When set, provides configuration for this item's quantity to be adjusted by the customer during checkout. */
   adjustable_quantity?: CreatePaymentLinkRequestLineItemsItemAdjustableQuantity;
   /** The ID of the [Price](https://docs.stripe.com/api/prices) or [Plan](https://docs.stripe.com/api/plans) object. One of `price` or `price_data` is required. */
   price?: string;
@@ -88349,7 +88349,7 @@ export const CreatePaymentMethodConfigurationRequestCustomerBalanceDisplayPrefer
     identifier: "CreatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference",
   }) as any as S.Schema<CreatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference>;
 
-/** Uses a customer’s [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
+/** Uses a customer's [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
 export interface CreatePaymentMethodConfigurationRequestCustomerBalance {
   /** Whether or not the payment method should be displayed. */
   display_preference?: CreatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference;
@@ -88468,7 +88468,7 @@ export const CreatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPr
     identifier: "CreatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference",
   }) as any as S.Schema<CreatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference>;
 
-/** Meal vouchers in France, or “titres-restaurant”, is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
+/** Meal vouchers in France, or "titres-restaurant", is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
 export interface CreatePaymentMethodConfigurationRequestFrMealVoucherConecs {
   /** Whether or not the payment method should be displayed. */
   display_preference?: CreatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference;
@@ -88970,7 +88970,7 @@ export const CreatePaymentMethodConfigurationRequestMultibancoDisplayPreference 
     identifier: "CreatePaymentMethodConfigurationRequestMultibancoDisplayPreference",
   }) as any as S.Schema<CreatePaymentMethodConfigurationRequestMultibancoDisplayPreference>;
 
-/** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)—a single integration path for creating payments using any supported method. */
+/** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)--a single integration path for creating payments using any supported method. */
 export interface CreatePaymentMethodConfigurationRequestMultibanco {
   /** Whether or not the payment method should be displayed. */
   display_preference?: CreatePaymentMethodConfigurationRequestMultibancoDisplayPreference;
@@ -89472,7 +89472,7 @@ export const CreatePaymentMethodConfigurationRequestRevolutPayDisplayPreference 
     identifier: "CreatePaymentMethodConfigurationRequestRevolutPayDisplayPreference",
   }) as any as S.Schema<CreatePaymentMethodConfigurationRequestRevolutPayDisplayPreference>;
 
-/** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
+/** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer's stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
 export interface CreatePaymentMethodConfigurationRequestRevolutPay {
   /** Whether or not the payment method should be displayed. */
   display_preference?: CreatePaymentMethodConfigurationRequestRevolutPayDisplayPreference;
@@ -89711,7 +89711,7 @@ export const CreatePaymentMethodConfigurationRequestSofortDisplayPreference =
     identifier: "CreatePaymentMethodConfigurationRequestSofortDisplayPreference",
   }) as any as S.Schema<CreatePaymentMethodConfigurationRequestSofortDisplayPreference>;
 
-/** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)—a single integration path for creating payments using any supported method—to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
+/** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)--a single integration path for creating payments using any supported method--to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
 export interface CreatePaymentMethodConfigurationRequestSofort {
   /** Whether or not the payment method should be displayed. */
   display_preference?: CreatePaymentMethodConfigurationRequestSofortDisplayPreference;
@@ -90030,7 +90030,7 @@ export interface CreatePaymentMethodConfigurationRequest {
   cashapp?: CreatePaymentMethodConfigurationRequestCashapp;
   /** [Stablecoin payments](https://docs.stripe.com/payments/stablecoin-payments) enable customers to pay in stablecoins like USDC from 100s of wallets including Phantom and Metamask. */
   crypto?: CreatePaymentMethodConfigurationRequestCrypto;
-  /** Uses a customer’s [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
+  /** Uses a customer's [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
   customer_balance?: CreatePaymentMethodConfigurationRequestCustomerBalance;
   /** EPS is an Austria-based payment method that allows customers to complete transactions online using their bank credentials. EPS is supported by all Austrian banks and is accepted by over 80% of Austrian online retailers. Check this [page](https://docs.stripe.com/payments/eps) for more details. */
   eps?: CreatePaymentMethodConfigurationRequestEps;
@@ -90038,7 +90038,7 @@ export interface CreatePaymentMethodConfigurationRequest {
   expand?: CreatePaymentMethodConfigurationRequestExpandList;
   /** Financial Process Exchange (FPX) is a Malaysia-based payment method that allows customers to complete transactions online using their bank credentials. Bank Negara Malaysia (BNM), the Central Bank of Malaysia, and eleven other major Malaysian financial institutions are members of the PayNet Group, which owns and operates FPX. It is one of the most popular online payment methods in Malaysia, with nearly 90 million transactions in 2018 according to BNM. Check this [page](https://docs.stripe.com/payments/fpx) for more details. */
   fpx?: CreatePaymentMethodConfigurationRequestFpx;
-  /** Meal vouchers in France, or “titres-restaurant”, is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
+  /** Meal vouchers in France, or "titres-restaurant", is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
   fr_meal_voucher_conecs?: CreatePaymentMethodConfigurationRequestFrMealVoucherConecs;
   /** giropay is a German payment method based on online banking, introduced in 2006. It allows customers to complete transactions online using their online banking environment, with funds debited from their bank account. Depending on their bank, customers confirm payments on giropay using a second factor of authentication or a PIN. giropay accounts for 10% of online checkouts in Germany. Check this [page](https://docs.stripe.com/payments/giropay) for more details. */
   giropay?: CreatePaymentMethodConfigurationRequestGiropay;
@@ -90064,7 +90064,7 @@ export interface CreatePaymentMethodConfigurationRequest {
   mb_way?: CreatePaymentMethodConfigurationRequestMbWay;
   /** MobilePay is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) card wallet payment method used in Denmark and Finland. It allows customers to [authenticate and approve](https://docs.stripe.com/payments/payment-methods#customer-actions) payments using the MobilePay app. Check this [page](https://docs.stripe.com/payments/mobilepay) for more details. */
   mobilepay?: CreatePaymentMethodConfigurationRequestMobilepay;
-  /** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)—a single integration path for creating payments using any supported method. */
+  /** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)--a single integration path for creating payments using any supported method. */
   multibanco?: CreatePaymentMethodConfigurationRequestMultibanco;
   /** Configuration name. */
   name?: string;
@@ -90094,7 +90094,7 @@ export interface CreatePaymentMethodConfigurationRequest {
   pix?: CreatePaymentMethodConfigurationRequestPix;
   /** PromptPay is a Thailand-based payment method that allows customers to make a payment using their preferred app from participating banks. Check this [page](https://docs.stripe.com/payments/promptpay) for more details. */
   promptpay?: CreatePaymentMethodConfigurationRequestPromptpay;
-  /** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
+  /** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer's stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
   revolut_pay?: CreatePaymentMethodConfigurationRequestRevolutPay;
   /** Samsung Pay is a [single-use](https://docs.stripe.com/payments/payment-methods#usage local wallet available in South Korea. */
   samsung_pay?: CreatePaymentMethodConfigurationRequestSamsungPay;
@@ -90106,7 +90106,7 @@ export interface CreatePaymentMethodConfigurationRequest {
   sepa_debit?: CreatePaymentMethodConfigurationRequestSepaDebit;
   /** SeQura is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) payment method that offers customers payment terms ranging from 7-120 days. Customers are redirected from your website or app, authorize the payment with SeQura, then return to your website or app. You get [immediate notification](https://docs.stripe.com/payments/payment-methods#payment-notification) of whether the payment succeeded or failed. */
   sequra?: CreatePaymentMethodConfigurationRequestSequra;
-  /** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)—a single integration path for creating payments using any supported method—to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
+  /** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)--a single integration path for creating payments using any supported method--to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
   sofort?: CreatePaymentMethodConfigurationRequestSofort;
   /** Sunbit is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) payment method where customers choose to pay in 3, 6, or 12 installments. Customers are redirected from your website or app, authorize the payment with Sunbit, then return to your website or app. You get [immediate notification](https://docs.stripe.com/payments/payment-methods#payment-notification) of whether the payment succeeded or failed. */
   sunbit?: CreatePaymentMethodConfigurationRequestSunbit;
@@ -90246,7 +90246,7 @@ export const PaymentMethodConfigResourcePaymentMethodProperties = /*@__PURE__*/ 
 export type PaymentMethodConfigurationObject = "payment_method_configuration";
 export const PaymentMethodConfigurationObject = S.String;
 
-/** PaymentMethodConfigurations control which payment methods are displayed to your customers when you don't explicitly specify payment method types. You can have multiple configurations with different sets of payment methods for different scenarios. There are two types of PaymentMethodConfigurations. Which is used depends on the [charge type](https://docs.stripe.com/connect/charges): **Direct** configurations apply to payments created on your account, including Connect destination charges, Connect separate charges and transfers, and payments not involving Connect. **Child** configurations apply to payments created on your connected accounts using direct charges, and charges with the on_behalf_of parameter. Child configurations have a `parent` that sets default values and controls which settings connected accounts may override. You can specify a parent ID at payment time, and Stripe will automatically resolve the connected account’s associated child configuration. Parent configurations are [managed in the dashboard](https://dashboard.stripe.com/settings/payment_methods/connected_accounts) and are not available in this API. Related guides: - [Payment Method Configurations API](https://docs.stripe.com/connect/payment-method-configurations) - [Multiple configurations on dynamic payment methods](https://docs.stripe.com/payments/multiple-payment-method-configs) - [Multiple configurations for your Connect accounts](https://docs.stripe.com/connect/multiple-payment-method-configurations) */
+/** PaymentMethodConfigurations control which payment methods are displayed to your customers when you don't explicitly specify payment method types. You can have multiple configurations with different sets of payment methods for different scenarios. There are two types of PaymentMethodConfigurations. Which is used depends on the [charge type](https://docs.stripe.com/connect/charges): **Direct** configurations apply to payments created on your account, including Connect destination charges, Connect separate charges and transfers, and payments not involving Connect. **Child** configurations apply to payments created on your connected accounts using direct charges, and charges with the on_behalf_of parameter. Child configurations have a `parent` that sets default values and controls which settings connected accounts may override. You can specify a parent ID at payment time, and Stripe will automatically resolve the connected account's associated child configuration. Parent configurations are [managed in the dashboard](https://dashboard.stripe.com/settings/payment_methods/connected_accounts) and are not available in this API. Related guides: - [Payment Method Configurations API](https://docs.stripe.com/connect/payment-method-configurations) - [Multiple configurations on dynamic payment methods](https://docs.stripe.com/payments/multiple-payment-method-configs) - [Multiple configurations for your Connect accounts](https://docs.stripe.com/connect/multiple-payment-method-configurations) */
 export interface PaymentMethodConfiguration {
   acss_debit?: PaymentMethodConfigResourcePaymentMethodProperties;
   /** Whether the configuration can be used for new payments. */
@@ -94638,7 +94638,7 @@ export type InsightsResourcesPaymentEvaluationRejectedCardAddressLine1Check =
   | "unchecked";
 export const InsightsResourcesPaymentEvaluationRejectedCardAddressLine1Check = S.String;
 
-/** Indicates whether the cardholder provided a postal code and if it matched the cardholder’s billing address. */
+/** Indicates whether the cardholder provided a postal code and if it matched the cardholder's billing address. */
 export type InsightsResourcesPaymentEvaluationRejectedCardAddressPostalCodeCheck =
   | "fail"
   | "pass"
@@ -94675,7 +94675,7 @@ export const InsightsResourcesPaymentEvaluationRejectedCardReason = S.String;
 export interface InsightsResourcesPaymentEvaluationRejectedCard {
   /** Result of the address line 1 check. */
   address_line1_check: InsightsResourcesPaymentEvaluationRejectedCardAddressLine1Check;
-  /** Indicates whether the cardholder provided a postal code and if it matched the cardholder’s billing address. */
+  /** Indicates whether the cardholder provided a postal code and if it matched the cardholder's billing address. */
   address_postal_code_check: InsightsResourcesPaymentEvaluationRejectedCardAddressPostalCodeCheck;
   /** Result of the CVC check. */
   cvc_check: InsightsResourcesPaymentEvaluationRejectedCardCvcCheck;
@@ -94713,7 +94713,7 @@ export type InsightsResourcesPaymentEvaluationSucceededCardAddressLine1Check =
   | "unchecked";
 export const InsightsResourcesPaymentEvaluationSucceededCardAddressLine1Check = S.String;
 
-/** Indicates whether the cardholder provided a postal code and if it matched the cardholder’s billing address. */
+/** Indicates whether the cardholder provided a postal code and if it matched the cardholder's billing address. */
 export type InsightsResourcesPaymentEvaluationSucceededCardAddressPostalCodeCheck =
   | "fail"
   | "pass"
@@ -94733,7 +94733,7 @@ export const InsightsResourcesPaymentEvaluationSucceededCardCvcCheck = S.String;
 export interface InsightsResourcesPaymentEvaluationSucceededCard {
   /** Result of the address line 1 check. */
   address_line1_check: InsightsResourcesPaymentEvaluationSucceededCardAddressLine1Check;
-  /** Indicates whether the cardholder provided a postal code and if it matched the cardholder’s billing address. */
+  /** Indicates whether the cardholder provided a postal code and if it matched the cardholder's billing address. */
   address_postal_code_check: InsightsResourcesPaymentEvaluationSucceededCardAddressPostalCodeCheck;
   /** Result of the CVC check. */
   cvc_check: InsightsResourcesPaymentEvaluationSucceededCardCvcCheck;
@@ -97434,7 +97434,7 @@ export type CreateSetupIntentRequestPaymentMethodOptionsCardRequestThreeDSecure 
   | "challenge";
 export const CreateSetupIntentRequestPaymentMethodOptionsCardRequestThreeDSecure = S.String;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type CreateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -97517,7 +97517,7 @@ export const CreateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureVersion
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this setup. */
 export interface CreateSetupIntentRequestPaymentMethodOptionsCardThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | CreateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus
     | (string & {});
@@ -98376,7 +98376,7 @@ export const CreateSetupIntentRequestUsage = S.String;
 export interface CreateSetupIntentRequest {
   /** The list of payment method types to allow for this SetupIntent. Stripe will only use methods in this list when determining the payment methods to offer. A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
   allowed_payment_method_types?: CreateSetupIntentRequestAllowedPaymentMethodTypesList;
-  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
+  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
   attach_to_self?: boolean;
   /** When you enable this parameter, this SetupIntent accepts payment methods that you enable in the Dashboard and that are compatible with its other parameters. */
   automatic_payment_methods?: CreateSetupIntentRequestAutomaticPaymentMethods;
@@ -99691,7 +99691,7 @@ export type CreateSetupIntentConfirmRequestPaymentMethodOptionsCardRequestThreeD
   | "challenge";
 export const CreateSetupIntentConfirmRequestPaymentMethodOptionsCardRequestThreeDSecure = S.String;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type CreateSetupIntentConfirmRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -99775,7 +99775,7 @@ export const CreateSetupIntentConfirmRequestPaymentMethodOptionsCardThreeDSecure
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this setup. */
 export interface CreateSetupIntentConfirmRequestPaymentMethodOptionsCardThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | CreateSetupIntentConfirmRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus
     | (string & {});
@@ -102042,7 +102042,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDeb
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = S.String;
 
-/** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebit =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1;
@@ -102078,7 +102078,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancont
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = S.String;
 
-/** This sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontact =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1;
@@ -102184,7 +102184,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieC
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = S.String;
 
-/** This sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillie =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1;
@@ -102215,7 +102215,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCas
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = S.String;
 
-/** This sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlik =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1;
@@ -102312,7 +102312,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCas
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1 = S.String;
 
-/** This sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCard =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1;
@@ -102340,7 +102340,7 @@ export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomer
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 =
   S.String;
 
-/** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalance =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1;
@@ -102350,7 +102350,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustome
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = S.String;
 
-/** This sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbini =
   | unknown
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1;
@@ -102413,7 +102413,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCa
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = S.String;
 
-/** This sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPayto =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1;
@@ -102490,7 +102490,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1 = S.String;
 
-/** This sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1;
@@ -102500,7 +102500,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix =
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = S.String;
 
-/** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebit =
   | unknown
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1;
@@ -102560,7 +102560,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = S.String;
 
-/** This sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpi =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1;
@@ -102699,7 +102699,7 @@ export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAc
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 =
   S.String;
 
-/** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1;
@@ -102708,29 +102708,29 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankA
 
 /** Payment-method-specific configuration to provide to invoices created by the subscription. */
 export interface CreateSubscriptionRequestPaymentSettingsPaymentMethodOptions {
-  /** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
   acss_debit?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebit;
-  /** This sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
   bancontact?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontact;
-  /** This sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
   billie?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillie;
-  /** This sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
   blik?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlik;
-  /** This sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
   card?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCard;
-  /** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
   customer_balance?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalance;
-  /** This sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
   konbini?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbini;
-  /** This sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
   payto?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPayto;
-  /** This sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
   pix?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix;
-  /** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
   sepa_debit?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebit;
-  /** This sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
   upi?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpi;
-  /** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
   us_bank_account?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccount;
 }
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodOptions = /*@__PURE__*/ S.suspend(
@@ -102823,7 +102823,7 @@ export const CreateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase0List
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1 = "";
 export const CreateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1 = S.String;
 
-/** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
+/** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
 export type CreateSubscriptionRequestPaymentSettingsPaymentMethodTypes =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase0List
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1;
@@ -102840,7 +102840,7 @@ export const CreateSubscriptionRequestPaymentSettingsSaveDefaultPaymentMethod = 
 export interface CreateSubscriptionRequestPaymentSettings {
   /** Payment-method-specific configuration to provide to invoices created by the subscription. */
   payment_method_options?: CreateSubscriptionRequestPaymentSettingsPaymentMethodOptions;
-  /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
+  /** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
   payment_method_types?: CreateSubscriptionRequestPaymentSettingsPaymentMethodTypes;
   /** Configure whether Stripe updates `subscription.default_payment_method` when payment succeeds. Defaults to `off` if unspecified. */
   save_default_payment_method?:
@@ -106501,7 +106501,7 @@ export interface CreateTaxRateRequest {
   expand?: CreateTaxRateRequestExpandList;
   /** This specifies if the tax rate is inclusive or exclusive. */
   inclusive: boolean;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction?: string;
   /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. */
   metadata?: CreateTaxRateRequestMetadataMap;
@@ -116039,7 +116039,7 @@ export const ConfirmationTokensResourcePaymentMethodOptions = /*@__PURE__*/ S.su
   identifier: "ConfirmationTokensResourcePaymentMethodOptions",
 }) as any as S.Schema<ConfirmationTokensResourcePaymentMethodOptions>;
 
-/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+/** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
 export type ConfirmationTokensResourcePaymentMethodPreviewAllowRedisplay =
   | "always"
   | "limited"
@@ -116120,7 +116120,7 @@ export interface ConfirmationTokensResourcePaymentMethodPreview {
   affirm?: unknown;
   afterpay_clearpay?: unknown;
   alipay?: unknown;
-  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to "unspecified". */
   allow_redisplay?: ConfirmationTokensResourcePaymentMethodPreviewAllowRedisplay;
   alma?: unknown;
   amazon_pay?: unknown;
@@ -117309,7 +117309,7 @@ export const CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentCardTesti
     identifier: "CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentCardTestingRisk",
   }) as any as S.Schema<CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentCardTestingRisk>;
 
-/** Stripe’s assessment of the likelihood of fraud on an authorization. */
+/** Stripe's assessment of the likelihood of fraud on an authorization. */
 export type CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRiskLevel =
   | "elevated"
   | "highest"
@@ -117319,11 +117319,11 @@ export type CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRiskL
   | "unknown";
 export const CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRiskLevel = S.String;
 
-/** Stripe’s assessment of this authorization’s likelihood to be fraudulent. */
+/** Stripe's assessment of this authorization's likelihood to be fraudulent. */
 export interface CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRisk {
-  /** Stripe’s assessment of the likelihood of fraud on an authorization. */
+  /** Stripe's assessment of the likelihood of fraud on an authorization. */
   level: CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRiskLevel | (string & {});
-  /** Stripe’s numerical model score assessing the likelihood of fraudulent activity. A higher score means a higher likelihood of fraudulent activity, and anything above 25 is considered high risk. */
+  /** Stripe's numerical model score assessing the likelihood of fraudulent activity. A higher score means a higher likelihood of fraudulent activity, and anything above 25 is considered high risk. */
   score?: number;
 }
 export const CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRisk =
@@ -117366,11 +117366,11 @@ export const CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentMerchantD
     identifier: "CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentMerchantDisputeRisk",
   }) as any as S.Schema<CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentMerchantDisputeRisk>;
 
-/** Stripe’s assessment of the fraud risk for this authorization. */
+/** Stripe's assessment of the fraud risk for this authorization. */
 export interface CreateTestHelpersIssuingAuthorizationRequestRiskAssessment {
   /** Stripe's assessment of this authorization's likelihood of being card testing activity. */
   card_testing_risk?: CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentCardTestingRisk;
-  /** Stripe’s assessment of this authorization’s likelihood to be fraudulent. */
+  /** Stripe's assessment of this authorization's likelihood to be fraudulent. */
   fraud_risk?: CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentFraudRisk;
   /** The dispute risk of the merchant (the seller on a purchase) on an authorization based on all Stripe Issuing activity. */
   merchant_dispute_risk?: CreateTestHelpersIssuingAuthorizationRequestRiskAssessmentMerchantDisputeRisk;
@@ -117390,7 +117390,7 @@ export const CreateTestHelpersIssuingAuthorizationRequestRiskAssessment = /*@__P
   identifier: "CreateTestHelpersIssuingAuthorizationRequestRiskAssessment",
 }) as any as S.Schema<CreateTestHelpersIssuingAuthorizationRequestRiskAssessment>;
 
-/** Whether the cardholder provided an address first line and if it matched the cardholder’s `billing.address.line1`. */
+/** Whether the cardholder provided an address first line and if it matched the cardholder's `billing.address.line1`. */
 export type CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressLine1Check =
   | "match"
   | "mismatch"
@@ -117398,7 +117398,7 @@ export type CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressL
 export const CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressLine1Check =
   S.String;
 
-/** Whether the cardholder provided a postal code and if it matched the cardholder’s `billing.address.postal_code`. */
+/** Whether the cardholder provided a postal code and if it matched the cardholder's `billing.address.postal_code`. */
 export type CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressPostalCodeCheck =
   | "match"
   | "mismatch"
@@ -117444,14 +117444,14 @@ export const CreateTestHelpersIssuingAuthorizationRequestVerificationDataAuthent
       "CreateTestHelpersIssuingAuthorizationRequestVerificationDataAuthenticationExemption",
   }) as any as S.Schema<CreateTestHelpersIssuingAuthorizationRequestVerificationDataAuthenticationExemption>;
 
-/** Whether the cardholder provided a CVC and if it matched Stripe’s record. */
+/** Whether the cardholder provided a CVC and if it matched Stripe's record. */
 export type CreateTestHelpersIssuingAuthorizationRequestVerificationDataCvcCheck =
   | "match"
   | "mismatch"
   | "not_provided";
 export const CreateTestHelpersIssuingAuthorizationRequestVerificationDataCvcCheck = S.String;
 
-/** Whether the cardholder provided an expiry date and if it matched Stripe’s record. */
+/** Whether the cardholder provided an expiry date and if it matched Stripe's record. */
 export type CreateTestHelpersIssuingAuthorizationRequestVerificationDataExpiryCheck =
   | "match"
   | "mismatch"
@@ -117485,19 +117485,19 @@ export const CreateTestHelpersIssuingAuthorizationRequestVerificationDataThreeDS
 
 /** Verifications that Stripe performed on information that the cardholder provided to the merchant. */
 export interface CreateTestHelpersIssuingAuthorizationRequestVerificationData {
-  /** Whether the cardholder provided an address first line and if it matched the cardholder’s `billing.address.line1`. */
+  /** Whether the cardholder provided an address first line and if it matched the cardholder's `billing.address.line1`. */
   address_line1_check?:
     | CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressLine1Check
     | (string & {});
-  /** Whether the cardholder provided a postal code and if it matched the cardholder’s `billing.address.postal_code`. */
+  /** Whether the cardholder provided a postal code and if it matched the cardholder's `billing.address.postal_code`. */
   address_postal_code_check?:
     | CreateTestHelpersIssuingAuthorizationRequestVerificationDataAddressPostalCodeCheck
     | (string & {});
   /** The exemption applied to this authorization. */
   authentication_exemption?: CreateTestHelpersIssuingAuthorizationRequestVerificationDataAuthenticationExemption;
-  /** Whether the cardholder provided a CVC and if it matched Stripe’s record. */
+  /** Whether the cardholder provided a CVC and if it matched Stripe's record. */
   cvc_check?: CreateTestHelpersIssuingAuthorizationRequestVerificationDataCvcCheck | (string & {});
-  /** Whether the cardholder provided an expiry date and if it matched Stripe’s record. */
+  /** Whether the cardholder provided an expiry date and if it matched Stripe's record. */
   expiry_check?:
     | CreateTestHelpersIssuingAuthorizationRequestVerificationDataExpiryCheck
     | (string & {});
@@ -117568,7 +117568,7 @@ export interface CreateTestHelpersIssuingAuthorizationRequest {
   merchant_data?: CreateTestHelpersIssuingAuthorizationRequestMerchantData;
   /** Details about the authorization, such as identifiers, set by the card network. */
   network_data?: CreateTestHelpersIssuingAuthorizationRequestNetworkData;
-  /** Stripe’s assessment of the fraud risk for this authorization. */
+  /** Stripe's assessment of the fraud risk for this authorization. */
   risk_assessment?: CreateTestHelpersIssuingAuthorizationRequestRiskAssessment;
   /** Verifications that Stripe performed on information that the cardholder provided to the merchant. */
   verification_data?: CreateTestHelpersIssuingAuthorizationRequestVerificationData;
@@ -122287,7 +122287,7 @@ export interface CreateThreeDSecureAuthenticationRequestAcquirerDetails {
   mcc?: string;
   /** The merchant name assigned by the acquirer or payment system. Same name used in the authorization message as defined in [ISO 8583](https://en.wikipedia.org/wiki/ISO_8583). */
   merchant_name?: string;
-  /** Requestor ID if you’re enrolled in the card network’s 3DS program. Otherwise, you can omit this field because Stripe assigns a Requestor ID with the card networks. */
+  /** Requestor ID if you're enrolled in the card network's 3DS program. Otherwise, you can omit this field because Stripe assigns a Requestor ID with the card networks. */
   requestor_id?: string;
 }
 export const CreateThreeDSecureAuthenticationRequestAcquirerDetails = /*@__PURE__*/ S.suspend(() =>
@@ -122307,23 +122307,23 @@ export const CreateThreeDSecureAuthenticationRequestAcquirerDetails = /*@__PURE_
 export interface CreateThreeDSecureAuthenticationRequestChannelBrowser {
   /** The HTTP accept headers from the cardholder's browser. Collected server-side. */
   accept_header: string;
-  /** The color depth of the cardholder’s screen. Returned from the `screen.colorDepth` property. */
+  /** The color depth of the cardholder's screen. Returned from the `screen.colorDepth` property. */
   color_depth?: number;
   /** Unique and immutable identifier linked to a device that is consistent across 3DS transactions for the specific user device. For example: hardware device ID or a platform-calculated device fingerprint. */
   device_id?: string;
   /** The IP address of the browser. Included in the HTTP request to your server before you create the 3DS Authentication. Collected server-side. */
   ip_address: string;
-  /** The cardholder browser’s ability to execute Java. Returned from the navigator.javaEnabled property. */
+  /** The cardholder browser's ability to execute Java. Returned from the navigator.javaEnabled property. */
   java_enabled?: boolean;
-  /** The cardholder browser’s ability to execute JavaScript. */
+  /** The cardholder browser's ability to execute JavaScript. */
   javascript_enabled: boolean;
   /** An IETF BCP 47 language tag representing the browser language. Typically returned from the `navigator.language` property, but might also be returned from `navigator.languages` or `navigator.browserLanguage`. In some cases, this value might be an array. To cast it to a string or null value, you can use the `getBrowserLanguage()` [example function](/payments/3d-secure/standalone-3d-secure#pass-client-side-collected-channel-information). */
   language: string;
-  /** The total height of the cardholder’s screen in pixels. Returned from the `screen.height` property. */
+  /** The total height of the cardholder's screen in pixels. Returned from the `screen.height` property. */
   screen_height?: number;
-  /** The total width of the cardholder’s screen in pixels. Returned from the `screen.width` property. */
+  /** The total width of the cardholder's screen in pixels. Returned from the `screen.width` property. */
   screen_width?: number;
-  /** The time difference between UTC time and the local time of the cardholder’s browser, in minutes. Returned by `new Date().getTimezoneOffset()` */
+  /** The time difference between UTC time and the local time of the cardholder's browser, in minutes. Returned by `new Date().getTimezoneOffset()` */
   timezone_offset?: number;
   /** The browser user agent. You can retrieve this value on the client side using the `navigator.userAgent` property, or in the HTTP request to your server before you create the 3DS Authentication. */
   user_agent: string;
@@ -122862,7 +122862,7 @@ export interface ThreeDSecureStandaloneResourceAcquirerDetails {
   mcc?: string;
   /** The merchant name assigned by the acquirer or payment system. Same name used in the authorization message as defined in [ISO 8583](https://en.wikipedia.org/wiki/ISO_8583). */
   merchant_name?: string;
-  /** Requestor ID if you’re enrolled in the card network’s 3DS program. Otherwise, you can omit this field because Stripe assigns a Requestor ID with the card networks. */
+  /** Requestor ID if you're enrolled in the card network's 3DS program. Otherwise, you can omit this field because Stripe assigns a Requestor ID with the card networks. */
   requestor_id?: string;
 }
 export const ThreeDSecureStandaloneResourceAcquirerDetails = /*@__PURE__*/ S.suspend(() =>
@@ -122882,21 +122882,21 @@ export const ThreeDSecureStandaloneResourceAcquirerDetails = /*@__PURE__*/ S.sus
 export interface ThreeDSecureStandaloneResourceBrowserDetails {
   /** The HTTP accept headers from the cardholder's browser. */
   accept_header: string;
-  /** The color depth of the cardholder’s screen. */
+  /** The color depth of the cardholder's screen. */
   color_depth?: number;
   /** The IP address of the browser. */
   ip_address: string;
-  /** The cardholder browser’s ability to execute Java. */
+  /** The cardholder browser's ability to execute Java. */
   java_enabled?: boolean;
-  /** The cardholder browser’s ability to execute JavaScript. */
+  /** The cardholder browser's ability to execute JavaScript. */
   javascript_enabled: boolean;
   /** An IETF BCP 47 language tag representing the browser language. */
   language: string;
-  /** The total height of the cardholder’s screen in pixels. */
+  /** The total height of the cardholder's screen in pixels. */
   screen_height?: number;
-  /** The total width of the cardholder’s screen in pixels. */
+  /** The total width of the cardholder's screen in pixels. */
   screen_width?: number;
-  /** The time difference between UTC time and the local time of the cardholder’s browser, in minutes. */
+  /** The time difference between UTC time and the local time of the cardholder's browser, in minutes. */
   timezone_offset?: number;
   /** The browser user agent. */
   user_agent: string;
@@ -123254,7 +123254,7 @@ export interface ThreeDSecureStandaloneResourceOutcomeDetails {
   ares?: string;
   /** TransStatus field on the ARes */
   ares_trans_status?: ThreeDSecureStandaloneResourceOutcomeDetailsAresTransStatus;
-  /** A 28-character Base64 string proving that 3DS was completed. Store this value securely, and don’t reuse it for multiple authorizations. */
+  /** A 28-character Base64 string proving that 3DS was completed. Store this value securely, and don't reuse it for multiple authorizations. */
   cryptogram?: string;
   /** The 3DS2 Directory Server Transaction ID. */
   ds_transaction_id?: string;
@@ -123649,7 +123649,7 @@ export interface CreateTokenRequestAccountCompany {
   representative_declaration?: CreateAccountRequestCompanyRepresentativeDeclaration;
   /** The category identifying the legal structure of the company or legal entity. See [Business structure](/connect/identity-verification#business-structure) for more details. Pass an empty string to unset this value. */
   structure?: CreateTokenRequestAccountCompanyStructure | (string & {});
-  /** The business ID number of the company, as appropriate for the company’s country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
+  /** The business ID number of the company, as appropriate for the company's country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
   tax_id?: string;
   /** The jurisdiction in which the `tax_id` is registered (Germany-based companies only). */
   tax_id_registrar?: string;
@@ -123776,13 +123776,13 @@ export type CreateTokenRequestAccountIndividualRelationshipPercentOwnership =
 export const CreateTokenRequestAccountIndividualRelationshipPercentOwnership =
   S.Unknown as any as S.Schema<CreateTokenRequestAccountIndividualRelationshipPercentOwnership>;
 
-/** Describes the person’s relationship to the account. */
+/** Describes the person's relationship to the account. */
 export interface CreateTokenRequestAccountIndividualRelationship {
   /** Whether the person is a director of the account's legal entity. Directors are typically members of the governing board of the company, or responsible for ensuring the company meets its regulatory obligations. */
   director?: boolean;
   /** Whether the person has significant responsibility to control, manage, or direct the organization. */
   executive?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: CreateTokenRequestAccountIndividualRelationshipPercentOwnership;
@@ -123861,7 +123861,7 @@ export interface CreateTokenRequestAccountIndividual {
   political_exposure?: CreateTokenRequestAccountIndividualPoliticalExposure | (string & {});
   /** The individual's registered address. */
   registered_address?: CreateAccountRequestBusinessProfileSupportAddress;
-  /** Describes the person’s relationship to the account. */
+  /** Describes the person's relationship to the account. */
   relationship?: CreateTokenRequestAccountIndividualRelationship;
   /** The last four digits of the individual's Social Security Number (U.S. only). */
   ssn_last_4?: string;
@@ -124287,7 +124287,7 @@ export interface CreateTokenRequestPersonRelationship {
   executive?: boolean;
   /** Whether the person is the legal guardian of the account's representative. */
   legal_guardian?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: CreateTokenRequestPersonRelationshipPercentOwnership;
@@ -125761,7 +125761,7 @@ export const TreasuryFinancialAccountSupportedCurrenciesList = /*@__PURE__*/ S.A
   S.String,
 ) as any as S.Schema<TreasuryFinancialAccountSupportedCurrenciesList>;
 
-/** Stripe Treasury for Platforms provides users with a container for money called a FinancialAccount that is separate from their Payments balance. FinancialAccounts serve as the source and destination of Treasury for Platform’s money movement APIs. */
+/** Stripe Treasury for Platforms provides users with a container for money called a FinancialAccount that is separate from their Payments balance. FinancialAccounts serve as the source and destination of Treasury for Platform's money movement APIs. */
 export interface TreasuryFinancialAccount {
   /** The array of paths to active Features in the Features hash. */
   active_features?: TreasuryFinancialAccountActiveFeaturesList;
@@ -139330,7 +139330,7 @@ export const GetSetupIntentsRequestExpandList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetSetupIntentsRequestExpandList>;
 
 export interface GetSetupIntentsRequest {
-  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
+  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
   attach_to_self?: boolean;
   /** A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options. */
   created?: GetSetupIntentsRequestCreated;
@@ -143862,7 +143862,7 @@ export interface UpdateAccountRequestCompany {
   representative_declaration?: CreateAccountRequestCompanyRepresentativeDeclaration;
   /** The category identifying the legal structure of the company or legal entity. See [Business structure](/connect/identity-verification#business-structure) for more details. Pass an empty string to unset this value. */
   structure?: UpdateAccountRequestCompanyStructure | (string & {});
-  /** The business ID number of the company, as appropriate for the company’s country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
+  /** The business ID number of the company, as appropriate for the company's country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.) Changing this value requires that the account re-accept the [terms of service](/api/accounts/object#account_object-tos_acceptance). */
   tax_id?: string;
   /** The jurisdiction in which the `tax_id` is registered (Germany-based companies only). */
   tax_id_registrar?: string;
@@ -143910,7 +143910,7 @@ export const UpdateAccountRequestDocumentsBankAccountOwnershipVerificationFilesL
     S.String,
   ) as any as S.Schema<UpdateAccountRequestDocumentsBankAccountOwnershipVerificationFilesList>;
 
-/** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account’s primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
+/** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
 export interface UpdateAccountRequestDocumentsBankAccountOwnershipVerification {
   /** One or more document ids returned by a [file upload](https://docs.stripe.com/api#create_file) with a `purpose` value of `account_requirement`. */
   files?: UpdateAccountRequestDocumentsBankAccountOwnershipVerificationFilesList;
@@ -144054,7 +144054,7 @@ export type UpdateAccountRequestDocumentsProofOfRegistrationSigner =
 export const UpdateAccountRequestDocumentsProofOfRegistrationSigner =
   CreateAccountRequestDocumentsProofOfUltimateBeneficialOwnershipSigner;
 
-/** One or more documents showing the company’s proof of registration with the national business registry. */
+/** One or more documents showing the company's proof of registration with the national business registry. */
 export interface UpdateAccountRequestDocumentsProofOfRegistration {
   /** One or more document ids returned by a [file upload](https://docs.stripe.com/api#create_file) with a `purpose` value of `account_requirement`. */
   files?: UpdateAccountRequestDocumentsProofOfRegistrationFilesList;
@@ -144103,7 +144103,7 @@ export const UpdateAccountRequestDocumentsProofOfUltimateBeneficialOwnership =
 
 /** Documents that may be submitted to satisfy various informational requests. */
 export interface UpdateAccountRequestDocuments {
-  /** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account’s primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
+  /** One or more documents that support the [Bank account ownership verification](https://support.stripe.com/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a check. */
   bank_account_ownership_verification?: UpdateAccountRequestDocumentsBankAccountOwnershipVerification;
   /** One or more documents that demonstrate proof of a company's license to operate. */
   company_license?: UpdateAccountRequestDocumentsCompanyLicense;
@@ -144117,7 +144117,7 @@ export interface UpdateAccountRequestDocuments {
   company_tax_id_verification?: UpdateAccountRequestDocumentsCompanyTaxIdVerification;
   /** One or more documents that demonstrate proof of address. */
   proof_of_address?: UpdateAccountRequestDocumentsProofOfAddress;
-  /** One or more documents showing the company’s proof of registration with the national business registry. */
+  /** One or more documents showing the company's proof of registration with the national business registry. */
   proof_of_registration?: UpdateAccountRequestDocumentsProofOfRegistration;
   /** One or more documents that demonstrate proof of ultimate beneficial ownership. */
   proof_of_ultimate_beneficial_ownership?: UpdateAccountRequestDocumentsProofOfUltimateBeneficialOwnership;
@@ -144253,13 +144253,13 @@ export type UpdateAccountRequestIndividualRelationshipPercentOwnership =
 export const UpdateAccountRequestIndividualRelationshipPercentOwnership =
   S.Unknown as any as S.Schema<UpdateAccountRequestIndividualRelationshipPercentOwnership>;
 
-/** Describes the person’s relationship to the account. */
+/** Describes the person's relationship to the account. */
 export interface UpdateAccountRequestIndividualRelationship {
   /** Whether the person is a director of the account's legal entity. Directors are typically members of the governing board of the company, or responsible for ensuring the company meets its regulatory obligations. */
   director?: boolean;
   /** Whether the person has significant responsibility to control, manage, or direct the organization. */
   executive?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: UpdateAccountRequestIndividualRelationshipPercentOwnership;
@@ -144337,7 +144337,7 @@ export interface UpdateAccountRequestIndividual {
   political_exposure?: UpdateAccountRequestIndividualPoliticalExposure | (string & {});
   /** The individual's registered address. */
   registered_address?: CreateAccountRequestBusinessProfileSupportAddress;
-  /** Describes the person’s relationship to the account. */
+  /** Describes the person's relationship to the account. */
   relationship?: UpdateAccountRequestIndividualRelationship;
   /** The last four digits of the individual's Social Security Number (U.S. only). */
   ssn_last_4?: string;
@@ -144825,7 +144825,7 @@ export interface UpdateAccountRequest {
   email?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: UpdateAccountRequestExpandList;
-  /** A card or bank account to attach to the account for receiving [payouts](/connect/bank-debit-card-payouts) (you won’t be able to use it for top-ups). You can provide either a token, like the ones returned by [Stripe.js](/js), or a dictionary, as documented in the `external_account` parameter for [bank account](/api#account_create_bank_account) creation. <br><br>By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](/api#account_create_bank_account) or [card creation](/api#account_create_card) APIs. After you create an [Account Link](/api/account_links) or [Account Session](/api/account_sessions), this property can only be updated for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. */
+  /** A card or bank account to attach to the account for receiving [payouts](/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [Stripe.js](/js), or a dictionary, as documented in the `external_account` parameter for [bank account](/api#account_create_bank_account) creation. <br><br>By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](/api#account_create_bank_account) or [card creation](/api#account_create_card) APIs. After you create an [Account Link](/api/account_links) or [Account Session](/api/account_sessions), this property can only be updated for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. */
   external_account?: string;
   /** A hash of account group type to tokens. These are account groups this account should be added to. */
   groups?: UpdateAccountRequestGroups;
@@ -144998,9 +144998,9 @@ export interface UpdateAccountExternalAccountRequest {
   default_for_currency?: boolean;
   /** Documents that may be submitted to satisfy various informational requests. */
   documents?: UpdateAccountExternalAccountRequestDocuments;
-  /** Two digit number representing the card’s expiration month. */
+  /** Two digit number representing the card's expiration month. */
   exp_month?: string;
-  /** Four digit number representing the card’s expiration year. */
+  /** Four digit number representing the card's expiration year. */
   exp_year?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: UpdateAccountExternalAccountRequestExpandList;
@@ -145290,7 +145290,7 @@ export interface UpdateAccountPersonRequestRelationship {
   executive?: boolean;
   /** Whether the person is the legal guardian of the account's representative. */
   legal_guardian?: boolean;
-  /** Whether the person is an owner of the account’s legal entity. */
+  /** Whether the person is an owner of the account's legal entity. */
   owner?: boolean;
   /** The percent owned by the person of the account's legal entity. */
   percent_ownership?: UpdateAccountPersonRequestRelationshipPercentOwnership;
@@ -145707,7 +145707,7 @@ export const UpdateBillingMeterRequestExpandList = /*@__PURE__*/ S.Array(
 
 export interface UpdateBillingMeterRequest {
   id: string;
-  /** The meter’s name. Not visible to the customer. */
+  /** The meter's name. Not visible to the customer. */
   display_name?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: UpdateBillingMeterRequestExpandList;
@@ -145742,7 +145742,7 @@ export const UpdateBillingPortalConfigurationRequestBusinessProfileHeadline =
 export type UpdateBillingPortalConfigurationRequestBusinessProfilePrivacyPolicyUrlCase1 = "";
 export const UpdateBillingPortalConfigurationRequestBusinessProfilePrivacyPolicyUrlCase1 = S.String;
 
-/** A link to the business’s publicly available privacy policy. */
+/** A link to the business's publicly available privacy policy. */
 export type UpdateBillingPortalConfigurationRequestBusinessProfilePrivacyPolicyUrl =
   | string
   | UpdateBillingPortalConfigurationRequestBusinessProfilePrivacyPolicyUrlCase1;
@@ -145753,7 +145753,7 @@ export type UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfService
 export const UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfServiceUrlCase1 =
   S.String;
 
-/** A link to the business’s publicly available terms of service. */
+/** A link to the business's publicly available terms of service. */
 export type UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfServiceUrl =
   | string
   | UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfServiceUrlCase1;
@@ -145764,9 +145764,9 @@ export const UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfServic
 export interface UpdateBillingPortalConfigurationRequestBusinessProfile {
   /** The messaging shown to customers in the portal. */
   headline?: UpdateBillingPortalConfigurationRequestBusinessProfileHeadline;
-  /** A link to the business’s publicly available privacy policy. */
+  /** A link to the business's publicly available privacy policy. */
   privacy_policy_url?: UpdateBillingPortalConfigurationRequestBusinessProfilePrivacyPolicyUrl;
-  /** A link to the business’s publicly available terms of service. */
+  /** A link to the business's publicly available terms of service. */
   terms_of_service_url?: UpdateBillingPortalConfigurationRequestBusinessProfileTermsOfServiceUrl;
 }
 export const UpdateBillingPortalConfigurationRequestBusinessProfile = /*@__PURE__*/ S.suspend(() =>
@@ -146488,7 +146488,7 @@ export const UpdateCheckoutSessionRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateCheckoutSessionRequestExpandList>;
 
-/** When set, provides configuration for this item’s quantity to be adjusted by the customer during Checkout. */
+/** When set, provides configuration for this item's quantity to be adjusted by the customer during Checkout. */
 export interface UpdateCheckoutSessionRequestLineItemsItemAdjustableQuantity {
   /** Set to true if the quantity can be adjusted to any positive integer. Setting to false will remove any previously specified constraints on quantity. */
   enabled: boolean;
@@ -146689,7 +146689,7 @@ export const UpdateCheckoutSessionRequestLineItemsItemTaxRates =
   S.Unknown as any as S.Schema<UpdateCheckoutSessionRequestLineItemsItemTaxRates>;
 
 export interface UpdateCheckoutSessionRequestLineItemsItem {
-  /** When set, provides configuration for this item’s quantity to be adjusted by the customer during Checkout. */
+  /** When set, provides configuration for this item's quantity to be adjusted by the customer during Checkout. */
   adjustable_quantity?: UpdateCheckoutSessionRequestLineItemsItemAdjustableQuantity;
   /** ID of an existing line item. */
   id?: string;
@@ -148141,7 +148141,7 @@ export type UpdateCoreAccountRequestDefaultsResponsibilitiesFeesCollector =
   | "stripe";
 export const UpdateCoreAccountRequestDefaultsResponsibilitiesFeesCollector = S.String;
 
-/** A value indicating who is responsible for losses when this Account can’t pay back negative balances from payments. */
+/** A value indicating who is responsible for losses when this Account can't pay back negative balances from payments. */
 export type UpdateCoreAccountRequestDefaultsResponsibilitiesLossesCollector =
   | "application"
   | "stripe";
@@ -148151,7 +148151,7 @@ export const UpdateCoreAccountRequestDefaultsResponsibilitiesLossesCollector = S
 export interface UpdateCoreAccountRequestDefaultsResponsibilities {
   /** A value indicating the party responsible for collecting fees from this account. */
   fees_collector: UpdateCoreAccountRequestDefaultsResponsibilitiesFeesCollector | (string & {});
-  /** A value indicating who is responsible for losses when this Account can’t pay back negative balances from payments. */
+  /** A value indicating who is responsible for losses when this Account can't pay back negative balances from payments. */
   losses_collector: UpdateCoreAccountRequestDefaultsResponsibilitiesLossesCollector | (string & {});
 }
 export const UpdateCoreAccountRequestDefaultsResponsibilities = /*@__PURE__*/ S.suspend(() =>
@@ -148206,11 +148206,11 @@ export const UpdateCoreAccountRequestIdentityAttestationsPersonsProvidedOwnershi
 
 /** Attestation that all Persons with a specific Relationship value have been provided. */
 export interface UpdateCoreAccountRequestIdentityAttestationsPersonsProvided {
-  /** Whether the company’s directors have been provided. Set this Boolean to true after creating all the company’s directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's directors have been provided. Set this Boolean to true after creating all the company's directors with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   directors?: boolean;
-  /** Whether the company’s executives have been provided. Set this Boolean to true after creating all the company’s executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's executives have been provided. Set this Boolean to true after creating all the company's executives with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   executives?: boolean;
-  /** Whether the company’s owners have been provided. Set this Boolean to true after creating all the company’s owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
+  /** Whether the company's owners have been provided. Set this Boolean to true after creating all the company's owners with the [Persons API](https://docs.stripe.com/api/v2/core/accounts/createperson). */
   owners?: boolean;
   /** Reason for why the company is exempt from providing ownership information. */
   ownership_exemption_reason?:
@@ -150570,7 +150570,7 @@ export interface UpdateCustomerRequest {
   expand?: UpdateCustomerRequestExpandList;
   /** The customer's full name. This may be up to *150 characters*. */
   individual_name?: UpdateCustomerRequestIndividualName;
-  /** The prefix for the customer used to generate unique invoice numbers. Must be 1–12 uppercase letters or numbers. */
+  /** The prefix for the customer used to generate unique invoice numbers. Must be 1-12 uppercase letters or numbers. */
   invoice_prefix?: string;
   /** Default invoice settings for this customer. */
   invoice_settings?: UpdateCustomerRequestInvoiceSettings;
@@ -150734,9 +150734,9 @@ export interface UpdateCustomerSourceRequest {
   address_state?: string;
   /** ZIP or postal code. */
   address_zip?: string;
-  /** Two digit number representing the card’s expiration month. */
+  /** Two digit number representing the card's expiration month. */
   exp_month?: string;
-  /** Four digit number representing the card’s expiration year. */
+  /** Four digit number representing the card's expiration year. */
   exp_year?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: UpdateCustomerSourceRequestExpandList;
@@ -150818,7 +150818,7 @@ export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvide
 export const UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceFingerprintCase1 =
   S.String;
 
-/** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+/** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
 export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceFingerprint =
   | string
   | UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceFingerprintCase1;
@@ -150830,7 +150830,7 @@ export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvide
 export const UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceIdCase1 =
   S.String;
 
-/** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+/** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
 export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceId =
   | string
   | UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceIdCase1;
@@ -150998,9 +150998,9 @@ export const UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvid
 export interface UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransaction {
   /** User Account ID used to log into business platform. Must be recognizable by the user. */
   customer_account_id?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerAccountId;
-  /** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+  /** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
   customer_device_fingerprint?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceFingerprint;
-  /** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+  /** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
   customer_device_id?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerDeviceId;
   /** The email address of the customer. */
   customer_email_address?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3DisputedTransactionCustomerEmailAddress;
@@ -151065,7 +151065,7 @@ export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvide
 export const UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceFingerprintCase1 =
   S.String;
 
-/** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+/** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
 export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceFingerprint =
   | string
   | UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceFingerprintCase1;
@@ -151077,7 +151077,7 @@ export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvide
 export const UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceIdCase1 =
   S.String;
 
-/** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+/** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
 export type UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceId =
   | string
   | UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceIdCase1;
@@ -151239,9 +151239,9 @@ export interface UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompelling
   charge: string;
   /** User Account ID used to log into business platform. Must be recognizable by the user. */
   customer_account_id?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerAccountId;
-  /** Unique identifier of the cardholder’s device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
+  /** Unique identifier of the cardholder's device derived from a combination of at least two hardware and software attributes. Must be at least 20 characters. */
   customer_device_fingerprint?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceFingerprint;
-  /** Unique identifier of the cardholder’s device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
+  /** Unique identifier of the cardholder's device such as a device serial number (e.g., International Mobile Equipment Identity [IMEI]). Must be at least 15 characters. */
   customer_device_id?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerDeviceId;
   /** The email address of the customer. */
   customer_email_address?: UpdateDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItemCustomerEmailAddress;
@@ -151639,7 +151639,7 @@ export type UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedT
 export const UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesItem =
   S.String;
 
-/** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+/** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList = Array<
   UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesItem | (string & {})
 >;
@@ -151649,13 +151649,13 @@ export const UpdateIdentityVerificationSessionRequestOptionsDocumentCase0Allowed
   ) as any as S.Schema<UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList>;
 
 export interface UpdateIdentityVerificationSessionRequestOptionsDocumentCase0 {
-  /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
+  /** Array of strings of allowed identity document types. If the provided identity document isn't one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
   allowed_types?: UpdateIdentityVerificationSessionRequestOptionsDocumentCase0AllowedTypesList;
-  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document’s extracted name and date of birth. */
+  /** Collect an ID number and perform an [ID number check](https://docs.stripe.com/identity/verification-checks?type=id-number) with the document's extracted name and date of birth. */
   require_id_number?: boolean;
-  /** Disable image uploads, identity document images have to be captured using the device’s camera. */
+  /** Disable image uploads, identity document images have to be captured using the device's camera. */
   require_live_capture?: boolean;
-  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user’s face. [Learn more](https://docs.stripe.com/identity/selfie). */
+  /** Capture a face image and perform a [selfie check](https://docs.stripe.com/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.stripe.com/identity/selfie). */
   require_matching_selfie?: boolean;
 }
 export const UpdateIdentityVerificationSessionRequestOptionsDocumentCase0 = /*@__PURE__*/ S.suspend(
@@ -151682,7 +151682,7 @@ export type UpdateIdentityVerificationSessionRequestOptionsDocument =
 export const UpdateIdentityVerificationSessionRequestOptionsDocument =
   S.Unknown as any as S.Schema<UpdateIdentityVerificationSessionRequestOptionsDocument>;
 
-/** A set of options for the session’s verification checks. */
+/** A set of options for the session's verification checks. */
 export interface UpdateIdentityVerificationSessionRequestOptions {
   /** Options that apply to the [document check](https://docs.stripe.com/identity/verification-checks?type=document). */
   document?: UpdateIdentityVerificationSessionRequestOptionsDocument;
@@ -151711,7 +151711,7 @@ export interface UpdateIdentityVerificationSessionRequest {
   expand?: UpdateIdentityVerificationSessionRequestExpandList;
   /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. */
   metadata?: UpdateIdentityVerificationSessionRequestMetadataMap;
-  /** A set of options for the session’s verification checks. */
+  /** A set of options for the session's verification checks. */
   options?: UpdateIdentityVerificationSessionRequestOptions;
   /** Details provided about the user being verified. These details may be shown to the user. */
   provided_details?: CreateIdentityVerificationSessionRequestProvidedDetails;
@@ -151989,7 +151989,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCas
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = S.String;
 
-/** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebit =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1;
@@ -152025,7 +152025,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCa
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = S.String;
 
-/** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontact =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontactCase1;
@@ -152134,7 +152134,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase0 
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = S.String;
 
-/** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillieCase1;
@@ -152144,7 +152144,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = S.String;
 
-/** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlik =
   | unknown
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlikCase1;
@@ -152255,7 +152255,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase0 =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1 = S.String;
 
-/** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCard =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCardCase1;
@@ -152282,7 +152282,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBala
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 = S.String;
 
-/** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalance =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1;
@@ -152292,7 +152292,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBala
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = S.String;
 
-/** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbini =
   | unknown
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1;
@@ -152354,7 +152354,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase0 =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = S.String;
 
-/** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPayto =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPaytoCase1;
@@ -152391,7 +152391,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase0 =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1 = S.String;
 
-/** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPixCase1;
@@ -152401,7 +152401,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = S.String;
 
-/** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebit =
   | unknown
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1;
@@ -152460,7 +152460,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase0 =
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = S.String;
 
-/** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpi =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpiCase1;
@@ -152598,38 +152598,38 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccoun
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 = S.String;
 
-/** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+/** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1;
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   S.Unknown as any as S.Schema<UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount>;
 
-/** Payment-method-specific configuration to provide to the invoice’s PaymentIntent. */
+/** Payment-method-specific configuration to provide to the invoice's PaymentIntent. */
 export interface UpdateInvoiceRequestPaymentSettingsPaymentMethodOptions {
-  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `acss_debit`, this sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
   acss_debit?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsAcssDebit;
-  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `bancontact`, this sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
   bancontact?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBancontact;
-  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `billie`, this sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
   billie?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBillie;
-  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `blik`, this sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
   blik?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsBlik;
-  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `card`, this sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
   card?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCard;
-  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `customer_balance`, this sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
   customer_balance?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalance;
-  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `konbini`, this sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
   konbini?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsKonbini;
-  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `payto`, this sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
   payto?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPayto;
-  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `pix`, this sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
   pix?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsPix;
-  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `sepa_debit`, this sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
   sepa_debit?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsSepaDebit;
-  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `upi`, this sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
   upi?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUpi;
-  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** If paying by `us_bank_account`, this sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
   us_bank_account?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccount;
 }
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
@@ -152718,7 +152718,7 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodTypesCase0List = /*
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1 = "";
 export const UpdateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1 = S.String;
 
-/** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+/** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type UpdateInvoiceRequestPaymentSettingsPaymentMethodTypes =
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodTypesCase0List
   | UpdateInvoiceRequestPaymentSettingsPaymentMethodTypesCase1;
@@ -152729,9 +152729,9 @@ export const UpdateInvoiceRequestPaymentSettingsPaymentMethodTypes =
 export interface UpdateInvoiceRequestPaymentSettings {
   /** ID of the mandate to be used for this invoice. It must correspond to the payment method used to pay the invoice, including the invoice's default_payment_method or default_source, if set. */
   default_mandate?: UpdateInvoiceRequestPaymentSettingsDefaultMandate;
-  /** Payment-method-specific configuration to provide to the invoice’s PaymentIntent. */
+  /** Payment-method-specific configuration to provide to the invoice's PaymentIntent. */
   payment_method_options?: UpdateInvoiceRequestPaymentSettingsPaymentMethodOptions;
-  /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
+  /** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
   payment_method_types?: UpdateInvoiceRequestPaymentSettingsPaymentMethodTypes;
 }
 export const UpdateInvoiceRequestPaymentSettings = /*@__PURE__*/ S.suspend(() =>
@@ -153539,7 +153539,7 @@ export type UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxRateDataTaxType =
   | "vat";
 export const UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxRateDataTaxType = S.String;
 
-/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+/** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
 export interface UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxRateData {
   /** Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
   country?: string;
@@ -153549,7 +153549,7 @@ export interface UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxRateData {
   display_name: string;
   /** This specifies if the tax rate is inclusive or exclusive. */
   inclusive: boolean;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction?: string;
   /** The level of the jurisdiction that imposes this tax rate. */
   jurisdiction_level?:
@@ -153602,7 +153602,7 @@ export const UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxabilityReason = S.Str
 export interface UpdateInvoiceLineRequestTaxAmountsCase0Item {
   /** The amount, in cents (or local equivalent), of the tax. */
   amount: number;
-  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item’s `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
+  /** Data to find or create a TaxRate object. Stripe automatically creates or reuses a TaxRate object for each tax amount. If the `tax_rate_data` exactly matches a previous value, Stripe will reuse the TaxRate object. TaxRate objects created automatically by Stripe are immediately archived, do not appear in the line item's `tax_rates`, and cannot be directly added to invoices, payments, or line items. */
   tax_rate_data: UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxRateData;
   /** The reasoning behind this tax, for example, if the product is tax exempt. */
   taxability_reason?: UpdateInvoiceLineRequestTaxAmountsCase0ItemTaxabilityReason | (string & {});
@@ -154942,7 +154942,7 @@ export const UpdateIssuingCardRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateIssuingCardRequest" }) as any as S.Schema<UpdateIssuingCardRequest>;
 
-/** The cardholder’s billing address. */
+/** The cardholder's billing address. */
 export type UpdateIssuingCardholderRequestBillingAddress = CreateIssuingCardRequestShippingAddress;
 export const UpdateIssuingCardholderRequestBillingAddress = CreateIssuingCardRequestShippingAddress;
 
@@ -155060,7 +155060,7 @@ export const UpdateIssuingCardholderRequestMetadataMap = /*@__PURE__*/ S.Record(
 export type UpdateIssuingCardholderRequestPreferredLocalesItem = "de" | "en" | "es" | "fr" | "it";
 export const UpdateIssuingCardholderRequestPreferredLocalesItem = S.String;
 
-/** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+/** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
 export type UpdateIssuingCardholderRequestPreferredLocalesList = Array<
   UpdateIssuingCardholderRequestPreferredLocalesItem | (string & {})
 >;
@@ -156141,7 +156141,7 @@ export interface UpdateIssuingCardholderRequest {
   metadata?: UpdateIssuingCardholderRequestMetadataMap;
   /** The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://docs.stripe.com/issuing/3d-secure) for more details. */
   phone_number?: string;
-  /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
+  /** The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
   preferred_locales?: UpdateIssuingCardholderRequestPreferredLocalesList;
   /** Rules that control spending across this cardholder's cards. Refer to our [documentation](https://docs.stripe.com/issuing/controls/spending-controls) for more details. */
   spending_controls?: UpdateIssuingCardholderRequestSpendingControls;
@@ -159447,7 +159447,7 @@ export type UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDesc
 export const UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
 export type UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana =
   | string
   | UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanaCase1;
@@ -159459,14 +159459,14 @@ export type UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDesc
 export const UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1 =
   S.String;
 
-/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+/** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
 export type UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   | string
   | UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanjiCase1;
 export const UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji =
   S.Unknown as any as S.Schema<UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji>;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -159557,7 +159557,7 @@ export const UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
 export interface UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecureAresTransStatus
     | (string & {});
@@ -159647,9 +159647,9 @@ export interface UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0 {
   setup_future_usage?:
     | UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0SetupFutureUsage
     | (string & {});
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters. */
   statement_descriptor_suffix_kana?: UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKana;
-  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
+  /** Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters. */
   statement_descriptor_suffix_kanji?: UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0StatementDescriptorSuffixKanji;
   /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this payment. */
   three_d_secure?: UpdatePaymentIntentRequestPaymentMethodOptionsCardCase0ThreeDSecure;
@@ -163094,14 +163094,14 @@ export const UpdatePaymentLinkRequestInvoiceCreation = /*@__PURE__*/ S.suspend((
   identifier: "UpdatePaymentLinkRequestInvoiceCreation",
 }) as any as S.Schema<UpdatePaymentLinkRequestInvoiceCreation>;
 
-/** When set, provides configuration for this item’s quantity to be adjusted by the customer during checkout. */
+/** When set, provides configuration for this item's quantity to be adjusted by the customer during checkout. */
 export type UpdatePaymentLinkRequestLineItemsItemAdjustableQuantity =
   CreatePaymentLinkRequestLineItemsItemAdjustableQuantity;
 export const UpdatePaymentLinkRequestLineItemsItemAdjustableQuantity =
   CreatePaymentLinkRequestLineItemsItemAdjustableQuantity;
 
 export interface UpdatePaymentLinkRequestLineItemsItem {
-  /** When set, provides configuration for this item’s quantity to be adjusted by the customer during checkout. */
+  /** When set, provides configuration for this item's quantity to be adjusted by the customer during checkout. */
   adjustable_quantity?: CreatePaymentLinkRequestLineItemsItemAdjustableQuantity;
   /** The ID of an existing line item on the payment link. */
   id: string;
@@ -165041,7 +165041,7 @@ export const UpdatePaymentMethodConfigurationRequestCustomerBalanceDisplayPrefer
     identifier: "UpdatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference",
   }) as any as S.Schema<UpdatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference>;
 
-/** Uses a customer’s [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
+/** Uses a customer's [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
 export interface UpdatePaymentMethodConfigurationRequestCustomerBalance {
   /** Whether or not the payment method should be displayed. */
   display_preference?: UpdatePaymentMethodConfigurationRequestCustomerBalanceDisplayPreference;
@@ -165160,7 +165160,7 @@ export const UpdatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPr
     identifier: "UpdatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference",
   }) as any as S.Schema<UpdatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference>;
 
-/** Meal vouchers in France, or “titres-restaurant”, is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
+/** Meal vouchers in France, or "titres-restaurant", is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
 export interface UpdatePaymentMethodConfigurationRequestFrMealVoucherConecs {
   /** Whether or not the payment method should be displayed. */
   display_preference?: UpdatePaymentMethodConfigurationRequestFrMealVoucherConecsDisplayPreference;
@@ -165662,7 +165662,7 @@ export const UpdatePaymentMethodConfigurationRequestMultibancoDisplayPreference 
     identifier: "UpdatePaymentMethodConfigurationRequestMultibancoDisplayPreference",
   }) as any as S.Schema<UpdatePaymentMethodConfigurationRequestMultibancoDisplayPreference>;
 
-/** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)—a single integration path for creating payments using any supported method. */
+/** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)--a single integration path for creating payments using any supported method. */
 export interface UpdatePaymentMethodConfigurationRequestMultibanco {
   /** Whether or not the payment method should be displayed. */
   display_preference?: UpdatePaymentMethodConfigurationRequestMultibancoDisplayPreference;
@@ -166164,7 +166164,7 @@ export const UpdatePaymentMethodConfigurationRequestRevolutPayDisplayPreference 
     identifier: "UpdatePaymentMethodConfigurationRequestRevolutPayDisplayPreference",
   }) as any as S.Schema<UpdatePaymentMethodConfigurationRequestRevolutPayDisplayPreference>;
 
-/** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
+/** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer's stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
 export interface UpdatePaymentMethodConfigurationRequestRevolutPay {
   /** Whether or not the payment method should be displayed. */
   display_preference?: UpdatePaymentMethodConfigurationRequestRevolutPayDisplayPreference;
@@ -166403,7 +166403,7 @@ export const UpdatePaymentMethodConfigurationRequestSofortDisplayPreference =
     identifier: "UpdatePaymentMethodConfigurationRequestSofortDisplayPreference",
   }) as any as S.Schema<UpdatePaymentMethodConfigurationRequestSofortDisplayPreference>;
 
-/** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)—a single integration path for creating payments using any supported method—to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
+/** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)--a single integration path for creating payments using any supported method--to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
 export interface UpdatePaymentMethodConfigurationRequestSofort {
   /** Whether or not the payment method should be displayed. */
   display_preference?: UpdatePaymentMethodConfigurationRequestSofortDisplayPreference;
@@ -166725,7 +166725,7 @@ export interface UpdatePaymentMethodConfigurationRequest {
   cashapp?: UpdatePaymentMethodConfigurationRequestCashapp;
   /** [Stablecoin payments](https://docs.stripe.com/payments/stablecoin-payments) enable customers to pay in stablecoins like USDC from 100s of wallets including Phantom and Metamask. */
   crypto?: UpdatePaymentMethodConfigurationRequestCrypto;
-  /** Uses a customer’s [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
+  /** Uses a customer's [cash balance](https://docs.stripe.com/payments/customer-balance) for the payment. The cash balance can be funded via a bank transfer. Check this [page](https://docs.stripe.com/payments/bank-transfers) for more details. */
   customer_balance?: UpdatePaymentMethodConfigurationRequestCustomerBalance;
   /** EPS is an Austria-based payment method that allows customers to complete transactions online using their bank credentials. EPS is supported by all Austrian banks and is accepted by over 80% of Austrian online retailers. Check this [page](https://docs.stripe.com/payments/eps) for more details. */
   eps?: UpdatePaymentMethodConfigurationRequestEps;
@@ -166733,7 +166733,7 @@ export interface UpdatePaymentMethodConfigurationRequest {
   expand?: UpdatePaymentMethodConfigurationRequestExpandList;
   /** Financial Process Exchange (FPX) is a Malaysia-based payment method that allows customers to complete transactions online using their bank credentials. Bank Negara Malaysia (BNM), the Central Bank of Malaysia, and eleven other major Malaysian financial institutions are members of the PayNet Group, which owns and operates FPX. It is one of the most popular online payment methods in Malaysia, with nearly 90 million transactions in 2018 according to BNM. Check this [page](https://docs.stripe.com/payments/fpx) for more details. */
   fpx?: UpdatePaymentMethodConfigurationRequestFpx;
-  /** Meal vouchers in France, or “titres-restaurant”, is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
+  /** Meal vouchers in France, or "titres-restaurant", is a local benefits program commonly offered by employers for their employees to purchase prepared food and beverages on working days. Check this [page](https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers) for more details. */
   fr_meal_voucher_conecs?: UpdatePaymentMethodConfigurationRequestFrMealVoucherConecs;
   /** giropay is a German payment method based on online banking, introduced in 2006. It allows customers to complete transactions online using their online banking environment, with funds debited from their bank account. Depending on their bank, customers confirm payments on giropay using a second factor of authentication or a PIN. giropay accounts for 10% of online checkouts in Germany. Check this [page](https://docs.stripe.com/payments/giropay) for more details. */
   giropay?: UpdatePaymentMethodConfigurationRequestGiropay;
@@ -166759,7 +166759,7 @@ export interface UpdatePaymentMethodConfigurationRequest {
   mb_way?: UpdatePaymentMethodConfigurationRequestMbWay;
   /** MobilePay is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) card wallet payment method used in Denmark and Finland. It allows customers to [authenticate and approve](https://docs.stripe.com/payments/payment-methods#customer-actions) payments using the MobilePay app. Check this [page](https://docs.stripe.com/payments/mobilepay) for more details. */
   mobilepay?: UpdatePaymentMethodConfigurationRequestMobilepay;
-  /** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)—a single integration path for creating payments using any supported method. */
+  /** Stripe users in Europe and the United States can accept Multibanco payments from customers in Portugal using [Sources](https://stripe.com/docs/sources)--a single integration path for creating payments using any supported method. */
   multibanco?: UpdatePaymentMethodConfigurationRequestMultibanco;
   /** Configuration name. */
   name?: string;
@@ -166787,7 +166787,7 @@ export interface UpdatePaymentMethodConfigurationRequest {
   pix?: UpdatePaymentMethodConfigurationRequestPix;
   /** PromptPay is a Thailand-based payment method that allows customers to make a payment using their preferred app from participating banks. Check this [page](https://docs.stripe.com/payments/promptpay) for more details. */
   promptpay?: UpdatePaymentMethodConfigurationRequestPromptpay;
-  /** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
+  /** Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment method. Revolut Pay uses the customer's stored balance or cards to fund the payment, and offers the option for non-Revolut customers to save their details after their first purchase. */
   revolut_pay?: UpdatePaymentMethodConfigurationRequestRevolutPay;
   /** Samsung Pay is a [single-use](https://docs.stripe.com/payments/payment-methods#usage local wallet available in South Korea. */
   samsung_pay?: UpdatePaymentMethodConfigurationRequestSamsungPay;
@@ -166799,7 +166799,7 @@ export interface UpdatePaymentMethodConfigurationRequest {
   sepa_debit?: UpdatePaymentMethodConfigurationRequestSepaDebit;
   /** SeQura is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) payment method that offers customers payment terms ranging from 7-120 days. Customers are redirected from your website or app, authorize the payment with SeQura, then return to your website or app. You get [immediate notification](https://docs.stripe.com/payments/payment-methods#payment-notification) of whether the payment succeeded or failed. */
   sequra?: UpdatePaymentMethodConfigurationRequestSequra;
-  /** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)—a single integration path for creating payments using any supported method—to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
+  /** Stripe users in Europe and the United States can use the [Payment Intents API](https://stripe.com/docs/payments/payment-intents)--a single integration path for creating payments using any supported method--to accept [Sofort](https://www.sofort.com/) payments from customers. Check this [page](https://docs.stripe.com/payments/sofort) for more details. */
   sofort?: UpdatePaymentMethodConfigurationRequestSofort;
   /** Sunbit is a [single-use](https://docs.stripe.com/payments/payment-methods#usage) payment method where customers choose to pay in 3, 6, or 12 installments. Customers are redirected from your website or app, authorize the payment with Sunbit, then return to your website or app. You get [immediate notification](https://docs.stripe.com/payments/payment-methods#payment-notification) of whether the payment succeeded or failed. */
   sunbit?: UpdatePaymentMethodConfigurationRequestSunbit;
@@ -169274,7 +169274,7 @@ export type UpdateSetupIntentRequestPaymentMethodOptionsCardRequestThreeDSecure 
   | "challenge";
 export const UpdateSetupIntentRequestPaymentMethodOptionsCardRequestThreeDSecure = S.String;
 
-/** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+/** The `transStatus` returned from the card Issuer's ACS in the ARes. */
 export type UpdateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus =
   | "A"
   | "C"
@@ -169357,7 +169357,7 @@ export const UpdateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureVersion
 
 /** If 3D Secure authentication was performed with a third-party provider, the authentication details to use for this setup. */
 export interface UpdateSetupIntentRequestPaymentMethodOptionsCardThreeDSecure {
-  /** The `transStatus` returned from the card Issuer’s ACS in the ARes. */
+  /** The `transStatus` returned from the card Issuer's ACS in the ARes. */
   ares_trans_status?:
     | UpdateSetupIntentRequestPaymentMethodOptionsCardThreeDSecureAresTransStatus
     | (string & {});
@@ -170183,7 +170183,7 @@ export interface UpdateSetupIntentRequest {
   intent: string;
   /** The list of payment method types to allow for this SetupIntent. Stripe will only use methods in this list when determining the payment methods to offer. A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
   allowed_payment_method_types?: UpdateSetupIntentRequestAllowedPaymentMethodTypes;
-  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
+  /** If present, the SetupIntent's payment method will be attached to the in-context Stripe Account. It can only be used for this Stripe Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer. */
   attach_to_self?: boolean;
   /** ID of the Customer this SetupIntent belongs to, if one exists. If present, the SetupIntent's payment method will be attached to the Customer on successful setup. Payment methods attached to other Customers cannot be used with this SetupIntent. */
   customer?: string;
@@ -171459,7 +171459,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDeb
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1 = S.String;
 
-/** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebit =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebitCase1;
@@ -171495,7 +171495,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancont
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1 = S.String;
 
-/** This sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontact =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontactCase1;
@@ -171601,7 +171601,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieC
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1 = S.String;
 
-/** This sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillie =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillieCase1;
@@ -171622,7 +171622,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCas
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1 = S.String;
 
-/** This sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlik =
   | CreateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlikCase1;
@@ -171719,7 +171719,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCas
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1 = S.String;
 
-/** This sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCard =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCardCase1;
@@ -171747,7 +171747,7 @@ export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomer
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1 =
   S.String;
 
-/** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalance =
   | CreateInvoiceRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalanceCase1;
@@ -171757,7 +171757,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustome
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1 = S.String;
 
-/** This sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbini =
   | unknown
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbiniCase1;
@@ -171820,7 +171820,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCa
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1 = S.String;
 
-/** This sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPayto =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPaytoCase1;
@@ -171897,7 +171897,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1 = S.String;
 
-/** This sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPixCase1;
@@ -171907,7 +171907,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix =
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1 = S.String;
 
-/** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebit =
   | unknown
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebitCase1;
@@ -171967,7 +171967,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1 = S.String;
 
-/** This sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpi =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpiCase1;
@@ -172106,7 +172106,7 @@ export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAc
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1 =
   S.String;
 
-/** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+/** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccount =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase1;
@@ -172115,29 +172115,29 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankA
 
 /** Payment-method-specific configuration to provide to invoices created by the subscription. */
 export interface UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptions {
-  /** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent. */
   acss_debit?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsAcssDebit;
-  /** This sub-hash contains details about the Bancontact payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent. */
   bancontact?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBancontact;
-  /** This sub-hash contains details about the Billie payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Billie payment method options to pass to the invoice's PaymentIntent. */
   billie?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBillie;
-  /** This sub-hash contains details about the Blik payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Blik payment method options to pass to the invoice's PaymentIntent. */
   blik?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsBlik;
-  /** This sub-hash contains details about the Card payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent. */
   card?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCard;
-  /** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent. */
   customer_balance?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsCustomerBalance;
-  /** This sub-hash contains details about the Konbini payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent. */
   konbini?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsKonbini;
-  /** This sub-hash contains details about the PayTo payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the PayTo payment method options to pass to the invoice's PaymentIntent. */
   payto?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPayto;
-  /** This sub-hash contains details about the Pix payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the Pix payment method options to pass to the invoice's PaymentIntent. */
   pix?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsPix;
-  /** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the SEPA Direct Debit payment method options to pass to the invoice's PaymentIntent. */
   sepa_debit?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsSepaDebit;
-  /** This sub-hash contains details about the UPI payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the UPI payment method options to pass to the invoice's PaymentIntent. */
   upi?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUpi;
-  /** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice’s PaymentIntent. */
+  /** This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent. */
   us_bank_account?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptionsUsBankAccount;
 }
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptions = /*@__PURE__*/ S.suspend(
@@ -172230,7 +172230,7 @@ export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase0List
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1 = "";
 export const UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1 = S.String;
 
-/** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
+/** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
 export type UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypes =
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase0List
   | UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypesCase1;
@@ -172247,7 +172247,7 @@ export const UpdateSubscriptionRequestPaymentSettingsSaveDefaultPaymentMethod = 
 export interface UpdateSubscriptionRequestPaymentSettings {
   /** Payment-method-specific configuration to provide to invoices created by the subscription. */
   payment_method_options?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodOptions;
-  /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
+  /** The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). Should not be specified with payment_method_configuration */
   payment_method_types?: UpdateSubscriptionRequestPaymentSettingsPaymentMethodTypes;
   /** Configure whether Stripe updates `subscription.default_payment_method` when payment succeeds. Defaults to `off` if unspecified. */
   save_default_payment_method?:
@@ -174195,7 +174195,7 @@ export interface UpdateTaxRateRequest {
   display_name?: string;
   /** Specifies which fields in the response should be expanded. */
   expand?: UpdateTaxRateRequestExpandList;
-  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice. */
+  /** The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer's invoice. */
   jurisdiction?: string;
   /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. */
   metadata?: UpdateTaxRateRequestMetadata;
@@ -176602,7 +176602,7 @@ export const UpdateWebhookEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWebhookEndpointRequest>;
 
 export type CreateAccountError = StripeOpError;
-/** Create an account <p>With <a href="/docs/connect">Connect</a>, you can create Stripe accounts for your users. To do this, you’ll first need to <a href="https://dashboard.stripe.com/account/applications/settings">register your platform</a>.</p> <p>If you’ve already collected information for your connected accounts, you <a href="/connect/marketplace/tasks/create#prefill-account-information">can prefill that information</a> when creating the account. Connect Onboarding won’t ask for the prefilled information during account onboarding. You can prefill any information on the account.</p> */
+/** Create an account <p>With <a href="/docs/connect">Connect</a>, you can create Stripe accounts for your users. To do this, you'll first need to <a href="https://dashboard.stripe.com/account/applications/settings">register your platform</a>.</p> <p>If you've already collected information for your connected accounts, you <a href="/connect/marketplace/tasks/create#prefill-account-information">can prefill that information</a> when creating the account. Connect Onboarding won't ask for the prefilled information during account onboarding. You can prefill any information on the account.</p> */
 export const CreateAccount: API.OperationMethod<
   CreateAccountRequest,
   Account,
@@ -176737,7 +176737,7 @@ export const CreateApplePayDomain: API.OperationMethod<
 }));
 
 export type CreateApplicationFeeRefundError = StripeOpError;
-/** Create an application fee refund <p>Refunds an application fee that has previously been collected but not yet refunded. Funds will be refunded to the Stripe account from which the fee was originally collected.</p> <p>You can optionally refund only part of an application fee. You can do so multiple times, until the entire fee has been refunded.</p> <p>Once entirely refunded, an application fee can’t be refunded again. This method will raise an error when called on an already-refunded application fee, or when trying to refund more money than is left on an application fee.</p> */
+/** Create an application fee refund <p>Refunds an application fee that has previously been collected but not yet refunded. Funds will be refunded to the Stripe account from which the fee was originally collected.</p> <p>You can optionally refund only part of an application fee. You can do so multiple times, until the entire fee has been refunded.</p> <p>Once entirely refunded, an application fee can't be refunded again. This method will raise an error when called on an already-refunded application fee, or when trying to refund more money than is left on an application fee.</p> */
 export const CreateApplicationFeeRefund: API.OperationMethod<
   CreateApplicationFeeRefundRequest,
   FeeRefund,
@@ -176977,7 +176977,7 @@ export const CreateBillingMeter: API.OperationMethod<
 }));
 
 export type CreateBillingMeterDeactivateError = StripeOpError;
-/** Deactivate a billing meter <p>When a meter is deactivated, no more meter events will be accepted for this meter. You can’t attach a deactivated meter to a price.</p> */
+/** Deactivate a billing meter <p>When a meter is deactivated, no more meter events will be accepted for this meter. You can't attach a deactivated meter to a price.</p> */
 export const CreateBillingMeterDeactivate: API.OperationMethod<
   CreateBillingMeterDeactivateRequest,
   BillingMeter,
@@ -177172,7 +177172,7 @@ export const CreateCheckoutSession: API.OperationMethod<
 }));
 
 export type CreateCheckoutSessionExpireError = StripeOpError;
-/** Expire a Checkout Session <p>A Checkout Session can be expired when it is in one of these statuses: <code>open</code> </p> <p>After it expires, a customer can’t complete a Checkout Session and customers loading the Checkout Session see a message saying the Checkout Session is expired.</p> */
+/** Expire a Checkout Session <p>A Checkout Session can be expired when it is in one of these statuses: <code>open</code> </p> <p>After it expires, a customer can't complete a Checkout Session and customers loading the Checkout Session see a message saying the Checkout Session is expired.</p> */
 export const CreateCheckoutSessionExpire: API.OperationMethod<
   CreateCheckoutSessionExpireRequest,
   CheckoutSession,
@@ -177382,7 +177382,7 @@ export const CreateCoreEventDestinationPing: API.OperationMethod<
 }));
 
 export type CreateCouponError = StripeOpError;
-/** Create a coupon <p>You can create coupons easily via the <a href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe dashboard. Coupon creation is also accessible via the API if you need to create coupons on the fly.</p> <p>A coupon has either a <code>percent_off</code> or an <code>amount_off</code> and <code>currency</code>. If you set an <code>amount_off</code>, that amount will be subtracted from any invoice’s subtotal. For example, an invoice with a subtotal of <currency>100</currency> will have a final total of <currency>0</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it and an invoice with a subtotal of <currency>300</currency> will have a final total of <currency>100</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it.</p> */
+/** Create a coupon <p>You can create coupons easily via the <a href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe dashboard. Coupon creation is also accessible via the API if you need to create coupons on the fly.</p> <p>A coupon has either a <code>percent_off</code> or an <code>amount_off</code> and <code>currency</code>. If you set an <code>amount_off</code>, that amount will be subtracted from any invoice's subtotal. For example, an invoice with a subtotal of <currency>100</currency> will have a final total of <currency>0</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it and an invoice with a subtotal of <currency>300</currency> will have a final total of <currency>100</currency> if a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to it.</p> */
 export const CreateCoupon: API.OperationMethod<
   CreateCouponRequest,
   Coupon,
@@ -177397,7 +177397,7 @@ export const CreateCoupon: API.OperationMethod<
 }));
 
 export type CreateCreditNoteError = StripeOpError;
-/** Create a credit note <p>Issue a credit note to adjust the amount of a finalized invoice. A credit note will first reduce the invoice’s <code>amount_remaining</code> (and <code>amount_due</code>), but not below zero. This amount is indicated by the credit note’s <code>pre_payment_amount</code>. The excess amount is indicated by <code>post_payment_amount</code>, and it can result in any combination of the following:</p> <ul> <li>Refunds: create a new refund (using <code>refund_amount</code>) or link existing refunds (using <code>refunds</code>).</li> <li>Customer balance credit: credit the customer’s balance (using <code>credit_amount</code>) which will be automatically applied to their next invoice when it’s finalized.</li> <li>Outside of Stripe credit: record the amount that is or will be credited outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul> <p>The sum of refunds, customer balance credits, and outside of Stripe credits must equal the <code>post_payment_amount</code>.</p> <p>You may issue multiple credit notes for an invoice. Each credit note may increment the invoice’s <code>pre_payment_credit_notes_amount</code>, <code>post_payment_credit_notes_amount</code>, or both, depending on the invoice’s <code>amount_remaining</code> at the time of credit note creation.</p> <p>For invoices that also have refunds created through the <a href="/docs/api/refunds">Refund API</a>, the credit note API subtracts those refund amounts from the maximum creditable amount. This prevents the combined credit notes and refunds from exceeding the invoice amount. If you use both, ensure the combined total does not exceed the invoice’s paid amount.</p> */
+/** Create a credit note <p>Issue a credit note to adjust the amount of a finalized invoice. A credit note will first reduce the invoice's <code>amount_remaining</code> (and <code>amount_due</code>), but not below zero. This amount is indicated by the credit note's <code>pre_payment_amount</code>. The excess amount is indicated by <code>post_payment_amount</code>, and it can result in any combination of the following:</p> <ul> <li>Refunds: create a new refund (using <code>refund_amount</code>) or link existing refunds (using <code>refunds</code>).</li> <li>Customer balance credit: credit the customer's balance (using <code>credit_amount</code>) which will be automatically applied to their next invoice when it's finalized.</li> <li>Outside of Stripe credit: record the amount that is or will be credited outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul> <p>The sum of refunds, customer balance credits, and outside of Stripe credits must equal the <code>post_payment_amount</code>.</p> <p>You may issue multiple credit notes for an invoice. Each credit note may increment the invoice's <code>pre_payment_credit_notes_amount</code>, <code>post_payment_credit_notes_amount</code>, or both, depending on the invoice's <code>amount_remaining</code> at the time of credit note creation.</p> <p>For invoices that also have refunds created through the <a href="/docs/api/refunds">Refund API</a>, the credit note API subtracts those refund amounts from the maximum creditable amount. This prevents the combined credit notes and refunds from exceeding the invoice amount. If you use both, ensure the combined total does not exceed the invoice's paid amount.</p> */
 export const CreateCreditNote: API.OperationMethod<
   CreateCreditNoteRequest,
   CreditNote,
@@ -177442,7 +177442,7 @@ export const CreateCustomer: API.OperationMethod<
 }));
 
 export type CreateCustomerBalanceTransactionError = StripeOpError;
-/** Create a customer balance transaction <p>Creates an immutable transaction that updates the customer’s credit <a href="/docs/billing/customer/balance">balance</a>.</p> */
+/** Create a customer balance transaction <p>Creates an immutable transaction that updates the customer's credit <a href="/docs/billing/customer/balance">balance</a>.</p> */
 export const CreateCustomerBalanceTransaction: API.OperationMethod<
   CreateCustomerBalanceTransactionRequest,
   CustomerBalanceTransaction,
@@ -177457,7 +177457,7 @@ export const CreateCustomerBalanceTransaction: API.OperationMethod<
 }));
 
 export type CreateCustomerCashBalanceError = StripeOpError;
-/** Update a cash balance's settings <p>Changes the settings on a customer’s cash balance.</p> */
+/** Update a cash balance's settings <p>Changes the settings on a customer's cash balance.</p> */
 export const CreateCustomerCashBalance: API.OperationMethod<
   CreateCustomerCashBalanceRequest,
   CashBalance,
@@ -177502,7 +177502,7 @@ export const CreateCustomerSession: API.OperationMethod<
 }));
 
 export type CreateCustomerSourceError = StripeOpError;
-/** Create a card <p>When you create a new credit card, you must specify a customer or recipient on which to create it.</p> <p>If the card’s owner has no default card, then the new card will become the default. However, if the owner already has a default, then it will not change. To change the default, you should <a href="/api/customers/update">update the customer</a> to have a new <code>default_source</code>.</p> */
+/** Create a card <p>When you create a new credit card, you must specify a customer or recipient on which to create it.</p> <p>If the card's owner has no default card, then the new card will become the default. However, if the owner already has a default, then it will not change. To change the default, you should <a href="/api/customers/update">update the customer</a> to have a new <code>default_source</code>.</p> */
 export const CreateCustomerSource: API.OperationMethod<
   CreateCustomerSourceRequest,
   CreateCustomerSourceResponse,
@@ -177592,7 +177592,7 @@ export const CreateEphemeralKey: API.OperationMethod<
 }));
 
 export type CreateFileError = StripeOpError;
-/** Create a file <p>To upload a file to Stripe, you need to send a request of type <code>multipart/form-data</code>. Include the file you want to upload in the request, and the parameters for creating a file.</p> <p>All of Stripe’s officially supported Client libraries support sending <code>multipart/form-data</code>.</p> */
+/** Create a file <p>To upload a file to Stripe, you need to send a request of type <code>multipart/form-data</code>. Include the file you want to upload in the request, and the parameters for creating a file.</p> <p>All of Stripe's officially supported Client libraries support sending <code>multipart/form-data</code>.</p> */
 export const CreateFile: API.OperationMethod<
   CreateFileRequest,
   File,
@@ -177682,7 +177682,7 @@ export const CreateFinancialConnectionsAccountUnsubscribe: API.OperationMethod<
 }));
 
 export type CreateFinancialConnectionsSessionError = StripeOpError;
-/** Create a Session <p>To launch the Financial Connections authorization flow, create a <code>Session</code>. The session’s <code>client_secret</code> can be used to launch the flow using Stripe.js.</p> */
+/** Create a Session <p>To launch the Financial Connections authorization flow, create a <code>Session</code>. The session's <code>client_secret</code> can be used to launch the flow using Stripe.js.</p> */
 export const CreateFinancialConnectionsSession: API.OperationMethod<
   CreateFinancialConnectionsSessionRequest,
   FinancialConnectionsSession,
@@ -177712,7 +177712,7 @@ export const CreateForwardingRequest: API.OperationMethod<
 }));
 
 export type CreateIdentityVerificationSessionError = StripeOpError;
-/** Create a VerificationSession <p>Creates a VerificationSession object.</p> <p>After the VerificationSession is created, display a verification modal using the session <code>client_secret</code> or send your users to the session’s <code>url</code>.</p> <p>If your API key is in test mode, verification checks won’t actually process, though everything else will occur as if in live mode.</p> <p>Related guide: <a href="/docs/identity/verify-identity-documents">Verify your users’ identity documents</a></p> */
+/** Create a VerificationSession <p>Creates a VerificationSession object.</p> <p>After the VerificationSession is created, display a verification modal using the session <code>client_secret</code> or send your users to the session's <code>url</code>.</p> <p>If your API key is in test mode, verification checks won't actually process, though everything else will occur as if in live mode.</p> <p>Related guide: <a href="/docs/identity/verify-identity-documents">Verify your users' identity documents</a></p> */
 export const CreateIdentityVerificationSession: API.OperationMethod<
   CreateIdentityVerificationSessionRequest,
   IdentityVerificationSession,
@@ -177742,7 +177742,7 @@ export const CreateIdentityVerificationSessionCancel: API.OperationMethod<
 }));
 
 export type CreateIdentityVerificationSessionRedactError = StripeOpError;
-/** Redact a VerificationSession <p>Redact a VerificationSession to remove all collected information from Stripe. This will redact the VerificationSession and all objects related to it, including VerificationReports, Events, request logs, etc.</p> <p>A VerificationSession object can be redacted when it is in <code>requires_input</code> or <code>verified</code> <a href="/docs/identity/how-sessions-work">status</a>. Redacting a VerificationSession in <code>requires_action</code> state will automatically cancel it.</p> <p>The redaction process may take up to four days. When the redaction process is in progress, the VerificationSession’s <code>redaction.status</code> field will be set to <code>processing</code>; when the process is finished, it will change to <code>redacted</code> and an <code>identity.verification_session.redacted</code> event will be emitted.</p> <p>Redaction is irreversible. Redacted objects are still accessible in the Stripe API, but all the fields that contain personal data will be replaced by the string <code>[redacted]</code> or a similar placeholder. The <code>metadata</code> field will also be erased. Redacted objects cannot be updated or used for any purpose.</p> <p><a href="/docs/identity/verification-sessions#redact">Learn more</a>.</p> */
+/** Redact a VerificationSession <p>Redact a VerificationSession to remove all collected information from Stripe. This will redact the VerificationSession and all objects related to it, including VerificationReports, Events, request logs, etc.</p> <p>A VerificationSession object can be redacted when it is in <code>requires_input</code> or <code>verified</code> <a href="/docs/identity/how-sessions-work">status</a>. Redacting a VerificationSession in <code>requires_action</code> state will automatically cancel it.</p> <p>The redaction process may take up to four days. When the redaction process is in progress, the VerificationSession's <code>redaction.status</code> field will be set to <code>processing</code>; when the process is finished, it will change to <code>redacted</code> and an <code>identity.verification_session.redacted</code> event will be emitted.</p> <p>Redaction is irreversible. Redacted objects are still accessible in the Stripe API, but all the fields that contain personal data will be replaced by the string <code>[redacted]</code> or a similar placeholder. The <code>metadata</code> field will also be erased. Redacted objects cannot be updated or used for any purpose.</p> <p><a href="/docs/identity/verification-sessions#redact">Learn more</a>.</p> */
 export const CreateIdentityVerificationSessionRedact: API.OperationMethod<
   CreateIdentityVerificationSessionRedactRequest,
   IdentityVerificationSession,
@@ -177787,7 +177787,7 @@ export const CreateInvoiceAddLine: API.OperationMethod<
 }));
 
 export type CreateInvoiceAttachPaymentError = StripeOpError;
-/** Attach a payment to an Invoice <p>Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to the list of <code>payments</code>.</p> <p>For the PaymentIntent, when the PaymentIntent’s status changes to <code>succeeded</code>, the payment is credited to the invoice, increasing its <code>amount_paid</code>. When the invoice is fully paid, the invoice’s status becomes <code>paid</code>.</p> <p>If the PaymentIntent’s status is already <code>succeeded</code> when it’s attached, it’s credited to the invoice immediately.</p> <p>See: <a href="/docs/invoicing/partial-payments">Partial payments</a> to learn more.</p> */
+/** Attach a payment to an Invoice <p>Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to the list of <code>payments</code>.</p> <p>For the PaymentIntent, when the PaymentIntent's status changes to <code>succeeded</code>, the payment is credited to the invoice, increasing its <code>amount_paid</code>. When the invoice is fully paid, the invoice's status becomes <code>paid</code>.</p> <p>If the PaymentIntent's status is already <code>succeeded</code> when it's attached, it's credited to the invoice immediately.</p> <p>See: <a href="/docs/invoicing/partial-payments">Partial payments</a> to learn more.</p> */
 export const CreateInvoiceAttachPayment: API.OperationMethod<
   CreateInvoiceAttachPaymentRequest,
   Invoice,
@@ -177802,7 +177802,7 @@ export const CreateInvoiceAttachPayment: API.OperationMethod<
 }));
 
 export type CreateInvoiceFinalizeError = StripeOpError;
-/** Finalize an invoice <p>Stripe automatically finalizes drafts before sending and attempting payment on invoices. However, if you’d like to finalize a draft invoice manually, you can do so using this method.</p> */
+/** Finalize an invoice <p>Stripe automatically finalizes drafts before sending and attempting payment on invoices. However, if you'd like to finalize a draft invoice manually, you can do so using this method.</p> */
 export const CreateInvoiceFinalize: API.OperationMethod<
   CreateInvoiceFinalizeRequest,
   Invoice,
@@ -177847,7 +177847,7 @@ export const CreateInvoiceMarkUncollectible: API.OperationMethod<
 }));
 
 export type CreateInvoicePayError = StripeOpError;
-/** Pay an invoice <p>Stripe automatically creates and then attempts to collect payment on invoices for customers on subscriptions according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you’d like to attempt payment on an invoice out of the normal collection schedule or for some other reason, you can do so.</p> */
+/** Pay an invoice <p>Stripe automatically creates and then attempts to collect payment on invoices for customers on subscriptions according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you'd like to attempt payment on an invoice out of the normal collection schedule or for some other reason, you can do so.</p> */
 export const CreateInvoicePay: API.OperationMethod<
   CreateInvoicePayRequest,
   Invoice,
@@ -177877,7 +177877,7 @@ export const CreateInvoiceRemoveLine: API.OperationMethod<
 }));
 
 export type CreateInvoiceRenderingTemplateArchiveError = StripeOpError;
-/** Archive an invoice rendering template <p>Updates the status of an invoice rendering template to ‘archived’ so no new Stripe objects (customers, invoices, etc.) can reference it. The template can also no longer be updated. However, if the template is already set on a Stripe object, it will continue to be applied on invoices generated by it.</p> */
+/** Archive an invoice rendering template <p>Updates the status of an invoice rendering template to 'archived' so no new Stripe objects (customers, invoices, etc.) can reference it. The template can also no longer be updated. However, if the template is already set on a Stripe object, it will continue to be applied on invoices generated by it.</p> */
 export const CreateInvoiceRenderingTemplateArchive: API.OperationMethod<
   CreateInvoiceRenderingTemplateArchiveRequest,
   InvoiceRenderingTemplate,
@@ -177907,7 +177907,7 @@ export const CreateInvoiceRenderingTemplateUnarchive: API.OperationMethod<
 }));
 
 export type CreateInvoicesCreatePreviewError = StripeOpError;
-/** Create a preview invoice <p>At any time, you can preview the upcoming invoice for a subscription or subscription schedule. This will show you all the charges that are pending, including subscription renewal charges, invoice item charges, etc. It will also show you any discounts that are applicable to the invoice.</p> <p>You can also preview the effects of creating or updating a subscription or subscription schedule, including a preview of any prorations that will take place. To ensure that the actual proration is calculated exactly the same as the previewed proration, you should pass the <code>subscription_details.proration_date</code> parameter when doing the actual subscription update.</p> <p>The recommended way to get only the prorations being previewed on the invoice is to consider line items where <code>parent.subscription_item_details.proration</code> is <code>true</code>.</p> <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview – the invoice has not yet been created. As such, the upcoming invoice will not show up in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you want to change the amount that your customer will be billed, you can add, remove, or update pending invoice items, or update the customer’s discount.</p> <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates may vary between the time of the preview and the time of the actual invoice creation. <a href="https://docs.stripe.com/currencies/conversions">Learn more</a></p> */
+/** Create a preview invoice <p>At any time, you can preview the upcoming invoice for a subscription or subscription schedule. This will show you all the charges that are pending, including subscription renewal charges, invoice item charges, etc. It will also show you any discounts that are applicable to the invoice.</p> <p>You can also preview the effects of creating or updating a subscription or subscription schedule, including a preview of any prorations that will take place. To ensure that the actual proration is calculated exactly the same as the previewed proration, you should pass the <code>subscription_details.proration_date</code> parameter when doing the actual subscription update.</p> <p>The recommended way to get only the prorations being previewed on the invoice is to consider line items where <code>parent.subscription_item_details.proration</code> is <code>true</code>.</p> <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview - the invoice has not yet been created. As such, the upcoming invoice will not show up in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you want to change the amount that your customer will be billed, you can add, remove, or update pending invoice items, or update the customer's discount.</p> <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates may vary between the time of the preview and the time of the actual invoice creation. <a href="https://docs.stripe.com/currencies/conversions">Learn more</a></p> */
 export const CreateInvoicesCreatePreview: API.OperationMethod<
   CreateInvoicesCreatePreviewRequest,
   Invoice,
@@ -177922,7 +177922,7 @@ export const CreateInvoicesCreatePreview: API.OperationMethod<
 }));
 
 export type CreateInvoiceSendError = StripeOpError;
-/** Send an invoice for manual payment <p>Stripe will automatically send invoices to customers according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you’d like to manually send an invoice to your customer out of the normal schedule, you can do so. When sending invoices that have already been paid, there will be no reference to the payment in the email.</p> <p>Requests made in test-mode result in no emails being sent, despite sending an <code>invoice.sent</code> event.</p> */
+/** Send an invoice for manual payment <p>Stripe will automatically send invoices to customers according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you'd like to manually send an invoice to your customer out of the normal schedule, you can do so. When sending invoices that have already been paid, there will be no reference to the payment in the email.</p> <p>Requests made in test-mode result in no emails being sent, despite sending an <code>invoice.sent</code> event.</p> */
 export const CreateInvoiceSend: API.OperationMethod<
   CreateInvoiceSendRequest,
   Invoice,
@@ -177952,7 +177952,7 @@ export const CreateInvoiceUpdateLine: API.OperationMethod<
 }));
 
 export type CreateInvoiceVoidError = StripeOpError;
-/** Void an invoice <p>Mark a finalized invoice as void. This cannot be undone. Voiding an invoice is similar to <a href="/api/invoices/delete">deletion</a>, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found.</p> <p>Consult with local regulations to determine whether and how an invoice might be amended, canceled, or voided in the jurisdiction you’re doing business in. You might need to <a href="/api/invoices/create">issue another invoice</a> or <a href="/api/credit_notes/create">credit note</a> instead. Stripe recommends that you consult with your legal counsel for advice specific to your business.</p> */
+/** Void an invoice <p>Mark a finalized invoice as void. This cannot be undone. Voiding an invoice is similar to <a href="/api/invoices/delete">deletion</a>, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found.</p> <p>Consult with local regulations to determine whether and how an invoice might be amended, canceled, or voided in the jurisdiction you're doing business in. You might need to <a href="/api/invoices/create">issue another invoice</a> or <a href="/api/credit_notes/create">credit note</a> instead. Stripe recommends that you consult with your legal counsel for advice specific to your business.</p> */
 export const CreateInvoiceVoid: API.OperationMethod<
   CreateInvoiceVoidRequest,
   Invoice,
@@ -178012,7 +178012,7 @@ export const CreateIssuingDispute: API.OperationMethod<
 }));
 
 export type CreateIssuingDisputeSubmitError = StripeOpError;
-/** Submit a dispute <p>Submits an Issuing <code>Dispute</code> to the card network. Stripe validates that all evidence fields required for the dispute’s reason are present. For more details, see <a href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute reasons and evidence</a>.</p> */
+/** Submit a dispute <p>Submits an Issuing <code>Dispute</code> to the card network. Stripe validates that all evidence fields required for the dispute's reason are present. For more details, see <a href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute reasons and evidence</a>.</p> */
 export const CreateIssuingDisputeSubmit: API.OperationMethod<
   CreateIssuingDisputeSubmitRequest,
   IssuingDispute,
@@ -178042,7 +178042,7 @@ export const CreateIssuingPersonalizationDesign: API.OperationMethod<
 }));
 
 export type CreatePaymentIntentError = StripeOpError;
-/** Create a PaymentIntent <p>Creates a PaymentIntent object.</p> <p>After the PaymentIntent is created, attach a payment method and <a href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment. Learn more about <a href="/docs/payments/payment-intents">the available payment flows with the Payment Intents API</a>.</p> <p>When you use <code>confirm=true</code> during creation, it’s equivalent to creating and confirming the PaymentIntent in the same call. You can use any parameters available in the <a href="/docs/api/payment_intents/confirm">confirm API</a> when you supply <code>confirm=true</code>.</p> */
+/** Create a PaymentIntent <p>Creates a PaymentIntent object.</p> <p>After the PaymentIntent is created, attach a payment method and <a href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment. Learn more about <a href="/docs/payments/payment-intents">the available payment flows with the Payment Intents API</a>.</p> <p>When you use <code>confirm=true</code> during creation, it's equivalent to creating and confirming the PaymentIntent in the same call. You can use any parameters available in the <a href="/docs/api/payment_intents/confirm">confirm API</a> when you supply <code>confirm=true</code>.</p> */
 export const CreatePaymentIntent: API.OperationMethod<
   CreatePaymentIntentRequest,
   PaymentIntent,
@@ -178072,7 +178072,7 @@ export const CreatePaymentIntentApplyCustomerBalance: API.OperationMethod<
 }));
 
 export type CreatePaymentIntentCancelError = StripeOpError;
-/** Cancel a PaymentIntent <p>You can cancel a PaymentIntent object when it’s in one of these statuses: <code>requires_payment_method</code>, <code>requires_capture</code>, <code>requires_confirmation</code>, <code>requires_action</code> or, <a href="/docs/payments/intents">in rare cases</a>, <code>processing</code>. </p> <p>After it’s canceled, no additional charges are made by the PaymentIntent and any operations on the PaymentIntent fail with an error. For PaymentIntents with a <code>status</code> of <code>requires_capture</code>, the remaining <code>amount_capturable</code> is automatically refunded. </p> <p>You can directly cancel the PaymentIntent for a Checkout Session only when the PaymentIntent has a status of <code>requires_capture</code>. Otherwise, you must <a href="/docs/api/checkout/sessions/expire">expire the Checkout Session</a>.</p> */
+/** Cancel a PaymentIntent <p>You can cancel a PaymentIntent object when it's in one of these statuses: <code>requires_payment_method</code>, <code>requires_capture</code>, <code>requires_confirmation</code>, <code>requires_action</code> or, <a href="/docs/payments/intents">in rare cases</a>, <code>processing</code>. </p> <p>After it's canceled, no additional charges are made by the PaymentIntent and any operations on the PaymentIntent fail with an error. For PaymentIntents with a <code>status</code> of <code>requires_capture</code>, the remaining <code>amount_capturable</code> is automatically refunded. </p> <p>You can directly cancel the PaymentIntent for a Checkout Session only when the PaymentIntent has a status of <code>requires_capture</code>. Otherwise, you must <a href="/docs/api/checkout/sessions/expire">expire the Checkout Session</a>.</p> */
 export const CreatePaymentIntentCancel: API.OperationMethod<
   CreatePaymentIntentCancelRequest,
   PaymentIntent,
@@ -178102,7 +178102,7 @@ export const CreatePaymentIntentCapture: API.OperationMethod<
 }));
 
 export type CreatePaymentIntentConfirmError = StripeOpError;
-/** Confirm a PaymentIntent <p>Confirm that your customer intends to pay with current or provided payment method. Upon confirmation, the PaymentIntent will attempt to initiate a payment.</p> <p>If the selected payment method requires additional authentication steps, the PaymentIntent will transition to the <code>requires_action</code> status and suggest additional actions via <code>next_action</code>. If payment fails, the PaymentIntent transitions to the <code>requires_payment_method</code> status or the <code>canceled</code> status if the confirmation limit is reached. If payment succeeds, the PaymentIntent will transition to the <code>succeeded</code> status (or <code>requires_capture</code>, if <code>capture_method</code> is set to <code>manual</code>).</p> <p>If the <code>confirmation_method</code> is <code>automatic</code>, payment may be attempted using our <a href="/docs/stripe-js/reference#stripe-handle-card-payment">client SDKs</a> and the PaymentIntent’s <a href="#payment_intent_object-client_secret">client_secret</a>. After <code>next_action</code>s are handled by the client, no additional confirmation is required to complete the payment.</p> <p>If the <code>confirmation_method</code> is <code>manual</code>, all payment attempts must be initiated using a secret key.</p> <p>If any actions are required for the payment, the PaymentIntent will return to the <code>requires_confirmation</code> state after those actions are completed. Your server needs to then explicitly re-confirm the PaymentIntent to initiate the next payment attempt.</p> <p>There is a variable upper limit on how many times a PaymentIntent can be confirmed. After this limit is reached, any further calls to this endpoint will transition the PaymentIntent to the <code>canceled</code> state.</p> */
+/** Confirm a PaymentIntent <p>Confirm that your customer intends to pay with current or provided payment method. Upon confirmation, the PaymentIntent will attempt to initiate a payment.</p> <p>If the selected payment method requires additional authentication steps, the PaymentIntent will transition to the <code>requires_action</code> status and suggest additional actions via <code>next_action</code>. If payment fails, the PaymentIntent transitions to the <code>requires_payment_method</code> status or the <code>canceled</code> status if the confirmation limit is reached. If payment succeeds, the PaymentIntent will transition to the <code>succeeded</code> status (or <code>requires_capture</code>, if <code>capture_method</code> is set to <code>manual</code>).</p> <p>If the <code>confirmation_method</code> is <code>automatic</code>, payment may be attempted using our <a href="/docs/stripe-js/reference#stripe-handle-card-payment">client SDKs</a> and the PaymentIntent's <a href="#payment_intent_object-client_secret">client_secret</a>. After <code>next_action</code>s are handled by the client, no additional confirmation is required to complete the payment.</p> <p>If the <code>confirmation_method</code> is <code>manual</code>, all payment attempts must be initiated using a secret key.</p> <p>If any actions are required for the payment, the PaymentIntent will return to the <code>requires_confirmation</code> state after those actions are completed. Your server needs to then explicitly re-confirm the PaymentIntent to initiate the next payment attempt.</p> <p>There is a variable upper limit on how many times a PaymentIntent can be confirmed. After this limit is reached, any further calls to this endpoint will transition the PaymentIntent to the <code>canceled</code> state.</p> */
 export const CreatePaymentIntentConfirm: API.OperationMethod<
   CreatePaymentIntentConfirmRequest,
   PaymentIntent,
@@ -178117,7 +178117,7 @@ export const CreatePaymentIntentConfirm: API.OperationMethod<
 }));
 
 export type CreatePaymentIntentIncrementAuthorizationError = StripeOpError;
-/** Increment an authorization <p>Perform an incremental authorization on an eligible <a href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the PaymentIntent’s status must be <code>requires_capture</code> and <a href="/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported">incremental_authorization_supported</a> must be <code>true</code>.</p> <p>Incremental authorizations attempt to increase the authorized amount on your customer’s card to the new, higher <code>amount</code> provided. Similar to the initial authorization, incremental authorizations can be declined. A single PaymentIntent can call this endpoint multiple times to further increase the authorized amount.</p> <p>If the incremental authorization succeeds, the PaymentIntent object returns with the updated <a href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>. If the incremental authorization fails, a <a href="/docs/error-codes#card-declined">card_declined</a> error returns, and no other fields on the PaymentIntent or Charge update. The PaymentIntent object remains capturable for the previously authorized amount.</p> <p>Each PaymentIntent can have a maximum of 10 incremental authorization attempts, including declines. After it’s captured, a PaymentIntent can no longer be incremented.</p> <p>Learn more about incremental authorizations with <a href="/docs/terminal/features/incremental-authorizations">in-person payments</a> and <a href="/docs/payments/incremental-authorization?platform=web&ui=elements">online payments</a>.</p> */
+/** Increment an authorization <p>Perform an incremental authorization on an eligible <a href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the PaymentIntent's status must be <code>requires_capture</code> and <a href="/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported">incremental_authorization_supported</a> must be <code>true</code>.</p> <p>Incremental authorizations attempt to increase the authorized amount on your customer's card to the new, higher <code>amount</code> provided. Similar to the initial authorization, incremental authorizations can be declined. A single PaymentIntent can call this endpoint multiple times to further increase the authorized amount.</p> <p>If the incremental authorization succeeds, the PaymentIntent object returns with the updated <a href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>. If the incremental authorization fails, a <a href="/docs/error-codes#card-declined">card_declined</a> error returns, and no other fields on the PaymentIntent or Charge update. The PaymentIntent object remains capturable for the previously authorized amount.</p> <p>Each PaymentIntent can have a maximum of 10 incremental authorization attempts, including declines. After it's captured, a PaymentIntent can no longer be incremented.</p> <p>Learn more about incremental authorizations with <a href="/docs/terminal/features/incremental-authorizations">in-person payments</a> and <a href="/docs/payments/incremental-authorization?platform=web&ui=elements">online payments</a>.</p> */
 export const CreatePaymentIntentIncrementAuthorization: API.OperationMethod<
   CreatePaymentIntentIncrementAuthorizationRequest,
   PaymentIntent,
@@ -178177,7 +178177,7 @@ export const CreatePaymentMethod: API.OperationMethod<
 }));
 
 export type CreatePaymentMethodAttachError = StripeOpError;
-/** Attach a PaymentMethod to a Customer <p>Attaches a PaymentMethod object to a Customer.</p> <p>To attach a new PaymentMethod to a customer for future payments, we recommend you use a <a href="/docs/api/setup_intents">SetupIntent</a> or a PaymentIntent with <a href="/docs/api/payment_intents/create#create_payment_intent-setup_future_usage">setup_future_usage</a>. These approaches will perform any necessary steps to set up the PaymentMethod for future payments. Using the <code>/v1/payment_methods/:id/attach</code> endpoint without first using a SetupIntent or PaymentIntent with <code>setup_future_usage</code> does not optimize the PaymentMethod for future use, which makes later declines and payment friction more likely. See <a href="/docs/payments/payment-intents#future-usage">Optimizing cards for future payments</a> for more information about setting up future payments.</p> <p>To use this PaymentMethod as the default for invoice or subscription payments, set <a href="/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><code>invoice_settings.default_payment_method</code></a>, on the Customer to the PaymentMethod’s ID.</p> */
+/** Attach a PaymentMethod to a Customer <p>Attaches a PaymentMethod object to a Customer.</p> <p>To attach a new PaymentMethod to a customer for future payments, we recommend you use a <a href="/docs/api/setup_intents">SetupIntent</a> or a PaymentIntent with <a href="/docs/api/payment_intents/create#create_payment_intent-setup_future_usage">setup_future_usage</a>. These approaches will perform any necessary steps to set up the PaymentMethod for future payments. Using the <code>/v1/payment_methods/:id/attach</code> endpoint without first using a SetupIntent or PaymentIntent with <code>setup_future_usage</code> does not optimize the PaymentMethod for future use, which makes later declines and payment friction more likely. See <a href="/docs/payments/payment-intents#future-usage">Optimizing cards for future payments</a> for more information about setting up future payments.</p> <p>To use this PaymentMethod as the default for invoice or subscription payments, set <a href="/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><code>invoice_settings.default_payment_method</code></a>, on the Customer to the PaymentMethod's ID.</p> */
 export const CreatePaymentMethodAttach: API.OperationMethod<
   CreatePaymentMethodAttachRequest,
   PaymentMethod,
@@ -178207,7 +178207,7 @@ export const CreatePaymentMethodConfiguration: API.OperationMethod<
 }));
 
 export type CreatePaymentMethodDetachError = StripeOpError;
-/** Detach a PaymentMethod from a Customer <p>Detaches a PaymentMethod object from a Customer. Detachment is permanent and irreversible — once detached, a PaymentMethod can no longer be used for payments or re-attached to a Customer.</p> */
+/** Detach a PaymentMethod from a Customer <p>Detaches a PaymentMethod object from a Customer. Detachment is permanent and irreversible -- once detached, a PaymentMethod can no longer be used for payments or re-attached to a Customer.</p> */
 export const CreatePaymentMethodDetach: API.OperationMethod<
   CreatePaymentMethodDetachRequest,
   PaymentMethod,
@@ -178237,7 +178237,7 @@ export const CreatePaymentMethodDomain: API.OperationMethod<
 }));
 
 export type CreatePaymentMethodDomainValidateError = StripeOpError;
-/** Validate an existing payment method domain <p>Some payment methods might require additional steps to register a domain. If the requirements weren’t satisfied when the domain was created, the payment method will be inactive on the domain. The payment method doesn’t appear in Elements or Embedded Checkout for this domain until it is active.</p> <p>To activate a payment method on an existing payment method domain, complete the required registration steps specific to the payment method, and then validate the payment method domain with this endpoint.</p> <p>Related guides: <a href="/docs/payments/payment-methods/pmd-registration">Payment method domains</a>.</p> */
+/** Validate an existing payment method domain <p>Some payment methods might require additional steps to register a domain. If the requirements weren't satisfied when the domain was created, the payment method will be inactive on the domain. The payment method doesn't appear in Elements or Embedded Checkout for this domain until it is active.</p> <p>To activate a payment method on an existing payment method domain, complete the required registration steps specific to the payment method, and then validate the payment method domain with this endpoint.</p> <p>Related guides: <a href="/docs/payments/payment-methods/pmd-registration">Payment method domains</a>.</p> */
 export const CreatePaymentMethodDomainValidate: API.OperationMethod<
   CreatePaymentMethodDomainValidateRequest,
   PaymentMethodDomain,
@@ -178357,7 +178357,7 @@ export const CreatePaymentRecordsReportPayment: API.OperationMethod<
 }));
 
 export type CreatePayoutError = StripeOpError;
-/** Create a payout <p>To send funds to your own bank account, create a new payout object. Your <a href="#balance">Stripe balance</a> must cover the payout amount. If it doesn’t, you receive an “Insufficient Funds” error.</p> <p>If your API key is in test mode, money won’t actually be sent, though every other action occurs as if you’re in live mode.</p> <p>If you create a manual payout on a Stripe account that uses multiple payment source types, you need to specify the source type balance that the payout draws from. The <a href="/api/balances/object">balance object</a> details available and pending amounts by source type.</p> */
+/** Create a payout <p>To send funds to your own bank account, create a new payout object. Your <a href="#balance">Stripe balance</a> must cover the payout amount. If it doesn't, you receive an "Insufficient Funds" error.</p> <p>If your API key is in test mode, money won't actually be sent, though every other action occurs as if you're in live mode.</p> <p>If you create a manual payout on a Stripe account that uses multiple payment source types, you need to specify the source type balance that the payout draws from. The <a href="/api/balances/object">balance object</a> details available and pending amounts by source type.</p> */
 export const CreatePayout: API.OperationMethod<
   CreatePayoutRequest,
   Payout,
@@ -178372,7 +178372,7 @@ export const CreatePayout: API.OperationMethod<
 }));
 
 export type CreatePayoutCancelError = StripeOpError;
-/** Cancel a payout <p>You can cancel a previously created payout if its status is <code>pending</code>. Stripe refunds the funds to your available balance. You can’t cancel automatic Stripe payouts.</p> */
+/** Cancel a payout <p>You can cancel a previously created payout if its status is <code>pending</code>. Stripe refunds the funds to your available balance. You can't cancel automatic Stripe payouts.</p> */
 export const CreatePayoutCancel: API.OperationMethod<
   CreatePayoutCancelRequest,
   Payout,
@@ -178597,7 +178597,7 @@ export const CreateRadarValueListItem: API.OperationMethod<
 }));
 
 export type CreateRefundError = StripeOpError;
-/** Create a refund <p>When you create a new refund, you must specify a Charge or a PaymentIntent object on which to create it.</p> <p>Creating a new refund will refund a charge that has previously been created but not yet refunded. Funds will be refunded to the credit or debit card that was originally charged.</p> <p>You can optionally refund only part of a charge. You can do so multiple times, until the entire charge has been refunded.</p> <p>Once entirely refunded, a charge can’t be refunded again. This method will raise an error when called on an already-refunded charge, or when trying to refund more money than is left on a charge.</p> */
+/** Create a refund <p>When you create a new refund, you must specify a Charge or a PaymentIntent object on which to create it.</p> <p>Creating a new refund will refund a charge that has previously been created but not yet refunded. Funds will be refunded to the credit or debit card that was originally charged.</p> <p>You can optionally refund only part of a charge. You can do so multiple times, until the entire charge has been refunded.</p> <p>Once entirely refunded, a charge can't be refunded again. This method will raise an error when called on an already-refunded charge, or when trying to refund more money than is left on a charge.</p> */
 export const CreateRefund: API.OperationMethod<
   CreateRefundRequest,
   Refund,
@@ -178612,7 +178612,7 @@ export const CreateRefund: API.OperationMethod<
 }));
 
 export type CreateRefundCancelError = StripeOpError;
-/** Cancel a refund <p>Cancels a refund with a status of <code>requires_action</code>.</p> <p>You can’t cancel refunds in other states. Only refunds for payment methods that require customer action can enter the <code>requires_action</code> state.</p> */
+/** Cancel a refund <p>Cancels a refund with a status of <code>requires_action</code>.</p> <p>You can't cancel refunds in other states. Only refunds for payment methods that require customer action can enter the <code>requires_action</code> state.</p> */
 export const CreateRefundCancel: API.OperationMethod<
   CreateRefundCancelRequest,
   Refund,
@@ -178672,7 +178672,7 @@ export const CreateSetupIntent: API.OperationMethod<
 }));
 
 export type CreateSetupIntentCancelError = StripeOpError;
-/** Cancel a SetupIntent <p>You can cancel a SetupIntent object when it’s in one of these statuses: <code>requires_payment_method</code>, <code>requires_confirmation</code>, or <code>requires_action</code>. </p> <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail with an error. You can’t cancel the SetupIntent for a Checkout Session. <a href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a> instead.</p> */
+/** Cancel a SetupIntent <p>You can cancel a SetupIntent object when it's in one of these statuses: <code>requires_payment_method</code>, <code>requires_confirmation</code>, or <code>requires_action</code>. </p> <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail with an error. You can't cancel the SetupIntent for a Checkout Session. <a href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a> instead.</p> */
 export const CreateSetupIntentCancel: API.OperationMethod<
   CreateSetupIntentCancelRequest,
   SetupIntent,
@@ -178687,7 +178687,7 @@ export const CreateSetupIntentCancel: API.OperationMethod<
 }));
 
 export type CreateSetupIntentConfirmError = StripeOpError;
-/** Confirm a SetupIntent <p>Confirm that your customer intends to set up the current or provided payment method. For example, you would confirm a SetupIntent when a customer hits the “Save” button on a payment method management page on your website.</p> <p>If the selected payment method does not require any additional steps from the customer, the SetupIntent will transition to the <code>succeeded</code> status.</p> <p>Otherwise, it will transition to the <code>requires_action</code> status and suggest additional actions via <code>next_action</code>. If setup fails, the SetupIntent will transition to the <code>requires_payment_method</code> status or the <code>canceled</code> status if the confirmation limit is reached.</p> */
+/** Confirm a SetupIntent <p>Confirm that your customer intends to set up the current or provided payment method. For example, you would confirm a SetupIntent when a customer hits the "Save" button on a payment method management page on your website.</p> <p>If the selected payment method does not require any additional steps from the customer, the SetupIntent will transition to the <code>succeeded</code> status.</p> <p>Otherwise, it will transition to the <code>requires_action</code> status and suggest additional actions via <code>next_action</code>. If setup fails, the SetupIntent will transition to the <code>requires_payment_method</code> status or the <code>canceled</code> status if the confirmation limit is reached.</p> */
 export const CreateSetupIntentConfirm: API.OperationMethod<
   CreateSetupIntentConfirmRequest,
   SetupIntent,
@@ -178822,7 +178822,7 @@ export const CreateSubscriptionPause: API.OperationMethod<
 }));
 
 export type CreateSubscriptionResumeError = StripeOpError;
-/** Resume a subscription <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle anchor and creating prorations. Resume is only available for subscriptions that use <code>charge_automatically</code> collection. If Stripe doesn’t generate a resumption invoice, the subscription becomes <code>active</code> immediately. When a resumption invoice is generated, Stripe finalizes it immediately. If the invoice is paid or marked uncollectible, the subscription becomes <code>active</code>. If the invoice is manually voided, the subscription stays <code>paused</code>. If there is no payment attempt within 23 hours, Stripe voids the invoice and the subscription stays <code>paused</code>. Learn more about <a href="/docs/billing/subscriptions/pause#resume-subscriptions">resuming subscriptions</a>.</p> */
+/** Resume a subscription <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle anchor and creating prorations. Resume is only available for subscriptions that use <code>charge_automatically</code> collection. If Stripe doesn't generate a resumption invoice, the subscription becomes <code>active</code> immediately. When a resumption invoice is generated, Stripe finalizes it immediately. If the invoice is paid or marked uncollectible, the subscription becomes <code>active</code>. If the invoice is manually voided, the subscription stays <code>paused</code>. If there is no payment attempt within 23 hours, Stripe voids the invoice and the subscription stays <code>paused</code>. Learn more about <a href="/docs/billing/subscriptions/pause#resume-subscriptions">resuming subscriptions</a>.</p> */
 export const CreateSubscriptionResume: API.OperationMethod<
   CreateSubscriptionResumeRequest,
   Subscription,
@@ -178867,7 +178867,7 @@ export const CreateSubscriptionScheduleCancel: API.OperationMethod<
 }));
 
 export type CreateSubscriptionScheduleReleaseError = StripeOpError;
-/** Release a schedule <p>Releases the subscription schedule immediately, which will stop scheduling of its phases, but leave any existing subscription in place. A schedule can only be released if its status is <code>not_started</code> or <code>active</code>. If the subscription schedule is currently associated with a subscription, releasing it will remove its <code>subscription</code> property and set the subscription’s ID to the <code>released_subscription</code> property.</p> */
+/** Release a schedule <p>Releases the subscription schedule immediately, which will stop scheduling of its phases, but leave any existing subscription in place. A schedule can only be released if its status is <code>not_started</code> or <code>active</code>. If the subscription schedule is currently associated with a subscription, releasing it will remove its <code>subscription</code> property and set the subscription's ID to the <code>released_subscription</code> property.</p> */
 export const CreateSubscriptionScheduleRelease: API.OperationMethod<
   CreateSubscriptionScheduleReleaseRequest,
   SubscriptionSchedule,
@@ -178972,7 +178972,7 @@ export const CreateTaxSettings: API.OperationMethod<
 }));
 
 export type CreateTaxTransactionsCreateFromCalculationError = StripeOpError;
-/** Create a Transaction from a Calculation <p>Creates a Tax Transaction from a calculation, if that calculation hasn’t expired. Calculations expire after 90 days.</p> */
+/** Create a Transaction from a Calculation <p>Creates a Tax Transaction from a calculation, if that calculation hasn't expired. Calculations expire after 90 days.</p> */
 export const CreateTaxTransactionsCreateFromCalculation: API.OperationMethod<
   CreateTaxTransactionsCreateFromCalculationRequest,
   TaxTransaction,
@@ -179392,7 +179392,7 @@ export const CreateTestHelpersIssuingCardShippingShip: API.OperationMethod<
 }));
 
 export type CreateTestHelpersIssuingCardShippingSubmitError = StripeOpError;
-/** Submit a testmode card <p>Updates the shipping status of the specified Issuing <code>Card</code> object to <code>submitted</code>. This method requires Stripe Version ‘2024-09-30.acacia’ or later.</p> */
+/** Submit a testmode card <p>Updates the shipping status of the specified Issuing <code>Card</code> object to <code>submitted</code>. This method requires Stripe Version '2024-09-30.acacia' or later.</p> */
 export const CreateTestHelpersIssuingCardShippingSubmit: API.OperationMethod<
   CreateTestHelpersIssuingCardShippingSubmitRequest,
   IssuingCard,
@@ -179722,7 +179722,7 @@ export const CreateTestHelpersTreasuryOutboundTransferReturn: API.OperationMetho
 }));
 
 export type CreateTestHelpersTreasuryReceivedCreditError = StripeOpError;
-/** Test mode: Create a ReceivedCredit <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party. In live mode, you can’t directly create ReceivedCredits initiated by third parties.</p> */
+/** Test mode: Create a ReceivedCredit <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party. In live mode, you can't directly create ReceivedCredits initiated by third parties.</p> */
 export const CreateTestHelpersTreasuryReceivedCredit: API.OperationMethod<
   CreateTestHelpersTreasuryReceivedCreditRequest,
   TreasuryReceivedCredit,
@@ -179737,7 +179737,7 @@ export const CreateTestHelpersTreasuryReceivedCredit: API.OperationMethod<
 }));
 
 export type CreateTestHelpersTreasuryReceivedDebitError = StripeOpError;
-/** Test mode: Create a ReceivedDebit <p>Use this endpoint to simulate a test mode ReceivedDebit initiated by a third party. In live mode, you can’t directly create ReceivedDebits initiated by third parties.</p> */
+/** Test mode: Create a ReceivedDebit <p>Use this endpoint to simulate a test mode ReceivedDebit initiated by a third party. In live mode, you can't directly create ReceivedDebits initiated by third parties.</p> */
 export const CreateTestHelpersTreasuryReceivedDebit: API.OperationMethod<
   CreateTestHelpersTreasuryReceivedDebitRequest,
   TreasuryReceivedDebit,
@@ -179767,7 +179767,7 @@ export const CreateThreeDSecureAuthentication: API.OperationMethod<
 }));
 
 export type CreateThreeDSecureAuthenticationCancelError = StripeOpError;
-/** Cancel a 3DS Authentication <p>This endpoint cancels a 3DS Authentication. You can cancel a 3DS Authentication object when it’s in a non-final status: <code>requires_submission</code> or <code>requires_challenge</code>.</p> */
+/** Cancel a 3DS Authentication <p>This endpoint cancels a 3DS Authentication. You can cancel a 3DS Authentication object when it's in a non-final status: <code>requires_submission</code> or <code>requires_challenge</code>.</p> */
 export const CreateThreeDSecureAuthenticationCancel: API.OperationMethod<
   CreateThreeDSecureAuthenticationCancelRequest,
   ThreeDSecureAuthentication,
@@ -179797,7 +179797,7 @@ export const CreateThreeDSecureAuthenticationSubmit: API.OperationMethod<
 }));
 
 export type CreateTokenError = StripeOpError;
-/** Create a bank account token <p>Creates a single-use token that represents a bank account’s details. You can use this token with any v1 API method in place of a bank account dictionary. You can only use this token once. To do so, attach it to a <a href="#accounts">connected account</a> where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.</p> */
+/** Create a bank account token <p>Creates a single-use token that represents a bank account's details. You can use this token with any v1 API method in place of a bank account dictionary. You can only use this token once. To do so, attach it to a <a href="#accounts">connected account</a> where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.</p> */
 export const CreateToken: API.OperationMethod<
   CreateTokenRequest,
   Token,
@@ -179842,7 +179842,7 @@ export const CreateTopupCancel: API.OperationMethod<
 }));
 
 export type CreateTransferError = StripeOpError;
-/** Create a transfer <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.</p> */
+/** Create a transfer <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you'll receive an "Insufficient Funds" error.</p> */
 export const CreateTransfer: API.OperationMethod<
   CreateTransferRequest,
   unknown,
@@ -179857,7 +179857,7 @@ export const CreateTransfer: API.OperationMethod<
 }));
 
 export type CreateTransferReversalError = StripeOpError;
-/** Create a transfer reversal <p>When you create a new reversal, you must specify a transfer to create it on.</p> <p>When reversing transfers, you can optionally reverse part of the transfer. You can do so as many times as you wish until the entire transfer has been reversed.</p> <p>Once entirely reversed, a transfer can’t be reversed again. This method will return an error when called on an already-reversed transfer, or when trying to reverse more money than is left on a transfer.</p> */
+/** Create a transfer reversal <p>When you create a new reversal, you must specify a transfer to create it on.</p> <p>When reversing transfers, you can optionally reverse part of the transfer. You can do so as many times as you wish until the entire transfer has been reversed.</p> <p>Once entirely reversed, a transfer can't be reversed again. This method will return an error when called on an already-reversed transfer, or when trying to reverse more money than is left on a transfer.</p> */
 export const CreateTransferReversal: API.OperationMethod<
   CreateTransferReversalRequest,
   TransferReversal,
@@ -180082,7 +180082,7 @@ export const DeleteAccountExternalAccount: API.OperationMethod<
 }));
 
 export type DeleteAccountPersonError = StripeOpError;
-/** Delete a person <p>Deletes an existing person’s relationship to the account’s legal entity. Any person with a relationship for an account can be deleted through the API, except if the person is the <code>representative</code>. If your integration is using the <code>executive</code> parameter, you cannot delete the only verified <code>executive</code> on file.</p> */
+/** Delete a person <p>Deletes an existing person's relationship to the account's legal entity. Any person with a relationship for an account can be deleted through the API, except if the person is the <code>representative</code>. If your integration is using the <code>executive</code> parameter, you cannot delete the only verified <code>executive</code> on file.</p> */
 export const DeleteAccountPerson: API.OperationMethod<
   DeleteAccountPersonRequest,
   DeletedPerson,
@@ -180142,7 +180142,7 @@ export const DeleteCoreEventDestination: API.OperationMethod<
 }));
 
 export type DeleteCouponError = StripeOpError;
-/** Delete a coupon <p>You can delete coupons via the <a href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe dashboard. However, deleting a coupon does not affect any customers who have already applied the coupon; it means that new customers can’t redeem the coupon. You can also delete coupons via the API.</p> */
+/** Delete a coupon <p>You can delete coupons via the <a href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe dashboard. However, deleting a coupon does not affect any customers who have already applied the coupon; it means that new customers can't redeem the coupon. You can also delete coupons via the API.</p> */
 export const DeleteCoupon: API.OperationMethod<
   DeleteCouponRequest,
   DeletedCoupon,
@@ -180247,7 +180247,7 @@ export const DeleteInvoice: API.OperationMethod<
 }));
 
 export type DeleteInvoiceitemError = StripeOpError;
-/** Delete an invoice item <p>Deletes an invoice item, removing it from an invoice. Deleting invoice items is only possible when they’re not attached to invoices, or if it’s attached to a draft invoice.</p> */
+/** Delete an invoice item <p>Deletes an invoice item, removing it from an invoice. Deleting invoice items is only possible when they're not attached to invoices, or if it's attached to a draft invoice.</p> */
 export const DeleteInvoiceitem: API.OperationMethod<
   DeleteInvoiceitemRequest,
   DeletedInvoiceitem,
@@ -180262,7 +180262,7 @@ export const DeleteInvoiceitem: API.OperationMethod<
 }));
 
 export type DeletePlanError = StripeOpError;
-/** Delete a plan <p>Deleting plans means new subscribers can’t be added. Existing subscribers aren’t affected.</p> */
+/** Delete a plan <p>Deleting plans means new subscribers can't be added. Existing subscribers aren't affected.</p> */
 export const DeletePlan: API.OperationMethod<
   DeletePlanRequest,
   DeletedPlan,
@@ -180337,7 +180337,7 @@ export const DeleteRadarValueListItem: API.OperationMethod<
 }));
 
 export type DeleteSubscriptionError = StripeOpError;
-/** Cancel a subscription <p>Cancels a customer’s subscription immediately. The customer won’t be charged again for the subscription. After it’s canceled, the subscription is largely immutable. You can still update its <a href="/metadata">metadata</a> and <code>cancellation_details</code>.</p> <p>Any pending invoice items that you’ve created are still charged at the end of the period, unless manually <a href="/api/invoiceitems/delete">deleted</a>. If you’ve set the subscription to cancel at the end of the period, any pending prorations are also left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations are removed if <code>invoice_now</code> and <code>prorate</code> are both set to false.</p> <p>By default, upon subscription cancellation, Stripe stops automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.</p> */
+/** Cancel a subscription <p>Cancels a customer's subscription immediately. The customer won't be charged again for the subscription. After it's canceled, the subscription is largely immutable. You can still update its <a href="/metadata">metadata</a> and <code>cancellation_details</code>.</p> <p>Any pending invoice items that you've created are still charged at the end of the period, unless manually <a href="/api/invoiceitems/delete">deleted</a>. If you've set the subscription to cancel at the end of the period, any pending prorations are also left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations are removed if <code>invoice_now</code> and <code>prorate</code> are both set to false.</p> <p>By default, upon subscription cancellation, Stripe stops automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.</p> */
 export const DeleteSubscription: API.OperationMethod<
   DeleteSubscriptionRequest,
   Subscription,
@@ -180577,7 +180577,7 @@ export const GetAccountPerson: API.OperationMethod<
 }));
 
 export type GetAccountPersonsError = StripeOpError;
-/** List all persons <p>Returns a list of people associated with the account’s legal entity. The people are returned sorted by creation date, with the most recent people appearing first.</p> */
+/** List all persons <p>Returns a list of people associated with the account's legal entity. The people are returned sorted by creation date, with the most recent people appearing first.</p> */
 export const GetAccountPersons: API.OperationMethod<
   GetAccountPersonsRequest,
   GetAccountPersonsResponse,
@@ -180592,7 +180592,7 @@ export const GetAccountPersons: API.OperationMethod<
 }));
 
 export type GetAccountsError = StripeOpError;
-/** List all connected accounts <p>Returns a list of accounts connected to your platform via <a href="/docs/connect">Connect</a>. If you’re not a platform, the list is empty.</p> */
+/** List all connected accounts <p>Returns a list of accounts connected to your platform via <a href="/docs/connect">Connect</a>. If you're not a platform, the list is empty.</p> */
 export const GetAccounts: API.OperationMethod<
   GetAccountsRequest,
   GetAccountsResponse,
@@ -180682,7 +180682,7 @@ export const GetApplicationFeeRefunds: API.OperationMethod<
 }));
 
 export type GetApplicationFeesError = StripeOpError;
-/** List all application fees <p>Returns a list of application fees you’ve previously collected. The application fees are returned in sorted order, with the most recent fees appearing first.</p> */
+/** List all application fees <p>Returns a list of application fees you've previously collected. The application fees are returned in sorted order, with the most recent fees appearing first.</p> */
 export const GetApplicationFees: API.OperationMethod<
   GetApplicationFeesRequest,
   GetApplicationFeesResponse,
@@ -180697,7 +180697,7 @@ export const GetApplicationFees: API.OperationMethod<
 }));
 
 export type GetAppsInstallError = StripeOpError;
-/** Retrieve an app install <p>Retrieves an app install. The installing account, the app’s developer (with the keys of the account that owns the app or of the app’s managed sandbox), and the embedding platform that created the install can retrieve it.</p> */
+/** Retrieve an app install <p>Retrieves an app install. The installing account, the app's developer (with the keys of the account that owns the app or of the app's managed sandbox), and the embedding platform that created the install can retrieve it.</p> */
 export const GetAppsInstall: API.OperationMethod<
   GetAppsInstallRequest,
   AppsInstall,
@@ -180712,7 +180712,7 @@ export const GetAppsInstall: API.OperationMethod<
 }));
 
 export type GetAppsInstallsError = StripeOpError;
-/** List all app installs <p>Returns a list of app installs. An app developer or embedding platform filtering by its own app sees the installs across the accounts that installed it; other callers see the installs on their own account. The key selects the environment: a live key lists live installs, a sandbox API key lists the installs on that sandbox, and the key of an app’s managed sandbox filtering by <code>app</code> lists that app’s installs across every sandbox. For existing accounts that still use legacy test mode, a test mode key lists legacy test mode installs.</p> */
+/** List all app installs <p>Returns a list of app installs. An app developer or embedding platform filtering by its own app sees the installs across the accounts that installed it; other callers see the installs on their own account. The key selects the environment: a live key lists live installs, a sandbox API key lists the installs on that sandbox, and the key of an app's managed sandbox filtering by <code>app</code> lists that app's installs across every sandbox. For existing accounts that still use legacy test mode, a test mode key lists legacy test mode installs.</p> */
 export const GetAppsInstalls: API.OperationMethod<
   GetAppsInstallsRequest,
   GetAppsInstallsResponse,
@@ -180802,7 +180802,7 @@ export const GetBalanceTransaction: API.OperationMethod<
 }));
 
 export type GetBalanceTransactionsError = StripeOpError;
-/** List all balance transactions <p>Returns a list of transactions that have contributed to the Stripe account balance (for example, charges, transfers, and so on). The transactions return in sorted order, with the most recent transactions appearing first.</p> <p>The previous name of this endpoint was “Balance history,” and it used the path <code>/v1/balance/history</code>.</p> */
+/** List all balance transactions <p>Returns a list of transactions that have contributed to the Stripe account balance (for example, charges, transfers, and so on). The transactions return in sorted order, with the most recent transactions appearing first.</p> <p>The previous name of this endpoint was "Balance history," and it used the path <code>/v1/balance/history</code>.</p> */
 export const GetBalanceTransactions: API.OperationMethod<
   GetBalanceTransactionsRequest,
   GetBalanceTransactionsResponse,
@@ -181072,7 +181072,7 @@ export const GetChargeRefunds: API.OperationMethod<
 }));
 
 export type GetChargesError = StripeOpError;
-/** List all charges <p>Returns a list of charges you’ve previously created. The charges are returned in sorted order, with the most recent charges appearing first.</p> */
+/** List all charges <p>Returns a list of charges you've previously created. The charges are returned in sorted order, with the most recent charges appearing first.</p> */
 export const GetCharges: API.OperationMethod<
   GetChargesRequest,
   GetChargesResponse,
@@ -181087,7 +181087,7 @@ export const GetCharges: API.OperationMethod<
 }));
 
 export type GetChargesSearchError = StripeOpError;
-/** Search charges <p>Search for charges you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search charges <p>Search for charges you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetChargesSearch: API.PaginatedOperationMethod<
   GetChargesSearchRequest,
   GetChargesSearchResponse,
@@ -181517,7 +181517,7 @@ export const GetCreditNote: API.OperationMethod<
 }));
 
 export type GetCreditNoteLinesError = StripeOpError;
-/** Retrieve a credit note's line items <p>When retrieving a credit note, you’ll get a <strong>lines</strong> property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.</p> */
+/** Retrieve a credit note's line items <p>When retrieving a credit note, you'll get a <strong>lines</strong> property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.</p> */
 export const GetCreditNoteLines: API.OperationMethod<
   GetCreditNoteLinesRequest,
   GetCreditNoteLinesResponse,
@@ -181562,7 +181562,7 @@ export const GetCreditNotesPreview: API.OperationMethod<
 }));
 
 export type GetCreditNotesPreviewLinesError = StripeOpError;
-/** Retrieve a credit note preview's line items <p>When retrieving a credit note preview, you’ll get a <strong>lines</strong> property containing the first handful of those items. This URL you can retrieve the full (paginated) list of line items.</p> */
+/** Retrieve a credit note preview's line items <p>When retrieving a credit note preview, you'll get a <strong>lines</strong> property containing the first handful of those items. This URL you can retrieve the full (paginated) list of line items.</p> */
 export const GetCreditNotesPreviewLines: API.OperationMethod<
   GetCreditNotesPreviewLinesRequest,
   GetCreditNotesPreviewLinesResponse,
@@ -181592,7 +181592,7 @@ export const GetCustomer: API.OperationMethod<
 }));
 
 export type GetCustomerBalanceTransactionError = StripeOpError;
-/** Retrieve a customer balance transaction <p>Retrieves a specific customer balance transaction that updated the customer’s <a href="/docs/billing/customer/balance">balances</a>.</p> */
+/** Retrieve a customer balance transaction <p>Retrieves a specific customer balance transaction that updated the customer's <a href="/docs/billing/customer/balance">balances</a>.</p> */
 export const GetCustomerBalanceTransaction: API.OperationMethod<
   GetCustomerBalanceTransactionRequest,
   CustomerBalanceTransaction,
@@ -181607,7 +181607,7 @@ export const GetCustomerBalanceTransaction: API.OperationMethod<
 }));
 
 export type GetCustomerBalanceTransactionsError = StripeOpError;
-/** List customer balance transactions <p>Returns a list of transactions that updated the customer’s <a href="/docs/billing/customer/balance">balances</a>.</p> */
+/** List customer balance transactions <p>Returns a list of transactions that updated the customer's <a href="/docs/billing/customer/balance">balances</a>.</p> */
 export const GetCustomerBalanceTransactions: API.OperationMethod<
   GetCustomerBalanceTransactionsRequest,
   GetCustomerBalanceTransactionsResponse,
@@ -181622,7 +181622,7 @@ export const GetCustomerBalanceTransactions: API.OperationMethod<
 }));
 
 export type GetCustomerCashBalanceError = StripeOpError;
-/** Retrieve a cash balance <p>Retrieves a customer’s cash balance.</p> */
+/** Retrieve a cash balance <p>Retrieves a customer's cash balance.</p> */
 export const GetCustomerCashBalance: API.OperationMethod<
   GetCustomerCashBalanceRequest,
   CashBalance,
@@ -181637,7 +181637,7 @@ export const GetCustomerCashBalance: API.OperationMethod<
 }));
 
 export type GetCustomerCashBalanceTransactionError = StripeOpError;
-/** Retrieve a cash balance transaction <p>Retrieves a specific cash balance transaction, which updated the customer’s <a href="/docs/payments/customer-balance">cash balance</a>.</p> */
+/** Retrieve a cash balance transaction <p>Retrieves a specific cash balance transaction, which updated the customer's <a href="/docs/payments/customer-balance">cash balance</a>.</p> */
 export const GetCustomerCashBalanceTransaction: API.OperationMethod<
   GetCustomerCashBalanceTransactionRequest,
   CustomerCashBalanceTransaction,
@@ -181652,7 +181652,7 @@ export const GetCustomerCashBalanceTransaction: API.OperationMethod<
 }));
 
 export type GetCustomerCashBalanceTransactionsError = StripeOpError;
-/** List cash balance transactions <p>Returns a list of transactions that modified the customer’s <a href="/docs/payments/customer-balance">cash balance</a>.</p> */
+/** List cash balance transactions <p>Returns a list of transactions that modified the customer's <a href="/docs/payments/customer-balance">cash balance</a>.</p> */
 export const GetCustomerCashBalanceTransactions: API.OperationMethod<
   GetCustomerCashBalanceTransactionsRequest,
   GetCustomerCashBalanceTransactionsResponse,
@@ -181742,7 +181742,7 @@ export const GetCustomerSources: API.OperationMethod<
 }));
 
 export type GetCustomersSearchError = StripeOpError;
-/** Search customers <p>Search for customers you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search customers <p>Search for customers you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetCustomersSearch: API.PaginatedOperationMethod<
   GetCustomersSearchRequest,
   GetCustomersSearchResponse,
@@ -182224,7 +182224,7 @@ export const GetInvoiceitems: API.OperationMethod<
 }));
 
 export type GetInvoiceLinesError = StripeOpError;
-/** Retrieve an invoice's line items <p>When retrieving an invoice, you’ll get a <strong>lines</strong> property containing the total count of line items and the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.</p> */
+/** Retrieve an invoice's line items <p>When retrieving an invoice, you'll get a <strong>lines</strong> property containing the total count of line items and the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.</p> */
 export const GetInvoiceLines: API.OperationMethod<
   GetInvoiceLinesRequest,
   GetInvoiceLinesResponse,
@@ -182314,7 +182314,7 @@ export const GetInvoices: API.OperationMethod<
 }));
 
 export type GetInvoicesSearchError = StripeOpError;
-/** Search invoices <p>Search for invoices you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search invoices <p>Search for invoices you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetInvoicesSearch: API.PaginatedOperationMethod<
   GetInvoicesSearchRequest,
   GetInvoicesSearchResponse,
@@ -182669,7 +182669,7 @@ export const GetPaymentIntents: API.OperationMethod<
 }));
 
 export type GetPaymentIntentsSearchError = StripeOpError;
-/** Search PaymentIntents <p>Search for PaymentIntents you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search PaymentIntents <p>Search for PaymentIntents you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetPaymentIntentsSearch: API.PaginatedOperationMethod<
   GetPaymentIntentsSearchRequest,
   GetPaymentIntentsSearchResponse,
@@ -182739,7 +182739,7 @@ export const GetPaymentLinks: API.OperationMethod<
 }));
 
 export type GetPaymentMethodError = StripeOpError;
-/** Retrieve a PaymentMethod <p>Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a payment method attached to a Customer, you should use <a href="/docs/api/payment_methods/customer">Retrieve a Customer’s PaymentMethods</a></p> */
+/** Retrieve a PaymentMethod <p>Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a payment method attached to a Customer, you should use <a href="/docs/api/payment_methods/customer">Retrieve a Customer's PaymentMethods</a></p> */
 export const GetPaymentMethod: API.OperationMethod<
   GetPaymentMethodRequest,
   PaymentMethod,
@@ -182941,7 +182941,7 @@ export const GetPrices: API.OperationMethod<
 }));
 
 export type GetPricesSearchError = StripeOpError;
-/** Search prices <p>Search for prices you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search prices <p>Search for prices you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetPricesSearch: API.PaginatedOperationMethod<
   GetPricesSearchRequest,
   GetPricesSearchResponse,
@@ -183056,7 +183056,7 @@ export const GetProducts: API.OperationMethod<
 }));
 
 export type GetProductsSearchError = StripeOpError;
-/** Search products <p>Search for products you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search products <p>Search for products you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetProductsSearch: API.PaginatedOperationMethod<
   GetProductsSearchRequest,
   GetProductsSearchResponse,
@@ -183617,7 +183617,7 @@ export const GetSubscriptionSchedules: API.OperationMethod<
 }));
 
 export type GetSubscriptionsSearchError = StripeOpError;
-/** Search subscriptions <p>Search for subscriptions you’ve previously created using Stripe’s <a href="/docs/search#search-query-language">Search Query Language</a>. Don’t use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
+/** Search subscriptions <p>Search for subscriptions you've previously created using Stripe's <a href="/docs/search#search-query-language">Search Query Language</a>. Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up to an hour behind during outages. Search functionality is not available to merchants in India.</p> */
 export const GetSubscriptionsSearch: API.PaginatedOperationMethod<
   GetSubscriptionsSearchRequest,
   GetSubscriptionsSearchResponse,
@@ -183657,7 +183657,7 @@ export const GetTaxAssociationsFind: API.OperationMethod<
 }));
 
 export type GetTaxCalculationError = StripeOpError;
-/** Retrieve a Calculation <p>Retrieves a Tax <code>Calculation</code> object, if the calculation hasn’t expired.</p> */
+/** Retrieve a Calculation <p>Retrieves a Tax <code>Calculation</code> object, if the calculation hasn't expired.</p> */
 export const GetTaxCalculation: API.OperationMethod<
   GetTaxCalculationRequest,
   TaxCalculation,
@@ -183672,7 +183672,7 @@ export const GetTaxCalculation: API.OperationMethod<
 }));
 
 export type GetTaxCalculationLineItemsError = StripeOpError;
-/** Retrieve a Calculation's line items <p>Retrieves the line items of a tax calculation as a collection, if the calculation hasn’t expired.</p> */
+/** Retrieve a Calculation's line items <p>Retrieves the line items of a tax calculation as a collection, if the calculation hasn't expired.</p> */
 export const GetTaxCalculationLineItems: API.OperationMethod<
   GetTaxCalculationLineItemsRequest,
   GetTaxCalculationLineItemsResponse,
@@ -184744,7 +184744,7 @@ export const UpdateCreditNote: API.OperationMethod<
 }));
 
 export type UpdateCustomerError = StripeOpError;
-/** Update a customer <p>Updates the specified customer by setting the values of the parameters passed. Any parameters not provided are left unchanged. For example, if you pass the <strong>source</strong> parameter, that becomes the customer’s active source (such as a card) to be used for all charges in the future. When you update a customer to a new valid card source by passing the <strong>source</strong> parameter: for each of the customer’s current subscriptions, if the subscription bills automatically and is in the <code>past_due</code> state, then the latest open invoice for the subscription with automatic collection enabled is retried. This retry doesn’t count as an automatic retry, and doesn’t affect the next regularly scheduled payment for the invoice. Changing the <strong>default_source</strong> for a customer doesn’t trigger this behavior.</p> <p>This request accepts mostly the same arguments as the customer creation call.</p> */
+/** Update a customer <p>Updates the specified customer by setting the values of the parameters passed. Any parameters not provided are left unchanged. For example, if you pass the <strong>source</strong> parameter, that becomes the customer's active source (such as a card) to be used for all charges in the future. When you update a customer to a new valid card source by passing the <strong>source</strong> parameter: for each of the customer's current subscriptions, if the subscription bills automatically and is in the <code>past_due</code> state, then the latest open invoice for the subscription with automatic collection enabled is retried. This retry doesn't count as an automatic retry, and doesn't affect the next regularly scheduled payment for the invoice. Changing the <strong>default_source</strong> for a customer doesn't trigger this behavior.</p> <p>This request accepts mostly the same arguments as the customer creation call.</p> */
 export const UpdateCustomer: API.OperationMethod<
   UpdateCustomerRequest,
   Customer,
@@ -184789,7 +184789,7 @@ export const UpdateCustomerSource: API.OperationMethod<
 }));
 
 export type UpdateDisputeError = StripeOpError;
-/** Update a dispute <p>When you get a dispute, contacting your customer is always the best first step. If that doesn’t work, you can submit evidence to help us resolve the dispute in your favor. You can do this in your <a href="https://dashboard.stripe.com/disputes">dashboard</a>, but if you prefer, you can use the API to submit evidence programmatically.</p> <p>Depending on your dispute type, different evidence fields will give you a better chance of winning your dispute. To figure out which evidence fields to provide, see our <a href="/docs/disputes/categories">guide to dispute types</a>.</p> */
+/** Update a dispute <p>When you get a dispute, contacting your customer is always the best first step. If that doesn't work, you can submit evidence to help us resolve the dispute in your favor. You can do this in your <a href="https://dashboard.stripe.com/disputes">dashboard</a>, but if you prefer, you can use the API to submit evidence programmatically.</p> <p>Depending on your dispute type, different evidence fields will give you a better chance of winning your dispute. To figure out which evidence fields to provide, see our <a href="/docs/disputes/categories">guide to dispute types</a>.</p> */
 export const UpdateDispute: API.OperationMethod<
   UpdateDisputeRequest,
   Dispute,
@@ -184804,7 +184804,7 @@ export const UpdateDispute: API.OperationMethod<
 }));
 
 export type UpdateEntitlementsFeatureError = StripeOpError;
-/** Updates a feature <p>Update a feature’s metadata or permanently deactivate it.</p> */
+/** Updates a feature <p>Update a feature's metadata or permanently deactivate it.</p> */
 export const UpdateEntitlementsFeature: API.OperationMethod<
   UpdateEntitlementsFeatureRequest,
   EntitlementsFeature,
@@ -184864,7 +184864,7 @@ export const UpdateInvoice: API.OperationMethod<
 }));
 
 export type UpdateInvoiceitemError = StripeOpError;
-/** Update an invoice item <p>Updates the amount or description of an invoice item on an upcoming invoice. Updating an invoice item is only possible before the invoice it’s attached to is closed.</p> */
+/** Update an invoice item <p>Updates the amount or description of an invoice item on an upcoming invoice. Updating an invoice item is only possible before the invoice it's attached to is closed.</p> */
 export const UpdateInvoiceitem: API.OperationMethod<
   UpdateInvoiceitemRequest,
   Invoiceitem,
@@ -184879,7 +184879,7 @@ export const UpdateInvoiceitem: API.OperationMethod<
 }));
 
 export type UpdateInvoiceLineError = StripeOpError;
-/** Update an invoice's line item <p>Updates an invoice’s line item. Some fields, such as <code>tax_amounts</code>, only live on the invoice line item, so they can only be updated through this endpoint. Other fields, such as <code>amount</code>, live on both the invoice item and the invoice line item, so updates on this endpoint will propagate to the invoice item as well. Updating an invoice’s line item is only possible before the invoice is finalized.</p> */
+/** Update an invoice's line item <p>Updates an invoice's line item. Some fields, such as <code>tax_amounts</code>, only live on the invoice line item, so they can only be updated through this endpoint. Other fields, such as <code>amount</code>, live on both the invoice item and the invoice line item, so updates on this endpoint will propagate to the invoice item as well. Updating an invoice's line item is only possible before the invoice is finalized.</p> */
 export const UpdateInvoiceLine: API.OperationMethod<
   UpdateInvoiceLineRequest,
   LineItem,
@@ -185074,7 +185074,7 @@ export const UpdatePaymentMethodDomain: API.OperationMethod<
 }));
 
 export type UpdatePayoutError = StripeOpError;
-/** Update a payout <p>Updates the specified payout by setting the values of the parameters you pass. We don’t change parameters that you don’t provide. This request only accepts the metadata as arguments.</p> */
+/** Update a payout <p>Updates the specified payout by setting the values of the parameters you pass. We don't change parameters that you don't provide. This request only accepts the metadata as arguments.</p> */
 export const UpdatePayout: API.OperationMethod<
   UpdatePayoutRequest,
   Payout,
@@ -185089,7 +185089,7 @@ export const UpdatePayout: API.OperationMethod<
 }));
 
 export type UpdatePlanError = StripeOpError;
-/** Update a plan <p>Updates the specified plan by setting the values of the parameters passed. Any parameters not provided are left unchanged. By design, you cannot change a plan’s ID, amount, currency, or billing cycle.</p> */
+/** Update a plan <p>Updates the specified plan by setting the values of the parameters passed. Any parameters not provided are left unchanged. By design, you cannot change a plan's ID, amount, currency, or billing cycle.</p> */
 export const UpdatePlan: API.OperationMethod<
   UpdatePlanRequest,
   Plan,
@@ -185194,7 +185194,7 @@ export const UpdateRadarValueList: API.OperationMethod<
 }));
 
 export type UpdateRefundError = StripeOpError;
-/** Update a refund <p>Updates the refund that you specify by setting the values of the passed parameters. Any parameters that you don’t provide remain unchanged.</p> <p>This request only accepts <code>metadata</code> as an argument.</p> */
+/** Update a refund <p>Updates the refund that you specify by setting the values of the passed parameters. Any parameters that you don't provide remain unchanged.</p> <p>This request only accepts <code>metadata</code> as an argument.</p> */
 export const UpdateRefund: API.OperationMethod<
   UpdateRefundRequest,
   Refund,
@@ -185254,7 +185254,7 @@ export const UpdateSource: API.OperationMethod<
 }));
 
 export type UpdateSubscriptionError = StripeOpError;
-/** Update a subscription <p>Updates an existing subscription to match the specified parameters. When changing prices or quantities, we optionally prorate the price we charge next month to make up for any price changes. To preview how the proration is calculated, use the <a href="/docs/api/invoices/create_preview">create preview</a> endpoint.</p> <p>By default, we prorate subscription changes. For example, if a customer signs up on May 1 for a <currency>100</currency> price, they’ll be billed <currency>100</currency> immediately. If on May 15 they switch to a <currency>200</currency> price, then on June 1 they’ll be billed <currency>250</currency> (<currency>200</currency> for a renewal of her subscription, plus a <currency>50</currency> prorating adjustment for half of the previous month’s <currency>100</currency> difference). Similarly, a downgrade generates a credit that is applied to the next invoice. We also prorate when you make quantity changes. You can also <a href="/billing/scripts/stripe-authored/proration">use scripts to prorate your billing</a>. To learn more, see <a href="/billing/subscriptions/prorations">Prorations</a>.</p> <p>Switching prices does not normally change the billing date or generate an immediate charge unless:</p> <ul> <li>The billing interval is changed (for example, from monthly to yearly).</li> <li>The subscription moves from free to paid.</li> <li>A trial starts or ends.</li> </ul> <p>In these cases, we apply a credit for the unused time on the previous price, immediately charge the customer using the new price, and reset the billing date. Learn about how <a href="/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe immediately attempts payment for subscription changes</a>.</p> <p>If you want to charge for an upgrade immediately, pass <code>proration_behavior</code> as <code>always_invoice</code> to create prorations, automatically invoice the customer for those proration adjustments, and attempt to collect payment. If you pass <code>create_prorations</code>, the prorations are created but not automatically invoiced. If you want to bill the customer for the prorations before the subscription’s renewal date, you need to manually <a href="/docs/api/invoices/create">invoice the customer</a>.</p> <p>If you don’t want to prorate, set the <code>proration_behavior</code> option to <code>none</code>. With this option, the customer is billed <currency>100</currency> on May 1 and <currency>200</currency> on June 1. Similarly, if you set <code>proration_behavior</code> to <code>none</code> when switching between different billing intervals (for example, from monthly to yearly), we don’t generate any credits for the old subscription’s unused time. We still reset the billing date and bill immediately for the new subscription.</p> <p>Updating the quantity on a subscription many times in an hour may result in <a href="/docs/rate-limits">rate limiting</a>. If you need to bill for a frequently changing quantity, consider integrating <a href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.</p> */
+/** Update a subscription <p>Updates an existing subscription to match the specified parameters. When changing prices or quantities, we optionally prorate the price we charge next month to make up for any price changes. To preview how the proration is calculated, use the <a href="/docs/api/invoices/create_preview">create preview</a> endpoint.</p> <p>By default, we prorate subscription changes. For example, if a customer signs up on May 1 for a <currency>100</currency> price, they'll be billed <currency>100</currency> immediately. If on May 15 they switch to a <currency>200</currency> price, then on June 1 they'll be billed <currency>250</currency> (<currency>200</currency> for a renewal of her subscription, plus a <currency>50</currency> prorating adjustment for half of the previous month's <currency>100</currency> difference). Similarly, a downgrade generates a credit that is applied to the next invoice. We also prorate when you make quantity changes. You can also <a href="/billing/scripts/stripe-authored/proration">use scripts to prorate your billing</a>. To learn more, see <a href="/billing/subscriptions/prorations">Prorations</a>.</p> <p>Switching prices does not normally change the billing date or generate an immediate charge unless:</p> <ul> <li>The billing interval is changed (for example, from monthly to yearly).</li> <li>The subscription moves from free to paid.</li> <li>A trial starts or ends.</li> </ul> <p>In these cases, we apply a credit for the unused time on the previous price, immediately charge the customer using the new price, and reset the billing date. Learn about how <a href="/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe immediately attempts payment for subscription changes</a>.</p> <p>If you want to charge for an upgrade immediately, pass <code>proration_behavior</code> as <code>always_invoice</code> to create prorations, automatically invoice the customer for those proration adjustments, and attempt to collect payment. If you pass <code>create_prorations</code>, the prorations are created but not automatically invoiced. If you want to bill the customer for the prorations before the subscription's renewal date, you need to manually <a href="/docs/api/invoices/create">invoice the customer</a>.</p> <p>If you don't want to prorate, set the <code>proration_behavior</code> option to <code>none</code>. With this option, the customer is billed <currency>100</currency> on May 1 and <currency>200</currency> on June 1. Similarly, if you set <code>proration_behavior</code> to <code>none</code> when switching between different billing intervals (for example, from monthly to yearly), we don't generate any credits for the old subscription's unused time. We still reset the billing date and bill immediately for the new subscription.</p> <p>Updating the quantity on a subscription many times in an hour may result in <a href="/docs/rate-limits">rate limiting</a>. If you need to bill for a frequently changing quantity, consider integrating <a href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.</p> */
 export const UpdateSubscription: API.OperationMethod<
   UpdateSubscriptionRequest,
   Subscription,

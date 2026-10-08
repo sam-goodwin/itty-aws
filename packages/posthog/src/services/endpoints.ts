@@ -48,7 +48,7 @@ export const CreateEndpointRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateEndpointRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type CreateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
 export const CreateEndpointRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -79,7 +79,7 @@ export interface CreateEndpointRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: CreateEndpointRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: CreateEndpointRequestOptionalBreakdownPropertiesList | null;
 }
 export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -653,13 +653,13 @@ export const SuggestionStatusEnum = S.String;
 
 /** AI-suggested query rewrite that would make the endpoint materializable. */
 export interface EndpointMaterializationSuggestion {
-  /** Outcome of the suggestion run: 'ok' — the suggested query passes the live materialization checks; 'cannot_fix' — no semantically equivalent rewrite exists; 'invalid' — a suggestion was produced but never passed validation (suggested_query carries the last attempt); 'model_error' — the model returned no usable response. * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
+  /** Outcome of the suggestion run: 'ok' -- the suggested query passes the live materialization checks; 'cannot_fix' -- no semantically equivalent rewrite exists; 'invalid' -- a suggestion was produced but never passed validation (suggested_query carries the last attempt); 'model_error' -- the model returned no usable response. * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
   suggestion_status: SuggestionStatusEnum;
   /** The complete rewritten SQL query, or null when no rewrite was produced. */
   suggested_query: string | null;
   /** User-facing explanation of what was changed and why, or why no fix exists. */
   explanation: string | null;
-  /** How many suggest→validate rounds were used. */
+  /** How many suggest->validate rounds were used. */
   attempts: number;
   /** Last validation failure when the suggestion did not pass the checks. */
   error: string | null;
@@ -1530,7 +1530,7 @@ export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
   operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
+  /** Customer analytics account custom property -- the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
@@ -1611,13 +1611,13 @@ export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
   event_type: BehavioralEventSource | (string & {});
-  /** Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval */
+  /** Absolute or relative (e.g. -30d) lower date bound -- alternative to time_value/time_interval */
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
   /** Event name, or action id when event_type is 'actions' */
   key: string;
   label?: string | null;
-  /** Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators */
+  /** Match persons who did NOT satisfy the criterion. Not the same as a low count -- zero-occurrence persons never match count operators */
   negation?: boolean | null;
   /** Count comparison for performed_event_multiple, defaults to exact */
   operator?: PropertyOperator | (string & {}) | null;
@@ -1626,7 +1626,7 @@ export interface BehavioralPropertyFilter {
   time_interval?: TimeUnitType | (string & {}) | null;
   /** Relative time window size, paired with time_interval */
   time_value?: number | null;
-  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP */
+  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only -- not evaluable by flags or CDP */
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
@@ -2004,7 +2004,7 @@ export const GetEndpointsMaterializationConditionRequest = /*@__PURE__*/ S.suspe
 
 /** The live materialization rules, for agents that want to rewrite a rejected query themselves. */
 export interface EndpointMaterializationConditions {
-  /** Python source code of the checks that decide whether an endpoint query can be materialized, read from the running system — always matches what this instance enforces. Reason from it to rewrite a rejected query into a form that passes every check. */
+  /** Python source code of the checks that decide whether an endpoint query can be materialized, read from the running system -- always matches what this instance enforces. Reason from it to rewrite a rejected query into a form that passes every check. */
   conditions_source: string;
   /** Hard rules a rewrite must obey so it stays semantically equivalent to the original query (same results for all variable values, keep every variable placeholder unchanged). */
   rewrite_contract: string;
@@ -2190,7 +2190,7 @@ export const UpdateEndpointRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateEndpointRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
 export const UpdateEndpointRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2220,7 +2220,7 @@ export interface UpdateEndpointRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: UpdateEndpointRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: UpdateEndpointRequestOptionalBreakdownPropertiesList | null;
 }
 export const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2260,7 +2260,7 @@ export const UpdateEndpointsPartialRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateEndpointsPartialRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList = Array<string>;
 export const UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2290,7 +2290,7 @@ export interface UpdateEndpointsPartialRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: UpdateEndpointsPartialRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
+  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList | null;
 }
 export const UpdateEndpointsPartialRequest = /*@__PURE__*/ S.suspend(() =>

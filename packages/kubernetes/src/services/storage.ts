@@ -1038,7 +1038,7 @@ export interface IoK8sApiCoreV1CSIPersistentVolumeSource {
   readOnly?: boolean;
   /** volumeAttributes of the volume to publish. */
   volumeAttributes?: IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap;
-  /** volumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required. */
+  /** volumeHandle is the unique volume name returned by the CSI volume plugin's CreateVolume to refer to the volume on all subsequent calls. Required. */
   volumeHandle: string;
 }
 export const IoK8sApiCoreV1CSIPersistentVolumeSource = /*@__PURE__*/ S.suspend(() =>

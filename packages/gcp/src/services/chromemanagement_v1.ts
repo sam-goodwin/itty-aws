@@ -351,7 +351,7 @@ export interface GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResp
   recentlyEnrolledCount?: string;
   /** Number of browsers that are pending an OS update */
   pendingBrowserUpdateCount?: string;
-  /** Number of browsers that haven’t had any recent activity */
+  /** Number of browsers that haven't had any recent activity */
   noRecentActivityCount?: string;
 }
 export const GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse =

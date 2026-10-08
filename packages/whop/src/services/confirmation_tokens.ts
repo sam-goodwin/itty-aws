@@ -120,7 +120,7 @@ export interface PaymentMethodDisplay {
   card?: PaymentMethodDisplayPreview;
   /** The family the type belongs to. */
   category: PaymentMethodDisplayCategory;
-  /** Human-readable label for the method, e.g. `Visa •••• 4242`. */
+  /** Human-readable label for the method, e.g. `Visa **** 4242`. */
   display_name: string;
   /** The saved payment method this preview came from, or `null` when the buyer supplied a new one. */
   id: string | null;
@@ -149,7 +149,7 @@ export type ConfirmationTokenStatus = "pending" | "consumed" | "expired";
 export const ConfirmationTokenStatus = S.String;
 
 export interface ConfirmationToken {
-  /** The collected billing address, including the name on the address. Null when not collected or without bearer authentication with payment:basic:read on the token’s account. */
+  /** The collected billing address, including the name on the address. Null when not collected or without bearer authentication with payment:basic:read on the token's account. */
   billing_address: PaymentAddress | null;
   /** Billing preview supplied at collection: email, name, country and postal code. */
   billing_details: PaymentBillingDetailsPreview | null;
@@ -160,7 +160,7 @@ export interface ConfirmationToken {
   id: string;
   /** Always `confirmation_token`. */
   object: string;
-  /** Display-only preview of the collected method — never the underlying token. */
+  /** Display-only preview of the collected method -- never the underlying token. */
   payment_method_preview: PaymentMethodDisplay;
   /** Save-consent state the element displayed at collection: `off_session`, `on_session`, or `null`. Confirm may vault only if attested here. */
   setup_future_usage: string | null;
@@ -182,7 +182,7 @@ export const ConfirmationToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfirmationToken" }) as any as S.Schema<ConfirmationToken>;
 
 export type GetConfirmationTokenError = NotFound | WhopOpError;
-/** Retrieve Confirmation Token Retrieves a token's payment method and billing details — never the underlying payment credential. Public and rate-limited: the account_id query param must match the account the token was minted for. A bearer credential with payment:basic:read on that account also receives the collected billing address. */
+/** Retrieve Confirmation Token Retrieves a token's payment method and billing details -- never the underlying payment credential. Public and rate-limited: the account_id query param must match the account the token was minted for. A bearer credential with payment:basic:read on that account also receives the collected billing address. */
 export const getConfirmationToken: API.OperationMethod<
   GetConfirmationTokenRequest,
   ConfirmationToken,

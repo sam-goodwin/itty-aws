@@ -200,7 +200,7 @@ export const UpdateCallResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCallResponse" }) as any as S.Schema<UpdateCallResponse>;
 
 export type AddCallError = SlackOpError;
-/** Registers a new Call. Required scopes — bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — An unexpected error has occurred while trying to register the Call. - `invalid_created_by` — The `created_by` user ID is invalid. - `invalid_start_time` — The start time is invalid. - `not_authorized` — The specified user is not authorized to create a Call in this channel. - `not_implemented` — This method is not available. - `user_not_found` — A specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.add */
+/** Registers a new Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error has occurred while trying to register the Call. - `invalid_created_by` -- The `created_by` user ID is invalid. - `invalid_start_time` -- The start time is invalid. - `not_authorized` -- The specified user is not authorized to create a Call in this channel. - `not_implemented` -- This method is not available. - `user_not_found` -- A specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.add */
 export const addCall: API.OperationMethod<
   AddCallRequest,
   AddCallResponse,
@@ -215,7 +215,7 @@ export const addCall: API.OperationMethod<
 }));
 
 export type AddParticipantError = SlackOpError;
-/** Registers new participants added to a Call. Required scopes — bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_users` — At least one specified user is already part of the Call. - `inactive_call` — The Call has been already ended. - `internal_error` — An unexpected exception occurred while adding a Call participant. - `invalid_call_id` — The specified Call wasn't found. - `missing_argument` — A required argument is missing. - `not_implemented` — This method is not available. - `user_not_found` — At least one specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.participants.add */
+/** Registers new participants added to a Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_users` -- At least one specified user is already part of the Call. - `inactive_call` -- The Call has been already ended. - `internal_error` -- An unexpected exception occurred while adding a Call participant. - `invalid_call_id` -- The specified Call wasn't found. - `missing_argument` -- A required argument is missing. - `not_implemented` -- This method is not available. - `user_not_found` -- At least one specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.participants.add */
 export const addParticipant: API.OperationMethod<
   AddParticipantRequest,
   AddParticipantResponse,
@@ -230,7 +230,7 @@ export const addParticipant: API.OperationMethod<
 }));
 
 export type CallsEndError = SlackOpError;
-/** Ends a Call. Required scopes — bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `inactive_call` — The Call has been already stopped. - `internal_error` — An unexpected error has occurred while ending the Call. - `invalid_call_id` — Invalid Call ID. - `not_implemented` — This method is not publicly available yet. See https://docs.slack.dev/reference/methods/calls.end */
+/** Ends a Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `inactive_call` -- The Call has been already stopped. - `internal_error` -- An unexpected error has occurred while ending the Call. - `invalid_call_id` -- Invalid Call ID. - `not_implemented` -- This method is not publicly available yet. See https://docs.slack.dev/reference/methods/calls.end */
 export const callsEnd: API.OperationMethod<
   CallsEndRequest,
   CallsEndResponse,
@@ -245,7 +245,7 @@ export const callsEnd: API.OperationMethod<
 }));
 
 export type CallsInfoError = SlackOpError;
-/** Returns information about a Call. Required scopes — bot: `calls:read`; user: `calls:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — An unexpected error occurred while finding information about this Call. - `not_implemented` — This method is not available. See https://docs.slack.dev/reference/methods/calls.info */
+/** Returns information about a Call. Required scopes -- bot: `calls:read`; user: `calls:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error occurred while finding information about this Call. - `not_implemented` -- This method is not available. See https://docs.slack.dev/reference/methods/calls.info */
 export const callsInfo: API.OperationMethod<
   CallsInfoRequest,
   CallsInfoResponse,
@@ -260,7 +260,7 @@ export const callsInfo: API.OperationMethod<
 }));
 
 export type RemoveParticipantError = SlackOpError;
-/** Registers participants removed from a Call. Required scopes — bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_users` — At least one specified user is not part of the Call. - `inactive_call` — The Call has been already ended. - `internal_error` — An unexpected exception occurred while removing participants from the Call. - `invalid_call_id` — The specified Call wasn't found. - `missing_argument` — A required argument is missing. - `not_implemented` — This method is not available. - `user_not_found` — At least one specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.participants.remove */
+/** Registers participants removed from a Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_users` -- At least one specified user is not part of the Call. - `inactive_call` -- The Call has been already ended. - `internal_error` -- An unexpected exception occurred while removing participants from the Call. - `invalid_call_id` -- The specified Call wasn't found. - `missing_argument` -- A required argument is missing. - `not_implemented` -- This method is not available. - `user_not_found` -- At least one specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.participants.remove */
 export const removeParticipant: API.OperationMethod<
   RemoveParticipantRequest,
   RemoveParticipantResponse,
@@ -275,7 +275,7 @@ export const removeParticipant: API.OperationMethod<
 }));
 
 export type UpdateCallError = SlackOpError;
-/** Updates information about a Call. Required scopes — bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — An unexpected exception occurred while updating the Call info. - `invalid_call_id` — The Call's `id` was invalid. - `not_implemented` — This method is not available. See https://docs.slack.dev/reference/methods/calls.update */
+/** Updates information about a Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected exception occurred while updating the Call info. - `invalid_call_id` -- The Call's `id` was invalid. - `not_implemented` -- This method is not available. See https://docs.slack.dev/reference/methods/calls.update */
 export const updateCall: API.OperationMethod<
   UpdateCallRequest,
   UpdateCallResponse,

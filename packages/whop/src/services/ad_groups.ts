@@ -428,7 +428,7 @@ export const AdGroupGeoLocationsBodyCountriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdGroupGeoLocationsBodyCountriesList>;
 
-/** Multi-country groups such as `worldwide` or `europe`. Include-only — groups can't be excluded. */
+/** Multi-country groups such as `worldwide` or `europe`. Include-only -- groups can't be excluded. */
 export type AdGroupGeoLocationsBodyCountryGroupsList = Array<string>;
 export const AdGroupGeoLocationsBodyCountryGroupsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -494,7 +494,7 @@ export type AdGroupGeoLocationsBodyZipsItem = string | AdGroupGeoLocationsBodyZi
 export const AdGroupGeoLocationsBodyZipsItem =
   S.Unknown as any as S.Schema<AdGroupGeoLocationsBodyZipsItem>;
 
-/** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` — a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
+/** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` -- a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
 export type AdGroupGeoLocationsBodyZipsList = Array<AdGroupGeoLocationsBodyZipsItem>;
 export const AdGroupGeoLocationsBodyZipsList = /*@__PURE__*/ S.Array(
   AdGroupGeoLocationsBodyZipsItem,
@@ -505,13 +505,13 @@ export interface AdGroupGeoLocationsBody {
   cities?: AdGroupGeoLocationsBodyCitiesList;
   /** Countries, as ISO 3166-1 alpha-2 codes such as `US`. */
   countries?: AdGroupGeoLocationsBodyCountriesList;
-  /** Multi-country groups such as `worldwide` or `europe`. Include-only — groups can't be excluded. */
+  /** Multi-country groups such as `worldwide` or `europe`. Include-only -- groups can't be excluded. */
   country_groups?: AdGroupGeoLocationsBodyCountryGroupsList;
   /** Circular areas, each a coordinate plus a radius. At most 200 across include and exclude. */
   custom_locations?: AdGroupGeoLocationsBodyCustomLocationsList;
   /** US states and DC, as ISO 3166-2 codes such as `US-CA`. US territories (`PR`, `GU`, `VI`, `AS`, `MP`) and everywhere outside the US are targeted through `countries`. */
   regions?: AdGroupGeoLocationsBodyRegionsList;
-  /** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` — a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
+  /** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` -- a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
   zips?: AdGroupGeoLocationsBodyZipsList;
 }
 export const AdGroupGeoLocationsBody = /*@__PURE__*/ S.suspend(() =>
@@ -563,7 +563,7 @@ export interface CreateAdGroupRequest {
   demographics?: AdGroupDemographicsBody;
   /** Cost per result to aim for (`average_target`) or never exceed (`maximum_target`). */
   desired_cost_per_result?: number;
-  /** Interest, behavior, and demographic targeting, using categories from the ad platform's targeting taxonomy. Entries across interests, behaviors, and demographics are OR'd together (anyone matching any entry is reached), matching Ads Manager's detailed-targeting box. At most 100 entries per section. Can't be combined with demographics.automatic, and unavailable to campaigns with special_ad_categories. Send the complete intended state — a section you omit is cleared. */
+  /** Interest, behavior, and demographic targeting, using categories from the ad platform's targeting taxonomy. Entries across interests, behaviors, and demographics are OR'd together (anyone matching any entry is reached), matching Ads Manager's detailed-targeting box. At most 100 entries per section. Can't be combined with demographics.automatic, and unavailable to campaigns with special_ad_categories. Send the complete intended state -- a section you omit is cleared. */
   detailed_targeting?: AdGroupDetailedTargetingBody;
   /** Device platforms and operating systems to target. */
   devices?: AdGroupDevicesBody;
@@ -1062,7 +1062,7 @@ export const AdGroupRegions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdGroupRegions" }) as any as S.Schema<AdGroupRegions>;
 
-/** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+/** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdGroupResultEvent =
   | "purchase"
   | "lead"
@@ -1192,7 +1192,7 @@ export interface AdGroup {
   reach: number;
   /** Locations targeted and excluded. */
   regions: AdGroupRegions;
-  /** The Whop pixel conversion event whose attributed count represents results — the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
+  /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
   result_event: AdGroupResultEvent | null;
   /** The merchant-defined event name when result_event is custom; null for the standard events. */
   result_event_name: string | null;
@@ -1496,7 +1496,7 @@ export interface ListAdGroupsRequest {
   status?: ListAdGroupsRequestStatus | (string & {});
   /** Filter ad groups by a title or ID substring. */
   query?: string;
-  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, …) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
+  /** The field to sort by. Defaults to created_at. Stat columns (spend, impressions, ...) rank over the stats_from/stats_to window across the whole list, not just the current page. results, cost_per_result and return_on_ad_spend rank by the same Whop pixel-attributed values the response reports. */
   order?: ListAdGroupsRequestOrder | (string & {});
   /** The sort direction. Defaults to desc. */
   direction?: ListAdGroupsRequestDirection | (string & {});
@@ -1766,7 +1766,7 @@ export type LocationTargetingOptionType = "locations";
 export const LocationTargetingOptionType = S.String;
 
 export interface LocationTargetingOption {
-  /** The standardized code the ad-group `regions` field takes: an ISO 3166-1 code for countries (`US`) or an ISO 3166-2 code for states and provinces (`US-CA`, `CA-ON`). Null for a location that has no standard code, such as a city or a metro area — target those by `key` in the `regions` cities list instead. */
+  /** The standardized code the ad-group `regions` field takes: an ISO 3166-1 code for countries (`US`) or an ISO 3166-2 code for states and provinces (`US-CA`, `CA-ON`). Null for a location that has no standard code, such as a city or a metro area -- target those by `key` in the `regions` cities list instead. */
   code: string | null;
   /** ISO 3166-1 code of the country the location sits in. */
   country_code: string | null;
@@ -1967,7 +1967,7 @@ export interface UpdateAdGroupRequest {
   demographics?: AdGroupDemographicsBody;
   /** Cost per result to aim for (`average_target`) or never exceed (`maximum_target`). */
   desired_cost_per_result?: number;
-  /** Interest, behavior, and demographic targeting, using categories from the ad platform's targeting taxonomy. Entries across interests, behaviors, and demographics are OR'd together (anyone matching any entry is reached), matching Ads Manager's detailed-targeting box. At most 100 entries per section. Can't be combined with demographics.automatic, and unavailable to campaigns with special_ad_categories. Send the complete intended state — a section you omit is cleared. */
+  /** Interest, behavior, and demographic targeting, using categories from the ad platform's targeting taxonomy. Entries across interests, behaviors, and demographics are OR'd together (anyone matching any entry is reached), matching Ads Manager's detailed-targeting box. At most 100 entries per section. Can't be combined with demographics.automatic, and unavailable to campaigns with special_ad_categories. Send the complete intended state -- a section you omit is cleared. */
   detailed_targeting?: AdGroupDetailedTargetingBody;
   /** Device platforms and operating systems to target. */
   devices?: AdGroupDevicesBody;
@@ -2053,7 +2053,7 @@ export const deleteAdGroup: API.OperationMethod<
 }));
 
 export type DuplicateAdGroupError = BadRequest | NotFound | Conflict | WhopOpError;
-/** Duplicate an Ad Group Creates copies of the ad group in `duplicating` status and returns them — into its own campaign, or into target_ad_campaign_id (which must belong to the same account and be compatible with the ad group's targeting and goals); each copy transitions to its final status (matching the source's active/paused state) once duplication completes. Poll each returned ad group until it leaves `duplicating` — a copy that could not be completed is deleted and returns 404. */
+/** Duplicate an Ad Group Creates copies of the ad group in `duplicating` status and returns them -- into its own campaign, or into target_ad_campaign_id (which must belong to the same account and be compatible with the ad group's targeting and goals); each copy transitions to its final status (matching the source's active/paused state) once duplication completes. Poll each returned ad group until it leaves `duplicating` -- a copy that could not be completed is deleted and returns 404. */
 export const duplicateAdGroup: API.OperationMethod<
   DuplicateAdGroupRequest,
   DuplicateAdGroupResponse,
@@ -2068,7 +2068,7 @@ export const duplicateAdGroup: API.OperationMethod<
 }));
 
 export type EstimateAdGroupReachError = BadRequest | Forbidden | Conflict | WhopOpError;
-/** Estimate Ad Group Reach Estimates how many people a draft targeting spec can reach, before an ad group is created. The body takes the same targeting fields as creating an ad group — `regions`, `demographics`, `detailed_targeting`, `audiences`, `languages`, and `devices` — and nothing is persisted. */
+/** Estimate Ad Group Reach Estimates how many people a draft targeting spec can reach, before an ad group is created. The body takes the same targeting fields as creating an ad group -- `regions`, `demographics`, `detailed_targeting`, `audiences`, `languages`, and `devices` -- and nothing is persisted. */
 export const estimateAdGroupReach: API.OperationMethod<
   EstimateAdGroupReachRequest,
   ReachEstimate,

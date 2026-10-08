@@ -5620,7 +5620,7 @@ export type ListTargetsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also ﬁlter the results by target.
+ * Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also U+FB01lter the results by target.
  */
 export const listTargets: API.PaginatedOperationMethod<
   ListTargetsRequest,

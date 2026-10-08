@@ -141,11 +141,11 @@ export const ResolutionBuyer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResolutionBuyer" }) as any as S.Schema<ResolutionBuyer>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -162,7 +162,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
-  /** The item's name as shown at checkout — the product title, else the plan title. */
+  /** The item's name as shown at checkout -- the product title, else the plan title. */
   label: string | null;
   /** The plan bought, prefixed `plan_`. Null when the plan has since been deleted. */
   plan_id: string | null;
@@ -230,11 +230,11 @@ export type ResolutionCenterCaseReason =
   | "subscription_canceled";
 export const ResolutionCenterCaseReason = S.String;
 
-/** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` — a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
+/** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` -- a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
 export type ResolutionCenterCaseRefund = "none" | "merchant" | "platform";
 export const ResolutionCenterCaseRefund = S.String;
 
-/** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled — read `outcome` for how. */
+/** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled -- read `outcome` for how. */
 export type ResolutionCenterCaseStatus =
   | "awaiting_merchant"
   | "awaiting_customer"
@@ -256,7 +256,7 @@ export interface ResolutionCenterCase {
   currency: string | null;
   /** Whether the customer has appealed a decision on this case. */
   customer_appealed: boolean;
-  /** Whether Whop is involved — either reviewing the case, or waiting on the side named by `status` for something it asked for while reviewing. */
+  /** Whether Whop is involved -- either reviewing the case, or waiting on the side named by `status` for something it asked for while reviewing. */
   escalated: boolean;
   /** Resolution center case ID, prefixed `reso_`. */
   id: string;
@@ -271,11 +271,11 @@ export interface ResolutionCenterCase {
   product_id: string | null;
   /** What the customer says went wrong. Shares the `/disputes` vocabulary, so a case that later becomes a chargeback reports the same complaint. */
   reason: ResolutionCenterCaseReason;
-  /** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` — a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
+  /** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` -- a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
   refund: ResolutionCenterCaseRefund | null;
   /** When the next response is due, as an ISO 8601 timestamp. */
   response_due_at: string | null;
-  /** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled — read `outcome` for how. */
+  /** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled -- read `outcome` for how. */
   status: ResolutionCenterCaseStatus;
   /** When the case was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
@@ -482,7 +482,7 @@ export interface GetResolutionCenterCaseSummaryRequest {
   groups?: GetResolutionCenterCaseSummaryRequestGroupsList;
   /** The account to summarize cases for (`biz_` tag). */
   account_id?: string;
-  /** Only cases opened by this customer — a `user_` tag, or `me` for the calling user. */
+  /** Only cases opened by this customer -- a `user_` tag, or `me` for the calling user. */
   user_id?: string;
   /** Only cases in these statuses. */
   status?: GetResolutionCenterCaseSummaryRequestStatusList;
@@ -781,7 +781,7 @@ export const ListResolutionCenterCasesRequestOutcomeList = /*@__PURE__*/ S.Array
 export interface ListResolutionCenterCasesRequest {
   /** Only cases filed against this account (`biz_` tag). With read access to the account this lists its whole queue; without, only the cases you opened against it. */
   account_id?: string;
-  /** Only cases opened by this customer — a `user_` tag, or `me` for the calling user. It narrows what you can already read, so `me` lists the cases you opened without the ones on accounts you are a team member of. */
+  /** Only cases opened by this customer -- a `user_` tag, or `me` for the calling user. It narrows what you can already read, so `me` lists the cases you opened without the ones on accounts you are a team member of. */
   user_id?: string;
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -795,7 +795,7 @@ export interface ListResolutionCenterCasesRequest {
   order?: ListResolutionCenterCasesRequestOrder | (string & {});
   /** Sort direction. */
   direction?: ListResolutionCenterCasesRequestDirection | (string & {});
-  /** Only cases in these statuses. Repeat the parameter to pass several — one paginated list covers all of them. */
+  /** Only cases in these statuses. Repeat the parameter to pass several -- one paginated list covers all of them. */
   status?: ListResolutionCenterCasesRequestStatusList;
   /** Only cases opened for these reasons. Repeat the parameter to pass several. */
   reason?: ListResolutionCenterCasesRequestReasonList;
@@ -1021,7 +1021,7 @@ export const getResolutionCenterCaseSummary: API.OperationMethod<
 }));
 
 export type ListResolutionCenterCaseEventsError = NotFound | WhopOpError;
-/** List Resolution Center Case Events Lists the case timeline, newest first. Events the viewer is not allowed to see are omitted — a customer reads the customer-visible timeline, the merchant reads the full one. */
+/** List Resolution Center Case Events Lists the case timeline, newest first. Events the viewer is not allowed to see are omitted -- a customer reads the customer-visible timeline, the merchant reads the full one. */
 export const listResolutionCenterCaseEvents: API.PaginatedOperationMethod<
   ListResolutionCenterCaseEventsRequest,
   ListResolutionCenterCaseEventsResponse,
@@ -1048,7 +1048,7 @@ export const listResolutionCenterCaseEvents: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListResolutionCenterCasesError = Forbidden | NotFound | WhopOpError;
-/** List Resolution Center Cases Lists resolution center cases. Without `account_id` you get every case you can read — the ones you opened as a buyer and every account you are a team member of; the filters narrow that list. */
+/** List Resolution Center Cases Lists resolution center cases. Without `account_id` you get every case you can read -- the ones you opened as a buyer and every account you are a team member of; the filters narrow that list. */
 export const listResolutionCenterCases: API.PaginatedOperationMethod<
   ListResolutionCenterCasesRequest,
   ListResolutionCenterCasesResponse,

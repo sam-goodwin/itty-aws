@@ -249,7 +249,7 @@ export type CreatePaymentMethodDomainError =
   | NotFound
   | Conflict
   | WhopOpError;
-/** Create Payment Method Domain Registers a hostname with the wallet provider and attempts verification inline. Returns `verified` when the provider fetched the domain-association file (for Apple Pay, `/.well-known/apple-developer-merchantid-domain-association`), or `pending` when it could not — host the file, then retry with the verify endpoint. */
+/** Create Payment Method Domain Registers a hostname with the wallet provider and attempts verification inline. Returns `verified` when the provider fetched the domain-association file (for Apple Pay, `/.well-known/apple-developer-merchantid-domain-association`), or `pending` when it could not -- host the file, then retry with the verify endpoint. */
 export const createPaymentMethodDomain: API.OperationMethod<
   CreatePaymentMethodDomainRequest,
   PaymentMethodDomain,

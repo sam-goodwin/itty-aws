@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 
 export type { HetznerOpError, HetznerOpContext };
 
-/** The project has no remaining Primary IP quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often transient — Servers hold auto-created Primary IP pairs that free up on delete — retry. */
+/** The project has no remaining Primary IP quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often transient -- Servers hold auto-created Primary IP pairs that free up on delete -- retry. */
 export class PrimaryIpLimitExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<PrimaryIpLimitExceeded>()("PrimaryIpLimitExceeded", {

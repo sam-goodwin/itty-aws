@@ -85,7 +85,7 @@ export const RegistrationState = S.String;
 export interface ExtendedZoneProperties {
   /** Status of the last operation performed by the subscription on the Edge Zone resource */
   provisioningState?: ProvisioningState;
-  /** Indicates the Azure Extended Zone registration’s approval status. */
+  /** Indicates the Azure Extended Zone registration's approval status. */
   registrationState?: RegistrationState;
   /** Display name of the Azure Extended Zone. */
   displayName: string;

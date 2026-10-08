@@ -306,7 +306,7 @@ export const ListReviewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReviewResponse" }) as any as S.Schema<ListReviewResponse>;
 
 export type GetReviewError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** Retrieve review [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing review. */
+/** Retrieve review [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing review. */
 export const getReview: API.OperationMethod<
   GetReviewRequest,
   Review,
@@ -321,7 +321,7 @@ export const getReview: API.OperationMethod<
 }));
 
 export type ListReviewError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
-/** List reviews [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of customer reviews for a specific product, with optional filtering by star rating and creation date. */
+/** List reviews [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of customer reviews for a specific product, with optional filtering by star rating and creation date. */
 export const listReview: API.PaginatedOperationMethod<
   ListReviewRequest,
   ListReviewResponse,

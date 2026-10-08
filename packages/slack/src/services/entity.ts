@@ -89,7 +89,7 @@ export const PresentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface PresentCommentsResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const PresentCommentsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -152,7 +152,7 @@ export const PresentDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PresentDetailsResponse" }) as any as S.Schema<PresentDetailsResponse>;
 
 export type AcknowledgeCommentActionError = SlackOpError;
-/** Acknowledge a comment mutation (edit, delete, or post) on a work object entity. Apps call this endpoint to confirm they have processed a comment action, and the backend emits a dedicated RTM event to the user. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `method_not_found` — when the API isn't available to the caller - `invalid_trigger_id` — Trigger id is not valid - `invalid_app_id` — App ID is not a valid format - `invalid_auth` — Invalid token provided - `invalid_action` — The comment data does not match the original trigger context (e.g., comment_id or thread_root_id mismatch) - `missing_comment_data` — Required comment fields are missing for the given action type - `not_allowed` — User is not enrolled in comment syncing - `invalid_sender_schema` — The sender field could not be transformed to a valid user schema See https://docs.slack.dev/reference/methods/entity.acknowledgeCommentAction */
+/** Acknowledge a comment mutation (edit, delete, or post) on a work object entity. Apps call this endpoint to confirm they have processed a comment action, and the backend emits a dedicated RTM event to the user. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `method_not_found` -- when the API isn't available to the caller - `invalid_trigger_id` -- Trigger id is not valid - `invalid_app_id` -- App ID is not a valid format - `invalid_auth` -- Invalid token provided - `invalid_action` -- The comment data does not match the original trigger context (e.g., comment_id or thread_root_id mismatch) - `missing_comment_data` -- Required comment fields are missing for the given action type - `not_allowed` -- User is not enrolled in comment syncing - `invalid_sender_schema` -- The sender field could not be transformed to a valid user schema See https://docs.slack.dev/reference/methods/entity.acknowledgeCommentAction */
 export const acknowledgeCommentAction: API.OperationMethod<
   AcknowledgeCommentActionRequest,
   AcknowledgeCommentActionResponse,
@@ -167,7 +167,7 @@ export const acknowledgeCommentAction: API.OperationMethod<
 }));
 
 export type PresentCommentsError = SlackOpError;
-/** Provide comments for work objects. Apps call this endpoint to send per-user flexpane comment data to the client. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `method_not_found` — when the API isn't available to the caller - `invalid_trigger_id` — Trigger id is not valid - `invalid_app_id` — App ID is not a valid format - `invalid_auth` — Invalid token provided - `user_auth_url_missing` — User auth url is required if user_auth_required is true - `missing_delete_action_id` — delete_action_id is required when any comment is marked can_delete See https://docs.slack.dev/reference/methods/entity.presentComments */
+/** Provide comments for work objects. Apps call this endpoint to send per-user flexpane comment data to the client. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `method_not_found` -- when the API isn't available to the caller - `invalid_trigger_id` -- Trigger id is not valid - `invalid_app_id` -- App ID is not a valid format - `invalid_auth` -- Invalid token provided - `user_auth_url_missing` -- User auth url is required if user_auth_required is true - `missing_delete_action_id` -- delete_action_id is required when any comment is marked can_delete See https://docs.slack.dev/reference/methods/entity.presentComments */
 export const presentComments: API.OperationMethod<
   PresentCommentsRequest,
   PresentCommentsResponse,
@@ -182,7 +182,7 @@ export const presentComments: API.OperationMethod<
 }));
 
 export type PresentDetailsError = SlackOpError;
-/** Provide custom flexpane behavior for Work Objects. Apps call this endpoint to send per-user flexpane metadata to the client. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_metadata` — The provided `metadata` argument could not be parsed or understood. - `feature_not_enabled` — temporarily gating API - `invalid_app_id` — App ID is not a valid format - `user_auth_url_missing` — User auth url is required if user_auth_required is true - `invalid_trigger_id` — Trigger id is not valid - `entity_metadata_does_not_match_trigger` — The provided entity's ID does not match the ID of the entity used to initiate the request - `missing_interactivity_url` — App does not have an interactivity URL configured - `missing_options_load_url` — App does not have an options load URL configured - `invalid_auth` — Invalid token provided See https://docs.slack.dev/reference/methods/entity.presentDetails */
+/** Provide custom flexpane behavior for Work Objects. Apps call this endpoint to send per-user flexpane metadata to the client. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_metadata` -- The provided `metadata` argument could not be parsed or understood. - `feature_not_enabled` -- temporarily gating API - `invalid_app_id` -- App ID is not a valid format - `user_auth_url_missing` -- User auth url is required if user_auth_required is true - `invalid_trigger_id` -- Trigger id is not valid - `entity_metadata_does_not_match_trigger` -- The provided entity's ID does not match the ID of the entity used to initiate the request - `missing_interactivity_url` -- App does not have an interactivity URL configured - `missing_options_load_url` -- App does not have an options load URL configured - `invalid_auth` -- Invalid token provided See https://docs.slack.dev/reference/methods/entity.presentDetails */
 export const presentDetails: API.OperationMethod<
   PresentDetailsRequest,
   PresentDetailsResponse,

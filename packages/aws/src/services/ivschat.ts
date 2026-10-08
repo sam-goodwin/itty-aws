@@ -921,7 +921,7 @@ export type DeleteMessageError =
   | CommonErrors;
 /**
  * Sends an event to a specific room which directs clients to delete a specific message;
- * that is, unrender it from view and delete it from the client’s chat history. This event’s
+ * that is, unrender it from view and delete it from the client's chat history. This event's
  * `EventName` is `aws:DELETE_MESSAGE`. This replicates the
  * DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
  */
@@ -1163,7 +1163,7 @@ export type SendEventError =
   | ValidationException
   | CommonErrors;
 /**
- * Sends an event to a room. Use this within your application’s business logic to send
+ * Sends an event to a room. Use this within your application's business logic to send
  * events to clients of a room; e.g., to notify clients to change the way the chat UI is
  * rendered.
  */
@@ -1283,7 +1283,7 @@ export type UpdateRoomError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a room’s configuration.
+ * Updates a room's configuration.
  */
 export const updateRoom: API.OperationMethod<
   UpdateRoomRequest,

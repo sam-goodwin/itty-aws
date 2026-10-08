@@ -994,7 +994,7 @@ export const createTaskChannel: API.OperationMethod<
 }));
 
 export type CreateTaskChannelsFeedError = PosthogOpError;
-/** Post a channel feed message API for a channel's system-announcement feed — durable "PostHog agent" rows (context created, CONTEXT.md being built) rendered alongside the channel's task cards. Read by any team member for a public channel; personal channels are owner-only. */
+/** Post a channel feed message API for a channel's system-announcement feed -- durable "PostHog agent" rows (context created, CONTEXT.md being built) rendered alongside the channel's task cards. Read by any team member for a public channel; personal channels are owner-only. */
 export const createTaskChannelsFeed: API.OperationMethod<
   CreateTaskChannelsFeedRequest,
   ChannelFeedMessageDTO,
@@ -1144,7 +1144,7 @@ export const getTaskChannelsContributor: API.OperationMethod<
 }));
 
 export type GetTaskChannelsInstructionError = PosthogOpError;
-/** Get channel instructions The channel's latest CONTEXT.md instructions. A channel with no published instructions reads as a blank version 0 — publish against base_version 0 to create version 1. */
+/** Get channel instructions The channel's latest CONTEXT.md instructions. A channel with no published instructions reads as a blank version 0 -- publish against base_version 0 to create version 1. */
 export const getTaskChannelsInstruction: API.OperationMethod<
   GetTaskChannelsInstructionRequest,
   ChannelInstructionsDTO,

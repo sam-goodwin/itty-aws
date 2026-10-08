@@ -151,7 +151,7 @@ export const TeamInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamInfoResponse" }) as any as S.Schema<TeamInfoResponse>;
 
 export type DndInfoError = SlackOpError;
-/** Retrieves a user's current Do Not Disturb status. Required scopes — bot: `dnd:read`; user: `dnd:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `user_not_found` — Value passed for `user` was invalid. - `user_not_visible` — User is not visible for this request. See https://docs.slack.dev/reference/methods/dnd.info */
+/** Retrieves a user's current Do Not Disturb status. Required scopes -- bot: `dnd:read`; user: `dnd:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `user_not_found` -- Value passed for `user` was invalid. - `user_not_visible` -- User is not visible for this request. See https://docs.slack.dev/reference/methods/dnd.info */
 export const dndInfo: API.OperationMethod<
   DndInfoRequest,
   DndInfoResponse,
@@ -166,7 +166,7 @@ export const dndInfo: API.OperationMethod<
 }));
 
 export type EndDndError = SlackOpError;
-/** Ends the current user's Do Not Disturb session immediately. Required scopes — user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `not_in_dnd` — The auth'd user isn't in DND mode. See https://docs.slack.dev/reference/methods/dnd.endDnd */
+/** Ends the current user's Do Not Disturb session immediately. Required scopes -- user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `not_in_dnd` -- The auth'd user isn't in DND mode. See https://docs.slack.dev/reference/methods/dnd.endDnd */
 export const endDnd: API.OperationMethod<
   EndDndRequest,
   EndDndResponse,
@@ -181,7 +181,7 @@ export const endDnd: API.OperationMethod<
 }));
 
 export type EndSnoozeError = SlackOpError;
-/** Ends the current user's snooze mode immediately. Required scopes — user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `snooze_end_failed` — There was a problem setting the user's Do Not Disturb status See https://docs.slack.dev/reference/methods/dnd.endSnooze */
+/** Ends the current user's snooze mode immediately. Required scopes -- user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `snooze_end_failed` -- There was a problem setting the user's Do Not Disturb status See https://docs.slack.dev/reference/methods/dnd.endSnooze */
 export const endSnooze: API.OperationMethod<
   EndSnoozeRequest,
   EndSnoozeResponse,
@@ -196,7 +196,7 @@ export const endSnooze: API.OperationMethod<
 }));
 
 export type SetSnoozeError = SlackOpError;
-/** Turns on Do Not Disturb mode for the current user, or changes its duration. Required scopes — user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_duration` — No value provided for `num_minutes` - `snooze_failed` — There was a problem setting the user's Do Not Disturb status - `too_long` — The value for `num_minutes` was too large See https://docs.slack.dev/reference/methods/dnd.setSnooze */
+/** Turns on Do Not Disturb mode for the current user, or changes its duration. Required scopes -- user: `dnd:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `missing_duration` -- No value provided for `num_minutes` - `snooze_failed` -- There was a problem setting the user's Do Not Disturb status - `too_long` -- The value for `num_minutes` was too large See https://docs.slack.dev/reference/methods/dnd.setSnooze */
 export const setSnooze: API.OperationMethod<
   SetSnoozeRequest,
   SetSnoozeResponse,
@@ -211,7 +211,7 @@ export const setSnooze: API.OperationMethod<
 }));
 
 export type TeamInfoError = SlackOpError;
-/** Retrieves the Do Not Disturb status for up to 50 users on a team. Required scopes — bot: `dnd:read`; user: `dnd:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_users_provided` — Must provide more than one user. - `user_not_visible` — User is not visible for this request. See https://docs.slack.dev/reference/methods/dnd.teamInfo */
+/** Retrieves the Do Not Disturb status for up to 50 users on a team. Required scopes -- bot: `dnd:read`; user: `dnd:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_users_provided` -- Must provide more than one user. - `user_not_visible` -- User is not visible for this request. See https://docs.slack.dev/reference/methods/dnd.teamInfo */
 export const teamInfo: API.OperationMethod<
   TeamInfoRequest,
   TeamInfoResponse,

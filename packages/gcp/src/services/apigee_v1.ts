@@ -4451,7 +4451,7 @@ export const GoogleCloudApigeeV1SecurityAction = /*@__PURE__*/ S.suspend(() =>
 export interface CreateOrganizationsEnvironmentsSecurityActionsRequest {
   /** Required. The organization and environment that this SecurityAction applies to. Format: organizations/{org}/environments/{env} */
   parent: string;
-  /** Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$). */
+  /** Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). */
   securityActionId?: string;
   /** Request body */
   body?: GoogleCloudApigeeV1SecurityAction;
@@ -9339,7 +9339,7 @@ export interface GoogleCloudApigeeV1McpServerConfig {
   revisionCreateTime?: string;
   /** Output only. Unique ID for the McpServerConfig that will only change if the organization is deleted and recreated. */
   uid?: string;
-  /** Output only. Cloud Storage URI to the McpServerConfigData blob in the Apigee tenant project bucket. The sidecar fetches this URI using Cloud Storage, and deserializes the. protojson blob to McpServerConfigData. Treat this as an opaque URI — its format may change. Example: gs://{apigee-tp-bucket}/apigee-mcp-config-{org}-{revision_id}.json */
+  /** Output only. Cloud Storage URI to the McpServerConfigData blob in the Apigee tenant project bucket. The sidecar fetches this URI using Cloud Storage, and deserializes the. protojson blob to McpServerConfigData. Treat this as an opaque URI -- its format may change. Example: gs://{apigee-tp-bucket}/apigee-mcp-config-{org}-{revision_id}.json */
   mcpServerConfigDataLocation?: string;
   /** Identifier. Resource name in the singleton form: organizations/{org}/mcpServerConfig */
   name?: string;
@@ -10992,7 +10992,7 @@ export const GetResultViewOrganizationsEnvironmentsSecurityReportsRequest = /*@_
 
 /** The response for security report result view APIs. */
 export interface GoogleCloudApigeeV1SecurityReportResultView {
-  /** Rows of security report result. Each row is a JSON object. Example: {sum(message_count): 1, developer_app: "(not set)",…} */
+  /** Rows of security report result. Each row is a JSON object. Example: {sum(message_count): 1, developer_app: "(not set)",...} */
   rows?: DocumentList;
   /** Error code when there is a failure. */
   code?: number;
@@ -11032,7 +11032,7 @@ export interface GoogleCloudApigeeV1AsyncQueryResultView {
   metadata?: GoogleCloudApigeeV1QueryMetadata;
   /** Error code when there is a failure. */
   code?: number;
-  /** Rows of query result. Each row is a JSON object. Example: {sum(message_count): 1, developer_app: "(not set)",…} */
+  /** Rows of query result. Each row is a JSON object. Example: {sum(message_count): 1, developer_app: "(not set)",...} */
   rows?: DocumentList;
   /** State of retrieving ResultView. */
   state?: string;

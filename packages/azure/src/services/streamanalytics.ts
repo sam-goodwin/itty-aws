@@ -354,7 +354,7 @@ export const FunctionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionOutput" }) as any as S.Schema<FunctionOutput>;
 
-/** The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint. */
+/** The physical binding of the function. For example, in the Azure Machine Learning web service's case, this describes the endpoint. */
 export interface FunctionBinding {
   /** Indicates the function binding type. */
   type: string;
@@ -3829,7 +3829,7 @@ export const TestFunction: API.OperationMethod<
 }));
 
 export type TestInputError = AzureOpError;
-/** Tests whether an input’s datasource is reachable and usable by the Azure Stream Analytics service. */
+/** Tests whether an input's datasource is reachable and usable by the Azure Stream Analytics service. */
 export const TestInput: API.OperationMethod<
   TestInputRequest,
   ResourceTestStatus,
@@ -3844,7 +3844,7 @@ export const TestInput: API.OperationMethod<
 }));
 
 export type TestOutputError = AzureOpError;
-/** Tests whether an output’s datasource is reachable and usable by the Azure Stream Analytics service. */
+/** Tests whether an output's datasource is reachable and usable by the Azure Stream Analytics service. */
 export const TestOutput: API.OperationMethod<
   TestOutputRequest,
   TestOutputResponse,

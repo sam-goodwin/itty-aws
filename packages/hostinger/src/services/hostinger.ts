@@ -5082,7 +5082,7 @@ export interface EcommerceV1ProductProductImageUploadUrlResource {
   upload_url?: string;
   /** Form fields to send alongside the file in the multipart POST. */
   fields?: EcommerceV1ProductProductImageUploadUrlResourceFieldsMap;
-  /** Key of the uploaded object — send it to the attach-image endpoint. */
+  /** Key of the uploaded object -- send it to the attach-image endpoint. */
   object_name?: string;
   /** Maximum accepted upload size in bytes. */
   max_bytes?: number;
@@ -10672,7 +10672,7 @@ export type AgencyHostingV1WebsitesWebsiteListItemResourceDetails =
 export const AgencyHostingV1WebsitesWebsiteListItemResourceDetails =
   S.Unknown as any as S.Schema<AgencyHostingV1WebsitesWebsiteListItemResourceDetails>;
 
-/** Website item. The `details` shape differs per platform — see the `platform` field. */
+/** Website item. The `details` shape differs per platform -- see the `platform` field. */
 export interface AgencyHostingV1WebsitesWebsiteListItemResource {
   id: string;
   client_id: number;
@@ -19491,7 +19491,7 @@ export const completeDomainDomainSetupV1: API.OperationMethod<
 }));
 
 export type CreateAgencyHostingANewWebsiteV1Error = UnprocessableEntity | HostingerOpError;
-/** Create a new website Provisions a new website on one of your Agency Plan hosting orders. Choose the datacenter, stack (`flavor`), and PHP version for the site. Optionally attach your own `domain` — omit it, set it to `null`, or leave it unavailable and a free `*.hostingersite.com` subdomain is generated instead — and/or install WordPress by supplying the `wordpress` details (admin account, site title, and language). Common setups: - **Plain PHP site**: `flavor` set to `php-fpm`, with `settings.php.version`; omit `wordpress` and `type`. - **WordPress site**: `flavor` set to the desired WordPress version (e.g. `wp-7.0`), plus the `wordpress` block (admin account, title, language). - **Static/Node.js frontend app**: `flavor` set to `php-fpm` and `type` set to `node-static`. Provisioning runs in the background, so the response returns immediately with a setup UUID that identifies the job. The new website becomes reachable once provisioning finishes. */
+/** Create a new website Provisions a new website on one of your Agency Plan hosting orders. Choose the datacenter, stack (`flavor`), and PHP version for the site. Optionally attach your own `domain` -- omit it, set it to `null`, or leave it unavailable and a free `*.hostingersite.com` subdomain is generated instead -- and/or install WordPress by supplying the `wordpress` details (admin account, site title, and language). Common setups: - **Plain PHP site**: `flavor` set to `php-fpm`, with `settings.php.version`; omit `wordpress` and `type`. - **WordPress site**: `flavor` set to the desired WordPress version (e.g. `wp-7.0`), plus the `wordpress` block (admin account, title, language). - **Static/Node.js frontend app**: `flavor` set to `php-fpm` and `type` set to `node-static`. Provisioning runs in the background, so the response returns immediately with a setup UUID that identifies the job. The new website becomes reachable once provisioning finishes. */
 export const createAgencyHostingANewWebsiteV1: API.OperationMethod<
   CreateAgencyHostingANewWebsiteV1Request,
   AgencyHostingV1SetupsWebsiteSetupResource,
@@ -19551,7 +19551,7 @@ export const createAgencyHostingWebsiteDatabaseV1: API.OperationMethod<
 }));
 
 export type CreateBillingPurchaseOrderV1Error = UnprocessableEntity | HostingerOpError;
-/** Create purchase order Create a purchase order for any Hostinger product. This unified endpoint places an order for one or more catalog items and works across all Hostinger products, leveraging the existing billing infrastructure. Use the [catalog endpoint](#tag/billing-catalog) to look up the `item_id` values available for purchase. If no payment method is provided, your default payment method will be used automatically. If the response is `202 Accepted`, the payment is still being processed and the order will complete asynchronously once the payment is confirmed. This endpoint only places the order. Product-specific provisioning (e.g. VPS setup or domain registration) is not performed here — once the order completes, use the relevant product endpoints or [hPanel](https://hpanel.hostinger.com/) to finalize setup. Use this endpoint to purchase any product available in the catalog. */
+/** Create purchase order Create a purchase order for any Hostinger product. This unified endpoint places an order for one or more catalog items and works across all Hostinger products, leveraging the existing billing infrastructure. Use the [catalog endpoint](#tag/billing-catalog) to look up the `item_id` values available for purchase. If no payment method is provided, your default payment method will be used automatically. If the response is `202 Accepted`, the payment is still being processed and the order will complete asynchronously once the payment is confirmed. This endpoint only places the order. Product-specific provisioning (e.g. VPS setup or domain registration) is not performed here -- once the order completes, use the relevant product endpoints or [hPanel](https://hpanel.hostinger.com/) to finalize setup. Use this endpoint to purchase any product available in the catalog. */
 export const createBillingPurchaseOrderV1: API.OperationMethod<
   CreateBillingPurchaseOrderV1Request,
   BillingV1OrderOrderResource,
@@ -21738,7 +21738,7 @@ export const getHostingSSLStatusV1: API.OperationMethod<
 }));
 
 export type GetHostingWebsiteFileContentV1Error = UnprocessableEntity | HostingerOpError;
-/** Get website file content Get a single file's content, relative to a website's document root. Read-only; refuses symlinks, oversized files, non-text file types, and files identified as containing secrets (e.g. credential files) — none of these are returned by this endpoint. */
+/** Get website file content Get a single file's content, relative to a website's document root. Read-only; refuses symlinks, oversized files, non-text file types, and files identified as containing secrets (e.g. credential files) -- none of these are returned by this endpoint. */
 export const getHostingWebsiteFileContentV1: API.OperationMethod<
   GetHostingWebsiteFileContentV1Request,
   HostingV1FilesFileContentResource,
@@ -22233,7 +22233,7 @@ export const hostingChangeDatabasePasswordV1: API.OperationMethod<
 }));
 
 export type HostingDeployStaticSiteArchiveV1Error = UnprocessableEntity | HostingerOpError;
-/** Deploy static site archive Deploy a static application from an archive file. WARNING: this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint. This endpoint allows you to deploy a static application from an archive file that has been uploaded to the website's directory. This only works for static sites (pre-built HTML/CSS/JS with no build step). For Node.js applications, use `Create NodeJS build from archive` instead, or `Start Node.js build` if the archive is already uploaded. For WordPress sites, use `Import WordPress website`. */
+/** Deploy static site archive Deploy a static application from an archive file. WARNING: this overwrites the website's existing contents and cannot be undone -- verify this is intended before calling this endpoint. This endpoint allows you to deploy a static application from an archive file that has been uploaded to the website's directory. This only works for static sites (pre-built HTML/CSS/JS with no build step). For Node.js applications, use `Create NodeJS build from archive` instead, or `Start Node.js build` if the archive is already uploaded. For WordPress sites, use `Import WordPress website`. */
 export const hostingDeployStaticSiteArchiveV1: API.OperationMethod<
   HostingDeployStaticSiteArchiveV1Request,
   CommonSuccessEmptyResource,
@@ -22340,7 +22340,7 @@ export const hostingSetupWebsiteDatabaseV1: API.OperationMethod<
 }));
 
 export type ImportHostingWordPressWebsiteV1Error = UnprocessableEntity | HostingerOpError;
-/** Import WordPress website Import WordPress website to the specified domain. WARNING: this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint. This endpoint allows you to import a WordPress website from archive and database files that have been uploaded to the website's directory. */
+/** Import WordPress website Import WordPress website to the specified domain. WARNING: this overwrites the website's existing contents and cannot be undone -- verify this is intended before calling this endpoint. This endpoint allows you to import a WordPress website from archive and database files that have been uploaded to the website's directory. */
 export const importHostingWordPressWebsiteV1: API.OperationMethod<
   ImportHostingWordPressWebsiteV1Request,
   CommonSuccessEmptyResource,
@@ -22462,7 +22462,7 @@ export const listAgencyHostingAgencyPlanOrderDiskUsageMetricsV1: API.OperationMe
 }));
 
 export type ListAgencyHostingAgencyPlanWebsitesV1Error = HostingerOpError;
-/** List Agency Plan websites Retrieve a paginated list of Agency Plan websites (H5G, Builder, and Horizons) accessible to the authenticated client. This endpoint returns websites from your hosting accounts as well as websites from other client hosting accounts that have shared access with you. The response shape differs per platform — see the `platform` field on each item. Use `website_types` to list only websites of a given detected type, e.g. only WordPress websites (`website_types=wordpress`) or only Node.js websites (`website_types=nodejs`). Combine with `order_ids`, `states`, or `domain` for more targeted results. */
+/** List Agency Plan websites Retrieve a paginated list of Agency Plan websites (H5G, Builder, and Horizons) accessible to the authenticated client. This endpoint returns websites from your hosting accounts as well as websites from other client hosting accounts that have shared access with you. The response shape differs per platform -- see the `platform` field on each item. Use `website_types` to list only websites of a given detected type, e.g. only WordPress websites (`website_types=wordpress`) or only Node.js websites (`website_types=nodejs`). Combine with `order_ids`, `states`, or `domain` for more targeted results. */
 export const listAgencyHostingAgencyPlanWebsitesV1: API.OperationMethod<
   ListAgencyHostingAgencyPlanWebsitesV1Request,
   ListAgencyHostingAgencyPlanWebsitesV1Response,
@@ -24133,7 +24133,7 @@ export const startDomainDomainTransferV1: API.OperationMethod<
 }));
 
 export type StartHostingNodeJsBuildV1Error = UnprocessableEntity | HostingerOpError;
-/** Start Node.js build Start a Node.js build process using files already present on the website's file storage. WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint. With `source_type` `archive`, `source_options.archive_path` must point to an existing archive file on the server (relative to the website document root). Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first. To auto-detect build settings from an archive before starting, first call the `Get Node.js Build Settings from Archive` endpoint. With `source_type` `git`, `source_options` carries `owner`, `repository`, `branch` and `installation_uuid`. Take the installation from `List Git installations` and the owner and repository from `List Git installation repositories`; the branch is cloned at its current head. The installation must belong to the same customer as the website. The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint. */
+/** Start Node.js build Start a Node.js build process using files already present on the website's file storage. WARNING: on success this overwrites the website's existing contents and cannot be undone -- verify this is intended before calling this endpoint. With `source_type` `archive`, `source_options.archive_path` must point to an existing archive file on the server (relative to the website document root). Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first. To auto-detect build settings from an archive before starting, first call the `Get Node.js Build Settings from Archive` endpoint. With `source_type` `git`, `source_options` carries `owner`, `repository`, `branch` and `installation_uuid`. Take the installation from `List Git installations` and the owner and repository from `List Git installation repositories`; the branch is cloned at its current head. The installation must belong to the same customer as the website. The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint. */
 export const startHostingNodeJsBuildV1: API.OperationMethod<
   StartHostingNodeJsBuildV1Request,
   HostingV1NodeJsBuildResource,
@@ -24508,7 +24508,7 @@ export const updateEcommerceAProductV1: API.OperationMethod<
 }));
 
 export type UpdateEcommerceProductVariantsInBatchV1Error = UnprocessableEntity | HostingerOpError;
-/** Update product variants in batch Update up to 100 existing variants in place by id — title, inventory, stock tracking and prices. Variants omitted from the request are left untouched. Prices replace the variant's existing prices in full. Returns the updated variants. */
+/** Update product variants in batch Update up to 100 existing variants in place by id -- title, inventory, stock tracking and prices. Variants omitted from the request are left untouched. Prices replace the variant's existing prices in full. Returns the updated variants. */
 export const updateEcommerceProductVariantsInBatchV1: API.OperationMethod<
   UpdateEcommerceProductVariantsInBatchV1Request,
   EcommerceV1VariantVariantListResponseResource,

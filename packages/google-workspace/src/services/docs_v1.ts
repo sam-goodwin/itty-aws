@@ -4082,7 +4082,7 @@ export const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(
 
 /** An object that appears inline with text. An InlineObject contains an EmbeddedObject such as an image. */
 export interface InlineObject {
-  /** The ID of this inline object. Can be used to update an object’s properties. */
+  /** The ID of this inline object. Can be used to update an object's properties. */
   objectId?: string;
   /** The suggested changes to the inline object properties, keyed by suggestion ID. */
   suggestedInlineObjectPropertiesChanges?: SuggestedInlineObjectPropertiesMap;

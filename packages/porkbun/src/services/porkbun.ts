@@ -101,7 +101,7 @@ export interface AccountVerifyPhoneSendResponse {
   codeAlreadySent?: boolean;
   alreadyVerified?: boolean;
   channel?: string;
-  /** The number, masked (`+1 ••• 42`). */
+  /** The number, masked (`+1 *** 42`). */
   sentTo?: string;
   expiresInMinutes?: number;
   retryAfterSeconds?: number;
@@ -134,9 +134,9 @@ export interface ApikeyRequestRequest {
   codeChallenge?: string;
   /** PKCE challenge method. Only S256 is supported. */
   codeChallengeMethod?: ApikeyRequestRequestCodeChallengeMethod | (string & {});
-  /** If true, skip the approval flow and immediately return a throwaway SANDBOX key pair (public `pk1_sb_`, secret `sk1_sb_`) for a fresh test account seeded with $1000 fake credit. Use it as apikey/secretapikey against the same base URL to run the whole API in the isolated sandbox — no real registry actions, DNS changes, or charges. Rate-limited (20/IP/hour). */
+  /** If true, skip the approval flow and immediately return a throwaway SANDBOX key pair (public `pk1_sb_`, secret `sk1_sb_`) for a fresh test account seeded with $1000 fake credit. Use it as apikey/secretapikey against the same base URL to run the whole API in the isolated sandbox -- no real registry actions, DNS changes, or charges. Rate-limited (20/IP/hour). */
   sandbox?: boolean;
-  /** Optional app-return redirect for native/mobile apps. Requires codeChallenge (PKCE). Must be an HTTPS URL your app claims as a Universal Link / App Link (custom URI schemes are rejected — another app could hijack them). After the account holder approves in the system browser, Porkbun redirects here with `?status=approved&requestToken=<token>` (or `status=denied`) so control returns to your app; it then calls /apikey/retrieve with its codeVerifier to receive the keys. The key is NEVER placed in the redirect — only the request token and status. */
+  /** Optional app-return redirect for native/mobile apps. Requires codeChallenge (PKCE). Must be an HTTPS URL your app claims as a Universal Link / App Link (custom URI schemes are rejected -- another app could hijack them). After the account holder approves in the system browser, Porkbun redirects here with `?status=approved&requestToken=<token>` (or `status=denied`) so control returns to your app; it then calls /apikey/retrieve with its codeVerifier to receive the keys. The key is NEVER placed in the redirect -- only the request token and status. */
   returnUrl?: string;
 }
 export const ApikeyRequestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -290,13 +290,13 @@ export const CloseoutBuyResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CloudflareCreateRecordRequest {
   domain: string;
-  /** A, AAAA, CNAME, TXT, MX, NS, PTR or SPF for a plain `content` value. Structured types (SRV, CAA, TLSA…) need `data` instead. */
+  /** A, AAAA, CNAME, TXT, MX, NS, PTR or SPF for a plain `content` value. Structured types (SRV, CAA, TLSA...) need `data` instead. */
   type: string;
   /** `@` for the apex, a bare label (`www`) is expanded, or a full hostname. */
   name?: string;
   /** The value the record points at. */
   content?: string;
-  /** 1 = automatic (Cloudflare's default), otherwise 60–86400. */
+  /** 1 = automatic (Cloudflare's default), otherwise 60-86400. */
   ttl?: number;
   /** Required for MX; lower is preferred. */
   priority?: number;
@@ -304,7 +304,7 @@ export interface CloudflareCreateRecordRequest {
   proxied?: boolean;
   /** Free-text note stored on the record (100 chars). */
   comment?: string;
-  /** Structured value for record types Cloudflare models as an object (SRV, CAA…), passed through as given. */
+  /** Structured value for record types Cloudflare models as an object (SRV, CAA...), passed through as given. */
   data?: unknown;
   dryRun?: boolean;
 }
@@ -361,13 +361,13 @@ export interface CloudflareEditRecordRequest {
   domain: string;
   /** Cloudflare record id from /cloudflare/getRecords. */
   recordId: string;
-  /** A, AAAA, CNAME, TXT, MX, NS, PTR or SPF for a plain `content` value. Structured types (SRV, CAA, TLSA…) need `data` instead. */
+  /** A, AAAA, CNAME, TXT, MX, NS, PTR or SPF for a plain `content` value. Structured types (SRV, CAA, TLSA...) need `data` instead. */
   type?: string;
   /** `@` for the apex, a bare label (`www`) is expanded, or a full hostname. */
   name?: string;
   /** The value the record points at. */
   content?: string;
-  /** 1 = automatic (Cloudflare's default), otherwise 60–86400. */
+  /** 1 = automatic (Cloudflare's default), otherwise 60-86400. */
   ttl?: number;
   /** Required for MX; lower is preferred. */
   priority?: number;
@@ -375,7 +375,7 @@ export interface CloudflareEditRecordRequest {
   proxied?: boolean;
   /** Free-text note stored on the record (100 chars). */
   comment?: string;
-  /** Structured value for record types Cloudflare models as an object (SRV, CAA…), passed through as given. */
+  /** Structured value for record types Cloudflare models as an object (SRV, CAA...), passed through as given. */
   data?: unknown;
   dryRun?: boolean;
 }
@@ -641,7 +641,7 @@ export const CreateAccountInviteRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateAccountInviteResponse {
   status: string;
-  /** Opaque token — pass to `/account/inviteStatus` to track completion */
+  /** Opaque token -- pass to `/account/inviteStatus` to track completion */
   inviteToken: string;
   /** URL to send to the prospective user. Opens Porkbun's standard registration page. */
   inviteUrl: string;
@@ -690,7 +690,7 @@ export interface CreateDnsRequest {
   prio?: number;
   /** Optional notes to store with the record (not served in DNS) */
   notes?: string;
-  /** If true, validate only — checks ownership/type/permissions and returns wouldSucceed without creating the record. */
+  /** If true, validate only -- checks ownership/type/permissions and returns wouldSucceed without creating the record. */
   dryRun?: boolean;
 }
 export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -740,7 +740,7 @@ export interface CreateDomainRequest {
   cost: number;
   /** Must be 'yes' or '1' to confirm agreement to the Domain Name Registration Agreement, Product Terms of Service, Privacy Policy, and automatic renewal terms. */
   agreeToTerms: CreateDomainRequestAgreeToTerms | (string & {});
-  /** Optional. Override WHOIS privacy for this registration. When omitted, the account-level default is used (set under Account Security Settings on porkbun.com/account — defaults to enabled). Pass `true` to force-enable privacy or `false` to register with public contact info. Strings `"on"`/`"off"`, `"true"`/`"false"`, `"yes"`/`"no"`, `"1"`/`"0"` are also accepted. Has no effect on TLDs that don't support WHOIS privacy (privacy stays off regardless). */
+  /** Optional. Override WHOIS privacy for this registration. When omitted, the account-level default is used (set under Account Security Settings on porkbun.com/account -- defaults to enabled). Pass `true` to force-enable privacy or `false` to register with public contact info. Strings `"on"`/`"off"`, `"true"`/`"false"`, `"yes"`/`"no"`, `"1"`/`"0"` are also accepted. Has no effect on TLDs that don't support WHOIS privacy (privacy stays off regardless). */
   whoisPrivacy?: boolean;
   /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
   payWith?: CreateDomainRequestPayWith | (string & {});
@@ -855,9 +855,9 @@ export const DryRunPreviewResponseOperation = S.String;
 /** Returned (HTTP 200) by /domain/create, /domain/renew, and /domain/transfer when the request includes `dryRun: true`. All validation has run but nothing was created or charged. All money amounts are in pennies (USD cents). */
 export interface DryRunPreviewResponse {
   status: string;
-  /** Always true on a dry-run preview — distinguishes it from a real success response. */
+  /** Always true on a dry-run preview -- distinguishes it from a real success response. */
   dryRun: boolean;
-  /** True if the operation would complete given current funds and spend-limit state. (Hard validation failures — unavailable, bad price, ineligible — return a normal error response instead of a preview.) */
+  /** True if the operation would complete given current funds and spend-limit state. (Hard validation failures -- unavailable, bad price, ineligible -- return a normal error response instead of a preview.) */
   wouldSucceed: boolean;
   operation: DryRunPreviewResponseOperation;
   domain: string;
@@ -918,7 +918,7 @@ export const CreateDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
   CreateDomainResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateDomainResponse2" }) as any as S.Schema<CreateDomainResponse2>;
 
-/** The hosting plan SKU to provision. Discover the provisionable SKUs (and each one’s price/interval/trial) via GET /hosting/plans, then pass the row’s `sku`. Currently Secure Static Hosting: PIXIESECURESTATICM2 ($3.00/mo) or PIXIESECURESTATICY2 ($30.00/yr). */
+/** The hosting plan SKU to provision. Discover the provisionable SKUs (and each one's price/interval/trial) via GET /hosting/plans, then pass the row's `sku`. Currently Secure Static Hosting: PIXIESECURESTATICM2 ($3.00/mo) or PIXIESECURESTATICY2 ($30.00/yr). */
 export type CreateHostingRequestSku = "PIXIESECURESTATICM2" | "PIXIESECURESTATICY2";
 export const CreateHostingRequestSku = S.String;
 
@@ -931,12 +931,12 @@ export const CreateHostingRequestPayWith = S.String;
 
 export interface CreateHostingRequest {
   domain: string;
-  /** The hosting plan SKU to provision. Discover the provisionable SKUs (and each one’s price/interval/trial) via GET /hosting/plans, then pass the row’s `sku`. Currently Secure Static Hosting: PIXIESECURESTATICM2 ($3.00/mo) or PIXIESECURESTATICY2 ($30.00/yr). */
+  /** The hosting plan SKU to provision. Discover the provisionable SKUs (and each one's price/interval/trial) via GET /hosting/plans, then pass the row's `sku`. Currently Secure Static Hosting: PIXIESECURESTATICM2 ($3.00/mo) or PIXIESECURESTATICY2 ($30.00/yr). */
   sku: CreateHostingRequestSku | (string & {});
   /** Echo the plan price in cents (300 monthly / 3000 yearly) to confirm the account holder understands the auto-renew / charge. Mismatch returns COST_ACKNOWLEDGMENT_REQUIRED. */
   acknowledgedCost: number;
   agreeToTerms: CreateHostingRequestAgreeToTerms | (string & {});
-  /** Required (true) when the domain is not already on Porkbun nameservers — provisioning will switch them. */
+  /** Required (true) when the domain is not already on Porkbun nameservers -- provisioning will switch them. */
   agreeToNameserverChange?: boolean;
   /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
   payWith?: CreateHostingRequestPayWith | (string & {});
@@ -1030,7 +1030,7 @@ export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
-  /** HTTPS endpoint that receives the signed POST. Port 443 only, and the hostname must resolve to a public internet address — private/loopback/reserved targets are refused. */
+  /** HTTPS endpoint that receives the signed POST. Port 443 only, and the hostname must resolve to a public internet address -- private/loopback/reserved targets are refused. */
   url: string;
   /** Event types to subscribe to. Omit, or pass ["*"], for all events. Prefix wildcards like "dns.*" are allowed. */
   events?: CreateWebhookRequestEventsList;
@@ -1774,7 +1774,7 @@ export const DnsScanResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsScanResponse" }) as any as S.Schema<DnsScanResponse>;
 
-/** Redirect kind. 'permanent' = HTTP 301; 'temporary' = HTTP 302 (default); 'masked' = loads the destination in a frame (URL masking). For a precise code — including a 307 temporary redirect — use `redirectType`. */
+/** Redirect kind. 'permanent' = HTTP 301; 'temporary' = HTTP 302 (default); 'masked' = loads the destination in a frame (URL masking). For a precise code -- including a 307 temporary redirect -- use `redirectType`. */
 export type DomainAddUrlForwardRequestType = "temporary" | "permanent" | "masked";
 export const DomainAddUrlForwardRequestType = S.String;
 
@@ -1796,7 +1796,7 @@ export interface DomainAddUrlForwardRequest {
   subdomain?: string;
   /** Destination URL to forward to */
   location: string;
-  /** Redirect kind. 'permanent' = HTTP 301; 'temporary' = HTTP 302 (default); 'masked' = loads the destination in a frame (URL masking). For a precise code — including a 307 temporary redirect — use `redirectType`. */
+  /** Redirect kind. 'permanent' = HTTP 301; 'temporary' = HTTP 302 (default); 'masked' = loads the destination in a frame (URL masking). For a precise code -- including a 307 temporary redirect -- use `redirectType`. */
   type: DomainAddUrlForwardRequestType | (string & {});
   /** Optional. The exact redirect type; takes precedence over `type` when supplied. 301 = permanent, 302 or 307 = temporary (this is how you request 307), masked = URL masking. Omit to derive from `type` (temporary->302, permanent->301). */
   redirectType?: DomainAddUrlForwardRequestRedirectType | (string & {});
@@ -2872,7 +2872,7 @@ export interface CloseoutItem {
   tld?: string;
   /** Current closeout price, integer US cents. Descends on a schedule. */
   price?: number;
-  /** The provider's own renewal figure. Indicative only — the amount actually charged is `renewalPrice` from /closeout/get/{domain}, which uses Porkbun pricing. */
+  /** The provider's own renewal figure. Indicative only -- the amount actually charged is `renewalPrice` from /closeout/get/{domain}, which uses Porkbun pricing. */
   providerRenewalPrice?: number | null;
   /** Porkbun's renewal or transfer price for the year included. Only returned by /closeout/get/{domain}. */
   renewalPrice?: number | null;
@@ -4124,7 +4124,7 @@ export const HostingPlansResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostingPlansResponse" }) as any as S.Schema<HostingPlansResponse>;
 
-/** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored — they describe the delegation, not the zone contents. */
+/** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored -- they describe the delegation, not the zone contents. */
 export type ImportDnsRequestRecordsList = Array<DnsRecordInput>;
 export const ImportDnsRequestRecordsList = /*@__PURE__*/ S.Array(
   DnsRecordInput,
@@ -4132,7 +4132,7 @@ export const ImportDnsRequestRecordsList = /*@__PURE__*/ S.Array(
 
 export interface ImportDnsRequest {
   domain: string;
-  /** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored — they describe the delegation, not the zone contents. */
+  /** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored -- they describe the delegation, not the zone contents. */
   records?: ImportDnsRequestRecordsList;
 }
 export const ImportDnsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5030,7 +5030,7 @@ export interface SearchCloseoutRequest {
   priceMin?: number;
   /** Maximum closeout price, integer US cents. */
   priceMax?: number;
-  /** One of: domain, endTime, price, revenue, visitors, inboundLinks, registrationDate. Ascending on registrationDate means oldest registration first, which is how you find aged names. Ascending on revenue, visitors or inboundLinks puts the domains with no recorded figure first (they return null) — use desc on those to see the highest values; the response carries a `warnings` entry reminding you. */
+  /** One of: domain, endTime, price, revenue, visitors, inboundLinks, registrationDate. Ascending on registrationDate means oldest registration first, which is how you find aged names. Ascending on revenue, visitors or inboundLinks puts the domains with no recorded figure first (they return null) -- use desc on those to see the highest values; the response carries a `warnings` entry reminding you. */
   sortName?: string;
   /** `asc` or `desc`. */
   sortDirection?: string;
@@ -5124,7 +5124,7 @@ export const WebhookTestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookTestResponse" }) as any as S.Schema<WebhookTestResponse>;
 
 export interface TopupAccountCreditRequest {
-  /** Optional one-off amount in integer US cents (500-50000). Omit to charge the amount the account has configured, which is the common case. A supplied amount does NOT change the stored setting — use it instead of rewriting the customer's configuration for a single charge. */
+  /** Optional one-off amount in integer US cents (500-50000). Omit to charge the amount the account has configured, which is the common case. A supplied amount does NOT change the stored setting -- use it instead of rewriting the customer's configuration for a single charge. */
   amount?: number;
   /** Preview the charge without making it. */
   dryRun?: boolean;
@@ -5433,7 +5433,7 @@ export const UpdateWebhookRequestStatus = S.String;
 export interface UpdateWebhookRequest {
   /** Endpoint id to update. */
   id: number;
-  /** HTTPS endpoint that receives the signed POST. Port 443 only, and the hostname must resolve to a public internet address — private/loopback/reserved targets are refused. */
+  /** HTTPS endpoint that receives the signed POST. Port 443 only, and the hostname must resolve to a public internet address -- private/loopback/reserved targets are refused. */
   url?: string;
   /** Replacement event subscription list (optional). */
   events?: UpdateWebhookRequestEventsList;
@@ -5618,7 +5618,7 @@ export const bulkDomainCheckDomain: API.OperationMethod<
 }));
 
 export type CloseoutBuyError = BadRequest | Forbidden | NotFound | Conflict | PorkbunOpError;
-/** Buy a closeout outright **Spends account credit, or pays directly in USDC with `"payWith": "usdc"` (HTTP 402, then repeat with `PAYMENT-SIGNATURE`; kept as account credit if the claim fails).** Counts toward the monthly API spend limit. Buys a closeout at its current price and claims the name with the provider in one call. Send `cost` as the exact `totalPrice` from `/closeout/get/{domain}`; any other value is refused with `COST_MISMATCH` so a caller can never be charged a price it did not name. `dryRun: true` with `cost: 0` returns a quote and charges nothing. Honours `Idempotency-Key`. **The domain does not arrive immediately.** Claiming reserves it; the provider then has to release it, which usually takes a few days. Poll `/domain/listAll` or subscribe to the `domain.registered` webhook rather than expecting it in your account when this returns. Every post-charge failure refunds automatically and says so via `refunded: true` — including losing the race to another buyer (`CLOSEOUT_UNAVAILABLE`) and the price moving between quote and claim (`COST_MISMATCH`). Closeouts are first-come at a fixed price, so a lost race is not worth retrying on the same name. Not available with a sandbox key (`SANDBOX_UNSUPPORTED`): the inventory provider has no test environment, so a purchase cannot be rehearsed without claiming a real name. Use `dryRun` against a live key instead — it validates and prices without charging. Eligibility is the same as registering a domain, plus verified email and phone. There is no account-age or prior-order requirement — a first-time customer can buy a closeout, which matters because listings are first-come and often gone within minutes. An account that support has blocked from auctions and closeouts (past-due invoices, or an auction terms violation) returns `CLOSEOUT_NOT_ELIGIBLE`, which is not retryable. */
+/** Buy a closeout outright **Spends account credit, or pays directly in USDC with `"payWith": "usdc"` (HTTP 402, then repeat with `PAYMENT-SIGNATURE`; kept as account credit if the claim fails).** Counts toward the monthly API spend limit. Buys a closeout at its current price and claims the name with the provider in one call. Send `cost` as the exact `totalPrice` from `/closeout/get/{domain}`; any other value is refused with `COST_MISMATCH` so a caller can never be charged a price it did not name. `dryRun: true` with `cost: 0` returns a quote and charges nothing. Honours `Idempotency-Key`. **The domain does not arrive immediately.** Claiming reserves it; the provider then has to release it, which usually takes a few days. Poll `/domain/listAll` or subscribe to the `domain.registered` webhook rather than expecting it in your account when this returns. Every post-charge failure refunds automatically and says so via `refunded: true` -- including losing the race to another buyer (`CLOSEOUT_UNAVAILABLE`) and the price moving between quote and claim (`COST_MISMATCH`). Closeouts are first-come at a fixed price, so a lost race is not worth retrying on the same name. Not available with a sandbox key (`SANDBOX_UNSUPPORTED`): the inventory provider has no test environment, so a purchase cannot be rehearsed without claiming a real name. Use `dryRun` against a live key instead -- it validates and prices without charging. Eligibility is the same as registering a domain, plus verified email and phone. There is no account-age or prior-order requirement -- a first-time customer can buy a closeout, which matters because listings are first-come and often gone within minutes. An account that support has blocked from auctions and closeouts (past-due invoices, or an auction terms violation) returns `CLOSEOUT_NOT_ELIGIBLE`, which is not retryable. */
 export const closeoutBuy: API.OperationMethod<
   CloseoutBuyRequest,
   CloseoutBuyResponse,
@@ -5678,7 +5678,7 @@ export const cloudflareEditRecord: API.OperationMethod<
 }));
 
 export type CloudflareGetConnectionError = PorkbunOpError;
-/** Check the Cloudflare account connection (poll target) Whether this account has an active Cloudflare grant, and which Cloudflare account it points at. **This is the poll target for the connect flow.** Minting the grant is a human action: Cloudflare's consent screen has to be completed in a browser, and the authorization is bound to the Porkbun web session that started it, so it cannot be driven over the API. When `connected` is `false` the response carries a `connectUrl` — send the account owner there, then poll this endpoint until `connected` is `true`. Also available via POST. */
+/** Check the Cloudflare account connection (poll target) Whether this account has an active Cloudflare grant, and which Cloudflare account it points at. **This is the poll target for the connect flow.** Minting the grant is a human action: Cloudflare's consent screen has to be completed in a browser, and the authorization is bound to the Porkbun web session that started it, so it cannot be driven over the API. When `connected` is `false` the response carries a `connectUrl` -- send the account owner there, then poll this endpoint until `connected` is `true`. Also available via POST. */
 export const cloudflareGetConnection: API.OperationMethod<
   CloudflareGetConnectionRequest,
   CloudflareGetConnectionResponse,
@@ -5693,7 +5693,7 @@ export const cloudflareGetConnection: API.OperationMethod<
 }));
 
 export type CloudflareGetQueueError = PorkbunOpError;
-/** List every Cloudflare move for the account Every Cloudflare move this account has requested, with status and message. Queue rows are never deleted, so this doubles as the audit trail. Also available via POST. **Status values** (poll until one of the terminal ones): Poll on a sensible interval (a few seconds early on, then back off) — a zone typically leaves `queued` within seconds but can sit in `setup` or `activating` while Cloudflare provisions the zone and DNS propagates. */
+/** List every Cloudflare move for the account Every Cloudflare move this account has requested, with status and message. Queue rows are never deleted, so this doubles as the audit trail. Also available via POST. **Status values** (poll until one of the terminal ones): Poll on a sensible interval (a few seconds early on, then back off) -- a zone typically leaves `queued` within seconds but can sit in `setup` or `activating` while Cloudflare provisions the zone and DNS propagates. */
 export const cloudflareGetQueue: API.OperationMethod<
   CloudflareGetQueueRequest,
   CloudflareGetQueueResponse,
@@ -5708,7 +5708,7 @@ export const cloudflareGetQueue: API.OperationMethod<
 }));
 
 export type CloudflareGetRecordsError = PorkbunOpError;
-/** List the domain's live DNS records at Cloudflare The domain's DNS records **as Cloudflare currently holds them**, each with its `proxied` flag and whether it is `proxiable` at all. Once a domain has moved, this is the authoritative record set — `/dns/retrieve` reads the Porkbun zone, which is no longer the one answering queries. Requires the move to have finished (`ZONE_NOT_READY` otherwise). Also available via POST. */
+/** List the domain's live DNS records at Cloudflare The domain's DNS records **as Cloudflare currently holds them**, each with its `proxied` flag and whether it is `proxiable` at all. Once a domain has moved, this is the authoritative record set -- `/dns/retrieve` reads the Porkbun zone, which is no longer the one answering queries. Requires the move to have finished (`ZONE_NOT_READY` otherwise). Also available via POST. */
 export const cloudflareGetRecords: API.OperationMethod<
   CloudflareGetRecordsRequest,
   CloudflareGetRecordsResponse,
@@ -5723,7 +5723,7 @@ export const cloudflareGetRecords: API.OperationMethod<
 }));
 
 export type CloudflareGetZoneError = PorkbunOpError;
-/** Get live zone state from Cloudflare (and detect nameserver drift) What **Cloudflare** says about the zone right now — status, paused, its nameservers, activation date — as opposed to what our queue row remembers. These drift: if the nameservers are repointed elsewhere after the move, our row still reads `done` while Cloudflare has stopped answering for the domain. The response includes the live public nameservers and a `nameserversDrifted` boolean so you don't have to diff them. Also available via POST. */
+/** Get live zone state from Cloudflare (and detect nameserver drift) What **Cloudflare** says about the zone right now -- status, paused, its nameservers, activation date -- as opposed to what our queue row remembers. These drift: if the nameservers are repointed elsewhere after the move, our row still reads `done` while Cloudflare has stopped answering for the domain. The response includes the live public nameservers and a `nameserversDrifted` boolean so you don't have to diff them. Also available via POST. */
 export const cloudflareGetZone: API.OperationMethod<
   CloudflareGetZoneRequest,
   CloudflareGetZoneResponse,
@@ -5768,7 +5768,7 @@ export const cloudflareInventory: API.OperationMethod<
 }));
 
 export type CloudflareRollbackError = PorkbunOpError;
-/** Undo a completed move (restore Porkbun nameservers) Point the domain's nameservers back at Porkbun, restoring the DNS we still hold. The Cloudflare zone is deliberately left in place — deleting a zone in someone's own Cloudflare account is theirs to do. Fails with `ROLLBACK_FAILED` if we never moved the domain, it is already back on Porkbun nameservers, or it is being worked on right now. Supports `dryRun`. */
+/** Undo a completed move (restore Porkbun nameservers) Point the domain's nameservers back at Porkbun, restoring the DNS we still hold. The Cloudflare zone is deliberately left in place -- deleting a zone in someone's own Cloudflare account is theirs to do. Fails with `ROLLBACK_FAILED` if we never moved the domain, it is already back on Porkbun nameservers, or it is being worked on right now. Supports `dryRun`. */
 export const cloudflareRollback: API.OperationMethod<
   CloudflareRollbackRequest,
   CloudflareRollbackResponse,
@@ -5783,7 +5783,7 @@ export const cloudflareRollback: API.OperationMethod<
 }));
 
 export type CloudflareSetProxyError = PorkbunOpError;
-/** Turn the Cloudflare proxy (orange cloud) on or off Set `proxied` on the domain's Cloudflare DNS records. **The move itself always imports records DNS-only (grey cloud), on purpose** — changing how traffic is served at the same time as changing who serves DNS gives you two variables to debug at once. Proxying is therefore a separate, explicit step, best done after you've confirmed the site still works. Defaults to every proxiable record; pass `records` to target specific names (`"@"` means the apex, a bare label like `"www"` is expanded). Only A, AAAA and CNAME can be proxied — anything else is reported under `skipped` with a reason rather than failing the call. Records already in the requested state are skipped too. Proxying hides the origin IP, so if the zone's MX points at a hostname you are proxying, mail to it breaks; that case comes back in `warnings`. Supports `dryRun`. Rate limit: 60 changes per account per hour (these calls go to Cloudflare under Porkbun's OAuth client). */
+/** Turn the Cloudflare proxy (orange cloud) on or off Set `proxied` on the domain's Cloudflare DNS records. **The move itself always imports records DNS-only (grey cloud), on purpose** -- changing how traffic is served at the same time as changing who serves DNS gives you two variables to debug at once. Proxying is therefore a separate, explicit step, best done after you've confirmed the site still works. Defaults to every proxiable record; pass `records` to target specific names (`"@"` means the apex, a bare label like `"www"` is expanded). Only A, AAAA and CNAME can be proxied -- anything else is reported under `skipped` with a reason rather than failing the call. Records already in the requested state are skipped too. Proxying hides the origin IP, so if the zone's MX points at a hostname you are proxying, mail to it breaks; that case comes back in `warnings`. Supports `dryRun`. Rate limit: 60 changes per account per hour (these calls go to Cloudflare under Porkbun's OAuth client). */
 export const cloudflareSetProxy: API.OperationMethod<
   CloudflareSetProxyRequest,
   CloudflareSetProxyResponse,
@@ -5798,7 +5798,7 @@ export const cloudflareSetProxy: API.OperationMethod<
 }));
 
 export type CloudflareSetZoneSettingsError = PorkbunOpError;
-/** Change zone settings (allowlisted) Set one or more of the allowlisted zone settings. This is an allowlist rather than a passthrough — Cloudflare exposes hundreds of settings and WAF/firewall/security controls are deliberately out of scope for this API. Prefer `ssl: "full"`; `flexible` is an invisible downgrade for visitors. Supports `dryRun`. Rate limit: shares the 60/hour Cloudflare-write budget. If the account's Cloudflare authorization predates this feature it will not carry the `zone-settings.write` scope, and this returns `CLOUDFLARE_REAUTHORIZE_REQUIRED` with a `connectUrl`. Reconnecting is the same one-click browser flow and does not disturb domains already moved. */
+/** Change zone settings (allowlisted) Set one or more of the allowlisted zone settings. This is an allowlist rather than a passthrough -- Cloudflare exposes hundreds of settings and WAF/firewall/security controls are deliberately out of scope for this API. Prefer `ssl: "full"`; `flexible` is an invisible downgrade for visitors. Supports `dryRun`. Rate limit: shares the 60/hour Cloudflare-write budget. If the account's Cloudflare authorization predates this feature it will not carry the `zone-settings.write` scope, and this returns `CLOUDFLARE_REAUTHORIZE_REQUIRED` with a `connectUrl`. Reconnecting is the same one-click browser flow and does not disturb domains already moved. */
 export const cloudflareSetZoneSettings: API.OperationMethod<
   CloudflareSetZoneSettingsRequest,
   CloudflareSetZoneSettingsResponse,
@@ -5813,7 +5813,7 @@ export const cloudflareSetZoneSettings: API.OperationMethod<
 }));
 
 export type ConnectCloudflareError = PorkbunOpError;
-/** Queue domains to move to the customer's Cloudflare account Queue one or many domains. For each one we create the zone in the customer's own Cloudflare account, copy across the DNS records we hold, and repoint the registry nameservers at Cloudflare. **Asynchronous.** Work runs on a background job over the next few minutes, so a successful call means *queued*, never *connected* — poll `/cloudflare/getQueue` or `/cloudflare/get/{domain}`. **`skipped` is a normal outcome, not an error.** DNSSEC live, custom nameservers, already connected, already in progress: each domain comes back under `queued`, `skipped` or `alreadyQueued` with its own reason. Read the reasons rather than treating a non-empty `skipped` as failure. Eligibility, ownership and nameserver state are re-checked immediately before each domain is acted on, so a domain accepted here can still be skipped later. Re-submitting a domain is safe: the queue row is the unit of truth and is updated in place. Supports `dryRun: true`, which returns the same per-domain verdicts without queueing anything. Requires an active Cloudflare connection (`CLOUDFLARE_NOT_CONNECTED` otherwise). Limits: 500 domains per call, 2000 domains per account per hour. After queueing, poll `/cloudflare/get/{domain}`: the row moves `queued` → `working` → `setup` → `activating` → `connected`. `setup` means Cloudflare has the zone but has not provisioned it yet, so the nameservers have deliberately not been touched. `activating` means the nameservers are already repointed and Cloudflare is confirming the zone, which can take a while as DNS propagates. */
+/** Queue domains to move to the customer's Cloudflare account Queue one or many domains. For each one we create the zone in the customer's own Cloudflare account, copy across the DNS records we hold, and repoint the registry nameservers at Cloudflare. **Asynchronous.** Work runs on a background job over the next few minutes, so a successful call means *queued*, never *connected* -- poll `/cloudflare/getQueue` or `/cloudflare/get/{domain}`. **`skipped` is a normal outcome, not an error.** DNSSEC live, custom nameservers, already connected, already in progress: each domain comes back under `queued`, `skipped` or `alreadyQueued` with its own reason. Read the reasons rather than treating a non-empty `skipped` as failure. Eligibility, ownership and nameserver state are re-checked immediately before each domain is acted on, so a domain accepted here can still be skipped later. Re-submitting a domain is safe: the queue row is the unit of truth and is updated in place. Supports `dryRun: true`, which returns the same per-domain verdicts without queueing anything. Requires an active Cloudflare connection (`CLOUDFLARE_NOT_CONNECTED` otherwise). Limits: 500 domains per call, 2000 domains per account per hour. After queueing, poll `/cloudflare/get/{domain}`: the row moves `queued` -> `working` -> `setup` -> `activating` -> `connected`. `setup` means Cloudflare has the zone but has not provisioned it yet, so the nameservers have deliberately not been touched. `activating` means the nameservers are already repointed and Cloudflare is confirming the zone, which can take a while as DNS propagates. */
 export const connectCloudflare: API.OperationMethod<
   ConnectCloudflareRequest,
   ConnectCloudflareResponse,
@@ -5828,7 +5828,7 @@ export const connectCloudflare: API.OperationMethod<
 }));
 
 export type CreateAccountInviteError = BadRequest | PorkbunOpError;
-/** Create an account registration invite Generates a one-time invite token and URL that you send to a prospective user. When the user visits the URL they go through Porkbun's normal account creation flow — including CAPTCHA, address collection, and TOS acceptance — in the browser. The invite expires in 48 hours. Each token can only be used once. Optionally supply an `email` to pre-fill the email field on the registration form. Optionally supply a `returnUrl` (must be HTTPS) to redirect the user back to your platform after they complete registration. After sending the invite URL, poll `/account/inviteStatus` to check whether the account was created. */
+/** Create an account registration invite Generates a one-time invite token and URL that you send to a prospective user. When the user visits the URL they go through Porkbun's normal account creation flow -- including CAPTCHA, address collection, and TOS acceptance -- in the browser. The invite expires in 48 hours. Each token can only be used once. Optionally supply an `email` to pre-fill the email field on the registration form. Optionally supply a `returnUrl` (must be HTTPS) to redirect the user back to your platform after they complete registration. After sending the invite URL, poll `/account/inviteStatus` to check whether the account was created. */
 export const createAccountInvite: API.OperationMethod<
   CreateAccountInviteRequest,
   CreateAccountInviteResponse,
@@ -5858,7 +5858,7 @@ export const createDns: API.OperationMethod<
 }));
 
 export type CreateDomainError = BadRequest | PorkbunOpError;
-/** Register a domain Register a domain, paid from account credit or directly in USDC. Requirements: - Account email and phone must be verified - Enough **prepaid credit** to cover the price, or `"payWith": "usdc"` to pay directly (see "Paying for it" below) - `agreeToTerms` must be `'yes'` or `'1'` - `cost` must equal the current price for the domain's minimum registration duration (in pennies) - Premium domains cannot be registered via API, and a single order cannot exceed $100 (`ORDER_TOO_LARGE`) ## Paying for it Two ways: from prepaid account credit (the default), or directly in USDC. **From account credit.** No card on file is charged at purchase time - the thing most first-time callers get wrong, because having a card saved is not enough; the balance has to be there before the call. - Read the balance with `GET /account/balance` (cents, plus a display string). - Add to it: `POST /account/topup` charges a saved card now (with the account holder's OK); `POST /account/topupMpp` returns a link an agent pays with the user's card from a Stripe Link agent wallet; `POST /account/topupCrypto` opens a USDC checkout an agent's wallet can pay over x402; or the account holder adds credit at https://porkbun.com/account/credit. - Turn on **auto top-up** at https://porkbun.com/account/api so a saved card refills the balance when it drops below a threshold. The hands-off option for an agent that registers on its own. - Rehearse with `dryRun: true`, which reports `cost`, `balance`, `sufficientFunds` and, when short, `shortfall`. A purchase attempted without enough credit returns `INSUFFICIENT_FUNDS` carrying `cost`, `balance`, `shortfall`, `topUpAvailable` and `usdcAmountToCover` in cents, and a message naming them. **Directly in USDC (x402).** Add `"payWith": "usdc"`. After every check passes, the call answers HTTP 402 `PAYMENT_REQUIRED` with Coinbase's x402 terms in the `PAYMENT-REQUIRED` header and charges nothing. An x402 client pays them and repeats the same request with a `PAYMENT-SIGNATURE` header, and the registration completes in that call, with the receipt in `PAYMENT-RESPONSE`. No credit is needed. If the registration fails after payment, the payment is not sent back to the wallet: it stays on the account as credit (`payment.keptAsCredit` and `balance_cents` in the error), ready to retry from credit. Guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 **Monthly limit.** Either way, purchases count toward the account's monthly API spend limit, $100 a month until the account holder sets their own at https://porkbun.com/account/api (`MONTHLY_SPEND_LIMIT_EXCEEDED`). Guide: https://porkbun.com/llms/guides/spend-limits Registrations are always for the registry-minimum duration (usually 1 year). **WHOIS privacy.** WHOIS privacy is automatically enabled on new registrations (when the TLD supports it). Pass the optional `whoisPrivacy` field to override this on a per-registration basis, or change the account-level default under Account Security Settings on porkbun.com/account. **Rate limits (both apply):** - Attempt limit (default: 1 attempt per second per account) - Success limit (default: 1000 successful registrations per 86400 seconds per account) Both limits are configurable per API key and their current values are returned in the `limits` field of the response. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT registering or charging — nothing is created. Send `cost: 0` with it to be quoted rather than having to match a price you do not know yet, and note that a dry run is answered even when the balance is too low: `wouldSucceed` comes back false with `shortfall` saying by how much. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "registration", "domain": "example.com", "tld": "com", "available": "available", "premium": false, "duration": 1, "cost": 973, "costDisplay": "$9.73", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this registration would succeed and cost $9.73. No order was created and no charge was made.", "requestId": "019e04fa-258d-7d11-aa86-4d5795c3fe8f" } ``` */
+/** Register a domain Register a domain, paid from account credit or directly in USDC. Requirements: - Account email and phone must be verified - Enough **prepaid credit** to cover the price, or `"payWith": "usdc"` to pay directly (see "Paying for it" below) - `agreeToTerms` must be `'yes'` or `'1'` - `cost` must equal the current price for the domain's minimum registration duration (in pennies) - Premium domains cannot be registered via API, and a single order cannot exceed $100 (`ORDER_TOO_LARGE`) ## Paying for it Two ways: from prepaid account credit (the default), or directly in USDC. **From account credit.** No card on file is charged at purchase time - the thing most first-time callers get wrong, because having a card saved is not enough; the balance has to be there before the call. - Read the balance with `GET /account/balance` (cents, plus a display string). - Add to it: `POST /account/topup` charges a saved card now (with the account holder's OK); `POST /account/topupMpp` returns a link an agent pays with the user's card from a Stripe Link agent wallet; `POST /account/topupCrypto` opens a USDC checkout an agent's wallet can pay over x402; or the account holder adds credit at https://porkbun.com/account/credit. - Turn on **auto top-up** at https://porkbun.com/account/api so a saved card refills the balance when it drops below a threshold. The hands-off option for an agent that registers on its own. - Rehearse with `dryRun: true`, which reports `cost`, `balance`, `sufficientFunds` and, when short, `shortfall`. A purchase attempted without enough credit returns `INSUFFICIENT_FUNDS` carrying `cost`, `balance`, `shortfall`, `topUpAvailable` and `usdcAmountToCover` in cents, and a message naming them. **Directly in USDC (x402).** Add `"payWith": "usdc"`. After every check passes, the call answers HTTP 402 `PAYMENT_REQUIRED` with Coinbase's x402 terms in the `PAYMENT-REQUIRED` header and charges nothing. An x402 client pays them and repeats the same request with a `PAYMENT-SIGNATURE` header, and the registration completes in that call, with the receipt in `PAYMENT-RESPONSE`. No credit is needed. If the registration fails after payment, the payment is not sent back to the wallet: it stays on the account as credit (`payment.keptAsCredit` and `balance_cents` in the error), ready to retry from credit. Guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 **Monthly limit.** Either way, purchases count toward the account's monthly API spend limit, $100 a month until the account holder sets their own at https://porkbun.com/account/api (`MONTHLY_SPEND_LIMIT_EXCEEDED`). Guide: https://porkbun.com/llms/guides/spend-limits Registrations are always for the registry-minimum duration (usually 1 year). **WHOIS privacy.** WHOIS privacy is automatically enabled on new registrations (when the TLD supports it). Pass the optional `whoisPrivacy` field to override this on a per-registration basis, or change the account-level default under Account Security Settings on porkbun.com/account. **Rate limits (both apply):** - Attempt limit (default: 1 attempt per second per account) - Success limit (default: 1000 successful registrations per 86400 seconds per account) Both limits are configurable per API key and their current values are returned in the `limits` field of the response. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT registering or charging -- nothing is created. Send `cost: 0` with it to be quoted rather than having to match a price you do not know yet, and note that a dry run is answered even when the balance is too low: `wouldSucceed` comes back false with `shortfall` saying by how much. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "registration", "domain": "example.com", "tld": "com", "available": "available", "premium": false, "duration": 1, "cost": 973, "costDisplay": "$9.73", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this registration would succeed and cost $9.73. No order was created and no charge was made.", "requestId": "019e04fa-258d-7d11-aa86-4d5795c3fe8f" } ``` */
 export const createDomain: API.OperationMethod<
   CreateDomainRequest,
   CreateDomainResponse2,
@@ -5873,7 +5873,7 @@ export const createDomain: API.OperationMethod<
 }));
 
 export type CreateHostingError = BadRequest | PorkbunOpError;
-/** Provision hosting — a static site or a WordPress site **Applies to:** Both products — the `sku` decides which. Provision hosting (Secure Static Hosting or Cloud for WordPress) for a domain in the account. The FIRST provision for a domain starts a **15-day free trial** ($0 now) that **auto-renews** at the plan price when the trial ends; a re-provision after deprovision is charged immediately, to account credit or directly in USDC with `"payWith": "usdc"` (HTTP 402, then repeat with `PAYMENT-SIGNATURE`; kept as account credit if provisioning fails), and counts toward the monthly API spend limit (one free trial per domain). Provisioning **switches the domain to Porkbun nameservers** if it isn't already — pass `agreeToNameserverChange: true` to allow that. Supports `dryRun`. Remote setup can be async: `status` may be `PENDING` — poll `/hosting/get` until `ACTIVE` before deploying. **Cloud for WordPress:** pass a `CLOUDWORDPRESS…` sku to provision a managed WordPress site instead of static hosting. The file endpoints (deploy/files/deleteFile/makeDir) do not apply — manage the site through WordPress, using `/hosting/createWpCredentials/{domain}` for REST API credentials. **Rate limit:** 10 provisions per account per hour (`dryRun` calls are free). */
+/** Provision hosting -- a static site or a WordPress site **Applies to:** Both products -- the `sku` decides which. Provision hosting (Secure Static Hosting or Cloud for WordPress) for a domain in the account. The FIRST provision for a domain starts a **15-day free trial** ($0 now) that **auto-renews** at the plan price when the trial ends; a re-provision after deprovision is charged immediately, to account credit or directly in USDC with `"payWith": "usdc"` (HTTP 402, then repeat with `PAYMENT-SIGNATURE`; kept as account credit if provisioning fails), and counts toward the monthly API spend limit (one free trial per domain). Provisioning **switches the domain to Porkbun nameservers** if it isn't already -- pass `agreeToNameserverChange: true` to allow that. Supports `dryRun`. Remote setup can be async: `status` may be `PENDING` -- poll `/hosting/get` until `ACTIVE` before deploying. **Cloud for WordPress:** pass a `CLOUDWORDPRESS...` sku to provision a managed WordPress site instead of static hosting. The file endpoints (deploy/files/deleteFile/makeDir) do not apply -- manage the site through WordPress, using `/hosting/createWpCredentials/{domain}` for REST API credentials. **Rate limit:** 10 provisions per account per hour (`dryRun` calls are free). */
 export const createHosting: API.OperationMethod<
   CreateHostingRequest,
   CreateHostingResponse,
@@ -5888,7 +5888,7 @@ export const createHosting: API.OperationMethod<
 }));
 
 export type CreateWebhookError = BadRequest | PorkbunOpError;
-/** Create a webhook endpoint Register an HTTPS endpoint to receive signed event payloads. The response includes the generated `secret` — store it securely; it is the HMAC key used to verify the `X-Porkbun-Signature` header. Omit `events` (or pass `["*"]`) to subscribe to all event types. Maximum 20 endpoints per account. **URL requirements:** the endpoint must be an `https://` URL on the standard port 443, with a hostname that resolves to a public internet address. Private, loopback, link-local, CGNAT and other reserved ranges are refused (`INVALID_WEBHOOK_URL`) because Porkbun delivers from inside its own network. Credentials in the URL (`https://user:pass@host`) are also refused — authenticate the receiver by verifying the `X-Porkbun-Signature` HMAC instead. A hostname that does not resolve yet is accepted, so you can register the endpoint before the receiver is deployed, but delivery is re-checked against these rules immediately before each request. */
+/** Create a webhook endpoint Register an HTTPS endpoint to receive signed event payloads. The response includes the generated `secret` -- store it securely; it is the HMAC key used to verify the `X-Porkbun-Signature` header. Omit `events` (or pass `["*"]`) to subscribe to all event types. Maximum 20 endpoints per account. **URL requirements:** the endpoint must be an `https://` URL on the standard port 443, with a hostname that resolves to a public internet address. Private, loopback, link-local, CGNAT and other reserved ranges are refused (`INVALID_WEBHOOK_URL`) because Porkbun delivers from inside its own network. Credentials in the URL (`https://user:pass@host`) are also refused -- authenticate the receiver by verifying the `X-Porkbun-Signature` HMAC instead. A hostname that does not resolve yet is accepted, so you can register the endpoint before the receiver is deployed, but delivery is re-checked against these rules immediately before each request. */
 export const createWebhook: API.OperationMethod<
   CreateWebhookRequest,
   WebhookEndpointResponse,
@@ -5948,7 +5948,7 @@ export const deleteWebhook: API.OperationMethod<
 }));
 
 export type DeployHostingError = BadRequest | PorkbunOpError;
-/** Upload site files (static hosting only) **Applies to:** Secure Static Hosting only — a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`; manage its content through WordPress instead. Upload static files to the domain's Secure Static Hosting space. Send `files` as an array of `{ path, content }` where `content` is base64. Total payload ≤ 10 MB per request (split larger sites across calls). Only static-web file types are accepted (html/css/js/images/fonts/…); server-executable types are rejected. Hosting must be ACTIVE. A file’s `path` may include directories (e.g. `assets/css/style.css`); any missing parent directories are created automatically. Paths are sanitized (no traversal/control chars) and the filename extension must be an allowed static-web type. */
+/** Upload site files (static hosting only) **Applies to:** Secure Static Hosting only -- a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`; manage its content through WordPress instead. Upload static files to the domain's Secure Static Hosting space. Send `files` as an array of `{ path, content }` where `content` is base64. Total payload <= 10 MB per request (split larger sites across calls). Only static-web file types are accepted (html/css/js/images/fonts/...); server-executable types are rejected. Hosting must be ACTIVE. A file's `path` may include directories (e.g. `assets/css/style.css`); any missing parent directories are created automatically. Paths are sanitized (no traversal/control chars) and the filename extension must be an allowed static-web type. */
 export const deployHosting: API.OperationMethod<
   DeployHostingRequest,
   DeployHostingResponse,
@@ -5978,7 +5978,7 @@ export const disconnectCloudflare: API.OperationMethod<
 }));
 
 export type DnsCreateDnssecRecordError = BadRequest | PorkbunOpError;
-/** Create DNSSEC record Create a DNSSEC DS or key record at the registry. DNSSEC requirements vary by registry — `keyTag`, `alg`, `digestType`, and `digest` are the minimum required fields. Key data fields are optional and will be omitted if not accepted by the registry. Algorithm and digest type are validated against the registry's own policy before the request is sent. Registries are retiring the values deprecated by RFC 9904/9905/9906 on different schedules, so what is accepted depends on the TLD: a value one registry has already dropped may still be accepted by another. A value the registry no longer accepts returns `DNSSEC_ALGORITHM_DEPRECATED`; one that still works but is being retired returns `status: SUCCESS` with a `warnings` array. Use algorithm 8 (RSA/SHA-256) or 13 (ECDSA/SHA-256) with digest type 2 (SHA-256) to be accepted everywhere. Existing DNSSEC records keep resolving regardless, and can always be deleted. */
+/** Create DNSSEC record Create a DNSSEC DS or key record at the registry. DNSSEC requirements vary by registry -- `keyTag`, `alg`, `digestType`, and `digest` are the minimum required fields. Key data fields are optional and will be omitted if not accepted by the registry. Algorithm and digest type are validated against the registry's own policy before the request is sent. Registries are retiring the values deprecated by RFC 9904/9905/9906 on different schedules, so what is accepted depends on the TLD: a value one registry has already dropped may still be accepted by another. A value the registry no longer accepts returns `DNSSEC_ALGORITHM_DEPRECATED`; one that still works but is being retired returns `status: SUCCESS` with a `warnings` array. Use algorithm 8 (RSA/SHA-256) or 13 (ECDSA/SHA-256) with digest type 2 (SHA-256) to be accepted everywhere. Existing DNSSEC records keep resolving regardless, and can always be deleted. */
 export const dnsCreateDnssecRecord: API.OperationMethod<
   DnsCreateDnssecRecordRequest,
   DnsCreateDnssecRecordResponse,
@@ -6128,7 +6128,7 @@ export const dnsRetrieveByNameType: API.OperationMethod<
 }));
 
 export type DnsScanError = BadRequest | PorkbunOpError;
-/** Discover the records a domain currently publishes Query a domain's **live authoritative nameservers** and return the records they answer with, writing nothing. This is what makes an inbound transfer non-destructive: a transfer moves only the delegation — EPP carries no zone data — so once the losing registrar stops answering for the zone, whatever it published is gone and unrecoverable. Run this **before** the nameservers move, then pass the result to `/dns/import/{domain}`. The scan probes a wide list of well-known names (apex, common subdomains, MX, DKIM selectors, provider verification hosts) and consolidates wildcards. It cannot enumerate a zone — DNS has no listing operation and AXFR is universally refused — so treat it as thorough but **not exhaustive**. If the old registrar exposes the zone through its own API, that is authoritative: read it with your own credentials (they never need to reach Porkbun) and POST those records to `/dns/import` instead. Metered separately at 20 calls per hour per account, because each call is roughly 90 DNS lookups. */
+/** Discover the records a domain currently publishes Query a domain's **live authoritative nameservers** and return the records they answer with, writing nothing. This is what makes an inbound transfer non-destructive: a transfer moves only the delegation -- EPP carries no zone data -- so once the losing registrar stops answering for the zone, whatever it published is gone and unrecoverable. Run this **before** the nameservers move, then pass the result to `/dns/import/{domain}`. The scan probes a wide list of well-known names (apex, common subdomains, MX, DKIM selectors, provider verification hosts) and consolidates wildcards. It cannot enumerate a zone -- DNS has no listing operation and AXFR is universally refused -- so treat it as thorough but **not exhaustive**. If the old registrar exposes the zone through its own API, that is authoritative: read it with your own credentials (they never need to reach Porkbun) and POST those records to `/dns/import` instead. Metered separately at 20 calls per hour per account, because each call is roughly 90 DNS lookups. */
 export const dnsScan: API.OperationMethod<
   DnsScanRequest,
   DnsScanResponse,
@@ -6263,7 +6263,7 @@ export const domainGetGlue: API.OperationMethod<
 }));
 
 export type DomainGetNsError = BadRequest | PorkbunOpError;
-/** Get nameservers Retrieve the authoritative nameservers listed at the registry for the domain. Supports both GET (with header auth) and POST (with body or header auth). **Nameservers are an unordered set.** This reads live from the registry, and registries are free to return the set in any order — so the order here will often differ from the order you sent to `/domain/updateNs`. Order carries no meaning in DNS (an NS RRset is unordered, RFC 1034/2181) and is not preserved by the parent zone. Compare nameservers as a set; if you are writing a Terraform provider or similar, model this as a set, not an ordered list, or every plan will show phantom drift. */
+/** Get nameservers Retrieve the authoritative nameservers listed at the registry for the domain. Supports both GET (with header auth) and POST (with body or header auth). **Nameservers are an unordered set.** This reads live from the registry, and registries are free to return the set in any order -- so the order here will often differ from the order you sent to `/domain/updateNs`. Order carries no meaning in DNS (an NS RRset is unordered, RFC 1034/2181) and is not preserved by the parent zone. Compare nameservers as a set; if you are writing a Terraform provider or similar, model this as a set, not an ordered list, or every plan will show phantom drift. */
 export const domainGetNs: API.OperationMethod<
   DomainGetNsRequest,
   DomainGetNsResponse,
@@ -6278,7 +6278,7 @@ export const domainGetNs: API.OperationMethod<
 }));
 
 export type DomainGetRegistrationRequirementsError = BadRequest | PorkbunOpError;
-/** Get TLD registration requirements (JSON Schema) Machine-readable registration requirements for a TLD. Returns whether the TLD is registerable via the API (`apiRegisterable`), the `/domain/create` request body as a JSON Schema, the fixed registration term, WHOIS-privacy/validated-address/registrant-only flags, and — for TLDs with registry eligibility rules (e.g. .us nexus, .ca legal type) — a second JSON Schema (`registryRequirements`) enumerating those fields with allowed values and labels. Call this before /domain/create to know upfront whether and how a TLD can be registered. Read-only; GET (header auth) or POST (body or header auth). */
+/** Get TLD registration requirements (JSON Schema) Machine-readable registration requirements for a TLD. Returns whether the TLD is registerable via the API (`apiRegisterable`), the `/domain/create` request body as a JSON Schema, the fixed registration term, WHOIS-privacy/validated-address/registrant-only flags, and -- for TLDs with registry eligibility rules (e.g. .us nexus, .ca legal type) -- a second JSON Schema (`registryRequirements`) enumerating those fields with allowed values and labels. Call this before /domain/create to know upfront whether and how a TLD can be registered. Read-only; GET (header auth) or POST (body or header auth). */
 export const domainGetRegistrationRequirements: API.OperationMethod<
   DomainGetRegistrationRequirementsRequest,
   DomainGetRegistrationRequirementsResponse,
@@ -6323,7 +6323,7 @@ export const domainGetUrlForwarding: API.OperationMethod<
 }));
 
 export type DomainStartTransferError = BadRequest | PorkbunOpError;
-/** Release a held transfer to the registry Release a transfer held at `PENDINGDNS` into the registry pipeline. Nothing releases a held transfer on a timer — this call is the only thing that does. Refuses with `TRANSFER_ZONE_EMPTY` if the zone has no records, which is the outage the hold exists to prevent. Pass `force: true` only if the domain genuinely needs no DNS at Porkbun. Supports `dryRun`. */
+/** Release a held transfer to the registry Release a transfer held at `PENDINGDNS` into the registry pipeline. Nothing releases a held transfer on a timer -- this call is the only thing that does. Refuses with `TRANSFER_ZONE_EMPTY` if the zone has no records, which is the outage the hold exists to prevent. Pass `force: true` only if the domain genuinely needs no DNS at Porkbun. Supports `dryRun`. */
 export const domainStartTransfer: API.OperationMethod<
   DomainStartTransferRequest,
   DomainStartTransferResponse,
@@ -6353,7 +6353,7 @@ export const domainUpdateAutoRenew: API.OperationMethod<
 }));
 
 export type DomainUpdateContactsError = BadRequest | PorkbunOpError;
-/** Update domain contacts Edit the domain's contacts. Send a `contacts` object keyed by role (`registrant`, `admin`, `tech`, `billing`) containing ANY subset of roles — unspecified roles keep their current values — or a single `contact` object to apply to all four. Behaves like the website: on thick TLDs the change is pushed to the registry, and a **registrant** change (name/organization/email) triggers the same material-change record and new-owner notice/verification email (no 60-day transfer lock is imposed). Per-TLD extension data (e.g. .us nexus, .ca legalType) is preserved. Supports `dryRun`. **`state` is matched against the official list for the country**, the same list the website's dropdown is built from, so case, accents and short codes all work: `NEW JERSEY`, `new jersey` and `NJ` are all stored as `New Jersey`, and `MEXICO CITY` as `Mexico City`. This matters because some registries validate the field and compare it case sensitively — .mx refuses `NEW JERSEY` and requires `Ciudad de México` for Mexico City, which Porkbun substitutes for you. For a TLD whose registry validates the field (currently the .mx family) a state that matches nothing is refused up front with `INVALID_STATE`, and the response lists every accepted value for that country in `validStates` — better than the registry's own "Object does not exist". For every other TLD an unrecognised state is sent through unchanged rather than rewritten. If a registry then refuses it, the contact is NOT created and no contacts are changed; the error names the registry's complaint. **Address-validated TLDs.** On a **registrant** change for a TLD that requires a validated address (`.de`, `.nrw`, `.uk`/`.co.uk`/…, `.us`, `.ca`, `.nyc`, `.au`, `.eu`, `.in`/`.co.in`/…, `.nz`/`.co.nz`/…), the API runs Google Address Validation (per-account rate-limited + 24h cached). If the address needs correction the call returns `ADDRESS_VALIDATION_REQUIRED` with a `suggestedAddress` and `addressValidationStatus`; re-submit with `addressValidationChoice` = `accept_suggestion` (save the standardized address) or `use_as_entered` (keep yours — stays blocked if a real correction was offered). For `.de`, DENIC registry verification is then attempted automatically (address-fingerprint / email); if it still needs a proof-of-address document upload, that is completed at porkbun.com. **Still not supported via API:** a registrant name/organization change on a `.au` domain is an auDA paid ownership trade and returns `REGISTRANT_CHANGE_NOT_SUPPORTED` (do it at porkbun.com). Admin/tech/billing edits are unaffected everywhere. */
+/** Update domain contacts Edit the domain's contacts. Send a `contacts` object keyed by role (`registrant`, `admin`, `tech`, `billing`) containing ANY subset of roles -- unspecified roles keep their current values -- or a single `contact` object to apply to all four. Behaves like the website: on thick TLDs the change is pushed to the registry, and a **registrant** change (name/organization/email) triggers the same material-change record and new-owner notice/verification email (no 60-day transfer lock is imposed). Per-TLD extension data (e.g. .us nexus, .ca legalType) is preserved. Supports `dryRun`. **`state` is matched against the official list for the country**, the same list the website's dropdown is built from, so case, accents and short codes all work: `NEW JERSEY`, `new jersey` and `NJ` are all stored as `New Jersey`, and `MEXICO CITY` as `Mexico City`. This matters because some registries validate the field and compare it case sensitively -- .mx refuses `NEW JERSEY` and requires `Ciudad de México` for Mexico City, which Porkbun substitutes for you. For a TLD whose registry validates the field (currently the .mx family) a state that matches nothing is refused up front with `INVALID_STATE`, and the response lists every accepted value for that country in `validStates` -- better than the registry's own "Object does not exist". For every other TLD an unrecognised state is sent through unchanged rather than rewritten. If a registry then refuses it, the contact is NOT created and no contacts are changed; the error names the registry's complaint. **Address-validated TLDs.** On a **registrant** change for a TLD that requires a validated address (`.de`, `.nrw`, `.uk`/`.co.uk`/..., `.us`, `.ca`, `.nyc`, `.au`, `.eu`, `.in`/`.co.in`/..., `.nz`/`.co.nz`/...), the API runs Google Address Validation (per-account rate-limited + 24h cached). If the address needs correction the call returns `ADDRESS_VALIDATION_REQUIRED` with a `suggestedAddress` and `addressValidationStatus`; re-submit with `addressValidationChoice` = `accept_suggestion` (save the standardized address) or `use_as_entered` (keep yours -- stays blocked if a real correction was offered). For `.de`, DENIC registry verification is then attempted automatically (address-fingerprint / email); if it still needs a proof-of-address document upload, that is completed at porkbun.com. **Still not supported via API:** a registrant name/organization change on a `.au` domain is an auDA paid ownership trade and returns `REGISTRANT_CHANGE_NOT_SUPPORTED` (do it at porkbun.com). Admin/tech/billing edits are unaffected everywhere. */
 export const domainUpdateContacts: API.OperationMethod<
   DomainUpdateContactsRequest,
   DomainUpdateContactsResponse,
@@ -6383,7 +6383,7 @@ export const domainUpdateGlue: API.OperationMethod<
 }));
 
 export type DomainUpdateNsError = BadRequest | PorkbunOpError;
-/** Update nameservers Update the nameservers for the domain at the registry. The list you send is applied as a set — the registry may store and return it in a different order, so do not expect `/domain/getNs` to echo your ordering back. See `/domain/getNs`. */
+/** Update nameservers Update the nameservers for the domain at the registry. The list you send is applied as a set -- the registry may store and return it in a different order, so do not expect `/domain/getNs` to echo your ordering back. See `/domain/getNs`. */
 export const domainUpdateNs: API.OperationMethod<
   DomainUpdateNsRequest,
   BasicResponse,
@@ -6398,7 +6398,7 @@ export const domainUpdateNs: API.OperationMethod<
 }));
 
 export type DomainUpdateTransferAuthCodeError = BadRequest | PorkbunOpError;
-/** Replace the auth code on a stuck transfer Replace the authorization code on an inbound transfer that stalled because the code was wrong, and re-queue it — instead of cancelling, refunding and re-submitting. The new code is validated against the registry before it is stored, so a bad code is rejected here (`INVALID_AUTH_CODE`) rather than failing again later. Only transfers in a repairable state qualify; anything else returns `TRANSFER_NOT_REPAIRABLE`. Supports `dryRun`. */
+/** Replace the auth code on a stuck transfer Replace the authorization code on an inbound transfer that stalled because the code was wrong, and re-queue it -- instead of cancelling, refunding and re-submitting. The new code is validated against the registry before it is stored, so a bad code is rejected here (`INVALID_AUTH_CODE`) rather than failing again later. Only transfers in a repairable state qualify; anything else returns `TRANSFER_NOT_REPAIRABLE`. Supports `dryRun`. */
 export const domainUpdateTransferAuthCode: API.OperationMethod<
   DomainUpdateTransferAuthCodeRequest,
   DomainUpdateTransferAuthCodeResponse,
@@ -6443,7 +6443,7 @@ export const emailSetPassword: API.OperationMethod<
 }));
 
 export type GetAccountInviteStatusError = BadRequest | PorkbunOpError;
-/** Check account invite status Returns the current status of a registration invite created by your API key. - `PENDING` — the invite URL has not yet been used - `ACCEPTED` — the user completed registration; `newAccountId` contains their account ID - `EXPIRED` — the invite was not used within 48 hours or was canceled You can only query invites created by your own API key. Pass credentials via `X-API-Key` and `X-Secret-API-Key` headers. */
+/** Check account invite status Returns the current status of a registration invite created by your API key. - `PENDING` -- the invite URL has not yet been used - `ACCEPTED` -- the user completed registration; `newAccountId` contains their account ID - `EXPIRED` -- the invite was not used within 48 hours or was canceled You can only query invites created by your own API key. Pass credentials via `X-API-Key` and `X-Secret-API-Key` headers. */
 export const getAccountInviteStatus: API.OperationMethod<
   GetAccountInviteStatusRequest,
   GetAccountInviteStatusResponse,
@@ -6458,7 +6458,7 @@ export const getAccountInviteStatus: API.OperationMethod<
 }));
 
 export type GetApikeyError = BadRequest | Forbidden | PorkbunOpError;
-/** Poll for API key approval Poll to check whether the account holder has approved an API key authorization request. Returns `status: PENDING` while awaiting approval. On approval, returns the public API key. For a **PKCE** request (one created with a codeChallenge), pass the matching codeVerifier here to receive BOTH keys once (secretapikey is included in that single response and never again); the secret must be claimed within 10 minutes of approval or the request expires (`REQUEST_EXPIRED`) and a new one is needed. For a **legacy** request the secret API key is never transmitted via this endpoint — it is displayed in the user's browser and must be pasted into the application. **Rate limit:** 120 requests per IP per 3600 seconds. */
+/** Poll for API key approval Poll to check whether the account holder has approved an API key authorization request. Returns `status: PENDING` while awaiting approval. On approval, returns the public API key. For a **PKCE** request (one created with a codeChallenge), pass the matching codeVerifier here to receive BOTH keys once (secretapikey is included in that single response and never again); the secret must be claimed within 10 minutes of approval or the request expires (`REQUEST_EXPIRED`) and a new one is needed. For a **legacy** request the secret API key is never transmitted via this endpoint -- it is displayed in the user's browser and must be pasted into the application. **Rate limit:** 120 requests per IP per 3600 seconds. */
 export const getApikey: API.OperationMethod<
   GetApikeyRequest,
   GetApikeyResponse,
@@ -6488,7 +6488,7 @@ export const getApiSettings: API.OperationMethod<
 }));
 
 export type GetAutoTopupError = PorkbunOpError;
-/** Read auto top-up settings What auto top-up is set to, whether a payment method is on file, and what `POST /account/topup` would charge right now (`effectiveAmount`). Auto top-up is how unattended work stops dead-ending on `INSUFFICIENT_FUNDS`: when an order drops the balance below `threshold`, Porkbun charges the saved payment method for `amount` and adds the credit. If `paymentMethodOnFile` is false the settings are inert and the response says so in `warnings` — a card can only be saved on the website, never over the API. */
+/** Read auto top-up settings What auto top-up is set to, whether a payment method is on file, and what `POST /account/topup` would charge right now (`effectiveAmount`). Auto top-up is how unattended work stops dead-ending on `INSUFFICIENT_FUNDS`: when an order drops the balance below `threshold`, Porkbun charges the saved payment method for `amount` and adds the credit. If `paymentMethodOnFile` is false the settings are inert and the response says so in `warnings` -- a card can only be saved on the website, never over the API. */
 export const getAutoTopup: API.OperationMethod<
   GetAutoTopupRequest,
   AutoTopupResponse,
@@ -6518,7 +6518,7 @@ export const getBalance: API.OperationMethod<
 }));
 
 export type GetCloseoutError = NotFound | PorkbunOpError;
-/** One closeout, with the binding total A single closeout plus `totalPrice` — the closeout price plus the registration year that comes with it. That total is what `/closeout/buy` will charge and what it expects back as `cost`. `localDomain` tells you which side of the pricing you are on: true means the name is already at Porkbun and is renewed, false means it is transferred in. `available` is false once somebody has claimed it. */
+/** One closeout, with the binding total A single closeout plus `totalPrice` -- the closeout price plus the registration year that comes with it. That total is what `/closeout/buy` will charge and what it expects back as `cost`. `localDomain` tells you which side of the pricing you are on: true means the name is already at Porkbun and is renewed, false means it is transferred in. `available` is false once somebody has claimed it. */
 export const getCloseout: API.OperationMethod<
   GetCloseoutRequest,
   GetCloseoutResponse,
@@ -6533,7 +6533,7 @@ export const getCloseout: API.OperationMethod<
 }));
 
 export type GetCloudflareError = PorkbunOpError;
-/** Get the Cloudflare move status for one domain Status of a single domain's move, including the zone id once created and the nameservers we replaced (kept so the move can be undone). `NOT_QUEUED` if the domain has never been queued. Also available via POST. **Status values** (poll until one of the terminal ones): Poll on a sensible interval (a few seconds early on, then back off) — a zone typically leaves `queued` within seconds but can sit in `setup` or `activating` while Cloudflare provisions the zone and DNS propagates. */
+/** Get the Cloudflare move status for one domain Status of a single domain's move, including the zone id once created and the nameservers we replaced (kept so the move can be undone). `NOT_QUEUED` if the domain has never been queued. Also available via POST. **Status values** (poll until one of the terminal ones): Poll on a sensible interval (a few seconds early on, then back off) -- a zone typically leaves `queued` within seconds but can sit in `setup` or `activating` while Cloudflare provisions the zone and DNS propagates. */
 export const getCloudflare: API.OperationMethod<
   GetCloudflareRequest,
   GetCloudflareResponse,
@@ -6653,7 +6653,7 @@ export const getDomainGlue: API.OperationMethod<
 }));
 
 export type GetDomainNsError = BadRequest | PorkbunOpError;
-/** Get nameservers Retrieve the authoritative nameservers listed at the registry for the domain. Supports both GET (with header auth) and POST (with body or header auth). **Nameservers are an unordered set.** This reads live from the registry, and registries are free to return the set in any order — so the order here will often differ from the order you sent to `/domain/updateNs`. Order carries no meaning in DNS (an NS RRset is unordered, RFC 1034/2181) and is not preserved by the parent zone. Compare nameservers as a set; if you are writing a Terraform provider or similar, model this as a set, not an ordered list, or every plan will show phantom drift. */
+/** Get nameservers Retrieve the authoritative nameservers listed at the registry for the domain. Supports both GET (with header auth) and POST (with body or header auth). **Nameservers are an unordered set.** This reads live from the registry, and registries are free to return the set in any order -- so the order here will often differ from the order you sent to `/domain/updateNs`. Order carries no meaning in DNS (an NS RRset is unordered, RFC 1034/2181) and is not preserved by the parent zone. Compare nameservers as a set; if you are writing a Terraform provider or similar, model this as a set, not an ordered list, or every plan will show phantom drift. */
 export const getDomainNs: API.OperationMethod<
   GetDomainNsRequest,
   GetDomainNsResponse,
@@ -6668,7 +6668,7 @@ export const getDomainNs: API.OperationMethod<
 }));
 
 export type GetDomainsError = BadRequest | PorkbunOpError;
-/** List all domains Retrieve domains in the authenticated account. Results are returned in chunks of up to 1000 domains. Use `start` to paginate. **Filtering:** all filter parameters are optional. Combine them freely. - `domain` — exact match (returns 0 or 1) - `nameContains` — substring search - `tlds` — limit to these TLDs - `expiringWithinDays` — only domains expiring within N days - `autoRenew` — `yes` / `no` - `apiAccess` — `yes` / `no` (filter to domains the API key can operate on) - `sortName` — `domain` / `tld` / `create_date` / `expire_date` - `sortDirection` — `asc` / `desc` Supports both GET (with header auth) and POST (with body or header auth). For multi-value `tlds` on GET, use bracket syntax: `?tlds[]=com&tlds[]=io`. */
+/** List all domains Retrieve domains in the authenticated account. Results are returned in chunks of up to 1000 domains. Use `start` to paginate. **Filtering:** all filter parameters are optional. Combine them freely. - `domain` -- exact match (returns 0 or 1) - `nameContains` -- substring search - `tlds` -- limit to these TLDs - `expiringWithinDays` -- only domains expiring within N days - `autoRenew` -- `yes` / `no` - `apiAccess` -- `yes` / `no` (filter to domains the API key can operate on) - `sortName` -- `domain` / `tld` / `create_date` / `expire_date` - `sortDirection` -- `asc` / `desc` Supports both GET (with header auth) and POST (with body or header auth). For multi-value `tlds` on GET, use bracket syntax: `?tlds[]=com&tlds[]=io`. */
 export const getDomains: API.OperationMethod<
   GetDomainsRequest,
   DomainListAllResponse,
@@ -6754,7 +6754,7 @@ export const getIp: API.OperationMethod<GetIpRequest, IpResponse, GetIpError, Po
   }));
 
 export type GetPingError = BadRequest | PorkbunOpError;
-/** Test credentials and get caller IP Returns the caller's public IP address. Optionally validates API credentials. - **No credentials supplied** — returns IP only. - **Valid credentials supplied** — returns IP with `credentialsValid: true`. - **Invalid credentials supplied** — returns an error. Useful for agents and clients to verify their API key is working before making other calls. */
+/** Test credentials and get caller IP Returns the caller's public IP address. Optionally validates API credentials. - **No credentials supplied** -- returns IP only. - **Valid credentials supplied** -- returns IP with `credentialsValid: true`. - **Invalid credentials supplied** -- returns an error. Useful for agents and clients to verify their API key is working before making other calls. */
 export const getPing: API.OperationMethod<
   GetPingRequest,
   GetPingResponse,
@@ -6769,7 +6769,7 @@ export const getPing: API.OperationMethod<
 }));
 
 export type GetPricingError = BadRequest | PorkbunOpError;
-/** Retrieve domain pricing (public) Retrieve default domain pricing information for all supported TLDs, or only the ones you ask for. Does not require authentication. Prices are in US dollars. Filter with `tld` (one TLD) and/or `tlds` (several). Names are case-insensitive, a leading dot is ignored, and IDN TLDs may be sent in Unicode or punycode (`みんな` or `xn--q9jyb4c`). A TLD Porkbun does not sell is left out of `pricing` and listed in `unsupported`; if none of the requested TLDs is sold the response is `INVALID_TLD` (HTTP 400). No filter returns every TLD. */
+/** Retrieve domain pricing (public) Retrieve default domain pricing information for all supported TLDs, or only the ones you ask for. Does not require authentication. Prices are in US dollars. Filter with `tld` (one TLD) and/or `tlds` (several). Names are case-insensitive, a leading dot is ignored, and IDN TLDs may be sent in Unicode or punycode (`U+307FU+3093U+306A` or `xn--q9jyb4c`). A TLD Porkbun does not sell is left out of `pricing` and listed in `unsupported`; if none of the requested TLDs is sold the response is `INVALID_TLD` (HTTP 400). No filter returns every TLD. */
 export const getPricing: API.OperationMethod<
   GetPricingRequest,
   GetPricingResponse,
@@ -6784,7 +6784,7 @@ export const getPricing: API.OperationMethod<
 }));
 
 export type GetPricingGetError = BadRequest | PorkbunOpError;
-/** Retrieve domain pricing (public) Retrieve default domain pricing information for all supported TLDs, or only the ones you ask for. Does not require authentication. Prices are in US dollars. Filter with `tld` (one TLD) and/or `tlds` (several). Names are case-insensitive, a leading dot is ignored, and IDN TLDs may be sent in Unicode or punycode (`みんな` or `xn--q9jyb4c`). A TLD Porkbun does not sell is left out of `pricing` and listed in `unsupported`; if none of the requested TLDs is sold the response is `INVALID_TLD` (HTTP 400). No filter returns every TLD. On GET, `tlds` is comma-separated: `?tlds=com,io,dev`. */
+/** Retrieve domain pricing (public) Retrieve default domain pricing information for all supported TLDs, or only the ones you ask for. Does not require authentication. Prices are in US dollars. Filter with `tld` (one TLD) and/or `tlds` (several). Names are case-insensitive, a leading dot is ignored, and IDN TLDs may be sent in Unicode or punycode (`U+307FU+3093U+306A` or `xn--q9jyb4c`). A TLD Porkbun does not sell is left out of `pricing` and listed in `unsupported`; if none of the requested TLDs is sold the response is `INVALID_TLD` (HTTP 400). No filter returns every TLD. On GET, `tlds` is comma-separated: `?tlds=com,io,dev`. */
 export const getPricingGet: API.OperationMethod<
   GetPricingGetRequest,
   GetPricingGetResponse,
@@ -6859,7 +6859,7 @@ export const getWebhook: API.OperationMethod<
 }));
 
 export type HostingCreateWpCredentialsError = BadRequest | PorkbunOpError;
-/** Mint WordPress REST API credentials (WordPress only) **Applies to:** Cloud for WordPress only. Creates a WordPress **Application Password** so an agent or integration can drive the site over the WP REST API at `https://{domain}/wp-json/` using HTTP Basic auth. The password is returned **once** — WordPress stores only a hash. Defaults to a dedicated least-privilege `porkbun-agent` user with the `editor` role (created on first use), which can manage content but not install code. `role: "administrator"` grants full site control **including plugin installation (arbitrary code execution on the site)** and therefore requires `acknowledgeFullAccess: true`. Revoke any time via `/hosting/deleteWpCredentials/{domain}` or in wp-admin under Users → Profile. Requires the site to be provisioned and ACTIVE (poll `/hosting/get/{domain}`). Free **preview** sites (the $0 parked plan) are excluded — they return `PREVIEW_SITE_NOT_SUPPORTED`; upgrade to a paid plan first. Works on any Cloud for WordPress site in the account regardless of whether it was provisioned via the API or the website, including sites migrated onto WP Cloud from the legacy WordPress product. For `role: "administrator"` the site's actual administrator account is looked up rather than assumed, so a renamed admin user is handled. **Rate limit:** 20 mints per account per hour (`dryRun` calls are free). */
+/** Mint WordPress REST API credentials (WordPress only) **Applies to:** Cloud for WordPress only. Creates a WordPress **Application Password** so an agent or integration can drive the site over the WP REST API at `https://{domain}/wp-json/` using HTTP Basic auth. The password is returned **once** -- WordPress stores only a hash. Defaults to a dedicated least-privilege `porkbun-agent` user with the `editor` role (created on first use), which can manage content but not install code. `role: "administrator"` grants full site control **including plugin installation (arbitrary code execution on the site)** and therefore requires `acknowledgeFullAccess: true`. Revoke any time via `/hosting/deleteWpCredentials/{domain}` or in wp-admin under Users -> Profile. Requires the site to be provisioned and ACTIVE (poll `/hosting/get/{domain}`). Free **preview** sites (the $0 parked plan) are excluded -- they return `PREVIEW_SITE_NOT_SUPPORTED`; upgrade to a paid plan first. Works on any Cloud for WordPress site in the account regardless of whether it was provisioned via the API or the website, including sites migrated onto WP Cloud from the legacy WordPress product. For `role: "administrator"` the site's actual administrator account is looked up rather than assumed, so a renamed admin user is handled. **Rate limit:** 20 mints per account per hour (`dryRun` calls are free). */
 export const hostingCreateWpCredentials: API.OperationMethod<
   HostingCreateWpCredentialsRequest,
   HostingCreateWpCredentialsResponse,
@@ -6874,7 +6874,7 @@ export const hostingCreateWpCredentials: API.OperationMethod<
 }));
 
 export type HostingDeleteFileError = BadRequest | PorkbunOpError;
-/** Delete a site file (static hosting only) **Applies to:** Secure Static Hosting only — a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. Delete a file or directory at `path` in the domain's hosting space. Idempotent: a path that is already gone returns `SUCCESS` with `alreadyAbsent: true`. A directory that still has files returns `HOSTING_DIR_NOT_EMPTY` with its `contents`, unless `recursive: true` is sent, which deletes it with everything inside (the site root can never be deleted). */
+/** Delete a site file (static hosting only) **Applies to:** Secure Static Hosting only -- a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. Delete a file or directory at `path` in the domain's hosting space. Idempotent: a path that is already gone returns `SUCCESS` with `alreadyAbsent: true`. A directory that still has files returns `HOSTING_DIR_NOT_EMPTY` with its `contents`, unless `recursive: true` is sent, which deletes it with everything inside (the site root can never be deleted). */
 export const hostingDeleteFile: API.OperationMethod<
   HostingDeleteFileRequest,
   HostingDeleteFileResponse,
@@ -6904,7 +6904,7 @@ export const hostingDeleteWpCredentials: API.OperationMethod<
 }));
 
 export type HostingFilesError = BadRequest | PorkbunOpError;
-/** List site files (static hosting only) **Applies to:** Secure Static Hosting only — a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. List file/directory names under an optional `path` in the domain's hosting space. Also available via POST (send `path` in the body). */
+/** List site files (static hosting only) **Applies to:** Secure Static Hosting only -- a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. List file/directory names under an optional `path` in the domain's hosting space. Also available via POST (send `path` in the body). */
 export const hostingFiles: API.OperationMethod<
   HostingFilesRequest,
   HostingFilesResponse,
@@ -6919,7 +6919,7 @@ export const hostingFiles: API.OperationMethod<
 }));
 
 export type HostingGetWpCredentialsError = BadRequest | PorkbunOpError;
-/** List WordPress application passwords (WordPress only) **Applies to:** Cloud for WordPress only. Lists the application passwords on the site (uuid, name, created, last used) so you can audit or pick one to revoke. Metadata only — WordPress stores just a hash, so a password can never be re-read. Optional `wpUser` (defaults to the dedicated `porkbun-agent` user). Free preview sites are excluded (`PREVIEW_SITE_NOT_SUPPORTED`). */
+/** List WordPress application passwords (WordPress only) **Applies to:** Cloud for WordPress only. Lists the application passwords on the site (uuid, name, created, last used) so you can audit or pick one to revoke. Metadata only -- WordPress stores just a hash, so a password can never be re-read. Optional `wpUser` (defaults to the dedicated `porkbun-agent` user). Free preview sites are excluded (`PREVIEW_SITE_NOT_SUPPORTED`). */
 export const hostingGetWpCredentials: API.OperationMethod<
   HostingGetWpCredentialsRequest,
   HostingGetWpCredentialsResponse,
@@ -6934,7 +6934,7 @@ export const hostingGetWpCredentials: API.OperationMethod<
 }));
 
 export type HostingMakeDirError = BadRequest | PorkbunOpError;
-/** Create a directory (static hosting only) **Applies to:** Secure Static Hosting only — a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. Create a directory (and any missing parent directories) at `path` in the domain’s hosting space. Deploy already auto-creates directories in a file’s path, so use this to stand up an empty directory explicitly. Path is sanitized segment-by-segment (no traversal / control chars). */
+/** Create a directory (static hosting only) **Applies to:** Secure Static Hosting only -- a WordPress site returns `NOT_SUPPORTED_FOR_PRODUCT`. Create a directory (and any missing parent directories) at `path` in the domain's hosting space. Deploy already auto-creates directories in a file's path, so use this to stand up an empty directory explicitly. Path is sanitized segment-by-segment (no traversal / control chars). */
 export const hostingMakeDir: API.OperationMethod<
   HostingMakeDirRequest,
   HostingMakeDirResponse,
@@ -6964,7 +6964,7 @@ export const hostingPlans: API.OperationMethod<
 }));
 
 export type ImportDnsError = BadRequest | PorkbunOpError;
-/** Bulk-create DNS records (transfer restore) Create many records in one call, so a domain arriving from another registrar keeps resolving instead of going dark. Send `records` to import an exact list — the better path when the old registrar has an API you can read with your own credentials. Omit `records` entirely and whatever `/dns/scan/{domain}` can discover is imported instead. **Idempotent.** A record that already exists is counted in `skipped`, not `failed`, so this is safe to re-run and safe to use as a converge step. Records that fail individually are listed in `failures` while the rest still import; the call only errors outright if nothing was importable. Imported records do nothing until the domain actually points at the Porkbun nameservers — check `/domain/getNs/{domain}` and set them with `/domain/updateNs/{domain}`. Maximum 500 records per call. Supports `dryRun`. */
+/** Bulk-create DNS records (transfer restore) Create many records in one call, so a domain arriving from another registrar keeps resolving instead of going dark. Send `records` to import an exact list -- the better path when the old registrar has an API you can read with your own credentials. Omit `records` entirely and whatever `/dns/scan/{domain}` can discover is imported instead. **Idempotent.** A record that already exists is counted in `skipped`, not `failed`, so this is safe to re-run and safe to use as a converge step. Records that fail individually are listed in `failures` while the rest still import; the call only errors outright if nothing was importable. Imported records do nothing until the domain actually points at the Porkbun nameservers -- check `/domain/getNs/{domain}` and set them with `/domain/updateNs/{domain}`. Maximum 500 records per call. Supports `dryRun`. */
 export const importDns: API.OperationMethod<
   ImportDnsRequest,
   ImportDnsResponse,
@@ -6979,7 +6979,7 @@ export const importDns: API.OperationMethod<
 }));
 
 export type ListDomainsError = BadRequest | PorkbunOpError;
-/** List all domains Retrieve domains in the authenticated account. Results are returned in chunks of up to 1000 domains. Use `start` to paginate. **Filtering:** all filter parameters are optional. Combine them freely. - `domain` — exact match (returns 0 or 1) - `nameContains` — substring search - `tlds` — limit to these TLDs - `expiringWithinDays` — only domains expiring within N days - `autoRenew` — `yes` / `no` - `apiAccess` — `yes` / `no` (filter to domains the API key can operate on) - `sortName` — `domain` / `tld` / `create_date` / `expire_date` - `sortDirection` — `asc` / `desc` Supports both GET (with header auth) and POST (with body or header auth). For multi-value `tlds` on GET, use bracket syntax: `?tlds[]=com&tlds[]=io`. */
+/** List all domains Retrieve domains in the authenticated account. Results are returned in chunks of up to 1000 domains. Use `start` to paginate. **Filtering:** all filter parameters are optional. Combine them freely. - `domain` -- exact match (returns 0 or 1) - `nameContains` -- substring search - `tlds` -- limit to these TLDs - `expiringWithinDays` -- only domains expiring within N days - `autoRenew` -- `yes` / `no` - `apiAccess` -- `yes` / `no` (filter to domains the API key can operate on) - `sortName` -- `domain` / `tld` / `create_date` / `expire_date` - `sortDirection` -- `asc` / `desc` Supports both GET (with header auth) and POST (with body or header auth). For multi-value `tlds` on GET, use bracket syntax: `?tlds[]=com&tlds[]=io`. */
 export const listDomains: API.OperationMethod<
   ListDomainsRequest,
   DomainListAllResponse,
@@ -7099,7 +7099,7 @@ export const mockEndpoint: API.OperationMethod<
 }));
 
 export type PingError = BadRequest | PorkbunOpError;
-/** Test credentials and get caller IP Returns the caller's public IP address. Optionally validates API credentials. - **No credentials supplied** — returns IP only. - **Valid credentials supplied** — returns IP with `credentialsValid: true`. - **Invalid credentials supplied** — returns an error. Useful for agents and clients to verify their API key is working before making other calls. */
+/** Test credentials and get caller IP Returns the caller's public IP address. Optionally validates API credentials. - **No credentials supplied** -- returns IP only. - **Valid credentials supplied** -- returns IP with `credentialsValid: true`. - **Invalid credentials supplied** -- returns an error. Useful for agents and clients to verify their API key is working before making other calls. */
 export const ping: API.OperationMethod<PingRequest, PingResponse, PingError, PorkbunOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: PingRequest,
@@ -7136,7 +7136,7 @@ export const previewCloudflare: API.OperationMethod<
 }));
 
 export type RenewDomainError = BadRequest | PorkbunOpError;
-/** Renew a domain Renew a domain, paid from account credit or directly in USDC. Requirements: - Domain must be in your account and active - Domain must be opted in to API access - Account email and phone must be verified - Sufficient account credit, or `"payWith": "usdc"` to pay directly - `cost` must equal the current renewal price for the domain's minimum renewal duration (in pennies) - Domain must have been registered more than 30 days ago (checked against the domain's creation date) - Domain must not have been successfully renewed within the last 30 days - Premium renewals are not currently supported via API Renewals are always for the registry-minimum duration (usually 1 year). Use `/domain/checkDomain/{domain}` with `priceType=renewal` to get the current price before renewing. **Rate limits (both apply):** - Attempt limit (default: 1 attempt per second per account) - Success limit (default: 1000 successful renewals per 86400 seconds per account) Both limits are configurable per API key and their current values are returned in the `limits` field of the response. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT renewing or charging — nothing is created. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "renewal", "domain": "example.com", "tld": "com", "available": "unavailable", "premium": false, "duration": 1, "cost": 1099, "costDisplay": "$10.99", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this renewal would succeed and cost $10.99. No order was created and no charge was made.", "requestId": "019e04fa-3c11-7a02-9bd2-1f7c0e4a8b55" } ``` **Paying for it.** Two ways. **From prepaid account credit** (the default): no card on file is charged at purchase time, so the balance has to be there first. Read it with `GET /account/balance`; add to it with `POST /account/topup` (a saved card, with the account holder's OK), `POST /account/topupMpp` (the user's card from a Stripe Link agent wallet), `POST /account/topupCrypto` (USDC) or at https://porkbun.com/account/credit, and auto top-up at https://porkbun.com/account/api keeps it filled. Too little credit returns `INSUFFICIENT_FUNDS` with `cost`, `balance`, `shortfall` and `usdcAmountToCover` in cents. **Or directly in USDC:** add `"payWith": "usdc"` and an x402 client pays the HTTP 402 this returns (`PAYMENT_REQUIRED`, terms in the `PAYMENT-REQUIRED` header) and repeats the request with `PAYMENT-SIGNATURE`; no credit is needed, and if the purchase fails the payment stays on the account as credit (https://porkbun.com/llms/guides/pay-with-usdc-x402). Either way the account's monthly API spend limit applies ($100 a month until the account holder sets their own; `MONTHLY_SPEND_LIMIT_EXCEEDED`). `dryRun: true` reports cost and balance without charging, and `dryRun` with `cost: 0` returns a quote. */
+/** Renew a domain Renew a domain, paid from account credit or directly in USDC. Requirements: - Domain must be in your account and active - Domain must be opted in to API access - Account email and phone must be verified - Sufficient account credit, or `"payWith": "usdc"` to pay directly - `cost` must equal the current renewal price for the domain's minimum renewal duration (in pennies) - Domain must have been registered more than 30 days ago (checked against the domain's creation date) - Domain must not have been successfully renewed within the last 30 days - Premium renewals are not currently supported via API Renewals are always for the registry-minimum duration (usually 1 year). Use `/domain/checkDomain/{domain}` with `priceType=renewal` to get the current price before renewing. **Rate limits (both apply):** - Attempt limit (default: 1 attempt per second per account) - Success limit (default: 1000 successful renewals per 86400 seconds per account) Both limits are configurable per API key and their current values are returned in the `limits` field of the response. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT renewing or charging -- nothing is created. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "renewal", "domain": "example.com", "tld": "com", "available": "unavailable", "premium": false, "duration": 1, "cost": 1099, "costDisplay": "$10.99", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this renewal would succeed and cost $10.99. No order was created and no charge was made.", "requestId": "019e04fa-3c11-7a02-9bd2-1f7c0e4a8b55" } ``` **Paying for it.** Two ways. **From prepaid account credit** (the default): no card on file is charged at purchase time, so the balance has to be there first. Read it with `GET /account/balance`; add to it with `POST /account/topup` (a saved card, with the account holder's OK), `POST /account/topupMpp` (the user's card from a Stripe Link agent wallet), `POST /account/topupCrypto` (USDC) or at https://porkbun.com/account/credit, and auto top-up at https://porkbun.com/account/api keeps it filled. Too little credit returns `INSUFFICIENT_FUNDS` with `cost`, `balance`, `shortfall` and `usdcAmountToCover` in cents. **Or directly in USDC:** add `"payWith": "usdc"` and an x402 client pays the HTTP 402 this returns (`PAYMENT_REQUIRED`, terms in the `PAYMENT-REQUIRED` header) and repeats the request with `PAYMENT-SIGNATURE`; no credit is needed, and if the purchase fails the payment stays on the account as credit (https://porkbun.com/llms/guides/pay-with-usdc-x402). Either way the account's monthly API spend limit applies ($100 a month until the account holder sets their own; `MONTHLY_SPEND_LIMIT_EXCEEDED`). `dryRun: true` reports cost and balance without charging, and `dryRun` with `cost: 0` returns a quote. */
 export const renewDomain: API.OperationMethod<
   RenewDomainRequest,
   RenewDomainResponse2,
@@ -7226,7 +7226,7 @@ export const sandboxTopup: API.OperationMethod<
 }));
 
 export type SandboxTriggerWebhookError = PorkbunOpError;
-/** Sandbox: fire a sample webhook event Sandbox only (requires a `pk1_sb_` key). Enqueues a signed sample webhook event to your registered endpoints so you can test your handler and signature verification for any event type on demand — including cron-driven events like `domain.expiring` that don't result from a single API call. Register an endpoint first with `POST /webhook/create`. */
+/** Sandbox: fire a sample webhook event Sandbox only (requires a `pk1_sb_` key). Enqueues a signed sample webhook event to your registered endpoints so you can test your handler and signature verification for any event type on demand -- including cron-driven events like `domain.expiring` that don't result from a single API call. Register an endpoint first with `POST /webhook/create`. */
 export const sandboxTriggerWebhook: API.OperationMethod<
   SandboxTriggerWebhookRequest,
   SandboxTriggerWebhookResponse,
@@ -7241,7 +7241,7 @@ export const sandboxTriggerWebhook: API.OperationMethod<
 }));
 
 export type SearchCloseoutError = BadRequest | PorkbunOpError;
-/** Search expired-domain closeouts Search the closeout inventory. Closeouts are expired domains that did not sell at auction and are now offered at a fixed, descending price — there is no bidding, the first buyer at the current price takes the name. Every filter is optional; with none you get the first page of the whole list plus `totalAvailable`. Page with `start`/`limit` until `start >= totalAvailable`. **`age` and `registrationDate` are on every row and both are sortable.** On the website the inventory is paginated by price tier and registration date is not shown, so finding aged names means walking several tier pages and then doing a WHOIS lookup per candidate. `sortName=registrationDate&sortDirection=asc` returns the oldest registrations first in one call. `price` is the closeout price alone. The binding total adds the renewal or transfer year you are also buying, and comes from `/closeout/get/{domain}` — it cannot be derived from search results, because a domain already at Porkbun is renewed while anything else is transferred in, and those are priced differently. */
+/** Search expired-domain closeouts Search the closeout inventory. Closeouts are expired domains that did not sell at auction and are now offered at a fixed, descending price -- there is no bidding, the first buyer at the current price takes the name. Every filter is optional; with none you get the first page of the whole list plus `totalAvailable`. Page with `start`/`limit` until `start >= totalAvailable`. **`age` and `registrationDate` are on every row and both are sortable.** On the website the inventory is paginated by price tier and registration date is not shown, so finding aged names means walking several tier pages and then doing a WHOIS lookup per candidate. `sortName=registrationDate&sortDirection=asc` returns the oldest registrations first in one call. `price` is the closeout price alone. The binding total adds the renewal or transfer year you are also buying, and comes from `/closeout/get/{domain}` -- it cannot be derived from search results, because a domain already at Porkbun is renewed while anything else is transferred in, and those are priced differently. */
 export const searchCloseout: API.OperationMethod<
   SearchCloseoutRequest,
   SearchCloseoutResponse,
@@ -7256,7 +7256,7 @@ export const searchCloseout: API.OperationMethod<
 }));
 
 export type SetAutoTopupError = BadRequest | PorkbunOpError;
-/** Configure auto top-up Set the top-up amount, and/or switch auto top-up on or off. `amount` stands on its own. It is what a top-up adds, and `POST /account/topup` charges the same figure on demand, so setting it without automating anything is a normal call: `{"amount": 10000}`. `enabled: true` additionally makes it fire by itself and requires `threshold` (the balance, in integer US cents, below which a top-up happens) plus an amount — either in the same call or already on file. `enabled: false` stops it firing on a threshold and **keeps the amount**, because on-demand top-ups still use it. **`amount` set over the API is capped at $500** ($5 minimum), because that value is also what `POST /account/topup` charges — an API key free to set it to anything would be setting its own limit, which is not a limit. A larger amount set by the account holder at porkbun.com/account/api is honoured as-is. No card is touched here, and one cannot be added over the API. Supports `dryRun`. */
+/** Configure auto top-up Set the top-up amount, and/or switch auto top-up on or off. `amount` stands on its own. It is what a top-up adds, and `POST /account/topup` charges the same figure on demand, so setting it without automating anything is a normal call: `{"amount": 10000}`. `enabled: true` additionally makes it fire by itself and requires `threshold` (the balance, in integer US cents, below which a top-up happens) plus an amount -- either in the same call or already on file. `enabled: false` stops it firing on a threshold and **keeps the amount**, because on-demand top-ups still use it. **`amount` set over the API is capped at $500** ($5 minimum), because that value is also what `POST /account/topup` charges -- an API key free to set it to anything would be setting its own limit, which is not a limit. A larger amount set by the account holder at porkbun.com/account/api is honoured as-is. No card is touched here, and one cannot be added over the API. Supports `dryRun`. */
 export const setAutoTopup: API.OperationMethod<
   SetAutoTopupRequest,
   AutoTopupResponse,
@@ -7286,7 +7286,7 @@ export const testWebhook: API.OperationMethod<
 }));
 
 export type TopupAccountCreditError = BadRequest | PorkbunOpError;
-/** Top up account credit now **Charges the saved payment method** and adds the money to account credit immediately. The call that unblocks work already in progress: enabling auto top-up does nothing until the next order trips the threshold, which is no help to a caller holding an `INSUFFICIENT_FUNDS` response right now. **`amount` is optional.** Omitted, it charges the account's configured top-up amount, or $50 if the account has never set one — `amountSource` in the response says which of `configured`, `default` or `request` applied. Supplied, it charges that figure for this call only and leaves the stored setting alone, which is the point: an agent could always have written the amount to `/account/autoTopup` first, and making it do that turns a one-off charge into a silent edit of a setting the customer owns. The card itself can only be saved outside the API, and a supplied amount is held to the same 500–50000 cent range as one set through `/account/autoTopup`. On top of that the dollars are bounded by the month: the account's **monthly spend limit** caps top-ups as well as domain spend (it is the account saying how much the API may move, and a card charge is the API moving money), and an account that has never set one still gets a $100/month ceiling. Card, auto top-ups set off by an API purchase, MPP and USDC all count toward it — `monthlyCeiling` and `ceilingSource` on `GET /account/autoTopup` say which is in force. Top-ups are also limited to 5 per day and 20 per month (`TOPUP_LIMIT_EXCEEDED`), and every successful charge emails the account holder. Errors that matter: `NO_PAYMENT_METHOD` (nothing saved to charge — the account holder has to save a card or buy credit on the website), `CARD_DECLINED` (nothing was added; the card needs attention), `TOPUP_FAILED` (nothing was charged; retry once). With a sandbox key this grants simulated credit and charges nothing (`simulated: true`). Supports `dryRun`, which previews the amount and charges nothing in any environment. Honours `Idempotency-Key`. */
+/** Top up account credit now **Charges the saved payment method** and adds the money to account credit immediately. The call that unblocks work already in progress: enabling auto top-up does nothing until the next order trips the threshold, which is no help to a caller holding an `INSUFFICIENT_FUNDS` response right now. **`amount` is optional.** Omitted, it charges the account's configured top-up amount, or $50 if the account has never set one -- `amountSource` in the response says which of `configured`, `default` or `request` applied. Supplied, it charges that figure for this call only and leaves the stored setting alone, which is the point: an agent could always have written the amount to `/account/autoTopup` first, and making it do that turns a one-off charge into a silent edit of a setting the customer owns. The card itself can only be saved outside the API, and a supplied amount is held to the same 500-50000 cent range as one set through `/account/autoTopup`. On top of that the dollars are bounded by the month: the account's **monthly spend limit** caps top-ups as well as domain spend (it is the account saying how much the API may move, and a card charge is the API moving money), and an account that has never set one still gets a $100/month ceiling. Card, auto top-ups set off by an API purchase, MPP and USDC all count toward it -- `monthlyCeiling` and `ceilingSource` on `GET /account/autoTopup` say which is in force. Top-ups are also limited to 5 per day and 20 per month (`TOPUP_LIMIT_EXCEEDED`), and every successful charge emails the account holder. Errors that matter: `NO_PAYMENT_METHOD` (nothing saved to charge -- the account holder has to save a card or buy credit on the website), `CARD_DECLINED` (nothing was added; the card needs attention), `TOPUP_FAILED` (nothing was charged; retry once). With a sandbox key this grants simulated credit and charges nothing (`simulated: true`). Supports `dryRun`, which previews the amount and charges nothing in any environment. Honours `Idempotency-Key`. */
 export const topupAccountCredit: API.OperationMethod<
   TopupAccountCreditRequest,
   TopupAccountCreditResponse,
@@ -7346,7 +7346,7 @@ export const topupMpp: API.OperationMethod<
 }));
 
 export type TransferDomainError = PorkbunOpError;
-/** Initiate a domain transfer Initiates an inbound domain transfer to Porkbun, paid from account credit or directly in USDC. The transfer is processed asynchronously and typically takes 5–7 days to complete. **Requirements:** - Account email and phone must be verified. - Sufficient account credit to cover the transfer cost, or `"payWith": "usdc"` to pay directly. - Domain must not already be in your account. - No other active transfer for the same domain. - `.uk` and manage-only TLDs are not supported via API. - Premium domain transfers are not supported via API. - Some registries refuse registrant contacts on temporary or encrypted email providers and suspend domains that use one. `.in` and its second levels are the first; a transfer whose registrant contact uses one is refused with `REGISTRANT_EMAIL_NOT_ACCEPTED` before any charge. This is about the contact recorded on the domain, not about who hosts mail for it. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT initiating the transfer or charging — nothing is created. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "transfer", "domain": "example.com", "tld": "com", "available": "unavailable", "premium": false, "duration": 1, "cost": 999, "costDisplay": "$9.99", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this transfer would succeed and cost $9.99. No order was created and no charge was made.", "requestId": "019e04fa-5f22-7c93-8a41-2e9d0b3f6c77" } ``` **Paying for it.** Two ways. **From prepaid account credit** (the default): no card on file is charged at purchase time, so the balance has to be there first. Read it with `GET /account/balance`; add to it with `POST /account/topup` (a saved card, with the account holder's OK), `POST /account/topupMpp` (the user's card from a Stripe Link agent wallet), `POST /account/topupCrypto` (USDC) or at https://porkbun.com/account/credit, and auto top-up at https://porkbun.com/account/api keeps it filled. Too little credit returns `INSUFFICIENT_FUNDS` with `cost`, `balance`, `shortfall` and `usdcAmountToCover` in cents. **Or directly in USDC:** add `"payWith": "usdc"` and an x402 client pays the HTTP 402 this returns (`PAYMENT_REQUIRED`, terms in the `PAYMENT-REQUIRED` header) and repeats the request with `PAYMENT-SIGNATURE`; no credit is needed, and if the purchase fails the payment stays on the account as credit (https://porkbun.com/llms/guides/pay-with-usdc-x402). Either way the account's monthly API spend limit applies ($100 a month until the account holder sets their own; `MONTHLY_SPEND_LIMIT_EXCEEDED`). `dryRun: true` reports cost and balance without charging, and `dryRun` with `cost: 0` returns a quote. */
+/** Initiate a domain transfer Initiates an inbound domain transfer to Porkbun, paid from account credit or directly in USDC. The transfer is processed asynchronously and typically takes 5-7 days to complete. **Requirements:** - Account email and phone must be verified. - Sufficient account credit to cover the transfer cost, or `"payWith": "usdc"` to pay directly. - Domain must not already be in your account. - No other active transfer for the same domain. - `.uk` and manage-only TLDs are not supported via API. - Premium domain transfers are not supported via API. - Some registries refuse registrant contacts on temporary or encrypted email providers and suspend domains that use one. `.in` and its second levels are the first; a transfer whose registrant contact uses one is refused with `REGISTRANT_EMAIL_NOT_ACCEPTED` before any charge. This is about the contact recorded on the domain, not about who hosts mail for it. ## Dry run Add `dryRun: true` to validate everything and preview the cost WITHOUT initiating the transfer or charging -- nothing is created. Example response: ```json { "status": "SUCCESS", "dryRun": true, "wouldSucceed": true, "operation": "transfer", "domain": "example.com", "tld": "com", "available": "unavailable", "premium": false, "duration": 1, "cost": 999, "costDisplay": "$9.99", "balance": 5000, "sufficientFunds": true, "message": "Dry run: this transfer would succeed and cost $9.99. No order was created and no charge was made.", "requestId": "019e04fa-5f22-7c93-8a41-2e9d0b3f6c77" } ``` **Paying for it.** Two ways. **From prepaid account credit** (the default): no card on file is charged at purchase time, so the balance has to be there first. Read it with `GET /account/balance`; add to it with `POST /account/topup` (a saved card, with the account holder's OK), `POST /account/topupMpp` (the user's card from a Stripe Link agent wallet), `POST /account/topupCrypto` (USDC) or at https://porkbun.com/account/credit, and auto top-up at https://porkbun.com/account/api keeps it filled. Too little credit returns `INSUFFICIENT_FUNDS` with `cost`, `balance`, `shortfall` and `usdcAmountToCover` in cents. **Or directly in USDC:** add `"payWith": "usdc"` and an x402 client pays the HTTP 402 this returns (`PAYMENT_REQUIRED`, terms in the `PAYMENT-REQUIRED` header) and repeats the request with `PAYMENT-SIGNATURE`; no credit is needed, and if the purchase fails the payment stays on the account as credit (https://porkbun.com/llms/guides/pay-with-usdc-x402). Either way the account's monthly API spend limit applies ($100 a month until the account holder sets their own; `MONTHLY_SPEND_LIMIT_EXCEEDED`). `dryRun: true` reports cost and balance without charging, and `dryRun` with `cost: 0` returns a quote. */
 export const transferDomain: API.OperationMethod<
   TransferDomainRequest,
   TransferDomainResponse2,
@@ -7376,7 +7376,7 @@ export const transferDomainPrepare: API.OperationMethod<
 }));
 
 export type UpdateWebhookError = BadRequest | NotFound | PorkbunOpError;
-/** Update a webhook endpoint Update an endpoint's URL, event subscriptions, and/or status. Only the supplied fields change. Set `status` to `DISABLED` to pause deliveries or `ACTIVE` to resume (resuming also resets the consecutive-failure counter). **URL requirements:** the endpoint must be an `https://` URL on the standard port 443, with a hostname that resolves to a public internet address. Private, loopback, link-local, CGNAT and other reserved ranges are refused (`INVALID_WEBHOOK_URL`) because Porkbun delivers from inside its own network. Credentials in the URL (`https://user:pass@host`) are also refused — authenticate the receiver by verifying the `X-Porkbun-Signature` HMAC instead. A hostname that does not resolve yet is accepted, so you can register the endpoint before the receiver is deployed, but delivery is re-checked against these rules immediately before each request. */
+/** Update a webhook endpoint Update an endpoint's URL, event subscriptions, and/or status. Only the supplied fields change. Set `status` to `DISABLED` to pause deliveries or `ACTIVE` to resume (resuming also resets the consecutive-failure counter). **URL requirements:** the endpoint must be an `https://` URL on the standard port 443, with a hostname that resolves to a public internet address. Private, loopback, link-local, CGNAT and other reserved ranges are refused (`INVALID_WEBHOOK_URL`) because Porkbun delivers from inside its own network. Credentials in the URL (`https://user:pass@host`) are also refused -- authenticate the receiver by verifying the `X-Porkbun-Signature` HMAC instead. A hostname that does not resolve yet is accepted, so you can register the endpoint before the receiver is deployed, but delivery is re-checked against these rules immediately before each request. */
 export const updateWebhook: API.OperationMethod<
   UpdateWebhookRequest,
   WebhookEndpointResponse,
@@ -7391,7 +7391,7 @@ export const updateWebhook: API.OperationMethod<
 }));
 
 export type WebhookDeliveriesError = BadRequest | NotFound | PorkbunOpError;
-/** List webhook deliveries List recent delivery attempts across the account (newest first), optionally filtered by endpoint or status. The bulky payload is omitted — use GET /webhook/delivery/{id} for it. History is retained about 30 days. Read-only; supports GET (header auth) or POST (body or header auth). */
+/** List webhook deliveries List recent delivery attempts across the account (newest first), optionally filtered by endpoint or status. The bulky payload is omitted -- use GET /webhook/delivery/{id} for it. History is retained about 30 days. Read-only; supports GET (header auth) or POST (body or header auth). */
 export const webhookDeliveries: API.OperationMethod<
   WebhookDeliveriesRequest,
   WebhookDeliveryListResponse,

@@ -101,7 +101,7 @@ export interface AccountRecommendedActionChain {
   actions: AccountRecommendedActionChainActionsList;
   /** What running the chain accomplishes */
   description: string;
-  /** Chain ID — `rac_seed_<chain>_<nonce>` for seeded chains, `rac_chain_*` for generated ones */
+  /** Chain ID -- `rac_seed_<chain>_<nonce>` for seeded chains, `rac_chain_*` for generated ones */
   id: string;
   /** Why the generator proposed this chain, or `null` for seeded chains */
   reasoning: unknown | null;
@@ -274,7 +274,7 @@ export const getRecommendedAction: API.OperationMethod<
 }));
 
 export type ListRecommendedActionExecutionsError = NotFound | WhopOpError;
-/** List Recommended Action Executions Lists the per-step record of a recommended action chain the server ran — one entry per step in position order, each carrying its current status and, once the step completed, the API response it produced. A chain that was never run server-side returns an empty list. */
+/** List Recommended Action Executions Lists the per-step record of a recommended action chain the server ran -- one entry per step in position order, each carrying its current status and, once the step completed, the API response it produced. A chain that was never run server-side returns an empty list. */
 export const listRecommendedActionExecutions: API.OperationMethod<
   ListRecommendedActionExecutionsRequest,
   ListRecommendedActionExecutionsResponse,
@@ -289,7 +289,7 @@ export const listRecommendedActionExecutions: API.OperationMethod<
 }));
 
 export type ListRecommendedActionsError = NotFound | WhopOpError;
-/** List Action Chains Lists the recommended action chains for an account — short sequences of actions (create a product, price it, publish it) the account should run next, gated on what it already has. */
+/** List Action Chains Lists the recommended action chains for an account -- short sequences of actions (create a product, price it, publish it) the account should run next, gated on what it already has. */
 export const listRecommendedActions: API.OperationMethod<
   ListRecommendedActionsRequest,
   ListRecommendedActionsResponse,
@@ -304,7 +304,7 @@ export const listRecommendedActions: API.OperationMethod<
 }));
 
 export type RunRecommendedActionError = NotFound | Conflict | WhopOpError;
-/** Execute Action Chain Records that the caller ran a recommended action chain. Nothing is executed server-side yet — the client follows the chain's step CTAs itself; this writes the `recommended_action_chain.executed` analytics event. */
+/** Execute Action Chain Records that the caller ran a recommended action chain. Nothing is executed server-side yet -- the client follows the chain's step CTAs itself; this writes the `recommended_action_chain.executed` analytics event. */
 export const runRecommendedAction: API.OperationMethod<
   RunRecommendedActionRequest,
   RunRecommendedActionResponse,

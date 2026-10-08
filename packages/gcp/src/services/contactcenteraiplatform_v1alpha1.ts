@@ -201,7 +201,7 @@ export const SAMLParamsAuthenticationContextsItemEnumList = /*@__PURE__*/ S.Arra
 export interface SAMLParams {
   /** SAML certificate */
   certificate?: string;
-  /** IdP field that maps to the user’s email address */
+  /** IdP field that maps to the user's email address */
   emailMapping?: string;
   /** Email address of the first admin users. */
   userEmail?: string;
@@ -345,7 +345,7 @@ export const FeatureConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureConfig" }) as any as S.Schema<FeatureConfig>;
 
-/** Defines a logical CCAIP component that e.g. “EMAIL”, "CRM". For more information see go/ccaip-private-path-v2. Each logical component is associated with a list of service attachments. */
+/** Defines a logical CCAIP component that e.g. "EMAIL", "CRM". For more information see go/ccaip-private-path-v2. Each logical component is associated with a list of service attachments. */
 export interface Component {
   /** Associated service attachments. The service attachment names that will be used for sending private traffic to the CCAIP tenant project. Example service attachment name: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default". */
   serviceAttachmentNames?: StringList;

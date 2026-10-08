@@ -492,7 +492,7 @@ export const GoogleCloudIntegrationsV1alphaParameterMap = /*@__PURE__*/ S.suspen
   identifier: "GoogleCloudIntegrationsV1alphaParameterMap",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaParameterMap>;
 
-/** The access token represents the authorization of a specific application to access specific parts of a user’s data. */
+/** The access token represents the authorization of a specific application to access specific parts of a user's data. */
 export interface GoogleCloudIntegrationsV1alphaAccessToken {
   /** The access token encapsulating the security identity of a process or thread. */
   accessToken?: string;
@@ -2733,7 +2733,7 @@ export const EnterpriseCrmEventbusProtoEventParameters = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<EnterpriseCrmEventbusProtoEventParameters>;
 
 export interface EnterpriseCrmEventbusProtoTriggerCriteria {
-  /** Optional. Implementation class name. The class should implement the “TypedTask” interface. */
+  /** Optional. Implementation class name. The class should implement the "TypedTask" interface. */
   triggerCriteriaTaskImplementationClassName?: string;
   /** Optional. To be used in TaskConfig for the implementation class. */
   parameters?: EnterpriseCrmEventbusProtoEventParameters;

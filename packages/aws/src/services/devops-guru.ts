@@ -2513,7 +2513,7 @@ export type AddNotificationChannelError =
  *
  * If you use an Amazon SNS topic that is encrypted by an Amazon Web Services Key Management Service customer-managed key (CMK), then you must add permissions
  * to the CMK. For more information, see Permissions for
- * Amazon Web Services KMS–encrypted Amazon SNS topics.
+ * Amazon Web Services KMS-encrypted Amazon SNS topics.
  */
 export const addNotificationChannel: API.OperationMethod<
   AddNotificationChannelRequest,

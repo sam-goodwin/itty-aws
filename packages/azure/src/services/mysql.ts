@@ -366,7 +366,7 @@ export const ConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "ConfigurationsCreateOrUpdateResponse",
 }) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>;
 
-/** Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE) */
+/** Backup Format for the current backup. (CollatedFormat is INTERNAL - DO NOT USE) */
 export type BackupFormat = "CollatedFormat" | "Raw";
 export const BackupFormat = S.String;
 
@@ -374,7 +374,7 @@ export const BackupFormat = S.String;
 export interface BackupSettings {
   /** The name of the backup. */
   backupName: string;
-  /** Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE) */
+  /** Backup Format for the current backup. (CollatedFormat is INTERNAL - DO NOT USE) */
   backupFormat?: BackupFormat | (string & {});
 }
 export const BackupSettings = /*@__PURE__*/ S.suspend(() =>

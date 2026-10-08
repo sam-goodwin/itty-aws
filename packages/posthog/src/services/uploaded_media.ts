@@ -197,7 +197,7 @@ export const UploadedMediaUploadStartedFormFieldsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UploadedMediaUploadStartedFormFieldsMap>;
 
 export interface UploadedMediaUploadStarted {
-  /** Id of the pending upload — pass this to complete_upload. */
+  /** Id of the pending upload -- pass this to complete_upload. */
   id: string;
   /** POST the image file here as multipart/form-data. */
   upload_url: string;
@@ -218,7 +218,7 @@ export const UploadedMediaUploadStarted = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadedMediaUploadStarted>;
 
 export type CreateUploadedMediaError = Forbidden | NotFound | PosthogOpError;
-/** When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards. Uploaded media must be less than 4MB and decode as a PNG, JPEG, GIF, WebP, AVIF or BMP image — the formats the download route will serve inline. Pass `purpose` to also add the image to a library, making it visible to `GET ?purpose=...`. */
+/** When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards. Uploaded media must be less than 4MB and decode as a PNG, JPEG, GIF, WebP, AVIF or BMP image -- the formats the download route will serve inline. Pass `purpose` to also add the image to a library, making it visible to `GET ?purpose=...`. */
 export const createUploadedMedia: API.OperationMethod<
   CreateUploadedMediaRequest,
   CreateUploadedMediaResponse,
@@ -233,7 +233,7 @@ export const createUploadedMedia: API.OperationMethod<
 }));
 
 export type ListUploadedMediaError = BadRequest | PosthogOpError;
-/** List images in the media library. Requires a `purpose` filter — the library is scoped per consumer (e.g. `email`), so browsing without one would mix in unrelated uploads (dashboard images, toolbar screenshots, ...). */
+/** List images in the media library. Requires a `purpose` filter -- the library is scoped per consumer (e.g. `email`), so browsing without one would mix in unrelated uploads (dashboard images, toolbar screenshots, ...). */
 export const listUploadedMedia: API.OperationMethod<
   ListUploadedMediaRequest,
   PaginatedUploadedMediaList,
@@ -248,7 +248,7 @@ export const listUploadedMedia: API.OperationMethod<
 }));
 
 export type UploadedMediaCompleteUploadCreateError = BadRequest | NotFound | PosthogOpError;
-/** Step 2 of the presigned upload flow: verifies the object POSTed to the upload_url, sniffs its real content type, and activates it — after this it appears in the library and is publicly servable. */
+/** Step 2 of the presigned upload flow: verifies the object POSTed to the upload_url, sniffs its real content type, and activates it -- after this it appears in the library and is publicly servable. */
 export const uploadedMediaCompleteUploadCreate: API.OperationMethod<
   UploadedMediaCompleteUploadCreateRequest,
   UploadedMedia2,

@@ -6332,7 +6332,7 @@ export interface WorkerMessage {
   workerMessageCode?: WorkerMessageCode;
   /** Record of worker lifecycle events. */
   workerLifecycleEvent?: WorkerLifecycleEvent;
-  /** Labels are used to group WorkerMessages. For example, a worker_message about a particular container might have the labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker", "CONTAINER_ID": "ac1234def"} Label tags typically correspond to Label enum values. However, for ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here. */
+  /** Labels are used to group WorkerMessages. For example, a worker_message about a particular container might have the labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015..." "CONTAINER_TYPE": "worker", "CONTAINER_ID": "ac1234def"} Label tags typically correspond to Label enum values. However, for ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here. */
   labels?: StringMap;
   /** Thread scaling information reported by workers. */
   workerThreadScalingReport?: WorkerThreadScalingReport;

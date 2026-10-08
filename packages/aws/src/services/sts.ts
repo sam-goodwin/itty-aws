@@ -787,7 +787,7 @@ export type AssumeRoleError =
  *
  * - Add the user as a principal directly in the role's trust policy.
  *
- * You can do either because the role’s trust policy acts as an IAM resource-based
+ * You can do either because the role's trust policy acts as an IAM resource-based
  * policy. When a resource-based policy grants access to a principal in the same account, no
  * additional identity-based policy is required. For more information about trust policies and
  * resource-based policies, see IAM Policies in the
@@ -937,8 +937,8 @@ export type AssumeRoleWithSAMLError =
  * information about session tags, see Passing Session Tags in STS in the
  * *IAM User Guide*.
  *
- * You can pass up to 50 session tags. The plaintext session tag keys can’t exceed 128
- * characters and the values can’t exceed 256 characters. For these and additional limits, see
+ * You can pass up to 50 session tags. The plaintext session tag keys can't exceed 128
+ * characters and the values can't exceed 256 characters. For these and additional limits, see
  * IAM
  * and STS Character Limits in the *IAM User Guide*.
  *
@@ -1084,8 +1084,8 @@ export type AssumeRoleWithWebIdentityError =
  * session tags using AssumeRoleWithWebIdentity in the
  * *IAM User Guide*.
  *
- * You can pass up to 50 session tags. The plaintext session tag keys can’t exceed 128
- * characters and the values can’t exceed 256 characters. For these and additional limits, see
+ * You can pass up to 50 session tags. The plaintext session tag keys can't exceed 128
+ * characters and the values can't exceed 256 characters. For these and additional limits, see
  * IAM
  * and STS Character Limits in the *IAM User Guide*.
  *
@@ -1393,7 +1393,7 @@ export type GetFederationTokenError =
  * that are defined in the permissions policy of the IAM user. For more
  * information, see Session Policies in
  * the *IAM User Guide*. For information about using
- * `GetFederationToken` to create temporary security credentials, see GetFederationToken—Federation Through a Custom Identity Broker.
+ * `GetFederationToken` to create temporary security credentials, see GetFederationToken--Federation Through a Custom Identity Broker.
  *
  * You can use the credentials to access a resource that has a resource-based policy. If
  * that policy specifically references the federated user session in the
@@ -1419,7 +1419,7 @@ export type GetFederationTokenError =
  * for Attribute-Based Access Control in the
  * *IAM User Guide*.
  *
- * Tag key–value pairs are not case sensitive, but case is preserved. This means that you
+ * Tag key-value pairs are not case sensitive, but case is preserved. This means that you
  * cannot have separate `Department` and `department` tag keys. Assume
  * that the user that you are federating has the
  * `Department`=`Marketing` tag and you pass the

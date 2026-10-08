@@ -71,7 +71,7 @@ export const GetCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCustomTopicRequest" }) as any as S.Schema<GetCustomTopicRequest>;
 
 export interface CustomTopicsGetResponseTopicsItem {
-  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
+  /** Unique label identifier. Must contain only lowercase letters (a-z), digits (0-9), and hyphens. */
   label: string;
   /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
@@ -245,7 +245,7 @@ export type PutCustomTopicError =
   | ZoneNotAuthorized
   | Forbidden
   | CloudflareOpError;
-/** Update the custom topic list of the zone, overwriting it entirely with the topics in the request, so include every topic you want to keep. Changes can take up to a minute to propagate. Each entry has a `label`, used to reference the topic in rule expressions and analytics, and a `topic` description, which the classifier scores prompts against while AI Security for Apps is enabled. The following rules apply: - A zone can hold at most 20 topics. - `label` must be 2–20 characters, using only lowercase letters (a–z), digits (0–9), and hyphens. - `topic` must be 2–50 printable ASCII characters. - Labels must be unique within the zone, and so must topic descriptions. */
+/** Update the custom topic list of the zone, overwriting it entirely with the topics in the request, so include every topic you want to keep. Changes can take up to a minute to propagate. Each entry has a `label`, used to reference the topic in rule expressions and analytics, and a `topic` description, which the classifier scores prompts against while AI Security for Apps is enabled. The following rules apply: - A zone can hold at most 20 topics. - `label` must be 2-20 characters, using only lowercase letters (a-z), digits (0-9), and hyphens. - `topic` must be 2-50 printable ASCII characters. - Labels must be unique within the zone, and so must topic descriptions. */
 export const putCustomTopic: API.OperationMethod<
   PutCustomTopicRequest,
   PutCustomTopicResponse,

@@ -411,7 +411,7 @@ export const WebhookTestableEventsList = /*@__PURE__*/ S.Array(
 export interface Webhook {
   /** The API version used to format payloads sent to this webhook endpoint. */
   api_version: WebhookApiVersion;
-  /** The dated API version (Api-Version-Date) that v1 payloads for this endpoint are pinned to: events serialize exactly like a REST read at this version (the native serializer where the resource has one). Null when unpinned — legacy (v2/v5) webhooks, and v1 webhooks on the legacy payload shape. */
+  /** The dated API version (Api-Version-Date) that v1 payloads for this endpoint are pinned to: events serialize exactly like a REST read at this version (the native serializer where the resource has one). Null when unpinned -- legacy (v2/v5) webhooks, and v1 webhooks on the legacy payload shape. */
   api_version_date: string | null;
   /** Whether events are sent for child resources. For example, if the webhook is on an account, enabling this sends events only from its connected accounts. */
   child_resource_events: boolean;
@@ -692,7 +692,7 @@ export interface ListWebhooksRequest {
   app_id?: string;
   /** Also return webhooks attached to the account's apps, not just the account's own. Cannot be combined with `app_id`. */
   include_app_webhooks?: boolean;
-  /** Only return webhooks whose endpoint is currently failing — every delivery since the current failure streak began has been rejected. Clears as soon as a delivery succeeds. */
+  /** Only return webhooks whose endpoint is currently failing -- every delivery since the current failure streak began has been rejected. Clears as soon as a delivery succeeds. */
   has_failures?: boolean;
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -839,7 +839,7 @@ export const WebhookListItemEventsList = /*@__PURE__*/ S.Array(
 export interface WebhookListItem {
   /** The API version used to format payloads sent to this webhook endpoint. */
   api_version: WebhookListItemApiVersion;
-  /** The dated API version (Api-Version-Date) that v1 payloads for this endpoint are pinned to: events serialize exactly like a REST read at this version (the native serializer where the resource has one). Null when unpinned — legacy (v2/v5) webhooks, and v1 webhooks on the legacy payload shape. */
+  /** The dated API version (Api-Version-Date) that v1 payloads for this endpoint are pinned to: events serialize exactly like a REST read at this version (the native serializer where the resource has one). Null when unpinned -- legacy (v2/v5) webhooks, and v1 webhooks on the legacy payload shape. */
   api_version_date: string | null;
   /** Whether events are sent for child resources. For example, if the webhook is on an account, enabling this sends events only from its connected accounts. */
   child_resource_events: boolean;
@@ -917,7 +917,7 @@ export interface ReplayWebhookRequest {
   id: string;
   /** Only replay these event types, in dot form (for example `payment.succeeded`). Omit to include every event. */
   events?: ReplayWebhookRequestEventsList;
-  /** Only replay messages whose most recent delivery attempt in the window failed. Defaults to false. Best-effort: a message whose attempts span processing batches can still be re-sent — replays keep the original `webhook-id` by default, so consumers that deduplicate are unaffected. */
+  /** Only replay messages whose most recent delivery attempt in the window failed. Defaults to false. Best-effort: a message whose attempts span processing batches can still be re-sent -- replays keep the original `webhook-id` by default, so consumers that deduplicate are unaffected. */
   failed_only?: boolean;
   /** Re-send each replayed message under a freshly generated `webhook-id` (in both the envelope and the signed headers) instead of its original one. Defaults to false. Use this when your endpoint deduplicates on `webhook-id` and you want it to process the replays as new messages. */
   regenerate_ids?: boolean;
@@ -1177,7 +1177,7 @@ export type DeliveriesWebhookError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List deliveries [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of delivery attempts for a webhook, ordered by most recent first. Includes the request payload, response body, response code, and timing for each attempt. Required permissions: - `developer:manage_webhook` */
+/** List deliveries [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of delivery attempts for a webhook, ordered by most recent first. Includes the request payload, response body, response code, and timing for each attempt. Required permissions: - `developer:manage_webhook` */
 export const deliveriesWebhook: API.PaginatedOperationMethod<
   DeliveriesWebhookRequest,
   DeliveriesWebhookResponse,

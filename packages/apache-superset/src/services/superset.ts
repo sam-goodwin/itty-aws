@@ -2850,7 +2850,7 @@ export interface CreateReportRequest {
   name: string;
   recipients?: CreateReportRequestRecipientsList;
   report_format?: CreateReportRequestReportFormat | (string & {});
-  /** Maximum number of retry attempts (1–10) */
+  /** Maximum number of retry attempts (1-10) */
   retry_max_attempts?: number;
   /** Notify report owners on each retry attempt */
   retry_notify_owners?: boolean;
@@ -3563,7 +3563,7 @@ export interface ReportScheduleRestApiPost {
   name: string;
   recipients?: ReportScheduleRestApiPostRecipientsList;
   report_format?: ReportScheduleRestApiPostReportFormat;
-  /** Maximum number of retry attempts (1–10) */
+  /** Maximum number of retry attempts (1-10) */
   retry_max_attempts?: number;
   /** Notify report owners on each retry attempt */
   retry_notify_owners?: boolean;
@@ -6045,7 +6045,7 @@ export interface VersionChangeRecord {
   from_value?: unknown | null;
   /** Semantic category of the change. First-class values in V1: 'filter', 'metric', 'dimension', 'column', 'chart', 'time_range', 'color_palette'. Falls back to 'field' for generic scalar changes that don't map to a named kind. */
   kind?: string;
-  /** The verb for this change: 'add', 'remove', 'move', 'edit', 'update' (a collapsed-summary record for a field whose per-leaf changes exceeded the cap), or 'announce' (a synthetic headline record). Surfaced explicitly so consumers need not infer the verb from from_value/to_value null-tests — 'move' in particular cannot be derived that way. */
+  /** The verb for this change: 'add', 'remove', 'move', 'edit', 'update' (a collapsed-summary record for a field whose per-leaf changes exceeded the cap), or 'announce' (a synthetic headline record). Surfaced explicitly so consumers need not infer the verb from from_value/to_value null-tests -- 'move' in particular cannot be derived that way. */
   operation?: string;
   /** Array of segments locating the change in the entity's state. Example: ['params', 'adhoc_filters', 'country']. */
   path?: unknown;
@@ -6081,7 +6081,7 @@ export interface VersionListItemSchema {
   transaction_id?: number;
   /** 0-based position in the history, oldest first */
   version_number?: number;
-  /** Deterministic UUIDv5 derived from the entity UUID and the Continuum transaction id — stable across replicas and retention pruning. The handle accepted by the get/restore version endpoints. */
+  /** Deterministic UUIDv5 derived from the entity UUID and the Continuum transaction id -- stable across replicas and retention pruning. The handle accepted by the get/restore version endpoints. */
   version_uuid?: string;
 }
 export const VersionListItemSchema = /*@__PURE__*/ S.suspend(() =>
@@ -12679,7 +12679,7 @@ export interface ListChartActivityRequest {
   since?: string;
   until?: string;
   include?: ListChartActivityRequestInclude | (string & {});
-  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) — applied before pagination, so `count` reflects the matches. */
+  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) -- applied before pagination, so `count` reflects the matches. */
   q?: string;
   page?: number;
   page_size?: number;
@@ -12703,7 +12703,7 @@ export const ActivityRecordActionKind = S.String;
 export type ActivityChangedBy = VersionChangedBy;
 export const ActivityChangedBy = VersionChangedBy;
 
-/** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` — a retroactive baseline for an entity that predates versioning; ``"created"`` — a creation with tracking on; ``"imported"`` — an import, attributed to the importing user; ``"unknown"`` — an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
+/** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` -- a retroactive baseline for an entity that predates versioning; ``"created"`` -- a creation with tracking on; ``"imported"`` -- an import, attributed to the importing user; ``"unknown"`` -- an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
 export type ActivityRecordCreationKind = "pre_tracking" | "created" | "imported" | "unknown";
 export const ActivityRecordCreationKind = S.String;
 
@@ -12718,7 +12718,7 @@ export const ActivityRecordEntityKind = S.String;
 export interface ActivityImpactChart {
   /** Chart id. */
   id?: number;
-  /** Chart name at the change's transaction — it may differ from the live name if the chart was renamed since. */
+  /** Chart name at the change's transaction -- it may differ from the live name if the chart was renamed since. */
   name?: string;
 }
 export const ActivityImpactChart = /*@__PURE__*/ S.suspend(() =>
@@ -12728,14 +12728,14 @@ export const ActivityImpactChart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityImpactChart" }) as any as S.Schema<ActivityImpactChart>;
 
-/** The affected sibling charts (id + name), sorted by name — the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
+/** The affected sibling charts (id + name), sorted by name -- the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
 export type ActivityImpactAffectedChartsList = Array<ActivityImpactChart>;
 export const ActivityImpactAffectedChartsList = /*@__PURE__*/ S.Array(
   ActivityImpactChart,
 ) as any as S.Schema<ActivityImpactAffectedChartsList>;
 
 export interface ActivityImpact {
-  /** The affected sibling charts (id + name), sorted by name — the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
+  /** The affected sibling charts (id + name), sorted by name -- the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
   affected_charts?: ActivityImpactAffectedChartsList;
   /** Number of sibling charts on the path entity affected by the same related-record change at this transaction. */
   charts?: number;
@@ -12747,7 +12747,7 @@ export const ActivityImpact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityImpact" }) as any as S.Schema<ActivityImpact>;
 
-/** Content category — what kind of thing changed. ``field`` is the fallback for scalar changes without a more specific category. Per-record. */
+/** Content category -- what kind of thing changed. ``field`` is the fallback for scalar changes without a more specific category. Per-record. */
 export type ActivityRecordKind =
   | "filter"
   | "metric"
@@ -12771,7 +12771,7 @@ export const ActivityRecordKind = S.String;
 export type ActivityRecordOperation = "add" | "remove" | "move" | "edit" | "update" | "announce";
 export const ActivityRecordOperation = S.String;
 
-/** Pure navigation address — no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
+/** Pure navigation address -- no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
 export type ActivityRecordPathList = Array<string>;
 export const ActivityRecordPathList = /*@__PURE__*/ S.Array(
   S.String,
@@ -12786,7 +12786,7 @@ export interface ActivityRecord {
   action_kind?: ActivityRecordActionKind | null;
   /** User who produced the change, or ``null`` when the saving user no longer exists in ``ab_user``. */
   changed_by?: VersionChangedBy | null;
-  /** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` — a retroactive baseline for an entity that predates versioning; ``"created"`` — a creation with tracking on; ``"imported"`` — an import, attributed to the importing user; ``"unknown"`` — an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
+  /** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` -- a retroactive baseline for an entity that predates versioning; ``"created"`` -- a creation with tracking on; ``"imported"`` -- an import, attributed to the importing user; ``"unknown"`` -- an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
   creation_kind?: ActivityRecordCreationKind | null;
   /** True iff the source entity is hard-deleted (no live row by ``entity_id``). False for live and soft-deleted entities. */
   entity_deleted?: boolean;
@@ -12794,7 +12794,7 @@ export interface ActivityRecord {
   entity_deletion_state?: ActivityRecordEntityDeletionState | null;
   /** User-facing kind of the source entity: one of ``"dashboard"`` / ``"chart"`` / ``"dataset"``. */
   entity_kind?: ActivityRecordEntityKind;
-  /** Name of the source entity *at the time of the change* — denormalized from the validity-strategy shadow row. Survives entity rename / delete. */
+  /** Name of the source entity *at the time of the change* -- denormalized from the validity-strategy shadow row. Survives entity rename / delete. */
   entity_name?: string;
   /** UUID of the source entity; ``null`` only when ``entity_deleted: true`` (the entity has been hard-deleted since the change was recorded). */
   entity_uuid?: string | null;
@@ -12802,19 +12802,19 @@ export interface ActivityRecord {
   first_tracked_save?: boolean;
   /** Prior value; ``null`` = didn't exist. */
   from_value?: unknown | null;
-  /** Optional dependent-count for ``source: "related"`` records — e.g., ``{"charts": 4}`` for a dataset edit that affected 4 charts on the path dashboard at the change's transaction. Absent for ``source: "self"`` records and for related records without dependents. */
+  /** Optional dependent-count for ``source: "related"`` records -- e.g., ``{"charts": 4}`` for a dataset edit that affected 4 charts on the path dashboard at the change's transaction. Absent for ``source: "self"`` records and for related records without dependents. */
   impact?: ActivityImpact | null;
   /** UTC timestamp; primary ordering key (DESC). */
   issued_at?: string;
-  /** Content category — what kind of thing changed. ``field`` is the fallback for scalar changes without a more specific category. Per-record. */
+  /** Content category -- what kind of thing changed. ``field`` is the fallback for scalar changes without a more specific category. Per-record. */
   kind?: ActivityRecordKind;
   /** Per-record verb: ``add`` / ``remove`` / ``move`` / ``edit``. Explicit instead of inferred from ``from_value`` / ``to_value`` null-tests. ``move`` only fires for layout records. */
   operation?: ActivityRecordOperation;
-  /** Pure navigation address — no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
+  /** Pure navigation address -- no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
   path?: ActivityRecordPathList | null;
   /** ``"self"`` if ``(entity_kind, entity_id)`` matches the path entity; else ``"related"``. Drives the frontend's no-group-under-save rendering rule. */
   source?: ActivityRecordSource;
-  /** Synthesized headline for ``source: "related"`` records — e.g., ``"Dataset updated: Sales Transactions"``. Empty string for ``source: "self"`` records, except ``__meta__`` self records (e.g. restore announcements), which carry their own headline. */
+  /** Synthesized headline for ``source: "related"`` records -- e.g., ``"Dataset updated: Sales Transactions"``. Empty string for ``source: "self"`` records, except ``__meta__`` self records (e.g. restore announcements), which carry their own headline. */
   summary?: string;
   /** New value; ``null`` = removed. */
   to_value?: unknown | null;
@@ -13252,7 +13252,7 @@ export interface ListDashboardActivityRequest {
   /** Upper bound on issued_at (ISO 8601, UTC) */
   until?: string;
   include?: ListDashboardActivityRequestInclude | (string & {});
-  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) — applied before pagination, so `count` reflects the matches. */
+  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) -- applied before pagination, so `count` reflects the matches. */
   q?: string;
   page?: number;
   page_size?: number;
@@ -13969,7 +13969,7 @@ export interface ListDatasetActivityRequest {
   since?: string;
   until?: string;
   include?: ListDatasetActivityRequestInclude | (string & {});
-  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) — applied before pagination, so `count` reflects the matches. */
+  /** Case-insensitive search over the full history (summary, entity name, kind, path, values) -- applied before pagination, so `count` reflects the matches. */
   q?: string;
   page?: number;
   page_size?: number;
@@ -15902,7 +15902,7 @@ export interface PutChartResponse {
   new_version_uuid?: string | null;
   /** Continuum transaction_id of the live row before this update. Stable across pruning. */
   old_transaction_id?: number | null;
-  /** 0-based version_number of the live row before this update. Unstable under retention pruning — see old_transaction_id for a stable identifier. */
+  /** 0-based version_number of the live row before this update. Unstable under retention pruning -- see old_transaction_id for a stable identifier. */
   old_version?: number | null;
   /** Deterministic version_uuid of the live row before this update. Null when version capture is disabled or the entity has no version rows yet. */
   old_version_uuid?: string | null;
@@ -16141,7 +16141,7 @@ export interface PutDashboardResponse {
   new_version_uuid?: string | null;
   /** Continuum transaction_id of the live row before this update. Stable across pruning. */
   old_transaction_id?: number | null;
-  /** 0-based version_number of the live row before this update. Unstable under retention pruning — see old_transaction_id for a stable identifier. */
+  /** 0-based version_number of the live row before this update. Unstable under retention pruning -- see old_transaction_id for a stable identifier. */
   old_version?: number | null;
   /** Deterministic version_uuid of the live row before this update. Null when version capture is disabled or the entity has no version rows yet. */
   old_version_uuid?: string | null;
@@ -16811,7 +16811,7 @@ export interface PutDatasetResponse {
   new_version_uuid?: string | null;
   /** Continuum transaction_id of the live row before this update. Stable across retention pruning. */
   old_transaction_id?: number | null;
-  /** 0-based version_number of the live row before this update (null if the dataset had no prior history). Matches the ``version_number`` field of the list versions endpoint. Unstable under retention pruning — see ``old_transaction_id`` for a stable identifier. */
+  /** 0-based version_number of the live row before this update (null if the dataset had no prior history). Matches the ``version_number`` field of the list versions endpoint. Unstable under retention pruning -- see ``old_transaction_id`` for a stable identifier. */
   old_version?: number | null;
   /** Deterministic version_uuid of the live row before this update. Null when version capture is disabled or the dataset has no version rows yet. */
   old_version_uuid?: string | null;
@@ -17625,7 +17625,7 @@ export interface PutReportRequest {
   name?: string;
   recipients?: PutReportRequestRecipientsList;
   report_format?: PutReportRequestReportFormat | (string & {});
-  /** Maximum number of retry attempts (1–10) */
+  /** Maximum number of retry attempts (1-10) */
   retry_max_attempts?: number;
   /** Notify report owners on each retry attempt */
   retry_notify_owners?: boolean;
@@ -18339,7 +18339,7 @@ export interface ReportScheduleRestApiPut {
   name?: string;
   recipients?: ReportScheduleRestApiPutRecipientsList;
   report_format?: ReportScheduleRestApiPutReportFormat;
-  /** Maximum number of retry attempts (1–10) */
+  /** Maximum number of retry attempts (1-10) */
   retry_max_attempts?: number;
   /** Notify report owners on each retry attempt */
   retry_notify_owners?: boolean;
@@ -19742,7 +19742,7 @@ export interface SubscribeReportRequest {
   name: string;
   recipients?: SubscribeReportRequestRecipientsList;
   report_format?: SubscribeReportRequestReportFormat | (string & {});
-  /** Maximum number of retry attempts (1–10) */
+  /** Maximum number of retry attempts (1-10) */
   retry_max_attempts?: number;
   /** Notify report owners on each retry attempt */
   retry_notify_owners?: boolean;
@@ -23581,7 +23581,7 @@ export const listChart: API.OperationMethod<
 }));
 
 export type ListChartActivityError = BadRequest | Forbidden | NotFound | ApacheSupersetOpError;
-/** Activity stream — chart own edits + datasets the chart pointed at during association */
+/** Activity stream -- chart own edits + datasets the chart pointed at during association */
 export const listChartActivity: API.OperationMethod<
   ListChartActivityRequest,
   ActivityResponse,
@@ -23701,7 +23701,7 @@ export const listDashboard: API.OperationMethod<
 }));
 
 export type ListDashboardActivityError = BadRequest | Forbidden | NotFound | ApacheSupersetOpError;
-/** Activity stream — dashboard own edits + transitive chart-on-dashboard and dataset-via-chart edits, time-bounded by association windows */
+/** Activity stream -- dashboard own edits + transitive chart-on-dashboard and dataset-via-chart edits, time-bounded by association windows */
 export const listDashboardActivity: API.OperationMethod<
   ListDashboardActivityRequest,
   ActivityResponse,
@@ -23915,7 +23915,7 @@ export const listDatabaseTables: API.OperationMethod<
 }));
 
 export type ListDatasetActivityError = BadRequest | Forbidden | NotFound | ApacheSupersetOpError;
-/** Get a dataset's activity stream A dataset's own edits only. Datasets have no transitive layer in V2 — chart and dashboard edits that touch this dataset do NOT appear here. ``?include=self`` and ``?include=all`` return the dataset's own edits; ``?include=related`` returns an empty stream (a dataset has no related entities to fan out to). */
+/** Get a dataset's activity stream A dataset's own edits only. Datasets have no transitive layer in V2 -- chart and dashboard edits that touch this dataset do NOT appear here. ``?include=self`` and ``?include=all`` return the dataset's own edits; ``?include=related`` returns an empty stream (a dataset has no related entities to fan out to). */
 export const listDatasetActivity: API.OperationMethod<
   ListDatasetActivityRequest,
   ActivityResponse,
@@ -25152,7 +25152,7 @@ export const stopQuery: API.OperationMethod<
 }));
 
 export type SubscribeReportError = BadRequest | UnprocessableEntity | ApacheSupersetOpError;
-/** Subscribe to a chart or dashboard report Creates a report schedule locked to the authenticated user's email. ``creation_method`` is derived server-side from the payload (chart → charts, dashboard → dashboards). ``recipients`` are not accepted and are always set to the requesting user's email address. */
+/** Subscribe to a chart or dashboard report Creates a report schedule locked to the authenticated user's email. ``creation_method`` is derived server-side from the payload (chart -> charts, dashboard -> dashboards). ``recipients`` are not accepted and are always set to the requesting user's email address. */
 export const subscribeReport: API.OperationMethod<
   SubscribeReportRequest,
   SubscribeReportResponse,

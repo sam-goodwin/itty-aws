@@ -58,7 +58,7 @@ export interface GetCostsForProjectRequest {
   to: string;
   /** Depth of desired cost information. "project" provides costs grouped by project, without services. "service" provides costs separated on service level. */
   depth?: GetCostsForProjectRequestDepth | (string & {});
-  /** Define granularity of costs – Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
+  /** Define granularity of costs - Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
   granularity?: GetCostsForProjectRequestGranularity | (string & {});
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
@@ -309,7 +309,7 @@ export interface ListCostsForCustomerRequest {
   to: string;
   /** Depth of desired cost information. "project" provides costs grouped by project, without services. "service" provides costs separated on service level. */
   depth?: ListCostsForCustomerRequestDepth | (string & {});
-  /** Define granularity of costs – Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
+  /** Define granularity of costs - Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
   granularity?: ListCostsForCustomerRequestGranularity | (string & {});
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
@@ -366,7 +366,7 @@ export interface ListCostsForResellerRequest {
   to: string;
   /** Depth of desired cost information. "project" provides costs grouped by project, without services. "service" provides costs separated on service level. */
   depth?: ListCostsForResellerRequestDepth | (string & {});
-  /** Define granularity of costs – Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
+  /** Define granularity of costs - Default is "none" which does NOT include detailed report data. If "monthly", "weekly" or "yearly" is requested, the "from" parameter SHOULD be the first day and the "to" parameter SHOULD be the last day of that time period. If not, they are normalized accordingly. If "daily" is requested, the date range defined by "from" and "to" MUST NOT be longer than 92 days. */
   granularity?: ListCostsForResellerRequestGranularity | (string & {});
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;

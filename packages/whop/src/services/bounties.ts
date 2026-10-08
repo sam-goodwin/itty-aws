@@ -68,7 +68,7 @@ export const BountyAcceptedDeliverableTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BountyAcceptedDeliverableTypesList>;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -97,7 +97,7 @@ export const UserSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSummary" }) as any as S.Schema<UserSummary>;
 
 export interface BountyActiveLivestreamFeed {
-  /** User hosting the proof livestream — the worker streaming their attempt. `null` if the host account no longer exists. */
+  /** User hosting the proof livestream -- the worker streaming their attempt. `null` if the host account no longer exists. */
   host: UserSummary | null;
   /** Livestream feed ID. */
   id: string;
@@ -188,9 +188,9 @@ export interface CaptureSpecVideo {
   embed_camera_metadata: boolean;
   /** Target capture frame rate. */
   fps: number;
-  /** Longest stall between consecutive frames a clip may contain before the client rejects it, in milliseconds. Every frame is timestamped in the frame log, so a stall stays alignable downstream — this bounds how broken a capture may be, not how evenly it must be paced. */
+  /** Longest stall between consecutive frames a clip may contain before the client rejects it, in milliseconds. Every frame is timestamped in the frame log, so a stall stays alignable downstream -- this bounds how broken a capture may be, not how evenly it must be paced. */
   frame_gap_tolerance_ms: number;
-  /** Required frame height in pixels — recorded footage must match exactly. */
+  /** Required frame height in pixels -- recorded footage must match exactly. */
   height: number;
   /** Minimum acceptable horizontal field of view, in degrees. */
   min_fov_degrees: number;
@@ -202,7 +202,7 @@ export interface CaptureSpecVideo {
   stabilization_mode: CaptureSpecVideoStabilizationMode;
   /** Whether hardware/software stabilization must be enabled. True exactly when stabilization_mode is `on`. */
   stabilization_required: boolean;
-  /** Required frame width in pixels — recorded footage must match exactly. */
+  /** Required frame width in pixels -- recorded footage must match exactly. */
   width: number;
 }
 export const CaptureSpecVideo = /*@__PURE__*/ S.suspend(() =>
@@ -361,7 +361,7 @@ export interface StorefrontAccount {
   id: string;
   /** Account logo image URL. `null` when the account has not set one. */
   logo_url: string | null;
-  /** Account public route identifier — the `whop.com/{route}` storefront path. */
+  /** Account public route identifier -- the `whop.com/{route}` storefront path. */
   route: string;
   /** Account display name. */
   title: string;
@@ -413,7 +413,7 @@ export interface Bounty {
   denied_submissions_count: number;
   /** Full task instructions shown to workers. */
   description: string;
-  /** Experience the bounty's discussion thread lives in, prefixed `exp_`. Read this — not `experience_id` — to open the thread: a platform-wide bounty has no hosting experience of its own but its discussion still lives in one. */
+  /** Experience the bounty's discussion thread lives in, prefixed `exp_`. Read this -- not `experience_id` -- to open the thread: a platform-wide bounty has no hosting experience of its own but its discussion still lives in one. */
   discussion_experience_id: string | null;
   /** Forum feed containing the bounty's discussion thread. `null` for a bounty with no forum post. */
   discussion_feed_id: string | null;
@@ -423,29 +423,29 @@ export interface Bounty {
   experience_id: string | null;
   /** Account whose balance funds the bounty pool, or `null` when a user funds it personally. May differ from the account hosting `experience_id`. */
   funding_account: AccountSummary | null;
-  /** Gross amount paid out from the bounty pool across accepted submissions — worker payouts, platform fees, and affiliate shares together. Tips and reviewer rewards are excluded. */
+  /** Gross amount paid out from the bounty pool across accepted submissions -- worker payouts, platform fees, and affiliate shares together. Tips and reviewer rewards are excluded. */
   gross_paid_out_amount: number;
   /** Gross bounty-pool amount allocated per accepted submission, in whole currency units. */
   gross_reward_amount: number;
-  /** Account hosting the bounty's forum — the one whose `route` and `experience_id` address its discussion thread, and where its submissions dashboard lives. `null` for a platform-wide bounty with no host. May differ from `funding_account`. */
+  /** Account hosting the bounty's forum -- the one whose `route` and `experience_id` address its discussion thread, and where its submissions dashboard lives. `null` for a platform-wide bounty with no host. May differ from `funding_account`. */
   hosting_account: StorefrontAccount | null;
   /** Bounty ID, prefixed `bnty_`. */
   id: string;
-  /** Total verified footage a submission must accumulate before it can be submitted, in seconds. Always a whole number of hours. Present only on `data_capture` bounties — it is what `net_reward_amount` pays for, so rate displays divide by it. `null` for every other goal type. */
+  /** Total verified footage a submission must accumulate before it can be submitted, in seconds. Always a whole number of hours. Present only on `data_capture` bounties -- it is what `net_reward_amount` pays for, so rate displays divide by it. `null` for every other goal type. */
   min_total_verified_duration_seconds: number | null;
-  /** What a worker is quoted per accepted submission after the platform fee, in whole currency units. The exact post-fee figure, at the standard platform fee rate — a worker who locked a different rate, or who arrived through an affiliate link, is paid a different amount. */
+  /** What a worker is quoted per accepted submission after the platform fee, in whole currency units. The exact post-fee figure, at the standard platform fee rate -- a worker who locked a different rate, or who arrived through an affiliate link, is paid a different amount. */
   net_reward_amount: number;
-  /** User who posted the bounty — the account owner when created with an account API key. */
+  /** User who posted the bounty -- the account owner when created with an account API key. */
   poster: UserSummary;
   /** How often the schedule creates a new bounty. Each occurrence is a separate bounty; the original is not republished. */
   scheduled_frequency: BountyScheduledFrequency | null;
   /** When a scheduled bounty will publish, as an ISO 8601 timestamp. `null` once published, for bounties that were never scheduled, and for terminally failed drafts parked for manual rescheduling. */
   scheduled_publish_at: string | null;
-  /** Unfilled winner capacity: `accepted_submissions_limit` minus `accepted_submissions_count`, clamped to zero. Not on its own a signal that the bounty accepts new claims — read `status` for that: only an `open` bounty takes new submissions. */
+  /** Unfilled winner capacity: `accepted_submissions_limit` minus `accepted_submissions_count`, clamped to zero. Not on its own a signal that the bounty accepts new claims -- read `status` for that: only an `open` bounty takes new submissions. */
   spots_remaining: number;
   /** Lifecycle state. `scheduled` bounties are unpublished drafts, visible to their poster and the account's authorized managers; `open` bounties accept new submissions; `closed` bounties are live but no longer accept new submissions; `completed` bounties paid out every winner slot; `canceled` bounties ended before filling their slots. */
   status: BountyStatus;
-  /** When new submissions stopped being accepted, as an ISO 8601 timestamp. Set when a cancellation is requested on a bounty with work in flight, so in-flight submissions can resolve before the bounty cancels. `null` when submissions were never stopped — including completed bounties that simply filled every winner slot. */
+  /** When new submissions stopped being accepted, as an ISO 8601 timestamp. Set when a cancellation is requested on a bounty with work in flight, so in-flight submissions can resolve before the bounty cancels. `null` when submissions were never stopped -- including completed bounties that simply filled every winner slot. */
   submissions_closed_at: string | null;
   /** Short name of the task shown to workers. */
   title: string;
@@ -566,7 +566,7 @@ export interface CreateBountyRequest {
   capture_spec?: CreateBountyRequestCaptureSpec;
   /** Full task instructions shown to workers. */
   description: string;
-  /** Experience to host the bounty in (`exp_` tag). Any visibility — public for an open bounty, private for an invited one. Required unless account_id is set, in which case the bounty anchors in that account's public forum. */
+  /** Experience to host the bounty in (`exp_` tag). Any visibility -- public for an open bounty, private for an invited one. Required unless account_id is set, in which case the bounty anchors in that account's public forum. */
   experience_id?: string | null;
   /** How often the schedule creates a new bounty. Each occurrence is a separate bounty. Defaults to `once`; only applies with `publish_at`. */
   frequency?: CreateBountyRequestFrequency | (string & {});
@@ -634,7 +634,7 @@ export type BountySubmissionLivestreamFeedRecordingStatus =
 export const BountySubmissionLivestreamFeedRecordingStatus = S.String;
 
 export interface BountySubmissionLivestreamFeed {
-  /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live — a feed with a `started_at` and no `ended_at` is streaming right now. */
+  /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live -- a feed with a `started_at` and no `ended_at` is streaming right now. */
   ended_at: string | null;
   /** Livestream feed ID. */
   id: string;
@@ -838,7 +838,7 @@ export interface BountyListItem {
   currency: string;
   /** Full task instructions shown to workers. */
   description: string;
-  /** Experience the bounty's discussion thread lives in, prefixed `exp_`. Read this — not `experience_id` — to open the thread: a platform-wide bounty has no hosting experience of its own but its discussion still lives in one. */
+  /** Experience the bounty's discussion thread lives in, prefixed `exp_`. Read this -- not `experience_id` -- to open the thread: a platform-wide bounty has no hosting experience of its own but its discussion still lives in one. */
   discussion_experience_id: string | null;
   /** Forum feed containing the bounty's discussion thread. `null` for a bounty with no forum post. */
   discussion_feed_id: string | null;
@@ -848,29 +848,29 @@ export interface BountyListItem {
   experience_id: string | null;
   /** Account whose balance funds the bounty pool, or `null` when a user funds it personally. May differ from the account hosting `experience_id`. */
   funding_account: AccountSummary | null;
-  /** Gross amount paid out from the bounty pool across accepted submissions — worker payouts, platform fees, and affiliate shares together. Tips and reviewer rewards are excluded. */
+  /** Gross amount paid out from the bounty pool across accepted submissions -- worker payouts, platform fees, and affiliate shares together. Tips and reviewer rewards are excluded. */
   gross_paid_out_amount: number;
   /** Gross bounty-pool amount allocated per accepted submission, in whole currency units. */
   gross_reward_amount: number;
-  /** Account hosting the bounty's forum — the one whose `route` and `experience_id` address its discussion thread, and where its submissions dashboard lives. `null` for a platform-wide bounty with no host. May differ from `funding_account`. */
+  /** Account hosting the bounty's forum -- the one whose `route` and `experience_id` address its discussion thread, and where its submissions dashboard lives. `null` for a platform-wide bounty with no host. May differ from `funding_account`. */
   hosting_account: StorefrontAccount | null;
   /** Bounty ID, prefixed `bnty_`. */
   id: string;
-  /** Total verified footage a submission must accumulate before it can be submitted, in seconds. Always a whole number of hours. Present only on `data_capture` bounties — it is what `net_reward_amount` pays for, so rate displays divide by it. `null` for every other goal type. */
+  /** Total verified footage a submission must accumulate before it can be submitted, in seconds. Always a whole number of hours. Present only on `data_capture` bounties -- it is what `net_reward_amount` pays for, so rate displays divide by it. `null` for every other goal type. */
   min_total_verified_duration_seconds: number | null;
-  /** What a worker is quoted per accepted submission after the platform fee, in whole currency units. The exact post-fee figure, at the standard platform fee rate — a worker who locked a different rate, or who arrived through an affiliate link, is paid a different amount. */
+  /** What a worker is quoted per accepted submission after the platform fee, in whole currency units. The exact post-fee figure, at the standard platform fee rate -- a worker who locked a different rate, or who arrived through an affiliate link, is paid a different amount. */
   net_reward_amount: number;
-  /** User who posted the bounty — the account owner when created with an account API key. */
+  /** User who posted the bounty -- the account owner when created with an account API key. */
   poster: UserSummary;
   /** How often the schedule creates a new bounty. Each occurrence is a separate bounty; the original is not republished. */
   scheduled_frequency: BountyListItemScheduledFrequency | null;
   /** When a scheduled bounty will publish, as an ISO 8601 timestamp. `null` once published, for bounties that were never scheduled, and for terminally failed drafts parked for manual rescheduling. */
   scheduled_publish_at: string | null;
-  /** Unfilled winner capacity: `accepted_submissions_limit` minus `accepted_submissions_count`, clamped to zero. Not on its own a signal that the bounty accepts new claims — read `status` for that: only an `open` bounty takes new submissions. */
+  /** Unfilled winner capacity: `accepted_submissions_limit` minus `accepted_submissions_count`, clamped to zero. Not on its own a signal that the bounty accepts new claims -- read `status` for that: only an `open` bounty takes new submissions. */
   spots_remaining: number;
   /** Lifecycle state. `scheduled` bounties are unpublished drafts, visible to their poster and the account's authorized managers; `open` bounties accept new submissions; `closed` bounties are live but no longer accept new submissions; `completed` bounties paid out every winner slot; `canceled` bounties ended before filling their slots. */
   status: BountyListItemStatus;
-  /** When new submissions stopped being accepted, as an ISO 8601 timestamp. Set when a cancellation is requested on a bounty with work in flight, so in-flight submissions can resolve before the bounty cancels. `null` when submissions were never stopped — including completed bounties that simply filled every winner slot. */
+  /** When new submissions stopped being accepted, as an ISO 8601 timestamp. Set when a cancellation is requested on a bounty with work in flight, so in-flight submissions can resolve before the bounty cancels. `null` when submissions were never stopped -- including completed bounties that simply filled every winner slot. */
   submissions_closed_at: string | null;
   /** Short name of the task shown to workers. */
   title: string;
@@ -1113,7 +1113,7 @@ export const createBounty: API.OperationMethod<
 }));
 
 export type GetBountyError = NotFound | WhopOpError;
-/** Retrieve Bounty Retrieves a bounty by ID. Authentication is optional: a request with no credential reads the bounty when it is publicly visible — published or completed, and not restricted to a private experience's members. Bounties outside the caller's scope, and bounties not publicly visible to an anonymous caller, return `404`. */
+/** Retrieve Bounty Retrieves a bounty by ID. Authentication is optional: a request with no credential reads the bounty when it is publicly visible -- published or completed, and not restricted to a private experience's members. Bounties outside the caller's scope, and bounties not publicly visible to an anonymous caller, return `404`. */
 export const getBounty: API.OperationMethod<
   GetBountyRequest,
   Bounty,
@@ -1128,7 +1128,7 @@ export const getBounty: API.OperationMethod<
 }));
 
 export type GetPublicBountySubmissionError = NotFound | WhopOpError;
-/** Retrieve Public Submission Retrieves one of a bounty's publicly visible submissions in the reduced public shape — the read behind a shared proof link, whose submission is usually outside the bounty page's capped preview. Authentication is optional; a bounty that is not publicly visible, and a submission that is not publicly visible work on it, both return `404`. */
+/** Retrieve Public Submission Retrieves one of a bounty's publicly visible submissions in the reduced public shape -- the read behind a shared proof link, whose submission is usually outside the bounty page's capped preview. Authentication is optional; a bounty that is not publicly visible, and a submission that is not publicly visible work on it, both return `404`. */
 export const getPublicBountySubmission: API.OperationMethod<
   GetPublicBountySubmissionRequest,
   PublicBountySubmission,
@@ -1143,7 +1143,7 @@ export const getPublicBountySubmission: API.OperationMethod<
 }));
 
 export type ListBountiesError = BadRequest | Forbidden | WhopOpError;
-/** List Bounties Lists bounties visible to the credential — for an account API key, the account's bounties including scheduled drafts; for a user token, the bounties the user can see and work. */
+/** List Bounties Lists bounties visible to the credential -- for an account API key, the account's bounties including scheduled drafts; for a user token, the bounties the user can see and work. */
 export const listBounties: API.PaginatedOperationMethod<
   ListBountiesRequest,
   ListBountiesResponse,
@@ -1170,7 +1170,7 @@ export const listBounties: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListPublicBountySubmissionsError = BadRequest | NotFound | WhopOpError;
-/** List Public Submissions Lists a bounty's publicly visible work — submitted, approved, and denied submissions in the reduced public shape. Authentication is optional; a bounty that is not publicly visible returns `404`. */
+/** List Public Submissions Lists a bounty's publicly visible work -- submitted, approved, and denied submissions in the reduced public shape. Authentication is optional; a bounty that is not publicly visible returns `404`. */
 export const listPublicBountySubmissions: API.PaginatedOperationMethod<
   ListPublicBountySubmissionsRequest,
   ListPublicBountySubmissionsResponse,

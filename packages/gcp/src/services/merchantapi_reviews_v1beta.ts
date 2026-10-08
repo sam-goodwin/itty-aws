@@ -659,7 +659,7 @@ export interface ProductReview {
   name?: string;
   /** Output only. The primary data source of the product review. */
   dataSource?: string;
-  /** Required. The permanent, unique identifier for the product review in the publisher’s system. */
+  /** Required. The permanent, unique identifier for the product review in the publisher's system. */
   productReviewId?: string;
   /** Optional. A list of product review attributes. */
   productReviewAttributes?: ProductReviewAttributes;

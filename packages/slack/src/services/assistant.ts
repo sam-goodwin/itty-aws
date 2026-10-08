@@ -365,7 +365,7 @@ export const SearchContextResponseResults = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface SearchContextResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const SearchContextResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -513,7 +513,7 @@ export const SetTitleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetTitleResponse" }) as any as S.Schema<SetTitleResponse>;
 
 export type SearchContextError = SlackOpError;
-/** Searches messages, files, channels and users across your Slack organization. Required scopes — user: `search:read.public`, `search:read.private`, `search:read.im`, `search:read.mpim`, `search:read.files`, `search:read.users`; bot: `search:read.public`, `search:read.files`, `search:read.users` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — Internal error. - `rate_limited` — Rate limited. - `missing_query` — Missing query. - `query_too_long` — Query too long. - `feature_not_enabled` — The feature is not available on the current workspace. - `invalid_action_token` — The `action_token` provided is not valid. - `invalid_cursor` — The cursormark provided is not valid. - `context_channel_not_found` — Specified `context_channel_id` is invalid or the user lacks permission to view it. - `missing_scope` — The requested channel types are not allowed by the provided scopes. - `assistant_search_context_disabled` — We're having issues returning your search results. Please wait and try again. See https://docs.slack.dev/reference/methods/assistant.search.context */
+/** Searches messages, files, channels and users across your Slack organization. Required scopes -- user: `search:read.public`, `search:read.private`, `search:read.im`, `search:read.mpim`, `search:read.files`, `search:read.users`; bot: `search:read.public`, `search:read.files`, `search:read.users` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error. - `rate_limited` -- Rate limited. - `missing_query` -- Missing query. - `query_too_long` -- Query too long. - `feature_not_enabled` -- The feature is not available on the current workspace. - `invalid_action_token` -- The `action_token` provided is not valid. - `invalid_cursor` -- The cursormark provided is not valid. - `context_channel_not_found` -- Specified `context_channel_id` is invalid or the user lacks permission to view it. - `missing_scope` -- The requested channel types are not allowed by the provided scopes. - `assistant_search_context_disabled` -- We're having issues returning your search results. Please wait and try again. See https://docs.slack.dev/reference/methods/assistant.search.context */
 export const searchContext: API.OperationMethod<
   SearchContextRequest,
   SearchContextResponse,
@@ -528,7 +528,7 @@ export const searchContext: API.OperationMethod<
 }));
 
 export type SearchInfoError = SlackOpError;
-/** Returns search capabilities on a given team. Required scopes — user: `search:read.public`; bot: `search:read.public` Rate limit tier: 2 See https://docs.slack.dev/reference/methods/assistant.search.info */
+/** Returns search capabilities on a given team. Required scopes -- user: `search:read.public`; bot: `search:read.public` Rate limit tier: 2 See https://docs.slack.dev/reference/methods/assistant.search.info */
 export const searchInfo: API.OperationMethod<
   SearchInfoRequest,
   SearchInfoResponse,
@@ -543,7 +543,7 @@ export const searchInfo: API.OperationMethod<
 }));
 
 export type SetStatusError = SlackOpError;
-/** Set the status for an AI assistant thread. Required scopes — bot: `chat:write` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `channel_not_found` — Error returned when given an invalid channel_id - `invalid_thread_ts` — Error returned when given an invalid thread_ts - `reserved_username` — Reserved usernames are not allowed to be used. - `method_not_supported_for_channel_type` — This type of conversation cannot be used with this method. Use `agents.sessions.setStatus` to set status in a session channel. See https://docs.slack.dev/reference/methods/assistant.threads.setStatus */
+/** Set the status for an AI assistant thread. Required scopes -- bot: `chat:write` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `channel_not_found` -- Error returned when given an invalid channel_id - `invalid_thread_ts` -- Error returned when given an invalid thread_ts - `reserved_username` -- Reserved usernames are not allowed to be used. - `method_not_supported_for_channel_type` -- This type of conversation cannot be used with this method. Use `agents.sessions.setStatus` to set status in a session channel. See https://docs.slack.dev/reference/methods/assistant.threads.setStatus */
 export const setStatus: API.OperationMethod<
   SetStatusRequest,
   SetStatusResponse,
@@ -558,7 +558,7 @@ export const setStatus: API.OperationMethod<
 }));
 
 export type SetSuggestedPromptsError = SlackOpError;
-/** Set suggested prompts for the given assistant thread Required scopes — bot: `assistant:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `invalid_thread_ts` — Thread not found - `missing_thread_ts` — Missing thread_ts - `channel_not_found` — Error returned when given an invalid channel_id - `message_not_found` — Error returned when given an invalid message - `not_agent_app` — This method requires the app to be configured as an agent. Enable the Agent feature in your app configuration at https://api.slack.com/apps. - `static_prompts_configured` — Suggested prompts can't be set dynamically without thread_ts because the app already has static suggested prompts configured. Remove the static prompts in your app configuration to set them via this method without thread_ts. See https://docs.slack.dev/reference/methods/assistant.threads.setSuggestedPrompts */
+/** Set suggested prompts for the given assistant thread Required scopes -- bot: `assistant:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `invalid_thread_ts` -- Thread not found - `missing_thread_ts` -- Missing thread_ts - `channel_not_found` -- Error returned when given an invalid channel_id - `message_not_found` -- Error returned when given an invalid message - `not_agent_app` -- This method requires the app to be configured as an agent. Enable the Agent feature in your app configuration at https://api.slack.com/apps. - `static_prompts_configured` -- Suggested prompts can't be set dynamically without thread_ts because the app already has static suggested prompts configured. Remove the static prompts in your app configuration to set them via this method without thread_ts. See https://docs.slack.dev/reference/methods/assistant.threads.setSuggestedPrompts */
 export const setSuggestedPrompts: API.OperationMethod<
   SetSuggestedPromptsRequest,
   SetSuggestedPromptsResponse,
@@ -573,7 +573,7 @@ export const setSuggestedPrompts: API.OperationMethod<
 }));
 
 export type SetTitleError = SlackOpError;
-/** Set the title for the given assistant thread Required scopes — bot: `assistant:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `invalid_thread_ts` — Thread not found - `channel_not_found` — Error returned when given an invalid channel_id See https://docs.slack.dev/reference/methods/assistant.threads.setTitle */
+/** Set the title for the given assistant thread Required scopes -- bot: `assistant:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `invalid_thread_ts` -- Thread not found - `channel_not_found` -- Error returned when given an invalid channel_id See https://docs.slack.dev/reference/methods/assistant.threads.setTitle */
 export const setTitle: API.OperationMethod<
   SetTitleRequest,
   SetTitleResponse,

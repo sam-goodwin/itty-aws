@@ -174,7 +174,7 @@ export const DiagnosticRemediationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DiagnosticRemediationRecordsList>;
 
 export interface DiagnosticRemediation {
-  /** Category of fix. dns: customer must change DNS records. config: customer must adjust their server config (e.g. allow port 80). wait: no action — the system will resolve on its own. retry: hit Retry. * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
+  /** Category of fix. dns: customer must change DNS records. config: customer must adjust their server config (e.g. allow port 80). wait: no action -- the system will resolve on its own. retry: hit Retry. * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
   type: DiagnosticRemediationTypeEnum;
   /** One-line, action-oriented summary of what to do. */
   summary: string;

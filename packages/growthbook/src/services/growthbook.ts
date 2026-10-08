@@ -229,7 +229,7 @@ export const RampScheduleStartActionsItemPatchEnvironmentsList = /*@__PURE__*/ S
 
 export interface RampScheduleStartActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: RampScheduleStartActionsItemPatchSavedGroupsList | null;
@@ -344,7 +344,7 @@ export const RampScheduleStepsItemActionsItemPatchEnvironmentsList = /*@__PURE__
 
 export interface RampScheduleStepsItemActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: RampScheduleStepsItemActionsItemPatchSavedGroupsList | null;
@@ -461,7 +461,7 @@ export const RampScheduleEndActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.A
 
 export interface RampScheduleEndActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: RampScheduleEndActionsItemPatchSavedGroupsList | null;
@@ -707,7 +707,7 @@ export interface RampSchedule {
   currentStepEnteredAt?: string | null;
   /** Approval record for the current step. Valid only while `stepApproval.stepIndex === currentStepIndex`. */
   stepApproval?: RampScheduleStepApproval | null;
-  /** Computed at read time: whether a human approval is the gate blocking the schedule right now — either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
+  /** Computed at read time: whether a human approval is the gate blocking the schedule right now -- either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
   awaitingApproval: boolean;
   /** When the monitored section most recently started (first monitored step entered). Used for no-traffic grace period gating. */
   monitoringStartDate?: string | null;
@@ -855,7 +855,7 @@ export const AppendAutoRunArtifactResponseSource = S.String;
 export type MetadataValue = string | number | boolean;
 export const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
 
-/** What the wizard learned about the environment it ran in — language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
+/** What the wizard learned about the environment it ran in -- language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
 export type Metadata = { [key: string]: MetadataValue | null | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -980,7 +980,7 @@ export const ApproveStepRampScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApproveStepRampScheduleResponse",
 }) as any as S.Schema<ApproveStepRampScheduleResponse>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type ArchiveConfigRequestIgnoreWarnings = string | boolean;
 export const ArchiveConfigRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<ArchiveConfigRequestIgnoreWarnings>;
@@ -988,7 +988,7 @@ export const ArchiveConfigRequestIgnoreWarnings =
 export interface ArchiveConfigRequest {
   /** The key of the config */
   key: string;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: ArchiveConfigRequestIgnoreWarnings;
   /** Set to true to publish despite schema validation errors, failed invariants, or schema changes that invalidate dependent resources. This does not bypass a rejected Custom Hook; use `skipHooks` for that. The caller must have Bypass draft approvals access for Feature Flags, Configs, and Constants in every Project. Otherwise, this field is ignored. */
   skipSchemaValidation?: boolean;
@@ -1004,13 +1004,13 @@ export const ArchiveConfigRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/v1/configs/{key}/archive", code: 200 })),
 ).annotate({ identifier: "ArchiveConfigRequest" }) as any as S.Schema<ArchiveConfigRequest>;
 
-/** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; this config's own keys win last). Like `parent`, set via this field — never via a `@config:` entry in `value`. */
+/** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; this config's own keys win last). Like `parent`, set via this field -- never via a `@config:` entry in `value`. */
 export type ConfigExtendsList = Array<string>;
 export const ConfigExtendsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigExtendsList>;
 
-/** This config's own base value as a JSON object (its declared fields only — inherited fields are layered in at resolution time, not stored here). Per-environment/project variants are expressed via `scopedOverrides`, not here. */
+/** This config's own base value as a JSON object (its declared fields only -- inherited fields are layered in at resolution time, not stored here). Per-environment/project variants are expressed via `scopedOverrides`, not here. */
 export type ConfigValueMap = { [key: string]: unknown | undefined };
 export const ConfigValueMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1047,7 +1047,7 @@ export const ConfigScopedOverridesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigScopedOverridesItem",
 }) as any as S.Schema<ConfigScopedOverridesItem>;
 
-/** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches — resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
+/** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches -- resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
 export type ConfigScopedOverridesList = Array<ConfigScopedOverridesItem>;
 export const ConfigScopedOverridesList = /*@__PURE__*/ S.Array(
   ConfigScopedOverridesItem,
@@ -1065,7 +1065,7 @@ export const ConfigScopedConfigProjectsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigScopedConfigProjectsList>;
 
-/** Present ONLY when this config is an environment/project-scoped override (a "flavor") of another config. Its value is a patch that applies solely within the listed environments/projects, layered onto `parent` at resolution — it is NOT a standalone config. A plain config (including an ordinary child that just inherits from a `parent`) omits this field entirely. Read-only: create/change the relationship via the parent config's `scopedOverrides`, never by setting this directly. */
+/** Present ONLY when this config is an environment/project-scoped override (a "flavor") of another config. Its value is a patch that applies solely within the listed environments/projects, layered onto `parent` at resolution -- it is NOT a standalone config. A plain config (including an ordinary child that just inherits from a `parent`) omits this field entirely. Read-only: create/change the relationship via the parent config's `scopedOverrides`, never by setting this directly. */
 export interface ConfigScopedConfig {
   /** The base config this one is a scoped override of. */
   parent: string;
@@ -1131,7 +1131,7 @@ export const ConfigInvariantsList = /*@__PURE__*/ S.Array(
   ConfigInvariantsItem,
 ) as any as S.Schema<ConfigInvariantsList>;
 
-/** The pinned published revision (present only when `locked`). Fetch it via `GET /configs-revisions/:key/:version` for a value guaranteed not to disappear or mutate — use it to pin reproducible builds. */
+/** The pinned published revision (present only when `locked`). Fetch it via `GET /configs-revisions/:key/:version` for a value guaranteed not to disappear or mutate -- use it to pin reproducible builds. */
 export interface ConfigLockedRevision {
   id: string;
   version: number;
@@ -1152,15 +1152,15 @@ export interface Config {
   owner?: string;
   /** The email address of the owner, when the owner can be resolved to a known user. */
   ownerEmail?: string;
-  /** The `key` of the config this one inherits from (lineage parent — the primary spine). Synthesized into `$extends` at resolution time and never stored in `value`. */
+  /** The `key` of the config this one inherits from (lineage parent -- the primary spine). Synthesized into `$extends` at resolution time and never stored in `value`. */
   parent?: string;
-  /** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; this config's own keys win last). Like `parent`, set via this field — never via a `@config:` entry in `value`. */
+  /** Additional composition bases (config `key`s) layered on top of `parent`, in precedence order (later overrides earlier; all override `parent`; this config's own keys win last). Like `parent`, set via this field -- never via a `@config:` entry in `value`. */
   extends?: ConfigExtendsList;
-  /** This config's own base value as a JSON object (its declared fields only — inherited fields are layered in at resolution time, not stored here). Per-environment/project variants are expressed via `scopedOverrides`, not here. */
+  /** This config's own base value as a JSON object (its declared fields only -- inherited fields are layered in at resolution time, not stored here). Per-environment/project variants are expressed via `scopedOverrides`, not here. */
   value?: ConfigValueMap;
-  /** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches — resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
+  /** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches -- resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
   scopedOverrides?: ConfigScopedOverridesList;
-  /** Present ONLY when this config is an environment/project-scoped override (a "flavor") of another config. Its value is a patch that applies solely within the listed environments/projects, layered onto `parent` at resolution — it is NOT a standalone config. A plain config (including an ordinary child that just inherits from a `parent`) omits this field entirely. Read-only: create/change the relationship via the parent config's `scopedOverrides`, never by setting this directly. */
+  /** Present ONLY when this config is an environment/project-scoped override (a "flavor") of another config. Its value is a patch that applies solely within the listed environments/projects, layered onto `parent` at resolution -- it is NOT a standalone config. A plain config (including an ordinary child that just inherits from a `parent`) omits this field entirely. Read-only: create/change the relationship via the parent config's `scopedOverrides`, never by setting this directly. */
   scopedConfig?: ConfigScopedConfig;
   description?: string;
   /** The project this config belongs to (empty = all projects) */
@@ -1176,7 +1176,7 @@ export interface Config {
   locked?: boolean;
   /** Whether the experiment guard is enabled. When enabled, publishing a value used by a running experiment returns a warning that must be acknowledged with `ignoreWarnings: true`. Disabling the guard requires Bypass draft approvals access. */
   experimentGuard?: boolean;
-  /** The pinned published revision (present only when `locked`). Fetch it via `GET /configs-revisions/:key/:version` for a value guaranteed not to disappear or mutate — use it to pin reproducible builds. */
+  /** The pinned published revision (present only when `locked`). Fetch it via `GET /configs-revisions/:key/:version` for a value guaranteed not to disappear or mutate -- use it to pin reproducible builds. */
   lockedRevision?: ConfigLockedRevision;
   /** Id of the user who locked the config (when `locked`). */
   lockedBy?: string;
@@ -1278,7 +1278,7 @@ export const ArchiveConstantRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConstantType = "string" | "json";
 export const ConstantType = S.String;
 
-/** Per-environment value overrides (environment id → value). Falls back to `value` when an environment is absent. */
+/** Per-environment value overrides (environment id -> value). Falls back to `value` when an environment is absent. */
 export type ConstantEnvironmentValuesMap = { [key: string]: string | undefined };
 export const ConstantEnvironmentValuesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1297,7 +1297,7 @@ export interface Constant {
   ownerEmail?: string;
   /** The default value (raw string for `string` constants, JSON-encoded for `json` constants) */
   value?: string;
-  /** Per-environment value overrides (environment id → value). Falls back to `value` when an environment is absent. */
+  /** Per-environment value overrides (environment id -> value). Falls back to `value` when an environment is absent. */
   environmentValues?: ConstantEnvironmentValuesMap;
   description?: string;
   /** The project this constant belongs to (empty = all projects) */
@@ -2042,7 +2042,7 @@ export const AutoRunSource = S.String;
 export type AutoRunMetadataValue = string | number | boolean;
 export const AutoRunMetadataValue = S.Unknown as any as S.Schema<AutoRunMetadataValue>;
 
-/** What the wizard learned about the environment it ran in — language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
+/** What the wizard learned about the environment it ran in -- language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
 export type AutoRunMetadataMap = { [key: string]: AutoRunMetadataValue | null | undefined };
 export const AutoRunMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2104,7 +2104,7 @@ export interface AutoRun {
   agent: string | null;
   /** Id of the user who ran the wizard */
   createdBy: string | null;
-  /** What the wizard learned about the environment it ran in — language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
+  /** What the wizard learned about the environment it ran in -- language, packageManager, framework, versions. Open by design; do not rely on any single key being present */
   metadata: AutoRunMetadataMap;
   artifacts: AutoRunArtifactsList;
   checks: AutoRunChecksList;
@@ -2307,7 +2307,7 @@ export interface FactTableColumnInput {
   autoSlices?: FactTableColumnInputAutoSlicesList;
   /** Locked slices that are protected from automatic updates. These will always be included in the slice levels even if they're not in the top values query results. */
   lockedAutoSlices?: FactTableColumnInputLockedAutoSlicesList;
-  /** Whether this is a virtual (computed) column defined by a SQL expression rather than detected from the fact table SQL. Can be set when creating a column, but a column's origin cannot be changed afterwards — sending a value that contradicts an existing column is rejected. */
+  /** Whether this is a virtual (computed) column defined by a SQL expression rather than detected from the fact table SQL. Can be set when creating a column, but a column's origin cannot be changed afterwards -- sending a value that contradicts an existing column is rejected. */
   isVirtual?: boolean;
   /** For virtual columns, the SQL expression that computes the column value. Only valid on a virtual column; when omitted from an update, the existing expression is preserved. */
   sql?: string;
@@ -3317,12 +3317,12 @@ export const CreateCodeRefResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateCodeRefResponse" }) as any as S.Schema<CreateCodeRefResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type CreateConfigRequestSkipSchemaValidation = string | boolean;
 export const CreateConfigRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<CreateConfigRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type CreateConfigRequestIgnoreWarnings = string | boolean;
 export const CreateConfigRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<CreateConfigRequestIgnoreWarnings>;
@@ -3370,7 +3370,7 @@ export const CreateConfigRequestScopedOverridesItem = /*@__PURE__*/ S.suspend(()
   identifier: "CreateConfigRequestScopedOverridesItem",
 }) as any as S.Schema<CreateConfigRequestScopedOverridesItem>;
 
-/** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches — resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
+/** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches -- resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
 export type CreateConfigRequestScopedOverridesList = Array<CreateConfigRequestScopedOverridesItem>;
 export const CreateConfigRequestScopedOverridesList = /*@__PURE__*/ S.Array(
   CreateConfigRequestScopedOverridesItem,
@@ -3397,7 +3397,7 @@ export const ConfigSchemaSourceCase0 = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigSchemaSourceCase1 {
   type: string;
-  /** TypeScript source — an interface or object type. */
+  /** TypeScript source -- an interface or object type. */
   value: string;
 }
 export const ConfigSchemaSourceCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -3409,7 +3409,7 @@ export const ConfigSchemaSourceCase1 = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigSchemaSourceCase2 {
   type: string;
-  /** Protobuf (proto3) source — a `message` definition. */
+  /** Protobuf (proto3) source -- a `message` definition. */
   value: string;
 }
 export const ConfigSchemaSourceCase2 = /*@__PURE__*/ S.suspend(() =>
@@ -3421,7 +3421,7 @@ export const ConfigSchemaSourceCase2 = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigSchemaSourceCase3 {
   type: string;
-  /** Python source — a Pydantic `BaseModel` class. */
+  /** Python source -- a Pydantic `BaseModel` class. */
   value: string;
 }
 export const ConfigSchemaSourceCase3 = /*@__PURE__*/ S.suspend(() =>
@@ -3433,7 +3433,7 @@ export const ConfigSchemaSourceCase3 = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigSchemaSourceCase4 {
   type: string;
-  /** Go source — a `struct` definition. */
+  /** Go source -- a `struct` definition. */
   value: string;
 }
 export const ConfigSchemaSourceCase4 = /*@__PURE__*/ S.suspend(() =>
@@ -3445,7 +3445,7 @@ export const ConfigSchemaSourceCase4 = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigSchemaSourceCase5 {
   type: string;
-  /** Rust source — a serde `struct` definition. */
+  /** Rust source -- a serde `struct` definition. */
   value: string;
 }
 export const ConfigSchemaSourceCase5 = /*@__PURE__*/ S.suspend(() =>
@@ -3464,7 +3464,7 @@ export type ConfigSchemaSource =
   | ConfigSchemaSourceCase5;
 export const ConfigSchemaSource = S.Unknown as any as S.Schema<ConfigSchemaSource>;
 
-/** The rule expression, as a mongo condition (mongrule) — the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
+/** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
 export type CreateConfigRequestInvariantsItemRuleMap = { [key: string]: unknown | undefined };
 export const CreateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3473,9 +3473,9 @@ export const CreateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
 
 export interface CreateConfigRequestInvariantsItem {
   name: string;
-  /** The rule expression, as a mongo condition (mongrule) — the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
+  /** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
   rule: CreateConfigRequestInvariantsItemRuleMap;
-  /** Shown to editors when the rule is violated. Optional — defaults to a generic message naming the rule. */
+  /** Shown to editors when the rule is violated. Optional -- defaults to a generic message naming the rule. */
   message?: string;
 }
 export const CreateConfigRequestInvariantsItem = /*@__PURE__*/ S.suspend(() =>
@@ -3495,9 +3495,9 @@ export const CreateConfigRequestInvariantsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateConfigRequestInvariantsList>;
 
 export interface CreateConfigRequest {
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: CreateConfigRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: CreateConfigRequestIgnoreWarnings;
   /** Stable reference handle (lowercase slug, unique per org), referenced as `@config:key` */
   key: string;
@@ -3509,13 +3509,13 @@ export interface CreateConfigRequest {
   extends?: CreateConfigRequestExtendsList;
   /** This config's base value as a JSON object. Per-environment/project variants are expressed via `scopedOverrides`. */
   value?: CreateConfigRequestValueMap;
-  /** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches — resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
+  /** Ordered, first-match-wins environment/project-scoped variant selection. Each entry points at a flavor config (a child config, by `key`) whose value is deep-merged onto this config's resolved value when the (environment, project) scope matches -- resolved at build time, per layer. This is how you create an environment-scoped override (as opposed to a plain child config): make a child config for the override value, then add it here with its scope. Send the complete list to replace it; an empty array clears all overrides. Entries must reference existing configs, may not reference this config itself, and may not be unreachable (fully subsumed by an earlier entry). */
   scopedOverrides?: CreateConfigRequestScopedOverridesList;
   description?: string;
   project?: string;
   /** The userId or email address of the owner. If an email address is provided, it will be used to look up the userId of the matching organization member. If an ID is provided, it will be validated as existing in the organization. When omitted, it defaults to the user associated with the request's Personal Access Token (PAT), if one is being used. */
   owner?: string;
-  /** Field definitions for this config, as a JSON Schema document (`{ type: "json-schema", value }`) or typed-code source (`{ type: "typescript" | "protobuf" | "python" | "go" | "rust", value }`) — converted server-side in one call. Fields whose key an ancestor (via `parent`/`extends`) already owns follow "base wins": an identical re-declaration is stripped with a `redundant-declaration` warning; one with a differing definition is rejected. A field owned by two sibling bases is a conflict and is rejected. Omit to leave the config schema-less. Conversion warnings are returned in `warnings`. */
+  /** Field definitions for this config, as a JSON Schema document (`{ type: "json-schema", value }`) or typed-code source (`{ type: "typescript" | "protobuf" | "python" | "go" | "rust", value }`) -- converted server-side in one call. Fields whose key an ancestor (via `parent`/`extends`) already owns follow "base wins": an identical re-declaration is stripped with a `redundant-declaration` warning; one with a differing definition is rejected. A field owned by two sibling bases is a conflict and is rejected. Omit to leave the config schema-less. Conversion warnings are returned in `warnings`. */
   schema?: ConfigSchemaSource;
   /** Optional identifier of the consuming codebase/service. When a typed-code schema (`typescript`/`protobuf`/`python`/`go`/`rust`) is supplied, its named-type structure is captured under this source so `GET /configs/:key/schema?source=<id>&format=<lang>` can reproduce those names. */
   source?: string;
@@ -3917,12 +3917,12 @@ export const CreateConfigRevisionDiscardResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConfigRevisionDiscardResponse",
 }) as any as S.Schema<CreateConfigRevisionDiscardResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type CreateConfigRevisionPublishRequestSkipSchemaValidation = string | boolean;
 export const CreateConfigRevisionPublishRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<CreateConfigRevisionPublishRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type CreateConfigRevisionPublishRequestIgnoreWarnings = string | boolean;
 export const CreateConfigRevisionPublishRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<CreateConfigRevisionPublishRequestIgnoreWarnings>;
@@ -3930,9 +3930,9 @@ export const CreateConfigRevisionPublishRequestIgnoreWarnings =
 export interface CreateConfigRevisionPublishRequest {
   key: string;
   version: number;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: CreateConfigRevisionPublishRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: CreateConfigRevisionPublishRequestIgnoreWarnings;
   /** Deprecated and ignored. Approval is bypassed automatically when the caller has Bypass draft approvals access for this resource or when the organization enables the REST API approval bypass. Otherwise, the revision must be approved before it can be published. */
   bypassApproval?: boolean;
@@ -4135,12 +4135,12 @@ export const CreateConfigRevisionRequestReviewResponse = /*@__PURE__*/ S.suspend
   identifier: "CreateConfigRevisionRequestReviewResponse",
 }) as any as S.Schema<CreateConfigRevisionRequestReviewResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type CreateConfigRevisionRevertRequestSkipSchemaValidation = string | boolean;
 export const CreateConfigRevisionRevertRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<CreateConfigRevisionRevertRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type CreateConfigRevisionRevertRequestIgnoreWarnings = string | boolean;
 export const CreateConfigRevisionRevertRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<CreateConfigRevisionRevertRequestIgnoreWarnings>;
@@ -4152,9 +4152,9 @@ export const CreateConfigRevisionRevertRequestStrategy = S.String;
 export interface CreateConfigRevisionRevertRequest {
   key: string;
   version: number;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: CreateConfigRevisionRevertRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: CreateConfigRevisionRevertRequestIgnoreWarnings;
   /** Whether to stage the revert as a draft or publish it immediately. Defaults to `draft`, or to `publish` when the org enables 'reverts bypass approval'. */
   strategy?: CreateConfigRevisionRevertRequestStrategy | (string & {});
@@ -13864,7 +13864,7 @@ export const CreateExperimentRequestPhasesItemSavedGroupTargetingItem = /*@__PUR
   identifier: "CreateExperimentRequestPhasesItemSavedGroupTargetingItem",
 }) as any as S.Schema<CreateExperimentRequestPhasesItemSavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type CreateExperimentRequestPhasesItemSavedGroupTargetingList =
   Array<CreateExperimentRequestPhasesItemSavedGroupTargetingItem>;
 export const CreateExperimentRequestPhasesItemSavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -13905,7 +13905,7 @@ export interface CreateExperimentRequestPhasesItem {
   /** Targeting condition as a JSON string. Mirrors the GET response. */
   targetingCondition?: string;
   savedGroups?: CreateExperimentRequestPhasesItemSavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: CreateExperimentRequestPhasesItemSavedGroupTargetingList;
   /** Deprecated: use `trafficSplit`. Takes precedence if set. */
   variationWeights?: CreateExperimentRequestPhasesItemVariationWeightsList;
@@ -14190,7 +14190,7 @@ export interface CreateExperimentRequest {
   autoRefresh?: boolean;
   hashAttribute?: string;
   fallbackAttribute?: string;
-  /** Picker preference: show attributes from all projects in this experiment's targeting UI instead of only those in scope for its project and linked features. Does not loosen enforcement — when the organization requires registered attributes with project scoping, out-of-scope attributes are still rejected. */
+  /** Picker preference: show attributes from all projects in this experiment's targeting UI instead of only those in scope for its project and linked features. Does not loosen enforcement -- when the organization requires registered attributes with project scoping, out-of-scope attributes are still rejected. */
   attributeScopeAllProjects?: boolean;
   hashVersion?: number;
   /** When true, disables Sticky Bucketing for this experiment. If omitted, defaults to your organization's Sticky Bucketing setting for new experiments. Sticky Bucketing only takes effect when it is also enabled at the organization level. */
@@ -15523,7 +15523,7 @@ export interface ChecklistItems {
   status: ChecklistItemsStatus;
   manual: boolean;
   reason: string;
-  /** When true, this item cannot be bypassed with `skipChecklist` — the experiment cannot be started until it is resolved. */
+  /** When true, this item cannot be bypassed with `skipChecklist` -- the experiment cannot be started until it is resolved. */
   hardBlock?: boolean;
 }
 export const ChecklistItems = /*@__PURE__*/ S.suspend(() =>
@@ -16296,7 +16296,7 @@ export interface FactTableColumn {
   autoSlices?: FactTableColumnAutoSlicesList;
   /** Locked slices that are protected from automatic updates. These will always be included in the slice levels even if they're not in the top values query results. */
   lockedAutoSlices?: FactTableColumnLockedAutoSlicesList;
-  /** Whether this is a virtual (computed) column defined by a SQL expression rather than detected from the fact table SQL. Can be set when creating a column, but a column's origin cannot be changed afterwards — sending a value that contradicts an existing column is rejected. */
+  /** Whether this is a virtual (computed) column defined by a SQL expression rather than detected from the fact table SQL. Can be set when creating a column, but a column's origin cannot be changed afterwards -- sending a value that contradicts an existing column is rejected. */
   isVirtual?: boolean;
   /** For virtual columns, the SQL expression that computes the column value. Only valid on a virtual column; when omitted from an update, the existing expression is preserved. */
   sql?: string;
@@ -16951,7 +16951,7 @@ export interface CreateLearningRequest {
   supportingExperimentIds?: CreateLearningRequestSupportingExperimentIdsList;
   contradictingExperimentIds?: CreateLearningRequestContradictingExperimentIdsList;
   projects?: CreateLearningRequestProjectsList;
-  /** ID of a learning status configured at the org level (Settings → General → Experiment Settings). Omit or pass an empty string for no status. */
+  /** ID of a learning status configured at the org level (Settings -> General -> Experiment Settings). Omit or pass an empty string for no status. */
   status?: string;
   /** The userId or email address of the owner. If an email address is provided, it will be used to look up the userId of the matching organization member. If an ID is provided, it will be validated as existing in the organization. */
   owner?: string;
@@ -17439,7 +17439,7 @@ export const CreateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList 
 
 export interface CreateRampScheduleRequestStepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: CreateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsList | null;
@@ -17571,7 +17571,7 @@ export const CreateRampScheduleRequestStartActionsItemPatchEnvironmentsList = /*
 
 export interface CreateRampScheduleRequestStartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: CreateRampScheduleRequestStartActionsItemPatchSavedGroupsList | null;
@@ -17684,7 +17684,7 @@ export const CreateRampScheduleRequestEndActionsItemPatchEnvironmentsList = /*@_
 
 export interface CreateRampScheduleRequestEndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: CreateRampScheduleRequestEndActionsItemPatchSavedGroupsList | null;
@@ -17936,7 +17936,7 @@ export const CreateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironme
 
 export interface CreateRampScheduleTemplateRequestStepsItemActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: CreateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsList | null;
@@ -18258,7 +18258,7 @@ export const RampScheduleTemplateStepsItemActionsItemPatchEnvironmentsList = /*@
 
 export interface RampScheduleTemplateStepsItemActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: RampScheduleTemplateStepsItemActionsItemPatchSavedGroupsList | null;
@@ -18585,7 +18585,7 @@ export const RevisionIdRefEntityType = S.String;
 
 export interface RevisionIdRef {
   entityType: RevisionIdRefEntityType | (string & {});
-  /** A revision id from this API or the revision webhooks (`rev_…` / `frev_…`). Alternative to identifier + version. */
+  /** A revision id from this API or the revision webhooks (`rev_...` / `frev_...`). Alternative to identifier + version. */
   revisionId: string;
 }
 export const RevisionIdRef = /*@__PURE__*/ S.suspend(() =>
@@ -18622,7 +18622,7 @@ export interface CreateReleasePublishRevisionRequest {
   skipSchemaValidation?: boolean;
   /** Set to true to publish despite Custom Hook rejections. The caller must have Bypass draft approvals access for Feature Flags, Configs, and Constants in every Project. */
   skipHooks?: boolean;
-  /** An optional publish comment recorded on every revision in this release — it appears in each entity's revision history and is passed to any custom validation hooks that run for the publish. */
+  /** An optional publish comment recorded on every revision in this release -- it appears in each entity's revision history and is passed to any custom validation hooks that run for the publish. */
   comment?: string;
 }
 export const CreateReleasePublishRevisionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -18649,7 +18649,7 @@ export interface Results {
   /** The identifier used in the request. */
   id: string;
   version: number;
-  /** The revision's id (`rev_…` or `frev_…`). */
+  /** The revision's id (`rev_...` or `frev_...`). */
   revisionId: string;
   status: ResultsStatus;
 }
@@ -18721,7 +18721,7 @@ export const Gates = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Gates" }) as any as S.Schema<Gates>;
 
-/** Dry runs report every gate, cleared and blocking. Real publishes return an empty list — blocking gates fail with a 422 instead. */
+/** Dry runs report every gate, cleared and blocking. Real publishes return an empty list -- blocking gates fail with a 422 instead. */
 export type CreateReleasePublishRevisionResponseGatesList = Array<Gates>;
 export const CreateReleasePublishRevisionResponseGatesList = /*@__PURE__*/ S.Array(
   Gates,
@@ -18754,7 +18754,7 @@ export const CreateReleasePublishRevisionResponseBypassedGatesItem = /*@__PURE__
   identifier: "CreateReleasePublishRevisionResponseBypassedGatesItem",
 }) as any as S.Schema<CreateReleasePublishRevisionResponseBypassedGatesItem>;
 
-/** Gates bypassed by the caller's flags or authority — what this publish overrode. */
+/** Gates bypassed by the caller's flags or authority -- what this publish overrode. */
 export type CreateReleasePublishRevisionResponseBypassedGatesList =
   Array<CreateReleasePublishRevisionResponseBypassedGatesItem>;
 export const CreateReleasePublishRevisionResponseBypassedGatesList = /*@__PURE__*/ S.Array(
@@ -18768,12 +18768,12 @@ export const CreateReleasePublishRevisionResponseWarningsList = /*@__PURE__*/ S.
 
 export interface CreateReleasePublishRevisionResponse {
   dryRun: boolean;
-  /** Correlation token (`pub_…`) stamped on every event this publish emitted. Absent on dry runs. */
+  /** Correlation token (`pub_...`) stamped on every event this publish emitted. Absent on dry runs. */
   bulkPublishId?: string;
   results: CreateReleasePublishRevisionResponseResultsList;
-  /** Dry runs report every gate, cleared and blocking. Real publishes return an empty list — blocking gates fail with a 422 instead. */
+  /** Dry runs report every gate, cleared and blocking. Real publishes return an empty list -- blocking gates fail with a 422 instead. */
   gates: CreateReleasePublishRevisionResponseGatesList;
-  /** Gates bypassed by the caller's flags or authority — what this publish overrode. */
+  /** Gates bypassed by the caller's flags or authority -- what this publish overrode. */
   bypassedGates: CreateReleasePublishRevisionResponseBypassedGatesList;
   warnings: CreateReleasePublishRevisionResponseWarningsList;
 }
@@ -19038,7 +19038,7 @@ export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReportType = "experiment-snapshot" | "experiment";
 export const ReportType = S.String;
 
-/** UI lifecycle marker. Note: this does NOT control public shareability — see `shareLevel` for visibility controls. */
+/** UI lifecycle marker. Note: this does NOT control public shareability -- see `shareLevel` for visibility controls. */
 export type ReportStatus = "published" | "private";
 export const ReportStatus = S.String;
 
@@ -19274,7 +19274,7 @@ export interface ReportExperimentMetadataVariationsItem {
   id: string;
   name: string;
   key: string;
-  /** Traffic weight (0–1) */
+  /** Traffic weight (0-1) */
   weight: number;
 }
 export const ReportExperimentMetadataVariationsItem = /*@__PURE__*/ S.suspend(() =>
@@ -19288,7 +19288,7 @@ export const ReportExperimentMetadataVariationsItem = /*@__PURE__*/ S.suspend(()
   identifier: "ReportExperimentMetadataVariationsItem",
 }) as any as S.Schema<ReportExperimentMetadataVariationsItem>;
 
-/** Variation metadata with current traffic weights — use to label result columns */
+/** Variation metadata with current traffic weights -- use to label result columns */
 export type ReportExperimentMetadataVariationsList = Array<ReportExperimentMetadataVariationsItem>;
 export const ReportExperimentMetadataVariationsList = /*@__PURE__*/ S.Array(
   ReportExperimentMetadataVariationsItem,
@@ -19298,7 +19298,7 @@ export interface ReportExperimentMetadataPhasesItem {
   name?: string;
   dateStarted?: string;
   dateEnded?: string;
-  /** Traffic coverage (0–1) */
+  /** Traffic coverage (0-1) */
   coverage?: number;
 }
 export const ReportExperimentMetadataPhasesItem = /*@__PURE__*/ S.suspend(() =>
@@ -19321,7 +19321,7 @@ export const ReportExperimentMetadataPhasesList = /*@__PURE__*/ S.Array(
 export interface ReportExperimentMetadata {
   /** Experiment type */
   type?: ReportExperimentMetadataType;
-  /** Variation metadata with current traffic weights — use to label result columns */
+  /** Variation metadata with current traffic weights -- use to label result columns */
   variations?: ReportExperimentMetadataVariationsList;
   /** Experiment phases */
   phases?: ReportExperimentMetadataPhasesList;
@@ -19534,7 +19534,7 @@ export interface Report {
   description: string;
   /** Report type. `experiment-snapshot` is the current shape and is what `POST /reports` always creates. `experiment` is a deprecated legacy shape that is read-only through this API; it cannot be created or refreshed and is preserved only for backward compatibility when reading reports created before the new shape existed. */
   type: ReportType;
-  /** UI lifecycle marker. Note: this does NOT control public shareability — see `shareLevel` for visibility controls. */
+  /** UI lifecycle marker. Note: this does NOT control public shareability -- see `shareLevel` for visibility controls. */
   status?: ReportStatus;
   /** Visibility of the report. `private` (default) restricts access to the API caller and admins. `organization` makes it visible to all members of the organization in the GrowthBook UI. `public` additionally exposes it via a shareable URL (returned as `shareUrl`); anyone with the URL can view it without authentication. */
   shareLevel?: ReportShareLevel;
@@ -21041,12 +21041,12 @@ export const DeleteConfigRevisionProjectionResponse = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteConfigRevisionProjectionResponse",
 }) as any as S.Schema<DeleteConfigRevisionProjectionResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type DeleteConfigRevisionPropertyRequestSkipSchemaValidation = string | boolean;
 export const DeleteConfigRevisionPropertyRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<DeleteConfigRevisionPropertyRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type DeleteConfigRevisionPropertyRequestIgnoreWarnings = string | boolean;
 export const DeleteConfigRevisionPropertyRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<DeleteConfigRevisionPropertyRequestIgnoreWarnings>;
@@ -21056,9 +21056,9 @@ export interface DeleteConfigRevisionPropertyRequest {
   version: string;
   /** Name of the property to remove. */
   property: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: DeleteConfigRevisionPropertyRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: DeleteConfigRevisionPropertyRequestIgnoreWarnings;
 }
 export const DeleteConfigRevisionPropertyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -21119,7 +21119,7 @@ export interface DeleteContextualBanditLinkedFeatureRequest {
   featureId: string;
   /** Publish the resulting revision immediately instead of leaving it as a draft. */
   autoPublish?: DeleteContextualBanditLinkedFeatureRequestAutoPublish;
-  /** Remove the rule from this existing draft revision instead of live. Required when the rule hasn't been published yet — omitting it targets the live revision, which has nothing to remove. */
+  /** Remove the rule from this existing draft revision instead of live. Required when the rule hasn't been published yet -- omitting it targets the live revision, which has nothing to remove. */
   draftVersion?: number;
 }
 export const DeleteContextualBanditLinkedFeatureRequest = /*@__PURE__*/ S.suspend(() =>
@@ -21507,7 +21507,7 @@ export const FeatureRuleV2ScheduleRulesList = /*@__PURE__*/ S.Array(
   ScheduleRule,
 ) as any as S.Schema<FeatureRuleV2ScheduleRulesList>;
 
-/** UI hint for which scheduling mode is active: - `none` – no schedule - `schedule` – simple time-based enable/disable via `scheduleRules` - `ramp` – multi-step ramp-up controlled by an associated RampSchedule document */
+/** UI hint for which scheduling mode is active: - `none` - no schedule - `schedule` - simple time-based enable/disable via `scheduleRules` - `ramp` - multi-step ramp-up controlled by an associated RampSchedule document */
 export type FeatureRuleV2ScheduleType = "none" | "schedule" | "ramp";
 export const FeatureRuleV2ScheduleType = S.String;
 
@@ -21621,7 +21621,7 @@ export interface FeatureRuleV2 {
   enabled?: boolean;
   /** Simple time-based on/off schedule for this rule */
   scheduleRules?: FeatureRuleV2ScheduleRulesList;
-  /** UI hint for which scheduling mode is active: - `none` – no schedule - `schedule` – simple time-based enable/disable via `scheduleRules` - `ramp` – multi-step ramp-up controlled by an associated RampSchedule document */
+  /** UI hint for which scheduling mode is active: - `none` - no schedule - `schedule` - simple time-based enable/disable via `scheduleRules` - `ramp` - multi-step ramp-up controlled by an associated RampSchedule document */
   scheduleType?: FeatureRuleV2ScheduleType;
   /** ID of the active RampSchedule document controlling this rule. Present when `scheduleType` is `ramp` and a live schedule exists. */
   rampScheduleId?: string;
@@ -21882,7 +21882,7 @@ export const FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchEnvironme
 
 export interface FeatureRevisionV2RampActionsItemCase0StartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase0StartActionsItemPatchSavedGroupsList | null;
@@ -22002,7 +22002,7 @@ export const FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchEnvir
 
 export interface FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase0StepsItemActionsItemPatchSavedGroupsList | null;
@@ -22144,7 +22144,7 @@ export const FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchEnvironment
 
 export interface FeatureRevisionV2RampActionsItemCase0EndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase0EndActionsItemPatchSavedGroupsList | null;
@@ -22389,7 +22389,7 @@ export const FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchEnvironme
 
 export interface FeatureRevisionV2RampActionsItemCase1StartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase1StartActionsItemPatchSavedGroupsList | null;
@@ -22509,7 +22509,7 @@ export const FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchEnvir
 
 export interface FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase1StepsItemActionsItemPatchSavedGroupsList | null;
@@ -22651,7 +22651,7 @@ export const FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchEnvironment
 
 export interface FeatureRevisionV2RampActionsItemCase1EndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: FeatureRevisionV2RampActionsItemCase1EndActionsItemPatchSavedGroupsList | null;
@@ -23334,7 +23334,7 @@ export interface EjectTargetRampScheduleRequest {
   id: string;
   /** Target ID (from the targets array) */
   targetId?: string;
-  /** Rule ID — use as an alternative to targetId */
+  /** Rule ID -- use as an alternative to targetId */
   ruleId?: string;
   /** Deprecated pre-v2 disambiguator. Optional when used with ruleId; omit on v2 ramps. */
   environment?: string;
@@ -26220,7 +26220,7 @@ export const GetFeatureKeysV2Response = /*@__PURE__*/ S.suspend(() =>
 export type GetFeatureRevisionDiffV2RequestFormat = "minimal" | "full";
 export const GetFeatureRevisionDiffV2RequestFormat = S.String;
 
-/** Compare against: `baseVersion` (default — the revision's own `baseVersion`, matches the in-app review view), `live` (the currently-live revision), or an integer version (an arbitrary historical revision). */
+/** Compare against: `baseVersion` (default -- the revision's own `baseVersion`, matches the in-app review view), `live` (the currently-live revision), or an integer version (an arbitrary historical revision). */
 export type GetFeatureRevisionDiffV2RequestBase = string | number;
 export const GetFeatureRevisionDiffV2RequestBase =
   S.Unknown as any as S.Schema<GetFeatureRevisionDiffV2RequestBase>;
@@ -26230,7 +26230,7 @@ export interface GetFeatureRevisionDiffV2Request {
   version: number;
   /** `minimal` (default) returns only what changed, with id-keyed arrays bucketed into added/removed/modified items. `full` returns the complete before/after content of the revision. */
   format?: GetFeatureRevisionDiffV2RequestFormat | (string & {});
-  /** Compare against: `baseVersion` (default — the revision's own `baseVersion`, matches the in-app review view), `live` (the currently-live revision), or an integer version (an arbitrary historical revision). */
+  /** Compare against: `baseVersion` (default -- the revision's own `baseVersion`, matches the in-app review view), `live` (the currently-live revision), or an integer version (an arbitrary historical revision). */
   base?: GetFeatureRevisionDiffV2RequestBase;
 }
 export const GetFeatureRevisionDiffV2Request = /*@__PURE__*/ S.suspend(() =>
@@ -26505,7 +26505,7 @@ export const LogUser = /*@__PURE__*/ S.suspend(() =>
 export interface Log {
   /** Log entry ID. Use a `Comment` entry's id with the PUT/DELETE log endpoints to edit or delete an owned comment. Absent on legacy entries stored inline on the revision. */
   id?: string;
-  /** Entry type — content edits (e.g. "add rule", "edit defaultValue", "rebase"), review lifecycle events ("Review Requested", "Approved", "Requested Changes"), comments ("Comment"), or other audit events. */
+  /** Entry type -- content edits (e.g. "add rule", "edit defaultValue", "rebase"), review lifecycle events ("Review Requested", "Approved", "Requested Changes"), comments ("Comment"), or other audit events. */
   action: string;
   subject: string;
   /** JSON-encoded payload for the entry */
@@ -30447,7 +30447,7 @@ export const HealthSummarySignalsList = /*@__PURE__*/ S.Array(
   HealthSummarySignalsItem,
 ) as any as S.Schema<HealthSummarySignalsList>;
 
-/** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior — either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
+/** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior -- either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
 export type HealthSummaryTrafficVariationUnitsList = Array<number>;
 export const HealthSummaryTrafficVariationUnitsList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -30476,7 +30476,7 @@ export const HealthSummaryTrafficMultipleExposuresStatus = S.String;
 export interface HealthSummaryTrafficMultipleExposures {
   /** Number of users exposed to both variations. */
   count: number;
-  /** Fraction of total users with multiple exposures (0–1). */
+  /** Fraction of total users with multiple exposures (0-1). */
   percent: number;
   status: HealthSummaryTrafficMultipleExposuresStatus;
 }
@@ -30494,7 +30494,7 @@ export const HealthSummaryTrafficMultipleExposures = /*@__PURE__*/ S.suspend(() 
 export interface HealthSummaryTraffic {
   /** Total unique users across all variations. */
   totalUsers: number;
-  /** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior — either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
+  /** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior -- either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
   variationUnits: HealthSummaryTrafficVariationUnitsList;
   srm?: HealthSummaryTrafficSrm;
   multipleExposures?: HealthSummaryTrafficMultipleExposures;
@@ -31717,7 +31717,7 @@ export const ListArchetypesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListArchetypesResponse" }) as any as S.Schema<ListArchetypesResponse>;
 
 export interface ListAttributesRequest {
-  /** Filter to attributes available in this project — includes org-wide attributes (no project restriction) and attributes explicitly scoped to this project. */
+  /** Filter to attributes available in this project -- includes org-wide attributes (no project restriction) and attributes explicitly scoped to this project. */
   projectId?: string;
 }
 export const ListAttributesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -32441,7 +32441,7 @@ export const ListExperimentsRequestStatus = S.String;
 export type ListExperimentsRequestResultItem = "dnf" | "won" | "lost" | "inconclusive";
 export const ListExperimentsRequestResultItem = S.String;
 
-/** Filter by comma-separated results (won, lost, inconclusive, dnf). Matches the experiment's recorded result — set when an experiment is stopped and retained if it's later restarted, so running experiments can match too */
+/** Filter by comma-separated results (won, lost, inconclusive, dnf). Matches the experiment's recorded result -- set when an experiment is stopped and retained if it's later restarted, so running experiments can match too */
 export type ListExperimentsRequestResultList = Array<
   ListExperimentsRequestResultItem | (string & {})
 >;
@@ -32452,7 +32452,7 @@ export const ListExperimentsRequestResultList = /*@__PURE__*/ S.Array(
 export type ListExperimentsRequestImplementationTypeItem = "feature" | "visualChange" | "redirect";
 export const ListExperimentsRequestImplementationTypeItem = S.String;
 
-/** Filter by comma-separated implementation types (feature, visualChange, redirect) — the kinds of changes linked to the experiment. To filter standard experiments vs bandits, use `bandits` instead */
+/** Filter by comma-separated implementation types (feature, visualChange, redirect) -- the kinds of changes linked to the experiment. To filter standard experiments vs bandits, use `bandits` instead */
 export type ListExperimentsRequestImplementationTypeList = Array<
   ListExperimentsRequestImplementationTypeItem | (string & {})
 >;
@@ -32491,11 +32491,11 @@ export interface ListExperimentsRequest {
   q?: string;
   /** Filter by comma-separated owner ids, names, or emails */
   owner?: string;
-  /** Filter by comma-separated results (won, lost, inconclusive, dnf). Matches the experiment's recorded result — set when an experiment is stopped and retained if it's later restarted, so running experiments can match too */
+  /** Filter by comma-separated results (won, lost, inconclusive, dnf). Matches the experiment's recorded result -- set when an experiment is stopped and retained if it's later restarted, so running experiments can match too */
   result?: ListExperimentsRequestResultList;
   /** Filter by comma-separated tags */
   tag?: string;
-  /** Filter by comma-separated implementation types (feature, visualChange, redirect) — the kinds of changes linked to the experiment. To filter standard experiments vs bandits, use `bandits` instead */
+  /** Filter by comma-separated implementation types (feature, visualChange, redirect) -- the kinds of changes linked to the experiment. To filter standard experiments vs bandits, use `bandits` instead */
   implementationType?: ListExperimentsRequestImplementationTypeList;
   /** Filter by comma-separated metric ids. Matches experiments that use a metric as a goal, secondary, or guardrail metric */
   metricId?: string;
@@ -36587,12 +36587,12 @@ export const PostFeatureRevisionDiscardV2Response = /*@__PURE__*/ S.suspend(() =
   identifier: "PostFeatureRevisionDiscardV2Response",
 }) as any as S.Schema<PostFeatureRevisionDiscardV2Response>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureRevisionPublishV2RequestSkipSchemaValidation = string | boolean;
 export const PostFeatureRevisionPublishV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PostFeatureRevisionPublishV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PostFeatureRevisionPublishV2RequestIgnoreWarnings = string | boolean;
 export const PostFeatureRevisionPublishV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PostFeatureRevisionPublishV2RequestIgnoreWarnings>;
@@ -36600,9 +36600,9 @@ export const PostFeatureRevisionPublishV2RequestIgnoreWarnings =
 export interface PostFeatureRevisionPublishV2Request {
   id: string;
   version: number;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PostFeatureRevisionPublishV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PostFeatureRevisionPublishV2RequestIgnoreWarnings;
   comment?: string;
   /** Deprecated and ignored. Approval is bypassed automatically when the caller has Bypass draft approvals access for this resource or when the organization enables the REST API approval bypass. Otherwise, the revision must be approved before it can be published. */
@@ -36653,7 +36653,7 @@ export type PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsValue =
   | "discard";
 export const PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsValue = S.String;
 
-/** Map of conflict key → resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
+/** Map of conflict key -> resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
 export type PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap = {
   [key: string]:
     | PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsValue
@@ -36669,7 +36669,7 @@ export const PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap =
 export interface PostFeatureRevisionRebasePreviewV2Request {
   id: string;
   version: number;
-  /** Map of conflict key → resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
+  /** Map of conflict key -> resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
   conflictResolutions?: PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap;
   /** Optimistic-concurrency guard: the live version the resolutions were authored against (as returned by merge-status or rebase preview). If live has since moved, the request fails with `409` instead of applying resolutions to different conflicts. */
   expectedLiveVersion?: number;
@@ -36789,7 +36789,7 @@ export const PostFeatureRevisionRebasePreviewV2Response = /*@__PURE__*/ S.suspen
 export type PostFeatureRevisionRebaseV2RequestConflictResolutionsValue = "overwrite" | "discard";
 export const PostFeatureRevisionRebaseV2RequestConflictResolutionsValue = S.String;
 
-/** Map of conflict key → resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
+/** Map of conflict key -> resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
 export type PostFeatureRevisionRebaseV2RequestConflictResolutionsMap = {
   [key: string]:
     | PostFeatureRevisionRebaseV2RequestConflictResolutionsValue
@@ -36804,7 +36804,7 @@ export const PostFeatureRevisionRebaseV2RequestConflictResolutionsMap = /*@__PUR
 export interface PostFeatureRevisionRebaseV2Request {
   id: string;
   version: number;
-  /** Map of conflict key → resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
+  /** Map of conflict key -> resolution. Keys come from the returned conflicts: `defaultValue`, `prerequisites`, `archived`, `holdout`, `environmentsEnabled.<env>`, `metadata.<field>`, `rules.<ruleId>`, and `rules.order`. `overwrite` keeps the draft's version of that item; `discard` keeps live's. The blanket `rules` key applies one strategy to all rule-level conflicts. */
   conflictResolutions?: PostFeatureRevisionRebaseV2RequestConflictResolutionsMap;
   /** Optimistic-concurrency guard: the live version the resolutions were authored against (as returned by merge-status or rebase preview). If live has since moved, the request fails with `409` instead of applying resolutions to different conflicts. */
   expectedLiveVersion?: number;
@@ -36988,12 +36988,12 @@ export const PostFeatureRevisionRevertV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostFeatureRevisionRevertV2Response",
 }) as any as S.Schema<PostFeatureRevisionRevertV2Response>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureRevisionRuleAddV2RequestSkipSchemaValidation = string | boolean;
 export const PostFeatureRevisionRuleAddV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PostFeatureRevisionRuleAddV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PostFeatureRevisionRuleAddV2RequestIgnoreWarnings = string | boolean;
 export const PostFeatureRevisionRuleAddV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PostFeatureRevisionRuleAddV2RequestIgnoreWarnings>;
@@ -37062,7 +37062,7 @@ export interface TargetingRule {
   config?: string | null;
   /** JSON features only. When true, the rule value is a partial object merged onto the feature's default value instead of replacing it. */
   sparse?: boolean;
-  /** Percentage of users to include (0–1). Defaults to 1. When less than 1, hashAttribute is required. */
+  /** Percentage of users to include (0-1). Defaults to 1. When less than 1, hashAttribute is required. */
   coverage?: number;
   /** Attribute to hash on for consistent assignment. Required when coverage < 1. */
   hashAttribute?: string;
@@ -37420,7 +37420,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatc
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PostFeatureRevisionRuleAddV2RequestRampScheduleStartActionsItemPatchSavedGroupsList | null;
@@ -37552,7 +37552,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItem
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PostFeatureRevisionRuleAddV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsList | null;
@@ -37704,7 +37704,7 @@ export const PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchE
 
 export interface PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PostFeatureRevisionRuleAddV2RequestRampScheduleEndActionsItemPatchSavedGroupsList | null;
@@ -37932,9 +37932,9 @@ export const PostFeatureRevisionRuleAddV2RequestSchedule = /*@__PURE__*/ S.suspe
 export interface PostFeatureRevisionRuleAddV2Request {
   id: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PostFeatureRevisionRuleAddV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PostFeatureRevisionRuleAddV2RequestIgnoreWarnings;
   rule: PostFeatureRevisionRuleAddV2RequestRule;
   /** Multi-step ramp schedule for force/rollout rules. Not supported for experiment-ref or safe-rollout rules. Mutually exclusive with `schedule`. */
@@ -38220,12 +38220,12 @@ export const PostFeatureRevisionV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostFeatureRevisionV2Response",
 }) as any as S.Schema<PostFeatureRevisionV2Response>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PostFeatureV2RequestSkipSchemaValidation = string | boolean;
 export const PostFeatureV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PostFeatureV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PostFeatureV2RequestIgnoreWarnings = string | boolean;
 export const PostFeatureV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PostFeatureV2RequestIgnoreWarnings>;
@@ -38300,7 +38300,7 @@ export const PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItem = /*@__PU
   identifier: "PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItem",
 }) as any as S.Schema<PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type PostFeatureV2RequestRulesItemCase0SavedGroupTargetingList =
   Array<PostFeatureV2RequestRulesItemCase0SavedGroupTargetingItem>;
 export const PostFeatureV2RequestRulesItemCase0SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -38354,7 +38354,7 @@ export interface PostFeatureV2RequestRulesItemCase0 {
   description?: string;
   condition?: string;
   savedGroups?: PostFeatureV2RequestRulesItemCase0SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: PostFeatureV2RequestRulesItemCase0SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -38461,7 +38461,7 @@ export const PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItem = /*@__PU
   identifier: "PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItem",
 }) as any as S.Schema<PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type PostFeatureV2RequestRulesItemCase1SavedGroupTargetingList =
   Array<PostFeatureV2RequestRulesItemCase1SavedGroupTargetingItem>;
 export const PostFeatureV2RequestRulesItemCase1SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -38506,7 +38506,7 @@ export interface PostFeatureV2RequestRulesItemCase1 {
   description?: string;
   condition?: string;
   savedGroups?: PostFeatureV2RequestRulesItemCase1SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: PostFeatureV2RequestRulesItemCase1SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -38622,7 +38622,7 @@ export const PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItem = /*@__PU
   identifier: "PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItem",
 }) as any as S.Schema<PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type PostFeatureV2RequestRulesItemCase2SavedGroupTargetingList =
   Array<PostFeatureV2RequestRulesItemCase2SavedGroupTargetingItem>;
 export const PostFeatureV2RequestRulesItemCase2SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -38692,7 +38692,7 @@ export interface PostFeatureV2RequestRulesItemCase2 {
   type: string;
   condition?: string;
   savedGroups?: PostFeatureV2RequestRulesItemCase2SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: PostFeatureV2RequestRulesItemCase2SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -38795,7 +38795,7 @@ export const PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItem = /*@__PU
   identifier: "PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItem",
 }) as any as S.Schema<PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type PostFeatureV2RequestRulesItemCase3SavedGroupTargetingList =
   Array<PostFeatureV2RequestRulesItemCase3SavedGroupTargetingItem>;
 export const PostFeatureV2RequestRulesItemCase3SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -38850,7 +38850,7 @@ export interface PostFeatureV2RequestRulesItemCase3 {
   type: string;
   condition?: string;
   savedGroups?: PostFeatureV2RequestRulesItemCase3SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: PostFeatureV2RequestRulesItemCase3SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -38954,9 +38954,9 @@ export const PostFeatureV2RequestCustomFieldsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostFeatureV2RequestCustomFieldsMap>;
 
 export interface PostFeatureV2Request {
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PostFeatureV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PostFeatureV2RequestIgnoreWarnings;
   /** A unique key name for the feature. Feature keys can only include letters, numbers, hyphens, and underscores. */
   id: string;
@@ -38967,7 +38967,7 @@ export interface PostFeatureV2Request {
   owner?: string;
   /** An associated project ID */
   project?: string;
-  /** Make this feature discoverable in — and served to — every project, beyond its primary `project`. Requires the `targetFeatures` permission (FlagsTarget policy) unscoped to any project. Governance stays with `project`. */
+  /** Make this feature discoverable in -- and served to -- every project, beyond its primary `project`. Requires the `targetFeatures` permission (FlagsTarget policy) unscoped to any project. Governance stays with `project`. */
   targetingAllProjects?: boolean;
   /** Secondary project IDs this feature is targeted in and served to, beyond its primary `project`. Adding a project requires the `targetFeatures` permission (FlagsTarget policy) in that project. Governance stays with `project`. */
   targetingProjects?: PostFeatureV2RequestTargetingProjectsList;
@@ -43628,12 +43628,12 @@ export const PutConfigRevisionArchiveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigRevisionArchiveResponse",
 }) as any as S.Schema<PutConfigRevisionArchiveResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionMetadataRequestSkipSchemaValidation = string | boolean;
 export const PutConfigRevisionMetadataRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutConfigRevisionMetadataRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutConfigRevisionMetadataRequestIgnoreWarnings = string | boolean;
 export const PutConfigRevisionMetadataRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutConfigRevisionMetadataRequestIgnoreWarnings>;
@@ -43647,9 +43647,9 @@ export const PutConfigRevisionMetadataRequestExtendsList = /*@__PURE__*/ S.Array
 export interface PutConfigRevisionMetadataRequest {
   key: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutConfigRevisionMetadataRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutConfigRevisionMetadataRequestIgnoreWarnings;
   revisionTitle?: string;
   revisionComment?: string;
@@ -43709,12 +43709,12 @@ export const PutConfigRevisionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigRevisionMetadataResponse",
 }) as any as S.Schema<PutConfigRevisionMetadataResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionProjectionRequestSkipSchemaValidation = string | boolean;
 export const PutConfigRevisionProjectionRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutConfigRevisionProjectionRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutConfigRevisionProjectionRequestIgnoreWarnings = string | boolean;
 export const PutConfigRevisionProjectionRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutConfigRevisionProjectionRequestIgnoreWarnings>;
@@ -43722,9 +43722,9 @@ export const PutConfigRevisionProjectionRequestIgnoreWarnings =
 export interface PutConfigRevisionProjectionRequest {
   key: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutConfigRevisionProjectionRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutConfigRevisionProjectionRequestIgnoreWarnings;
   revisionTitle?: string;
   revisionComment?: string;
@@ -43776,12 +43776,12 @@ export const PutConfigRevisionProjectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigRevisionProjectionResponse",
 }) as any as S.Schema<PutConfigRevisionProjectionResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionPropertyRequestSkipSchemaValidation = string | boolean;
 export const PutConfigRevisionPropertyRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutConfigRevisionPropertyRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutConfigRevisionPropertyRequestIgnoreWarnings = string | boolean;
 export const PutConfigRevisionPropertyRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutConfigRevisionPropertyRequestIgnoreWarnings>;
@@ -43789,9 +43789,9 @@ export const PutConfigRevisionPropertyRequestIgnoreWarnings =
 export interface PutConfigRevisionPropertyRequest {
   key: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutConfigRevisionPropertyRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutConfigRevisionPropertyRequestIgnoreWarnings;
   revisionTitle?: string;
   revisionComment?: string;
@@ -43840,12 +43840,12 @@ export const PutConfigRevisionPropertyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigRevisionPropertyResponse",
 }) as any as S.Schema<PutConfigRevisionPropertyResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionSchemaRequestSkipSchemaValidation = string | boolean;
 export const PutConfigRevisionSchemaRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutConfigRevisionSchemaRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutConfigRevisionSchemaRequestIgnoreWarnings = string | boolean;
 export const PutConfigRevisionSchemaRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutConfigRevisionSchemaRequestIgnoreWarnings>;
@@ -43853,9 +43853,9 @@ export const PutConfigRevisionSchemaRequestIgnoreWarnings =
 export interface PutConfigRevisionSchemaRequest {
   key: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutConfigRevisionSchemaRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutConfigRevisionSchemaRequestIgnoreWarnings;
   revisionTitle?: string;
   revisionComment?: string;
@@ -43906,17 +43906,17 @@ export const PutConfigRevisionSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigRevisionSchemaResponse",
 }) as any as S.Schema<PutConfigRevisionSchemaResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutConfigRevisionValueRequestSkipSchemaValidation = string | boolean;
 export const PutConfigRevisionValueRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutConfigRevisionValueRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutConfigRevisionValueRequestIgnoreWarnings = string | boolean;
 export const PutConfigRevisionValueRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutConfigRevisionValueRequestIgnoreWarnings>;
 
-/** This config's own value as a JSON object — a targeted patch deep-merged onto the resolved parent value. */
+/** This config's own value as a JSON object -- a targeted patch deep-merged onto the resolved parent value. */
 export type PutConfigRevisionValueRequestValueMap = { [key: string]: unknown | undefined };
 export const PutConfigRevisionValueRequestValueMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -43926,13 +43926,13 @@ export const PutConfigRevisionValueRequestValueMap = /*@__PURE__*/ S.Record(
 export interface PutConfigRevisionValueRequest {
   key: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutConfigRevisionValueRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutConfigRevisionValueRequestIgnoreWarnings;
   revisionTitle?: string;
   revisionComment?: string;
-  /** This config's own value as a JSON object — a targeted patch deep-merged onto the resolved parent value. */
+  /** This config's own value as a JSON object -- a targeted patch deep-merged onto the resolved parent value. */
   value?: PutConfigRevisionValueRequestValueMap;
   /** When the config has no schema yet, infer one from the supplied `value` and stage it on the same draft. */
   inferSchemaIfMissing?: boolean;
@@ -44055,7 +44055,7 @@ export const PutConstantRevisionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConstantRevisionMetadataResponse",
 }) as any as S.Schema<PutConstantRevisionMetadataResponse>;
 
-/** Per-environment value overrides (environment id → value) */
+/** Per-environment value overrides (environment id -> value) */
 export type PutConstantRevisionValueRequestEnvironmentValuesMap = {
   [key: string]: string | undefined;
 };
@@ -44071,7 +44071,7 @@ export interface PutConstantRevisionValueRequest {
   revisionComment?: string;
   /** The default value (raw string for `string` constants, JSON-encoded for `json` constants) */
   value?: string;
-  /** Per-environment value overrides (environment id → value) */
+  /** Per-environment value overrides (environment id -> value) */
   environmentValues?: PutConstantRevisionValueRequestEnvironmentValuesMap;
 }
 export const PutConstantRevisionValueRequest = /*@__PURE__*/ S.suspend(() =>
@@ -44231,12 +44231,12 @@ export const PutFeatureRevisionArchiveV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutFeatureRevisionArchiveV2Response",
 }) as any as S.Schema<PutFeatureRevisionArchiveV2Response>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutFeatureRevisionDefaultValueV2RequestSkipSchemaValidation = string | boolean;
 export const PutFeatureRevisionDefaultValueV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutFeatureRevisionDefaultValueV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutFeatureRevisionDefaultValueV2RequestIgnoreWarnings = string | boolean;
 export const PutFeatureRevisionDefaultValueV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutFeatureRevisionDefaultValueV2RequestIgnoreWarnings>;
@@ -44244,13 +44244,13 @@ export const PutFeatureRevisionDefaultValueV2RequestIgnoreWarnings =
 export interface PutFeatureRevisionDefaultValueV2Request {
   id: string;
   version: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutFeatureRevisionDefaultValueV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutFeatureRevisionDefaultValueV2RequestIgnoreWarnings;
   /** New default value. In Config mode (feature has `baseConfig`), the default must be exactly a config with no overrides: send `"{}"` to use `baseConfig`, or set `defaultValueConfig` to point at a descendant. */
   defaultValue: string;
-  /** Key of a config within the feature's `baseConfig` family that the default value resolves to (the base itself or a descendant). The default is exactly that config with no overrides; pass `null` to use `baseConfig`. Do not embed `@config:` in `defaultValue` — use this field. */
+  /** Key of a config within the feature's `baseConfig` family that the default value resolves to (the base itself or a descendant). The default is exactly that config with no overrides; pass `null` to use `baseConfig`. Do not embed `@config:` in `defaultValue` -- use this field. */
   defaultValueConfig?: string | null;
   /** Title for a newly created draft. Only used when version is "new"; ignored for existing revisions. */
   revisionTitle?: string;
@@ -44680,7 +44680,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchEnv
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleRampScheduleV2RequestStartActionsItemPatchSavedGroupsList | null;
@@ -44805,7 +44805,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatc
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleRampScheduleV2RequestStepsItemActionsItemPatchSavedGroupsList | null;
@@ -44956,7 +44956,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchEnvir
 
 export interface PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleRampScheduleV2RequestEndActionsItemPatchSavedGroupsList | null;
@@ -45177,7 +45177,7 @@ export const PutFeatureRevisionRuleRampScheduleV2RequestStartStateEnvironmentsLi
 
 /** The rule state to roll back to (the rollback/jump-to-start anchor). Merged onto the rule's current state, so `{ "coverage": 0 }` keeps existing targeting but rolls back to 0%. Steps accumulate on it, and it is the only place a plan sets `hashAttribute` (plus optional `seed` and `hashVersion`), which a partial-coverage step on a force rule requires unless the rule has one. On create, omitting it infers the anchor from the rule's current coverage (and returns a warning if that isn't 0%); on update of a live schedule, omitting it leaves the existing anchor unchanged. */
 export interface PutFeatureRevisionRuleRampScheduleV2RequestStartState {
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleRampScheduleV2RequestStartStateSavedGroupsList | null;
@@ -45295,12 +45295,12 @@ export const PutFeatureRevisionRuleRampScheduleV2Response = /*@__PURE__*/ S.susp
   identifier: "PutFeatureRevisionRuleRampScheduleV2Response",
 }) as any as S.Schema<PutFeatureRevisionRuleRampScheduleV2Response>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type PutFeatureRevisionRuleV2RequestSkipSchemaValidation = string | boolean;
 export const PutFeatureRevisionRuleV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<PutFeatureRevisionRuleV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type PutFeatureRevisionRuleV2RequestIgnoreWarnings = string | boolean;
 export const PutFeatureRevisionRuleV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<PutFeatureRevisionRuleV2RequestIgnoreWarnings>;
@@ -45486,7 +45486,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchEnv
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleV2RequestRampScheduleStartActionsItemPatchSavedGroupsList | null;
@@ -45611,7 +45611,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatc
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleV2RequestRampScheduleStepsItemActionsItemPatchSavedGroupsList | null;
@@ -45762,7 +45762,7 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchEnvir
 
 export interface PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatch {
   ruleId?: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: PutFeatureRevisionRuleV2RequestRampScheduleEndActionsItemPatchSavedGroupsList | null;
@@ -45969,9 +45969,9 @@ export interface PutFeatureRevisionRuleV2Request {
   id: string;
   version: string;
   ruleId: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: PutFeatureRevisionRuleV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: PutFeatureRevisionRuleV2RequestIgnoreWarnings;
   rule: PutFeatureRevisionRuleV2RequestRule;
   /** Multi-step ramp schedule for force/rollout rules. Not supported for experiment-ref or safe-rollout rules. Mutually exclusive with `schedule`. */
@@ -46619,7 +46619,7 @@ export interface PutReportSettingsRequestVariationsItem {
   id: string;
   name?: string;
   key?: string;
-  /** Traffic weight (0–1) */
+  /** Traffic weight (0-1) */
   weight?: number;
 }
 export const PutReportSettingsRequestVariationsItem = /*@__PURE__*/ S.suspend(() =>
@@ -46682,7 +46682,7 @@ export interface PutReportSettingsRequest {
   skipPartialData?: boolean;
   /** Override variation names, keys, or traffic weights used in this report. Weights are merged into the latest phase. Changes take effect on the next refresh. */
   variations?: PutReportSettingsRequestVariationsList;
-  /** Traffic coverage (0–1) for the latest phase. Used when computing scaled impact. */
+  /** Traffic coverage (0-1) for the latest phase. Used when computing scaled impact. */
   coverage?: number;
 }
 export const PutReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -47953,7 +47953,7 @@ export const StartActionsPatchEnvironmentsList = /*@__PURE__*/ S.Array(
 
 export interface StartActionsPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: StartActionsPatchSavedGroupsList | null;
@@ -48053,7 +48053,7 @@ export const StepsActionsItemPatchEnvironmentsList = /*@__PURE__*/ S.Array(
 
 export interface StepsActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: StepsActionsItemPatchSavedGroupsList | null;
@@ -48163,7 +48163,7 @@ export const EndActionsPatchEnvironmentsList = /*@__PURE__*/ S.Array(
 
 export interface EndActionsPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: EndActionsPatchSavedGroupsList | null;
@@ -48410,7 +48410,7 @@ export interface SetAutoUpdateRampScheduleResponse {
   currentStepEnteredAt?: string | null;
   /** Approval record for the current step. Valid only while `stepApproval.stepIndex === currentStepIndex`. */
   stepApproval?: SetAutoUpdateRampScheduleResponseStepApproval | null;
-  /** Computed at read time: whether a human approval is the gate blocking the schedule right now — either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
+  /** Computed at read time: whether a human approval is the gate blocking the schedule right now -- either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
   awaitingApproval: boolean;
   /** When the monitored section most recently started (first monitored step entered). Used for no-traffic grace period gating. */
   monitoringStartDate?: string | null;
@@ -48707,7 +48707,7 @@ export interface SetMonitoringModeRampScheduleResponse {
   currentStepEnteredAt?: string | null;
   /** Approval record for the current step. Valid only while `stepApproval.stepIndex === currentStepIndex`. */
   stepApproval?: SetMonitoringModeRampScheduleResponseStepApproval | null;
-  /** Computed at read time: whether a human approval is the gate blocking the schedule right now — either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
+  /** Computed at read time: whether a human approval is the gate blocking the schedule right now -- either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
   awaitingApproval: boolean;
   /** When the monitored section most recently started (first monitored step entered). Used for no-traffic grace period gating. */
   monitoringStartDate?: string | null;
@@ -49182,12 +49182,12 @@ export const UpdateAutoRunResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateAutoRunResponse" }) as any as S.Schema<UpdateAutoRunResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type UpdateConfigRequestSkipSchemaValidation = string | boolean;
 export const UpdateConfigRequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<UpdateConfigRequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type UpdateConfigRequestIgnoreWarnings = string | boolean;
 export const UpdateConfigRequestIgnoreWarnings =
   S.Unknown as any as S.Schema<UpdateConfigRequestIgnoreWarnings>;
@@ -49241,7 +49241,7 @@ export const UpdateConfigRequestScopedOverridesList = /*@__PURE__*/ S.Array(
   UpdateConfigRequestScopedOverridesItem,
 ) as any as S.Schema<UpdateConfigRequestScopedOverridesList>;
 
-/** The rule expression, as a mongo condition (mongrule) — the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
+/** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
 export type UpdateConfigRequestInvariantsItemRuleMap = { [key: string]: unknown | undefined };
 export const UpdateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -49250,9 +49250,9 @@ export const UpdateConfigRequestInvariantsItemRuleMap = /*@__PURE__*/ S.Record(
 
 export interface UpdateConfigRequestInvariantsItem {
   name: string;
-  /** The rule expression, as a mongo condition (mongrule) — the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
+  /** The rule expression, as a mongo condition (mongrule) -- the same condition syntax as feature targeting, extended with `{ "$ref": "otherField" }` to compare against another field, e.g. `{ "min_replicas": { "$lte": { "$ref": "max_replicas" } } }`. */
   rule: UpdateConfigRequestInvariantsItemRuleMap;
-  /** Shown to editors when the rule is violated. Optional — defaults to a generic message naming the rule. */
+  /** Shown to editors when the rule is violated. Optional -- defaults to a generic message naming the rule. */
   message?: string;
 }
 export const UpdateConfigRequestInvariantsItem = /*@__PURE__*/ S.suspend(() =>
@@ -49274,9 +49274,9 @@ export const UpdateConfigRequestInvariantsList = /*@__PURE__*/ S.Array(
 export interface UpdateConfigRequest {
   /** The key of the config */
   key: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: UpdateConfigRequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: UpdateConfigRequestIgnoreWarnings;
   name?: string;
   /** Change the lineage parent (the `key` of the config to inherit from). Set to an empty string to detach from the parent and make this a root config. */
@@ -49388,7 +49388,7 @@ export const UpdateConfigRevisionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigRevisionResponse",
 }) as any as S.Schema<UpdateConfigRevisionResponse>;
 
-/** Per-environment value overrides (environment id → value). When provided, this REPLACES the entire override map — send the complete set, not just the environments you want to change (omit the field to leave overrides unchanged). */
+/** Per-environment value overrides (environment id -> value). When provided, this REPLACES the entire override map -- send the complete set, not just the environments you want to change (omit the field to leave overrides unchanged). */
 export type UpdateConstantRequestEnvironmentValuesMap = { [key: string]: string | undefined };
 export const UpdateConstantRequestEnvironmentValuesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -49400,7 +49400,7 @@ export interface UpdateConstantRequest {
   key: string;
   name?: string;
   value?: string;
-  /** Per-environment value overrides (environment id → value). When provided, this REPLACES the entire override map — send the complete set, not just the environments you want to change (omit the field to leave overrides unchanged). */
+  /** Per-environment value overrides (environment id -> value). When provided, this REPLACES the entire override map -- send the complete set, not just the environments you want to change (omit the field to leave overrides unchanged). */
   environmentValues?: UpdateConstantRequestEnvironmentValuesMap;
   description?: string;
   project?: string;
@@ -58156,7 +58156,7 @@ export const UpdateExperimentRequestPhasesItemSavedGroupTargetingItem = /*@__PUR
   identifier: "UpdateExperimentRequestPhasesItemSavedGroupTargetingItem",
 }) as any as S.Schema<UpdateExperimentRequestPhasesItemSavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type UpdateExperimentRequestPhasesItemSavedGroupTargetingList =
   Array<UpdateExperimentRequestPhasesItemSavedGroupTargetingItem>;
 export const UpdateExperimentRequestPhasesItemSavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -58197,7 +58197,7 @@ export interface UpdateExperimentRequestPhasesItem {
   /** Targeting condition as a JSON string. Mirrors the GET response. */
   targetingCondition?: string;
   savedGroups?: UpdateExperimentRequestPhasesItemSavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: UpdateExperimentRequestPhasesItemSavedGroupTargetingList;
   /** Deprecated: use `trafficSplit`. Takes precedence if set. */
   variationWeights?: UpdateExperimentRequestPhasesItemVariationWeightsList;
@@ -58447,7 +58447,7 @@ export interface UpdateExperimentRequest {
   autoRefresh?: boolean;
   hashAttribute?: string;
   fallbackAttribute?: string;
-  /** Picker preference: show attributes from all projects in this experiment's targeting UI instead of only those in scope for its project and linked features. Does not loosen enforcement — when the organization requires registered attributes with project scoping, out-of-scope attributes are still rejected. */
+  /** Picker preference: show attributes from all projects in this experiment's targeting UI instead of only those in scope for its project and linked features. Does not loosen enforcement -- when the organization requires registered attributes with project scoping, out-of-scope attributes are still rejected. */
   attributeScopeAllProjects?: boolean;
   hashVersion?: number;
   disableStickyBucketing?: boolean;
@@ -59626,12 +59626,12 @@ export const UpdateFactTableVirtualColumnResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateFactTableVirtualColumnResponse",
 }) as any as S.Schema<UpdateFactTableVirtualColumnResponse>;
 
-/** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+/** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
 export type UpdateFeatureV2RequestSkipSchemaValidation = string | boolean;
 export const UpdateFeatureV2RequestSkipSchemaValidation =
   S.Unknown as any as S.Schema<UpdateFeatureV2RequestSkipSchemaValidation>;
 
-/** Deprecated — pass `ignoreWarnings` in the request body instead. */
+/** Deprecated -- pass `ignoreWarnings` in the request body instead. */
 export type UpdateFeatureV2RequestIgnoreWarnings = string | boolean;
 export const UpdateFeatureV2RequestIgnoreWarnings =
   S.Unknown as any as S.Schema<UpdateFeatureV2RequestIgnoreWarnings>;
@@ -59702,7 +59702,7 @@ export const UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItem = /*@__
   identifier: "UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItem",
 }) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingList =
   Array<UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingItem>;
 export const UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -59747,7 +59747,7 @@ export interface UpdateFeatureV2RequestRulesItemCase0 {
   description?: string;
   condition?: string;
   savedGroups?: UpdateFeatureV2RequestRulesItemCase0SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: UpdateFeatureV2RequestRulesItemCase0SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -59854,7 +59854,7 @@ export const UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItem = /*@__
   identifier: "UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItem",
 }) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingList =
   Array<UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingItem>;
 export const UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -59899,7 +59899,7 @@ export interface UpdateFeatureV2RequestRulesItemCase1 {
   description?: string;
   condition?: string;
   savedGroups?: UpdateFeatureV2RequestRulesItemCase1SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: UpdateFeatureV2RequestRulesItemCase1SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -60015,7 +60015,7 @@ export const UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItem = /*@__
   identifier: "UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItem",
 }) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingList =
   Array<UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingItem>;
 export const UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -60074,7 +60074,7 @@ export interface UpdateFeatureV2RequestRulesItemCase2 {
   type: string;
   condition?: string;
   savedGroups?: UpdateFeatureV2RequestRulesItemCase2SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: UpdateFeatureV2RequestRulesItemCase2SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -60177,7 +60177,7 @@ export const UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItem = /*@__
   identifier: "UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItem",
 }) as any as S.Schema<UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItem>;
 
-/** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+/** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
 export type UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingList =
   Array<UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingItem>;
 export const UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingList = /*@__PURE__*/ S.Array(
@@ -60232,7 +60232,7 @@ export interface UpdateFeatureV2RequestRulesItemCase3 {
   type: string;
   condition?: string;
   savedGroups?: UpdateFeatureV2RequestRulesItemCase3SavedGroupsList;
-  /** Deprecated — use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
+  /** Deprecated -- use `savedGroups`. Accepted so a GET response can be posted back unchanged; `savedGroups` takes precedence if both are sent. */
   savedGroupTargeting?: UpdateFeatureV2RequestRulesItemCase3SavedGroupTargetingList;
   /** Read-only; ignored on write. Accepted so a GET response can be posted back unchanged. */
   pendingRamp?: unknown;
@@ -60333,23 +60333,23 @@ export const UpdateFeatureV2RequestHoldout = FeatureWithRevisionsV2Holdout;
 export interface UpdateFeatureV2Request {
   /** The id of the requested resource */
   id: string;
-  /** Deprecated — pass `skipSchemaValidation` in the request body instead. */
+  /** Deprecated -- pass `skipSchemaValidation` in the request body instead. */
   skipSchemaValidation?: UpdateFeatureV2RequestSkipSchemaValidation;
-  /** Deprecated — pass `ignoreWarnings` in the request body instead. */
+  /** Deprecated -- pass `ignoreWarnings` in the request body instead. */
   ignoreWarnings?: UpdateFeatureV2RequestIgnoreWarnings;
   /** Description of the feature */
   description?: string;
   archived?: boolean;
   /** An associated project ID */
   project?: string;
-  /** Make this feature discoverable in — and served to — every project, beyond its primary `project`. Requires the `targetFeatures` permission (FlagsTarget policy) unscoped to any project. Governance stays with `project`. */
+  /** Make this feature discoverable in -- and served to -- every project, beyond its primary `project`. Requires the `targetFeatures` permission (FlagsTarget policy) unscoped to any project. Governance stays with `project`. */
   targetingAllProjects?: boolean;
   /** Secondary project IDs this feature is targeted in and served to, beyond its primary `project`. Adding a project requires the `targetFeatures` permission (FlagsTarget policy) in that project. Governance stays with `project`. */
   targetingProjects?: UpdateFeatureV2RequestTargetingProjectsList;
   /** The userId or email address of the owner. If an email address is provided, it will be used to look up the userId of the matching organization member. If an ID is provided, it will be validated as existing in the organization. */
   owner?: string;
   defaultValue?: string;
-  /** The config backing this flag, fixed at creation. Cannot be changed by an update — resend the current value or omit it; a different value is rejected. */
+  /** The config backing this flag, fixed at creation. Cannot be changed by an update -- resend the current value or omit it; a different value is rejected. */
   baseConfig?: string | null;
   /** Optional. A config within `baseConfig`'s family that the default value resolves to instead of `baseConfig` itself. null or omitted means the default is `baseConfig`. The default is exactly this config and carries no overrides of its own. */
   defaultValueConfig?: string | null;
@@ -60579,7 +60579,7 @@ export interface UpdateLearningRequest {
   supportingExperimentIds?: UpdateLearningRequestSupportingExperimentIdsList;
   contradictingExperimentIds?: UpdateLearningRequestContradictingExperimentIdsList;
   projects?: UpdateLearningRequestProjectsList;
-  /** ID of a learning status configured at the org level (Settings → General → Experiment Settings). Omit or pass an empty string for no status. */
+  /** ID of a learning status configured at the org level (Settings -> General -> Experiment Settings). Omit or pass an empty string for no status. */
   status?: string;
 }
 export const UpdateLearningRequest = /*@__PURE__*/ S.suspend(() =>
@@ -60954,7 +60954,7 @@ export const UpdateRampScheduleRequestStepsItemActionsItemPatchEnvironmentsList 
 
 export interface UpdateRampScheduleRequestStepsItemActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: UpdateRampScheduleRequestStepsItemActionsItemPatchSavedGroupsList | null;
@@ -61089,7 +61089,7 @@ export const UpdateRampScheduleRequestStartActionsItemPatchEnvironmentsList = /*
 /** The rule's pre-ramp state, and the only place a plan sets hashAttribute, seed or hashVersion. */
 export interface UpdateRampScheduleRequestStartActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: UpdateRampScheduleRequestStartActionsItemPatchSavedGroupsList | null;
@@ -61203,7 +61203,7 @@ export const UpdateRampScheduleRequestEndActionsItemPatchEnvironmentsList = /*@_
 
 export interface UpdateRampScheduleRequestEndActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: UpdateRampScheduleRequestEndActionsItemPatchSavedGroupsList | null;
@@ -61621,7 +61621,7 @@ export interface UpdateRampScheduleLockdownResponse {
   currentStepEnteredAt?: string | null;
   /** Approval record for the current step. Valid only while `stepApproval.stepIndex === currentStepIndex`. */
   stepApproval?: UpdateRampScheduleLockdownResponseStepApproval | null;
-  /** Computed at read time: whether a human approval is the gate blocking the schedule right now — either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
+  /** Computed at read time: whether a human approval is the gate blocking the schedule right now -- either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
   awaitingApproval: boolean;
   /** When the monitored section most recently started (first monitored step entered). Used for no-traffic grace period gating. */
   monitoringStartDate?: string | null;
@@ -61964,7 +61964,7 @@ export interface UpdateRampScheduleMonitoringResponse {
   currentStepEnteredAt?: string | null;
   /** Approval record for the current step. Valid only while `stepApproval.stepIndex === currentStepIndex`. */
   stepApproval?: UpdateRampScheduleMonitoringResponseStepApproval | null;
-  /** Computed at read time: whether a human approval is the gate blocking the schedule right now — either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
+  /** Computed at read time: whether a human approval is the gate blocking the schedule right now -- either the start-approval gate (`requiresStartApproval` before step 0) or the current step's `holdConditions.requiresApproval` once its time hold (if any) has elapsed. Paused schedules report `false` (the pause is the blocking gate). For monitored steps the approve-step endpoint may still reject an approval until analysis-based gates clear. */
   awaitingApproval: boolean;
   /** When the monitored section most recently started (first monitored step entered). Used for no-traffic grace period gating. */
   monitoringStartDate?: string | null;
@@ -62023,7 +62023,7 @@ export interface UpdateRampScheduleStepsRequestStepsItem {
   actions?: unknown;
   /** Hold duration in seconds before this step's gates are evaluated. `null` means no time gate. */
   interval: number | null;
-  /** When true, this step runs A/B traffic analysis while active. Applies only to future steps — cannot be changed on the currently executing step. */
+  /** When true, this step runs A/B traffic analysis while active. Applies only to future steps -- cannot be changed on the currently executing step. */
   monitored?: boolean;
   /** Additional gates that must clear before the step advances: `minSampleSize` and/or `requiresApproval`. */
   holdConditions?: RampScheduleStepsItemHoldConditions;
@@ -62042,7 +62042,7 @@ export const UpdateRampScheduleStepsRequestStepsItem = /*@__PURE__*/ S.suspend((
   identifier: "UpdateRampScheduleStepsRequestStepsItem",
 }) as any as S.Schema<UpdateRampScheduleStepsRequestStepsItem>;
 
-/** Full replacement of the steps array. Step-level coverage patches (`actions`) are intentionally excluded — those require a revision publish because they change the SDK payload. Use the revision flow to modify coverage/targeting; use this endpoint to update monitoring flags and hold conditions. */
+/** Full replacement of the steps array. Step-level coverage patches (`actions`) are intentionally excluded -- those require a revision publish because they change the SDK payload. Use the revision flow to modify coverage/targeting; use this endpoint to update monitoring flags and hold conditions. */
 export type UpdateRampScheduleStepsRequestStepsList =
   Array<UpdateRampScheduleStepsRequestStepsItem>;
 export const UpdateRampScheduleStepsRequestStepsList = /*@__PURE__*/ S.Array(
@@ -62051,7 +62051,7 @@ export const UpdateRampScheduleStepsRequestStepsList = /*@__PURE__*/ S.Array(
 
 export interface UpdateRampScheduleStepsRequest {
   id: string;
-  /** Full replacement of the steps array. Step-level coverage patches (`actions`) are intentionally excluded — those require a revision publish because they change the SDK payload. Use the revision flow to modify coverage/targeting; use this endpoint to update monitoring flags and hold conditions. */
+  /** Full replacement of the steps array. Step-level coverage patches (`actions`) are intentionally excluded -- those require a revision publish because they change the SDK payload. Use the revision flow to modify coverage/targeting; use this endpoint to update monitoring flags and hold conditions. */
   steps: UpdateRampScheduleStepsRequestStepsList;
 }
 export const UpdateRampScheduleStepsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -62137,7 +62137,7 @@ export const UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchEnvironme
 
 export interface UpdateRampScheduleTemplateRequestStepsItemActionsItemPatch {
   ruleId: string;
-  /** Traffic fraction (0–1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm — no existing user changes group. The REST API enforces coverage ≤ 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
+  /** Traffic fraction (0-1). For monitored steps the rollout rule is promoted to an experiment: treatment = [0, coverage), control = [0.5, 0.5+coverage). Both arms are equal-sized and non-adjacent, so a step-up only adds new users to each arm -- no existing user changes group. The REST API enforces coverage <= 0.5 on monitored steps so control end never exceeds 1.0. The SDK uses explicit hash ranges on bucketingV2 clients to keep bucketing stable across monitored/unmonitored transitions. */
   coverage?: number | null;
   condition?: string | null;
   savedGroups?: UpdateRampScheduleTemplateRequestStepsItemActionsItemPatchSavedGroupsList | null;
@@ -62686,7 +62686,7 @@ export const UpdateTeamResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyConfigSchemaRequest {
   /** The key of the config */
   key: string;
-  /** The schema to check against the config's stored schema — a JSON Schema document or typed-code source (`typescript`/`protobuf`/`python`/`go`/`rust`). Read-only: nothing is mutated. */
+  /** The schema to check against the config's stored schema -- a JSON Schema document or typed-code source (`typescript`/`protobuf`/`python`/`go`/`rust`). Read-only: nothing is mutated. */
   schema: ConfigSchemaSource;
 }
 export const VerifyConfigSchemaRequest = /*@__PURE__*/ S.suspend(() =>
@@ -62754,7 +62754,7 @@ export interface AncestorOwnedFields {
   key: string;
   /** Key of the ancestor config that owns the field. */
   ownedBy: string;
-  /** True when the supplied definition matches the ancestor's contract — a save would strip it harmlessly (with a warning). False means a save would be rejected. */
+  /** True when the supplied definition matches the ancestor's contract -- a save would strip it harmlessly (with a warning). False means a save would be rejected. */
   identical: boolean;
 }
 export const AncestorOwnedFields = /*@__PURE__*/ S.suspend(() =>
@@ -62847,7 +62847,7 @@ export const addTeamMembers: API.OperationMethod<
 }));
 
 export type ApiAdvanceRampScheduleError = GrowthBookOpError;
-/** Advance to the next step, overriding any holds Moves the schedule to the next step, bypassing **all** hold conditions — interval, min sample size, and monitoring signal holds. Accepts `running` or `paused` status; if paused, the schedule is implicitly resumed (timing anchors recalculated) before the step moves. **Approval gate**: if the current step has an unsatisfied `holdConditions.requiresApproval` gate, this endpoint returns **409** by default. Either call `/actions/approve-step` first (recommended), or pass `force: true` to override the approval gate. `force: true` requires `FlagsBypassApprovals` permission and is logged in the audit trail. **Two common uses:** - **Post-interval monitoring hold** (`decision: "hold"`, interval elapsed): the step timer has completed but a signal or guardrail is flagging concern. Use this after reviewing the `/status` health summary and deciding to accept the risk and proceed. - **Hard override**: skip a step regardless of where it is in its interval or hold conditions (CI gate, external deployment pipeline). When to use other actions instead: - **`/actions/resume`** — restores a paused schedule without moving the step. - **`/actions/approve-step`** — clears only the approval gate; other conditions still resolve naturally. - **`/actions/rollback`** — preferred response when `decision: "rollback"` or signals include `guardrail-failing`. */
+/** Advance to the next step, overriding any holds Moves the schedule to the next step, bypassing **all** hold conditions -- interval, min sample size, and monitoring signal holds. Accepts `running` or `paused` status; if paused, the schedule is implicitly resumed (timing anchors recalculated) before the step moves. **Approval gate**: if the current step has an unsatisfied `holdConditions.requiresApproval` gate, this endpoint returns **409** by default. Either call `/actions/approve-step` first (recommended), or pass `force: true` to override the approval gate. `force: true` requires `FlagsBypassApprovals` permission and is logged in the audit trail. **Two common uses:** - **Post-interval monitoring hold** (`decision: "hold"`, interval elapsed): the step timer has completed but a signal or guardrail is flagging concern. Use this after reviewing the `/status` health summary and deciding to accept the risk and proceed. - **Hard override**: skip a step regardless of where it is in its interval or hold conditions (CI gate, external deployment pipeline). When to use other actions instead: - **`/actions/resume`** -- restores a paused schedule without moving the step. - **`/actions/approve-step`** -- clears only the approval gate; other conditions still resolve naturally. - **`/actions/rollback`** -- preferred response when `decision: "rollback"` or signals include `guardrail-failing`. */
 export const apiAdvanceRampSchedule: API.OperationMethod<
   ApiAdvanceRampScheduleRequest,
   ApiAdvanceRampScheduleResponse,
@@ -62877,7 +62877,7 @@ export const appendAutoRunArtifact: API.OperationMethod<
 }));
 
 export type ApproveStepRampScheduleError = GrowthBookOpError;
-/** Approve the pending approval gate Clears whichever approval gate is currently pending on the schedule: - **Start gate** — a schedule created with `requiresStartApproval` sits in `ready` at step -1 with its rule disabled (zero traffic). Approving starts the ramp (or, if a future `startDate` is set, arms it to start on that date). - **Step gate** — the `holdConditions.requiresApproval` gate on the current step of a `running` schedule. For a step gate, approval is the **final** gate: it can only be granted once every other hold has cleared. This endpoint rejects the request (`400`) if the step is not yet ready — while the interval timer is still counting down, or (for monitored steps) before fresh analysis is available or while a guardrail/health signal is failing. Poll `/status` and call this once it reports awaiting approval. **Non-monitored steps**: once the interval has elapsed, approving clears the last hold and advances immediately, chaining through subsequent instant steps. **Monitored steps**: approving clears the last hold and the agenda advances on its next tick (re-checking analysis first). Different from `/actions/advance`: `approve-step` works within the normal evaluation flow and refuses to skip ahead of the interval or any other unmet gate. Use `/actions/advance` to bypass all remaining holds. Requires update + publish (start gate) or review (step gate) permissions for the associated feature. */
+/** Approve the pending approval gate Clears whichever approval gate is currently pending on the schedule: - **Start gate** -- a schedule created with `requiresStartApproval` sits in `ready` at step -1 with its rule disabled (zero traffic). Approving starts the ramp (or, if a future `startDate` is set, arms it to start on that date). - **Step gate** -- the `holdConditions.requiresApproval` gate on the current step of a `running` schedule. For a step gate, approval is the **final** gate: it can only be granted once every other hold has cleared. This endpoint rejects the request (`400`) if the step is not yet ready -- while the interval timer is still counting down, or (for monitored steps) before fresh analysis is available or while a guardrail/health signal is failing. Poll `/status` and call this once it reports awaiting approval. **Non-monitored steps**: once the interval has elapsed, approving clears the last hold and advances immediately, chaining through subsequent instant steps. **Monitored steps**: approving clears the last hold and the agenda advances on its next tick (re-checking analysis first). Different from `/actions/advance`: `approve-step` works within the normal evaluation flow and refuses to skip ahead of the interval or any other unmet gate. Use `/actions/advance` to bypass all remaining holds. Requires update + publish (start gate) or review (step gate) permissions for the associated feature. */
 export const approveStepRampSchedule: API.OperationMethod<
   ApproveStepRampScheduleRequest,
   ApproveStepRampScheduleResponse,
@@ -62892,7 +62892,7 @@ export const approveStepRampSchedule: API.OperationMethod<
 }));
 
 export type ArchiveConfigError = GrowthBookOpError;
-/** Archive a single config Archives a config. A child config (including an environment/project override) is archived outright when its live value is an empty patch or nothing serves it. When archiving would strip a value that live features or other configs still consume, the request returns a 422 listing the blocking gates — re-submit with `"ignoreWarnings": true` in the request body to acknowledge and proceed. A locked config, or one whose org requires approval, returns its own gate (unlock or route the change through a draft revision). */
+/** Archive a single config Archives a config. A child config (including an environment/project override) is archived outright when its live value is an empty patch or nothing serves it. When archiving would strip a value that live features or other configs still consume, the request returns a 422 listing the blocking gates -- re-submit with `"ignoreWarnings": true` in the request body to acknowledge and proceed. A locked config, or one whose org requires approval, returns its own gate (unlock or route the change through a draft revision). */
 export const archiveConfig: API.OperationMethod<
   ArchiveConfigRequest,
   ArchiveConfigResponse,
@@ -63102,7 +63102,7 @@ export const createConfigRevisionPublish: API.OperationMethod<
 }));
 
 export type CreateConfigRevisionRebaseError = GrowthBookOpError;
-/** Rebase a draft revision onto the current live config Updates the draft's base snapshot to the current live state, applying the draft's changes on top. Supply `conflictResolutions` to resolve any conflicting fields. Strategies are `overwrite` (use the draft's value), `discard` (keep the live value), or `union` (merge arrays without duplicates — for array fields like `extends`; pass a `customValues` entry to supply the resolved array yourself). */
+/** Rebase a draft revision onto the current live config Updates the draft's base snapshot to the current live state, applying the draft's changes on top. Supply `conflictResolutions` to resolve any conflicting fields. Strategies are `overwrite` (use the draft's value), `discard` (keep the live value), or `union` (merge arrays without duplicates -- for array fields like `extends`; pass a `customValues` entry to supply the resolved array yourself). */
 export const createConfigRevisionRebase: API.OperationMethod<
   CreateConfigRevisionRebaseRequest,
   CreateConfigRevisionRebaseResponse,
@@ -63717,7 +63717,7 @@ export const createNamespace: API.OperationMethod<
 }));
 
 export type CreateNamespaceRotateSeedError = GrowthBookOpError;
-/** Rotate namespace seed ⚠️ Dangerous: sets a new seed for a multiRange namespace. Every user's bucket position within the namespace is re-computed immediately, which re-randomizes traffic eligibility for **all** experiments currently using this namespace. Only do this if you intentionally want to reshuffle all allocations across experiments. This could be useful when re-using a namespace for a new set of experiments. */
+/** Rotate namespace seed U+26A0 Dangerous: sets a new seed for a multiRange namespace. Every user's bucket position within the namespace is re-computed immediately, which re-randomizes traffic eligibility for **all** experiments currently using this namespace. Only do this if you intentionally want to reshuffle all allocations across experiments. This could be useful when re-using a namespace for a new set of experiments. */
 export const createNamespaceRotateSeed: API.OperationMethod<
   CreateNamespaceRotateSeedRequest,
   CreateNamespaceRotateSeedResponse,
@@ -63792,7 +63792,7 @@ export const createRampScheduleTemplate: API.OperationMethod<
 }));
 
 export type CreateReleasePublishRevisionError = GrowthBookOpError;
-/** Atomically publish revisions across multiple entities Publishes a set of revisions — at most one per entity — across Feature Flags, Saved Groups, configs, and constants as a single all-or-nothing operation. Validation, guards, and custom hooks run against the combined end-state of the whole set, so interdependent changes (e.g. a config schema change plus the values that depend on it) publish together even when the in-between states would be invalid. A blocked publish returns one 422 listing every gate across every item and the flag that clears each. A concurrent change to any target aborts with a 409 and nothing publishes. A failure after the commit starts rolls everything back and emits `revision.publishFailed` for each revision in the set. SDK payloads refresh once per request. Pass `dryRun: true` for the full gate report with zero writes. Requires the `releases` commercial feature. */
+/** Atomically publish revisions across multiple entities Publishes a set of revisions -- at most one per entity -- across Feature Flags, Saved Groups, configs, and constants as a single all-or-nothing operation. Validation, guards, and custom hooks run against the combined end-state of the whole set, so interdependent changes (e.g. a config schema change plus the values that depend on it) publish together even when the in-between states would be invalid. A blocked publish returns one 422 listing every gate across every item and the flag that clears each. A concurrent change to any target aborts with a 409 and nothing publishes. A failure after the commit starts rolls everything back and emits `revision.publishFailed` for each revision in the set. SDK payloads refresh once per request. Pass `dryRun: true` for the full gate report with zero writes. Requires the `releases` commercial feature. */
 export const createReleasePublishRevision: API.OperationMethod<
   CreateReleasePublishRevisionRequest,
   CreateReleasePublishRevisionResponse,
@@ -63912,7 +63912,7 @@ export const createSavedGroupRevisionPublish: API.OperationMethod<
 }));
 
 export type CreateSavedGroupRevisionRebaseError = GrowthBookOpError;
-/** Rebase a draft revision onto the current live saved group Updates the draft's base snapshot to the current live state, applying the draft's changes on top. Supply `conflictResolutions` to resolve any conflicting fields. Strategies are `overwrite` (use the draft's value), `discard` (keep the live value), or `union` (merge arrays — use only on `values`). Optimistic locking is not enforced by this endpoint; callers who need strict locking should call `merge-status` before and after. */
+/** Rebase a draft revision onto the current live saved group Updates the draft's base snapshot to the current live state, applying the draft's changes on top. Supply `conflictResolutions` to resolve any conflicting fields. Strategies are `overwrite` (use the draft's value), `discard` (keep the live value), or `union` (merge arrays -- use only on `values`). Optimistic locking is not enforced by this endpoint; callers who need strict locking should call `merge-status` before and after. */
 export const createSavedGroupRevisionRebase: API.OperationMethod<
   CreateSavedGroupRevisionRebaseRequest,
   CreateSavedGroupRevisionRebaseResponse,
@@ -64362,7 +64362,7 @@ export const deleteFeatureRevisionLogEntryV2: API.OperationMethod<
 }));
 
 export type DeleteFeatureRevisionRuleRampScheduleV2Error = GrowthBookOpError;
-/** Remove ramp schedule from a rule Clears any pending ramp action for this rule. If a live ramp schedule exists, queues a detach that removes it on publish — the rule will show `pendingRamp: "detach"`. If only a pending create exists, it is removed and `pendingRamp` is cleared. */
+/** Remove ramp schedule from a rule Clears any pending ramp action for this rule. If a live ramp schedule exists, queues a detach that removes it on publish -- the rule will show `pendingRamp: "detach"`. If only a pending create exists, it is removed and `pendingRamp` is cleared. */
 export const deleteFeatureRevisionRuleRampScheduleV2: API.OperationMethod<
   DeleteFeatureRevisionRuleRampScheduleV2Request,
   DeleteFeatureRevisionRuleRampScheduleV2Response,
@@ -64467,7 +64467,7 @@ export const deleteMetricGroup: API.OperationMethod<
 }));
 
 export type DeleteNamespaceError = GrowthBookOpError;
-/** Delete a namespace Permanently removes a namespace from the organization. Returns a 409 error if any active experiments currently reference this namespace — disable or remove those references first. */
+/** Delete a namespace Permanently removes a namespace from the organization. Returns a 409 error if any active experiments currently reference this namespace -- disable or remove those references first. */
 export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
@@ -65284,7 +65284,7 @@ export const getFeatureKeysV2: API.OperationMethod<
 }));
 
 export type GetFeatureRevisionDiffV2Error = GrowthBookOpError;
-/** Diff a revision against another revision Returns a schema-keyed JSON diff between this revision and a baseline. The same shapes the in-app review surface produces under `Copy as → Minimal JSON` / `Full JSON`: `minimal` lists only what changed (with id-keyed arrays bucketed into added/removed/modified items and reorder detection), while `full` returns the complete before/after content of the revision. Lifecycle fields (version, status, comment, date, createdBy, publishedBy) are excluded from the diff body and echoed via `from` / `to` instead. Defaults to diffing against the revision's own `baseVersion`; pass `?base=live` to diff against the current live revision, or `?base=<version>` for an arbitrary historical one. */
+/** Diff a revision against another revision Returns a schema-keyed JSON diff between this revision and a baseline. The same shapes the in-app review surface produces under `Copy as -> Minimal JSON` / `Full JSON`: `minimal` lists only what changed (with id-keyed arrays bucketed into added/removed/modified items and reorder detection), while `full` returns the complete before/after content of the revision. Lifecycle fields (version, status, comment, date, createdBy, publishedBy) are excluded from the diff body and echoed via `from` / `to` instead. Defaults to diffing against the revision's own `baseVersion`; pass `?base=live` to diff against the current live revision, or `?base=<version>` for an arbitrary historical one. */
 export const getFeatureRevisionDiffV2: API.OperationMethod<
   GetFeatureRevisionDiffV2Request,
   GetFeatureRevisionDiffV2Response,
@@ -65314,7 +65314,7 @@ export const getFeatureRevisionLatestV2: API.OperationMethod<
 }));
 
 export type GetFeatureRevisionLogV2Error = GrowthBookOpError;
-/** List the activity log for a revision Returns every log entry for the revision — content edits (rules, default value, rebases), review lifecycle events (review requested, approved, changes requested, recalled, undone), comments, and other audit events — sorted oldest-first. */
+/** List the activity log for a revision Returns every log entry for the revision -- content edits (rules, default value, rebases), review lifecycle events (review requested, approved, changes requested, recalled, undone), comments, and other audit events -- sorted oldest-first. */
 export const getFeatureRevisionLogV2: API.OperationMethod<
   GetFeatureRevisionLogV2Request,
   GetFeatureRevisionLogV2Response,
@@ -65917,7 +65917,7 @@ export const getWarehouseTableSchema: API.OperationMethod<
 }));
 
 export type JumpRampScheduleError = GrowthBookOpError;
-/** Jump to a specific step Teleports the schedule to `targetStepIndex` (forward or backward) and leaves it `paused`. Resets timing anchors so the destination step's interval starts fresh when the schedule is next resumed or started. Pass `-1` to return to the pre-start position without applying rollback rule patches — useful for resetting a non-started schedule. For a full traffic revert, use `/actions/rollback` instead. Accepts any non-terminal schedule status. */
+/** Jump to a specific step Teleports the schedule to `targetStepIndex` (forward or backward) and leaves it `paused`. Resets timing anchors so the destination step's interval starts fresh when the schedule is next resumed or started. Pass `-1` to return to the pre-start position without applying rollback rule patches -- useful for resetting a non-started schedule. For a full traffic revert, use `/actions/rollback` instead. Accepts any non-terminal schedule status. */
 export const jumpRampSchedule: API.OperationMethod<
   JumpRampScheduleRequest,
   JumpRampScheduleResponse,
@@ -67090,7 +67090,7 @@ export const postFeatureRevisionPublishV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionRebasePreviewV2Error = GrowthBookOpError;
-/** Preview a rebase without applying it Dry-run of the rebase: runs the same three-way merge with the supplied `conflictResolutions` and returns every conflict (resolved and unresolved) plus the merged result once all are resolved — without modifying the draft. Use it to iterate on resolutions before committing them via the rebase endpoint. */
+/** Preview a rebase without applying it Dry-run of the rebase: runs the same three-way merge with the supplied `conflictResolutions` and returns every conflict (resolved and unresolved) plus the merged result once all are resolved -- without modifying the draft. Use it to iterate on resolutions before committing them via the rebase endpoint. */
 export const postFeatureRevisionRebasePreviewV2: API.OperationMethod<
   PostFeatureRevisionRebasePreviewV2Request,
   PostFeatureRevisionRebasePreviewV2Response,
@@ -67105,7 +67105,7 @@ export const postFeatureRevisionRebasePreviewV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionRebaseV2Error = GrowthBookOpError;
-/** Rebase a draft revision onto the current live version Updates the draft's base revision to match the currently-live revision, applying the draft's changes on top. Supply `conflictResolutions` to resolve conflicting items individually — including per-rule (`rules.<ruleId>`) and rule-order (`rules.order`) conflicts. Supply `expectedLiveVersion` and/or `expectedDraftDateUpdated` (both returned by merge-status and rebase preview) to fail fast with `409` if either side changes between conflict review and submission. Unresolved conflicts also respond with `409`. */
+/** Rebase a draft revision onto the current live version Updates the draft's base revision to match the currently-live revision, applying the draft's changes on top. Supply `conflictResolutions` to resolve conflicting items individually -- including per-rule (`rules.<ruleId>`) and rule-order (`rules.order`) conflicts. Supply `expectedLiveVersion` and/or `expectedDraftDateUpdated` (both returned by merge-status and rebase preview) to fail fast with `409` if either side changes between conflict review and submission. Unresolved conflicts also respond with `409`. */
 export const postFeatureRevisionRebaseV2: API.OperationMethod<
   PostFeatureRevisionRebaseV2Request,
   PostFeatureRevisionRebaseV2Response,
@@ -67120,7 +67120,7 @@ export const postFeatureRevisionRebaseV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionRecallReviewV2Error = GrowthBookOpError;
-/** Recall a review request (revert to draft) Retracts the review request, returning the revision from `pending-review`, `changes-requested`, or `approved` back to `draft`. Allowed for any user with draft-management permission on the feature (the same permission required to request review), not only the original requester. Existing review log entries are preserved as audit history but any in-flight reviewer verdicts (Approved / Requested Changes) submitted during this review cycle no longer count — submitting a fresh `request-review` starts a new cycle. */
+/** Recall a review request (revert to draft) Retracts the review request, returning the revision from `pending-review`, `changes-requested`, or `approved` back to `draft`. Allowed for any user with draft-management permission on the feature (the same permission required to request review), not only the original requester. Existing review log entries are preserved as audit history but any in-flight reviewer verdicts (Approved / Requested Changes) submitted during this review cycle no longer count -- submitting a fresh `request-review` starts a new cycle. */
 export const postFeatureRevisionRecallReviewV2: API.OperationMethod<
   PostFeatureRevisionRecallReviewV2Request,
   PostFeatureRevisionRecallReviewV2Response,
@@ -67135,7 +67135,7 @@ export const postFeatureRevisionRecallReviewV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionReopenV2Error = GrowthBookOpError;
-/** Reopen a discarded revision as a draft Returns a `discarded` revision to `draft` status so it can be edited, reviewed, and published. Prior review state is not restored — the draft must go back through review if approvals are required. */
+/** Reopen a discarded revision as a draft Returns a `discarded` revision to `draft` status so it can be edited, reviewed, and published. Prior review state is not restored -- the draft must go back through review if approvals are required. */
 export const postFeatureRevisionReopenV2: API.OperationMethod<
   PostFeatureRevisionReopenV2Request,
   PostFeatureRevisionReopenV2Response,
@@ -67180,7 +67180,7 @@ export const postFeatureRevisionRevertV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionRuleAddV2Error = GrowthBookOpError;
-/** Add a rule to a draft revision Appends a new rule to the revision's rule list. Supply `allEnvironments: true` on the rule to target all environments, or `environments: [...]` to scope to specific ones. **Scheduling:** For `force` and `rollout` rules, attach a schedule via `rampSchedule` (multi-step ramp) or `schedule` (simple start/end window) — these create standalone ramp actions and set `pendingRamp: "create"` on the rule. For `experiment-ref` and `safe-rollout` rules, only `schedule` is supported and is stored as legacy schedule fields on the rule itself (`rampSchedule` is not available for these rule types). */
+/** Add a rule to a draft revision Appends a new rule to the revision's rule list. Supply `allEnvironments: true` on the rule to target all environments, or `environments: [...]` to scope to specific ones. **Scheduling:** For `force` and `rollout` rules, attach a schedule via `rampSchedule` (multi-step ramp) or `schedule` (simple start/end window) -- these create standalone ramp actions and set `pendingRamp: "create"` on the rule. For `experiment-ref` and `safe-rollout` rules, only `schedule` is supported and is stored as legacy schedule fields on the rule itself (`rampSchedule` is not available for these rule types). */
 export const postFeatureRevisionRuleAddV2: API.OperationMethod<
   PostFeatureRevisionRuleAddV2Request,
   PostFeatureRevisionRuleAddV2Response,
@@ -67195,7 +67195,7 @@ export const postFeatureRevisionRuleAddV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionRulesReorderV2Error = GrowthBookOpError;
-/** Reorder rules in the revision Replaces the flat global rule order. `ruleIds` must contain **exactly** the set of all existing rule IDs in the revision — no additions, omissions, or duplicates. */
+/** Reorder rules in the revision Replaces the flat global rule order. `ruleIds` must contain **exactly** the set of all existing rule IDs in the revision -- no additions, omissions, or duplicates. */
 export const postFeatureRevisionRulesReorderV2: API.OperationMethod<
   PostFeatureRevisionRulesReorderV2Request,
   PostFeatureRevisionRulesReorderV2Response,
@@ -67255,7 +67255,7 @@ export const postFeatureRevisionToggleV2: API.OperationMethod<
 }));
 
 export type PostFeatureRevisionUndoReviewV2Error = GrowthBookOpError;
-/** Undo a reviewer's own review verdict Reviewer retracts their own verdict. The revision status rewinds to the state implied by the remaining active verdicts from other reviewers: any outstanding `Requested Changes` → `changes-requested`, else any outstanding `Approved` → `approved`, else `pending-review`. Existing review comments are preserved. If the retraction resolves the revision to `approved` and auto-publish-on-approval is armed, the revision is published. */
+/** Undo a reviewer's own review verdict Reviewer retracts their own verdict. The revision status rewinds to the state implied by the remaining active verdicts from other reviewers: any outstanding `Requested Changes` -> `changes-requested`, else any outstanding `Approved` -> `approved`, else `pending-review`. Existing review comments are preserved. If the retraction resolves the revision to `approved` and auto-publish-on-approval is armed, the revision is published. */
 export const postFeatureRevisionUndoReviewV2: API.OperationMethod<
   PostFeatureRevisionUndoReviewV2Request,
   PostFeatureRevisionUndoReviewV2Response,
@@ -67285,7 +67285,7 @@ export const postFeatureRevisionV2: API.OperationMethod<
 }));
 
 export type PostFeatureV2Error = GrowthBookOpError;
-/** Create a single feature Creates a new Feature Flag. The caller needs Create access in its Project, plus Publish access for any environment the Feature Flag starts enabled in — one that starts disabled everywhere needs Create alone. Rules are supplied as a top-level `rules` array; each rule includes `allEnvironments` / `environments` scope fields. ### Config-backed features (Config mode) A JSON feature can be backed by a shared **config** — the config supplies the base JSON value and schema, and the feature's *rule* values become override *patches* merged on top (nested objects deep-merge; arrays and scalars replace). The default value is exactly a config with no overrides (see below). Config backing is set exclusively through dedicated fields — never a raw `$extends: ["@config:…"]` inside a value string (that is rejected). `@const:` references inside values still work. - **Top-level (`baseConfig`):** set `valueType: "json"` and `baseConfig: "<configKey>"` to put the Feature Flag in Config mode. The config must be live. This is the family root and the base the default value patches. - **Default value:** unlike rules, the default is exactly a config with no overrides of its own — send `defaultValue: "{}"` to use `baseConfig`. To resolve the default to a *descendant* of `baseConfig` instead, set `defaultValueConfig` to that descendant's key (it must be within `baseConfig`'s family); omit/null to use `baseConfig` directly. - **Rules & experiment variations:** each carries its own `config` field naming the family config that value patches (omit/null to patch the base). `value` is the override patch. Example: ```json { "id": "checkout-config", "valueType": "json", "baseConfig": "purchase-flow", "defaultValue": "{}", "rules": [ { "type": "force", "config": "purchase-flow-vip", "value": "{\"maxItems\": 20}", "allEnvironments": true } ] } ``` */
+/** Create a single feature Creates a new Feature Flag. The caller needs Create access in its Project, plus Publish access for any environment the Feature Flag starts enabled in -- one that starts disabled everywhere needs Create alone. Rules are supplied as a top-level `rules` array; each rule includes `allEnvironments` / `environments` scope fields. ### Config-backed features (Config mode) A JSON feature can be backed by a shared **config** -- the config supplies the base JSON value and schema, and the feature's *rule* values become override *patches* merged on top (nested objects deep-merge; arrays and scalars replace). The default value is exactly a config with no overrides (see below). Config backing is set exclusively through dedicated fields -- never a raw `$extends: ["@config:..."]` inside a value string (that is rejected). `@const:` references inside values still work. - **Top-level (`baseConfig`):** set `valueType: "json"` and `baseConfig: "<configKey>"` to put the Feature Flag in Config mode. The config must be live. This is the family root and the base the default value patches. - **Default value:** unlike rules, the default is exactly a config with no overrides of its own -- send `defaultValue: "{}"` to use `baseConfig`. To resolve the default to a *descendant* of `baseConfig` instead, set `defaultValueConfig` to that descendant's key (it must be within `baseConfig`'s family); omit/null to use `baseConfig` directly. - **Rules & experiment variations:** each carries its own `config` field naming the family config that value patches (omit/null to patch the base). `value` is the override patch. Example: ```json { "id": "checkout-config", "valueType": "json", "baseConfig": "purchase-flow", "defaultValue": "{}", "rules": [ { "type": "force", "config": "purchase-flow-vip", "value": "{\"maxItems\": 20}", "allEnvironments": true } ] } ``` */
 export const postFeatureV2: API.OperationMethod<
   PostFeatureV2Request,
   PostFeatureV2Response,
@@ -67525,7 +67525,7 @@ export const putConfigRevisionProjection: API.OperationMethod<
 }));
 
 export type PutConfigRevisionPropertyError = GrowthBookOpError;
-/** Set one property of a config draft revision's value Stages a single property of this config's own value on the draft, leaving every other property untouched. Prefer this over `PUT .../value` when changing one field: a whole-value write from a stale read silently drops properties someone else added in the meantime. `null` is a value (it does not remove the property) — use `DELETE .../property` to remove one. Pass `version: "new"` to auto-create a draft. */
+/** Set one property of a config draft revision's value Stages a single property of this config's own value on the draft, leaving every other property untouched. Prefer this over `PUT .../value` when changing one field: a whole-value write from a stale read silently drops properties someone else added in the meantime. `null` is a value (it does not remove the property) -- use `DELETE .../property` to remove one. Pass `version: "new"` to auto-create a draft. */
 export const putConfigRevisionProperty: API.OperationMethod<
   PutConfigRevisionPropertyRequest,
   PutConfigRevisionPropertyResponse,
@@ -67540,7 +67540,7 @@ export const putConfigRevisionProperty: API.OperationMethod<
 }));
 
 export type PutConfigRevisionSchemaError = GrowthBookOpError;
-/** Update or import the schema of a config draft revision Stages this config's field schema on the draft. Provide exactly ONE source: - `schema`: a schema document — `{ type: "json-schema", value }` (a JSON Schema object) or `{ type: "typescript", value }` (TypeScript source). **JSON Schema is the recommended ("happy path") format** — it is the canonical pivot, preserves nested objects/arrays, and resolves local `$ref`/`$defs` (so generator output with referenced types works). `typescript` is a best-effort convenience parser. All conversions are lossy-by-design and degrade exotic constructs to permissive types WITH warnings (returned in `warnings`). - `infer: true`: derive the schema from the draft's value. Fields whose key a published ancestor already owns follow "base wins": an identical re-declaration is stripped with a `redundant-declaration` warning; one with a differing definition is rejected. Pass `version: "new"` to auto-create a draft. */
+/** Update or import the schema of a config draft revision Stages this config's field schema on the draft. Provide exactly ONE source: - `schema`: a schema document -- `{ type: "json-schema", value }` (a JSON Schema object) or `{ type: "typescript", value }` (TypeScript source). **JSON Schema is the recommended ("happy path") format** -- it is the canonical pivot, preserves nested objects/arrays, and resolves local `$ref`/`$defs` (so generator output with referenced types works). `typescript` is a best-effort convenience parser. All conversions are lossy-by-design and degrade exotic constructs to permissive types WITH warnings (returned in `warnings`). - `infer: true`: derive the schema from the draft's value. Fields whose key a published ancestor already owns follow "base wins": an identical re-declaration is stripped with a `redundant-declaration` warning; one with a differing definition is rejected. Pass `version: "new"` to auto-create a draft. */
 export const putConfigRevisionSchema: API.OperationMethod<
   PutConfigRevisionSchemaRequest,
   PutConfigRevisionSchemaResponse,
@@ -67555,7 +67555,7 @@ export const putConfigRevisionSchema: API.OperationMethod<
 }));
 
 export type PutConfigRevisionValueError = GrowthBookOpError;
-/** Update the value of a config draft revision Stages a new `value` (this config's own JSON object) on the draft. Pass `version: "new"` to auto-create a draft. A `@config:` inheritance entry in the value is rejected — express lineage via the `parent`/`extends` metadata fields instead. Configs are environment-agnostic: there is no per-environment override (use a Constant for that). Inheritance is a deep (targeted) patch: this value is merged onto the resolved parent recursively, key by key — restate only the leaves you want to change and the rest are inherited. Arrays and scalars replace wholesale, `null` is a value (it does not delete a key), and a value composed from a constant via `$extends` is applied whole. Set `inferSchemaIfMissing: true` to derive and stage a field schema from the value when the config has none yet. */
+/** Update the value of a config draft revision Stages a new `value` (this config's own JSON object) on the draft. Pass `version: "new"` to auto-create a draft. A `@config:` inheritance entry in the value is rejected -- express lineage via the `parent`/`extends` metadata fields instead. Configs are environment-agnostic: there is no per-environment override (use a Constant for that). Inheritance is a deep (targeted) patch: this value is merged onto the resolved parent recursively, key by key -- restate only the leaves you want to change and the rest are inherited. Arrays and scalars replace wholesale, `null` is a value (it does not delete a key), and a value composed from a constant via `$extends` is applied whole. Set `inferSchemaIfMissing: true` to derive and stage a field schema from the value when the config has none yet. */
 export const putConfigRevisionValue: API.OperationMethod<
   PutConfigRevisionValueRequest,
   PutConfigRevisionValueResponse,
@@ -67630,7 +67630,7 @@ export const putEnvironment: API.OperationMethod<
 }));
 
 export type PutExperimentScheduleError = Conflict | GrowthBookOpError;
-/** Set an experiment's schedule and shipping automation Full-replace of the experiment's scheduled start/end and end-of-experiment shipping automation. The body is the complete desired state: any omitted field is cleared (omit `startAt` to remove a scheduled start; send an empty body to clear the whole schedule). Provide either `stopAt` or `stopAfter`, not both; a relative `stopAfter` resolves to a concrete stop when the experiment starts. Setting a scheduled end (`stopAt` or `stopAfter`) requires a `scheduledStopPlan` (any mode, including `notify`). The scheduled end must be in the future: a `stopAt` (or a `stopAfter` that resolves) in the past is rejected — including one whose end date has already passed and been acted on, so changing the plan after a soft end requires committing to a new end date. Auto-ship shipping requires the Decision Framework. */
+/** Set an experiment's schedule and shipping automation Full-replace of the experiment's scheduled start/end and end-of-experiment shipping automation. The body is the complete desired state: any omitted field is cleared (omit `startAt` to remove a scheduled start; send an empty body to clear the whole schedule). Provide either `stopAt` or `stopAfter`, not both; a relative `stopAfter` resolves to a concrete stop when the experiment starts. Setting a scheduled end (`stopAt` or `stopAfter`) requires a `scheduledStopPlan` (any mode, including `notify`). The scheduled end must be in the future: a `stopAt` (or a `stopAfter` that resolves) in the past is rejected -- including one whose end date has already passed and been acted on, so changing the plan after a soft end requires committing to a new end date. Auto-ship shipping requires the Decision Framework. */
 export const putExperimentSchedule: API.OperationMethod<
   PutExperimentScheduleRequest,
   PutExperimentScheduleResponse,
@@ -67720,7 +67720,7 @@ export const putFeatureRevisionMetadataV2: API.OperationMethod<
 }));
 
 export type PutFeatureRevisionPrerequisitesV2Error = GrowthBookOpError;
-/** Set feature-level prerequisites in a draft revision Sets the feature-level prerequisites for this revision. Each prerequisite must be a boolean feature flag; the gate is always 'prerequisite flag is on'. The condition is applied automatically — only the flag ID is required. */
+/** Set feature-level prerequisites in a draft revision Sets the feature-level prerequisites for this revision. Each prerequisite must be a boolean feature flag; the gate is always 'prerequisite flag is on'. The condition is applied automatically -- only the flag ID is required. */
 export const putFeatureRevisionPrerequisitesV2: API.OperationMethod<
   PutFeatureRevisionPrerequisitesV2Request,
   PutFeatureRevisionPrerequisitesV2Response,
@@ -67735,7 +67735,7 @@ export const putFeatureRevisionPrerequisitesV2: API.OperationMethod<
 }));
 
 export type PutFeatureRevisionRuleRampScheduleV2Error = GrowthBookOpError;
-/** Set ramp schedule for a rule Queues a revision-controlled ramp action for this rule. If the rule already has a live ramp schedule, this stores an `update` action applied on publish; otherwise it stores a `create` action. No live schedule config changes are applied immediately by this endpoint. You can build the ramp from a template (`templateId`) and set the rollback anchor (`startState`) in the same request — e.g. pull in a template and pass `startState: { "coverage": 0 }` so a rollback returns the rule to 0%. */
+/** Set ramp schedule for a rule Queues a revision-controlled ramp action for this rule. If the rule already has a live ramp schedule, this stores an `update` action applied on publish; otherwise it stores a `create` action. No live schedule config changes are applied immediately by this endpoint. You can build the ramp from a template (`templateId`) and set the rollback anchor (`startState`) in the same request -- e.g. pull in a template and pass `startState: { "coverage": 0 }` so a rollback returns the rule to 0%. */
 export const putFeatureRevisionRuleRampScheduleV2: API.OperationMethod<
   PutFeatureRevisionRuleRampScheduleV2Request,
   PutFeatureRevisionRuleRampScheduleV2Response,
@@ -67750,7 +67750,7 @@ export const putFeatureRevisionRuleRampScheduleV2: API.OperationMethod<
 }));
 
 export type PutFeatureRevisionRuleV2Error = GrowthBookOpError;
-/** Update a rule in a draft revision Patches fields on an existing rule (identified by `ruleId`). The rule `type` cannot be changed. Scope can be updated via `allEnvironments` / `environments` patch fields. **Scheduling:** For `force` and `rollout` rules, update the schedule via `rampSchedule` (multi-step ramp) or `schedule` (simple start/end window) — these manage standalone ramp actions and set `pendingRamp: "create"` on the rule. For `experiment-ref` and `safe-rollout` rules, only `schedule` is supported and updates legacy schedule fields on the rule itself (`rampSchedule` is not available for these rule types). */
+/** Update a rule in a draft revision Patches fields on an existing rule (identified by `ruleId`). The rule `type` cannot be changed. Scope can be updated via `allEnvironments` / `environments` patch fields. **Scheduling:** For `force` and `rollout` rules, update the schedule via `rampSchedule` (multi-step ramp) or `schedule` (simple start/end window) -- these manage standalone ramp actions and set `pendingRamp: "create"` on the rule. For `experiment-ref` and `safe-rollout` rules, only `schedule` is supported and updates legacy schedule fields on the rule itself (`rampSchedule` is not available for these rule types). */
 export const putFeatureRevisionRuleV2: API.OperationMethod<
   PutFeatureRevisionRuleV2Request,
   PutFeatureRevisionRuleV2Response,
@@ -67990,7 +67990,7 @@ export const refreshContextualBandit: API.OperationMethod<
 }));
 
 export type RefreshMonitoringRampScheduleError = GrowthBookOpError;
-/** Trigger a manual monitoring update Queues a new analysis snapshot for the schedule's monitoring experiment. The snapshot runs asynchronously — poll `GET /ramp-schedules/:id/status` until `snapshotAt` advances to confirm results are ready. Only available when the schedule is within its monitored step window: - Not in a terminal state (`completed` or `rolled-back`). - Has at least one step with `monitored: true`. - `currentStepIndex` is within `[firstMonitoredStepIndex, lastMonitoredStepIndex]`. Violating any condition returns **409 Conflict** with a descriptive message. Requires the `runQueries` permission on the configured datasource (enforced via `canRunExperimentQueries`). */
+/** Trigger a manual monitoring update Queues a new analysis snapshot for the schedule's monitoring experiment. The snapshot runs asynchronously -- poll `GET /ramp-schedules/:id/status` until `snapshotAt` advances to confirm results are ready. Only available when the schedule is within its monitored step window: - Not in a terminal state (`completed` or `rolled-back`). - Has at least one step with `monitored: true`. - `currentStepIndex` is within `[firstMonitoredStepIndex, lastMonitoredStepIndex]`. Violating any condition returns **409 Conflict** with a descriptive message. Requires the `runQueries` permission on the configured datasource (enforced via `canRunExperimentQueries`). */
 export const refreshMonitoringRampSchedule: API.OperationMethod<
   RefreshMonitoringRampScheduleRequest,
   RefreshMonitoringRampScheduleResponse,
@@ -68035,7 +68035,7 @@ export const restartRampSchedule: API.OperationMethod<
 }));
 
 export type ResumeRampScheduleError = GrowthBookOpError;
-/** Resume a paused ramp schedule Resumes a `paused` schedule without moving the current step. Timing anchors (`phaseStartedAt`, `startedAt`) are shifted forward by the pause duration so that interval-based steps continue from where they left off rather than restarting their clock. Does **not** advance to the next step — use `/actions/advance` if you also want to skip the remainder of the current step. */
+/** Resume a paused ramp schedule Resumes a `paused` schedule without moving the current step. Timing anchors (`phaseStartedAt`, `startedAt`) are shifted forward by the pause duration so that interval-based steps continue from where they left off rather than restarting their clock. Does **not** advance to the next step -- use `/actions/advance` if you also want to skip the remainder of the current step. */
 export const resumeRampSchedule: API.OperationMethod<
   ResumeRampScheduleRequest,
   ResumeRampScheduleResponse,
@@ -68080,7 +68080,7 @@ export const revertFeatureV2: API.OperationMethod<
 }));
 
 export type RollbackRampScheduleError = GrowthBookOpError;
-/** Roll back a ramp schedule Rewinds all ramp effects (rule coverage, targeting, etc.) to the starting position and lands in terminal `rolled-back` status. The reason is persisted as `lastRollbackReason` (prefixed with `Manual: `) and surfaced in the UI. This is also the correct response to a monitoring alert — when the `/status` endpoint returns `decision: "rollback"` or signals include `guardrail-failing`, call this endpoint with a descriptive `reason`. From this terminal state the schedule can be brought back to `ready` via `/actions/restart`, after which `/actions/start` will run it again. */
+/** Roll back a ramp schedule Rewinds all ramp effects (rule coverage, targeting, etc.) to the starting position and lands in terminal `rolled-back` status. The reason is persisted as `lastRollbackReason` (prefixed with `Manual: `) and surfaced in the UI. This is also the correct response to a monitoring alert -- when the `/status` endpoint returns `decision: "rollback"` or signals include `guardrail-failing`, call this endpoint with a descriptive `reason`. From this terminal state the schedule can be brought back to `ready` via `/actions/restart`, after which `/actions/start` will run it again. */
 export const rollbackRampSchedule: API.OperationMethod<
   RollbackRampScheduleRequest,
   RollbackRampScheduleResponse,
@@ -68230,7 +68230,7 @@ export const startHoldoutAnalysis: API.OperationMethod<
 }));
 
 export type StartRampScheduleError = GrowthBookOpError;
-/** Start a ramp schedule Transitions the schedule from `ready` to `running`. The schedule must have at least one target rule attached — a schedule created without targets starts in `pending` and moves to `ready` automatically when the first target is attached via `/actions/add-target`. The first step is processed immediately: interval-free steps advance right away; interval-based steps arm a timer. Once started, use `/actions/pause` to halt, `/actions/advance` to skip steps, or `/actions/rollback` to revert. */
+/** Start a ramp schedule Transitions the schedule from `ready` to `running`. The schedule must have at least one target rule attached -- a schedule created without targets starts in `pending` and moves to `ready` automatically when the first target is attached via `/actions/add-target`. The first step is processed immediately: interval-free steps advance right away; interval-based steps arm a timer. Once started, use `/actions/pause` to halt, `/actions/advance` to skip steps, or `/actions/rollback` to revert. */
 export const startRampSchedule: API.OperationMethod<
   StartRampScheduleRequest,
   StartRampScheduleResponse,
@@ -68740,7 +68740,7 @@ export const updateRampSchedule: API.OperationMethod<
 }));
 
 export type UpdateRampScheduleLockdownError = GrowthBookOpError;
-/** Update ramp lockdown configuration Sets the lockdown mode. `locked` prevents other users from publishing unrelated changes to the parent feature while the ramp is running — useful when you want to ensure no external edits interfere with a live rollout. It does **not** affect the ramp's own auto-advancement or monitoring behavior; use `actions/pause` to halt the ramp itself. `none` removes the publishing restriction. */
+/** Update ramp lockdown configuration Sets the lockdown mode. `locked` prevents other users from publishing unrelated changes to the parent feature while the ramp is running -- useful when you want to ensure no external edits interfere with a live rollout. It does **not** affect the ramp's own auto-advancement or monitoring behavior; use `actions/pause` to halt the ramp itself. `none` removes the publishing restriction. */
 export const updateRampScheduleLockdown: API.OperationMethod<
   UpdateRampScheduleLockdownRequest,
   UpdateRampScheduleLockdownResponse,
@@ -68755,7 +68755,7 @@ export const updateRampScheduleLockdown: API.OperationMethod<
 }));
 
 export type UpdateRampScheduleMonitoringError = GrowthBookOpError;
-/** Update ramp monitoring configuration Replaces the monitoring configuration. Health-action thresholds (`srmAction`, `noTrafficAction`, etc.) can be updated at any time. Once a linked SafeRollout has started, `datasourceId`, `exposureQueryId`, the metric IDs and the snapshot cadence are all locked — stop and recreate the schedule to change the data source. Changes to guardrail or signal metric IDs take effect on the next analysis run. */
+/** Update ramp monitoring configuration Replaces the monitoring configuration. Health-action thresholds (`srmAction`, `noTrafficAction`, etc.) can be updated at any time. Once a linked SafeRollout has started, `datasourceId`, `exposureQueryId`, the metric IDs and the snapshot cadence are all locked -- stop and recreate the schedule to change the data source. Changes to guardrail or signal metric IDs take effect on the next analysis run. */
 export const updateRampScheduleMonitoring: API.OperationMethod<
   UpdateRampScheduleMonitoringRequest,
   UpdateRampScheduleMonitoringResponse,
@@ -68770,7 +68770,7 @@ export const updateRampScheduleMonitoring: API.OperationMethod<
 }));
 
 export type UpdateRampScheduleStepsError = GrowthBookOpError;
-/** Update ramp schedule steps Fully replaces the steps array for a ramp schedule. Only allowed when the schedule is in a non-running, non-terminal state (`ready`, `pending`, or `paused`). Pause a running schedule first; restart a terminal schedule first. On a schedule attached to a rule this skips the revision review flow, so when the organization requires review anywhere it is limited to credentials that may bypass approval. **Step actions** (coverage/targeting patches) are not accepted here — they change the SDK payload and must go through a feature revision draft. Existing step actions are preserved for each position. Use `PUT /v2/features/:id/revisions/:version/rules/:ruleId/ramp-schedule` to modify coverage/targeting. */
+/** Update ramp schedule steps Fully replaces the steps array for a ramp schedule. Only allowed when the schedule is in a non-running, non-terminal state (`ready`, `pending`, or `paused`). Pause a running schedule first; restart a terminal schedule first. On a schedule attached to a rule this skips the revision review flow, so when the organization requires review anywhere it is limited to credentials that may bypass approval. **Step actions** (coverage/targeting patches) are not accepted here -- they change the SDK payload and must go through a feature revision draft. Existing step actions are preserved for each position. Use `PUT /v2/features/:id/revisions/:version/rules/:ruleId/ramp-schedule` to modify coverage/targeting. */
 export const updateRampScheduleSteps: API.OperationMethod<
   UpdateRampScheduleStepsRequest,
   UpdateRampScheduleStepsResponse,

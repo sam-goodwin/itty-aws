@@ -61,7 +61,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** The API is not enabled on the project (HTTP 403 PERMISSION_DENIED, reason SERVICE_DISABLED: '… API has not been used in project … before or it is disabled.'). Enable the API; not retryable until then. */
+/** The API is not enabled on the project (HTTP 403 PERMISSION_DENIED, reason SERVICE_DISABLED: '... API has not been used in project ... before or it is disabled.'). Enable the API; not retryable until then. */
 export class ServiceDisabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceDisabled>()("ServiceDisabled", {

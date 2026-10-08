@@ -4742,7 +4742,7 @@ export type CopyServerlessCacheSnapshotError =
   | TagQuotaPerResourceExceeded
   | CommonErrors;
 /**
- * Creates a copy of an existing serverless cache’s snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.
+ * Creates a copy of an existing serverless cache's snapshot. Available for Valkey, Redis OSS and Serverless Memcached only.
  */
 export const copyServerlessCacheSnapshot: API.OperationMethod<
   CopyServerlessCacheSnapshotRequest,
@@ -6278,7 +6278,7 @@ export type DescribeServerlessCacheSnapshotsError =
   | CommonErrors;
 /**
  * Returns information about serverless cache snapshots.
- * By default, this API lists all of the customer’s serverless cache snapshots.
+ * By default, this API lists all of the customer's serverless cache snapshots.
  * It can also describe a single serverless cache snapshot, or the snapshots associated with
  * a particular serverless cache. Available for Valkey, Redis OSS and Serverless Memcached only.
  */

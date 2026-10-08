@@ -244,7 +244,7 @@ export interface IdentityProfile {
   phone: string | null;
   /** Whether this is an 'individual' or 'business' profile. */
   profile_type: string;
-  /** Derived verification status across all linked verifications. Returns `action_required` whenever the profile has an open request for information (whether a verification, payout, or audit RFI) — i.e. the merchant must submit something before it is in good standing. */
+  /** Derived verification status across all linked verifications. Returns `action_required` whenever the profile has an open request for information (whether a verification, payout, or audit RFI) -- i.e. the merchant must submit something before it is in good standing. */
   status: IdentityProfileStatuses;
   /** When the identity profile was last synced from a verification. */
   updated_at: string;
@@ -364,7 +364,7 @@ export interface IdentityProfileListItem {
   phone: string | null;
   /** Whether this is an 'individual' or 'business' profile. */
   profile_type: string;
-  /** Derived verification status across all linked verifications. Returns `action_required` whenever the profile has an open request for information (whether a verification, payout, or audit RFI) — i.e. the merchant must submit something before it is in good standing. */
+  /** Derived verification status across all linked verifications. Returns `action_required` whenever the profile has an open request for information (whether a verification, payout, or audit RFI) -- i.e. the merchant must submit something before it is in good standing. */
   status: IdentityProfileStatuses;
   /** When the identity profile was last synced from a verification. */
   updated_at: string;
@@ -502,7 +502,7 @@ export type GetIdentityProfileError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve identity profile [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing identity profile. Required permissions: - `identity:read` */
+/** Retrieve identity profile [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing identity profile. Required permissions: - `identity:read` */
 export const getIdentityProfile: API.OperationMethod<
   GetIdentityProfileRequest,
   IdentityProfile,
@@ -522,7 +522,7 @@ export type ListIdentityProfileError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List identity profiles [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of identity profiles. When account_id is provided, lists IPs currently linked to that account's ledger. When omitted, lists IPs linked to any ledger the actor can read (including child accounts under a parent). Required permissions: - `identity:read` */
+/** List identity profiles [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of identity profiles. When account_id is provided, lists IPs currently linked to that account's ledger. When omitted, lists IPs linked to any ledger the actor can read (including child accounts under a parent). Required permissions: - `identity:read` */
 export const listIdentityProfile: API.PaginatedOperationMethod<
   ListIdentityProfileRequest,
   ListIdentityProfileResponse,
@@ -554,7 +554,7 @@ export type ListVerificationsIdentityProfileError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List identity profile verifications [Legacy API — https://docs.whop.com/api-reference] Returns a list of verifications attached to an identity profile, ordered by most recent first. Required permissions: - `identity:read` */
+/** List identity profile verifications [Legacy API -- https://docs.whop.com/api-reference] Returns a list of verifications attached to an identity profile, ordered by most recent first. Required permissions: - `identity:read` */
 export const listVerificationsIdentityProfile: API.PaginatedOperationMethod<
   ListVerificationsIdentityProfileRequest,
   ListVerificationsIdentityProfileResponse,
@@ -586,7 +586,7 @@ export type UnlinkIdentityProfileError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Unlink an identity profile [Legacy API — https://docs.whop.com/api-reference] Unlinks an IdentityProfile from a LedgerAccount (flips the matching link to is_current=false). */
+/** Unlink an identity profile [Legacy API -- https://docs.whop.com/api-reference] Unlinks an IdentityProfile from a LedgerAccount (flips the matching link to is_current=false). */
 export const unlinkIdentityProfile: API.OperationMethod<
   UnlinkIdentityProfileRequest,
   IdentityProfile,

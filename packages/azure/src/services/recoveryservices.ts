@@ -840,7 +840,7 @@ export const ImmutabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** Immutability Settings of vault */
 export interface ImmutabilitySettings {
   state?: ImmutabilityState | (string & {});
-  /** Immutability configuration of the vault — selects whether immutability is inherited from the backup policy (AsPerPolicy) or fixed for a specific duration (TimeBased). */
+  /** Immutability configuration of the vault -- selects whether immutability is inherited from the backup policy (AsPerPolicy) or fixed for a specific duration (TimeBased). */
   configuration?: ImmutabilityConfiguration;
 }
 export const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>

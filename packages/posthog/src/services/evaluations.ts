@@ -197,7 +197,7 @@ export const EvaluationCondition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EvaluationCondition" }) as any as S.Schema<EvaluationCondition>;
 
-/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type CreateEvaluationRequestConditionsList = Array<EvaluationCondition>;
 export const CreateEvaluationRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
@@ -214,7 +214,7 @@ export const CreateEvaluationRequestTargetConfigCase0Strategy = S.String;
 export interface CreateEvaluationRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: CreateEvaluationRequestTargetConfigCase0Strategy;
-  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
 export const CreateEvaluationRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -233,9 +233,9 @@ export const CreateEvaluationRequestTargetConfigCase1Strategy = S.String;
 export interface CreateEvaluationRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: CreateEvaluationRequestTargetConfigCase1Strategy;
-  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10-1800 for 'trace', 10-86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
   quiet_period_seconds?: number;
-  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
 export const CreateEvaluationRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -304,9 +304,9 @@ export interface CreateEvaluationRequest {
   output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
   output_config?: CreateEvaluationRequestOutputConfig;
-  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: CreateEvaluationRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations -- a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
   target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
   target_config?: CreateEvaluationRequestTargetConfig;
@@ -471,7 +471,7 @@ export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EvaluationOutputConfig" }) as any as S.Schema<EvaluationOutputConfig>;
 
-/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationConditionsList = Array<EvaluationCondition>;
 export const EvaluationConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
@@ -484,7 +484,7 @@ export const EvaluationTargetConfigCase0Strategy = S.String;
 export interface EvaluationTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: EvaluationTargetConfigCase0Strategy;
-  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
 export const EvaluationTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -503,9 +503,9 @@ export const EvaluationTargetConfigCase1Strategy = S.String;
 export interface EvaluationTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: EvaluationTargetConfigCase1Strategy;
-  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10-1800 for 'trace', 10-86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
   quiet_period_seconds?: number;
-  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
 export const EvaluationTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -613,9 +613,9 @@ export interface Evaluation {
   output_type?: OutputTypeEnum;
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
   output_config?: EvaluationOutputConfig;
-  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations -- a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
   target?: EvaluationTargetEnum;
   /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
   target_config?: EvaluationTargetConfig;
@@ -986,7 +986,7 @@ export interface CreateEvaluationsTestHogRequest {
   output_config?: CreateEvaluationsTestHogRequestOutputConfig;
   /** Hog source code to test. Return a boolean, finite number, or category keys matching output_type. Categorical single selection accepts one key or a one-item list; multiple selection accepts a list, including []. Return null only for allowed N/A. Output settings determine which boolean counts as a failure. */
   source?: string;
-  /** Number of recent $ai_generation events to test against (1–10, default 5). */
+  /** Number of recent $ai_generation events to test against (1-10, default 5). */
   sample_count?: number;
   /** Whether the evaluation can return N/A for non-applicable generations. */
   allows_na?: boolean;
@@ -1419,7 +1419,7 @@ export const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEvaluationRequestOutputConfig",
 }) as any as S.Schema<UpdateEvaluationRequestOutputConfig>;
 
-/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationRequestConditionsList = Array<EvaluationCondition>;
 export const UpdateEvaluationRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
@@ -1432,7 +1432,7 @@ export const UpdateEvaluationRequestTargetConfigCase0Strategy = S.String;
 export interface UpdateEvaluationRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: UpdateEvaluationRequestTargetConfigCase0Strategy;
-  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
 export const UpdateEvaluationRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -1451,9 +1451,9 @@ export const UpdateEvaluationRequestTargetConfigCase1Strategy = S.String;
 export interface UpdateEvaluationRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: UpdateEvaluationRequestTargetConfigCase1Strategy;
-  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10-1800 for 'trace', 10-86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
   quiet_period_seconds?: number;
-  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
 export const UpdateEvaluationRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -1494,9 +1494,9 @@ export interface UpdateEvaluationRequest {
   output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
   output_config?: UpdateEvaluationRequestOutputConfig;
-  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: UpdateEvaluationRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations -- a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
   target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
   target_config?: UpdateEvaluationRequestTargetConfig;
@@ -1659,7 +1659,7 @@ export const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ S.suspe
   identifier: "UpdateEvaluationsPartialRequestOutputConfig",
 }) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfig>;
 
-/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationsPartialRequestConditionsList = Array<EvaluationCondition>;
 export const UpdateEvaluationsPartialRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
@@ -1672,7 +1672,7 @@ export const UpdateEvaluationsPartialRequestTargetConfigCase0Strategy = S.String
 export interface UpdateEvaluationsPartialRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: UpdateEvaluationsPartialRequestTargetConfigCase0Strategy;
-  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
 export const UpdateEvaluationsPartialRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -1691,9 +1691,9 @@ export const UpdateEvaluationsPartialRequestTargetConfigCase1Strategy = S.String
 export interface UpdateEvaluationsPartialRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: UpdateEvaluationsPartialRequestTargetConfigCase1Strategy;
-  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10-1800 for 'trace', 10-86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
   quiet_period_seconds?: number;
-  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
 export const UpdateEvaluationsPartialRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -1734,9 +1734,9 @@ export interface UpdateEvaluationsPartialRequest {
   output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
   output_config?: UpdateEvaluationsPartialRequestOutputConfig;
-  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: UpdateEvaluationsPartialRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations -- a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
   target?: EvaluationTargetEnum | (string & {});
   /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
   target_config?: UpdateEvaluationsPartialRequestTargetConfig;

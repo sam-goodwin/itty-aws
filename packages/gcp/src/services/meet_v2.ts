@@ -429,7 +429,7 @@ export const CreateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSpacesMembersRequest>;
 
 export interface DeleteSpacesMembersRequest {
-  /** Required. Format: “spaces/{space}/members/{member}” */
+  /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
 export const DeleteSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -597,7 +597,7 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest = /*@__P
 
 /** Refers to each unique join or leave session when a user joins a conference from a device. Note that any time a user joins the conference a new unique ID is assigned. That means if a user joins a space multiple times from the same device, they're assigned different IDs, and are also be treated as different participant sessions. */
 export interface ParticipantSession {
-  /** Output only. Timestamp when the user session ends. Unset if the user session hasn’t ended. */
+  /** Output only. Timestamp when the user session ends. Unset if the user session hasn't ended. */
   endTime?: string;
   /** Identifier. Session id. */
   name?: string;
@@ -766,7 +766,7 @@ export const GetConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.sus
   identifier: "GetConferenceRecordsTranscriptsEntriesRequest",
 }) as any as S.Schema<GetConferenceRecordsTranscriptsEntriesRequest>;
 
-/** Single entry for one user’s speech during a transcript session. */
+/** Single entry for one user's speech during a transcript session. */
 export interface TranscriptEntry {
   /** Output only. Refers to the participant who speaks. */
   participant?: string;
@@ -803,7 +803,7 @@ export const GetSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSpacesRequest" }) as any as S.Schema<GetSpacesRequest>;
 
 export interface GetSpacesMembersRequest {
-  /** Required. Format: “spaces/{space}/members/{member}” */
+  /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
 export const GetSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>

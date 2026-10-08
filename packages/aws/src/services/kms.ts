@@ -5084,7 +5084,7 @@ export type ImportKeyMaterialError =
  * materials into the replica Region keys. You cannot directly import new key material into
  * the replica Region keys.
  *
- * To import new key material for a multi-Region symmetric key, you’ll need to complete the
+ * To import new key material for a multi-Region symmetric key, you'll need to complete the
  * following:
  *
  * - Call `ImportKeyMaterial` on the primary Region key with the

@@ -313,7 +313,7 @@ export type GetObjectError =
   | RequestedRangeNotSatisfiableException
   | CommonErrors;
 /**
- * Downloads the object at the specified path. If the object’s upload availability is set to `streaming`, AWS Elemental MediaStore downloads the object even if it’s still uploading the object.
+ * Downloads the object at the specified path. If the object's upload availability is set to `streaming`, AWS Elemental MediaStore downloads the object even if it's still uploading the object.
  */
 export const getObject: API.OperationMethod<
   GetObjectRequest,

@@ -74,7 +74,7 @@ export interface CreateAuthGithubActionsTokenResponseData {
   /** Prefixed integration token ID (`itgr_` prefix). */
   id: string;
   type: string;
-  /** The minted integration token. Returned once — copy it immediately. */
+  /** The minted integration token. Returned once -- copy it immediately. */
   value: string;
   /** ISO 8601 instant after which the token is invalid. */
   expiresAt: string;
@@ -241,7 +241,7 @@ export const CreateBucketKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateBuildRequestSource = "ci" | "cli";
 export const CreateBuildRequestSource = S.String;
 
-/** Identifies the CI run. Supplying it makes creation idempotent — a repeat call for the same run returns the build that already exists. Omit it for builds with no run to name, such as a deploy from a laptop, where every call creates a new build. */
+/** Identifies the CI run. Supplying it makes creation idempotent -- a repeat call for the same run returns the build that already exists. Omit it for builds with no run to name, such as a deploy from a laptop, where every call creates a new build. */
 export interface CreateBuildRequestRunIdentity {
   /** CI provider the run identity belongs to. */
   provider: string;
@@ -270,7 +270,7 @@ export interface CreateBuildRequest {
   commitSha: string;
   /** Git branch name. */
   branchName: string;
-  /** Identifies the CI run. Supplying it makes creation idempotent — a repeat call for the same run returns the build that already exists. Omit it for builds with no run to name, such as a deploy from a laptop, where every call creates a new build. */
+  /** Identifies the CI run. Supplying it makes creation idempotent -- a repeat call for the same run returns the build that already exists. Omit it for builds with no run to name, such as a deploy from a laptop, where every call creates a new build. */
   runIdentity?: CreateBuildRequestRunIdentity;
   /** Link to the run's logs in the reporter's own system. */
   externalLogUrl?: string;
@@ -1644,7 +1644,7 @@ export const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateProjectBranchResponseDataRole = "production" | "preview";
 export const CreateProjectBranchResponseDataRole = S.String;
 
-/** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+/** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type CreateProjectBranchResponseDataProject = CreateBucketResponseDataProject;
 export const CreateProjectBranchResponseDataProject = CreateBucketResponseDataProject;
 
@@ -1657,7 +1657,7 @@ export interface CreateProjectBranchResponseData {
   role: CreateProjectBranchResponseDataRole;
   createdAt: string;
   updatedAt: string;
-  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
 export const CreateProjectBranchResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -2920,7 +2920,7 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetBranchResponseDataRole = "production" | "preview";
 export const GetBranchResponseDataRole = S.String;
 
-/** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+/** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type GetBranchResponseDataProject = CreateBucketResponseDataProject;
 export const GetBranchResponseDataProject = CreateBucketResponseDataProject;
 
@@ -2933,7 +2933,7 @@ export interface GetBranchResponseData {
   role: GetBranchResponseDataRole;
   createdAt: string;
   updatedAt: string;
-  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
 export const GetBranchResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -5037,7 +5037,7 @@ export const GetProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectBranchesResponseDataItemRole = "production" | "preview";
 export const GetProjectBranchesResponseDataItemRole = S.String;
 
-/** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+/** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type GetProjectBranchesResponseDataItemProject = CreateBucketResponseDataProject;
 export const GetProjectBranchesResponseDataItemProject = CreateBucketResponseDataProject;
 
@@ -5050,7 +5050,7 @@ export interface GetProjectBranchesResponseDataItem {
   role: GetProjectBranchesResponseDataItemRole;
   createdAt: string;
   updatedAt: string;
-  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
 export const GetProjectBranchesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
@@ -6604,7 +6604,7 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateBranchResponseDataRole = "production" | "preview";
 export const UpdateBranchResponseDataRole = S.String;
 
-/** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+/** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type UpdateBranchResponseDataProject = CreateBucketResponseDataProject;
 export const UpdateBranchResponseDataProject = CreateBucketResponseDataProject;
 
@@ -6617,7 +6617,7 @@ export interface UpdateBranchResponseData {
   role: UpdateBranchResponseDataRole;
   createdAt: string;
   updatedAt: string;
-  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
+  /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
 export const UpdateBranchResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -6691,7 +6691,7 @@ export interface UpdateBuildRequest {
   /** How far the run has got. */
   phase?: UpdateBuildRequestPhase | (string & {});
   state?: UpdateBuildRequestState | (string & {});
-  /** Name of the step that failed, free text — step names come from build tooling the platform cannot validate. */
+  /** Name of the step that failed, free text -- step names come from build tooling the platform cannot validate. */
   failingStep?: string;
   errorMessage?: string;
   externalLogUrl?: string;
@@ -7113,7 +7113,7 @@ export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
 
 export type CreateAuthGithubActionsTokenError = PrismaOpError;
-/** Exchange a GitHub Actions OIDC token for a workspace service token ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Verifies the GitHub Actions OIDC token and mints a short-lived workspace service token. The caller must request the token with audience `prisma-cloud`. Any verification failure returns a generic 401 — the response never reveals whether a repository is connected. */
+/** Exchange a GitHub Actions OIDC token for a workspace service token U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Verifies the GitHub Actions OIDC token and mints a short-lived workspace service token. The caller must request the token with audience `prisma-cloud`. Any verification failure returns a generic 401 -- the response never reveals whether a repository is connected. */
 export const createAuthGithubActionsToken: API.OperationMethod<
   CreateAuthGithubActionsTokenRequest,
   CreateAuthGithubActionsTokenResponse,
@@ -7143,7 +7143,7 @@ export const createBucket: API.OperationMethod<
 }));
 
 export type CreateBucketKeyError = BadRequest | NotFound | PrismaOpError;
-/** Create bucket key Creates a new access key for the given bucket. The `secretAccessKey` field is returned exactly once in this response and is never stored — copy it immediately. */
+/** Create bucket key Creates a new access key for the given bucket. The `secretAccessKey` field is returned exactly once in this response and is never stored -- copy it immediately. */
 export const createBucketKey: API.OperationMethod<
   CreateBucketKeyRequest,
   CreateBucketKeyResponse,
@@ -7158,7 +7158,7 @@ export const createBucketKey: API.OperationMethod<
 }));
 
 export type CreateBuildError = NotFound | PrismaOpError;
-/** Report a build ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Records a build any deploy tool is running — a CI workflow, a deploy script, or Composer from a laptop. The workspace comes from the token, never from the body, which is what lets a build be reported before the project it will create exists. Supplying `runIdentity` makes the call idempotent: a repeat for the same run returns the build already recorded rather than a second one. The response is the same either way; a caller cannot tell whether it created the build or joined one. A build reported with no `runIdentity` has no dedup key, so a client that retries a lost response creates a second build. Supply a `runIdentity` whenever the run has one. */
+/** Report a build U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Records a build any deploy tool is running -- a CI workflow, a deploy script, or Composer from a laptop. The workspace comes from the token, never from the body, which is what lets a build be reported before the project it will create exists. Supplying `runIdentity` makes the call idempotent: a repeat for the same run returns the build already recorded rather than a second one. The response is the same either way; a caller cannot tell whether it created the build or joined one. A build reported with no `runIdentity` has no dedup key, so a client that retries a lost response creates a second build. Supply a `runIdentity` whenever the run has one. */
 export const createBuild: API.OperationMethod<
   CreateBuildRequest,
   CreateBuildResponse,
@@ -7239,7 +7239,7 @@ export const createDatabaseConnection: API.OperationMethod<
 }));
 
 export type CreateDatabaseRestoreError = NotFound | Conflict | UnprocessableEntity | PrismaOpError;
-/** Restore database (destructive) ⚠️ **Destructive operation** — this immediately and irreversibly overwrites all data in the target database with the contents of the specified backup. Any data written since the backup was taken will be lost. Ensure you have a recent backup of the target database before proceeding. Replaces the data in an existing database from a backup. Connections and credentials are preserved — only the data layer is replaced. */
+/** Restore database (destructive) U+26A0 **Destructive operation** -- this immediately and irreversibly overwrites all data in the target database with the contents of the specified backup. Any data written since the backup was taken will be lost. Ensure you have a recent backup of the target database before proceeding. Replaces the data in an existing database from a backup. Connections and credentials are preserved -- only the data layer is replaced. */
 export const createDatabaseRestore: API.OperationMethod<
   CreateDatabaseRestoreRequest,
   CreateDatabaseRestoreResponse,
@@ -7254,7 +7254,7 @@ export const createDatabaseRestore: API.OperationMethod<
 }));
 
 export type CreateDeploymentStartError = Forbidden | NotFound | Conflict | PrismaOpError;
-/** Start deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Requests VM creation and startup for the deployment. The artifact must be uploaded before calling this endpoint. Returns a preview domain that becomes reachable once the VM is running. Poll the status endpoint until `running` is reached. */
+/** Start deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Requests VM creation and startup for the deployment. The artifact must be uploaded before calling this endpoint. Returns a preview domain that becomes reachable once the VM is running. Poll the status endpoint until `running` is reached. */
 export const createDeploymentStart: API.OperationMethod<
   CreateDeploymentStartRequest,
   CreateDeploymentStartResponse,
@@ -7269,7 +7269,7 @@ export const createDeploymentStart: API.OperationMethod<
 }));
 
 export type CreateDeploymentStopError = Forbidden | NotFound | Conflict | PrismaOpError;
-/** Stop deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Requests VM shutdown for the deployment. The deployment record and metadata are retained. Poll the status endpoint until `stopped` is reached. */
+/** Stop deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Requests VM shutdown for the deployment. The deployment record and metadata are retained. Poll the status endpoint until `stopped` is reached. */
 export const createDeploymentStop: API.OperationMethod<
   CreateDeploymentStopRequest,
   CreateDeploymentStopResponse,
@@ -7284,7 +7284,7 @@ export const createDeploymentStop: API.OperationMethod<
 }));
 
 export type CreateDomainRetryError = Forbidden | NotFound | Conflict | PrismaOpError;
-/** Retry custom domain provisioning ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Retries DNS verification and certificate issuance for a failed or pending domain. Returns 409 if the domain is not yet eligible for retry (e.g. still provisioning). */
+/** Retry custom domain provisioning U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Retries DNS verification and certificate issuance for a failed or pending domain. Returns 409 if the domain is not yet eligible for retry (e.g. still provisioning). */
 export const createDomainRetry: API.OperationMethod<
   CreateDomainRetryRequest,
   CreateDomainRetryResponse,
@@ -7303,7 +7303,7 @@ export type CreateEnvironmentVariableError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Create an environment variable ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates a new environment variable in a project's `production` or `preview` environment, or a preview branch override when `branchId` is supplied. Returns 409 if a variable with the same key already exists in that scope — use PATCH to replace its value. Values are stored encrypted and are not returned by subsequent reads. */
+/** Create an environment variable U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates a new environment variable in a project's `production` or `preview` environment, or a preview branch override when `branchId` is supplied. Returns 409 if a variable with the same key already exists in that scope -- use PATCH to replace its value. Values are stored encrypted and are not returned by subsequent reads. */
 export const createEnvironmentVariable: API.OperationMethod<
   CreateEnvironmentVariableRequest,
   CreateEnvironmentVariableResponse,
@@ -7333,7 +7333,7 @@ export const createProject: API.OperationMethod<
 }));
 
 export type CreateProjectBranchError = NotFound | Conflict | UnprocessableEntity | PrismaOpError;
-/** Create a branch ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates a Branch under the specified Project. The first Branch in a Project is always created with isDefault=true and role=production regardless of the body value. Later Branches are created with role=preview. Setting isDefault=true while another Branch already holds the default atomically swaps the default flag only. */
+/** Create a branch U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates a Branch under the specified Project. The first Branch in a Project is always created with isDefault=true and role=production regardless of the body value. Later Branches are created with role=preview. Setting isDefault=true while another Branch already holds the default atomically swaps the default flag only. */
 export const createProjectBranch: API.OperationMethod<
   CreateProjectBranchRequest,
   CreateProjectBranchResponse,
@@ -7348,7 +7348,7 @@ export const createProjectBranch: API.OperationMethod<
 }));
 
 export type CreateProjectBranchAlchemyStateLeaseError = NotFound | Conflict | PrismaOpError;
-/** Acquire Alchemy deploy lease ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Acquires the deploy lease for a (branch, stack, stage). An expired lease is replaced atomically; a live lease fails fast with 409 naming the current holder — there is no queueing. Every Alchemy state operation requires a live deploy lease. */
+/** Acquire Alchemy deploy lease U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Acquires the deploy lease for a (branch, stack, stage). An expired lease is replaced atomically; a live lease fails fast with 409 naming the current holder -- there is no queueing. Every Alchemy state operation requires a live deploy lease. */
 export const createProjectBranchAlchemyStateLease: API.OperationMethod<
   CreateProjectBranchAlchemyStateLeaseRequest,
   CreateProjectBranchAlchemyStateLeaseResponse,
@@ -7403,7 +7403,7 @@ export type CreateScmInstallationsInstallIntentError =
   | NotFound
   | UnprocessableEntity
   | PrismaOpError;
-/** Create an SCM App installation intent ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates an installation intent for the given workspace. If an existing installation can be proven to belong to the caller it is linked immediately (`alreadyLinked`); otherwise the response carries a URL the user opens to install the SCM app. Pass `repository` (owner/name) so an installation that already covers it but cannot be linked automatically is detected and explained in `hint`. Currently only `github` is supported. */
+/** Create an SCM App installation intent U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates an installation intent for the given workspace. If an existing installation can be proven to belong to the caller it is linked immediately (`alreadyLinked`); otherwise the response carries a URL the user opens to install the SCM app. Pass `repository` (owner/name) so an installation that already covers it but cannot be linked automatically is detected and explained in `hint`. Currently only `github` is supported. */
 export const createScmInstallationsInstallIntent: API.OperationMethod<
   CreateScmInstallationsInstallIntentRequest,
   CreateScmInstallationsInstallIntentResponse,
@@ -7423,7 +7423,7 @@ export type CreateServiceError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Create service ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates a new service under the specified project. The `projectId` is required in the request body. The service is placed in the given region, or the project's default region if omitted (falling back to us-east-1). Returns `409 Conflict` when a service already occupies the slot on the resolved branch, either by name or by `logicalId`; the body includes the existing service's id, name, branch, and logical id, and `conflict` says which attribute clashed. The name is checked first. `logicalId` cannot be combined with `branchGitName`; pass `branchId` instead. */
+/** Create service U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates a new service under the specified project. The `projectId` is required in the request body. The service is placed in the given region, or the project's default region if omitted (falling back to us-east-1). Returns `409 Conflict` when a service already occupies the slot on the resolved branch, either by name or by `logicalId`; the body includes the existing service's id, name, branch, and logical id, and `conflict` says which attribute clashed. The name is checked first. `logicalId` cannot be combined with `branchGitName`; pass `branchId` instead. */
 export const createService: API.OperationMethod<
   CreateServiceRequest,
   CreateServiceResponse,
@@ -7442,7 +7442,7 @@ export type CreateServiceDeploymentError =
   | NotFound
   | UnprocessableEntity
   | PrismaOpError;
-/** Create deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates a new deployment under the specified service. Returns a pre-signed upload URL for the artifact unless `skipCodeUpload` is set (which forks the active promoted deployment's artifact). Environment variables are resolved automatically from the service's attached Branch (production-class templates for the production Branch; preview-class templates for preview Branches). Manage env vars via the `/v1/environment-variables` endpoints, not as part of the deploy payload. */
+/** Create deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates a new deployment under the specified service. Returns a pre-signed upload URL for the artifact unless `skipCodeUpload` is set (which forks the active promoted deployment's artifact). Environment variables are resolved automatically from the service's attached Branch (production-class templates for the production Branch; preview-class templates for preview Branches). Manage env vars via the `/v1/environment-variables` endpoints, not as part of the deploy payload. */
 export const createServiceDeployment: API.OperationMethod<
   CreateServiceDeploymentRequest,
   CreateServiceDeploymentResponse,
@@ -7463,7 +7463,7 @@ export type CreateServiceDomainError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Create a custom domain ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Registers a custom hostname for the service. The hostname must CNAME to the regional switchboard target before DNS verification can succeed. Returns 429 if the service has reached its domain quota (default: 3). */
+/** Create a custom domain U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Registers a custom hostname for the service. The hostname must CNAME to the regional switchboard target before DNS verification can succeed. Returns 429 if the service has reached its domain quota (default: 3). */
 export const createServiceDomain: API.OperationMethod<
   CreateServiceDomainRequest,
   CreateServiceDomainResponse,
@@ -7483,7 +7483,7 @@ export type CreateServicePromoteError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Promote deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Promotes a deployment to be the active deployment behind the service's stable endpoint. The deployment must be running. Returns the service endpoint domain. */
+/** Promote deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Promotes a deployment to be the active deployment behind the service's stable endpoint. The deployment must be running. Returns the service endpoint domain. */
 export const createServicePromote: API.OperationMethod<
   CreateServicePromoteRequest,
   CreateServicePromoteResponse,
@@ -7503,7 +7503,7 @@ export type CreateServiceRollbackError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Roll a service back to an existing deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Makes any eligible existing deployment live behind the service's stable endpoint (rollback or roll-forward). Unlike promote, a stopped target is started and waited until it is running before the endpoint is switched, so the currently-live deployment keeps serving with zero downtime. Returns the service endpoint domain. */
+/** Roll a service back to an existing deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Makes any eligible existing deployment live behind the service's stable endpoint (rollback or roll-forward). Unlike promote, a stopped target is started and waited until it is running before the endpoint is switched, so the currently-live deployment keeps serving with zero downtime. Returns the service endpoint domain. */
 export const createServiceRollback: API.OperationMethod<
   CreateServiceRollbackRequest,
   CreateServiceRollbackResponse,
@@ -7523,7 +7523,7 @@ export type CreateSourceRepositoryError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Link a source repository to a project ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Links a GitHub repository to a Prisma project via an existing SCM installation. */
+/** Link a source repository to a project U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Links a GitHub repository to a Prisma project via an existing SCM installation. */
 export const createSourceRepository: API.OperationMethod<
   CreateSourceRepositoryRequest,
   CreateSourceRepositoryResponse,
@@ -7538,7 +7538,7 @@ export const createSourceRepository: API.OperationMethod<
 }));
 
 export type CreateWorkspaceError = Forbidden | PrismaOpError;
-/** Create a workspace ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Creates a new free-plan workspace owned by the authenticated user. For agent tokens the workspace is created for the agent's sponsor, and the agent's permission policy treats this as an admin action — under the default policy the sponsor approves it first. */
+/** Create a workspace U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Creates a new free-plan workspace owned by the authenticated user. For agent tokens the workspace is created for the agent's sponsor, and the agent's permission policy treats this as an admin action -- under the default policy the sponsor approves it first. */
 export const createWorkspace: API.OperationMethod<
   CreateWorkspaceRequest,
   CreateWorkspaceResponse,
@@ -7553,7 +7553,7 @@ export const createWorkspace: API.OperationMethod<
 }));
 
 export type CreateWorkspaceServiceTokenError = NotFound | UnprocessableEntity | PrismaOpError;
-/** Create service token Creates a new service token for the given workspace. The `value` field is returned exactly once in this response and is never stored — copy it immediately. */
+/** Create service token Creates a new service token for the given workspace. The `value` field is returned exactly once in this response and is never stored -- copy it immediately. */
 export const createWorkspaceServiceToken: API.OperationMethod<
   CreateWorkspaceServiceTokenRequest,
   CreateWorkspaceServiceTokenResponse,
@@ -7568,7 +7568,7 @@ export const createWorkspaceServiceToken: API.OperationMethod<
 }));
 
 export type DeleteBranchError = NotFound | Conflict | UnprocessableEntity | PrismaOpError;
-/** Soft-delete a branch ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Soft-deletes a Branch (sets deletedAt). Refuses if the Branch is the Project's current default, the Project's production Branch, or has live members. */
+/** Soft-delete a branch U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Soft-deletes a Branch (sets deletedAt). Refuses if the Branch is the Project's current default, the Project's production Branch, or has live members. */
 export const deleteBranch: API.OperationMethod<
   DeleteBranchRequest,
   DeleteBranchResponse,
@@ -7643,7 +7643,7 @@ export const deleteDatabase: API.OperationMethod<
 }));
 
 export type DeleteDeploymentError = Forbidden | NotFound | Conflict | PrismaOpError;
-/** Delete deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Permanently deletes the deployment, its metadata, and any associated VM. The deployment must be stopped or in the `new` state before it can be deleted. */
+/** Delete deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Permanently deletes the deployment, its metadata, and any associated VM. The deployment must be stopped or in the `new` state before it can be deleted. */
 export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentRequest,
   DeleteDeploymentResponse,
@@ -7658,7 +7658,7 @@ export const deleteDeployment: API.OperationMethod<
 }));
 
 export type DeleteDomainError = Forbidden | NotFound | PrismaOpError;
-/** Delete a custom domain ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Removes a custom domain binding. Authorization is derived from the parent compute service's workspace. */
+/** Delete a custom domain U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Removes a custom domain binding. Authorization is derived from the parent compute service's workspace. */
 export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResponse,
@@ -7673,7 +7673,7 @@ export const deleteDomain: API.OperationMethod<
 }));
 
 export type DeleteEnvironmentVariableError = NotFound | UnprocessableEntity | PrismaOpError;
-/** Delete an environment variable ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Removes an environment variable. A second delete of the same variable returns 404. */
+/** Delete an environment variable U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Removes an environment variable. A second delete of the same variable returns 404. */
 export const deleteEnvironmentVariable: API.OperationMethod<
   DeleteEnvironmentVariableRequest,
   DeleteEnvironmentVariableResponse,
@@ -7723,7 +7723,7 @@ export const deleteProject: API.OperationMethod<
 }));
 
 export type DeleteProjectBranchAlchemyStateLeaseError = NotFound | PrismaOpError;
-/** Release Alchemy deploy lease ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Releases the deploy lease addressed by the Alchemy-State-Lease-Id header on clean deploy exit. A missing, replaced, or expired lease returns 404 — a lost lease at release time is surfaced, not idempotently swallowed. */
+/** Release Alchemy deploy lease U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Releases the deploy lease addressed by the Alchemy-State-Lease-Id header on clean deploy exit. A missing, replaced, or expired lease returns 404 -- a lost lease at release time is surfaced, not idempotently swallowed. */
 export const deleteProjectBranchAlchemyStateLease: API.OperationMethod<
   DeleteProjectBranchAlchemyStateLeaseRequest,
   DeleteProjectBranchAlchemyStateLeaseResponse,
@@ -7738,7 +7738,7 @@ export const deleteProjectBranchAlchemyStateLease: API.OperationMethod<
 }));
 
 export type DeleteProjectBranchAlchemyStateStateStackError = NotFound | Conflict | PrismaOpError;
-/** Delete Alchemy stack state ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Deletes every resource-state and output row of the stack, or only the given stage's rows when the stage query parameter is set. Requires a live deploy lease on the affected stage; without a stage it additionally requires that no other stage of the stack holds a live lease, so one stage's deploy can never delete state another stage's deploy is using. Idempotent. */
+/** Delete Alchemy stack state U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Deletes every resource-state and output row of the stack, or only the given stage's rows when the stage query parameter is set. Requires a live deploy lease on the affected stage; without a stage it additionally requires that no other stage of the stack holds a live lease, so one stage's deploy can never delete state another stage's deploy is using. Idempotent. */
 export const deleteProjectBranchAlchemyStateStateStack: API.OperationMethod<
   DeleteProjectBranchAlchemyStateStateStackRequest,
   DeleteProjectBranchAlchemyStateStateStackResponse,
@@ -7756,7 +7756,7 @@ export type DeleteProjectBranchAlchemyStateStateStackStageResourceError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** Delete Alchemy resource state ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Deletes the resource state row. Idempotent: deleting an absent row also returns 204. */
+/** Delete Alchemy resource state U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Deletes the resource state row. Idempotent: deleting an absent row also returns 204. */
 export const deleteProjectBranchAlchemyStateStateStackStageResource: API.OperationMethod<
   DeleteProjectBranchAlchemyStateStateStackStageResourceRequest,
   DeleteProjectBranchAlchemyStateStateStackStageResourceResponse,
@@ -7771,7 +7771,7 @@ export const deleteProjectBranchAlchemyStateStateStackStageResource: API.Operati
 }));
 
 export type DeleteServiceError = Forbidden | NotFound | Conflict | PrismaOpError;
-/** Delete service ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Deletes a service. Deployments under the service are deleted before the service is deleted. */
+/** Delete service U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Deletes a service. Deployments under the service are deleted before the service is deleted. */
 export const deleteService: API.OperationMethod<
   DeleteServiceRequest,
   DeleteServiceResponse,
@@ -7786,7 +7786,7 @@ export const deleteService: API.OperationMethod<
 }));
 
 export type DeleteSourceRepositoryError = NotFound | PrismaOpError;
-/** Disconnect a source repository ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Disconnects the source repository link. Existing branches and their attached resources are preserved. */
+/** Disconnect a source repository U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Disconnects the source repository link. Existing branches and their attached resources are preserved. */
 export const deleteSourceRepository: API.OperationMethod<
   DeleteSourceRepositoryRequest,
   DeleteSourceRepositoryResponse,
@@ -7846,7 +7846,7 @@ export const getAgentApproval: API.OperationMethod<
 }));
 
 export type GetBranchError = NotFound | PrismaOpError;
-/** Get a branch ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a single Branch by ID. Member resources are not inlined — list them via /v1/databases?branchId= and /v1/apps?branchId=. */
+/** Get a branch U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a single Branch by ID. Member resources are not inlined -- list them via /v1/databases?branchId= and /v1/apps?branchId=. */
 export const getBranch: API.OperationMethod<
   GetBranchRequest,
   GetBranchResponse,
@@ -7906,7 +7906,7 @@ export const getBuckets: API.OperationMethod<
 }));
 
 export type GetBuildError = NotFound | PrismaOpError;
-/** Get a build ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns one build with the resources it reported acting on. */
+/** Get a build U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns one build with the resources it reported acting on. */
 export const getBuild: API.OperationMethod<
   GetBuildRequest,
   GetBuildResponse,
@@ -7921,7 +7921,7 @@ export const getBuild: API.OperationMethod<
 }));
 
 export type GetBuildsError = NotFound | PrismaOpError;
-/** List builds ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists the builds of the caller's workspace, newest first, filtered by project, branch, or state. `cursor` is opaque: pass back the `nextCursor` the previous page returned. */
+/** List builds U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists the builds of the caller's workspace, newest first, filtered by project, branch, or state. `cursor` is opaque: pass back the `nextCursor` the previous page returned. */
 export const getBuilds: API.OperationMethod<
   GetBuildsRequest,
   GetBuildsResponse,
@@ -8041,7 +8041,7 @@ export const getDatabaseUsage: API.OperationMethod<
 }));
 
 export type GetDeploymentError = Forbidden | NotFound | PrismaOpError;
-/** Get deployment ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a deployment by ID, including its current status derived from the underlying VM state. */
+/** Get deployment U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a deployment by ID, including its current status derived from the underlying VM state. */
 export const getDeployment: API.OperationMethod<
   GetDeploymentRequest,
   GetDeploymentResponse,
@@ -8056,7 +8056,7 @@ export const getDeployment: API.OperationMethod<
 }));
 
 export type GetDeploymentLogsError = Forbidden | NotFound | PrismaOpError;
-/** Get deployment logs ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns log output for the specified deployment. Each record is a JSON object with `type: "log"` (log text + byte metadata) or `type: "terminal"` (end-of-page signal with a resume cursor). A plain GET responds with newline-delimited JSON (`application/x-ndjson`): it drains the requested window (`tail`, `from_start`, or `cursor`), ends with a terminal record carrying the cursor for the next page, and closes. Send an `Upgrade: websocket` header to follow the log live instead; a live segment ends after 10 minutes with the same terminal/cursor mechanism. */
+/** Get deployment logs U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns log output for the specified deployment. Each record is a JSON object with `type: "log"` (log text + byte metadata) or `type: "terminal"` (end-of-page signal with a resume cursor). A plain GET responds with newline-delimited JSON (`application/x-ndjson`): it drains the requested window (`tail`, `from_start`, or `cursor`), ends with a terminal record carrying the cursor for the next page, and closes. Send an `Upgrade: websocket` header to follow the log live instead; a live segment ends after 10 minutes with the same terminal/cursor mechanism. */
 export const getDeploymentLogs: API.OperationMethod<
   GetDeploymentLogsRequest,
   GetDeploymentLogsResponse,
@@ -8071,7 +8071,7 @@ export const getDeploymentLogs: API.OperationMethod<
 }));
 
 export type GetDomainError = Forbidden | NotFound | PrismaOpError;
-/** Get a custom domain ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns details for a custom domain by id. Authorization is derived from the parent compute service's workspace. */
+/** Get a custom domain U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns details for a custom domain by id. Authorization is derived from the parent compute service's workspace. */
 export const getDomain: API.OperationMethod<
   GetDomainRequest,
   GetDomainResponse,
@@ -8086,7 +8086,7 @@ export const getDomain: API.OperationMethod<
 }));
 
 export type GetEnvironmentVariableError = NotFound | UnprocessableEntity | PrismaOpError;
-/** Get an environment variable ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a single environment variable's metadata. The value is not returned. */
+/** Get an environment variable U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a single environment variable's metadata. The value is not returned. */
 export const getEnvironmentVariable: API.OperationMethod<
   GetEnvironmentVariableRequest,
   GetEnvironmentVariableResponse,
@@ -8101,7 +8101,7 @@ export const getEnvironmentVariable: API.OperationMethod<
 }));
 
 export type GetEnvironmentVariablesError = NotFound | UnprocessableEntity | PrismaOpError;
-/** List environment variables ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a paginated list of environment variables. All filters are optional; combine `projectId`, `class`, and `key` to look up a specific variable by name. */
+/** List environment variables U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a paginated list of environment variables. All filters are optional; combine `projectId`, `class`, and `key` to look up a specific variable by name. */
 export const getEnvironmentVariables: API.OperationMethod<
   GetEnvironmentVariablesRequest,
   GetEnvironmentVariablesResponse,
@@ -8172,7 +8172,7 @@ export const getProject: API.OperationMethod<
 }));
 
 export type GetProjectBranchAlchemyStateStateStacksError = NotFound | Conflict | PrismaOpError;
-/** List Alchemy stacks ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists the distinct stack names with state or output rows on the branch. Requires no deploy lease: the stock client's auth probe (checkHttpStateStoreAuth) calls this endpoint bare, and it exposes stack names only. */
+/** List Alchemy stacks U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists the distinct stack names with state or output rows on the branch. Requires no deploy lease: the stock client's auth probe (checkHttpStateStoreAuth) calls this endpoint bare, and it exposes stack names only. */
 export const getProjectBranchAlchemyStateStateStacks: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStacksRequest,
   GetProjectBranchAlchemyStateStateStacksResponse,
@@ -8190,7 +8190,7 @@ export type GetProjectBranchAlchemyStateStateStackStageOutputError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** Get Alchemy stack output ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns the stored stack output for the stage, or a JSON null body when absent (the stock client maps null to undefined). */
+/** Get Alchemy stack output U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns the stored stack output for the stage, or a JSON null body when absent (the stock client maps null to undefined). */
 export const getProjectBranchAlchemyStateStateStackStageOutput: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStageOutputRequest,
   GetProjectBranchAlchemyStateStateStackStageOutputResponse,
@@ -8208,7 +8208,7 @@ export type GetProjectBranchAlchemyStateStateStackStageReplacedResourcesError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** List replaced Alchemy resources ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns the decrypted resource states of the stage whose status is "replaced". */
+/** List replaced Alchemy resources U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns the decrypted resource states of the stage whose status is "replaced". */
 export const getProjectBranchAlchemyStateStateStackStageReplacedResources: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest,
   GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse,
@@ -8226,7 +8226,7 @@ export type GetProjectBranchAlchemyStateStateStackStageResourceError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** Get Alchemy resource state ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns the stored resource state, or a JSON null body when absent (the stock client maps null to undefined). */
+/** Get Alchemy resource state U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns the stored resource state, or a JSON null body when absent (the stock client maps null to undefined). */
 export const getProjectBranchAlchemyStateStateStackStageResource: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStageResourceRequest,
   GetProjectBranchAlchemyStateStateStackStageResourceResponse,
@@ -8244,7 +8244,7 @@ export type GetProjectBranchAlchemyStateStateStackStageResourcesError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** List Alchemy resources ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists the resource FQNs stored for the stage, ordered by FQN. */
+/** List Alchemy resources U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists the resource FQNs stored for the stage, ordered by FQN. */
 export const getProjectBranchAlchemyStateStateStackStageResources: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStageResourcesRequest,
   GetProjectBranchAlchemyStateStateStackStageResourcesResponse,
@@ -8259,7 +8259,7 @@ export const getProjectBranchAlchemyStateStateStackStageResources: API.Operation
 }));
 
 export type GetProjectBranchAlchemyStateStateStackStagesError = NotFound | Conflict | PrismaOpError;
-/** List Alchemy stages ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists the distinct stage names with state or output rows for the stack. Accepts a live deploy lease on any stage of the stack. */
+/** List Alchemy stages U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists the distinct stage names with state or output rows for the stack. Accepts a live deploy lease on any stage of the stack. */
 export const getProjectBranchAlchemyStateStateStackStages: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStagesRequest,
   GetProjectBranchAlchemyStateStateStackStagesResponse,
@@ -8274,7 +8274,7 @@ export const getProjectBranchAlchemyStateStateStackStages: API.OperationMethod<
 }));
 
 export type GetProjectBranchAlchemyStateVersionError = PrismaOpError;
-/** Alchemy state store version ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Unauthenticated contract-version probe served verbatim from the pinned alchemy HttpStateApi contract. Returns the constant only and never inspects the addressed project or branch. */
+/** Alchemy state store version U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Unauthenticated contract-version probe served verbatim from the pinned alchemy HttpStateApi contract. Returns the constant only and never inspects the addressed project or branch. */
 export const getProjectBranchAlchemyStateVersion: API.OperationMethod<
   GetProjectBranchAlchemyStateVersionRequest,
   GetProjectBranchAlchemyStateVersionResponse,
@@ -8289,7 +8289,7 @@ export const getProjectBranchAlchemyStateVersion: API.OperationMethod<
 }));
 
 export type GetProjectBranchApplicationTopologyError = NotFound | PrismaOpError;
-/** Get branch topology ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns the stored topology graph for the branch — the same shape Composer submitted. Nodes, ports, and edges are returned in deterministic order. */
+/** Get branch topology U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns the stored topology graph for the branch -- the same shape Composer submitted. Nodes, ports, and edges are returned in deterministic order. */
 export const getProjectBranchApplicationTopology: API.OperationMethod<
   GetProjectBranchApplicationTopologyRequest,
   GetProjectBranchApplicationTopologyResponse,
@@ -8304,7 +8304,7 @@ export const getProjectBranchApplicationTopology: API.OperationMethod<
 }));
 
 export type GetProjectBranchesError = NotFound | UnprocessableEntity | PrismaOpError;
-/** List branches in a project ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns the live Branches of a Project. Supports two mutually exclusive filters: ?gitName= (exact match — at most one row), ?gitNameContains= (case-sensitive substring). Soft-deleted Branches are not returned. Ordered by createdAt ascending. */
+/** List branches in a project U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns the live Branches of a Project. Supports two mutually exclusive filters: ?gitName= (exact match -- at most one row), ?gitNameContains= (case-sensitive substring). Soft-deleted Branches are not returned. Ordered by createdAt ascending. */
 export const getProjectBranches: API.OperationMethod<
   GetProjectBranchesRequest,
   GetProjectBranchesResponse,
@@ -8394,7 +8394,7 @@ export const getRegionsPostgres: API.OperationMethod<
 }));
 
 export type GetScmInstallationRepositoriesError = NotFound | UnprocessableEntity | PrismaOpError;
-/** List repositories accessible to an SCM installation ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists repositories accessible to the given SCM installation. */
+/** List repositories accessible to an SCM installation U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists repositories accessible to the given SCM installation. */
 export const getScmInstallationRepositories: API.OperationMethod<
   GetScmInstallationRepositoriesRequest,
   GetScmInstallationRepositoriesResponse,
@@ -8409,7 +8409,7 @@ export const getScmInstallationRepositories: API.OperationMethod<
 }));
 
 export type GetScmInstallationsError = PrismaOpError;
-/** List SCM installations for a workspace ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Lists active SCM installations connected to the given workspace. */
+/** List SCM installations for a workspace U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Lists active SCM installations connected to the given workspace. */
 export const getScmInstallations: API.OperationMethod<
   GetScmInstallationsRequest,
   GetScmInstallationsResponse,
@@ -8424,7 +8424,7 @@ export const getScmInstallations: API.OperationMethod<
 }));
 
 export type GetServiceError = Forbidden | NotFound | PrismaOpError;
-/** Get service ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a service by ID, including its region and active promoted deployment reference. */
+/** Get service U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a service by ID, including its region and active promoted deployment reference. */
 export const getService: API.OperationMethod<
   GetServiceRequest,
   GetServiceResponse,
@@ -8439,7 +8439,7 @@ export const getService: API.OperationMethod<
 }));
 
 export type GetServiceDeploymentsError = Forbidden | NotFound | PrismaOpError;
-/** List deployments ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns all deployments belonging to a service, ordered by creation time (newest first). Supports cursor-based pagination. */
+/** List deployments U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns all deployments belonging to a service, ordered by creation time (newest first). Supports cursor-based pagination. */
 export const getServiceDeployments: API.OperationMethod<
   GetServiceDeploymentsRequest,
   GetServiceDeploymentsResponse,
@@ -8454,7 +8454,7 @@ export const getServiceDeployments: API.OperationMethod<
 }));
 
 export type GetServiceDomainsError = Forbidden | NotFound | PrismaOpError;
-/** List custom domains for a service ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns all custom domains attached to any deployment of the service. Domains are aggregated across all deployments since Foundry lists per deployment. */
+/** List custom domains for a service U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns all custom domains attached to any deployment of the service. Domains are aggregated across all deployments since Foundry lists per deployment. */
 export const getServiceDomains: API.OperationMethod<
   GetServiceDomainsRequest,
   GetServiceDomainsResponse,
@@ -8469,7 +8469,7 @@ export const getServiceDomains: API.OperationMethod<
 }));
 
 export type GetServicesError = Forbidden | NotFound | UnprocessableEntity | PrismaOpError;
-/** List services ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns all services the token has access to, ordered by creation time (oldest first). Optionally filter by project ID. Supports cursor-based pagination. */
+/** List services U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns all services the token has access to, ordered by creation time (oldest first). Optionally filter by project ID. Supports cursor-based pagination. */
 export const getServices: API.OperationMethod<
   GetServicesRequest,
   GetServicesResponse,
@@ -8484,7 +8484,7 @@ export const getServices: API.OperationMethod<
 }));
 
 export type GetSourceRepositoriesError = NotFound | PrismaOpError;
-/** List source repositories ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns source repositories linked to a project. Requires projectId query parameter. */
+/** List source repositories U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns source repositories linked to a project. Requires projectId query parameter. */
 export const getSourceRepositories: API.OperationMethod<
   GetSourceRepositoriesRequest,
   GetSourceRepositoriesResponse,
@@ -8499,7 +8499,7 @@ export const getSourceRepositories: API.OperationMethod<
 }));
 
 export type GetSourceRepositoryError = NotFound | PrismaOpError;
-/** Get a source repository ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a single source repository link by ID. */
+/** Get a source repository U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Returns a single source repository link by ID. */
 export const getSourceRepository: API.OperationMethod<
   GetSourceRepositoryRequest,
   GetSourceRepositoryResponse,
@@ -8589,7 +8589,7 @@ export const getWorkspaceSubscription: API.OperationMethod<
 }));
 
 export type PutBuildResourceError = NotFound | PrismaOpError;
-/** Report a resource a build acted on ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Records that the build created, acted on, or deleted a platform resource — the provenance a deploy run leaves behind. Idempotent: re-reporting the same resource updates the row rather than adding one, and never weakens the recorded action. The resource must belong to the caller's workspace, and must still be findable: a soft-deleted resource can be reported, but `project`, `database`, `service_key` and `config_variable` leave no row behind, so a build that deletes one must report it before deleting it. Reporting a deployment as `created` also attaches the deployment to the build and records the app it deployed into, both in the same transaction, because a deployment relates its build to that app whether or not the reporter says so. */
+/** Report a resource a build acted on U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Records that the build created, acted on, or deleted a platform resource -- the provenance a deploy run leaves behind. Idempotent: re-reporting the same resource updates the row rather than adding one, and never weakens the recorded action. The resource must belong to the caller's workspace, and must still be findable: a soft-deleted resource can be reported, but `project`, `database`, `service_key` and `config_variable` leave no row behind, so a build that deletes one must report it before deleting it. Reporting a deployment as `created` also attaches the deployment to the build and records the app it deployed into, both in the same transaction, because a deployment relates its build to that app whether or not the reporter says so. */
 export const putBuildResource: API.OperationMethod<
   PutBuildResourceRequest,
   PutBuildResourceResponse,
@@ -8607,7 +8607,7 @@ export type PutProjectBranchAlchemyStateStateStackStageOutputError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** Set Alchemy stack output ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Overwrites the stack output for the stage, encrypted at rest, and echoes the stored value. */
+/** Set Alchemy stack output U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Overwrites the stack output for the stage, encrypted at rest, and echoes the stored value. */
 export const putProjectBranchAlchemyStateStateStackStageOutput: API.OperationMethod<
   PutProjectBranchAlchemyStateStateStackStageOutputRequest,
   PutProjectBranchAlchemyStateStateStackStageOutputResponse,
@@ -8625,7 +8625,7 @@ export type PutProjectBranchAlchemyStateStateStackStageResourceError =
   | NotFound
   | Conflict
   | PrismaOpError;
-/** Set Alchemy resource state ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Stores the resource state encrypted at rest and echoes the stored value. */
+/** Set Alchemy resource state U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Stores the resource state encrypted at rest and echoes the stored value. */
 export const putProjectBranchAlchemyStateStateStackStageResource: API.OperationMethod<
   PutProjectBranchAlchemyStateStateStackStageResourceRequest,
   PutProjectBranchAlchemyStateStateStackStageResourceResponse,
@@ -8643,7 +8643,7 @@ export type PutProjectBranchApplicationTopologyError =
   | NotFound
   | UnprocessableEntity
   | PrismaOpError;
-/** Replace branch topology ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Atomically replaces the entire topology for a branch. Composer calls this after Load, before the apply. On error, Composer warns and continues — the previous topology is preserved. */
+/** Replace branch topology U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Atomically replaces the entire topology for a branch. Composer calls this after Load, before the apply. On error, Composer warns and continues -- the previous topology is preserved. */
 export const putProjectBranchApplicationTopology: API.OperationMethod<
   PutProjectBranchApplicationTopologyRequest,
   PutProjectBranchApplicationTopologyResponse,
@@ -8658,7 +8658,7 @@ export const putProjectBranchApplicationTopology: API.OperationMethod<
 }));
 
 export type UpdateBranchError = NotFound | UnprocessableEntity | PrismaOpError;
-/** Update a branch ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Promotes a Branch to be the Project's default. Only isDefault is mutable — gitName rename and role changes are rejected. */
+/** Update a branch U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Promotes a Branch to be the Project's default. Only isDefault is mutable -- gitName rename and role changes are rejected. */
 export const updateBranch: API.OperationMethod<
   UpdateBranchRequest,
   UpdateBranchResponse,
@@ -8688,7 +8688,7 @@ export const updateBucket: API.OperationMethod<
 }));
 
 export type UpdateBuildError = NotFound | Conflict | PrismaOpError;
-/** Update a build ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Records progress on a build. Any holder of the workspace token may patch any field — the webhook, the CI run and Composer each report the part of a deploy they can see, and the token is the boundary. Reaching `running` stamps `startedAt` and reaching a terminal state stamps `finishedAt`, both only if unset, so re-reporting the same state does not move the clock. Once a build has finished, its state no longer changes: a later report updates the other fields and leaves the state as the finishing report set it. `projectId`, `branchId`, `deployedUrl` and `applicationTopologyContentHash` can each be set once and never changed: a reporter that resolves them partway through a deploy sets them here, but a value already recorded cannot be changed and the attempt is a conflict. Sending the value already recorded is accepted and changes nothing. `projectId` and `branchId` must belong to the caller's workspace, and a branch must belong to the build's project, so a branch from another project is refused. */
+/** Update a build U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Records progress on a build. Any holder of the workspace token may patch any field -- the webhook, the CI run and Composer each report the part of a deploy they can see, and the token is the boundary. Reaching `running` stamps `startedAt` and reaching a terminal state stamps `finishedAt`, both only if unset, so re-reporting the same state does not move the clock. Once a build has finished, its state no longer changes: a later report updates the other fields and leaves the state as the finishing report set it. `projectId`, `branchId`, `deployedUrl` and `applicationTopologyContentHash` can each be set once and never changed: a reporter that resolves them partway through a deploy sets them here, but a value already recorded cannot be changed and the attempt is a conflict. Sending the value already recorded is accepted and changes nothing. `projectId` and `branchId` must belong to the caller's workspace, and a branch must belong to the build's project, so a branch from another project is refused. */
 export const updateBuild: API.OperationMethod<
   UpdateBuildRequest,
   UpdateBuildResponse,
@@ -8723,7 +8723,7 @@ export const updateDatabase: API.OperationMethod<
 }));
 
 export type UpdateEnvironmentVariableError = NotFound | UnprocessableEntity | PrismaOpError;
-/** Update an environment variable's value ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Replaces the value of an existing environment variable. Only the value is mutable — the project, environment, key, and branch are fixed at create-time. */
+/** Update an environment variable's value U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Replaces the value of an existing environment variable. Only the value is mutable -- the project, environment, key, and branch are fixed at create-time. */
 export const updateEnvironmentVariable: API.OperationMethod<
   UpdateEnvironmentVariableRequest,
   UpdateEnvironmentVariableResponse,
@@ -8753,7 +8753,7 @@ export const updateProject: API.OperationMethod<
 }));
 
 export type UpdateProjectBranchAlchemyStateLeaseError = NotFound | PrismaOpError;
-/** Heartbeat Alchemy deploy lease ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Extends the unexpired deploy lease addressed by the Alchemy-State-Lease-Id header from now. A missing, replaced, or expired lease returns 404 — the lost-lease signal; an expired lease can never be revived. */
+/** Heartbeat Alchemy deploy lease U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Extends the unexpired deploy lease addressed by the Alchemy-State-Lease-Id header from now. A missing, replaced, or expired lease returns 404 -- the lost-lease signal; an expired lease can never be revived. */
 export const updateProjectBranchAlchemyStateLease: API.OperationMethod<
   UpdateProjectBranchAlchemyStateLeaseRequest,
   UpdateProjectBranchAlchemyStateLeaseResponse,
@@ -8773,7 +8773,7 @@ export type UpdateServiceError =
   | Conflict
   | UnprocessableEntity
   | PrismaOpError;
-/** Update service ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Updates the display name, logical id, or branch of a service. `logicalId` cannot be combined with `branchId` or `branchGitName` in one request; move the service first, then set its `logicalId`. */
+/** Update service U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Updates the display name, logical id, or branch of a service. `logicalId` cannot be combined with `branchId` or `branchGitName` in one request; move the service first, then set its `logicalId`. */
 export const updateService: API.OperationMethod<
   UpdateServiceRequest,
   UpdateServiceResponse,

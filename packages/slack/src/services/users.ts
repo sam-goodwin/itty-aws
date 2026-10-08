@@ -107,7 +107,7 @@ export const ListUsersResponseMembersList = /*@__PURE__*/ S.Array(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListUsersResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const ListUsersResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -401,7 +401,7 @@ export const UsersInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsersInfoResponse" }) as any as S.Schema<UsersInfoResponse>;
 
 export type DeletePhotoError = SlackOpError;
-/** Delete the user profile photo Required scopes — user: `users.profile:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — An unexpected error occurred. See https://docs.slack.dev/reference/methods/users.deletePhoto */
+/** Delete the user profile photo Required scopes -- user: `users.profile:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error occurred. See https://docs.slack.dev/reference/methods/users.deletePhoto */
 export const deletePhoto: API.OperationMethod<
   DeletePhotoRequest,
   DeletePhotoResponse,
@@ -416,7 +416,7 @@ export const deletePhoto: API.OperationMethod<
 }));
 
 export type GetPresenceError = SlackOpError;
-/** Gets user presence information. Required scopes — bot: `users:read`; user: `users:read` Rate limit tier: 3 See https://docs.slack.dev/reference/methods/users.getPresence */
+/** Gets user presence information. Required scopes -- bot: `users:read`; user: `users:read` Rate limit tier: 3 See https://docs.slack.dev/reference/methods/users.getPresence */
 export const getPresence: API.OperationMethod<
   GetPresenceRequest,
   GetPresenceResponse,
@@ -431,7 +431,7 @@ export const getPresence: API.OperationMethod<
 }));
 
 export type GetProfileError = SlackOpError;
-/** Retrieve a user's profile information, including their custom status. Required scopes — bot: `users.profile:read`; user: `users.profile:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `user_not_found` — Value passed for `user` was invalid. - `token_revoked` — The token being used is not valid. - `ratelimited` — You are attempting to call this method too frequently. See https://docs.slack.dev/reference/methods/users.profile.get */
+/** Retrieve a user's profile information, including their custom status. Required scopes -- bot: `users.profile:read`; user: `users.profile:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `user_not_found` -- Value passed for `user` was invalid. - `token_revoked` -- The token being used is not valid. - `ratelimited` -- You are attempting to call this method too frequently. See https://docs.slack.dev/reference/methods/users.profile.get */
 export const getProfile: API.OperationMethod<
   GetProfileRequest,
   GetProfileResponse,
@@ -446,7 +446,7 @@ export const getProfile: API.OperationMethod<
 }));
 
 export type ListUsersError = SlackOpError;
-/** Lists all users in a Slack team. Required scopes — bot: `users:read`; user: `users:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` — Value passed for `cursor` was not valid or is no longer valid. - `limit_required` — For large teams a limit is required. - `missing_argument` — A required argument is missing. See https://docs.slack.dev/reference/methods/users.list */
+/** Lists all users in a Slack team. Required scopes -- bot: `users:read`; user: `users:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Value passed for `cursor` was not valid or is no longer valid. - `limit_required` -- For large teams a limit is required. - `missing_argument` -- A required argument is missing. See https://docs.slack.dev/reference/methods/users.list */
 export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
@@ -472,7 +472,7 @@ export const listUsers: API.PaginatedOperationMethod<
 ) as any;
 
 export type LookupByEmailError = SlackOpError;
-/** Find a user with an email address. Required scopes — bot: `users:read.email`; user: `users:read.email` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `enterprise_is_restricted` — This method was called with an inappropriate enterprise-level token. - `users_not_found` — Value passed for `user` was invalid. See https://docs.slack.dev/reference/methods/users.lookupByEmail */
+/** Find a user with an email address. Required scopes -- bot: `users:read.email`; user: `users:read.email` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `enterprise_is_restricted` -- This method was called with an inappropriate enterprise-level token. - `users_not_found` -- Value passed for `user` was invalid. See https://docs.slack.dev/reference/methods/users.lookupByEmail */
 export const lookupByEmail: API.OperationMethod<
   LookupByEmailRequest,
   LookupByEmailResponse,
@@ -487,7 +487,7 @@ export const lookupByEmail: API.OperationMethod<
 }));
 
 export type LookupDiscoverableContactError = SlackOpError;
-/** Look up an email address to see if someone is discoverable on Slack Required scopes — bot: `conversations.connect:manage`, `team:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `not_allowed` — user is not allowed to call this API - `ratelimited` — too many attempts - `invalid_arguments` — Invalid arguments (including exceeding character count) - `restricted_action` — user is restricted from calling this API - `not_an_enterprise` — The token does not belong to an enterprise. See https://docs.slack.dev/reference/methods/users.discoverableContacts.lookup */
+/** Look up an email address to see if someone is discoverable on Slack Required scopes -- bot: `conversations.connect:manage`, `team:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `not_allowed` -- user is not allowed to call this API - `ratelimited` -- too many attempts - `invalid_arguments` -- Invalid arguments (including exceeding character count) - `restricted_action` -- user is restricted from calling this API - `not_an_enterprise` -- The token does not belong to an enterprise. See https://docs.slack.dev/reference/methods/users.discoverableContacts.lookup */
 export const lookupDiscoverableContact: API.OperationMethod<
   LookupDiscoverableContactRequest,
   LookupDiscoverableContactResponse,
@@ -502,7 +502,7 @@ export const lookupDiscoverableContact: API.OperationMethod<
 }));
 
 export type SetActiveError = SlackOpError;
-/** Marked a user as active. Deprecated and non-functional. Required scopes — bot: `users:write`; user: `users:write` Rate limit tier: 2 See https://docs.slack.dev/reference/methods/users.setActive */
+/** Marked a user as active. Deprecated and non-functional. Required scopes -- bot: `users:write`; user: `users:write` Rate limit tier: 2 See https://docs.slack.dev/reference/methods/users.setActive */
 export const setActive: API.OperationMethod<
   SetActiveRequest,
   SetActiveResponse,
@@ -517,7 +517,7 @@ export const setActive: API.OperationMethod<
 }));
 
 export type SetPhotoError = SlackOpError;
-/** Set the user profile photo Required scopes — user: `users.profile:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` — The uploaded image could not be processed - try passing a JPEG, GIF or PNG - `internal_error` — An unexpected error occurred. - `too_large` — The uploaded image had excessive dimensions - `too_many_frames` — An animated GIF with too many frames was uploaded See https://docs.slack.dev/reference/methods/users.setPhoto */
+/** Set the user profile photo Required scopes -- user: `users.profile:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` -- The uploaded image could not be processed - try passing a JPEG, GIF or PNG - `internal_error` -- An unexpected error occurred. - `too_large` -- The uploaded image had excessive dimensions - `too_many_frames` -- An animated GIF with too many frames was uploaded See https://docs.slack.dev/reference/methods/users.setPhoto */
 export const setPhoto: API.OperationMethod<
   SetPhotoRequest,
   SetPhotoResponse,
@@ -532,7 +532,7 @@ export const setPhoto: API.OperationMethod<
 }));
 
 export type SetPresenceError = SlackOpError;
-/** Manually sets user presence. Required scopes — bot: `users:write`; user: `users:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_presence` — Value passed for `presence` was invalid. See https://docs.slack.dev/reference/methods/users.setPresence */
+/** Manually sets user presence. Required scopes -- bot: `users:write`; user: `users:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_presence` -- Value passed for `presence` was invalid. See https://docs.slack.dev/reference/methods/users.setPresence */
 export const setPresence: API.OperationMethod<
   SetPresenceRequest,
   SetPresenceResponse,
@@ -547,7 +547,7 @@ export const setPresence: API.OperationMethod<
 }));
 
 export type SetProfileError = SlackOpError;
-/** Set a user's profile information, including custom status. Required scopes — user: `users.profile:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `cannot_update_admin_user` — Only a primary owner can update the profile of an admin. - `email_taken` — email taken - `invalid_profile` — Profile object passed in is not valid JSON (make sure it is URL encoded!). - `must_clear_both_status_text_and_status_emoji` — Clearing the status requires setting both `status_text` and `status_emoji` to ''. - `name_not_allowed` — name cannot contain URL. - `not_admin` — Only admins can update the profile of another user. Some fields, like `email` may only be updated by an admin. - `not_app_admin` — Only team owners and selected members can update the profile of a bot user. - `partial_profile_set_failed` — Failed to set user profile. - `profile_set_failed` — Failed to set user profile. - `reserved_name` — First or last name are reserved. - `sudo_required` — Request requires sudo session. - `too_long` — You attempted to set a custom status but it was longer than the maximum allowed, 100. - `permission_denied` — Permission denied. - `username_same` — Username is the same as the current username. - `invalid_emoji_not_allowed` — Invalid emoji not allowed. - `invalid_ooo_message` — Invalid Out of Office message. - `invalid_starts_with_at` — Name cannot start with @. See https://docs.slack.dev/reference/methods/users.profile.set */
+/** Set a user's profile information, including custom status. Required scopes -- user: `users.profile:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `cannot_update_admin_user` -- Only a primary owner can update the profile of an admin. - `email_taken` -- email taken - `invalid_profile` -- Profile object passed in is not valid JSON (make sure it is URL encoded!). - `must_clear_both_status_text_and_status_emoji` -- Clearing the status requires setting both `status_text` and `status_emoji` to ''. - `name_not_allowed` -- name cannot contain URL. - `not_admin` -- Only admins can update the profile of another user. Some fields, like `email` may only be updated by an admin. - `not_app_admin` -- Only team owners and selected members can update the profile of a bot user. - `partial_profile_set_failed` -- Failed to set user profile. - `profile_set_failed` -- Failed to set user profile. - `reserved_name` -- First or last name are reserved. - `sudo_required` -- Request requires sudo session. - `too_long` -- You attempted to set a custom status but it was longer than the maximum allowed, 100. - `permission_denied` -- Permission denied. - `username_same` -- Username is the same as the current username. - `invalid_emoji_not_allowed` -- Invalid emoji not allowed. - `invalid_ooo_message` -- Invalid Out of Office message. - `invalid_starts_with_at` -- Name cannot start with @. See https://docs.slack.dev/reference/methods/users.profile.set */
 export const setProfile: API.OperationMethod<
   SetProfileRequest,
   SetProfileResponse,
@@ -562,7 +562,7 @@ export const setProfile: API.OperationMethod<
 }));
 
 export type UsersConversationsError = SlackOpError;
-/** List conversations the calling user is a member of. Required scopes — bot: `groups:read`, `im:read`, `mpim:read`, `channels:read`; user: `groups:read`, `im:read`, `mpim:read`, `channels:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` — Value passed for `cursor` was not valid or is no longer valid. - `invalid_limit` — Value passed for `limit` is not understood. - `invalid_types` — Value passed for `type` could not be used based on the method's capabilities or the permission scopes granted to the used token. - `method_not_supported_for_channel_type` — This type of conversation cannot be used with this method. - `missing_argument` — A required argument is missing. - `missing_scope` — The calling token is not granted the necessary scopes to complete this operation. See https://docs.slack.dev/reference/methods/users.conversations */
+/** List conversations the calling user is a member of. Required scopes -- bot: `groups:read`, `im:read`, `mpim:read`, `channels:read`; user: `groups:read`, `im:read`, `mpim:read`, `channels:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Value passed for `cursor` was not valid or is no longer valid. - `invalid_limit` -- Value passed for `limit` is not understood. - `invalid_types` -- Value passed for `type` could not be used based on the method's capabilities or the permission scopes granted to the used token. - `method_not_supported_for_channel_type` -- This type of conversation cannot be used with this method. - `missing_argument` -- A required argument is missing. - `missing_scope` -- The calling token is not granted the necessary scopes to complete this operation. See https://docs.slack.dev/reference/methods/users.conversations */
 export const usersConversations: API.PaginatedOperationMethod<
   UsersConversationsRequest,
   UsersConversationsResponse,
@@ -588,7 +588,7 @@ export const usersConversations: API.PaginatedOperationMethod<
 ) as any;
 
 export type UsersIdentityError = SlackOpError;
-/** Get a user's identity. Required scopes — user: `identity:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — Internal error - `invalid_user_id` — Invalid user id provided - `email_not_verified` — user email has not been verified See https://docs.slack.dev/reference/methods/users.identity */
+/** Get a user's identity. Required scopes -- user: `identity:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error - `invalid_user_id` -- Invalid user id provided - `email_not_verified` -- user email has not been verified See https://docs.slack.dev/reference/methods/users.identity */
 export const usersIdentity: API.OperationMethod<
   UsersIdentityRequest,
   UsersIdentityResponse,
@@ -603,7 +603,7 @@ export const usersIdentity: API.OperationMethod<
 }));
 
 export type UsersInfoError = SlackOpError;
-/** Gets information about a user. Required scopes — bot: `users:read`; user: `users:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `too_many_users` — Too many users. - `user_not_found` — Value passed for `user` was invalid. - `user_not_visible` — The requested user is not visible to the calling user See https://docs.slack.dev/reference/methods/users.info */
+/** Gets information about a user. Required scopes -- bot: `users:read`; user: `users:read` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `too_many_users` -- Too many users. - `user_not_found` -- Value passed for `user` was invalid. - `user_not_visible` -- The requested user is not visible to the calling user See https://docs.slack.dev/reference/methods/users.info */
 export const usersInfo: API.OperationMethod<
   UsersInfoRequest,
   UsersInfoResponse,

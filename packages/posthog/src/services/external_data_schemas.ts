@@ -306,7 +306,7 @@ export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSchemaRowFiltersItem",
 }) as any as S.Schema<ExternalDataSchemaRowFiltersItem>;
 
-/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList = Array<ExternalDataSchemaRowFiltersItem>;
 export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
@@ -338,7 +338,7 @@ export const ExternalDataSchemaSourceSupportedApiVersionsList = /*@__PURE__*/ S.
   S.String,
 ) as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
 
-/** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
+/** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
 export interface ExternalDataSchemaSource {
   id?: string;
   source_type?: string;
@@ -369,7 +369,7 @@ export interface ExternalDataSourceApiVersionDeprecation {
   version: string;
   /** Date the vendor stops serving this version; null if not announced. */
   sunset_at: string | null;
-  /** The source's current default vendor API version — the migration target. */
+  /** The source's current default vendor API version -- the migration target. */
   default_version: string;
 }
 export const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
@@ -421,13 +421,13 @@ export interface ExternalDataSchema {
   incremental_sync_blocked?: IncrementalSyncBlockedReasonEnum | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: ExternalDataSchemaEnabledColumnsList | null;
-  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemaRowFiltersList | null;
   /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
   available_columns?: ExternalDataSchemaAvailableColumnsList;
   /** Whether exact source-side column metadata is available for safe source-query projection. */
   source_column_metadata_available?: boolean;
-  /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
+  /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
   source?: ExternalDataSchemaSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
@@ -627,7 +627,7 @@ export const UpdateExternalDataSchemaRequestEnabledColumnsList = /*@__PURE__*/ S
 export type UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
 export const UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
 
-/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemaRequestRowFiltersList = Array<ExternalDataSchemaRowFiltersItem>;
 export const UpdateExternalDataSchemaRequestRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
@@ -661,7 +661,7 @@ export interface UpdateExternalDataSchemaRequest {
   cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: UpdateExternalDataSchemaRequestEnabledColumnsList | null;
-  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
   row_filters?: UpdateExternalDataSchemaRequestRowFiltersList | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
@@ -745,7 +745,7 @@ export type UpdateExternalDataSchemasPartialRequestRowFiltersItem =
 export const UpdateExternalDataSchemasPartialRequestRowFiltersItem =
   ExternalDataSchemaRowFiltersItem;
 
-/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+/** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemasPartialRequestRowFiltersList =
   Array<ExternalDataSchemaRowFiltersItem>;
 export const UpdateExternalDataSchemasPartialRequestRowFiltersList = /*@__PURE__*/ S.Array(
@@ -780,7 +780,7 @@ export interface UpdateExternalDataSchemasPartialRequest {
   cdc_table_mode?: CdcTableModeEnum | (string & {}) | null;
   /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
   enabled_columns?: UpdateExternalDataSchemasPartialRequestEnabledColumnsList | null;
-  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
+  /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
   row_filters?: UpdateExternalDataSchemasPartialRequestRowFiltersList | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;

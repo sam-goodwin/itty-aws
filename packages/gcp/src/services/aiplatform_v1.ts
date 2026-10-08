@@ -63,7 +63,7 @@ export class Conflict
     [{ status: 409 }],
   ) {}
 
-/** Vertex DataLabelingJob is deprecated for this project (HTTP 400 INVALID_ARGUMENT: 'Vertex DataLabelingJob is deprecated, so new project … will not be able to use the service unless they opt-in to use Labelbox human labelers.'). Not retryable. */
+/** Vertex DataLabelingJob is deprecated for this project (HTTP 400 INVALID_ARGUMENT: 'Vertex DataLabelingJob is deprecated, so new project ... will not be able to use the service unless they opt-in to use Labelbox human labelers.'). Not retryable. */
 export class DataLabelingJobDeprecated
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<DataLabelingJobDeprecated>()("DataLabelingJobDeprecated", {
@@ -3254,7 +3254,7 @@ export interface GoogleCloudAiplatformV1FeatureStatsAnomaly {
   score?: number;
   /** Path of the stats file for current feature values in Cloud Storage bucket. Format: gs:////stats. Example: gs://monitoring_bucket/feature_name/stats. Stats are stored as binary format with Protobuf message [tensorflow.metadata.v0.FeatureNameStatistics](https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/statistics.proto). */
   statsUri?: string;
-  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
+  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. */
   distributionDeviation?: number;
   /** Path of the anomaly file for current feature values in Cloud Storage bucket. Format: gs:////anomalies. Example: gs://monitoring_bucket/feature_name/anomalies. Stats are stored as binary format with Protobuf message Anoamlies are stored as binary format with Protobuf message [tensorflow.metadata.v0.AnomalyInfo] (https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/anomalies.proto). */
   anomalyUri?: string;
@@ -13199,7 +13199,7 @@ export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysis
 
 /** The config for Featurestore Monitoring threshold. */
 export interface GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig {
-  /** Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
+  /** Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
 export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig =
@@ -14768,7 +14768,7 @@ export const GoogleCloudAiplatformV1SamplingStrategy = /*@__PURE__*/ S.suspend((
 
 /** The config for feature monitoring threshold. */
 export interface GoogleCloudAiplatformV1ThresholdConfig {
-  /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
+  /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
 export const GoogleCloudAiplatformV1ThresholdConfig = /*@__PURE__*/ S.suspend(() =>
@@ -16240,9 +16240,9 @@ export const GoogleCloudAiplatformV1ResourceRuntime = /*@__PURE__*/ S.suspend(()
 
 /** The min/max number of replicas allowed if enabling autoscaling */
 export interface GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec {
-  /** Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error. For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a resource_pool to be 0 to match the OSS Ray behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters). As for Persistent Resource, the min_replica_count must be > 0, we added a corresponding validation inside CreatePersistentResourceRequestValidator.java. */
+  /** Optional. min replicas in the node pool, must be <= replica_count and < max_replica_count or will throw error. For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a resource_pool to be 0 to match the OSS Ray behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters). As for Persistent Resource, the min_replica_count must be > 0, we added a corresponding validation inside CreatePersistentResourceRequestValidator.java. */
   minReplicaCount?: string;
-  /** Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error */
+  /** Optional. max replicas in the node pool, must be >= replica_count and > min_replica_count or will throw error */
   maxReplicaCount?: string;
 }
 export const GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec = /*@__PURE__*/ S.suspend(() =>

@@ -581,7 +581,7 @@ export interface ListFilesResponseBodyItem {
   /** Not defined for directories */
   xetHash?: string;
   mtime?: string;
-  /** Sub-millisecond remainder of mtime, in nanoseconds (0–999_999) */
+  /** Sub-millisecond remainder of mtime, in nanoseconds (0-999_999) */
   mtimeNanos?: number;
   uploadedAt: string;
   contentType?: string;
@@ -751,7 +751,7 @@ export interface ListPathsInfoResponseBodyItem {
   /** Not defined for directories */
   xetHash?: string;
   mtime?: string;
-  /** Sub-millisecond remainder of mtime, in nanoseconds (0–999_999) */
+  /** Sub-millisecond remainder of mtime, in nanoseconds (0-999_999) */
   mtimeNanos?: number;
   uploadedAt: string;
   contentType?: string;
@@ -989,7 +989,7 @@ export const duplicateXetFiles: API.OperationMethod<
 }));
 
 export type FollowChangesError = HuggingFaceOpError;
-/** Follow changes Server-sent events (`Accept: text/event-stream`) of the bucket's file changes, so clients can stop polling `/tree`. Events: - `ready`: `{"cursor"}` — replay (if any) is done, live changes follow. `cursor` may be absent if the feed has seen no change yet. - `changes`: `{"cursor", "changes": [{"path", "op": "add" | "update" | "delete", "size"?, "xetHash"?, "uploadedAt"?, "mtime"?, "mtimeNanos"?}]}` — a batch of changes coalesced over ~200ms. An `update` only carries the fields that changed (an identical re-upload has just `uploadedAt`); `mtime`/`mtimeNanos` are `null` when a re-upload cleared them. `xetHash` is omitted without content read access. - `reset`: `{"reason": "cursor_too_old"}` — the requested `cursor`/`since` is older than what the server buffers (about 15 minutes); the stream ends and the client must re-list. A `since` at or after the bucket's `updatedAt` never resets, however old. - `reconnect`: `{"cursor"}` — sent after 20 minutes or when the server shuts down (deploys), then the stream ends; reconnect with that cursor. Treat any other end of the stream the same way: reconnect with the last cursor you received. A `: ping` comment is sent every 30s. Resume with `?cursor=` (exclusive) or `?since=` (inclusive); without either, only live changes are sent. */
+/** Follow changes Server-sent events (`Accept: text/event-stream`) of the bucket's file changes, so clients can stop polling `/tree`. Events: - `ready`: `{"cursor"}` -- replay (if any) is done, live changes follow. `cursor` may be absent if the feed has seen no change yet. - `changes`: `{"cursor", "changes": [{"path", "op": "add" | "update" | "delete", "size"?, "xetHash"?, "uploadedAt"?, "mtime"?, "mtimeNanos"?}]}` -- a batch of changes coalesced over ~200ms. An `update` only carries the fields that changed (an identical re-upload has just `uploadedAt`); `mtime`/`mtimeNanos` are `null` when a re-upload cleared them. `xetHash` is omitted without content read access. - `reset`: `{"reason": "cursor_too_old"}` -- the requested `cursor`/`since` is older than what the server buffers (about 15 minutes); the stream ends and the client must re-list. A `since` at or after the bucket's `updatedAt` never resets, however old. - `reconnect`: `{"cursor"}` -- sent after 20 minutes or when the server shuts down (deploys), then the stream ends; reconnect with that cursor. Treat any other end of the stream the same way: reconnect with the last cursor you received. A `: ping` comment is sent every 30s. Resume with `?cursor=` (exclusive) or `?since=` (inclusive); without either, only live changes are sent. */
 export const followChanges: API.OperationMethod<
   FollowChangesRequest,
   FollowChangesResponse,

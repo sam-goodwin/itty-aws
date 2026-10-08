@@ -4824,7 +4824,7 @@ export type CreateReportError =
   | ValidationException
   | CommonErrors;
 /**
- * On-demand report creation. Idempotent — duplicate requests with same clientToken return existing result.
+ * On-demand report creation. Idempotent -- duplicate requests with same clientToken return existing result.
  */
 export const createReport: API.OperationMethod<
   CreateReportRequest,
@@ -5279,7 +5279,7 @@ export type DeleteTestSourcesError =
   | ValidationException
   | CommonErrors;
 /**
- * Removes monitoring sources from a test. The operation is transactional and idempotent — removing a source that is not attached is a no-op.
+ * Removes monitoring sources from a test. The operation is transactional and idempotent -- removing a source that is not attached is a no-op.
  */
 export const deleteTestSources: API.OperationMethod<
   DeleteTestSourcesRequest,
@@ -6524,7 +6524,7 @@ export type PutTestSourcesError =
   | ValidationException
   | CommonErrors;
 /**
- * Adds or updates the monitoring sources on a test. The operation is transactional — either every source is written or the call fails and nothing is written.
+ * Adds or updates the monitoring sources on a test. The operation is transactional -- either every source is written or the call fails and nothing is written.
  */
 export const putTestSources: API.OperationMethod<
   PutTestSourcesRequest,

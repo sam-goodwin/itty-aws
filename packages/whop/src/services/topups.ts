@@ -204,7 +204,7 @@ export type CreateTopupError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create topup [Legacy API — https://docs.whop.com/api-reference] Add funds to a company's platform balance by charging a stored payment method. Top-ups have no fees or taxes and do not count as revenue. Required permissions: - `payment:charge` */
+/** Create topup [Legacy API -- https://docs.whop.com/api-reference] Add funds to a company's platform balance by charging a stored payment method. Top-ups have no fees or taxes and do not count as revenue. Required permissions: - `payment:charge` */
 export const createTopup: API.OperationMethod<
   CreateTopupRequest,
   Topup,

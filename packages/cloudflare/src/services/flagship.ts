@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   createdAt: "created_at",
   defaultVariation: "default_variation",
@@ -56,7 +56,7 @@ export class FlagshipFlagNotFound
 export interface CreateAppRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
-  /** Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores). */
+  /** Name of the Flagship app (1-64 letters, numbers, hyphens, or underscores). */
   name: string;
 }
 export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
@@ -733,7 +733,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsList>;
 
 export interface AppsFlagsCreateRequestRulesItemRollout {
-  /** Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
+  /** Percentage of matching traffic (0-100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
@@ -1446,7 +1446,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsList>;
 
 export interface AppsFlagsCreateResponseRulesItemRollout {
-  /** Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
+  /** Percentage of matching traffic (0-100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string | null;
@@ -2408,7 +2408,7 @@ export interface ListAppFlagChangelogsRequest {
   flagKey: string;
   /** Pagination cursor from a previous response. */
   cursor?: string;
-  /** Max items to return (1–200). */
+  /** Max items to return (1-200). */
   limit?: number;
 }
 export const ListAppFlagChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4726,7 +4726,7 @@ export interface ListAppFlagsRequest {
   appId: string;
   /** Pagination cursor from a previous response. */
   cursor?: string;
-  /** Max items to return (1–200). */
+  /** Max items to return (1-200). */
   limit?: number;
 }
 export const ListAppFlagsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5502,7 +5502,7 @@ export interface UpdateAppRequest {
   accountId: string;
   /** Flagship app ID returned when the app was created. */
   appId: string;
-  /** Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores). */
+  /** Name of the Flagship app (1-64 letters, numbers, hyphens, or underscores). */
   name?: string;
 }
 export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7137,7 +7137,7 @@ export const updateApp: API.OperationMethod<
 }));
 
 export type UpdateAppFlagError = FlagshipFlagNotFound | FlagshipAppNotFound | CloudflareOpError;
-/** Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. The path key identifies the flag and cannot be renamed by changing the body `key`. Each update appends a changelog entry. */
+/** Replaces the entire flag definition. Omitted fields are dropped, not preserved -- read before writing. The path key identifies the flag and cannot be renamed by changing the body `key`. Each update appends a changelog entry. */
 export const updateAppFlag: API.OperationMethod<
   UpdateAppFlagRequest,
   UpdateAppFlagResponse,

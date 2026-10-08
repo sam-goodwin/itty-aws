@@ -61,7 +61,7 @@ export const CreateZoneRrsetRequestLabelsMap = /*@__PURE__*/ S.Record(
 export interface CreateZoneRrsetRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: CreateZoneRrsetRequestType | (string & {});
@@ -136,7 +136,7 @@ export const CreateZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
 export interface CreateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: CreateZoneRrsetResponseRrsetType;
@@ -429,7 +429,7 @@ export const GetZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
 export interface GetZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: GetZoneRrsetResponseRrsetType;
@@ -582,7 +582,7 @@ export const ListZoneRrsetsResponseRrsetsItemRecordsList = /*@__PURE__*/ S.Array
 export interface ListZoneRrsetsResponseRrsetsItem {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: ListZoneRrsetsResponseRrsetsItemType;
@@ -758,7 +758,7 @@ export const UpdateZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
 export interface UpdateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: UpdateZoneRrsetResponseRrsetType;

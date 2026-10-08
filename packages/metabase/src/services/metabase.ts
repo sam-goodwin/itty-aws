@@ -1891,7 +1891,7 @@ export const MetabaseAgentApiApiQueryRequestCase1 = /*@__PURE__*/ S.suspend(() =
   identifier: "MetabaseAgentApiApiQueryRequestCase1",
 }) as any as S.Schema<MetabaseAgentApiApiQueryRequestCase1>;
 
-/** Request body for /v2/construct-query and the fresh-query branch of /v2/query. A single `:query` key whose value is a JSON object matching [[metabase.lib.schema/external-query]] — the canonical portable MBQL 5 wire format. The query is fully self-describing: the database is derived from the first stage's `source-table:` or `source-card:`, all field references are portable FKs (`[<db-name>, <schema>, <table-name>, <column-name>]`), and there is no auxiliary `source_entity` / `referenced_entities` envelope. See `resources/metabot/prompts/tools/construct_notebook_query.md` for the full format reference (including operators, joins, expressions, multi-stage queries, and FK conventions). Closed map: any extra top-level keys (notably the legacy `source_entity` / `referenced_entities` envelope from before the repr migration) are dropped during request decoding, so a caller still sending the old shape is served. The inner `:query` value is intentionally typed as an open map ([[ms/Map]]) at this boundary rather than `::lib.schema/external-query`. Being open matters: a closed map with no declared entries would have every key stripped before the handler saw it. Reasons for not naming the real schema: 1. Deep MBQL-shape validation runs inside the representations pipeline (`metabot.tools.construct/execute-representations-query` calls `repr/validate-query` after the repair pass), so the boundary check would be redundant. 2. The strict-tool manifest lint (`assert-optional-fields-nullable!`) walks every map reachable from the tool input schema. `::external-query` references `::query`, which carries several `:optional` keys (`:lib/metadata`, `:database`, `:settings`, …) that are not `[:maybe ...]` — for sound reasons unrelated to this endpoint. Recursing into them would force a wide schema change just to satisfy the lint at the agent boundary. */
+/** Request body for /v2/construct-query and the fresh-query branch of /v2/query. A single `:query` key whose value is a JSON object matching [[metabase.lib.schema/external-query]] -- the canonical portable MBQL 5 wire format. The query is fully self-describing: the database is derived from the first stage's `source-table:` or `source-card:`, all field references are portable FKs (`[<db-name>, <schema>, <table-name>, <column-name>]`), and there is no auxiliary `source_entity` / `referenced_entities` envelope. See `resources/metabot/prompts/tools/construct_notebook_query.md` for the full format reference (including operators, joins, expressions, multi-stage queries, and FK conventions). Closed map: any extra top-level keys (notably the legacy `source_entity` / `referenced_entities` envelope from before the repr migration) are dropped during request decoding, so a caller still sending the old shape is served. The inner `:query` value is intentionally typed as an open map ([[ms/Map]]) at this boundary rather than `::lib.schema/external-query`. Being open matters: a closed map with no declared entries would have every key stripped before the handler saw it. Reasons for not naming the real schema: 1. Deep MBQL-shape validation runs inside the representations pipeline (`metabot.tools.construct/execute-representations-query` calls `repr/validate-query` after the repair pass), so the boundary check would be redundant. 2. The strict-tool manifest lint (`assert-optional-fields-nullable!`) walks every map reachable from the tool input schema. `::external-query` references `::query`, which carries several `:optional` keys (`:lib/metadata`, `:database`, `:settings`, ...) that are not `[:maybe ...]` -- for sound reasons unrelated to this endpoint. Recursing into them would force a wide schema change just to satisfy the lint at the agent boundary. */
 export interface MetabaseAgentApiApiConstructQueryRequest {
   prompt?: string | null;
   /** Value must be a map. */
@@ -1906,7 +1906,7 @@ export const MetabaseAgentApiApiConstructQueryRequest = /*@__PURE__*/ S.suspend(
   identifier: "MetabaseAgentApiApiConstructQueryRequest",
 }) as any as S.Schema<MetabaseAgentApiApiConstructQueryRequest>;
 
-/** Request body for /v2/query, one of three shapes: - `{:continuation_token <string>}` from a prior response (pagination); - `{:query <base64-string>}` — a query_handle resolved by the MCP layer to its stored base64 MBQL; already resolved, so it's executed directly (like /v1/execute) rather than re-run through the representations pipeline; - `{:query <external-query-object>}` — a fresh portable MBQL 5 payload, same shape as /v2/construct-query. The string-vs-object `:query` distinction is what the `:dispatch` keys on. Each branch is a closed map, so top-level keys it doesn't declare (e.g. the legacy `source_entity` / `referenced_entities` envelope, or a `:query` sent alongside a `:continuation_token`) are dropped before the handler runs. */
+/** Request body for /v2/query, one of three shapes: - `{:continuation_token <string>}` from a prior response (pagination); - `{:query <base64-string>}` -- a query_handle resolved by the MCP layer to its stored base64 MBQL; already resolved, so it's executed directly (like /v1/execute) rather than re-run through the representations pipeline; - `{:query <external-query-object>}` -- a fresh portable MBQL 5 payload, same shape as /v2/construct-query. The string-vs-object `:query` distinction is what the `:dispatch` keys on. Each branch is a closed map, so top-level keys it doesn't declare (e.g. the legacy `source_entity` / `referenced_entities` envelope, or a `:query` sent alongside a `:continuation_token`) are dropped before the handler runs. */
 export type MetabaseAgentApiApiQueryRequest =
   | MetabaseAgentApiApiQueryRequestCase0
   | MetabaseAgentApiApiQueryRequestCase1
@@ -21013,7 +21013,7 @@ export const createAgentCollection: API.OperationMethod<
 }));
 
 export type CreateAgentConstructNativeQueryError = MetabaseOpError;
-/** POST /api/agent/v1/construct-native-query Construct a native (raw SQL) query against a database. Wraps `sql` into a serialized native query and returns it base64-encoded — the same `{"query": <base64>}` shape as /v2/construct-query — so it can be saved as a question via /v1/question (the MCP layer swaps the base64 for a `query_handle`). This endpoint does NOT execute the SQL; to run native SQL ad hoc use /v1/execute-sql. The MBQL execution endpoints (/v1/execute, /v2/query) reject native queries by design, so a handle produced here is for saving, not for /v2/query execution. */
+/** POST /api/agent/v1/construct-native-query Construct a native (raw SQL) query against a database. Wraps `sql` into a serialized native query and returns it base64-encoded -- the same `{"query": <base64>}` shape as /v2/construct-query -- so it can be saved as a question via /v1/question (the MCP layer swaps the base64 for a `query_handle`). This endpoint does NOT execute the SQL; to run native SQL ad hoc use /v1/execute-sql. The MBQL execution endpoints (/v1/execute, /v2/query) reject native queries by design, so a handle produced here is for saving, not for /v2/query execution. */
 export const createAgentConstructNativeQuery: API.OperationMethod<
   CreateAgentConstructNativeQueryRequest,
   CreateAgentConstructNativeQueryResponse,
@@ -21028,7 +21028,7 @@ export const createAgentConstructNativeQuery: API.OperationMethod<
 }));
 
 export type CreateAgentConstructQueryError = MetabaseOpError;
-/** POST /api/agent/v2/construct-query Construct an MBQL query from a portable MBQL 5 representations JSON payload. The body is `{"query": <external-query>}` where `<external-query>` is a JSON object matching `::lib.schema/external-query` — see the `construct_notebook_query` tool documentation for the format reference. Returns a base64-encoded MBQL query that can be executed via /v1/execute or paginated via /v2/query. */
+/** POST /api/agent/v2/construct-query Construct an MBQL query from a portable MBQL 5 representations JSON payload. The body is `{"query": <external-query>}` where `<external-query>` is a JSON object matching `::lib.schema/external-query` -- see the `construct_notebook_query` tool documentation for the format reference. Returns a base64-encoded MBQL query that can be executed via /v1/execute or paginated via /v2/query. */
 export const createAgentConstructQuery: API.OperationMethod<
   CreateAgentConstructQueryRequest,
   CreateAgentConstructQueryResponse,
@@ -21133,7 +21133,7 @@ export const createAgentQuestion: API.OperationMethod<
 }));
 
 export type CreateAgentQuestionQueryError = MetabaseOpError;
-/** POST /api/agent/v1/question/{id}/query Run a saved question (card) and return its results. Executes the query stored on the card under the caller's permissions and returns rows + column metadata — the same response shape as /v1/execute. Parameterized questions are NOT supported: if the card declares parameters or input template tags (field filters / variables), this returns a 400. Run it in Metabase, or save a parameterless version. */
+/** POST /api/agent/v1/question/{id}/query Run a saved question (card) and return its results. Executes the query stored on the card under the caller's permissions and returns rows + column metadata -- the same response shape as /v1/execute. Parameterized questions are NOT supported: if the card declares parameters or input template tags (field filters / variables), this returns a 400. Run it in Metabase, or save a parameterless version. */
 export const createAgentQuestionQuery: API.OperationMethod<
   CreateAgentQuestionQueryRequest,
   CreateAgentQuestionQueryResponse,
@@ -22033,7 +22033,7 @@ export const createEeCustomVizPlugin: API.OperationMethod<
 }));
 
 export type CreateEeCustomVizPluginDevError = MetabaseOpError;
-/** POST /api/ee/custom-viz-plugin/dev Register a dev-only custom visualization plugin from a local dev server. No bundle upload is required — files are served from the dev server URL. Requires custom viz plugin dev mode to be enabled. */
+/** POST /api/ee/custom-viz-plugin/dev Register a dev-only custom visualization plugin from a local dev server. No bundle upload is required -- files are served from the dev server URL. Requires custom viz plugin dev mode to be enabled. */
 export const createEeCustomVizPluginDev: API.OperationMethod<
   CreateEeCustomVizPluginDevRequest,
   CreateEeCustomVizPluginDevResponse,
@@ -22048,7 +22048,7 @@ export const createEeCustomVizPluginDev: API.OperationMethod<
 }));
 
 export type CreateEeCustomVizPluginRefreshError = MetabaseOpError;
-/** POST /api/ee/custom-viz-plugin/{id}/refresh Re-fetch the manifest from the dev server for a dev-only plugin. For uploaded plugins this is a no-op — to update an upload-backed plugin, PUT a new bundle to `/:id/bundle`. */
+/** POST /api/ee/custom-viz-plugin/{id}/refresh Re-fetch the manifest from the dev server for a dev-only plugin. For uploaded plugins this is a no-op -- to update an upload-backed plugin, PUT a new bundle to `/:id/bundle`. */
 export const createEeCustomVizPluginRefresh: API.OperationMethod<
   CreateEeCustomVizPluginRefreshRequest,
   CreateEeCustomVizPluginRefreshResponse,
@@ -22078,7 +22078,7 @@ export const createEeDatabaseReplicationConnectionDatabasePreview: API.Operation
 }));
 
 export type CreateEeDatabaseRoutingDestinationDatabaseError = MetabaseOpError;
-/** POST /api/ee/database-routing/destination-database Create new Destination Databases. Note that unlike the normal `POST /api/database` endpoint, this endpoint does not test that the database is actually reachable before adding it — destination details are not required to be valid at creation time, and an unreachable destination is fine. */
+/** POST /api/ee/database-routing/destination-database Create new Destination Databases. Note that unlike the normal `POST /api/database` endpoint, this endpoint does not test that the database is actually reachable before adding it -- destination details are not required to be valid at creation time, and an unreachable destination is fine. */
 export const createEeDatabaseRoutingDestinationDatabase: API.OperationMethod<
   CreateEeDatabaseRoutingDestinationDatabaseRequest,
   CreateEeDatabaseRoutingDestinationDatabaseResponse,
@@ -22168,7 +22168,7 @@ export const createEeLibrary: API.OperationMethod<
 }));
 
 export type CreateEeMfaAdminRemoveError = MetabaseOpError;
-/** POST /api/ee/mfa/admin/remove Admin: remove a user's two-factor enrollment entirely — the lockout escape hatch for a lost authenticator with no recovery codes. Never feature-gated (a lapsed license must not make lockouts permanent). The affected user is notified by email. They re-enroll from scratch — there is nothing to "reset", the secret lives on their device. */
+/** POST /api/ee/mfa/admin/remove Admin: remove a user's two-factor enrollment entirely -- the lockout escape hatch for a lost authenticator with no recovery codes. Never feature-gated (a lapsed license must not make lockouts permanent). The affected user is notified by email. They re-enroll from scratch -- there is nothing to "reset", the secret lives on their device. */
 export const createEeMfaAdminRemove: API.OperationMethod<
   CreateEeMfaAdminRemoveRequest,
   CreateEeMfaAdminRemoveResponse,
@@ -22183,7 +22183,7 @@ export const createEeMfaAdminRemove: API.OperationMethod<
 }));
 
 export type CreateEeMfaDisableError = MetabaseOpError;
-/** POST /api/ee/mfa/disable Disable two-factor authentication for the current user. Re-auth is a fresh second factor — a TOTP code or an unused recovery code — never just the password. */
+/** POST /api/ee/mfa/disable Disable two-factor authentication for the current user. Re-auth is a fresh second factor -- a TOTP code or an unused recovery code -- never just the password. */
 export const createEeMfaDisable: API.OperationMethod<
   CreateEeMfaDisableRequest,
   CreateEeMfaDisableResponse,
@@ -22213,7 +22213,7 @@ export const createEeMfaEnroll: API.OperationMethod<
 }));
 
 export type CreateEeMfaEnrollConfirmError = MetabaseOpError;
-/** POST /api/ee/mfa/enroll/confirm Confirm TOTP enrollment by verifying a code from the authenticator app. Activates the second factor and returns the single-use recovery codes — the only time they exist in plaintext. */
+/** POST /api/ee/mfa/enroll/confirm Confirm TOTP enrollment by verifying a code from the authenticator app. Activates the second factor and returns the single-use recovery codes -- the only time they exist in plaintext. */
 export const createEeMfaEnrollConfirm: API.OperationMethod<
   CreateEeMfaEnrollConfirmRequest,
   CreateEeMfaEnrollConfirmResponse,
@@ -22228,7 +22228,7 @@ export const createEeMfaEnrollConfirm: API.OperationMethod<
 }));
 
 export type CreateEeMfaRecoveryCodeError = MetabaseOpError;
-/** POST /api/ee/mfa/recovery-codes Regenerate the current user's recovery codes, invalidating the entire previous set. Re-auth is a fresh second factor — a TOTP code or an unused recovery code — so a stolen password alone can never rotate the codes. The plaintext codes are returned exactly once; only hashes are stored. */
+/** POST /api/ee/mfa/recovery-codes Regenerate the current user's recovery codes, invalidating the entire previous set. Re-auth is a fresh second factor -- a TOTP code or an unused recovery code -- so a stolen password alone can never rotate the codes. The plaintext codes are returned exactly once; only hashes are stored. */
 export const createEeMfaRecoveryCode: API.OperationMethod<
   CreateEeMfaRecoveryCodeRequest,
   CreateEeMfaRecoveryCodeResponse,
@@ -22318,7 +22318,7 @@ export const createEeRemoteSyncStash: API.OperationMethod<
 }));
 
 export type CreateEeRemoteSyncTestConnectionError = MetabaseOpError;
-/** POST /api/ee/remote-sync/test-connection Test whether the Remote Sync credentials can reach the git repository. When called with an empty body, validates the currently saved URL and token. When the body provides `remote-sync-url` or `remote-sync-token`, those override the saved values — useful for verifying a new Personal Access Token before saving. An obfuscated token (matching the existing token's masked representation) is treated as "unchanged" and the stored token value is used for the test. Only validates connection and authentication; branch existence is not checked here. Returns `{:status :success}` on success. On failure, returns a 400 with a user-friendly error message describing the connection problem. Requires superuser permissions. */
+/** POST /api/ee/remote-sync/test-connection Test whether the Remote Sync credentials can reach the git repository. When called with an empty body, validates the currently saved URL and token. When the body provides `remote-sync-url` or `remote-sync-token`, those override the saved values -- useful for verifying a new Personal Access Token before saving. An obfuscated token (matching the existing token's masked representation) is treated as "unchanged" and the stored token value is used for the test. Only validates connection and authentication; branch existence is not checked here. Returns `{:status :success}` on success. On failure, returns a 400 with a user-friendly error message describing the connection problem. Requires superuser permissions. */
 export const createEeRemoteSyncTestConnection: API.OperationMethod<
   CreateEeRemoteSyncTestConnectionRequest,
   CreateEeRemoteSyncTestConnectionResponse,
@@ -22513,7 +22513,7 @@ export const createEeSerializationImport: API.OperationMethod<
 }));
 
 export type CreateEeSerializationMetadataExportError = MetabaseOpError;
-/** POST /api/ee/serialization/metadata/export Get warehouse metadata (databases, tables, and fields) for all databases visible to the current user. References between rows are emitted as raw numeric ids (`db_id`, `table_id`, `parent_id`, `fk_target_field_id`). Sections must be opted into with the `with-databases`, `with-tables`, and `with-fields` query parameters — they all default to `false`. The response is streamed for efficiency with large schemas. Requires `View data` → `Can view` and `Create queries` → `Query builder only` (or `Query builder and native`) permissions on each database and table. */
+/** POST /api/ee/serialization/metadata/export Get warehouse metadata (databases, tables, and fields) for all databases visible to the current user. References between rows are emitted as raw numeric ids (`db_id`, `table_id`, `parent_id`, `fk_target_field_id`). Sections must be opted into with the `with-databases`, `with-tables`, and `with-fields` query parameters -- they all default to `false`. The response is streamed for efficiency with large schemas. Requires `View data` -> `Can view` and `Create queries` -> `Query builder only` (or `Query builder and native`) permissions on each database and table. */
 export const createEeSerializationMetadataExport: API.OperationMethod<
   CreateEeSerializationMetadataExportRequest,
   CreateEeSerializationMetadataExportResponse,
@@ -26113,7 +26113,7 @@ export const getDocumentByDocumentId: API.OperationMethod<
 }));
 
 export type GetDocumentByUuidError = MetabaseOpError;
-/** GET /api/public/document/{uuid} Fetch a publicly-accessible Document. Does not require auth credentials. Public sharing must be enabled. Returns a Document with sensitive fields removed (excludes collection_id, permissions, creator details, etc.). Includes all embedded Cards with their metadata hydrated so the frontend doesn't need to make separate requests for each card — just like public Dashboards do. */
+/** GET /api/public/document/{uuid} Fetch a publicly-accessible Document. Does not require auth credentials. Public sharing must be enabled. Returns a Document with sensitive fields removed (excludes collection_id, permissions, creator details, etc.). Includes all embedded Cards with their metadata hydrated so the frontend doesn't need to make separate requests for each card -- just like public Dashboards do. */
 export const getDocumentByUuid: API.OperationMethod<
   GetDocumentByUuidRequest,
   GetDocumentByUuidResponse,
@@ -26383,7 +26383,7 @@ export const getEeCustomVizPlugin: API.OperationMethod<
 }));
 
 export type GetEeCustomVizPluginAssetError = MetabaseOpError;
-/** GET /api/ee/custom-viz-plugin/{id}/asset Serve the plugin's icon image from its bundle. The asset path is passed as a `path` query parameter (e.g. `?path=icon.svg`) and must match the manifest `icon`. Only the icon is served — plugins do not ship arbitrary assets. In dev mode, proxies from the dev base URL if set. */
+/** GET /api/ee/custom-viz-plugin/{id}/asset Serve the plugin's icon image from its bundle. The asset path is passed as a `path` query parameter (e.g. `?path=icon.svg`) and must match the manifest `icon`. Only the icon is served -- plugins do not ship arbitrary assets. In dev mode, proxies from the dev base URL if set. */
 export const getEeCustomVizPluginAsset: API.OperationMethod<
   GetEeCustomVizPluginAssetRequest,
   GetEeCustomVizPluginAssetResponse,
@@ -26713,7 +26713,7 @@ export const getEeMetabotUsage: API.OperationMethod<
 }));
 
 export type GetEeMfaAdminOverviewError = MetabaseOpError;
-/** GET /api/ee/mfa/admin/overview Admin: enrollment overview — how many users have (and haven't) set up a second factor, and whether the instance encrypts secrets at rest. */
+/** GET /api/ee/mfa/admin/overview Admin: enrollment overview -- how many users have (and haven't) set up a second factor, and whether the instance encrypts secrets at rest. */
 export const getEeMfaAdminOverview: API.OperationMethod<
   GetEeMfaAdminOverviewRequest,
   GetEeMfaAdminOverviewResponse,
@@ -28018,7 +28018,7 @@ export const getNotification: API.OperationMethod<
 }));
 
 export type GetNotificationAdminError = MetabaseOpError;
-/** GET /api/notification/admin List card-type notifications (alerts) for admin management. Supports pagination (`limit` + `offset` query params — handled by the offset-paging middleware), filtering, and sorting. `last_send_status` filter operates on the latest channel-send task_history row for the notification (`successful` = latest channel-send succeeded; `failing` = latest channel-send failed). `last_check_status` filter operates on the latest terminal TaskRun for the notification — the whole-run rollup (`successful` = the run succeeded; `failing` = it failed or was abandoned). This is a superset of `last_send_status`: it also catches query failures and heartbeat-abandoned runs that never reached the send step. The Failing tab uses `?last_check_status=failing`. `creatorless=true` selects notifications with no creator or a deactivated creator (the Ownerless tab). `creatorless=false` selects the inverse. `channel` accepts a single string or a repeated query param for multi-select (OR logic). */
+/** GET /api/notification/admin List card-type notifications (alerts) for admin management. Supports pagination (`limit` + `offset` query params -- handled by the offset-paging middleware), filtering, and sorting. `last_send_status` filter operates on the latest channel-send task_history row for the notification (`successful` = latest channel-send succeeded; `failing` = latest channel-send failed). `last_check_status` filter operates on the latest terminal TaskRun for the notification -- the whole-run rollup (`successful` = the run succeeded; `failing` = it failed or was abandoned). This is a superset of `last_send_status`: it also catches query failures and heartbeat-abandoned runs that never reached the send step. The Failing tab uses `?last_check_status=failing`. `creatorless=true` selects notifications with no creator or a deactivated creator (the Ownerless tab). `creatorless=false` selects the inverse. `channel` accepts a single string or a repeated query param for multi-select (OR logic). */
 export const getNotificationAdmin: API.OperationMethod<
   GetNotificationAdminRequest,
   GetNotificationAdminResponse,
@@ -29443,7 +29443,7 @@ export const putAgentDashboard: API.OperationMethod<
 }));
 
 export type PutAgentMetricError = MetabaseOpError;
-/** PUT /api/agent/v1/metric/{id} Update a saved metric. Patch semantics - only fields that you pass are changed. Set `collection_id` to move the metric to a different collection. Set `archived: true` to archive. Pass `query` (a query_handle from construct_query, or a base64 MBQL string) to replace the underlying query; the replacement must still be a valid metric (exactly one aggregation, at most one date/datetime grouping). The target card must be a metric — use `update_question` for questions. */
+/** PUT /api/agent/v1/metric/{id} Update a saved metric. Patch semantics - only fields that you pass are changed. Set `collection_id` to move the metric to a different collection. Set `archived: true` to archive. Pass `query` (a query_handle from construct_query, or a base64 MBQL string) to replace the underlying query; the replacement must still be a valid metric (exactly one aggregation, at most one date/datetime grouping). The target card must be a metric -- use `update_question` for questions. */
 export const putAgentMetric: API.OperationMethod<
   PutAgentMetricRequest,
   PutAgentMetricResponse,
@@ -30403,7 +30403,7 @@ export const putTransformJob: API.OperationMethod<
 }));
 
 export type PutTransformJobActiveError = MetabaseOpError;
-/** PUT /api/transform-job/active Activate or deactivate every transform job. Inactive jobs do not run on schedule. Manual runs via `POST /api/transform-job/:job-id/run` ignore this flag. Reports per-job outcome counts: `:updated` (successfully flipped) and `:failed` (raised an error during the flip — the row update or Quartz write failed and was logged). */
+/** PUT /api/transform-job/active Activate or deactivate every transform job. Inactive jobs do not run on schedule. Manual runs via `POST /api/transform-job/:job-id/run` ignore this flag. Reports per-job outcome counts: `:updated` (successfully flipped) and `:failed` (raised an error during the flip -- the row update or Quartz write failed and was logged). */
 export const putTransformJobActive: API.OperationMethod<
   PutTransformJobActiveRequest,
   PutTransformJobActiveResponse,

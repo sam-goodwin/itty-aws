@@ -16240,9 +16240,9 @@ export type CreateAssetTypeError =
  *
  * - The domain-identifier and owning-project-identifier must be valid and active.
  *
- * - The name of the asset type must be unique within the domain — duplicate names will cause failure.
+ * - The name of the asset type must be unique within the domain -- duplicate names will cause failure.
  *
- * - JSON input must be valid — incorrect formatting causes Invalid JSON errors.
+ * - JSON input must be valid -- incorrect formatting causes Invalid JSON errors.
  */
 export const createAssetType: API.OperationMethod<
   CreateAssetTypeInput,

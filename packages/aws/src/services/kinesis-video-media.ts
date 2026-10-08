@@ -192,10 +192,10 @@ export type GetMediaError =
  * If an error is thrown after invoking a Kinesis Video Streams media API, in addition to
  * the HTTP status code and the response body, it includes the following pieces of information:
  *
- * - `x-amz-ErrorType` HTTP header – contains a more specific error type in
+ * - `x-amz-ErrorType` HTTP header - contains a more specific error type in
  * addition to what the HTTP status code provides.
  *
- * - `x-amz-RequestId` HTTP header – if you want to report an issue to AWS,
+ * - `x-amz-RequestId` HTTP header - if you want to report an issue to AWS,
  * the support team can better diagnose the problem if given the Request Id.
  *
  * Both the HTTP status code and the ErrorType header can be utilized to make programmatic

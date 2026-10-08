@@ -1604,7 +1604,7 @@ export interface DatabasePropertiesInput {
   useFreeLimit?: boolean;
   /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
   freeLimitExhaustionBehavior?: DatabasePropertiesInputFreeLimitExhaustionBehavior | (string & {});
-  /** The resource identifier of the source associated with the create operation of this database. This property is only supported for DataWarehouse edition and allows to restore across subscriptions. When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover. When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified. When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool. When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool. When source subscription belongs to a different tenant than target subscription, “x-ms-authorization-auxiliary” header must contain authentication token for the source tenant. For more details about “x-ms-authorization-auxiliary” header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant */
+  /** The resource identifier of the source associated with the create operation of this database. This property is only supported for DataWarehouse edition and allows to restore across subscriptions. When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover. When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified. When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool. When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool. When source subscription belongs to a different tenant than target subscription, "x-ms-authorization-auxiliary" header must contain authentication token for the source tenant. For more details about "x-ms-authorization-auxiliary" header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant */
   sourceResourceId?: string;
   /** Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier. This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier. When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database. To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state. */
   manualCutover?: boolean;
@@ -1979,7 +1979,7 @@ export interface DatabaseProperties {
   useFreeLimit?: boolean;
   /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
   freeLimitExhaustionBehavior?: DatabasePropertiesFreeLimitExhaustionBehavior;
-  /** The resource identifier of the source associated with the create operation of this database. This property is only supported for DataWarehouse edition and allows to restore across subscriptions. When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover. When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified. When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool. When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool. When source subscription belongs to a different tenant than target subscription, “x-ms-authorization-auxiliary” header must contain authentication token for the source tenant. For more details about “x-ms-authorization-auxiliary” header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant */
+  /** The resource identifier of the source associated with the create operation of this database. This property is only supported for DataWarehouse edition and allows to restore across subscriptions. When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover. When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified. When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool. When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool. When source subscription belongs to a different tenant than target subscription, "x-ms-authorization-auxiliary" header must contain authentication token for the source tenant. For more details about "x-ms-authorization-auxiliary" header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant */
   sourceResourceId?: string;
   /** Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier. This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier. When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database. To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state. */
   manualCutover?: boolean;
@@ -5735,7 +5735,7 @@ export const DistributedAvailabilityGroupPropertiesInputInstanceLinkRole = S.Str
 export type DistributedAvailabilityGroupPropertiesInputFailoverMode = "None" | "Manual";
 export const DistributedAvailabilityGroupPropertiesInputFailoverMode = S.String;
 
-/** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
+/** Database seeding mode - can be Automatic (default), or Manual for supported scenarios. */
 export type DistributedAvailabilityGroupPropertiesInputSeedingMode = "Automatic" | "Manual";
 export const DistributedAvailabilityGroupPropertiesInputSeedingMode = S.String;
 
@@ -5804,7 +5804,7 @@ export interface DistributedAvailabilityGroupPropertiesInput {
   instanceAvailabilityGroupName?: string;
   /** The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure. */
   failoverMode?: DistributedAvailabilityGroupPropertiesInputFailoverMode | (string & {});
-  /** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
+  /** Database seeding mode - can be Automatic (default), or Manual for supported scenarios. */
   seedingMode?: DistributedAvailabilityGroupPropertiesInputSeedingMode | (string & {});
   /** Databases in the distributed availability group */
   databases?: DistributedAvailabilityGroupPropertiesInputDatabasesList;
@@ -5873,7 +5873,7 @@ export const DistributedAvailabilityGroupPropertiesInstanceLinkRole = S.String;
 export type DistributedAvailabilityGroupPropertiesFailoverMode = "None" | "Manual";
 export const DistributedAvailabilityGroupPropertiesFailoverMode = S.String;
 
-/** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
+/** Database seeding mode - can be Automatic (default), or Manual for supported scenarios. */
 export type DistributedAvailabilityGroupPropertiesSeedingMode = "Automatic" | "Manual";
 export const DistributedAvailabilityGroupPropertiesSeedingMode = S.String;
 
@@ -6002,7 +6002,7 @@ export interface DistributedAvailabilityGroupProperties {
   instanceAvailabilityGroupName?: string;
   /** The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure. */
   failoverMode?: DistributedAvailabilityGroupPropertiesFailoverMode;
-  /** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
+  /** Database seeding mode - can be Automatic (default), or Manual for supported scenarios. */
   seedingMode?: DistributedAvailabilityGroupPropertiesSeedingMode;
   /** Databases in the distributed availability group */
   databases?: DistributedAvailabilityGroupPropertiesDatabasesList;
@@ -13132,7 +13132,7 @@ export type ManagedDatabasePropertiesCreateMode =
   | "RestoreLongTermRetentionBackup";
 export const ManagedDatabasePropertiesCreateMode = S.String;
 
-/** Root cause kind. Allowed values are “TransparentDataEncryption”, “DatabaseReplication”, and “Unknown”. */
+/** Root cause kind. Allowed values are "TransparentDataEncryption", "DatabaseReplication", and "Unknown". */
 export type ManagedDatabaseExtendedAccessibilityInfoInaccessibilityReasonKind =
   | "Unknown"
   | "TransparentDataEncryption"
@@ -13145,9 +13145,9 @@ export interface ManagedDatabaseExtendedAccessibilityInfo {
   inaccessibilityReasonErrorCode: string;
   /** Root cause explanation and mitigation action. */
   inaccessibilityReasonDescription: string;
-  /** Root cause kind. Allowed values are “TransparentDataEncryption”, “DatabaseReplication”, and “Unknown”. */
+  /** Root cause kind. Allowed values are "TransparentDataEncryption", "DatabaseReplication", and "Unknown". */
   inaccessibilityReasonKind: ManagedDatabaseExtendedAccessibilityInfoInaccessibilityReasonKind;
-  /** For the root cause kind “TransparentDataEncryption”, the CMK URI. */
+  /** For the root cause kind "TransparentDataEncryption", the CMK URI. */
   inaccessibilityReasonTdeKeyUri?: string;
 }
 export const ManagedDatabaseExtendedAccessibilityInfo = /*@__PURE__*/ S.suspend(() =>
@@ -13207,7 +13207,7 @@ export interface ManagedDatabaseProperties {
   crossSubscriptionTargetManagedInstanceId?: string;
   /** Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created. */
   isLedgerOn?: boolean;
-  /** Additional observability and troubleshooting information for databases in ‘Inaccessible’ state. */
+  /** Additional observability and troubleshooting information for databases in 'Inaccessible' state. */
   extendedAccessibilityInfo?: ManagedDatabaseExtendedAccessibilityInfo;
 }
 export const ManagedDatabaseProperties = /*@__PURE__*/ S.suspend(() =>

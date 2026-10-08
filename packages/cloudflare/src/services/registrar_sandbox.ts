@@ -928,7 +928,7 @@ export const UpdateStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateStatusGetResponse" }) as any as S.Schema<UpdateStatusGetResponse>;
 
 export type CheckError = CloudflareOpError;
-/** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation — it does not create, modify, or reserve any domains. */
+/** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation -- it does not create, modify, or reserve any domains. */
 export const check: API.OperationMethod<
   CheckRequest,
   CheckResponse,

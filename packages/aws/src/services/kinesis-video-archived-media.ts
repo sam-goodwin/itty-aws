@@ -698,10 +698,10 @@ export type GetDASHStreamingSessionURLError =
  * in addition to the HTTP status code and the response body, it includes the following
  * pieces of information:
  *
- * - `x-amz-ErrorType` HTTP header – contains a more specific error
+ * - `x-amz-ErrorType` HTTP header - contains a more specific error
  * type in addition to what the HTTP status code provides.
  *
- * - `x-amz-RequestId` HTTP header – if you want to report an issue to
+ * - `x-amz-RequestId` HTTP header - if you want to report an issue to
  * Amazon Web Services the support team can better diagnose the problem if given the Request
  * Id.
  *
@@ -896,10 +896,10 @@ export type GetHLSStreamingSessionURLError =
  * in addition to the HTTP status code and the response body, it includes the following
  * pieces of information:
  *
- * - `x-amz-ErrorType` HTTP header – contains a more specific error
+ * - `x-amz-ErrorType` HTTP header - contains a more specific error
  * type in addition to what the HTTP status code provides.
  *
- * - `x-amz-RequestId` HTTP header – if you want to report an issue to
+ * - `x-amz-RequestId` HTTP header - if you want to report an issue to
  * Amazon Web Services, the support team can better diagnose the problem if given the Request
  * Id.
  *
@@ -993,10 +993,10 @@ export type GetMediaForFragmentListError =
  * in addition to the HTTP status code and the response body, it includes the following
  * pieces of information:
  *
- * - `x-amz-ErrorType` HTTP header – contains a more specific error
+ * - `x-amz-ErrorType` HTTP header - contains a more specific error
  * type in addition to what the HTTP status code provides.
  *
- * - `x-amz-RequestId` HTTP header – if you want to report an issue to
+ * - `x-amz-RequestId` HTTP header - if you want to report an issue to
  * Amazon Web Services, the support team can better diagnose the problem if given the Request
  * Id.
  *
@@ -1050,10 +1050,10 @@ export type ListFragmentsError =
  * in addition to the HTTP status code and the response body, it includes the following
  * pieces of information:
  *
- * - `x-amz-ErrorType` HTTP header – contains a more specific error
+ * - `x-amz-ErrorType` HTTP header - contains a more specific error
  * type in addition to what the HTTP status code provides.
  *
- * - `x-amz-RequestId` HTTP header – if you want to report an issue to
+ * - `x-amz-RequestId` HTTP header - if you want to report an issue to
  * Amazon Web Services, the support team can better diagnose the problem if given the Request
  * Id.
  *

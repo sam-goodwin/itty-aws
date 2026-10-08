@@ -179,9 +179,9 @@ export const PaymentLastPaymentError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentLastPaymentError" }) as any as S.Schema<PaymentLastPaymentError>;
 
 export interface PaymentNextActionRedirectData {
-  /** The widest the provider's page lays out usefully, in CSS pixels — cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
+  /** The widest the provider's page lays out usefully, in CSS pixels -- cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
   frame_max_width: number | null;
-  /** The provider's page for this payment, as an absolute URL — take the buyer there. */
+  /** The provider's page for this payment, as an absolute URL -- take the buyer there. */
   url: string;
 }
 export const PaymentNextActionRedirectData = /*@__PURE__*/ S.suspend(() =>
@@ -228,11 +228,11 @@ export type PaymentVoucherInstructionsKind = "voucher";
 export const PaymentVoucherInstructionsKind = S.String;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -249,7 +249,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentVoucher {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
-  /** The barcode's contents, when the voucher carries one — render it in the symbology named by `barcode_format`. */
+  /** The barcode's contents, when the voucher carries one -- render it in the symbology named by `barcode_format`. */
   barcode?: string;
   /** The symbology `barcode` is encoded in, such as `CODE_128`. */
   barcode_format?: string;
@@ -263,7 +263,7 @@ export interface PaymentVoucher {
   provider_logo?: string;
   /** The network the buyer pays at, such as OXXO. */
   provider_name?: string;
-  /** The voucher's number — what the buyer reads out or types at the counter to pay. */
+  /** The voucher's number -- what the buyer reads out or types at the counter to pay. */
   reference?: string;
 }
 export const PaymentVoucher = /*@__PURE__*/ S.suspend(() =>
@@ -308,7 +308,7 @@ export interface PaymentQr {
   expires_at?: string;
   /** An account key the buyer can pay to directly (Colombia's Bre-B llave), for apps that take a key instead of a scan. */
   key?: string;
-  /** The QR code's contents, ready to render as a scannable image — `qr_format` says how it is encoded. */
+  /** The QR code's contents, ready to render as a scannable image -- `qr_format` says how it is encoded. */
   qr_code?: string;
   /** How `qr_code` is encoded. */
   qr_format?: string;
@@ -338,9 +338,9 @@ export const PaymentQrInstructions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentQrInstructions" }) as any as S.Schema<PaymentQrInstructions>;
 
 export interface PaymentBankTransfer {
-  /** The account to send to, in the local scheme's format — `account_number_label` says what to call it. */
+  /** The account to send to, in the local scheme's format -- `account_number_label` says what to call it. */
   account_number?: string;
-  /** What to call `account_number` when showing it, in the local scheme's own terms — `CLABE` in Mexico, for example. */
+  /** What to call `account_number` when showing it, in the local scheme's own terms -- `CLABE` in Mexico, for example. */
   account_number_label?: string;
   /** Exactly what the buyer must send, in the charged currency. */
   amount?: Money;
@@ -350,9 +350,9 @@ export interface PaymentBankTransfer {
   bank_address?: string;
   /** The receiving branch, where the local system routes by branch. */
   bank_branch?: string;
-  /** The code that identifies the receiving bank — its code in the local clearing system, or its SWIFT/BIC on a transfer that crosses borders. */
+  /** The code that identifies the receiving bank -- its code in the local clearing system, or its SWIFT/BIC on a transfer that crosses borders. */
   bank_code?: string;
-  /** What to call `bank_code` when showing it, in the scheme's own terms — `SWIFT / BIC` on an international wire, for example. */
+  /** What to call `bank_code` when showing it, in the scheme's own terms -- `SWIFT / BIC` on an international wire, for example. */
   bank_code_label?: string;
   /** The receiving bank's name. */
   bank_name?: string;
@@ -360,7 +360,7 @@ export interface PaymentBankTransfer {
   beneficiary_document?: string;
   /** What kind of document `beneficiary_document` is, in the local system's own vocabulary. */
   beneficiary_document_type?: string;
-  /** Who the account belongs to — the name the buyer's bank may ask them to confirm. */
+  /** Who the account belongs to -- the name the buyer's bank may ask them to confirm. */
   beneficiary_name?: string;
   /** A hosted page with the complete, printable instructions. If you would rather not render the details yourself, send the buyer here. */
   document_url?: string;
@@ -420,7 +420,7 @@ export const PaymentBankTransferInstructions = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentBankTransferInstructions",
 }) as any as S.Schema<PaymentBankTransferInstructions>;
 
-/** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional — the rails behind these methods publish them unevenly — but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
+/** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional -- the rails behind these methods publish them unevenly -- but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
 export type PaymentInstructions =
   | PaymentVoucherInstructions
   | PaymentQrInstructions
@@ -437,7 +437,7 @@ export const PaymentNextActionDisplayInstructionsRenderList = /*@__PURE__*/ S.Ar
   PaymentNextActionDisplayInstructionsRenderItem,
 ) as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
 
-/** Always `display_instructions`: show the buyer `data` — what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
+/** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
 export type PaymentNextActionDisplayInstructionsType = "display_instructions";
 export const PaymentNextActionDisplayInstructionsType = S.String;
 
@@ -445,7 +445,7 @@ export interface PaymentNextActionDisplayInstructions {
   /** The instructions. `kind` picks the shape, and the details sit under the key named for it: `voucher`, `qr`, or `bank_transfer`. */
   data: PaymentInstructions;
   render: PaymentNextActionDisplayInstructionsRenderList;
-  /** Always `display_instructions`: show the buyer `data` — what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
+  /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
   type: PaymentNextActionDisplayInstructionsType;
 }
 export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =>
@@ -459,7 +459,7 @@ export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaymentNextActionDisplayInstructions>;
 
 export interface PaymentNextActionAwaitConfirmationData {
-  /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed — watch `status` for the failed attempt. */
+  /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed -- watch `status` for the failed attempt. */
   expires_at: string;
 }
 export const PaymentNextActionAwaitConfirmationData = /*@__PURE__*/ S.suspend(() =>
@@ -480,7 +480,7 @@ export const PaymentNextActionAwaitConfirmationRenderList = /*@__PURE__*/ S.Arra
   PaymentNextActionAwaitConfirmationRenderItem,
 ) as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
 
-/** Always `await_confirmation`: nothing to show — the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
+/** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
 export type PaymentNextActionAwaitConfirmationType = "await_confirmation";
 export const PaymentNextActionAwaitConfirmationType = S.String;
 
@@ -488,7 +488,7 @@ export interface PaymentNextActionAwaitConfirmation {
   /** How long the wait can last. */
   data: PaymentNextActionAwaitConfirmationData;
   render: PaymentNextActionAwaitConfirmationRenderList;
-  /** Always `await_confirmation`: nothing to show — the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
+  /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
   type: PaymentNextActionAwaitConfirmationType;
 }
 export const PaymentNextActionAwaitConfirmation = /*@__PURE__*/ S.suspend(() =>
@@ -518,7 +518,7 @@ export const PaymentProcessingDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentProcessingDetails" }) as any as S.Schema<PaymentProcessingDetails>;
 
-/** How far the payment has got. `requires_confirmation` — nothing attempted yet, or the last attempt failed and can be retried. `requires_action` — the buyer has a step outstanding; see `next_action`. `requires_capture` — the card authorization is holding funds and must be captured. `confirming` — the buyer has done their part and the processor is deciding. `processing` — with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` — collected. `canceled` — voided or written off. */
+/** How far the payment has got. `requires_confirmation` -- nothing attempted yet, or the last attempt failed and can be retried. `requires_action` -- the buyer has a step outstanding; see `next_action`. `requires_capture` -- the card authorization is holding funds and must be captured. `confirming` -- the buyer has done their part and the processor is deciding. `processing` -- with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` -- collected. `canceled` -- voided or written off. */
 export type PaymentStatusStatus =
   | "requires_confirmation"
   | "requires_action"
@@ -544,11 +544,11 @@ export interface PaymentStatus {
   next_action: PaymentNextAction | null;
   /** Always `payment_status`. */
   object: string;
-  /** Present while `status` is `processing` on a settlement rail, otherwise `null`. A `processing` status without it has not been decided yet — keep polling. */
+  /** Present while `status` is `processing` on a settlement rail, otherwise `null`. A `processing` status without it has not been decided yet -- keep polling. */
   processing_details: PaymentProcessingDetails | null;
-  /** Where to send the buyer once the payment reaches a resting state, or `null` to leave them where they are. Editable until they return — see the return_url operation. */
+  /** Where to send the buyer once the payment reaches a resting state, or `null` to leave them where they are. Editable until they return -- see the return_url operation. */
   return_url: string | null;
-  /** How far the payment has got. `requires_confirmation` — nothing attempted yet, or the last attempt failed and can be retried. `requires_action` — the buyer has a step outstanding; see `next_action`. `requires_capture` — the card authorization is holding funds and must be captured. `confirming` — the buyer has done their part and the processor is deciding. `processing` — with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` — collected. `canceled` — voided or written off. */
+  /** How far the payment has got. `requires_confirmation` -- nothing attempted yet, or the last attempt failed and can be retried. `requires_action` -- the buyer has a step outstanding; see `next_action`. `requires_capture` -- the card authorization is holding funds and must be captured. `confirming` -- the buyer has done their part and the processor is deciding. `processing` -- with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` -- collected. `canceled` -- voided or written off. */
   status: PaymentStatusStatus;
 }
 export const PaymentStatus = /*@__PURE__*/ S.suspend(() =>
@@ -567,7 +567,7 @@ export const PaymentStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentStatus" }) as any as S.Schema<PaymentStatus>;
 
 export interface CreatePaymentRequestLineItemsItem {
-  /** An existing plan to charge for, prefixed `plan_`. Each plan may appear once — use `quantity` for multiple units. */
+  /** An existing plan to charge for, prefixed `plan_`. Each plan may appear once -- use `quantity` for multiple units. */
   plan_id: string;
   /** How many units of the plan to purchase. Defaults to 1; more than 1 requires the plan to allow multiple quantities. */
   quantity?: number | null;
@@ -850,7 +850,7 @@ export interface CreatePaymentRequest {
   auto_capture_after_minutes?: number | null;
   /** Whether to capture a card payment immediately. Defaults to true. Pass false to place an authorization hold that must be captured in full within five days via the capture endpoint, or automatically after `auto_capture_after_minutes`. */
   capture?: boolean | null;
-  /** A confirmation token describing a payment method the buyer just supplied. Provide this instead of `member_id` and `payment_method_id`; the buyer is resolved from the token's billing email, or from `email`. The buyer may still have a step to complete — poll the payment's status for what to do next. */
+  /** A confirmation token describing a payment method the buyer just supplied. Provide this instead of `member_id` and `payment_method_id`; the buyer is resolved from the token's billing email, or from `email`. The buyer may still have a step to complete -- poll the payment's status for what to do next. */
   confirmation_token?: string | null;
   /** Overrides the buyer email carried on the confirmation token, resolving or creating the user the payment belongs to. Ignored unless `confirmation_token` is provided, and when the token was created by a signed-in buyer. */
   email?: string | null;
@@ -1151,7 +1151,7 @@ export const PaymentHoldsList = /*@__PURE__*/ S.Array(
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
-  /** The item's name as shown at checkout — the product title, else the plan title. */
+  /** The item's name as shown at checkout -- the product title, else the plan title. */
   label: string | null;
   /** The plan bought, prefixed `plan_`. Null when the plan has since been deleted. */
   plan_id: string | null;
@@ -1185,7 +1185,7 @@ export const PaymentLineItemsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaymentLineItemsList>;
 
 export interface PaymentInstrumentCard {
-  /** The network identifier (`visa`, `amex`, …), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
+  /** The network identifier (`visa`, `amex`, ...), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
   brand: string | null;
   /** The card's expiry month, 1 to 12. Null when the vault did not record it. */
   exp_month: number | null;
@@ -1256,11 +1256,11 @@ export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentInstrument {
   /** Card payments only: the card's network, last four, and issuer identification number. */
   card: PaymentInstrumentCard | null;
-  /** Buyer-facing instrument name — "Visa •••• 4242" when the card surfaced, else the method's own name ("Klarna"). */
+  /** Buyer-facing instrument name -- "Visa **** 4242" when the card surfaced, else the method's own name ("Klarna"). */
   display_name: string;
   /** The standard icon set: square and card shapes, each in light and dark colorways. */
   icons: PaymentMethodIcons;
-  /** Installment methods only: how many payments the charge splits into. Data, not copy — compose and translate the label client-side. */
+  /** Installment methods only: how many payments the charge splits into. Data, not copy -- compose and translate the label client-side. */
   installment_count: number | null;
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
@@ -1484,7 +1484,7 @@ export type ReceiptTaxBehaviors = "exclusive" | "inclusive" | "unspecified" | "u
 export const ReceiptTaxBehaviors = S.String;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -1549,7 +1549,7 @@ export interface Payment {
   billing_reason: BillingReasons | null;
   /** The checkout configuration the buyer paid through, prefixed `ch_`, or null. */
   checkout_configuration_id: string | null;
-  /** The credential a buyer's surface presents to poll this payment and set its return URL. Only on payments created from a confirmation token, and always null in list responses — retrieve the payment for it. */
+  /** The credential a buyer's surface presents to poll this payment and set its return URL. Only on payments created from a confirmation token, and always null in list responses -- retrieve the payment for it. */
   client_secret: string | Redacted.Redacted<string> | null;
   /** When the payment was created, as an ISO 8601 timestamp. */
   created_at: string;
@@ -1602,21 +1602,21 @@ export interface Payment {
   product_id: string | null;
   /** The promo code applied at checkout, prefixed `promo_`, or null. */
   promo_code_id: string | null;
-  /** Whop-hosted URL where the buyer can sign in and complete 3D Secure for an off-session charge the bank challenged — a subscription renewal or a saved-card payment. Null when recovery is unavailable, you lack `member:basic:read`, or in list responses. Retrieve the payment for it. */
+  /** Whop-hosted URL where the buyer can sign in and complete 3D Secure for an off-session charge the bank challenged -- a subscription renewal or a saved-card payment. Null when recovery is unavailable, you lack `member:basic:read`, or in list responses. Retrieve the payment for it. */
   recovery_url: string | null;
   /** True when the payment is `paid`, not yet fully refunded, and its processor supports refunds. */
   refundable: boolean;
-  /** How much has been refunded so far, as it settled — refunds convert at the rate in force when each one was issued, not the payment's original rate. */
+  /** How much has been refunded so far, as it settled -- refunds convert at the rate in force when each one was issued, not the payment's original rate. */
   refunded_amount: Money | null;
   /** When the payment was refunded, or null. */
   refunded_at: string | null;
-  /** True when the payment is `open` and Whop can attempt the charge again — see `POST /payments/{id}/retry`. */
+  /** True when the payment is `open` and Whop can attempt the charge again -- see `POST /payments/{id}/retry`. */
   retryable: boolean;
   /** Whop's published risk index from 0 (lowest) to 100 (highest), including enforced decision floors. This is not a fraud probability. Null when no score is available. */
   risk_score: number | null;
   /** Deprecated. Risk score explanations are no longer provided; always null. DEPRECATED: Risk score explanations are no longer provided. Always null. */
   risk_signals: unknown | null;
-  /** When the portion not listed in `holds` posts to the account's available balance, at midnight UTC. The `financial_activity.funds_available` webhook's `posted_at` carries the same value when the settlement that clears it posts. Null until the payment is paid, and always null in list responses — retrieve the payment for it. */
+  /** When the portion not listed in `holds` posts to the account's available balance, at midnight UTC. The `financial_activity.funds_available` webhook's `posted_at` carries the same value when the settlement that clears it posts. Null until the payment is paid, and always null in list responses -- retrieve the payment for it. */
   settlement_time_at: string | null;
   /** The shipment fulfilling this payment, prefixed `ship_`. Null when nothing ships or without the shipment:basic:read permission. */
   shipment_id: string | null;
@@ -1636,7 +1636,7 @@ export interface Payment {
   tax_refunded_amount: Money;
   /** True when the buyer completed 3D Secure for this payment. */
   three_ds_verified: boolean;
-  /** The account-facing total: the price after discounts, plus any tax added on top. Excludes buyer fees, which the buyer pays above this amount — so this is not necessarily what the buyer's statement shows. */
+  /** The account-facing total: the price after discounts, plus any tax added on top. Excludes buyer fees, which the buyer pays above this amount -- so this is not necessarily what the buyer's statement shows. */
   total: Money | null;
   /** When the payment last changed, as an ISO 8601 timestamp. */
   updated_at: string;
@@ -1646,7 +1646,7 @@ export interface Payment {
   user: UserSummary | null;
   /** The Address Verification Service (AVS), cardholder name, and Card Verification Value (CVV/CVC) results, or null when the processor returned none. */
   verification_checks: PaymentVerificationChecks | null;
-  /** True when the payment can be voided or canceled. The request is rejected if the payment is no longer eligible — see `POST /payments/{id}/void`. */
+  /** True when the payment can be voided or canceled. The request is rejected if the payment is no longer eligible -- see `POST /payments/{id}/void`. */
   voidable: boolean;
 }
 export const Payment = /*@__PURE__*/ S.suspend(() =>
@@ -1952,7 +1952,7 @@ export const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RefundPaymentRequest {
   /** The payment to refund, prefixed `pay_`. */
   id: string;
-  /** The amount to refund, stated in this payment's `currency` like every other amount on it. When the buyer was billed in a different currency, it is converted at the payment's own exchange rate before the refund is issued. An amount that covers everything still refundable refunds the rest of the payment — omit it to refund the rest without having to work out what that is. */
+  /** The amount to refund, stated in this payment's `currency` like every other amount on it. When the buyer was billed in a different currency, it is converted at the payment's own exchange rate before the refund is issued. An amount that covers everything still refundable refunds the rest of the payment -- omit it to refund the rest without having to work out what that is. */
   partial_amount?: number | null;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -2035,7 +2035,7 @@ export const capturePayment: API.OperationMethod<
 }));
 
 export type CreatePaymentError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
-/** Create Payment Charges a buyer for one or more plans. Pass a payment method already on file (`member_id` and `payment_method_id`), or a `confirmation_token` describing a method the buyer just supplied. Collection runs in the background: the response is the payment as created, not its outcome — poll Retrieve status for how far it has got and, for a confirmation-token payment, what the buyer must still do. Pass `line_items` for one or more plans with quantities, `plan_id` for an existing plan, or `plan` to find or create one inline. These inputs are mutually exclusive. */
+/** Create Payment Charges a buyer for one or more plans. Pass a payment method already on file (`member_id` and `payment_method_id`), or a `confirmation_token` describing a method the buyer just supplied. Collection runs in the background: the response is the payment as created, not its outcome -- poll Retrieve status for how far it has got and, for a confirmation-token payment, what the buyer must still do. Pass `line_items` for one or more plans with quantities, `plan_id` for an existing plan, or `plan` to find or create one inline. These inputs are mutually exclusive. */
 export const createPayment: API.OperationMethod<
   CreatePaymentRequest,
   Payment,
@@ -2050,7 +2050,7 @@ export const createPayment: API.OperationMethod<
 }));
 
 export type GetPaymentError = Forbidden | NotFound | WhopOpError;
-/** Retrieve Payment Returns one payment, including every purchased line item with its quantity and subtotal. Related records are ids — resolve a plan, membership, member or shipment on its own endpoint, and list this payment's refunds, disputes or Resolution Center cases with `?payment_id=`. */
+/** Retrieve Payment Returns one payment, including every purchased line item with its quantity and subtotal. Related records are ids -- resolve a plan, membership, member or shipment on its own endpoint, and list this payment's refunds, disputes or Resolution Center cases with `?payment_id=`. */
 export const getPayment: API.OperationMethod<
   GetPaymentRequest,
   Payment,
@@ -2080,7 +2080,7 @@ export const getStatusPayment: API.OperationMethod<
 }));
 
 export type ListPaymentFeesError = NotFound | WhopOpError;
-/** List Payment Fees Returns the fee breakdown of one payment — Whop's fee, processing, affiliate and other lines — each in the currency it was collected in and converted to the payment's settlement currency. The list is complete in one page. */
+/** List Payment Fees Returns the fee breakdown of one payment -- Whop's fee, processing, affiliate and other lines -- each in the currency it was collected in and converted to the payment's settlement currency. The list is complete in one page. */
 export const listPaymentFees: API.OperationMethod<
   ListPaymentFeesRequest,
   ListPaymentFeesResponse,
@@ -2095,7 +2095,7 @@ export const listPaymentFees: API.OperationMethod<
 }));
 
 export type ListPaymentsError = BadRequest | WhopOpError;
-/** List Payments Lists payments, newest first. Without filters this is every payment the caller can read: a company credential's own account, or for a user every account they can read payments for. Filters narrow by account, buyer, product, plan, membership, status, billing reason, currency, and creation window. Filtering by `billing_reason=subscription_cycle` also matches renewals recorded as `subscription_update`. `settlement_time_at` is null on list rows — retrieve the payment for it. */
+/** List Payments Lists payments, newest first. Without filters this is every payment the caller can read: a company credential's own account, or for a user every account they can read payments for. Filters narrow by account, buyer, product, plan, membership, status, billing reason, currency, and creation window. Filtering by `billing_reason=subscription_cycle` also matches renewals recorded as `subscription_update`. `settlement_time_at` is null on list rows -- retrieve the payment for it. */
 export const listPayments: API.PaginatedOperationMethod<
   ListPaymentsRequest,
   ListPaymentsResponse,
@@ -2137,7 +2137,7 @@ export const refundPayment: API.OperationMethod<
 }));
 
 export type ResumePaymentError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
-/** Resume a parked renewal Starts a fresh on-session attempt with the saved card for a subscription renewal that is waiting on the customer to authenticate; the bank's step then arrives in `next_action` on the following status reads. Only the payment's own customer may call it — with the payment's `client_secret` or their own session — and it is a no-op for any payment that is not a parked renewal. */
+/** Resume a parked renewal Starts a fresh on-session attempt with the saved card for a subscription renewal that is waiting on the customer to authenticate; the bank's step then arrives in `next_action` on the following status reads. Only the payment's own customer may call it -- with the payment's `client_secret` or their own session -- and it is a no-op for any payment that is not a parked renewal. */
 export const resumePayment: API.OperationMethod<
   ResumePaymentRequest,
   PaymentStatus,

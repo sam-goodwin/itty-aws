@@ -98,7 +98,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 
 /** A single permission on the note. Associates a `member` with a `role`. */
 export interface Permission {
-  /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
+  /** The role granted by this permission. The role determines the entity's ability to read, write, and share notes. */
   role?: PermissionRoleEnum | (string & {});
   /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
   email?: string;

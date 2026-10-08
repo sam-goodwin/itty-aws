@@ -150,7 +150,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-/** `public` files are served via an unsigned CDN URL — use for assets anyone may see. `private` files are served via a signed, expiring URL — use for sensitive documents. Defaults to `private`. */
+/** `public` files are served via an unsigned CDN URL -- use for assets anyone may see. `private` files are served via a signed, expiring URL -- use for sensitive documents. Defaults to `private`. */
 export type CreateFileRequestVisibility = "public" | "private";
 export const CreateFileRequestVisibility = S.String;
 
@@ -161,7 +161,7 @@ export interface CreateFileRequest {
   filename: string;
   /** Upload the file in 5MB parts. Required for files larger than 5GB; useful above ~100MB. The file must be larger than 5MB. */
   multipart?: boolean;
-  /** `public` files are served via an unsigned CDN URL — use for assets anyone may see. `private` files are served via a signed, expiring URL — use for sensitive documents. Defaults to `private`. */
+  /** `public` files are served via an unsigned CDN URL -- use for assets anyone may see. `private` files are served via a signed, expiring URL -- use for sensitive documents. Defaults to `private`. */
   visibility?: CreateFileRequestVisibility | (string & {});
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
@@ -274,7 +274,7 @@ export const completeFile: API.OperationMethod<
 }));
 
 export type CreateFileError = BadRequest | Conflict | WhopOpError;
-/** Create File Creates a file and returns a presigned destination to upload its bytes to. PUT the bytes to `upload_url` (single-part), or to each of `multipart_upload_urls` and then call Complete File Multipart Upload. Once the bytes land the file becomes `ready`, and its ID can be attached wherever a file is accepted — account legal documents, dispute evidence documents. For a step-by-step walkthrough of single-part and multipart uploads, see the [direct file uploads guide](/developer/guides/direct-file-uploads). */
+/** Create File Creates a file and returns a presigned destination to upload its bytes to. PUT the bytes to `upload_url` (single-part), or to each of `multipart_upload_urls` and then call Complete File Multipart Upload. Once the bytes land the file becomes `ready`, and its ID can be attached wherever a file is accepted -- account legal documents, dispute evidence documents. For a step-by-step walkthrough of single-part and multipart uploads, see the [direct file uploads guide](/developer/guides/direct-file-uploads). */
 export const createFile: API.OperationMethod<
   CreateFileRequest,
   File,
@@ -289,7 +289,7 @@ export const createFile: API.OperationMethod<
 }));
 
 export type GetFileError = NotFound | WhopOpError;
-/** Retrieve File Retrieves a file you uploaded — poll it after uploading the bytes to see `upload_status` become `ready`. Only the creator can retrieve a file this way; a file attached to another resource is read through that resource. */
+/** Retrieve File Retrieves a file you uploaded -- poll it after uploading the bytes to see `upload_status` become `ready`. Only the creator can retrieve a file this way; a file attached to another resource is read through that resource. */
 export const getFile: API.OperationMethod<GetFileRequest, File, GetFileError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: GetFileRequest,
@@ -300,7 +300,7 @@ export const getFile: API.OperationMethod<GetFileRequest, File, GetFileError, Wh
   }));
 
 export type ListFilesError = BadRequest | WhopOpError;
-/** List Files Returns the files with the given IDs, newest first — fetch a batch in one request instead of retrieving each file individually. Only files you created are returned; IDs that do not exist, or that another credential created, are omitted. A request for up to 100 IDs answers in a single page by default; a larger batch pages at up to 100 files per response — follow `page_info` with the same `file_ids` to walk the rest. */
+/** List Files Returns the files with the given IDs, newest first -- fetch a batch in one request instead of retrieving each file individually. Only files you created are returned; IDs that do not exist, or that another credential created, are omitted. A request for up to 100 IDs answers in a single page by default; a larger batch pages at up to 100 files per response -- follow `page_info` with the same `file_ids` to walk the rest. */
 export const listFiles: API.PaginatedOperationMethod<
   ListFilesRequest,
   ListFilesResponse,

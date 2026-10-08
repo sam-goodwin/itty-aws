@@ -2415,7 +2415,7 @@ export type CreateServiceLevelObjectiveError =
 /**
  * Creates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations. Use SLOs to set and track specific target levels for the reliability and availability of your applications and services. SLOs use service level indicators (SLIs) to calculate whether the application is performing at the level that you want.
  *
- * Create an SLO to set a target for a service or operation’s availability or latency. CloudWatch measures this target frequently you can find whether it has been breached.
+ * Create an SLO to set a target for a service or operation's availability or latency. CloudWatch measures this target frequently you can find whether it has been breached.
  *
  * The target performance quality that is defined for an SLO is the *attainment goal*.
  *

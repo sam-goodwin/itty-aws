@@ -108,7 +108,7 @@ export const DisputeAttachment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DisputeAttachment" }) as any as S.Schema<DisputeAttachment>;
 
-/** The uploaded file's MIME type. Uploads are restricted to the types the processor accepts, and rejected without one — never null. */
+/** The uploaded file's MIME type. Uploads are restricted to the types the processor accepts, and rejected without one -- never null. */
 export type DisputeEvidenceDocumentContentType =
   | "application/pdf"
   | "application/json"
@@ -117,7 +117,7 @@ export type DisputeEvidenceDocumentContentType =
   | "image/webp";
 export const DisputeEvidenceDocumentContentType = S.String;
 
-/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
 export type DisputeEvidenceDocumentDocumentType =
   | "return_policy"
   | "shipping_policy"
@@ -160,11 +160,11 @@ export type DisputeEvidenceDocumentVisibility = "public" | "private";
 export const DisputeEvidenceDocumentVisibility = S.String;
 
 export interface DisputeEvidenceDocument {
-  /** The uploaded file's MIME type. Uploads are restricted to the types the processor accepts, and rejected without one — never null. */
+  /** The uploaded file's MIME type. Uploads are restricted to the types the processor accepts, and rejected without one -- never null. */
   content_type: DisputeEvidenceDocumentContentType | null;
   /** When the file was created, as an ISO 8601 timestamp. */
   created_at: string;
-  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
   document_type: DisputeEvidenceDocumentDocumentType;
   /** The original filename, including its extension. */
   filename: string | null;
@@ -292,11 +292,11 @@ export const DisputeIssuerCommentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisputeIssuerCommentsList>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -313,7 +313,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
-  /** The item's name as shown at checkout — the product title, else the plan title. */
+  /** The item's name as shown at checkout -- the product title, else the plan title. */
   label: string | null;
   /** The plan bought, prefixed `plan_`. Null when the plan has since been deleted. */
   plan_id: string | null;
@@ -347,7 +347,7 @@ export const DisputeLineItemsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisputeLineItemsList>;
 
 export interface PaymentInstrumentCard {
-  /** The network identifier (`visa`, `amex`, …), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
+  /** The network identifier (`visa`, `amex`, ...), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
   brand: string | null;
   /** The card's expiry month, 1 to 12. Null when the vault did not record it. */
   exp_month: number | null;
@@ -418,11 +418,11 @@ export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentInstrument {
   /** Card payments only: the card's network, last four, and issuer identification number. */
   card: PaymentInstrumentCard | null;
-  /** Buyer-facing instrument name — "Visa •••• 4242" when the card surfaced, else the method's own name ("Klarna"). */
+  /** Buyer-facing instrument name -- "Visa **** 4242" when the card surfaced, else the method's own name ("Klarna"). */
   display_name: string;
   /** The standard icon set: square and card shapes, each in light and dark colorways. */
   icons: PaymentMethodIcons;
-  /** Installment methods only: how many payments the charge splits into. Data, not copy — compose and translate the label client-side. */
+  /** Installment methods only: how many payments the charge splits into. Data, not copy -- compose and translate the label client-side. */
   installment_count: number | null;
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
@@ -487,7 +487,7 @@ export type DisputeReason =
   | "other";
 export const DisputeReason = S.String;
 
-/** Where the dispute stands. `needs_response` is awaiting evidence, `under_review` is with the processor, `won` returned the funds to the seller, `lost` returned them to the customer, and `closed` ended without a ruling. The `warning_` statuses are the same stages for an inquiry, which moves no funds. A dispute past its `evidence_due_at` reports `under_review` — the window to respond has closed. */
+/** Where the dispute stands. `needs_response` is awaiting evidence, `under_review` is with the processor, `won` returned the funds to the seller, `lost` returned them to the customer, and `closed` ended without a ruling. The `warning_` statuses are the same stages for an inquiry, which moves no funds. A dispute past its `evidence_due_at` reports `under_review` -- the window to respond has closed. */
 export type DisputeStatus =
   | "needs_response"
   | "warning_needs_response"
@@ -534,9 +534,9 @@ export interface Dispute {
   product_id: string | null;
   /** Why the customer says they are disputing, normalized across processors and card networks. `other` covers a processor reason Whop has not categorized yet. */
   reason: DisputeReason;
-  /** The raw card-network or processor reason code, such as `10.4`. Informational only — `reason` is not derived from it. */
+  /** The raw card-network or processor reason code, such as `10.4`. Informational only -- `reason` is not derived from it. */
   reason_code: string | null;
-  /** Where the dispute stands. `needs_response` is awaiting evidence, `under_review` is with the processor, `won` returned the funds to the seller, `lost` returned them to the customer, and `closed` ended without a ruling. The `warning_` statuses are the same stages for an inquiry, which moves no funds. A dispute past its `evidence_due_at` reports `under_review` — the window to respond has closed. */
+  /** Where the dispute stands. `needs_response` is awaiting evidence, `under_review` is with the processor, `won` returned the funds to the seller, `lost` returned them to the customer, and `closed` ended without a ruling. The `warning_` statuses are the same stages for an inquiry, which moves no funds. A dispute past its `evidence_due_at` reports `under_review` -- the window to respond has closed. */
   status: DisputeStatus;
   /** When the dispute was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
@@ -721,7 +721,7 @@ export interface ListDisputesRequest {
   order?: ListDisputesRequestOrder | (string & {});
   /** Sort direction. */
   direction?: ListDisputesRequestDirection | (string & {});
-  /** Only disputes in these statuses. Repeat the parameter to pass several — one paginated list covers all of them. Inquiries match only the `warning_` statuses. A `needs_response` dispute whose evidence deadline has passed reports and filters as `under_review` instead. */
+  /** Only disputes in these statuses. Repeat the parameter to pass several -- one paginated list covers all of them. Inquiries match only the `warning_` statuses. A `needs_response` dispute whose evidence deadline has passed reports and filters as `under_review` instead. */
   status?: ListDisputesRequestStatusList;
   /** Only disputes in this three-letter ISO currency. */
   currency?: string;
@@ -1095,11 +1095,11 @@ export const LegacyDisputePaymentPaymentInstrumentIcons = /*@__PURE__*/ S.suspen
 
 /** The instrument this payment was made with, shaped for display: the method type, a buyer-facing name, the standard icon set, and the card facts when it was a card. Null when the receipt names no payment method. */
 export interface LegacyDisputePaymentPaymentInstrument {
-  /** Buyer-facing instrument name — "Visa •••• 4242" when the card surfaced, else the method's own name ("Klarna"). */
+  /** Buyer-facing instrument name -- "Visa **** 4242" when the card surfaced, else the method's own name ("Klarna"). */
   display_name: string;
   /** The standard icon set: square and card shapes, each in light and dark colorways. */
   icons: LegacyDisputePaymentPaymentInstrumentIcons;
-  /** Installment methods only: how many payments the charge splits into. Data, not copy — compose and translate the label client-side. */
+  /** Installment methods only: how many payments the charge splits into. Data, not copy -- compose and translate the label client-side. */
   installment_count: number | null;
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
@@ -1485,7 +1485,7 @@ export type UpdateDisputeRequestEvidenceCustomerCommunicationAttachment =
 export const UpdateDisputeRequestEvidenceCustomerCommunicationAttachment =
   UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
 
-/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
 export type UpdateDisputeRequestEvidenceDocumentsItemDocumentType =
   | "return_policy"
   | "shipping_policy"
@@ -1504,7 +1504,7 @@ export const UpdateDisputeRequestEvidenceDocumentsItemDocumentType = S.String;
 export interface UpdateDisputeRequestEvidenceDocumentsItem {
   /** The ID returned by a direct upload. */
   direct_upload_id?: string;
-  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
   document_type: UpdateDisputeRequestEvidenceDocumentsItemDocumentType | (string & {});
   /** The file itself. Send it as a file part to upload and attach in one call, or use `id`/`direct_upload_id` for a file that is already stored. */
   file?: string;
@@ -1711,7 +1711,7 @@ export const UpdateEvidenceDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEvidenceDisputeRequest",
 }) as any as S.Schema<UpdateEvidenceDisputeRequest>;
 
-/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+/** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
 export type UploadDisputeEvidenceRequestDocumentsItemDocumentType =
   | "return_policy"
   | "shipping_policy"
@@ -1730,7 +1730,7 @@ export const UploadDisputeEvidenceRequestDocumentsItemDocumentType = S.String;
 export interface UploadDisputeEvidenceRequestDocumentsItem {
   /** The ID returned by a direct upload. */
   direct_upload_id?: string;
-  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents — uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer — a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics — IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence — renewals, cancellation, reminders sent. */
+  /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
   document_type: UploadDisputeEvidenceRequestDocumentsItemDocumentType | (string & {});
   /** The file itself. Send it as a file part to upload and attach in one call, or use `id`/`direct_upload_id` for a file that is already stored. */
   file?: string;
@@ -1831,7 +1831,7 @@ export const listDisputes: API.PaginatedOperationMethod<
 ) as any;
 
 export type SubmitDisputeError = BadRequest | NotFound | Conflict | WhopOpError;
-/** Submit Dispute Sends a dispute's evidence to the payment processor. This is final — it cannot be edited or sent again. */
+/** Submit Dispute Sends a dispute's evidence to the payment processor. This is final -- it cannot be edited or sent again. */
 export const submitDispute: API.OperationMethod<
   SubmitDisputeRequest,
   Dispute,
@@ -1851,7 +1851,7 @@ export type SubmitEvidenceDisputeError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Submit evidence [Legacy API — https://docs.whop.com/api-reference] Submit a payment dispute to the payment processor for review. Once submitted, no further edits can be made. Required permissions: - `payment:dispute` - `plan:basic:read` - `access_pass:basic:read` - `company:basic:read` - `payment:basic:read` - `member:email:read` - `member:basic:read` - `member:phone:read` */
+/** Submit evidence [Legacy API -- https://docs.whop.com/api-reference] Submit a payment dispute to the payment processor for review. Once submitted, no further edits can be made. Required permissions: - `payment:dispute` - `plan:basic:read` - `access_pass:basic:read` - `company:basic:read` - `payment:basic:read` - `member:email:read` - `member:basic:read` - `member:phone:read` */
 export const submitEvidenceDispute: API.OperationMethod<
   SubmitEvidenceDisputeRequest,
   LegacyDispute,
@@ -1866,7 +1866,7 @@ export const submitEvidenceDispute: API.OperationMethod<
 }));
 
 export type UpdateDisputeError = BadRequest | NotFound | WhopOpError;
-/** Update Dispute Edits a dispute's evidence, while it is still editable. Sending it is a separate call. `evidence.documents`, when provided, replaces the full set of documents beyond the four fixed evidence slots — see its own description. */
+/** Update Dispute Edits a dispute's evidence, while it is still editable. Sending it is a separate call. `evidence.documents`, when provided, replaces the full set of documents beyond the four fixed evidence slots -- see its own description. */
 export const updateDispute: API.OperationMethod<
   UpdateDisputeRequest,
   Dispute,
@@ -1886,7 +1886,7 @@ export type UpdateEvidenceDisputeError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update evidence [Legacy API — https://docs.whop.com/api-reference] Update a dispute with evidence data to attempt to win the dispute. Required permissions: - `payment:dispute` - `plan:basic:read` - `access_pass:basic:read` - `company:basic:read` - `payment:basic:read` - `member:email:read` - `member:basic:read` - `member:phone:read` */
+/** Update evidence [Legacy API -- https://docs.whop.com/api-reference] Update a dispute with evidence data to attempt to win the dispute. Required permissions: - `payment:dispute` - `plan:basic:read` - `access_pass:basic:read` - `company:basic:read` - `payment:basic:read` - `member:email:read` - `member:basic:read` - `member:phone:read` */
 export const updateEvidenceDispute: API.OperationMethod<
   UpdateEvidenceDisputeRequest,
   LegacyDispute,
@@ -1901,7 +1901,7 @@ export const updateEvidenceDispute: API.OperationMethod<
 }));
 
 export type UploadDisputeEvidenceError = BadRequest | NotFound | Conflict | WhopOpError;
-/** Upload Dispute Evidence Prefer `PATCH /disputes/{id}` with `evidence.documents` — it does the same replace alongside every other evidence field in one call. Replaces the full set of uploaded evidence documents on a dispute, beyond the four fixed evidence slots. Upload files through `POST /files` and reference them by `id`, or send the files as multipart file parts to upload and attach in one call. Send every document the packet should carry — up to 10, 10MB each and 25MB in total; an empty list removes them all. Accepted content types: application/pdf, application/json, image/jpeg, image/png, image/webp — any other type is rejected. Policy documents (`return_policy`, `shipping_policy`, `cancellation_policy`, `terms_of_service`) default from the account's own documents; uploading one here replaces the account copy for this dispute, and a `cancellation_policy` or `return_policy` upload also takes precedence over the matching fixed evidence slot. */
+/** Upload Dispute Evidence Prefer `PATCH /disputes/{id}` with `evidence.documents` -- it does the same replace alongside every other evidence field in one call. Replaces the full set of uploaded evidence documents on a dispute, beyond the four fixed evidence slots. Upload files through `POST /files` and reference them by `id`, or send the files as multipart file parts to upload and attach in one call. Send every document the packet should carry -- up to 10, 10MB each and 25MB in total; an empty list removes them all. Accepted content types: application/pdf, application/json, image/jpeg, image/png, image/webp -- any other type is rejected. Policy documents (`return_policy`, `shipping_policy`, `cancellation_policy`, `terms_of_service`) default from the account's own documents; uploading one here replaces the account copy for this dispute, and a `cancellation_policy` or `return_policy` upload also takes precedence over the matching fixed evidence slot. */
 export const uploadDisputeEvidence: API.OperationMethod<
   UploadDisputeEvidenceRequest,
   Dispute,

@@ -58,7 +58,7 @@ export const CreateReferralPartnerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateReferralPartnerRequest>;
 
 export interface CreateReferralPartnerResponse {
-  /** The caller's referral link — businesses that sign up through it are attributed to the caller. */
+  /** The caller's referral link -- businesses that sign up through it are attributed to the caller. */
   referral_link: string;
   /** When the caller became a Whop partner. */
   whop_partner_enabled_at: string;
@@ -146,7 +146,7 @@ export const PartnerPayoutRatesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PartnerPayoutRatesList>;
 
 export interface UserProfilePicture {
-  /** Avatar image URL. Always present — a generated placeholder when the user set no picture. */
+  /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
 export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
@@ -333,7 +333,7 @@ export const AccountRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.A
   S.String,
 ) as any as S.Schema<AccountRecommendedActionBlockedCapabilitiesList>;
 
-/** Always optional — never blocking */
+/** Always optional -- never blocking */
 export type AccountRecommendedActionStatus = "optional";
 export const AccountRecommendedActionStatus = S.String;
 
@@ -353,7 +353,7 @@ export interface AccountRecommendedAction {
   impact_score: number | null;
   /** Why this action was recommended, or `null` */
   reasoning: string | null;
-  /** Always optional — never blocking */
+  /** Always optional -- never blocking */
   status: AccountRecommendedActionStatus;
   /** Headline for the recommendation */
   title: string;
@@ -1461,11 +1461,11 @@ export const ListReferredUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReferredUsersRequest" }) as any as S.Schema<ListReferredUsersRequest>;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -1563,7 +1563,7 @@ export const ListReferredUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReferredUsersResponse>;
 
 export type CreateReferralPartnerError = Forbidden | Conflict | WhopOpError;
-/** Enroll as a Whop partner Enrolls the calling user in the Whop partner program, making their partner businesses eligible for earnings. Idempotent — enrolling again keeps the original enrollment time. */
+/** Enroll as a Whop partner Enrolls the calling user in the Whop partner program, making their partner businesses eligible for earnings. Idempotent -- enrolling again keeps the original enrollment time. */
 export const createReferralPartner: API.OperationMethod<
   CreateReferralPartnerRequest,
   CreateReferralPartnerResponse,
@@ -1608,7 +1608,7 @@ export const getPartnerBusiness: API.OperationMethod<
 }));
 
 export type GetPartnerLeaderboardError = BadRequest | WhopOpError;
-/** Retrieve the leaderboard Ranks referrers by partner business earnings — all-time by default, or over the current day, month, year, or trailing 30 days. Authentication is optional: authenticated callers also get their own standing, anonymous callers get the rankings alone. */
+/** Retrieve the leaderboard Ranks referrers by partner business earnings -- all-time by default, or over the current day, month, year, or trailing 30 days. Authentication is optional: authenticated callers also get their own standing, anonymous callers get the rankings alone. */
 export const getPartnerLeaderboard: API.OperationMethod<
   GetPartnerLeaderboardRequest,
   GetPartnerLeaderboardResponse,

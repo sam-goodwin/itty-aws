@@ -2597,7 +2597,7 @@ export type AssumeDecoratedRoleWithSAMLError =
   | OperationTimeoutException
   | CommonErrors;
 /**
- * Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request. This decoration allows Lake Formation to enforce access policies against the SAML users and groups. This API operation requires SAML federation setup in the caller’s account as it can only be called with valid SAML assertions.
+ * Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request. This decoration allows Lake Formation to enforce access policies against the SAML users and groups. This API operation requires SAML federation setup in the caller's account as it can only be called with valid SAML assertions.
  * Lake Formation does not scope down the permission of the assumed role. All permissions attached to the role via the SAML federation setup will be included in the role session.
  *
  * This decorated role is expected to access data in Amazon S3 by getting temporary access from Lake Formation which is authorized via the virtual API `GetDataAccess`.
@@ -2887,7 +2887,7 @@ export type CreateLFTagExpressionError =
 /**
  * Creates a new LF-Tag expression with the provided name, description, catalog ID, and
  * expression body. This call fails if a LF-Tag expression with the same name already exists in
- * the caller’s account or if the underlying LF-Tags don't exist. To call this API operation,
+ * the caller's account or if the underlying LF-Tags don't exist. To call this API operation,
  * caller needs the following Lake Formation permissions:
  *
  * `CREATE_LF_TAG_EXPRESSION` on the root catalog resource.
@@ -3870,7 +3870,7 @@ export type ListLFTagExpressionsError =
   | OperationTimeoutException
   | CommonErrors;
 /**
- * Returns the LF-Tag expressions in caller’s account filtered based on caller's permissions. Data Lake and read only admins implicitly can see all tag expressions in their account, else caller needs DESCRIBE permissions on tag expression.
+ * Returns the LF-Tag expressions in caller's account filtered based on caller's permissions. Data Lake and read only admins implicitly can see all tag expressions in their account, else caller needs DESCRIBE permissions on tag expression.
  */
 export const listLFTagExpressions: API.PaginatedOperationMethod<
   ListLFTagExpressionsRequest,

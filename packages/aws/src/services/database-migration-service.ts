@@ -9263,13 +9263,13 @@ export type StartMetadataModelConversionError =
  * options:
  *
  * - DescribeMetadataModel and
- * DescribeMetadataModelChildren – navigate the target metadata
+ * DescribeMetadataModelChildren - navigate the target metadata
  * tree and retrieve converted definitions.
  *
- * - StartMetadataModelExportAsScript – export as data definition
+ * - StartMetadataModelExportAsScript - export as data definition
  * language (DDL) scripts to your Amazon S3 bucket.
  *
- * - StartMetadataModelExportToTarget – apply directly to your
+ * - StartMetadataModelExportToTarget - apply directly to your
  * target database.
  *
  * **Required permissions:**

@@ -3279,7 +3279,7 @@ export type SendApiAssetError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation invokes an API Gateway API asset. The request is proxied to the provider’s API Gateway API.
+ * This operation invokes an API Gateway API asset. The request is proxied to the provider's API Gateway API.
  */
 export const sendApiAsset: API.OperationMethod<
   SendApiAssetRequest,

@@ -742,7 +742,7 @@ export const ApproveWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend((
 export type ApproveWaitlistEntriesControllerResponseState = "pending" | "approved" | "denied";
 export const ApproveWaitlistEntriesControllerResponseState = S.String;
 
-/** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+/** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
@@ -760,7 +760,7 @@ export interface ApproveWaitlistEntriesControllerResponse {
   state: ApproveWaitlistEntriesControllerResponseState;
   /** The timestamp when the entry was approved, or null if not yet approved. */
   approved_at: string | null;
-  /** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+  /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
   additional_fields?: ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap;
   /** The unique ID of the waitlist the entry belongs to. */
   waitlist_id?: string | null;
@@ -2624,7 +2624,7 @@ export const AuthenticationFactorEnrolled = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAuthkitOauthResourcesControllerRequest {
   /** The resource URI. May be a wildcard pattern with a single `*`, either in the leftmost hostname label or as the final path segment, where enabled for the environment. */
   uri: string;
-  /** Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only — this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default. */
+  /** Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only -- this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default. */
   default?: boolean;
 }
 export const CreateAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3306,7 +3306,7 @@ export const ConnectedAccountWriteResponseScopesList = /*@__PURE__*/ S.Array(
 export type ConnectedAccountWriteResponseAuthMethod = "oauth" | "api_key" | "client_credentials";
 export const ConnectedAccountWriteResponseAuthMethod = S.String;
 
-/** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+/** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountWriteResponseConfigMap = { [key: string]: string | undefined };
 export const ConnectedAccountWriteResponseConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3366,7 +3366,7 @@ export interface ConnectedAccountWriteResponse {
   client_id?: string | null;
   /** The last four characters of the client secret supplied for this connection, or `null` when it can't be read. Only present when `auth_method` is `client_credentials`. */
   client_secret_last_4?: string | null;
-  /** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+  /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
   config?: ConnectedAccountWriteResponseConfigMap;
   /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
   state: ConnectedAccountWriteResponseState;
@@ -3561,9 +3561,9 @@ export const CustomProviderDefinitionDtoAuthenticateVia = S.String;
 export interface CustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
   name: string;
-  /** The provider's OAuth authorization endpoint. Required for OAuth providers; omit for `api_key` providers. Must be a static URL: `${config.…}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
+  /** The provider's OAuth authorization endpoint. Required for OAuth providers; omit for `api_key` providers. Must be a static URL: `${config....}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
   authorization_url?: string;
-  /** The provider's OAuth token endpoint. Required for OAuth and `client_credentials` providers; omit for `api_key` providers. Must be a static URL: `${config.…}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
+  /** The provider's OAuth token endpoint. Required for OAuth and `client_credentials` providers; omit for `api_key` providers. Must be a static URL: `${config....}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
   token_url?: string;
   /** The endpoint used to refresh tokens, if different from the token endpoint. Must be a static URL, like the other endpoints. */
   refresh_token_url?: string | null;
@@ -5147,7 +5147,7 @@ export const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__
   identifier: "CreateUserlandUserOrganizationMembershipsControllerResponse",
 }) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponse>;
 
-/** Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+/** Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
@@ -5157,11 +5157,11 @@ export const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = /*@__PUR
 ) as any as S.Schema<CreateWaitlistsControllerEntryRequestAdditionalFieldsMap>;
 
 export interface CreateWaitlistsControllerEntryRequest {
-  /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. Use `default` when adding the first entry — the default waitlist is created automatically. */
+  /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. Use `default` when adding the first entry -- the default waitlist is created automatically. */
   id: string;
   /** The email address of the user joining the waitlist. */
   email: string;
-  /** Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+  /** Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
   additional_fields?: CreateWaitlistsControllerEntryRequestAdditionalFieldsMap;
   /** Whether to send the waitlist confirmation email to the user. Defaults to `false`. No email is sent when the waitlist confirmation email is disabled in the environment, even if `send_confirmation_email` is `true`. */
   send_confirmation_email?: boolean;
@@ -5181,7 +5181,7 @@ export const CreateWaitlistsControllerEntryRequest = /*@__PURE__*/ S.suspend(() 
 export type WaitlistEntryState = "pending" | "approved" | "denied";
 export const WaitlistEntryState = S.String;
 
-/** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+/** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntryAdditionalFieldsMap = { [key: string]: string | undefined };
 export const WaitlistEntryAdditionalFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5197,7 +5197,7 @@ export interface WaitlistEntry {
   state: WaitlistEntryState;
   /** The timestamp when the entry was approved, or null if not yet approved. */
   approved_at: string | null;
-  /** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+  /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
   additional_fields?: WaitlistEntryAdditionalFieldsMap;
   /** The unique ID of the waitlist the entry belongs to. */
   waitlist_id?: string | null;
@@ -6916,7 +6916,7 @@ export const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<DirectoryUserWithGroupsRolesList>;
 
-/** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance — the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
+/** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
 export type DirectoryUserWithGroupsGroupsList = Array<DirectoryGroup>;
 export const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
@@ -6960,7 +6960,7 @@ export interface DirectoryUserWithGroups {
   created_at?: string;
   /** An ISO 8601 timestamp. */
   updated_at?: string;
-  /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance — the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
+  /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
   groups?: DirectoryUserWithGroupsGroupsList;
 }
 export const DirectoryUserWithGroups = /*@__PURE__*/ S.suspend(() =>
@@ -7865,7 +7865,7 @@ export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
 export type ConnectedAccountAuthMethod = "oauth" | "api_key" | "client_credentials";
 export const ConnectedAccountAuthMethod = S.String;
 
-/** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+/** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountConfigMap = { [key: string]: string | undefined };
 export const ConnectedAccountConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -7901,7 +7901,7 @@ export interface ConnectedAccount {
   client_id?: string | null;
   /** The last four characters of the client secret supplied for this connection, or `null` when it can't be read. Only present when `auth_method` is `client_credentials`. */
   client_secret_last_4?: string | null;
-  /** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+  /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
   config?: ConnectedAccountConfigMap;
   /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
   state?: ConnectedAccountState;
@@ -7994,7 +7994,7 @@ export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "client_credentials";
 export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod = S.String;
 
-/** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+/** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountConfigMap = {
   [key: string]: string | undefined;
 };
@@ -8035,7 +8035,7 @@ export interface DataIntegrationsListResponseDataItemConnectedAccount {
   client_id?: string | null;
   /** The last four characters of the client secret supplied for this connection, or `null` when it can't be read. Only present when `auth_method` is `client_credentials`. */
   client_secret_last_4?: string | null;
-  /** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+  /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
   config?: DataIntegrationsListResponseDataItemConnectedAccountConfigMap;
   /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
   state: DataIntegrationsListResponseDataItemConnectedAccountState;
@@ -8099,7 +8099,7 @@ export type DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod 
   | "client_credentials";
 export const DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod = S.String;
 
-/** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+/** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap = {
   [key: string]: string | undefined;
 };
@@ -8141,7 +8141,7 @@ export interface DataIntegrationsListResponseDataItemConnectedAccountsItem {
   client_id?: string | null;
   /** The last four characters of the client secret supplied for this connection, or `null` when it can't be read. Only present when `auth_method` is `client_credentials`. */
   client_secret_last_4?: string | null;
-  /** The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
+  /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
   config?: DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap;
   /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
   state: DataIntegrationsListResponseDataItemConnectedAccountsItemState;
@@ -12620,7 +12620,7 @@ export interface PatchConnectionsControllerRequest {
   name?: string;
   /** The customer-owned identifier for the Connection. Set to `null` to stop tracking one. */
   external_id?: string | null;
-  /** The type of the Connection. Immutable after creation — it may be sent, but only with the Connection current type. */
+  /** The type of the Connection. Immutable after creation -- it may be sent, but only with the Connection current type. */
   connection_type?: string;
   /** How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated. */
   attribute_maps?: PatchConnectionAttributeMapsDto;
@@ -13818,7 +13818,7 @@ export const SsoTokenResponseOauthTokens = /*@__PURE__*/ S.suspend(() =>
 export interface SsoTokenResponse {
   /** The type of token issued. */
   token_type?: string;
-  /** An access token that can be exchanged for a user profile. Access tokens are short-lived — see the `expires_in` field for the exact lifetime. */
+  /** An access token that can be exchanged for a user profile. Access tokens are short-lived -- see the `expires_in` field for the exact lifetime. */
   access_token?: string | Redacted.Redacted<string>;
   /** The lifetime of the access token in seconds. */
   expires_in?: number;
@@ -14479,9 +14479,9 @@ export const UpdateCustomProviderDefinitionDtoAuthenticateVia = S.String;
 export interface UpdateCustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
   name?: string;
-  /** The provider's OAuth authorization endpoint. Must be a static URL: `${config.…}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
+  /** The provider's OAuth authorization endpoint. Must be a static URL: `${config....}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
   authorization_url?: string;
-  /** The provider's OAuth token endpoint. Must be a static URL: `${config.…}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
+  /** The provider's OAuth token endpoint. Must be a static URL: `${config....}` placeholders are resolved against a provider's declared config fields, which custom providers cannot declare. */
   token_url?: string;
   /** The endpoint used to refresh tokens, if different from the token endpoint. Must be a static URL, like the other endpoints. */
   refresh_token_url?: string | null;
@@ -16038,7 +16038,7 @@ export interface UserlandUserAuthenticationFactorsControllerCreate0Request {
   totp_issuer?: string;
   /** The user's account name displayed in their authenticator app. */
   totp_user?: string;
-  /** The Base32-encoded shared secret for TOTP factors. This can be provided when creating the auth factor, otherwise it will be generated. The algorithm used to derive TOTP codes is SHA-1, the code length is 6 digits, and the timestep is 30 seconds – the secret must be compatible with these parameters. */
+  /** The Base32-encoded shared secret for TOTP factors. This can be provided when creating the auth factor, otherwise it will be generated. The algorithm used to derive TOTP codes is SHA-1, the code length is 6 digits, and the timestep is 30 seconds - the secret must be compatible with these parameters. */
   totp_secret?: string | Redacted.Redacted<string>;
 }
 export const UserlandUserAuthenticationFactorsControllerCreate0Request = /*@__PURE__*/ S.suspend(
@@ -16544,7 +16544,7 @@ export const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UserlandUsersControllerUpdate0Request>;
 
 export interface ValidateAgentAdminControllerCredentialRequestBodyCase0 {
-  /** The kind of credential being validated — an agent API key or an agent access token. */
+  /** The kind of credential being validated -- an agent API key or an agent access token. */
   type: string;
   /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
   credential: string;
@@ -16559,7 +16559,7 @@ export const ValidateAgentAdminControllerCredentialRequestBodyCase0 = /*@__PURE_
 }) as any as S.Schema<ValidateAgentAdminControllerCredentialRequestBodyCase0>;
 
 export interface ValidateAgentAdminControllerCredentialRequestBodyCase1 {
-  /** The kind of credential being validated — an agent API key or an agent access token. */
+  /** The kind of credential being validated -- an agent API key or an agent access token. */
   type: string;
   /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
   credential: string;
@@ -16754,7 +16754,7 @@ export const WaitlistEntriesControllerDenyRequest = /*@__PURE__*/ S.suspend(() =
 export type WaitlistEntriesControllerDenyResponseState = "pending" | "approved" | "denied";
 export const WaitlistEntriesControllerDenyResponseState = S.String;
 
-/** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+/** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntriesControllerDenyResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
@@ -16772,7 +16772,7 @@ export interface WaitlistEntriesControllerDenyResponse {
   state: WaitlistEntriesControllerDenyResponseState;
   /** The timestamp when the entry was approved, or null if not yet approved. */
   approved_at: string | null;
-  /** Additional fields submitted when the user joined the waitlist. Values are user-provided — treat them as untrusted input when rendering or exporting. */
+  /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
   additional_fields?: WaitlistEntriesControllerDenyResponseAdditionalFieldsMap;
   /** The unique ID of the waitlist the entry belongs to. */
   waitlist_id?: string | null;
@@ -17008,7 +17008,7 @@ export const ApplicationsControllerFind: API.OperationMethod<
 }));
 
 export type ApproveWaitlistEntriesControllerError = NotFound | UnprocessableEntity | WorkosOpError;
-/** Approve a waitlist entry Approve a waitlist entry, create an invitation for its email address, and send the invitation email. Approving a denied entry reverses the denial. The approval is saved even when the invitation steps fail, so instead of retrying the approval, recover based on the outcome: - `200` — the entry is approved. If invitation creation failed, no invitation exists yet; [send](/reference/authkit/invitation/send) one. - `422` with code `invitation_email_not_sent` — the entry is approved and an invitation exists, but its email was not sent; [resend](/reference/authkit/invitation/resend) it. - `422` with code `invalid_state` — the entry was already approved. */
+/** Approve a waitlist entry Approve a waitlist entry, create an invitation for its email address, and send the invitation email. Approving a denied entry reverses the denial. The approval is saved even when the invitation steps fail, so instead of retrying the approval, recover based on the outcome: - `200` -- the entry is approved. If invitation creation failed, no invitation exists yet; [send](/reference/authkit/invitation/send) one. - `422` with code `invitation_email_not_sent` -- the entry is approved and an invitation exists, but its email was not sent; [resend](/reference/authkit/invitation/resend) it. - `422` with code `invalid_state` -- the entry was already approved. */
 export const ApproveWaitlistEntriesController: API.OperationMethod<
   ApproveWaitlistEntriesControllerRequest,
   ApproveWaitlistEntriesControllerResponse,
@@ -17792,7 +17792,7 @@ export type CreateSamlIdpSigningCertificatesControllerError =
   | NotFound
   | UnprocessableEntity
   | WorkosOpError;
-/** Create an IdP signing certificate Adds an Identity Provider signing certificate to the connection, so SAML responses signed with its key can be verified. Use this to import a new certificate ahead of an Identity Provider rotation — the existing certificates keep working until they are deleted or expire. */
+/** Create an IdP signing certificate Adds an Identity Provider signing certificate to the connection, so SAML responses signed with its key can be verified. Use this to import a new certificate ahead of an Identity Provider rotation -- the existing certificates keep working until they are deleted or expire. */
 export const CreateSamlIdpSigningCertificatesController: API.OperationMethod<
   CreateSamlIdpSigningCertificatesControllerRequest,
   SamlIdpSigningCertificate,
@@ -17812,7 +17812,7 @@ export type CreateSamlSpEncryptionCertificatesControllerError =
   | NotFound
   | Conflict
   | WorkosOpError;
-/** Create an SP encryption certificate Generates a new encryption key pair for the connection and returns its public certificate. WorkOS holds the private key, so the request takes no body — to bring your own key pairs, provide `saml_options.sp_encryption_key_pairs` when creating the connection instead. Creating a certificate appends rather than replaces: every active private key is tried when decrypting, which lets a rotation overlap the old and new certificates. */
+/** Create an SP encryption certificate Generates a new encryption key pair for the connection and returns its public certificate. WorkOS holds the private key, so the request takes no body -- to bring your own key pairs, provide `saml_options.sp_encryption_key_pairs` when creating the connection instead. Creating a certificate appends rather than replaces: every active private key is tried when decrypting, which lets a rotation overlap the old and new certificates. */
 export const CreateSamlSpEncryptionCertificatesController: API.OperationMethod<
   CreateSamlSpEncryptionCertificatesControllerRequest,
   SamlSpEncryptionCertificate,
@@ -17832,7 +17832,7 @@ export type CreateSamlSpSigningCertificatesControllerError =
   | NotFound
   | Conflict
   | WorkosOpError;
-/** Create an SP signing certificate Generates a new request signing key pair for the connection and returns its public certificate. WorkOS holds the private key, so the request takes no body — to bring your own key pair, provide `saml_options.sp_signing_key_pair` when creating the connection instead. A connection signs with one key pair at a time: delete the existing certificate before creating its replacement. */
+/** Create an SP signing certificate Generates a new request signing key pair for the connection and returns its public certificate. WorkOS holds the private key, so the request takes no body -- to bring your own key pair, provide `saml_options.sp_signing_key_pair` when creating the connection instead. A connection signs with one key pair at a time: delete the existing certificate before creating its replacement. */
 export const CreateSamlSpSigningCertificatesController: API.OperationMethod<
   CreateSamlSpSigningCertificatesControllerRequest,
   SamlSpSigningCertificate,
@@ -18501,7 +18501,7 @@ export const DeleteUserlandUserOrganizationMembershipsController: API.OperationM
 }));
 
 export type DeleteWaitlistEntriesControllerError = NotFound | WorkosOpError;
-/** Delete a waitlist entry Remove the entry from the waitlist. Its email address can join again unless a user with that email now exists in the environment. Deleting the entry does not revoke an invitation created by approving it — [revoke that invitation](/reference/authkit/invitation/revoke) separately to withdraw access. */
+/** Delete a waitlist entry Remove the entry from the waitlist. Its email address can join again unless a user with that email now exists in the environment. Deleting the entry does not revoke an invitation created by approving it -- [revoke that invitation](/reference/authkit/invitation/revoke) separately to withdraw access. */
 export const DeleteWaitlistEntriesController: API.OperationMethod<
   DeleteWaitlistEntriesControllerRequest,
   DeleteWaitlistEntriesControllerResponse,
@@ -19422,7 +19422,7 @@ export type ListAuthorizationControllerResourcesForMembershipError =
   | NotFound
   | UnprocessableEntity
   | WorkosOpError;
-/** List resources for organization membership Returns all child resources of a parent resource where the organization membership has a specific permission. This is useful for resource discovery—answering "What projects can this user access in this workspace?" You must provide either `parent_resource_id` or both `parent_resource_external_id` and `parent_resource_type_slug` to identify the parent resource. */
+/** List resources for organization membership Returns all child resources of a parent resource where the organization membership has a specific permission. This is useful for resource discovery--answering "What projects can this user access in this workspace?" You must provide either `parent_resource_id` or both `parent_resource_external_id` and `parent_resource_type_slug` to identify the parent resource. */
 export const ListAuthorizationControllerResourcesForMembership: API.OperationMethod<
   ListAuthorizationControllerResourcesForMembershipRequest,
   AuthorizationResourceList,
@@ -20043,7 +20043,7 @@ export const ListUserlandUserSessionsController: API.OperationMethod<
 }));
 
 export type ListWaitlistsControllerError = WorkosOpError;
-/** List waitlists Get a list of the waitlists in the environment. All waitlists are returned in a single response — this endpoint is not paginated, so the `list_metadata` cursors are always `null`. */
+/** List waitlists Get a list of the waitlists in the environment. All waitlists are returned in a single response -- this endpoint is not paginated, so the `list_metadata` cursors are always `null`. */
 export const ListWaitlistsController: API.OperationMethod<
   ListWaitlistsControllerRequest,
   ListWaitlistsControllerResponse,
@@ -21245,7 +21245,7 @@ export const UserlandUsersControllerUpdate0: API.OperationMethod<
 }));
 
 export type ValidateAgentAdminControllerCredentialError = BadRequest | WorkosOpError;
-/** Validate an agent credential Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential. */
+/** Validate an agent credential Validate an agent credential -- an API key or access token -- against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential. */
 export const ValidateAgentAdminControllerCredential: API.OperationMethod<
   ValidateAgentAdminControllerCredentialRequest,
   AgentCredentialValidation,
@@ -21263,7 +21263,7 @@ export type ValidateAgentBlueprintsTokenControllerTokenError =
   | BadRequest
   | NotFound
   | WorkosOpError;
-/** Validate an agent token Validates an agent access token: verifies its signature against the environment, that it was minted under this blueprint, and that the backing session is live (not revoked or expired, and — for delegated sessions — that the delegating user session has not ended). Returns the token claims and session metadata when valid; invalid tokens are reported as errors with stable codes. */
+/** Validate an agent token Validates an agent access token: verifies its signature against the environment, that it was minted under this blueprint, and that the backing session is live (not revoked or expired, and -- for delegated sessions -- that the delegating user session has not ended). Returns the token claims and session metadata when valid; invalid tokens are reported as errors with stable codes. */
 export const ValidateAgentBlueprintsTokenControllerToken: API.OperationMethod<
   ValidateAgentBlueprintsTokenControllerTokenRequest,
   AgentTokenValidation,

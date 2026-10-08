@@ -863,7 +863,7 @@ export const LegalDocumentCreator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LegalDocumentCreator" }) as any as S.Schema<LegalDocumentCreator>;
 
-/** Output serializer — what the API returns for every row. */
+/** Output serializer -- what the API returns for every row. */
 export interface LegalDocumentDTO {
   id?: string;
   document_type?: string;
@@ -2293,7 +2293,7 @@ export const MarketingAnalyticsEventConversionGoalSchemaMapMap = /*@__PURE__*/ S
 export interface MarketingAnalyticsEventConversionGoal {
   conversion_goal_id: string;
   conversion_goal_name: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -2400,7 +2400,7 @@ export const MarketingAnalyticsActionConversionGoalSchemaMapMap = /*@__PURE__*/ 
 export interface MarketingAnalyticsActionConversionGoal {
   conversion_goal_id: string;
   conversion_goal_name: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -2501,7 +2501,7 @@ export const MarketingAnalyticsWarehouseConversionGoalSchemaMapMap = /*@__PURE__
 export interface MarketingAnalyticsWarehouseConversionGoal {
   conversion_goal_id: string;
   conversion_goal_name: string;
-  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions -- its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
   counts_as_customer?: boolean | null;
   /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
   counts_as_revenue?: boolean | null;
@@ -5957,7 +5957,7 @@ export type ScopeObjectEnum =
   | "wizard_run";
 export const ScopeObjectEnum = S.String;
 
-/** A resolved access level with the rule that supplied it — the wire form of `ResolvedAccess`. */
+/** A resolved access level with the rule that supplied it -- the wire form of `ResolvedAccess`. */
 export interface ProjectAccessSource {
   /** The access level that applies. */
   access_level: string;
@@ -6388,7 +6388,7 @@ export const AccessControlMemberAccessRoleIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlMemberAccessRoleIdsList>;
 
-/** A resolved access level with the rule that supplied it — the wire form of `ResolvedAccess`. */
+/** A resolved access level with the rule that supplied it -- the wire form of `ResolvedAccess`. */
 export interface ResolvedAccess {
   /** The access level that applies. */
   access_level: string;
@@ -6813,13 +6813,13 @@ export const GetOrganizationsProjectsLogsConfigRequest = /*@__PURE__*/ S.suspend
   identifier: "GetOrganizationsProjectsLogsConfigRequest",
 }) as any as S.Schema<GetOrganizationsProjectsLogsConfigRequest>;
 
-/** Log attribute keys whose values should match a person's distinct_id — a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
+/** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamLogsConfigLogsDistinctIdAttributeKeysList = Array<string>;
 export const TeamLogsConfigLogsDistinctIdAttributeKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TeamLogsConfigLogsDistinctIdAttributeKeysList>;
 
-/** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
+/** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type TeamLogsConfigLogsSessionIdAttributeKeysList = Array<string>;
 export const TeamLogsConfigLogsSessionIdAttributeKeysList = /*@__PURE__*/ S.Array(
   S.String,
@@ -6832,11 +6832,11 @@ export const TeamLogsConfigLogsPatternMessageKeysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TeamLogsConfigLogsPatternMessageKeysList>;
 
 export interface TeamLogsConfig {
-  /** Legacy single-key alias — always the first entry of `logs_distinct_id_attribute_keys`. Read-only; write the plural field instead. */
+  /** Legacy single-key alias -- always the first entry of `logs_distinct_id_attribute_keys`. Read-only; write the plural field instead. */
   logs_distinct_id_attribute_key: string;
-  /** Log attribute keys whose values should match a person's distinct_id — a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
+  /** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
   logs_distinct_id_attribute_keys: TeamLogsConfigLogsDistinctIdAttributeKeysList;
-  /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
+  /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
   logs_session_id_attribute_keys: TeamLogsConfigLogsSessionIdAttributeKeysList;
   /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
   logs_pattern_message_keys: TeamLogsConfigLogsPatternMessageKeysList;
@@ -6892,7 +6892,7 @@ export const GetOrganizationsProjectsTracingConfigRequest = /*@__PURE__*/ S.susp
   identifier: "GetOrganizationsProjectsTracingConfigRequest",
 }) as any as S.Schema<GetOrganizationsProjectsTracingConfigRequest>;
 
-/** Span or resource attribute keys whose values should match a person's distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
+/** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamTracingConfigTracingDistinctIdAttributeKeysList = Array<string>;
 export const TeamTracingConfigTracingDistinctIdAttributeKeysList = /*@__PURE__*/ S.Array(
   S.String,
@@ -6905,7 +6905,7 @@ export const TeamTracingConfigTracingSessionIdAttributeKeysList = /*@__PURE__*/ 
 ) as any as S.Schema<TeamTracingConfigTracingSessionIdAttributeKeysList>;
 
 export interface TeamTracingConfig {
-  /** Span or resource attribute keys whose values should match a person's distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
+  /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
   tracing_distinct_id_attribute_keys: TeamTracingConfigTracingDistinctIdAttributeKeysList;
   /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
   tracing_session_id_attribute_keys: TeamTracingConfigTracingSessionIdAttributeKeysList;
@@ -7808,9 +7808,9 @@ export interface ListMembersRequest {
   offset?: number;
   /** Sort order. Defaults to `-joined_at`. */
   order?: ListMembersRequestOrder | (string & {});
-  /** When `true`, only return members whose email domain is not one of the organization's verified domains — the members who would lose access under verified-domain enforcement. */
+  /** When `true`, only return members whose email domain is not one of the organization's verified domains -- the members who would lose access under verified-domain enforcement. */
   outside_verified_domains?: boolean;
-  /** Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
+  /** Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
   search?: string;
 }
 export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11582,7 +11582,7 @@ export const UpdateOrganizationsProjectsExperimentsConfigPartialRequest = /*@__P
   identifier: "UpdateOrganizationsProjectsExperimentsConfigPartialRequest",
 }) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequest>;
 
-/** Log attribute keys whose values should match a person's distinct_id — a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
+/** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
@@ -11590,7 +11590,7 @@ export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAt
     S.String,
   ) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList>;
 
-/** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
+/** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
@@ -11611,9 +11611,9 @@ export interface UpdateOrganizationsProjectsLogsConfigPartialRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Log attribute keys whose values should match a person's distinct_id — a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
+  /** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
   logs_distinct_id_attribute_keys?: UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList;
-  /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
+  /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
   logs_session_id_attribute_keys?: UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList;
   /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
   logs_pattern_message_keys?: UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList;
@@ -11914,7 +11914,7 @@ export const UpdateOrganizationsProjectsPartialRequest = /*@__PURE__*/ S.suspend
   identifier: "UpdateOrganizationsProjectsPartialRequest",
 }) as any as S.Schema<UpdateOrganizationsProjectsPartialRequest>;
 
-/** Span or resource attribute keys whose values should match a person's distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
+/** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
   Array<string>;
 export const UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
@@ -11935,7 +11935,7 @@ export interface UpdateOrganizationsProjectsTracingConfigPartialRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Span or resource attribute keys whose values should match a person's distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
+  /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
   tracing_distinct_id_attribute_keys?: UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList;
   /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
   tracing_session_id_attribute_keys?: UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList;
@@ -12258,7 +12258,7 @@ export const createOrganizationsProjectsDefaultEvaluationContext: API.OperationM
 }));
 
 export type CreateOrganizationsProjectsEvaluationContextSuggestionError = PosthogOpError;
-/** Hide an evaluation context name from the flag editor's suggestion list, or restore it. POST hides the name; DELETE restores it. The underlying context row and any flags already using it are never modified — this only controls what gets suggested. */
+/** Hide an evaluation context name from the flag editor's suggestion list, or restore it. POST hides the name; DELETE restores it. The underlying context row and any flags already using it are never modified -- this only controls what gets suggested. */
 export const createOrganizationsProjectsEvaluationContextSuggestion: API.OperationMethod<
   CreateOrganizationsProjectsEvaluationContextSuggestionRequest,
   EvaluationContextSuggestionResponse,
@@ -13081,7 +13081,7 @@ export const invitesDestroy: API.OperationMethod<
 }));
 
 export type LegalDocumentsDestroyError = Forbidden | NotFound | PosthogOpError;
-/** Delete an unsigned legal document. The PandaDoc envelope is voided first so the original signer can no longer complete it; only if that succeeds is the row removed, freeing the unique-per-org-per-type constraint so a fresh document can be generated. Returns 503 if the PandaDoc void fails — the row stays in that case and the frontend should prompt the user to retry. Returns 403 for signed documents (legal artifacts; staff can still delete signed rows from Django admin). */
+/** Delete an unsigned legal document. The PandaDoc envelope is voided first so the original signer can no longer complete it; only if that succeeds is the row removed, freeing the unique-per-org-per-type constraint so a fresh document can be generated. Returns 503 if the PandaDoc void fails -- the row stays in that case and the frontend should prompt the user to retry. Returns 403 for signed documents (legal artifacts; staff can still delete signed rows from Django admin). */
 export const legalDocumentsDestroy: API.OperationMethod<
   LegalDocumentsDestroyRequest,
   LegalDocumentsDestroyResponse,
@@ -13441,7 +13441,7 @@ export const organizationsProjectsDestroy: API.OperationMethod<
 }));
 
 export type OrganizationsProjectsEvaluationContextSuggestionsDestroyError = PosthogOpError;
-/** Hide an evaluation context name from the flag editor's suggestion list, or restore it. POST hides the name; DELETE restores it. The underlying context row and any flags already using it are never modified — this only controls what gets suggested. */
+/** Hide an evaluation context name from the flag editor's suggestion list, or restore it. POST hides the name; DELETE restores it. The underlying context row and any flags already using it are never modified -- this only controls what gets suggested. */
 export const organizationsProjectsEvaluationContextSuggestionsDestroy: API.OperationMethod<
   OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest,
   EvaluationContextSuggestionResponse,
@@ -13719,7 +13719,7 @@ export const updateMembersPartial: API.OperationMethod<
 }));
 
 export type UpdateOrganizationsProjectError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Replace a project and its settings. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided. */
+/** Replace a project and its settings. Prefer the PATCH endpoint for partial updates -- PUT requires every writable field to be provided. */
 export const updateOrganizationsProject: API.OperationMethod<
   UpdateOrganizationsProjectRequest,
   ProjectBackwardCompat,

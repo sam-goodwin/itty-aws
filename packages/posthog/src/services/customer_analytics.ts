@@ -610,7 +610,7 @@ export const ExternalAccountCustomPropertiesMap = /*@__PURE__*/ S.Record(
 export interface ExternalAccount {
   /** Account UUID. */
   id: string;
-  /** External account key — the group key the account is linked to. */
+  /** External account key -- the group key the account is linked to. */
   external_id: string | null;
   /** Human-readable account name. */
   name: string;
@@ -687,7 +687,7 @@ export const EventStreamAccountIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventStreamAccountIdsList>;
 
-/** The caller's event stream — a live feed of selected accounts' events posted to a Slack channel of their choice. One stream per user per project. */
+/** The caller's event stream -- a live feed of selected accounts' events posted to a Slack channel of their choice. One stream per user per project. */
 export interface EventStream {
   id: string;
   /** Whether the stream delivers to Slack. Delivery also requires at least one event, at least one member account with an external ID, and a Slack workspace + channel. */
@@ -999,7 +999,7 @@ export const ListAccountNotesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/account_notes/", code: 200 })),
 ).annotate({ identifier: "ListAccountNotesRequest" }) as any as S.Schema<ListAccountNotesRequest>;
 
-/** A team-wide account note — an internal notebook linked to a Customer analytics account. */
+/** A team-wide account note -- an internal notebook linked to a Customer analytics account. */
 export interface AccountNote {
   /** URL-safe short ID of the notebook. */
   short_id: string;
@@ -1374,7 +1374,7 @@ export const createCustomerAnalyticsExternalAccount: API.OperationMethod<
 }));
 
 export type CreateEventStreamError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const createEventStream: API.OperationMethod<
   CreateEventStreamRequest,
   EventStream,
@@ -1389,7 +1389,7 @@ export const createEventStream: API.OperationMethod<
 }));
 
 export type EventStreamsAddAccountCreateError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const eventStreamsAddAccountCreate: API.OperationMethod<
   EventStreamsAddAccountCreateRequest,
   EventStream,
@@ -1404,7 +1404,7 @@ export const eventStreamsAddAccountCreate: API.OperationMethod<
 }));
 
 export type EventStreamsDestroyError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const eventStreamsDestroy: API.OperationMethod<
   EventStreamsDestroyRequest,
   EventStreamsDestroyResponse,
@@ -1419,7 +1419,7 @@ export const eventStreamsDestroy: API.OperationMethod<
 }));
 
 export type EventStreamsRemoveAccountCreateError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const eventStreamsRemoveAccountCreate: API.OperationMethod<
   EventStreamsRemoveAccountCreateRequest,
   EventStream,
@@ -1434,7 +1434,7 @@ export const eventStreamsRemoveAccountCreate: API.OperationMethod<
 }));
 
 export type EventStreamsSendTestMessageCreateError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const eventStreamsSendTestMessageCreate: API.OperationMethod<
   EventStreamsSendTestMessageCreateRequest,
   EventStreamTestMessage,
@@ -1557,7 +1557,7 @@ export const listAccountsRelationships: API.OperationMethod<
 }));
 
 export type ListEventStreamsError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const listEventStreams: API.OperationMethod<
   ListEventStreamsRequest,
   ListEventStreamsResponse,
@@ -1572,7 +1572,7 @@ export const listEventStreams: API.OperationMethod<
 }));
 
 export type UpdateEventStreamError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const updateEventStream: API.OperationMethod<
   UpdateEventStreamRequest,
   EventStream,
@@ -1587,7 +1587,7 @@ export const updateEventStream: API.OperationMethod<
 }));
 
 export type UpdateEventStreamsPartialError = PosthogOpError;
-/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user — each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
+/** The caller's event stream: a live feed of selected accounts' events posted to a Slack channel of their choice. Per-user -- each team member owns at most one stream, and every endpoint is scoped to the caller's own. Delivery runs through a managed CDP destination that is re-provisioned inside the same transaction as every write, so config and delivery can't drift apart. */
 export const updateEventStreamsPartial: API.OperationMethod<
   UpdateEventStreamsPartialRequest,
   EventStream,

@@ -462,7 +462,7 @@ export const SelectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SelectResponse" }) as any as S.Schema<SelectResponse>;
 export type BatchDeleteAttributesError = CommonErrors;
 /**
- * Deletes attributes (or whole items) on up to 25 items in a single call. Idempotent — missing items/attributes are not an error.
+ * Deletes attributes (or whole items) on up to 25 items in a single call. Idempotent -- missing items/attributes are not an error.
  */
 export const batchDeleteAttributes: API.OperationMethod<
   BatchDeleteAttributesRequest,
@@ -522,7 +522,7 @@ export type CreateDomainError =
   | NumberDomainsExceeded
   | CommonErrors;
 /**
- * Creates a new SimpleDB domain. Idempotent — creating an existing domain succeeds without error.
+ * Creates a new SimpleDB domain. Idempotent -- creating an existing domain succeeds without error.
  */
 export const createDomain: API.OperationMethod<
   CreateDomainRequest,
@@ -545,7 +545,7 @@ export type DeleteAttributesError =
   | NoSuchDomain
   | CommonErrors;
 /**
- * Deletes one or more attributes of a SimpleDB item — or the whole item when no attributes are named. Idempotent: deleting a missing attribute/item succeeds.
+ * Deletes one or more attributes of a SimpleDB item -- or the whole item when no attributes are named. Idempotent: deleting a missing attribute/item succeeds.
  */
 export const deleteAttributes: API.OperationMethod<
   DeleteAttributesRequest,
@@ -563,7 +563,7 @@ export const deleteAttributes: API.OperationMethod<
 
 export type DeleteDomainError = MissingParameter | CommonErrors;
 /**
- * Deletes a SimpleDB domain and all of its items. Idempotent — deleting a missing domain succeeds without error.
+ * Deletes a SimpleDB domain and all of its items. Idempotent -- deleting a missing domain succeeds without error.
  */
 export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,

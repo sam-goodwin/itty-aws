@@ -2287,7 +2287,7 @@ export type UpdateEnrollmentConfigurationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates your account’s Compute Optimizer Automation enrollment configuration.
+ * Updates your account's Compute Optimizer Automation enrollment configuration.
  */
 export const updateEnrollmentConfiguration: API.OperationMethod<
   UpdateEnrollmentConfigurationRequest,

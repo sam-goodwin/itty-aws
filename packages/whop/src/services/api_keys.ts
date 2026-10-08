@@ -321,7 +321,7 @@ export interface ApiKey {
   name: string | null;
   /** Masked version of the secret key, so the key can be recognized without revealing the full secret. */
   obfuscated_secret_key: string | Redacted.Redacted<string>;
-  /** The full secret used to authenticate requests. Returned only once, on create and rotate responses — store it immediately. */
+  /** The full secret used to authenticate requests. Returned only once, on create and rotate responses -- store it immediately. */
   secret_key?: string | Redacted.Redacted<string>;
   /** System role the key inherits its permissions from, or `null` when it uses an explicit permissions policy. Only account API keys can use a system role. */
   system_role: ApiKeySystemRole | null;
@@ -691,7 +691,7 @@ export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateApiKeyRequest" }) as any as S.Schema<UpdateApiKeyRequest>;
 
 export type CreateApiKeyError = BadRequest | Forbidden | Conflict | WhopOpError;
-/** Create API Key Creates an API key for an account or app. The response is the only place the full `secret_key` is returned — store it immediately. Requires a user session; API keys cannot manage API keys. */
+/** Create API Key Creates an API key for an account or app. The response is the only place the full `secret_key` is returned -- store it immediately. Requires a user session; API keys cannot manage API keys. */
 export const createApiKey: API.OperationMethod<
   CreateApiKeyRequest,
   ApiKey,
@@ -721,7 +721,7 @@ export const deleteApiKey: API.OperationMethod<
 }));
 
 export type GetApiKeyError = Forbidden | NotFound | WhopOpError;
-/** Retrieve API Key Retrieves an API key with its effective permission grants. The full secret is never returned — rotate the key if it was lost. */
+/** Retrieve API Key Retrieves an API key with its effective permission grants. The full secret is never returned -- rotate the key if it was lost. */
 export const getApiKey: API.OperationMethod<
   GetApiKeyRequest,
   ApiKey,
@@ -736,7 +736,7 @@ export const getApiKey: API.OperationMethod<
 }));
 
 export type ListApiKeyPermissionsError = WhopOpError;
-/** List the Permission Catalog Lists the catalog of permission actions that can be granted to users, apps, and API keys — the source for the dashboard's permission pickers. Small and returned in full on one page. */
+/** List the Permission Catalog Lists the catalog of permission actions that can be granted to users, apps, and API keys -- the source for the dashboard's permission pickers. Small and returned in full on one page. */
 export const listApiKeyPermissions: API.OperationMethod<
   ListApiKeyPermissionsRequest,
   ListApiKeyPermissionsResponse,
@@ -751,7 +751,7 @@ export const listApiKeyPermissions: API.OperationMethod<
 }));
 
 export type ListApiKeysError = BadRequest | Forbidden | NotFound | WhopOpError;
-/** List API Keys Lists the API keys of an account or app, newest first. Responses never include the full secret — only its obfuscated form. */
+/** List API Keys Lists the API keys of an account or app, newest first. Responses never include the full secret -- only its obfuscated form. */
 export const listApiKeys: API.PaginatedOperationMethod<
   ListApiKeysRequest,
   ListApiKeysResponse,

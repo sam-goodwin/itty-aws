@@ -78,7 +78,7 @@ export const ListTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListTeamsResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const ListTeamsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -164,7 +164,7 @@ export const TestAuthResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestAuthResponse" }) as any as S.Schema<TestAuthResponse>;
 
 export type ListTeamsError = SlackOpError;
-/** Obtain a full list of workspaces your org-wide app has been approved for. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` — Invalid cursor. - `invalid_limit` — The value passed for `limit` was not valid. - `invalid_auth` — The token doesn't have access to this endpoint. - `internal_error` — There was an internal error. See https://docs.slack.dev/reference/methods/auth.teams.list */
+/** Obtain a full list of workspaces your org-wide app has been approved for. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Invalid cursor. - `invalid_limit` -- The value passed for `limit` was not valid. - `invalid_auth` -- The token doesn't have access to this endpoint. - `internal_error` -- There was an internal error. See https://docs.slack.dev/reference/methods/auth.teams.list */
 export const listTeams: API.PaginatedOperationMethod<
   ListTeamsRequest,
   ListTeamsResponse,
@@ -190,7 +190,7 @@ export const listTeams: API.PaginatedOperationMethod<
 ) as any;
 
 export type RevokeAuthError = SlackOpError;
-/** Revokes a token. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — Internal system error - `not_bearer_token` — Incompatible token type provided See https://docs.slack.dev/reference/methods/auth.revoke */
+/** Revokes a token. Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal system error - `not_bearer_token` -- Incompatible token type provided See https://docs.slack.dev/reference/methods/auth.revoke */
 export const revokeAuth: API.OperationMethod<
   RevokeAuthRequest,
   RevokeAuthResponse,
@@ -205,7 +205,7 @@ export const revokeAuth: API.OperationMethod<
 }));
 
 export type TestAuthError = SlackOpError;
-/** Checks authentication & identity. Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — An internal error has been found. - `invalid_auth` — Method was called with invalid credentials See https://docs.slack.dev/reference/methods/auth.test */
+/** Checks authentication & identity. Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An internal error has been found. - `invalid_auth` -- Method was called with invalid credentials See https://docs.slack.dev/reference/methods/auth.test */
 export const testAuth: API.OperationMethod<
   TestAuthRequest,
   TestAuthResponse,

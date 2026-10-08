@@ -667,7 +667,7 @@ export type PutRecordError =
  * The `PutRecord` API is used to ingest a list of `Records` into
  * your feature group.
  *
- * If a new record’s `EventTime` is greater, the new record is written to both
+ * If a new record's `EventTime` is greater, the new record is written to both
  * the `OnlineStore` and `OfflineStore`. Otherwise, the record is a
  * historic record and it is written only to the `OfflineStore`.
  *
@@ -676,7 +676,7 @@ export type PutRecordError =
  * parameter.
  *
  * You can set the ingested record to expire at a given time to live (TTL) duration after
- * the record’s event time, `ExpiresAt` = `EventTime` +
+ * the record's event time, `ExpiresAt` = `EventTime` +
  * `TtlDuration`, by specifying the `TtlDuration` parameter. A record
  * level `TtlDuration` is set when specifying the `TtlDuration`
  * parameter using the `PutRecord` API call. If the input `TtlDuration`

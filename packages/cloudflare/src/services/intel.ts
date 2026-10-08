@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   accountTag: "account_tag",
   additionalInformation: "additional_information",
@@ -866,7 +866,7 @@ export interface GetDomainRequest {
   domain?: string;
   /** Skip DNS resolution lookups for faster response. */
   skipDns?: boolean;
-  /** Skip the domain ranking lookup for faster responses. Defaults to `false` (ranking is included). Set to `true` to opt out — primarily used by callers like Cloudflare Radar that need to avoid a circular dependency when building the domain details page. Note: the bulk endpoint (`/intel/domain/bulk`) uses opposite defaults — see `include_ranking` there. */
+  /** Skip the domain ranking lookup for faster responses. Defaults to `false` (ranking is included). Set to `true` to opt out -- primarily used by callers like Cloudflare Radar that need to avoid a circular dependency when building the domain details page. Note: the bulk endpoint (`/intel/domain/bulk`) uses opposite defaults -- see `include_ranking` there. */
   skipRanking?: boolean;
 }
 export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1032,9 +1032,9 @@ export interface GetDomainBulkRequest {
   accountId: string;
   /** Accepts multiple values like `?domain=cloudflare.com&domain=example.com`. */
   domain?: DomainsBulksGetRequestDomainList;
-  /** Whether to include domain ranking data in the response. Defaults to `false` — ranking lookups are expensive at bulk scale and most callers do not need them. Set to `true` to opt in. This parameter replaces the deprecated `skip_ranking` (see below). */
+  /** Whether to include domain ranking data in the response. Defaults to `false` -- ranking lookups are expensive at bulk scale and most callers do not need them. Set to `true` to opt in. This parameter replaces the deprecated `skip_ranking` (see below). */
   includeRanking?: boolean;
-  /** **Deprecated.** Previously controlled whether the ranking lookup was skipped (defaulted to `false`, meaning ranking ran). The endpoint's default behavior is being flipped — ranking is now opt-in via `include_ranking=true` — and this parameter will be silently ignored. Remove it from your callers and use `include_ranking` instead. */
+  /** **Deprecated.** Previously controlled whether the ranking lookup was skipped (defaulted to `false`, meaning ranking ran). The endpoint's default behavior is being flipped -- ranking is now opt-in via `include_ranking=true` -- and this parameter will be silently ignored. Remove it from your callers and use `include_ranking` instead. */
   skipRanking?: boolean;
 }
 export const GetDomainBulkRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1271,7 +1271,7 @@ export interface IndicatorFeedsGetResponseLastUploadSummarySkipped {
   allowlistedDomains?: number | null;
   /** Indicators in the upload whose valid_until is already in the past. These are not added to QS; the expiration cron handles cleanup. */
   expiredIndicators?: number | null;
-  /** Reserved for future use. Currently always 0 — the unifier aborts the entire upload on a single bad indicator. */
+  /** Reserved for future use. Currently always 0 -- the unifier aborts the entire upload on a single bad indicator. */
   invalidIndicators?: number | null;
 }
 export const IndicatorFeedsGetResponseLastUploadSummarySkipped = /*@__PURE__*/ S.suspend(() =>
@@ -3053,7 +3053,7 @@ export const getDomain: API.OperationMethod<
 }));
 
 export type GetDomainBulkError = CloudflareOpError;
-/** Returns security details and statistics about multiple domains in a single request. **Behavior change — domain ranking is becoming opt-in.** This endpoint previously included domain ranking data in every response and accepted a `skip_ranking=true` query parameter to opt out. That parameter is being deprecated and ranking will no longer be returned by default. Callers that want ranking data must pass `include_ranking=true`. The `skip_ranking` parameter will be silently ignored once the change ships. */
+/** Returns security details and statistics about multiple domains in a single request. **Behavior change -- domain ranking is becoming opt-in.** This endpoint previously included domain ranking data in every response and accepted a `skip_ranking=true` query parameter to opt out. That parameter is being deprecated and ranking will no longer be returned by default. Callers that want ranking data must pass `include_ranking=true`. The `skip_ranking` parameter will be silently ignored once the change ships. */
 export const getDomainBulk: API.OperationMethod<
   GetDomainBulkRequest,
   GetDomainBulkResponse,
@@ -3258,7 +3258,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
 ) as any;
 
 export type PutIndicatorFeedSnapshotError = IndicatorFeedNotFound | Forbidden | CloudflareOpError;
-/** Revises the raw data entries in a custom threat indicator feed. Accepts both plain and gzipped STIX2/CRDF bodies. Gzip is detected by RFC 1952 magic bytes (`0x1f 0x8b`) and/or a `.gz` filename suffix (case-insensitive) — either signal alone is sufficient to trigger the gzip path; if the body is not valid gzip, the upload fails fast. Customers are encouraged to gzip larger uploads — the api-gateway 500 MB body cap applies to the on-the-wire (compressed) size, so gzip lets a single upload carry several GiB of decompressed STIX. */
+/** Revises the raw data entries in a custom threat indicator feed. Accepts both plain and gzipped STIX2/CRDF bodies. Gzip is detected by RFC 1952 magic bytes (`0x1f 0x8b`) and/or a `.gz` filename suffix (case-insensitive) -- either signal alone is sufficient to trigger the gzip path; if the body is not valid gzip, the upload fails fast. Customers are encouraged to gzip larger uploads -- the api-gateway 500 MB body cap applies to the on-the-wire (compressed) size, so gzip lets a single upload carry several GiB of decompressed STIX. */
 export const putIndicatorFeedSnapshot: API.OperationMethod<
   PutIndicatorFeedSnapshotRequest,
   PutIndicatorFeedSnapshotResponse,

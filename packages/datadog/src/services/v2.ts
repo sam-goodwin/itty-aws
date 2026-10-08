@@ -9255,7 +9255,7 @@ export const AzureTenantType = S.String;
 export interface AzureTenant {
   /** The Client ID, also known as the Application ID in Azure, is a unique identifier for an application. It's used to identify the application during the authentication process. Your Application (client) ID is listed in the application's overview page. You can navigate to your application via the Azure Directory. */
   app_client_id: string;
-  /** The Client Secret is a confidential piece of information known only to the application and Azure AD. It's used to prove the application's identity. Your Client Secret is available from the application’s secrets page. You can navigate to your application via the Azure Directory. */
+  /** The Client Secret is a confidential piece of information known only to the application and Azure AD. It's used to prove the application's identity. Your Client Secret is available from the application's secrets page. You can navigate to your application via the Azure Directory. */
   client_secret: string | Redacted.Redacted<string>;
   /** If provided, the custom scope to be requested from Microsoft when acquiring an OAuth 2 access token. This custom scope is used only in conjunction with the HTTP action. A resource's scope is constructed by using the identifier URI for the resource and .default, separated by a forward slash (/) as follows:{identifierURI}/.default. */
   custom_scopes?: string;
@@ -22257,7 +22257,7 @@ export const SecureEmbedShareType = S.String;
 export interface SecureEmbedCreateResponseAttributes {
   /** Creation timestamp. */
   created_at?: string;
-  /** The secret credential used for HMAC signing. Returned only on creation. Store securely — it cannot be retrieved again. */
+  /** The secret credential used for HMAC signing. Returned only on creation. Store securely -- it cannot be retrieved again. */
   credential?: string;
   /** The source dashboard ID. */
   dashboard_id?: string;
@@ -41365,7 +41365,7 @@ export const OrgGroupPolicyCreateAttributesContentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrgGroupPolicyCreateAttributesContentMap>;
 
-/** The enforcement tier of the policy. `OVERRIDE_ALLOWED` means the policy is set but member orgs may mutate it. `GROUP_MANAGED` means the policy is strictly controlled and mutations are blocked for affected orgs. `DELEGATE` means each member org controls its own value. `role` policies only support `GROUP_MANAGED` and `DELEGATE` — `OVERRIDE_ALLOWED` is rejected for this policy type. Transitioning a `role` policy to `DELEGATE` (disabling it) is one-way — the policy cannot be transitioned back to `GROUP_MANAGED` afterward. */
+/** The enforcement tier of the policy. `OVERRIDE_ALLOWED` means the policy is set but member orgs may mutate it. `GROUP_MANAGED` means the policy is strictly controlled and mutations are blocked for affected orgs. `DELEGATE` means each member org controls its own value. `role` policies only support `GROUP_MANAGED` and `DELEGATE` -- `OVERRIDE_ALLOWED` is rejected for this policy type. Transitioning a `role` policy to `DELEGATE` (disabling it) is one-way -- the policy cannot be transitioned back to `GROUP_MANAGED` afterward. */
 export type OrgGroupPolicyEnforcementTier = "OVERRIDE_ALLOWED" | "GROUP_MANAGED" | "DELEGATE";
 export const OrgGroupPolicyEnforcementTier = S.String;
 
@@ -42366,9 +42366,9 @@ export const ServiceDefinitionMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Contact information about the service. */
 export interface ServiceDefinitionV1Contact {
-  /** Service owner’s email. */
+  /** Service owner's email. */
   email?: string;
-  /** Service owner’s Slack channel. */
+  /** Service owner's Slack channel. */
   slack?: string;
 }
 export const ServiceDefinitionV1Contact = /*@__PURE__*/ S.suspend(() =>
@@ -42988,7 +42988,7 @@ export const ObservabilityPipelineElasticsearchDestinationInputsList = /*@__PURE
 
 /** Configuration for enabling TLS encryption between the pipeline component and external services. */
 export interface ObservabilityPipelineTls {
-  /** Path to the Certificate Authority (CA) file used to validate the server’s TLS certificate. */
+  /** Path to the Certificate Authority (CA) file used to validate the server's TLS certificate. */
   ca_file?: string;
   /** Path to the TLS client certificate file used to authenticate the pipeline component with upstream or downstream services. */
   crt_file: string;
@@ -43091,7 +43091,7 @@ export const ObservabilityPipelineHttpClientDestinationInputsList = /*@__PURE__*
 
 /** Configuration for enabling TLS encryption between the pipeline component and external services. */
 export interface ObservabilityPipelineClientTls {
-  /** Path to the Certificate Authority (CA) file used to validate the server’s TLS certificate. */
+  /** Path to the Certificate Authority (CA) file used to validate the server's TLS certificate. */
   ca_file?: string;
   /** Path to the TLS client certificate file used to authenticate the pipeline component with upstream or downstream services. */
   crt_file: string;
@@ -43220,7 +43220,7 @@ export const ObservabilityPipelineAmazonOpenSearchDestination = /*@__PURE__*/ S.
   identifier: "ObservabilityPipelineAmazonOpenSearchDestination",
 }) as any as S.Schema<ObservabilityPipelineAmazonOpenSearchDestination>;
 
-/** AWS authentication credentials used for accessing AWS services such as S3. If omitted, the system’s default credentials are used (for example, the IAM role and environment variables). */
+/** AWS authentication credentials used for accessing AWS services such as S3. If omitted, the system's default credentials are used (for example, the IAM role and environment variables). */
 export interface ObservabilityPipelineAwsAuth {
   /** The Amazon Resource Name (ARN) of the role to assume. */
   assume_role?: string;
@@ -43725,7 +43725,7 @@ export const ObservabilityPipelineClickhouseDestinationCompressionAlgorithm = S.
 /** Structured compression configuration for the ClickHouse destination. Use `algorithm` to specify the compression type and `level` (optional, gzip only) to control compression strength. */
 export interface ObservabilityPipelineClickhouseDestinationCompressionObject {
   algorithm: ObservabilityPipelineClickhouseDestinationCompressionAlgorithm | (string & {});
-  /** Compression level (1–9). Only applicable when `algorithm` is `gzip`. */
+  /** Compression level (1-9). Only applicable when `algorithm` is `gzip`. */
   level?: number;
 }
 export const ObservabilityPipelineClickhouseDestinationCompressionObject = /*@__PURE__*/ S.suspend(
@@ -43738,7 +43738,7 @@ export const ObservabilityPipelineClickhouseDestinationCompressionObject = /*@__
   identifier: "ObservabilityPipelineClickhouseDestinationCompressionObject",
 }) as any as S.Schema<ObservabilityPipelineClickhouseDestinationCompressionObject>;
 
-/** Compression setting for outbound HTTP requests to ClickHouse. Can be specified as a shorthand string (`"gzip"` or `"none"`) or as an object with an `algorithm` field and an optional `level` (gzip only, 1–9). */
+/** Compression setting for outbound HTTP requests to ClickHouse. Can be specified as a shorthand string (`"gzip"` or `"none"`) or as an object with an `algorithm` field and an optional `level` (gzip only, 1-9). */
 export type ObservabilityPipelineClickhouseDestinationCompression =
   | ObservabilityPipelineClickhouseDestinationCompressionAlgorithm
   | ObservabilityPipelineClickhouseDestinationCompressionObject;
@@ -46816,7 +46816,7 @@ export const ObservabilityPipelineSensitiveDataScannerProcessorLibraryPatternOpt
 export type ObservabilityPipelineSensitiveDataScannerProcessorLibraryPatternType = "library";
 export const ObservabilityPipelineSensitiveDataScannerProcessorLibraryPatternType = S.String;
 
-/** Specifies a pattern from Datadog’s sensitive data detection library to match known sensitive data types. */
+/** Specifies a pattern from Datadog's sensitive data detection library to match known sensitive data types. */
 export interface ObservabilityPipelineSensitiveDataScannerProcessorLibraryPattern {
   options: ObservabilityPipelineSensitiveDataScannerProcessorLibraryPatternOptions;
   type: ObservabilityPipelineSensitiveDataScannerProcessorLibraryPatternType;
@@ -48645,7 +48645,7 @@ export const ObservabilityPipelineConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObservabilityPipelineConfig",
 }) as any as S.Schema<ObservabilityPipelineConfig>;
 
-/** Defines the pipeline’s name and its components (sources, processors, and destinations). */
+/** Defines the pipeline's name and its components (sources, processors, and destinations). */
 export interface ObservabilityPipelineDataAttributes {
   config: ObservabilityPipelineConfig;
   /** Name of the pipeline. */
@@ -48684,7 +48684,7 @@ export const CreatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/api/v2/obs-pipelines/pipelines", code: 200 })),
 ).annotate({ identifier: "CreatePipelineRequest" }) as any as S.Schema<CreatePipelineRequest>;
 
-/** Contains the pipeline’s ID, type, and configuration attributes. */
+/** Contains the pipeline's ID, type, and configuration attributes. */
 export interface ObservabilityPipelineData {
   attributes: ObservabilityPipelineDataAttributes;
   /** Unique identifier for the pipeline. */
@@ -53210,7 +53210,7 @@ export interface SensitiveDataScannerTextReplacement {
   number_of_chars?: number;
   /** Required if type == 'replacement_string'. */
   replacement_string?: string;
-  /** Only valid when type == `replacement_string`. When enabled, matches can be unmasked in logs by users with ‘Data Scanner Unmask’ permission. As a security best practice, avoid masking for highly-sensitive, long-lived data. */
+  /** Only valid when type == `replacement_string`. When enabled, matches can be unmasked in logs by users with 'Data Scanner Unmask' permission. As a security best practice, avoid masking for highly-sensitive, long-lived data. */
   should_save_match?: boolean;
   type?: SensitiveDataScannerTextReplacementType | (string & {});
 }
@@ -62534,7 +62534,7 @@ export const TeamsOwnershipMatchType = S.String;
 
 /** The attributes of the teams ownership mapping to create. */
 export interface TeamsOwnershipMappingCreateDataAttributes {
-  /** The ID of the RUM application this mapping applies to. For browser applications, provide the real application UUID — the team is applied to the view regardless of service. For mobile applications, omit this field (or set it to the nil UUID `00000000-0000-0000-0000-000000000000`) — the team is applied to the view and service combination across all applications. */
+  /** The ID of the RUM application this mapping applies to. For browser applications, provide the real application UUID -- the team is applied to the view regardless of service. For mobile applications, omit this field (or set it to the nil UUID `00000000-0000-0000-0000-000000000000`) -- the team is applied to the view and service combination across all applications. */
   application_id?: string;
   match_type?: TeamsOwnershipMatchType | (string & {});
   /** The RUM application's service name. For browser applications, this is optional. For mobile applications, this is required and scopes the ownership to a specific service. */
@@ -62651,7 +62651,7 @@ export const TeamsOwnershipMappingResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes of the mapping to add. `team_handle` and `view_name` are required when `op` is `add`. At least one of `service` or `application_id` must be provided. */
 export interface TeamsOwnershipMappingBatchOperationDataAttributes {
-  /** The ID of the RUM application this mapping applies to. For browser applications, provide the real application UUID — the team is applied to the view regardless of service. For mobile applications, omit this field (or set it to the nil UUID `00000000-0000-0000-0000-000000000000`) — the team is applied to the view and service combination across all applications. */
+  /** The ID of the RUM application this mapping applies to. For browser applications, provide the real application UUID -- the team is applied to the view regardless of service. For mobile applications, omit this field (or set it to the nil UUID `00000000-0000-0000-0000-000000000000`) -- the team is applied to the view and service combination across all applications. */
   application_id?: string;
   match_type?: TeamsOwnershipMatchType | (string & {});
   /** The RUM application's service name. For browser applications, this is optional. For mobile applications, this is required and scopes the ownership to a specific service. */
@@ -83800,7 +83800,7 @@ export interface TestOptimizationFlakyTestsManagementPoliciesDisabledFailureRate
   /** Minimum number of runs required before the rule is evaluated. Must be greater than or equal to 0. */
   min_runs?: number;
   status?: TestOptimizationFlakyTestsManagementPoliciesDisabledStatus | (string & {});
-  /** Failure rate threshold (0.0–1.0) above which the rule triggers. */
+  /** Failure rate threshold (0.0-1.0) above which the rule triggers. */
   threshold?: number;
 }
 export const TestOptimizationFlakyTestsManagementPoliciesDisabledFailureRateRule =
@@ -83872,7 +83872,7 @@ export interface TestOptimizationFlakyTestsManagementPoliciesQuarantinedFailureR
   enabled?: boolean;
   /** Minimum number of runs required before the rule is evaluated. Must be greater than or equal to 0. */
   min_runs?: number;
-  /** Failure rate threshold (0.0–1.0) above which the rule triggers. */
+  /** Failure rate threshold (0.0-1.0) above which the rule triggers. */
   threshold?: number;
 }
 export const TestOptimizationFlakyTestsManagementPoliciesQuarantinedFailureRateRule =
@@ -93203,11 +93203,11 @@ export interface RumSdkConfigRumAttributes {
   env?: string;
   /** The service name tag for the RUM application. */
   service?: string;
-  /** The percentage of collected sessions for which a replay is captured (0–100). */
+  /** The percentage of collected sessions for which a replay is captured (0-100). */
   session_replay_sample_rate: number;
-  /** The percentage of user sessions to collect (0–100). */
+  /** The percentage of user sessions to collect (0-100). */
   session_sample_rate: number;
-  /** The percentage of requests to forward as APM traces (0–100). */
+  /** The percentage of requests to forward as APM traces (0-100). */
   trace_sample_rate?: number;
   /** Whether to share a session across subdomains of the same site. */
   track_session_across_subdomains?: boolean;
@@ -126030,7 +126030,7 @@ export const MetricsAndMetricTagConfigurationsResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<MetricsAndMetricTagConfigurationsResponse>;
 
 export interface ListTagIndexingRulesRequest {
-  /** Page size (1–1000, default 100). */
+  /** Page size (1-1000, default 100). */
   page_limit_?: number;
   /** Page offset from the start of the list (default 0). */
   page_offset_?: number;
@@ -133596,7 +133596,7 @@ export const TicketCreationRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TicketCreationRuleReorderResponse",
 }) as any as S.Schema<TicketCreationRuleReorderResponse>;
 
-/** Ordered list of tag indexing rule UUIDs. The server assigns rule_order 1, 2, … matching position in this list. */
+/** Ordered list of tag indexing rule UUIDs. The server assigns rule_order 1, 2, ... matching position in this list. */
 export type TagIndexingRuleOrderAttributesRuleIdsList = Array<string>;
 export const TagIndexingRuleOrderAttributesRuleIdsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -133604,7 +133604,7 @@ export const TagIndexingRuleOrderAttributesRuleIdsList = /*@__PURE__*/ S.Array(
 
 /** Attributes for the reorder operation. */
 export interface TagIndexingRuleOrderAttributes {
-  /** Ordered list of tag indexing rule UUIDs. The server assigns rule_order 1, 2, … matching position in this list. */
+  /** Ordered list of tag indexing rule UUIDs. The server assigns rule_order 1, 2, ... matching position in this list. */
   rule_ids?: TagIndexingRuleOrderAttributesRuleIdsList;
 }
 export const TagIndexingRuleOrderAttributes = /*@__PURE__*/ S.suspend(() =>
@@ -134580,7 +134580,7 @@ export const RecommendationsFilterRequestData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationsFilterRequestData>;
 
 export interface SearchCostRecommendationsRequest {
-  /** Number of results per page (1–10000). */
+  /** Number of results per page (1-10000). */
   page_size_?: string;
   /** Pagination token from a previous response. */
   page_token_?: string;
@@ -134676,7 +134676,7 @@ export interface RecommendationsPageMetaPage {
   filter?: string;
   /** Opaque token used to fetch the next page; absent on the last page. */
   next_page_token?: string;
-  /** Number of items returned in this page (1–10000). */
+  /** Number of items returned in this page (1-10000). */
   page_size?: number;
   /** Pagination token echoed back from the request. */
   page_token?: string;
@@ -136500,7 +136500,7 @@ export interface SearchWidgetsRequest {
   filter_title_?: string;
   /** Filter widgets by tags. Format as bracket-delimited CSV, e.g. `[tag1,tag2]`. */
   filter_tags_?: string;
-  /** Sort field for the results. **`title`, `created_at`, `modified_at`** — both ascending and descending are supported. Use the bare field name for ascending (e.g. `sort=title`) or prefix with `-` for descending (e.g. `sort=-modified_at`). **`is_favorited`** — returns favorites-first ordering (favorited widgets first, then the rest). Direction is fixed; the `-` prefix is ignored for this field. */
+  /** Sort field for the results. **`title`, `created_at`, `modified_at`** -- both ascending and descending are supported. Use the bare field name for ascending (e.g. `sort=title`) or prefix with `-` for descending (e.g. `sort=-modified_at`). **`is_favorited`** -- returns favorites-first ordering (favorited widgets first, then the rest). Direction is fixed; the `-` prefix is ignored for this field. */
   sort?: string;
   /** Page number for pagination (0-indexed). */
   page_number_?: number;
@@ -138615,7 +138615,7 @@ export const AsanaIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
 export interface AzureTenantUpdate {
   /** The Client ID, also known as the Application ID in Azure, is a unique identifier for an application. It's used to identify the application during the authentication process. Your Application (client) ID is listed in the application's overview page. You can navigate to your application via the Azure Directory. */
   app_client_id?: string;
-  /** The Client Secret is a confidential piece of information known only to the application and Azure AD. It's used to prove the application's identity. Your Client Secret is available from the application’s secrets page. You can navigate to your application via the Azure Directory. */
+  /** The Client Secret is a confidential piece of information known only to the application and Azure AD. It's used to prove the application's identity. Your Client Secret is available from the application's secrets page. You can navigate to your application via the Azure Directory. */
   client_secret?: string | Redacted.Redacted<string>;
   /** If provided, the custom scope to be requested from Microsoft when acquiring an OAuth 2 access token. This custom scope is used only in conjunction with the HTTP action. A resource's scope is constructed by using the identifier URI for the resource and .default, separated by a forward slash (/) as follows:{identifierURI}/.default. */
   custom_scopes?: string;
@@ -149262,11 +149262,11 @@ export interface RumSdkConfigRumUpdateAttributes {
   env?: string;
   /** The service name tag for the RUM application. */
   service?: string;
-  /** The percentage of collected sessions for which a replay is captured (0–100). */
+  /** The percentage of collected sessions for which a replay is captured (0-100). */
   session_replay_sample_rate: number;
-  /** The percentage of user sessions to collect (0–100). */
+  /** The percentage of user sessions to collect (0-100). */
   session_sample_rate: number;
-  /** The percentage of requests to forward as APM traces (0–100). */
+  /** The percentage of requests to forward as APM traces (0-100). */
   trace_sample_rate?: number;
   /** Whether to share a session across subdomains of the same site. */
   track_session_across_subdomains?: boolean;
@@ -153036,7 +153036,7 @@ export const UpsertLLMObsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpsertLLMObsAnnotationsRequest",
 }) as any as S.Schema<UpsertLLMObsAnnotationsRequest>;
 
-/** A single label value entry in an annotation response. In addition to the submitted fields, the server populates `type` and `name_when_saved` to mirror the schema state at the time the annotation was created — these help clients display values correctly when the schema has since changed. */
+/** A single label value entry in an annotation response. In addition to the submitted fields, the server populates `type` and `name_when_saved` to mirror the schema state at the time the annotation was created -- these help clients display values correctly when the schema has since changed. */
 export interface LLMObsAnnotationLabelValueResponse {
   assessment?: LLMObsAnnotationAssessment;
   /** ID of the label schema this value corresponds to. */
@@ -156316,7 +156316,7 @@ export const createDashboardListItems: API.OperationMethod<
 }));
 
 export type CreateDashboardSecureEmbedError = Forbidden | NotFound | Conflict | DatadogOpError;
-/** Create a secure embed for a dashboard Create a secure embed share for a dashboard. The response includes a one-time `credential` used for HMAC-SHA256 signing. Store it securely — it cannot be retrieved again. */
+/** Create a secure embed for a dashboard Create a secure embed share for a dashboard. The response includes a one-time `credential` used for HMAC-SHA256 signing. Store it securely -- it cannot be retrieved again. */
 export const createDashboardSecureEmbed: API.OperationMethod<
   CreateDashboardSecureEmbedRequest,
   SecureEmbedCreateResponse,
@@ -156521,7 +156521,7 @@ export const createElasticCloudIntegrationAccount: API.OperationMethod<
 }));
 
 export type CreateEventError = BadRequest | Forbidden | DatadogOpError;
-/** Post an event This endpoint allows you to publish events. **Note:** To utilize this endpoint with our client libraries, please ensure you are using the latest version released on or after July 1, 2025. Earlier versions do not support this functionality. **Important:** Upgrade to the latest client library version to use the updated endpoint at `https://event-management-intake.{site}/api/v2/events`. Older client library versions of the Post an event (v2) API send requests to a deprecated endpoint (`https://api.{site}/api/v2/events`). ✅ **Only events with the `change` or `alert` category** are in General Availability. For change events, see [Change Tracking](https://docs.datadoghq.com/change_tracking) for more details. ❌ For use cases involving other event categories, use the V1 endpoint or reach out to [support](https://www.datadoghq.com/support/). */
+/** Post an event This endpoint allows you to publish events. **Note:** To utilize this endpoint with our client libraries, please ensure you are using the latest version released on or after July 1, 2025. Earlier versions do not support this functionality. **Important:** Upgrade to the latest client library version to use the updated endpoint at `https://event-management-intake.{site}/api/v2/events`. Older client library versions of the Post an event (v2) API send requests to a deprecated endpoint (`https://api.{site}/api/v2/events`). U+2705 **Only events with the `change` or `alert` category** are in General Availability. For change events, see [Change Tracking](https://docs.datadoghq.com/change_tracking) for more details. U+274C For use cases involving other event categories, use the V1 endpoint or reach out to [support](https://www.datadoghq.com/support/). */
 export const createEvent: API.OperationMethod<
   CreateEventRequest,
   CreateEventResponse,
@@ -164370,7 +164370,7 @@ export const getCustomRuleset: API.OperationMethod<
 }));
 
 export type GetDashboardListItemsError = Forbidden | NotFound | DatadogOpError;
-/** Get items of a Dashboard List Fetch the dashboard list’s dashboard definitions. */
+/** Get items of a Dashboard List Fetch the dashboard list's dashboard definitions. */
 export const getDashboardListItems: API.OperationMethod<
   GetDashboardListItemsRequest,
   DashboardListItems,
@@ -166688,7 +166688,7 @@ export const getRetentionFilter: API.OperationMethod<
 }));
 
 export type GetRoleError = Forbidden | NotFound | DatadogOpError;
-/** Get a role Get a role in the organization specified by the role’s `role_id`. */
+/** Get a role Get a role in the organization specified by the role's `role_id`. */
 export const getRole: API.OperationMethod<
   GetRoleRequest,
   RoleResponse,
@@ -168306,7 +168306,7 @@ export const getUsageAttributionTypes: API.OperationMethod<
 }));
 
 export type GetUsageSummaryAvailableFieldsError = Forbidden | DatadogOpError;
-/** Get available fields for usage summary List the field names returned by `GET /api/v1/usage/summary` at each of its three response levels. Each list contains every key the data endpoint emits—both typed fields declared in the OpenAPI spec and untyped keys exposed through `additionalProperties` (the latter used for billing dimensions and usage types added after the v1 schema freeze). This endpoint is only accessible for [parent-level organizations](https://docs.datadoghq.com/account_management/multi_organization/). Go example: ```go fields, _, err := api.GetUsageSummaryAvailableFields(ctx) attr := fields.Data.GetAttributes() // resp is the *UsageSummaryResponse returned by api.GetUsageSummary(ctx, ...) // Layer 1: UsageSummaryResponse for _, key := range attr.GetResponseFields() { if val, ok := resp.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } // Layer 2: UsageSummaryDate (per month) for _, date := range resp.GetUsage() { for _, key := range attr.GetDateFields() { if val, ok := date.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } // Layer 3: UsageSummaryDateOrg (per org per month) for _, org := range date.GetOrgs() { for _, key := range attr.GetDateOrgFields() { if val, ok := org.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } } } ``` */
+/** Get available fields for usage summary List the field names returned by `GET /api/v1/usage/summary` at each of its three response levels. Each list contains every key the data endpoint emits--both typed fields declared in the OpenAPI spec and untyped keys exposed through `additionalProperties` (the latter used for billing dimensions and usage types added after the v1 schema freeze). This endpoint is only accessible for [parent-level organizations](https://docs.datadoghq.com/account_management/multi_organization/). Go example: ```go fields, _, err := api.GetUsageSummaryAvailableFields(ctx) attr := fields.Data.GetAttributes() // resp is the *UsageSummaryResponse returned by api.GetUsageSummary(ctx, ...) // Layer 1: UsageSummaryResponse for _, key := range attr.GetResponseFields() { if val, ok := resp.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } // Layer 2: UsageSummaryDate (per month) for _, date := range resp.GetUsage() { for _, key := range attr.GetDateFields() { if val, ok := date.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } // Layer 3: UsageSummaryDateOrg (per org per month) for _, org := range date.GetOrgs() { for _, key := range attr.GetDateOrgFields() { if val, ok := org.AdditionalProperties[key]; ok { fmt.Println(key, val.(json.Number)) } } } } ``` */
 export const getUsageSummaryAvailableFields: API.OperationMethod<
   GetUsageSummaryAvailableFieldsRequest,
   GetUsageSummaryAvailableFieldsResponse,
@@ -168321,7 +168321,7 @@ export const getUsageSummaryAvailableFields: API.OperationMethod<
 }));
 
 export type GetUserError = Forbidden | NotFound | DatadogOpError;
-/** Get user details Get a user in the organization specified by the user’s `user_id`. */
+/** Get user details Get a user in the organization specified by the user's `user_id`. */
 export const getUser: API.OperationMethod<
   GetUserRequest,
   UserResponse,
@@ -173282,7 +173282,7 @@ export const listUserOrganizations: API.OperationMethod<
 }));
 
 export type ListUserPermissionsError = Forbidden | NotFound | DatadogOpError;
-/** Get a user permissions Get a user permission set. Returns a list of the user’s permissions granted by the associated user's roles. */
+/** Get a user permissions Get a user permission set. Returns a list of the user's permissions granted by the associated user's roles. */
 export const listUserPermissions: API.OperationMethod<
   ListUserPermissionsRequest,
   PermissionsResponse,
@@ -174249,7 +174249,7 @@ export const reorderApmRetentionFilters: API.OperationMethod<
 }));
 
 export type ReorderCustomAllocationRulesError = DatadogOpError;
-/** Reorder custom allocation rules Reorder custom allocation rules - Change the execution order of custom allocation rules. **Important**: You must provide the **complete list** of all rule IDs in the desired execution order. The API will reorder ALL rules according to the provided sequence. Rules are executed in the order specified, with lower indices (earlier in the array) having higher priority. **Example**: If you have rules with IDs [123, 456, 789] and want to change order from 123→456→789 to 456→123→789, send: [{"id": "456"}, {"id": "123"}, {"id": "789"}] */
+/** Reorder custom allocation rules Reorder custom allocation rules - Change the execution order of custom allocation rules. **Important**: You must provide the **complete list** of all rule IDs in the desired execution order. The API will reorder ALL rules according to the provided sequence. Rules are executed in the order specified, with lower indices (earlier in the array) having higher priority. **Example**: If you have rules with IDs [123, 456, 789] and want to change order from 123->456->789 to 456->123->789, send: [{"id": "456"}, {"id": "123"}, {"id": "789"}] */
 export const reorderCustomAllocationRules: API.OperationMethod<
   ReorderCustomAllocationRulesRequest,
   ReorderCustomAllocationRulesResponse,
@@ -174374,7 +174374,7 @@ export const reorderSecurityFindingsAutomationTicketCreationRules: API.Operation
 }));
 
 export type ReorderTagIndexingRulesError = BadRequest | Forbidden | NotFound | DatadogOpError;
-/** Reorder tag indexing rules Atomically re-sequence the tag indexing rules for an org to match the supplied list of rule UUIDs. The server assigns `rule_order` 1, 2, … matching each rule UUID by position in the list. The UUIDs of all active rules must be provided; omitting any active rule UUID returns a 400 error. Requires the `Manage Tags for Metrics` permission. */
+/** Reorder tag indexing rules Atomically re-sequence the tag indexing rules for an org to match the supplied list of rule UUIDs. The server assigns `rule_order` 1, 2, ... matching each rule UUID by position in the list. The UUIDs of all active rules must be provided; omitting any active rule UUID returns a 400 error. Requires the `Manage Tags for Metrics` permission. */
 export const reorderTagIndexingRules: API.OperationMethod<
   ReorderTagIndexingRulesRequest,
   ReorderTagIndexingRulesResponse,
@@ -174759,7 +174759,7 @@ export const searchJourneys: API.OperationMethod<
 }));
 
 export type SearchLLMObsExperimentationError = BadRequest | Forbidden | DatadogOpError;
-/** Search Agent Observability experimentation Search across Agent Observability experimentation entities — projects, datasets, dataset records, experiments, and experiment runs — using cursor-based pagination. The `filter.scope` field controls which entity types are returned. At least one valid scope must be provided. Returns `200 OK` when all results fit in a single page. Returns `206 Partial Content` with a cursor in `meta.after` when additional pages are available. */
+/** Search Agent Observability experimentation Search across Agent Observability experimentation entities -- projects, datasets, dataset records, experiments, and experiment runs -- using cursor-based pagination. The `filter.scope` field controls which entity types are returned. At least one valid scope must be provided. Returns `200 OK` when all results fit in a single page. Returns `206 Partial Content` with a cursor in `meta.after` when additional pages are available. */
 export const searchLLMObsExperimentation: API.OperationMethod<
   SearchLLMObsExperimentationRequest,
   LLMObsExperimentationSearchResponse,
@@ -174868,7 +174868,7 @@ export const searchSuites: API.OperationMethod<
 }));
 
 export type SearchWidgetsError = BadRequest | Forbidden | DatadogOpError;
-/** Search widgets Search and list widgets for a given experience type, with filtering, sorting, and pagination. **Response meta** carries totals scoped to the current filter: - `filtered_total` — widgets matching the filter. - `created_by_you_total` — among the matches, how many the current user created. - `favorited_by_you_total` — among the matches, how many the current user has favorited. - `created_by_anyone_total` — total widgets in the experience type, ignoring filters. Each returned widget includes `is_favorited` reflecting the current user's favorite status. Favoriting itself is performed through the shared favorites API, not this endpoint. */
+/** Search widgets Search and list widgets for a given experience type, with filtering, sorting, and pagination. **Response meta** carries totals scoped to the current filter: - `filtered_total` -- widgets matching the filter. - `created_by_you_total` -- among the matches, how many the current user created. - `favorited_by_you_total` -- among the matches, how many the current user has favorited. - `created_by_anyone_total` -- total widgets in the experience type, ignoring filters. Each returned widget includes `is_favorited` reflecting the current user's favorite status. Favoriting itself is performed through the shared favorites API, not this endpoint. */
 export const searchWidgets: API.OperationMethod<
   SearchWidgetsRequest,
   WidgetListResponse,
@@ -175076,7 +175076,7 @@ export const submitLog: API.OperationMethod<
 }));
 
 export type SubmitMetricsError = BadRequest | Forbidden | DatadogOpError;
-/** Submit metrics The metrics end-point allows you to post time-series data that can be graphed on Datadog’s dashboards. The maximum payload size is 500 kilobytes (512000 bytes). Compressed payloads must have a decompressed size of less than 5 megabytes (5242880 bytes). If you’re submitting metrics directly to the Datadog API without using DogStatsD, expect: - 64 bits for the timestamp - 64 bits for the value - 20 bytes for the metric names - 50 bytes for the timeseries - The full payload is approximately 100 bytes. Host name is one of the resources in the Resources field. */
+/** Submit metrics The metrics end-point allows you to post time-series data that can be graphed on Datadog's dashboards. The maximum payload size is 500 kilobytes (512000 bytes). Compressed payloads must have a decompressed size of less than 5 megabytes (5242880 bytes). If you're submitting metrics directly to the Datadog API without using DogStatsD, expect: - 64 bits for the timestamp - 64 bits for the value - 20 bytes for the metric names - 50 bytes for the timeseries - The full payload is approximately 100 bytes. Host name is one of the resources in the Resources field. */
 export const submitMetrics: API.OperationMethod<
   SubmitMetricsRequest,
   SubmitMetricsResponse,

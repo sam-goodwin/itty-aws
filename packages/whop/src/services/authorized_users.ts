@@ -312,7 +312,7 @@ export type CreateAuthorizedUserError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create authorized user [Legacy API — https://docs.whop.com/api-reference] Add a new authorized user to a company. Required permissions: - `authorized_user:create` - `member:email:read` */
+/** Create authorized user [Legacy API -- https://docs.whop.com/api-reference] Add a new authorized user to a company. Required permissions: - `authorized_user:create` - `member:email:read` */
 export const createAuthorizedUser: API.OperationMethod<
   CreateAuthorizedUserRequest,
   AuthorizedUser,
@@ -332,7 +332,7 @@ export type DeleteAuthorizedUserError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete authorized user [Legacy API — https://docs.whop.com/api-reference] Remove an authorized user from a company. Required permissions: - `authorized_user:delete` */
+/** Delete authorized user [Legacy API -- https://docs.whop.com/api-reference] Remove an authorized user from a company. Required permissions: - `authorized_user:delete` */
 export const deleteAuthorizedUser: API.OperationMethod<
   DeleteAuthorizedUserRequest,
   DeleteAuthorizedUserResponse,
@@ -352,7 +352,7 @@ export type GetAuthorizedUserError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve authorized user [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing authorized user. Required permissions: - `company:authorized_user:read` - `member:email:read` */
+/** Retrieve authorized user [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing authorized user. Required permissions: - `company:authorized_user:read` - `member:email:read` */
 export const getAuthorizedUser: API.OperationMethod<
   GetAuthorizedUserRequest,
   AuthorizedUser,
@@ -372,7 +372,7 @@ export type ListAuthorizedUserError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List authorized users [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of authorized team members for a company, with optional filtering by user, role, and creation date. Required permissions: - `company:authorized_user:read` - `member:email:read` */
+/** List authorized users [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of authorized team members for a company, with optional filtering by user, role, and creation date. Required permissions: - `company:authorized_user:read` - `member:email:read` */
 export const listAuthorizedUser: API.PaginatedOperationMethod<
   ListAuthorizedUserRequest,
   ListAuthorizedUserResponse,

@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   accountId: "account_id",
   anniversaryDate: "anniversary_date",
@@ -1787,7 +1787,7 @@ export interface CreateThreatEventTagRequest {
   aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList;
   aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList;
   attributionOrganization?: ThreatEventsTagsCreateRequestAttributionOrganization;
-  /** Tag type (category) UUID. Optional — when present, `properties` is validated against this category's schema. When absent, the tag is typeless and properties are accepted free-form. */
+  /** Tag type (category) UUID. Optional -- when present, `properties` is validated against this category's schema. When absent, the tag is typeless and properties are accepted free-form. */
   categoryUuid?: string;
   /** Overall tag confidence (1-10). Optional. */
   confidence?: number;
@@ -6780,7 +6780,7 @@ export interface ListThreatEventsGraphRequest {
   cursor?: string;
   /** Comma-separated dataset UUIDs to restrict neighbor scope, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Intersected with access grants. */
   datasetIds?: ListThreatEventsGraphRequestDatasetIdsList;
-  /** Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default). */
+  /** Edge direction relative to each seed: out (seed->neighbors), in (neighbors->seed), both (default). */
   direction?: string;
   /** Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes. */
   expand?: ListThreatEventsGraphRequestExpandList;
@@ -6792,7 +6792,7 @@ export interface ListThreatEventsGraphRequest {
   maxNodes?: number;
   /** Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to. */
   relationshipTypes?: ListThreatEventsGraphRequestRelationshipTypesList;
-  /** Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-…,indicator:661fa920-… Provide 1–50 entries; omitting seeds returns 400. */
+  /** Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1-50 entries; omitting seeds returns 400. */
   seeds?: ListThreatEventsGraphRequestSeedsList;
 }
 export const ListThreatEventsGraphRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6823,7 +6823,7 @@ export const ListThreatEventsGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventsGraphRequest>;
 
 export interface ListThreatEventsGraphResponseEdgesItem {
-  /** Deterministic composite edge id (source→target:relationshipType) */
+  /** Deterministic composite edge id (source->target:relationshipType) */
   id: string;
   relationshipType: string;
   /** Compact id of the source node (type:uuid) */
@@ -6930,7 +6930,7 @@ export interface ListThreatEventsIndicatorsRequest {
   createdAfter?: string;
   /** Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z'). */
   createdBefore?: string;
-  /** Opaque cursor from a previous response's `pagination.cursor`. When provided, all filters, datasetIds, page, `pageSize`, `includeTags` and `relatedEventsLimit` come from the cursor — do not resend them. Sending any filter, `page`, `pageSize`, `includeTags`, `relatedEventsLimit`, `includeTotalCount=true`, or `cache=from-graph` alongside a cursor yields a 400 `CursorFilterConflictError`. A cursor issued for a different entity, an unsupported version, or a dataset that has since been reconfigured as analytics-only yields a 400 `InvalidCursorError`. */
+  /** Opaque cursor from a previous response's `pagination.cursor`. When provided, all filters, datasetIds, page, `pageSize`, `includeTags` and `relatedEventsLimit` come from the cursor -- do not resend them. Sending any filter, `page`, `pageSize`, `includeTags`, `relatedEventsLimit`, `includeTotalCount=true`, or `cache=from-graph` alongside a cursor yields a 400 `CursorFilterConflictError`. A cursor issued for a different entity, an unsupported version, or a dataset that has since been reconfigured as analytics-only yields a 400 `InvalidCursorError`. */
   cursor?: string;
   /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset. */
   datasetIds?: ListThreatEventsIndicatorsRequestDatasetIdsList;
@@ -6947,7 +6947,7 @@ export interface ListThreatEventsIndicatorsRequest {
   pageSize?: number;
   /** Filter by related event IDs */
   relatedEvents?: ListThreatEventsIndicatorsRequestRelatedEventsList;
-  /** Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events. For JSON responses, when the limit hides events, the indicator carries `relatedEventsHasMore: true` and the response includes an advisory message — the cap is never applied silently. STIX and TAXII representations do not include related-event data. */
+  /** Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events. For JSON responses, when the limit hides events, the indicator carries `relatedEventsHasMore: true` and the response includes an advisory message -- the cap is never applied silently. STIX and TAXII representations do not include related-event data. */
   relatedEventsLimit?: number;
   /** Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType, uuid. Supports operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use the 'in' operator with an array value to bulk-check up to 100 indicators in a single request, e.g. search=[{"field":"value","op":"in","value":["evil.com","bad.org"]}]. Multiple conditions are AND'd together. Max 10 conditions per request. */
   search?: ListThreatEventsIndicatorsRequestSearchList;
@@ -7373,9 +7373,9 @@ export interface ListThreatEventsIndicatorsAggregateRequest {
   createdBefore?: string;
   /** Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible datasets, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, aggregates across all accessible datasets. */
   datasetIds?: ListThreatEventsIndicatorsAggregateRequestDatasetIdsList;
-  /** For measure=relationships: only count indicator→event links whose relationship was created/observed on or after this date (ISO 8601). Bounds the activity view to recently-observed links. Note: this filters by the relationship's createdAt (link-observation time), not the underlying event's business date. */
+  /** For measure=relationships: only count indicator->event links whose relationship was created/observed on or after this date (ISO 8601). Bounds the activity view to recently-observed links. Note: this filters by the relationship's createdAt (link-observation time), not the underlying event's business date. */
   eventDateAfter?: string;
-  /** For measure=relationships: only count indicator→event links whose relationship was created/observed on or before this date (ISO 8601). Bounds the activity view by the relationship's createdAt (link-observation time), not the underlying event's business date. */
+  /** For measure=relationships: only count indicator->event links whose relationship was created/observed on or before this date (ISO 8601). Bounds the activity view by the relationship's createdAt (link-observation time), not the underlying event's business date. */
   eventDateBefore?: string;
   /** Maximum number of aggregation results to return (1-100) */
   limit?: number;
@@ -7946,11 +7946,11 @@ export interface ListThreatEventsTagsRequest {
   /** Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit. */
   cache?: ListThreatEventsTagsRequestCache | (string & {});
   categoryUuid?: string;
-  /** Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, categoryName, description, dateOfDiscovery, tlp, confidence, actorCategory, motive, attributionOrganization, originCountryISO, aliases, externalReferences, opsecLevel, sophisticationLevel, activeDuration, priority, lastSeen, aliasGroupNames. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{"field":"originCountryISO","op":"in","value":["IR","CN"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for "apt28" will also match "apt280" if both appear in the same tag's alias list). */
+  /** Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, categoryName, description, dateOfDiscovery, tlp, confidence, actorCategory, motive, attributionOrganization, originCountryISO, aliases, externalReferences, opsecLevel, sophisticationLevel, activeDuration, priority, lastSeen, aliasGroupNames. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{"field":"originCountryISO","op":"in","value":["IR","CN"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) -- matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID -> tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for "apt28" will also match "apt280" if both appear in the same tag's alias list). */
   filters?: ListThreatEventsTagsRequestFiltersList;
   page?: number;
   pageSize?: number;
-  /** Free-text substring match on tag value AND custom-field properties. Searches case-insensitively inside both `Tag.value` and the serialized `Tag.properties` JSON blob (keys, values, and annotation metadata like confidence/tlp are all searchable). Same serialized-text tradeoff as `aliasGroupNames` — substrings can cross JSON boundaries. */
+  /** Free-text substring match on tag value AND custom-field properties. Searches case-insensitively inside both `Tag.value` and the serialized `Tag.properties` JSON blob (keys, values, and annotation metadata like confidence/tlp are all searchable). Same serialized-text tradeoff as `aliasGroupNames` -- substrings can cross JSON boundaries. */
   search?: string;
 }
 export const ListThreatEventsTagsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9413,7 +9413,7 @@ export interface ListThreatSignalsIndicatorsRequest {
   feedId?: string;
   includeTotal?: boolean;
   perPage?: number;
-  /** NFC-normalized and trimmed, case-insensitive literal substring search of indicator values. Requires 3–500 Unicode code points; the upper code-point bound is described here because OpenAPI string length cannot precisely express it without imposing UTF-16 semantics. */
+  /** NFC-normalized and trimmed, case-insensitive literal substring search of indicator values. Requires 3-500 Unicode code points; the upper code-point bound is described here because OpenAPI string length cannot precisely express it without imposing UTF-16 semantics. */
   search?: string;
   sort?: string;
 }
@@ -12110,7 +12110,7 @@ export const listThreatEventsCategoriesCatalog: API.OperationMethod<
 }));
 
 export type ListThreatEventsGraphError = CloudflareOpError;
-/** Expands the single-level relationship neighborhood of one or more seed nodes (event, indicator, or tag) from R2 Data Catalog. Seeds use compact id format (type:uuid), e.g. "event:550e8400-…". Multi-seed requests merge and deduplicate results server-side. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope. */
+/** Expands the single-level relationship neighborhood of one or more seed nodes (event, indicator, or tag) from R2 Data Catalog. Seeds use compact id format (type:uuid), e.g. "event:550e8400-...". Multi-seed requests merge and deduplicate results server-side. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope. */
 export const listThreatEventsGraph: API.OperationMethod<
   ListThreatEventsGraphRequest,
   ListThreatEventsGraphResponse,

@@ -10807,7 +10807,7 @@ export const v1ApplyAMigration: API.OperationMethod<
 }));
 
 export type V1ApplyProjectAddonError = BadRequest | Forbidden | SupabaseOpError;
-/** Apply or update billing addons, including compute instance size Selects an addon variant, for example scaling the project’s compute instance up or down, and applies it to the project. */
+/** Apply or update billing addons, including compute instance size Selects an addon variant, for example scaling the project's compute instance up or down, and applies it to the project. */
 export const v1ApplyProjectAddon: API.OperationMethod<
   V1ApplyProjectAddonRequest,
   V1ApplyProjectAddonResponse,
@@ -11385,7 +11385,7 @@ export const v1EnableDatabaseWebhook: API.OperationMethod<
 }));
 
 export type V1ExchangeOauthTokenError = BadRequest | Forbidden | SupabaseOpError;
-/** Exchange auth code for user's access and refresh token Supports `authorization_code`, `refresh_token`, and `urn:ietf:params:oauth:grant-type:jwt-bearer` grant types. The `jwt-bearer` grant type (IDJAG — identity-directed JWT assertion) is in beta and available on Team and Enterprise plans only. This endpoint is currently in its **Beta** stage. */
+/** Exchange auth code for user's access and refresh token Supports `authorization_code`, `refresh_token`, and `urn:ietf:params:oauth:grant-type:jwt-bearer` grant types. The `jwt-bearer` grant type (IDJAG -- identity-directed JWT assertion) is in beta and available on Team and Enterprise plans only. This endpoint is currently in its **Beta** stage. */
 export const v1ExchangeOauthToken: API.OperationMethod<
   V1ExchangeOauthTokenRequest,
   OAuthTokenResponseOutput,

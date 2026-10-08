@@ -233,7 +233,7 @@ export type GetPayoutMethodError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve payout method [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing payout method. Required permissions: - `payout:destination:read` */
+/** Retrieve payout method [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing payout method. Required permissions: - `payout:destination:read` */
 export const getPayoutMethod: API.OperationMethod<
   GetPayoutMethodRequest,
   PayoutMethod,
@@ -253,7 +253,7 @@ export type ListPayoutMethodError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List payout methods [Legacy API — https://docs.whop.com/api-reference] Returns a list of active payout methods configured for a company, ordered by most recently created. Required permissions: - `payout:destination:read` */
+/** List payout methods [Legacy API -- https://docs.whop.com/api-reference] Returns a list of active payout methods configured for a company, ordered by most recently created. Required permissions: - `payout:destination:read` */
 export const listPayoutMethod: API.PaginatedOperationMethod<
   ListPayoutMethodRequest,
   ListPayoutMethodResponse,

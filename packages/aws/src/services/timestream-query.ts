@@ -1240,7 +1240,7 @@ export type DescribeEndpointsError =
  * API calls against. This API is available through both Write and Query.
  *
  * Because the Timestream SDKs are designed to transparently work with the
- * service’s architecture, including the management and mapping of the service endpoints,
+ * service's architecture, including the management and mapping of the service endpoints,
  * *it is not recommended that you use this API unless*:
  *
  * - You are using VPC endpoints (Amazon Web Services PrivateLink) with Timestream

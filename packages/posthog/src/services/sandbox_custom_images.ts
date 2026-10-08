@@ -308,7 +308,7 @@ export const createSandboxCustomImagesBuild: API.OperationMethod<
 }));
 
 export type CreateSandboxCustomImagesBuilderTaskError = PosthogOpError;
-/** Revive (or reuse) the image's builder agent session. When the previous session has ended, a fresh one is started seeded with the stored spec — use this to update an existing image. */
+/** Revive (or reuse) the image's builder agent session. When the previous session has ended, a fresh one is started seeded with the stored spec -- use this to update an existing image. */
 export const createSandboxCustomImagesBuilderTask: API.OperationMethod<
   CreateSandboxCustomImagesBuilderTaskRequest,
   SandboxCustomImageDTO,

@@ -198,7 +198,7 @@ export const ListStarsResponseItemsList = /*@__PURE__*/ S.Array(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListStarsResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const ListStarsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -256,7 +256,7 @@ export const RemoveStarResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveStarResponse" }) as any as S.Schema<RemoveStarResponse>;
 
 export type AddStarError = SlackOpError;
-/** Save an item for later. Formerly known as adding a star. Required scopes — user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_starred` — The specified item has already been starred by the authenticated user. - `bad_timestamp` — Value passed for `timestamp` was invalid. - `channel_not_found` — Channel, private group, or DM specified by `channel` does not exist - `external_channel_migrating` — Channel is undergoing active migration - `file_comment_not_found` — File comment specified by `file_comment` does not exist. - `file_not_found` — File specified by `file` does not exist. - `message_not_found` — Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` — `file`, `file_comment`, `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/stars.add */
+/** Save an item for later. Formerly known as adding a star. Required scopes -- user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_starred` -- The specified item has already been starred by the authenticated user. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Channel, private group, or DM specified by `channel` does not exist - `external_channel_migrating` -- Channel is undergoing active migration - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `file_not_found` -- File specified by `file` does not exist. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/stars.add */
 export const addStar: API.OperationMethod<
   AddStarRequest,
   AddStarResponse,
@@ -271,7 +271,7 @@ export const addStar: API.OperationMethod<
 }));
 
 export type ListStarsError = SlackOpError;
-/** (Deprecated) Listed a user's saved items, formerly known as stars. Required scopes — user: `stars:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` — A required argument is missing. See https://docs.slack.dev/reference/methods/stars.list */
+/** (Deprecated) Listed a user's saved items, formerly known as stars. Required scopes -- user: `stars:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `missing_argument` -- A required argument is missing. See https://docs.slack.dev/reference/methods/stars.list */
 export const listStars: API.PaginatedOperationMethod<
   ListStarsRequest,
   ListStarsResponse,
@@ -297,7 +297,7 @@ export const listStars: API.PaginatedOperationMethod<
 ) as any;
 
 export type RemoveStarError = SlackOpError;
-/** Removes a saved item (star) from an item. Required scopes — user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` — Value passed for `timestamp` was invalid. - `channel_not_found` — Channel, private group, or DM specified by `channel` does not exist - `file_comment_not_found` — File comment specified by `file_comment` does not exist. - `file_not_found` — File specified by `file` does not exist. - `message_not_found` — Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` — `file`, `file_comment`, `channel` and `timestamp` was not specified. - `not_starred` — The specified item is not currently starred by the authenticated user. See https://docs.slack.dev/reference/methods/stars.remove */
+/** Removes a saved item (star) from an item. Required scopes -- user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Channel, private group, or DM specified by `channel` does not exist - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `file_not_found` -- File specified by `file` does not exist. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, `channel` and `timestamp` was not specified. - `not_starred` -- The specified item is not currently starred by the authenticated user. See https://docs.slack.dev/reference/methods/stars.remove */
 export const removeStar: API.OperationMethod<
   RemoveStarRequest,
   RemoveStarResponse,

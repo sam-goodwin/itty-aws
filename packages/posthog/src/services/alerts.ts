@@ -170,7 +170,7 @@ export const HogQLAlertEvaluation = S.String;
 export interface HogQLAlertConfig {
   /** Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column). */
   column?: string | null;
-  /** How to read the result rows — an explicit choice, no implicit default. */
+  /** How to read the result rows -- an explicit choice, no implicit default. */
   evaluation: HogQLAlertEvaluation | (string & {});
   /** Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row). */
   label_column?: string | null;
@@ -217,7 +217,7 @@ export const MetricsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricsAlertConfig" }) as any as S.Schema<MetricsAlertConfig>;
 
-/** Per-insight-kind alert config, discriminated by ``type`` — keeps the OpenAPI (and the generated frontend types and MCP tool schemas) in sync with every kind alerts support. */
+/** Per-insight-kind alert config, discriminated by ``type`` -- keeps the OpenAPI (and the generated frontend types and MCP tool schemas) in sync with every kind alerts support. */
 export type AlertConfigUnion =
   | TrendsAlertConfig
   | HogQLAlertConfig
@@ -319,7 +319,7 @@ export interface ECODDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const ECODDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -342,7 +342,7 @@ export interface IsolationForestDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -370,7 +370,7 @@ export interface KNNDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const KNNDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -392,7 +392,7 @@ export interface HBOSDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const HBOSDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -413,7 +413,7 @@ export interface LOFDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const LOFDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -436,7 +436,7 @@ export interface OCSVMDetectorConfig {
   /** Anomaly probability threshold (default: 0.9) */
   threshold?: number | null;
   type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
+  /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
 export const OCSVMDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -540,9 +540,9 @@ export type CalculationIntervalEnum =
 export const CalculationIntervalEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
-  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span ≥ 30 minutes on the local daily timeline (half-open [start, end)). */
+  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
-  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span ≥ 30 minutes locally. */
+  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
 export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
@@ -608,7 +608,7 @@ export interface CreateAlertRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), the first fire of an episode is held until the investigation agent produces a verdict, and that notification is suppressed when the verdict is false_positive (and optionally when inconclusive). Later fires of the same episode notify without waiting. A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
 export const CreateAlertRequest = /*@__PURE__*/ S.suspend(() =>
@@ -866,7 +866,7 @@ export interface Alert {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), the first fire of an episode is held until the investigation agent produces a verdict, and that notification is suppressed when the verdict is false_positive (and optionally when inconclusive). Later fires of the same episode notify without waiting. A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
@@ -976,7 +976,7 @@ export interface CreateAlertsSimulateRequest {
   detector_config?: DetectorConfig;
   /** Zero-based index of the series to analyze (trends insights only). */
   series_index?: number;
-  /** Relative date string for how far back to simulate (e.g. '-24h', '-30d', '-4w'). If not provided, uses the detector's minimum required samples. Trends insights only — a SQL query's own rows are the series. */
+  /** Relative date string for how far back to simulate (e.g. '-24h', '-30d', '-4w'). If not provided, uses the detector's minimum required samples. Trends insights only -- a SQL query's own rows are the series. */
   date_from?: string | null;
   /** Per-insight-kind alert config. For SQL insights, selects the evaluated column and read direction (last_row/first_row) so the preview matches the alert; ignored for trends. */
   config?: AlertConfigUnion | null;
@@ -1322,7 +1322,7 @@ export interface UpdateAlertRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), the first fire of an episode is held until the investigation agent produces a verdict, and that notification is suppressed when the verdict is false_positive (and optionally when inconclusive). Later fires of the same episode notify without waiting. A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
 export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1391,7 +1391,7 @@ export interface UpdateAlertsPartialRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), the first fire of an episode is held until the investigation agent produces a verdict, and that notification is suppressed when the verdict is false_positive (and optionally when inconclusive). Later fires of the same episode notify without waiting. A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
 export const UpdateAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>

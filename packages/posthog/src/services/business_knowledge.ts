@@ -71,7 +71,7 @@ export const BusinessKnowledgeDocumentsSearchListRequest = /*@__PURE__*/ S.suspe
   identifier: "BusinessKnowledgeDocumentsSearchListRequest",
 }) as any as S.Schema<BusinessKnowledgeDocumentsSearchListRequest>;
 
-/** One ranked chunk from a business knowledge search. Output-only — the rows come from the ``search_knowledge_for_team`` logic helper (a ``KnowledgeSearchResult`` dataclass), not the ORM. */
+/** One ranked chunk from a business knowledge search. Output-only -- the rows come from the ``search_knowledge_for_team`` logic helper (a ``KnowledgeSearchResult`` dataclass), not the ORM. */
 export interface KnowledgeSearchResult {
   /** Stable identifier of this chunk. */
   chunk_id: string;
@@ -408,7 +408,7 @@ export interface KnowledgeSource {
   next_refresh_at: string | null;
   /** True when at least one document in this source was flagged unsafe by the content classifier and is therefore excluded from agent search. */
   has_unsafe_documents: boolean;
-  /** Semantic-index state of this source. A `ready` source serves keyword (full-text) search immediately, but semantic search needs a background job to classify and embed its documents, which can take up to an hour. `pending` — at least one document is still awaiting classification or embedding. `completed` — every eligible document has been submitted to the embedding pipeline. `disabled` — the organization has not approved AI data processing, so embeddings never run and search stays keyword-only. Only meaningful while `status` is `ready`. */
+  /** Semantic-index state of this source. A `ready` source serves keyword (full-text) search immediately, but semantic search needs a background job to classify and embed its documents, which can take up to an hour. `pending` -- at least one document is still awaiting classification or embedding. `completed` -- every eligible document has been submitted to the embedding pipeline. `disabled` -- the organization has not approved AI data processing, so embeddings never run and search stays keyword-only. Only meaningful while `status` is `ready`. */
   embedding_status: EmbeddingStatusEnum;
   /** Support ticket number this learned source came from. Null for sources you added yourself. */
   learned_from_ticket_number: number | null;
@@ -984,7 +984,7 @@ export const ListBusinessKnowledgeDocumentsWindowRequest = /*@__PURE__*/ S.suspe
   identifier: "ListBusinessKnowledgeDocumentsWindowRequest",
 }) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowRequest>;
 
-/** One chunk in a drill-down window over a single knowledge document. Output-only — the rows come from the `get_document_window` logic helper (a `KnowledgeSearchResult` dataclass), not the ORM, so this is a plain read serializer rather than a `ModelSerializer`. */
+/** One chunk in a drill-down window over a single knowledge document. Output-only -- the rows come from the `get_document_window` logic helper (a `KnowledgeSearchResult` dataclass), not the ORM, so this is a plain read serializer rather than a `ModelSerializer`. */
 export interface KnowledgeDocumentWindow {
   /** Stable identifier of this chunk. Same value used in search results. */
   chunk_id: string;

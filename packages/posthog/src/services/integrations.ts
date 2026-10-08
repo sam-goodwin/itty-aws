@@ -412,7 +412,7 @@ export const GetIntegrationsChannelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsChannelRequest>;
 
 export interface SlackChannel {
-  /** Slack channel ID (e.g. C0123ABC) — pass to cdp-functions inputs.channel. */
+  /** Slack channel ID (e.g. C0123ABC) -- pass to cdp-functions inputs.channel. */
   id: string;
   /** Slack channel name without the leading '#'. */
   name: string;
@@ -571,7 +571,7 @@ export interface GitHubAvailableInstallation {
   account_name: string | null;
   /** GitHub account type, e.g. 'Organization' or 'User'. */
   account_type: string | null;
-  /** A project in the organization that already has this installation linked. Null when the installation isn't linked to any project yet — it was found via the user's personal GitHub link and can be adopted by linking it here. */
+  /** A project in the organization that already has this installation linked. Null when the installation isn't linked to any project yet -- it was found via the user's personal GitHub link and can be adopted by linking it here. */
   source_team_id: number | null;
   /** Name of the project in source_team_id, so the picker can say where the installation comes from. Null for an installation no project has linked yet. */
   source_team_name: string | null;
@@ -727,7 +727,7 @@ export interface GitHubRepo {
   pushed_at?: string;
   /** Whether the repository is archived. */
   archived?: boolean;
-  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+  /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
 export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
@@ -1112,7 +1112,7 @@ export const GetIntegrationsUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsUserRequest>;
 
 export interface SlackUser {
-  /** Slack member ID (e.g. U0123ABC) — post to it to open a direct message. */
+  /** Slack member ID (e.g. U0123ABC) -- post to it to open a direct message. */
   id: string;
   /** Slack username (handle) without the leading '@'. */
   name: string;
@@ -1653,7 +1653,7 @@ export const getIntegrationsClickupWorkspace: API.OperationMethod<
 }));
 
 export type GetIntegrationsGithubAvailableInstallationError = PosthogOpError;
-/** List GitHub installations this project can link. A GitHub App installs once per organization, so a second project links an existing installation rather than reinstalling. This backs the picker: when more than one option exists, the client passes the chosen installation_id to github/link_existing. The list also includes installations the user's personal GitHub link can see but that aren't linked to any project yet (``source_team_id: null``) — orphan installations approved on GitHub outside PostHog's callback, which ``github/link_existing`` can adopt. */
+/** List GitHub installations this project can link. A GitHub App installs once per organization, so a second project links an existing installation rather than reinstalling. This backs the picker: when more than one option exists, the client passes the chosen installation_id to github/link_existing. The list also includes installations the user's personal GitHub link can see but that aren't linked to any project yet (``source_team_id: null``) -- orphan installations approved on GitHub outside PostHog's callback, which ``github/link_existing`` can adopt. */
 export const getIntegrationsGithubAvailableInstallation: API.OperationMethod<
   GetIntegrationsGithubAvailableInstallationRequest,
   GitHubAvailableInstallationsResponse,

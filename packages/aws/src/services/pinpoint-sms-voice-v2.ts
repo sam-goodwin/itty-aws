@@ -5582,7 +5582,7 @@ export type CreateRegistrationAttachmentError =
   | ValidationException
   | CommonErrors;
 /**
- * Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted.
+ * Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed "letter of authorization" (LOA) to be submitted.
  *
  * Use either `AttachmentUrl` or `AttachmentBody` to upload your attachment. If both are specified then an exception is returned.
  */
@@ -6813,7 +6813,7 @@ export type DescribeProtectConfigurationsError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the protect configurations that match any of filters. If a filter isn’t provided then all protect configurations are returned.
+ * Retrieves the protect configurations that match any of filters. If a filter isn't provided then all protect configurations are returned.
  */
 export const describeProtectConfigurations: API.PaginatedOperationMethod<
   DescribeProtectConfigurationsRequest,

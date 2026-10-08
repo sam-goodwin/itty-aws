@@ -43,7 +43,7 @@ export const GroupUsageMetricFormatEnum = S.String;
 export type GroupUsageMetricDisplayEnum = "number" | "sparkline";
 export const GroupUsageMetricDisplayEnum = S.String;
 
-/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type CreateGroupsTypesMetricsRequestFiltersMap = { [key: string]: unknown | undefined };
 export const CreateGroupsTypesMetricsRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -66,7 +66,7 @@ export interface CreateGroupsTypesMetricsRequest {
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
   display?: GroupUsageMetricDisplayEnum | (string & {});
-  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
   filters?: CreateGroupsTypesMetricsRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
   math?: GroupUsageMetricMathEnum | (string & {});
@@ -95,7 +95,7 @@ export const CreateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupsTypesMetricsRequest",
 }) as any as S.Schema<CreateGroupsTypesMetricsRequest>;
 
-/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type GroupUsageMetricFiltersMap = { [key: string]: unknown | undefined };
 export const GroupUsageMetricFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -112,7 +112,7 @@ export interface GroupUsageMetric {
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
   display?: GroupUsageMetricDisplayEnum;
-  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
   filters?: GroupUsageMetricFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
   math?: GroupUsageMetricMathEnum;
@@ -390,7 +390,7 @@ export const PaginatedGroupUsageMetricList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedGroupUsageMetricList",
 }) as any as S.Schema<PaginatedGroupUsageMetricList>;
 
-/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type UpdateGroupsTypesMetricsRequestFiltersMap = { [key: string]: unknown | undefined };
 export const UpdateGroupsTypesMetricsRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -411,7 +411,7 @@ export interface UpdateGroupsTypesMetricsRequest {
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
   display?: GroupUsageMetricDisplayEnum | (string & {});
-  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
   filters?: UpdateGroupsTypesMetricsRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
   math?: GroupUsageMetricMathEnum | (string & {});
@@ -441,7 +441,7 @@ export const UpdateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGroupsTypesMetricsRequest",
 }) as any as S.Schema<UpdateGroupsTypesMetricsRequest>;
 
-/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+/** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type UpdateGroupsTypesMetricsPartialRequestFiltersMap = {
   [key: string]: unknown | undefined;
 };
@@ -464,7 +464,7 @@ export interface UpdateGroupsTypesMetricsPartialRequest {
   interval?: number;
   /** Visual representation in the UI. One of `number` or `sparkline`. * `number` - number * `sparkline` - sparkline */
   display?: GroupUsageMetricDisplayEnum | (string & {});
-  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
+  /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
   filters?: UpdateGroupsTypesMetricsPartialRequestFiltersMap;
   /** Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events. * `count` - count * `sum` - sum */
   math?: GroupUsageMetricMathEnum | (string & {});

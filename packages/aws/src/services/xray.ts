@@ -3009,7 +3009,7 @@ export type UpdateIndexingRuleError =
   | ThrottledException
   | CommonErrors;
 /**
- * Modifies an indexing rule’s configuration.
+ * Modifies an indexing rule's configuration.
  *
  * Indexing rules are used for determining the sampling rate for spans indexed from CloudWatch Logs. For more information, see Transaction Search.
  */

@@ -3116,7 +3116,7 @@ export interface CatalogGroupProperties {
   learnMoreLink?: string;
   /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
   keywords?: CatalogGroupPropertiesKeywordsList;
-  /** The benefit type's icon as JSON-escaped SVG markup. After parsing, the value is a complete `<svg>…</svg>` element. */
+  /** The benefit type's icon as JSON-escaped SVG markup. After parsing, the value is a complete `<svg>...</svg>` element. */
   icon?: string;
   /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
   capabilities?: CatalogGroupPropertiesCapabilitiesList;

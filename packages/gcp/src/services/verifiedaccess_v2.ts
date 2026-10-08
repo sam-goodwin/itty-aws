@@ -233,7 +233,7 @@ export const DeviceSignalsPasswordProtectionWarningTriggerEnum = S.String;
 
 /** The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms. */
 export interface DeviceSignals {
-  /** Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile’s user or ChromeOS user. */
+  /** Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile's user or ChromeOS user. */
   profileAffiliationIds?: StringList;
   /** Output only. Value of the AllowScreenLock policy on the device. See https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details. Available on ChromeOS only. */
   allowScreenLock?: boolean;

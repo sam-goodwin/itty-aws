@@ -112,7 +112,7 @@ export const Access = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Access" }) as any as S.Schema<Access>;
 
 export interface Audit {
-  /** Enable cluster audit log forwarding to a Telemetry Router. ⚠️ Note: This feature is in private preview. Enabling audit logging is only possible for enabled accounts. Otherwise the request will be rejected. */
+  /** Enable cluster audit log forwarding to a Telemetry Router. U+26A0 Note: This feature is in private preview. Enabling audit logging is only possible for enabled accounts. Otherwise the request will be rejected. */
   enabled: boolean;
 }
 export const Audit = /*@__PURE__*/ S.suspend(() =>
@@ -141,7 +141,7 @@ export const ACL = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ACL" }) as any as S.Schema<ACL>;
 
 export interface ApplicationLoadBalancer {
-  /** Enables the application load balancer extension. ⚠️ Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. */
+  /** Enables the application load balancer extension. U+26A0 Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. */
   enabled: boolean;
 }
 export const ApplicationLoadBalancer = /*@__PURE__*/ S.suspend(() =>
@@ -286,7 +286,7 @@ export const CNI = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CNI" }) as any as S.Schema<CNI>;
 
-/** The access scope of the Control Plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. ⚠️ Warning: Changing the access scope on an existing cluster directly impacts its network exposure (e.g., making a private cluster publicly accessible) ⚠️ Note: This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
+/** The access scope of the Control Plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. U+26A0 Warning: Changing the access scope on an existing cluster directly impacts its network exposure (e.g., making a private cluster publicly accessible) U+26A0 Note: This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
 export type AccessScope = "PUBLIC" | "SNA";
 export const AccessScope = S.String;
 
@@ -336,7 +336,7 @@ export const NodepoolAvailabilityZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NodepoolAvailabilityZonesList>;
 
 export interface Kata {
-  /** Enable workload isolation via Kata Containers for pods scheduled on this node pool. ⚠️ Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. */
+  /** Enable workload isolation via Kata Containers for pods scheduled on this node pool. U+26A0 Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. */
   enabled: boolean;
 }
 export const Kata = /*@__PURE__*/ S.suspend(() =>

@@ -2159,7 +2159,7 @@ export const DefaultConsistencyLevel = S.String;
 export interface ConsistencyPolicy {
   /** The default consistency level and configuration settings of the Cosmos DB account. */
   defaultConsistencyLevel: DefaultConsistencyLevel | (string & {});
-  /** When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'. */
+  /** When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 - 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'. */
   maxStalenessPrefix?: number;
   /** When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'. */
   maxIntervalInSeconds?: number;
@@ -2201,7 +2201,7 @@ export const DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType 
 
 /** IpAddressOrRange object */
 export interface IpAddressOrRange {
-  /** A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”. */
+  /** A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: "23.40.210.245" or "23.40.210.0/8". */
   ipAddressOrRange?: string;
 }
 export const IpAddressOrRange = /*@__PURE__*/ S.suspend(() =>

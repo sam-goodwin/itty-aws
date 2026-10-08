@@ -2708,7 +2708,7 @@ export interface ClustersContinueUpdateVersionRequest {
   machineGroupTargetingMode?:
     | ClustersContinueUpdateVersionRequestMachineGroupTargetingMode
     | (string & {});
-  /** Specifies how safeguards are applied during the continue update version operation. Use All to run all pre‑operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
+  /** Specifies how safeguards are applied during the continue update version operation. Use All to run all pre-operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
   safeguardMode?: ClusterContinueUpdateVersionSafeguardMode | (string & {});
 }
 export const ClustersContinueUpdateVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5806,7 +5806,7 @@ export interface NetworkAttachment {
   ipv6Address?: string;
   /** The MAC address of the interface for the virtual machine that corresponds to this network attachment. */
   macAddress?: string;
-  /** The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored. */
+  /** The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn't specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored. */
   networkAttachmentName?: string;
 }
 export const NetworkAttachment = /*@__PURE__*/ S.suspend(() =>
@@ -13122,7 +13122,7 @@ export interface UpdateClusterVersionRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
-  /** Specifies how safeguards are applied during the update version operation. Use All to run all pre‑operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
+  /** Specifies how safeguards are applied during the update version operation. Use All to run all pre-operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
   safeguardMode?: ClusterUpdateVersionSafeguardMode | (string & {});
   /** The version to be applied to the cluster during update. */
   targetClusterVersion: string;
@@ -14363,7 +14363,7 @@ export interface NetworkAttachmentInput {
   ipv4Address?: string;
   /** The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6 or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty. */
   ipv6Address?: string;
-  /** The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored. */
+  /** The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn't specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored. */
   networkAttachmentName?: string;
 }
 export const NetworkAttachmentInput = /*@__PURE__*/ S.suspend(() =>

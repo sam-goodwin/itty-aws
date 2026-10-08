@@ -207,7 +207,7 @@ export const AzureProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Authentication method for Amazon Web Services (AWS) that uses Google owned Google service account to assume into customer's AWS IAM Role. */
 export interface AwsAccessRole {
-  /** The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection. */
+  /** The user's AWS IAM Role that trusts the Google-owned AWS IAM user Connection. */
   iamRoleId?: string;
   /** A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role. */
   identity?: string;
@@ -346,7 +346,7 @@ export interface ConnectorConfigurationAuthentication {
   serviceAccount?: string;
   /** Username/password authentication. */
   usernamePassword?: ConnectorConfigurationUsernamePassword;
-  /** Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters aren't standardized in the configuration sections. To update a single parameter value, call ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with backticks—for example, ``configuration.parameters.`parameter id` ``. */
+  /** Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters aren't standardized in the configuration sections. To update a single parameter value, call ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with backticks--for example, ``configuration.parameters.`parameter id` ``. */
   parameters?: ConnectorConfigurationParameterValueMap;
 }
 export const ConnectorConfigurationAuthentication = /*@__PURE__*/ S.suspend(() =>
@@ -451,7 +451,7 @@ export const ConnectorConfigurationAsset = /*@__PURE__*/ S.suspend(() =>
 export interface ConnectorConfiguration {
   /** Specifies how to reach the remote system this connection is pointing to. */
   endpoint?: ConnectorConfigurationEndpoint;
-  /** Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters aren't standardized in the configuration sections. To update a single parameter value, call ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with backticks—for example, ``configuration.parameters.`parameter id` ``. */
+  /** Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters aren't standardized in the configuration sections. To update a single parameter value, call ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with backticks--for example, ``configuration.parameters.`parameter id` ``. */
   parameters?: ConnectorConfigurationParameterValueMap;
   /** Client authentication. */
   authentication?: ConnectorConfigurationAuthentication;

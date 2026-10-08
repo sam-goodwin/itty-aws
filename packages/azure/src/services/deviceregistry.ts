@@ -227,7 +227,7 @@ export const AssetEndpointProfilesCreateOrReplaceResponseTagsMap = /*@__PURE__*/
 export interface AssetEndpointProfileStatusError {
   /** Error code for classification of errors (ex: 400, 404, 500, etc.). */
   code?: number;
-  /** Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”). */
+  /** Human readable helpful error message to provide additional context for error (ex: "targetAddress 'foo' is not a valid url"). */
   message?: string;
 }
 export const AssetEndpointProfileStatusError = /*@__PURE__*/ S.suspend(() =>
@@ -597,7 +597,7 @@ export const AssetPropertiesEventsList = /*@__PURE__*/ S.Array(
 export interface AssetStatusError {
   /** Error code for classification of errors (ex: 400, 404, 500, etc.). */
   code?: number;
-  /** Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”). */
+  /** Human readable helpful error message to provide additional context for error (ex: "capability Id 'foo' does not exist"). */
   message?: string;
 }
 export const AssetStatusError = /*@__PURE__*/ S.suspend(() =>
@@ -1558,9 +1558,9 @@ export const ManagementActionExecutionStatus = S.String;
 export interface ErrorDetails {
   /** Multi-part error code for classification and root causing of errors (ex: 400.200.100.432). */
   code?: string;
-  /** Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”). */
+  /** Human-readable helpful error message to provide additional context for error (ex: "Authentication method not supported"). */
   message?: string;
-  /** Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”). */
+  /** Human-readable helpful detailed text context for debugging (ex: "The following mechanisms are supported..."). */
   info?: string;
   /** Unique identifier for the transaction to aid in debugging. */
   correlationId?: string;
@@ -1584,7 +1584,7 @@ export const ErrorDetailsList = /*@__PURE__*/ S.Array(
 export interface Error {
   /** Error code for classification of errors (ex: '400', '404', '500', etc.). */
   code?: string;
-  /** Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”). */
+  /** Human-readable helpful error message to provide additional context for error (e.g.,: "Capability ID 'foo' does not exist"). */
   message?: string;
   /** Array of error details that describe the status of each error. */
   details?: ErrorDetailsList;
@@ -2817,7 +2817,7 @@ export const StatusErrorDetailsList = /*@__PURE__*/ S.Array(
 export interface StatusError {
   /** Error code for classification of errors (ex: '400', '404', '500', etc.). */
   code?: string;
-  /** Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”). */
+  /** Human-readable helpful error message to provide additional context for error (e.g.,: "Capability ID 'foo' does not exist"). */
   message?: string;
   /** Array of error details that describe the status of each error. */
   details?: StatusErrorDetailsList;

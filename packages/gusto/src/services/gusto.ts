@@ -585,7 +585,7 @@ export interface CompanyBenefit {
   company_uuid?: string;
   /** Whether this company benefit can be deleted. Deletable will be set to true if the benefit has not been used in payroll, has no employee benefits associated, and the benefit is not owned by Gusto or a Partner */
   deletable?: boolean;
-  /** The description of the company benefit. For example, a company may offer multiple benefits with an ID of 1 (for Medical Insurance). The description would show something more specific like “Kaiser Permanente” or “Blue Cross/ Blue Shield”. */
+  /** The description of the company benefit. For example, a company may offer multiple benefits with an ID of 1 (for Medical Insurance). The description would show something more specific like "Kaiser Permanente" or "Blue Cross/ Blue Shield". */
   description?: string;
   /** The number of employees enrolled in the benefit, only returned when enrollment_count query param is set to true. */
   enrollment_count?: number;
@@ -627,7 +627,7 @@ export const CompanyBenefit = /*@__PURE__*/ S.suspend(() =>
 export type CreateCompanyContractorRequestType = "Individual" | "Business";
 export const CreateCompanyContractorRequestType = S.String;
 
-/** The contractor’s wage type. */
+/** The contractor's wage type. */
 export type CreateCompanyContractorRequestWageType = "Fixed" | "Hourly";
 export const CreateCompanyContractorRequestWageType = S.String;
 
@@ -638,19 +638,19 @@ export interface CreateCompanyContractorRequest {
   business_name?: string;
   /** The employer identification number of the contractor business. This attribute is optional for `Business` contractors and will be ignored for `Individual` contractors. */
   ein?: string;
-  /** The contractor’s email address. */
+  /** The contractor's email address. */
   email?: string;
   /** The boolean flag indicating whether Gusto will file a new hire report for the contractor. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
   file_new_hire_report?: boolean;
-  /** The contractor’s first name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's first name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
   first_name?: string;
-  /** The contractor’s hourly rate. This attribute is required if the wage_type is `Hourly`. */
+  /** The contractor's hourly rate. This attribute is required if the wage_type is `Hourly`. */
   hourly_rate?: string;
   /** The status of the contractor. If the contractor's start date is in the future, updating this field to true means we are setting the start date to today. Attempting to deactivate a contractor while a dismissal is already scheduled, or reactivate while a rehire is already scheduled, will return a 422 error. Cancel the pending transition first using the appropriate cancel endpoint. */
   is_active?: boolean;
-  /** The contractor’s last name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's last name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
   last_name?: string;
-  /** The contractor’s middle initial. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's middle initial. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
   middle_initial?: string;
   /** Whether the contractor or the payroll admin will complete onboarding in Gusto. Self-onboarding is recommended so that contractors receive Gusto accounts. If self_onboarding is true, then email is required. */
   self_onboarding?: boolean;
@@ -660,7 +660,7 @@ export interface CreateCompanyContractorRequest {
   start_date: string;
   /** The contractor type. */
   type: CreateCompanyContractorRequestType | (string & {});
-  /** The contractor’s wage type. */
+  /** The contractor's wage type. */
   wage_type: CreateCompanyContractorRequestWageType | (string & {});
   /** The work email address of the contractor. This is provided to support syncing users between our system and yours. You may not use this email address for any other purpose (e.g. marketing). */
   work_email?: string;
@@ -691,7 +691,7 @@ export const CreateCompanyContractorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCompanyContractorRequest",
 }) as any as S.Schema<CreateCompanyContractorRequest>;
 
-/** The contractor’s home address. */
+/** The contractor's home address. */
 export interface ContractorAddress {
   city?: string;
   country?: string;
@@ -782,9 +782,9 @@ export const ContractorWageType = S.String;
 
 /** The representation of a contractor (individual or business) in Gusto. */
 export interface Contractor {
-  /** The contractor’s home address. */
+  /** The contractor's home address. */
   address?: ContractorAddress | null;
-  /** The name of the contractor business. This attribute is required for “Business” contractors and will be ignored for “Individual” contractors. */
+  /** The name of the contractor business. This attribute is required for "Business" contractors and will be ignored for "Individual" contractors. */
   business_name?: string | null;
   /** The UUID of the company the contractor is employed by. */
   company_uuid?: string;
@@ -798,27 +798,27 @@ export interface Contractor {
   dismissal_cancellation_eligible?: boolean;
   /** The contractor's dismissal date. */
   dismissal_date?: string | null;
-  /** The Federal Employer Identification Number of the contractor business. This attribute is optional for “Business” contractors and will be ignored for “Individual” contractors. */
+  /** The Federal Employer Identification Number of the contractor business. This attribute is optional for "Business" contractors and will be ignored for "Individual" contractors. */
   ein?: string | null;
-  /** The contractor’s email address. This attribute is optional for “Individual” contractors and will be ignored for “Business” contractors. */
+  /** The contractor's email address. This attribute is optional for "Individual" contractors and will be ignored for "Business" contractors. */
   email?: string | null;
   /** The boolean flag indicating whether Gusto will file a new hire report for the contractor */
   file_new_hire_report?: boolean | null;
-  /** The contractor’s first name. This attribute is required for “Individual” contractors and will be ignored for “Business” contractors. */
+  /** The contractor's first name. This attribute is required for "Individual" contractors and will be ignored for "Business" contractors. */
   first_name?: string | null;
   /** Whether company's Employer Identification Number (EIN) is present */
   has_ein?: boolean | null;
   /** Indicates whether the contractor has an SSN in Gusto. */
   has_ssn?: boolean;
-  /** The contractor’s hourly rate. This attribute is required if the wage_type is “Hourly”. */
+  /** The contractor's hourly rate. This attribute is required if the wage_type is "Hourly". */
   hourly_rate?: string;
   /** The status of the contractor with the company. */
   is_active?: boolean;
-  /** The contractor’s last name. This attribute is required for “Individual” contractors and will be ignored for “Business” contractors. */
+  /** The contractor's last name. This attribute is required for "Individual" contractors and will be ignored for "Business" contractors. */
   last_name?: string | null;
   /** Member portal invitation status information. Only included when the include param has the portal_invitations value set. */
   member_portal_invitation_status?: ContractorMemberPortalInvitationStatus | null;
-  /** The contractor’s middle initial. This attribute is optional for “Individual” contractors and will be ignored for “Business” contractors. */
+  /** The contractor's middle initial. This attribute is optional for "Individual" contractors and will be ignored for "Business" contractors. */
   middle_initial?: string | null;
   /** The updated onboarding status for the contractor */
   onboarded?: boolean;
@@ -3905,7 +3905,7 @@ export const CreateCompanySignatoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCompanySignatoryRequest",
 }) as any as S.Schema<CreateCompanySignatoryRequest>;
 
-/** The competitor the company is switching to. Required if `reason` is `'switching_provider'`. > 🚧 Switching to Gusto requires Customer Support > If `'gusto_com'` is selected, this change must be completed by Gusto Customer Support and cannot be performed via the API. This endpoint will return a 422 error in that case. */
+/** The competitor the company is switching to. Required if `reason` is `'switching_provider'`. > U+1F6A7 Switching to Gusto requires Customer Support > If `'gusto_com'` is selected, this change must be completed by Gusto Customer Support and cannot be performed via the API. This endpoint will return a 422 error in that case. */
 export type CreateCompanySuspensionRequestLeavingFor =
   | "accountant"
   | "adp"
@@ -3939,7 +3939,7 @@ export type CreateCompanySuspensionRequestLeavingFor =
   | "zenefits";
 export const CreateCompanySuspensionRequestLeavingFor = S.String;
 
-/** Explanation for why the company is suspending their account. > 🚧 FEIN or entity type changes require Customer Support > If a company is switching FEIN or changing their entity type, this change must be performed by Gusto Customer Support and cannot be performed via the API at this time. */
+/** Explanation for why the company is suspending their account. > U+1F6A7 FEIN or entity type changes require Customer Support > If a company is switching FEIN or changing their entity type, this change must be performed by Gusto Customer Support and cannot be performed via the API at this time. */
 export type CreateCompanySuspensionRequestReason =
   | "switching_provider"
   | "shutting_down"
@@ -3961,9 +3961,9 @@ export interface CreateCompanySuspensionRequest {
   file_quarterly_forms: boolean;
   /** Should Gusto file yearly tax forms on behalf of the company? The correct answer can depend on why the company is suspending their account, and how taxes are being reconciled. */
   file_yearly_forms: boolean;
-  /** The competitor the company is switching to. Required if `reason` is `'switching_provider'`. > 🚧 Switching to Gusto requires Customer Support > If `'gusto_com'` is selected, this change must be completed by Gusto Customer Support and cannot be performed via the API. This endpoint will return a 422 error in that case. */
+  /** The competitor the company is switching to. Required if `reason` is `'switching_provider'`. > U+1F6A7 Switching to Gusto requires Customer Support > If `'gusto_com'` is selected, this change must be completed by Gusto Customer Support and cannot be performed via the API. This endpoint will return a 422 error in that case. */
   leaving_for?: CreateCompanySuspensionRequestLeavingFor | (string & {});
-  /** Explanation for why the company is suspending their account. > 🚧 FEIN or entity type changes require Customer Support > If a company is switching FEIN or changing their entity type, this change must be performed by Gusto Customer Support and cannot be performed via the API at this time. */
+  /** Explanation for why the company is suspending their account. > U+1F6A7 FEIN or entity type changes require Customer Support > If a company is switching FEIN or changing their entity type, this change must be performed by Gusto Customer Support and cannot be performed via the API at this time. */
   reason: CreateCompanySuspensionRequestReason | (string & {});
   /** How Gusto will handle taxes already collected. */
   reconcile_tax_method: CreateCompanySuspensionRequestReconcileTaxMethod | (string & {});
@@ -5201,7 +5201,7 @@ export type GarnishmentGarnishmentType =
   | "other_garnishment";
 export const GarnishmentGarnishmentType = S.String;
 
-/** Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. */
+/** Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee's pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. */
 export interface Garnishment {
   /** Whether or not this garnishment is currently active. */
   active?: boolean;
@@ -6097,7 +6097,7 @@ export const CreatePayrollBatchRequest = /*@__PURE__*/ S.suspend(() =>
 export type PayrollBatchBatchAction = "cancel";
 export const PayrollBatchBatchAction = S.String;
 
-/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
+/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
 export type PayrollBatchStatus = "pending" | "processing" | "completed" | "failed";
 export const PayrollBatchStatus = S.String;
 
@@ -6107,7 +6107,7 @@ export interface PayrollBatch {
   batch_action: PayrollBatchBatchAction;
   /** The idempotency key provided when creating the batch. */
   idempotency_key: string;
-  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
+  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
   status: PayrollBatchStatus;
   /** The unique identifier of the payroll cancellation batch. */
   uuid: string;
@@ -6172,7 +6172,7 @@ export const CreatePayrollDigestRequest = /*@__PURE__*/ S.suspend(() =>
 export type PayrollDigestBatchAction = "create";
 export const PayrollDigestBatchAction = S.String;
 
-/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
+/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
 export type PayrollDigestStatus = "pending" | "processing" | "completed" | "failed";
 export const PayrollDigestStatus = S.String;
 
@@ -6182,7 +6182,7 @@ export interface PayrollDigest {
   batch_action: PayrollDigestBatchAction;
   /** The idempotency key provided when creating the batch. */
   idempotency_key: string;
-  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
+  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
   status: PayrollDigestStatus;
   /** The unique identifier of the payroll digest batch. */
   uuid: string;
@@ -7417,7 +7417,7 @@ export interface SupportedBenefit {
   name?: string;
   /** Whether the benefit is deducted after tax calculations. */
   posttax?: boolean;
-  /** Whether the benefit is deducted before tax calculations, thus reducing one’s taxable income */
+  /** Whether the benefit is deducted before tax calculations, thus reducing one's taxable income */
   pretax?: boolean;
   /** Whether the benefit is associated with retirement planning. */
   retirement?: boolean;
@@ -7487,7 +7487,7 @@ export const BenefitTypeRequirementsCatchUpDefaultValue = /*@__PURE__*/ S.suspen
   identifier: "BenefitTypeRequirementsCatchUpDefaultValue",
 }) as any as S.Schema<BenefitTypeRequirementsCatchUpDefaultValue>;
 
-/** Whether the employee should use a benefit’s 'catch up' rate. Only Roth 401k and 401k benefits use this value for employees over 50. */
+/** Whether the employee should use a benefit's 'catch up' rate. Only Roth 401k and 401k benefits use this value for employees over 50. */
 export interface BenefitTypeRequirementsCatchUp {
   choices?: BenefitTypeRequirementsCatchUpChoicesList | null;
   default_value?: BenefitTypeRequirementsCatchUpDefaultValue | null;
@@ -7705,7 +7705,7 @@ export const BenefitTypeRequirementsLimitOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitTypeRequirementsLimitOption>;
 
 export interface BenefitTypeRequirements {
-  /** Whether the employee should use a benefit’s 'catch up' rate. Only Roth 401k and 401k benefits use this value for employees over 50. */
+  /** Whether the employee should use a benefit's 'catch up' rate. Only Roth 401k and 401k benefits use this value for employees over 50. */
   catch_up?: BenefitTypeRequirementsCatchUp;
   /** The maximum company contribution amount per year. A null value signifies no limit. */
   company_contribution_annual_maximum?: BenefitTypeRequirementsCompanyContributionAnnualMaximum;
@@ -8525,7 +8525,7 @@ export interface CompanyBenefitWithEmployeeBenefits {
   company_uuid?: string;
   /** Whether this company benefit can be deleted. Deletable will be set to true if the benefit has not been used in payroll, has no employee benefits associated, and the benefit is not owned by Gusto or a Partner */
   deletable?: boolean;
-  /** The description of the company benefit. For example, a company may offer multiple benefits with an ID of 1 (for Medical Insurance). The description would show something more specific like “Kaiser Permanente” or “Blue Cross/ Blue Shield”. */
+  /** The description of the company benefit. For example, a company may offer multiple benefits with an ID of 1 (for Medical Insurance). The description would show something more specific like "Kaiser Permanente" or "Blue Cross/ Blue Shield". */
   description?: string;
   employee_benefits?: CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsList;
   /** The partner name of the partner that created the company benefit. For example, "XYZ Corp". */
@@ -10258,7 +10258,7 @@ export interface NotificationResourcesItem {
   entity_type: NotificationResourcesItemEntityType;
   /** Unique identifier of the entity */
   entity_uuid: string;
-  /** Optional. The type of a resource that is related to the one described by entity_type and entity_uuid. For instance, if the entity_type is “BankAccount”, the reference_type could be the “Employee” or “Contractor” to whom the bank account belongs. */
+  /** Optional. The type of a resource that is related to the one described by entity_type and entity_uuid. For instance, if the entity_type is "BankAccount", the reference_type could be the "Employee" or "Contractor" to whom the bank account belongs. */
   reference_type?: string;
   /** Optional. Unique identifier of the reference. */
   reference_uuid?: string;
@@ -11660,7 +11660,7 @@ export interface GetCompanyPaySchedulesPreviewRequest {
   day_2?: number;
   /** End date for the preview range. If given, this date must be in the future. When unspecified, defaults to 18 months from today. */
   end_date?: string;
-  /** Optional UUID of an existing pay schedule. When supplied, the preview is seeded from the persisted schedule — including internal flags (such as arrears handling) that affect period boundaries but are not exposed as request parameters. Any other query parameters override individual attributes on top of the loaded schedule. */
+  /** Optional UUID of an existing pay schedule. When supplied, the preview is seeded from the persisted schedule -- including internal flags (such as arrears handling) that affect period boundaries but are not exposed as request parameters. Any other query parameters override individual attributes on top of the loaded schedule. */
   pay_schedule_uuid?: string;
 }
 export const GetCompanyPaySchedulesPreviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12782,7 +12782,7 @@ export const MemberPortalInvitationStatus = S.String;
 
 /** The status of a member portal invitation for an employee or contractor. Returned by `GET /v1/employees/{employee_id}/member_portal_invitations` and `GET /v1/contractors/{contractor_uuid}/member_portal_invitations`. */
 export interface MemberPortalInvitation {
-  /** Whether the invitation can no longer be acted on by the member. Returns `true` when the invitation token has expired or when the invitation has been `cancelled`. To reissue an expired invitation, call `POST` on this endpoint again — a new token will be generated and will override the prior one. */
+  /** Whether the invitation can no longer be acted on by the member. Returns `true` when the invitation token has expired or when the invitation has been `cancelled`. To reissue an expired invitation, call `POST` on this endpoint again -- a new token will be generated and will override the prior one. */
   expired: boolean;
   /** Current status of the member portal invitation. - `pending`: The invitation record has been created but the invitation email has not yet been delivered. - `sent`: The invitation email has been delivered to the member. - `verified`: The member has been verified by the member portal partner. - `complete`: The member has fully completed their member portal registration. - `cancelled`: The invitation has been cancelled, either via `DELETE` on this endpoint or because it was superseded. */
   status: MemberPortalInvitationStatus;
@@ -15269,7 +15269,7 @@ export const PayrollBatchResultsResultsItemErrorsList = /*@__PURE__*/ S.Array(
   PayrollBatchResultsResultsItemErrorsItem,
 ) as any as S.Schema<PayrollBatchResultsResultsItemErrorsList>;
 
-/** The outcome of cancelling this payroll. A cancel is atomic — there is no per-payroll `partial_success`. - `success`: the payroll was cancelled, or required no action (already cancelled / never run) - `failed`: the payroll could not be cancelled; see `errors` */
+/** The outcome of cancelling this payroll. A cancel is atomic -- there is no per-payroll `partial_success`. - `success`: the payroll was cancelled, or required no action (already cancelled / never run) - `failed`: the payroll could not be cancelled; see `errors` */
 export type PayrollBatchResultsResultsItemStatus = "success" | "failed";
 export const PayrollBatchResultsResultsItemStatus = S.String;
 
@@ -15278,7 +15278,7 @@ export interface PayrollBatchResultsResultsItem {
   errors?: PayrollBatchResultsResultsItemErrorsList;
   /** The index of this payroll in the original POST batch array. */
   idx?: number;
-  /** The outcome of cancelling this payroll. A cancel is atomic — there is no per-payroll `partial_success`. - `success`: the payroll was cancelled, or required no action (already cancelled / never run) - `failed`: the payroll could not be cancelled; see `errors` */
+  /** The outcome of cancelling this payroll. A cancel is atomic -- there is no per-payroll `partial_success`. - `success`: the payroll was cancelled, or required no action (already cancelled / never run) - `failed`: the payroll could not be cancelled; see `errors` */
   status?: PayrollBatchResultsResultsItemStatus;
   /** The UUID of the payroll. */
   uuid?: string;
@@ -15300,7 +15300,7 @@ export const PayrollBatchResultsResultsList = /*@__PURE__*/ S.Array(
   PayrollBatchResultsResultsItem,
 ) as any as S.Schema<PayrollBatchResultsResultsList>;
 
-/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
+/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
 export type PayrollBatchResultsStatus = "pending" | "processing" | "completed" | "failed";
 export const PayrollBatchResultsStatus = S.String;
 
@@ -15318,7 +15318,7 @@ export interface PayrollBatchResults {
   processed_items?: number;
   /** Per-payroll cancellation results. Only present once the batch reaches a terminal status. One entry per authorized payroll. */
   results?: PayrollBatchResultsResultsList;
-  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
+  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-payroll outcomes) and `failed` (the batch crashed at the system level; can be retried). This is distinct from the per-payroll `status` returned inside `results[]`. A `completed` batch does not imply every payroll was cancelled. */
   status: PayrollBatchResultsStatus;
   /** The timestamp when the batch was submitted. */
   submitted_at: string;
@@ -15416,7 +15416,7 @@ export const PayrollDigestResultsResultsItemBlockersItem = /*@__PURE__*/ S.suspe
   identifier: "PayrollDigestResultsResultsItemBlockersItem",
 }) as any as S.Schema<PayrollDigestResultsResultsItemBlockersItem>;
 
-/** Reasons the company cannot currently run payroll. Applies to every payroll in this company's `payrolls` array — blockers are evaluated at the company level, not per payroll. Empty when there are no blockers. */
+/** Reasons the company cannot currently run payroll. Applies to every payroll in this company's `payrolls` array -- blockers are evaluated at the company level, not per payroll. Empty when there are no blockers. */
 export type PayrollDigestResultsResultsItemBlockersList =
   Array<PayrollDigestResultsResultsItemBlockersItem>;
 export const PayrollDigestResultsResultsItemBlockersList = /*@__PURE__*/ S.Array(
@@ -15516,7 +15516,7 @@ export const PayrollDigestResultsResultsItemPayrollsItem = /*@__PURE__*/ S.suspe
   identifier: "PayrollDigestResultsResultsItemPayrollsItem",
 }) as any as S.Schema<PayrollDigestResultsResultsItemPayrollsItem>;
 
-/** Payrolls for this company within the digest date window (7 days past, 30–60 days future). May be empty. */
+/** Payrolls for this company within the digest date window (7 days past, 30-60 days future). May be empty. */
 export type PayrollDigestResultsResultsItemPayrollsList =
   Array<PayrollDigestResultsResultsItemPayrollsItem>;
 export const PayrollDigestResultsResultsItemPayrollsList = /*@__PURE__*/ S.Array(
@@ -15528,7 +15528,7 @@ export type PayrollDigestResultsResultsItemStatus = "success" | "partial_success
 export const PayrollDigestResultsResultsItemStatus = S.String;
 
 export interface PayrollDigestResultsResultsItem {
-  /** Reasons the company cannot currently run payroll. Applies to every payroll in this company's `payrolls` array — blockers are evaluated at the company level, not per payroll. Empty when there are no blockers. */
+  /** Reasons the company cannot currently run payroll. Applies to every payroll in this company's `payrolls` array -- blockers are evaluated at the company level, not per payroll. Empty when there are no blockers. */
   blockers?: PayrollDigestResultsResultsItemBlockersList;
   /** The type of entity this result represents. */
   entity_type?: PayrollDigestResultsResultsItemEntityType;
@@ -15536,7 +15536,7 @@ export interface PayrollDigestResultsResultsItem {
   idx?: number;
   /** The legal/display name of the company. */
   name?: string;
-  /** Payrolls for this company within the digest date window (7 days past, 30–60 days future). May be empty. */
+  /** Payrolls for this company within the digest date window (7 days past, 30-60 days future). May be empty. */
   payrolls?: PayrollDigestResultsResultsItemPayrollsList;
   /** The status of this company's digest computation. */
   status?: PayrollDigestResultsResultsItemStatus;
@@ -15563,7 +15563,7 @@ export const PayrollDigestResultsResultsList = /*@__PURE__*/ S.Array(
   PayrollDigestResultsResultsItem,
 ) as any as S.Schema<PayrollDigestResultsResultsList>;
 
-/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
+/** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
 export type PayrollDigestResultsStatus = "pending" | "processing" | "completed" | "failed";
 export const PayrollDigestResultsStatus = S.String;
 
@@ -15581,7 +15581,7 @@ export interface PayrollDigestResults {
   processed_items?: number;
   /** Per-company results. Only present once the batch reaches a terminal status. Includes successfully processed companies (with their `payrolls` array, which may be empty when the company has no payrolls in the date window). */
   results?: PayrollDigestResultsResultsList;
-  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished — inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
+  /** The lifecycle status of the batch request itself. Terminal values are `completed` (processing finished -- inspect `results` and `exclusions` for per-company outcomes) and `failed` (request failed; can be retried). This is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. */
   status: PayrollDigestResultsStatus;
   /** The timestamp when the batch was submitted. */
   submitted_at: string;
@@ -16921,7 +16921,7 @@ export const EmployeeStateTaxAnswerValue =
   S.Unknown as any as S.Schema<EmployeeStateTaxAnswerValue>;
 
 export interface EmployeeStateTaxAnswer {
-  /** The effective date of the answer - currently always “2010-01-01”. */
+  /** The effective date of the answer - currently always "2010-01-01". */
   valid_from?: string;
   /** The effective end date of the answer - currently always null. */
   valid_up_to?: string | null;
@@ -17567,7 +17567,7 @@ export interface PayrollReceipt {
   /** An array of employee compensations and withholdings for this payroll */
   employee_compensations?: PayrollReceiptEmployeeCompensationsList;
   liability_of_licensee?: string;
-  /** Always the fixed string "ZenPayroll, Inc., dba Gusto is a licensed money transmitter. For more about Gusto’s licenses and your state-specific rights to request information, submit complaints, dispute errors, or cancel transactions, visit our license page." */
+  /** Always the fixed string "ZenPayroll, Inc., dba Gusto is a licensed money transmitter. For more about Gusto's licenses and your state-specific rights to request information, submit complaints, dispute errors, or cancel transactions, visit our license page." */
   license?: string;
   /** URL for the license information for the licensed payroll processor. Always the fixed string "https://gusto.com/about/licenses" */
   license_uri?: string;
@@ -20212,7 +20212,7 @@ export const PutCompensationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PutContractorRequestType = "Individual" | "Business";
 export const PutContractorRequestType = S.String;
 
-/** The contractor’s wage type. */
+/** The contractor's wage type. */
 export type PutContractorRequestWageType = "Fixed" | "Hourly";
 export const PutContractorRequestWageType = S.String;
 
@@ -20225,19 +20225,19 @@ export interface PutContractorRequest {
   business_name?: string;
   /** The employer identification number of the contractor business. This attribute is optional for `Business` contractors and will be ignored for `Individual` contractors. */
   ein?: string;
-  /** The contractor’s email address. */
+  /** The contractor's email address. */
   email?: string;
   /** The boolean flag indicating whether Gusto will file a new hire report for the contractor. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
   file_new_hire_report?: boolean;
-  /** The contractor’s first name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's first name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
   first_name?: string;
-  /** The contractor’s hourly rate. This attribute is required if the wage_type is `Hourly`. */
+  /** The contractor's hourly rate. This attribute is required if the wage_type is `Hourly`. */
   hourly_rate?: string;
   /** The status of the contractor. If the contractor's start date is in the future, updating this field to true means we are setting the start date to today. Attempting to deactivate a contractor while a dismissal is already scheduled, or reactivate while a rehire is already scheduled, will return a 422 error. Cancel the pending transition first using the appropriate cancel endpoint. */
   is_active?: boolean;
-  /** The contractor’s last name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's last name. This attribute is required for `Individual` contractors and will be ignored for `Business` contractors. */
   last_name?: string;
-  /** The contractor’s middle initial. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
+  /** The contractor's middle initial. This attribute is optional for `Individual` contractors and will be ignored for `Business` contractors. */
   middle_initial?: string;
   /** Whether the contractor or the payroll admin will complete onboarding in Gusto. Self-onboarding is recommended so that contractors receive Gusto accounts. If self_onboarding is true, then email is required. */
   self_onboarding?: boolean;
@@ -20247,7 +20247,7 @@ export interface PutContractorRequest {
   start_date?: string;
   /** The contractor type. */
   type?: PutContractorRequestType | (string & {});
-  /** The contractor’s wage type. */
+  /** The contractor's wage type. */
   wage_type?: PutContractorRequestWageType | (string & {});
   /** The work email address of the contractor. This is provided to support syncing users between our system and yours. You may not use this email address for any other purpose (e.g. marketing). */
   work_email?: string;
@@ -23089,7 +23089,7 @@ export const UpdateEmployeeSection603HighEarnerStatusRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<UpdateEmployeeSection603HighEarnerStatusRequest>;
 
 export type CreateBulkReport2Error = UnprocessableEntity | GustoOpError;
-/** Create a bulk report batch Triggers asynchronous generation of up to 25 reports across companies the partner is mapped to. Each `batch` item is a `custom_report` (same parameters as [create a custom report](https://docs.gusto.com/embedded-payroll/reference/post-companies-company_uuid-reports)) or a `general_ledger` report (same parameters as [create a general ledger report](https://docs.gusto.com/embedded-payroll/reference/post-payrolls-payroll_uuid-reports-general_ledger)), keyed by `company_uuid` and `report_type`. Items are validated synchronously; if any is invalid, the entire batch is rejected. Poll the [bulk report GET endpoint](https://docs.gusto.com/embedded-payroll/reference/get-v1-bulk_reports-request_uuid) with the returned `uuid` for status and the report URL, which is valid for 10 minutes. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `company_reports:write` */
+/** Create a bulk report batch Triggers asynchronous generation of up to 25 reports across companies the partner is mapped to. Each `batch` item is a `custom_report` (same parameters as [create a custom report](https://docs.gusto.com/embedded-payroll/reference/post-companies-company_uuid-reports)) or a `general_ledger` report (same parameters as [create a general ledger report](https://docs.gusto.com/embedded-payroll/reference/post-payrolls-payroll_uuid-reports-general_ledger)), keyed by `company_uuid` and `report_type`. Items are validated synchronously; if any is invalid, the entire batch is rejected. Poll the [bulk report GET endpoint](https://docs.gusto.com/embedded-payroll/reference/get-v1-bulk_reports-request_uuid) with the returned `uuid` for status and the report URL, which is valid for 10 minutes. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `company_reports:write` */
 export const createBulkReport2: API.OperationMethod<
   CreateBulkReportRequest,
   CreateBulkReport,
@@ -23134,7 +23134,7 @@ export const createCompanyAdmin: API.OperationMethod<
 }));
 
 export type CreateCompanyBankAccountError = NotFound | UnprocessableEntity | GustoOpError;
-/** Create a company bank account This endpoint creates a new company bank account. Upon being created, two verification deposits are automatically sent to the bank account, and the bank account's verification_status is 'awaiting_deposits'. When the deposits are successfully transferred, the verification_status changes to 'ready_for_verification', at which point the verify endpoint can be used to verify the bank account. After successful verification, the bank account's verification_status is 'verified'. >🚧 Warning > > If a default bank account exists, it will be disabled and the new bank account will replace it as the company's default funding method. scope: `company_bank_accounts:write` */
+/** Create a company bank account This endpoint creates a new company bank account. Upon being created, two verification deposits are automatically sent to the bank account, and the bank account's verification_status is 'awaiting_deposits'. When the deposits are successfully transferred, the verification_status changes to 'ready_for_verification', at which point the verify endpoint can be used to verify the bank account. After successful verification, the bank account's verification_status is 'verified'. >U+1F6A7 Warning > > If a default bank account exists, it will be disabled and the new bank account will replace it as the company's default funding method. scope: `company_bank_accounts:write` */
 export const createCompanyBankAccount: API.OperationMethod<
   CreateCompanyBankAccountRequest,
   CompanyBankAccount,
@@ -23603,7 +23603,7 @@ export const createEmployeeEmployeeBenefit: API.OperationMethod<
 }));
 
 export type CreateEmployeeGarnishmentError = NotFound | UnprocessableEntity | GustoOpError;
-/** Create a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:write` */
+/** Create a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee's pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:write` */
 export const createEmployeeGarnishment: API.OperationMethod<
   CreateEmployeeGarnishmentRequest,
   Garnishment,
@@ -23781,7 +23781,7 @@ export const createEmployeeYtdBenefitAmountsFromDifferentCompany: API.OperationM
 }));
 
 export type CreatePartnerManagedCompanyError = UnprocessableEntity | GustoOpError;
-/** Create a partner managed company Create a partner managed company. When you successfully call the API, it does the following: * Creates a new company in Gusto * Creates a new user using the provided email if the user does not already exist. * Makes the user the primary payroll administrator of the new company. In response, you will receive oauth access tokens for the created company. IMPORTANT: the returned access and refresh tokens are reserved for this company only. They cannot be used to access other companies AND previously granted tokens cannot be used to access this company. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `partner_managed_companies:manage` */
+/** Create a partner managed company Create a partner managed company. When you successfully call the API, it does the following: * Creates a new company in Gusto * Creates a new user using the provided email if the user does not already exist. * Makes the user the primary payroll administrator of the new company. In response, you will receive oauth access tokens for the created company. IMPORTANT: the returned access and refresh tokens are reserved for this company only. They cannot be used to access other companies AND previously granted tokens cannot be used to access this company. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `partner_managed_companies:manage` */
 export const createPartnerManagedCompany: API.OperationMethod<
   CreatePartnerManagedCompanyRequest,
   PartnerManagedCompany,
@@ -23796,7 +23796,7 @@ export const createPartnerManagedCompany: API.OperationMethod<
 }));
 
 export type CreatePayrollBatchError = Conflict | UnprocessableEntity | GustoOpError;
-/** Create a payroll cancellation batch Cancels up to 100 payrolls across one or more companies the partner is mapped to, asynchronously. The batch is processed asynchronously. Use the returned batch UUID to poll `GET /v1/payroll_batches/{payroll_batch_uuid}` for status and per-payroll results. Each item carries the payroll `uuid` and the `company_uuid` that owns it. A payroll whose company is not mapped to the partner — or that doesn't exist — is recorded as a `not_found` exclusion rather than a hard error, so every requested UUID lands in either `results` or `exclusions`. Idempotency is scoped per `(partner, idempotency_key)`. A duplicate POST with the same `idempotency_key` returns a 409 Conflict referencing the existing batch UUID — no duplicate processing occurs. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_batches:write` */
+/** Create a payroll cancellation batch Cancels up to 100 payrolls across one or more companies the partner is mapped to, asynchronously. The batch is processed asynchronously. Use the returned batch UUID to poll `GET /v1/payroll_batches/{payroll_batch_uuid}` for status and per-payroll results. Each item carries the payroll `uuid` and the `company_uuid` that owns it. A payroll whose company is not mapped to the partner -- or that doesn't exist -- is recorded as a `not_found` exclusion rather than a hard error, so every requested UUID lands in either `results` or `exclusions`. Idempotency is scoped per `(partner, idempotency_key)`. A duplicate POST with the same `idempotency_key` returns a 409 Conflict referencing the existing batch UUID -- no duplicate processing occurs. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_batches:write` */
 export const createPayrollBatch: API.OperationMethod<
   CreatePayrollBatchRequest,
   PayrollBatch,
@@ -23811,7 +23811,7 @@ export const createPayrollBatch: API.OperationMethod<
 }));
 
 export type CreatePayrollDigestError = Conflict | UnprocessableEntity | GustoOpError;
-/** Create a payroll digest batch Triggers an asynchronous computation of payroll digest data (statuses, blockers, pay periods, totals) across up to 25 companies that the partner is mapped to. The batch is processed asynchronously. Use the returned batch UUID to poll `GET /v1/payroll_digests/{payroll_digest_uuid}` for status and results. Idempotency is scoped per `(partner, idempotency_key)`. A duplicate POST with the same `idempotency_key` returns a 409 Conflict referencing the existing batch UUID — no duplicate computation occurs. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_digests:write` */
+/** Create a payroll digest batch Triggers an asynchronous computation of payroll digest data (statuses, blockers, pay periods, totals) across up to 25 companies that the partner is mapped to. The batch is processed asynchronously. Use the returned batch UUID to poll `GET /v1/payroll_digests/{payroll_digest_uuid}` for status and results. Idempotency is scoped per `(partner, idempotency_key)`. A duplicate POST with the same `idempotency_key` returns a 409 Conflict referencing the existing batch UUID -- no duplicate computation occurs. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_digests:write` */
 export const createPayrollDigest: API.OperationMethod<
   CreatePayrollDigestRequest,
   PayrollDigest,
@@ -23859,7 +23859,7 @@ export const createPayrollReportsGeneralLedger: API.OperationMethod<
 }));
 
 export type CreatePlaidProcessorTokenError = NotFound | UnprocessableEntity | GustoOpError;
-/** Create a bank account from a plaid processor token This endpoint creates a new **verified** bank account by using a plaid processor token to retrieve its information. > 📘 > To create a token please use the [plaid api](https://plaid.com/docs/api/processors/#processortokencreate) and select "gusto" as processor. > 🚧 Warning - Company Bank Accounts > > If a default company bank account exists, it will be disabled and the new bank account will replace it as the company's default funding method. scope: `plaid_processor:write` */
+/** Create a bank account from a plaid processor token This endpoint creates a new **verified** bank account by using a plaid processor token to retrieve its information. > U+1F4D8 > To create a token please use the [plaid api](https://plaid.com/docs/api/processors/#processortokencreate) and select "gusto" as processor. > U+1F6A7 Warning - Company Bank Accounts > > If a default company bank account exists, it will be disabled and the new bank account will replace it as the company's default funding method. scope: `plaid_processor:write` */
 export const createPlaidProcessorToken: API.OperationMethod<
   CreatePlaidProcessorTokenRequest,
   CompanyBankAccount,
@@ -23874,7 +23874,7 @@ export const createPlaidProcessorToken: API.OperationMethod<
 }));
 
 export type CreateProvisionError = UnprocessableEntity | GustoOpError;
-/** Create a company ### Overview The company provisioning API provides a way to create a Gusto company as part of your integration. When you successfully call the API, the API does the following: * Creates a new company in Gusto. * Creates a new user in Gusto. * Makes the new user the primary payroll administrator of the new company. * Sends a welcome email to the new user. In the response, you will receive an account claim URL. Redirect the user to this URL to complete their account setup inside of Gusto > 📘 System Access Authentication > > This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access). 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `accounts:write` */
+/** Create a company ### Overview The company provisioning API provides a way to create a Gusto company as part of your integration. When you successfully call the API, the API does the following: * Creates a new company in Gusto. * Creates a new user in Gusto. * Makes the new user the primary payroll administrator of the new company. * Sends a welcome email to the new user. In the response, you will receive an account claim URL. Redirect the user to this URL to complete their account setup inside of Gusto > U+1F4D8 System Access Authentication > > This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access). U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `accounts:write` */
 export const createProvision: API.OperationMethod<
   CreateProvisionRequest,
   ProvisionCreated,
@@ -23904,7 +23904,7 @@ export const createSalaryEstimateAccept: API.OperationMethod<
 }));
 
 export type CreateSandboxGenerate1099Error = NotFound | UnprocessableEntity | GustoOpError;
-/** Generate a 1099 form [DEMO] > 🚧 Demo action > > This action is only available in the Demo environment Generates a 1099 document for testing purposes. scope: `contractors:write` */
+/** Generate a 1099 form [DEMO] > U+1F6A7 Demo action > > This action is only available in the Demo environment Generates a 1099 document for testing purposes. scope: `contractors:write` */
 export const createSandboxGenerate1099: API.OperationMethod<
   CreateSandboxGenerate1099Request,
   Form1099,
@@ -23919,7 +23919,7 @@ export const createSandboxGenerate1099: API.OperationMethod<
 }));
 
 export type CreateSandboxGenerateW2Error = NotFound | UnprocessableEntity | GustoOpError;
-/** Generate a W2 form [DEMO] > 🚧 Demo action > > This action is only available in the Demo environment Generates a W2 document for testing purposes. scope: `employees:write` */
+/** Generate a W2 form [DEMO] > U+1F6A7 Demo action > > This action is only available in the Demo environment Generates a W2 document for testing purposes. scope: `employees:write` */
 export const createSandboxGenerateW2: API.OperationMethod<
   CreateSandboxGenerateW2Request,
   Form,
@@ -23934,7 +23934,7 @@ export const createSandboxGenerateW2: API.OperationMethod<
 }));
 
 export type CreateWebhookSubscriptionError = UnprocessableEntity | GustoOpError;
-/** Create a webhook subscription Create a webhook subscription to receive events of the specified subscription_types whenever there is a state change. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
+/** Create a webhook subscription Create a webhook subscription to receive events of the specified subscription_types whenever there is a state change. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
 export const createWebhookSubscription: API.OperationMethod<
   CreateWebhookSubscriptionRequest,
   WebhookSubscription,
@@ -24372,7 +24372,7 @@ export const deleteV1ExternalPayroll: API.OperationMethod<
 }));
 
 export type DeleteWebhookSubscriptionUuidError = NotFound | GustoOpError;
-/** Delete a webhook subscription Deletes the Webhook Subscription associated with the provided UUID. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
+/** Delete a webhook subscription Deletes the Webhook Subscription associated with the provided UUID. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
 export const deleteWebhookSubscriptionUuid: API.OperationMethod<
   DeleteWebhookSubscriptionUuidRequest,
   DeleteWebhookSubscriptionUuidResponse,
@@ -24462,7 +24462,7 @@ export const getBenefitsBenefitRequirements: API.OperationMethod<
 }));
 
 export type GetBulkReportError = NotFound | GustoOpError;
-/** Get a bulk report batch Get a bulk report batch's status and results given the `request_uuid`. While in progress, only batch metadata is returned; once complete, it also includes a signed `report_url` (a zip of all generated reports, valid for 10 minutes) and a per-company breakdown. Reports containing PHI are inaccessible with `company_reports:read:tier_2_only` data scope. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `company_reports:read` */
+/** Get a bulk report batch Get a bulk report batch's status and results given the `request_uuid`. While in progress, only batch metadata is returned; once complete, it also includes a signed `report_url` (a zip of all generated reports, valid for 10 minutes) and a per-company breakdown. Reports containing PHI are inaccessible with `company_reports:read:tier_2_only` data scope. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `company_reports:read` */
 export const getBulkReport: API.OperationMethod<
   GetBulkReportRequest,
   BulkReport,
@@ -25098,7 +25098,7 @@ export const getCompanySignatories: API.OperationMethod<
 }));
 
 export type GetCompanySuspensionsError = NotFound | GustoOpError;
-/** Get suspensions for this company Get existing suspension records for this company. A company may have multiple suspension records if they have suspended their Gusto account more than once. >📘 To check if company is already suspended > > To determine if a company is _currently_ suspended, use the `is_suspended` and `company_status` fields in the [Get a company](https://docs.gusto.com/embedded-payroll/reference/get-v1-companies) endpoint. scope: `company_suspensions:read` */
+/** Get suspensions for this company Get existing suspension records for this company. A company may have multiple suspension records if they have suspended their Gusto account more than once. >U+1F4D8 To check if company is already suspended > > To determine if a company is _currently_ suspended, use the `is_suspended` and `company_status` fields in the [Get a company](https://docs.gusto.com/embedded-payroll/reference/get-v1-companies) endpoint. scope: `company_suspensions:read` */
 export const getCompanySuspensions: API.OperationMethod<
   GetCompanySuspensionsRequest,
   GetCompanySuspensionsResponse,
@@ -25188,7 +25188,7 @@ export const getCompanyTimeOffRequests: API.OperationMethod<
 }));
 
 export type GetCompanyTimeOffRequests2Error = NotFound | UnprocessableEntity | GustoOpError;
-/** List time off requests for a company Get all time off requests for a company. Supports filtering by status, employee, and date ranges. Possible statuses: - `pending` — awaiting approval - `approved` — approved by an admin but not yet processed in a payroll - `declined` — declined by an admin - `consumed` — processed in a completed payroll Allowed values for `status`: pending, approved, declined, consumed. scope: `time_off_requests:read` */
+/** List time off requests for a company Get all time off requests for a company. Supports filtering by status, employee, and date ranges. Possible statuses: - `pending` -- awaiting approval - `approved` -- approved by an admin but not yet processed in a payroll - `declined` -- declined by an admin - `consumed` -- processed in a completed payroll Allowed values for `status`: pending, approved, declined, consumed. scope: `time_off_requests:read` */
 export const getCompanyTimeOffRequests2: API.OperationMethod<
   GetCompanyTimeOffRequestsRequest2,
   GetCompanyTimeOffRequestsResponse2,
@@ -25413,7 +25413,7 @@ export const getContractorPaymentPdf: API.OperationMethod<
 }));
 
 export type GetContractorPaymentReceiptError = NotFound | GustoOpError;
-/** Get a single contractor payment receipt Returns a contractor payment receipt. Notes: * Receipts are only available for direct deposit payments and are only available once those payments have been funded. * Payroll Receipt requests for payrolls which do not have receipts available (e.g. payment by check) will return a 404 status. * Hour and dollar amounts are returned as string representations of numeric decimals. * Dollar amounts are represented to the cent. * If no data has yet be inserted for a given field, it defaults to “0.00” (for fixed amounts). scope: `payrolls:read` */
+/** Get a single contractor payment receipt Returns a contractor payment receipt. Notes: * Receipts are only available for direct deposit payments and are only available once those payments have been funded. * Payroll Receipt requests for payrolls which do not have receipts available (e.g. payment by check) will return a 404 status. * Hour and dollar amounts are returned as string representations of numeric decimals. * Dollar amounts are represented to the cent. * If no data has yet be inserted for a given field, it defaults to "0.00" (for fixed amounts). scope: `payrolls:read` */
 export const getContractorPaymentReceipt: API.OperationMethod<
   GetContractorPaymentReceiptRequest,
   ContractorPaymentReceipt,
@@ -25473,7 +25473,7 @@ export const getEmployeeBankAccounts: API.OperationMethod<
 }));
 
 export type GetEmployeeBenefitError = NotFound | GustoOpError;
-/** Get an employee benefit Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment. Benefits containing PHI are only visible to applications with the `employee_benefits:read:phi` scope. scope: `employee_benefits:read` */
+/** Get an employee benefit Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee's enrollment. Benefits containing PHI are only visible to applications with the `employee_benefits:read:phi` scope. scope: `employee_benefits:read` */
 export const getEmployeeBenefit: API.OperationMethod<
   GetEmployeeBenefitRequest,
   GetEmployeeBenefitResponse,
@@ -25503,7 +25503,7 @@ export const getEmployeeCustomFields: API.OperationMethod<
 }));
 
 export type GetEmployeeEmployeeBenefitsError = NotFound | GustoOpError;
-/** Get all benefits for an employee Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee’s enrollment. Returns an array of all employee benefits for this employee Benefits containing PHI are only visible to applications with the `employee_benefits:read:phi` scope. scope: `employee_benefits:read` */
+/** Get all benefits for an employee Employee benefits represent an employee enrolled in a particular company benefit. It includes information specific to that employee's enrollment. Returns an array of all employee benefits for this employee Benefits containing PHI are only visible to applications with the `employee_benefits:read:phi` scope. scope: `employee_benefits:read` */
 export const getEmployeeEmployeeBenefits: API.OperationMethod<
   GetEmployeeEmployeeBenefitsRequest,
   GetEmployeeEmployeeBenefitsResponse,
@@ -25578,7 +25578,7 @@ export const getEmployeeForms: API.OperationMethod<
 }));
 
 export type GetEmployeeGarnishmentsError = NotFound | GustoOpError;
-/** Get garnishments for an employee Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:read` */
+/** Get garnishments for an employee Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee's pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:read` */
 export const getEmployeeGarnishments: API.OperationMethod<
   GetEmployeeGarnishmentsRequest,
   GetEmployeeGarnishmentsResponse,
@@ -25836,7 +25836,7 @@ export const getEmployeeYtdBenefitAmountsFromDifferentCompany: API.OperationMeth
 }));
 
 export type GetEventsError = UnprocessableEntity | GustoOpError;
-/** Get all events Fetch all events, going back up to 30 days, that your partner application has the required scopes for. Note that a partner does NOT have to have verified webhook subscriptions in order to utilize this endpoint. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `events:read` */
+/** Get all events Fetch all events, going back up to 30 days, that your partner application has the required scopes for. Note that a partner does NOT have to have verified webhook subscriptions in order to utilize this endpoint. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `events:read` */
 export const getEvents: API.OperationMethod<
   GetEventsRequest,
   GetEventsResponse,
@@ -25851,7 +25851,7 @@ export const getEvents: API.OperationMethod<
 }));
 
 export type GetGarnishmentError = NotFound | GustoOpError;
-/** Get a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:read` */
+/** Get a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee's pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:read` */
 export const getGarnishment: API.OperationMethod<
   GetGarnishmentRequest,
   Garnishment,
@@ -25926,7 +25926,7 @@ export const getInformationRequests: API.OperationMethod<
 }));
 
 export type GetInvoiceError = UnprocessableEntity | GustoOpError;
-/** Retrieve invoicing data for companies Retrieve data for active companies used to calculate invoices for Gusto Embedded Payroll. A company is considered active for an invoice period if they are an active partner managed company, have run payroll or created contractor payments since becoming a partner managed company, and are not suspended at any point during the invoice period. This endpoint forces pagination, with 100 results returned at a time. You can learn more about our pagination here: [pagination guide](https://docs.gusto.com/embedded-payroll/docs/pagination) 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `invoices:read` */
+/** Retrieve invoicing data for companies Retrieve data for active companies used to calculate invoices for Gusto Embedded Payroll. A company is considered active for an invoice period if they are an active partner managed company, have run payroll or created contractor payments since becoming a partner managed company, and are not suspended at any point during the invoice period. This endpoint forces pagination, with 100 results returned at a time. You can learn more about our pagination here: [pagination guide](https://docs.gusto.com/embedded-payroll/docs/pagination) U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `invoices:read` */
 export const getInvoice: API.OperationMethod<
   GetInvoiceRequest,
   InvoiceData,
@@ -26027,7 +26027,7 @@ export const getPartnerManagedCompanyMigrationReadiness: API.OperationMethod<
 }));
 
 export type GetPayrollBatchError = NotFound | GustoOpError;
-/** Get a payroll cancellation batch Returns the status and per-payroll results of a payroll cancellation batch. Poll this endpoint until the batch `status` reaches a terminal value (`completed` or `failed`). Once terminal, the response includes the `results` array (one entry per authorized payroll, each with its own per-payroll `status` — `success` or `failed`) and the `exclusions` array (one entry per payroll that could not be processed). A cancel is atomic, so a per-payroll result is only ever `success` or `failed` — never `partial_success`. Note that the top-level batch `status` (`pending` / `processing` / `completed` / `failed`) is the request lifecycle, distinct from the per-payroll `status` inside `results[]`. A `completed` batch does not imply every payroll was cancelled — inspect the array for per-payroll outcomes. Results are stored in Redis with a limited TTL after completion. If the partner polls after results have expired, this endpoint returns 410 Gone — partners should re-submit a new batch. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_batches:read` */
+/** Get a payroll cancellation batch Returns the status and per-payroll results of a payroll cancellation batch. Poll this endpoint until the batch `status` reaches a terminal value (`completed` or `failed`). Once terminal, the response includes the `results` array (one entry per authorized payroll, each with its own per-payroll `status` -- `success` or `failed`) and the `exclusions` array (one entry per payroll that could not be processed). A cancel is atomic, so a per-payroll result is only ever `success` or `failed` -- never `partial_success`. Note that the top-level batch `status` (`pending` / `processing` / `completed` / `failed`) is the request lifecycle, distinct from the per-payroll `status` inside `results[]`. A `completed` batch does not imply every payroll was cancelled -- inspect the array for per-payroll outcomes. Results are stored in Redis with a limited TTL after completion. If the partner polls after results have expired, this endpoint returns 410 Gone -- partners should re-submit a new batch. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_batches:read` */
 export const getPayrollBatch: API.OperationMethod<
   GetPayrollBatchRequest,
   PayrollBatchResults,
@@ -26042,7 +26042,7 @@ export const getPayrollBatch: API.OperationMethod<
 }));
 
 export type GetPayrollDigestError = NotFound | GustoOpError;
-/** Get a payroll digest batch Returns the status and results of a payroll digest batch. Poll this endpoint until the batch `status` reaches a terminal value (`completed` or `failed`). Once terminal, the response includes the full `results` array (one entry per attempted company, each with its own per-company `status` — `success`, `partial_success`, or `failed`) and the `exclusions` array (one entry per company that could not be looked up or processed). Note that the top-level batch `status` (`pending` / `processing` / `completed` / `failed`) is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. A `completed` batch does not imply every company succeeded — inspect the arrays for per-company outcomes. Results are stored in Redis with a short TTL after completion. If the partner polls after results have expired, this endpoint returns 410 Gone — partners should re-submit a new batch to fetch fresh data. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_digests:read` */
+/** Get a payroll digest batch Returns the status and results of a payroll digest batch. Poll this endpoint until the batch `status` reaches a terminal value (`completed` or `failed`). Once terminal, the response includes the full `results` array (one entry per attempted company, each with its own per-company `status` -- `success`, `partial_success`, or `failed`) and the `exclusions` array (one entry per company that could not be looked up or processed). Note that the top-level batch `status` (`pending` / `processing` / `completed` / `failed`) is distinct from the per-company `status` returned inside `results[]` and `exclusions[]`. A `completed` batch does not imply every company succeeded -- inspect the arrays for per-company outcomes. Results are stored in Redis with a short TTL after completion. If the partner polls after results have expired, this endpoint returns 410 Gone -- partners should re-submit a new batch to fetch fresh data. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `payroll_digests:read` */
 export const getPayrollDigest: API.OperationMethod<
   GetPayrollDigestRequest,
   PayrollDigestResults,
@@ -26132,7 +26132,7 @@ export const getReverseWireTransactions: API.OperationMethod<
 }));
 
 export type GetSalaryEstimatesOccupationsError = UnprocessableEntity | GustoOpError;
-/** Search for BLS occupations Search for Bureau of Labor Statistics (BLS) occupations by name or keyword. This endpoint helps users find the appropriate occupation codes to use when creating or updating salary estimates. Returns a list of matching occupations with their codes, titles, and descriptions. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `salary_estimates:read` */
+/** Search for BLS occupations Search for Bureau of Labor Statistics (BLS) occupations by name or keyword. This endpoint helps users find the appropriate occupation codes to use when creating or updating salary estimates. Returns a list of matching occupations with their codes, titles, and descriptions. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `salary_estimates:read` */
 export const getSalaryEstimatesOccupations: API.OperationMethod<
   GetSalaryEstimatesOccupationsRequest,
   GetSalaryEstimatesOccupationsResponse,
@@ -26405,7 +26405,7 @@ export type GetV1ContractorPaymentsContractorPaymentUuidFundError =
   | NotFound
   | UnprocessableEntity
   | GustoOpError;
-/** Fund a contractor payment [DEMO] > 🚧 Demo action > > This action is only available in the Demo environment Simulate funding a contractor payment. Funding only occurs automatically in the production environment when bank transactions are generated. Use this action in the demo environment to transition a contractor payment's `status` from `Unfunded` to `Funded`. A `Funded` status is required for generating a contractor payment receipt. scope: `payrolls:run` */
+/** Fund a contractor payment [DEMO] > U+1F6A7 Demo action > > This action is only available in the Demo environment Simulate funding a contractor payment. Funding only occurs automatically in the production environment when bank transactions are generated. Use this action in the demo environment to transition a contractor payment's `status` from `Unfunded` to `Funded`. A `Funded` status is required for generating a contractor payment receipt. scope: `payrolls:run` */
 export const getV1ContractorPaymentsContractorPaymentUuidFund: API.OperationMethod<
   GetV1ContractorPaymentsContractorPaymentUuidFundRequest,
   ContractorPayment,
@@ -26570,7 +26570,7 @@ export const getV1TaxLiabilities: API.OperationMethod<
 }));
 
 export type GetV1WebhookSubscriptionVerificationTokenUuidError = NotFound | GustoOpError;
-/** Request a verification token for a webhook subscription Request that the webhook subscription `verification_token` be POSTed to the Subscription URL. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
+/** Request a verification token for a webhook subscription Request that the webhook subscription `verification_token` be POSTed to the Subscription URL. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
 export const getV1WebhookSubscriptionVerificationTokenUuid: API.OperationMethod<
   GetV1WebhookSubscriptionVerificationTokenUuidRequest,
   WebhookVerificationTokenResponse,
@@ -26603,7 +26603,7 @@ export const getVersionEmployeesTimeOffActivities: API.OperationMethod<
 }));
 
 export type GetWebhooksHealthCheckError = GustoOpError;
-/** Get the webhooks health status Returns the health status (`healthy`, `unhealthy`, or `unknown`) of the webhooks system based on the last ten minutes of activity. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
+/** Get the webhooks health status Returns the health status (`healthy`, `unhealthy`, or `unknown`) of the webhooks system based on the last ten minutes of activity. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
 export const getWebhooksHealthCheck: API.OperationMethod<
   GetWebhooksHealthCheckRequest,
   WebhooksHealthCheckStatus,
@@ -26618,7 +26618,7 @@ export const getWebhooksHealthCheck: API.OperationMethod<
 }));
 
 export type GetWebhookSubscriptionsError = GustoOpError;
-/** List webhook subscriptions Returns all webhook subscriptions associated with the provided Partner API token. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
+/** List webhook subscriptions Returns all webhook subscriptions associated with the provided Partner API token. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
 export const getWebhookSubscriptions: API.OperationMethod<
   GetWebhookSubscriptionsRequest,
   GetWebhookSubscriptionsResponse,
@@ -26633,7 +26633,7 @@ export const getWebhookSubscriptions: API.OperationMethod<
 }));
 
 export type GetWebhookSubscriptionUuidError = NotFound | GustoOpError;
-/** Get a webhook subscription Returns the Webhook Subscription associated with the provided UUID. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
+/** Get a webhook subscription Returns the Webhook Subscription associated with the provided UUID. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:read` */
 export const getWebhookSubscriptionUuid: API.OperationMethod<
   GetWebhookSubscriptionUuidRequest,
   WebhookSubscription,
@@ -26757,7 +26757,7 @@ export const postV1CompensationsCompensationId: API.OperationMethod<
 }));
 
 export type PostV1DisconnectAppIntegrationError = NotFound | GustoOpError;
-/** Disconnect an app integration Disconnects the given company from the App Integration associated with the current system access token. If multiple users from that company are authorized with the App Integration, then their tokens will also be revoked. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `companies:disconnect_app_integration` */
+/** Disconnect an app integration Disconnects the given company from the App Integration associated with the current system access token. If multiple users from that company are authorized with the App Integration, then their tokens will also be revoked. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `companies:disconnect_app_integration` */
 export const postV1DisconnectAppIntegration: API.OperationMethod<
   PostV1DisconnectAppIntegrationRequest,
   PostV1DisconnectAppIntegrationResponse,
@@ -27179,7 +27179,7 @@ export const putCompensation: API.OperationMethod<
 }));
 
 export type PutContractorError = NotFound | Conflict | UnprocessableEntity | GustoOpError;
-/** Update a contractor Update a contractor. > 🚧 Warning > > Watch out when changing a contractor's type (when the contractor is finished onboarding). Specifically, changing contractor type can be dangerous since Gusto won't recognize and file two separate 1099s if they simply change from business to individual scope: `contractors:write` */
+/** Update a contractor Update a contractor. > U+1F6A7 Warning > > Watch out when changing a contractor's type (when the contractor is finished onboarding). Specifically, changing contractor type can be dangerous since Gusto won't recognize and file two separate 1099s if they simply change from business to individual scope: `contractors:write` */
 export const putContractor: API.OperationMethod<
   PutContractorRequest,
   Contractor,
@@ -27194,7 +27194,7 @@ export const putContractor: API.OperationMethod<
 }));
 
 export type PutContractorAddressError = NotFound | UnprocessableEntity | GustoOpError;
-/** Create or update a contractor's address The address of a contractor is used to determine certain tax information about them. Addresses are geocoded on create and update to ensure validity. > 🚧 Contractors can only have one address. > > When a contractor is created, an address is created for them by default. Updating the address will replace the existing address. scope: `contractors:write` */
+/** Create or update a contractor's address The address of a contractor is used to determine certain tax information about them. Addresses are geocoded on create and update to ensure validity. > U+1F6A7 Contractors can only have one address. > > When a contractor is created, an address is created for them by default. Updating the address will replace the existing address. scope: `contractors:write` */
 export const putContractorAddress: API.OperationMethod<
   PutContractorAddressRequest,
   ContractorAddress2,
@@ -27284,7 +27284,7 @@ export const putEmployeeFormSign: API.OperationMethod<
 }));
 
 export type PutEmployeeI9AuthorizationError = NotFound | UnprocessableEntity | GustoOpError;
-/** Create or update an employee's I-9 authorization An employee's I-9 authorization stores information about an employee's authorization status, as well as signatures and other information required to complete the Form I-9 for employment eligibility verification. If the version is supplied and the employee I-9 authorization exists, this endpoint acts as an update. Otherwise, it will create an employee I-9 authorization. Validations on this endpoint are conditional: * `document_type` may be required, depending on `authorization_status`. * Valid formats for `document_number` vary, depending on `document_type`. * `country` is only allowed with `document_type: 'foreign_passport'`. * `expiration_date` is only allowed with `authorization_status: 'alien'`. > ℹ️ Unneeded information is automatically removed during updates. > > If an update causes some formerly-required fields to be unneeded, the now-unneeded data will be removed automatically. > > **Example:** Updating `authorization_status` from `alien` to `citizen` will cause any data in `document_type`, `document_number`, `country`, and `expiration_date` to be removed, since these fields are unused for `authorization_status:'citizen'`. Detailed instructions for completing Form I-9 can be found at https://www.uscis.gov/sites/default/files/document/forms/i-9instr.pdf ### Related guides - [I-9 employment verification](https://docs.gusto.com/embedded-payroll/docs/i-9-employment-verification) scope: `i9_authorizations:write` */
+/** Create or update an employee's I-9 authorization An employee's I-9 authorization stores information about an employee's authorization status, as well as signatures and other information required to complete the Form I-9 for employment eligibility verification. If the version is supplied and the employee I-9 authorization exists, this endpoint acts as an update. Otherwise, it will create an employee I-9 authorization. Validations on this endpoint are conditional: * `document_type` may be required, depending on `authorization_status`. * Valid formats for `document_number` vary, depending on `document_type`. * `country` is only allowed with `document_type: 'foreign_passport'`. * `expiration_date` is only allowed with `authorization_status: 'alien'`. > U+2139 Unneeded information is automatically removed during updates. > > If an update causes some formerly-required fields to be unneeded, the now-unneeded data will be removed automatically. > > **Example:** Updating `authorization_status` from `alien` to `citizen` will cause any data in `document_type`, `document_number`, `country`, and `expiration_date` to be removed, since these fields are unused for `authorization_status:'citizen'`. Detailed instructions for completing Form I-9 can be found at https://www.uscis.gov/sites/default/files/document/forms/i-9instr.pdf ### Related guides - [I-9 employment verification](https://docs.gusto.com/embedded-payroll/docs/i-9-employment-verification) scope: `i9_authorizations:write` */
 export const putEmployeeI9Authorization: API.OperationMethod<
   PutEmployeeI9AuthorizationRequest,
   I9Authorization,
@@ -27302,7 +27302,7 @@ export type PutEmployeeI9AuthorizationDocumentsError =
   | NotFound
   | UnprocessableEntity
   | GustoOpError;
-/** Create an employee's I-9 authorization verification documents An employee's I-9 verification documents are the documents an employee has provided the employer to verify their identity and authorization to work in the United States. Use the [document options endpoint](https://docs.gusto.com/embedded-payroll/reference/get-v1-employees-employee_id-i9_authorization-document_options) to get the possible document types and titles, which can vary depending on the employee's authorization status. > 🚧 Every request must contain the complete list of documents for the Employee. > > Every request to this endpoint removes any previous verification document records for the employee. ### Related guides - [I-9 employment verification](https://docs.gusto.com/embedded-payroll/docs/i-9-employment-verification) scope: `i9_authorizations:manage` */
+/** Create an employee's I-9 authorization verification documents An employee's I-9 verification documents are the documents an employee has provided the employer to verify their identity and authorization to work in the United States. Use the [document options endpoint](https://docs.gusto.com/embedded-payroll/reference/get-v1-employees-employee_id-i9_authorization-document_options) to get the possible document types and titles, which can vary depending on the employee's authorization status. > U+1F6A7 Every request must contain the complete list of documents for the Employee. > > Every request to this endpoint removes any previous verification document records for the employee. ### Related guides - [I-9 employment verification](https://docs.gusto.com/embedded-payroll/docs/i-9-employment-verification) scope: `i9_authorizations:manage` */
 export const putEmployeeI9AuthorizationDocuments: API.OperationMethod<
   PutEmployeeI9AuthorizationDocumentsRequest,
   PutEmployeeI9AuthorizationDocumentsResponse,
@@ -27414,7 +27414,7 @@ export const putEmployees: API.OperationMethod<
 }));
 
 export type PutGarnishmentError = NotFound | UnprocessableEntity | GustoOpError;
-/** Update a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee’s pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:write` */
+/** Update a garnishment Garnishments, or employee deductions, are fixed amounts or percentages deducted from an employee's pay. They can be deducted a specific number of times or on a recurring basis. Garnishments can also have maximum deductions on a yearly or per-pay-period bases. Common uses for garnishments are court-ordered payments for child support or back taxes. Some companies provide loans to their employees that are repaid via garnishments. scope: `garnishments:write` */
 export const putGarnishment: API.OperationMethod<
   PutGarnishmentRequest,
   Garnishment,
@@ -27473,7 +27473,7 @@ export type PutPartnerManagedCompanyDisassociateError =
   | NotFound
   | UnprocessableEntity
   | GustoOpError;
-/** Disassociate a partner managed company Disassociate a company from your embedded payroll product, reversing an earlier association or migration. You can only disassociate a company that is currently associated with your application. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `partner_managed_companies:disassociate` */
+/** Disassociate a partner managed company Disassociate a company from your embedded payroll product, reversing an earlier association or migration. You can only disassociate a company that is currently associated with your application. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `partner_managed_companies:disassociate` */
 export const putPartnerManagedCompanyDisassociate: API.OperationMethod<
   PutPartnerManagedCompanyDisassociateRequest,
   PartnerManagedCompanyDisassociateResponse,
@@ -27720,7 +27720,7 @@ export type PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundError =
   | NotFound
   | UnprocessableEntity
   | GustoOpError;
-/** Fund a contractor payment group [DEMO] > 🚧 Demo action > This action is only available in the Demo environment Simulate funding a contractor payment group. Funding only occurs automatically in the production environment when bank transactions are generated. Use this action in the demo environment to transition a contractor payment group's `status` from `Unfunded` to `Funded`. A `Funded` status is required for generating a contractor payment receipt. scope: `payrolls:run` */
+/** Fund a contractor payment group [DEMO] > U+1F6A7 Demo action > This action is only available in the Demo environment Simulate funding a contractor payment group. Funding only occurs automatically in the production environment when bank transactions are generated. Use this action in the demo environment to transition a contractor payment group's `status` from `Unfunded` to `Funded`. A `Funded` status is required for generating a contractor payment receipt. scope: `payrolls:run` */
 export const putV1ContractorPaymentGroupsContractorPaymentGroupIdFund: API.OperationMethod<
   PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundRequest,
   PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponse,
@@ -27881,7 +27881,7 @@ export const putV1TaxLiabilitiesFinish: API.OperationMethod<
 }));
 
 export type PutV1VerifyWebhookSubscriptionUuidError = NotFound | UnprocessableEntity | GustoOpError;
-/** Verify a webhook subscription When a webhook subscription is created, a `verification_token` is POSTed to the registered webhook subscription URL. This `verify` endpoint needs to be called with `verification_token` before webhook events can be sent to the registered webhook URL. Use the /v1/webhook_subscriptions/{webhook_subscription_uuid}/request_verification_token API to resend the `verification_token` to the Subscriber. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
+/** Verify a webhook subscription When a webhook subscription is created, a `verification_token` is POSTed to the registered webhook subscription URL. This `verify` endpoint needs to be called with `verification_token` before webhook events can be sent to the registered webhook URL. Use the /v1/webhook_subscriptions/{webhook_subscription_uuid}/request_verification_token API to resend the `verification_token` to the Subscriber. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
 export const putV1VerifyWebhookSubscriptionUuid: API.OperationMethod<
   PutV1VerifyWebhookSubscriptionUuidRequest,
   WebhookSubscription,
@@ -27896,7 +27896,7 @@ export const putV1VerifyWebhookSubscriptionUuid: API.OperationMethod<
 }));
 
 export type PutWebhookSubscriptionUuidError = NotFound | UnprocessableEntity | GustoOpError;
-/** Update a webhook subscription Updates the Webhook Subscription associated with the provided UUID. 📘 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
+/** Update a webhook subscription Updates the Webhook Subscription associated with the provided UUID. U+1F4D8 System Access Authentication This endpoint uses the [Bearer Auth scheme with the system-level access token in the HTTP Authorization header](https://docs.gusto.com/embedded-payroll/docs/system-access) scope: `webhook_subscriptions:write` */
 export const putWebhookSubscriptionUuid: API.OperationMethod<
   PutWebhookSubscriptionUuidRequest,
   WebhookSubscription,

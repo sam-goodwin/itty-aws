@@ -5679,7 +5679,7 @@ export const PostSyncUserWithLDAPRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostSyncUserWithLDAPRequest",
 }) as any as S.Schema<PostSyncUserWithLDAPRequest>;
 
-/** queries.refId – Specifies an identifier of the query. Is optional and default to “A”. queries.datasourceId – Specifies the data source to be queried. Each query in the request must have an unique datasourceId. queries.maxDataPoints - Species maximum amount of data points that dashboard panel can render. Is optional and default to 100. queries.intervalMs - Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000. */
+/** queries.refId - Specifies an identifier of the query. Is optional and default to "A". queries.datasourceId - Specifies the data source to be queried. Each query in the request must have an unique datasourceId. queries.maxDataPoints - Species maximum amount of data points that dashboard panel can render. Is optional and default to 100. queries.intervalMs - Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000. */
 export type QueryMetricsWithExpressionsRequestQueriesList = Array<unknown>;
 export const QueryMetricsWithExpressionsRequestQueriesList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -5689,7 +5689,7 @@ export interface QueryMetricsWithExpressionsRequest {
   debug?: boolean;
   /** From Start time in epoch timestamps in milliseconds or relative using Grafana time units. */
   from: string;
-  /** queries.refId – Specifies an identifier of the query. Is optional and default to “A”. queries.datasourceId – Specifies the data source to be queried. Each query in the request must have an unique datasourceId. queries.maxDataPoints - Species maximum amount of data points that dashboard panel can render. Is optional and default to 100. queries.intervalMs - Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000. */
+  /** queries.refId - Specifies an identifier of the query. Is optional and default to "A". queries.datasourceId - Specifies the data source to be queried. Each query in the request must have an unique datasourceId. queries.maxDataPoints - Species maximum amount of data points that dashboard panel can render. Is optional and default to 100. queries.intervalMs - Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000. */
   queries: QueryMetricsWithExpressionsRequestQueriesList;
   /** To End time in epoch timestamps in milliseconds or relative using Grafana time units. */
   to: string;
@@ -7324,13 +7324,13 @@ export interface SearchRequest {
   tag?: SearchRequestTagList;
   /** Type to search for, dash-folder or dash-db Description: - `dash-folder` - Search for folder - `dash-db` - Seatch for dashboard */
   type?: SearchRequestType | (string & {});
-  /** List of dashboard id’s to search for This is deprecated: users should use the `dashboardUIDs` query parameter instead */
+  /** List of dashboard id's to search for This is deprecated: users should use the `dashboardUIDs` query parameter instead */
   dashboardIds?: SearchRequestDashboardIdsList;
-  /** List of dashboard uid’s to search for */
+  /** List of dashboard uid's to search for */
   dashboardUIDs?: SearchRequestDashboardUIDsList;
-  /** List of folder id’s to search in for dashboards If it's `0` then it will query for the top level folders This is deprecated: users should use the `folderUIDs` query parameter instead Deprecated: use FolderUIDs instead */
+  /** List of folder id's to search in for dashboards If it's `0` then it will query for the top level folders This is deprecated: users should use the `folderUIDs` query parameter instead Deprecated: use FolderUIDs instead */
   folderIds?: SearchRequestFolderIdsList;
-  /** List of folder UID’s to search in for dashboards If it's an empty string then it will query for the top level folders */
+  /** List of folder UID's to search in for dashboards If it's an empty string then it will query for the top level folders */
   folderUIDs?: SearchRequestFolderUIDsList;
   /** Flag indicating if only starred Dashboards should be returned */
   starred?: boolean;
@@ -9155,7 +9155,7 @@ export const addTeamRole: API.OperationMethod<
 }));
 
 export type AddUserRoleError = Forbidden | NotFound | GrafanaOpError;
-/** Add a user role assignment. Assign a role to a specific user. For bulk updates consider Set user role assignments. You need to have a permission with action `users.roles:add` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only assign roles which have same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to assign a role which will allow to do that. This is done to prevent escalation of privileges. */
+/** Add a user role assignment. Assign a role to a specific user. For bulk updates consider Set user role assignments. You need to have a permission with action `users.roles:add` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only assign roles which have same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won't be able to assign a role which will allow to do that. This is done to prevent escalation of privileges. */
 export const addUserRole: API.OperationMethod<
   AddUserRoleRequest,
   SuccessResponseBody,
@@ -9305,7 +9305,7 @@ export const adminProvisioningReloadAccessControl: API.OperationMethod<
 }));
 
 export type AdminProvisioningReloadDashboardsError = Forbidden | GrafanaOpError;
-/** Reload dashboard provisioning configurations. Reloads the provisioning config files for dashboards again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:dashboards`. */
+/** Reload dashboard provisioning configurations. Reloads the provisioning config files for dashboards again. It won't return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:dashboards`. */
 export const adminProvisioningReloadDashboards: API.OperationMethod<
   AdminProvisioningReloadDashboardsRequest,
   SuccessResponseBody,
@@ -9320,7 +9320,7 @@ export const adminProvisioningReloadDashboards: API.OperationMethod<
 }));
 
 export type AdminProvisioningReloadDatasourcesError = Forbidden | GrafanaOpError;
-/** Reload datasource provisioning configurations. Reloads the provisioning config files for datasources again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:datasources`. */
+/** Reload datasource provisioning configurations. Reloads the provisioning config files for datasources again. It won't return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:datasources`. */
 export const adminProvisioningReloadDatasources: API.OperationMethod<
   AdminProvisioningReloadDatasourcesRequest,
   SuccessResponseBody,
@@ -9335,7 +9335,7 @@ export const adminProvisioningReloadDatasources: API.OperationMethod<
 }));
 
 export type AdminProvisioningReloadPluginsError = Forbidden | GrafanaOpError;
-/** Reload plugin provisioning configurations. Reloads the provisioning config files for plugins again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:plugin`. */
+/** Reload plugin provisioning configurations. Reloads the provisioning config files for plugins again. It won't return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning. If you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:plugin`. */
 export const adminProvisioningReloadPlugins: API.OperationMethod<
   AdminProvisioningReloadPluginsRequest,
   SuccessResponseBody,
@@ -9639,7 +9639,7 @@ export const createReport: API.OperationMethod<
 }));
 
 export type CreateRoleError = BadRequest | Forbidden | GrafanaOpError;
-/** Create a new custom role. Creates a new custom role and maps given permissions to that role. Note that roles with the same prefix as Fixed Roles can’t be created. You need to have a permission with action `roles:write` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only create custom roles with the same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to create a custom role which allows to do that. This is done to prevent escalation of privileges. */
+/** Create a new custom role. Creates a new custom role and maps given permissions to that role. Note that roles with the same prefix as Fixed Roles can't be created. You need to have a permission with action `roles:write` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only create custom roles with the same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won't be able to create a custom role which allows to do that. This is done to prevent escalation of privileges. */
 export const createRole: API.OperationMethod<
   CreateRoleRequest,
   RoleDTO,
@@ -9973,7 +9973,7 @@ export const deleteRecordingRuleWriteTarget: API.OperationMethod<
 }));
 
 export type DeleteRoleError = BadRequest | Forbidden | GrafanaOpError;
-/** Delete a custom role. Delete a role with the given UID, and it’s permissions. If the role is assigned to a built-in role, the deletion operation will fail, unless force query param is set to true, and in that case all assignments will also be deleted. You need to have a permission with action `roles:delete` and scope `permissions:type:delegate`. */
+/** Delete a custom role. Delete a role with the given UID, and it's permissions. If the role is assigned to a built-in role, the deletion operation will fail, unless force query param is set to true, and in that case all assignments will also be deleted. You need to have a permission with action `roles:delete` and scope `permissions:type:delegate`. */
 export const deleteRole: API.OperationMethod<
   DeleteRoleRequest,
   SuccessResponseBody,
@@ -11360,7 +11360,7 @@ export const postACS: API.OperationMethod<
 }));
 
 export type PostGraphiteAnnotationError = BadRequest | Forbidden | GrafanaOpError;
-/** Create Annotation in Graphite format. Creates an annotation by using Graphite-compatible event format. The `when` and `data` fields are optional. If `when` is not specified then the current time will be used as annotation’s timestamp. The `tags` field can also be in prior to Graphite `0.10.0` format (string with multiple tags being separated by a space). */
+/** Create Annotation in Graphite format. Creates an annotation by using Graphite-compatible event format. The `when` and `data` fields are optional. If `when` is not specified then the current time will be used as annotation's timestamp. The `tags` field can also be in prior to Graphite `0.10.0` format (string with multiple tags being separated by a space). */
 export const postGraphiteAnnotation: API.OperationMethod<
   PostGraphiteAnnotationRequest,
   PostGraphiteAnnotationResponse,
@@ -12154,7 +12154,7 @@ export const searchUsersWithPaging: API.OperationMethod<
 }));
 
 export type SendReportError = BadRequest | Forbidden | NotFound | GrafanaOpError;
-/** Send a report. Generate and send a report. This API waits for the report to be generated before returning. We recommend that you set the client’s timeout to at least 60 seconds. Available to org admins only and with a valid license. Only available in Grafana Enterprise v7.0+. This API endpoint is experimental and may be deprecated in a future release. On deprecation, a migration strategy will be provided and the endpoint will remain functional until the next major release of Grafana. You need to have a permission with action `reports:send`. */
+/** Send a report. Generate and send a report. This API waits for the report to be generated before returning. We recommend that you set the client's timeout to at least 60 seconds. Available to org admins only and with a valid license. Only available in Grafana Enterprise v7.0+. This API endpoint is experimental and may be deprecated in a future release. On deprecation, a migration strategy will be provided and the endpoint will remain functional until the next major release of Grafana. You need to have a permission with action `reports:send`. */
 export const sendReport: API.OperationMethod<
   SendReportRequest,
   SuccessResponseBody,
@@ -12308,7 +12308,7 @@ export const setTeamRoles: API.OperationMethod<
 }));
 
 export type SetUserRolesError = BadRequest | Forbidden | NotFound | GrafanaOpError;
-/** Set user role assignments. Update the user’s role assignments to match the provided set of UIDs. This will remove any assigned roles that aren’t in the request and add roles that are in the set but are not already assigned to the user. Roles mapped through group attribute sync are not impacted. If you want to add or remove a single role, consider using Add a user role assignment or Remove a user role assignment instead. You need to have a permission with action `users.roles:add` and `users.roles:remove` and scope `permissions:type:delegate` for each. The delegate scope is required for permissions on roles being added. */
+/** Set user role assignments. Update the user's role assignments to match the provided set of UIDs. This will remove any assigned roles that aren't in the request and add roles that are in the set but are not already assigned to the user. Roles mapped through group attribute sync are not impacted. If you want to add or remove a single role, consider using Add a user role assignment or Remove a user role assignment instead. You need to have a permission with action `users.roles:add` and `users.roles:remove` and scope `permissions:type:delegate` for each. The delegate scope is required for permissions on roles being added. */
 export const setUserRoles: API.OperationMethod<
   SetUserRolesRequest,
   SuccessResponseBody,
@@ -12462,7 +12462,7 @@ export const updateDataSourceByUID: API.OperationMethod<
 }));
 
 export type UpdateFolderPermissionsError = Forbidden | NotFound | GrafanaOpError;
-/** Updates permissions for a folder. This operation will remove existing permissions if they’re not included in the request. */
+/** Updates permissions for a folder. This operation will remove existing permissions if they're not included in the request. */
 export const updateFolderPermissions: API.OperationMethod<
   UpdateFolderPermissionsRequest,
   SuccessResponseBody,

@@ -1563,7 +1563,7 @@ export type CreateMicrovmImageError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a MicroVM image from the specified code artifact and base image. The build is asynchronous — the image transitions from CREATING to CREATED on success, or CREATE_FAILED on failure. Use GetMicrovmImage to poll for completion.
+ * Creates a MicroVM image from the specified code artifact and base image. The build is asynchronous -- the image transitions from CREATING to CREATED on success, or CREATE_FAILED on failure. Use GetMicrovmImage to poll for completion.
  */
 export const createMicrovmImage: API.OperationMethod<
   CreateMicrovmImageRequest,
@@ -1691,7 +1691,7 @@ export type GetMicrovmError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the details of a specific MicroVM, including its state, endpoint, image information, and configuration. The state field is eventually consistent — determine readiness by connecting to the endpoint.
+ * Retrieves the details of a specific MicroVM, including its state, endpoint, image information, and configuration. The state field is eventually consistent -- determine readiness by connecting to the endpoint.
  */
 export const getMicrovm: API.OperationMethod<
   GetMicrovmRequest,
@@ -2251,7 +2251,7 @@ export type UpdateMicrovmImageError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates the configuration of a MicroVM image and triggers a new version build. This operation uses PUT semantics — all required fields (codeArtifact, baseImageArn, buildRoleArn) must be provided with every request.
+ * Updates the configuration of a MicroVM image and triggers a new version build. This operation uses PUT semantics -- all required fields (codeArtifact, baseImageArn, buildRoleArn) must be provided with every request.
  */
 export const updateMicrovmImage: API.OperationMethod<
   UpdateMicrovmImageRequest,

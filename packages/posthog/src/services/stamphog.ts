@@ -83,7 +83,7 @@ export const StamphogRepoConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateStamphogRepoConfigsSyncInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** GitHub App installation ID from the fresh-install Setup URL redirect. Optional: absent or blank means discover the caller's installations from the OAuth code instead (authorize-first flow). The id is not trusted on its own — ownership is always proven via the code. */
+  /** GitHub App installation ID from the fresh-install Setup URL redirect. Optional: absent or blank means discover the caller's installations from the OAuth code instead (authorize-first flow). The id is not trusted on its own -- ownership is always proven via the code. */
   installation_id?: string;
   /** GitHub user-to-server OAuth code from the post-install redirect (present when the App has 'Request user authorization during installation' enabled). Exchanged server-side to prove the caller owns the installation before its repos are bound. */
   code: string;
@@ -150,7 +150,7 @@ export interface StamphogSyncInstallationResponse {
   skipped: StamphogSyncInstallationResponseSkippedList;
   /** How many repositories this team can add after the sync, across all its connected installations. List them with available_repositories. */
   available_count: number;
-  /** True only on the discovery path (no installation_id) when the caller can reach no installation of this App — it isn't installed anywhere they can see. The frontend should route the user to the GitHub install page (install_url). Always false on the explicit installation_id path. */
+  /** True only on the discovery path (no installation_id) when the caller can reach no installation of this App -- it isn't installed anywhere they can see. The frontend should route the user to the GitHub install page (install_url). Always false on the explicit installation_id path. */
   app_not_installed: boolean;
   /** Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found). */
   installations: StamphogSyncInstallationResponseInstallationsList;
@@ -205,7 +205,7 @@ export const ReviewRunStatusEnum = S.String;
 export type ReviewRunVerdictEnum = "none" | "approved" | "refused" | "escalate" | "wait" | "error";
 export const ReviewRunVerdictEnum = S.String;
 
-/** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content — changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` — which a project member without repo access must not read. Only the terminal decision is exposed. */
+/** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content -- changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` -- which a project member without repo access must not read. Only the terminal decision is exposed. */
 export interface GateResultSummary {
   /** Whether the deterministic gates blocked auto-review before the reviewer ran. */
   gate_blocked: boolean;
@@ -285,7 +285,7 @@ export interface ReviewRun {
   status: ReviewRunStatusEnum;
   /** Final verdict reached by the reviewer, if any. * `none` - NONE * `approved` - APPROVED * `refused` - REFUSED * `escalate` - ESCALATE * `wait` - WAIT * `error` - ERROR */
   verdict: ReviewRunVerdictEnum;
-  /** Allowlisted deterministic gate outcome (gate_blocked, final_verdict). The nested gate, classification, and policy sub-objects are excluded — they carry changed-file paths and policy scopes, repository content a project member without repo access must not read. */
+  /** Allowlisted deterministic gate outcome (gate_blocked, final_verdict). The nested gate, classification, and policy sub-objects are excluded -- they carry changed-file paths and policy scopes, repository content a project member without repo access must not read. */
   gate_result: GateResultSummary;
   /** Allowlisted subset of the reviewer output blob (stamphog version, reviewer exit code). The raw reviewer stdout, PR payload, changed-file patches, and policy file contents are excluded. The reviewer's reasoning, the text stamphog posts on GitHub, is in `reasoning` instead. */
   output: ReviewOutputSummary;
@@ -976,7 +976,7 @@ export const UpdateStamphogRepoConfigsPartialRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateStamphogRepoConfigsPartialRequest>;
 
 export type CreateStamphogRepoConfigError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const createStamphogRepoConfig: API.OperationMethod<
   CreateStamphogRepoConfigRequest,
   StamphogRepoConfig,
@@ -991,7 +991,7 @@ export const createStamphogRepoConfig: API.OperationMethod<
 }));
 
 export type CreateStamphogRepoConfigsSyncInstallationError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const createStamphogRepoConfigsSyncInstallation: API.OperationMethod<
   CreateStamphogRepoConfigsSyncInstallationRequest,
   StamphogSyncInstallationResponse,
@@ -1051,7 +1051,7 @@ export const getStamphogPullRequest: API.OperationMethod<
 }));
 
 export type GetStamphogRepoConfigError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const getStamphogRepoConfig: API.OperationMethod<
   GetStamphogRepoConfigRequest,
   StamphogRepoConfig,
@@ -1126,7 +1126,7 @@ export const listStamphogPullRequests: API.OperationMethod<
 }));
 
 export type ListStamphogRepoConfigsError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const listStamphogRepoConfigs: API.OperationMethod<
   ListStamphogRepoConfigsRequest,
   PaginatedStamphogRepoConfigList,
@@ -1171,7 +1171,7 @@ export const stamphogRepoConfigsAddRepositoryCreate: API.OperationMethod<
 }));
 
 export type StamphogRepoConfigsDestroyError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const stamphogRepoConfigsDestroy: API.OperationMethod<
   StamphogRepoConfigsDestroyRequest,
   StamphogRepoConfigsDestroyResponse,
@@ -1186,7 +1186,7 @@ export const stamphogRepoConfigsDestroy: API.OperationMethod<
 }));
 
 export type StamphogRepoConfigsInstallInfoRetrieveError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const stamphogRepoConfigsInstallInfoRetrieve: API.OperationMethod<
   StamphogRepoConfigsInstallInfoRetrieveRequest,
   StamphogInstallInfo,
@@ -1201,7 +1201,7 @@ export const stamphogRepoConfigsInstallInfoRetrieve: API.OperationMethod<
 }));
 
 export type UpdateStamphogRepoConfigError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const updateStamphogRepoConfig: API.OperationMethod<
   UpdateStamphogRepoConfigRequest,
   StamphogRepoConfig,
@@ -1216,7 +1216,7 @@ export const updateStamphogRepoConfig: API.OperationMethod<
 }));
 
 export type UpdateStamphogRepoConfigsPartialError = PosthogOpError;
-/** Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides. */
+/** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const updateStamphogRepoConfigsPartial: API.OperationMethod<
   UpdateStamphogRepoConfigsPartialRequest,
   StamphogRepoConfig,

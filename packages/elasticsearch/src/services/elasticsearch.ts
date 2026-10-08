@@ -163,7 +163,7 @@ export interface NodesTypesRepositoryMeteringInformation {
   repository_stopped_at?: number;
   /** A flag that tells whether or not this object has been archived. When a repository is closed or updated the repository metering information is archived and kept for a certain period of time. This allows retrieving the repository metering information of previous repository instantiations. */
   archived: boolean;
-  /** The cluster state version when this object was archived, this field can be used as a logical timestamp to delete all the archived metrics up to an observed version. This field is only present for archived repository metering information objects. The main purpose of this field is to avoid possible race conditions during repository metering information deletions, i.e. deleting archived repositories metering information that we haven’t observed yet. */
+  /** The cluster state version when this object was archived, this field can be used as a logical timestamp to delete all the archived metrics up to an observed version. This field is only present for archived repository metering information objects. The main purpose of this field is to avoid possible race conditions during repository metering information deletions, i.e. deleting archived repositories metering information that we haven't observed yet. */
   cluster_version?: number;
   /** An object with the number of request performed against the repository grouped by request type. */
   request_counts: NodesTypesRequestCounts;
@@ -194,7 +194,7 @@ export const ArchiveNodesClearRepositoriesMeteringResponseNodesMap = /*@__PURE__
 ) as any as S.Schema<ArchiveNodesClearRepositoriesMeteringResponseNodesMap>;
 
 export interface ArchiveNodesClearRepositoriesMeteringResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   /** Name of the cluster. Based on the `cluster.name` setting. */
   cluster_name: string;
@@ -4219,7 +4219,7 @@ export interface TypesQueryDslFieldValueFactorScoreFunction {
   field: string;
   /** Optional factor to multiply the field value with. */
   factor?: number;
-  /** Value used if the document doesn’t have that field. The modifier and factor are still applied to it as though it were read from the document. */
+  /** Value used if the document doesn't have that field. The modifier and factor are still applied to it as though it were read from the document. */
   missing?: number;
   /** Modifier to apply to the field value. */
   modifier?: TypesQueryDslFieldValueFactorModifier | (string & {});
@@ -4318,7 +4318,7 @@ export interface TypesQueryDslFunctionScoreContainer {
   gauss?: TypesQueryDslDecayFunction;
   /** Function that scores a document with a linear decay, depending on the distance of a numeric field value of the document from an origin. */
   linear?: TypesQueryDslDecayFunction;
-  /** Function allows you to use a field from a document to influence the score. It’s similar to using the script_score function, however, it avoids the overhead of scripting. */
+  /** Function allows you to use a field from a document to influence the score. It's similar to using the script_score function, however, it avoids the overhead of scripting. */
   field_value_factor?: TypesQueryDslFieldValueFactorScoreFunction;
   /** Generates scores that are uniformly distributed from 0 up to but not including 1. In case you want scores to be reproducible, it is possible to provide a `seed` and `field`. */
   random_score?: TypesQueryDslRandomScoreFunction;
@@ -4691,7 +4691,7 @@ export interface GlobalSearchTypesHighlightField {
   /** Highlight matches for a query other than the search query. This is especially useful if you use a rescore query because those are not taken into account by highlighting by default. */
   highlight_query?: TypesQueryDslQueryContainer;
   max_fragment_length?: number;
-  /** If set to a non-negative value, highlighting stops at this defined maximum limit. The rest of the text is not processed, thus not highlighted and no error is returned The `max_analyzed_offset` query setting does not override the `index.highlight.max_analyzed_offset` setting, which prevails when it’s set to lower value than the query setting. */
+  /** If set to a non-negative value, highlighting stops at this defined maximum limit. The rest of the text is not processed, thus not highlighted and no error is returned The `max_analyzed_offset` query setting does not override the `index.highlight.max_analyzed_offset` setting, which prevails when it's set to lower value than the query setting. */
   max_analyzed_offset?: number;
   /** The amount of text you want to return from the beginning of the field if there are no matching fragments to highlight. */
   no_match_size?: number;
@@ -4790,7 +4790,7 @@ export interface GlobalSearchTypesHighlight {
   /** Highlight matches for a query other than the search query. This is especially useful if you use a rescore query because those are not taken into account by highlighting by default. */
   highlight_query?: TypesQueryDslQueryContainer;
   max_fragment_length?: number;
-  /** If set to a non-negative value, highlighting stops at this defined maximum limit. The rest of the text is not processed, thus not highlighted and no error is returned The `max_analyzed_offset` query setting does not override the `index.highlight.max_analyzed_offset` setting, which prevails when it’s set to lower value than the query setting. */
+  /** If set to a non-negative value, highlighting stops at this defined maximum limit. The rest of the text is not processed, thus not highlighted and no error is returned The `max_analyzed_offset` query setting does not override the `index.highlight.max_analyzed_offset` setting, which prevails when it's set to lower value than the query setting. */
   max_analyzed_offset?: number;
   /** The amount of text you want to return from the beginning of the field if there are no matching fragments to highlight. */
   no_match_size?: number;
@@ -5056,7 +5056,7 @@ export interface TypesQueryDslHasChildQuery {
   min_children?: number;
   /** Query you wish to run on child documents of the `type` field. If a child document matches the search, the query returns the parent document. */
   query: TypesQueryDslQueryContainer;
-  /** Indicates how scores for matching child documents affect the root parent document’s relevance score. */
+  /** Indicates how scores for matching child documents affect the root parent document's relevance score. */
   score_mode?: TypesQueryDslChildScoreMode | (string & {});
   /** Name of the child relationship mapped for the `join` field. */
   type: string;
@@ -6106,7 +6106,7 @@ export interface TypesQueryDslNestedQuery {
   path: string;
   /** Query you wish to run on nested objects in the path. */
   query: TypesQueryDslQueryContainer;
-  /** How scores for matching child objects affect the root parent document’s relevance score. */
+  /** How scores for matching child objects affect the root parent document's relevance score. */
   score_mode?: TypesQueryDslChildScoreMode | (string & {});
 }
 export const TypesQueryDslNestedQuery = /*@__PURE__*/ S.suspend(() =>
@@ -6245,7 +6245,7 @@ export interface TypesQueryDslPrefixQuery {
   rewrite?: string;
   /** Beginning characters of terms you wish to find in the provided field. */
   value: string;
-  /** Allows case insensitive matching of the value with the indexed field values when set to `true`. Default is `false` which means the case sensitivity of matching depends on the underlying field’s mapping. */
+  /** Allows case insensitive matching of the value with the indexed field values when set to `true`. Default is `false` which means the case sensitivity of matching depends on the underlying field's mapping. */
   case_insensitive?: boolean;
 }
 export const TypesQueryDslPrefixQuery = /*@__PURE__*/ S.suspend(() =>
@@ -6591,7 +6591,7 @@ export interface TypesQueryDslRegexpQuery {
   /** Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score. */
   boost?: number;
   _name?: string;
-  /** Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`. When `false`, case sensitivity of matching depends on the underlying field’s mapping. */
+  /** Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`. When `false`, case sensitivity of matching depends on the underlying field's mapping. */
   case_insensitive?: boolean;
   /** Enables optional operators for the regular expression. */
   flags?: string;
@@ -6902,15 +6902,15 @@ export interface TypesQueryDslSpanNotQuery {
   /** Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score. */
   boost?: number;
   _name?: string;
-  /** The number of tokens from within the include span that can’t have overlap with the exclude span. Equivalent to setting both `pre` and `post`. */
+  /** The number of tokens from within the include span that can't have overlap with the exclude span. Equivalent to setting both `pre` and `post`. */
   dist?: number;
   /** Span query whose matches must not overlap those returned. */
   exclude: TypesQueryDslSpanQuery;
   /** Span query whose matches are filtered. */
   include: TypesQueryDslSpanQuery;
-  /** The number of tokens after the include span that can’t have overlap with the exclude span. */
+  /** The number of tokens after the include span that can't have overlap with the exclude span. */
   post?: number;
-  /** The number of tokens before the include span that can’t have overlap with the exclude span. */
+  /** The number of tokens before the include span that can't have overlap with the exclude span. */
   pre?: number;
 }
 export const TypesQueryDslSpanNotQuery = /*@__PURE__*/ S.suspend(() =>
@@ -7119,7 +7119,7 @@ export interface TypesQueryDslTermQuery {
   _name?: string;
   /** Term you wish to find in the provided field. */
   value: TypesFieldValue;
-  /** Allows case insensitive matching of the value with the indexed field values when set to `true`. When `false`, the case sensitivity of matching depends on the underlying field’s mapping. */
+  /** Allows case insensitive matching of the value with the indexed field values when set to `true`. When `false`, the case sensitivity of matching depends on the underlying field's mapping. */
   case_insensitive?: boolean;
 }
 export const TypesQueryDslTermQuery = /*@__PURE__*/ S.suspend(() =>
@@ -7276,7 +7276,7 @@ export interface TypesQueryDslWildcardQuery {
   /** Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score. */
   boost?: number;
   _name?: string;
-  /** Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping. */
+  /** Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field's mapping. */
   case_insensitive?: boolean;
   /** Method used to rewrite the query. */
   rewrite?: string;
@@ -7659,7 +7659,7 @@ export const TypesAggregationsGapPolicy = S.String;
 export interface TypesAggregationsAverageBucketAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -7703,7 +7703,7 @@ export const TypesAggregationsBoxplotAggregation = /*@__PURE__*/ S.suspend(() =>
 export interface TypesAggregationsBucketScriptAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -7757,7 +7757,7 @@ export const TypesAggregationsBucketKsAggregationFractionsList = /*@__PURE__*/ S
   S.Number,
 ) as any as S.Schema<TypesAggregationsBucketKsAggregationFractionsList>;
 
-/** A sibling pipeline aggregation which executes a two sample Kolmogorov–Smirnov test (referred to as a "K-S test" from now on) against a provided distribution, and the distribution implied by the documents counts in the configured sibling aggregation. Specifically, for some metric, assuming that the percentile intervals of the metric are known beforehand or have been computed by an aggregation, then one would use range aggregation for the sibling to compute the p-value of the distribution difference between the metric and the restriction of that metric to a subset of the documents. A natural use case is if the sibling aggregation range aggregation nested in a terms aggregation, in which case one compares the overall distribution of metric to its restriction to each term. */
+/** A sibling pipeline aggregation which executes a two sample Kolmogorov-Smirnov test (referred to as a "K-S test" from now on) against a provided distribution, and the distribution implied by the documents counts in the configured sibling aggregation. Specifically, for some metric, assuming that the percentile intervals of the metric are known beforehand or have been computed by an aggregation, then one would use range aggregation for the sibling to compute the p-value of the distribution difference between the metric and the restriction of that metric to a subset of the documents. A natural use case is if the sibling aggregation range aggregation nested in a terms aggregation, in which case one compares the overall distribution of metric to its restriction to each term. */
 export interface TypesAggregationsBucketKsAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
@@ -7796,7 +7796,7 @@ export const TypesAggregationsBucketCorrelationFunctionCountCorrelationIndicator
   ) as any as S.Schema<TypesAggregationsBucketCorrelationFunctionCountCorrelationIndicatorFractionsList>;
 
 export interface TypesAggregationsBucketCorrelationFunctionCountCorrelationIndicator {
-  /** The total number of documents that initially created the expectations. It’s required to be greater than or equal to the sum of all values in the buckets_path as this is the originating superset of data to which the term values are correlated. */
+  /** The total number of documents that initially created the expectations. It's required to be greater than or equal to the sum of all values in the buckets_path as this is the originating superset of data to which the term values are correlated. */
   doc_count: number;
   /** An array of numbers with which to correlate the configured `bucket_path` values. The length of this value must always equal the number of buckets returned by the `bucket_path`. */
   expectations: TypesAggregationsBucketCorrelationFunctionCountCorrelationIndicatorExpectationsList;
@@ -8431,7 +8431,7 @@ export const TypesAggregationsExtendedStatsAggregation = /*@__PURE__*/ S.suspend
 export interface TypesAggregationsExtendedStatsBucketAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -8980,7 +8980,7 @@ export const TypesAggregationsInferenceConfigContainer = /*@__PURE__*/ S.suspend
 export interface TypesAggregationsInferenceAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9085,7 +9085,7 @@ export const TypesAggregationsLinearMovingAverageAggregationModel = S.String;
 export interface TypesAggregationsLinearMovingAverageAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9116,7 +9116,7 @@ export const TypesAggregationsSimpleMovingAverageAggregationModel = S.String;
 export interface TypesAggregationsSimpleMovingAverageAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9158,7 +9158,7 @@ export const TypesAggregationsEwmaModelSettings = /*@__PURE__*/ S.suspend(() =>
 export interface TypesAggregationsEwmaMovingAverageAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9202,7 +9202,7 @@ export const TypesAggregationsHoltLinearModelSettings = /*@__PURE__*/ S.suspend(
 export interface TypesAggregationsHoltMovingAverageAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9257,7 +9257,7 @@ export const TypesAggregationsHoltWintersModelSettings = /*@__PURE__*/ S.suspend
 export interface TypesAggregationsHoltWintersMovingAverageAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9294,7 +9294,7 @@ export const TypesAggregationsMovingAverageAggregation =
 export interface TypesAggregationsMovingPercentilesAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9320,7 +9320,7 @@ export const TypesAggregationsMovingPercentilesAggregation = /*@__PURE__*/ S.sus
 export interface TypesAggregationsMovingFunctionAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9429,7 +9429,7 @@ export const TypesAggregationsNormalizeMethod = S.String;
 export interface TypesAggregationsNormalizeAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9570,7 +9570,7 @@ export const TypesAggregationsPercentilesBucketAggregationPercentsList = /*@__PU
 export interface TypesAggregationsPercentilesBucketAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -9762,7 +9762,7 @@ export const TypesAggregationsScriptedMetricAggregation = /*@__PURE__*/ S.suspen
 export interface TypesAggregationsSerialDifferencingAggregation {
   /** Path to the buckets that contain one set of values to correlate. */
   buckets_path?: TypesAggregationsBucketsPath;
-  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation’s `value_as_string` property. */
+  /** `DecimalFormat` pattern for the output value. If specified, the formatted value is returned in the aggregation's `value_as_string` property. */
   format?: string;
   /** Policy to apply when gaps are found in the data. */
   gap_policy?: TypesAggregationsGapPolicy | (string & {});
@@ -10324,7 +10324,7 @@ export interface TypesAggregationsAggregationContainer {
   bucket_selector?: TypesAggregationsBucketScriptAggregation;
   /** A parent pipeline aggregation which sorts the buckets of its parent multi-bucket aggregation. */
   bucket_sort?: TypesAggregationsBucketSortAggregation;
-  /** A sibling pipeline aggregation which runs a two sample Kolmogorov–Smirnov test ("K-S test") against a provided distribution and the distribution implied by the documents counts in the configured sibling aggregation. */
+  /** A sibling pipeline aggregation which runs a two sample Kolmogorov-Smirnov test ("K-S test") against a provided distribution and the distribution implied by the documents counts in the configured sibling aggregation. */
   bucket_count_ks_test?: TypesAggregationsBucketKsAggregation;
   /** A sibling pipeline aggregation which runs a correlation function on the configured sibling multi-bucket aggregation. */
   bucket_correlation?: TypesAggregationsBucketCorrelationAggregation;
@@ -10378,7 +10378,7 @@ export interface TypesAggregationsAggregationContainer {
   geotile_grid?: TypesAggregationsGeoTileGridAggregation;
   /** A multi-bucket aggregation that groups `geo_point` and `geo_shape` values into buckets that represent a grid. Each cell corresponds to a H3 cell index and is labeled using the H3Index representation. */
   geohex_grid?: TypesAggregationsGeohexGridAggregation;
-  /** Defines a single bucket of all the documents within the search execution context. This context is defined by the indices and the document types you’re searching on, but is not influenced by the search query itself. */
+  /** Defines a single bucket of all the documents within the search execution context. This context is defined by the indices and the document types you're searching on, but is not influenced by the search query itself. */
   global?: TypesQueryDslRankFeatureFunctionLinear;
   /** A multi-bucket values source based aggregation that can be applied on numeric values or numeric range values extracted from the documents. It dynamically builds fixed size (interval) buckets over the values. */
   histogram?: TypesAggregationsHistogramAggregation;
@@ -10424,7 +10424,7 @@ export interface TypesAggregationsAggregationContainer {
   percentiles_bucket?: TypesAggregationsPercentilesBucketAggregation;
   /** A multi-bucket value source based aggregation that enables the user to define a set of ranges - each representing a bucket. */
   range?: TypesAggregationsRangeAggregation;
-  /** A multi-bucket value source based aggregation which finds "rare" terms — terms that are at the long-tail of the distribution and are not frequent. */
+  /** A multi-bucket value source based aggregation which finds "rare" terms -- terms that are at the long-tail of the distribution and are not frequent. */
   rare_terms?: TypesAggregationsRareTermsAggregation;
   /** Calculates a rate of documents or a field in each bucket. Can only be used inside a `date_histogram` or `composite` aggregation. */
   rate?: TypesAggregationsRateAggregation;
@@ -10458,7 +10458,7 @@ export interface TypesAggregationsAggregationContainer {
   time_series?: TypesAggregationsTimeSeriesAggregation;
   /** A metric aggregation that returns the top matching documents per bucket. */
   top_hits?: TypesAggregationsTopHitsAggregation;
-  /** A metrics aggregation that performs a statistical hypothesis test in which the test statistic follows a Student’s t-distribution under the null hypothesis on numeric values extracted from the aggregated documents. */
+  /** A metrics aggregation that performs a statistical hypothesis test in which the test statistic follows a Student's t-distribution under the null hypothesis on numeric values extracted from the aggregated documents. */
   t_test?: TypesAggregationsTTestAggregation;
   /** A metric aggregation that selects metrics from the document with the largest or smallest sort value. */
   top_metrics?: TypesAggregationsTopMetricsAggregation;
@@ -12053,7 +12053,7 @@ export const AsyncSearchSubmitRequestFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AsyncSearchSubmitRequestFieldsList>;
 
 export interface AsyncSearchSubmitRequest {
-  /** Blocks and waits until the search is completed up to a certain timeout. When the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster. */
+  /** Blocks and waits until the search is completed up to a certain timeout. When the async search completes within the timeout, the response won't include the ID as the results are not stored in the cluster. */
   wait_for_completion_timeout?: TypesDuration;
   /** Specifies how long the async search needs to be available. Ongoing async searches and any saved search results are deleted after this period. */
   keep_alive?: TypesDuration;
@@ -12349,7 +12349,7 @@ export const AsyncSearchSubmit1RequestFieldsList = /*@__PURE__*/ S.Array(
 export interface AsyncSearchSubmit1Request {
   /** A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices */
   index: string;
-  /** Blocks and waits until the search is completed up to a certain timeout. When the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster. */
+  /** Blocks and waits until the search is completed up to a certain timeout. When the async search completes within the timeout, the response won't include the ID as the results are not stored in the cluster. */
   wait_for_completion_timeout?: TypesDuration;
   /** Specifies how long the async search needs to be available. Ongoing async searches and any saved search results are deleted after this period. */
   keep_alive?: TypesDuration;
@@ -14043,17 +14043,17 @@ export type CatAllocationAllocationRecordDiskIndicesForecast = TypesByteSize | s
 export const CatAllocationAllocationRecordDiskIndicesForecast =
   S.Unknown as any as S.Schema<CatAllocationAllocationRecordDiskIndicesForecast>;
 
-/** Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards. IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index. */
+/** Disk space used by the node's shards. Does not include disk space for the translog or unassigned shards. IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index. */
 export type CatAllocationAllocationRecordDiskIndices = TypesByteSize | string;
 export const CatAllocationAllocationRecordDiskIndices =
   S.Unknown as any as S.Schema<CatAllocationAllocationRecordDiskIndices>;
 
-/** Total disk space in use. Elasticsearch retrieves this metric from the node’s operating system (OS). The metric includes disk space for: Elasticsearch, including the translog and unassigned shards; the node’s operating system; any other applications or files on the node. Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files. */
+/** Total disk space in use. Elasticsearch retrieves this metric from the node's operating system (OS). The metric includes disk space for: Elasticsearch, including the translog and unassigned shards; the node's operating system; any other applications or files on the node. Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files. */
 export type CatAllocationAllocationRecordDiskUsed = TypesByteSize | string;
 export const CatAllocationAllocationRecordDiskUsed =
   S.Unknown as any as S.Schema<CatAllocationAllocationRecordDiskUsed>;
 
-/** Free disk space available to Elasticsearch. Elasticsearch retrieves this metric from the node’s operating system. Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space. */
+/** Free disk space available to Elasticsearch. Elasticsearch retrieves this metric from the node's operating system. Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space. */
 export type CatAllocationAllocationRecordDiskAvail = TypesByteSize | string;
 export const CatAllocationAllocationRecordDiskAvail =
   S.Unknown as any as S.Schema<CatAllocationAllocationRecordDiskAvail>;
@@ -14080,11 +14080,11 @@ export interface CatAllocationAllocationRecord {
   write_load_forecast?: CatAllocationAllocationRecordWriteLoadForecast;
   /** Sum of shard size forecasts */
   disk_indices_forecast?: CatAllocationAllocationRecordDiskIndicesForecast;
-  /** Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards. IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index. */
+  /** Disk space used by the node's shards. Does not include disk space for the translog or unassigned shards. IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index. */
   disk_indices?: CatAllocationAllocationRecordDiskIndices;
-  /** Total disk space in use. Elasticsearch retrieves this metric from the node’s operating system (OS). The metric includes disk space for: Elasticsearch, including the translog and unassigned shards; the node’s operating system; any other applications or files on the node. Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files. */
+  /** Total disk space in use. Elasticsearch retrieves this metric from the node's operating system (OS). The metric includes disk space for: Elasticsearch, including the translog and unassigned shards; the node's operating system; any other applications or files on the node. Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files. */
   disk_used?: CatAllocationAllocationRecordDiskUsed;
-  /** Free disk space available to Elasticsearch. Elasticsearch retrieves this metric from the node’s operating system. Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space. */
+  /** Free disk space available to Elasticsearch. Elasticsearch retrieves this metric from the node's operating system. Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space. */
   disk_avail?: CatAllocationAllocationRecordDiskAvail;
   /** Total disk space for the node, including in-use and available space. */
   disk_total?: CatAllocationAllocationRecordDiskTotal;
@@ -16346,9 +16346,9 @@ export interface CatMlJobsJobsRecord {
   model_frequent_category_count?: string;
   /** The number of categories that match just one categorized document. */
   model_rare_category_count?: string;
-  /** The number of categories created by categorization that will never be assigned again because another category’s definition makes it a superset of the dead category. Dead categories are a side effect of the way categorization has no prior training. */
+  /** The number of categories created by categorization that will never be assigned again because another category's definition makes it a superset of the dead category. Dead categories are a side effect of the way categorization has no prior training. */
   model_dead_category_count?: string;
-  /** The number of times that categorization wanted to create a new category but couldn’t because the job had hit its `model_memory_limit`. This count does not track which specific categories failed to be created. Therefore you cannot use this value to determine the number of unique categories that were missed. */
+  /** The number of times that categorization wanted to create a new category but couldn't because the job had hit its `model_memory_limit`. This count does not track which specific categories failed to be created. Therefore you cannot use this value to determine the number of unique categories that were missed. */
   model_failed_category_count?: string;
   /** The timestamp when the model stats were gathered, according to server time. */
   model_log_time?: string;
@@ -18281,7 +18281,7 @@ export interface CatShardsShardsRecord {
   node?: string;
   /** The sync identifier. */
   sync_id?: string;
-  /** The reason for the last change to the state of an unassigned shard. It does not explain why the shard is currently unassigned; use the cluster allocation explain API for that information. Returned values include: `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard. `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery. `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index. `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index. `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the cluster reroute API. `INDEX_CLOSED`: Unassigned because the index was closed. `INDEX_CREATED`: Unassigned as a result of an API creation of an index. `INDEX_REOPENED`: Unassigned as a result of opening a closed index. `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the cluster reroute API. `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index. `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster. `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the node shutdown API. `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed. `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled. `REINITIALIZED`: When a shard moves from started back to initializing. `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica. `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command. */
+  /** The reason for the last change to the state of an unassigned shard. It does not explain why the shard is currently unassigned; use the cluster allocation explain API for that information. Returned values include: `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard. `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery. `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index. `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index. `FORCED_EMPTY_PRIMARY`: The shard's allocation was last modified by forcing an empty primary using the cluster reroute API. `INDEX_CLOSED`: Unassigned because the index was closed. `INDEX_CREATED`: Unassigned as a result of an API creation of an index. `INDEX_REOPENED`: Unassigned as a result of opening a closed index. `MANUAL_ALLOCATION`: The shard's allocation was last modified by the cluster reroute API. `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index. `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster. `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the node shutdown API. `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed. `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled. `REINITIALIZED`: When a shard moves from started back to initializing. `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica. `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command. */
   unassigned_reason?: string;
   /** The time at which the shard became unassigned in Coordinated Universal Time (UTC). */
   unassigned_at?: string;
@@ -19877,11 +19877,11 @@ export interface CcrPutAutoFollowPatternRequest {
   master_timeout?: TypesDuration;
   /** The remote cluster containing the leader indices to match against. */
   remote_cluster: string;
-  /** The name of follower index. The template {{leader_index}} can be used to derive the name of the follower index from the name of the leader index. When following a data stream, use {{leader_index}}; CCR does not support changes to the names of a follower data stream’s backing indices. */
+  /** The name of follower index. The template {{leader_index}} can be used to derive the name of the follower index from the name of the leader index. When following a data stream, use {{leader_index}}; CCR does not support changes to the names of a follower data stream's backing indices. */
   follow_index_pattern?: string;
   /** An array of simple index patterns to match against indices in the remote cluster specified by the remote_cluster field. */
   leader_index_patterns?: TypesIndexPatterns;
-  /** An array of simple index patterns that can be used to exclude indices from being auto-followed. Indices in the remote cluster whose names are matching one or more leader_index_patterns and one or more leader_index_exclusion_patterns won’t be followed. */
+  /** An array of simple index patterns that can be used to exclude indices from being auto-followed. Indices in the remote cluster whose names are matching one or more leader_index_patterns and one or more leader_index_exclusion_patterns won't be followed. */
   leader_index_exclusion_patterns?: TypesIndexPatterns;
   /** The maximum number of outstanding reads requests from the remote cluster. */
   max_outstanding_read_requests?: number;
@@ -21370,7 +21370,7 @@ export interface IndicesTypesIndexSettingsLifecycle {
   indexing_complete?: SpecUtilsStringifiedboolean;
   /** If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting if you create a new index that contains old data and want to use the original creation date to calculate the index age. Specified as a Unix epoch value in milliseconds. */
   origination_date?: number;
-  /** Set to true to parse the origination date from the index name. This origination date is used to calculate the index age for its phase transitions. The index name must match the pattern ^.*-{date_format}-\\d+, where the date_format is yyyy.MM.dd and the trailing digits are optional. An index that was rolled over would normally match the full format, for example logs-2016.10.31-000002). If the index name doesn’t match the pattern, index creation fails. */
+  /** Set to true to parse the origination date from the index name. This origination date is used to calculate the index age for its phase transitions. The index name must match the pattern ^.*-{date_format}-\\d+, where the date_format is yyyy.MM.dd and the trailing digits are optional. An index that was rolled over would normally match the full format, for example logs-2016.10.31-000002). If the index name doesn't match the pattern, index creation fails. */
   parse_origination_date?: boolean;
   step?: IndicesTypesIndexSettingsLifecycleStep;
   /** The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action. When the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more information about rolling indices, see Rollover. */
@@ -23316,7 +23316,7 @@ export const TypesAnalysisHunspellTokenFilterType = S.String;
 export interface TypesAnalysisHunspellTokenFilter {
   version?: string;
   type: TypesAnalysisHunspellTokenFilterType;
-  /** If `true`, duplicate tokens are removed from the filter’s output. Defaults to `true`. */
+  /** If `true`, duplicate tokens are removed from the filter's output. Defaults to `true`. */
   dedup?: boolean;
   /** One or more `.dic` files (e.g, `en_US.dic`, my_custom.dic) to use for the Hunspell dictionary. By default, the `hunspell` filter uses all `.dic` files in the `<$ES_PATH_CONF>/hunspell/<locale>` directory specified using the `lang`, `language`, or `locale` parameter. */
   dictionary?: string;
@@ -23613,7 +23613,7 @@ export interface TypesAnalysisMinHashTokenFilter {
   bucket_count?: number;
   /** Number of ways to hash each token in the stream. Defaults to `1`. */
   hash_count?: number;
-  /** Number of hashes to keep from each bucket. Defaults to `1`. Hashes are retained by ascending size, starting with the bucket’s smallest hash first. */
+  /** Number of hashes to keep from each bucket. Defaults to `1`. Hashes are retained by ascending size, starting with the bucket's smallest hash first. */
   hash_set_size?: number;
   /** If `true`, the filter fills empty buckets with the value of the first non-empty bucket to its circular right if the `hash_set_size` is `1`. If the `bucket_count` argument is greater than 1, this parameter defaults to `true`. Otherwise, this parameter defaults to `false`. */
   with_rotation?: boolean;
@@ -23743,10 +23743,10 @@ export const TypesAnalysisPatternReplaceTokenFilterType = S.String;
 export interface TypesAnalysisPatternReplaceTokenFilter {
   version?: string;
   type: TypesAnalysisPatternReplaceTokenFilterType;
-  /** If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`. */
+  /** If `true`, all substrings matching the pattern parameter's regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`. */
   all?: boolean;
   flags?: string;
-  /** Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter. */
+  /** Regular expression, written in Java's regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter. */
   pattern: string;
   /** Replacement substring. Defaults to an empty substring (`""`). */
   replacement?: string;
@@ -24050,7 +24050,7 @@ export interface TypesAnalysisStopTokenFilter {
   type: TypesAnalysisStopTokenFilterType;
   /** If `true`, stop word matching is case insensitive. For example, if `true`, a stop word of the matches and removes `The`, `THE`, or `the`. Defaults to `false`. */
   ignore_case?: boolean;
-  /** If `true`, the last token of a stream is removed if it’s a stop word. Defaults to `true`. */
+  /** If `true`, the last token of a stream is removed if it's a stop word. Defaults to `true`. */
   remove_trailing?: boolean;
   /** Language value, such as `_arabic_` or `_thai_`. Defaults to `_english_`. */
   stopwords?: TypesAnalysisStopWords;
@@ -24259,7 +24259,7 @@ export const TypesAnalysisUppercaseTokenFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "TypesAnalysisUppercaseTokenFilter",
 }) as any as S.Schema<TypesAnalysisUppercaseTokenFilter>;
 
-/** Array of tokens the filter won’t split. */
+/** Array of tokens the filter won't split. */
 export type TypesAnalysisWordDelimiterGraphTokenFilterProtectedWordsList = Array<string>;
 export const TypesAnalysisWordDelimiterGraphTokenFilterProtectedWordsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -24288,9 +24288,9 @@ export interface TypesAnalysisWordDelimiterGraphTokenFilter {
   generate_word_parts?: boolean;
   /** If `true`, the filter includes the original version of any split tokens in the output. This original version includes non-alphanumeric delimiters. Defaults to `false`. */
   preserve_original?: SpecUtilsStringifiedboolean;
-  /** Array of tokens the filter won’t split. */
+  /** Array of tokens the filter won't split. */
   protected_words?: TypesAnalysisWordDelimiterGraphTokenFilterProtectedWordsList;
-  /** Path to a file that contains a list of tokens the filter won’t split. This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
+  /** Path to a file that contains a list of tokens the filter won't split. This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
   protected_words_path?: string;
   /** If `true`, the filter splits tokens at letter case transitions. For example: camelCase -> [ camel, Case ]. Defaults to `true`. */
   split_on_case_change?: boolean;
@@ -24332,7 +24332,7 @@ export const TypesAnalysisWordDelimiterGraphTokenFilter = /*@__PURE__*/ S.suspen
   identifier: "TypesAnalysisWordDelimiterGraphTokenFilter",
 }) as any as S.Schema<TypesAnalysisWordDelimiterGraphTokenFilter>;
 
-/** Array of tokens the filter won’t split. */
+/** Array of tokens the filter won't split. */
 export type TypesAnalysisWordDelimiterTokenFilterProtectedWordsList = Array<string>;
 export const TypesAnalysisWordDelimiterTokenFilterProtectedWordsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -24361,9 +24361,9 @@ export interface TypesAnalysisWordDelimiterTokenFilter {
   generate_word_parts?: boolean;
   /** If `true`, the filter includes the original version of any split tokens in the output. This original version includes non-alphanumeric delimiters. Defaults to `false`. */
   preserve_original?: SpecUtilsStringifiedboolean;
-  /** Array of tokens the filter won’t split. */
+  /** Array of tokens the filter won't split. */
   protected_words?: TypesAnalysisWordDelimiterTokenFilterProtectedWordsList;
-  /** Path to a file that contains a list of tokens the filter won’t split. This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
+  /** Path to a file that contains a list of tokens the filter won't split. This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
   protected_words_path?: string;
   /** If `true`, the filter splits tokens at letter case transitions. For example: camelCase -> [ camel, Case ]. Defaults to `true`. */
   split_on_case_change?: boolean;
@@ -25582,7 +25582,7 @@ export const IndicesTypesMappingLimitSettingsNestedObjects = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IndicesTypesMappingLimitSettingsNestedObjects>;
 
 export interface IndicesTypesMappingLimitSettingsFieldNameLength {
-  /** Setting for the maximum length of a field name. This setting isn’t really something that addresses mappings explosion but might still be useful if you want to limit the field length. It usually shouldn’t be necessary to set this setting. The default is okay unless a user starts to add a huge number of fields with really long names. Default is `Long.MAX_VALUE` (no limit). */
+  /** Setting for the maximum length of a field name. This setting isn't really something that addresses mappings explosion but might still be useful if you want to limit the field length. It usually shouldn't be necessary to set this setting. The default is okay unless a user starts to add a huge number of fields with really long names. Default is `Long.MAX_VALUE` (no limit). */
   limit?: number;
 }
 export const IndicesTypesMappingLimitSettingsFieldNameLength = /*@__PURE__*/ S.suspend(() =>
@@ -30440,7 +30440,7 @@ export interface NodesTypesClient {
   local_address?: string;
   /** Remote address for the HTTP connection. */
   remote_address?: string;
-  /** The URI of the client’s most recent request. */
+  /** The URI of the client's most recent request. */
   last_uri?: string;
   /** Time at which the client opened the connection. */
   opened_time?: string;
@@ -30458,7 +30458,7 @@ export interface NodesTypesClient {
   request_count?: number;
   /** Cumulative size in bytes of all requests from this client. */
   request_size_bytes?: number;
-  /** Value from the client’s `x-opaque-id` HTTP header. If unavailable, this property is not included in the response. */
+  /** Value from the client's `x-opaque-id` HTTP header. If unavailable, this property is not included in the response. */
   x_opaque_id?: string;
 }
 export const NodesTypesClient = /*@__PURE__*/ S.suspend(() =>
@@ -31063,7 +31063,7 @@ export const IndicesPutIndexTemplateIndexTemplateMapping = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<IndicesPutIndexTemplateIndexTemplateMapping>;
 
 export interface ClusterPutComponentTemplateRequest {
-  /** Name of the component template to create. Elasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`. Elastic Agent uses these templates to configure backing indices for its data streams. If you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version. If you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API. */
+  /** Name of the component template to create. Elasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`. Elastic Agent uses these templates to configure backing indices for its data streams. If you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version. If you don't use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API. */
   name: string;
   /** If `true`, this request cannot replace or update existing component templates. */
   create?: boolean;
@@ -31096,7 +31096,7 @@ export const ClusterPutComponentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterPutComponentTemplateRequest>;
 
 export interface ClusterPutComponentTemplate1Request {
-  /** Name of the component template to create. Elasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`. Elastic Agent uses these templates to configure backing indices for its data streams. If you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version. If you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API. */
+  /** Name of the component template to create. Elasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`. Elastic Agent uses these templates to configure backing indices for its data streams. If you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version. If you don't use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API. */
   name: string;
   /** If `true`, this request cannot replace or update existing component templates. */
   create?: boolean;
@@ -31627,7 +31627,7 @@ export const ClusterState2Response = /*@__PURE__*/ S.suspend(() =>
 export interface ClusterStatsRequest {
   /** Include remote cluster data into the response */
   include_remotes?: boolean;
-  /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s `_nodes.failed` property. Defaults to no timeout. */
+  /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response's `_nodes.failed` property. Defaults to no timeout. */
   timeout?: TypesDuration;
 }
 export const ClusterStatsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -32291,7 +32291,7 @@ export interface ClusterStatsRuntimeFieldTypes {
   lines_total: number;
   /** Field data type used in selected nodes. */
   name: string;
-  /** Number of runtime fields that don’t declare a script. */
+  /** Number of runtime fields that don't declare a script. */
   scriptless_count: number;
   /** Number of runtime fields that shadow an indexed field. */
   shadowed_count: number;
@@ -33093,7 +33093,7 @@ export const ClusterStatsClusterNodesVersionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterStatsClusterNodesVersionsList>;
 
 export interface ClusterStatsClusterNodes {
-  /** Contains counts for nodes selected by the request’s node filters. */
+  /** Contains counts for nodes selected by the request's node filters. */
   count: ClusterStatsClusterNodeCount;
   /** Contains statistics about the discovery types used by selected nodes. */
   discovery_types: ClusterStatsClusterNodesDiscoveryTypesMap;
@@ -33453,7 +33453,7 @@ export const ClusterStatsCCSStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterStatsCCSStats" }) as any as S.Schema<ClusterStatsCCSStats>;
 
 export interface ClusterStatsResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   /** Name of the cluster, based on the cluster name setting. */
   cluster_name: string;
@@ -33461,7 +33461,7 @@ export interface ClusterStatsResponse {
   cluster_uuid: string;
   /** Contains statistics about indices with shards assigned to selected nodes. */
   indices: ClusterStatsClusterIndices;
-  /** Contains statistics about nodes selected by the request’s node filters. */
+  /** Contains statistics about nodes selected by the request's node filters. */
   nodes: ClusterStatsClusterNodes;
   /** Contains stats on repository feature usage exposed in cluster stats for telemetry. */
   repositories: ClusterStatsResponseRepositoriesMap;
@@ -33494,7 +33494,7 @@ export interface ClusterStats1Request {
   node_id: string;
   /** Include remote cluster data into the response */
   include_remotes?: boolean;
-  /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s `_nodes.failed` property. Defaults to no timeout. */
+  /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response's `_nodes.failed` property. Defaults to no timeout. */
   timeout?: TypesDuration;
 }
 export const ClusterStats1Request = /*@__PURE__*/ S.suspend(() =>
@@ -33521,7 +33521,7 @@ export const ClusterStats1ResponseRepositoriesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterStats1ResponseRepositoriesMap>;
 
 export interface ClusterStats1Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   /** Name of the cluster, based on the cluster name setting. */
   cluster_name: string;
@@ -33529,7 +33529,7 @@ export interface ClusterStats1Response {
   cluster_uuid: string;
   /** Contains statistics about indices with shards assigned to selected nodes. */
   indices: ClusterStatsClusterIndices;
-  /** Contains statistics about nodes selected by the request’s node filters. */
+  /** Contains statistics about nodes selected by the request's node filters. */
   nodes: ClusterStatsClusterNodes;
   /** Contains stats on repository feature usage exposed in cluster stats for telemetry. */
   repositories: ClusterStats1ResponseRepositoriesMap;
@@ -34803,7 +34803,7 @@ export const Count3Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Count3Response" }) as any as S.Schema<Count3Response>;
 
 export interface CreateRequest {
-  /** The name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn’t match a data stream template, this request creates the index. */
+  /** The name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn't match a data stream template, this request creates the index. */
   index: string;
   /** A unique identifier for the document. To automatically generate a document ID, use the `POST /<target>/_doc/` request format. */
   id: string;
@@ -34879,7 +34879,7 @@ export const TypesWriteResponseBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypesWriteResponseBase" }) as any as S.Schema<TypesWriteResponseBase>;
 
 export interface Create1Request {
-  /** The name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn’t match a data stream template, this request creates the index. */
+  /** The name of the data stream or index to target. If the target doesn't exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn't exist and doesn't match a data stream template, this request creates the index. */
   index: string;
   /** A unique identifier for the document. To automatically generate a document ID, use the `POST /<target>/_doc/` request format. */
   id: string;
@@ -35513,7 +35513,7 @@ export const DeleteConnectorSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectorSyncJobRequest>;
 
 export interface DeleteEqlRequest {
-  /** Identifier for the search to delete. A search ID is provided in the EQL search API's response for an async search. A search ID is also provided if the request’s `keep_on_completion` parameter is `true`. */
+  /** Identifier for the search to delete. A search ID is provided in the EQL search API's response for an async search. A search ID is also provided if the request's `keep_on_completion` parameter is `true`. */
   id: string;
 }
 export const DeleteEqlRequest = /*@__PURE__*/ S.suspend(() =>
@@ -37627,7 +37627,7 @@ export const GlobalFieldCapsFieldCapabilityNonDimensionIndicesList = /*@__PURE__
   S.String,
 ) as any as S.Schema<GlobalFieldCapsFieldCapabilityNonDimensionIndicesList>;
 
-/** The list of indices where this field is present if these indices don’t have the same `time_series_metric` value for this field. */
+/** The list of indices where this field is present if these indices don't have the same `time_series_metric` value for this field. */
 export type GlobalFieldCapsFieldCapabilityMetricConflictsIndicesList = Array<string>;
 export const GlobalFieldCapsFieldCapabilityMetricConflictsIndicesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -37659,7 +37659,7 @@ export interface GlobalFieldCapsFieldCapability {
   time_series_metric?: TypesMappingTimeSeriesMetricType;
   /** If this list is present in response then some indices have the field marked as a dimension and other indices, the ones in this list, do not. */
   non_dimension_indices?: GlobalFieldCapsFieldCapabilityNonDimensionIndicesList;
-  /** The list of indices where this field is present if these indices don’t have the same `time_series_metric` value for this field. */
+  /** The list of indices where this field is present if these indices don't have the same `time_series_metric` value for this field. */
   metric_conflicts_indices?: GlobalFieldCapsFieldCapabilityMetricConflictsIndicesList;
 }
 export const GlobalFieldCapsFieldCapability = /*@__PURE__*/ S.suspend(() =>
@@ -39168,7 +39168,7 @@ export const ConnectorTypesConnectorSyncJob = /*@__PURE__*/ S.suspend(() =>
 export interface GetEqlRequest {
   /** Identifier for the search. */
   id: string;
-  /** Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request. */
+  /** Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search's EQL search API request. */
   keep_alive?: TypesDuration;
   /** Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results. */
   wait_for_completion_timeout?: TypesDuration;
@@ -40519,7 +40519,7 @@ export const TransformTypesSource = /*@__PURE__*/ S.suspend(() =>
 export interface TransformTypesTimeSync {
   /** The time delay between the current time and the latest input data time. */
   delay?: TypesDuration;
-  /** The date field that is used to identify new documents in the source. In general, it’s a good idea to use a field that contains the ingest timestamp. If you use a different field, you might need to set the delay such that it accounts for data transmission delays. */
+  /** The date field that is used to identify new documents in the source. In general, it's a good idea to use a field that contains the ingest timestamp. If you use a different field, you might need to set the delay such that it accounts for data transmission delays. */
   field: string;
 }
 export const TransformTypesTimeSync = /*@__PURE__*/ S.suspend(() =>
@@ -42792,7 +42792,7 @@ export const IndicesAnalyzeTextToAnalyze =
 export interface IndicesAnalyzeRequest {
   /** Index used to derive the analyzer. If specified, the `analyzer` or field parameter overrides this value. If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer. */
   index?: string;
-  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that’s been configured in the index. */
+  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that's been configured in the index. */
   analyzer?: string;
   /** Array of token attributes used to filter the output of the `explain` parameter. */
   attributes?: IndicesAnalyzeRequestAttributesList;
@@ -42994,7 +42994,7 @@ export const IndicesAnalyze1RequestFilterList = /*@__PURE__*/ S.Array(
 export interface IndicesAnalyze1Request {
   /** Index used to derive the analyzer. If specified, the `analyzer` or field parameter overrides this value. If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer. */
   index?: string;
-  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that’s been configured in the index. */
+  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that's been configured in the index. */
   analyzer?: string;
   /** Array of token attributes used to filter the output of the `explain` parameter. */
   attributes?: IndicesAnalyze1RequestAttributesList;
@@ -43065,7 +43065,7 @@ export const IndicesAnalyze2RequestFilterList = /*@__PURE__*/ S.Array(
 export interface IndicesAnalyze2Request {
   /** Index used to derive the analyzer. If specified, the `analyzer` or field parameter overrides this value. If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer. */
   index: string;
-  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that’s been configured in the index. */
+  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that's been configured in the index. */
   analyzer?: string;
   /** Array of token attributes used to filter the output of the `explain` parameter. */
   attributes?: IndicesAnalyze2RequestAttributesList;
@@ -43136,7 +43136,7 @@ export const IndicesAnalyze3RequestFilterList = /*@__PURE__*/ S.Array(
 export interface IndicesAnalyze3Request {
   /** Index used to derive the analyzer. If specified, the `analyzer` or field parameter overrides this value. If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer. */
   index: string;
-  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that’s been configured in the index. */
+  /** The name of the analyzer that should be applied to the provided `text`. This could be a built-in analyzer, or an analyzer that's been configured in the index. */
   analyzer?: string;
   /** Array of token attributes used to filter the output of the `explain` parameter. */
   attributes?: IndicesAnalyze3RequestAttributesList;
@@ -43514,11 +43514,11 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: number;
   /** Name of the data stream. */
   data_stream: string;
-  /** The data stream’s highest `@timestamp` value, converted to milliseconds since the Unix epoch. NOTE: This timestamp is provided as a best effort. The data stream may contain `@timestamp` values higher than this if one or more of the following conditions are met: The stream contains closed backing indices; Backing indices with a lower generation contain higher `@timestamp` values. */
+  /** The data stream's highest `@timestamp` value, converted to milliseconds since the Unix epoch. NOTE: This timestamp is provided as a best effort. The data stream may contain `@timestamp` values higher than this if one or more of the following conditions are met: The stream contains closed backing indices; Backing indices with a lower generation contain higher `@timestamp` values. */
   maximum_timestamp: number;
-  /** Total size of all shards for the data stream’s backing indices. This parameter is only returned if the `human` query parameter is `true`. */
+  /** Total size of all shards for the data stream's backing indices. This parameter is only returned if the `human` query parameter is `true`. */
   store_size?: TypesByteSize;
-  /** Total size, in bytes, of all shards for the data stream’s backing indices. */
+  /** Total size, in bytes, of all shards for the data stream's backing indices. */
   store_size_bytes: number;
 }
 export const IndicesDataStreamsStatsDataStreamsStatsItem = /*@__PURE__*/ S.suspend(() =>
@@ -43747,7 +43747,7 @@ export const IndicesDeleteDataStreamOptionsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<IndicesDeleteDataStreamOptionsRequest>;
 
 export interface IndicesDiskUsageRequest {
-  /** Comma-separated list of data streams, indices, and aliases used to limit the request. It’s recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly. */
+  /** Comma-separated list of data streams, indices, and aliases used to limit the request. It's recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly. */
   index: string;
   /** A setting that does two separate checks on the index expression. If `false`, the request returns an error (1) if any wildcard expression (including `_all` and `*`) resolves to zero matching indices or (2) if the complete set of resolved indices, aliases or data streams is empty after all expressions are evaluated. If `true`, index expressions that resolve to no indices are allowed and the request returns an empty result. */
   allow_no_indices?: boolean;
@@ -44415,7 +44415,7 @@ export const IndicesTypesFailureStore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndicesTypesFailureStore" }) as any as S.Schema<IndicesTypesFailureStore>;
 
-/** Array of objects containing information about the data stream’s backing indices. The last item in this array contains information about the stream’s current write index. */
+/** Array of objects containing information about the data stream's backing indices. The last item in this array contains information about the stream's current write index. */
 export type IndicesTypesDataStreamIndicesList = Array<IndicesTypesDataStreamIndex>;
 export const IndicesTypesDataStreamIndicesList = /*@__PURE__*/ S.Array(
   IndicesTypesDataStreamIndex,
@@ -44434,23 +44434,23 @@ export const IndicesTypesDataStreamTimestampField = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<IndicesTypesDataStreamTimestampField>;
 
 export interface IndicesTypesDataStream {
-  /** Custom metadata for the stream, copied from the `_meta` object of the stream’s matching index template. If empty, the response omits this property. */
+  /** Custom metadata for the stream, copied from the `_meta` object of the stream's matching index template. If empty, the response omits this property. */
   _meta?: TypesMetadata;
   /** If `true`, the data stream allows custom routing on write request. */
   allow_custom_routing?: boolean;
   /** Information about failure store backing indices */
   failure_store?: IndicesTypesFailureStore;
-  /** Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1. */
+  /** Current generation for the data stream. This number acts as a cumulative count of the stream's rollovers, starting at 1. */
   generation: number;
   /** If `true`, the data stream is hidden. */
   hidden: boolean;
-  /** Name of the current ILM lifecycle policy in the stream’s matching index template. This lifecycle policy is set in the `index.lifecycle.name` setting. If the template does not include a lifecycle policy, this property is not included in the response. NOTE: A data stream’s backing indices may be assigned different lifecycle policies. To retrieve the lifecycle policy for individual backing indices, use the get index settings API. */
+  /** Name of the current ILM lifecycle policy in the stream's matching index template. This lifecycle policy is set in the `index.lifecycle.name` setting. If the template does not include a lifecycle policy, this property is not included in the response. NOTE: A data stream's backing indices may be assigned different lifecycle policies. To retrieve the lifecycle policy for individual backing indices, use the get index settings API. */
   ilm_policy?: string;
   /** Name of the lifecycle system that'll manage the next generation of the data stream. */
   next_generation_managed_by: IndicesTypesManagedBy;
   /** Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream. */
   prefer_ilm: boolean;
-  /** Array of objects containing information about the data stream’s backing indices. The last item in this array contains information about the stream’s current write index. */
+  /** Array of objects containing information about the data stream's backing indices. The last item in this array contains information about the stream's current write index. */
   indices: IndicesTypesDataStreamIndicesList;
   /** Contains the configuration for the data stream lifecycle of this data stream. */
   lifecycle?: IndicesTypesDataStreamLifecycleWithRollover;
@@ -44464,11 +44464,11 @@ export interface IndicesTypesDataStream {
   settings: IndicesTypesIndexSettings;
   /** The mappings specific to this data stream that will take precedence over the mappings in the matching index template. */
   mappings?: TypesMappingTypeMapping;
-  /** Health status of the data stream. This health status is based on the state of the primary and replica shards of the stream’s backing indices. */
+  /** Health status of the data stream. This health status is based on the state of the primary and replica shards of the stream's backing indices. */
   status: TypesHealthStatus;
   /** If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction. */
   system?: boolean;
-  /** Name of the index template used to create the data stream’s backing indices. The template’s index pattern must match the name of this data stream. */
+  /** Name of the index template used to create the data stream's backing indices. The template's index pattern must match the name of this data stream. */
   template: string;
   /** Information about the `@timestamp` field in the data stream. */
   timestamp_field: IndicesTypesDataStreamTimestampField;
@@ -45253,9 +45253,9 @@ export const IndicesModifyDataStreamIndexAndDataStreamAction = /*@__PURE__*/ S.s
 export interface IndicesModifyDataStreamAction {
   /** Adds an existing index as a backing index for a data stream. The index is hidden as part of this operation. WARNING: Adding indices with the `add_backing_index` action can potentially result in improper data stream behavior. This should be considered an expert level API. */
   add_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction;
-  /** Removes a backing index from a data stream. The index is unhidden as part of this operation. A data stream’s write index cannot be removed. */
+  /** Removes a backing index from a data stream. The index is unhidden as part of this operation. A data stream's write index cannot be removed. */
   remove_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction;
-  /** Deletes a backing index from a data stream. A data stream’s write index cannot be deleted because it is the write index. */
+  /** Deletes a backing index from a data stream. A data stream's write index cannot be deleted because it is the write index. */
   delete_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction;
 }
 export const IndicesModifyDataStreamAction = /*@__PURE__*/ S.suspend(() =>
@@ -45350,7 +45350,7 @@ export const IndicesPromoteDataStreamResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IndicesPutAliasRequest {
   /** Comma-separated list of data streams or indices to add. Supports wildcards (`*`). Wildcard patterns that match both data streams and indices return an error. */
   index: string;
-  /** Alias to update. If the alias doesn’t exist, the request creates it. Index alias names support date math. */
+  /** Alias to update. If the alias doesn't exist, the request creates it. Index alias names support date math. */
   name: string;
   /** Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. */
   master_timeout?: TypesDuration;
@@ -45358,13 +45358,13 @@ export interface IndicesPutAliasRequest {
   timeout?: TypesDuration;
   /** Query used to limit documents the alias can access. */
   filter?: TypesQueryDslQueryContainer;
-  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don't support this parameter. */
   index_routing?: string;
-  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream. */
+  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn't set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn't set, the index automatically acts as the write index. Data stream aliases don't automatically set a write data stream, even if the alias points to one data stream. */
   is_write_index?: boolean;
-  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don't support this parameter. */
   routing?: string;
-  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don't support this parameter. */
   search_routing?: string;
 }
 export const IndicesPutAliasRequest = /*@__PURE__*/ S.suspend(() =>
@@ -45384,7 +45384,7 @@ export const IndicesPutAliasRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IndicesPutAlias1Request {
   /** Comma-separated list of data streams or indices to add. Supports wildcards (`*`). Wildcard patterns that match both data streams and indices return an error. */
   index: string;
-  /** Alias to update. If the alias doesn’t exist, the request creates it. Index alias names support date math. */
+  /** Alias to update. If the alias doesn't exist, the request creates it. Index alias names support date math. */
   name: string;
   /** Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. */
   master_timeout?: TypesDuration;
@@ -45392,13 +45392,13 @@ export interface IndicesPutAlias1Request {
   timeout?: TypesDuration;
   /** Query used to limit documents the alias can access. */
   filter?: TypesQueryDslQueryContainer;
-  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don't support this parameter. */
   index_routing?: string;
-  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream. */
+  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn't set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn't set, the index automatically acts as the write index. Data stream aliases don't automatically set a write data stream, even if the alias points to one data stream. */
   is_write_index?: boolean;
-  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don't support this parameter. */
   routing?: string;
-  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don't support this parameter. */
   search_routing?: string;
 }
 export const IndicesPutAlias1Request = /*@__PURE__*/ S.suspend(() =>
@@ -45418,7 +45418,7 @@ export const IndicesPutAlias1Request = /*@__PURE__*/ S.suspend(() =>
 export interface IndicesPutAlias2Request {
   /** Comma-separated list of data streams or indices to add. Supports wildcards (`*`). Wildcard patterns that match both data streams and indices return an error. */
   index: string;
-  /** Alias to update. If the alias doesn’t exist, the request creates it. Index alias names support date math. */
+  /** Alias to update. If the alias doesn't exist, the request creates it. Index alias names support date math. */
   name: string;
   /** Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. */
   master_timeout?: TypesDuration;
@@ -45426,13 +45426,13 @@ export interface IndicesPutAlias2Request {
   timeout?: TypesDuration;
   /** Query used to limit documents the alias can access. */
   filter?: TypesQueryDslQueryContainer;
-  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don't support this parameter. */
   index_routing?: string;
-  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream. */
+  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn't set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn't set, the index automatically acts as the write index. Data stream aliases don't automatically set a write data stream, even if the alias points to one data stream. */
   is_write_index?: boolean;
-  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don't support this parameter. */
   routing?: string;
-  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don't support this parameter. */
   search_routing?: string;
 }
 export const IndicesPutAlias2Request = /*@__PURE__*/ S.suspend(() =>
@@ -45452,7 +45452,7 @@ export const IndicesPutAlias2Request = /*@__PURE__*/ S.suspend(() =>
 export interface IndicesPutAlias3Request {
   /** Comma-separated list of data streams or indices to add. Supports wildcards (`*`). Wildcard patterns that match both data streams and indices return an error. */
   index: string;
-  /** Alias to update. If the alias doesn’t exist, the request creates it. Index alias names support date math. */
+  /** Alias to update. If the alias doesn't exist, the request creates it. Index alias names support date math. */
   name: string;
   /** Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. */
   master_timeout?: TypesDuration;
@@ -45460,13 +45460,13 @@ export interface IndicesPutAlias3Request {
   timeout?: TypesDuration;
   /** Query used to limit documents the alias can access. */
   filter?: TypesQueryDslQueryContainer;
-  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don't support this parameter. */
   index_routing?: string;
-  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream. */
+  /** If `true`, sets the write index or data stream for the alias. If an alias points to multiple indices or data streams and `is_write_index` isn't set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn't set, the index automatically acts as the write index. Data stream aliases don't automatically set a write data stream, even if the alias points to one data stream. */
   is_write_index?: boolean;
-  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don't support this parameter. */
   routing?: string;
-  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don't support this parameter. */
   search_routing?: string;
 }
 export const IndicesPutAlias3Request = /*@__PURE__*/ S.suspend(() =>
@@ -49469,15 +49469,15 @@ export interface IndicesUpdateAliasesAddAction {
   index?: string;
   /** Data streams or indices for the action. Supports wildcards (`*`). */
   indices?: TypesIndices;
-  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations. Data stream aliases don't support this parameter. */
   index_routing?: string;
   /** If `true`, the alias is hidden. */
   is_hidden?: boolean;
   /** If `true`, sets the write index or data stream for the alias. */
   is_write_index?: boolean;
-  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don’t support this parameter. */
+  /** Value used to route indexing and search operations to a specific shard. Data stream aliases don't support this parameter. */
   routing?: string;
-  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don’t support this parameter. */
+  /** Value used to route search operations to a specific shard. If specified, this overwrites the `routing` value for search operations. Data stream aliases don't support this parameter. */
   search_routing?: string;
   /** If `true`, the alias must exist to perform the action. */
   must_exist?: boolean;
@@ -49555,7 +49555,7 @@ export const IndicesUpdateAliasesRemoveIndexAction = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<IndicesUpdateAliasesRemoveIndexAction>;
 
 export interface IndicesUpdateAliasesAction {
-  /** Adds a data stream or index to an alias. If the alias doesn’t exist, the `add` action creates it. */
+  /** Adds a data stream or index to an alias. If the alias doesn't exist, the `add` action creates it. */
   add?: IndicesUpdateAliasesAddAction;
   /** Removes a data stream or index from an alias. */
   remove?: IndicesUpdateAliasesRemoveAction;
@@ -50277,7 +50277,7 @@ export interface InferenceChatCompletionUnifiedRequest {
   model?: string;
   /** The upper bound limit for the number of tokens that can be generated for a completion request. */
   max_completion_tokens?: number;
-  /** The reasoning configuration for the completion request. This controls the model's reasoning process in one of two ways: * By specifying the model’s reasoning effort level with the `effort` field. * By enabling reasoning with default settings by setting `enabled` field to `true`. It also includes optional settings to control: * The level of detail in the summary returned in the response with the `summary` field. * Whether reasoning details are included in the response at all with the `exclude` field. Example (effort): ``` { "reasoning": { "effort": "high", "summary": "concise", "exclude": false } } ``` Example (enabled): ``` { "reasoning": { "enabled": true, "summary": "concise", "exclude": false } } ``` Currently supported only for `elastic` provider. */
+  /** The reasoning configuration for the completion request. This controls the model's reasoning process in one of two ways: * By specifying the model's reasoning effort level with the `effort` field. * By enabling reasoning with default settings by setting `enabled` field to `true`. It also includes optional settings to control: * The level of detail in the summary returned in the response with the `summary` field. * Whether reasoning details are included in the response at all with the `exclude` field. Example (effort): ``` { "reasoning": { "effort": "high", "summary": "concise", "exclude": false } } ``` Example (enabled): ``` { "reasoning": { "enabled": true, "summary": "concise", "exclude": false } } ``` Currently supported only for `elastic` provider. */
   reasoning?: InferenceTypesReasoning;
   /** A sequence of strings to control when the model should stop generating additional tokens. */
   stop?: InferenceChatCompletionUnifiedRequestStopList;
@@ -51003,7 +51003,7 @@ export interface InferenceNonStreamingChatCompletionRequest {
   model?: string;
   /** The upper bound limit for the number of tokens that can be generated for a completion request. */
   max_completion_tokens?: number;
-  /** The reasoning configuration for the completion request. This controls the model's reasoning process in one of two ways: * By specifying the model’s reasoning effort level with the `effort` field. * By enabling reasoning with default settings by setting `enabled` field to `true`. It also includes optional settings to control: * The level of detail in the summary returned in the response with the `summary` field. * Whether reasoning details are included in the response at all with the `exclude` field. Example (effort): ``` { "reasoning": { "effort": "high", "summary": "concise", "exclude": false } } ``` Example (enabled): ``` { "reasoning": { "enabled": true, "summary": "concise", "exclude": false } } ``` Currently supported only for `elastic` provider. */
+  /** The reasoning configuration for the completion request. This controls the model's reasoning process in one of two ways: * By specifying the model's reasoning effort level with the `effort` field. * By enabling reasoning with default settings by setting `enabled` field to `true`. It also includes optional settings to control: * The level of detail in the summary returned in the response with the `summary` field. * Whether reasoning details are included in the response at all with the `exclude` field. Example (effort): ``` { "reasoning": { "effort": "high", "summary": "concise", "exclude": false } } ``` Example (enabled): ``` { "reasoning": { "enabled": true, "summary": "concise", "exclude": false } } ``` Currently supported only for `elastic` provider. */
   reasoning?: InferenceTypesReasoning;
   /** A sequence of strings to control when the model should stop generating additional tokens. */
   stop?: InferenceNonStreamingChatCompletionRequestStopList;
@@ -52378,7 +52378,7 @@ export const InferencePutCustomRequestTaskType = S.String;
 export type InferenceTypesCustomServiceType = "custom";
 export const InferenceTypesCustomServiceType = S.String;
 
-/** Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service. For example: ``` "headers": { "Authorization": "Bearer ${api_key}", "Content-Type": "application/json;charset=utf-8" } ``` */
+/** Specifies the HTTP header parameters - such as `Authorization` or `Content-Type` - that are required to access the custom service. For example: ``` "headers": { "Authorization": "Bearer ${api_key}", "Content-Type": "application/json;charset=utf-8" } ``` */
 export type InferenceTypesCustomServiceSettingsHeadersMap = { [key: string]: string | undefined };
 export const InferenceTypesCustomServiceSettingsHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -52447,7 +52447,7 @@ export const InferenceTypesCustomServiceSettingsSecretParametersMap = /*@__PURE_
 export interface InferenceTypesCustomServiceSettings {
   /** Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10. The batch size is the maximum number of inputs in a single request to the upstream service. The chunk within the batch are controlled by the selected chunking strategy for the semantic_text field. */
   batch_size?: number;
-  /** Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service. For example: ``` "headers": { "Authorization": "Bearer ${api_key}", "Content-Type": "application/json;charset=utf-8" } ``` */
+  /** Specifies the HTTP header parameters - such as `Authorization` or `Content-Type` - that are required to access the custom service. For example: ``` "headers": { "Authorization": "Bearer ${api_key}", "Content-Type": "application/json;charset=utf-8" } ``` */
   headers?: InferenceTypesCustomServiceSettingsHeadersMap;
   /** Specifies the input type translation values that are used to replace the `${input_type}` template in the request body. For example: ``` "input_type": { "translation": { "ingest": "do_ingest", "search": "do_search" }, "default": "a_default" }, ``` If the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`. If it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used. `translation` can be: * `classification` * `clustering` * `ingest` * `search` */
   input_type?: InferenceTypesCustomServiceSettingsInputTypeMap;
@@ -53012,9 +53012,9 @@ export const InferenceTypesGoogleModelGardenProvider = S.String;
 export interface InferenceTypesGoogleVertexAIServiceSettings {
   /** The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks. In order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`. Modes: - Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`. - Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters. */
   provider?: InferenceTypesGoogleModelGardenProvider | (string & {});
-  /** The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint. If both `url` and `streaming_url` are provided, each is used for its respective mode. If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`. If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`). At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage. Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face). Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `url`. */
+  /** The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint. If both `url` and `streaming_url` are provided, each is used for its respective mode. If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`. If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`). At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage. Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face). Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint's `Sample request` page. The request examples also illustrate the proper formatting for the `url`. */
   url?: string;
-  /** The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint. If both `streaming_url` and `url` are provided, each is used for its respective mode. If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests. If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`). At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage. Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face). Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`. */
+  /** The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint. If both `streaming_url` and `url` are provided, each is used for its respective mode. If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests. If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`). At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage. Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face). Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint's `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`. */
   streaming_url?: string;
   /** The name of the location to use for the inference task for the Google Vertex AI inference task. For Google Vertex AI, when `provider` is omitted or `google`, `location` is optional. When `location` is omitted, the request targets the Google Vertex AI global endpoint (`https://aiplatform.googleapis.com`); when it is provided, the corresponding regional endpoint (`https://<location>-aiplatform.googleapis.com`) is used. The field must be omitted to select the global endpoint; an empty string is not a valid `location`. For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored. Refer to the Google documentation for the list of supported locations. */
   location?: string;
@@ -53028,7 +53028,7 @@ export interface InferenceTypesGoogleVertexAIServiceSettings {
   service_account_json: string;
   /** For a `text_embedding` task, the number of dimensions the resulting output embeddings should have. By default, the model's standard output dimension is used. Refer to the Google documentation for more information. */
   dimensions?: number;
-  /** Only applicable for the `text_embedding` task type. Controls the batch size of chunked inference requests sent to Google Vertex AI. Setting this parameter lower reduces the risk of exceeding token limits but may result in more API calls. Setting it higher increases throughput but may risk hitting token limits. To estimate a safe `max_batch_size` value, you can use it together with the `max_chunk_size` parameter using the following formula: `max_batch_size ≈ max_chunk_size × 1.3 × 512 ÷ 20000` Where: - `1.3` is an approximate tokens-per-word ratio - `512` is the maximum number of chunks that can be generated per document - `20000` is the Google Vertex AI token limit per request This estimate assumes the worst-case scenario with a document generating the maximum 512 chunks. */
+  /** Only applicable for the `text_embedding` task type. Controls the batch size of chunked inference requests sent to Google Vertex AI. Setting this parameter lower reduces the risk of exceeding token limits but may result in more API calls. Setting it higher increases throughput but may risk hitting token limits. To estimate a safe `max_batch_size` value, you can use it together with the `max_chunk_size` parameter using the following formula: `max_batch_size ~ max_chunk_size × 1.3 × 512 ÷ 20000` Where: - `1.3` is an approximate tokens-per-word ratio - `512` is the maximum number of chunks that can be generated per document - `20000` is the Google Vertex AI token limit per request This estimate assumes the worst-case scenario with a document generating the maximum 512 chunks. */
   max_batch_size?: number;
 }
 export const InferenceTypesGoogleVertexAIServiceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -53238,11 +53238,11 @@ export const InferenceTypesHuggingFaceServiceType = S.String;
 export interface InferenceTypesHuggingFaceServiceSettings {
   /** A valid access token for your HuggingFace account. You can create or find your access tokens on the HuggingFace settings page. IMPORTANT: You need to provide the API key only once, during the inference model creation. The get inference endpoint API does not retrieve your API key. */
   api_key: string | Redacted.Redacted<string>;
-  /** This setting helps to minimize the number of rate limit errors returned from Hugging Face. By default, the `hugging_face` service sets the number of requests allowed per minute to 3000 for all supported tasks. Hugging Face does not publish a universal rate limit — actual limits may vary. It is recommended to adjust this value based on the capacity and limits of your specific deployment environment. */
+  /** This setting helps to minimize the number of rate limit errors returned from Hugging Face. By default, the `hugging_face` service sets the number of requests allowed per minute to 3000 for all supported tasks. Hugging Face does not publish a universal rate limit -- actual limits may vary. It is recommended to adjust this value based on the capacity and limits of your specific deployment environment. */
   rate_limit?: InferenceTypesRateLimitSetting;
   /** The URL endpoint to use for the requests. For `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (see the linked external documentation for details). The endpoint URL for the request must include `/v1/chat/completions`. If the model supports the OpenAI Chat Completion schema, a toggle should appear in the interface. Enabling this toggle doesn't change any model behavior, it reveals the full endpoint URL needed (which should include `/v1/chat/completions`) when configuring the inference endpoint in Elasticsearch. If the model doesn't support this schema, the toggle may not be shown. */
   url: string;
-  /** The name of the HuggingFace model to use for the inference task. For `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints. For the `text_embedding` task, this field should not be included. Otherwise, the request will fail. */
+  /** The name of the HuggingFace model to use for the inference task. For `completion` and `chat_completion` tasks, this field is optional but may be required for certain models -- particularly when using serverless inference endpoints. For the `text_embedding` task, this field should not be included. Otherwise, the request will fail. */
   model_id?: string;
 }
 export const InferenceTypesHuggingFaceServiceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -54767,7 +54767,7 @@ export const IngestGeoIpStatsGeoIpNodeDatabasesDatabasesList = /*@__PURE__*/ S.A
   IngestGeoIpStatsGeoIpNodeDatabaseName,
 ) as any as S.Schema<IngestGeoIpStatsGeoIpNodeDatabasesDatabasesList>;
 
-/** Downloaded database files, including related license files. Elasticsearch stores these files in the node’s temporary directory: $ES_TMPDIR/geoip-databases/<node_id>. */
+/** Downloaded database files, including related license files. Elasticsearch stores these files in the node's temporary directory: $ES_TMPDIR/geoip-databases/<node_id>. */
 export type IngestGeoIpStatsGeoIpNodeDatabasesFilesInTempList = Array<string>;
 export const IngestGeoIpStatsGeoIpNodeDatabasesFilesInTempList = /*@__PURE__*/ S.Array(
   S.String,
@@ -54777,7 +54777,7 @@ export const IngestGeoIpStatsGeoIpNodeDatabasesFilesInTempList = /*@__PURE__*/ S
 export interface IngestGeoIpStatsGeoIpNodeDatabases {
   /** Downloaded databases for the node. */
   databases: IngestGeoIpStatsGeoIpNodeDatabasesDatabasesList;
-  /** Downloaded database files, including related license files. Elasticsearch stores these files in the node’s temporary directory: $ES_TMPDIR/geoip-databases/<node_id>. */
+  /** Downloaded database files, including related license files. Elasticsearch stores these files in the node's temporary directory: $ES_TMPDIR/geoip-databases/<node_id>. */
   files_in_temp: IngestGeoIpStatsGeoIpNodeDatabasesFilesInTempList;
 }
 export const IngestGeoIpStatsGeoIpNodeDatabases = /*@__PURE__*/ S.suspend(() =>
@@ -55245,7 +55245,7 @@ export interface IngestTypesCircleProcessor {
   on_failure?: IngestTypesCircleProcessorOnFailureList;
   /** Identifier for the processor. Useful for debugging and metrics. */
   tag?: string;
-  /** The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`). */
+  /** The difference between the resulting inscribed distance from center to side and the circle's radius (measured in meters for `geo_shape`, unit-less for `shape`). */
   error_distance: number;
   /** The field to interpret as a circle. Either a string in WKT format or a map for GeoJSON. */
   field: string;
@@ -56045,7 +56045,7 @@ export interface IngestTypesGrokProcessor {
   pattern_definitions?: IngestTypesGrokProcessorPatternDefinitionsMap;
   /** An ordered list of grok expression to match and extract named captures with. Returns on the first expression in the list that matches. */
   patterns: IngestTypesGrokProcessorPatternsList;
-  /** When `true`, `_ingest._grok_match_index` will be inserted into your matched document’s metadata with the index into the pattern found in `patterns` that matched. */
+  /** When `true`, `_ingest._grok_match_index` will be inserted into your matched document's metadata with the index into the pattern found in `patterns` that matched. */
   trace_match?: boolean;
   /** When `true`, the processor does matching but does not extract structured fields */
   validate_only?: boolean;
@@ -56654,7 +56654,7 @@ export interface IngestTypesRegisteredDomainProcessor {
   tag?: string;
   /** Field containing the source FQDN. */
   field: string;
-  /** Object field containing extracted domain components. If an empty string, the processor adds components to the document’s root. */
+  /** Object field containing extracted domain components. If an empty string, the processor adds components to the document's root. */
   target_field?: string;
   /** If true and any required fields are missing, the processor quietly exits without modifying the document. */
   ignore_missing?: boolean;
@@ -56793,7 +56793,7 @@ export interface IngestTypesRerouteProcessor {
   on_failure?: IngestTypesRerouteProcessorOnFailureList;
   /** Identifier for the processor. Useful for debugging and metrics. */
   tag?: string;
-  /** A static value for the target. Can’t be set when the dataset or namespace option is set. */
+  /** A static value for the target. Can't be set when the dataset or namespace option is set. */
   destination?: string;
   /** Field references or a static value for the dataset part of the data stream name. In addition to the criteria for index names, cannot contain - and must be no longer than 100 characters. Example values are nginx.access and nginx.error. Supports field references with a mustache-like syntax (denoted as {{double}} or {{{triple}}} curly braces). When resolving field references, the processor replaces invalid characters with _. Uses the <dataset> part of the index name as a fallback if all field references resolve to a null, missing, or non-string value. default {{data_stream.dataset}} */
   dataset?: IngestTypesRerouteProcessorDataset;
@@ -57284,7 +57284,7 @@ export const IngestTypesUserAgentProcessor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestTypesUserAgentProcessor>;
 
 export interface IngestTypesProcessorContainer {
-  /** Appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn’t exist. Accepts a single value or an array of values. */
+  /** Appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn't exist. Accepts a single value or an array of values. */
   append?: IngestTypesAppendProcessor;
   /** The attachment processor lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by using the Apache text extraction library Tika. */
   attachment?: IngestTypesAttachmentProcessor;
@@ -57306,7 +57306,7 @@ export interface IngestTypesProcessorContainer {
   date_index_name?: IngestTypesDateIndexNameProcessor;
   /** Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern. */
   dissect?: IngestTypesDissectProcessor;
-  /** Expands a field with dots into an object field. This processor allows fields with dots in the name to be accessible by other processors in the pipeline. Otherwise these fields can’t be accessed by any processor. */
+  /** Expands a field with dots into an object field. This processor allows fields with dots in the name to be accessible by other processors in the pipeline. Otherwise these fields can't be accessed by any processor. */
   dot_expander?: IngestTypesDotExpanderProcessor;
   /** Drops the document without raising any errors. This is useful to prevent the document from getting indexed based on some condition. */
   drop?: IngestTypesDropProcessor;
@@ -57314,7 +57314,7 @@ export interface IngestTypesProcessorContainer {
   enrich?: IngestTypesEnrichProcessor;
   /** Raises an exception. This is useful for when you expect a pipeline to fail and want to relay a specific message to the requester. */
   fail?: IngestTypesFailProcessor;
-  /** Computes a hash of the document’s content. You can use this hash for content fingerprinting. */
+  /** Computes a hash of the document's content. You can use this hash for content fingerprinting. */
   fingerprint?: IngestTypesFingerprintProcessor;
   /** Runs an ingest processor on each element of an array or object. */
   foreach?: IngestTypesForeachProcessor;
@@ -57348,11 +57348,11 @@ export interface IngestTypesProcessorContainer {
   redact?: IngestTypesRedactProcessor;
   /** Extracts the registered domain (also known as the effective top-level domain or eTLD), sub-domain, and top-level domain from a fully qualified domain name (FQDN). Uses the registered domains defined in the Mozilla Public Suffix List. */
   registered_domain?: IngestTypesRegisteredDomainProcessor;
-  /** Removes existing fields. If one field doesn’t exist, an exception will be thrown. */
+  /** Removes existing fields. If one field doesn't exist, an exception will be thrown. */
   remove?: IngestTypesRemoveProcessor;
-  /** Renames an existing field. If the field doesn’t exist or the new name is already used, an exception will be thrown. */
+  /** Renames an existing field. If the field doesn't exist or the new name is already used, an exception will be thrown. */
   rename?: IngestTypesRenameProcessor;
-  /** Routes a document to another target index or data stream. When setting the `destination` option, the target is explicitly specified and the dataset and namespace options can’t be set. When the `destination` option is not set, this processor is in a data stream mode. Note that in this mode, the reroute processor can only be used on data streams that follow the data stream naming scheme. */
+  /** Routes a document to another target index or data stream. When setting the `destination` option, the target is explicitly specified and the dataset and namespace options can't be set. When the `destination` option is not set, this processor is in a data stream mode. Note that in this mode, the reroute processor can only be used on data streams that follow the data stream naming scheme. */
   reroute?: IngestTypesRerouteProcessor;
   /** Runs an inline or stored script on incoming documents. The script runs in the `ingest` context. */
   script?: IngestTypesScriptProcessor;
@@ -57372,7 +57372,7 @@ export interface IngestTypesProcessorContainer {
   uppercase?: IngestTypesUppercaseProcessor;
   /** URL-decodes a string. If the field is an array of strings, all members of the array will be decoded. */
   urldecode?: IngestTypesUrlDecodeProcessor;
-  /** Parses a Uniform Resource Identifier (URI) string and extracts its components as an object. This URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password. */
+  /** Parses a Uniform Resource Identifier (URI) string and extracts its components as an object. This URI object includes properties for the URI's domain, path, fragment, port, query, scheme, user info, username, and password. */
   uri_parts?: IngestTypesUriPartsProcessor;
   /** The `user_agent` processor extracts details from the user agent string a browser sends with its web requests. This processor adds this information by default under the `user_agent` field. */
   user_agent?: IngestTypesUserAgentProcessor;
@@ -60019,7 +60019,7 @@ export interface MlTypesAnalysisConfig {
   latency?: TypesDuration;
   /** Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. For jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`. */
   model_prune_window?: TypesDuration;
-  /** This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector. */
+  /** This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you'll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector. */
   multivariate_by_fields?: boolean;
   /** Settings related to how categorization interacts with partition fields. */
   per_partition_categorization?: MlTypesPerPartitionCategorization;
@@ -60244,7 +60244,7 @@ export const MlTypesDataframeEvaluationOutlierDetectionMetrics = /*@__PURE__*/ S
 export interface MlTypesDataframeEvaluationOutlierDetection {
   /** The field of the index which contains the ground truth. The data type of this field can be boolean or integer. If the data type is integer, the value has to be either 0 (false) or 1 (true). */
   actual_field: string;
-  /** The field of the index that defines the probability of whether the item belongs to the class in question or not. It’s the field that contains the results of the analysis. */
+  /** The field of the index that defines the probability of whether the item belongs to the class in question or not. It's the field that contains the results of the analysis. */
   predicted_probability_field: string;
   /** Specifies the metrics that are used for the evaluation. */
   metrics?: MlTypesDataframeEvaluationOutlierDetectionMetrics;
@@ -60803,7 +60803,7 @@ export const MlTypesDataframeAnalysisFeatureProcessorMultiEncoding = /*@__PURE__
   identifier: "MlTypesDataframeAnalysisFeatureProcessorMultiEncoding",
 }) as any as S.Schema<MlTypesDataframeAnalysisFeatureProcessorMultiEncoding>;
 
-/** Specifies which n-grams to gather. It’s an array of integer values where the minimum value is 1, and a maximum value is 5. */
+/** Specifies which n-grams to gather. It's an array of integer values where the minimum value is 1, and a maximum value is 5. */
 export type MlTypesDataframeAnalysisFeatureProcessorNGramEncodingNGramsList = Array<number>;
 export const MlTypesDataframeAnalysisFeatureProcessorNGramEncodingNGramsList =
   /*@__PURE__*/ S.Array(
@@ -60817,7 +60817,7 @@ export interface MlTypesDataframeAnalysisFeatureProcessorNGramEncoding {
   field: string;
   /** Specifies the length of the n-gram substring. Defaults to 50. Must be greater than 0. */
   length?: number;
-  /** Specifies which n-grams to gather. It’s an array of integer values where the minimum value is 1, and a maximum value is 5. */
+  /** Specifies which n-grams to gather. It's an array of integer values where the minimum value is 1, and a maximum value is 5. */
   n_grams: MlTypesDataframeAnalysisFeatureProcessorNGramEncodingNGramsList;
   /** Specifies the zero-indexed start of the n-gram substring. Negative values are allowed for encoding n-grams of string suffixes. Defaults to 0. */
   start?: number;
@@ -60949,7 +60949,7 @@ export interface MlTypesDataframeAnalysisClassification {
   soft_tree_depth_limit?: number;
   /** Advanced configuration option. This option controls how quickly the regularized loss increases when the tree depth exceeds `soft_tree_depth_limit`. By default, this value is calculated during hyperparameter optimization. It must be greater than or equal to 0.01. */
   soft_tree_depth_tolerance?: number;
-  /** Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won’t be included in the calculation for used percentage. */
+  /** Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won't be included in the calculation for used percentage. */
   training_percent?: TypesPercentage;
   class_assignment_objective?: string;
   /** Defines the number of categories for which the predicted probabilities are reported. It must be non-negative or -1. If it is -1 or greater than the total number of categories, probabilities are reported for all categories; if you have a large number of categories, there could be a significant effect on the size of your destination index. NOTE: To use the AUC ROC evaluation method, `num_top_classes` must be set to -1 or a value greater than or equal to the total number of categories. */
@@ -61051,7 +61051,7 @@ export interface MlTypesDataframeAnalysisRegression {
   soft_tree_depth_limit?: number;
   /** Advanced configuration option. This option controls how quickly the regularized loss increases when the tree depth exceeds `soft_tree_depth_limit`. By default, this value is calculated during hyperparameter optimization. It must be greater than or equal to 0.01. */
   soft_tree_depth_tolerance?: number;
-  /** Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won’t be included in the calculation for used percentage. */
+  /** Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won't be included in the calculation for used percentage. */
   training_percent?: TypesPercentage;
   /** The loss function used during regression. Available options are `mse` (mean squared error), `msle` (mean squared logarithmic error), `huber` (Pseudo-Huber loss). */
   loss_function?: string;
@@ -61384,7 +61384,7 @@ export interface MlForecastRequest {
   duration?: TypesDuration;
   /** The period of time that forecast results are retained. After a forecast expires, the results are deleted. If set to a value of 0, the forecast is never automatically deleted. */
   expires_in?: TypesDuration;
-  /** The maximum memory the forecast can use. If the forecast needs to use more than the provided amount, it will spool to disk. Default is 20mb, maximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s configured memory limit, it is automatically reduced to below that amount. */
+  /** The maximum memory the forecast can use. If the forecast needs to use more than the provided amount, it will spool to disk. Default is 20mb, maximum is 500mb and minimum is 1mb. If set to 40% or more of the job's configured memory limit, it is automatically reduced to below that amount. */
   max_model_memory?: string;
 }
 export const MlForecastRequest = /*@__PURE__*/ S.suspend(() =>
@@ -63258,7 +63258,7 @@ export interface MlTypesInfluencer {
   result_type: string;
   /** The start time of the bucket for which these results were calculated. */
   timestamp: number;
-  /** Additional influencer properties are added, depending on the fields being analyzed. For example, if it’s analyzing `user_name` as an influencer, a field `user_name` is added to the result document. This information enables you to filter the anomaly results more easily. */
+  /** Additional influencer properties are added, depending on the fields being analyzed. For example, if it's analyzing `user_name` as an influencer, a field `user_name` is added to the result document. This information enables you to filter the anomaly results more easily. */
   foo?: string;
 }
 export const MlTypesInfluencer = /*@__PURE__*/ S.suspend(() =>
@@ -66529,7 +66529,7 @@ export const MlOpenJobResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MlOpenJobResponse" }) as any as S.Schema<MlOpenJobResponse>;
 
-/** A list of one of more scheduled events. The event’s start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
+/** A list of one of more scheduled events. The event's start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
 export type MlPostCalendarEventsRequestEventsList = Array<MlTypesCalendarEvent>;
 export const MlPostCalendarEventsRequestEventsList = /*@__PURE__*/ S.Array(
   MlTypesCalendarEvent,
@@ -66538,7 +66538,7 @@ export const MlPostCalendarEventsRequestEventsList = /*@__PURE__*/ S.Array(
 export interface MlPostCalendarEventsRequest {
   /** A string that uniquely identifies a calendar. */
   calendar_id: string;
-  /** A list of one of more scheduled events. The event’s start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
+  /** A list of one of more scheduled events. The event's start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
   events: MlPostCalendarEventsRequestEventsList;
 }
 export const MlPostCalendarEventsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -66850,7 +66850,7 @@ export const MlPreviewDataFrameAnalyticsDataframePreviewConfig = /*@__PURE__*/ S
 }) as any as S.Schema<MlPreviewDataFrameAnalyticsDataframePreviewConfig>;
 
 export interface MlPreviewDataFrameAnalyticsRequest {
-  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don’t need to be provided in the context of this API. */
+  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don't need to be provided in the context of this API. */
   config?: MlPreviewDataFrameAnalyticsDataframePreviewConfig;
 }
 export const MlPreviewDataFrameAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -66889,7 +66889,7 @@ export const MlPreviewDataFrameAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MlPreviewDataFrameAnalyticsResponse>;
 
 export interface MlPreviewDataFrameAnalytics1Request {
-  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don’t need to be provided in the context of this API. */
+  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don't need to be provided in the context of this API. */
   config?: MlPreviewDataFrameAnalyticsDataframePreviewConfig;
 }
 export const MlPreviewDataFrameAnalytics1Request = /*@__PURE__*/ S.suspend(() =>
@@ -66930,7 +66930,7 @@ export const MlPreviewDataFrameAnalytics1Response = /*@__PURE__*/ S.suspend(() =
 export interface MlPreviewDataFrameAnalytics2Request {
   /** Identifier for the data frame analytics job. */
   id: string;
-  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don’t need to be provided in the context of this API. */
+  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don't need to be provided in the context of this API. */
   config?: MlPreviewDataFrameAnalyticsDataframePreviewConfig;
 }
 export const MlPreviewDataFrameAnalytics2Request = /*@__PURE__*/ S.suspend(() =>
@@ -66972,7 +66972,7 @@ export const MlPreviewDataFrameAnalytics2Response = /*@__PURE__*/ S.suspend(() =
 export interface MlPreviewDataFrameAnalytics3Request {
   /** Identifier for the data frame analytics job. */
   id: string;
-  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don’t need to be provided in the context of this API. */
+  /** A data frame analytics config as described in create data frame analytics jobs. Note that `id` and `dest` don't need to be provided in the context of this API. */
   config?: MlPreviewDataFrameAnalyticsDataframePreviewConfig;
 }
 export const MlPreviewDataFrameAnalytics3Request = /*@__PURE__*/ S.suspend(() =>
@@ -67239,7 +67239,7 @@ export interface MlPutDataFrameAnalyticsRequest {
   allow_lazy_start?: boolean;
   /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
   analysis: MlTypesDataframeAnalysisContainer;
-  /** Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection. The supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score. Regression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis. Classification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on. */
+  /** Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection. The supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don't support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don't have an outlier score. Regression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don't contain a results field are not included in the regression analysis. Classification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don't contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on. */
   analyzed_fields?: MlTypesDataframeAnalysisAnalyzedFields;
   /** A description of the job. */
   description?: string;
@@ -67500,7 +67500,7 @@ export interface MlTypesAnalysisConfigRead {
   latency?: TypesDuration;
   /** Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. For jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`. */
   model_prune_window?: TypesDuration;
-  /** This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector. */
+  /** This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you'll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector. */
   multivariate_by_fields?: boolean;
   /** Settings related to how categorization interacts with partition fields. */
   per_partition_categorization?: MlTypesPerPartitionCategorization;
@@ -68105,7 +68105,7 @@ export interface MlStartTrainedModelDeploymentRequest {
   cache_size?: TypesByteSize;
   /** A unique identifier for the deployment of the model. */
   deployment_id?: string;
-  /** The number of model allocations on each node where the model is deployed. All allocations on a node share the same copy of the model in memory but use a separate set of threads to evaluate the model. Increasing this value generally increases the throughput. If this setting is greater than the number of hardware threads it will automatically be changed to a value less than the number of hardware threads. If adaptive_allocations is enabled, do not set this value, because it’s automatically set. */
+  /** The number of model allocations on each node where the model is deployed. All allocations on a node share the same copy of the model in memory but use a separate set of threads to evaluate the model. Increasing this value generally increases the throughput. If this setting is greater than the number of hardware threads it will automatically be changed to a value less than the number of hardware threads. If adaptive_allocations is enabled, do not set this value, because it's automatically set. */
   number_of_allocations?: number;
   /** The deployment priority */
   priority?: MlTypesTrainingPriority | (string & {});
@@ -68844,7 +68844,7 @@ export interface MlUpgradeJobSnapshotRequest {
   job_id: string;
   /** A numerical character string that uniquely identifies the model snapshot. */
   snapshot_id: string;
-  /** When true, the API won’t respond until the upgrade is complete. Otherwise, it responds as soon as the upgrade task is assigned to a node. */
+  /** When true, the API won't respond until the upgrade is complete. Otherwise, it responds as soon as the upgrade task is assigned to a node. */
   wait_for_completion?: boolean;
   /** Controls the time to wait for the request to complete. */
   timeout?: TypesDuration;
@@ -69774,7 +69774,7 @@ export const NodesGetRepositoriesMeteringInfoResponseNodesMap = /*@__PURE__*/ S.
 ) as any as S.Schema<NodesGetRepositoriesMeteringInfoResponseNodesMap>;
 
 export interface NodesGetRepositoriesMeteringInfoResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   /** Name of the cluster. Based on the `cluster.name` setting. */
   cluster_name: string;
@@ -70794,11 +70794,11 @@ export interface NodesInfoNodeInfo {
   build_hash: string;
   build_type: string;
   component_versions: NodesInfoNodeInfoComponentVersionsMap;
-  /** The node’s host name. */
+  /** The node's host name. */
   host: string;
   http?: NodesInfoNodeInfoHttp;
   index_version: number;
-  /** The node’s IP address. */
+  /** The node's IP address. */
   ip: string;
   jvm?: NodesInfoNodeJvmInfo;
   /** The node's name */
@@ -70863,7 +70863,7 @@ export const NodesInfoResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesInfoResponseNodesMap>;
 
 export interface NodesInfoResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesInfoResponseNodesMap;
@@ -70899,7 +70899,7 @@ export const NodesInfo1ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesInfo1ResponseNodesMap>;
 
 export interface NodesInfo1Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesInfo1ResponseNodesMap;
@@ -70935,7 +70935,7 @@ export const NodesInfo2ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesInfo2ResponseNodesMap>;
 
 export interface NodesInfo2Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesInfo2ResponseNodesMap;
@@ -70974,7 +70974,7 @@ export const NodesInfo3ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesInfo3ResponseNodesMap>;
 
 export interface NodesInfo3Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesInfo3ResponseNodesMap;
@@ -71042,7 +71042,7 @@ export const NodesReloadSecureSettingsResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesReloadSecureSettingsResponseNodesMap>;
 
 export interface NodesReloadSecureSettingsResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesReloadSecureSettingsResponseNodesMap;
@@ -71084,7 +71084,7 @@ export const NodesReloadSecureSettings1ResponseNodesMap = /*@__PURE__*/ S.Record
 ) as any as S.Schema<NodesReloadSecureSettings1ResponseNodesMap>;
 
 export interface NodesReloadSecureSettings1Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesReloadSecureSettings1ResponseNodesMap;
@@ -72421,7 +72421,7 @@ export const NodesStatsResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStatsResponseNodesMap>;
 
 export interface NodesStatsResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStatsResponseNodesMap;
@@ -72483,7 +72483,7 @@ export const NodesStats1ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStats1ResponseNodesMap>;
 
 export interface NodesStats1Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStats1ResponseNodesMap;
@@ -72545,7 +72545,7 @@ export const NodesStats2ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStats2ResponseNodesMap>;
 
 export interface NodesStats2Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStats2ResponseNodesMap;
@@ -72610,7 +72610,7 @@ export const NodesStats3ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStats3ResponseNodesMap>;
 
 export interface NodesStats3Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStats3ResponseNodesMap;
@@ -72675,7 +72675,7 @@ export const NodesStats4ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStats4ResponseNodesMap>;
 
 export interface NodesStats4Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStats4ResponseNodesMap;
@@ -72745,7 +72745,7 @@ export const NodesStats5ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesStats5ResponseNodesMap>;
 
 export interface NodesStats5Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name?: string;
   nodes: NodesStats5ResponseNodesMap;
@@ -72808,7 +72808,7 @@ export const NodesUsageResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesUsageResponseNodesMap>;
 
 export interface NodesUsageResponse {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesUsageResponseNodesMap;
@@ -72841,7 +72841,7 @@ export const NodesUsage1ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesUsage1ResponseNodesMap>;
 
 export interface NodesUsage1Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesUsage1ResponseNodesMap;
@@ -72874,7 +72874,7 @@ export const NodesUsage2ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesUsage2ResponseNodesMap>;
 
 export interface NodesUsage2Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesUsage2ResponseNodesMap;
@@ -72910,7 +72910,7 @@ export const NodesUsage3ResponseNodesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NodesUsage3ResponseNodesMap>;
 
 export interface NodesUsage3Response {
-  /** Contains statistics about the number of nodes selected by the request’s node filters. */
+  /** Contains statistics about the number of nodes selected by the request's node filters. */
   _nodes?: TypesNodeStatistics;
   cluster_name: string;
   nodes: NodesUsage3ResponseNodesMap;
@@ -73889,9 +73889,9 @@ export const GlobalRankEvalRankEvalQuery = /*@__PURE__*/ S.suspend(() =>
 export interface GlobalRankEvalDocumentRating {
   /** The document ID. */
   _id: string;
-  /** The document’s index. For data streams, this should be the document’s backing index. */
+  /** The document's index. For data streams, this should be the document's backing index. */
   _index: string;
-  /** The document’s relevance with regard to this search request. */
+  /** The document's relevance with regard to this search request. */
   rating: number;
 }
 export const GlobalRankEvalDocumentRating = /*@__PURE__*/ S.suspend(() =>
@@ -73918,7 +73918,7 @@ export const GlobalRankEvalRankEvalRequestItemParamsMap = /*@__PURE__*/ S.Record
 ) as any as S.Schema<GlobalRankEvalRankEvalRequestItemParamsMap>;
 
 export interface GlobalRankEvalRankEvalRequestItem {
-  /** The search request’s ID, used to group result details later. */
+  /** The search request's ID, used to group result details later. */
   id: string;
   /** The query being evaluated. */
   request?: GlobalRankEvalRankEvalQuery;
@@ -74075,7 +74075,7 @@ export const GlobalRankEvalUnratedDocument = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalRankEvalUnratedDocument",
 }) as any as S.Schema<GlobalRankEvalUnratedDocument>;
 
-/** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
+/** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn't have a ratings value. This can be used to ask the user to supply ratings for these documents */
 export type GlobalRankEvalRankEvalMetricDetailUnratedDocsList =
   Array<GlobalRankEvalUnratedDocument>;
 export const GlobalRankEvalRankEvalMetricDetailUnratedDocsList = /*@__PURE__*/ S.Array(
@@ -74140,7 +74140,7 @@ export const GlobalRankEvalRankEvalMetricDetailMetricDetailsMap = /*@__PURE__*/ 
 export interface GlobalRankEvalRankEvalMetricDetail {
   /** The metric_score in the details section shows the contribution of this query to the global quality metric score */
   metric_score: number;
-  /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
+  /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn't have a ratings value. This can be used to ask the user to supply ratings for these documents */
   unrated_docs: GlobalRankEvalRankEvalMetricDetailUnratedDocsList;
   /** The hits section shows a grouping of the search results with their supplied ratings */
   hits: GlobalRankEvalRankEvalMetricDetailHitsList;
@@ -75099,7 +75099,7 @@ export interface RestoreSnapshotRequest {
   ignore_index_settings?: RestoreSnapshotRequestIgnoreIndexSettingsList;
   /** If `true`, the request ignores any index or data stream in indices that's missing from the snapshot. If `false`, the request returns an error for any missing index or data stream. */
   ignore_unavailable?: boolean;
-  /** If `true`, the request restores aliases for any restored data streams and indices. If `false`, the request doesn’t restore aliases. */
+  /** If `true`, the request restores aliases for any restored data streams and indices. If `false`, the request doesn't restore aliases. */
   include_aliases?: boolean;
   /** If `true`, restore the cluster state. The cluster state includes: * Persistent cluster settings * Index templates * Legacy index templates * Ingest pipelines * Index lifecycle management (ILM) policies * Stored scripts * For snapshots taken after 7.12.0, feature states If `include_global_state` is `true`, the restore operation merges the legacy index templates in your cluster with the templates contained in the snapshot, replacing any existing ones whose name matches one in the snapshot. It completely removes all persistent settings, non-legacy index templates, ingest pipelines, and ILM lifecycle policies that exist in your cluster and replaces them with the corresponding items from the snapshot. Use the `feature_states` parameter to configure how feature states are restored. If `include_global_state` is `true` and a snapshot was created without a global state then the restore request will fail. */
   include_global_state?: boolean;
@@ -75210,7 +75210,7 @@ export interface ScrollRequest {
   scroll?: TypesDuration;
   /** The scroll ID */
   scroll_id?: string;
-  /** If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object. */
+  /** If true, the API response's hit.total property is returned as an integer. If false, the API response's hit.total property is returned as an object. */
   rest_total_hits_as_int?: boolean;
 }
 export const ScrollRequest = /*@__PURE__*/ S.suspend(() =>
@@ -75294,7 +75294,7 @@ export interface Scroll1Request {
   scroll?: TypesDuration;
   /** The scroll ID */
   scroll_id?: string;
-  /** If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object. */
+  /** If true, the API response's hit.total property is returned as an integer. If false, the API response's hit.total property is returned as an object. */
   rest_total_hits_as_int?: boolean;
 }
 export const Scroll1Request = /*@__PURE__*/ S.suspend(() =>
@@ -75310,7 +75310,7 @@ export interface Scroll2Request {
   scroll_id: string;
   /** The period to retain the search context for scrolling. */
   scroll?: TypesDuration;
-  /** If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object. */
+  /** If true, the API response's hit.total property is returned as an integer. If false, the API response's hit.total property is returned as an object. */
   rest_total_hits_as_int?: boolean;
 }
 export const Scroll2Request = /*@__PURE__*/ S.suspend(() =>
@@ -75326,7 +75326,7 @@ export interface Scroll3Request {
   scroll_id: string;
   /** The period to retain the search context for scrolling. */
   scroll?: TypesDuration;
-  /** If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object. */
+  /** If true, the API response's hit.total property is returned as an integer. If false, the API response's hit.total property is returned as an object. */
   rest_total_hits_as_int?: boolean;
 }
 export const Scroll3Request = /*@__PURE__*/ S.suspend(() =>
@@ -80628,7 +80628,7 @@ export const SecurityGetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export type SecurityTypesApiKeyType = "rest" | "cross_cluster";
 export const SecurityTypesApiKeyType = S.String;
 
-/** The role descriptors assigned to this API key when it was created or last updated. An empty role descriptor means the API key inherits the owner user’s permissions. */
+/** The role descriptors assigned to this API key when it was created or last updated. An empty role descriptor means the API key inherits the owner user's permissions. */
 export type SecurityTypesApiKeyRoleDescriptorsMap = {
   [key: string]: SecurityTypesRoleDescriptor | undefined;
 };
@@ -80645,7 +80645,7 @@ export const SecurityTypesApiKeyLimitedByItemMap = /*@__PURE__*/ S.Record(
   SecurityTypesRoleDescriptor,
 ) as any as S.Schema<SecurityTypesApiKeyLimitedByItemMap>;
 
-/** The owner user’s permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions. */
+/** The owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions. */
 export type SecurityTypesApiKeyLimitedByList = Array<SecurityTypesApiKeyLimitedByItemMap>;
 export const SecurityTypesApiKeyLimitedByList = /*@__PURE__*/ S.Array(
   SecurityTypesApiKeyLimitedByItemMap,
@@ -80674,9 +80674,9 @@ export interface SecurityTypesApiKey {
   realm_type?: string;
   /** Metadata of the API key */
   metadata: TypesMetadata;
-  /** The role descriptors assigned to this API key when it was created or last updated. An empty role descriptor means the API key inherits the owner user’s permissions. */
+  /** The role descriptors assigned to this API key when it was created or last updated. An empty role descriptor means the API key inherits the owner user's permissions. */
   role_descriptors?: SecurityTypesApiKeyRoleDescriptorsMap;
-  /** The owner user’s permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions. */
+  /** The owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions. */
   limited_by?: SecurityTypesApiKeyLimitedByList;
   /** The access granted to cross-cluster API keys. The access is composed of permissions for cross cluster search and cross cluster replication. At least one of them must be specified. When specified, the new access assignment fully replaces the previously assigned access. */
   access?: SecurityTypesAccess;
@@ -83104,7 +83104,7 @@ export const SecurityPutRoleRequestRunAsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SecurityPutRoleRequestRunAsList>;
 
-/** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
+/** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn't allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
 export type SecurityPutRoleRequestTransientMetadataMap = { [key: string]: unknown | undefined };
 export const SecurityPutRoleRequestTransientMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -83134,7 +83134,7 @@ export interface SecurityPutRoleRequest {
   run_as?: SecurityPutRoleRequestRunAsList;
   /** Optional description of the role descriptor */
   description?: string;
-  /** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
+  /** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn't allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
   transient_metadata?: SecurityPutRoleRequestTransientMetadataMap;
 }
 export const SecurityPutRoleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -83207,7 +83207,7 @@ export const SecurityPutRole1RequestRunAsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SecurityPutRole1RequestRunAsList>;
 
-/** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
+/** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn't allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
 export type SecurityPutRole1RequestTransientMetadataMap = { [key: string]: unknown | undefined };
 export const SecurityPutRole1RequestTransientMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -83237,7 +83237,7 @@ export interface SecurityPutRole1Request {
   run_as?: SecurityPutRole1RequestRunAsList;
   /** Optional description of the role descriptor */
   description?: string;
-  /** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
+  /** Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn't allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API. */
   transient_metadata?: SecurityPutRole1RequestTransientMetadataMap;
 }
 export const SecurityPutRole1Request = /*@__PURE__*/ S.suspend(() =>
@@ -83724,7 +83724,7 @@ export const SecurityQueryApiKeysRequestAggregationsMap = /*@__PURE__*/ S.Record
 ) as any as S.Schema<SecurityQueryApiKeysRequestAggregationsMap>;
 
 export interface SecurityQueryApiKeysRequest {
-  /** Return the snapshot of the owner user's role descriptors associated with the API key. An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it). An API key cannot retrieve any API key’s limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges. */
+  /** Return the snapshot of the owner user's role descriptors associated with the API key. An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it). An API key cannot retrieve any API key's limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges. */
   with_limited_by?: boolean;
   /** Determines whether to also retrieve the profile UID for the API key owner principal. If it exists, the profile UID is returned under the `profile_uid` response field for each API key. */
   with_profile_uid?: boolean;
@@ -83822,7 +83822,7 @@ export const SecurityQueryApiKeys1RequestAggregationsMap = /*@__PURE__*/ S.Recor
 ) as any as S.Schema<SecurityQueryApiKeys1RequestAggregationsMap>;
 
 export interface SecurityQueryApiKeys1Request {
-  /** Return the snapshot of the owner user's role descriptors associated with the API key. An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it). An API key cannot retrieve any API key’s limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges. */
+  /** Return the snapshot of the owner user's role descriptors associated with the API key. An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it). An API key cannot retrieve any API key's limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges. */
   with_limited_by?: boolean;
   /** Determines whether to also retrieve the profile UID for the API key owner principal. If it exists, the profile UID is returned under the `profile_uid` response field for each API key. */
   with_profile_uid?: boolean;
@@ -84703,7 +84703,7 @@ export const SecurityUpdateCrossClusterApiKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SecurityUpdateCrossClusterApiKeyRequest>;
 
 export interface SecurityUpdateCrossClusterApiKeyResponse {
-  /** If `true`, the API key was updated. If `false`, the API key didn’t change because no change was detected. */
+  /** If `true`, the API key was updated. If `false`, the API key didn't change because no change was detected. */
   updated: boolean;
 }
 export const SecurityUpdateCrossClusterApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
@@ -84982,7 +84982,7 @@ export const SimulateIngestRequestIndexTemplateSubstitutionsMap = /*@__PURE__*/ 
   IndicesTypesIndexTemplate,
 ) as any as S.Schema<SimulateIngestRequestIndexTemplateSubstitutionsMap>;
 
-/** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+/** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
 export type SimulateIngestRequestPipelineSubstitutionsMap = {
   [key: string]: IngestTypesPipeline | undefined;
 };
@@ -85003,7 +85003,7 @@ export interface SimulateIngestRequest {
   /** A map of index template names to substitute index template definition objects. */
   index_template_substitutions?: SimulateIngestRequestIndexTemplateSubstitutionsMap;
   mapping_addition?: TypesMappingTypeMapping;
-  /** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+  /** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
   pipeline_substitutions?: SimulateIngestRequestPipelineSubstitutionsMap;
 }
 export const SimulateIngestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -85131,7 +85131,7 @@ export const SimulateIngest1RequestIndexTemplateSubstitutionsMap = /*@__PURE__*/
   IndicesTypesIndexTemplate,
 ) as any as S.Schema<SimulateIngest1RequestIndexTemplateSubstitutionsMap>;
 
-/** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+/** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
 export type SimulateIngest1RequestPipelineSubstitutionsMap = {
   [key: string]: IngestTypesPipeline | undefined;
 };
@@ -85152,7 +85152,7 @@ export interface SimulateIngest1Request {
   /** A map of index template names to substitute index template definition objects. */
   index_template_substitutions?: SimulateIngest1RequestIndexTemplateSubstitutionsMap;
   mapping_addition?: TypesMappingTypeMapping;
-  /** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+  /** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
   pipeline_substitutions?: SimulateIngest1RequestPipelineSubstitutionsMap;
 }
 export const SimulateIngest1Request = /*@__PURE__*/ S.suspend(() =>
@@ -85207,7 +85207,7 @@ export const SimulateIngest2RequestIndexTemplateSubstitutionsMap = /*@__PURE__*/
   IndicesTypesIndexTemplate,
 ) as any as S.Schema<SimulateIngest2RequestIndexTemplateSubstitutionsMap>;
 
-/** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+/** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
 export type SimulateIngest2RequestPipelineSubstitutionsMap = {
   [key: string]: IngestTypesPipeline | undefined;
 };
@@ -85230,7 +85230,7 @@ export interface SimulateIngest2Request {
   /** A map of index template names to substitute index template definition objects. */
   index_template_substitutions?: SimulateIngest2RequestIndexTemplateSubstitutionsMap;
   mapping_addition?: TypesMappingTypeMapping;
-  /** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+  /** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
   pipeline_substitutions?: SimulateIngest2RequestPipelineSubstitutionsMap;
 }
 export const SimulateIngest2Request = /*@__PURE__*/ S.suspend(() =>
@@ -85286,7 +85286,7 @@ export const SimulateIngest3RequestIndexTemplateSubstitutionsMap = /*@__PURE__*/
   IndicesTypesIndexTemplate,
 ) as any as S.Schema<SimulateIngest3RequestIndexTemplateSubstitutionsMap>;
 
-/** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+/** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
 export type SimulateIngest3RequestPipelineSubstitutionsMap = {
   [key: string]: IngestTypesPipeline | undefined;
 };
@@ -85309,7 +85309,7 @@ export interface SimulateIngest3Request {
   /** A map of index template names to substitute index template definition objects. */
   index_template_substitutions?: SimulateIngest3RequestIndexTemplateSubstitutionsMap;
   mapping_addition?: TypesMappingTypeMapping;
-  /** Pipelines to test. If you don’t specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
+  /** Pipelines to test. If you don't specify the `pipeline` request path parameter, this parameter is required. If you specify both this and the request path parameter, the API only uses the request path parameter. */
   pipeline_substitutions?: SimulateIngest3RequestPipelineSubstitutionsMap;
 }
 export const SimulateIngest3Request = /*@__PURE__*/ S.suspend(() =>
@@ -85704,7 +85704,7 @@ export interface SlmPutLifecycleRequest {
   config?: SlmTypesConfiguration;
   /** Name automatically assigned to each snapshot created by the policy. Date math is supported. To prevent conflicting snapshot names, a UUID is automatically appended to each snapshot name. */
   name?: string;
-  /** Repository used to store snapshots created by this policy. This repository must exist prior to the policy’s creation. You can create a repository using the snapshot repository API. */
+  /** Repository used to store snapshots created by this policy. This repository must exist prior to the policy's creation. You can create a repository using the snapshot repository API. */
   repository?: string;
   /** Retention rules used to retain and delete snapshots created by the policy. */
   retention?: SlmTypesRetention;
@@ -89395,7 +89395,7 @@ export const TransformUpgradeTransformsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransformUpgradeTransformsResponse {
   /** The number of transforms that need to be upgraded. */
   needs_update: number;
-  /** The number of transforms that don’t require upgrading. */
+  /** The number of transforms that don't require upgrading. */
   no_action: number;
   /** The number of transforms that have been upgraded. */
   updated: number;
@@ -95015,7 +95015,7 @@ export const catPlugins: API.OperationMethod<
 }));
 
 export type CatRecoveryError = ElasticsearchOpError;
-/** Get shard recovery information Get information about ongoing and completed shard recoveries. Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing. For data streams, the API returns information about the stream’s backing indices. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API. ## Required authorization * Index privileges: `monitor` * Cluster privileges: `monitor` */
+/** Get shard recovery information Get information about ongoing and completed shard recoveries. Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing. For data streams, the API returns information about the stream's backing indices. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API. ## Required authorization * Index privileges: `monitor` * Cluster privileges: `monitor` */
 export const catRecovery: API.OperationMethod<
   CatRecoveryRequest,
   CatRecoveryResponse,
@@ -95030,7 +95030,7 @@ export const catRecovery: API.OperationMethod<
 }));
 
 export type CatRecovery1Error = ElasticsearchOpError;
-/** Get shard recovery information Get information about ongoing and completed shard recoveries. Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing. For data streams, the API returns information about the stream’s backing indices. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API. ## Required authorization * Index privileges: `monitor` * Cluster privileges: `monitor` */
+/** Get shard recovery information Get information about ongoing and completed shard recoveries. Shard recovery is the process of initializing a shard copy, such as restoring a primary shard from a snapshot or syncing a replica shard from a primary shard. When a shard recovery completes, the recovered shard is available for search and indexing. For data streams, the API returns information about the stream's backing indices. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API. ## Required authorization * Index privileges: `monitor` * Cluster privileges: `monitor` */
 export const catRecovery1: API.OperationMethod<
   CatRecovery1Request,
   CatRecovery1Response,
@@ -95615,7 +95615,7 @@ export const clusterGetSettings: API.OperationMethod<
 }));
 
 export type ClusterHealthError = ElasticsearchOpError;
-/** Get the cluster health status You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices. The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated. The index level status is controlled by the worst shard status. One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level. The cluster status is controlled by the worst index status. ## Required authorization * Cluster privileges: `monitor`,`manage` */
+/** Get the cluster health status You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream's backing indices. The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated. The index level status is controlled by the worst shard status. One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level. The cluster status is controlled by the worst index status. ## Required authorization * Cluster privileges: `monitor`,`manage` */
 export const clusterHealth: API.OperationMethod<
   ClusterHealthRequest,
   ClusterHealthHealthResponseBody,
@@ -95630,7 +95630,7 @@ export const clusterHealth: API.OperationMethod<
 }));
 
 export type ClusterHealth1Error = ElasticsearchOpError;
-/** Get the cluster health status You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices. The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated. The index level status is controlled by the worst shard status. One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level. The cluster status is controlled by the worst index status. ## Required authorization * Cluster privileges: `monitor`,`manage` */
+/** Get the cluster health status You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream's backing indices. The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated. The index level status is controlled by the worst shard status. One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level. The cluster status is controlled by the worst index status. ## Required authorization * Cluster privileges: `monitor`,`manage` */
 export const clusterHealth1: API.OperationMethod<
   ClusterHealth1Request,
   ClusterHealthHealthResponseBody,
@@ -95675,7 +95675,7 @@ export const clusterPendingTasks: API.OperationMethod<
 }));
 
 export type ClusterPostVotingConfigExclusionsError = ElasticsearchOpError;
-/** Update voting configuration exclusions Update the cluster voting config exclusions by node IDs or node names. By default, if there are more than three master-eligible nodes in the cluster and you remove fewer than half of the master-eligible nodes in the cluster at once, the voting configuration automatically shrinks. If you want to shrink the voting configuration to contain fewer than three nodes or to remove half or more of the master-eligible nodes in the cluster at once, use this API to remove departing nodes from the voting configuration manually. The API adds an entry for each specified node to the cluster’s voting configuration exclusions list. It then waits until the cluster has reconfigured its voting configuration to exclude the specified nodes. Clusters should have no voting configuration exclusions in normal operation. Once the excluded nodes have stopped, clear the voting configuration exclusions with `DELETE /_cluster/voting_config_exclusions`. This API waits for the nodes to be fully removed from the cluster before it returns. If your cluster has voting configuration exclusions for nodes that you no longer intend to remove, use `DELETE /_cluster/voting_config_exclusions?wait_for_removal=false` to clear the voting configuration exclusions without waiting for the nodes to leave the cluster. A response to `POST /_cluster/voting_config_exclusions` with an HTTP status code of 200 OK guarantees that the node has been removed from the voting configuration and will not be reinstated until the voting configuration exclusions are cleared by calling `DELETE /_cluster/voting_config_exclusions`. If the call to `POST /_cluster/voting_config_exclusions` fails or returns a response with an HTTP status code other than 200 OK then the node may not have been removed from the voting configuration. In that case, you may safely retry the call. NOTE: Voting exclusions are required only when you remove at least half of the master-eligible nodes from a cluster in a short time period. They are not required when removing master-ineligible nodes or when removing fewer than half of the master-eligible nodes. */
+/** Update voting configuration exclusions Update the cluster voting config exclusions by node IDs or node names. By default, if there are more than three master-eligible nodes in the cluster and you remove fewer than half of the master-eligible nodes in the cluster at once, the voting configuration automatically shrinks. If you want to shrink the voting configuration to contain fewer than three nodes or to remove half or more of the master-eligible nodes in the cluster at once, use this API to remove departing nodes from the voting configuration manually. The API adds an entry for each specified node to the cluster's voting configuration exclusions list. It then waits until the cluster has reconfigured its voting configuration to exclude the specified nodes. Clusters should have no voting configuration exclusions in normal operation. Once the excluded nodes have stopped, clear the voting configuration exclusions with `DELETE /_cluster/voting_config_exclusions`. This API waits for the nodes to be fully removed from the cluster before it returns. If your cluster has voting configuration exclusions for nodes that you no longer intend to remove, use `DELETE /_cluster/voting_config_exclusions?wait_for_removal=false` to clear the voting configuration exclusions without waiting for the nodes to leave the cluster. A response to `POST /_cluster/voting_config_exclusions` with an HTTP status code of 200 OK guarantees that the node has been removed from the voting configuration and will not be reinstated until the voting configuration exclusions are cleared by calling `DELETE /_cluster/voting_config_exclusions`. If the call to `POST /_cluster/voting_config_exclusions` fails or returns a response with an HTTP status code other than 200 OK then the node may not have been removed from the voting configuration. In that case, you may safely retry the call. NOTE: Voting exclusions are required only when you remove at least half of the master-eligible nodes from a cluster in a short time period. They are not required when removing master-ineligible nodes or when removing fewer than half of the master-eligible nodes. */
 export const clusterPostVotingConfigExclusions: API.OperationMethod<
   ClusterPostVotingConfigExclusionsRequest,
   ClusterPostVotingConfigExclusionsResponse,
@@ -95690,7 +95690,7 @@ export const clusterPostVotingConfigExclusions: API.OperationMethod<
 }));
 
 export type ClusterPutComponentTemplateError = ElasticsearchOpError;
-/** Create or update a component template Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. An index template can be composed of multiple component templates. To use a component template, specify it in an index template’s `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream’s backing indices. Changes to component templates do not affect existing indices, including a stream’s backing indices. You can use C-style `/* *\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket. **Applying component templates** You cannot directly apply a component template to a data stream or index. To be applied, a component template must be included in an index template's `composed_of` list. ## Required authorization * Cluster privileges: `manage_index_templates` */
+/** Create or update a component template Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. An index template can be composed of multiple component templates. To use a component template, specify it in an index template's `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream's backing indices. Changes to component templates do not affect existing indices, including a stream's backing indices. You can use C-style `/* *\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket. **Applying component templates** You cannot directly apply a component template to a data stream or index. To be applied, a component template must be included in an index template's `composed_of` list. ## Required authorization * Cluster privileges: `manage_index_templates` */
 export const clusterPutComponentTemplate: API.OperationMethod<
   ClusterPutComponentTemplateRequest,
   TypesAcknowledgedResponseBase,
@@ -95705,7 +95705,7 @@ export const clusterPutComponentTemplate: API.OperationMethod<
 }));
 
 export type ClusterPutComponentTemplate1Error = ElasticsearchOpError;
-/** Create or update a component template Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. An index template can be composed of multiple component templates. To use a component template, specify it in an index template’s `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream’s backing indices. Changes to component templates do not affect existing indices, including a stream’s backing indices. You can use C-style `/* *\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket. **Applying component templates** You cannot directly apply a component template to a data stream or index. To be applied, a component template must be included in an index template's `composed_of` list. ## Required authorization * Cluster privileges: `manage_index_templates` */
+/** Create or update a component template Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. An index template can be composed of multiple component templates. To use a component template, specify it in an index template's `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream's backing indices. Changes to component templates do not affect existing indices, including a stream's backing indices. You can use C-style `/* *\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket. **Applying component templates** You cannot directly apply a component template to a data stream or index. To be applied, a component template must be included in an index template's `composed_of` list. ## Required authorization * Cluster privileges: `manage_index_templates` */
 export const clusterPutComponentTemplate1: API.OperationMethod<
   ClusterPutComponentTemplate1Request,
   TypesAcknowledgedResponseBase,
@@ -95720,7 +95720,7 @@ export const clusterPutComponentTemplate1: API.OperationMethod<
 }));
 
 export type ClusterPutSettingsError = ElasticsearchOpError;
-/** Update the cluster settings Configure and update dynamic settings on a running cluster. You can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`. Updates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart. You can also reset transient or persistent settings by assigning them a null value. If you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value. For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting. TIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster. If you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes. WARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead. If a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration. */
+/** Update the cluster settings Configure and update dynamic settings on a running cluster. You can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`. Updates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart. You can also reset transient or persistent settings by assigning them a null value. If you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value. For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting. TIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster. If you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn't require a restart and ensures a setting's value is the same on all nodes. WARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead. If a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration. */
 export const clusterPutSettings: API.OperationMethod<
   ClusterPutSettingsRequest,
   ClusterPutSettingsResponse,
@@ -95750,7 +95750,7 @@ export const clusterRemoteInfo: API.OperationMethod<
 }));
 
 export type ClusterRerouteError = ElasticsearchOpError;
-/** Reroute the cluster Manually change the allocation of individual shards in the cluster. For example, a shard can be moved from one node to another explicitly, an allocation can be canceled, and an unassigned shard can be explicitly allocated to a specific node. It is important to note that after processing any reroute commands Elasticsearch will perform rebalancing as normal (respecting the values of settings such as `cluster.routing.rebalance.enable`) in order to remain in a balanced state. For example, if the requested allocation includes moving a shard from node1 to node2 then this may cause a shard to be moved from node2 back to node1 to even things out. The cluster can be set to disable allocations using the `cluster.routing.allocation.enable` setting. If allocations are disabled then the only allocations that will be performed are explicit ones given using the reroute command, and consequent allocations due to rebalancing. The cluster will attempt to allocate a shard a maximum of `index.allocation.max_retries` times in a row (defaults to `5`), before giving up and leaving the shard unallocated. This scenario can be caused by structural problems such as having an analyzer which refers to a stopwords file which doesn’t exist on all nodes. Once the problem has been corrected, allocation can be manually retried by calling the reroute API with the `?retry_failed` URI query parameter, which will attempt a single retry round for these shards. */
+/** Reroute the cluster Manually change the allocation of individual shards in the cluster. For example, a shard can be moved from one node to another explicitly, an allocation can be canceled, and an unassigned shard can be explicitly allocated to a specific node. It is important to note that after processing any reroute commands Elasticsearch will perform rebalancing as normal (respecting the values of settings such as `cluster.routing.rebalance.enable`) in order to remain in a balanced state. For example, if the requested allocation includes moving a shard from node1 to node2 then this may cause a shard to be moved from node2 back to node1 to even things out. The cluster can be set to disable allocations using the `cluster.routing.allocation.enable` setting. If allocations are disabled then the only allocations that will be performed are explicit ones given using the reroute command, and consequent allocations due to rebalancing. The cluster will attempt to allocate a shard a maximum of `index.allocation.max_retries` times in a row (defaults to `5`), before giving up and leaving the shard unallocated. This scenario can be caused by structural problems such as having an analyzer which refers to a stopwords file which doesn't exist on all nodes. Once the problem has been corrected, allocation can be manually retried by calling the reroute API with the `?retry_failed` URI query parameter, which will attempt a single retry round for these shards. */
 export const clusterReroute: API.OperationMethod<
   ClusterRerouteRequest,
   ClusterRerouteResponse,
@@ -95960,7 +95960,7 @@ export const connectorUpdateConfiguration: API.OperationMethod<
 }));
 
 export type ConnectorUpdateErrorError = ElasticsearchOpError;
-/** Update the connector error field Set the error field for the connector. If the error provided in the request body is non-null, the connector’s status is updated to error. Otherwise, if the error is reset to null, the connector status is updated to connected. */
+/** Update the connector error field Set the error field for the connector. If the error provided in the request body is non-null, the connector's status is updated to error. Otherwise, if the error is reset to null, the connector status is updated to connected. */
 export const connectorUpdateError: API.OperationMethod<
   ConnectorUpdateErrorRequest,
   ConnectorUpdateErrorResponse,
@@ -96185,7 +96185,7 @@ export const count3: API.OperationMethod<
 }));
 
 export type CreateError = ElasticsearchOpError;
-/** Create a new document in the index You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs Using `_create` guarantees that the document is indexed only if it does not already exist. It returns a 409 response when a document with a same ID already exists in the index. To update an existing document, you must use the `/<target>/_doc/` API. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Routing** By default, shard placement — or routing — is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter. Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. ## Required authorization * Index privileges: `create` */
+/** Create a new document in the index You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs Using `_create` guarantees that the document is indexed only if it does not already exist. It returns a 409 response when a document with a same ID already exists in the index. To update an existing document, you must use the `/<target>/_doc/` API. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Routing** By default, shard placement -- or routing -- is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter. Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. ## Required authorization * Index privileges: `create` */
 export const create: API.OperationMethod<
   CreateRequest,
   TypesWriteResponseBase,
@@ -96200,7 +96200,7 @@ export const create: API.OperationMethod<
 }));
 
 export type Create1Error = ElasticsearchOpError;
-/** Create a new document in the index You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs Using `_create` guarantees that the document is indexed only if it does not already exist. It returns a 409 response when a document with a same ID already exists in the index. To update an existing document, you must use the `/<target>/_doc/` API. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Routing** By default, shard placement — or routing — is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter. Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. ## Required authorization * Index privileges: `create` */
+/** Create a new document in the index You can index a new JSON document with the `/<target>/_doc/` or `/<target>/_create/<_id>` APIs Using `_create` guarantees that the document is indexed only if it does not already exist. It returns a 409 response when a document with a same ID already exists in the index. To update an existing document, you must use the `/<target>/_doc/` API. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add a document using the `PUT /<target>/_create/<_id>` or `POST /<target>/_create/<_id>` request formats, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Routing** By default, shard placement -- or routing -- is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter. Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. ## Required authorization * Index privileges: `create` */
 export const create1: API.OperationMethod<
   Create1Request,
   TypesWriteResponseBase,
@@ -96335,7 +96335,7 @@ export const deleteByQueryRethrottle: API.OperationMethod<
 }));
 
 export type DeleteConnectorError = ElasticsearchOpError;
-/** Delete a connector Removes a connector and associated sync jobs. This is a destructive action that is not recoverable. NOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector. These need to be removed manually. */
+/** Delete a connector Removes a connector and associated sync jobs. This is a destructive action that is not recoverable. NOTE: This action doesn't delete any API keys, ingest pipelines, or data indices associated with the connector. These need to be removed manually. */
 export const deleteConnector: API.OperationMethod<
   DeleteConnectorRequest,
   TypesAcknowledgedResponseBase,
@@ -96965,7 +96965,7 @@ export const explain1: API.OperationMethod<
 }));
 
 export type FieldCapsError = ElasticsearchOpError;
-/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream’s backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
+/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream's backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
 export const fieldCaps: API.OperationMethod<
   FieldCapsRequest,
   FieldCapsResponse,
@@ -96980,7 +96980,7 @@ export const fieldCaps: API.OperationMethod<
 }));
 
 export type FieldCaps1Error = ElasticsearchOpError;
-/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream’s backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
+/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream's backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
 export const fieldCaps1: API.OperationMethod<
   FieldCaps1Request,
   FieldCaps1Response,
@@ -96995,7 +96995,7 @@ export const fieldCaps1: API.OperationMethod<
 }));
 
 export type FieldCaps2Error = ElasticsearchOpError;
-/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream’s backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
+/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream's backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
 export const fieldCaps2: API.OperationMethod<
   FieldCaps2Request,
   FieldCaps2Response,
@@ -97010,7 +97010,7 @@ export const fieldCaps2: API.OperationMethod<
 }));
 
 export type FieldCaps3Error = ElasticsearchOpError;
-/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream’s backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
+/** Get the field capabilities Get information about the capabilities of fields among multiple indices. For data streams, the API returns field capabilities among the stream's backing indices. It returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family. ## Required authorization * Index privileges: `view_index_metadata`,`read` */
 export const fieldCaps3: API.OperationMethod<
   FieldCaps3Request,
   FieldCaps3Response,
@@ -97250,7 +97250,7 @@ export const getFeatures: API.OperationMethod<
 }));
 
 export type GetIndexError = ElasticsearchOpError;
-/** Get index information Get information about one or more indices. For data streams, the API returns information about the stream’s backing indices. ## Required authorization * Index privileges: `view_index_metadata`,`manage` */
+/** Get index information Get information about one or more indices. For data streams, the API returns information about the stream's backing indices. ## Required authorization * Index privileges: `view_index_metadata`,`manage` */
 export const getIndex: API.OperationMethod<
   GetIndexRequest,
   GetIndexResponse,
@@ -97550,7 +97550,7 @@ export const graphExplore1: API.OperationMethod<
 }));
 
 export type HealthReportError = ElasticsearchOpError;
-/** Get the cluster health Get a report with the health status of an Elasticsearch cluster. The report contains a list of indicators that compose Elasticsearch functionality. Each indicator has a health status of: green, unknown, yellow or red. The indicator will provide an explanation and metadata describing the reason for its current health status. The cluster’s status is controlled by the worst indicator status. In the event that an indicator’s status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue. Each impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system. Some health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system. The root cause and remediation steps are encapsulated in a diagnosis. A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem. NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently. When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic. */
+/** Get the cluster health Get a report with the health status of an Elasticsearch cluster. The report contains a list of indicators that compose Elasticsearch functionality. Each indicator has a health status of: green, unknown, yellow or red. The indicator will provide an explanation and metadata describing the reason for its current health status. The cluster's status is controlled by the worst indicator status. In the event that an indicator's status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue. Each impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system. Some health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system. The root cause and remediation steps are encapsulated in a diagnosis. A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem. NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently. When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic. */
 export const healthReport: API.OperationMethod<
   HealthReportRequest,
   HealthReportResponse,
@@ -97565,7 +97565,7 @@ export const healthReport: API.OperationMethod<
 }));
 
 export type HealthReport1Error = ElasticsearchOpError;
-/** Get the cluster health Get a report with the health status of an Elasticsearch cluster. The report contains a list of indicators that compose Elasticsearch functionality. Each indicator has a health status of: green, unknown, yellow or red. The indicator will provide an explanation and metadata describing the reason for its current health status. The cluster’s status is controlled by the worst indicator status. In the event that an indicator’s status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue. Each impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system. Some health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system. The root cause and remediation steps are encapsulated in a diagnosis. A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem. NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently. When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic. */
+/** Get the cluster health Get a report with the health status of an Elasticsearch cluster. The report contains a list of indicators that compose Elasticsearch functionality. Each indicator has a health status of: green, unknown, yellow or red. The indicator will provide an explanation and metadata describing the reason for its current health status. The cluster's status is controlled by the worst indicator status. In the event that an indicator's status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue. Each impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system. Some health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system. The root cause and remediation steps are encapsulated in a diagnosis. A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem. NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently. When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic. */
 export const healthReport1: API.OperationMethod<
   HealthReport1Request,
   HealthReport1Response,
@@ -98315,7 +98315,7 @@ export const indicesGetDataStreamSettings: API.OperationMethod<
 }));
 
 export type IndicesGetFieldMappingError = ElasticsearchOpError;
-/** Get mapping definitions Retrieves mapping definitions for one or more fields. For data streams, the API retrieves field mappings for the stream’s backing indices. This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields. ## Required authorization * Index privileges: `view_index_metadata` */
+/** Get mapping definitions Retrieves mapping definitions for one or more fields. For data streams, the API retrieves field mappings for the stream's backing indices. This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields. ## Required authorization * Index privileges: `view_index_metadata` */
 export const indicesGetFieldMapping: API.OperationMethod<
   IndicesGetFieldMappingRequest,
   IndicesGetFieldMappingResponse,
@@ -98330,7 +98330,7 @@ export const indicesGetFieldMapping: API.OperationMethod<
 }));
 
 export type IndicesGetFieldMapping1Error = ElasticsearchOpError;
-/** Get mapping definitions Retrieves mapping definitions for one or more fields. For data streams, the API retrieves field mappings for the stream’s backing indices. This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields. ## Required authorization * Index privileges: `view_index_metadata` */
+/** Get mapping definitions Retrieves mapping definitions for one or more fields. For data streams, the API retrieves field mappings for the stream's backing indices. This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields. ## Required authorization * Index privileges: `view_index_metadata` */
 export const indicesGetFieldMapping1: API.OperationMethod<
   IndicesGetFieldMapping1Request,
   IndicesGetFieldMapping1Response,
@@ -98345,7 +98345,7 @@ export const indicesGetFieldMapping1: API.OperationMethod<
 }));
 
 export type IndicesGetMappingError = ElasticsearchOpError;
-/** Get mapping definitions For data streams, the API retrieves mappings for the stream’s backing indices. ## Required authorization * Index privileges: `view_index_metadata` */
+/** Get mapping definitions For data streams, the API retrieves mappings for the stream's backing indices. ## Required authorization * Index privileges: `view_index_metadata` */
 export const indicesGetMapping: API.OperationMethod<
   IndicesGetMappingRequest,
   IndicesGetMappingResponse,
@@ -98360,7 +98360,7 @@ export const indicesGetMapping: API.OperationMethod<
 }));
 
 export type IndicesGetMapping1Error = ElasticsearchOpError;
-/** Get mapping definitions For data streams, the API retrieves mappings for the stream’s backing indices. ## Required authorization * Index privileges: `view_index_metadata` */
+/** Get mapping definitions For data streams, the API retrieves mappings for the stream's backing indices. ## Required authorization * Index privileges: `view_index_metadata` */
 export const indicesGetMapping1: API.OperationMethod<
   IndicesGetMapping1Request,
   IndicesGetMapping1Response,
@@ -98735,7 +98735,7 @@ export const indicesRecovery1: API.OperationMethod<
 }));
 
 export type IndicesRefresh1Error = ElasticsearchOpError;
-/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
+/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream's backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
 export const indicesRefresh1: API.OperationMethod<
   IndicesRefresh1Request,
   TypesShardsOperationResponseBase,
@@ -98750,7 +98750,7 @@ export const indicesRefresh1: API.OperationMethod<
 }));
 
 export type IndicesRefresh2Error = ElasticsearchOpError;
-/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
+/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream's backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
 export const indicesRefresh2: API.OperationMethod<
   IndicesRefresh2Request,
   TypesShardsOperationResponseBase,
@@ -98765,7 +98765,7 @@ export const indicesRefresh2: API.OperationMethod<
 }));
 
 export type IndicesRefresh3Error = ElasticsearchOpError;
-/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
+/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream's backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
 export const indicesRefresh3: API.OperationMethod<
   IndicesRefresh3Request,
   TypesShardsOperationResponseBase,
@@ -100250,7 +100250,7 @@ export const licensePostStartTrial: API.OperationMethod<
 }));
 
 export type ListError = ElasticsearchOpError;
-/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement — or routing — is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
+/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement -- or routing -- is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn't fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
 export const list: API.OperationMethod<
   ListRequest,
   TypesWriteResponseBase,
@@ -100265,7 +100265,7 @@ export const list: API.OperationMethod<
 }));
 
 export type List1Error = ElasticsearchOpError;
-/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement — or routing — is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
+/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement -- or routing -- is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn't fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
 export const list1: API.OperationMethod<
   List1Request,
   TypesWriteResponseBase,
@@ -100280,7 +100280,7 @@ export const list1: API.OperationMethod<
 }));
 
 export type List2Error = ElasticsearchOpError;
-/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement — or routing — is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
+/** Create or update a document in an index Add a JSON document to the specified data stream or index and make it searchable. If the target is an index and the document already exists, the request updates the document and increments its version. NOTE: You cannot use this API to send update requests for existing documents in a data stream. If the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias: * To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege. * To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege. * To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege. Automatic data stream creation requires a matching index template with data stream enabled. NOTE: Replica shards might not all be started when an indexing operation returns successfully. By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless). **Automatically create data streams and indices** If the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream. If the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates. NOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation. If no mapping exists, the index operation creates a dynamic mapping. By default, new fields and objects are automatically added to the mapping if needed. Automatic index creation is controlled by the `action.auto_create_index` setting. If it is `true`, any index can be created automatically. You can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely. Specify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. When a list is specified, the default behaviour is to disallow. NOTE: The `action.auto_create_index` setting affects the automatic creation of indices only. It does not affect the creation of data streams. **Optimistic concurrency control** Index operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters. If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`. **Routing** By default, shard placement -- or routing -- is controlled by using a hash of the document's ID value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter. When setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself. This does come at the (very minimal) cost of an additional document parsing pass. If the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted. NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template. **Distributed** The index operation is directed to the primary shard based on its route and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas. **Active shards** To improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation. If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs. By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`). This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`. To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless). Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1). Specifying a negative value or a number greater than the number of shard copies will throw an error. For example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes). If you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding. This means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data. If `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding. This requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard. However, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index. The operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard. It is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts. After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary. The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed. **No operation (noop) updates** When updating a document by using this API, a new version of the document is always created even if the document hasn't changed. If this isn't acceptable use the `_update` API with `detect_noop` set to `true`. The `detect_noop` option isn't available on this API because it doesn't fetch the old source and isn't able to compare it against the new source. There isn't a definitive rule for when noop updates aren't acceptable. It's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates. **Versioning** Each indexed document is given a version number. By default, internal versioning is used that starts at 1 and increments with each update, deletes included. Optionally, the version number can be set to an external value (for example, if maintained in a database). To enable this functionality, `version_type` should be set to `external`. The value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`. NOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations. If no version is provided, the operation runs without any version checks. When using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document. If true, the document will be indexed and the new version number used. If the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example: ``` PUT my-index-000001/_doc/1?version=2&version_type=external { "user": { "id": "elkbee" } } ``` In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1. If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code). A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used. Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order. ## Required authorization * Index privileges: `index` */
 export const list2: API.OperationMethod<
   List2Request,
   TypesWriteResponseBase,
@@ -102620,7 +102620,7 @@ export const nodesUsage3: API.OperationMethod<
 }));
 
 export type OpenPointInTimeError = ElasticsearchOpError;
-/** Open a point in time A search request by default runs against the most recent visible data of the target indices, which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple search requests using the same point in time. For example, if refreshes happen between `search_after` requests, then the results of those requests might not be consistent as changes happening between searches are only visible to the more recent point in time. A point in time must be opened explicitly before being used in search requests. A subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time. Just like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits. If you want to retrieve more hits, use PIT with `search_after`. IMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied. Always use the most recently-received PIT identifier for the next request. If you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses. In that case, use any of these values for later requests, preferring more recently-received values whenever possible. When a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception. To get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime. **Keeping point in time alive** The `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time. The value does not need to be long enough to process all data — it just needs to be long enough for the next request. Normally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments. Once the smaller segments are no longer needed they are deleted. However, open point-in-times prevent the old segments from being deleted since they are still in use. TIP: Keeping older segments alive means that more disk space and file handles are needed. Ensure that you have configured your nodes to have ample free file handles. Additionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request. Ensure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates. Note that a point-in-time doesn't prevent its associated indices from being deleted. You can check how many point-in-times (that is, search contexts) are open with the nodes stats API. ## Required authorization * Index privileges: `read` */
+/** Open a point in time A search request by default runs against the most recent visible data of the target indices, which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the state of the data as it existed when initiated. In some cases, it's preferred to perform multiple search requests using the same point in time. For example, if refreshes happen between `search_after` requests, then the results of those requests might not be consistent as changes happening between searches are only visible to the more recent point in time. A point in time must be opened explicitly before being used in search requests. A subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time. Just like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits. If you want to retrieve more hits, use PIT with `search_after`. IMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied. Always use the most recently-received PIT identifier for the next request. If you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses. In that case, use any of these values for later requests, preferring more recently-received values whenever possible. When a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception. To get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime. **Keeping point in time alive** The `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time. The value does not need to be long enough to process all data -- it just needs to be long enough for the next request. Normally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments. Once the smaller segments are no longer needed they are deleted. However, open point-in-times prevent the old segments from being deleted since they are still in use. TIP: Keeping older segments alive means that more disk space and file handles are needed. Ensure that you have configured your nodes to have ample free file handles. Additionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request. Ensure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates. Note that a point-in-time doesn't prevent its associated indices from being deleted. You can check how many point-in-times (that is, search contexts) are open with the nodes stats API. ## Required authorization * Index privileges: `read` */
 export const openPointInTime: API.OperationMethod<
   OpenPointInTimeRequest,
   OpenPointInTimeResponse,
@@ -103025,7 +103025,7 @@ export const rankEval3: API.OperationMethod<
 }));
 
 export type RefreshIndexError = ElasticsearchOpError;
-/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
+/** Refresh an index A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream's backing indices. By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. You can change this default interval with the `index.refresh_interval` setting. In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices. Refresh requests are synchronous and do not return a response until the refresh operation completes. Refreshes are resource-intensive. To ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible. If your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option. This option ensures the indexing operation waits for a periodic refresh before running the search. ## Required authorization * Index privileges: `maintenance` */
 export const refreshIndex: API.OperationMethod<
   RefreshIndexRequest,
   TypesShardsOperationResponseBase,
@@ -103055,7 +103055,7 @@ export const reindex: API.OperationMethod<
 }));
 
 export type ReindexRethrottleError = ElasticsearchOpError;
-/** Throttle a reindex operation Change the maximum number of documents to index per second for a particular reindex operation. For example, to unthrottle to unlimited documents per second: ``` POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1 ``` Rethrottling that speeds up the query takes effect immediately. Rethrottling that slows down the query will take effect after completing the current batch of documents. This behavior prevents scroll timeouts. This API follows reindex tasks across node-shutdown relocations, so callers can keep using the original task ID throughout the lifetime of the operation. The relocated task ID is also accepted and is followed transparently. In either case, returned task IDs and timings reflect the original task, not its relocated successor. The rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains no successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default `group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with `group_by=none` or `group_by=parents`). */
+/** Throttle a reindex operation Change the maximum number of documents to index per second for a particular reindex operation. For example, to unthrottle to unlimited documents per second: ``` POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1 ``` Rethrottling that speeds up the query takes effect immediately. Rethrottling that slows down the query will take effect after completing the current batch of documents. This behavior prevents scroll timeouts. This API follows reindex tasks across node-shutdown relocations, so callers can keep using the original task ID throughout the lifetime of the operation. The relocated task ID is also accepted and is followed transparently. In either case, returned task IDs and timings reflect the original task, not its relocated successor. The rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains no successfully rethrottled tasks -- that is, no entries under `nodes` (returned with the default `group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with `group_by=none` or `group_by=parents`). */
 export const reindexRethrottle: API.OperationMethod<
   ReindexRethrottleRequest,
   ReindexRethrottleResponse,
@@ -103985,7 +103985,7 @@ export const securityCreateApiKey1: API.OperationMethod<
 }));
 
 export type SecurityCreateCrossClusterApiKeyError = ElasticsearchOpError;
-/** Create a cross-cluster API key Create an API key of the `cross_cluster` type for the API key based remote cluster access. A `cross_cluster` API key cannot be used to authenticate through the REST interface. IMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error. Cross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled. NOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key’s effective permission is exactly as specified with the `access` property. A successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds. By default, API keys never expire. You can specify expiration information when you create the API keys. Cross-cluster API keys can only be updated with the update cross-cluster API key API. Attempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error. ## Required authorization * Cluster privileges: `manage_security` */
+/** Create a cross-cluster API key Create an API key of the `cross_cluster` type for the API key based remote cluster access. A `cross_cluster` API key cannot be used to authenticate through the REST interface. IMPORTANT: To authenticate this request you must use a credential that is not an API key. Even if you use an API key that has the required privilege, the API returns an error. Cross-cluster API keys are created by the Elasticsearch API key service, which is automatically enabled. NOTE: Unlike REST API keys, a cross-cluster API key does not capture permissions of the authenticated user. The API key's effective permission is exactly as specified with the `access` property. A successful request returns a JSON structure that contains the API key, its unique ID, and its name. If applicable, it also returns expiration information for the API key in milliseconds. By default, API keys never expire. You can specify expiration information when you create the API keys. Cross-cluster API keys can only be updated with the update cross-cluster API key API. Attempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error. ## Required authorization * Cluster privileges: `manage_security` */
 export const securityCreateCrossClusterApiKey: API.OperationMethod<
   SecurityCreateCrossClusterApiKeyRequest,
   SecurityCreateCrossClusterApiKeyResponse,
@@ -104045,7 +104045,7 @@ export const securityCreateServiceToken2: API.OperationMethod<
 }));
 
 export type SecurityDelegatePkiError = ElasticsearchOpError;
-/** Delegate PKI authentication This API implements the exchange of an X509Certificate chain for an Elasticsearch access token. The certificate chain is validated, according to RFC 5280, by sequentially considering the trust configuration of every installed PKI realm that has `delegation.enabled` set to `true`. A successfully trusted client certificate is also subject to the validation of the subject distinguished name according to thw `username_pattern` of the respective realm. This API is called by smart and trusted proxies, such as Kibana, which terminate the user's TLS session but still want to authenticate the user by using a PKI realm—-​as if the user connected directly to Elasticsearch. IMPORTANT: The association between the subject public key in the target certificate and the corresponding private key is not validated. This is part of the TLS authentication process and it is delegated to the proxy that calls this API. The proxy is trusted to have performed the TLS authentication and this API translates that authentication into an Elasticsearch access token. ## Required authorization * Cluster privileges: `all` */
+/** Delegate PKI authentication This API implements the exchange of an X509Certificate chain for an Elasticsearch access token. The certificate chain is validated, according to RFC 5280, by sequentially considering the trust configuration of every installed PKI realm that has `delegation.enabled` set to `true`. A successfully trusted client certificate is also subject to the validation of the subject distinguished name according to thw `username_pattern` of the respective realm. This API is called by smart and trusted proxies, such as Kibana, which terminate the user's TLS session but still want to authenticate the user by using a PKI realm---as if the user connected directly to Elasticsearch. IMPORTANT: The association between the subject public key in the target certificate and the corresponding private key is not validated. This is part of the TLS authentication process and it is delegated to the proxy that calls this API. The proxy is trusted to have performed the TLS authentication and this API translates that authentication into an Elasticsearch access token. ## Required authorization * Cluster privileges: `all` */
 export const securityDelegatePki: API.OperationMethod<
   SecurityDelegatePkiRequest,
   SecurityDelegatePkiResponse,
@@ -104180,7 +104180,7 @@ export const securityDisableUser1: API.OperationMethod<
 }));
 
 export type SecurityDisableUserProfileError = ElasticsearchOpError;
-/** Disable a user profile Disable user profiles so that they are not visible in user profile searches. NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice. When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches. To re-enable a disabled user profile, use the enable user profile API . ## Required authorization * Cluster privileges: `manage_user_profile` */
+/** Disable a user profile Disable user profiles so that they are not visible in user profile searches. NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice. When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it's not visible in these searches. To re-enable a disabled user profile, use the enable user profile API . ## Required authorization * Cluster privileges: `manage_user_profile` */
 export const securityDisableUserProfile: API.OperationMethod<
   SecurityDisableUserProfileRequest,
   TypesAcknowledgedResponseBase,
@@ -104195,7 +104195,7 @@ export const securityDisableUserProfile: API.OperationMethod<
 }));
 
 export type SecurityDisableUserProfile1Error = ElasticsearchOpError;
-/** Disable a user profile Disable user profiles so that they are not visible in user profile searches. NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice. When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches. To re-enable a disabled user profile, use the enable user profile API . ## Required authorization * Cluster privileges: `manage_user_profile` */
+/** Disable a user profile Disable user profiles so that they are not visible in user profile searches. NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice. When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it's not visible in these searches. To re-enable a disabled user profile, use the enable user profile API . ## Required authorization * Cluster privileges: `manage_user_profile` */
 export const securityDisableUserProfile1: API.OperationMethod<
   SecurityDisableUserProfile1Request,
   TypesAcknowledgedResponseBase,
@@ -104495,7 +104495,7 @@ export const securityGetServiceCredentials: API.OperationMethod<
 }));
 
 export type SecurityGetSettingsError = ElasticsearchOpError;
-/** Get security index settings Get the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of the index settings — those that are user-configurable—will be shown. This includes: * `index.auto_expand_replicas` * `index.number_of_replicas` ## Required authorization * Cluster privileges: `read_security` */
+/** Get security index settings Get the user-configurable settings for the security internal index (`.security` and associated indices). Only a subset of the index settings -- those that are user-configurable--will be shown. This includes: * `index.auto_expand_replicas` * `index.number_of_replicas` ## Required authorization * Cluster privileges: `read_security` */
 export const securityGetSettings: API.OperationMethod<
   SecurityGetSettingsRequest,
   SecurityGetSettingsResponse,
@@ -105035,7 +105035,7 @@ export const securitySuggestUserProfiles1: API.OperationMethod<
 }));
 
 export type SecurityUpdateApiKeyError = ElasticsearchOpError;
-/** Update an API key Update attributes of an existing API key. This API supports updates to an API key's access scope, expiration, and metadata. To use this API, you must have at least the `manage_own_api_key` cluster privilege. Users can only update API keys that they created or that were granted to them. To update another user’s API key, use the `run_as` feature to submit a request on behalf of another user. IMPORTANT: It's not possible to use an API key as the authentication credential for this API. The owner user’s credentials are required. Use this API to update API keys created by the create API key or grant API Key APIs. If you need to apply the same update to many API keys, you can use the bulk update API keys API to reduce overhead. It's not possible to update expired API keys or API keys that have been invalidated by the invalidate API key API. The access scope of an API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request. The snapshot of the owner's permissions is updated automatically on every call. IMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change the API key's access scope. This change can occur if the owner user's permissions have changed since the API key was created or last modified. ## Required authorization * Cluster privileges: `manage_own_api_key` */
+/** Update an API key Update attributes of an existing API key. This API supports updates to an API key's access scope, expiration, and metadata. To use this API, you must have at least the `manage_own_api_key` cluster privilege. Users can only update API keys that they created or that were granted to them. To update another user's API key, use the `run_as` feature to submit a request on behalf of another user. IMPORTANT: It's not possible to use an API key as the authentication credential for this API. The owner user's credentials are required. Use this API to update API keys created by the create API key or grant API Key APIs. If you need to apply the same update to many API keys, you can use the bulk update API keys API to reduce overhead. It's not possible to update expired API keys or API keys that have been invalidated by the invalidate API key API. The access scope of an API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request. The snapshot of the owner's permissions is updated automatically on every call. IMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change the API key's access scope. This change can occur if the owner user's permissions have changed since the API key was created or last modified. ## Required authorization * Cluster privileges: `manage_own_api_key` */
 export const securityUpdateApiKey: API.OperationMethod<
   SecurityUpdateApiKeyRequest,
   SecurityUpdateApiKeyResponse,
@@ -105650,7 +105650,7 @@ export const startSlm: API.OperationMethod<
 }));
 
 export type StartTransformError = ElasticsearchOpError;
-/** Start a transform When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping definitions for the destination index from the source indices and the transform aggregations. If fields in the destination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations), the transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce mapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you start the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings in a pivot transform. When the transform starts, a series of validations occur to ensure its success. If you deferred validation when you created the transform, they occur when you start the transform—​with the exception of privilege checks. When Elasticsearch security features are enabled, the transform remembers which roles the user that created it had at the time of creation and uses those same roles. If those roles do not have the required privileges on the source and destination indices, the transform fails when it attempts unauthorized operations. ## Required authorization * Index privileges: `read`,`view_index_metadata` * Cluster privileges: `manage_transform` */
+/** Start a transform When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping definitions for the destination index from the source indices and the transform aggregations. If fields in the destination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations), the transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce mapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you start the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings in a pivot transform. When the transform starts, a series of validations occur to ensure its success. If you deferred validation when you created the transform, they occur when you start the transform--with the exception of privilege checks. When Elasticsearch security features are enabled, the transform remembers which roles the user that created it had at the time of creation and uses those same roles. If those roles do not have the required privileges on the source and destination indices, the transform fails when it attempts unauthorized operations. ## Required authorization * Index privileges: `read`,`view_index_metadata` * Cluster privileges: `manage_transform` */
 export const startTransform: API.OperationMethod<
   StartTransformRequest,
   TypesAcknowledgedResponseBase,
@@ -106070,7 +106070,7 @@ export const transformSetUpgradeMode: API.OperationMethod<
 }));
 
 export type TransformUpgradeTransformsError = ElasticsearchOpError;
-/** Upgrade all transforms Transforms are compatible across minor versions and between supported major versions. However, over time, the format of transform configuration information may change. This API identifies transforms that have a legacy configuration format and upgrades them to the latest version. It also cleans up the internal data structures that store the transform state and checkpoints. The upgrade does not affect the source and destination indices. The upgrade also does not affect the roles that transforms use when Elasticsearch security features are enabled; the role used to read source data and write to the destination index remains unchanged. If a transform upgrade step fails, the upgrade stops and an error is returned about the underlying issue. Resolve the issue then re-run the process again. A summary is returned when the upgrade is finished. To ensure continuous transforms remain running during a major version upgrade of the cluster – for example, from 7.16 to 8.0 – it is recommended to upgrade transforms before upgrading the cluster. You may want to perform a recent cluster backup prior to the upgrade. ## Required authorization * Cluster privileges: `manage_transform` */
+/** Upgrade all transforms Transforms are compatible across minor versions and between supported major versions. However, over time, the format of transform configuration information may change. This API identifies transforms that have a legacy configuration format and upgrades them to the latest version. It also cleans up the internal data structures that store the transform state and checkpoints. The upgrade does not affect the source and destination indices. The upgrade also does not affect the roles that transforms use when Elasticsearch security features are enabled; the role used to read source data and write to the destination index remains unchanged. If a transform upgrade step fails, the upgrade stops and an error is returned about the underlying issue. Resolve the issue then re-run the process again. A summary is returned when the upgrade is finished. To ensure continuous transforms remain running during a major version upgrade of the cluster - for example, from 7.16 to 8.0 - it is recommended to upgrade transforms before upgrading the cluster. You may want to perform a recent cluster backup prior to the upgrade. ## Required authorization * Cluster privileges: `manage_transform` */
 export const transformUpgradeTransforms: API.OperationMethod<
   TransformUpgradeTransformsRequest,
   TransformUpgradeTransformsResponse,

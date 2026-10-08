@@ -33168,15 +33168,15 @@ export type CreateKnowledgeBaseError =
 /**
  * Creates a knowledge base from a specified data source. Supported data source connector types include:
  *
- * - `S3_KNOWLEDGE_BASE` – Uses an Amazon S3 bucket as the data source.
+ * - `S3_KNOWLEDGE_BASE` - Uses an Amazon S3 bucket as the data source.
  *
- * - `WEB_CRAWLER` – Uses web pages indexed by the built-in web crawler as the data source.
+ * - `WEB_CRAWLER` - Uses web pages indexed by the built-in web crawler as the data source.
  *
- * - `GOOGLE_DRIVE` – Uses Google Drive as the data source. Supports service account authentication only.
+ * - `GOOGLE_DRIVE` - Uses Google Drive as the data source. Supports service account authentication only.
  *
- * - `SHAREPOINT` – Uses SharePoint as the data source. Supports two-legged OAuth only.
+ * - `SHAREPOINT` - Uses SharePoint as the data source. Supports two-legged OAuth only.
  *
- * - `ONE_DRIVE` – Uses OneDrive as the data source. Supports two-legged OAuth only.
+ * - `ONE_DRIVE` - Uses OneDrive as the data source. Supports two-legged OAuth only.
  */
 export const createKnowledgeBase: API.OperationMethod<
   CreateKnowledgeBaseRequest,
@@ -33812,17 +33812,17 @@ export type DeleteAccountSubscriptionError =
 /**
  * Deleting your Quick Sight account subscription has permanent, irreversible consequences across all Amazon Web Services regions:
  *
- * - Global deletion – Running this operation from any single region will delete your Quick Sight account and all data in every Amazon Web Services region where you have Quick Sight resources.
+ * - Global deletion - Running this operation from any single region will delete your Quick Sight account and all data in every Amazon Web Services region where you have Quick Sight resources.
  *
- * - Complete data loss – All dashboards, analyses, datasets, data sources, and custom visuals will be permanently deleted across all regions.
+ * - Complete data loss - All dashboards, analyses, datasets, data sources, and custom visuals will be permanently deleted across all regions.
  *
- * - Embedded content failure – All embedded dashboards and visuals in your applications will immediately stop working and display errors to end users.
+ * - Embedded content failure - All embedded dashboards and visuals in your applications will immediately stop working and display errors to end users.
  *
- * - Shared resources removed – All shared dashboards, folders, and resources will become inaccessible to other users and external recipients.
+ * - Shared resources removed - All shared dashboards, folders, and resources will become inaccessible to other users and external recipients.
  *
- * - User access terminated – All Quick Sight users in your account will lose access immediately, including authors, readers, and administrators.
+ * - User access terminated - All Quick Sight users in your account will lose access immediately, including authors, readers, and administrators.
  *
- * - **No recovery possible** – Once deleted, your Quick Sight account and all associated data cannot be restored.
+ * - **No recovery possible** - Once deleted, your Quick Sight account and all associated data cannot be restored.
  *
  * Consider exporting critical dashboards and data before proceeding with account deletion.
  *

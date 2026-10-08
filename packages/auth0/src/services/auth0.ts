@@ -13550,7 +13550,7 @@ export interface ConnectionForOrganization {
   connection_id: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -13638,7 +13638,7 @@ export interface OrganizationEnabledConnection {
   connection_id?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -13861,7 +13861,7 @@ export interface CreateOrganizationConnectionRequest {
   organization_connection_name?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -13893,7 +13893,7 @@ export interface CreateOrganizationAllConnectionResponseContent {
   organization_connection_name?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -23353,7 +23353,7 @@ export interface GetOrganizationConnectionResponseContent {
   connection_id?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -26745,7 +26745,7 @@ export interface GetOrganizationAllConnectionResponseContent {
   organization_connection_name?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -26802,7 +26802,7 @@ export interface OrganizationAllConnectionPost {
   organization_connection_name?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -33286,7 +33286,7 @@ export interface PatchEnabledConnectionsByConnectionIdRequest {
   assign_membership_on_login?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
 }
 export const PatchEnabledConnectionsByConnectionIdRequest = /*@__PURE__*/ S.suspend(() =>
@@ -33312,7 +33312,7 @@ export interface UpdateOrganizationConnectionResponseContent {
   connection_id?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -35685,7 +35685,7 @@ export interface PostEmailVerificationRequest {
   user_id: string;
   /** ID of the client (application). If provided for tenants using the New Universal Login experience, the email template and UI displays application details, and the user is prompted to redirect to the application's <a target='' href='https://auth0.com/docs/authenticate/login/auth0-universal-login/configure-default-login-routes#completing-the-password-reset-flow'>default login route</a> after the ticket is used. client_id is required to use the <a target='' href='https://auth0.com/docs/customize/actions/flows-and-triggers/post-change-password-flow'>Password Reset Post Challenge</a> trigger. */
   client_id?: string;
-  /** (Optional) Organization ID – the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
+  /** (Optional) Organization ID - the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
   organization_id?: string;
   /** Number of seconds for which the ticket is valid before expiration. If unspecified or set to 0, this value defaults to 432000 seconds (5 days). */
   ttl_sec?: number;
@@ -35728,7 +35728,7 @@ export interface PostEnabledConnectionsRequest {
   assign_membership_on_login?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
 }
 export const PostEnabledConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -35748,7 +35748,7 @@ export interface AddOrganizationConnectionResponseContent {
   connection_id?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -36195,7 +36195,7 @@ export interface PostPasswordChangeRequest {
   user_id?: string;
   /** ID of the client (application). If provided for tenants using the New Universal Login experience, the email template and UI displays application details, and the user is prompted to redirect to the application's <a target='' href='https://auth0.com/docs/authenticate/login/auth0-universal-login/configure-default-login-routes#completing-the-password-reset-flow'>default login route</a> after the ticket is used. client_id is required to use the <a target='' href='https://auth0.com/docs/customize/actions/flows-and-triggers/post-change-password-flow'>Password Reset Post Challenge</a> trigger. */
   client_id?: string;
-  /** (Optional) Organization ID – the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
+  /** (Optional) Organization ID - the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
   organization_id?: string;
   /** ID of the connection. If provided, allows the user to be specified using email instead of user_id. If you set this value, you must also send the email parameter. You cannot send user_id when specifying a connection_id. */
   connection_id?: string;
@@ -37024,7 +37024,7 @@ export interface SelfServiceProfileSsoTicketEnabledOrganization {
   organization_id: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
 }
 export const SelfServiceProfileSsoTicketEnabledOrganization = /*@__PURE__*/ S.suspend(() =>
@@ -37055,7 +37055,7 @@ export const SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList =
     S.String,
   ) as any as S.Schema<SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList>;
 
-/** Configuration for the setup of the connection’s domain_aliases in the Self-Service Enterprise Configuration flow. */
+/** Configuration for the setup of the connection's domain_aliases in the Self-Service Enterprise Configuration flow. */
 export interface SelfServiceProfileSsoTicketDomainAliasesConfig {
   domain_verification: SelfServiceProfileSsoTicketDomainVerificationEnum | (string & {});
   /** List of domains that will be submitted for verification during the Self-Service Enterprise Configuration flow. */
@@ -37603,7 +37603,7 @@ export interface PostVerificationEmailRequest {
   /** client_id of the client (application). If no value provided, the global Client ID will be used. */
   client_id?: string;
   identity?: Identity;
-  /** (Optional) Organization ID – the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
+  /** (Optional) Organization ID - the ID of the Organization. If provided, organization parameters will be made available to the email template and organization branding will be applied to the prompt. In addition, the redirect link in the prompt will include organization_id and organization_name query string parameters. */
   organization_id?: string;
 }
 export const PostVerificationEmailRequest = /*@__PURE__*/ S.suspend(() =>
@@ -41528,7 +41528,7 @@ export interface UpdateOrganizationConnectionRequest {
   organization_connection_name?: string | null;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -41565,7 +41565,7 @@ export interface UpdateOrganizationAllConnectionResponseContent {
   organization_connection_name?: string;
   /** When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection. */
   assign_membership_on_login?: boolean;
-  /** Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections. Default: true. */
+  /** Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections. Default: true. */
   show_as_button?: boolean;
   /** Determines whether organization signup should be enabled for this organization connection. Only applicable for database connections. Default: false. */
   is_signup_enabled?: boolean;
@@ -43395,7 +43395,7 @@ export const createSelfServiceProfile: API.OperationMethod<
 }));
 
 export type CreateTokenExchangeProfileError = BadRequest | Forbidden | Conflict | Auth0OpError;
-/** Create a token exchange profile Create a new Token Exchange Profile within your tenant. By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. */
+/** Create a token exchange profile Create a new Token Exchange Profile within your tenant. By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. */
 export const createTokenExchangeProfile: API.OperationMethod<
   CreateTokenExchangeProfileRequest,
   CreateTokenExchangeProfileResponseContent,
@@ -47323,7 +47323,7 @@ export const getSynchronizedGroups: API.OperationMethod<
 }));
 
 export type GetTokenExchangeProfileError = BadRequest | Forbidden | NotFound | Auth0OpError;
-/** Get a token exchange profile Retrieve details about a single Token Exchange Profile specified by ID. By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. */
+/** Get a token exchange profile Retrieve details about a single Token Exchange Profile specified by ID. By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. */
 export const getTokenExchangeProfile: API.OperationMethod<
   GetTokenExchangeProfileRequest,
   GetTokenExchangeProfileResponseContent,
@@ -47338,7 +47338,7 @@ export const getTokenExchangeProfile: API.OperationMethod<
 }));
 
 export type GetTokenExchangeProfilesError = BadRequest | Forbidden | Auth0OpError;
-/** Get token exchange profiles Retrieve a list of all Token Exchange Profiles available in your tenant. By using this feature, you agree to the applicable Free Trial terms in [Okta’s Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user’s subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. This endpoint supports Checkpoint pagination. To search by checkpoint, use the following parameters: - `from`: Optional id from which to start selection. - `take`: The total amount of entries to retrieve when using the from parameter. Defaults to 50. **Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining. */
+/** Get token exchange profiles Retrieve a list of all Token Exchange Profiles available in your tenant. By using this feature, you agree to the applicable Free Trial terms in [Okta's Master Subscription Agreement](https://www.okta.com/legal/). It is your responsibility to securely validate the user's subject_token. See [User Guide](https://auth0.com/docs/authenticate/custom-token-exchange) for more details. This endpoint supports Checkpoint pagination. To search by checkpoint, use the following parameters: - `from`: Optional id from which to start selection. - `take`: The total amount of entries to retrieve when using the from parameter. Defaults to 50. **Note**: The first time you call this endpoint using checkpoint pagination, omit the `from` parameter. If there are more results, a `next` value is included in the response. You can use this for subsequent API calls. When `next` is no longer included in the response, no pages are remaining. */
 export const getTokenExchangeProfiles: API.OperationMethod<
   GetTokenExchangeProfilesRequest,
   ListTokenExchangeProfileResponseContent,
@@ -48415,7 +48415,7 @@ export const postMembers: API.OperationMethod<
 }));
 
 export type PostPasswordChangeError = BadRequest | Forbidden | NotFound | Auth0OpError;
-/** Create a password change ticket Create a password change ticket for a given user. A password change ticket is a generated URL that the user can consume to start a reset password flow. Note: This endpoint does not verify the given user’s identity. If you call this endpoint within your application, you must design your application to verify the user’s identity. */
+/** Create a password change ticket Create a password change ticket for a given user. A password change ticket is a generated URL that the user can consume to start a reset password flow. Note: This endpoint does not verify the given user's identity. If you call this endpoint within your application, you must design your application to verify the user's identity. */
 export const postPasswordChange: API.OperationMethod<
   PostPasswordChangeRequest,
   ChangePasswordTicketResponseContent,
@@ -49563,7 +49563,7 @@ export type UpdateExperimentStatusError =
   | Conflict
   | UnprocessableEntity
   | Auth0OpError;
-/** Transition an experiment to a new status. Transitions an experiment through its lifecycle: draft → active, active → paused, paused → active, active/paused → completed. Activation runs full readiness validation. */
+/** Transition an experiment to a new status. Transitions an experiment through its lifecycle: draft -> active, active -> paused, paused -> active, active/paused -> completed. Activation runs full readiness validation. */
 export const updateExperimentStatus: API.OperationMethod<
   UpdateExperimentStatusRequest,
   UpdateExperimentStatusResponseContent,
@@ -49593,7 +49593,7 @@ export const updateFeatureFlag: API.OperationMethod<
 }));
 
 export type UpdateFeatureFlagStatusError = BadRequest | Forbidden | NotFound | Auth0OpError;
-/** Transition a feature flag to a new status. Transitions a feature flag through its lifecycle states: draft → active, draft → archived, active → archived. */
+/** Transition a feature flag to a new status. Transitions a feature flag through its lifecycle states: draft -> active, draft -> archived, active -> archived. */
 export const updateFeatureFlagStatus: API.OperationMethod<
   UpdateFeatureFlagStatusRequest,
   UpdateFeatureFlagStatusResponseContent,

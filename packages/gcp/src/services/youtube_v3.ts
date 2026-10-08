@@ -4718,7 +4718,7 @@ export interface ContentRating {
   bmukkRating?: ContentRatingBmukkRatingEnum | (string & {});
   /** The video's rating from Malta's Film Age-Classification Board. */
   mccaaRating?: ContentRatingMccaaRatingEnum | (string & {});
-  /** The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South Korea. */
+  /** The video's Korea Media Rating Board (U+C601U+C0C1U+BB3CU+B4F1U+AE09U+C704U+C6D0U+D68C) rating. The KMRB rates videos in South Korea. */
   kmrbRating?: ContentRatingKmrbRatingEnum | (string & {});
   /** The video's Motion Picture Association of America (MPAA) rating. */
   mpaaRating?: ContentRatingMpaaRatingEnum | (string & {});
@@ -4738,7 +4738,7 @@ export interface ContentRating {
   mocRating?: ContentRatingMocRatingEnum | (string & {});
   /** Reasons that explain why the video received its DJCQT (Brazil) rating. */
   djctqRatingReasons?: ContentRatingDjctqRatingReasonsItemEnumList;
-  /** The video's rating from Taiwan's Ministry of Culture (文化部). */
+  /** The video's rating from Taiwan's Ministry of Culture (U+6587U+5316U+90E8). */
   moctwRating?: ContentRatingMoctwRatingEnum | (string & {});
   /** The video's Canadian Home Video Rating System (CHVRS) rating. */
   chvrsRating?: ContentRatingChvrsRatingEnum | (string & {});
@@ -4762,7 +4762,7 @@ export interface ContentRating {
   icaaRating?: ContentRatingIcaaRatingEnum | (string & {});
   /** The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html. */
   mpaatRating?: ContentRatingMpaatRatingEnum | (string & {});
-  /** The video's Eirin (映倫) rating. Eirin is the Japanese rating system. */
+  /** The video's Eirin (U+6620U+502B) rating. Eirin is the Japanese rating system. */
   eirinRating?: ContentRatingEirinRatingEnum | (string & {});
   /** The video's rating in Peru. */
   pefilmRating?: ContentRatingPefilmRatingEnum | (string & {});
@@ -4832,7 +4832,7 @@ export interface ContentRating {
   cccRating?: ContentRatingCccRatingEnum | (string & {});
   /** The video's rating in Poland. */
   nbcplRating?: ContentRatingNbcplRatingEnum | (string & {});
-  /** The video's rating from France's Conseil supérieur de l’audiovisuel, which rates broadcast content. */
+  /** The video's rating from France's Conseil supérieur de l'audiovisuel, which rates broadcast content. */
   csaRating?: ContentRatingCsaRatingEnum | (string & {});
   /** The video's National Film Registry of the Russian Federation (MKRF - Russia) rating. */
   russiaRating?: ContentRatingRussiaRatingEnum | (string & {});

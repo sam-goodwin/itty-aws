@@ -1903,14 +1903,14 @@ export type CreateReplicationConfigurationError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a replication conﬁguration to either a new or existing EFS file system.
+ * Creates a replication conU+FB01guration to either a new or existing EFS file system.
  * For more information, see Amazon EFS replication in the Amazon EFS User
  * Guide. The replication configuration specifies the following:
  *
- * - **Source file system** – The EFS file
+ * - **Source file system** - The EFS file
  * system that you want to replicate.
  *
- * - **Destination file system** – The destination file
+ * - **Destination file system** - The destination file
  * system to which the source file system is replicated. There can only be one destination
  * file system in a replication configuration.
  *
@@ -2710,13 +2710,13 @@ export type PutLifecycleConfigurationError =
  *
  * -
  * `TransitionToIA`
- * –
+ * -
  * When to move files in the file system from primary storage (Standard storage class) into the Infrequent Access
  * (IA) storage.
  *
  * -
  * `TransitionToArchive`
- * –
+ * -
  * When to move files in the file system from their current storage class (either IA or Standard storage) into the
  * Archive storage.
  *
@@ -2728,7 +2728,7 @@ export type PutLifecycleConfigurationError =
  *
  * -
  * `TransitionToPrimaryStorageClass`
- * –
+ * -
  * Whether to move files in the file system back to primary storage (Standard storage class) after they are accessed in IA
  * or Archive storage.
  *

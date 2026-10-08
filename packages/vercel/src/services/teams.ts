@@ -619,7 +619,7 @@ export const TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsList = /*@__PU
   TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem,
 ) as any as S.Schema<TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsList>;
 
-/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
+/** Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` -- git provider webhook. - `'cli'` -- Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` -- direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` -- project deploy-hook URL. The URL is the credential. - `'integration'` -- third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` -- the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` -- see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable. */
 export type TeamDeploymentPolicyDeploymentSourcesItemSourcesItem =
   | "cli"
   | "deploy-hook"
@@ -1385,7 +1385,7 @@ export interface Team {
   name: string | null;
   /** NSNB configuration for the team. */
   nsnbConfig?: TeamNsnbConfig;
-  /** Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams. */
+  /** Best-effort ID of the organization's root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams. */
   orgRootTeamId?: string;
   /** The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams). */
   parentId?: string;
@@ -2254,7 +2254,7 @@ export interface TeamLimited {
   membership?: TeamLimitedMembership;
   /** Name associated with the Team account, or `null` if none has been provided. */
   name: string | null;
-  /** Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams. */
+  /** Best-effort ID of the organization's root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams. */
   orgRootTeamId?: string;
   /** The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams). */
   parentId?: string;

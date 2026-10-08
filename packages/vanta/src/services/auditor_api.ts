@@ -42,7 +42,7 @@ export const InformationRequestLinkedControlIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InformationRequestLinkedControlIdsList>;
 
-/** Current approval status of the information request, tracking its lifecycle through the audit process. The status progresses through the workflow: initial state → awaiting review → approved or flagged. Status can move between awaiting review and flagged states as evidence is reviewed and resubmitted. */
+/** Current approval status of the information request, tracking its lifecycle through the audit process. The status progresses through the workflow: initial state -> awaiting review -> approved or flagged. Status can move between awaiting review and flagged states as evidence is reviewed and resubmitted. */
 export type InformationRequestApprovalStatus =
   | "NEEDS_EVIDENCE"
   | "READY_FOR_AUDIT"
@@ -60,7 +60,7 @@ export const InformationRequestFrameworkCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InformationRequestFrameworkCodesList>;
 
-/** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope — stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
+/** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope -- stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
 export type InformationRequestSegmentIdsList = Array<string>;
 export const InformationRequestSegmentIdsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -122,7 +122,7 @@ export interface InformationRequest {
   cadence: InformationRequestCadence | null;
   /** Always empty on read. Use `linkedControlIds` for control linkage and `segmentIds` for request assignment. */
   frameworkCodes: InformationRequestFrameworkCodesList;
-  /** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope — stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
+  /** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope -- stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
   segmentIds: InformationRequestSegmentIdsList;
   /** Detailed description explaining what evidence is needed and why. Should provide clear instructions to help the customer understand what to submit. */
   description: string | null;
@@ -288,7 +288,7 @@ export const CreateCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCommentForControlRequest",
 }) as any as S.Schema<CreateCommentForControlRequest>;
 
-/** A comment on a control within an audit. These threaded discussions let auditors and customers collaborate on a specific control — asking questions, documenting reasoning, or recording follow-ups — directly against the control being assessed. Audit control comments are scoped to a single audit engagement and are distinct from any organization-internal control comments. */
+/** A comment on a control within an audit. These threaded discussions let auditors and customers collaborate on a specific control -- asking questions, documenting reasoning, or recording follow-ups -- directly against the control being assessed. Audit control comments are scoped to a single audit engagement and are distinct from any organization-internal control comments. */
 export interface AuditControlComment {
   /** The unique identifier for the comment within Vanta's system. Format: ObjectId as a string (e.g., "6890e473dce1da5d8406f5e7"). */
   id: string;
@@ -934,7 +934,7 @@ export const AuditSoc2Deliverable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditSoc2Deliverable" }) as any as S.Schema<AuditSoc2Deliverable>;
 
-/** One segment of an audit's scope. A live audit returns every in-scope program and system segment; more than one segment does not by itself imply more than one framework. Soft-deleted audits return an empty list. `displayName` is the segment label owned by audit scope (for example "{Framework}" or "{Framework} — {Business Unit}"). `soc2Deliverable` is the per-segment SOC 2 config, or null. `businessUnit` is set for program segments that are BU-scoped and null otherwise. `system` is set for system segments and null otherwise. */
+/** One segment of an audit's scope. A live audit returns every in-scope program and system segment; more than one segment does not by itself imply more than one framework. Soft-deleted audits return an empty list. `displayName` is the segment label owned by audit scope (for example "{Framework}" or "{Framework} -- {Business Unit}"). `soc2Deliverable` is the per-segment SOC 2 config, or null. `businessUnit` is set for program segments that are BU-scoped and null otherwise. `system` is set for system segments and null otherwise. */
 export interface AuditSegment {
   /** The unique identifier for the segment. */
   id: string;
@@ -984,7 +984,7 @@ export interface Audit {
   auditEndDate: string;
   /** Timestamp at which auditors gain access to the audit. Occurs before the audit window begins */
   earlyAccessStartsAt: string | null;
-  /** Legacy singular framework display name from the audit type. Incomplete for a multi-framework audit — use `segments` instead. */
+  /** Legacy singular framework display name from the audit type. Incomplete for a multi-framework audit -- use `segments` instead. */
   framework: string;
   /** The display name for the audit. Returns the custom audit name if set, otherwise returns the framework name. */
   displayName: string;
@@ -1986,14 +1986,14 @@ export const AuditOrganizationNotificationSubscription = /*@__PURE__*/ S.suspend
   identifier: "AuditOrganizationNotificationSubscription",
 }) as any as S.Schema<AuditOrganizationNotificationSubscription>;
 
-/** External notification subscriptions — one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
+/** External notification subscriptions -- one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
 export type AuditOrganizationNotificationsExternalNotificationsList =
   Array<AuditOrganizationNotificationSubscription>;
 export const AuditOrganizationNotificationsExternalNotificationsList = /*@__PURE__*/ S.Array(
   AuditOrganizationNotificationSubscription,
 ) as any as S.Schema<AuditOrganizationNotificationsExternalNotificationsList>;
 
-/** Organization notifications record returned by the auditor API. Ad-hoc single-row payload per domain mirroring the shape of the Organization → Notifications page. Only `id` is guaranteed; every other field is optional because controlled audit views can strip any column from the response. */
+/** Organization notifications record returned by the auditor API. Ad-hoc single-row payload per domain mirroring the shape of the Organization -> Notifications page. Only `id` is guaranteed; every other field is optional because controlled audit views can strip any column from the response. */
 export interface AuditOrganizationNotifications {
   /** Domain identifier of the audited organization. */
   id: string;
@@ -2003,7 +2003,7 @@ export interface AuditOrganizationNotifications {
   employeeDigestFrequency?: string | null;
   /** Channels on which the personnel reminder digest is delivered (e.g. `["EMAIL"]` or `["EMAIL", "SLACK"]`). */
   subscribedChannelTypes?: AuditOrganizationNotificationsSubscribedChannelTypesList;
-  /** External notification subscriptions — one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
+  /** External notification subscriptions -- one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
   externalNotifications?: AuditOrganizationNotificationsExternalNotificationsList;
 }
 export const AuditOrganizationNotifications = /*@__PURE__*/ S.suspend(() =>
@@ -2230,7 +2230,7 @@ export const AuditorControlInScopeSegmentIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AuditorControlInScopeSegmentIdsList>;
 
-/** An auditor's assessment of a control within an audit. This is the full flat union of every framework's assessment states (the superset); the selected segment's framework determines which subset applies. `NOT_ASSESSED` is shared by all frameworks and is the default for a control that has not yet been assessed. Which states apply to which framework: - Most frameworks (e.g. SOC 2): `IN_PLACE`, `NOT_IN_PLACE`, `PARTIAL`, `NOT_ASSESSED` - ISO 27001: `CONFORMING`, `MINOR_NON_CONFORMITY`, `MAJOR_NON_CONFORMITY`, `NOT_ASSESSED` - FedRAMP: `SATISFIED`, `NOT_SATISFIED`, `OTHER_THAN_SATISFIED`, `NOT_ASSESSED` - FedRAMP Key Security Indicators (KSI): `TRUE`, `FALSE`, `PARTIAL`, `NOT_ASSESSED` Distinct from `ControlStatus`, which is the computed tests/documents-passing status — a different concept. */
+/** An auditor's assessment of a control within an audit. This is the full flat union of every framework's assessment states (the superset); the selected segment's framework determines which subset applies. `NOT_ASSESSED` is shared by all frameworks and is the default for a control that has not yet been assessed. Which states apply to which framework: - Most frameworks (e.g. SOC 2): `IN_PLACE`, `NOT_IN_PLACE`, `PARTIAL`, `NOT_ASSESSED` - ISO 27001: `CONFORMING`, `MINOR_NON_CONFORMITY`, `MAJOR_NON_CONFORMITY`, `NOT_ASSESSED` - FedRAMP: `SATISFIED`, `NOT_SATISFIED`, `OTHER_THAN_SATISFIED`, `NOT_ASSESSED` - FedRAMP Key Security Indicators (KSI): `TRUE`, `FALSE`, `PARTIAL`, `NOT_ASSESSED` Distinct from `ControlStatus`, which is the computed tests/documents-passing status -- a different concept. */
 export type AuditControlAssessmentState =
   | "IN_PLACE"
   | "NOT_IN_PLACE"
@@ -3176,7 +3176,7 @@ export const EvidenceFillOutcome = S.String;
 export interface InformationRequestActivityLog {
   /** The unique identifier for the activity log entry within Vanta's system. Format: ObjectId as a string (e.g., "6890e473dce1da5d8406f5e7"). */
   id: string;
-  /** Type of activity that occurred on the information request. Determines which additional fields are populated. `AUDIT_INFORMATION_REQUEST_EVIDENCE_FILL` is never returned — automated evidence fill activity is withheld — so no entry carries that value even though the enum still lists it. Do not write a case for it. */
+  /** Type of activity that occurred on the information request. Determines which additional fields are populated. `AUDIT_INFORMATION_REQUEST_EVIDENCE_FILL` is never returned -- automated evidence fill activity is withheld -- so no entry carries that value even though the enum still lists it. Do not write a case for it. */
   activityType: InformationRequestActivityType;
   /** Timestamp when the activity occurred. Format: ISO 8601 UTC timestamp. */
   timestamp: string;
@@ -4303,7 +4303,7 @@ export const UpdateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend
   identifier: "UpdateCommentForInformationRequestRequest",
 }) as any as S.Schema<UpdateCommentForInformationRequestRequest>;
 
-/** Framework codes are assigned only at creation; on update this field is a silent no-op — a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
+/** Framework codes are assigned only at creation; on update this field is a silent no-op -- a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
 export type UpdateInformationRequestRequestFrameworkCodesList = Array<string>;
 export const UpdateInformationRequestRequestFrameworkCodesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -4324,7 +4324,7 @@ export const UpdateInformationRequestRequestLinkedControlIdsList = /*@__PURE__*/
 export interface UpdateInformationRequestRequest {
   auditId: string;
   requestId: string;
-  /** Framework codes are assigned only at creation; on update this field is a silent no-op — a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
+  /** Framework codes are assigned only at creation; on update this field is a silent no-op -- a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
   frameworkCodes?: UpdateInformationRequestRequestFrameworkCodesList;
   /** Detailed description of what evidence is needed. */
   description?: string | null;
@@ -4520,7 +4520,7 @@ export const createCustomEvidenceRequest: API.OperationMethod<
 }));
 
 export type CreateInformationRequestError = VantaOpError;
-/** Create a new information request Creates a new information request for an audit during audit setup or as requirements evolve. After creating all information requests, use POST /audits/{auditId}/share-information-request-list to make them visible to the customer organization. Until shared, requests remain in draft state visible only to auditors. New requests are created in an initial state indicating evidence is needed. The status progresses through the workflow: initial state → awaiting review → approved or flagged. Rate limit: 600 requests / minute. */
+/** Create a new information request Creates a new information request for an audit during audit setup or as requirements evolve. After creating all information requests, use POST /audits/{auditId}/share-information-request-list to make them visible to the customer organization. Until shared, requests remain in draft state visible only to auditors. New requests are created in an initial state indicating evidence is needed. The status progresses through the workflow: initial state -> awaiting review -> approved or flagged. Rate limit: 600 requests / minute. */
 export const createInformationRequest: API.OperationMethod<
   CreateInformationRequestRequest,
   InformationRequest,
@@ -4580,7 +4580,7 @@ export const deleteInformationRequest: API.OperationMethod<
 }));
 
 export type DuplicateError = VantaOpError;
-/** Duplicate an IRL audit Duplicates an existing IRL audit into a new audit engagement with the supplied displayName, audit dates, early access date, and auditor roster. Company, audit type, and framework are copied from the source audit and cannot be changed. Each email in `allowAuditorEmails` must match an active user in the authenticated audit firm's domain. Provision auditors via `POST /auditors` before referencing them here, or copy emails from `GET /audits/{sourceAuditId}` → `allowAuditorEmails` when duplicating with the same roster. Information requests are copied from the source audit. After duplication: - Requests with Vanta evidence will be pre-filled and marked as internal review. Review them before sharing with your customer. - Requests where evidence was not available or was uploaded externally will need evidence added manually. - Evidence capture dates and due dates can be modified after duplication. Audits with generated information requests can be duplicated only after their information requests have been created successfully. Rate limit: 10 requests / minute. */
+/** Duplicate an IRL audit Duplicates an existing IRL audit into a new audit engagement with the supplied displayName, audit dates, early access date, and auditor roster. Company, audit type, and framework are copied from the source audit and cannot be changed. Each email in `allowAuditorEmails` must match an active user in the authenticated audit firm's domain. Provision auditors via `POST /auditors` before referencing them here, or copy emails from `GET /audits/{sourceAuditId}` -> `allowAuditorEmails` when duplicating with the same roster. Information requests are copied from the source audit. After duplication: - Requests with Vanta evidence will be pre-filled and marked as internal review. Review them before sharing with your customer. - Requests where evidence was not available or was uploaded externally will need evidence added manually. - Evidence capture dates and due dates can be modified after duplication. Audits with generated information requests can be duplicated only after their information requests have been created successfully. Rate limit: 10 requests / minute. */
 export const duplicate: API.OperationMethod<
   DuplicateRequest,
   Audit,
@@ -4741,7 +4741,7 @@ export const getOrganizationInformation: API.OperationMethod<
 }));
 
 export type GetOrganizationNotificationsError = VantaOpError;
-/** Get organization notification settings for an audit Retrieves organization notification settings for an audit. This endpoint returns a single record containing the auditee organization's notification configuration — schedule, personnel reminder settings, and external notification subscriptions (Compliance, Vendors, Access Reviews, Trust Center). The response is a single aggregate object per domain. Sorting and pagination are not applicable. Under a controlled audit view (TRIMMED_DOWN), only CAV-approved fields are included. Rate limit: 10 requests / minute. */
+/** Get organization notification settings for an audit Retrieves organization notification settings for an audit. This endpoint returns a single record containing the auditee organization's notification configuration -- schedule, personnel reminder settings, and external notification subscriptions (Compliance, Vendors, Access Reviews, Trust Center). The response is a single aggregate object per domain. Sorting and pagination are not applicable. Under a controlled audit view (TRIMMED_DOWN), only CAV-approved fields are included. Rate limit: 10 requests / minute. */
 export const getOrganizationNotifications: API.OperationMethod<
   GetOrganizationNotificationsRequest,
   AuditOrganizationNotifications,
@@ -4936,7 +4936,7 @@ export const listCommentsForInformationRequest: API.OperationMethod<
 }));
 
 export type ListInformationRequestActivityError = VantaOpError;
-/** List information request activity Retrieves a paginated list of activity logs for an information request, providing an audit trail of the changes and actions taken on it. Activity recording Vanta's automated preparation of a request is never returned by this endpoint, so `fillOutcome` is always null here. Some internal status transitions are also withheld, and those are removed after a page is selected, so a page can contain fewer entries than `pageSize` — or none at all — while more pages remain. Follow `results.pageInfo.hasNextPage` rather than treating a short or empty page as the end of the list. If the information request has been deleted, this endpoint returns a 4xx HTTP error instead of its activity. This endpoint supports delta synchronization via the `changedSinceDate` parameter, allowing efficient polling for changes without retrieving the entire dataset. Pagination usage: 1. Make initial request with desired `pageSize` 2. Check `results.pageInfo.hasNextPage` to see if more data exists 3. If true, use `results.pageInfo.endCursor` as `pageCursor` in next request 4. Repeat until `hasNextPage` is false Delta sync usage: 1. Store the timestamp of your last sync 2. Pass that timestamp as `changedSinceDate` 3. Only activity created since that timestamp is returned 4. Process updates to track all changes to the information request 5. Update your last sync timestamp to the current time Rate limit: 50 requests / minute. */
+/** List information request activity Retrieves a paginated list of activity logs for an information request, providing an audit trail of the changes and actions taken on it. Activity recording Vanta's automated preparation of a request is never returned by this endpoint, so `fillOutcome` is always null here. Some internal status transitions are also withheld, and those are removed after a page is selected, so a page can contain fewer entries than `pageSize` -- or none at all -- while more pages remain. Follow `results.pageInfo.hasNextPage` rather than treating a short or empty page as the end of the list. If the information request has been deleted, this endpoint returns a 4xx HTTP error instead of its activity. This endpoint supports delta synchronization via the `changedSinceDate` parameter, allowing efficient polling for changes without retrieving the entire dataset. Pagination usage: 1. Make initial request with desired `pageSize` 2. Check `results.pageInfo.hasNextPage` to see if more data exists 3. If true, use `results.pageInfo.endCursor` as `pageCursor` in next request 4. Repeat until `hasNextPage` is false Delta sync usage: 1. Store the timestamp of your last sync 2. Pass that timestamp as `changedSinceDate` 3. Only activity created since that timestamp is returned 4. Process updates to track all changes to the information request 5. Update your last sync timestamp to the current time Rate limit: 50 requests / minute. */
 export const listInformationRequestActivity: API.OperationMethod<
   ListInformationRequestActivityRequest,
   PaginatedResponseInformationRequestActivityLog,
@@ -5161,7 +5161,7 @@ export const updateInformationRequest: API.OperationMethod<
 }));
 
 export type UpsertAssessmentForControlError = VantaOpError;
-/** Upsert a control's assessment within an audit Records (upserts) an auditor's assessment state and justification for a control within an IRL audit — the API equivalent of assessing a control in the web app. Overwrites the assessment for this control in the chosen audit segment. `segmentId` may be any segment on the audit, `PROGRAM` or `SYSTEM` (see `segments` on the audit). It may be omitted only when the audit has exactly one segment. The `assessmentState` must be valid for that segment's framework (the request is rejected otherwise). The acting auditor is identified by `auditorEmail`, which must belong to the audit firm making the request. Returns 404 when the control is not part of the audit or the auditor email does not resolve to a firm user. Returns 422 when `segmentId` is omitted on an audit with more than one segment, when `segmentId` is not a segment on this audit, or when the control is not assigned to that segment for this audit. Applies to both Full and Controlled Audit View audits. Rate limit: 10 requests / minute. */
+/** Upsert a control's assessment within an audit Records (upserts) an auditor's assessment state and justification for a control within an IRL audit -- the API equivalent of assessing a control in the web app. Overwrites the assessment for this control in the chosen audit segment. `segmentId` may be any segment on the audit, `PROGRAM` or `SYSTEM` (see `segments` on the audit). It may be omitted only when the audit has exactly one segment. The `assessmentState` must be valid for that segment's framework (the request is rejected otherwise). The acting auditor is identified by `auditorEmail`, which must belong to the audit firm making the request. Returns 404 when the control is not part of the audit or the auditor email does not resolve to a firm user. Returns 422 when `segmentId` is omitted on an audit with more than one segment, when `segmentId` is not a segment on this audit, or when the control is not assigned to that segment for this audit. Applies to both Full and Controlled Audit View audits. Rate limit: 10 requests / minute. */
 export const upsertAssessmentForControl: API.OperationMethod<
   UpsertAssessmentForControlRequest,
   AuditorControlAssessment,

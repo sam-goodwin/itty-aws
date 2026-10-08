@@ -328,7 +328,7 @@ export interface CreateAzureIntegrationRequest {
   client_secret?: string | Redacted.Redacted<string>;
   /** Limit the Azure container apps that are pulled into Datadog using tags. Only container apps that match one of the defined tags are imported into Datadog. */
   container_app_filters?: string;
-  /** When enabled, Datadog’s Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
+  /** When enabled, Datadog's Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
   cspm_enabled?: boolean;
   /** Enable custom metrics for your organization. */
   custom_metrics_enabled?: boolean;
@@ -3326,7 +3326,7 @@ export const DistributionWidgetYAxis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DistributionWidgetYAxis" }) as any as S.Schema<DistributionWidgetYAxis>;
 
-/** The Distribution visualization is another way of showing metrics aggregated across one or several tags, such as hosts. Unlike the heat map, a distribution graph’s x-axis is quantity rather than time. */
+/** The Distribution visualization is another way of showing metrics aggregated across one or several tags, such as hosts. Unlike the heat map, a distribution graph's x-axis is quantity rather than time. */
 export interface DistributionWidgetDefinition {
   /** A list of custom links. */
   custom_links?: DistributionWidgetDefinitionCustomLinksList;
@@ -4931,7 +4931,7 @@ export const HostMapWidgetDefinitionRequestType = S.String;
 
 /** Query definition for the host map widget. Supports three mutually exclusive formats distinguished by `request_type`: the deprecated legacy metric-based format (`fill`/`size`, no `request_type`), the infrastructure-backed format (`request_type: infrastructure_hostmap`), and the DDSQL published-dataset format (`request_type: data_projection`). */
 export interface HostMapWidgetDefinitionRequests {
-  /** Optional child entities for hierarchical visualization (for example, host → container). Only used by the infrastructure-backed format. */
+  /** Optional child entities for hierarchical visualization (for example, host -> container). Only used by the infrastructure-backed format. */
   child?: HostMapWidgetInfrastructureRequest;
   /** List of conditional formatting rules applied to fill values. */
   conditional_formats?: HostMapWidgetDefinitionRequestsConditionalFormatsList;
@@ -8013,7 +8013,7 @@ export const DashboardWidgetsList = /*@__PURE__*/ S.Array(
   Widget,
 ) as any as S.Schema<DashboardWidgetsList>;
 
-/** A dashboard is Datadog’s tool for visually tracking, analyzing, and displaying key performance metrics, which enable you to monitor the health of your infrastructure. */
+/** A dashboard is Datadog's tool for visually tracking, analyzing, and displaying key performance metrics, which enable you to monitor the health of your infrastructure. */
 export interface Dashboard {
   /** Identifier of the dashboard author. */
   author_handle?: string;
@@ -8644,7 +8644,7 @@ export const LogsDateRemapperSourcesList = /*@__PURE__*/ S.Array(
 export type LogsDateRemapperType = "date-remapper";
 export const LogsDateRemapperType = S.String;
 
-/** As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes. - `timestamp` - `date` - `_timestamp` - `Timestamp` - `eventTime` - `published_date` If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164. **Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them. If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account. */
+/** As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes. - `timestamp` - `date` - `_timestamp` - `Timestamp` - `eventTime` - `published_date` If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164. **Note:** If your logs don't contain any of the default attributes and you haven't defined your own date attribute, Datadog timestamps the logs with the date it received them. If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account. */
 export interface LogsDateRemapper {
   /** Whether or not the processor is enabled. */
   is_enabled?: boolean;
@@ -8921,7 +8921,7 @@ export const LogsCategoryProcessor = /*@__PURE__*/ S.suspend(() =>
 export type LogsArithmeticProcessorType = "arithmetic-processor";
 export const LogsArithmeticProcessorType = S.String;
 
-/** Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log. The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`. By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number. *Notes*: - The operator `-` needs to be space split in the formula as it can also be contained in attribute names. - If the target attribute already exists, it is overwritten by the result of the formula. - Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`. - If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter). */
+/** Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log. The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`. By default, the calculation is skipped if an attribute is missing. Select "Replace missing attribute by 0" to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number. *Notes*: - The operator `-` needs to be space split in the formula as it can also be contained in attribute names. - If the target attribute already exists, it is overwritten by the result of the formula. - Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`. - If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter). */
 export interface LogsArithmeticProcessor {
   /** Arithmetic operation between one or more log attributes. */
   expression: string;
@@ -10765,13 +10765,13 @@ export interface MonitorOptionsInput {
   /** A Boolean indicating whether this monitor notifies when data stops reporting. Defaults to `false`. */
   notify_no_data?: boolean;
   on_missing_data?: OnMissingDataOption | (string & {});
-  /** The number of minutes after the last notification before a monitor re-notifies on the current status. It only re-notifies if it’s not resolved. */
+  /** The number of minutes after the last notification before a monitor re-notifies on the current status. It only re-notifies if it's not resolved. */
   renotify_interval?: number | null;
   /** The number of times re-notification messages should be sent on the current status at the provided re-notification interval. */
   renotify_occurrences?: number | null;
   /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
   renotify_statuses?: MonitorOptionsInputRenotifyStatusesList | null;
-  /** A Boolean indicating whether this monitor needs a full window of data before it’s evaluated. We highly recommend you set this to `false` for sparse metrics, otherwise some evaluations are skipped. Default is false. This setting only applies to metric monitors. */
+  /** A Boolean indicating whether this monitor needs a full window of data before it's evaluated. We highly recommend you set this to `false` for sparse metrics, otherwise some evaluations are skipped. Default is false. This setting only applies to metric monitors. */
   require_full_window?: boolean;
   scheduling_options?: MonitorOptionsSchedulingOptions;
   /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
@@ -11035,13 +11035,13 @@ export interface MonitorOptions {
   /** A Boolean indicating whether this monitor notifies when data stops reporting. Defaults to `false`. */
   notify_no_data?: boolean;
   on_missing_data?: OnMissingDataOption;
-  /** The number of minutes after the last notification before a monitor re-notifies on the current status. It only re-notifies if it’s not resolved. */
+  /** The number of minutes after the last notification before a monitor re-notifies on the current status. It only re-notifies if it's not resolved. */
   renotify_interval?: number | null;
   /** The number of times re-notification messages should be sent on the current status at the provided re-notification interval. */
   renotify_occurrences?: number | null;
   /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
   renotify_statuses?: MonitorOptionsRenotifyStatusesList | null;
-  /** A Boolean indicating whether this monitor needs a full window of data before it’s evaluated. We highly recommend you set this to `false` for sparse metrics, otherwise some evaluations are skipped. Default is false. This setting only applies to metric monitors. */
+  /** A Boolean indicating whether this monitor needs a full window of data before it's evaluated. We highly recommend you set this to `false` for sparse metrics, otherwise some evaluations are skipped. Default is false. This setting only applies to metric monitors. */
   require_full_window?: boolean;
   scheduling_options?: MonitorOptionsSchedulingOptions;
   /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
@@ -15309,7 +15309,7 @@ export interface DeleteAzureIntegrationRequest {
   client_secret?: string | Redacted.Redacted<string>;
   /** Limit the Azure container apps that are pulled into Datadog using tags. Only container apps that match one of the defined tags are imported into Datadog. */
   container_app_filters?: string;
-  /** When enabled, Datadog’s Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
+  /** When enabled, Datadog's Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
   cspm_enabled?: boolean;
   /** Enable custom metrics for your organization. */
   custom_metrics_enabled?: boolean;
@@ -19394,7 +19394,7 @@ export interface AzureAccount {
   client_secret?: string | Redacted.Redacted<string>;
   /** Limit the Azure container apps that are pulled into Datadog using tags. Only container apps that match one of the defined tags are imported into Datadog. */
   container_app_filters?: string;
-  /** When enabled, Datadog’s Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
+  /** When enabled, Datadog's Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
   cspm_enabled?: boolean;
   /** Enable custom metrics for your organization. */
   custom_metrics_enabled?: boolean;
@@ -21985,7 +21985,7 @@ export interface UpdateAzureHostFiltersRequest {
   client_secret?: string | Redacted.Redacted<string>;
   /** Limit the Azure container apps that are pulled into Datadog using tags. Only container apps that match one of the defined tags are imported into Datadog. */
   container_app_filters?: string;
-  /** When enabled, Datadog’s Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
+  /** When enabled, Datadog's Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
   cspm_enabled?: boolean;
   /** Enable custom metrics for your organization. */
   custom_metrics_enabled?: boolean;
@@ -22068,7 +22068,7 @@ export interface UpdateAzureIntegrationRequest {
   client_secret?: string | Redacted.Redacted<string>;
   /** Limit the Azure container apps that are pulled into Datadog using tags. Only container apps that match one of the defined tags are imported into Datadog. */
   container_app_filters?: string;
-  /** When enabled, Datadog’s Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
+  /** When enabled, Datadog's Cloud Security Management product scans resource configurations monitored by this app registration. Note: This requires resource_collection_enabled to be set to true. */
   cspm_enabled?: boolean;
   /** Enable custom metrics for your organization. */
   custom_metrics_enabled?: boolean;
@@ -24240,7 +24240,7 @@ export const getDashboardList: API.OperationMethod<
 }));
 
 export type GetEventError = Forbidden | NotFound | DatadogOpError;
-/** Get an event This endpoint allows you to query for event details. **Note**: If the event you’re querying contains markdown formatting of any kind, you may see characters such as `%`,`\`,`n` in your output. */
+/** Get an event This endpoint allows you to query for event details. **Note**: If the event you're querying contains markdown formatting of any kind, you may see characters such as `%`,`\`,`n` in your output. */
 export const getEvent: API.OperationMethod<
   GetEventRequest,
   EventResponse,
@@ -24630,7 +24630,7 @@ export const getSLOCorrections: API.OperationMethod<
 }));
 
 export type GetSLOHistoryError = BadRequest | Forbidden | NotFound | DatadogOpError;
-/** Get an SLO's history Get a specific SLO’s history, regardless of its SLO type. The detailed history data is structured according to the source data type. For example, metric data is included for event SLOs that use the metric source, and monitor SLO types include the monitor transition history. **Note:** There are different response formats for event based and time based SLOs. Examples of both are shown. */
+/** Get an SLO's history Get a specific SLO's history, regardless of its SLO type. The detailed history data is structured according to the source data type. For example, metric data is included for event SLOs that use the metric source, and monitor SLO types include the monitor transition history. **Note:** There are different response formats for event based and time based SLOs. Examples of both are shown. */
 export const getSLOHistory: API.OperationMethod<
   GetSLOHistoryRequest,
   SLOHistoryResponse,
@@ -24889,7 +24889,7 @@ export const listDashboards: API.OperationMethod<
 }));
 
 export type ListEventsError = BadRequest | Forbidden | DatadogOpError;
-/** Get a list of events The event stream can be queried and filtered by time, priority, sources and tags. **Notes**: - If the event you’re querying contains markdown formatting of any kind, you may see characters such as `%`,`\`,`n` in your output. - This endpoint returns a maximum of `1000` most recent results. To return additional results, identify the last timestamp of the last result and set that as the `end` query time to paginate the results. You can also use the page parameter to specify which set of `1000` results to return. */
+/** Get a list of events The event stream can be queried and filtered by time, priority, sources and tags. **Notes**: - If the event you're querying contains markdown formatting of any kind, you may see characters such as `%`,`\`,`n` in your output. - This endpoint returns a maximum of `1000` most recent results. To return additional results, identify the last timestamp of the last result and set that as the `end` query time to paginate the results. You can also use the page parameter to specify which set of `1000` results to return. */
 export const listEvents: API.OperationMethod<
   ListEventsRequest,
   EventListResponse,
@@ -25264,7 +25264,7 @@ export const sendPublicDashboardInvitation: API.OperationMethod<
 }));
 
 export type SubmitDistributionPointsError = BadRequest | Forbidden | DatadogOpError;
-/** Submit distribution points The distribution points end-point allows you to post distribution data that can be graphed on Datadog’s dashboards. */
+/** Submit distribution points The distribution points end-point allows you to post distribution data that can be graphed on Datadog's dashboards. */
 export const submitDistributionPoints: API.OperationMethod<
   SubmitDistributionPointsRequest,
   SubmitDistributionPointsResponse,
@@ -25279,7 +25279,7 @@ export const submitDistributionPoints: API.OperationMethod<
 }));
 
 export type SubmitMetricsError = BadRequest | Forbidden | DatadogOpError;
-/** Submit metrics The metrics end-point allows you to post time-series data that can be graphed on Datadog’s dashboards. The maximum payload size is 3.2 megabytes (3200000 bytes). Compressed payloads must have a decompressed size of less than 62 megabytes (62914560 bytes). If you’re submitting metrics directly to the Datadog API without using DogStatsD, expect: - 64 bits for the timestamp - 64 bits for the value - 40 bytes for the metric names - 50 bytes for the timeseries - The full payload is approximately 100 bytes. However, with the DogStatsD API, compression is applied, which reduces the payload size. */
+/** Submit metrics The metrics end-point allows you to post time-series data that can be graphed on Datadog's dashboards. The maximum payload size is 3.2 megabytes (3200000 bytes). Compressed payloads must have a decompressed size of less than 62 megabytes (62914560 bytes). If you're submitting metrics directly to the Datadog API without using DogStatsD, expect: - 64 bits for the timestamp - 64 bits for the value - 40 bytes for the metric names - 50 bytes for the timeseries - The full payload is approximately 100 bytes. However, with the DogStatsD API, compression is applied, which reduces the payload size. */
 export const submitMetrics: API.OperationMethod<
   SubmitMetricsRequest,
   SubmitMetricsResponse,
@@ -25524,7 +25524,7 @@ export const updateLogsIndexOrder: API.OperationMethod<
 }));
 
 export type UpdateLogsPipelineError = BadRequest | Forbidden | DatadogOpError;
-/** Update a pipeline Update a given pipeline configuration to change it’s processors or their order. **Note**: Using this method updates your pipeline configuration by **replacing** your current configuration with the new one sent to your Datadog organization. */
+/** Update a pipeline Update a given pipeline configuration to change it's processors or their order. **Note**: Using this method updates your pipeline configuration by **replacing** your current configuration with the new one sent to your Datadog organization. */
 export const updateLogsPipeline: API.OperationMethod<
   UpdateLogsPipelineRequest,
   LogsPipeline,

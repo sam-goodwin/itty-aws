@@ -151,7 +151,7 @@ export interface ReviewerResponse {
   kind?: string;
   /** The user that's responsible for this response. */
   reviewer?: User;
-  /** A reviewer’s response for the approval. */
+  /** A reviewer's response for the approval. */
   response?: ReviewerResponseResponseEnum;
 }
 export const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>

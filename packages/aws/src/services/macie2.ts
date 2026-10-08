@@ -94,7 +94,7 @@ export class MacieNotEnabled
     { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
     /*@__PURE__*/ T.SyntheticError({
       from: "AccessDeniedException",
-      message: { matches: "Macie is(n[’']t| not) enabled" },
+      message: { matches: "Macie is(n[\u2019']t| not) enabled" },
     }),
   ).pipe(C.withRetryableError) {}
 export class ResourceNotFoundException

@@ -804,7 +804,7 @@ export type CreateCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create course lesson [Legacy API — https://docs.whop.com/api-reference] Create a new lesson within a course chapter. Lessons can contain video, text, or assessment content. Required permissions: - `courses:update` */
+/** Create course lesson [Legacy API -- https://docs.whop.com/api-reference] Create a new lesson within a course chapter. Lessons can contain video, text, or assessment content. Required permissions: - `courses:update` */
 export const createCourseLesson: API.OperationMethod<
   CreateCourseLessonRequest,
   CourseLesson,
@@ -824,7 +824,7 @@ export type DeleteCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete course lesson [Legacy API — https://docs.whop.com/api-reference] Permanently delete a lesson and remove it from its chapter. Required permissions: - `courses:update` */
+/** Delete course lesson [Legacy API -- https://docs.whop.com/api-reference] Permanently delete a lesson and remove it from its chapter. Required permissions: - `courses:update` */
 export const deleteCourseLesson: API.OperationMethod<
   DeleteCourseLessonRequest,
   DeleteCourseLessonResponse,
@@ -844,7 +844,7 @@ export type GetCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve course lesson [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing course lesson. Required permissions: - `courses:read` */
+/** Retrieve course lesson [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing course lesson. Required permissions: - `courses:read` */
 export const getCourseLesson: API.OperationMethod<
   GetCourseLessonRequest,
   CourseLesson,
@@ -864,7 +864,7 @@ export type ListCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List course lessons [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of lessons within a course or chapter, ordered by position. Required permissions: - `courses:read` */
+/** List course lessons [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of lessons within a course or chapter, ordered by position. Required permissions: - `courses:read` */
 export const listCourseLesson: API.PaginatedOperationMethod<
   ListCourseLessonRequest,
   ListCourseLessonResponse,
@@ -896,7 +896,7 @@ export type MarkAsCompletedCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Mark as completed course lesson [Legacy API — https://docs.whop.com/api-reference] Mark a lesson as completed for the current user after they finish the content. */
+/** Mark as completed course lesson [Legacy API -- https://docs.whop.com/api-reference] Mark a lesson as completed for the current user after they finish the content. */
 export const markAsCompletedCourseLesson: API.OperationMethod<
   MarkAsCompletedCourseLessonRequest,
   MarkAsCompletedCourseLessonResponse,
@@ -916,7 +916,7 @@ export type StartCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Start course lesson [Legacy API — https://docs.whop.com/api-reference] Record that the current user has started viewing a lesson, creating progress tracking records. */
+/** Start course lesson [Legacy API -- https://docs.whop.com/api-reference] Record that the current user has started viewing a lesson, creating progress tracking records. */
 export const startCourseLesson: API.OperationMethod<
   StartCourseLessonRequest,
   StartCourseLessonResponse,
@@ -936,7 +936,7 @@ export type SubmitAssessmentCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Submit assessment course lesson [Legacy API — https://docs.whop.com/api-reference] Submit answers for a quiz or knowledge check lesson and receive a graded result. */
+/** Submit assessment course lesson [Legacy API -- https://docs.whop.com/api-reference] Submit answers for a quiz or knowledge check lesson and receive a graded result. */
 export const submitAssessmentCourseLesson: API.OperationMethod<
   SubmitAssessmentCourseLessonRequest,
   SubmitAssessmentCourseLessonResponse,
@@ -956,7 +956,7 @@ export type UpdateCourseLessonError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update course lesson [Legacy API — https://docs.whop.com/api-reference] Update a lesson's content, type, visibility, assessment questions, or media attachments. Required permissions: - `courses:update` */
+/** Update course lesson [Legacy API -- https://docs.whop.com/api-reference] Update a lesson's content, type, visibility, assessment questions, or media attachments. Required permissions: - `courses:update` */
 export const updateCourseLesson: API.OperationMethod<
   UpdateCourseLessonRequest,
   CourseLesson,

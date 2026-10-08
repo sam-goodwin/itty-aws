@@ -5771,8 +5771,8 @@ export type AcquireRoleError =
   | CommonErrors;
 /**
  * Creates an IAM role from the specified role template. The new role takes its
- * configuration—including its name, path, trust policy, inline and managed policies,
- * permissions boundary, tags, and maximum session duration—from the role
+ * configuration--including its name, path, trust policy, inline and managed policies,
+ * permissions boundary, tags, and maximum session duration--from the role
  * template version that you specify. For more information about roles, see IAM roles in the
  * *IAM User Guide*.
  *
@@ -7120,7 +7120,7 @@ export type DeleteRoleError =
  *
  * - Instance profile (RemoveRoleFromInstanceProfile)
  *
- * - Optional – Delete instance profile after detaching from role for
+ * - Optional - Delete instance profile after detaching from role for
  * resource clean up (DeleteInstanceProfile)
  *
  * Make sure that you do not have any Amazon EC2 instances running with the role you are
@@ -7934,25 +7934,25 @@ export type GenerateOrganizationsAccessReportError =
  * without specifying the optional Organizations policy ID. The type of entity that you specify
  * determines the data returned in the report.
  *
- * - **Root** – When you specify the
+ * - **Root** - When you specify the
  * organizations root as the entity, the resulting report lists all of the services
  * allowed by SCPs that are attached to your root. For each service, the report
  * includes data for all accounts in your organization except the
  * management account, because the management account is not limited by SCPs.
  *
- * - **OU** – When you specify an
+ * - **OU** - When you specify an
  * organizational unit (OU) as the entity, the resulting report lists all of the
  * services allowed by SCPs that are attached to the OU and its parents. For each
  * service, the report includes data for all accounts in the OU or its children.
  * This data excludes the management account, because the management account is not
  * limited by SCPs.
  *
- * - **management account** – When you specify the
+ * - **management account** - When you specify the
  * management account, the resulting report lists all Amazon Web Services services, because the
  * management account is not limited by SCPs. For each service, the report includes
  * data for only the management account.
  *
- * - **Account** – When you specify another
+ * - **Account** - When you specify another
  * account as the entity, the resulting report lists all of the services allowed by
  * SCPs that are attached to the account and its parents. For each service, the
  * report includes data for only the specified account.
@@ -7961,7 +7961,7 @@ export type GenerateOrganizationsAccessReportError =
  * and the optional Organizations policy ID. The type of entity that you specify determines the data
  * returned for each service.
  *
- * - **Root** – When you specify the root
+ * - **Root** - When you specify the root
  * entity and a policy ID, the resulting report lists all of the services that are
  * allowed by the specified SCP. For each service, the report includes data for all
  * accounts in your organization to which the SCP applies. This data excludes the
@@ -7969,7 +7969,7 @@ export type GenerateOrganizationsAccessReportError =
  * SCP is not attached to any entities in the organization, then the report will
  * return a list of services with no data.
  *
- * - **OU** – When you specify an OU entity and
+ * - **OU** - When you specify an OU entity and
  * a policy ID, the resulting report lists all of the services that are allowed by
  * the specified SCP. For each service, the report includes data for all accounts
  * in the OU or its children to which the SCP applies. This means that other
@@ -7979,13 +7979,13 @@ export type GenerateOrganizationsAccessReportError =
  * or one of its children, the report will return a list of services with no
  * data.
  *
- * - **management account** – When you specify the
+ * - **management account** - When you specify the
  * management account, the resulting report lists all Amazon Web Services services, because the
  * management account is not limited by SCPs. If you specify a policy ID in the CLI
  * or API, the policy is ignored. For each service, the report includes data for
  * only the management account.
  *
- * - **Account** – When you specify another
+ * - **Account** - When you specify another
  * account entity and a policy ID, the resulting report lists all of the services
  * that are allowed by the specified SCP. For each service, the report includes
  * data for only the specified account. This means that other accounts in the
@@ -8044,7 +8044,7 @@ export type GenerateServiceLastAccessedDetailsError =
  * `JobId`. Use this parameter in the following operations to retrieve the
  * following details from your report:
  *
- * - GetServiceLastAccessedDetails – Use this operation for
+ * - GetServiceLastAccessedDetails - Use this operation for
  * users, groups, roles, or policies to list every Amazon Web Services service that the resource
  * could access using permissions policies. For each service, the response includes
  * information about the most recent access attempt.
@@ -8054,7 +8054,7 @@ export type GenerateServiceLastAccessedDetailsError =
  * within a session, or by the same user when used to call
  * `GetServiceLastAccessedDetail`.
  *
- * - GetServiceLastAccessedDetailsWithEntities – Use this
+ * - GetServiceLastAccessedDetailsWithEntities - Use this
  * operation for groups and policies to list information about the associated
  * entities (users or roles) that attempted to access a specific Amazon Web Services service.
  *
@@ -8739,9 +8739,9 @@ export type GetRoleTemplateVersionError =
   | CommonErrors;
 /**
  * Retrieves information about a version of the specified role template. Role templates
- * define a reusable configuration—including role name and path patterns, trust
+ * define a reusable configuration--including role name and path patterns, trust
  * policy, inline and managed policies, permissions boundary, tags, and maximum session
- * duration—that you use to create IAM roles with AcquireRole.
+ * duration--that you use to create IAM roles with AcquireRole.
  *
  * If you do not specify a minor version, the service returns the template's default
  * minor version.
@@ -8841,16 +8841,16 @@ export type GetServiceLastAccessedDetailsError =
  * the date and time of the last attempt. It also returns the ARN of the following entity,
  * depending on the resource ARN that you used to generate the report:
  *
- * - **User** – Returns the user ARN that you
+ * - **User** - Returns the user ARN that you
  * used to generate the report
  *
- * - **Group** – Returns the ARN of the group
+ * - **Group** - Returns the ARN of the group
  * member (user) that last attempted to access the service
  *
- * - **Role** – Returns the role ARN that you
+ * - **Role** - Returns the role ARN that you
  * used to generate the report
  *
- * - **Policy** – Returns the ARN of the user
+ * - **Policy** - Returns the ARN of the user
  * or role that last used the policy to attempt to access the service
  *
  * By default, the list is sorted by service namespace.
@@ -8889,11 +8889,11 @@ export type GetServiceLastAccessedDetailsWithEntitiesError =
  * status of your report job and a list of entities that could have used group or policy
  * permissions to access the specified service.
  *
- * - **Group** – For a group report, this
- * operation returns a list of users in the group that could have used the group’s
+ * - **Group** - For a group report, this
+ * operation returns a list of users in the group that could have used the group's
  * policies in an attempt to access the service.
  *
- * - **Policy** – For a policy report, this
+ * - **Policy** - For a policy report, this
  * operation returns a list of entities (users or roles) that could have used the
  * policy in an attempt to access the service.
  *
@@ -9676,16 +9676,16 @@ export type ListPoliciesGrantingServiceAccessError =
  * The list of policies returned by the operation depends on the ARN of the identity that
  * you provide.
  *
- * - **User** – The list of policies includes
+ * - **User** - The list of policies includes
  * the managed and inline policies that are attached to the user directly. The list
  * also includes any additional managed and inline policies that are attached to
  * the group to which the user belongs.
  *
- * - **Group** – The list of policies includes
+ * - **Group** - The list of policies includes
  * only the managed and inline policies that are attached to the group directly.
- * Policies that are attached to the group’s user are not included.
+ * Policies that are attached to the group's user are not included.
  *
- * - **Role** – The list of policies includes
+ * - **Role** - The list of policies includes
  * only the managed and inline policies that are attached to the role.
  *
  * For each managed policy, this operation returns the ARN and policy name. For each

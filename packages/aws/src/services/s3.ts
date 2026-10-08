@@ -12044,7 +12044,7 @@ export type CreateMultipartUploadError =
  * `CreateMultipartUpload` request.
  *
  * - Use KMS keys (SSE-KMS) that include the Amazon Web Services managed key (`aws/s3`) and
- * KMS customer managed keys stored in Key Management Service (KMS) – If you want Amazon Web Services to manage the keys used
+ * KMS customer managed keys stored in Key Management Service (KMS) - If you want Amazon Web Services to manage the keys used
  * to encrypt data, specify the following headers in the request.
  *
  * - `x-amz-server-side-encryption`
@@ -12081,7 +12081,7 @@ export type CreateMultipartUploadError =
  * Protecting Data Using Server-Side Encryption with KMS keys in the
  * *Amazon S3 User Guide*.
  *
- * - Use customer-provided encryption keys (SSE-C) – If you want to manage your own
+ * - Use customer-provided encryption keys (SSE-C) - If you want to manage your own
  * encryption keys, provide all the following headers in the request.
  *
  * - `x-amz-server-side-encryption-customer-algorithm`
@@ -12161,7 +12161,7 @@ export type CreateSessionError = NoSuchBucket | CommonErrors;
  * a bucket policy or an IAM identity-based policy. Then, you use IAM credentials to make the `CreateSession`
  * API request on the bucket, which returns temporary security credentials that include the access key ID,
  * secret access key, session token, and expiration. These credentials have associated permissions to
- * access the Zonal endpoint API operations. After the session is created, you don’t need to use other policies to grant
+ * access the Zonal endpoint API operations. After the session is created, you don't need to use other policies to grant
  * permissions to each Zonal endpoint API individually. Instead, in your Zonal endpoint API requests, you sign your
  * requests by applying the temporary security credentials of the session to the request headers and
  * following the SigV4 protocol for authentication. You also apply the session token to the
@@ -12339,7 +12339,7 @@ export type DeleteBucketAnalyticsConfigurationError =
  * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources.
  *
- * For information about the Amazon S3 analytics feature, see Amazon S3 Analytics – Storage Class
+ * For information about the Amazon S3 analytics feature, see Amazon S3 Analytics - Storage Class
  * Analysis.
  *
  * The following operations are related to `DeleteBucketAnalyticsConfiguration`:
@@ -13041,7 +13041,7 @@ export type DeleteObjectError =
  *
  * - If bucket versioning is enabled, the operation inserts a delete marker, which becomes the
  * current version of the object. To permanently delete an object in a versioned bucket, you must
- * include the object’s `versionId` in the request. For more information about
+ * include the object's `versionId` in the request. For more information about
  * versioning-enabled buckets, see Deleting object versions from a
  * versioning-enabled bucket.
  *
@@ -13050,7 +13050,7 @@ export type DeleteObjectError =
  * version of the object. If there isn't an object with a null `versionId`, and all versions
  * of the object have a `versionId`, Amazon S3 does not remove the object and only inserts a
  * delete marker. To permanently delete an object that has a `versionId`, you must include
- * the object’s `versionId` in the request. For more information about versioning-suspended
+ * the object's `versionId` in the request. For more information about versioning-suspended
  * buckets, see Deleting
  * objects from versioning-suspended buckets.
  *
@@ -13512,7 +13512,7 @@ export type GetBucketAnalyticsConfigurationError =
  * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources in the *Amazon S3 User Guide*.
  *
- * For information about Amazon S3 analytics feature, see Amazon S3 Analytics – Storage Class Analysis
+ * For information about Amazon S3 analytics feature, see Amazon S3 Analytics - Storage Class Analysis
  * in the *Amazon S3 User Guide*.
  *
  * The following operations are related to `GetBucketAnalyticsConfiguration`:
@@ -13863,7 +13863,7 @@ export type GetBucketLocationError = RequestLimitExceeded | SlowDown | NoSuchBuc
  * In a bucket's home Region, calls to the `GetBucketLocation` operation are governed
  * by the bucket's policy. In other Regions, the bucket policy doesn't apply, which means that
  * cross-account access won't be authorized. However, calls to the `HeadBucket` operation
- * always return the bucket’s location through an HTTP response header, whether access to the bucket
+ * always return the bucket's location through an HTTP response header, whether access to the bucket
  * is authorized or not. Therefore, we recommend using the `HeadBucket` operation for
  * bucket Region discovery and to avoid using the `GetBucketLocation` operation.
  *
@@ -14584,13 +14584,13 @@ export type GetObjectError =
  * in the request header, only the `s3:GetObject` permission is required. The
  * `s3:GetObjectVersion` permission is not required in this scenario.
  *
- * If the object that you request doesn’t exist, the error that Amazon S3 returns depends on
+ * If the object that you request doesn't exist, the error that Amazon S3 returns depends on
  * whether you also have the `s3:ListBucket` permission.
  *
  * - If you have the `s3:ListBucket` permission on the bucket, Amazon S3 returns an
  * HTTP status code `404 Not Found` error.
  *
- * - If you don’t have the `s3:ListBucket` permission, Amazon S3 returns an HTTP
+ * - If you don't have the `s3:ListBucket` permission, Amazon S3 returns an HTTP
  * status code `403 Access Denied` error.
  *
  * - **Directory bucket permissions** - To grant access to this API operation on a directory bucket, we recommend that you use the
@@ -14624,7 +14624,7 @@ export type GetObjectError =
  * for the `GetObject` requests, if your object uses server-side encryption with Amazon S3
  * managed encryption keys (SSE-S3), server-side encryption with Key Management Service (KMS) keys (SSE-KMS), or
  * dual-layer server-side encryption with Amazon Web Services KMS keys (DSSE-KMS). If you include the header in
- * your `GetObject` requests for the object that uses these types of keys, you’ll get an
+ * your `GetObject` requests for the object that uses these types of keys, you'll get an
  * HTTP `400 Bad Request` error.
  *
  * **Directory buckets** -
@@ -14849,7 +14849,7 @@ export type GetObjectAttributesError = NoSuchKey | NoSuchVersion | MethodNotAllo
  * server-side encryption with Amazon S3 managed encryption keys (SSE-S3). The
  * `x-amz-server-side-encryption` header is used when you `PUT` an object
  * to S3 and want to specify the encryption method. If you include this header in a
- * `GET` request for an object that uses these types of keys, you’ll get an HTTP
+ * `GET` request for an object that uses these types of keys, you'll get an HTTP
  * `400 Bad Request` error. It's because the encryption method can't be changed when
  * you retrieve the object.
  *
@@ -15338,7 +15338,7 @@ export type HeadObjectError =
  * - If you have the `s3:ListBucket` permission on the bucket, Amazon S3 returns an
  * HTTP status code `404 Not Found` error.
  *
- * - If you don’t have the `s3:ListBucket` permission, Amazon S3 returns an HTTP
+ * - If you don't have the `s3:ListBucket` permission, Amazon S3 returns an HTTP
  * status code `403 Forbidden` error.
  *
  * - **Directory bucket permissions** - To grant access to this API operation on a directory bucket, we recommend that you use the
@@ -15362,7 +15362,7 @@ export type HeadObjectError =
  * server-side encryption with Amazon S3 managed encryption keys (SSE-S3). The
  * `x-amz-server-side-encryption` header is used when you `PUT` an object
  * to S3 and want to specify the encryption method. If you include this header in a
- * `HEAD` request for an object that uses these types of keys, you’ll get an HTTP
+ * `HEAD` request for an object that uses these types of keys, you'll get an HTTP
  * `400 Bad Request` error. It's because the encryption method can't be changed when
  * you retrieve the object.
  *
@@ -15455,7 +15455,7 @@ export type ListBucketAnalyticsConfigurationsError =
  * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources.
  *
- * For information about Amazon S3 analytics feature, see Amazon S3 Analytics – Storage Class
+ * For information about Amazon S3 analytics feature, see Amazon S3 Analytics - Storage Class
  * Analysis.
  *
  * The following operations are related to `ListBucketAnalyticsConfigurations`:
@@ -15675,7 +15675,7 @@ export type ListBucketsError = RequestLimitExceeded | SlowDown | RequestError | 
  * We strongly recommend using only paginated `ListBuckets` requests. Unpaginated
  * `ListBuckets` requests are only supported for Amazon Web Services accounts set to the default general
  * purpose bucket quota of 10,000. If you have an approved general purpose bucket quota above 10,000, you
- * must send paginated `ListBuckets` requests to list your account’s buckets. All unpaginated
+ * must send paginated `ListBuckets` requests to list your account's buckets. All unpaginated
  * `ListBuckets` requests will be rejected for Amazon Web Services accounts with a general purpose bucket
  * quota greater than 10,000.
  *
@@ -16209,9 +16209,9 @@ export type PutBucketAccelerateConfigurationError =
  *
  * The Transfer Acceleration state of a bucket can be set to one of the following two values:
  *
- * - Enabled – Enables accelerated data transfers to the bucket.
+ * - Enabled - Enables accelerated data transfers to the bucket.
  *
- * - Suspended – Disables accelerated data transfers to the bucket.
+ * - Suspended - Disables accelerated data transfers to the bucket.
  *
  * The GetBucketAccelerateConfiguration action returns the transfer acceleration state of a
  * bucket.
@@ -16305,12 +16305,12 @@ export type PutBucketAclError =
  * You specify each grantee as a type=value pair, where the type is one of the
  * following:
  *
- * - `id` – if the value specified is the canonical user ID of an
+ * - `id` - if the value specified is the canonical user ID of an
  * Amazon Web Services account
  *
- * - `uri` – if you are granting permissions to a predefined group
+ * - `uri` - if you are granting permissions to a predefined group
  *
- * - `emailAddress` – if the value specified is the email address of an
+ * - `emailAddress` - if the value specified is the email address of an
  * Amazon Web Services account
  *
  * Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions:
@@ -16424,7 +16424,7 @@ export type PutBucketAnalyticsConfigurationError = CommonErrors;
  * destination bucket and an optional destination prefix where the file is written. You can export the data
  * to a destination bucket in a different account. However, the destination bucket must be in the same
  * Region as the bucket that you are making the PUT analytics configuration to. For more information, see
- * Amazon S3 Analytics –
+ * Amazon S3 Analytics -
  * Storage Class Analysis.
  *
  * You must create a bucket policy on the destination bucket where the exported file is written to
@@ -16599,7 +16599,7 @@ export type PutBucketEncryptionError =
  * - Your SSE-KMS configuration can only support 1 customer managed key per directory bucket's lifetime.
  * The Amazon Web Services managed key (`aws/s3`) isn't supported.
  *
- * - S3 Bucket Keys are always enabled for `GET` and `PUT` operations in a directory bucket and can’t be disabled. S3 Bucket Keys aren't supported, when you copy SSE-KMS encrypted objects from general purpose buckets
+ * - S3 Bucket Keys are always enabled for `GET` and `PUT` operations in a directory bucket and can't be disabled. S3 Bucket Keys aren't supported, when you copy SSE-KMS encrypted objects from general purpose buckets
  * to directory buckets, from directory buckets to general purpose buckets, or between directory buckets, through CopyObject, UploadPartCopy, the Copy operation in Batch Operations, or
  * the import jobs. In this case, Amazon S3 makes a call to KMS every time a copy request is made for a KMS-encrypted object.
  *
@@ -16610,7 +16610,7 @@ export type PutBucketEncryptionError =
  * PutBucketEncryption requests.
  *
  * If you're specifying a customer managed KMS key, we recommend using a fully qualified KMS key
- * ARN. If you use a KMS key alias instead, then KMS resolves the key within the requester’s account.
+ * ARN. If you use a KMS key alias instead, then KMS resolves the key within the requester's account.
  * This behavior can result in data that's encrypted with a KMS key that belongs to the requester, and
  * not the bucket owner.
  *
@@ -17522,10 +17522,10 @@ export type PutBucketVersioningError =
  *
  * You can set the versioning state with one of the following values:
  *
- * **Enabled**—Enables versioning for the objects in the bucket. All
+ * **Enabled**--Enables versioning for the objects in the bucket. All
  * objects added to the bucket receive a unique version ID.
  *
- * **Suspended**—Disables versioning for the objects in the bucket. All
+ * **Suspended**--Disables versioning for the objects in the bucket. All
  * objects added to the bucket receive the version ID null.
  *
  * If the versioning state has never been set on a bucket, it has no versioning state; a GetBucketVersioning request does not return a versioning state value.
@@ -17872,12 +17872,12 @@ export type PutObjectAclError =
  * You specify each grantee as a type=value pair, where the type is one of the
  * following:
  *
- * - `id` – if the value specified is the canonical user ID of an
+ * - `id` - if the value specified is the canonical user ID of an
  * Amazon Web Services account
  *
- * - `uri` – if you are granting permissions to a predefined group
+ * - `uri` - if you are granting permissions to a predefined group
  *
- * - `emailAddress` – if the value specified is the email address of an
+ * - `emailAddress` - if the value specified is the email address of an
  * Amazon Web Services account
  *
  * Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions:
@@ -18281,7 +18281,7 @@ export const putPublicAccessBlock: API.OperationMethod<
 export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
 /**
  * Renames an existing object in a directory bucket that uses the S3 Express One Zone storage class.
- * You can use `RenameObject` by specifying an existing object’s name as the source and the new
+ * You can use `RenameObject` by specifying an existing object's name as the source and the new
  * name of the object as the destination within the same directory bucket.
  *
  * `RenameObject` is only supported for objects stored in the S3 Express One Zone storage
@@ -18293,7 +18293,7 @@ export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
  * - **If-None-Match** - Renames the object only if an object
  * with the specified name does not already exist in the directory bucket. If you don't want to
  * overwrite an existing object, you can add the `If-None-Match` conditional header with the
- * value `‘*’` in the `RenameObject` request. Amazon S3 then returns a 412
+ * value `'*'` in the `RenameObject` request. Amazon S3 then returns a 412
  * Precondition Failed error if the object with the specified name already exists. For more
  * information, see RFC 7232.
  *
@@ -18398,7 +18398,7 @@ export type RestoreObjectError =
  * - `Expedited` - Expedited retrievals allow you to quickly access your data stored
  * in the S3 Glacier Flexible Retrieval storage class or S3 Intelligent-Tiering Archive tier when occasional
  * urgent requests for restoring archives are required. For all but the largest archived objects
- * (250 MB+), data accessed using Expedited retrievals is typically made available within 1–5
+ * (250 MB+), data accessed using Expedited retrievals is typically made available within 1-5
  * minutes. Provisioned capacity ensures that retrieval capacity for Expedited retrievals is
  * available when you need it. Expedited retrievals and provisioned capacity are not available
  * for objects stored in the S3 Glacier Deep Archive storage class or
@@ -18406,7 +18406,7 @@ export type RestoreObjectError =
  *
  * - `Standard` - Standard retrievals allow you to access any of your archived
  * objects within several hours. This is the default option for retrieval requests that do not
- * specify the retrieval option. Standard retrievals typically finish within 3–5 hours for
+ * specify the retrieval option. Standard retrievals typically finish within 3-5 hours for
  * objects stored in the S3 Glacier Flexible Retrieval storage class or S3 Intelligent-Tiering Archive tier.
  * They typically finish within 12 hours for objects stored in the
  * S3 Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep Archive tier. Standard
@@ -18414,7 +18414,7 @@ export type RestoreObjectError =
  *
  * - `Bulk` - Bulk retrievals free for objects stored in the S3 Glacier Flexible
  * Retrieval and S3 Intelligent-Tiering storage classes, enabling you to retrieve large amounts,
- * even petabytes, of data at no cost. Bulk retrievals typically finish within 5–12 hours for
+ * even petabytes, of data at no cost. Bulk retrievals typically finish within 5-12 hours for
  * objects stored in the S3 Glacier Flexible Retrieval storage class or S3 Intelligent-Tiering Archive tier.
  * Bulk retrievals are also the lowest-cost retrieval option when restoring objects from
  * S3 Glacier Deep Archive. They typically finish within 48 hours for objects stored in
@@ -18864,7 +18864,7 @@ export type UpdateObjectEncryptionError = AccessDenied | InvalidRequest | NoSuch
  * the bucket. Specify a KMS key that belongs to the same organization as the bucket, and then
  * try again.
  *
- * - The encryption type for the specified object can’t be updated because that object is
+ * - The encryption type for the specified object can't be updated because that object is
  * protected by S3 Object Lock. If the object has a governance-mode retention period or a legal
  * hold, you must first remove the Object Lock status on the object before you issue your
  * `UpdateObjectEncryption` request. You can't use the `UpdateObjectEncryption`

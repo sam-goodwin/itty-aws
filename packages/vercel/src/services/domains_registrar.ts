@@ -2096,7 +2096,7 @@ export const renewDomain: API.OperationMethod<
 }));
 
 export type SearchDomainsError = BadRequest | Forbidden | VercelOpError;
-/** Get Domain Availability and Pricing Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required. */
+/** Get Domain Availability and Pricing Start domain research here. Get registration availability and pricing for 1-200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required. */
 export const searchDomains: API.OperationMethod<
   SearchDomainsRequest,
   SearchDomainsResponse,

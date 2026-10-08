@@ -507,7 +507,7 @@ export const AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOpti
 export interface AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem {
   /** A unique ID that identifies a payer-selected shipping option. */
   id: string;
-  /** A description that the payer sees, which helps them choose an appropriate shipping option. For example, `Free Shipping`, `USPS Priority Shipping`, `Expédition prioritaire USPS`, or `USPS yōuxiān fā huò`. Localize this description to the payer's locale. */
+  /** A description that the payer sees, which helps them choose an appropriate shipping option. For example, `Free Shipping`, `USPS Priority Shipping`, `Expédition prioritaire USPS`, or `USPS yU+014DuxiU+0101n fU+0101 huò`. Localize this description to the payer's locale. */
   label: string;
   type?: unknown;
   amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -640,7 +640,7 @@ export type PaypalWalletExperienceContextInputShippingPreference =
   | "SET_PROVIDED_ADDRESS";
 export const PaypalWalletExperienceContextInputShippingPreference = S.String;
 
-/** The preference to display the contact information (buyer’s shipping email & phone number) on PayPal's checkout for easy merchant-buyer communication. */
+/** The preference to display the contact information (buyer's shipping email & phone number) on PayPal's checkout for easy merchant-buyer communication. */
 export type PaypalWalletExperienceContextInputContactPreference =
   | "NO_CONTACT_INFO"
   | "UPDATE_CONTACT_INFO"
@@ -735,7 +735,7 @@ export interface PaypalWalletExperienceContextInput {
   locale?: unknown;
   /** The location from which the shipping address is derived. */
   shipping_preference?: PaypalWalletExperienceContextInputShippingPreference | (string & {});
-  /** The preference to display the contact information (buyer’s shipping email & phone number) on PayPal's checkout for easy merchant-buyer communication. */
+  /** The preference to display the contact information (buyer's shipping email & phone number) on PayPal's checkout for easy merchant-buyer communication. */
   contact_preference?: PaypalWalletExperienceContextInputContactPreference | (string & {});
   return_url?: unknown;
   cancel_url?: unknown;
@@ -1488,7 +1488,7 @@ export const CustomerPhone = CardCustomerPhone;
 export type CustomerName = CardCustomerName;
 export const CustomerName = CardCustomerName;
 
-/** This object represents a merchant’s customer, allowing them to store contact details, and track all payments associated with the same customer. */
+/** This object represents a merchant's customer, allowing them to store contact details, and track all payments associated with the same customer. */
 export interface Customer {
   id?: string;
   email_address?: unknown;
@@ -1814,7 +1814,7 @@ export const VenmoWalletCustomerPhone = CardCustomerPhone;
 export type VenmoWalletCustomerName = CardCustomerName;
 export const VenmoWalletCustomerName = CardCustomerName;
 
-/** This object represents a merchant’s customer, allowing them to store contact details, and track all payments associated with the same customer. */
+/** This object represents a merchant's customer, allowing them to store contact details, and track all payments associated with the same customer. */
 export type VenmoWalletCustomer = Customer;
 export const VenmoWalletCustomer = Customer;
 
@@ -14115,7 +14115,7 @@ export interface CreateOrderRequestPurchaseUnitsItem {
   custom_id?: string;
   /** The API caller-provided external invoice number for this order. Appears in both the payer's transaction history and the emails that the payer receives. invoice_id values are required to be unique within each merchant account by default. Although the uniqueness validation is configurable, disabling this behavior will remove the account's ability to use invoice_id in other APIs as an identifier. It is highly recommended to keep a unique invoice_id for each Order. */
   invoice_id?: string;
-  /** <blockquote>This field supports up to 127 characters, but <strong>any content beyond 22 characters (including spaces) will be truncated. The 22 character limit is reflected in the response</strong> representation of this field.</blockquote>The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement descriptor will appear in following format on the payer's card statement: <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+ <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the descriptor of the merchant’s payment receiving preferences which can be seen by logging into the merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.</li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is <code>PAYPAL * Janes Gift 80</code>. */
+  /** <blockquote>This field supports up to 127 characters, but <strong>any content beyond 22 characters (including spaces) will be truncated. The 22 character limit is reflected in the response</strong> representation of this field.</blockquote>The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement descriptor will appear in following format on the payer's card statement: <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+ <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the descriptor of the merchant's payment receiving preferences which can be seen by logging into the merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.</li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is <code>PAYPAL * Janes Gift 80</code>. */
   soft_descriptor?: string;
   /** An array of items that the customer purchases from the merchant. */
   items?: CreateOrderRequestPurchaseUnitsItemItemsList;
@@ -14165,7 +14165,7 @@ export const CreateOrderRequestApplicationContextUserAction = S.String;
 export type PayeePaymentMethodPreference = "UNRESTRICTED" | "IMMEDIATE_PAYMENT_REQUIRED";
 export const PayeePaymentMethodPreference = S.String;
 
-/** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer’s explicit authorization before initiating a transaction. To stay compliant, you’ll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
+/** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer's explicit authorization before initiating a transaction. To stay compliant, you'll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
 export type CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode =
   | "TEL"
   | "WEB"
@@ -14175,7 +14175,7 @@ export const CreateOrderRequestApplicationContextPaymentMethodStandardEntryClass
 
 export interface CreateOrderRequestApplicationContextPaymentMethod {
   payee_preferred?: PayeePaymentMethodPreference | (string & {});
-  /** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer’s explicit authorization before initiating a transaction. To stay compliant, you’ll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
+  /** NACHA (the regulatory body governing the ACH network) requires that API callers (merchants, partners) obtain the consumer's explicit authorization before initiating a transaction. To stay compliant, you'll need to make sure that you retain a compliant authorization for each transaction that you originate to the ACH Network using this API. ACH transactions are categorized (using SEC codes) by how you capture authorization from the Receiver (the person whose bank account is being debited or credited). PayPal supports the following SEC codes. */
   standard_entry_class_code?:
     | CreateOrderRequestApplicationContextPaymentMethodStandardEntryClassCode
     | (string & {});
@@ -23315,7 +23315,7 @@ export interface ServerCallbackRequestPurchaseUnitsItem {
   custom_id?: string;
   /** The API caller-provided external invoice number for this order. Appears in both the payer's transaction history and the emails that the payer receives. invoice_id values are required to be unique within each merchant account by default. Although the uniqueness validation is configurable, disabling this behavior will remove the account's ability to use invoice_id in other APIs as an identifier. It is highly recommended to keep a unique invoice_id for each Order. */
   invoice_id?: string;
-  /** <blockquote>This field supports up to 127 characters, but <strong>any content beyond 22 characters (including spaces) will be truncated. The 22 character limit is reflected in the response</strong> representation of this field.</blockquote>The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement descriptor will appear in following format on the payer's card statement: <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+ <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the descriptor of the merchant’s payment receiving preferences which can be seen by logging into the merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.</li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is <code>PAYPAL * Janes Gift 80</code>. */
+  /** <blockquote>This field supports up to 127 characters, but <strong>any content beyond 22 characters (including spaces) will be truncated. The 22 character limit is reflected in the response</strong> representation of this field.</blockquote>The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement descriptor will appear in following format on the payer's card statement: <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+ <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the descriptor of the merchant's payment receiving preferences which can be seen by logging into the merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.</li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is <code>PAYPAL * Janes Gift 80</code>. */
   soft_descriptor?: string;
   /** An array of items that the customer purchases from the merchant. */
   items?: ServerCallbackRequestPurchaseUnitsItemItemsList;

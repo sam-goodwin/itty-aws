@@ -16,7 +16,7 @@ export interface CreateTracingRetentionRuleRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
 export const CreateTracingRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -46,7 +46,7 @@ export interface TracesRetentionRule {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
   /** Incremented on each update for worker cache coherency. */
   version: number;
@@ -148,7 +148,7 @@ export const CreateTracingRetentionRulesSuggestNameRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateTracingRetentionRulesSuggestNameRequest>;
 
 export interface LogsRetentionRuleNameSuggestion {
-  /** Suggested rule name. Empty when no suggestion could be generated — clients hide the hint. */
+  /** Suggested rule name. Empty when no suggestion could be generated -- clients hide the hint. */
   name: string;
 }
 export const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ S.suspend(() =>
@@ -247,7 +247,7 @@ export interface TracingAggregationQueryBody {
   serviceNames?: TracingAggregationQueryBodyServiceNamesList;
   /** Property filters applied to spans in both windows. */
   filterGroup?: TracingAggregationQueryBodyFilterGroupList;
-  /** Max rows to return, ordered by total_duration_nano DESC. Defaults to 100; hard max 5000. Keep this small to bound the response size — a high value on high-cardinality span names (e.g. untemplated URL paths) returns a very large payload. Prefer narrowing with `serviceNames`/`filterGroup` over raising the limit. */
+  /** Max rows to return, ordered by total_duration_nano DESC. Defaults to 100; hard max 5000. Keep this small to bound the response size -- a high value on high-cardinality span names (e.g. untemplated URL paths) returns a very large payload. Prefer narrowing with `serviceNames`/`filterGroup` over raising the limit. */
   limit?: number;
   /** Row offset for pagination. Combine with `limit` and the `next_offset` returned in the response to page through results beyond the first page. */
   offset?: number;
@@ -355,7 +355,7 @@ export interface TracingAggregationResponse {
   results: TracingAggregationResponseResultsList;
   /** Rows for the comparison window when compareFilter.compare is true, else null. */
   compare: TracingAggregationResponseCompareList | null;
-  /** True when more rows exist beyond this page — page further with `next_offset`, or narrow the query. */
+  /** True when more rows exist beyond this page -- page further with `next_offset`, or narrow the query. */
   has_more: boolean;
   /** Offset to request the next page, or null when this is the last page. */
   next_offset: number | null;
@@ -501,7 +501,7 @@ export const TracingCountBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TracingCountBodyServiceNamesList>;
 
-/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingCountBodyStatusCodesList = Array<number>;
 export const TracingCountBodyStatusCodesList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -577,7 +577,7 @@ export interface TracingCountBody {
   dateRange?: TracingDateRange;
   /** Filter by service names. */
   serviceNames?: TracingCountBodyServiceNamesList;
-  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
   statusCodes?: TracingCountBodyStatusCodesList;
   /** Property filters for the count. Either a flat list of filters or a nested filter group. */
   filterGroup?: TracingCountBodyFilterGroup;
@@ -611,7 +611,7 @@ export const CreateTracingSpansCountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TracingCountResponse {
   /** Number of spans matching the filters. */
   count: number;
-  /** Number of distinct traces whose root span matches the filters — the trace count shown in the Traces view. */
+  /** Number of distinct traces whose root span matches the filters -- the trace count shown in the Traces view. */
   traceCount: number;
 }
 export const TracingCountResponse = /*@__PURE__*/ S.suspend(() =>
@@ -627,7 +627,7 @@ export const TracingDurationHistogramQueryBodyServiceNamesList = /*@__PURE__*/ S
   S.String,
 ) as any as S.Schema<TracingDurationHistogramQueryBodyServiceNamesList>;
 
-/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingDurationHistogramQueryBodyStatusCodesList = Array<number>;
 export const TracingDurationHistogramQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -644,11 +644,11 @@ export interface TracingDurationHistogramQueryBody {
   dateRange?: TracingDateRange;
   /** Filter by service names. */
   serviceNames?: TracingDurationHistogramQueryBodyServiceNamesList;
-  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
   statusCodes?: TracingDurationHistogramQueryBodyStatusCodesList;
   /** Property filters for the query. */
   filterGroup?: TracingDurationHistogramQueryBodyFilterGroupList;
-  /** When true (default), bucket root-span durations only — a distribution of traces. When false, bucket every matching span — used with a span name filter for operation-scoped distributions. */
+  /** When true (default), bucket root-span durations only -- a distribution of traces. When false, bucket every matching span -- used with a span name filter for operation-scoped distributions. */
   rootSpans?: boolean;
 }
 export const TracingDurationHistogramQueryBody = /*@__PURE__*/ S.suspend(() =>
@@ -979,7 +979,7 @@ export const TracingQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TracingQueryBodyServiceNamesList>;
 
-/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingQueryBodyStatusCodesList = Array<number>;
 export const TracingQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -1004,7 +1004,7 @@ export interface TracingQueryBody {
   dateRange?: TracingDateRange;
   /** Filter by service names. */
   serviceNames?: TracingQueryBodyServiceNamesList;
-  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
   statusCodes?: TracingQueryBodyStatusCodesList;
   /** Column to order by. Defaults to timestamp. Ordering by timestamp paginates via the keyset cursor ('after'); ordering by duration paginates via 'offset'. * `timestamp` - timestamp * `duration` - duration */
   orderBy?: TracingQueryBodyOrderByEnum | (string & {});
@@ -1166,7 +1166,7 @@ export const TracingSparklineQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TracingSparklineQueryBodyServiceNamesList>;
 
-/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+/** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingSparklineQueryBodyStatusCodesList = Array<number>;
 export const TracingSparklineQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -1183,11 +1183,11 @@ export interface TracingSparklineQueryBody {
   dateRange?: TracingDateRange;
   /** Filter by service names. */
   serviceNames?: TracingSparklineQueryBodyServiceNamesList;
-  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans. */
+  /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
   statusCodes?: TracingSparklineQueryBodyStatusCodesList;
   /** Property filters for the query. */
   filterGroup?: TracingSparklineQueryBodyFilterGroupList;
-  /** When true, count only root spans (one per trace) so the bars reflect the Traces view. When false (default), count every matching span — the Spans view's volume. */
+  /** When true, count only root spans (one per trace) so the bars reflect the Traces view. When false (default), count every matching span -- the Spans view's volume. */
   rootSpans?: boolean;
 }
 export const TracingSparklineQueryBody = /*@__PURE__*/ S.suspend(() =>
@@ -1380,9 +1380,9 @@ export interface SymbolStatsRow {
   end_line?: number | null;
   /** The same metrics over the immediately-preceding equal-length period. */
   previous: SymbolStatsPeriod;
-  /** Percentage change in count vs the previous period (180 = +180%). Null when there is no baseline (previous count 0). Use `previous.count` — not a null here — to detect a new symbol. */
+  /** Percentage change in count vs the previous period (180 = +180%). Null when there is no baseline (previous count 0). Use `previous.count` -- not a null here -- to detect a new symbol. */
   count_pct_change: number | null;
-  /** Percentage change in p95 duration vs the previous period (180 = +180%). Null when the previous p95 is 0 (no comparable baseline), which can occur even when previous.count > 0 — do not read null as 'new symbol'. */
+  /** Percentage change in p95 duration vs the previous period (180 = +180%). Null when the previous p95 is 0 (no comparable baseline), which can occur even when previous.count > 0 -- do not read null as 'new symbol'. */
   p95_duration_pct_change: number | null;
 }
 export const SymbolStatsRow = /*@__PURE__*/ S.suspend(() =>
@@ -1685,7 +1685,7 @@ export const TracingTreeResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TracingTreeResponse" }) as any as S.Schema<TracingTreeResponse>;
 
-/** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+/** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type CreateTracingViewRequestFiltersMap = { [key: string]: unknown | undefined };
 export const CreateTracingViewRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1697,7 +1697,7 @@ export interface CreateTracingViewRequest {
   project_id: string;
   /** Human-readable name shown in the saved views list. */
   name: string;
-  /** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+  /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
   filters?: CreateTracingViewRequestFiltersMap;
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
@@ -1711,7 +1711,7 @@ export const CreateTracingViewRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/tracing/views/", code: 200 })),
 ).annotate({ identifier: "CreateTracingViewRequest" }) as any as S.Schema<CreateTracingViewRequest>;
 
-/** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+/** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type TracingViewFiltersMap = { [key: string]: unknown | undefined };
 export const TracingViewFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1774,7 +1774,7 @@ export interface TracingView {
   short_id: string;
   /** Human-readable name shown in the saved views list. */
   name: string;
-  /** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+  /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
   filters?: TracingViewFiltersMap;
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
@@ -1866,7 +1866,7 @@ export interface TracingAttributeEntry {
   propertyFilterType: string;
   /** How the search query matched this row: "key" if the attribute key matched, "value" if a value matched. * `key` - key * `value` - value */
   matchedOn: MatchedOnEnum;
-  /** Sample matching value — only set when matchedOn is "value". */
+  /** Sample matching value -- only set when matchedOn is "value". */
   matchedValue?: string | null;
 }
 export const TracingAttributeEntry = /*@__PURE__*/ S.suspend(() =>
@@ -2254,7 +2254,7 @@ export interface UpdateTracingRetentionRuleRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
 export const UpdateTracingRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2287,7 +2287,7 @@ export interface UpdateTracingRetentionRulesPartialRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config?: unknown;
 }
 export const UpdateTracingRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2309,7 +2309,7 @@ export const UpdateTracingRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend
   identifier: "UpdateTracingRetentionRulesPartialRequest",
 }) as any as S.Schema<UpdateTracingRetentionRulesPartialRequest>;
 
-/** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+/** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewRequestFiltersMap = { [key: string]: unknown | undefined };
 export const UpdateTracingViewRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2322,7 +2322,7 @@ export interface UpdateTracingViewRequest {
   short_id: string;
   /** Human-readable name shown in the saved views list. */
   name: string;
-  /** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+  /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
   filters?: UpdateTracingViewRequestFiltersMap;
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;
@@ -2343,7 +2343,7 @@ export const UpdateTracingViewRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTracingViewRequest" }) as any as S.Schema<UpdateTracingViewRequest>;
 
-/** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+/** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewsPartialRequestFiltersMap = { [key: string]: unknown | undefined };
 export const UpdateTracingViewsPartialRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2356,7 +2356,7 @@ export interface UpdateTracingViewsPartialRequest {
   short_id: string;
   /** Human-readable name shown in the saved views list. */
   name?: string;
-  /** Saved tracing filters — a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
+  /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
   filters?: UpdateTracingViewsPartialRequestFiltersMap;
   /** Whether the view is pinned for quick access. */
   pinned?: boolean;

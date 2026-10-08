@@ -74,7 +74,7 @@ export interface CreateCustomPropertyDefinitionRequest {
   target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
-  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
+  /** Abbreviate large numbers (e.g. 10,000 -> 10K). Only applies to numeric properties. */
   is_big_number?: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: CreateCustomPropertyDefinitionRequestOptionsList | null;
@@ -206,15 +206,15 @@ export interface CustomPropertySource {
   created_at: string;
   created_by: number | null;
   updated_at: string | null;
-  /** Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable — including a view whose frequency is set on its data-modeling DAG. */
+  /** Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable -- including a view whose frequency is set on its data-modeling DAG. */
   sync_frequency_interval_seconds: number | null;
-  /** Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate — drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable. */
+  /** Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate -- drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable. */
   next_sync_at: string | null;
   /** Person and group sources only: the most recent sync/backfill run, or null if none yet. */
   latest_run: CustomPropertySyncRun | null;
   /** Table-bound person and group sources only: UUID of the warehouse source owning the schema, so the UI can link to the table. Null for account sources, view-bound sources, or when unavailable. */
   external_data_source: string | null;
-  /** Person and group sources only: what this source reads, as it is named in HogQL — the imported table, or the view. Null for account sources or when unavailable. */
+  /** Person and group sources only: what this source reads, as it is named in HogQL -- the imported table, or the view. Null for account sources or when unavailable. */
   table_name: string | null;
   /** View-bound person and group sources only: the materialized view's name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources. */
   saved_query_name: string | null;
@@ -271,7 +271,7 @@ export const CustomPropertyDefinitionReferencesList = /*@__PURE__*/ S.Array(
   CustomPropertyReference,
 ) as any as S.Schema<CustomPropertyDefinitionReferencesList>;
 
-/** A team-scoped definition of a custom account property — the attribute side of the model. Holds only the property's shape (name, display type, big-number flag). Per-account values are stored separately, so this serializer never reads or writes account values. */
+/** A team-scoped definition of a custom account property -- the attribute side of the model. Holds only the property's shape (name, display type, big-number flag). Per-account values are stored separately, so this serializer never reads or writes account values. */
 export interface CustomPropertyDefinition {
   id: string;
   /** Human-readable name of the custom property. Unique within the team. */
@@ -284,9 +284,9 @@ export interface CustomPropertyDefinition {
   target_type?: CustomPropertyDefinitionTargetTypeEnum;
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
-  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
+  /** Abbreviate large numbers (e.g. 10,000 -> 10K). Only applies to numeric properties. */
   is_big_number?: boolean;
-  /** True when PostHog writes this property itself. Its name and display type are fixed — an update changing either is rejected. */
+  /** True when PostHog writes this property itself. Its name and display type are fixed -- an update changing either is rejected. */
   is_canonical: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: CustomPropertyDefinitionOptionsList | null;
@@ -415,7 +415,7 @@ export const CustomPropertyValueSuggestionsResponseResultsList = /*@__PURE__*/ S
 export interface CustomPropertyValueSuggestionsResponse {
   /** Suggested values matching the search input. */
   results: CustomPropertyValueSuggestionsResponseResultsList;
-  /** Always false — present for compatibility with the property-values consumer. */
+  /** Always false -- present for compatibility with the property-values consumer. */
   refreshing: boolean;
 }
 export const CustomPropertyValueSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -493,7 +493,7 @@ export interface UpdateCustomPropertyDefinitionRequest {
   target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
-  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
+  /** Abbreviate large numbers (e.g. 10,000 -> 10K). Only applies to numeric properties. */
   is_big_number?: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: UpdateCustomPropertyDefinitionRequestOptionsList | null;
@@ -540,7 +540,7 @@ export interface UpdateCustomPropertyDefinitionsPartialRequest {
   target_type?: CustomPropertyDefinitionTargetTypeEnum | (string & {});
   /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
   group_type_index?: number | null;
-  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
+  /** Abbreviate large numbers (e.g. 10,000 -> 10K). Only applies to numeric properties. */
   is_big_number?: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: UpdateCustomPropertyDefinitionsPartialRequestOptionsList | null;

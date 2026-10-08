@@ -15615,7 +15615,7 @@ export type MoveApplicationByUuidError =
   | NotFound
   | UnprocessableEntity
   | CoolifyOpError;
-/** Move Move application to another project/environment. This is a purely organizational change — running containers are not affected. Note: after moving, the application will pick up shared environment variables from the new environment on the next deployment. */
+/** Move Move application to another project/environment. This is a purely organizational change -- running containers are not affected. Note: after moving, the application will pick up shared environment variables from the new environment on the next deployment. */
 export const moveApplicationByUuid: API.OperationMethod<
   MoveApplicationByUuidRequest,
   MoveApplicationByUuidResponse,
@@ -15630,7 +15630,7 @@ export const moveApplicationByUuid: API.OperationMethod<
 }));
 
 export type MoveDatabaseByUuidError = BadRequest | NotFound | UnprocessableEntity | CoolifyOpError;
-/** Move Move database to another project/environment. This is a purely organizational change — running containers are not affected. Note: after moving, the database will pick up shared environment variables from the new environment on the next deployment. */
+/** Move Move database to another project/environment. This is a purely organizational change -- running containers are not affected. Note: after moving, the database will pick up shared environment variables from the new environment on the next deployment. */
 export const moveDatabaseByUuid: API.OperationMethod<
   MoveDatabaseByUuidRequest,
   MoveDatabaseByUuidResponse,
@@ -15645,7 +15645,7 @@ export const moveDatabaseByUuid: API.OperationMethod<
 }));
 
 export type MoveServiceByUuidError = BadRequest | NotFound | UnprocessableEntity | CoolifyOpError;
-/** Move Move service to another project/environment. This is a purely organizational change — running containers are not affected. Note: after moving, the service will pick up shared environment variables from the new environment on the next deployment. */
+/** Move Move service to another project/environment. This is a purely organizational change -- running containers are not affected. Note: after moving, the service will pick up shared environment variables from the new environment on the next deployment. */
 export const moveServiceByUuid: API.OperationMethod<
   MoveServiceByUuidRequest,
   MoveServiceByUuidResponse,

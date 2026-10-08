@@ -239,7 +239,7 @@ export const HogFunctionFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionFilters" }) as any as S.Schema<HogFunctionFilters>;
 
 export interface HogFunctionMasking {
-  /** Time-to-live in seconds for the masking cache (60–86400). */
+  /** Time-to-live in seconds for the masking cache (60-86400). */
   ttl?: number;
   /** Optional threshold count before masking applies. */
   threshold?: number | null;
@@ -892,13 +892,13 @@ export const CreateHogFunctionsRerunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateHogFunctionsRerunRequest",
 }) as any as S.Schema<CreateHogFunctionsRerunRequest>;
 
-/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue — the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
+/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue -- the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
 export interface HogInvocationRerunResponse {
   /** ID of the cyclotron wrapper job that will run the rerun. Use this to poll status. */
   rerun_job_id: string;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  /** Always 0 -- rerun runs asynchronously. Kept for response shape stability. */
   queued_count: number;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  /** Always 0 -- rerun runs asynchronously. Kept for response shape stability. */
   skipped_count: number;
 }
 export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>

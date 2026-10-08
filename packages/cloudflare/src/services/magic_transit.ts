@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   accountAppId: "account_app_id",
   allowNullCipher: "allow_null_cipher",
@@ -820,7 +820,7 @@ export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -1073,7 +1073,7 @@ export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -2090,7 +2090,7 @@ export interface CreateGreTunnelRequest {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -2240,7 +2240,7 @@ export interface CreateGreTunnelResponse {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -2379,7 +2379,7 @@ export interface CreateIpsecTunnelRequest {
   accountId: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -2543,7 +2543,7 @@ export interface CreateIpsecTunnelResponse {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -4562,7 +4562,7 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnel {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -4777,7 +4777,7 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnel {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -7527,7 +7527,7 @@ export interface GreTunnelsGetResponseGreTunnel {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -7736,7 +7736,7 @@ export interface IpsecTunnelsGetResponseIpsecTunnel {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -10453,7 +10453,7 @@ export interface GreTunnelsListResponseGreTunnelsItem {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -10659,7 +10659,7 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItem {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -13628,7 +13628,7 @@ export interface UpdateGreTunnelRequest {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -13788,7 +13788,7 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnel {
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
   customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
@@ -13940,7 +13940,7 @@ export interface UpdateIpsecTunnelRequest {
   ipsecTunnelId: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
@@ -14120,7 +14120,7 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnel {
   id: string;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, 192.168.0.0-192.168.255.255. */
   interfaceAddress: string;
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;

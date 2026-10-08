@@ -240,7 +240,7 @@ export interface Certification {
   name?: string;
   /** The code of the certification. For example, for the EPREL certificate with the link https://eprel.ec.europa.eu/screen/product/dishwashers2019/123456 the code is 123456. The code is required for European Energy Labels. */
   code?: string;
-  /** The authority or certification body responsible for issuing the certification. At this time, the most common value is "EC" or “European_Commission” for energy labels in the EU. */
+  /** The authority or certification body responsible for issuing the certification. At this time, the most common value is "EC" or "European_Commission" for energy labels in the EU. */
   authority?: string;
 }
 export const Certification = /*@__PURE__*/ S.suspend(() =>

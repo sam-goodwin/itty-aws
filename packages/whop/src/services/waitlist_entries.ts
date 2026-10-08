@@ -96,7 +96,7 @@ export const ApproveWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApproveWaitlistEntryRequest",
 }) as any as S.Schema<ApproveWaitlistEntryRequest>;
 
-/** Why the last approval attempt failed, or `null` when none has. `plan_unavailable` — the plan, product, or seller account was deleted. `already_member` — the user already has a membership on a one-per-user product. `checkout_failed` — checkout failed, usually a declined payment, and the signup was denied. `unknown` — another failure; retry. Cleared when approval is requeued. */
+/** Why the last approval attempt failed, or `null` when none has. `plan_unavailable` -- the plan, product, or seller account was deleted. `already_member` -- the user already has a membership on a one-per-user product. `checkout_failed` -- checkout failed, usually a declined payment, and the signup was denied. `unknown` -- another failure; retry. Cleared when approval is requeued. */
 export type WaitlistEntryApprovalFailureReason =
   | "plan_unavailable"
   | "already_member"
@@ -134,7 +134,7 @@ export const WaitlistEntryStatus = S.String;
 export interface WaitlistEntry {
   /** The seller account, prefixed `biz_`. */
   account_id: string;
-  /** Why the last approval attempt failed, or `null` when none has. `plan_unavailable` — the plan, product, or seller account was deleted. `already_member` — the user already has a membership on a one-per-user product. `checkout_failed` — checkout failed, usually a declined payment, and the signup was denied. `unknown` — another failure; retry. Cleared when approval is requeued. */
+  /** Why the last approval attempt failed, or `null` when none has. `plan_unavailable` -- the plan, product, or seller account was deleted. `already_member` -- the user already has a membership on a one-per-user product. `checkout_failed` -- checkout failed, usually a declined payment, and the signup was denied. `unknown` -- another failure; retry. Cleared when approval is requeued. */
   approval_failure_reason: WaitlistEntryApprovalFailureReason | null;
   /** The account the signup was submitted on behalf of, prefixed `biz_`, or `null` when the user signed up for themselves. */
   buyer_account_id: string | null;

@@ -9129,7 +9129,7 @@ export type CancelEnrichmentJobError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Cancels a running or pending enrichment job. This is an idempotent operation—calling it multiple
+ * Cancels a running or pending enrichment job. This is an idempotent operation--calling it multiple
  * times with the same jobId is safe and returns the current status.
  *
  * Behavior
@@ -9387,15 +9387,15 @@ export type CreateAssetModelError =
  * You can create three types of asset models, `ASSET_MODEL`,
  * `COMPONENT_MODEL`, or an `INTERFACE`.
  *
- * - **ASSET_MODEL** – (default) An asset model that
+ * - **ASSET_MODEL** - (default) An asset model that
  * you can use to create assets. Can't be included as a component in another asset
  * model.
  *
- * - **COMPONENT_MODEL** – A reusable component that
+ * - **COMPONENT_MODEL** - A reusable component that
  * you can include in the composite models of other asset models. You can't create
  * assets directly from this type of asset model.
  *
- * - **INTERFACE** – An interface is a type of model
+ * - **INTERFACE** - An interface is a type of model
  * that defines a standard structure that can be applied to different asset models.
  */
 export const createAssetModel: API.OperationMethod<
@@ -11030,7 +11030,7 @@ export type DescribeEnrichmentJobError =
  *
  * Status Monitoring
  *
- * Jobs progress through statuses: PENDING → RUNNING → terminal state
+ * Jobs progress through statuses: PENDING -> RUNNING -> terminal state
  *
  * Terminal states:
  *
@@ -11375,7 +11375,7 @@ export type DescribeSearchError =
   | CommonErrors;
 /**
  * Returns the current status and metadata of a single search, including the query that was
- * submitted, the search type, and — when the search has failed — the reason. Use this to poll a
+ * submitted, the search type, and -- when the search has failed -- the reason. Use this to poll a
  * search started with `StartSearch` until it reaches a terminal status (`SUCCEEDED` or
  * `FAILED`).
  */
@@ -13723,7 +13723,7 @@ export type UpdateAssetModelError =
  * *IoT SiteWise User Guide*.
  *
  * If you remove a property from an asset model, IoT SiteWise deletes all previous data for that
- * property. You can’t change the type or data type of an existing property.
+ * property. You can't change the type or data type of an existing property.
  *
  * To replace an existing asset model property with a new one with the same
  * `name`, do the following:
@@ -13776,7 +13776,7 @@ export type UpdateAssetModelCompositeModelError =
  * *IoT SiteWise User Guide*.
  *
  * If you remove a property from a composite asset model, IoT SiteWise deletes all previous data
- * for that property. You can’t change the type or data type of an existing property.
+ * for that property. You can't change the type or data type of an existing property.
  *
  * To replace an existing composite asset model property with a new one with the same
  * `name`, do the following:

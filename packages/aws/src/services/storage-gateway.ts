@@ -3624,7 +3624,7 @@ export type CreateCachediSCSIVolumeError =
  *
  * Optionally, you can provide the ARN for an existing volume as the
  * `SourceVolumeARN` for this cached volume, which creates an exact copy of the
- * existing volume’s latest recovery point. The `VolumeSizeInBytes` value must be
+ * existing volume's latest recovery point. The `VolumeSizeInBytes` value must be
  * equal to or larger than the size of the copied volume, in bytes.
  */
 export const createCachediSCSIVolume: API.OperationMethod<

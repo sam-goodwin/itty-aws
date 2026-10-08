@@ -191,7 +191,7 @@ export interface ListShipmentsRequest {
   account_id?: string;
   /** Filter to shipments with this delivery status. */
   status?: ListShipmentsRequestStatus | (string & {});
-  /** Only shipments fulfilling these payments, each prefixed `pay_`. Repeat the parameter to pass several, up to 100 per request — one paginated list covers all of them. */
+  /** Only shipments fulfilling these payments, each prefixed `pay_`. Repeat the parameter to pass several, up to 100 per request -- one paginated list covers all of them. */
   payment_id?: ListShipmentsRequestPaymentIdList;
   /** Return shipments created before this ISO 8601 timestamp. */
   created_before?: string;

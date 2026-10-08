@@ -1119,7 +1119,7 @@ export const AggregationUnit = S.String;
 export interface DependenciesSignalGroupV2 {
   /** Aggregation type for child dependencies. */
   aggregationType: DependenciesSignalGroupV2AggregationType | (string & {});
-  /** Degraded threshold for aggregation. For MinHealthy: parent is degraded when healthy count/percentage falls to or below this value. For MaxNotHealthy: parent is degraded when not-healthy count/percentage reaches or exceeds this value. Optional — if not set, there is no degraded state (transitions directly from Healthy to Unhealthy). */
+  /** Degraded threshold for aggregation. For MinHealthy: parent is degraded when healthy count/percentage falls to or below this value. For MaxNotHealthy: parent is degraded when not-healthy count/percentage reaches or exceeds this value. Optional -- if not set, there is no degraded state (transitions directly from Healthy to Unhealthy). */
   degradedThreshold?: number;
   /** Unhealthy threshold for aggregation. For MinHealthy: parent is unhealthy when healthy count/percentage falls to or below this value. For MaxNotHealthy: parent is unhealthy when not-healthy count/percentage reaches or exceeds this value. Required when aggregationType is MinHealthy or MaxNotHealthy. */
   unhealthyThreshold?: number;
@@ -1184,7 +1184,7 @@ export interface SignalAggregationGroupInput {
   aggregationType?: SignalAggregationGroupInputAggregationType | (string & {});
   /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
   members: SignalAggregationGroupInputMembersList;
-  /** Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional — if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf. */
+  /** Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional -- if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf. */
   degradedThreshold?: number;
   /** Unhealthy threshold for threshold-bearing strategies. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise. */
   unhealthyThreshold?: number;
@@ -1773,7 +1773,7 @@ export interface SignalAggregationGroup {
   aggregationType?: SignalAggregationGroupAggregationType;
   /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
   members: SignalAggregationGroupMembersList;
-  /** Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional — if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf. */
+  /** Degraded threshold for threshold-bearing strategies (MinHealthy, MaxNotHealthy). For MinHealthy: group is degraded when the healthy member count/percentage falls to or below this value. For MaxNotHealthy: group is degraded when the not-healthy member count/percentage reaches or exceeds this value. Optional -- if not set, the group transitions directly between Healthy and Unhealthy. MUST NOT be set when aggregationType is WorstOf or BestOf. */
   degradedThreshold?: number;
   /** Unhealthy threshold for threshold-bearing strategies. Required when aggregationType is MinHealthy or MaxNotHealthy; MUST NOT be set otherwise. */
   unhealthyThreshold?: number;
@@ -2405,24 +2405,24 @@ export const SignalConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalConfiguration" }) as any as S.Schema<SignalConfiguration>;
 
-/** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` — not paired by index. */
+/** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedSignalsList = Array<SignalConfiguration>;
 export const GetSignalRecommendationsResponseRecommendedSignalsList = /*@__PURE__*/ S.Array(
   SignalConfiguration,
 ) as any as S.Schema<GetSignalRecommendationsResponseRecommendedSignalsList>;
 
-/** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` — not paired by index. */
+/** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedConfigurationsList =
   Array<SignalConfiguration>;
 export const GetSignalRecommendationsResponseRecommendedConfigurationsList = /*@__PURE__*/ S.Array(
   SignalConfiguration,
 ) as any as S.Schema<GetSignalRecommendationsResponseRecommendedConfigurationsList>;
 
-/** Response from `getSignalRecommendations` containing two independent suggestion streams for the Azure resource type represented by the target Entity. `recommendedSignals` lists signals broadly recommended to be enabled by default; `recommendedConfigurations` lists additional metrics that are not broadly applicable but, if a caller chooses to monitor one of them, ship with suggested starting-point thresholds. The two arrays are independent — items are not paired by index, and callers should treat them as two separate suggestion streams. */
+/** Response from `getSignalRecommendations` containing two independent suggestion streams for the Azure resource type represented by the target Entity. `recommendedSignals` lists signals broadly recommended to be enabled by default; `recommendedConfigurations` lists additional metrics that are not broadly applicable but, if a caller chooses to monitor one of them, ship with suggested starting-point thresholds. The two arrays are independent -- items are not paired by index, and callers should treat them as two separate suggestion streams. */
 export interface GetSignalRecommendationsResponse {
-  /** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` — not paired by index. */
+  /** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` -- not paired by index. */
   recommendedSignals: GetSignalRecommendationsResponseRecommendedSignalsList;
-  /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` — not paired by index. */
+  /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
   recommendedConfigurations: GetSignalRecommendationsResponseRecommendedConfigurationsList;
 }
 export const GetSignalRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>

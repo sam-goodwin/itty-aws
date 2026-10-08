@@ -413,7 +413,7 @@ export const CreateContainerRegistryCredentialsRequest = /*@__PURE__*/ S.suspend
   identifier: "CreateContainerRegistryCredentialsRequest",
 }) as any as S.Schema<CreateContainerRegistryCredentialsRequest>;
 
-/** Registry credentials (transcribed from the distilled SDK — endpoint is docs-absent). */
+/** Registry credentials (transcribed from the distilled SDK -- endpoint is docs-absent). */
 export interface CreateContainerRegistryCredentialsResult {
   user?: string | null;
   username?: string | null;

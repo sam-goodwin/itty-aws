@@ -2768,7 +2768,7 @@ export const ListLlmAnalyticsPersonalSpendRequestBucketMinutes = S.Number;
 export interface ListLlmAnalyticsPersonalSpendRequest {
   /** When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets). * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
   bucket_minutes?: ListLlmAnalyticsPersonalSpendRequestBucketMinutes | (number & {});
-  /** Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days. */
+  /** Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) -- same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days. */
   date_from?: string;
   /** End of the spend window. Accepts the same formats as `date_from`. Defaults to `now` when omitted. */
   date_to?: string;
@@ -2797,9 +2797,9 @@ export interface Summary {
   date_from: string;
   /** Exclusive UTC end of the spend window resolved from the request. */
   date_to: string;
-  /** The `ai_product` filter applied to tool / model / trace breakdowns — echoes the request `product`. */
+  /** The `ai_product` filter applied to tool / model / trace breakdowns -- echoes the request `product`. */
   product: string;
-  /** Total LLM cost in USD across every `ai_product` for the user — independent of the `product` filter. */
+  /** Total LLM cost in USD across every `ai_product` for the user -- independent of the `product` filter. */
   total_cost_usd: number;
   /** Total $ai_generation + $ai_embedding events captured across every product. */
   event_count: number;
@@ -2860,11 +2860,11 @@ export interface ToolBreakdownRow {
   tool: string | null;
   /** Number of $ai_generation events whose tool list includes this tool. */
   generation_count: number;
-  /** Sum of `$ai_total_cost_usd` for generations whose tool list includes this tool. Multi-tool generations contribute their full cost to every tool they invoked, so this sum can exceed `summary.scoped_cost_usd`. Prefer `share_of_scoped` for headline percentages — it's computed per row and doesn't require the totals to reconcile. */
+  /** Sum of `$ai_total_cost_usd` for generations whose tool list includes this tool. Multi-tool generations contribute their full cost to every tool they invoked, so this sum can exceed `summary.scoped_cost_usd`. Prefer `share_of_scoped` for headline percentages -- it's computed per row and doesn't require the totals to reconcile. */
   cost_usd: number;
-  /** This tool's share of `summary.scoped_cost_usd`, expressed as a float in `[0, 1]`. Independent per row, so co-occurring tools can each show a substantial share — the headline number to present (e.g. `'Bash drove 47% of your spend'`). */
+  /** This tool's share of `summary.scoped_cost_usd`, expressed as a float in `[0, 1]`. Independent per row, so co-occurring tools can each show a substantial share -- the headline number to present (e.g. `'Bash drove 47% of your spend'`). */
   share_of_scoped: number;
-  /** Average `$ai_input_tokens` across these generations — high values signal context bloat per call. */
+  /** Average `$ai_input_tokens` across these generations -- high values signal context bloat per call. */
   avg_input_tokens: number;
 }
 export const ToolBreakdownRow = /*@__PURE__*/ S.suspend(() =>
@@ -2959,14 +2959,14 @@ export const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DayBreakdownRow" }) as any as S.Schema<DayBreakdownRow>;
 
-/** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series. */
+/** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted -- zero-fill client-side when rendering a continuous series. */
 export type DayBreakdownItemsList = Array<DayBreakdownRow>;
 export const DayBreakdownItemsList = /*@__PURE__*/ S.Array(
   DayBreakdownRow,
 ) as any as S.Schema<DayBreakdownItemsList>;
 
 export interface DayBreakdown {
-  /** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series. */
+  /** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted -- zero-fill client-side when rendering a continuous series. */
   items: DayBreakdownItemsList;
   /** Effectively always false: `by_day` ignores `limit` because truncating a time series by cost would be meaningless, and the 90-day window cap already bounds the series length. */
   truncated: boolean;
@@ -3072,7 +3072,7 @@ export const BucketBreakdown = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketBreakdown" }) as any as S.Schema<BucketBreakdown>;
 
 export interface TopTraceRow {
-  /** `$ai_trace_id` of the session — opaque string scoped to the originating product. Format is not stable: most are UUIDs but some SDK wrappers emit JSON-shaped strings like `{"device_id":"...","session_id":"..."}`. Callers should treat this as an opaque identifier (URL-encode before linking to a trace view). */
+  /** `$ai_trace_id` of the session -- opaque string scoped to the originating product. Format is not stable: most are UUIDs but some SDK wrappers emit JSON-shaped strings like `{"device_id":"...","session_id":"..."}`. Callers should treat this as an opaque identifier (URL-encode before linking to a trace view). */
   trace_id: string | null;
   /** Number of $ai_generation events in this trace. */
   generation_count: number;
@@ -3113,7 +3113,7 @@ export const TopTraces = /*@__PURE__*/ S.suspend(() =>
 export interface PersonalSpendAnalysisResponse {
   /** High-level totals for the lookback window. */
   summary: Summary;
-  /** Spend grouped by the `ai_product` property — always across all products, never filtered. */
+  /** Spend grouped by the `ai_product` property -- always across all products, never filtered. */
   by_product: ProductBreakdown;
   /** Spend grouped by tool. Scoped to `product` when set. */
   by_tool: ToolBreakdown;
@@ -3125,7 +3125,7 @@ export interface PersonalSpendAnalysisResponse {
   by_day_model: PersonalSpendAnalysisResponseByDayModelList;
   /** Spend grouped by UTC time bucket with per-bucket cost/token components, ordered ascending. Scoped to `product`. Only present when the request set `bucket_minutes`. */
   by_bucket?: BucketBreakdown;
-  /** Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren't actionable in the UI. Kept in the response shape so existing consumers don't crash; remove your rendering of this field and we'll drop it from the response entirely in a follow-up. */
+  /** Deprecated -- always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren't actionable in the UI. Kept in the response shape so existing consumers don't crash; remove your rendering of this field and we'll drop it from the response entirely in a follow-up. */
   top_traces: TopTraces;
 }
 export const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3539,7 +3539,7 @@ export const createLlmAnalyticsSummarizationBatchCheck: API.OperationMethod<
 }));
 
 export type CreateLlmAnalyticsTextReprError = BadRequest | PosthogOpError;
-/** Generate a human-readable text representation of an LLM trace event. This endpoint converts AI observability events ($ai_generation, $ai_span, $ai_embedding, or $ai_trace) into formatted text representations suitable for display, logging, or analysis. **Supported Event Types:** - `$ai_generation`: Individual LLM API calls with input/output messages - `$ai_span`: Logical spans with state transitions - `$ai_embedding`: Embedding generation events (text input → vector) - `$ai_trace`: Full traces with hierarchical structure **Options:** - `max_length`: Maximum character count (default: 2000000) - `truncated`: Enable middle-content truncation within events (default: true) - `truncate_buffer`: Characters at start/end when truncating (default: 1000) - `include_markers`: Use interactive markers vs plain text indicators (default: true) - Frontend: set true for `<<<TRUNCATED|base64|...>>>` markers - Backend/LLM: set false for `... (X chars truncated) ...` text - `collapsed`: Show summary vs full trace tree (default: false) - `include_hierarchy`: Include tree structure for traces (default: true) - `max_depth`: Maximum depth for hierarchical rendering (default: unlimited) - `tools_collapse_threshold`: Number of tools before auto-collapsing list (default: 5) - Tool lists >5 items show `<<<TOOLS_EXPANDABLE|...>>>` marker for frontend - Or `[+] AVAILABLE TOOLS: N` for backend when `include_markers: false` - `include_line_numbers`: Prefix each line with line number like L001:, L010: (default: false) **Use Cases:** - Frontend display: `truncated: true, include_markers: true, include_line_numbers: true` - Backend LLM context (summary): `truncated: true, include_markers: false, collapsed: true` - Backend LLM context (full): `truncated: false` The response includes the formatted text and metadata about the rendering. */
+/** Generate a human-readable text representation of an LLM trace event. This endpoint converts AI observability events ($ai_generation, $ai_span, $ai_embedding, or $ai_trace) into formatted text representations suitable for display, logging, or analysis. **Supported Event Types:** - `$ai_generation`: Individual LLM API calls with input/output messages - `$ai_span`: Logical spans with state transitions - `$ai_embedding`: Embedding generation events (text input -> vector) - `$ai_trace`: Full traces with hierarchical structure **Options:** - `max_length`: Maximum character count (default: 2000000) - `truncated`: Enable middle-content truncation within events (default: true) - `truncate_buffer`: Characters at start/end when truncating (default: 1000) - `include_markers`: Use interactive markers vs plain text indicators (default: true) - Frontend: set true for `<<<TRUNCATED|base64|...>>>` markers - Backend/LLM: set false for `... (X chars truncated) ...` text - `collapsed`: Show summary vs full trace tree (default: false) - `include_hierarchy`: Include tree structure for traces (default: true) - `max_depth`: Maximum depth for hierarchical rendering (default: unlimited) - `tools_collapse_threshold`: Number of tools before auto-collapsing list (default: 5) - Tool lists >5 items show `<<<TOOLS_EXPANDABLE|...>>>` marker for frontend - Or `[+] AVAILABLE TOOLS: N` for backend when `include_markers: false` - `include_line_numbers`: Prefix each line with line number like L001:, L010: (default: false) **Use Cases:** - Frontend display: `truncated: true, include_markers: true, include_line_numbers: true` - Backend LLM context (summary): `truncated: true, include_markers: false, collapsed: true` - Backend LLM context (full): `truncated: false` The response includes the formatted text and metadata about the rendering. */
 export const createLlmAnalyticsTextRepr: API.OperationMethod<
   CreateLlmAnalyticsTextReprRequest,
   TextReprResponse,
@@ -3884,7 +3884,7 @@ export const listDatasetsRevisions: API.OperationMethod<
 }));
 
 export type ListLlmAnalyticsPersonalSpendError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache. */
+/** Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window -- defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache. */
 export const listLlmAnalyticsPersonalSpend: API.OperationMethod<
   ListLlmAnalyticsPersonalSpendRequest,
   ListLlmAnalyticsPersonalSpendResponse,

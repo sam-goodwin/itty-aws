@@ -800,7 +800,7 @@ export const BankBranchLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BankBranchLocation" }) as any as S.Schema<BankBranchLocation>;
 
-/** Seller’s consent to operate on this financial instrument. */
+/** Seller's consent to operate on this financial instrument. */
 export interface Mandate {
   /** Whether mandate was accepted or not. */
   accepted: boolean;
@@ -934,7 +934,7 @@ export const SignupMode = S.String;
 export interface ThirdPartyDetails {
   features?: RestApiIntegrationRestEndpointFeaturesEnumList;
   signup_mode?: SignupMode | (string & {});
-  /** The organization to which the account will belong in the partner’s hierarchy, as a path. */
+  /** The organization to which the account will belong in the partner's hierarchy, as a path. */
   organization?: string;
 }
 export const ThirdPartyDetails = /*@__PURE__*/ S.suspend(() =>

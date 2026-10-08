@@ -498,11 +498,11 @@ export interface ActionRun {
   index_in_repo?: number;
   /** If this is triggered by a PR from a forked repository or an untrusted user, we need to check if it is approved and limit permissions when running the workflow. */
   is_fork_pull_request?: boolean;
-  /** has the commit/tag/… the action run ran on been deleted */
+  /** has the commit/tag/... the action run ran on been deleted */
   is_ref_deleted?: boolean;
   /** may need approval if it's a fork pull request */
   need_approval?: boolean;
-  /** the commit/tag/… the action run ran on */
+  /** the commit/tag/... the action run ran on */
   prettyref?: string;
   repository?: Repository;
   /** when the action run was started */
@@ -5048,7 +5048,7 @@ export interface RepoGetActionRunLogsRequest {
   owner: string;
   /** name of the repo */
   repo: string;
-  /** ID of the workflow run. The ZIP contains the latest attempt of each job in the run, with each entry named `{job-name}-{job-id}-attempt-{N}.log` (the job ID prevents collisions when two jobs share a name; the attempt number records which run the log came from). The run itself has no attempt number — jobs are re-run independently, so use the per-job logs endpoint with `?attempt` to fetch a specific historical attempt of one job. */
+  /** ID of the workflow run. The ZIP contains the latest attempt of each job in the run, with each entry named `{job-name}-{job-id}-attempt-{N}.log` (the job ID prevents collisions when two jobs share a name; the attempt number records which run the log came from). The run itself has no attempt number -- jobs are re-run independently, so use the per-job logs endpoint with `?attempt` to fetch a specific historical attempt of one job. */
   run_id: number;
 }
 export const RepoGetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5285,7 +5285,7 @@ export interface RepoGetContentsRequest {
   repo: string;
   /** path of the dir, file, symlink or submodule in the repo */
   filepath: string;
-  /** The name of the commit/branch/tag. Default the repository’s default branch (usually master) */
+  /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
 export const RepoGetContentsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5302,7 +5302,7 @@ export interface RepoGetContentsListRequest {
   owner: string;
   /** name of the repo */
   repo: string;
-  /** The name of the commit/branch/tag. Default the repository’s default branch (usually master) */
+  /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
 export const RepoGetContentsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5334,7 +5334,7 @@ export interface RepoGetEditorConfigRequest {
   repo: string;
   /** filepath of file to get */
   filepath: string;
-  /** The name of the commit/branch/tag. Default the repository’s default branch (usually master) */
+  /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
 export const RepoGetEditorConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5895,7 +5895,7 @@ export interface RepoGetRawFileRequest {
   repo: string;
   /** filepath of the file to get */
   filepath: string;
-  /** The name of the commit/branch/tag. Default the repository’s default branch (usually master) */
+  /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
 export const RepoGetRawFileRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5919,7 +5919,7 @@ export interface RepoGetRawFileOrLFSRequest {
   repo: string;
   /** filepath of the file to get */
   filepath: string;
-  /** The name of the commit/branch/tag. Default the repository’s default branch (usually master) */
+  /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
 export const RepoGetRawFileOrLFSRequest = /*@__PURE__*/ S.suspend(() =>

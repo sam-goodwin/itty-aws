@@ -211,7 +211,7 @@ export type CreateReactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create reaction [Legacy API — https://docs.whop.com/api-reference] Add an emoji reaction or poll vote to a message or forum post. In forums, the reaction is always a like. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
+/** Create reaction [Legacy API -- https://docs.whop.com/api-reference] Add an emoji reaction or poll vote to a message or forum post. In forums, the reaction is always a like. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
 export const createReaction: API.OperationMethod<
   CreateReactionRequest,
   Reaction,
@@ -231,7 +231,7 @@ export type DeleteReactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete reaction [Legacy API — https://docs.whop.com/api-reference] Remove an emoji reaction from a message or forum post. Only the reaction author or a channel admin can remove a reaction. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
+/** Delete reaction [Legacy API -- https://docs.whop.com/api-reference] Remove an emoji reaction from a message or forum post. Only the reaction author or a channel admin can remove a reaction. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
 export const deleteReaction: API.OperationMethod<
   DeleteReactionRequest,
   DeleteReactionResponse,
@@ -251,7 +251,7 @@ export type GetReactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve reaction [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing reaction. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
+/** Retrieve reaction [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing reaction. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
 export const getReaction: API.OperationMethod<
   GetReactionRequest,
   Reaction,
@@ -271,7 +271,7 @@ export type ListReactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List reactions [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of emoji reactions on a specific message or forum post, sorted by most recent. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
+/** List reactions [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of emoji reactions on a specific message or forum post, sorted by most recent. Required permissions (one of): - `chat:read` - `dms:read` - `forum:read` - `livestream:chat:read` - `support_chat:read` */
 export const listReaction: API.PaginatedOperationMethod<
   ListReactionRequest,
   ListReactionResponse,

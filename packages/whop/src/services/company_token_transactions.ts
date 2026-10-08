@@ -354,7 +354,7 @@ export type CreateCompanyTokenTransactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create company token transaction [Legacy API — https://docs.whop.com/api-reference] Create a token transaction to add, subtract, or transfer tokens for a member within a company. Required permissions: - `company_token_transaction:create` - `member:basic:read` - `company:basic:read` */
+/** Create company token transaction [Legacy API -- https://docs.whop.com/api-reference] Create a token transaction to add, subtract, or transfer tokens for a member within a company. Required permissions: - `company_token_transaction:create` - `member:basic:read` - `company:basic:read` */
 export const createCompanyTokenTransaction: API.OperationMethod<
   CreateCompanyTokenTransactionRequest,
   CompanyTokenTransaction,
@@ -374,7 +374,7 @@ export type GetCompanyTokenTransactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve company token transaction [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing company token transaction. Required permissions: - `company_token_transaction:read` - `member:basic:read` - `company:basic:read` */
+/** Retrieve company token transaction [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing company token transaction. Required permissions: - `company_token_transaction:read` - `member:basic:read` - `company:basic:read` */
 export const getCompanyTokenTransaction: API.OperationMethod<
   GetCompanyTokenTransactionRequest,
   CompanyTokenTransaction,
@@ -394,7 +394,7 @@ export type ListCompanyTokenTransactionError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List company token transactions [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of token transactions for a user or company, depending on the authenticated actor, with optional filtering by user and transaction type. Required permissions: - `company_token_transaction:read` - `member:basic:read` - `company:basic:read` */
+/** List company token transactions [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of token transactions for a user or company, depending on the authenticated actor, with optional filtering by user and transaction type. Required permissions: - `company_token_transaction:read` - `member:basic:read` - `company:basic:read` */
 export const listCompanyTokenTransaction: API.PaginatedOperationMethod<
   ListCompanyTokenTransactionRequest,
   ListCompanyTokenTransactionResponse,

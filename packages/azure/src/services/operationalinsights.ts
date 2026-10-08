@@ -449,7 +449,7 @@ export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersCreateOrUpdateResponse",
 }) as any as S.Schema<ClustersCreateOrUpdateResponse>;
 
-/** An array of tables to export, for example: [“Heartbeat, SecurityEvent”]. */
+/** An array of tables to export, for example: ["Heartbeat, SecurityEvent"]. */
 export type DataExportPropertiesTableNamesList = Array<string>;
 export const DataExportPropertiesTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -491,7 +491,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 export interface DataExportProperties {
   /** The data export rule ID. */
   dataExportId?: string;
-  /** An array of tables to export, for example: [“Heartbeat, SecurityEvent”]. */
+  /** An array of tables to export, for example: ["Heartbeat, SecurityEvent"]. */
   tableNames: DataExportPropertiesTableNamesList;
   /** destination properties. */
   destination?: Destination;

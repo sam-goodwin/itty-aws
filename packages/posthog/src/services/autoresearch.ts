@@ -939,7 +939,7 @@ export interface CreateAutoresearchSuggestionsRespondRequest {
   pipeline_id: string;
   /** A UUID string identifying this autoresearch suggestion. */
   id: string;
-  /** How the agent handled the suggestion: 'picked_up' (applied as a search constraint), 'acted_on' (spawned one or more iterations), or 'dismissed' (rejected — explain why in agent_response). * `picked_up` - picked_up * `acted_on` - acted_on * `dismissed` - dismissed */
+  /** How the agent handled the suggestion: 'picked_up' (applied as a search constraint), 'acted_on' (spawned one or more iterations), or 'dismissed' (rejected -- explain why in agent_response). * `picked_up` - picked_up * `acted_on` - acted_on * `dismissed` - dismissed */
   status: RespondToSuggestionStatusEnum | (string & {});
   /** Plain-English note on how the suggestion was interpreted and acted upon. A dismissal needs a note, sent now or recorded earlier. Omit it to keep the note already recorded; send an empty string to clear it. */
   agent_response?: string;
@@ -1008,19 +1008,19 @@ export const TrainingRunSummaryLadderItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrainingRunSummaryLadderItem",
 }) as any as S.Schema<TrainingRunSummaryLadderItem>;
 
-/** Kept iterations, highest holdout AUC first — the winning approaches worth reusing. */
+/** Kept iterations, highest holdout AUC first -- the winning approaches worth reusing. */
 export type TrainingRunSummaryKeptLadderList = Array<TrainingRunSummaryLadderItem>;
 export const TrainingRunSummaryKeptLadderList = /*@__PURE__*/ S.Array(
   TrainingRunSummaryLadderItem,
 ) as any as S.Schema<TrainingRunSummaryKeptLadderList>;
 
-/** Discarded or crashed iterations — approaches already tried that did not help; avoid repeating. */
+/** Discarded or crashed iterations -- approaches already tried that did not help; avoid repeating. */
 export type TrainingRunSummaryDeadEndsList = Array<TrainingRunSummaryLadderItem>;
 export const TrainingRunSummaryDeadEndsList = /*@__PURE__*/ S.Array(
   TrainingRunSummaryLadderItem,
 ) as any as S.Schema<TrainingRunSummaryDeadEndsList>;
 
-/** Tier-1 distilled summary of a completed run — the orientation memory a new run reads first. */
+/** Tier-1 distilled summary of a completed run -- the orientation memory a new run reads first. */
 export interface TrainingRunSummary {
   /** Target event the run's pipeline predicts. */
   target_event: string;
@@ -1032,13 +1032,13 @@ export interface TrainingRunSummary {
   champion_promoted: boolean;
   /** Model class of the run's best model. */
   champion_model_class: string;
-  /** Kept iterations, highest holdout AUC first — the winning approaches worth reusing. */
+  /** Kept iterations, highest holdout AUC first -- the winning approaches worth reusing. */
   kept_ladder: TrainingRunSummaryKeptLadderList;
-  /** Discarded or crashed iterations — approaches already tried that did not help; avoid repeating. */
+  /** Discarded or crashed iterations -- approaches already tried that did not help; avoid repeating. */
   dead_ends: TrainingRunSummaryDeadEndsList;
   /** Agent's suggested next experiments for a future run. Empty if not provided. */
   recommended_next: string;
-  /** Agent's 1–2 sentence distillation of what this run learned. Empty if not provided. */
+  /** Agent's 1-2 sentence distillation of what this run learned. Empty if not provided. */
   distillation: string;
   /** Short id of the report notebook the agent built for this run. Empty if there is none. */
   report_notebook_short_id?: string;
@@ -1109,7 +1109,7 @@ export const IterationTrail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IterationTrail" }) as any as S.Schema<IterationTrail>;
 
-/** Per-iteration breakdown — every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
+/** Per-iteration breakdown -- every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
 export type AutoresearchTrainingRunIterationsList = Array<IterationTrail>;
 export const AutoresearchTrainingRunIterationsList = /*@__PURE__*/ S.Array(
   IterationTrail,
@@ -1136,7 +1136,7 @@ export interface AutoresearchTrainingRun {
   best_holdout_score: number | null;
   /** Distilled cross-run learning summary written on completion. Null until the run completes. */
   summary: TrainingRunSummary | null;
-  /** Per-iteration breakdown — every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
+  /** Per-iteration breakdown -- every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
   iterations: AutoresearchTrainingRunIterationsList;
   /** Error message if the run failed. */
   error: string;
@@ -1201,7 +1201,7 @@ export interface CreateAutoresearchTrainingRunsCompleteRequest {
   model_explanation?: unknown;
   /** What a future run should try next, given what this run learned. Stored in the run summary so the next run reads it during orientation. Keep it short and concrete; max 2000 characters. */
   recommended_next?: string;
-  /** A 1–2 sentence distillation of what this run learned — the winning signal, the key transform, the dead-ends. Stored in the run summary as the cheapest thing the next run reads. Max 2000 characters. */
+  /** A 1-2 sentence distillation of what this run learned -- the winning signal, the key transform, the dead-ends. Stored in the run summary as the cheapest thing the next run reads. Max 2000 characters. */
   distillation?: string;
   /** Short id of the report notebook you built for this run. Stored in the run summary only if the notebook exists in this project; an unknown id is dropped and does not fail the completion. */
   report_notebook_short_id?: string;
@@ -1308,7 +1308,7 @@ export interface CreateAutoresearchTrainingRunsIterationRequest {
   agent_description?: string;
   /** Agent's self-assessed confidence (0-1) that this iteration helps. */
   agent_confidence?: number | null;
-  /** UUID of the steering suggestion this iteration was spawned from, if any. Set it whenever the iteration acts on a pending suggestion — it links the iteration back to the suggestion for attribution and advances the suggestion to 'acted_on'. */
+  /** UUID of the steering suggestion this iteration was spawned from, if any. Set it whenever the iteration acts on a pending suggestion -- it links the iteration back to the suggestion for attribution and advances the suggestion to 'acted_on'. */
   parent_suggestion?: string | null;
 }
 export const CreateAutoresearchTrainingRunsIterationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1397,7 +1397,7 @@ export interface AutoresearchIteration {
   holdout_score?: number | null;
   status: AutoresearchIterationStatusEnum;
   agent_description?: string;
-  /** Agent's self-assessed confidence 0–1 */
+  /** Agent's self-assessed confidence 0-1 */
   agent_confidence?: number | null;
   /** UUID of the steering suggestion this iteration was spawned from, if any. */
   parent_suggestion?: string | null;
@@ -1428,7 +1428,7 @@ export interface CreateAutoresearchTrainingRunsMaterializeFeatureRequest {
   pipeline_id: string;
   /** A UUID string identifying this autoresearch training run. */
   id: string;
-  /** Your HogQL feature query, using the {anchors}/{lookback_days} contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id), one row per user. The backend runs it server-side against the labeled training population — no 500-row cap — and writes the resulting train/holdout feature and label parquet files into your sandbox. */
+  /** Your HogQL feature query, using the {anchors}/{lookback_days} contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id), one row per user. The backend runs it server-side against the labeled training population -- no 500-row cap -- and writes the resulting train/holdout feature and label parquet files into your sandbox. */
   features_sql: string;
 }
 export const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1986,7 +1986,7 @@ export interface TrainingRunHistoryEntry {
   iteration_count: number;
   /** When this run completed. */
   completed_at: string | null;
-  /** Distilled tier-1 summary of this run — read this first to orient. Null for older runs without one. */
+  /** Distilled tier-1 summary of this run -- read this first to orient. Null for older runs without one. */
   summary: TrainingRunSummary | null;
   /** The iteration trail: every recipe tried, kept or discarded, with rationale and score. */
   iterations: TrainingRunHistoryEntryIterationsList;
@@ -2006,7 +2006,7 @@ export const TrainingRunHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrainingRunHistoryEntry" }) as any as S.Schema<TrainingRunHistoryEntry>;
 
-/** Recent completed training runs — the current pipeline first, then same-target sibling pipelines on the team — newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
+/** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
 export type TrainingRunHistoryRunsList = Array<TrainingRunHistoryEntry>;
 export const TrainingRunHistoryRunsList = /*@__PURE__*/ S.Array(
   TrainingRunHistoryEntry,
@@ -2014,7 +2014,7 @@ export const TrainingRunHistoryRunsList = /*@__PURE__*/ S.Array(
 
 /** Cross-run learning memory: prior runs the agent should read before iterating. */
 export interface TrainingRunHistory {
-  /** Recent completed training runs — the current pipeline first, then same-target sibling pipelines on the team — newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
+  /** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
   runs: TrainingRunHistoryRunsList;
 }
 export const TrainingRunHistory = /*@__PURE__*/ S.suspend(() =>
@@ -2228,7 +2228,7 @@ export interface TemplateInfo {
   description: string;
   /** Default prediction horizon in days. Can be overridden when resolving. */
   default_horizon_days: number;
-  /** If true, you must supply a target_event when resolving — the template does not auto-select one. Required for 'feature_adoption' and 'repeat_key_behavior'. */
+  /** If true, you must supply a target_event when resolving -- the template does not auto-select one. Required for 'feature_adoption' and 'repeat_key_behavior'. */
   requires_user_event: boolean;
   /** If true, the target event is automatically resolved from your event schema ($pageview, $screen, or the highest-volume non-noisy event). You can override the resolved event when resolving the template. */
   requires_activity_resolution: boolean;
@@ -2633,7 +2633,7 @@ export const autoresearchResumeCreate: API.OperationMethod<
 }));
 
 export type AutoresearchTrainingRunsArtifactsDeleteCreateError = BadRequest | PosthogOpError;
-/** Delete an artifact bundle file Remove one file from this training run's artifact bundle. Idempotent — deleting a missing file is a no-op. The bundle is frozen once the run completes or fails. */
+/** Delete an artifact bundle file Remove one file from this training run's artifact bundle. Idempotent -- deleting a missing file is a no-op. The bundle is frozen once the run completes or fails. */
 export const autoresearchTrainingRunsArtifactsDeleteCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsDeleteCreateRequest,
   ArtifactDeleteResult,
@@ -2663,7 +2663,7 @@ export const autoresearchTrainingRunsArtifactsGetCreate: API.OperationMethod<
 }));
 
 export type AutoresearchTrainingRunsArtifactsUploadCreateError = BadRequest | PosthogOpError;
-/** Upload an artifact bundle file Upload one file of this training run's artifact bundle. Send the file contents base64-encoded in content_base64. Re-uploading the same path overwrites it. Use this — not curl/set_output — to author train.py, predict.py, and features.sql. The bundle is frozen once the run completes or fails. */
+/** Upload an artifact bundle file Upload one file of this training run's artifact bundle. Send the file contents base64-encoded in content_base64. Re-uploading the same path overwrites it. Use this -- not curl/set_output -- to author train.py, predict.py, and features.sql. The bundle is frozen once the run completes or fails. */
 export const autoresearchTrainingRunsArtifactsUploadCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsUploadCreateRequest,
   StoredArtifact,
@@ -2738,7 +2738,7 @@ export const createAutoresearchPause: API.OperationMethod<
 }));
 
 export type CreateAutoresearchResolveTemplateError = BadRequest | PosthogOpError;
-/** Resolve a template Resolve a template key and optional overrides into a concrete pipeline config. For activity-based templates ('likely_active_soon', 'at_risk_of_inactivity', 'return_after_first_use'), the target event is auto-resolved from your event schema — check resolved_activity_event and activity_event_alternatives, then override if needed. For 'feature_adoption' and 'repeat_key_behavior', supply target_event. After resolving, call autoresearch-validate-create to check volume and warnings, then autoresearch-create to create the pipeline. */
+/** Resolve a template Resolve a template key and optional overrides into a concrete pipeline config. For activity-based templates ('likely_active_soon', 'at_risk_of_inactivity', 'return_after_first_use'), the target event is auto-resolved from your event schema -- check resolved_activity_event and activity_event_alternatives, then override if needed. For 'feature_adoption' and 'repeat_key_behavior', supply target_event. After resolving, call autoresearch-validate-create to check volume and warnings, then autoresearch-create to create the pipeline. */
 export const createAutoresearchResolveTemplate: API.OperationMethod<
   CreateAutoresearchResolveTemplateRequest,
   ResolvedTemplate,
@@ -2783,7 +2783,7 @@ export const createAutoresearchSuggestion: API.OperationMethod<
 }));
 
 export type CreateAutoresearchSuggestionsRespondError = BadRequest | PosthogOpError;
-/** Respond to a suggestion Record how the agent handled a steering suggestion: set status to 'picked_up' (applied as a search constraint), 'acted_on' (spawned iterations), or 'dismissed' (rejected — explain in agent_response), and write the agent_response note the human will read. Call this from the training loop after deciding what to do with a pending suggestion. Recording an iteration with parent_suggestion set already advances a suggestion to 'acted_on'; use this to add the narrative or to mark a suggestion picked_up/dismissed without spawning an iteration. A suggestion only moves forward (queued, picked_up, then acted_on or dismissed); the same status again updates the note. */
+/** Respond to a suggestion Record how the agent handled a steering suggestion: set status to 'picked_up' (applied as a search constraint), 'acted_on' (spawned iterations), or 'dismissed' (rejected -- explain in agent_response), and write the agent_response note the human will read. Call this from the training loop after deciding what to do with a pending suggestion. Recording an iteration with parent_suggestion set already advances a suggestion to 'acted_on'; use this to add the narrative or to mark a suggestion picked_up/dismissed without spawning an iteration. A suggestion only moves forward (queued, picked_up, then acted_on or dismissed); the same status again updates the note. */
 export const createAutoresearchSuggestionsRespond: API.OperationMethod<
   CreateAutoresearchSuggestionsRespondRequest,
   AutoresearchSuggestion,
@@ -2813,7 +2813,7 @@ export const createAutoresearchTrain: API.OperationMethod<
 }));
 
 export type CreateAutoresearchTrainingRunError = BadRequest | PosthogOpError;
-/** Open a training run Open a new training run for a pipeline and return its id. An agent — the in-house sandbox, an external bring-your-own agent, or a scheduled job — then records iterations against this run and finalizes it with the complete endpoint. The run starts in 'running'. */
+/** Open a training run Open a new training run for a pipeline and return its id. An agent -- the in-house sandbox, an external bring-your-own agent, or a scheduled job -- then records iterations against this run and finalizes it with the complete endpoint. The run starts in 'running'. */
 export const createAutoresearchTrainingRun: API.OperationMethod<
   CreateAutoresearchTrainingRunRequest,
   AutoresearchTrainingRun,

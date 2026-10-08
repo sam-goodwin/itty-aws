@@ -29140,7 +29140,7 @@ export type DescribePhoneNumberError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets details and status of a phone number that’s claimed to your Connect Customer instance or traffic distribution group.
+ * Gets details and status of a phone number that's claimed to your Connect Customer instance or traffic distribution group.
  *
  * If the number is claimed to a traffic distribution group, and you are calling in the Amazon Web Services Region where the traffic distribution group was
  * created, you can use either a phone number ARN or UUID value for the `PhoneNumberId` URI request
@@ -29470,7 +29470,7 @@ export type DescribeUserError =
   | CommonErrors;
 /**
  * Describes the specified user. You can find the instance ID in the Connect Customer
- * console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users
+ * console (it's the final part of the ARN). The console does not display the user IDs. Instead, list the users
  * and note the IDs provided in the output.
  */
 export const describeUser: API.OperationMethod<
@@ -30304,7 +30304,7 @@ export type DismissUserContactError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the agent to
+ * Dismisses contacts from an agent's CCP and returns the agent to an available state, which allows the agent to
  * receive a new routed contact. Contacts can only be dismissed if they are in a `MISSED`,
  * `ERROR`, `ENDED`, or `REJECTED` state in the Agent Event Stream.
  */
@@ -35395,7 +35395,7 @@ export type StartChatContactError =
  * Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain
  * credentials from the CreateParticipantConnection API in the Connect Customer Participant Service.
  *
- * When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the
+ * When a new chat contact is successfully created, clients must subscribe to the participant's connection for the
  * created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS.
  *
  * To receive connection information directly in the response, set `ConnectionTypes` on the request. To
@@ -35814,7 +35814,7 @@ export type StartOutboundVoiceContactError =
  * outbound call to a contact, and then puts the contact in queue, the call is then routed to the agent, like any other
  * inbound case.
  *
- * Dialing timeout for this operation can be configured with the “RingTimeoutInSeconds” parameter. If not
+ * Dialing timeout for this operation can be configured with the "RingTimeoutInSeconds" parameter. If not
  * specified, the default dialing timeout will be 60 seconds which means if the call is not connected within 60 seconds,
  * it fails.
  *
@@ -35912,7 +35912,7 @@ export type StartTaskContactError =
  *
  * - Any update on attributes in a new task contact does not update attributes on previous contact.
  *
- * - There’s no limit on the number of task contacts that can be created that use the same
+ * - There's no limit on the number of task contacts that can be created that use the same
  * `RelatedContactId`.
  *
  * In addition, when calling StartTaskContact include only one of these parameters: `ContactFlowID`,
@@ -36484,7 +36484,7 @@ export type UpdateAttachedFilesConfigurationError =
 /**
  * Updates the attached files configuration for the specified Connect Customer instance and attachment scope.
  *
- * If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.
+ * If no instance-specific configuration exists, this operation creates one. Partial updates are supported--only specified fields are updated, while unspecified fields retain their current values.
  */
 export const updateAttachedFilesConfiguration: API.OperationMethod<
   UpdateAttachedFilesConfigurationRequest,
@@ -36734,7 +36734,7 @@ export type UpdateContactFlowModuleAliasError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a specific Aliases metadata, including the version it’s tied to, it’s name, and description.
+ * Updates a specific Aliases metadata, including the version it's tied to, it's name, and description.
  */
 export const updateContactFlowModuleAlias: API.OperationMethod<
   UpdateContactFlowModuleAliasRequest,
@@ -37624,7 +37624,7 @@ export type UpdatePhoneNumberMetadataError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a phone number’s metadata.
+ * Updates a phone number's metadata.
  *
  * To verify the status of a previous UpdatePhoneNumberMetadata operation, call the DescribePhoneNumber API.
  */

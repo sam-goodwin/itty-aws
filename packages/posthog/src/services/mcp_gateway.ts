@@ -56,7 +56,7 @@ export interface TeamMCPGatewayConfig {
   allow_custom_servers?: boolean;
   /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
   allow_member_agent_access?: boolean;
-  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
+  /** Whether servers with no gateway registration -- including catalog templates published later -- are enabled for the team. A registered server's own toggle always wins. */
   default_servers_enabled?: boolean;
   /** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
   member_default_preset?: TeamMCPGatewayConfigMemberDefaultPreset;
@@ -433,7 +433,7 @@ export const MCPGatewayServerConnectionsList = /*@__PURE__*/ S.Array(
 export interface GatewayYourConnection {
   /** The caller's installation row for this server. */
   installation_id: string;
-  /** Per-connection switch — false when self-disabled. */
+  /** Per-connection switch -- false when self-disabled. */
   is_enabled: boolean;
   /** True when the OAuth round-trip has not completed yet. */
   pending_oauth: boolean;
@@ -1249,7 +1249,7 @@ export interface McpGatewayConfigUpdateSettingsCreateRequest {
   allow_custom_servers?: boolean;
   /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
   allow_member_agent_access?: boolean;
-  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
+  /** Whether servers with no gateway registration -- including catalog templates published later -- are enabled for the team. A registered server's own toggle always wins. */
   default_servers_enabled?: boolean;
   /** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
   member_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset;

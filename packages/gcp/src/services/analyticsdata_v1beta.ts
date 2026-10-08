@@ -1184,7 +1184,7 @@ export interface CheckCompatibilityRequest {
   metrics?: MetricList;
   /** The filter clause of metrics. `metricFilter` should be the same value as in your `runReport` request */
   metricFilter?: FilterExpression;
-  /** Filters the dimensions and metrics in the response to just this compatibility. Commonly used as `”compatibilityFilter”: “COMPATIBLE”` to only return compatible dimensions & metrics. */
+  /** Filters the dimensions and metrics in the response to just this compatibility. Commonly used as `"compatibilityFilter": "COMPATIBLE"` to only return compatible dimensions & metrics. */
   compatibilityFilter?: CheckCompatibilityRequestCompatibilityFilterEnum | (string & {});
   /** The dimensions in this report. `dimensions` should be the same value as in your `runReport` request. */
   dimensions?: DimensionList;

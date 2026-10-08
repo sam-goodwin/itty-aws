@@ -321,11 +321,11 @@ export interface Collection {
   headline?: StringList;
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
   customLabel1?: string;
-  /** The URL of a collection’s image. [image_link attribute](https://support.google.com/merchants/answer/9703236) */
+  /** The URL of a collection's image. [image_link attribute](https://support.google.com/merchants/answer/9703236) */
   imageLink?: StringList;
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
   customLabel4?: string;
-  /** A collection’s landing page. URL directly linking to your collection's page on your website. [link attribute](https://support.google.com/merchants/answer/9673983) */
+  /** A collection's landing page. URL directly linking to your collection's page on your website. [link attribute](https://support.google.com/merchants/answer/9673983) */
   link?: string;
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. [Custom label](https://support.google.com/merchants/answer/9674217) */
   customLabel0?: string;
@@ -335,7 +335,7 @@ export interface Collection {
   featuredProduct?: CollectionFeaturedProductList;
   /** The language of a collection and the language of any featured products linked to the collection. [language attribute](https://support.google.com/merchants/answer/9673781) */
   language?: string;
-  /** A collection’s mobile-optimized landing page when you have a different URL for mobile and desktop traffic. [mobile_link attribute](https://support.google.com/merchants/answer/9646123) */
+  /** A collection's mobile-optimized landing page when you have a different URL for mobile and desktop traffic. [mobile_link attribute](https://support.google.com/merchants/answer/9646123) */
   mobileLink?: string;
   /** [product_country attribute](https://support.google.com/merchants/answer/9674155) */
   productCountry?: string;
@@ -1710,7 +1710,7 @@ export interface AccountItemUpdatesSettings {
   allowPriceUpdates?: boolean;
   /** If allow_availability_updates is enabled, items are automatically updated in all your Shopping target countries. By default, availability updates will only be applied to items that are 'out of stock' on your website but 'in stock' on Shopping. Set this to true to also update items that are 'in stock' on your website, but 'out of stock' on Google Shopping. In order for this field to have an effect, you must also allow availability updates. */
   allowStrictAvailabilityUpdates?: boolean;
-  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer’s page. */
+  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer's page. */
   allowAvailabilityUpdates?: boolean;
 }
 export const AccountItemUpdatesSettings = /*@__PURE__*/ S.suspend(() =>
@@ -4098,7 +4098,7 @@ export interface Product {
   maxHandlingTime?: string;
   /** Structured title, for algorithmically (AI)-generated titles. */
   structuredTitle?: ProductStructuredTitle;
-  /** The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
+  /** The date time when an offer becomes visible in search results across Google's YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
   disclosureDate?: string;
   /** Availability status of the item. */
   availability?: string;
@@ -6521,7 +6521,7 @@ export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = /*@__P
 
 /** Status of program and region. */
 export interface FreeListingsProgramStatusRegionStatus {
-  /** Reason a program in a specific region isn’t eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
+  /** Reason a program in a specific region isn't eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
   reviewIneligibilityReasonDescription?: string;
   /** If a program is eligible for review in a specific region. Only visible if `eligibilityStatus` is `DISAPPROVED`. */
   reviewEligibilityStatus?: FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum;
@@ -6977,7 +6977,7 @@ export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
 export interface ShoppingAdsProgramStatusRegionStatus {
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
   disapprovalDate?: string;
-  /** Reason a program in a specific region isn’t eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
+  /** Reason a program in a specific region isn't eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
   reviewIneligibilityReasonDescription?: string;
   /** Additional information for ineligibility. If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a timestamp for the end of the cooldown period is provided. */
   reviewIneligibilityReasonDetails?: FreeListingsProgramStatusReviewIneligibilityReasonDetails;
@@ -9776,7 +9776,7 @@ export interface TopicTrends {
   last90DaysSearchInterest?: number;
   /** Daily search interest, normalized to the time and country to make comparisons easier, with 100 representing peak popularity (from 0 to 100) for the requested time period and location. */
   searchInterest?: number;
-  /** Country trends are calculated for. Must be a two-letter country code (ISO 3166-1-alpha-2 code), for example, `“US”`. */
+  /** Country trends are calculated for. Must be a two-letter country code (ISO 3166-1-alpha-2 code), for example, `"US"`. */
   customerCountryCode?: string;
   /** Search interest in the last 30 days, with the same normalization as search_interest. This field is only present for a past date. */
   last30DaysSearchInterest?: number;
@@ -9926,9 +9926,9 @@ export const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
 export interface CompetitiveVisibility {
-  /** Higher position rate shows how often a competitor’s offer got placed in a higher position on the page than your offer. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
+  /** Higher position rate shows how often a competitor's offer got placed in a higher position on the page than your offer. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
-  /** Page overlap rate describes how frequently competing retailers’ offers are shown together with your offers on the same page. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
+  /** Page overlap rate describes how frequently competing retailers' offers are shown together with your offers on the same page. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
   pageOverlapRate?: number;
   /** True if this row contains data for your domain. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
   isYourDomain?: boolean;
@@ -9940,7 +9940,7 @@ export interface CompetitiveVisibility {
   categoryBenchmarkVisibilityTrend?: number;
   /** Change in visibility based on impressions for your domain with respect to the start of the selected time range (or first day with non-zero impressions). Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered on in the 'WHERE' clause. */
   yourDomainVisibilityTrend?: number;
-  /** Relative visibility shows how often your competitors’ offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Available only in `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
+  /** Relative visibility shows how often your competitors' offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Available only in `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
   relativeVisibility?: number;
   /** Google product category ID to calculate the report for, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). Required in the `SELECT` clause. A `WHERE` condition on `competitive_visibility.category_id` is required in the query. */
   categoryId?: string;

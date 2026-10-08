@@ -225,7 +225,7 @@ export const CancelRunV1Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelRunV1Response" }) as any as S.Schema<CancelRunV1Response>;
 
 export interface CloseSessionV1Request {
-  /** The session's friendly ID (`session_…`) or your `externalId`. The server disambiguates by the `session_` prefix. */
+  /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
   /** Optional reason recorded on the session row. */
   reason?: string;
@@ -345,7 +345,7 @@ export const SessionObject = /*@__PURE__*/ S.suspend(() =>
 export interface CompleteWaitpointTokenCallbackV1Request {
   /** The ID of the waitpoint token. */
   waitpointId: string;
-  /** The HMAC hash that authenticates the request. This is embedded in the `url` returned when creating the token — do not construct it manually. */
+  /** The HMAC hash that authenticates the request. This is embedded in the `url` returned when creating the token -- do not construct it manually. */
   callbackHash: string;
 }
 export const CompleteWaitpointTokenCallbackV1Request = /*@__PURE__*/ S.suspend(() =>
@@ -1035,7 +1035,7 @@ export interface GetBatchResultsV1ResponseItemsItem {
   ok: boolean;
   /** The run ID. */
   id: string;
-  /** The serialized output as a string (present when ok is true). Use outputType to determine how to parse it — for "application/json" use JSON.parse(). */
+  /** The serialized output as a string (present when ok is true). Use outputType to determine how to parse it -- for "application/json" use JSON.parse(). */
   output?: string;
   /** The content type of the serialized output, e.g. "application/json". */
   outputType?: string;
@@ -1899,7 +1899,7 @@ export interface GetRunResultV1Response {
   ok: boolean;
   /** The run ID. */
   id: string;
-  /** The serialized output as a string (present when ok is true). Use outputType to determine how to parse it — for "application/json" use JSON.parse(). */
+  /** The serialized output as a string (present when ok is true). Use outputType to determine how to parse it -- for "application/json" use JSON.parse(). */
   output?: string;
   /** The content type of the serialized output, e.g. "application/json". */
   outputType?: string;
@@ -2378,7 +2378,7 @@ export const GetScheduleV1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScheduleV1Request" }) as any as S.Schema<GetScheduleV1Request>;
 
 export interface GetSessionV1Request {
-  /** The session's friendly ID (`session_…`) or your `externalId`. The server disambiguates by the `session_` prefix. */
+  /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
 }
 export const GetSessionV1Request = /*@__PURE__*/ S.suspend(() =>
@@ -3542,7 +3542,7 @@ export const ListSessionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSessionsResult" }) as any as S.Schema<ListSessionsResult>;
 
 export interface ListWaitpointTokensV1Request {
-  /** Number of tokens to return per page (1–100). */
+  /** Number of tokens to return per page (1-100). */
   page_size_?: number;
   /** Return tokens after this cursor (from `pagination.next` in a previous response). */
   page_after_?: string;
@@ -4368,7 +4368,7 @@ export const UpdateSessionV1RequestMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UpdateSessionV1RequestMetadataMap>;
 
 export interface UpdateSessionV1Request {
-  /** The session's friendly ID (`session_…`) or your `externalId`. The server disambiguates by the `session_` prefix. */
+  /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
   /** Replaces the tags on the session row. */
   tags?: UpdateSessionV1RequestTagsList;
@@ -4481,7 +4481,7 @@ export const cancelRunV1: API.OperationMethod<
 }));
 
 export type CloseSessionV1Error = NotFound | TriggerDevOpError;
-/** Close a session Close a session. Closing is terminal and idempotent — closing an already-closed session returns the existing row unchanged. A closed session cannot be reopened, and reusing its `externalId` on create returns `409`. Requires a secret key — a session public token cannot close a session. */
+/** Close a session Close a session. Closing is terminal and idempotent -- closing an already-closed session returns the existing row unchanged. A closed session cannot be reopened, and reusing its `externalId` on create returns `409`. Requires a secret key -- a session public token cannot close a session. */
 export const closeSessionV1: API.OperationMethod<
   CloseSessionV1Request,
   SessionObject,
@@ -4496,7 +4496,7 @@ export const closeSessionV1: API.OperationMethod<
 }));
 
 export type CompleteWaitpointTokenCallbackV1Error = NotFound | TriggerDevOpError;
-/** Complete a waitpoint token via HTTP callback Completes a waitpoint token using the pre-signed callback URL returned in the `url` field when the token was created. No API key is required — the `callbackHash` in the URL acts as the authentication token. This is designed to be given directly to external services (e.g. as a webhook URL) so they can unblock a waiting run without needing access to your API key. The entire request body is passed as the output data to the waiting run. If the token is already completed, this is a no-op and returns `success: true`. */
+/** Complete a waitpoint token via HTTP callback Completes a waitpoint token using the pre-signed callback URL returned in the `url` field when the token was created. No API key is required -- the `callbackHash` in the URL acts as the authentication token. This is designed to be given directly to external services (e.g. as a webhook URL) so they can unblock a waiting run without needing access to your API key. The entire request body is passed as the output data to the waiting run. If the token is already completed, this is a no-op and returns `success: true`. */
 export const completeWaitpointTokenCallbackV1: API.OperationMethod<
   CompleteWaitpointTokenCallbackV1Request,
   CompleteWaitpointTokenResponse,
@@ -4661,7 +4661,7 @@ export const executeQueryV1: API.OperationMethod<
 }));
 
 export type GetBatchResultsV1Error = NotFound | TriggerDevOpError;
-/** Retrieve batch results Returns the execution results of all completed runs in a batch. Only finished runs (successful or failed) are included in the items array — runs that are still executing are omitted. Returns 404 if the batch doesn't exist. */
+/** Retrieve batch results Returns the execution results of all completed runs in a batch. Only finished runs (successful or failed) are included in the items array -- runs that are still executing are omitted. Returns 404 if the batch doesn't exist. */
 export const getBatchResultsV1: API.OperationMethod<
   GetBatchResultsV1Request,
   GetBatchResultsV1Response,
@@ -4841,7 +4841,7 @@ export const getRunResultV1: API.OperationMethod<
 }));
 
 export type GetRunTraceV1Error = NotFound | TriggerDevOpError;
-/** Retrieve run trace Returns the OTel trace subtree for the requested run — the run's span as `rootSpan`, its ancestor chain, and its descendant spans. For child or nested runs in a large trace, this is scoped to that run rather than the trace-wide root. */
+/** Retrieve run trace Returns the OTel trace subtree for the requested run -- the run's span as `rootSpan`, its ancestor chain, and its descendant spans. For child or nested runs in a large trace, this is scoped to that run rather than the trace-wide root. */
 export const getRunTraceV1: API.OperationMethod<
   GetRunTraceV1Request,
   GetRunTraceV1Response,
@@ -4886,7 +4886,7 @@ export const getScheduleV1: API.OperationMethod<
 }));
 
 export type GetSessionV1Error = NotFound | TriggerDevOpError;
-/** Retrieve a session Retrieve a single session by its friendly id (`session_…`) or your `externalId`. The response includes `triggerConfig` and the friendly `currentRunId` of the live run, if any. */
+/** Retrieve a session Retrieve a single session by its friendly id (`session_...`) or your `externalId`. The response includes `triggerConfig` and the friendly `currentRunId` of the live run, if any. */
 export const getSessionV1: API.OperationMethod<
   GetSessionV1Request,
   SessionObject,
@@ -5381,7 +5381,7 @@ export const updateScheduleV1: API.OperationMethod<
 }));
 
 export type UpdateSessionV1Error = NotFound | UnprocessableEntity | TriggerDevOpError;
-/** Update a session Update a session's `tags` or `metadata`. Pass `metadata: null` to clear it. Requires a secret key — a session public token cannot update a session. `externalId` is read-only after create: it cannot be changed or cleared. Sending a value different from the current one (including `null` when one is set) returns `422`; sending the same value is accepted as a no-op. */
+/** Update a session Update a session's `tags` or `metadata`. Pass `metadata: null` to clear it. Requires a secret key -- a session public token cannot update a session. `externalId` is read-only after create: it cannot be changed or cleared. Sending a value different from the current one (including `null` when one is set) returns `422`; sending the same value is accepted as a no-op. */
 export const updateSessionV1: API.OperationMethod<
   UpdateSessionV1Request,
   SessionObject,

@@ -173,7 +173,7 @@ export interface GenerateMcpAnalyticsSessionIntentRequest {
   project_id: string;
   /** A UUID string identifying this mcp analytics submission. */
   id: string;
-  /** Absolute ISO timestamp lower bound for the intent scan — pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted. */
+  /** Absolute ISO timestamp lower bound for the intent scan -- pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted. */
   date_from?: string;
 }
 export const GenerateMcpAnalyticsSessionIntentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -235,11 +235,11 @@ export interface MCPIntentClusterToolEntry {
   tool: string;
   /** Number of tool calls routed to this tool across the cluster. */
   count: number;
-  /** Percentage of the cluster's calls that went to this tool, 0–100. */
+  /** Percentage of the cluster's calls that went to this tool, 0-100. */
   pct: number;
   /** Number of error responses observed for this tool within the cluster. */
   errors: number;
-  /** Error rate for this tool within the cluster, 0–100. */
+  /** Error rate for this tool within the cluster, 0-100. */
   error_rate_pct: number;
 }
 export const MCPIntentClusterToolEntry = /*@__PURE__*/ S.suspend(() =>
@@ -370,7 +370,7 @@ export interface MCPIntentCluster {
   call_count: number;
   /** Total number of error responses observed across the cluster. */
   error_count: number;
-  /** Aggregate error rate across all tool calls in the cluster, 0–100. */
+  /** Aggregate error rate across all tool calls in the cluster, 0-100. */
   error_rate_pct: number;
   /** Normalised Shannon entropy of the tool distribution. 0 means perfectly consistent routing (one tool dominates); 1 means uniformly spread across all tools called for this intent cluster. */
   routing_entropy: number;
@@ -423,7 +423,7 @@ export const MCPToolPivotCompetitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPToolPivotCompetitor" }) as any as S.Schema<MCPToolPivotCompetitor>;
 
 export interface MCPToolPivotClusterEntry {
-  /** Cluster this entry refers to, within the snapshot. The cluster's own label, totals, and entropy live on that cluster — join on this id rather than expecting them here. */
+  /** Cluster this entry refers to, within the snapshot. The cluster's own label, totals, and entropy live on that cluster -- join on this id rather than expecting them here. */
   cluster_id: number;
   /** Calls routed to this tool for this intent cluster. */
   calls: number;
@@ -456,7 +456,7 @@ export const MCPToolPivotClustersList = /*@__PURE__*/ S.Array(
 export interface MCPToolPivot {
   /** Effective MCP tool name. */
   tool: string;
-  /** Intent-attributed calls to this tool across the sampled corpus, counting every cluster the run produced — including clusters the snapshot's cluster cap left out. */
+  /** Intent-attributed calls to this tool across the sampled corpus, counting every cluster the run produced -- including clusters the snapshot's cluster cap left out. */
   call_count: number;
   /** Errored attributed calls across the corpus. */
   error_count: number;
@@ -702,7 +702,7 @@ export const ListMcpAnalyticsMissingCapabilitiesRequest = /*@__PURE__*/ S.suspen
 export interface ListMcpAnalyticsSessionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Start of the window to aggregate sessions over. PostHog date string — relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'. */
+  /** Start of the window to aggregate sessions over. PostHog date string -- relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'. */
   date_from?: string;
   /** End of the window. PostHog date string or absolute ISO timestamp. Defaults to now. */
   date_to?: string;
@@ -1050,11 +1050,11 @@ export interface McpAnalyticsSessionsToolCallsRequest {
   project_id: string;
   /** A UUID string identifying this mcp analytics submission. */
   id: string;
-  /** Absolute ISO timestamp lower bound for the event scan — pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted or unparseable. */
+  /** Absolute ISO timestamp lower bound for the event scan -- pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted or unparseable. */
   date_from?: string;
   /** Whether to also apply the project's internal and test user filters (its test_account_filters setting) on top of `properties`. */
   filter_test_accounts?: boolean;
-  /** Maximum tool calls to return per page (1–500). Defaults to 500 — the whole page — so a session's calls come back in one request; pass a smaller value for a lighter response. Values above the cap are rejected. */
+  /** Maximum tool calls to return per page (1-500). Defaults to 500 -- the whole page -- so a session's calls come back in one request; pass a smaller value for a lighter response. Values above the cap are rejected. */
   limit?: number;
   /** Number of tool calls to skip before returning results. Combine with limit to page through a session's calls; the response's has_next flag indicates whether more remain. */
   offset?: number;

@@ -2899,7 +2899,7 @@ export const VolumePropertiesInputPlacementRulesList = /*@__PURE__*/ S.Array(
 export type VolumePropertiesInputEnableSubvolumes = "Enabled" | "Disabled";
 export const VolumePropertiesInputEnableSubvolumes = S.String;
 
-/** Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode, delivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature is available only in regions where it’s been configured and first-time users must finish onboarding prior to using Breakthrough Mode. */
+/** Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode, delivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature is available only in regions where it's been configured and first-time users must finish onboarding prior to using Breakthrough Mode. */
 export type BreakthroughMode = "Enabled" | "Disabled";
 export const BreakthroughMode = S.String;
 
@@ -3661,7 +3661,7 @@ export interface VolumeQuotaRulesPropertiesInput {
   quotaSizeInKiBs?: number;
   /** Type of quota */
   quotaType?: QuotaType | (string & {});
-  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
+  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
 }
 export const VolumeQuotaRulesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
@@ -3732,7 +3732,7 @@ export interface VolumeQuotaRulesProperties {
   quotaSizeInKiBs?: number;
   /** Type of quota */
   quotaType?: QuotaType;
-  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
+  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
 }
 export const VolumeQuotaRulesProperties = /*@__PURE__*/ S.suspend(() =>
@@ -7329,7 +7329,7 @@ export const ListVolumeQuotaReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface QuotaReport {
   /** Type of quota */
   quotaType?: QuotaType;
-  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
+  /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
   /** Specifies the current usage in kibibytes for the user/group quota. */
   quotaLimitUsedInKiBs?: number;

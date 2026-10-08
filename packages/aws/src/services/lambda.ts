@@ -5846,17 +5846,17 @@ export type CreateEventSourceMappingError =
  *
  * The following error handling options are available for stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
  *
- * - `BisectBatchOnFunctionError` – If the function returns an error, split the batch in two and retry.
+ * - `BisectBatchOnFunctionError` - If the function returns an error, split the batch in two and retry.
  *
- * - `MaximumRecordAgeInSeconds` – Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
+ * - `MaximumRecordAgeInSeconds` - Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
  *
- * - `MaximumRetryAttempts` – Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
+ * - `MaximumRetryAttempts` - Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
  *
- * - `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
+ * - `OnFailure` - Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
  *
  * The following option is available only for DynamoDB and Kinesis event sources:
  *
- * - `ParallelizationFactor` – Process multiple batches from each shard concurrently.
+ * - `ParallelizationFactor` - Process multiple batches from each shard concurrently.
  *
  * For information about which configuration parameters apply to each event source, see the following topics.
  *
@@ -8664,17 +8664,17 @@ export type UpdateEventSourceMappingError =
  *
  * The following error handling options are available for stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
  *
- * - `BisectBatchOnFunctionError` – If the function returns an error, split the batch in two and retry.
+ * - `BisectBatchOnFunctionError` - If the function returns an error, split the batch in two and retry.
  *
- * - `MaximumRecordAgeInSeconds` – Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
+ * - `MaximumRecordAgeInSeconds` - Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
  *
- * - `MaximumRetryAttempts` – Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
+ * - `MaximumRetryAttempts` - Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
  *
- * - `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
+ * - `OnFailure` - Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
  *
  * The following option is available only for DynamoDB and Kinesis event sources:
  *
- * - `ParallelizationFactor` – Process multiple batches from each shard concurrently.
+ * - `ParallelizationFactor` - Process multiple batches from each shard concurrently.
  *
  * For information about which configuration parameters apply to each event source, see the following topics.
  *

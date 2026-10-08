@@ -1230,9 +1230,9 @@ export interface GetAgentResponseTriggersItemSchedule {
   monthdays?: GetAgentResponseTriggersItemScheduleMonthdaysList;
   /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
   week_numbers?: GetAgentResponseTriggersItemScheduleWeekNumbersList;
-  /** Hour of day (0–23) the schedule runs. */
+  /** Hour of day (0-23) the schedule runs. */
   hour?: number;
-  /** Minute of the hour (0–59) the schedule runs. */
+  /** Minute of the hour (0-59) the schedule runs. */
   minute?: number;
   /** IANA timezone (e.g. "America/New_York"). */
   timezone?: string;
@@ -3659,9 +3659,9 @@ export interface QueryAgentsResponseResultsItemCase0TriggersItemSchedule {
   monthdays?: QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysList;
   /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
   week_numbers?: QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekNumbersList;
-  /** Hour of day (0–23) the schedule runs. */
+  /** Hour of day (0-23) the schedule runs. */
   hour?: number;
-  /** Minute of the hour (0–59) the schedule runs. */
+  /** Minute of the hour (0-59) the schedule runs. */
   minute?: number;
   /** IANA timezone (e.g. "America/New_York"). */
   timezone?: string;
@@ -4366,9 +4366,9 @@ export interface QueryAgentsResponseResultsItemCase1TriggersItemSchedule {
   monthdays?: QueryAgentsResponseResultsItemCase1TriggersItemScheduleMonthdaysList;
   /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
   week_numbers?: QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekNumbersList;
-  /** Hour of day (0–23) the schedule runs. */
+  /** Hour of day (0-23) the schedule runs. */
   hour?: number;
-  /** Minute of the hour (0–59) the schedule runs. */
+  /** Minute of the hour (0-59) the schedule runs. */
   minute?: number;
   /** IANA timezone (e.g. "America/New_York"). */
   timezone?: string;

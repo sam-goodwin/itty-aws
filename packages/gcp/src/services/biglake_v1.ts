@@ -22,7 +22,7 @@ export class BadRequest
     [{ status: 400 }],
   ) {}
 
-/** BigLake answers a missing catalog, database or table with HTTP 403 PERMISSION_DENIED: "Permission 'biglake.<kind>.get' denied on resource '...' (or it may not exist)." — verified live with a caller that can read existing resources. */
+/** BigLake answers a missing catalog, database or table with HTTP 403 PERMISSION_DENIED: "Permission 'biglake.<kind>.get' denied on resource '...' (or it may not exist)." -- verified live with a caller that can read existing resources. */
 export class BigLakeResourceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BigLakeResourceNotFound>()("BigLakeResourceNotFound", {

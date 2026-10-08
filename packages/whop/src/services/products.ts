@@ -176,11 +176,11 @@ export type ProductCustomCta =
 export const ProductCustomCta = S.String;
 
 export interface Money {
-  /** The amount in major units, as an exact decimal string — `"10.00"` is ten dollars. A string so no float rounds it in transit. */
+  /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
   /** Three-letter ISO 4217 currency code, lowercase. */
   currency: string;
-  /** How many decimal places the amount CARRIES — the precision the charge itself runs at. */
+  /** How many decimal places the amount CARRIES -- the precision the charge itself runs at. */
   decimals: number;
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
@@ -350,7 +350,7 @@ export const PlanListItemVisibility = S.String;
 export interface PlanListItem {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
-  /** Whether adaptive pricing is enabled for this plan. Raw setting — does not check processor compatibility or feature flags. */
+  /** Whether adaptive pricing is enabled for this plan. Raw setting -- does not check processor compatibility or feature flags. */
   adaptive_pricing_enabled: boolean;
   /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
   attributes: PlanListItemAttributesMap | null;
@@ -921,7 +921,7 @@ export const deleteProduct: API.OperationMethod<
 }));
 
 export type GetProductError = NotFound | WhopOpError;
-/** Retrieve Product Retrieves a product. Public — no credentials. */
+/** Retrieve Product Retrieves a product. Public -- no credentials. */
 export const getProduct: API.OperationMethod<
   GetProductRequest,
   Product,

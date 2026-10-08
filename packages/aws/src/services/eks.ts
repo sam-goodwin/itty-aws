@@ -5555,7 +5555,7 @@ export type CreatePodIdentityAssociationError =
  * Similar to Amazon Web Services IAM behavior, EKS Pod Identity associations are eventually consistent,
  * and may take several seconds to be effective after the initial API call returns
  * successfully. You must design your applications to account for these potential delays.
- * We recommend that you don’t include association create/updates in the
+ * We recommend that you don't include association create/updates in the
  * critical, high-availability code paths of your application. Instead, make changes in a
  * separate initialization or setup routine that you run less frequently.
  *
@@ -5690,11 +5690,11 @@ export type DeleteCertificateAuthorityError =
  *
  * Deleting a certificate authority removes its public certificate from the cluster's
  * trust bundle. You can't delete the certificate authority that's currently signing
- * certificates for the cluster (its `signingStatus` is `IN_USE`) — to
+ * certificates for the cluster (its `signingStatus` is `IN_USE`) -- to
  * remove the outgoing CA, first activate the successor CA with
  * `ActivateCertificateAuthority`
  * . Amazon EKS also protects a successor CA
- * from deletion in certain cases to keep a valid rotation path — for example, a successor
+ * from deletion in certain cases to keep a valid rotation path -- for example, a successor
  * that Amazon EKS appended can't be deleted while it's the only successor on the cluster. This is
  * an asynchronous operation that returns an `update` object.
  */
@@ -7415,7 +7415,7 @@ export type UpdatePodIdentityAssociationError =
  * Similar to Amazon Web Services IAM behavior, EKS Pod Identity associations are eventually consistent,
  * and may take several seconds to be effective after the initial API call returns
  * successfully. You must design your applications to account for these potential delays.
- * We recommend that you don’t include association create/updates in the
+ * We recommend that you don't include association create/updates in the
  * critical, high-availability code paths of your application. Instead, make changes in a
  * separate initialization or setup routine that you run less frequently.
  *

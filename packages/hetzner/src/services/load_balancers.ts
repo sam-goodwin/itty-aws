@@ -2187,7 +2187,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdateLoadBalancerError = HetznerOpError;
-/** Update a Load Balancer Updates a Load Balancer. You can update a Load Balancer’s name and a Load Balancer’s labels. Note: if the Load Balancer object changes during the request, the response will be a “conflict” error. */
+/** Update a Load Balancer Updates a Load Balancer. You can update a Load Balancer's name and a Load Balancer's labels. Note: if the Load Balancer object changes during the request, the response will be a "conflict" error. */
 export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerRequest,
   UpdateLoadBalancerResponse,

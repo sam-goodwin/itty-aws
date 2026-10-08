@@ -4885,7 +4885,7 @@ export const CheckApiManagementServiceNameAvailabilityRequest = /*@__PURE__*/ S.
   identifier: "CheckApiManagementServiceNameAvailabilityRequest",
 }) as any as S.Schema<CheckApiManagementServiceNameAvailabilityRequest>;
 
-/** Invalid indicates the name provided does not match the resource provider’s naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
+/** Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
 export type ApiManagementServiceNameAvailabilityResultReason =
   | "Valid"
   | "Invalid"
@@ -4898,7 +4898,7 @@ export interface ApiManagementServiceNameAvailabilityResult {
   nameAvailable?: boolean;
   /** If reason == invalid, provide the user with the reason why the given name is invalid, and provide the resource naming requirements so that the user can select a valid name. If reason == AlreadyExists, explain that <resourceName> is already in use, and direct them to select a different name. */
   message?: string;
-  /** Invalid indicates the name provided does not match the resource provider’s naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
+  /** Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
   reason?: ApiManagementServiceNameAvailabilityResultReason;
 }
 export const ApiManagementServiceNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
@@ -13245,7 +13245,7 @@ export interface ProductContractProperties {
   terms?: string;
   /** Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true. */
   subscriptionRequired?: boolean;
-  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
+  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product's APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product's APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
   approvalRequired?: boolean;
   /** Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false. */
   subscriptionsLimit?: number;
@@ -13524,7 +13524,7 @@ export interface GetQuotaByPeriodKeyRequest {
   resourceGroupName: string;
   /** The name of the API Management service. */
   serviceName: string;
-  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it’s accessible by "boo" counter key. But if it’s defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
+  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it's accessible by "boo" counter key. But if it's defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
   quotaCounterKey: string;
   /** Quota period key identifier. */
   quotaPeriodKey: string;
@@ -13614,7 +13614,7 @@ export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSubscriptionRequest" }) as any as S.Schema<GetSubscriptionRequest>;
 
-/** Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+/** Subscription state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
 export type SubscriptionContractPropertiesState =
   | "suspended"
   | "active"
@@ -13632,7 +13632,7 @@ export interface SubscriptionContractProperties {
   scope: string;
   /** The name of the subscription, or null if the subscription has no name. */
   displayName?: string;
-  /** Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+  /** Subscription state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
   state: SubscriptionContractPropertiesState;
   /** Subscription creation date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard. */
   createdDate?: string;
@@ -16686,7 +16686,7 @@ export interface ProductTagResourceContractProperties {
   terms?: string;
   /** Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true. */
   subscriptionRequired?: boolean;
-  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
+  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product's APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product's APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
   approvalRequired?: boolean;
   /** Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false. */
   subscriptionsLimit?: number;
@@ -23059,7 +23059,7 @@ export interface ListQuotaByCounterKeyByServiceRequest {
   resourceGroupName: string;
   /** The name of the API Management service. */
   serviceName: string;
-  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it’s accessible by "boo" counter key. But if it’s defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
+  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it's accessible by "boo" counter key. But if it's defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
   quotaCounterKey: string;
 }
 export const ListQuotaByCounterKeyByServiceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -29414,7 +29414,7 @@ export const SendUserConfirmationPasswordResponse = /*@__PURE__*/ S.suspend(() =
 export type SubscriptionCreateOrUpdateRequestAppType = "portal" | "developerPortal";
 export const SubscriptionCreateOrUpdateRequestAppType = S.String;
 
-/** Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+/** Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
 export type SubscriptionCreateParameterPropertiesState =
   | "suspended"
   | "active"
@@ -29436,7 +29436,7 @@ export interface SubscriptionCreateParameterProperties {
   primaryKey?: string;
   /** Secondary subscription key. If not specified during request key will be generated automatically. */
   secondaryKey?: string;
-  /** Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+  /** Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
   state?: SubscriptionCreateParameterPropertiesState | (string & {});
   /** Determines whether tracing can be enabled */
   allowTracing?: boolean;
@@ -32102,7 +32102,7 @@ export interface ProductUpdateProperties {
   terms?: string;
   /** Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true. */
   subscriptionRequired?: boolean;
-  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
+  /** whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product's APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product's APIs. Can be present only if subscriptionRequired property is present and has a value of false. */
   approvalRequired?: boolean;
   /** Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false. */
   subscriptionsLimit?: number;
@@ -32228,7 +32228,7 @@ export interface UpdateQuotaByCounterKeyRequest {
   resourceGroupName: string;
   /** The name of the API Management service. */
   serviceName: string;
-  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it’s accessible by "boo" counter key. But if it’s defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
+  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it's accessible by "boo" counter key. But if it's defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
   quotaCounterKey: string;
   /** Quota counter value details. */
   properties?: QuotaCounterValueContractProperties;
@@ -32283,7 +32283,7 @@ export interface UpdateQuotaByPeriodKeyRequest {
   resourceGroupName: string;
   /** The name of the API Management service. */
   serviceName: string;
-  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it’s accessible by "boo" counter key. But if it’s defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
+  /** Quota counter key identifier.This is the result of expression defined in counter-key attribute of the quota-by-key policy.For Example, if you specify counter-key="boo" in the policy, then it's accessible by "boo" counter key. But if it's defined as counter-key="@("b"+"a")" then it will be accessible by "ba" key */
   quotaCounterKey: string;
   /** Quota period key identifier. */
   quotaPeriodKey: string;
@@ -32337,7 +32337,7 @@ export const UpdateQuotaByPeriodKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSubscriptionRequestAppType = "portal" | "developerPortal";
 export const UpdateSubscriptionRequestAppType = S.String;
 
-/** Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+/** Subscription state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
 export type SubscriptionUpdateParameterPropertiesState =
   | "suspended"
   | "active"
@@ -32361,7 +32361,7 @@ export interface SubscriptionUpdateParameterProperties {
   primaryKey?: string;
   /** Secondary subscription key. */
   secondaryKey?: string;
-  /** Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
+  /** Subscription state. Possible states are * active - the subscription is active, * suspended - the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted - the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected - the subscription request has been denied by an administrator, * cancelled - the subscription has been cancelled by the developer or administrator, * expired - the subscription reached its expiration date and was deactivated. */
   state?: SubscriptionUpdateParameterPropertiesState | (string & {});
   /** Comments describing subscription state change by the administrator when the state is changed to the 'rejected'. */
   stateComment?: string;

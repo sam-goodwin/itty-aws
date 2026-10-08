@@ -10940,7 +10940,7 @@ export type DeleteResourcePolicyError =
  * cross-account sharing of parameters, see Working with
  * shared parameters in the *Amazon Web Services Systems Manager User Guide*.
  *
- * - `Document` – Shares the document using Resource Access Manager (RAM). For more information about sharing documents, see Sharing
+ * - `Document` - Shares the document using Resource Access Manager (RAM). For more information about sharing documents, see Sharing
  * Systems Manager documents in the *Amazon Web Services Systems Manager User Guide*.
  */
 export const deleteResourcePolicy: API.OperationMethod<
@@ -13883,7 +13883,7 @@ export type PutResourcePolicyError =
  * For more information, see Sharing a
  * parameter in the *Amazon Web Services Systems Manager User Guide*
  *
- * - `Document` – Shares the document using Resource Access Manager (RAM). For more information about sharing documents, see Sharing
+ * - `Document` - Shares the document using Resource Access Manager (RAM). For more information about sharing documents, see Sharing
  * Systems Manager documents in the *Amazon Web Services Systems Manager User Guide*.
  *
  * While you can share a document using the Systems Manager `PutResourcePolicy` operation, we

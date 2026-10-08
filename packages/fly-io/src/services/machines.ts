@@ -1003,7 +1003,7 @@ export const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(
   FlyContainerHealthcheck,
 ) as any as S.Schema<FlyContainerConfigHealthchecksList>;
 
-/** * no - Never try to restart a Machine automatically when its main process exits, whether that’s on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
+/** * no - Never try to restart a Machine automatically when its main process exits, whether that's on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
 export type FlyMachineRestartPolicy = "no" | "always" | "on-failure";
 export const FlyMachineRestartPolicy = S.String;
 
@@ -1011,7 +1011,7 @@ export const FlyMachineRestartPolicy = S.String;
 export interface FlyMachineRestart {
   /** When policy is on-failure, the maximum number of times to attempt to restart the Machine before letting it stop. */
   max_retries?: number;
-  /** * no - Never try to restart a Machine automatically when its main process exits, whether that’s on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
+  /** * no - Never try to restart a Machine automatically when its main process exits, whether that's on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
   policy?: FlyMachineRestartPolicy | (string & {});
 }
 export const FlyMachineRestart = /*@__PURE__*/ S.suspend(() =>
@@ -1680,7 +1680,7 @@ export const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyMachineConfigStaticsList>;
 
 export interface FlyMachineConfig {
-  /** Optional boolean telling the Machine to destroy itself once it’s complete (default false) */
+  /** Optional boolean telling the Machine to destroy itself once it's complete (default false) */
   auto_destroy?: boolean;
   cache_drive?: FlyMachineCacheDrive;
   /** An optional object that defines one or more named top-level checks. The key for each check is the check name. */
@@ -5438,7 +5438,7 @@ export const checkAppCertificate: API.OperationMethod<
 }));
 
 export type CordonMachineError = BadRequest | Forbidden | NotFound | Conflict | FlyIoOpError;
-/** Cordon Machine “Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
+/** Cordon Machine "Cordoning" a Machine refers to disabling its services, so the Fly Proxy won't route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
 export const cordonMachine: API.OperationMethod<
   CordonMachineRequest,
   CordonMachineResponse,
@@ -5552,7 +5552,7 @@ export const createAppIPAssignment: API.OperationMethod<
 }));
 
 export type CreateMachineError = BadRequest | Forbidden | NotFound | Conflict | FlyIoOpError;
-/** Create Machine Create a Machine within a specific app using the details provided in the request body. **Important**: This request can fail, and you’re responsible for handling that failure. If you ask for a large Machine, or a Machine in a region we happen to be at capacity for, you might need to retry the request, or to fall back to another region. If you’re working directly with the Machines API, you’re taking some responsibility for your own orchestration! */
+/** Create Machine Create a Machine within a specific app using the details provided in the request body. **Important**: This request can fail, and you're responsible for handling that failure. If you ask for a large Machine, or a Machine in a region we happen to be at capacity for, you might need to retry the request, or to fall back to another region. If you're working directly with the Machines API, you're taking some responsibility for your own orchestration! */
 export const createMachine: API.OperationMethod<
   CreateMachineRequest,
   Machine,
@@ -6819,7 +6819,7 @@ export const suspendMachine: API.OperationMethod<
 }));
 
 export type UncordonMachineError = BadRequest | Forbidden | NotFound | Conflict | FlyIoOpError;
-/** Uncordon Machine “Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
+/** Uncordon Machine "Cordoning" a Machine refers to disabling its services, so the Fly Proxy won't route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones. */
 export const uncordonMachine: API.OperationMethod<
   UncordonMachineRequest,
   UncordonMachineResponse,

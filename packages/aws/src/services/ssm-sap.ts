@@ -1372,7 +1372,7 @@ export type DeregisterApplicationError =
   | ValidationException
   | CommonErrors;
 /**
- * Deregister an SAP application with AWS Systems Manager for SAP. This action does not aﬀect the existing setup of your SAP workloads on Amazon EC2.
+ * Deregister an SAP application with AWS Systems Manager for SAP. This action does not aU+FB00ect the existing setup of your SAP workloads on Amazon EC2.
  */
 export const deregisterApplication: API.OperationMethod<
   DeregisterApplicationInput,

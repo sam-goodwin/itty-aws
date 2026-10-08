@@ -2136,7 +2136,7 @@ export type GetPreferencesError =
   | ValidationException
   | CommonErrors;
 /**
- * Returns a set of preferences for an account in order to add account-specific preferences into the service. These preferences impact how the savings associated with recommendations are presented—estimated savings after discounts or estimated savings before discounts, for example.
+ * Returns a set of preferences for an account in order to add account-specific preferences into the service. These preferences impact how the savings associated with recommendations are presented--estimated savings after discounts or estimated savings before discounts, for example.
  */
 export const getPreferences: API.OperationMethod<
   GetPreferencesRequest,

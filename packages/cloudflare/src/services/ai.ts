@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   completionTokens: "completion_tokens",
   createdAt: "created_at",
@@ -506,7 +506,7 @@ export const RunRequestMessagesTextGenerationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunRequestMessagesTextGenerationList>;
 
 export interface RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl {
-  /** Image URI with data (e.g. data:image/jpeg;base64,/9j/…). */
+  /** Image URI with data (e.g. data:image/jpeg;base64,/9j/...). */
   url: string;
 }
 export const RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl =

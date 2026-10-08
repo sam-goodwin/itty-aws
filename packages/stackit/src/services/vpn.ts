@@ -179,7 +179,7 @@ export interface CreateGatewayBGPFilterRequest {
   projectId: string;
   region: CreateGatewayBGPFilterRequestRegion | (string & {});
   gatewayId: string;
-  /** A user-friendly name for the filter. Display only — not enforced unique across a gateway. */
+  /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
   displayName: string;
 }
 export const CreateGatewayBGPFilterRequest = /*@__PURE__*/ S.suspend(() =>
@@ -202,7 +202,7 @@ export const CreateGatewayBGPFilterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A named BGP route filter. Internally a BGPFilter holds an ordered set of rules (managed via the nested /rules sub-resource); a route is evaluated against each rule in 'sequence' order and the first match decides the outcome. An implicit DENY is applied after the last rule, so a route that matches no PERMIT rule is dropped. Attaching an empty filter to a tunnel therefore denies every route. Resource limits: the maximum number of filters per gateway equals the gateway plan's maxConnections value; the maximum number of rules per filter is 10. */
 export interface BGPFilter {
-  /** A user-friendly name for the filter. Display only — not enforced unique across a gateway. */
+  /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
   displayName: string;
   /** The server-generated UUID of the filter. */
   id?: string;
@@ -234,7 +234,7 @@ export const CreateGatewayBGPFilterRuleRequestMatchCommunitiesList = /*@__PURE__
   S.String,
 ) as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
 
-/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type CreateGatewayBGPFilterRuleRequestMatchPrefixesList = Array<string>;
 export const CreateGatewayBGPFilterRuleRequestMatchPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -254,7 +254,7 @@ export interface CreateGatewayBGPFilterRuleRequestMatch {
   minPrefixLength?: number;
   /** Matches the exact IPv4 address of the BGP neighbor that advertised the route. Useful when the same filter is attached to multiple tunnels with different neighbor IPs (allows per-peer rules in a shared filter). When a filter is attached to a single tunnel, this field is effectively a no-op because the route-map is already neighbor-scoped. */
   peer?: string;
-  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: CreateGatewayBGPFilterRuleRequestMatchPrefixesList;
 }
 export const CreateGatewayBGPFilterRuleRequestMatch = /*@__PURE__*/ S.suspend(() =>
@@ -293,7 +293,7 @@ export interface CreateGatewayBGPFilterRuleRequest {
   action: CreateGatewayBGPFilterRuleRequestAction | (string & {});
   /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
   match?: CreateGatewayBGPFilterRuleRequestMatch;
-  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required — sending a partial update without 'sequence' returns 400. */
+  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required -- sending a partial update without 'sequence' returns 400. */
   sequence?: number;
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;
@@ -336,7 +336,7 @@ export const BGPFilterRuleMatchCommunitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BGPFilterRuleMatchCommunitiesList>;
 
-/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type BGPFilterRuleMatchPrefixesList = Array<string>;
 export const BGPFilterRuleMatchPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -356,7 +356,7 @@ export interface BGPFilterRuleMatch {
   minPrefixLength?: number;
   /** Matches the exact IPv4 address of the BGP neighbor that advertised the route. Useful when the same filter is attached to multiple tunnels with different neighbor IPs (allows per-peer rules in a shared filter). When a filter is attached to a single tunnel, this field is effectively a no-op because the route-map is already neighbor-scoped. */
   peer?: string;
-  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: BGPFilterRuleMatchPrefixesList;
 }
 export const BGPFilterRuleMatch = /*@__PURE__*/ S.suspend(() =>
@@ -383,7 +383,7 @@ export interface BGPFilterRule {
   id?: string;
   /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
   match?: BGPFilterRuleMatch;
-  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required — sending a partial update without 'sequence' returns 400. */
+  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required -- sending a partial update without 'sequence' returns 400. */
   sequence?: number;
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;
@@ -1791,7 +1791,7 @@ export interface UpdateGatewayBGPFilterRequest {
   region: UpdateGatewayBGPFilterRequestRegion | (string & {});
   gatewayId: string;
   filterId: string;
-  /** A user-friendly name for the filter. Display only — not enforced unique across a gateway. */
+  /** A user-friendly name for the filter. Display only -- not enforced unique across a gateway. */
   displayName: string;
 }
 export const UpdateGatewayBGPFilterRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1833,7 +1833,7 @@ export const UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList = /*@__PURE__
   S.String,
 ) as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
 
-/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+/** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type UpdateGatewayBGPFilterRuleRequestMatchPrefixesList = Array<string>;
 export const UpdateGatewayBGPFilterRuleRequestMatchPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1853,7 +1853,7 @@ export interface UpdateGatewayBGPFilterRuleRequestMatch {
   minPrefixLength?: number;
   /** Matches the exact IPv4 address of the BGP neighbor that advertised the route. Useful when the same filter is attached to multiple tunnels with different neighbor IPs (allows per-peer rules in a shared filter). When a filter is attached to a single tunnel, this field is effectively a no-op because the route-map is already neighbor-scoped. */
   peer?: string;
-  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 → 10.0.0.0/24). */
+  /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: UpdateGatewayBGPFilterRuleRequestMatchPrefixesList;
 }
 export const UpdateGatewayBGPFilterRuleRequestMatch = /*@__PURE__*/ S.suspend(() =>
@@ -1884,7 +1884,7 @@ export interface UpdateGatewayBGPFilterRuleRequest {
   action: UpdateGatewayBGPFilterRuleRequestAction | (string & {});
   /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
   match?: UpdateGatewayBGPFilterRuleRequestMatch;
-  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required — sending a partial update without 'sequence' returns 400. */
+  /** The evaluation order of the rule. Lower numbers are evaluated first. Must be unique within a filter. On POST, this field is optional: when omitted the server auto-assigns max(existing)+10 (the first rule starts at 10). On PUT this field is required -- sending a partial update without 'sequence' returns 400. */
   sequence?: number;
   /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
   set?: CreateGatewayBGPFilterRuleRequestSet;

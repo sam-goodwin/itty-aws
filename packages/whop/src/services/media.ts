@@ -209,7 +209,7 @@ export type GenerateMediaAssetError =
   | Forbidden
   | Conflict
   | WhopOpError;
-/** Generate Media Asset Starts an AI media generation job billed from the account's balance. Generation is asynchronous — poll `GET /media/{id}` until the asset is `ready`, then use `file.id` anywhere attachments are accepted. */
+/** Generate Media Asset Starts an AI media generation job billed from the account's balance. Generation is asynchronous -- poll `GET /media/{id}` until the asset is `ready`, then use `file.id` anywhere attachments are accepted. */
 export const generateMediaAsset: API.OperationMethod<
   GenerateMediaAssetRequest,
   MediaAsset,

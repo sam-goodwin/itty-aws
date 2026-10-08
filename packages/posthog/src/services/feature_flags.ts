@@ -751,7 +751,7 @@ export interface CreateFeatureFlagsTestEvaluationRequest {
   distinct_id?: string;
   /** Person ID to test against (mutually exclusive with distinct_id) */
   person_id?: string;
-  /** Optional point-in-time to evaluate the flag against — both flag conditions and person properties are reconstructed as they existed at that timestamp. ISO 8601 with timezone, e.g. ``2026-04-29T15:30:00Z`` or ``2026-04-29T15:30:00+00:00``. Naive timestamps (no timezone) are interpreted as UTC. */
+  /** Optional point-in-time to evaluate the flag against -- both flag conditions and person properties are reconstructed as they existed at that timestamp. ISO 8601 with timezone, e.g. ``2026-04-29T15:30:00Z`` or ``2026-04-29T15:30:00+00:00``. Naive timestamps (no timezone) are interpreted as UTC. */
   timestamp?: string | null;
   /** Groups for feature flag evaluation (JSON object, defaults to empty dict) */
   groups?: unknown;
@@ -824,7 +824,7 @@ export const FeatureFlagConditionAnalysisPropertiesList = /*@__PURE__*/ S.Array(
 export interface FeatureFlagConditionAnalysis {
   /** Index of this condition in the feature flag */
   index: number;
-  /** True when this condition was the one that determined the flag's outcome. Use this to find the winning condition — at most one condition per flag is True. */
+  /** True when this condition was the one that determined the flag's outcome. Use this to find the winning condition -- at most one condition per flag is True. */
   matched: boolean;
   /** True when every property in this condition evaluated to true, regardless of whether this condition was the eventual winner. */
   properties_matched?: boolean;
@@ -983,7 +983,7 @@ export const BulkDeleteFiltersExcludedTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDeleteFiltersExcludedTagsList>;
 
-/** Allowed filter keys for bulk_delete — same shape as the list endpoint's query params. */
+/** Allowed filter keys for bulk_delete -- same shape as the list endpoint's query params. */
 export interface BulkDeleteFilters {
   /** 'true' and 'false' filter on serving state, the flag's `active` column. 'STALE' returns enabled flags only, so a disabled flag is never STALE. An enabled flag matches when its last recorded `$feature_flag_called` event is more than 30 days old. With no recorded event, it matches when it is at least 30 days old and either stores `filters` as `{}` or serves one result to everyone through a release condition at 100% with no property filters. A flag with no recorded event and an empty `groups` list does not match, even when its `status` reads STALE. An SDK that sends no `$feature_flag_called` event leaves no record, so a STALE flag can still be in use. * `true` - true * `false` - false * `STALE` - STALE */
   active?: ActiveEnum | (string & {});
@@ -1030,7 +1030,7 @@ export const FeatureFlagsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
 export interface FeatureFlagsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Filter criteria — same shape as the list endpoint's query params. Mutually exclusive with `ids`. Use this to bulk-delete by search/active/tags/etc. instead of supplying explicit IDs. */
+  /** Filter criteria -- same shape as the list endpoint's query params. Mutually exclusive with `ids`. Use this to bulk-delete by search/active/tags/etc. instead of supplying explicit IDs. */
   filters?: BulkDeleteFilters;
   /** Explicit feature flag IDs to soft-delete. Mutually exclusive with `filters`. */
   ids?: FeatureFlagsBulkDeleteCreateRequestIdsList;
@@ -1081,7 +1081,7 @@ export const BulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BulkDeleteResponseDeletedList>;
 
 export interface BulkDeleteErrorItem {
-  /** Feature flag ID — integer for valid inputs; the original raw value for invalid inputs. */
+  /** Feature flag ID -- integer for valid inputs; the original raw value for invalid inputs. */
   id: unknown;
   /** The flag key, when known. */
   key?: string;
@@ -1102,7 +1102,7 @@ export const BulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
   BulkDeleteErrorItem,
 ) as any as S.Schema<BulkDeleteResponseErrorsList>;
 
-/** Schema-only — referenced from ``@extend_schema(responses=...)`` to describe the wire format. Never instantiate this for validation or call ``.is_valid()`` / ``.errors`` on it: the declared ``errors`` field shadows DRF's inherited ``Serializer.errors`` ReturnDict property, so accessing ``serializer.errors`` would return this field descriptor instead of validation errors. The handler builds the response dict directly; this class exists only so drf-spectacular can render the response in the OpenAPI spec and downstream generated clients. */
+/** Schema-only -- referenced from ``@extend_schema(responses=...)`` to describe the wire format. Never instantiate this for validation or call ``.is_valid()`` / ``.errors`` on it: the declared ``errors`` field shadows DRF's inherited ``Serializer.errors`` ReturnDict property, so accessing ``serializer.errors`` would return this field descriptor instead of validation errors. The handler builds the response dict directly; this class exists only so drf-spectacular can render the response in the OpenAPI spec and downstream generated clients. */
 export interface BulkDeleteResponse {
   /** Flags successfully soft-deleted. */
   deleted: BulkDeleteResponseDeletedList;
@@ -1867,7 +1867,7 @@ export const GetFeatureFlagsStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsStatusRequest>;
 
 export interface FeatureFlagRolloutSummary {
-  /** True if the flag is effectively rolled out to everyone, independent of recent evaluation. For boolean flags this means at least one release condition targets 100% with no property filters (or there are no release conditions); for multivariate flags it means a single variant is served to 100% via a fully rolled out release condition. This is the signal for 'fully rolled out' / GA — unlike `status`, which only reflects recent evaluation. */
+  /** True if the flag is effectively rolled out to everyone, independent of recent evaluation. For boolean flags this means at least one release condition targets 100% with no property filters (or there are no release conditions); for multivariate flags it means a single variant is served to 100% via a fully rolled out release condition. This is the signal for 'fully rolled out' / GA -- unlike `status`, which only reflects recent evaluation. */
   effectively_full_rollout: boolean;
   /** True if any release condition has property filters, i.e. the flag is conditionally targeted rather than a blanket rollout. This says nothing about which condition produced `max_rollout_percentage`: the two fields are computed independently over the whole condition list. */
   has_targeting_conditions: boolean;
@@ -2422,7 +2422,7 @@ export type FeatureFlagsBulkUpdateTagsCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Bulk update tags on multiple objects. PAT access: this action has no ``required_scopes=`` on the decorator — inheriting viewsets must add ``"bulk_update_tags"`` to their ``scope_object_write_actions`` list to accept personal API keys. Without that opt-in, ``APIScopePermission`` rejects PAT requests with "This action does not support personal API key access". Done per-viewset so granting ``<scope>:write`` for one resource doesn't leak access to sibling resources that share this mixin. Accepts: - {"ids": [...], "action": "add"|"remove"|"set", "tags": ["tag1", "tag2"]} Actions: - "add": Add tags to existing tags on each object - "remove": Remove specific tags from each object - "set": Replace all tags on each object with the provided list */
+/** Bulk update tags on multiple objects. PAT access: this action has no ``required_scopes=`` on the decorator -- inheriting viewsets must add ``"bulk_update_tags"`` to their ``scope_object_write_actions`` list to accept personal API keys. Without that opt-in, ``APIScopePermission`` rejects PAT requests with "This action does not support personal API key access". Done per-viewset so granting ``<scope>:write`` for one resource doesn't leak access to sibling resources that share this mixin. Accepts: - {"ids": [...], "action": "add"|"remove"|"set", "tags": ["tag1", "tag2"]} Actions: - "add": Add tags to existing tags on each object - "remove": Remove specific tags from each object - "set": Replace all tags on each object with the provided list */
 export const featureFlagsBulkUpdateTagsCreate: API.OperationMethod<
   FeatureFlagsBulkUpdateTagsCreateRequest,
   BulkUpdateTagsResponse,

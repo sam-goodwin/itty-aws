@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   channelLink: "channel_link",
   keyId: "key_id",
@@ -3433,7 +3433,7 @@ export const createLiveInput: API.OperationMethod<
 }));
 
 export type CreateLiveInputOutputError = LiveInputNotFound | Forbidden | CloudflareOpError;
-/** Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input — one live input can have many outputs. */
+/** Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input -- one live input can have many outputs. */
 export const createLiveInputOutput: API.OperationMethod<
   CreateLiveInputOutputRequest,
   CreateLiveInputOutputResponse,

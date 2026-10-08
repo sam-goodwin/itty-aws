@@ -1666,7 +1666,7 @@ export interface AppServiceSpecCors {
   expose_headers?: AppServiceSpecCorsExposeHeadersList;
   /** An optional duration specifying how long browsers can cache the results of a preflight request. This configures the `Access-Control-Max-Age` header. */
   max_age?: string;
-  /** Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
+  /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
 export const AppServiceSpecCors = /*@__PURE__*/ S.suspend(() =>
@@ -1904,7 +1904,7 @@ export interface AppStaticSiteSpecCors {
   expose_headers?: AppStaticSiteSpecCorsExposeHeadersList;
   /** An optional duration specifying how long browsers can cache the results of a preflight request. This configures the `Access-Control-Max-Age` header. */
   max_age?: string;
-  /** Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
+  /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
 export const AppStaticSiteSpecCors = /*@__PURE__*/ S.suspend(() =>
@@ -2268,7 +2268,7 @@ export interface AppFunctionsSpecCors {
   expose_headers?: AppFunctionsSpecCorsExposeHeadersList;
   /** An optional duration specifying how long browsers can cache the results of a preflight request. This configures the `Access-Control-Max-Age` header. */
   max_age?: string;
-  /** Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
+  /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
 export const AppFunctionsSpecCors = /*@__PURE__*/ S.suspend(() =>
@@ -2515,7 +2515,7 @@ export interface AppsCorsPolicy {
   expose_headers?: AppsCorsPolicyExposeHeadersList;
   /** An optional duration specifying how long browsers can cache the results of a preflight request. This configures the `Access-Control-Max-Age` header. */
   max_age?: string;
-  /** Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
+  /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
 export const AppsCorsPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -2669,7 +2669,7 @@ export interface AppSpec {
   name: string;
   /** The slug form of the geographical origin of the app. Default: `nearest available` */
   region?: AppSpecRegion;
-  /** If set to `true`, the app will **not** be cached at the edge (CDN). Enable this option if you want to manage CDN configuration yourself—whether by using an external CDN provider or by handling static content and caching within your app. This setting is also recommended for apps that require real-time data or serve dynamic content, such as those using Server-Sent Events (SSE) over GET, or hosting an MCP (Model Context Protocol) Server that utilizes SSE. **Note:** This feature is not available for static site components. For more information, see [Disable CDN Cache](https://docs.digitalocean.com/products/app-platform/how-to/cache-content/#disable-cdn-cache). */
+  /** If set to `true`, the app will **not** be cached at the edge (CDN). Enable this option if you want to manage CDN configuration yourself--whether by using an external CDN provider or by handling static content and caching within your app. This setting is also recommended for apps that require real-time data or serve dynamic content, such as those using Server-Sent Events (SSE) over GET, or hosting an MCP (Model Context Protocol) Server that utilizes SSE. **Note:** This feature is not available for static site components. For more information, see [Disable CDN Cache](https://docs.digitalocean.com/products/app-platform/how-to/cache-content/#disable-cdn-cache). */
   disable_edge_cache?: boolean;
   /** If set to `true`, email addresses in the app will not be obfuscated. This is useful for apps that require email addresses to be visible (in the HTML markup). */
   disable_email_obfuscation?: boolean;
@@ -6052,7 +6052,7 @@ export interface AppSpecInput {
   name: string;
   /** The slug form of the geographical origin of the app. Default: `nearest available` */
   region?: AppSpecInputRegion | (string & {});
-  /** If set to `true`, the app will **not** be cached at the edge (CDN). Enable this option if you want to manage CDN configuration yourself—whether by using an external CDN provider or by handling static content and caching within your app. This setting is also recommended for apps that require real-time data or serve dynamic content, such as those using Server-Sent Events (SSE) over GET, or hosting an MCP (Model Context Protocol) Server that utilizes SSE. **Note:** This feature is not available for static site components. For more information, see [Disable CDN Cache](https://docs.digitalocean.com/products/app-platform/how-to/cache-content/#disable-cdn-cache). */
+  /** If set to `true`, the app will **not** be cached at the edge (CDN). Enable this option if you want to manage CDN configuration yourself--whether by using an external CDN provider or by handling static content and caching within your app. This setting is also recommended for apps that require real-time data or serve dynamic content, such as those using Server-Sent Events (SSE) over GET, or hosting an MCP (Model Context Protocol) Server that utilizes SSE. **Note:** This feature is not available for static site components. For more information, see [Disable CDN Cache](https://docs.digitalocean.com/products/app-platform/how-to/cache-content/#disable-cdn-cache). */
   disable_edge_cache?: boolean;
   /** If set to `true`, email addresses in the app will not be obfuscated. This is useful for apps that require email addresses to be visible (in the HTML markup). */
   disable_email_obfuscation?: boolean;
@@ -10665,7 +10665,7 @@ export const CreateGenaiEvaluationTestCaseRequestMetricsList = /*@__PURE__*/ S.A
 
 export interface CreateGenaiEvaluationTestCaseRequest {
   agent_workspace_name?: string;
-  /** Dataset against which the test‑case is executed. */
+  /** Dataset against which the test-case is executed. */
   dataset_uuid?: string;
   /** Description of the test case. */
   description?: string;
@@ -10692,7 +10692,7 @@ export const CreateGenaiEvaluationTestCaseRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateGenaiEvaluationTestCaseRequest>;
 
 export interface ApiCreateEvaluationTestCaseOutput {
-  /** Test‑case UUID. */
+  /** Test-case UUID. */
   test_case_uuid?: string;
 }
 export const ApiCreateEvaluationTestCaseOutput = /*@__PURE__*/ S.suspend(() =>
@@ -12171,7 +12171,7 @@ export const CreateInferenceEmbeddingRequestInputCase1List = /*@__PURE__*/ S.Arr
   S.String,
 ) as any as S.Schema<CreateInferenceEmbeddingRequestInputCase1List>;
 
-/** A single string or 1–2048 strings; each string produces one row in `data`, in order. */
+/** A single string or 1-2048 strings; each string produces one row in `data`, in order. */
 export type CreateInferenceEmbeddingRequestInput =
   | string
   | CreateInferenceEmbeddingRequestInputCase1List;
@@ -12185,7 +12185,7 @@ export const CreateInferenceEmbeddingRequestEncodingFormat = S.String;
 export interface CreateInferenceEmbeddingRequest {
   /** Model id to use for embeddings. Must match a model your account can access. */
   model: string;
-  /** A single string or 1–2048 strings; each string produces one row in `data`, in order. */
+  /** A single string or 1-2048 strings; each string produces one row in `data`, in order. */
   input: CreateInferenceEmbeddingRequestInput;
   /** Optional end-user identifier to help with abuse monitoring. */
   user?: string;
@@ -13644,7 +13644,7 @@ export const EmailNotificationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Slack notification channel configuration. `webhook_url` is write-only: send the full value on create/update; reads return a masked value (`********`). Omit `webhook_url` on update to keep the existing secret. */
 export interface SlackNotificationConfig {
-  /** Slack incoming webhook URL. Write-only secret — full value on create/update; masked as `********` on read. Omit on update to retain the existing value. */
+  /** Slack incoming webhook URL. Write-only secret -- full value on create/update; masked as `********` on read. Omit on update to retain the existing value. */
   webhook_url?: string;
   /** The Slack channel name to notify. */
   channel: string;
@@ -13660,7 +13660,7 @@ export const SlackNotificationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface WebhookBasicAuth {
   /** Basic auth username. */
   username: string;
-  /** Basic auth password. Write-only secret — full value on create/update; masked as `********` on read. */
+  /** Basic auth password. Write-only secret -- full value on create/update; masked as `********` on read. */
   password?: string | Redacted.Redacted<string>;
 }
 export const WebhookBasicAuth = /*@__PURE__*/ S.suspend(() =>
@@ -13672,7 +13672,7 @@ export const WebhookBasicAuth = /*@__PURE__*/ S.suspend(() =>
 
 /** Bearer token authentication for a webhook. `token` is write-only: full value on create/update; masked (`********`) on read. Omit on update to keep the existing token. */
 export interface WebhookBearerToken {
-  /** Bearer token value sent in the Authorization header. Write-only secret — full value on create/update; masked as `********` on read. */
+  /** Bearer token value sent in the Authorization header. Write-only secret -- full value on create/update; masked as `********` on read. */
   token?: string;
 }
 export const WebhookBearerToken = /*@__PURE__*/ S.suspend(() =>
@@ -13690,7 +13690,7 @@ export const WebhookNotificationConfigHeadersMap = /*@__PURE__*/ S.Record(
 
 /** Optional HMAC signature configuration. `secret` is write-only: full value on create/update; masked (`********`) on read. Omit on update to keep the existing secret. */
 export interface WebhookSignatureConfig {
-  /** Shared secret used to sign webhook payloads. Write-only secret — full value on create/update; masked as `********` on read. */
+  /** Shared secret used to sign webhook payloads. Write-only secret -- full value on create/update; masked as `********` on read. */
   secret?: string | Redacted.Redacted<string>;
 }
 export const WebhookSignatureConfig = /*@__PURE__*/ S.suspend(() =>
@@ -15618,7 +15618,7 @@ export const NfsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateNfsAccessPointRequest {
   /** The unique identifier of the NFS share. */
   share_id: string;
-  /** The name for the access point. Must be unique per share. Must be 2–63 characters and match `^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]$`. The name `default` is reserved (case-insensitive) for the implicit default access point created with each share. */
+  /** The name for the access point. Must be unique per share. Must be 2-63 characters and match `^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]$`. The name `default` is reserved (case-insensitive) for the implicit default access point created with each share. */
   name: string;
   /** The export sub-path. Must start with `/`, must not be exactly `/` (reserved for the default access point), must be at most 1024 characters, may contain only alphanumerics, `-`, `_`, `.`, and `/`, and must not contain `..` path segments. */
   path: string;
@@ -21008,7 +21008,7 @@ export const FunctionsUpdateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionsUpdateTriggerResponse",
 }) as any as S.Schema<FunctionsUpdateTriggerResponse>;
 
-/** A single file’s metadata in the request. */
+/** A single file's metadata in the request. */
 export interface ApiPresignedUrlFile {
   /** Local filename */
   file_name?: string;
@@ -23110,7 +23110,7 @@ export interface PostgresAdvancedConfig {
   bgwriter_flush_after?: number;
   /** The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100. */
   bgwriter_lru_maxpages?: number;
-  /** The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. */
+  /** The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a "just in time" policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. */
   bgwriter_lru_multiplier?: number;
   /** The amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. */
   deadlock_timeout?: number;
@@ -26137,13 +26137,13 @@ export const ApiModelEvaluationPresetMetricsList = /*@__PURE__*/ S.Array(
   ApiEvaluationMetric,
 ) as any as S.Schema<ApiModelEvaluationPresetMetricsList>;
 
-/** Sections of the inline evaluation config that were persisted when this preset was created. Use this to tell "section was saved with an empty value" apart from "section was not saved" — scalar fields like `dataset_uuid` or `candidate_system_prompt` are always emitted as the empty string when the section was not saved. */
+/** Sections of the inline evaluation config that were persisted when this preset was created. Use this to tell "section was saved with an empty value" apart from "section was not saved" -- scalar fields like `dataset_uuid` or `candidate_system_prompt` are always emitted as the empty string when the section was not saved. */
 export type ApiModelEvaluationPresetSavedSectionsList = Array<ApiPresetSaveSection>;
 export const ApiModelEvaluationPresetSavedSectionsList = /*@__PURE__*/ S.Array(
   ApiPresetSaveSection,
 ) as any as S.Schema<ApiModelEvaluationPresetSavedSectionsList>;
 
-/** Model Evaluation Preset - a saved, reusable configuration for model evaluation runs. Each section (dataset, judge, metrics, candidate, system prompt) is independent and may be empty; sections the preset omits must be supplied inline on the run that references it. Use `saved_sections` to tell "section saved with empty value" apart from "section not saved at all" — each section's scalar fields are left empty when the section was not saved. */
+/** Model Evaluation Preset - a saved, reusable configuration for model evaluation runs. Each section (dataset, judge, metrics, candidate, system prompt) is independent and may be empty; sections the preset omits must be supplied inline on the run that references it. Use `saved_sections` to tell "section saved with empty value" apart from "section not saved at all" -- each section's scalar fields are left empty when the section was not saved. */
 export interface ApiModelEvaluationPreset {
   candidate_inference_config?: ApiCandidateInferenceConfig;
   /** Model slug used to call the candidate model API. Empty when the CANDIDATE section was not saved. */
@@ -26169,7 +26169,7 @@ export interface ApiModelEvaluationPreset {
   metrics?: ApiModelEvaluationPresetMetricsList;
   /** Name of the evaluation preset. */
   name?: string;
-  /** Sections of the inline evaluation config that were persisted when this preset was created. Use this to tell "section was saved with an empty value" apart from "section was not saved" — scalar fields like `dataset_uuid` or `candidate_system_prompt` are always emitted as the empty string when the section was not saved. */
+  /** Sections of the inline evaluation config that were persisted when this preset was created. Use this to tell "section was saved with an empty value" apart from "section was not saved" -- scalar fields like `dataset_uuid` or `candidate_system_prompt` are always emitted as the empty string when the section was not saved. */
   saved_sections?: ApiModelEvaluationPresetSavedSectionsList;
   star_metric?: ApiStarMetric;
 }
@@ -26230,7 +26230,7 @@ export const ApiModelEvaluationEpochAttemptMetricResultsList = /*@__PURE__*/ S.A
   ApiEvaluationMetricResult,
 ) as any as S.Schema<ApiModelEvaluationEpochAttemptMetricResultsList>;
 
-/** ModelEvaluationEpochAttempt is one epoch's attempt at a dataset row, nested under ModelEvaluationResult.epoch_results for multi-epoch runs. Carries only the fields that vary per pass — row-identifying fields (input/ground_truth/row_number) and candidate_model_name/uuid live once on the parent ModelEvaluationResult and aren't repeated here. */
+/** ModelEvaluationEpochAttempt is one epoch's attempt at a dataset row, nested under ModelEvaluationResult.epoch_results for multi-epoch runs. Carries only the fields that vary per pass -- row-identifying fields (input/ground_truth/row_number) and candidate_model_name/uuid live once on the parent ModelEvaluationResult and aren't repeated here. */
 export interface ApiModelEvaluationEpochAttempt {
   candidate_routed_task?: string;
   /** Per-metric scores and judge reasoning for this specific pass. */
@@ -26248,7 +26248,7 @@ export const ApiModelEvaluationEpochAttempt = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiModelEvaluationEpochAttempt",
 }) as any as S.Schema<ApiModelEvaluationEpochAttempt>;
 
-/** Present only when the run's epochs > 1: every pass over this row — including epoch 1, duplicated here for convenience — keyed by 1-indexed "epoch1"/"epoch2"/"epoch3" labels. Mirrors the shape of the downloadable results file's epochResults object. The top-level fields above (output, metric_results, candidate_routed_task) always reflect epoch 1, so single-epoch clients reading only those fields see no difference when epochs > 1. */
+/** Present only when the run's epochs > 1: every pass over this row -- including epoch 1, duplicated here for convenience -- keyed by 1-indexed "epoch1"/"epoch2"/"epoch3" labels. Mirrors the shape of the downloadable results file's epochResults object. The top-level fields above (output, metric_results, candidate_routed_task) always reflect epoch 1, so single-epoch clients reading only those fields see no difference when epochs > 1. */
 export type ApiModelEvaluationResultEpochResultsMap = {
   [key: string]: ApiModelEvaluationEpochAttempt | undefined;
 };
@@ -26268,9 +26268,9 @@ export interface ApiModelEvaluationResult {
   candidate_model_name?: string;
   candidate_model_uuid?: string;
   candidate_routed_task?: string;
-  /** Which pass over this dataset row produced this result, 1-indexed (1 = first pass). Always 0 (and omitted from JSON) when the run's epochs is 1 (the default) — per-attempt epoch numbering doesn't apply to single-pass runs. When epochs > 1, this always reflects epoch 1 (see epoch_results below). */
+  /** Which pass over this dataset row produced this result, 1-indexed (1 = first pass). Always 0 (and omitted from JSON) when the run's epochs is 1 (the default) -- per-attempt epoch numbering doesn't apply to single-pass runs. When epochs > 1, this always reflects epoch 1 (see epoch_results below). */
   epoch?: number;
-  /** Present only when the run's epochs > 1: every pass over this row — including epoch 1, duplicated here for convenience — keyed by 1-indexed "epoch1"/"epoch2"/"epoch3" labels. Mirrors the shape of the downloadable results file's epochResults object. The top-level fields above (output, metric_results, candidate_routed_task) always reflect epoch 1, so single-epoch clients reading only those fields see no difference when epochs > 1. */
+  /** Present only when the run's epochs > 1: every pass over this row -- including epoch 1, duplicated here for convenience -- keyed by 1-indexed "epoch1"/"epoch2"/"epoch3" labels. Mirrors the shape of the downloadable results file's epochResults object. The top-level fields above (output, metric_results, candidate_routed_task) always reflect epoch 1, so single-epoch clients reading only those fields see no difference when epochs > 1. */
   epoch_results?: ApiModelEvaluationResultEpochResultsMap;
   ground_truth?: string;
   /** The input query sent to the candidate model. */
@@ -26342,11 +26342,11 @@ export interface ApiEpochResultSummary {
   pass_at_k_percent?: number;
   /** Each epoch's own standalone score, persisted next to the aggregate. */
   per_epoch?: ApiEpochResultSummaryPerEpochList;
-  /** Rows where every epoch failed or was skipped, so the row contributes to no score. Not a random sample of difficulty — surface this explicitly. */
+  /** Rows where every epoch failed or was skipped, so the row contributes to no score. Not a random sample of difficulty -- surface this explicitly. */
   rows_excluded?: number;
   /** Rows with at least one scored epoch. The effective N behind every percentage above; always display alongside them. */
   rows_scored?: number;
-  /** Population standard deviation of the k per-epoch scores below — the signal for whether a difference between runs is real or noise. */
+  /** Population standard deviation of the k per-epoch scores below -- the signal for whether a difference between runs is real or noise. */
   score_stddev_percent?: number;
 }
 export const ApiEpochResultSummary = /*@__PURE__*/ S.suspend(() =>
@@ -27342,7 +27342,7 @@ export const GetInferenceBatchResultsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInferenceBatchResultsRequest",
 }) as any as S.Schema<GetInferenceBatchResultsRequest>;
 
-/** Presigned download URLs for a batch job. URLs are short-lived — download the artifacts soon after fetching them. */
+/** Presigned download URLs for a batch job. URLs are short-lived -- download the artifacts soon after fetching them. */
 export interface BatchResultsResponse {
   batch_id: string;
   /** When `false`, keep polling batch status and retry later. */
@@ -35764,7 +35764,7 @@ export interface ApiAgentPublic {
   route_uuid?: string;
   /** A set of abitrary tags to organize your agent */
   tags?: ApiAgentPublicTagsList;
-  /** Controls the model’s creativity, specified as a number between 0 and 1. Lower values produce more predictable and conservative responses, while higher values encourage creativity and variation. */
+  /** Controls the model's creativity, specified as a number between 0 and 1. Lower values produce more predictable and conservative responses, while higher values encourage creativity and variation. */
   temperature?: number;
   template?: ApiAgentTemplate;
   /** The thinking token budget for Anthropic extended thinking (0 = disabled) */
@@ -37882,7 +37882,7 @@ export interface ListGenaiScenarioSetsRequest {
   source_kinds?: ListGenaiScenarioSetsRequestSourceKindsList;
   /** Free-text search across name and description (case-insensitive substring match). Empty means no search. */
   search?: string;
-  /** Field to sort by. Defaults to creation date when unspecified. - SCENARIO_SET_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SCENARIO_SET_SORT_FIELD_NAME: Sort by customer-supplied name (case-insensitive). - SCENARIO_SET_SORT_FIELD_STATUS: Sort by status using lifecycle order (generating → ready → terminal). - SCENARIO_SET_SORT_FIELD_SCENARIO_COUNT: Sort by scenario_count. - SCENARIO_SET_SORT_FIELD_UPDATED_AT: Sort by last update date. */
+  /** Field to sort by. Defaults to creation date when unspecified. - SCENARIO_SET_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SCENARIO_SET_SORT_FIELD_NAME: Sort by customer-supplied name (case-insensitive). - SCENARIO_SET_SORT_FIELD_STATUS: Sort by status using lifecycle order (generating -> ready -> terminal). - SCENARIO_SET_SORT_FIELD_SCENARIO_COUNT: Sort by scenario_count. - SCENARIO_SET_SORT_FIELD_UPDATED_AT: Sort by last update date. */
   sort_by?: ListGenaiScenarioSetsRequestSortBy | (string & {});
   /** Sort direction. Defaults to descending when unspecified. */
   sort_direction?: ListGenaiScenarioSetsRequestSortDirection | (string & {});
@@ -37901,7 +37901,7 @@ export const ListGenaiScenarioSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGenaiScenarioSetsRequest",
 }) as any as S.Schema<ListGenaiScenarioSetsRequest>;
 
-/** Sortable fields for listing scenario sets. - SCENARIO_SET_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SCENARIO_SET_SORT_FIELD_NAME: Sort by customer-supplied name (case-insensitive). - SCENARIO_SET_SORT_FIELD_STATUS: Sort by status using lifecycle order (generating → ready → terminal). - SCENARIO_SET_SORT_FIELD_SCENARIO_COUNT: Sort by scenario_count. - SCENARIO_SET_SORT_FIELD_UPDATED_AT: Sort by last update date. */
+/** Sortable fields for listing scenario sets. - SCENARIO_SET_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SCENARIO_SET_SORT_FIELD_NAME: Sort by customer-supplied name (case-insensitive). - SCENARIO_SET_SORT_FIELD_STATUS: Sort by status using lifecycle order (generating -> ready -> terminal). - SCENARIO_SET_SORT_FIELD_SCENARIO_COUNT: Sort by scenario_count. - SCENARIO_SET_SORT_FIELD_UPDATED_AT: Sort by last update date. */
 export type ApiScenarioSetSortField =
   | "SCENARIO_SET_SORT_FIELD_UNSPECIFIED"
   | "SCENARIO_SET_SORT_FIELD_CREATED_AT"
@@ -38167,7 +38167,7 @@ export interface ListGenaiSimulationRunsRequest {
   statuses?: ListGenaiSimulationRunsRequestStatusesList;
   /** Free-text search across the run name and scenario set name (case-insensitive substring match). Empty means no search. */
   search?: string;
-  /** Field to sort by. Defaults to creation date when unspecified. - SIMULATION_RUN_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SIMULATION_RUN_SORT_FIELD_NAME: Sort by customer-supplied run name (case-insensitive). - SIMULATION_RUN_SORT_FIELD_STATUS: Sort by status using lifecycle order (pending → running → terminal). - SIMULATION_RUN_SORT_FIELD_UPDATED_AT: Sort by last update date. */
+  /** Field to sort by. Defaults to creation date when unspecified. - SIMULATION_RUN_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SIMULATION_RUN_SORT_FIELD_NAME: Sort by customer-supplied run name (case-insensitive). - SIMULATION_RUN_SORT_FIELD_STATUS: Sort by status using lifecycle order (pending -> running -> terminal). - SIMULATION_RUN_SORT_FIELD_UPDATED_AT: Sort by last update date. */
   sort_by?: ListGenaiSimulationRunsRequestSortBy | (string & {});
   /** Sort direction. Defaults to descending when unspecified. */
   sort_direction?: ListGenaiSimulationRunsRequestSortDirection | (string & {});
@@ -38186,7 +38186,7 @@ export const ListGenaiSimulationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGenaiSimulationRunsRequest",
 }) as any as S.Schema<ListGenaiSimulationRunsRequest>;
 
-/** Sortable fields for listing simulation runs. - SIMULATION_RUN_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SIMULATION_RUN_SORT_FIELD_NAME: Sort by customer-supplied run name (case-insensitive). - SIMULATION_RUN_SORT_FIELD_STATUS: Sort by status using lifecycle order (pending → running → terminal). - SIMULATION_RUN_SORT_FIELD_UPDATED_AT: Sort by last update date. */
+/** Sortable fields for listing simulation runs. - SIMULATION_RUN_SORT_FIELD_CREATED_AT: Sort by creation date. Default. - SIMULATION_RUN_SORT_FIELD_NAME: Sort by customer-supplied run name (case-insensitive). - SIMULATION_RUN_SORT_FIELD_STATUS: Sort by status using lifecycle order (pending -> running -> terminal). - SIMULATION_RUN_SORT_FIELD_UPDATED_AT: Sort by last update date. */
 export type ApiSimulationRunSortField =
   | "SIMULATION_RUN_SORT_FIELD_UNSPECIFIED"
   | "SIMULATION_RUN_SORT_FIELD_CREATED_AT"
@@ -43827,7 +43827,7 @@ export interface ResyncMcpServerResponse {
   tools?: ResyncMcpServerResponseToolsList;
   /** True when discovery is still running (HTTP 202). Poll the server to see the outcome. */
   pending?: boolean;
-  /** Set when discovery could not run because `user_id` has no authorized connection to this server yet. It carries the remedy — send the user to `connect_url` — so the caller acts on this response rather than parsing the server's `syncError`. */
+  /** Set when discovery could not run because `user_id` has no authorized connection to this server yet. It carries the remedy -- send the user to `connect_url` -- so the caller acts on this response rather than parsing the server's `syncError`. */
   authorization?: ConnectionAuthorization | null;
 }
 export const ResyncMcpServerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -45253,7 +45253,7 @@ export interface UpdateGenaiAgentRequest {
   router_preset_slug?: string;
   /** A set of abitrary tags to organize your agent */
   tags?: UpdateGenaiAgentRequestTagsList;
-  /** Controls the model’s creativity, specified as a number between 0 and 1. Lower values produce more predictable and conservative responses, while higher values encourage creativity and variation. */
+  /** Controls the model's creativity, specified as a number between 0 and 1. Lower values produce more predictable and conservative responses, while higher values encourage creativity and variation. */
   temperature?: number;
   thinking_token_budget?: number;
   /** Defines the cumulative probability threshold for word selection, specified as a number between 0 and 1. Higher values allow for more diverse outputs, while lower values ensure focused and coherent responses. */
@@ -45636,7 +45636,7 @@ export const ApiEvaluationTestCaseMetricList = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGenaiEvaluationTestCaseRequest {
   /** Test-case UUID to update */
   test_case_uuid: string;
-  /** Dataset against which the test‑case is executed. */
+  /** Dataset against which the test-case is executed. */
   dataset_uuid?: string;
   /** Description of the test case. */
   description?: string;
@@ -48045,7 +48045,7 @@ export const cancelGenaiModelEvaluationRun: API.OperationMethod<
 }));
 
 export type CancelInferenceBatchError = Forbidden | NotFound | Conflict | DigitalOceanOpError;
-/** Cancel a Batch Inference Job Requests cancellation of a batch job. The job transitions to `cancelling` and, once in-flight requests drain, to `cancelled`. Jobs already in a terminal state (`completed`, `failed`, `expired`, `cancelled`) cannot be cancelled and return `409 Conflict`. Cancellation is also rejected with `409 Conflict` while the job has not yet been submitted to the upstream provider — there is nothing to cancel until the provider batch id is assigned. Partial results produced before cancellation remain available via `GET /v1/batches/{batch_id}/results`. */
+/** Cancel a Batch Inference Job Requests cancellation of a batch job. The job transitions to `cancelling` and, once in-flight requests drain, to `cancelled`. Jobs already in a terminal state (`completed`, `failed`, `expired`, `cancelled`) cannot be cancelled and return `409 Conflict`. Cancellation is also rejected with `409 Conflict` while the job has not yet been submitted to the upstream provider -- there is nothing to cancel until the provider batch id is assigned. Partial results produced before cancellation remain available via `GET /v1/batches/{batch_id}/results`. */
 export const cancelInferenceBatch: API.OperationMethod<
   CancelInferenceBatchRequest,
   Batch,
@@ -48741,7 +48741,7 @@ export type CreateInferenceBatchError =
   | Conflict
   | UnprocessableEntity
   | DigitalOceanOpError;
-/** Create a Batch Inference Job Submits a batch job against a previously uploaded JSONL input file. The upload must have completed before this call; otherwise the request is rejected. Supply a unique `request_id` to make the submission idempotent — retries with the same value return the existing job. When `provider` is `openai`, the `url` on each JSONL line must match `endpoint`. */
+/** Create a Batch Inference Job Submits a batch job against a previously uploaded JSONL input file. The upload must have completed before this call; otherwise the request is rejected. Supply a unique `request_id` to make the submission idempotent -- retries with the same value return the existing job. When `provider` is `openai`, the `url` on each JSONL line must match `endpoint`. */
 export const createInferenceBatch: API.OperationMethod<
   CreateInferenceBatchRequest,
   Batch,
@@ -52456,7 +52456,7 @@ export const getInferenceBatch: API.OperationMethod<
 }));
 
 export type GetInferenceBatchResultsError = Forbidden | NotFound | DigitalOceanOpError;
-/** Get Batch Inference Results Download Links Returns short-lived presigned download URLs for the output (and optional error sidecar) of a completed batch job. If results are not yet ready, the response sets `result_available: false` or returns `412 Precondition Failed`; in both cases, keep polling batch status and retry. Download the artifacts soon after fetching — the URLs are short-lived. Result files themselves are retained for up to 30 days after the job completes, after which they are deleted. */
+/** Get Batch Inference Results Download Links Returns short-lived presigned download URLs for the output (and optional error sidecar) of a completed batch job. If results are not yet ready, the response sets `result_available: false` or returns `412 Precondition Failed`; in both cases, keep polling batch status and retry. Download the artifacts soon after fetching -- the URLs are short-lived. Result files themselves are retained for up to 30 days after the job completes, after which they are deleted. */
 export const getInferenceBatchResults: API.OperationMethod<
   GetInferenceBatchResultsRequest,
   BatchResultsResponse,
@@ -56936,7 +56936,7 @@ export const monitoringGetAppRestartCountMetricsYml: API.OperationMethod<
 }));
 
 export type MonitoringGetDatabaseMysqlIndexVsSequentialReadsError = NotFound | DigitalOceanOpError;
-/** Get Database MySQL Index vs Sequential Reads Metrics Retrieve index vs sequential reads ratio (percent) for a MySQL service — i.e. percentage of reads using an index. */
+/** Get Database MySQL Index vs Sequential Reads Metrics Retrieve index vs sequential reads ratio (percent) for a MySQL service -- i.e. percentage of reads using an index. */
 export const monitoringGetDatabaseMysqlIndexVsSequentialReads: API.OperationMethod<
   MonitoringGetDatabaseMysqlIndexVsSequentialReadsRequest,
   Metrics,
@@ -58616,7 +58616,7 @@ export const updateVpcSubnetRoute: API.OperationMethod<
 }));
 
 export type UploadInferenceBatchFileError = Forbidden | DigitalOceanOpError;
-/** Upload a Batch Inference Input File Uploads the raw JSONL bytes to the presigned `upload_url` returned by `POST /v1/batches/files`. **The URL is dynamic — do not construct it.** Use the `upload_url` value from the previous step verbatim. Its host, path, and query parameters are part of the short-lived (~15 minute) signature and change per request; the server and path shown here are illustrative. If the URL expires before the upload completes, create a new file intent and retry. `POST /v1/batches` performs a `HEAD` check on the uploaded object and will reject the batch if this upload has not completed. Send the raw JSONL bytes verbatim. Presigned PUT URLs are signature-sensitive to request headers — prefer `application/octet-stream` or omit `Content-Type` entirely. A custom value (for example `application/jsonl`) can cause signature mismatches unless the URL was signed for that exact header. */
+/** Upload a Batch Inference Input File Uploads the raw JSONL bytes to the presigned `upload_url` returned by `POST /v1/batches/files`. **The URL is dynamic -- do not construct it.** Use the `upload_url` value from the previous step verbatim. Its host, path, and query parameters are part of the short-lived (~15 minute) signature and change per request; the server and path shown here are illustrative. If the URL expires before the upload completes, create a new file intent and retry. `POST /v1/batches` performs a `HEAD` check on the uploaded object and will reject the batch if this upload has not completed. Send the raw JSONL bytes verbatim. Presigned PUT URLs are signature-sensitive to request headers -- prefer `application/octet-stream` or omit `Content-Type` entirely. A custom value (for example `application/jsonl`) can cause signature mismatches unless the URL was signed for that exact header. */
 export const uploadInferenceBatchFile: API.OperationMethod<
   UploadInferenceBatchFileRequest,
   UploadInferenceBatchFileResponse,

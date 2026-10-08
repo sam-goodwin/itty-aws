@@ -7506,7 +7506,7 @@ export type ListPluginTypeActionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists configured Amazon Q Business actions for any plugin type—both built-in and custom.
+ * Lists configured Amazon Q Business actions for any plugin type--both built-in and custom.
  */
 export const listPluginTypeActions: API.PaginatedOperationMethod<
   ListPluginTypeActionsRequest,
@@ -7752,7 +7752,7 @@ export type PutGroupError =
   | ValidationException
   | CommonErrors;
 /**
- * Create, or updates, a mapping of users—who have access to a document—to groups.
+ * Create, or updates, a mapping of users--who have access to a document--to groups.
  *
  * You can also map sub groups to groups. For example, the group "Company Intellectual Property Teams" includes sub groups "Research" and "Engineering". These sub groups include their own list of users or people who work in these teams. Only users who work in research and engineering, and therefore belong in the intellectual property group, can see top-secret company documents in their Amazon Q Business chat results.
  *

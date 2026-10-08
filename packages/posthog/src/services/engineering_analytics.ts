@@ -3930,9 +3930,9 @@ export const MergeEngineeringAnalyticsTeamTrendRequest = /*@__PURE__*/ S.suspend
 export interface TeamMergeTrendPoint {
   /** Start of the day bucket (team timezone), keyed on merged_at. */
   day: string;
-  /** Median open→merge seconds of the PRs this team's members merged that day; null on a day the team merged nothing. */
+  /** Median open->merge seconds of the PRs this team's members merged that day; null on a day the team merged nothing. */
   median_seconds: number | null;
-  /** Average open→merge seconds over the same merges; diverges above the median when a few long-running PRs drag the mean. Null on a day the team merged nothing. */
+  /** Average open->merge seconds over the same merges; diverges above the median when a few long-running PRs drag the mean. Null on a day the team merged nothing. */
   average_seconds: number | null;
   /** Merged PRs behind that day's median and average. */
   merged_count: number;
@@ -3946,14 +3946,14 @@ export const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TeamMergeTrendPoint" }) as any as S.Schema<TeamMergeTrendPoint>;
 
-/** Daily median and average open→merge over the PRs this team's members merged, ascending by day. Coarse timing (open→merge combines draft and review time); bots excluded. */
+/** Daily median and average open->merge over the PRs this team's members merged, ascending by day. Coarse timing (open->merge combines draft and review time); bots excluded. */
 export type TeamMergeTrendPointsList = Array<TeamMergeTrendPoint>;
 export const TeamMergeTrendPointsList = /*@__PURE__*/ S.Array(
   TeamMergeTrendPoint,
 ) as any as S.Schema<TeamMergeTrendPointsList>;
 
 export interface TeamMergeTrend {
-  /** Daily median and average open→merge over the PRs this team's members merged, ascending by day. Coarse timing (open→merge combines draft and review time); bots excluded. */
+  /** Daily median and average open->merge over the PRs this team's members merged, ascending by day. Coarse timing (open->merge combines draft and review time); bots excluded. */
   points: TeamMergeTrendPointsList;
   /** The team slug this trend is scoped to. */
   owner_team: string;
@@ -4711,7 +4711,7 @@ export const getEngineeringAnalyticsCiSignalsConfig: API.OperationMethod<
 }));
 
 export type MergeEngineeringAnalyticsTeamTrendError = BadRequest | PosthogOpError;
-/** One team's daily time-to-merge trend: the median and average open→merge seconds over the PRs the team's members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source's team_members snapshot; has_membership_data is false without it. */
+/** One team's daily time-to-merge trend: the median and average open->merge seconds over the PRs the team's members merged each day (PR author login -> GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open->merge (draft + review time combined); bots are excluded. Requires the GitHub source's team_members snapshot; has_membership_data is false without it. */
 export const mergeEngineeringAnalyticsTeamTrend: API.OperationMethod<
   MergeEngineeringAnalyticsTeamTrendRequest,
   TeamMergeTrend,

@@ -61673,7 +61673,7 @@ export type CancelCapacityReservationError =
  *
  * - `assessing`
  *
- * - `scheduled` — requires a cancellation quote. Use
+ * - `scheduled` -- requires a cancellation quote. Use
  * `CreateCapacityReservationCancellationQuote` to generate a quote,
  * then pass the quote ID with `ApplyCancellationCharges` set to
  * `commitment-wind-down`. The cancellation charge depends on how
@@ -61682,14 +61682,14 @@ export type CancelCapacityReservationError =
  * - `active` and there is no commitment duration or the commitment
  * duration has elapsed.
  *
- * - `active` during the commitment duration — requires a
+ * - `active` during the commitment duration -- requires a
  * cancellation quote. Use
  * `CreateCapacityReservationCancellationQuote` to generate a quote,
  * then pass the quote ID with `ApplyCancellationCharges` set to
  * `commitment-wind-down`. The Capacity Reservation transitions to
  * `cancelling` while charges are applied.
  *
- * - `delayed` — the commitment duration is waived, so no
+ * - `delayed` -- the commitment duration is waived, so no
  * cancellation charge applies.
  *
  * You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML.
@@ -62484,7 +62484,7 @@ export type CreateClientVpnRouteError =
   | CommonErrors;
 /**
  * Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the
- * available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
+ * available destination network routes. Each route in the route table specifies the path for traU+FB03c to speciU+FB01c resources or networks.
  */
 export const createClientVpnRoute: API.OperationMethod<
   CreateClientVpnRouteRequest,
@@ -62578,7 +62578,7 @@ export type CreateCustomerGatewayError =
 /**
  * Provides information to Amazon Web Services about your customer gateway device. The
  * customer gateway device is the appliance at your end of the VPN connection. You
- * must provide the IP address of the customer gateway device’s external
+ * must provide the IP address of the customer gateway device's external
  * interface. The IP address must be static and can be behind a device performing network
  * address translation (NAT).
  *
@@ -65422,7 +65422,7 @@ export type CreateVpcBlockPublicAccessExclusionError =
   | UnauthorizedOperation
   | CommonErrors;
 /**
- * Create a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
+ * Create a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account's BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
  */
 export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   CreateVpcBlockPublicAccessExclusionRequest,
@@ -68337,7 +68337,7 @@ export type DeleteVpcBlockPublicAccessExclusionError =
   | UnauthorizedOperation
   | CommonErrors;
 /**
- * Delete a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
+ * Delete a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account's BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
  */
 export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
   DeleteVpcBlockPublicAccessExclusionRequest,
@@ -74494,7 +74494,7 @@ export type DescribeVpcBlockPublicAccessExclusionsError =
   | UnauthorizedOperation
   | CommonErrors;
 /**
- * Describe VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
+ * Describe VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account's BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
  */
 export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
   DescribeVpcBlockPublicAccessExclusionsRequest,
@@ -75509,7 +75509,7 @@ export type DisableImageDeregistrationProtectionError =
  * the AMI can be deregistered.
  *
  * If you chose to include a 24-hour cooldown period when you enabled deregistration
- * protection for the AMI, then, when you disable deregistration protection, you won’t
+ * protection for the AMI, then, when you disable deregistration protection, you won't
  * immediately be able to deregister the AMI.
  *
  * For more information, see Protect an Amazon EC2 AMI from
@@ -80442,8 +80442,8 @@ export type ModifyInstanceMetadataOptionsError =
  * Modify the instance metadata parameters on a running or stopped instance. When you
  * modify the parameters on a stopped instance, they are applied when the instance is
  * started. When you modify the parameters on a running instance, the API responds with a
- * state of “pending”. After the parameter modifications are successfully applied to the
- * instance, the state of the modifications changes from “pending” to “applied” in
+ * state of "pending". After the parameter modifications are successfully applied to the
+ * instance, the state of the modifications changes from "pending" to "applied" in
  * subsequent describe-instances API calls. For more information, see Instance metadata and user data in the
  * *Amazon EC2 User Guide*.
  */
@@ -81671,7 +81671,7 @@ export const modifyVpcAttribute: API.OperationMethod<
 
 export type ModifyVpcBlockPublicAccessExclusionError = CommonErrors;
 /**
- * Modify VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on.
+ * Modify VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account's BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on.
  */
 export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   ModifyVpcBlockPublicAccessExclusionRequest,
@@ -83029,12 +83029,12 @@ export type ReplaceImageInstanceTypeSpecificationError = CommonErrors;
  * You can specify supported instance types, unsupported instance types, or both. The
  * evaluation logic is as follows:
  *
- * - No specification set – all instance types are allowed.
+ * - No specification set - all instance types are allowed.
  *
- * - Only `UnsupportedInstanceTypes` set – All instance types are allowed
+ * - Only `UnsupportedInstanceTypes` set - All instance types are allowed
  * except those that match the unsupported list.
  *
- * - `SupportedInstanceTypes` set – The instance type must match the
+ * - `SupportedInstanceTypes` set - The instance type must match the
  * supported list and must not match the unsupported list.
  *
  * Instance type entries support wildcard patterns using `*` (for example,

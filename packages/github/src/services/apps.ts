@@ -3214,7 +3214,7 @@ export const getSubscriptionPlanForAccountStubbed: API.OperationMethod<
 }));
 
 export type GetUserInstallationError = GithubOpError;
-/** Get a user installation for the authenticated app Enables an authenticated GitHub App to find the user’s installation information. You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. */
+/** Get a user installation for the authenticated app Enables an authenticated GitHub App to find the user's installation information. You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. */
 export const getUserInstallation: API.OperationMethod<
   GetUserInstallationRequest,
   Installation,

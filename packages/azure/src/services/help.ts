@@ -555,7 +555,7 @@ export const CheckDiagnosticNameAvailability: API.OperationMethod<
 }));
 
 export type CreateDiagnosticError = AzureOpError;
-/** Diagnostics tells you precisely the root cause of the issue and how to address it. You can get diagnostics once you discover and identify the relevant solution for your Azure issue.<br/><br/> You can create diagnostics using the ‘solutionId’ from Solution Discovery API response and ‘additionalParameters’ <br/><br/> <b>Note: </b>‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API */
+/** Diagnostics tells you precisely the root cause of the issue and how to address it. You can get diagnostics once you discover and identify the relevant solution for your Azure issue.<br/><br/> You can create diagnostics using the 'solutionId' from Solution Discovery API response and 'additionalParameters' <br/><br/> <b>Note: </b>'requiredParameterSets' from Solutions Discovery API response must be passed via 'additionalParameters' as an input to Diagnostics API */
 export const CreateDiagnostic: API.OperationMethod<
   CreateDiagnosticRequest,
   CreateDiagnosticResponse,
@@ -585,7 +585,7 @@ export const GetDiagnostic: API.OperationMethod<
 }));
 
 export type ListDiscoverySolutionError = AzureOpError;
-/** Solutions Discovery is the initial point of entry within Help API, which helps you identify the relevant solutions for your Azure issue.<br/><br/> You can discover solutions using resourceUri OR resourceUri + problemClassificationId.<br/><br/>We will do our best in returning relevant diagnostics for your Azure issue.<br/><br/> Get the problemClassificationId(s) using this [reference](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP).<br/><br/> <b>Note: </b> ‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API. */
+/** Solutions Discovery is the initial point of entry within Help API, which helps you identify the relevant solutions for your Azure issue.<br/><br/> You can discover solutions using resourceUri OR resourceUri + problemClassificationId.<br/><br/>We will do our best in returning relevant diagnostics for your Azure issue.<br/><br/> Get the problemClassificationId(s) using this [reference](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP).<br/><br/> <b>Note: </b> 'requiredParameterSets' from Solutions Discovery API response must be passed via 'additionalParameters' as an input to Diagnostics API. */
 export const ListDiscoverySolution: API.OperationMethod<
   ListDiscoverySolutionRequest,
   DiscoveryResponse,

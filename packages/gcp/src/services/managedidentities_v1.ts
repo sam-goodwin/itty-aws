@@ -416,7 +416,7 @@ export interface Backup {
   updateTime?: string;
   /** Output only. The unique name of the Backup in the form of `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}` */
   name?: string;
-  /** Output only. Indicates whether it’s an on-demand backup or scheduled. */
+  /** Output only. Indicates whether it's an on-demand backup or scheduled. */
   type?: BackupTypeEnum | (string & {});
   /** Output only. Additional information about the current status of this backup, if available. */
   statusMessage?: string;

@@ -11081,9 +11081,9 @@ export type ListIntentMetricsError =
 /**
  * Retrieves summary metrics for the intents in your bot. The following fields are required:
  *
- * - `metrics` – A list of AnalyticsIntentMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
+ * - `metrics` - A list of AnalyticsIntentMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
  * Of the optional fields, you can organize the results in the following ways:
  *
@@ -11129,9 +11129,9 @@ export type ListIntentPathsError =
 /**
  * Retrieves summary statistics for a path of intents that users take over sessions with your bot. The following fields are required:
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
- * - `intentPath` – Define an order of intents for which you want to retrieve metrics. Separate intents in the path with a forward slash. For example, populate the `intentPath` field with `/BookCar/BookHotel` to see details about how many times users invoked the `BookCar` and `BookHotel` intents in that order.
+ * - `intentPath` - Define an order of intents for which you want to retrieve metrics. Separate intents in the path with a forward slash. For example, populate the `intentPath` field with `/BookCar/BookHotel` to see details about how many times users invoked the `BookCar` and `BookHotel` intents in that order.
  *
  * Use the optional `filters` field to filter the results.
  */
@@ -11201,9 +11201,9 @@ export type ListIntentStageMetricsError =
 /**
  * Retrieves summary metrics for the stages within intents in your bot. The following fields are required:
  *
- * - `metrics` – A list of AnalyticsIntentStageMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
+ * - `metrics` - A list of AnalyticsIntentStageMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
  * Of the optional fields, you can organize the results in the following ways:
  *
@@ -11327,9 +11327,9 @@ export type ListSessionMetricsError =
 /**
  * Retrieves summary metrics for the user sessions with your bot. The following fields are required:
  *
- * - `metrics` – A list of AnalyticsSessionMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
+ * - `metrics` - A list of AnalyticsSessionMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
  * Of the optional fields, you can organize the results in the following ways:
  *
@@ -11619,7 +11619,7 @@ export type ListUtteranceAnalyticsDataError =
  *
  * Retrieves a list of metadata for individual user utterances to your bot. The following fields are required:
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
  * Of the optional fields, you can organize the results in the following ways:
  *
@@ -11668,9 +11668,9 @@ export type ListUtteranceMetricsError =
  *
  * Retrieves summary metrics for the utterances in your bot. The following fields are required:
  *
- * - `metrics` – A list of AnalyticsUtteranceMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
+ * - `metrics` - A list of AnalyticsUtteranceMetric objects. In each object, use the `name` field to specify the metric to calculate, the `statistic` field to specify whether to calculate the `Sum`, `Average`, or `Max` number, and the `order` field to specify whether to sort the results in `Ascending` or `Descending` order.
  *
- * - `startDateTime` and `endDateTime` – Define a time range for which you want to retrieve results.
+ * - `startDateTime` and `endDateTime` - Define a time range for which you want to retrieve results.
  *
  * Of the optional fields, you can organize the results in the following ways:
  *

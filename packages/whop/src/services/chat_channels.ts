@@ -255,7 +255,7 @@ export type GetChatChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve chat channel [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing chat channel. Required permissions: - `chat:read` */
+/** Retrieve chat channel [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing chat channel. Required permissions: - `chat:read` */
 export const getChatChannel: API.OperationMethod<
   GetChatChannelRequest,
   ChatChannel,
@@ -275,7 +275,7 @@ export type ListChatChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List chat channels [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of chat channels within a specific company, with optional filtering by product. Required permissions: - `chat:read` */
+/** List chat channels [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of chat channels within a specific company, with optional filtering by product. Required permissions: - `chat:read` */
 export const listChatChannel: API.PaginatedOperationMethod<
   ListChatChannelRequest,
   ListChatChannelResponse,
@@ -307,7 +307,7 @@ export type UpdateChatChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update chat channel [Legacy API — https://docs.whop.com/api-reference] Update moderation settings for a chat channel, such as who can post, banned words, and media restrictions. Required permissions: - `chat:moderate` */
+/** Update chat channel [Legacy API -- https://docs.whop.com/api-reference] Update moderation settings for a chat channel, such as who can post, banned words, and media restrictions. Required permissions: - `chat:moderate` */
 export const updateChatChannel: API.OperationMethod<
   UpdateChatChannelRequest,
   ChatChannel,

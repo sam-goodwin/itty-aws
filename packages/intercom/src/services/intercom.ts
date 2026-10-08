@@ -1104,7 +1104,7 @@ export const BulkContentActionsRequestContentIdsList = /*@__PURE__*/ S.Array(
   BulkContentActionsRequestContentIdsItem,
 ) as any as S.Schema<BulkContentActionsRequestContentIdsList>;
 
-/** Required when `action` is `set_availability`. Each field is optional — only the properties present in the request are toggled. */
+/** Required when `action` is `set_availability`. Each field is optional -- only the properties present in the request are toggled. */
 export interface BulkContentActionsRequestAvailability {
   /** Toggle Fin AI Agent availability. */
   ai_agent?: boolean;
@@ -1187,7 +1187,7 @@ export interface BulkContentActionsRequest {
   action: BulkContentActionsRequestAction | (string & {});
   /** Up to 1,000 content items to apply the action to. */
   content_ids: BulkContentActionsRequestContentIdsList;
-  /** Required when `action` is `set_availability`. Each field is optional — only the properties present in the request are toggled. */
+  /** Required when `action` is `set_availability`. Each field is optional -- only the properties present in the request are toggled. */
   availability?: BulkContentActionsRequestAvailability;
   /** Required when `action` is `set_audience`. Manages segment membership. */
   audience?: BulkContentActionsRequestAudience;
@@ -2649,7 +2649,7 @@ export interface CreateArticleRequest {
   description?: string;
   /** The content of the article in HTML. For multilingual articles, this will be the body of the default language's content. Mutually exclusive with `body_markdown`. */
   body?: string;
-  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` — you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
+  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` -- you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
   body_markdown?: string;
   /** The id of the author of the article. For multilingual articles, this will be the id of the author of the default language's content. Must be a teammate on the help center's workspace. */
   author_id: number;
@@ -2668,9 +2668,9 @@ export interface CreateArticleRequest {
   ai_copilot_availability?: boolean;
   /** Whether the article should be available for AI Sales Agent. For multilingual articles, this sets the default language's availability. */
   ai_sales_agent_availability?: boolean;
-  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_publish_at?: string | null;
-  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_unpublish_at?: string | null;
 }
 export const CreateArticleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3028,9 +3028,9 @@ export interface CreateArticleResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: CreateArticleResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -3708,7 +3708,7 @@ export interface CreateContentSnippetRequest {
   title: string;
   /** The content blocks that make up the body of the snippet. Mutually exclusive with `body_markdown`. */
   json_blocks?: CreateContentSnippetRequestJsonBlocksList;
-  /** The content of the snippet in markdown. An alternative to `json_blocks` — you can provide content as markdown instead of structured blocks. Mutually exclusive with `json_blocks`. */
+  /** The content of the snippet in markdown. An alternative to `json_blocks` -- you can provide content as markdown instead of structured blocks. Mutually exclusive with `json_blocks`. */
   body_markdown?: string;
   /** The locale of the content snippet. Defaults to `en`. */
   locale?: string;
@@ -5800,7 +5800,7 @@ export interface CreateInternalArticleRequest {
   title: string;
   /** The content of the article in HTML. Mutually exclusive with `body_markdown`. */
   body?: string;
-  /** The content of the article in markdown. An alternative to `body` — you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
+  /** The content of the article in markdown. An alternative to `body` -- you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
   body_markdown?: string;
   /** The id of the author of the article. */
   author_id: number;
@@ -6255,7 +6255,7 @@ export interface OfficeHoursTimeInterval {
   start_minute?: number;
   /** Minute the interval ends. For schedules, offset from the start of the week (Monday 00:00 = 0); for exceptions, offset from midnight on `exception_date`. */
   end_minute?: number;
-  /** Derived day of the week the interval falls on (0 = Monday … 6 = Sunday). For exceptions, this is derived from `exception_date`. */
+  /** Derived day of the week the interval falls on (0 = Monday ... 6 = Sunday). For exceptions, this is derived from `exception_date`. */
   day_of_week?: number;
 }
 export const OfficeHoursTimeInterval = /*@__PURE__*/ S.suspend(() =>
@@ -7835,7 +7835,7 @@ export interface EscalateFinConversationRequest {
   /** The external ID of the conversation to escalate. Provide this or `user`. Required on Fin for Platforms, where `user` is not supported. */
   conversation_id?: string;
   user?: EscalateFinConversationRequestUser;
-  /** Optional background for the receiving teammate, valid with either `conversation_id` or `user`. On the Intercom Helpdesk, it appears above the summary in the internal note of the new conversation the teammate picks up, and is never shown to the end user. Not surfaced on Fin for Platforms. Avoid including credentials or unnecessary personal data — it is visible to any teammate with access to the conversation. */
+  /** Optional background for the receiving teammate, valid with either `conversation_id` or `user`. On the Intercom Helpdesk, it appears above the summary in the internal note of the new conversation the teammate picks up, and is never shown to the end user. Not surfaced on Fin for Platforms. Avoid including credentials or unnecessary personal data -- it is visible to any teammate with access to the conversation. */
   context?: string;
 }
 export const EscalateFinConversationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8087,9 +8087,9 @@ export interface GetArticleResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: GetArticleResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -8209,9 +8209,9 @@ export interface GetArticleDraftResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: GetArticleDraftResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -9199,7 +9199,7 @@ export const ConversationFirstContactReply = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationFirstContactReply",
 }) as any as S.Schema<ConversationFirstContactReply>;
 
-/** SLA statuses: - `hit`: If there’s at least one hit event in the underlying sla_events table, and no “missed” or “canceled” events for the conversation. - `missed`: If there are any missed sla_events for the conversation and no canceled events. If there’s even a single missed sla event, the status will always be missed. A missed status is not applied when the SLA expires, only the next time a teammate replies. - `active`: An SLA has been applied to a conversation, but has not yet been fulfilled. SLA status is active only if there are no “hit, “missed”, or “canceled” events. */
+/** SLA statuses: - `hit`: If there's at least one hit event in the underlying sla_events table, and no "missed" or "canceled" events for the conversation. - `missed`: If there are any missed sla_events for the conversation and no canceled events. If there's even a single missed sla event, the status will always be missed. A missed status is not applied when the SLA expires, only the next time a teammate replies. - `active`: An SLA has been applied to a conversation, but has not yet been fulfilled. SLA status is active only if there are no "hit, "missed", or "canceled" events. */
 export type SlaAppliedSlaStatus = "hit" | "missed" | "cancelled" | "active";
 export const SlaAppliedSlaStatus = S.String;
 
@@ -9209,7 +9209,7 @@ export interface SlaApplied {
   type?: string;
   /** The name of the SLA as given by the teammate when it was created. */
   sla_name?: string;
-  /** SLA statuses: - `hit`: If there’s at least one hit event in the underlying sla_events table, and no “missed” or “canceled” events for the conversation. - `missed`: If there are any missed sla_events for the conversation and no canceled events. If there’s even a single missed sla event, the status will always be missed. A missed status is not applied when the SLA expires, only the next time a teammate replies. - `active`: An SLA has been applied to a conversation, but has not yet been fulfilled. SLA status is active only if there are no “hit, “missed”, or “canceled” events. */
+  /** SLA statuses: - `hit`: If there's at least one hit event in the underlying sla_events table, and no "missed" or "canceled" events for the conversation. - `missed`: If there are any missed sla_events for the conversation and no canceled events. If there's even a single missed sla event, the status will always be missed. A missed status is not applied when the SLA expires, only the next time a teammate replies. - `active`: An SLA has been applied to a conversation, but has not yet been fulfilled. SLA status is active only if there are no "hit, "missed", or "canceled" events. */
   sla_status?: SlaAppliedSlaStatus;
 }
 export const SlaApplied = /*@__PURE__*/ S.suspend(() =>
@@ -9992,7 +9992,7 @@ export interface ConversationScorecardEvaluatorResult {
   reasoning?: string | null;
   /** Identifiers for structured reasons assigned to the result, if any. */
   reason_ids?: ConversationScorecardEvaluatorResultReasonIdsList | null;
-  /** Free-text entered by the reviewer to supplement or stand in for the structured `reason_ids` — typically captured when the reviewer selects an "Other" option or adds a custom note. Null when not provided. */
+  /** Free-text entered by the reviewer to supplement or stand in for the structured `reason_ids` -- typically captured when the reviewer selects an "Other" option or adds a custom note. Null when not provided. */
   other_text?: string | null;
 }
 export const ConversationScorecardEvaluatorResult = /*@__PURE__*/ S.suspend(() =>
@@ -10884,7 +10884,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 export interface GetTeamMetricsRequest {
   /** The unique identifier of the team to retrieve metrics for. Use `GET /teams` to list available team IDs. */
   team_id: string;
-  /** The number of seconds after which an open conversation is considered idle. Clamped to the range 1–86400. Defaults to 1800 (30 minutes). */
+  /** The number of seconds after which an open conversation is considered idle. Clamped to the range 1-86400. Defaults to 1800 (30 minutes). */
   idle_threshold?: number;
 }
 export const GetTeamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12187,9 +12187,9 @@ export interface ArticleListItem {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: ArticleListItemHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -12870,7 +12870,7 @@ export const BannerAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BannerAction" }) as any as S.Schema<BannerAction>;
 
-/** Reserved for future use. Always `null` in the current version — banners that depend on client-side targeting rules (such as page URL or time on page) are not returned by this endpoint. */
+/** Reserved for future use. Always `null` in the current version -- banners that depend on client-side targeting rules (such as page URL or time on page) are not returned by this endpoint. */
 export type BannerClientTargetingList = Array<unknown>;
 export const BannerClientTargetingList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -12896,7 +12896,7 @@ export interface Banner {
   show_dismiss_button?: boolean;
   /** The action a contact can take on the banner, or `null` when the banner has no action. The fields present depend on `type`: `url` (`label`, `target`), `reaction` (`reaction_set`), `email_collector`, or `product_tour` (`tour_id`, `tour_url`). */
   action?: BannerAction | null;
-  /** Reserved for future use. Always `null` in the current version — banners that depend on client-side targeting rules (such as page URL or time on page) are not returned by this endpoint. */
+  /** Reserved for future use. Always `null` in the current version -- banners that depend on client-side targeting rules (such as page URL or time on page) are not returned by this endpoint. */
   client_targeting?: BannerClientTargetingList | null;
   /** The time the contact's view of this banner was created. */
   created_at?: number;
@@ -13846,7 +13846,7 @@ export const ListFinCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFinCapabilitiesRequest>;
 
 export interface ListFinCapabilitiesResponseCapabilitiesItem {
-  /** The kind of capability — `procedure` for a runnable procedure, or a static action such as `reply`, `ask`, or `escalate`. */
+  /** The kind of capability -- `procedure` for a runnable procedure, or a static action such as `reply`, `ask`, or `escalate`. */
   type?: string;
   /** The procedure ID. Present only when `type` is `procedure`. */
   id?: string;
@@ -15123,9 +15123,9 @@ export interface PublishArticleDraftResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: PublishArticleDraftResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -15940,9 +15940,9 @@ export interface Article {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: ArticleHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -16322,7 +16322,7 @@ export interface SearchContentRequest {
   tag_ids?: SearchContentRequestTagIdsList;
   /** Match operator paired with `tag_ids`. `IN` returns content matching any of the given tags; `NIN` excludes content matching any of them. */
   tag_operator?: SearchContentRequestTagOperator | (string & {});
-  /** Filter by tag IDs using OR semantics — returns content matching any of the given tags. Alternative to `tag_ids` + `tag_operator`. Accepts a comma-separated list or repeated params. */
+  /** Filter by tag IDs using OR semantics -- returns content matching any of the given tags. Alternative to `tag_ids` + `tag_operator`. Accepts a comma-separated list or repeated params. */
   any_tag_ids?: SearchContentRequestAnyTagIdsList;
   /** Filter by folder IDs. Must be sent together with `folder_entity_type`. Accepts a comma-separated list or repeated params. */
   folder_ids?: SearchContentRequestFolderIdsList;
@@ -16681,7 +16681,7 @@ export interface StageArticleDraftRequest {
   description?: string;
   /** The content of the article in HTML. For multilingual articles, this will be the body of the default language's content. Mutually exclusive with `body_markdown`. */
   body?: string;
-  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` — you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
+  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` -- you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
   body_markdown?: string;
   /** The id of the author of the article. For multilingual articles, this will be the id of the author of the default language's content. Must be a teammate on the help center's workspace. */
   author_id?: number;
@@ -16700,9 +16700,9 @@ export interface StageArticleDraftRequest {
   ai_copilot_availability?: boolean;
   /** Whether the article should be available for AI Sales Agent. For multilingual articles, this sets the default language's availability. */
   ai_sales_agent_availability?: boolean;
-  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_publish_at?: string | null;
-  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_unpublish_at?: string | null;
 }
 export const StageArticleDraftRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16795,9 +16795,9 @@ export interface StageArticleDraftResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: StageArticleDraftResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -16906,16 +16906,16 @@ export const StartFinConversationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartFinConversationResponse",
 }) as any as S.Schema<StartFinConversationResponse>;
 
-/** The rating the user selected — one of the `key` values from the `csat_requested` event's options. */
+/** The rating the user selected -- one of the `key` values from the `csat_requested` event's options. */
 export type SubmitFinCsatRequestRating = "terrible" | "bad" | "ok" | "good" | "amazing";
 export const SubmitFinCsatRequestRating = S.String;
 
 export interface SubmitFinCsatRequest {
-  /** Your external conversation ID — the same ID you started the conversation with, and the one echoed on the `csat_requested` event. */
+  /** Your external conversation ID -- the same ID you started the conversation with, and the one echoed on the `csat_requested` event. */
   conversation_id: string;
-  /** The rating the user selected — one of the `key` values from the `csat_requested` event's options. */
+  /** The rating the user selected -- one of the `key` values from the `csat_requested` event's options. */
   rating: SubmitFinCsatRequestRating | (string & {});
-  /** Optional free-text comment the user left alongside the rating. Can be added to an already-rated survey, but only once — the rating locks after a remark is recorded. */
+  /** Optional free-text comment the user left alongside the rating. Can be added to an already-rated survey, but only once -- the rating locks after a remark is recorded. */
   remark?: string;
 }
 export const SubmitFinCsatRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17019,7 +17019,7 @@ export interface UpdateArticleRequest {
   description?: string;
   /** The content of the article in HTML. For multilingual articles, this will be the body of the default language's content. Mutually exclusive with `body_markdown`. */
   body?: string;
-  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` — you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
+  /** The content of the article in markdown. For multilingual articles, this will be the body of the default language's content. An alternative to `body` -- you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
   body_markdown?: string;
   /** The id of the author of the article. For multilingual articles, this will be the id of the author of the default language's content. Must be a teammate on the help center's workspace. */
   author_id?: number;
@@ -17038,9 +17038,9 @@ export interface UpdateArticleRequest {
   ai_copilot_availability?: boolean;
   /** Whether the article should be available for AI Sales Agent. For multilingual articles, this sets the default language's availability. */
   ai_sales_agent_availability?: boolean;
-  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future publish of the article. When set together with `state: "published"`, the article is scheduled instead of published immediately. Setting `null` cancels a pending publish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Combining with `state: "draft"` returns 400 `parameter_invalid`. Sending in the same request as `scheduled_unpublish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_publish_at?: string | null;
-  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` — the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 — only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
+  /** ISO 8601 timestamp at which to schedule a future unpublish of the article. Setting `null` cancels a pending unpublish schedule. Timestamps in the past or equal to the current time are rejected with 400 `parameter_invalid` -- the value must be strictly in the future. Rejected with 400 `parameter_invalid` if the article has never been published. Sending in the same request as `scheduled_publish_at` returns 400 -- only one pending schedule per article. Empty string returns 400 `parameter_invalid`. */
   scheduled_unpublish_at?: string | null;
 }
 export const UpdateArticleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17133,9 +17133,9 @@ export interface UpdateArticleResponse {
   exclude_from_article_suggestions?: boolean;
   /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
   help_center_audience?: UpdateArticleResponseHelpCenterAudience | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be published. `null` when no publish is scheduled. Mutually exclusive with `scheduled_unpublish_at` -- at most one pending schedule exists per article. */
   scheduled_publish_at?: number | null;
-  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` — at most one pending schedule exists per article. */
+  /** The Unix timestamp (in seconds) at which the article is scheduled to be unpublished. `null` when no unpublish is scheduled. Mutually exclusive with `scheduled_publish_at` -- at most one pending schedule exists per article. */
   scheduled_unpublish_at?: number | null;
   /** The default locale of the help center. This field is only returned for multilingual help centers. */
   default_locale?: string;
@@ -17542,7 +17542,7 @@ export interface UpdateContentSnippetRequest {
   title?: string;
   /** The content blocks that make up the body of the snippet. Mutually exclusive with `body_markdown`. */
   json_blocks?: UpdateContentSnippetRequestJsonBlocksList;
-  /** The content of the snippet in markdown. An alternative to `json_blocks` — you can provide content as markdown instead of structured blocks. Mutually exclusive with `json_blocks`. */
+  /** The content of the snippet in markdown. An alternative to `json_blocks` -- you can provide content as markdown instead of structured blocks. Mutually exclusive with `json_blocks`. */
   body_markdown?: string;
   /** The locale of the content snippet. */
   locale?: string;
@@ -17888,7 +17888,7 @@ export interface UpdateInternalArticleRequest {
   title?: string;
   /** The content of the article in HTML. Mutually exclusive with `body_markdown`. */
   body?: string;
-  /** The content of the article in markdown. An alternative to `body` — you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
+  /** The content of the article in markdown. An alternative to `body` -- you can provide content as markdown instead of HTML. Mutually exclusive with `body`. */
   body_markdown?: string;
   /** The id of the author of the article. */
   author_id?: number;
@@ -18295,7 +18295,7 @@ export const archiveContact: API.OperationMethod<
 }));
 
 export type AskFinError = BadRequest | IntercomOpError;
-/** Ask Fin Ask Fin a single, self-contained question and receive one informational answer. Unlike a conversation, `/fin/ask` is non-conversational: Fin will not ask follow-up questions, will not run procedures, and will not escalate to a human on its own. You can still escalate one yourself with `POST /fin/escalate`; the ask conversation is already closed after its one-shot answer, and escalation leaves it closed while routing the handoff separately. Fin's answer is delivered asynchronously via the `fin_replied` event. The conversation ends with a `complete` status — there is no `awaiting_user_reply` cycle. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
+/** Ask Fin Ask Fin a single, self-contained question and receive one informational answer. Unlike a conversation, `/fin/ask` is non-conversational: Fin will not ask follow-up questions, will not run procedures, and will not escalate to a human on its own. You can still escalate one yourself with `POST /fin/escalate`; the ask conversation is already closed after its one-shot answer, and escalation leaves it closed while routing the handoff separately. Fin's answer is delivered asynchronously via the `fin_replied` event. The conversation ends with a `complete` status -- there is no `awaiting_user_reply` cycle. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
 export const askFin: API.OperationMethod<
   AskFinRequest,
   AskFinResponse,
@@ -18460,7 +18460,7 @@ export const blockContact: API.OperationMethod<
 }));
 
 export type BulkContentActionsError = Forbidden | UnprocessableEntity | IntercomOpError;
-/** Run a bulk action on Knowledge Hub content Asynchronously run a bulk action over up to 1,000 Knowledge Hub content items. Six actions are supported: * `publish` and `unpublish` — apply to `article_content` only. * `delete` — permanently delete content (excludes synced sources and `external_content`). * `set_availability` — toggle Fin AI Agent, Copilot, and Sales Agent availability flags. * `set_audience` — manage segment membership on content. * `update_tags` — apply and/or remove existing tags on content. Unlike the other actions, `update_tags` addresses articles by the parent `article` id, not `article_content`. Tags must already exist and not be archived; supply at least one of `add_tag_ids` / `remove_tag_ids`. The endpoint validates the request, enqueues background work, and returns 202 with a placeholder envelope. Items whose `type` is not in the action's allowlist are silently dropped before processing. Articles imported from synced sources (Confluence, Notion, Zendesk, Salesforce Knowledge, etc.) are silently skipped on `delete` — they can only be removed by disconnecting the underlying import source. Requires the `write_content` OAuth scope. */
+/** Run a bulk action on Knowledge Hub content Asynchronously run a bulk action over up to 1,000 Knowledge Hub content items. Six actions are supported: * `publish` and `unpublish` -- apply to `article_content` only. * `delete` -- permanently delete content (excludes synced sources and `external_content`). * `set_availability` -- toggle Fin AI Agent, Copilot, and Sales Agent availability flags. * `set_audience` -- manage segment membership on content. * `update_tags` -- apply and/or remove existing tags on content. Unlike the other actions, `update_tags` addresses articles by the parent `article` id, not `article_content`. Tags must already exist and not be archived; supply at least one of `add_tag_ids` / `remove_tag_ids`. The endpoint validates the request, enqueues background work, and returns 202 with a placeholder envelope. Items whose `type` is not in the action's allowlist are silently dropped before processing. Articles imported from synced sources (Confluence, Notion, Zendesk, Salesforce Knowledge, etc.) are silently skipped on `delete` -- they can only be removed by disconnecting the underlying import source. Requires the `write_content` OAuth scope. */
 export const bulkContentActions: API.OperationMethod<
   BulkContentActionsRequest,
   BulkContentActionsResponse,
@@ -18580,7 +18580,7 @@ export const convertConversationToTicket: API.OperationMethod<
 }));
 
 export type ConvertVisitorError = IntercomOpError;
-/** Convert a visitor You can merge a Visitor to a Contact of role type `lead` or `user`. > 📘 What happens upon a visitor being converted? > > If the User exists, then the Visitor will be merged into it, the Visitor deleted and the User returned. If the User does not exist, the Visitor will be converted to a User, with the User identifiers replacing it's Visitor identifiers. */
+/** Convert a visitor You can merge a Visitor to a Contact of role type `lead` or `user`. > U+1F4D8 What happens upon a visitor being converted? > > If the User exists, then the Visitor will be merged into it, the Visitor deleted and the User returned. If the User does not exist, the Visitor will be converted to a User, with the User identifiers replacing it's Visitor identifiers. */
 export const convertVisitor: API.OperationMethod<
   ConvertVisitorRequest,
   Contact,
@@ -18595,7 +18595,7 @@ export const convertVisitor: API.OperationMethod<
 }));
 
 export type CreateArticleError = BadRequest | IntercomOpError;
-/** Create an article You can create a new article by making a POST request to `https://api.intercom.io/articles`. > 📘 Tags cannot be managed via the Articles API > > Article tags are read-only in responses. To create, update, or delete tags, use the Intercom UI or the Tags API endpoints. */
+/** Create an article You can create a new article by making a POST request to `https://api.intercom.io/articles`. > U+1F4D8 Tags cannot be managed via the Articles API > > Article tags are read-only in responses. To create, update, or delete tags, use the Intercom UI or the Tags API endpoints. */
 export const createArticle: API.OperationMethod<
   CreateArticleRequest,
   CreateArticleResponse,
@@ -18808,7 +18808,7 @@ export const createDataEvent: API.OperationMethod<
 }));
 
 export type CreateDataExportError = IntercomOpError;
-/** Create content data export To create your export job, you need to send a `POST` request to the export endpoint `https://api.intercom.io/export/content/data`. This endpoint exports **message delivery and engagement data** for outbound content (Emails, Posts, Custom Bots, Surveys, Tours, Series, and more). The exported data includes who received each message, when they received it, and how they engaged with it (opens, clicks, replies, completions, dismissals, unsubscribes, and bounces). It does not export raw message or conversation content. The only parameters you need to provide are the range of dates that you want exported. >🚧 Limit of one active job > > You can only have one active job per workspace. You will receive a HTTP status code of 429 with the message Exceeded rate limit of 1 pending message data export jobs if you attempt to create a second concurrent job. >❗️ Updated_at not included > > It should be noted that the timeframe only includes messages sent during the time period and not messages that were only updated during this period. For example, if a message was updated yesterday but sent two days ago, you would need to set the created_at_after date before the message was sent to include that in your retrieval job. >📘 Date ranges are inclusive > > Requesting data for 2018-06-01 until 2018-06-30 will get all data for those days including those specified - e.g. 2018-06-01 00:00:00 until 2018-06-30 23:59:99. */
+/** Create content data export To create your export job, you need to send a `POST` request to the export endpoint `https://api.intercom.io/export/content/data`. This endpoint exports **message delivery and engagement data** for outbound content (Emails, Posts, Custom Bots, Surveys, Tours, Series, and more). The exported data includes who received each message, when they received it, and how they engaged with it (opens, clicks, replies, completions, dismissals, unsubscribes, and bounces). It does not export raw message or conversation content. The only parameters you need to provide are the range of dates that you want exported. >U+1F6A7 Limit of one active job > > You can only have one active job per workspace. You will receive a HTTP status code of 429 with the message Exceeded rate limit of 1 pending message data export jobs if you attempt to create a second concurrent job. >U+2757 Updated_at not included > > It should be noted that the timeframe only includes messages sent during the time period and not messages that were only updated during this period. For example, if a message was updated yesterday but sent two days ago, you would need to set the created_at_after date before the message was sent to include that in your retrieval job. >U+1F4D8 Date ranges are inclusive > > Requesting data for 2018-06-01 until 2018-06-30 will get all data for those days including those specified - e.g. 2018-06-01 00:00:00 until 2018-06-30 23:59:99. */
 export const createDataExport: API.OperationMethod<
   CreateDataExportRequest,
   DataExport,
@@ -18888,7 +18888,7 @@ export const createInternalArticle: API.OperationMethod<
 }));
 
 export type CreateMessageError = BadRequest | Forbidden | UnprocessableEntity | IntercomOpError;
-/** Create a message You can create a message that has been initiated by an admin. The conversation can be either an in-app message, an email or whatsapp. > 🚧 Sending for visitors > > There can be a short delay between when a contact is created and when a contact becomes available to be messaged through the API. A 404 Not Found error will be returned in this case. This will return the Message model that has been created. > 🚧 Retrieving Associated Conversations > > As this is a message, there will be no conversation present until the contact responds. Once they do, you will have to search for a contact's conversations with the id of the message. */
+/** Create a message You can create a message that has been initiated by an admin. The conversation can be either an in-app message, an email or whatsapp. > U+1F6A7 Sending for visitors > > There can be a short delay between when a contact is created and when a contact becomes available to be messaged through the API. A 404 Not Found error will be returned in this case. This will return the Message model that has been created. > U+1F6A7 Retrieving Associated Conversations > > As this is a message, there will be no conversation present until the contact responds. Once they do, you will have to search for a contact's conversations with the id of the message. */
 export const createMessage: API.OperationMethod<
   CreateMessageRequest,
   Message,
@@ -19023,7 +19023,7 @@ export const createTicket: API.OperationMethod<
 }));
 
 export type CreateTicketTypeError = IntercomOpError;
-/** Create a ticket type You can create a new ticket type. > 📘 Creating ticket types. > > Every ticket type will be created with two default attributes: _default_title_ and _default_description_. > For the `icon` propery, use an emoji from [Twemoji Cheatsheet](https://twemoji-cheatsheet.vercel.app/) */
+/** Create a ticket type You can create a new ticket type. > U+1F4D8 Creating ticket types. > > Every ticket type will be created with two default attributes: _default_title_ and _default_description_. > For the `icon` propery, use an emoji from [Twemoji Cheatsheet](https://twemoji-cheatsheet.vercel.app/) */
 export const createTicketType: API.OperationMethod<
   CreateTicketTypeRequest,
   TicketType2,
@@ -19540,7 +19540,7 @@ export const dismissContactBanner: API.OperationMethod<
 }));
 
 export type DownloadDataExportError = IntercomOpError;
-/** Download content data export When a job has a status of complete, and thus a filled download_url, you can download your data by hitting that provided URL, formatted like so: https://api.intercom.io/download/content/data/xyz1234. Your exported message data will be streamed continuously back down to you in a gzipped CSV format. > 📘 Octet header required > > You will have to specify the header Accept: `application/octet-stream` when hitting this endpoint. */
+/** Download content data export When a job has a status of complete, and thus a filled download_url, you can download your data by hitting that provided URL, formatted like so: https://api.intercom.io/download/content/data/xyz1234. Your exported message data will be streamed continuously back down to you in a gzipped CSV format. > U+1F4D8 Octet header required > > You will have to specify the header Accept: `application/octet-stream` when hitting this endpoint. */
 export const downloadDataExport: API.OperationMethod<
   DownloadDataExportRequest,
   DownloadDataExportResponse,
@@ -19570,7 +19570,7 @@ export const enqueueCreateTicket: API.OperationMethod<
 }));
 
 export type EscalateFinConversationError = BadRequest | IntercomOpError;
-/** Escalate to a human Hand a conversation off to a human teammate. If you use the Intercom Helpdesk, the handoff lands in your team inbox. Provide either `conversation_id` or `user`: - `conversation_id` — escalate an existing agent conversation, including one started with `/fin/ask`. On the Intercom Helpdesk, Fin by default summarises the conversation and opens a new Helpdesk conversation that carries the summary as an internal note. Escalation does not change the original agent conversation's assignment or open/closed state. Configure an escalation Operator Workflow to change this default. - `user` — escalate on behalf of a user with no prior agent conversation. On the Intercom Helpdesk, a new Helpdesk conversation is created for the teammate. Not supported on Fin for Platforms — see below. In both cases, pass the optional `context` to give the receiving teammate background your orchestrating agent has and Fin does not. On the Intercom Helpdesk, it appears above the summary in the internal note of the new conversation the teammate picks up. It is never shown to the end user. Escalating an existing conversation also sets its AI Agent resolution state to `escalated`, readable as `ai_agent.resolution_state` on the Conversations API. This is a resolution state, not a billable resolution. On Fin for Platforms, `conversation_id` is required — `user` is not supported and is rejected, because there is no Intercom Helpdesk in which to create a conversation. There is no Intercom inbox either, so an escalation that no workflow handles does not open a Helpdesk conversation for a teammate. `context` is not surfaced, and the conversation is left open for your platform to hand off and continue driving. You are notified over the existing webhook or SSE channel with an `escalated` status followed by `complete`. The `complete` status signals that Fin is done; it does not close the conversation. On the Intercom Helpdesk, the new human conversation remains open; on Fin for Platforms, the conversation remains open for whoever handles it on your platform. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
+/** Escalate to a human Hand a conversation off to a human teammate. If you use the Intercom Helpdesk, the handoff lands in your team inbox. Provide either `conversation_id` or `user`: - `conversation_id` -- escalate an existing agent conversation, including one started with `/fin/ask`. On the Intercom Helpdesk, Fin by default summarises the conversation and opens a new Helpdesk conversation that carries the summary as an internal note. Escalation does not change the original agent conversation's assignment or open/closed state. Configure an escalation Operator Workflow to change this default. - `user` -- escalate on behalf of a user with no prior agent conversation. On the Intercom Helpdesk, a new Helpdesk conversation is created for the teammate. Not supported on Fin for Platforms -- see below. In both cases, pass the optional `context` to give the receiving teammate background your orchestrating agent has and Fin does not. On the Intercom Helpdesk, it appears above the summary in the internal note of the new conversation the teammate picks up. It is never shown to the end user. Escalating an existing conversation also sets its AI Agent resolution state to `escalated`, readable as `ai_agent.resolution_state` on the Conversations API. This is a resolution state, not a billable resolution. On Fin for Platforms, `conversation_id` is required -- `user` is not supported and is rejected, because there is no Intercom Helpdesk in which to create a conversation. There is no Intercom inbox either, so an escalation that no workflow handles does not open a Helpdesk conversation for a teammate. `context` is not surfaced, and the conversation is left open for your platform to hand off and continue driving. You are notified over the existing webhook or SSE channel with an `escalated` status followed by `complete`. The `complete` status signals that Fin is done; it does not close the conversation. On the Intercom Helpdesk, the new human conversation remains open; on Fin for Platforms, the conversation remains open for whoever handles it on your platform. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
 export const escalateFinConversation: API.OperationMethod<
   EscalateFinConversationRequest,
   EscalateFinConversationResponse,
@@ -19926,7 +19926,7 @@ export const getDataConnectorExecutionResult: API.OperationMethod<
 }));
 
 export type GetDataExportError = IntercomOpError;
-/** Show content data export You can view the status of your job by sending a `GET` request to the URL `https://api.intercom.io/export/content/data/{job_identifier}` - the `{job_identifier}` is the value returned in the response when you first created the export job. More on it can be seen in the Export Job Model. > 🚧 Jobs expire after two days > All jobs that have completed processing (and are thus available to download from the provided URL) will have an expiry limit of two days from when the export ob completed. After this, the data will no longer be available. */
+/** Show content data export You can view the status of your job by sending a `GET` request to the URL `https://api.intercom.io/export/content/data/{job_identifier}` - the `{job_identifier}` is the value returned in the response when you first created the export job. More on it can be seen in the Export Job Model. > U+1F6A7 Jobs expire after two days > All jobs that have completed processing (and are thus available to download from the provided URL) will have an expiry limit of two days from when the export ob completed. After this, the data will no longer be available. */
 export const getDataExport: API.OperationMethod<
   GetDataExportRequest,
   DataExport,
@@ -20263,7 +20263,7 @@ export const getWhatsAppMessageStatus2: API.OperationMethod<
 }));
 
 export type IdentifyAdminError = IntercomOpError;
-/** Identify an admin You can view the currently authorised admin along with the embedded app object (a "workspace" in legacy terminology). > 🚧 Single Sign On > > If you are building a custom "Log in with Intercom" flow for your site, and you call the `/me` endpoint to identify the logged-in user, you should not accept any sign-ins from users with unverified email addresses as it poses a potential impersonation security risk. */
+/** Identify an admin You can view the currently authorised admin along with the embedded app object (a "workspace" in legacy terminology). > U+1F6A7 Single Sign On > > If you are building a custom "Log in with Intercom" flow for your site, and you call the `/me` endpoint to identify the logged-in user, you should not accept any sign-ins from users with unverified email addresses as it poses a potential impersonation security risk. */
 export const identifyAdmin: API.OperationMethod<
   IdentifyAdminRequest,
   AdminWithApp,
@@ -20323,7 +20323,7 @@ export const lisDataAttributes: API.OperationMethod<
 }));
 
 export type LisDataEventsError = IntercomOpError;
-/** List all data events > 🚧 > > Please note that you can only 'list' events that are less than 90 days old. Event counts and summaries will still include your events older than 90 days but you cannot 'list' these events individually if they are older than 90 days The events belonging to a customer can be listed by sending a GET request to `https://api.intercom.io/events` with a user or lead identifier along with a `type` parameter. The identifier parameter can be one of `user_id`, `email` or `intercom_user_id`. The `type` parameter value must be `user`. - `https://api.intercom.io/events?type=user&user_id={user_id}` - `https://api.intercom.io/events?type=user&email={email}` - `https://api.intercom.io/events?type=user&intercom_user_id={id}` (this call can be used to list leads) The `email` parameter value should be [url encoded](http://en.wikipedia.org/wiki/Percent-encoding) when sending. You can optionally define the result page size as well with the `per_page` parameter. */
+/** List all data events > U+1F6A7 > > Please note that you can only 'list' events that are less than 90 days old. Event counts and summaries will still include your events older than 90 days but you cannot 'list' these events individually if they are older than 90 days The events belonging to a customer can be listed by sending a GET request to `https://api.intercom.io/events` with a user or lead identifier along with a `type` parameter. The identifier parameter can be one of `user_id`, `email` or `intercom_user_id`. The `type` parameter value must be `user`. - `https://api.intercom.io/events?type=user&user_id={user_id}` - `https://api.intercom.io/events?type=user&email={email}` - `https://api.intercom.io/events?type=user&intercom_user_id={id}` (this call can be used to list leads) The `email` parameter value should be [url encoded](http://en.wikipedia.org/wiki/Percent-encoding) when sending. You can optionally define the result page size as well with the `per_page` parameter. */
 export const lisDataEvents: API.OperationMethod<
   LisDataEventsRequest,
   DataEventSummary,
@@ -20413,7 +20413,7 @@ export const listAllCompanies: API.OperationMethod<
 }));
 
 export type ListArticlesError = IntercomOpError;
-/** List all articles You can fetch a list of all articles by making a GET request to `https://api.intercom.io/articles`. > 📘 How are the articles sorted and ordered? > > Articles will be returned in descending order on the `updated_at` attribute. This means if you need to iterate through results then we'll show the most recently updated articles first. */
+/** List all articles You can fetch a list of all articles by making a GET request to `https://api.intercom.io/articles`. > U+1F4D8 How are the articles sorted and ordered? > > Articles will be returned in descending order on the `updated_at` attribute. This means if you need to iterate through results then we'll show the most recently updated articles first. */
 export const listArticles: API.OperationMethod<
   ListArticlesRequest,
   ArticleList,
@@ -20683,7 +20683,7 @@ export const listConversations: API.OperationMethod<
 }));
 
 export type ListCustomObjectInstancesError = NotFound | IntercomOpError;
-/** List Custom Object Instances List instances of a custom object type. Three modes are supported: - **No filter** — returns all instances for the type. - **`references_contact_id`** — returns instances associated with the given contact. - **`references_conversation_id`** — returns instances associated with the given conversation. When **`external_id`** is provided, returns a single matching instance (not a list). */
+/** List Custom Object Instances List instances of a custom object type. Three modes are supported: - **No filter** -- returns all instances for the type. - **`references_contact_id`** -- returns instances associated with the given contact. - **`references_conversation_id`** -- returns instances associated with the given conversation. When **`external_id`** is provided, returns a single matching instance (not a list). */
 export const listCustomObjectInstances: API.OperationMethod<
   ListCustomObjectInstancesRequest,
   CustomObjectInstancesPaginatedList,
@@ -21013,7 +21013,7 @@ export const listSideConversations: API.OperationMethod<
 }));
 
 export type ListSubscriptionsForAContactError = NotFound | IntercomOpError;
-/** List subscriptions for a contact You can fetch a list of subscription types that are attached to a contact. These can be subscriptions that a user has 'opted-in' to or has 'opted-out' from, depending on the subscription type. This will return a list of Subscription Type objects that the contact is associated with. The data property will show a combined list of: 1.Opt-out subscription types that the user has opted-out from. 2.Opt-in subscription types that the user has opted-in to receiving. **Note:** This endpoint only returns subscriptions where the contact has explicitly configured their preference. Subscriptions that are in the default state — where the contact has not made an explicit opt-in or opt-out choice — are not included in the response. */
+/** List subscriptions for a contact You can fetch a list of subscription types that are attached to a contact. These can be subscriptions that a user has 'opted-in' to or has 'opted-out' from, depending on the subscription type. This will return a list of Subscription Type objects that the contact is associated with. The data property will show a combined list of: 1.Opt-out subscription types that the user has opted-out from. 2.Opt-in subscription types that the user has opted-in to receiving. **Note:** This endpoint only returns subscriptions where the contact has explicitly configured their preference. Subscriptions that are in the default state -- where the contact has not made an explicit opt-in or opt-out choice -- are not included in the response. */
 export const listSubscriptionsForAContact: API.OperationMethod<
   ListSubscriptionsForAContactRequest,
   SubscriptionTypeList,
@@ -21133,7 +21133,7 @@ export const manageConversation: API.OperationMethod<
 }));
 
 export type MergeContactError = BadRequest | IntercomOpError;
-/** Merge a lead and a user You can merge a contact with a `role` of `lead` into a contact with a `role` of `user`. {% admonition type="warning" name="Merged contacts are not retrievable via the API" %} Once a merge is completed, the source contact (`from`) is permanently removed from the active contact list. This means: - **GET /contacts/{id}** — Requesting the source contact by its original ID will return a `404 Not Found` error. - **POST /contacts/search** — The source contact will not appear in search results, including queries filtered by `updated_at`. - **GET /contacts** — The source contact will not appear in list results. Only the target contact (`into`) remains accessible. If your application stores contact IDs, update them to use the target contact's ID after a merge. {% /admonition %} */
+/** Merge a lead and a user You can merge a contact with a `role` of `lead` into a contact with a `role` of `user`. {% admonition type="warning" name="Merged contacts are not retrievable via the API" %} Once a merge is completed, the source contact (`from`) is permanently removed from the active contact list. This means: - **GET /contacts/{id}** -- Requesting the source contact by its original ID will return a `404 Not Found` error. - **POST /contacts/search** -- The source contact will not appear in search results, including queries filtered by `updated_at`. - **GET /contacts** -- The source contact will not appear in list results. Only the target contact (`into`) remains accessible. If your application stores contact IDs, update them to use the target contact's ID after a merge. {% /admonition %} */
 export const mergeContact: API.OperationMethod<
   MergeContactRequest,
   MergeContactResponse,
@@ -21253,7 +21253,7 @@ export const replyToFin: API.OperationMethod<
 }));
 
 export type RunFinProcedureError = BadRequest | IntercomOpError;
-/** Run a Fin procedure Deterministically run a specific procedure on a new conversation. Calling this endpoint guarantees that the named procedure runs — there is no non-deterministic routing. Fin's progress is delivered asynchronously via events or Server-Sent Events. If the procedure pauses for user input, the conversation status becomes `awaiting_user_reply` — send the user's response with [`/fin/reply`](/docs/references/rest-api/api.intercom.io/fin-agent/replytofin). {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
+/** Run a Fin procedure Deterministically run a specific procedure on a new conversation. Calling this endpoint guarantees that the named procedure runs -- there is no non-deterministic routing. Fin's progress is delivered asynchronously via events or Server-Sent Events. If the procedure pauses for user input, the conversation status becomes `awaiting_user_reply` -- send the user's response with [`/fin/reply`](/docs/references/rest-api/api.intercom.io/fin-agent/replytofin). {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
 export const runFinProcedure: API.OperationMethod<
   RunFinProcedureRequest,
   RunFinProcedureResponse,
@@ -21328,7 +21328,7 @@ export const searchContacts: API.OperationMethod<
 }));
 
 export type SearchContentError = UnprocessableEntity | IntercomOpError;
-/** Search knowledge base contents Search the knowledge base contents — articles, snippets, external pages, uploaded files, and internal articles — using a keyword query. Each result row has a `type` discriminator. Most types (`content_snippet`, `external_content`, `file_source_content`, `internal_article`) return a flat `{ type, id, title }` shape. Help center articles return a nested shape with a `contents[]` array, one entry per locale. Requires the `read_content` OAuth scope. */
+/** Search knowledge base contents Search the knowledge base contents -- articles, snippets, external pages, uploaded files, and internal articles -- using a keyword query. Each result row has a `type` discriminator. Most types (`content_snippet`, `external_content`, `file_source_content`, `internal_article`) return a flat `{ type, id, title }` shape. Help center articles return a nested shape with a `contents[]` array, one entry per locale. Requires the `read_content` OAuth scope. */
 export const searchContent: API.OperationMethod<
   SearchContentRequest,
   ContentSearchResponse,
@@ -21433,7 +21433,7 @@ export const startFinConversation: API.OperationMethod<
 }));
 
 export type SubmitFinCsatError = UnprocessableEntity | IntercomOpError;
-/** Submit a CSAT rating Record a customer's satisfaction rating for a conversation, with an optional free-text remark. Fin decides *when* to ask for a rating — this reuses the CSAT settings on your Fin workflow, not this API. When Fin asks, it fires a `csat_requested` event over webhooks or SSE carrying the rating options to show the user. Present those options, then submit the user's choice here. Submitting the same rating again, with no new remark, is a no-op and stays successful, so an at-least-once client can safely retry. Submitting a *different* rating updates the stored rating while the update window is still open, and a first remark can be added to an already-rated survey. Once a remark has been recorded the rating is locked and can no longer be changed. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
+/** Submit a CSAT rating Record a customer's satisfaction rating for a conversation, with an optional free-text remark. Fin decides *when* to ask for a rating -- this reuses the CSAT settings on your Fin workflow, not this API. When Fin asks, it fires a `csat_requested` event over webhooks or SSE carrying the rating options to show the user. Present those options, then submit the user's choice here. Submitting the same rating again, with no new remark, is a no-op and stays successful, so an at-least-once client can safely retry. Submitting a *different* rating updates the stored rating while the update window is still open, and a first remark can be added to an already-rated survey. Once a remark has been recorded the rating is locked and can no longer be changed. {% admonition type="warning" %} To request access to the Fin Agent API, please [fill out this form](https://forms.gle/osy4uyiqyomRCsL2A). {% /admonition %} */
 export const submitFinCsat: API.OperationMethod<
   SubmitFinCsatRequest,
   SubmitFinCsatResponse,
@@ -21478,7 +21478,7 @@ export const unlinkConversationFromTicket: API.OperationMethod<
 }));
 
 export type UpdateArticleError = NotFound | IntercomOpError;
-/** Update an article You can update the details of a single article by making a PUT request to `https://api.intercom.io/articles/<id>`. > 📘 Tags cannot be managed via the Articles API > > Article tags are read-only in responses. To create, update, or delete tags, use the Intercom UI or the Tags API endpoints. */
+/** Update an article You can update the details of a single article by making a PUT request to `https://api.intercom.io/articles/<id>`. > U+1F4D8 Tags cannot be managed via the Articles API > > Article tags are read-only in responses. To create, update, or delete tags, use the Intercom UI or the Tags API endpoints. */
 export const updateArticle: API.OperationMethod<
   UpdateArticleRequest,
   UpdateArticleResponse,
@@ -21635,7 +21635,7 @@ export type UpdateDataAttributeError =
   | NotFound
   | UnprocessableEntity
   | IntercomOpError;
-/** Update a data attribute You can update a data attribute. > 🚧 Updating the data type is not possible > > It is currently a dangerous action to execute changing a data attribute's type via the API. You will need to update the type via the UI instead. */
+/** Update a data attribute You can update a data attribute. > U+1F6A7 Updating the data type is not possible > > It is currently a dangerous action to execute changing a data attribute's type via the API. You will need to update the type via the UI instead. */
 export const updateDataAttribute: API.OperationMethod<
   UpdateDataAttributeRequest,
   DataAttribute,
@@ -21770,7 +21770,7 @@ export const updateTicket: API.OperationMethod<
 }));
 
 export type UpdateTicketTypeError = IntercomOpError;
-/** Update a ticket type You can update a ticket type. > 📘 Updating a ticket type. > > For the `icon` propery, use an emoji from [Twemoji Cheatsheet](https://twemoji-cheatsheet.vercel.app/) */
+/** Update a ticket type You can update a ticket type. > U+1F4D8 Updating a ticket type. > > For the `icon` propery, use an emoji from [Twemoji Cheatsheet](https://twemoji-cheatsheet.vercel.app/) */
 export const updateTicketType: API.OperationMethod<
   UpdateTicketTypeRequest,
   TicketType2,

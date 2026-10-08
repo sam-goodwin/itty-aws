@@ -820,7 +820,7 @@ export const deleteUser: API.OperationMethod<
 }));
 
 export type DestroyClusterError = NotFound | FlyIoOpError;
-/** Destroy an MPG v2 cluster (async — poll 404) */
+/** Destroy an MPG v2 cluster (async -- poll 404) */
 export const destroyCluster: API.OperationMethod<
   DestroyClusterRequest,
   DestroyClusterResponse,

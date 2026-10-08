@@ -293,7 +293,7 @@ export const CreateSandboxRequestEnvMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateSandboxRequestEnvMap>;
 
 export interface CreateSandboxRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_…`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
   org?: string;
   /** Optional exactly-once key for creating a sandbox. Send your own opaque, account-unique value (a UUID) to make `POST /sandboxes` safe to retry when the response is lost (network timeout, 5xx): the first request creates the sandbox and binds it to the key; every later request with the **same account, key, and request body** returns that same sandbox instead of creating a second, billable one. Behavior: keys are retained for **24 hours**; a concurrent or early retry while the first sandbox is still being minted returns `409` `idempotency_in_progress` (retry shortly, same key); reusing a key with a **different body** returns `409` `idempotency_key_reused`; timeouts and 5xx are safe to retry with the same key; a create that fails before the sandbox exists releases the key within ~2 minutes so a retry can create the sandbox. Omit the header to keep the default (non-idempotent) behavior. */
   idempotencyKey?: string;
@@ -1716,7 +1716,7 @@ export const GetLatestSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLatestSandboxSnapshotResponse>;
 
 export interface GetLimitsRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_…`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
   org?: string;
   /** Legacy alias for `org`. Takes precedence over `org` / `X-Boat-Org` when set. */
   teamId?: string;
@@ -2725,7 +2725,7 @@ export type OrgRole = "owner" | "member";
 export const OrgRole = S.String;
 
 export interface Org {
-  /** Your account id for the personal row, `team_…` for an organization. */
+  /** Your account id for the personal row, `team_...` for an organization. */
   id: string;
   /** Accepted wherever an org is passed, like the id. */
   name: string;
@@ -2971,7 +2971,7 @@ export type ListSandboxesRequestSort = "asc" | "desc";
 export const ListSandboxesRequestSort = S.String;
 
 export interface ListSandboxesRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_…`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
   org?: string;
   /** Maximum items to return. */
   limit?: number;

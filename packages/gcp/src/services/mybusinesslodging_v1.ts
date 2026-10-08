@@ -3014,9 +3014,9 @@ export const EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum
 
 /** Energy efficiency practices implemented at the hotel. */
 export interface EnergyEfficiency {
-  /** Energy efficient lighting. At least 75% of the property's lighting is energy efficient, using lighting that is more than 45 lumens per watt – typically LED or CFL lightbulbs. */
+  /** Energy efficient lighting. At least 75% of the property's lighting is energy efficient, using lighting that is more than 45 lumens per watt - typically LED or CFL lightbulbs. */
   energyEfficientLighting?: boolean;
-  /** Energy efficient heating and cooling systems. The property doesn't use chlorofluorocarbon (CFC)-based refrigerants in heating, ventilating, and air-conditioning systems unless a third-party audit shows it's not economically feasible. The CFC-based refrigerants which are used should have a Global Warming Potential (GWP) ≤ 10. The property uses occupancy sensors on HVAC systems in back-of-house spaces, meeting rooms, and other low-traffic areas. */
+  /** Energy efficient heating and cooling systems. The property doesn't use chlorofluorocarbon (CFC)-based refrigerants in heating, ventilating, and air-conditioning systems unless a third-party audit shows it's not economically feasible. The CFC-based refrigerants which are used should have a Global Warming Potential (GWP) <= 10. The property uses occupancy sensors on HVAC systems in back-of-house spaces, meeting rooms, and other low-traffic areas. */
   energyEfficientHeatingAndCoolingSystems?: boolean;
   /** Energy conservation program exception. */
   energyConservationProgramException?:

@@ -4387,7 +4387,7 @@ export type GetSavingsPlansCoverageError =
   | CommonErrors;
 /**
  * Retrieves the Savings Plans covered for your account. This enables you to see how much of
- * your cost is covered by a Savings Plan. An organization’s management account can see the
+ * your cost is covered by a Savings Plan. An organization's management account can see the
  * coverage of the associated member accounts. This supports dimensions, cost categories, and
  * nested expressions. For any time period, you can filter data for Savings Plans usage with the
  * following dimensions:
@@ -4668,7 +4668,7 @@ export type ListCostCategoryDefinitionsError = LimitExceededException | CommonEr
  * Returns the name, Amazon Resource Name (ARN), `NumberOfRules` and effective
  * dates of all cost categories defined in the account. You have the option to use
  * `EffectiveOn` and `SupportedResourceTypes` to return a list of cost categories that were active on a specific
- * date. If there is no `EffectiveOn` specified, you’ll see cost categories that are
+ * date. If there is no `EffectiveOn` specified, you'll see cost categories that are
  * effective on the current date. If cost category is still effective, `EffectiveEnd`
  * is omitted in the response. `ListCostCategoryDefinitions` supports pagination. The
  * request can have a `MaxResults` range up to 100.
@@ -5004,7 +5004,7 @@ export type UpdateCostCategoryDefinitionError =
   | CommonErrors;
 /**
  * Updates an existing cost category. Changes made to the cost category rules will be used to
- * categorize the current month’s expenses and future expenses. This won’t change categorization
+ * categorize the current month's expenses and future expenses. This won't change categorization
  * for the previous months.
  */
 export const updateCostCategoryDefinition: API.OperationMethod<

@@ -2295,7 +2295,7 @@ export type CreateActivityError =
  *
  * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
  *
- * `CreateActivity` is an idempotent API. Subsequent requests won’t create a
+ * `CreateActivity` is an idempotent API. Subsequent requests won't create a
  * duplicate resource if it was already created. `CreateActivity`'s idempotency
  * check is based on the activity `name`. If a following request has different
  * `tags` values, Step Functions will ignore these differences and treat it as an
@@ -2356,7 +2356,7 @@ export type CreateStateMachineError =
  *
  * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
  *
- * `CreateStateMachine` is an idempotent API. Subsequent requests won’t create a
+ * `CreateStateMachine` is an idempotent API. Subsequent requests won't create a
  * duplicate resource if it was already created. `CreateStateMachine`'s idempotency
  * check is based on the state machine `name`, `definition`,
  * `type`, `LoggingConfiguration`,

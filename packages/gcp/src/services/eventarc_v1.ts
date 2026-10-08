@@ -359,7 +359,7 @@ export const LoggingConfigLogSeverityEnum = S.String;
 
 /** The configuration for Platform Telemetry logging for Eventarc Advanced resources. */
 export interface LoggingConfig {
-  /** Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE. */
+  /** Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at severitiy >= this value will be sent, unless it is NONE. */
   logSeverity?: LoggingConfigLogSeverityEnum | (string & {});
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>

@@ -154,7 +154,7 @@ export const AppliancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type AppliancePropertiesDistro = "AKSEdge";
 export const AppliancePropertiesDistro = S.String;
 
-/** Appliance’s health and state of connection to on-prem. This list of values is not exhaustive. */
+/** Appliance's health and state of connection to on-prem. This list of values is not exhaustive. */
 export type Status =
   | "WaitingForHeartbeat"
   | "Validating"
@@ -200,7 +200,7 @@ export interface ApplianceProperties {
   provisioningState?: string;
   /** Certificates pair used to download MSI certificate from HIS. Can only be set once. */
   publicKey?: string;
-  /** Appliance’s health and state of connection to on-prem. This list of values is not exhaustive. */
+  /** Appliance's health and state of connection to on-prem. This list of values is not exhaustive. */
   status?: Status;
   /** Version of the Appliance */
   version?: string;
@@ -643,7 +643,7 @@ export const ListApplianceClusterUserCredentialRequest = /*@__PURE__*/ S.suspend
   identifier: "ListApplianceClusterUserCredentialRequest",
 }) as any as S.Schema<ListApplianceClusterUserCredentialRequest>;
 
-/** Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS). */
+/** Contains the REP (rendezvous endpoint) and "Listener" access token from notification service (NS). */
 export interface HybridConnectionConfig {
   /** Timestamp when this token will be expired. */
   expirationTime?: number;
@@ -691,7 +691,7 @@ export const ApplianceListCredentialResultsKubeconfigsList = /*@__PURE__*/ S.Arr
 
 /** The List Cluster User Credential appliance. */
 export interface ApplianceListCredentialResults {
-  /** Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS). */
+  /** Contains the REP (rendezvous endpoint) and "Listener" access token from notification service (NS). */
   hybridConnectionConfig?: HybridConnectionConfig;
   /** The list of appliance kubeconfigs. */
   kubeconfigs?: ApplianceListCredentialResultsKubeconfigsList;

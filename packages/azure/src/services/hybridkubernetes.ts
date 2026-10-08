@@ -945,7 +945,7 @@ export const ListConnectedClusterClusterUserCredentialRequest = /*@__PURE__*/ S.
   identifier: "ListConnectedClusterClusterUserCredentialRequest",
 }) as any as S.Schema<ListConnectedClusterClusterUserCredentialRequest>;
 
-/** Contains the REP (rendezvous endpoint) and “Sender” access token. */
+/** Contains the REP (rendezvous endpoint) and "Sender" access token. */
 export interface HybridConnectionConfig {
   /** Timestamp when this token will be expired. */
   expirationTime?: number;
@@ -993,7 +993,7 @@ export const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
 
 /** The list of credential result response. */
 export interface CredentialResults {
-  /** Contains the REP (rendezvous endpoint) and “Sender” access token. */
+  /** Contains the REP (rendezvous endpoint) and "Sender" access token. */
   hybridConnectionConfig?: HybridConnectionConfig;
   /** Base64-encoded Kubernetes configuration file. */
   kubeconfigs?: CredentialResultsKubeconfigsList;

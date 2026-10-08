@@ -116,7 +116,7 @@ export interface CreatePersonsSplitRequest {
   /** A unique value identifying this person. Accepts both numeric ID and UUID. */
   id: string;
   format?: CreatePersonsSplitRequestFormat | (string & {});
-  /** The distinct_id to **keep** on this person; every *other* distinct_id is moved to its own new single-id person. If omitted, the first distinct_id on the person is kept. The original person always retains its properties; to clear individual properties afterward, use the delete_property endpoint. To surgically *remove* one or more distinct_ids while leaving the merge intact, use `distinct_ids_to_split` instead — these parameters are inverses of each other and cannot be combined. */
+  /** The distinct_id to **keep** on this person; every *other* distinct_id is moved to its own new single-id person. If omitted, the first distinct_id on the person is kept. The original person always retains its properties; to clear individual properties afterward, use the delete_property endpoint. To surgically *remove* one or more distinct_ids while leaving the merge intact, use `distinct_ids_to_split` instead -- these parameters are inverses of each other and cannot be combined. */
   main_distinct_id?: string | null;
   /** List of distinct_ids to **move off** this person onto new single-id persons. The original person keeps every other distinct_id and its properties. New persons are created with deterministic UUIDs derived from `(team_id, distinct_id)`. Cannot be combined with `main_distinct_id`. */
   distinct_ids_to_split?: CreatePersonsSplitRequestDistinctIdsToSplitList | null;
@@ -136,7 +136,7 @@ export const CreatePersonsSplitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersonsSplitRequest>;
 
 export interface PersonSplitResponse {
-  /** Always `true` when the split task was enqueued. The split itself runs asynchronously — a 201 response means the task was accepted, not that the merge state has already been updated. */
+  /** Always `true` when the split task was enqueued. The split itself runs asynchronously -- a 201 response means the task was accepted, not that the merge state has already been updated. */
   success: boolean;
 }
 export const PersonSplitResponse = /*@__PURE__*/ S.suspend(() =>
@@ -789,7 +789,7 @@ export interface ListPersonsEmailsRequest {
   project_id: string;
   /** A unique integer value identifying this person. */
   id: number;
-  /** Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) — bounds the ClickHouse partition scan. */
+  /** Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) -- bounds the ClickHouse partition scan. */
   after?: string;
   /** End of the time range, matched on sent time. Same format as 'after'. Defaults to now. */
   before?: string;
@@ -818,7 +818,7 @@ export interface MessageAsset {
   invocation_id: string;
   /** The email step (action node) within the workflow that sent this email. */
   action_id: string;
-  /** The workflow id that sent this email — used to navigate from a person's Emails tab back into the originating workflow. */
+  /** The workflow id that sent this email -- used to navigate from a person's Emails tab back into the originating workflow. */
   function_id: string;
   /** Human-readable workflow name for display. Empty when the workflow has been deleted; clients should fall back to function_id in that case. */
   function_name: string;
@@ -876,7 +876,7 @@ export interface ListPersonsPushNotificationsRequest {
   project_id: string;
   /** A unique integer value identifying this person. */
   id: number;
-  /** Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) — bounds the ClickHouse partition scan. */
+  /** Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) -- bounds the ClickHouse partition scan. */
   after?: string;
   /** End of the time range, matched on sent time. Same format as 'after'. Defaults to now. */
   before?: string;

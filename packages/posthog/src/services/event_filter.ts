@@ -175,7 +175,7 @@ export const getEventFilter: API.OperationMethod<
 }));
 
 export type GetEventFilterMetricsError = PosthogOpError;
-/** Single event filter per team. GET /event_filter/ — returns the config (or null if not yet created) POST /event_filter/ — creates or updates the config (upsert) GET /event_filter/metrics/ — time-series metrics GET /event_filter/metrics/totals/ — aggregate totals */
+/** Single event filter per team. GET /event_filter/ -- returns the config (or null if not yet created) POST /event_filter/ -- creates or updates the config (upsert) GET /event_filter/metrics/ -- time-series metrics GET /event_filter/metrics/totals/ -- aggregate totals */
 export const getEventFilterMetrics: API.OperationMethod<
   GetEventFilterMetricsRequest,
   AppMetricsResponse,
@@ -190,7 +190,7 @@ export const getEventFilterMetrics: API.OperationMethod<
 }));
 
 export type GetEventFilterMetricsTotalError = PosthogOpError;
-/** Single event filter per team. GET /event_filter/ — returns the config (or null if not yet created) POST /event_filter/ — creates or updates the config (upsert) GET /event_filter/metrics/ — time-series metrics GET /event_filter/metrics/totals/ — aggregate totals */
+/** Single event filter per team. GET /event_filter/ -- returns the config (or null if not yet created) POST /event_filter/ -- creates or updates the config (upsert) GET /event_filter/metrics/ -- time-series metrics GET /event_filter/metrics/totals/ -- aggregate totals */
 export const getEventFilterMetricsTotal: API.OperationMethod<
   GetEventFilterMetricsTotalRequest,
   AppMetricsTotalsResponse,

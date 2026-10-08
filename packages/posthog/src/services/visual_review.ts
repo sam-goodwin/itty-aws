@@ -93,7 +93,7 @@ export interface CreateVisualReviewReposQuarantineRequest {
   reason?: string;
   /** When the quarantine lifts itself, as an ISO 8601 datetime. Through MCP an omitted or later expiry becomes 30 days from now; anywhere else omitting it means no expiry. */
   expires_at?: string | null;
-  /** Optional pointer to the run whose failing snapshot prompted this quarantine — used to surface a 'view the failing run' link later. */
+  /** Optional pointer to the run whose failing snapshot prompted this quarantine -- used to surface a 'view the failing run' link later. */
   source_run_id?: string | null;
   /** Post the quarantine to the Slack channel of the team that owns the story, naming the user who quarantined it. Only Storybook snapshots have an owning team. Best effort: skipped when the story has no owning team or the project has no Slack integration. */
   notify_owners?: boolean;
@@ -437,11 +437,11 @@ export interface CreateVisualReviewRunsFinalizeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
-  /** Approve every still-pending changed and new snapshot before finalizing (tolerated snapshots are left untouched). Leave false to finalize a run you've already reviewed — finalizing fails if any changed/new snapshot is still unreviewed. */
+  /** Approve every still-pending changed and new snapshot before finalizing (tolerated snapshots are left untouched). Leave false to finalize a run you've already reviewed -- finalizing fails if any changed/new snapshot is still unreviewed. */
   approve_all?: boolean;
-  /** Whether the server commits the approved baseline to the PR branch and greens the gate (the normal path — leave true). Set false only for tooling that commits the baseline itself: the server skips the commit and returns the signed YAML in `baseline_content` instead. With false, the gate is NOT greened, `metadata.baseline_commit_sha` is absent, and no post-approval PR comment is posted. */
+  /** Whether the server commits the approved baseline to the PR branch and greens the gate (the normal path -- leave true). Set false only for tooling that commits the baseline itself: the server skips the commit and returns the signed YAML in `baseline_content` instead. With false, the gate is NOT greened, `metadata.baseline_commit_sha` is absent, and no post-approval PR comment is posted. */
   commit_to_github?: boolean;
-  /** Whether to embed the before/after snapshot images in the post-approval PR comment. The comment itself is posted when the repo has PR comments enabled and `commit_to_github` is true: it updates the run's review prompt when the run has one, and posts a new comment when it does not. This flag only controls the images. Defaults false — the comment stays a text summary unless the reviewer opts in to attach the snapshots. */
+  /** Whether to embed the before/after snapshot images in the post-approval PR comment. The comment itself is posted when the repo has PR comments enabled and `commit_to_github` is true: it updates the run's review prompt when the run has one, and posts a new comment when it does not. This flag only controls the images. Defaults false -- the comment stays a text summary unless the reviewer opts in to attach the snapshots. */
   add_images_to_comment_on_pr?: boolean;
 }
 export const CreateVisualReviewRunsFinalizeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1871,7 +1871,7 @@ export const ApproveSnapshotInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApproveSnapshotInput" }) as any as S.Schema<ApproveSnapshotInput>;
 
-/** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
+/** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) -- it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
 export type VisualReviewRunsApproveCreateRequestSnapshotsList = Array<ApproveSnapshotInput>;
 export const VisualReviewRunsApproveCreateRequestSnapshotsList = /*@__PURE__*/ S.Array(
   ApproveSnapshotInput,
@@ -1881,7 +1881,7 @@ export interface VisualReviewRunsApproveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
-  /** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
+  /** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) -- it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
   snapshots: VisualReviewRunsApproveCreateRequestSnapshotsList;
 }
 export const VisualReviewRunsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2093,7 +2093,7 @@ export const getVisualReviewRepos: API.OperationMethod<
 }));
 
 export type GetVisualReviewReposBaselineError = PosthogOpError;
-/** Snapshots overview for a repo: every identifier with a current baseline (latest non-superseded master/main run per run_type), plus tolerate counts, active quarantine state, and a 30-day stability sparkline. Capped at 7500 entries — sets `truncated` and returns the most recently active when exceeded. Filtering / faceting / search are all done client-side; this endpoint takes no filter query params. */
+/** Snapshots overview for a repo: every identifier with a current baseline (latest non-superseded master/main run per run_type), plus tolerate counts, active quarantine state, and a 30-day stability sparkline. Capped at 7500 entries -- sets `truncated` and returns the most recently active when exceeded. Filtering / faceting / search are all done client-side; this endpoint takes no filter query params. */
 export const getVisualReviewReposBaseline: API.OperationMethod<
   GetVisualReviewReposBaselineRequest,
   BaselineOverview,
@@ -2383,7 +2383,7 @@ export const visualReviewRunsAddSnapshotsCreate: API.OperationMethod<
 }));
 
 export type VisualReviewRunsApproveCreateError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Mark snapshots reviewed (DB only). Records the per-snapshot "Accept change" decision. Does not commit the baseline or change the GitHub gate — call finalize to ship the run. Works on a quarantined snapshot too: a quarantined snapshot approved here is committed by finalize, which updates a quarantined story's baseline entry without lifting the quarantine. */
+/** Mark snapshots reviewed (DB only). Records the per-snapshot "Accept change" decision. Does not commit the baseline or change the GitHub gate -- call finalize to ship the run. Works on a quarantined snapshot too: a quarantined snapshot approved here is committed by finalize, which updates a quarantined story's baseline entry without lifting the quarantine. */
 export const visualReviewRunsApproveCreate: API.OperationMethod<
   VisualReviewRunsApproveCreateRequest,
   Run,

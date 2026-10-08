@@ -1164,18 +1164,18 @@ export const GetPaperResponseCommentsItemDataEditorAvatarUrlsList = /*@__PURE__*
 ) as any as S.Schema<GetPaperResponseCommentsItemDataEditorAvatarUrlsList>;
 
 export type GetPaperResponseCommentsItemDataReactionsItemReaction =
-  | "🔥"
-  | "🚀"
-  | "👀"
-  | "❤️"
-  | "🤗"
-  | "😎"
-  | "➕"
-  | "🧠"
-  | "👍"
-  | "🤝"
-  | "😔"
-  | "🤯";
+  | "\ud83d\udd25"
+  | "\ud83d\ude80"
+  | "\ud83d\udc40"
+  | "\u2764\ufe0f"
+  | "\ud83e\udd17"
+  | "\ud83d\ude0e"
+  | "\u2795"
+  | "\ud83e\udde0"
+  | "\ud83d\udc4d"
+  | "\ud83e\udd1d"
+  | "\ud83d\ude14"
+  | "\ud83e\udd2f";
 export const GetPaperResponseCommentsItemDataReactionsItemReaction = S.String;
 
 export type GetPaperResponseCommentsItemDataReactionsItemUsersList = Array<string>;

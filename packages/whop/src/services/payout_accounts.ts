@@ -217,7 +217,7 @@ export type GetPayoutAccountError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve payout account [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing payout account. Required permissions: - `payout:account:read` */
+/** Retrieve payout account [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing payout account. Required permissions: - `payout:account:read` */
 export const getPayoutAccount: API.OperationMethod<
   GetPayoutAccountRequest,
   PayoutAccount,

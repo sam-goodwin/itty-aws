@@ -2501,7 +2501,7 @@ export const UpdateResourceSecretsByIdResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResourceSecretsByIdResponse>;
 
 export type CreateEventError = BadRequest | Forbidden | NotFound | VercelOpError;
-/** Create Event Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner’s application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel’s datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/> */
+/** Create Event Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner's application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel's datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/> */
 export const createEvent: API.OperationMethod<
   CreateEventRequest,
   CreateEventResponse,
@@ -2586,7 +2586,7 @@ export const finalizeInstallation: API.OperationMethod<
 }));
 
 export type GetAccountInfoError = BadRequest | Forbidden | NotFound | VercelOpError;
-/** Get Account Information Fetches the best account or user’s contact info */
+/** Get Account Information Fetches the best account or user's contact info */
 export const getAccountInfo: API.OperationMethod<
   GetAccountInfoRequest,
   GetAccountInfoResponse,
@@ -2747,7 +2747,7 @@ export type RevokeInstallationCredentialError =
   | NotFound
   | Conflict
   | VercelOpError;
-/** Revoke Installation Credential Retires a superseded installation credential, so a partner can complete a rotation it started with `POST /credentials/rotate` — the leaked credential stops working without the customer having to reinstall. Authenticated by a live installation credential plus the integration's client secret. The credential to retire is named in the body rather than being the one that authenticates, so the ordinary flow is: rotate, store the replacement, then authenticate with the replacement and revoke the old one. Refuses to retire an installation's last live credential. Rotation exists so remediation is not customer-visible; revoking the only credential would undo that and leave the install needing a reinstall. */
+/** Revoke Installation Credential Retires a superseded installation credential, so a partner can complete a rotation it started with `POST /credentials/rotate` -- the leaked credential stops working without the customer having to reinstall. Authenticated by a live installation credential plus the integration's client secret. The credential to retire is named in the body rather than being the one that authenticates, so the ordinary flow is: rotate, store the replacement, then authenticate with the replacement and revoke the old one. Refuses to retire an installation's last live credential. Rotation exists so remediation is not customer-visible; revoking the only credential would undo that and leave the install needing a reinstall. */
 export const revokeInstallationCredential: API.OperationMethod<
   RevokeInstallationCredentialRequest,
   RevokeInstallationCredentialResponse,
@@ -2767,7 +2767,7 @@ export type RotateInstallationCredentialError =
   | NotFound
   | Conflict
   | VercelOpError;
-/** Rotate Installation Credential Issues a replacement access token for an installation, so a partner can rotate a credential it believes is compromised without the customer having to reinstall. Authenticated by the credential being replaced plus the integration's client secret: a leaked access token on its own cannot rotate itself, which would otherwise let an attacker take over the installation and lock the partner out. The previous credential intentionally stays valid so in-flight requests keep working. Retiring it is a separate, explicit operation — a partner is never left mid-rotation without a working credential. */
+/** Rotate Installation Credential Issues a replacement access token for an installation, so a partner can rotate a credential it believes is compromised without the customer having to reinstall. Authenticated by the credential being replaced plus the integration's client secret: a leaked access token on its own cannot rotate itself, which would otherwise let an attacker take over the installation and lock the partner out. The previous credential intentionally stays valid so in-flight requests keep working. Retiring it is a separate, explicit operation -- a partner is never left mid-rotation without a working credential. */
 export const rotateInstallationCredential: API.OperationMethod<
   RotateInstallationCredentialRequest,
   RotateInstallationCredentialResponse,
@@ -2905,7 +2905,7 @@ export type UpdateResourceSecretsByIdError =
   | Conflict
   | UnprocessableEntity
   | VercelOpError;
-/** Update Resource Secrets This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/> */
+/** Update Resource Secrets This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner's application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/> */
 export const updateResourceSecretsById: API.OperationMethod<
   UpdateResourceSecretsByIdRequest,
   UpdateResourceSecretsByIdResponse,

@@ -4323,7 +4323,7 @@ export type AssociateFacesError =
  * `FaceIds` is returned. If a given face is already associated with the given
  * `UserID`, it will be ignored and will not be returned in the response. If a given
  * face is already associated to a different `UserID`, isn't found in the collection,
- * doesn’t meet the `UserMatchThreshold`, or there are already 100 faces associated
+ * doesn't meet the `UserMatchThreshold`, or there are already 100 faces associated
  * with the `UserID`, it will be returned as part of an array of
  * `UnsuccessfulFaceAssociations.`
  *
@@ -4409,7 +4409,7 @@ export type CompareFacesError =
  * including the bounding box of the face and confidence value.
  *
  * The `QualityFilter` input parameter allows you to filter out detected faces
- * that don’t meet a required quality bar. The quality bar is based on a variety of common use
+ * that don't meet a required quality bar. The quality bar is based on a variety of common use
  * cases. Use `QualityFilter` to set the quality bar by specifying `LOW`,
  * `MEDIUM`, or `HIGH`. If you do not want to filter detected faces,
  * specify `NONE`. The default value is `NONE`.
@@ -5622,7 +5622,7 @@ export type DetectLabelsError =
  *
  * - Categories - The label categories that the detected label belongs to.
  *
- * - BoundingBox — Bounding boxes are described for all instances of detected common
+ * - BoundingBox -- Bounding boxes are described for all instances of detected common
  * object labels, returned in an array of Instance objects. An Instance object contains a
  * BoundingBox object, describing the location of the label on the input image. It also
  * includes the confidence for the accuracy of the detected bounding box.
@@ -5637,10 +5637,10 @@ export type DetectLabelsError =
  * - Dominant Color - An array of the dominant colors in the image.
  *
  * - Foreground - Information about the sharpness, brightness, and dominant colors of the
- * input image’s foreground.
+ * input image's foreground.
  *
  * - Background - Information about the sharpness, brightness, and dominant colors of the
- * input image’s background.
+ * input image's background.
  *
  * The list of returned labels will include at least one label for every detected object,
  * along with information about that label. In the following example, suppose the input image has
@@ -6393,19 +6393,19 @@ export type GetLabelDetectionError =
  *
  * - Categories - The label categories that the detected label belongs to.
  *
- * - BoundingBox — Bounding boxes are described for all instances of detected common object labels,
+ * - BoundingBox -- Bounding boxes are described for all instances of detected common object labels,
  * returned in an array of Instance objects. An Instance object contains a BoundingBox object, describing
  * the location of the label on the input image. It also includes the confidence for the accuracy of the detected bounding box.
  *
  * - Timestamp - Time, in milliseconds from the start of the video, that the label was detected.
  * For aggregation by `SEGMENTS`, the `StartTimestampMillis`,
  * `EndTimestampMillis`, and `DurationMillis` structures are what
- * define a segment. Although the “Timestamp” structure is still returned with each label,
+ * define a segment. Although the "Timestamp" structure is still returned with each label,
  * its value is set to be the same as `StartTimestampMillis`.
  *
  * Timestamp and Bounding box information are returned for detected Instances, only if
  * aggregation is done by `TIMESTAMPS`. If aggregating by `SEGMENTS`,
- * information about detected instances isn’t returned.
+ * information about detected instances isn't returned.
  *
  * The version of the label model used for the detection is also returned.
  *
@@ -6736,7 +6736,7 @@ export type IndexFacesError =
  * to index smaller faces, such as those belonging to people standing in the background.
  *
  * The `QualityFilter` input parameter allows you to filter out detected faces
- * that don’t meet a required quality bar. The quality bar is based on a variety of common use
+ * that don't meet a required quality bar. The quality bar is based on a variety of common use
  * cases. By default, `IndexFaces` chooses the quality bar that's used to filter
  * faces. You can also explicitly choose the quality bar. Use `QualityFilter`, to set
  * the quality bar by specifying `LOW`, `MEDIUM`, or `HIGH`. If
@@ -6761,7 +6761,7 @@ export type IndexFacesError =
  *
  * - The face has an extreme pose.
  *
- * - The face doesn’t have enough detail to be suitable for face search.
+ * - The face doesn't have enough detail to be suitable for face search.
  *
  * In response, the `IndexFaces` operation returns an array of metadata for all
  * detected faces, `FaceRecords`. This includes:
@@ -7459,7 +7459,7 @@ export type SearchFacesByImageError =
  * Developer Guide.
  *
  * The `QualityFilter` input parameter allows you to filter out detected faces
- * that don’t meet a required quality bar. The quality bar is based on a variety of common use
+ * that don't meet a required quality bar. The quality bar is based on a variety of common use
  * cases. Use `QualityFilter` to set the quality bar for filtering by specifying
  * `LOW`, `MEDIUM`, or `HIGH`. If you do not want to filter
  * detected faces, specify `NONE`. The default value is `NONE`.

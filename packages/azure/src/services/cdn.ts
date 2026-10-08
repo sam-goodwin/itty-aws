@@ -1781,7 +1781,7 @@ export const DeliveryRuleActionsList = /*@__PURE__*/ S.Array(
 export interface DeliveryRule {
   /** Name of the rule */
   name?: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: DeliveryRuleConditionsList;
@@ -2964,7 +2964,7 @@ export const RulePropertiesInputMatchProcessingBehavior = S.String;
 
 /** The JSON object that contains the properties of the Rules to create. */
 export interface RulePropertiesInput {
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order?: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: RulePropertiesInputConditionsList;
@@ -3034,7 +3034,7 @@ export const RulePropertiesMatchProcessingBehavior = S.String;
 export interface RuleProperties {
   /** The name of the rule set containing the rule. */
   ruleSetName?: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order?: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: RulePropertiesConditionsList;
@@ -3100,7 +3100,7 @@ export const BatchRulePropertiesInputMatchProcessingBehavior = S.String;
 export interface BatchRulePropertiesInput {
   /** Name of the rule. */
   ruleName: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order?: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: BatchRulePropertiesInputConditionsList;
@@ -3190,7 +3190,7 @@ export interface BatchRuleProperties {
   ruleName: string;
   /** The name of the rule set containing the rule. */
   ruleSetName?: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order?: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: BatchRulePropertiesConditionsList;
@@ -9885,7 +9885,7 @@ export const RuleUpdatePropertiesParametersInputMatchProcessingBehavior = S.Stri
 
 /** The JSON object that contains the properties of the rule to update. */
 export interface RuleUpdatePropertiesParametersInput {
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
   order?: number;
   /** A list of conditions that must be matched for the actions to be executed */
   conditions?: RuleUpdatePropertiesParametersInputConditionsList;

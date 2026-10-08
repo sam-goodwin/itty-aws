@@ -106,7 +106,7 @@ export const CreateZoneRequestRrsetsItemLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateZoneRequestRrsetsItemLabelsMap>;
 
 export interface CreateZoneRequestRrsetsItem {
-  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (✉️). For the [Zone](#tag/zones) apex, use `@`. */
+  /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
   /** Type of the [RRSet](#tag/zone-rrsets). */
   type: CreateZoneRequestRrsetsItemType | (string & {});

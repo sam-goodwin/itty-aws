@@ -117,7 +117,7 @@ export const BotsInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BotsInfoResponse" }) as any as S.Schema<BotsInfoResponse>;
 
 export type BotsInfoError = SlackOpError;
-/** Gets information about a bot user. Required scopes — bot: `users:read`; user: `users:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bot_not_found` — Value passed for `bot` was invalid. - `bots_not_found` — At least one value passed for `bots` was invalid. - `missing_argument` — A required argument is missing. - `team_not_found` — Value passed for `team_id` was invalid. See https://docs.slack.dev/reference/methods/bots.info */
+/** Gets information about a bot user. Required scopes -- bot: `users:read`; user: `users:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bot_not_found` -- Value passed for `bot` was invalid. - `bots_not_found` -- At least one value passed for `bots` was invalid. - `missing_argument` -- A required argument is missing. - `team_not_found` -- Value passed for `team_id` was invalid. See https://docs.slack.dev/reference/methods/bots.info */
 export const botsInfo: API.OperationMethod<
   BotsInfoRequest,
   BotsInfoResponse,

@@ -145,7 +145,7 @@ export type JoinStorageSessionError =
  * Before using this API, you must call the `GetSignalingChannelEndpoint` API to request the WEBRTC endpoint. You then specify the endpoint and region in your `JoinStorageSession` API request.
  *
  * Join the ongoing one way-video and/or multi-way audio WebRTC session as a video producing
- * device for an input channel. If there’s no existing session for the channel, a new streaming
+ * device for an input channel. If there's no existing session for the channel, a new streaming
  * session needs to be created, and the Amazon Resource Name (ARN) of the signaling channel must
  * be provided.
  *
@@ -213,7 +213,7 @@ export type JoinStorageSessionAsViewerError =
   | CommonErrors;
 /**
  * Join the ongoing one way-video and/or multi-way audio WebRTC session as
- * a viewer for an input channel. If there’s
+ * a viewer for an input channel. If there's
  * no existing session for the channel, create a new streaming session and provide
  * the Amazon Resource Name (ARN) of the signaling channel (`channelArn`)
  * and client id (`clientId`).
@@ -227,7 +227,7 @@ export type JoinStorageSessionAsViewerError =
  *
  * Customers can also use existing Kinesis Video Streams features like
  * `HLS` or `DASH` playback, Image generation, and more
- * with ingested WebRTC media. If there’s an existing session with the same
+ * with ingested WebRTC media. If there's an existing session with the same
  * `clientId` that's found in the join session request, the new request takes precedence.
  */
 export const joinStorageSessionAsViewer: API.OperationMethod<

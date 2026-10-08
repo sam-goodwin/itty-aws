@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   acceptFoa: "accept_foa",
   approveTransfer: "approve_transfer",
@@ -1683,7 +1683,7 @@ export const TransferCheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferCheckResponse" }) as any as S.Schema<TransferCheckResponse>;
 
 export type CheckRegistrarError = CloudflareOpError;
-/** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation — it does not create, modify, or reserve any domains. */
+/** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation -- it does not create, modify, or reserve any domains. */
 export const checkRegistrar: API.OperationMethod<
   CheckRegistrarRequest,
   CheckRegistrarResponse,
@@ -1698,7 +1698,7 @@ export const checkRegistrar: API.OperationMethod<
 }));
 
 export type CreateRegistrationError = CloudflareOpError;
-/** Starts a domain registration workflow. This is a billable operation — successful registration charges the account's default payment method. All successful domain registrations are non-refundable — once the workflow completes with `state: succeeded`, the charge cannot be reversed. */
+/** Starts a domain registration workflow. This is a billable operation -- successful registration charges the account's default payment method. All successful domain registrations are non-refundable -- once the workflow completes with `state: succeeded`, the charge cannot be reversed. */
 export const createRegistration: API.OperationMethod<
   CreateRegistrationRequest,
   CreateRegistrationResponse,
@@ -1713,7 +1713,7 @@ export const createRegistration: API.OperationMethod<
 }));
 
 export type CreateTransferInError = CloudflareOpError;
-/** Starts a domain transfer-in workflow. This is typically a billable operation — successful transfers charge the account's default payment method, except for extensions with zero transfer pricing (e.g. UK extensions). All successful domain transfers are non-refundable. */
+/** Starts a domain transfer-in workflow. This is typically a billable operation -- successful transfers charge the account's default payment method, except for extensions with zero transfer pricing (e.g. UK extensions). All successful domain transfers are non-refundable. */
 export const createTransferIn: API.OperationMethod<
   CreateTransferInRequest,
   CreateTransferInResponse,
@@ -1923,7 +1923,7 @@ export const searchRegistrar: API.OperationMethod<
 }));
 
 export type TransferCheckError = CloudflareOpError;
-/** Performs real-time, authoritative eligibility checks directly against needed requirements. Use this endpoint to verify a domain is available before attempting a transfer via `POST /registrations/:domain_name/transfer-in`. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation — it does not create, modify, or reserve any domains. */
+/** Performs real-time, authoritative eligibility checks directly against needed requirements. Use this endpoint to verify a domain is available before attempting a transfer via `POST /registrations/:domain_name/transfer-in`. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation -- it does not create, modify, or reserve any domains. */
 export const transferCheck: API.OperationMethod<
   TransferCheckRequest,
   TransferCheckResponse,

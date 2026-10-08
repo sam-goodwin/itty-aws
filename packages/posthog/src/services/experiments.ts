@@ -151,7 +151,7 @@ export const ExperimentParametersVariantNotesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentParametersVariantNotesMap>;
 
 export interface ExperimentParameters {
-  /** Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20–30% for most experiments. */
+  /** Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20-30% for most experiments. */
   minimum_detectable_effect?: number | null;
   /** Free-text notes per variant, keyed by variant key. Use to document what each variant does or its reroute URL. */
   variant_notes?: ExperimentParametersVariantNotesMap | null;
@@ -982,7 +982,7 @@ export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
   operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
+  /** Customer analytics account custom property -- the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
@@ -1063,13 +1063,13 @@ export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
   event_type: BehavioralEventSource | (string & {});
-  /** Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval */
+  /** Absolute or relative (e.g. -30d) lower date bound -- alternative to time_value/time_interval */
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
   /** Event name, or action id when event_type is 'actions' */
   key: string;
   label?: string | null;
-  /** Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators */
+  /** Match persons who did NOT satisfy the criterion. Not the same as a low count -- zero-occurrence persons never match count operators */
   negation?: boolean | null;
   /** Count comparison for performed_event_multiple, defaults to exact */
   operator?: PropertyOperator | (string & {}) | null;
@@ -1078,7 +1078,7 @@ export interface BehavioralPropertyFilter {
   time_interval?: TimeUnitType | (string & {}) | null;
   /** Relative time window size, paired with time_interval */
   time_value?: number | null;
-  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP */
+  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only -- not evaluable by flags or CDP */
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
@@ -1207,11 +1207,11 @@ export interface ExperimentApiEventSource {
   /** Action ID. Required for ActionsNode. */
   id?: number | null;
   kind?: Kind1 | (string & {});
-  /** How to aggregate this source. Defaults to 'total' (event count). Use 'sum' together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: 'avg', 'min', 'max', 'unique_session', 'dau', 'unique_group', 'hogql'. */
+  /** How to aggregate this source. Defaults to 'total' (event count). Use 'sum' together with math_property to aggregate a numeric property -- e.g. a ratio numerator of revenue per order. Other options: 'avg', 'min', 'max', 'unique_session', 'dau', 'unique_group', 'hogql'. */
   math?: ExperimentMetricMathType | (string & {}) | null;
   /** Group type index to aggregate over. Required when math is 'unique_group'. */
   math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
-  /** HogQL aggregation expression. Required when math is 'hogql' — without it the metric silently falls back to a plain count/sum. */
+  /** HogQL aggregation expression. Required when math is 'hogql' -- without it the metric silently falls back to a plain count/sum. */
   math_hogql?: string | null;
   /** Numeric event property to aggregate when math is 'sum', 'avg', 'min', or 'max' (e.g. 'revenue'). */
   math_property?: string | null;
@@ -1286,11 +1286,11 @@ export interface ExperimentApiRetentionStart {
   id?: number | null;
   /** Pass 'ExperimentExposureNode' to start retention from the experiment's own exposure event; the other fields then stay unset. */
   kind: Kind3 | (string & {});
-  /** How to aggregate this source. Defaults to 'total' (event count). Use 'sum' together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: 'avg', 'min', 'max', 'unique_session', 'dau', 'unique_group', 'hogql'. */
+  /** How to aggregate this source. Defaults to 'total' (event count). Use 'sum' together with math_property to aggregate a numeric property -- e.g. a ratio numerator of revenue per order. Other options: 'avg', 'min', 'max', 'unique_session', 'dau', 'unique_group', 'hogql'. */
   math?: ExperimentMetricMathType | (string & {}) | null;
   /** Group type index to aggregate over. Required when math is 'unique_group'. */
   math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
-  /** HogQL aggregation expression. Required when math is 'hogql' — without it the metric silently falls back to a plain count/sum. */
+  /** HogQL aggregation expression. Required when math is 'hogql' -- without it the metric silently falls back to a plain count/sum. */
   math_hogql?: string | null;
   /** Numeric event property to aggregate when math is 'sum', 'avg', 'min', or 'max' (e.g. 'revenue'). */
   math_property?: string | null;
@@ -1388,7 +1388,7 @@ export const ExperimentApiMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExperimentApiMetric" }) as any as S.Schema<ExperimentApiMetric>;
 
-/** List wrapper for OpenAPI schema generation — the field stores an array of metrics. */
+/** List wrapper for OpenAPI schema generation -- the field stores an array of metrics. */
 export type ExperimentApiMetricsList = Array<ExperimentApiMetric>;
 export const ExperimentApiMetricsList = /*@__PURE__*/ S.Array(
   ExperimentApiMetric,
@@ -1410,7 +1410,7 @@ export const CreateExperimentRequestSecondaryMetricsOrderedUuidsList = /*@__PURE
   S.String,
 ) as any as S.Schema<CreateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
 export const CreateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1432,7 +1432,7 @@ export interface CreateExperimentRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key: string;
   /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
   feature_flag?: ExperimentFeatureFlagInput;
@@ -1461,7 +1461,7 @@ export interface CreateExperimentRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -1477,9 +1477,9 @@ export interface CreateExperimentRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: CreateExperimentRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentRequestTagsList;
@@ -1890,7 +1890,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeatureFlagConditionGroupSchema",
 }) as any as S.Schema<FeatureFlagConditionGroupSchema>;
 
-/** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
+/** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList = Array<FeatureFlagConditionGroupSchema>;
 export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
@@ -1944,14 +1944,14 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-/** A holdout group — a stable slice of users excluded from experiment exposure. */
+/** A holdout group -- a stable slice of users excluded from experiment exposure. */
 export interface ExperimentHoldout {
   id?: number;
   /** Human-readable name for the holdout group. */
   name?: string;
   /** Optional description of what this holdout reserves and why. */
   description?: string | null;
-  /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
+  /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
   filters?: ExperimentHoldoutFiltersList;
   created_by?: UserBasic | null;
   created_at?: string;
@@ -2040,7 +2040,7 @@ export interface ExperimentOutput {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key?: string;
   feature_flag?: MinimalFeatureFlag;
   holdout?: ExperimentHoldout;
@@ -2087,15 +2087,15 @@ export interface ExperimentOutput {
   /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
   secondary_metrics_ordered_uuids?: ExperimentOutputSecondaryMetricsOrderedUuidsList | null;
   only_count_matured_users?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended). */
+  /** Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated -- virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing -- virtual state derived from the flag's release groups, not stored), 'stopped' (ended). */
   status?: ExperimentStatusEnum;
   /** Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project. */
   is_legacy?: boolean;
   /** Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions). */
   can_freeze_exposure?: boolean;
-  /** The event exposures are actually counted on when the experiment doesn't configure a custom one — `$feature_flag_called`, or `$experiment_exposure` once the team is in the rollout and the experiment started at or after the cutoff. Resolved server-side so clients display the same event the results queries read. For a draft, this is what the experiment would resolve to if launched now. */
+  /** The event exposures are actually counted on when the experiment doesn't configure a custom one -- `$feature_flag_called`, or `$experiment_exposure` once the team is in the rollout and the experiment started at or after the cutoff. Resolved server-side so clients display the same event the results queries read. For a draft, this is what the experiment would resolve to if launched now. */
   resolved_exposure_event?: string;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
@@ -2462,7 +2462,7 @@ export const CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrdere
     S.String,
   ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
@@ -2489,7 +2489,7 @@ export interface CreateExperimentsRecalculateTimeseriesRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key?: string;
   /** ID of a holdout group to exclude from the experiment. */
   holdout_id?: number | null;
@@ -2516,7 +2516,7 @@ export interface CreateExperimentsRecalculateTimeseriesRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -2532,9 +2532,9 @@ export interface CreateExperimentsRecalculateTimeseriesRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentsRecalculateTimeseriesRequestTagsList;
@@ -2762,13 +2762,13 @@ export const CreateExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(()
   identifier: "CreateExperimentsSessionContextRequest",
 }) as any as S.Schema<CreateExperimentsSessionContextRequest>;
 
-/** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
+/** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants -- a signal of multi-exposure bias. */
 export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
 export const ExperimentSessionContextItemVariantsSeenList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
 
-/** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+/** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricHitTimestampsList = Array<string>;
 export const ExperimentSessionMetricHitTimestampsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2784,7 +2784,7 @@ export type SourceRoleEnum =
   | "retention_completion";
 export const SourceRoleEnum = S.String;
 
-/** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+/** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
 export const ExperimentSessionMetricSourceHitTimestampsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2796,7 +2796,7 @@ export interface ExperimentSessionMetricSourceHit {
   source_role: SourceRoleEnum;
   /** Display name of the source event or action. */
   source_name: string;
-  /** 0-based position of this source among all the metric's sources, data-warehouse ones included — so a funnel step keeps its real step number even when an earlier step has no session events. */
+  /** 0-based position of this source among all the metric's sources, data-warehouse ones included -- so a funnel step keeps its real step number even when an earlier step has no session events. */
   source_index: number;
   /** Total number of sources the metric is defined over. */
   source_total: number;
@@ -2804,7 +2804,7 @@ export interface ExperimentSessionMetricSourceHit {
   event_count: number;
   /** Timestamp of the first event in the session matching this source. */
   first_timestamp: string;
-  /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+  /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
   timestamps: ExperimentSessionMetricSourceHitTimestampsList;
 }
 export const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
@@ -2837,7 +2837,7 @@ export interface ExperimentSessionMetricHit {
   event_count: number;
   /** Timestamp of the first event in the session matching the metric. */
   first_timestamp: string;
-  /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+  /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
   timestamps: ExperimentSessionMetricHitTimestampsList;
   /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
   sources: ExperimentSessionMetricHitSourcesList;
@@ -2871,11 +2871,11 @@ export interface ExperimentSessionContextItem {
   flag_key: string;
   /** Variant the session saw. Taken from the earliest event matching the experiment's exposure criteria when one exists, otherwise from the earliest flag evaluation in the session, otherwise from the $feature/<key> property stamped on the session's events. */
   variant: string;
-  /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
+  /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants -- a signal of multi-exposure bias. */
   variants_seen: ExperimentSessionContextItemVariantsSeenList;
   /** True when the session saw more than one variant of this flag. */
   multiple_variants: boolean;
-  /** Timestamp of the first event in the session matching the experiment's exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/<key> properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person's counted first exposure may lie in an earlier session. */
+  /** Timestamp of the first event in the session matching the experiment's exposure criteria -- the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/<key> properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person's counted first exposure may lie in an earlier session. */
   first_exposure_timestamp: string | null;
   /** When the experiment was launched. */
   experiment_start_date: string | null;
@@ -3992,7 +3992,7 @@ export interface CreateExperimentsShipVariantRequest {
   set_repository_as_team_default?: boolean;
   /** The key of the variant to ship. */
   variant_key?: string;
-  /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them. */
+  /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution -- existing release conditions are preserved and the variant is served only to users who already match them. */
   release_to_everyone?: boolean;
 }
 export const CreateExperimentsShipVariantRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4215,7 +4215,7 @@ export const ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryM
     S.String,
   ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
@@ -4243,7 +4243,7 @@ export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key?: string;
   /** ID of a holdout group to exclude from the experiment. */
   holdout_id?: number | null;
@@ -4270,7 +4270,7 @@ export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -4286,9 +4286,9 @@ export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList;
@@ -4464,7 +4464,7 @@ export const ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList =
     S.String,
   ) as any as S.Schema<ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
@@ -4490,7 +4490,7 @@ export interface ExperimentsDuplicateCreateRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key?: string;
   /** ID of a holdout group to exclude from the experiment. */
   holdout_id?: number | null;
@@ -4517,7 +4517,7 @@ export interface ExperimentsDuplicateCreateRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -4533,9 +4533,9 @@ export interface ExperimentsDuplicateCreateRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: ExperimentsDuplicateCreateRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsDuplicateCreateRequestTagsList;
@@ -4887,7 +4887,7 @@ export const ExperimentFlagCleanupTargetCandidatesList = /*@__PURE__*/ S.Array(
 export interface ExperimentFlagCleanupTarget {
   /** Repository a flag-cleanup pull request would be opened in, or null when none can be determined. */
   repository: string | null;
-  /** How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment's default cleanup repository), `single_repo` (the team's only connected repository), `ambiguous` (several connected repositories and none saved — pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened). * `explicit` - explicit * `team_default` - team_default * `single_repo` - single_repo * `ambiguous` - ambiguous * `no_integration` - no_integration */
+  /** How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment's default cleanup repository), `single_repo` (the team's only connected repository), `ambiguous` (several connected repositories and none saved -- pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened). * `explicit` - explicit * `team_default` - team_default * `single_repo` - single_repo * `ambiguous` - ambiguous * `no_integration` - no_integration */
   source: ExperimentFlagCleanupTargetSourceEnum;
   /** Repositories connected to the team's GitHub integration, to choose a target from. */
   candidates: ExperimentFlagCleanupTargetCandidatesList;
@@ -5481,7 +5481,7 @@ export const ExperimentBasicTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExperimentBasicTagsList>;
 
-/** Lightweight, read-only serializer for the experiment list endpoint. The list view (and the MCP list tool) render only the scalar and feature-flag fields shared via ``ExperimentBaseSerializer`` — never the metric definitions. Omitting ``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the large JSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that work belongs to the detail response served by ``ExperimentSerializer``. Because the metric fields, the write-side machinery, and the action-name-refreshing ``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base, this serializer needs no overrides: it gets DRF's default ``get_fields`` (no write-only ``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), and a plain ``ListSerializer`` that never touches the deferred columns. See ``EnterpriseExperimentsViewSet.safely_get_queryset``. */
+/** Lightweight, read-only serializer for the experiment list endpoint. The list view (and the MCP list tool) render only the scalar and feature-flag fields shared via ``ExperimentBaseSerializer`` -- never the metric definitions. Omitting ``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the large JSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that work belongs to the detail response served by ``ExperimentSerializer``. Because the metric fields, the write-side machinery, and the action-name-refreshing ``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base, this serializer needs no overrides: it gets DRF's default ``get_fields`` (no write-only ``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), and a plain ``ListSerializer`` that never touches the deferred columns. See ``EnterpriseExperimentsViewSet.safely_get_queryset``. */
 export interface ExperimentBasic {
   id: number;
   /** Name of the experiment. */
@@ -5490,7 +5490,7 @@ export interface ExperimentBasic {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key: string;
   feature_flag: MinimalFeatureFlag;
   holdout: ExperimentHoldout;
@@ -5513,7 +5513,7 @@ export interface ExperimentBasic {
   conclusion?: ConclusionEnum | null;
   /** Comment about the experiment conclusion. */
   conclusion_comment?: string | null;
-  /** Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended). */
+  /** Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated -- virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing -- virtual state derived from the flag's release groups, not stored), 'stopped' (ended). */
   status: ExperimentStatusEnum;
   /** Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project. */
   is_legacy: boolean;
@@ -5597,7 +5597,7 @@ export const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList = /*@__PURE
   S.String,
 ) as any as S.Schema<UpdateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
 export const UpdateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5621,7 +5621,7 @@ export interface UpdateExperimentRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key: string;
   /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
   feature_flag?: ExperimentFeatureFlagInput;
@@ -5650,7 +5650,7 @@ export interface UpdateExperimentRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -5666,9 +5666,9 @@ export interface UpdateExperimentRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: UpdateExperimentRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentRequestTagsList;
@@ -5744,7 +5744,7 @@ export const UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList =
     S.String,
   ) as any as S.Schema<UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList>;
 
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentsPartialRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
@@ -5770,7 +5770,7 @@ export interface UpdateExperimentsPartialRequest {
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first -- reuse an existing flag when possible. */
   feature_flag_key?: string;
   /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
   feature_flag?: ExperimentFeatureFlagInput;
@@ -5799,7 +5799,7 @@ export interface UpdateExperimentsPartialRequest {
   metrics_secondary?: ExperimentApiMetricsList | null;
   stats_config?: unknown;
   scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true -- never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
   allow_unknown_events?: boolean;
   _create_in_folder?: string;
   /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
@@ -5815,9 +5815,9 @@ export interface UpdateExperimentsPartialRequest {
   only_count_matured_users?: boolean;
   /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
   update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe -- metric collections per metric uuid, other fields per field -- using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
   original_experiment?: UpdateExperimentsPartialRequestOriginalExperimentMap | null;
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentsPartialRequestTagsList;
@@ -5886,7 +5886,7 @@ export const createExperiment: API.OperationMethod<
 }));
 
 export type CreateExperimentsCalculateRunningTimeError = PosthogOpError;
-/** Estimate the recommended sample size and running time for an experiment. Pure statistical calculation — does not read or write any experiment. Pass the metric type, a minimum detectable effect, and either a baseline value or raw baseline statistics. When `exposure_rate_per_day` is provided, the response also includes the estimated running time in days. */
+/** Estimate the recommended sample size and running time for an experiment. Pure statistical calculation -- does not read or write any experiment. Pass the metric type, a minimum detectable effect, and either a baseline value or raw baseline statistics. When `exposure_rate_per_day` is provided, the response also includes the estimated running time in days. */
 export const createExperimentsCalculateRunningTime: API.OperationMethod<
   CreateExperimentsCalculateRunningTimeRequest,
   RunningTimeCalculationResult,
@@ -5901,7 +5901,7 @@ export const createExperimentsCalculateRunningTime: API.OperationMethod<
 }));
 
 export type CreateExperimentsEndError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** End a running experiment without shipping a variant. Sets end_date to now and marks the experiment as stopped. The feature flag is NOT modified — users continue to see their assigned variants and exposure events ($feature_flag_called) continue to be recorded. However, only data up to end_date is included in experiment results. Use this when: - You want to freeze the results window without changing which variant users see. - A variant was already shipped manually via the feature flag UI and the experiment just needs to be marked complete. The end_date can be adjusted after ending via PATCH if it needs to be backdated (e.g. to match when the flag was actually paused). Other options: - Use ship_variant to end the experiment AND roll out a single variant to 100%% of users. - Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results). Returns 400 if the experiment is not running. */
+/** End a running experiment without shipping a variant. Sets end_date to now and marks the experiment as stopped. The feature flag is NOT modified -- users continue to see their assigned variants and exposure events ($feature_flag_called) continue to be recorded. However, only data up to end_date is included in experiment results. Use this when: - You want to freeze the results window without changing which variant users see. - A variant was already shipped manually via the feature flag UI and the experiment just needs to be marked complete. The end_date can be adjusted after ending via PATCH if it needs to be backdated (e.g. to match when the flag was actually paused). Other options: - Use ship_variant to end the experiment AND roll out a single variant to 100%% of users. - Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results). Returns 400 if the experiment is not running. */
 export const createExperimentsEnd: API.OperationMethod<
   CreateExperimentsEndRequest,
   ExperimentOutput,
@@ -5916,7 +5916,7 @@ export const createExperimentsEnd: API.OperationMethod<
 }));
 
 export type CreateExperimentsFreezeExposureError = PosthogOpError;
-/** Freeze exposure on a running experiment while metrics keep flowing. Snapshots the already-exposed users into a static cohort and narrows the linked feature flag so only those users keep matching — new users can no longer enter the experiment. ``end_date`` is left null so long-term metrics (revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep their assigned variant. The serialized status becomes 'exposure_frozen'. Returns 400 if the experiment is not running, exposure is already frozen, the experiment is group-aggregated (group flags cannot be frozen with a person cohort), or the exposed set is too large to snapshot synchronously. */
+/** Freeze exposure on a running experiment while metrics keep flowing. Snapshots the already-exposed users into a static cohort and narrows the linked feature flag so only those users keep matching -- new users can no longer enter the experiment. ``end_date`` is left null so long-term metrics (revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep their assigned variant. The serialized status becomes 'exposure_frozen'. Returns 400 if the experiment is not running, exposure is already frozen, the experiment is group-aggregated (group flags cannot be frozen with a person cohort), or the exposed set is too large to snapshot synchronously. */
 export const createExperimentsFreezeExposure: API.OperationMethod<
   CreateExperimentsFreezeExposureRequest,
   ExperimentOutput,
@@ -5946,7 +5946,7 @@ export const createExperimentsLaunch: API.OperationMethod<
 }));
 
 export type CreateExperimentsMetricsRecalculationError = PosthogOpError;
-/** Trigger a batch recalculation of all metrics for this experiment. Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation is already pending or in progress for this experiment. The response payload intentionally does not include the `results` array — at POST time the workflow has just been queued and no per-metric results exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflow progresses. */
+/** Trigger a batch recalculation of all metrics for this experiment. Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation is already pending or in progress for this experiment. The response payload intentionally does not include the `results` array -- at POST time the workflow has just been queued and no per-metric results exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflow progresses. */
 export const createExperimentsMetricsRecalculation: API.OperationMethod<
   CreateExperimentsMetricsRecalculationRequest,
   ExperimentMetricsRecalculationJob,
@@ -5995,7 +5995,7 @@ export const createExperimentsRecalculateTimeseries: API.OperationMethod<
 }));
 
 export type CreateExperimentsSessionBucketError = PosthogOpError;
-/** Session recordings of this experiment matching a bucket. Answers the questions a recordings query can't express on its own — "fired any of these metrics", "fired none of them", "was exposed but never completed the funnel in this session" — by returning a bounded, most-recent-first list of session IDs to pass back as a recordings query's session_ids. POST because the metric list doesn't fit a query string; the endpoint only reads. Session-scoped and goal-free: the set describes what happened in each session, while the experiment analysis counts per person over the whole run window. A session can be in the drop-off bucket while the same person converts in a later one. */
+/** Session recordings of this experiment matching a bucket. Answers the questions a recordings query can't express on its own -- "fired any of these metrics", "fired none of them", "was exposed but never completed the funnel in this session" -- by returning a bounded, most-recent-first list of session IDs to pass back as a recordings query's session_ids. POST because the metric list doesn't fit a query string; the endpoint only reads. Session-scoped and goal-free: the set describes what happened in each session, while the experiment analysis counts per person over the whole run window. A session can be in the drop-off bucket while the same person converts in a later one. */
 export const createExperimentsSessionBucket: API.OperationMethod<
   CreateExperimentsSessionBucketRequest,
   ExperimentSessionBucketResponse,
@@ -6055,7 +6055,7 @@ export const createExperimentsSetupContext: API.OperationMethod<
 }));
 
 export type CreateExperimentsShipVariantError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Ship a variant and (optionally) end the experiment. Updates the feature flag so the selected variant gets 100% of the variant distribution. By default, existing release conditions on the flag are preserved untouched — the variant is served only to users who already match them. Pass ``release_to_everyone: true`` to also prepend a catch-all release condition that rolls the variant out to 100% of users (overrides any existing release conditions on the flag). Can be called on both running and stopped experiments. If the experiment is still running, it will also be ended (end_date set and status marked as stopped). If the experiment has already ended, only the flag is rewritten - this supports the "end first, ship later" workflow. If an approval policy requires review before changes on the flag take effect, the API returns 409 with a change_request_id. The experiment is NOT ended until the change request is approved and the user retries. Returns 400 if the experiment is in draft state, the variant_key is not found on the flag, or the experiment has no linked feature flag. */
+/** Ship a variant and (optionally) end the experiment. Updates the feature flag so the selected variant gets 100% of the variant distribution. By default, existing release conditions on the flag are preserved untouched -- the variant is served only to users who already match them. Pass ``release_to_everyone: true`` to also prepend a catch-all release condition that rolls the variant out to 100% of users (overrides any existing release conditions on the flag). Can be called on both running and stopped experiments. If the experiment is still running, it will also be ended (end_date set and status marked as stopped). If the experiment has already ended, only the flag is rewritten - this supports the "end first, ship later" workflow. If an approval policy requires review before changes on the flag take effect, the API returns 409 with a change_request_id. The experiment is NOT ended until the change request is approved and the user retries. Returns 400 if the experiment is in draft state, the variant_key is not found on the flag, or the experiment has no linked feature flag. */
 export const createExperimentsShipVariant: API.OperationMethod<
   CreateExperimentsShipVariantRequest,
   ExperimentOutput,
@@ -6100,7 +6100,7 @@ export const experimentsArchiveCreate: API.OperationMethod<
 }));
 
 export type ExperimentsBulkUpdateTagsCreateError = PosthogOpError;
-/** Bulk update tags on multiple objects. PAT access: this action has no ``required_scopes=`` on the decorator — inheriting viewsets must add ``"bulk_update_tags"`` to their ``scope_object_write_actions`` list to accept personal API keys. Without that opt-in, ``APIScopePermission`` rejects PAT requests with "This action does not support personal API key access". Done per-viewset so granting ``<scope>:write`` for one resource doesn't leak access to sibling resources that share this mixin. Accepts: - {"ids": [...], "action": "add"|"remove"|"set", "tags": ["tag1", "tag2"]} Actions: - "add": Add tags to existing tags on each object - "remove": Remove specific tags from each object - "set": Replace all tags on each object with the provided list */
+/** Bulk update tags on multiple objects. PAT access: this action has no ``required_scopes=`` on the decorator -- inheriting viewsets must add ``"bulk_update_tags"`` to their ``scope_object_write_actions`` list to accept personal API keys. Without that opt-in, ``APIScopePermission`` rejects PAT requests with "This action does not support personal API key access". Done per-viewset so granting ``<scope>:write`` for one resource doesn't leak access to sibling resources that share this mixin. Accepts: - {"ids": [...], "action": "add"|"remove"|"set", "tags": ["tag1", "tag2"]} Actions: - "add": Add tags to existing tags on each object - "remove": Remove specific tags from each object - "set": Replace all tags on each object with the provided list */
 export const experimentsBulkUpdateTagsCreate: API.OperationMethod<
   ExperimentsBulkUpdateTagsCreateRequest,
   BulkUpdateTagsResponse,
@@ -6213,7 +6213,7 @@ export const experimentsMigrateCreate: API.OperationMethod<
 }));
 
 export type ExperimentsResetCreateError = Forbidden | NotFound | PosthogOpError;
-/** Reset an experiment back to draft state. Clears start/end dates, conclusion, archived flag, and any flag-cleanup task pointer. The feature flag is left unchanged — users continue to see their assigned variants. Previously collected events still exist but won't be included in results unless the start date is manually adjusted after re-launch. Returns 400 if the experiment is already in draft state. */
+/** Reset an experiment back to draft state. Clears start/end dates, conclusion, archived flag, and any flag-cleanup task pointer. The feature flag is left unchanged -- users continue to see their assigned variants. Previously collected events still exist but won't be included in results unless the start date is manually adjusted after re-launch. Returns 400 if the experiment is already in draft state. */
 export const experimentsResetCreate: API.OperationMethod<
   ExperimentsResetCreateRequest,
   ExperimentOutput,
@@ -6393,7 +6393,7 @@ export const getExperimentsPromptTemplate: API.OperationMethod<
 }));
 
 export type GetExperimentsSessionContextError = PosthogOpError;
-/** Resolve which experiments (and variants) a session recording saw. Variants come from the session's $feature_flag_called events and stamped $feature/<key> event properties — flag evaluation, which may differ from an experiment's exposure criteria. */
+/** Resolve which experiments (and variants) a session recording saw. Variants come from the session's $feature_flag_called events and stamped $feature/<key> event properties -- flag evaluation, which may differ from an experiment's exposure criteria. */
 export const getExperimentsSessionContext: API.OperationMethod<
   GetExperimentsSessionContextRequest,
   ExperimentSessionContextResponse,

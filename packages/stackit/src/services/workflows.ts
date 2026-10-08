@@ -90,7 +90,7 @@ export interface GitDagBundle {
   name: string;
   /** How often (in seconds) to check for new commits. Defaults to 60. */
   refreshInterval?: number;
-  /** Subdirectory within the repository containing DAG files. Defaults to root. Leading and trailing slashes are stripped automatically — the following four forms are all equivalent and stored as `dags/production`: `/dags/production/`, `dags/production/`, `/dags/production`, `dags/production`. */
+  /** Subdirectory within the repository containing DAG files. Defaults to root. Leading and trailing slashes are stripped automatically -- the following four forms are all equivalent and stored as `dags/production`: `/dags/production/`, `dags/production/`, `/dags/production`, `dags/production`. */
   subdir?: string;
   /** Bundle type identifier. */
   type: GitDagBundleType;
@@ -769,7 +769,7 @@ export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
-/** Bundle type identifier — must match the existing bundle's type. */
+/** Bundle type identifier -- must match the existing bundle's type. */
 export type UpdateGitDagBundlePayloadType = "git";
 export const UpdateGitDagBundlePayloadType = S.String;
 
@@ -782,7 +782,7 @@ export interface UpdateGitDagBundlePayload {
   refreshInterval?: number;
   /** Updated subdirectory within the repository. Set to empty string or "/" to clear an existing subdir. */
   subdir?: string;
-  /** Bundle type identifier — must match the existing bundle's type. */
+  /** Bundle type identifier -- must match the existing bundle's type. */
   type: UpdateGitDagBundlePayloadType;
   /** Updated Git repository URL. If changed, auth must also be provided. */
   url?: string;
@@ -800,7 +800,7 @@ export const UpdateGitDagBundlePayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGitDagBundlePayload",
 }) as any as S.Schema<UpdateGitDagBundlePayload>;
 
-/** Bundle type identifier — must match the existing bundle's type. */
+/** Bundle type identifier -- must match the existing bundle's type. */
 export type UpdateS3DagBundlePayloadType = "s3";
 export const UpdateS3DagBundlePayloadType = S.String;
 
@@ -815,7 +815,7 @@ export interface UpdateS3DagBundlePayload {
   /** Updated refresh interval in seconds. */
   refreshInterval?: number;
   s3Auth?: S3Auth;
-  /** Bundle type identifier — must match the existing bundle's type. */
+  /** Bundle type identifier -- must match the existing bundle's type. */
   type: UpdateS3DagBundlePayloadType;
 }
 export const UpdateS3DagBundlePayload = /*@__PURE__*/ S.suspend(() =>

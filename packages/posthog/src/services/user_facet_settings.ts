@@ -29,7 +29,7 @@ export type UserFacetSettingsEntrySourceTypeEnum = "attribute" | "resourceAttrib
 export const UserFacetSettingsEntrySourceTypeEnum = S.String;
 
 export interface UserFacetSettingsEntry {
-  /** The log or span attribute key this facet is based on — for example `http.status_code` or `k8s.pod.name`. */
+  /** The log or span attribute key this facet is based on -- for example `http.status_code` or `k8s.pod.name`. */
   key: string;
   /** Where the key lives: `attribute` for a plain log/span attribute, `resourceAttribute` for an OpenTelemetry resource attribute. * `attribute` - attribute * `resourceAttribute` - resourceAttribute */
   source_type: UserFacetSettingsEntrySourceTypeEnum | (string & {});

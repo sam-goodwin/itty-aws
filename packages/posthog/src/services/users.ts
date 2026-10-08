@@ -142,7 +142,7 @@ export const OnboardingSkipRequestReasonEnum = S.String;
 
 export interface CreateUsersOnboardingSkipRequest {
   uuid: string;
-  /** Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically. * `later` - Later * `other` - Other */
+  /** Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here -- use the delegate endpoint so the delegation invite is created atomically. * `later` - Later * `other` - Other */
   reason: OnboardingSkipRequestReasonEnum | (string & {});
   /** Onboarding step key the user was on when skipping, for analytics only. */
   step_at_skip?: string;
@@ -157,7 +157,7 @@ export const CreateUsersOnboardingSkipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUsersOnboardingSkipRequest",
 }) as any as S.Schema<CreateUsersOnboardingSkipRequest>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UserOutputNotificationSettingsMap = { [key: string]: unknown | undefined };
 export const UserOutputNotificationSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1128,7 +1128,7 @@ export interface UserOutput {
   email?: string;
   pending_email?: string | null;
   is_email_verified?: boolean | null;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UserOutputNotificationSettingsMap;
   /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
   notification_locks?: UserOutputNotificationLocksList;
@@ -1276,7 +1276,7 @@ export const UserPushTokenItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserPushTokenItem" }) as any as S.Schema<UserPushTokenItem>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersRequestEmailVerificationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -1304,7 +1304,7 @@ export interface CreateUsersRequestEmailVerificationRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: CreateUsersRequestEmailVerificationRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -1371,7 +1371,7 @@ export const CreateUsersRequestEmailVerificationResponse = /*@__PURE__*/ S.suspe
   identifier: "CreateUsersRequestEmailVerificationResponse",
 }) as any as S.Schema<CreateUsersRequestEmailVerificationResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersScenePersonalisationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -1399,7 +1399,7 @@ export interface CreateUsersScenePersonalisationRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: CreateUsersScenePersonalisationRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -1560,7 +1560,7 @@ export const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalUserAutonomyConfig" }) as any as S.Schema<SignalUserAutonomyConfig>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -1588,7 +1588,7 @@ export interface CreateUsersTwoFactorBackupCodeRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -1652,7 +1652,7 @@ export const CreateUsersTwoFactorBackupCodeResponse = /*@__PURE__*/ S.suspend(()
   identifier: "CreateUsersTwoFactorBackupCodeResponse",
 }) as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersValidate2faRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -1678,7 +1678,7 @@ export interface CreateUsersValidate2faRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: CreateUsersValidate2faRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -1898,7 +1898,7 @@ export interface GitHubRepo {
   pushed_at?: string;
   /** Whether the repository is archived. */
   archived?: boolean;
-  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+  /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
 export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
@@ -2263,7 +2263,7 @@ export const ListUsersLoginSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserAuthSession {
   /** Identifier used to revoke this login session. */
   id: string;
-  /** When this login session was first created — the original sign-in time. */
+  /** When this login session was first created -- the original sign-in time. */
   created_at: string | null;
   /** When this login session last made a request (refreshed periodically). */
   last_activity: string;
@@ -2340,7 +2340,7 @@ export const SignalUserAutonomyDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalUserAutonomyDestroyResponse",
 }) as any as S.Schema<SignalUserAutonomyDestroyResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUserRequestNotificationSettingsMap = { [key: string]: unknown | undefined };
 export const UpdateUserRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2363,7 +2363,7 @@ export interface UpdateUserRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UpdateUserRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -2418,7 +2418,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "PUT", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -2447,7 +2447,7 @@ export interface UpdateUsersHedgehogConfigPartialRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -2515,7 +2515,7 @@ export const UpdateUsersHedgehogConfigPartialResponse = /*@__PURE__*/ S.suspend(
   identifier: "UpdateUsersHedgehogConfigPartialResponse",
 }) as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -2541,7 +2541,7 @@ export interface UpdateUsersPartialRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UpdateUsersPartialRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -2631,7 +2631,7 @@ export const UpdateUsersProductIntroSeenPartialResponse = /*@__PURE__*/ S.suspen
   identifier: "UpdateUsersProductIntroSeenPartialResponse",
 }) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -2661,7 +2661,7 @@ export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -3038,7 +3038,7 @@ export const UsersPushTokensUnregisterCreateResponse = /*@__PURE__*/ S.suspend((
   identifier: "UsersPushTokensUnregisterCreateResponse",
 }) as any as S.Schema<UsersPushTokensUnregisterCreateResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorDisableCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -3064,7 +3064,7 @@ export interface UsersTwoFactorDisableCreateRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UsersTwoFactorDisableCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -3146,7 +3146,7 @@ export const UsersTwoFactorStartSetupRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "UsersTwoFactorStartSetupRetrieveResponse",
 }) as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorValidateCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -3172,7 +3172,7 @@ export interface UsersTwoFactorValidateCreateRequest {
   first_name?: string;
   last_name?: string;
   email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
   notification_settings?: UsersTwoFactorValidateCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
@@ -3364,7 +3364,7 @@ export const createUsersScenePersonalisation: API.OperationMethod<
 }));
 
 export type CreateUsersSignalAutonomyError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ → current config (or 404) POST /api/users/<id>/signal_autonomy/ → create or update DELETE /api/users/<id>/signal_autonomy/ → remove (opt out) */
+/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ -> current config (or 404) POST /api/users/<id>/signal_autonomy/ -> create or update DELETE /api/users/<id>/signal_autonomy/ -> remove (opt out) */
 export const createUsersSignalAutonomy: API.OperationMethod<
   CreateUsersSignalAutonomyRequest,
   SignalUserAutonomyConfig,
@@ -3455,7 +3455,7 @@ export const getUsersHedgehogConfig: API.OperationMethod<
 }));
 
 export type GetUsersIntegrationsCodexError = PosthogOpError;
-/** Show the ChatGPT account connected for Codex cloud tasks `/api/users/@me/integrations/` — manage the user's personal GitHub integrations. */
+/** Show the ChatGPT account connected for Codex cloud tasks `/api/users/@me/integrations/` -- manage the user's personal GitHub integrations. */
 export const getUsersIntegrationsCodex: API.OperationMethod<
   GetUsersIntegrationsCodexRequest,
   UserCodexIntegration,
@@ -3515,7 +3515,7 @@ export const getUsersIntegrationsSlackLinkableWorkspace: API.OperationMethod<
 }));
 
 export type GetUsersSignalAutonomyError = Forbidden | NotFound | PosthogOpError;
-/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ → current config (or 404) POST /api/users/<id>/signal_autonomy/ → create or update DELETE /api/users/<id>/signal_autonomy/ → remove (opt out) */
+/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ -> current config (or 404) POST /api/users/<id>/signal_autonomy/ -> create or update DELETE /api/users/<id>/signal_autonomy/ -> remove (opt out) */
 export const getUsersSignalAutonomy: API.OperationMethod<
   GetUsersSignalAutonomyRequest,
   SignalUserAutonomyConfig,
@@ -3588,7 +3588,7 @@ export const listUsers: API.OperationMethod<
 }));
 
 export type ListUsersIntegrationsError = PosthogOpError;
-/** List the user's personal integrations of a given kind Return the authenticated user's personal integrations of a given ``kind`` (``github`` or ``slack``). The response shape varies per kind because the underlying ``UserIntegration`` rows carry different identity fields — GitHub rows expose ``installation_id`` / ``account`` / ``uses_shared_installation``; Slack rows expose ``slack_user_id`` / ``slack_team_id`` / ``slack_team_name``. Kind-specific destroy and start actions remain split so their distinct semantics (e.g. Slack's lack of "uninstall on last reference") stay explicit at the URL layer. Default of ``kind=github`` is load-bearing: mobile (``apps/mobile/...``) and the Code SDK (``packages/api-client/...``) both call this endpoint without a query param today and rely on receiving GitHub rows. */
+/** List the user's personal integrations of a given kind Return the authenticated user's personal integrations of a given ``kind`` (``github`` or ``slack``). The response shape varies per kind because the underlying ``UserIntegration`` rows carry different identity fields -- GitHub rows expose ``installation_id`` / ``account`` / ``uses_shared_installation``; Slack rows expose ``slack_user_id`` / ``slack_team_id`` / ``slack_team_name``. Kind-specific destroy and start actions remain split so their distinct semantics (e.g. Slack's lack of "uninstall on last reference") stay explicit at the URL layer. Default of ``kind=github`` is load-bearing: mobile (``apps/mobile/...``) and the Code SDK (``packages/api-client/...``) both call this endpoint without a query param today and rely on receiving GitHub rows. */
 export const listUsersIntegrations: API.OperationMethod<
   ListUsersIntegrationsRequest,
   PaginatedUserGitHubIntegrationListResponseList,
@@ -3603,7 +3603,7 @@ export const listUsersIntegrations: API.OperationMethod<
 }));
 
 export type ListUsersLoginSessionsError = PosthogOpError;
-/** List the cookie-auth login sessions for the current user. Self-only — never another user. */
+/** List the cookie-auth login sessions for the current user. Self-only -- never another user. */
 export const listUsersLoginSessions: API.OperationMethod<
   ListUsersLoginSessionsRequest,
   ListUsersLoginSessionsResponse,
@@ -3633,7 +3633,7 @@ export const loginUserSessionsDestroy: API.OperationMethod<
 }));
 
 export type SignalUserAutonomyDestroyError = Forbidden | NotFound | PosthogOpError;
-/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ → current config (or 404) POST /api/users/<id>/signal_autonomy/ → create or update DELETE /api/users/<id>/signal_autonomy/ → remove (opt out) */
+/** Per-user signal autonomy config (singleton keyed by user). GET /api/users/<id>/signal_autonomy/ -> current config (or 404) POST /api/users/<id>/signal_autonomy/ -> create or update DELETE /api/users/<id>/signal_autonomy/ -> remove (opt out) */
 export const signalUserAutonomyDestroy: API.OperationMethod<
   SignalUserAutonomyDestroyRequest,
   SignalUserAutonomyDestroyResponse,
@@ -3648,7 +3648,7 @@ export const signalUserAutonomyDestroy: API.OperationMethod<
 }));
 
 export type UpdateUserError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Replace the authenticated user's profile and settings. Pass `@me` as the UUID to update the authenticated user. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided. */
+/** Replace the authenticated user's profile and settings. Pass `@me` as the UUID to update the authenticated user. Prefer the PATCH endpoint for partial updates -- PUT requires every writable field to be provided. */
 export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UserOutput,
@@ -3817,7 +3817,7 @@ export const usersIntegrationsGithubStartCreate: API.OperationMethod<
 }));
 
 export type UsersIntegrationsSlackDestroyError = PosthogOpError;
-/** Unlink a Slack identity Remove a Slack identity link by Slack user id. Idempotent and flag-agnostic — users must always be able to unlink even after the feature flag is turned off. */
+/** Unlink a Slack identity Remove a Slack identity link by Slack user id. Idempotent and flag-agnostic -- users must always be able to unlink even after the feature flag is turned off. */
 export const usersIntegrationsSlackDestroy: API.OperationMethod<
   UsersIntegrationsSlackDestroyRequest,
   UsersIntegrationsSlackDestroyResponse,
@@ -3832,7 +3832,7 @@ export const usersIntegrationsSlackDestroy: API.OperationMethod<
 }));
 
 export type UsersIntegrationsSlackStartCreateError = PosthogOpError;
-/** Start Slack identity link from settings Mint a Sign-in-with-Slack invite URL initiated from settings, without Slack-DM context. The returned URL takes the user through PostHog login (already satisfied here), then to Slack OAuth, then back to our callback which writes the ``UserIntegration`` row. Without body params, falls back to the user's ``current_team`` and that team's first Slack ``Integration`` — works when there's exactly one linkable workspace. With ``team_id`` + ``slack_team_id``, links against the exact pair (what the frontend uses when a picker is shown). Refuses if the target team has no matching Slack workspace, if the feature flag is off for the workspace, or if the user is already linked to it. */
+/** Start Slack identity link from settings Mint a Sign-in-with-Slack invite URL initiated from settings, without Slack-DM context. The returned URL takes the user through PostHog login (already satisfied here), then to Slack OAuth, then back to our callback which writes the ``UserIntegration`` row. Without body params, falls back to the user's ``current_team`` and that team's first Slack ``Integration`` -- works when there's exactly one linkable workspace. With ``team_id`` + ``slack_team_id``, links against the exact pair (what the frontend uses when a picker is shown). Refuses if the target team has no matching Slack workspace, if the feature flag is off for the workspace, or if the user is already linked to it. */
 export const usersIntegrationsSlackStartCreate: API.OperationMethod<
   UsersIntegrationsSlackStartCreateRequest,
   UserSlackLinkStartResponse,

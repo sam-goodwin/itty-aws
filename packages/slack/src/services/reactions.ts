@@ -116,7 +116,7 @@ export const ListReactionsResponseItemsList = /*@__PURE__*/ S.Array(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListReactionsResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const ListReactionsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -177,7 +177,7 @@ export const RemoveReactionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveReactionResponse" }) as any as S.Schema<RemoveReactionResponse>;
 
 export type AddReactionError = SlackOpError;
-/** Adds a reaction to an item. Required scopes — bot: `reactions:write`; user: `reactions:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `already_reacted` — The specified item already has the user/reaction combination. - `bad_timestamp` — Value passed for `timestamp` was invalid. - `channel_not_found` — Value passed for `channel` is invalid. - `external_channel_migrating` — The channel is in the process of being migrated. - `invalid_name` — Value passed for `name` was invalid. - `is_archived` — Channel specified has been archived. - `message_not_found` — Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` — combination of `channel` and `timestamp` was not specified. - `not_reactable` — Whatever you passed in, like a `file` or `file_comment`, can't be reacted to anymore. Your app can react to messages though. - `thread_locked` — Reactions are disabled as the specified message is part of a locked thread. - `too_many_emoji` — The limit for distinct reactions (i.e emoji) on the item has been reached. - `too_many_reactions` — The limit for reactions a person may add to the item has been reached. - `no_access` — User does not have access to react to this canvas. See https://docs.slack.dev/reference/methods/reactions.add */
+/** Adds a reaction to an item. Required scopes -- bot: `reactions:write`; user: `reactions:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `already_reacted` -- The specified item already has the user/reaction combination. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Value passed for `channel` is invalid. - `external_channel_migrating` -- The channel is in the process of being migrated. - `invalid_name` -- Value passed for `name` was invalid. - `is_archived` -- Channel specified has been archived. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- combination of `channel` and `timestamp` was not specified. - `not_reactable` -- Whatever you passed in, like a `file` or `file_comment`, can't be reacted to anymore. Your app can react to messages though. - `thread_locked` -- Reactions are disabled as the specified message is part of a locked thread. - `too_many_emoji` -- The limit for distinct reactions (i.e emoji) on the item has been reached. - `too_many_reactions` -- The limit for reactions a person may add to the item has been reached. - `no_access` -- User does not have access to react to this canvas. See https://docs.slack.dev/reference/methods/reactions.add */
 export const addReaction: API.OperationMethod<
   AddReactionRequest,
   AddReactionResponse,
@@ -192,7 +192,7 @@ export const addReaction: API.OperationMethod<
 }));
 
 export type GetReactionError = SlackOpError;
-/** Gets reactions for an item. Required scopes — bot: `reactions:read`; user: `reactions:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` — Value passed for `timestamp` was invalid. - `channel_not_found` — Value passed for `channel` was invalid. - `file_comment_not_found` — File comment specified by `file_comment` does not exist. - `file_not_found` — File specified by `file` does not exist. - `message_not_found` — Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` — `file`, `file_comment`, or combination of `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/reactions.get */
+/** Gets reactions for an item. Required scopes -- bot: `reactions:read`; user: `reactions:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Value passed for `channel` was invalid. - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `file_not_found` -- File specified by `file` does not exist. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, or combination of `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/reactions.get */
 export const getReaction: API.OperationMethod<
   GetReactionRequest,
   GetReactionResponse,
@@ -207,7 +207,7 @@ export const getReaction: API.OperationMethod<
 }));
 
 export type ListReactionsError = SlackOpError;
-/** Lists reactions made by a user. Required scopes — bot: `reactions:read`; user: `reactions:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` — Value passed for `cursor` was not valid or is no longer valid. - `user_not_found` — Value passed for `user` was invalid. See https://docs.slack.dev/reference/methods/reactions.list */
+/** Lists reactions made by a user. Required scopes -- bot: `reactions:read`; user: `reactions:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_cursor` -- Value passed for `cursor` was not valid or is no longer valid. - `user_not_found` -- Value passed for `user` was invalid. See https://docs.slack.dev/reference/methods/reactions.list */
 export const listReactions: API.PaginatedOperationMethod<
   ListReactionsRequest,
   ListReactionsResponse,
@@ -233,7 +233,7 @@ export const listReactions: API.PaginatedOperationMethod<
 ) as any;
 
 export type RemoveReactionError = SlackOpError;
-/** Removes a reaction from an item. Required scopes — bot: `reactions:write`; user: `reactions:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` — Value passed for `timestamp` was invalid. - `channel_not_found` — The specified channel was not found. - `external_channel_migrating` — The reaction is in a channel that is being migrated - `file_not_found` — File specified by `file` does not exist. - `file_comment_not_found` — File comment specified by `file_comment` does not exist. - `invalid_name` — Value passed for `name` was invalid. - `message_not_found` — Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` — `file`, `file_comment`, or combination of `channel` and `timestamp` was not specified. - `no_access` — The requestor does not have permission to perform this action on the specified item. - `no_reaction` — The specified reaction does not exist, or the requestor is not the original reaction author. - `thread_locked` — Reactions are disabled as the specified message is part of a locked thread. See https://docs.slack.dev/reference/methods/reactions.remove */
+/** Removes a reaction from an item. Required scopes -- bot: `reactions:write`; user: `reactions:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- The specified channel was not found. - `external_channel_migrating` -- The reaction is in a channel that is being migrated - `file_not_found` -- File specified by `file` does not exist. - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `invalid_name` -- Value passed for `name` was invalid. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, or combination of `channel` and `timestamp` was not specified. - `no_access` -- The requestor does not have permission to perform this action on the specified item. - `no_reaction` -- The specified reaction does not exist, or the requestor is not the original reaction author. - `thread_locked` -- Reactions are disabled as the specified message is part of a locked thread. See https://docs.slack.dev/reference/methods/reactions.remove */
 export const removeReaction: API.OperationMethod<
   RemoveReactionRequest,
   RemoveReactionResponse,

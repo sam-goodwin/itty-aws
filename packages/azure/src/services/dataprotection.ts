@@ -438,7 +438,7 @@ export const UserFacingErrorPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<UserFacingErrorPropertiesMap>;
 
-/** RecommendedAction � localized. */
+/** RecommendedAction U+FFFD localized. */
 export type UserFacingErrorRecommendedActionList = Array<string>;
 export const UserFacingErrorRecommendedActionList = /*@__PURE__*/ S.Array(
   S.String,
@@ -459,7 +459,7 @@ export interface UserFacingError {
   /** Any key value pairs that can be injected inside error object */
   properties?: UserFacingErrorPropertiesMap;
   message?: string;
-  /** RecommendedAction � localized. */
+  /** RecommendedAction U+FFFD localized. */
   recommendedAction?: UserFacingErrorRecommendedActionList;
   /** Target of the error. */
   target?: string;

@@ -61,7 +61,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** The project's per-region Filestore storage quota for the requested tier is exhausted (HTTP 429: "Quota limit '<Tier>StorageGibPerRegion' has been exceeded. Limit: N in region R."). A capacity limit, not rate limiting — deliberately carries no httpError so it is not classified as throttling and retried; it clears only when quota is raised or storage is freed. */
+/** The project's per-region Filestore storage quota for the requested tier is exhausted (HTTP 429: "Quota limit '<Tier>StorageGibPerRegion' has been exceeded. Limit: N in region R."). A capacity limit, not rate limiting -- deliberately carries no httpError so it is not classified as throttling and retried; it clears only when quota is raised or storage is freed. */
 export class StorageQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<StorageQuotaExceeded>()("StorageQuotaExceeded", {

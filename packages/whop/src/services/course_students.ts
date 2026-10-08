@@ -233,7 +233,7 @@ export type GetCourseStudentError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve course student [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing course student. Required permissions: - `courses:read` - `course_analytics:read` */
+/** Retrieve course student [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing course student. Required permissions: - `courses:read` - `course_analytics:read` */
 export const getCourseStudent: API.OperationMethod<
   GetCourseStudentRequest,
   CourseStudent,
@@ -253,7 +253,7 @@ export type ListCourseStudentError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List course students [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of students enrolled in a course, with optional name filtering. Required permissions: - `courses:read` - `course_analytics:read` */
+/** List course students [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of students enrolled in a course, with optional name filtering. Required permissions: - `courses:read` - `course_analytics:read` */
 export const listCourseStudent: API.PaginatedOperationMethod<
   ListCourseStudentRequest,
   ListCourseStudentResponse,

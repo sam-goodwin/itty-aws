@@ -37,9 +37,9 @@ export type CalendarUnitEnum = "day" | "week" | "month";
 export const CalendarUnitEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
-  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span ≥ 30 minutes on the local daily timeline (half-open [start, end)). */
+  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
-  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span ≥ 30 minutes locally. */
+  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
 export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>

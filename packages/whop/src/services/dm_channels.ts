@@ -210,7 +210,7 @@ export type CreateDmChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create dm channel [Legacy API — https://docs.whop.com/api-reference] Create a new DM channel between two or more users, optionally scoped to a specific company. Returns the existing channel if one already exists. Required permissions: - `dms:channel:manage` */
+/** Create dm channel [Legacy API -- https://docs.whop.com/api-reference] Create a new DM channel between two or more users, optionally scoped to a specific company. Returns the existing channel if one already exists. Required permissions: - `dms:channel:manage` */
 export const createDmChannel: API.OperationMethod<
   CreateDmChannelRequest,
   DmChannel,
@@ -230,7 +230,7 @@ export type DeleteDmChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete dm channel [Legacy API — https://docs.whop.com/api-reference] Permanently delete a DM channel and all of its messages. Only an admin of the channel can perform this action. Required permissions (one of): - `dms:channel:manage` - `support_chat:create` */
+/** Delete dm channel [Legacy API -- https://docs.whop.com/api-reference] Permanently delete a DM channel and all of its messages. Only an admin of the channel can perform this action. Required permissions (one of): - `dms:channel:manage` - `support_chat:create` */
 export const deleteDmChannel: API.OperationMethod<
   DeleteDmChannelRequest,
   DeleteDmChannelResponse,
@@ -250,7 +250,7 @@ export type GetDmChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve dm channel [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing DM channel. Required permissions (one of): - `dms:read` - `support_chat:read` */
+/** Retrieve dm channel [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing DM channel. Required permissions (one of): - `dms:read` - `support_chat:read` */
 export const getDmChannel: API.OperationMethod<
   GetDmChannelRequest,
   DmChannel,
@@ -270,7 +270,7 @@ export type ListDmChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List dm channels [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of DM channels for the currently authenticated user, sorted by most recently active. Required permissions: - `dms:read` */
+/** List dm channels [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of DM channels for the currently authenticated user, sorted by most recently active. Required permissions: - `dms:read` */
 export const listDmChannel: API.PaginatedOperationMethod<
   ListDmChannelRequest,
   ListDmChannelResponse,
@@ -302,7 +302,7 @@ export type UpdateDmChannelError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update dm channel [Legacy API — https://docs.whop.com/api-reference] Update the settings of an existing DM channel, such as its display name. Only an admin of the channel can perform this action. Required permissions (one of): - `dms:channel:manage` - `support_chat:create` */
+/** Update dm channel [Legacy API -- https://docs.whop.com/api-reference] Update the settings of an existing DM channel, such as its display name. Only an admin of the channel can perform this action. Required permissions (one of): - `dms:channel:manage` - `support_chat:create` */
 export const updateDmChannel: API.OperationMethod<
   UpdateDmChannelRequest,
   DmChannel,

@@ -2313,7 +2313,7 @@ export const StopClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
 
 /** The properties used to update a cluster. */
 export interface ClusterPropertiesForUpdateInput {
-  /** The password of the administrator login. Each cluster is created with pre-defined administrative role called ‘citus’. */
+  /** The password of the administrator login. Each cluster is created with pre-defined administrative role called 'citus'. */
   administratorLoginPassword?: string | Redacted.Redacted<string>;
   /** The major PostgreSQL version on all cluster servers. */
   postgresqlVersion?: string;

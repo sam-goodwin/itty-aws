@@ -12,7 +12,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   android: "ANDROID",
   asMembersCount: "as_members_count",
@@ -2958,7 +2958,7 @@ export interface AsesDnsTopRequest {
   dnssecAware?: DnsTopAsesRequestDnssecAwareList;
   /** Filters results based on DNSSEC-validated answers by end-to-end security status. */
   dnssecE2e?: DnsTopAsesRequestDnssecE2eList;
-  /** Filters results by domain name. When set, no other DNS filter may be used — only date filtering (`dateRange`, or `dateStart`/`dateEnd`) is allowed — and the date range cannot exceed 31 days. */
+  /** Filters results by domain name. When set, no other DNS filter may be used -- only date filtering (`dateRange`, or `dateStart`/`dateEnd`) is allowed -- and the date range cannot exceed 31 days. */
   domain?: DnsTopAsesRequestDomainList;
   /** Format in which results will be returned. */
   format?: DnsTopAsesRequestFormat | (string & {});
@@ -41709,7 +41709,7 @@ export interface LocationsDnsTopRequest {
   dnssecAware?: DnsTopLocationsRequestDnssecAwareList;
   /** Filters results based on DNSSEC-validated answers by end-to-end security status. */
   dnssecE2e?: DnsTopLocationsRequestDnssecE2eList;
-  /** Filters results by domain name. When set, no other DNS filter may be used — only date filtering (`dateRange`, or `dateStart`/`dateEnd`) is allowed — and the date range cannot exceed 31 days. */
+  /** Filters results by domain name. When set, no other DNS filter may be used -- only date filtering (`dateRange`, or `dateStart`/`dateEnd`) is allowed -- and the date range cannot exceed 31 days. */
   domain?: DnsTopLocationsRequestDomainList;
   /** Format in which results will be returned. */
   format?: DnsTopLocationsRequestFormat | (string & {});
@@ -84015,7 +84015,7 @@ export const attacksAttackLayer7Top: API.OperationMethod<
 }));
 
 export type BgpRoutesUpstreamsTimeseriesError = CloudflareOpError;
-/** Retrieves the share of an AS's observed paths carried by each direct upstream over time, derived from RouteViews RIB snapshots across all collectors (the combined product). Each upstream ASN is returned as its own series of shares (0–1); the least-significant upstreams beyond the requested limit are grouped into an "OTHER" series. Series share a common set of timestamps. */
+/** Retrieves the share of an AS's observed paths carried by each direct upstream over time, derived from RouteViews RIB snapshots across all collectors (the combined product). Each upstream ASN is returned as its own series of shares (0-1); the least-significant upstreams beyond the requested limit are grouped into an "OTHER" series. Series share a common set of timestamps. */
 export const bgpRoutesUpstreamsTimeseries: API.OperationMethod<
   BgpRoutesUpstreamsTimeseriesRequest,
   BgpRoutesUpstreamsTimeseriesResponse,
@@ -87345,7 +87345,7 @@ export const timeseriesBgpRpkiAspa: API.OperationMethod<
 }));
 
 export type TimeseriesBgpRpkiRoaError = CloudflareOpError;
-/** Retrieves RPKI ROA (Route Origin Authorization) validation ratios over time. Returns the selected metric as a time series. Supports filtering by ASN or location (country code) — multiple values of the same filter type produce one series per value. If no ASN or location is specified, returns the global aggregate. */
+/** Retrieves RPKI ROA (Route Origin Authorization) validation ratios over time. Returns the selected metric as a time series. Supports filtering by ASN or location (country code) -- multiple values of the same filter type produce one series per value. If no ASN or location is specified, returns the global aggregate. */
 export const timeseriesBgpRpkiRoa: API.OperationMethod<
   TimeseriesBgpRpkiRoaRequest,
   TimeseriesBgpRpkiRoaResponse,

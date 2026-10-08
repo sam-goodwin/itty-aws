@@ -525,7 +525,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHours {
   openNow?: boolean;
   /** A type string used to identify the type of secondary hours. */
   secondaryHoursType?: GoogleMapsPlacesV1PlaceOpeningHoursSecondaryHoursTypeEnum;
-  /** Localized strings describing the opening hours of this place, one string for each day of the week. NOTE: The order of the days and the start of the week is determined by the locale (language and region). The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions` array. Do not assume they will begin on the same day. Will be empty if the hours are unknown or could not be converted to localized text. Example: "Sun: 18:00–06:00" */
+  /** Localized strings describing the opening hours of this place, one string for each day of the week. NOTE: The order of the days and the start of the week is determined by the locale (language and region). The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions` array. Do not assume they will begin on the same day. Will be empty if the hours are unknown or could not be converted to localized text. Example: "Sun: 18:00-06:00" */
   weekdayDescriptions?: StringList;
 }
 export const GoogleMapsPlacesV1PlaceOpeningHours = /*@__PURE__*/ S.suspend(() =>

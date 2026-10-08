@@ -572,7 +572,7 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
 ) as any;
 
 export type UpdatePlacementGroupError = HetznerOpError;
-/** Update a PlacementGroup Updates the Placement Group properties. Note: if the Placement Group object changes during the request, the response will be a “conflict” error. */
+/** Update a PlacementGroup Updates the Placement Group properties. Note: if the Placement Group object changes during the request, the response will be a "conflict" error. */
 export const updatePlacementGroup: API.OperationMethod<
   UpdatePlacementGroupRequest,
   UpdatePlacementGroupResponse,

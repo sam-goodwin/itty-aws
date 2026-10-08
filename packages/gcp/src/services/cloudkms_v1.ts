@@ -222,7 +222,7 @@ export const AsymmetricDecryptResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A Digest holds a cryptographic message digest. */
 export interface Digest {
-  /** A message digest produced with SHAKE-256, to be used with ML-DSA external-μ algorithms only. See "message representative" note in section 6.2, algorithm 7 of the FIPS-204 standard: https://doi.org/10.6028/nist.fips.204 */
+  /** A message digest produced with SHAKE-256, to be used with ML-DSA external-U+03BC algorithms only. See "message representative" note in section 6.2, algorithm 7 of the FIPS-204 standard: https://doi.org/10.6028/nist.fips.204 */
   externalMu?: string;
   /** A message digest produced with the SHA-256 algorithm. */
   sha256?: string;

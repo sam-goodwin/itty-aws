@@ -799,7 +799,7 @@ export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
   operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
+  /** Customer analytics account custom property -- the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
@@ -880,13 +880,13 @@ export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
   event_type: BehavioralEventSource | (string & {});
-  /** Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval */
+  /** Absolute or relative (e.g. -30d) lower date bound -- alternative to time_value/time_interval */
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
   /** Event name, or action id when event_type is 'actions' */
   key: string;
   label?: string | null;
-  /** Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators */
+  /** Match persons who did NOT satisfy the criterion. Not the same as a low count -- zero-occurrence persons never match count operators */
   negation?: boolean | null;
   /** Count comparison for performed_event_multiple, defaults to exact */
   operator?: PropertyOperator | (string & {}) | null;
@@ -895,7 +895,7 @@ export interface BehavioralPropertyFilter {
   time_interval?: TimeUnitType | (string & {}) | null;
   /** Relative time window size, paired with time_interval */
   time_value?: number | null;
-  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP */
+  /** Person performed (or didn't perform) an event in a time window. ClickHouse-only -- not evaluable by flags or CDP */
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
@@ -1009,9 +1009,9 @@ export type LogsAlertConfigurationThresholdOperatorEnum = "above" | "below";
 export const LogsAlertConfigurationThresholdOperatorEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
-  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span ≥ 30 minutes on the local daily timeline (half-open [start, end)). */
+  /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
-  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span ≥ 30 minutes locally. */
+  /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
 export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
@@ -1046,7 +1046,7 @@ export interface CreateLogsAlertRequest {
   name?: string;
   /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
   enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  /** Filter criteria -- subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
   filters?: LogsAlertFilters;
   /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
   threshold_count?: number;
@@ -1121,7 +1121,7 @@ export const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
 export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
 export const NotificationDestinationTypeEnum = S.String;
 
-/** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
+/** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
 export type LogsAlertConfigurationDestinationTypesList = Array<NotificationDestinationTypeEnum>;
 export const LogsAlertConfigurationDestinationTypesList = /*@__PURE__*/ S.Array(
   NotificationDestinationTypeEnum,
@@ -1185,7 +1185,7 @@ export interface LogsAlertConfiguration {
   name?: string;
   /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
   enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  /** Filter criteria -- subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
   filters?: LogsAlertFilters;
   /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
   threshold_count?: number;
@@ -1219,7 +1219,7 @@ export interface LogsAlertConfiguration {
   last_error_message?: string | null;
   /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
   state_timeline?: LogsAlertConfigurationStateTimelineList;
-  /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
+  /** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
   destination_types?: LogsAlertConfigurationDestinationTypesList;
   /** When the alert was first enabled. Null means the alert is still in draft state. */
   first_enabled_at?: string | null;
@@ -1314,13 +1314,13 @@ export const LogsAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLogsAlertsSimulateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Filter criteria — same format as LogsAlertConfiguration.filters. */
+  /** Filter criteria -- same format as LogsAlertConfiguration.filters. */
   filters?: LogsAlertFilters;
   /** Threshold count to evaluate against. */
   threshold_count?: number;
   /** Whether the alert fires when the count is above or below the threshold. * `above` - Above * `below` - Below */
   threshold_operator?: LogsAlertConfigurationThresholdOperatorEnum | (string & {});
-  /** Window size in minutes — determines bucket interval. */
+  /** Window size in minutes -- determines bucket interval. */
   window_minutes?: number;
   /** How often the alert is evaluated, in minutes. */
   check_interval_minutes?: number;
@@ -1967,16 +1967,16 @@ export const LogsCountRangeBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogsCountRangeBucket" }) as any as S.Schema<LogsCountRangeBucket>;
 
-/** Buckets ordered by `date_from` ascending. Empty buckets are omitted — infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
+/** Buckets ordered by `date_from` ascending. Empty buckets are omitted -- infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
 export type LogsCountRangesResponseRangesList = Array<LogsCountRangeBucket>;
 export const LogsCountRangesResponseRangesList = /*@__PURE__*/ S.Array(
   LogsCountRangeBucket,
 ) as any as S.Schema<LogsCountRangesResponseRangesList>;
 
 export interface LogsCountRangesResponse {
-  /** Buckets ordered by `date_from` ascending. Empty buckets are omitted — infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
+  /** Buckets ordered by `date_from` ascending. Empty buckets are omitted -- infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
   ranges: LogsCountRangesResponseRangesList;
-  /** Short-form duration of the chosen bucket width (e.g. "1h", "5m", "30s", "1d"). Informational only — use each bucket's `date_from`/`date_to` for follow-up queries. */
+  /** Short-form duration of the chosen bucket width (e.g. "1h", "5m", "30s", "1d"). Informational only -- use each bucket's `date_from`/`date_to` for follow-up queries. */
   interval: string;
 }
 export const LogsCountRangesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2156,7 +2156,7 @@ export type LogsGroupBySourceEnum = "log" | "resource" | "column";
 export const LogsGroupBySourceEnum = S.String;
 
 export interface LogsGroupByDimension {
-  /** The key this dimension groups by — an attribute key (e.g. "session_id", "service.name") or, when source is "column", one of the top-level log fields: "severity_level", "trace_id", "span_id". */
+  /** The key this dimension groups by -- an attribute key (e.g. "session_id", "service.name") or, when source is "column", one of the top-level log fields: "severity_level", "trace_id", "span_id". */
   key: string;
   /** Where this dimension's key lives: "log" for log-level attributes, "resource" for resource-level attributes, "column" for top-level log fields. * `log` - log * `resource` - resource * `column` - column */
   source?: LogsGroupBySourceEnum | (string & {});
@@ -2189,7 +2189,7 @@ export interface LogsGroupByBody {
   searchTerm?: string;
   /** Property filters applied before grouping. Same shape as the query-logs endpoint. */
   filterGroup?: LogsGroupByBodyFilterGroupList;
-  /** The key to group logs by — an attribute key (e.g. "session_id", "service.name") or, when groupBySource is "column", one of the top-level log fields: "severity_level", "trace_id", "span_id". Ignored when groupBys is provided. */
+  /** The key to group logs by -- an attribute key (e.g. "session_id", "service.name") or, when groupBySource is "column", one of the top-level log fields: "severity_level", "trace_id", "span_id". Ignored when groupBys is provided. */
   groupBy?: string;
   /** Where the grouping key lives: "log" for log-level attributes, "resource" for resource-level attributes, "column" for top-level log fields. Ignored when groupBys is provided. * `log` - log * `resource` - resource * `column` - column */
   groupBySource?: LogsGroupBySourceEnum | (string & {});
@@ -2372,7 +2372,7 @@ export const LogsImpactResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogsImpactResponse" }) as any as S.Schema<LogsImpactResponse>;
 
-/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type CreateLogsMetricRuleRequestGroupByList = Array<string>;
 export const CreateLogsMetricRuleRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2387,17 +2387,17 @@ export interface CreateLogsMetricRuleRequest {
   project_id: string;
   /** User-visible label for this rule. */
   name: string;
-  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name. */
+  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation -- create a new rule to emit under a different name. */
   metric_name: string;
   /** When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project. */
   enabled?: boolean;
-  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match. */
+  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter -- empty groups never match. */
   filter_group?: unknown;
-  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation — it determines the emitted metric type. */
+  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation -- it determines the emitted metric type. */
   value_attribute?: string | null;
-  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
   group_by?: CreateLogsMetricRuleRequestGroupByList;
-  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation — it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
+  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
 export const CreateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2417,7 +2417,7 @@ export const CreateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLogsMetricRuleRequest",
 }) as any as S.Schema<CreateLogsMetricRuleRequest>;
 
-/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type LogsMetricRuleGroupByList = Array<string>;
 export const LogsMetricRuleGroupByList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2428,17 +2428,17 @@ export interface LogsMetricRule {
   id: string;
   /** User-visible label for this rule. */
   name: string;
-  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name. */
+  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation -- create a new rule to emit under a different name. */
   metric_name: string;
   /** When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project. */
   enabled?: boolean;
-  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match. */
+  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter -- empty groups never match. */
   filter_group?: unknown;
-  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation — it determines the emitted metric type. */
+  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation -- it determines the emitted metric type. */
   value_attribute?: string | null;
-  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
   group_by?: LogsMetricRuleGroupByList;
-  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation — it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
+  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum;
   /** Incremented on each update for worker cache coherency. */
   version: number;
@@ -2587,11 +2587,11 @@ export const LogPatternMatchPatternsList = /*@__PURE__*/ S.Array(
 export interface LogPattern {
   /** Log template with variable tokens masked, e.g. "Connected to <ip> in <num>ms". Body mining masks <timestamp>, <uuid>, <ip>, <hex>, <num>, plus <*> for word positions Drain found to vary. Stored patterns use the ingestion vocabulary instead: <N>, <TIMESTAMP>, <KLOGTIME>, <UUID>, <IP>, <HOST>, <HEX>, <ID>, <EMAIL>, <JSON_ARRAY>, and <JSON:keys> for a JSON body reduced to its key set. */
   pattern: string;
-  /** Occurrences of this pattern within the sample. When `sampled` is true this is a sample count, not the full-window total — prefer `estimated_count` for display. */
+  /** Occurrences of this pattern within the sample. When `sampled` is true this is a sample count, not the full-window total -- prefer `estimated_count` for display. */
   count: number;
   /** Estimated occurrences across the full window, extrapolated from the sample (`count / scanned_count * total_count`). Equals `count` when the window was not sampled. */
   estimated_count: number;
-  /** Share of the log volume this pattern represents (0–100). Measured over the sample when `sampled` is true, over every matching row otherwise. */
+  /** Share of the log volume this pattern represents (0-100). Measured over the sample when `sampled` is true, over every matching row otherwise. */
   volume_share_pct: number;
   /** Occurrences at severity "error" or "fatal". A sample count when `sampled` is true, so prefer `estimated_error_count` for display. */
   error_count: number;
@@ -2687,7 +2687,7 @@ export interface LogsPatternsResponse {
   total_count: number;
   /** True when the window held more rows than the sample cap, so patterns were mined from a deterministic, evenly-distributed sample rather than every matching row. */
   sampled: boolean;
-  /** Share of the window's log rows that were eligible for sampling (0–100). Below 100, the scan was bounded to evenly-spaced time slices across the window to keep the query within its execution budget; rows outside the slices could not appear in the sample. */
+  /** Share of the window's log rows that were eligible for sampling (0-100). Below 100, the scan was bounded to evenly-spaced time slices across the window to keep the query within its execution budget; rows outside the slices could not appear in the sample. */
   sample_coverage_pct: number;
   /** Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly. */
   sparkline_buckets: LogsPatternsResponseSparklineBucketsList;
@@ -2734,7 +2734,7 @@ export type LogPatternDiffEntryClassificationEnum = "new" | "rate_shift" | "gone
 export const LogPatternDiffEntryClassificationEnum = S.String;
 
 export interface LogPatternDiffEntry {
-  /** "new": appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). "rate_shift": present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. "gone": cleared the floor in the baseline but absent from the current window. "unchanged" means "no confident claim", not "provably identical" — sampled mining cannot prove a below-floor template is genuinely new or gone. * `new` - new * `rate_shift` - rate_shift * `gone` - gone * `unchanged` - unchanged */
+  /** "new": appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). "rate_shift": present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. "gone": cleared the floor in the baseline but absent from the current window. "unchanged" means "no confident claim", not "provably identical" -- sampled mining cannot prove a below-floor template is genuinely new or gone. * `new` - new * `rate_shift` - rate_shift * `gone` - gone * `unchanged` - unchanged */
   classification: LogPatternDiffEntryClassificationEnum;
   /** Current-window rate divided by baseline rate, both normalized per second so windows of different lengths compare fairly. 4.0 means 4x faster now; 0.25 means quartered. Null when the pattern is missing from either window. */
   rate_ratio: number | null;
@@ -2990,7 +2990,7 @@ export interface LogsQueryResponse {
   hasMore?: boolean;
   /** Opaque cursor to pass as `after` in the next request to fetch the next page. Null when hasMore is false. */
   nextCursor?: string | null;
-  /** Maximum number of rows the `export` endpoint will produce — informational. */
+  /** Maximum number of rows the `export` endpoint will produce -- informational. */
   maxExportableLogs?: number;
   /** Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested. */
   columns?: LogsQueryResponseColumnsList | null;
@@ -3015,7 +3015,7 @@ export interface CreateLogsRetentionRuleRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
 export const CreateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3041,7 +3041,7 @@ export interface LogsRetentionRule {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
   /** Incremented on each update for worker cache coherency. */
   version: number;
@@ -3143,7 +3143,7 @@ export const CreateLogsRetentionRulesSuggestNameRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateLogsRetentionRulesSuggestNameRequest>;
 
 export interface LogsRetentionRuleNameSuggestion {
-  /** Suggested rule name. Empty when no suggestion could be generated — clients hide the hint. */
+  /** Suggested rule name. Empty when no suggestion could be generated -- clients hide the hint. */
   name: string;
 }
 export const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ S.suspend(() =>
@@ -3190,7 +3190,7 @@ export interface CreateLogsSamplingRuleRequest {
   scope_path_pattern?: string | null;
   /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
   scope_attribute_filters?: CreateLogsSamplingRuleRequestScopeAttributeFiltersList;
-  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
+  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
 }
 export const CreateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3241,7 +3241,7 @@ export interface LogsSamplingRule {
   scope_path_pattern?: string | null;
   /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
   scope_attribute_filters?: LogsSamplingRuleScopeAttributeFiltersList;
-  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
+  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
   /** Incremented on each update for worker cache coherency. */
   version: number;
@@ -3344,7 +3344,7 @@ export const CreateLogsSamplingRulesSimulateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLogsSamplingRulesSimulateRequest>;
 
 export interface LogsSamplingRuleSimulateResponse {
-  /** Rough percent of log volume this rule would drop (0–100). Stub until ClickHouse-backed estimate ships. */
+  /** Rough percent of log volume this rule would drop (0-100). Stub until ClickHouse-backed estimate ships. */
   estimated_reduction_pct: number;
   /** Human-readable caveats for the estimate. */
   notes: string;
@@ -3459,7 +3459,7 @@ export interface LogsServiceAggregate {
   error_count?: number;
   /** Pre-computed error_count / log_count, rounded to 4 decimals. Useful for ranking noisy services. */
   error_rate?: number;
-  /** Share of total log volume in the window for this service (0–100). */
+  /** Share of total log volume in the window for this service (0-100). */
   volume_share_pct?: number;
   /** Counts by coarse severity bucket (debug, info, warn, error+fatal). */
   severity_breakdown?: LogsServiceSeverityBreakdown;
@@ -3650,7 +3650,7 @@ export const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogsSparklineResponse" }) as any as S.Schema<LogsSparklineResponse>;
 
-/** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+/** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type CreateLogsViewRequestFiltersMap = { [key: string]: unknown | undefined };
 export const CreateLogsViewRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3680,7 +3680,7 @@ export interface LogsViewColumn {
   name?: string;
   /** Only meaningful for `type: custom`: a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression, sent verbatim in the logs query's `customColumns`. */
   expression?: string;
-  /** Column width in pixels (1–2000). Omitted for the default width; ignored for the flex message column. */
+  /** Column width in pixels (1-2000). Omitted for the default width; ignored for the flex message column. */
   width?: number;
 }
 export const LogsViewColumn = /*@__PURE__*/ S.suspend(() =>
@@ -3703,7 +3703,7 @@ export interface CreateLogsViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name?: string;
-  /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+  /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: CreateLogsViewRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: CreateLogsViewRequestColumnsList | null;
@@ -3719,7 +3719,7 @@ export const CreateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/views/", code: 200 })),
 ).annotate({ identifier: "CreateLogsViewRequest" }) as any as S.Schema<CreateLogsViewRequest>;
 
-/** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+/** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type LogsViewFiltersMap = { [key: string]: unknown | undefined };
 export const LogsViewFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3736,7 +3736,7 @@ export interface LogsView {
   id?: string;
   short_id?: string;
   name?: string;
-  /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+  /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: LogsViewFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: LogsViewColumnsList | null;
@@ -3780,7 +3780,7 @@ export const LogsAlertConfigurationDetailStateTimelineList = /*@__PURE__*/ S.Arr
   LogsAlertStateInterval,
 ) as any as S.Schema<LogsAlertConfigurationDetailStateTimelineList>;
 
-/** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
+/** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
 export type LogsAlertConfigurationDetailDestinationTypesList =
   Array<NotificationDestinationTypeEnum>;
 export const LogsAlertConfigurationDetailDestinationTypesList = /*@__PURE__*/ S.Array(
@@ -3830,7 +3830,7 @@ export interface LogsAlertConfigurationDetail {
   name?: string;
   /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
   enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  /** Filter criteria -- subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
   filters?: LogsAlertFilters;
   /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
   threshold_count?: number;
@@ -3864,7 +3864,7 @@ export interface LogsAlertConfigurationDetail {
   last_error_message: string | null;
   /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
   state_timeline: LogsAlertConfigurationDetailStateTimelineList;
-  /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
+  /** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
   destination_types: LogsAlertConfigurationDetailDestinationTypesList;
   /** When the alert was first enabled. Null means the alert is still in draft state. */
   first_enabled_at: string | null;
@@ -3975,7 +3975,7 @@ export interface LogAttributeEntry {
   propertyFilterType?: string;
   /** How the search query matched this row: "key" if the attribute key matched, "value" if a value matched. * `key` - key * `value` - value */
   matchedOn?: MatchedOnEnum;
-  /** Sample matching value — only set when matchedOn is "value". */
+  /** Sample matching value -- only set when matchedOn is "value". */
   matchedValue?: string | null;
 }
 export const LogAttributeEntry = /*@__PURE__*/ S.suspend(() =>
@@ -4128,7 +4128,7 @@ export const GetLogsValueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogAttributeValue {
   /** Attribute value (used as the identifier). */
   id?: string;
-  /** Display name — currently identical to `id`. */
+  /** Display name -- currently identical to `id`. */
   name?: string;
   /** Number of log records with this attribute value, scoped to the current date range, service, and resource filters. */
   count?: number;
@@ -4150,7 +4150,7 @@ export const LogsValuesResponseResultsList = /*@__PURE__*/ S.Array(
 export interface LogsValuesResponse {
   /** Distinct values observed for the requested attribute. */
   results?: LogsValuesResponseResultsList;
-  /** Always false — reserved for future cached-value refresh signalling. */
+  /** Always false -- reserved for future cached-value refresh signalling. */
   refreshing?: boolean;
 }
 export const LogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4632,7 +4632,7 @@ export interface UpdateLogsAlertRequest {
   name?: string;
   /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
   enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  /** Filter criteria -- subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
   filters?: LogsAlertFilters;
   /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
   threshold_count?: number;
@@ -4680,7 +4680,7 @@ export interface UpdateLogsAlertsPartialRequest {
   name?: string;
   /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
   enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  /** Filter criteria -- subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
   filters?: LogsAlertFilters;
   /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
   threshold_count?: number;
@@ -4721,7 +4721,7 @@ export const UpdateLogsAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLogsAlertsPartialRequest",
 }) as any as S.Schema<UpdateLogsAlertsPartialRequest>;
 
-/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type UpdateLogsMetricRuleRequestGroupByList = Array<string>;
 export const UpdateLogsMetricRuleRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
@@ -4734,17 +4734,17 @@ export interface UpdateLogsMetricRuleRequest {
   id: string;
   /** User-visible label for this rule. */
   name: string;
-  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name. */
+  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation -- create a new rule to emit under a different name. */
   metric_name: string;
   /** When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project. */
   enabled?: boolean;
-  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match. */
+  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter -- empty groups never match. */
   filter_group?: unknown;
-  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation — it determines the emitted metric type. */
+  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation -- it determines the emitted metric type. */
   value_attribute?: string | null;
-  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
   group_by?: UpdateLogsMetricRuleRequestGroupByList;
-  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation — it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
+  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
 export const UpdateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4765,7 +4765,7 @@ export const UpdateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLogsMetricRuleRequest",
 }) as any as S.Schema<UpdateLogsMetricRuleRequest>;
 
-/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+/** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type UpdateLogsMetricRulesPartialRequestGroupByList = Array<string>;
 export const UpdateLogsMetricRulesPartialRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
@@ -4778,17 +4778,17 @@ export interface UpdateLogsMetricRulesPartialRequest {
   id: string;
   /** User-visible label for this rule. */
   name?: string;
-  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name. */
+  /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation -- create a new rule to emit under a different name. */
   metric_name?: string;
   /** When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project. */
   enabled?: boolean;
-  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match. */
+  /** PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api","type":"log_attribute"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter -- empty groups never match. */
   filter_group?: unknown;
-  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation — it determines the emitted metric type. */
+  /** Attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`, prefixed with `attributes.` / `resource_attributes.`. For `source=spans` rules, the span pseudo-key `duration_ms` (span wall-clock duration) is also allowed. Omit to count matching records instead. Immutable after creation -- it determines the emitted metric type. */
   value_attribute?: string | null;
-  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
+  /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
   group_by?: UpdateLogsMetricRulesPartialRequestGroupByList;
-  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation — it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
+  /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
 export const UpdateLogsMetricRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4824,7 +4824,7 @@ export interface UpdateLogsRetentionRuleRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
 export const UpdateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4857,7 +4857,7 @@ export interface UpdateLogsRetentionRulesPartialRequest {
   enabled?: boolean;
   /** Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules. */
   priority?: number | null;
-  /** Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
+  /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config?: unknown;
 }
 export const UpdateLogsRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4913,7 +4913,7 @@ export interface UpdateLogsSamplingRuleRequest {
   scope_path_pattern?: string | null;
   /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
   scope_attribute_filters?: UpdateLogsSamplingRuleRequestScopeAttributeFiltersList;
-  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
+  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
 }
 export const UpdateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4974,7 +4974,7 @@ export interface UpdateLogsSamplingRulesPartialRequest {
   scope_path_pattern?: string | null;
   /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
   scope_attribute_filters?: UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersList;
-  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
+  /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config?: unknown;
 }
 export const UpdateLogsSamplingRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5002,7 +5002,7 @@ export const UpdateLogsSamplingRulesPartialRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateLogsSamplingRulesPartialRequest",
 }) as any as S.Schema<UpdateLogsSamplingRulesPartialRequest>;
 
-/** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+/** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type UpdateLogsViewRequestFiltersMap = { [key: string]: unknown | undefined };
 export const UpdateLogsViewRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5020,7 +5020,7 @@ export interface UpdateLogsViewRequest {
   project_id: string;
   short_id: string;
   name?: string;
-  /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+  /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: UpdateLogsViewRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: UpdateLogsViewRequestColumnsList | null;
@@ -5039,7 +5039,7 @@ export const UpdateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateLogsViewRequest" }) as any as S.Schema<UpdateLogsViewRequest>;
 
-/** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+/** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type UpdateLogsViewsPartialRequestFiltersMap = { [key: string]: unknown | undefined };
 export const UpdateLogsViewsPartialRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5057,7 +5057,7 @@ export interface UpdateLogsViewsPartialRequest {
   project_id: string;
   short_id: string;
   name?: string;
-  /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
+  /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: UpdateLogsViewsPartialRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: UpdateLogsViewsPartialRequestColumnsList | null;
@@ -5112,7 +5112,7 @@ export const createLogsAlertsDestination: API.OperationMethod<
 }));
 
 export type CreateLogsAlertsSimulateError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Simulate a logs alert on historical data using the full state machine. Read-only — no alert check records are created. */
+/** Simulate a logs alert on historical data using the full state machine. Read-only -- no alert check records are created. */
 export const createLogsAlertsSimulate: API.OperationMethod<
   CreateLogsAlertsSimulateRequest,
   LogsAlertSimulateResponse,
@@ -5556,7 +5556,7 @@ export const listLogsAlerts: API.OperationMethod<
 }));
 
 export type ListLogsAlertsEventsError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Paginated event history for this alert, newest first. Returns state transitions, errored checks, and user-initiated control-plane rows (reset, enable/disable, snooze/unsnooze, threshold change) — quiet no-op check rows (where state didn't change and there was no error) are filtered out since only the last 10 are kept and they carry no forensic value. Optional `?kind=...` narrows to a single kind. */
+/** Paginated event history for this alert, newest first. Returns state transitions, errored checks, and user-initiated control-plane rows (reset, enable/disable, snooze/unsnooze, threshold change) -- quiet no-op check rows (where state didn't change and there was no error) are filtered out since only the last 10 are kept and they carry no forensic value. Optional `?kind=...` narrows to a single kind. */
 export const listLogsAlertsEvents: API.OperationMethod<
   ListLogsAlertsEventsRequest,
   PaginatedLogsAlertEventList,

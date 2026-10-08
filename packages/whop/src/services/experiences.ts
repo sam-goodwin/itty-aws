@@ -416,7 +416,7 @@ export type AttachExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Attach experience [Legacy API — https://docs.whop.com/api-reference] Attach an experience to a product, making it accessible to the product's customers. Required permissions: - `experience:attach` */
+/** Attach experience [Legacy API -- https://docs.whop.com/api-reference] Attach an experience to a product, making it accessible to the product's customers. Required permissions: - `experience:attach` */
 export const attachExperience: API.OperationMethod<
   AttachExperienceRequest,
   Experience,
@@ -436,7 +436,7 @@ export type CreateExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Create experience [Legacy API — https://docs.whop.com/api-reference] Required permissions: - `experience:create` */
+/** Create experience [Legacy API -- https://docs.whop.com/api-reference] Required permissions: - `experience:create` */
 export const createExperience: API.OperationMethod<
   CreateExperienceRequest,
   Experience,
@@ -456,7 +456,7 @@ export type DeleteExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Delete experience [Legacy API — https://docs.whop.com/api-reference] Required permissions: - `experience:delete` */
+/** Delete experience [Legacy API -- https://docs.whop.com/api-reference] Required permissions: - `experience:delete` */
 export const deleteExperience: API.OperationMethod<
   DeleteExperienceRequest,
   DeleteExperienceResponse,
@@ -476,7 +476,7 @@ export type DetachExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Detach experience [Legacy API — https://docs.whop.com/api-reference] Detach an experience from a product, removing customer access to it through that product. Required permissions: - `experience:detach` */
+/** Detach experience [Legacy API -- https://docs.whop.com/api-reference] Detach an experience from a product, removing customer access to it through that product. Required permissions: - `experience:detach` */
 export const detachExperience: API.OperationMethod<
   DetachExperienceRequest,
   Experience,
@@ -496,7 +496,7 @@ export type DuplicateExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Duplicate experience [Legacy API — https://docs.whop.com/api-reference] Duplicates an existing experience. The name will be copied, unless provided. The new experience will be attached to the same products as the original experience. If duplicating a Forum or Chat experience, the new experience will have the same settings as the original experience, e.g. who can post, who can comment, etc. No content, e.g. posts, messages, lessons from within the original experience will be copied. Required permissions: - `experience:create` */
+/** Duplicate experience [Legacy API -- https://docs.whop.com/api-reference] Duplicates an existing experience. The name will be copied, unless provided. The new experience will be attached to the same products as the original experience. If duplicating a Forum or Chat experience, the new experience will have the same settings as the original experience, e.g. who can post, who can comment, etc. No content, e.g. posts, messages, lessons from within the original experience will be copied. Required permissions: - `experience:create` */
 export const duplicateExperience: API.OperationMethod<
   DuplicateExperienceRequest,
   Experience,
@@ -516,7 +516,7 @@ export type GetExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Retrieve experience [Legacy API — https://docs.whop.com/api-reference] Retrieves the details of an existing experience. */
+/** Retrieve experience [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing experience. */
 export const getExperience: API.OperationMethod<
   GetExperienceRequest,
   Experience,
@@ -536,7 +536,7 @@ export type ListExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** List experiences [Legacy API — https://docs.whop.com/api-reference] Returns a paginated list of experiences belonging to a company, with optional filtering by product and app. */
+/** List experiences [Legacy API -- https://docs.whop.com/api-reference] Returns a paginated list of experiences belonging to a company, with optional filtering by product and app. */
 export const listExperience: API.PaginatedOperationMethod<
   ListExperienceRequest,
   ListExperienceResponse,
@@ -568,7 +568,7 @@ export type UpdateExperienceError =
   | NotFound
   | UnprocessableEntity
   | WhopOpError;
-/** Update experience [Legacy API — https://docs.whop.com/api-reference] Required permissions: - `experience:update` */
+/** Update experience [Legacy API -- https://docs.whop.com/api-reference] Required permissions: - `experience:update` */
 export const updateExperience: API.OperationMethod<
   UpdateExperienceRequest,
   Experience,

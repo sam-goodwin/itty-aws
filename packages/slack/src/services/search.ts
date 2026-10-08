@@ -379,7 +379,7 @@ export const SearchMessagesResponseBotsMap = /*@__PURE__*/ S.Record(
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface SearchMessagesResponseResponseMetadata {
-  /** Cursor for the next page — pass as `cursor` on the next call. */
+  /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
 export const SearchMessagesResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -421,7 +421,7 @@ export const SearchMessagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMessagesResponse" }) as any as S.Schema<SearchMessagesResponse>;
 
 export type SearchAllError = SlackOpError;
-/** Searches for messages and files matching a query. Required scopes — user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` — No query was provided. See https://docs.slack.dev/reference/methods/search.all */
+/** Searches for messages and files matching a query. Required scopes -- user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` -- No query was provided. See https://docs.slack.dev/reference/methods/search.all */
 export const searchAll: API.OperationMethod<
   SearchAllRequest,
   SearchAllResponse,
@@ -436,7 +436,7 @@ export const searchAll: API.OperationMethod<
 }));
 
 export type SearchFilesError = SlackOpError;
-/** Searches for files matching a query. Required scopes — user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` — No query was provided. See https://docs.slack.dev/reference/methods/search.files */
+/** Searches for files matching a query. Required scopes -- user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` -- No query was provided. See https://docs.slack.dev/reference/methods/search.files */
 export const searchFiles: API.OperationMethod<
   SearchFilesRequest,
   SearchFilesResponse,
@@ -451,7 +451,7 @@ export const searchFiles: API.OperationMethod<
 }));
 
 export type SearchMessagesError = SlackOpError;
-/** Searches for messages matching a query. Required scopes — user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` — No query was provided. See https://docs.slack.dev/reference/methods/search.messages */
+/** Searches for messages matching a query. Required scopes -- user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` -- No query was provided. See https://docs.slack.dev/reference/methods/search.messages */
 export const searchMessages: API.OperationMethod<
   SearchMessagesRequest,
   SearchMessagesResponse,

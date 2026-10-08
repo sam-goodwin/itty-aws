@@ -941,7 +941,7 @@ export const DuplicateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DuplicateRepositoryResponse {
   url: string;
-  /** True when the repo's LFS/Xet files are still being copied in the background; poll `…/duplicate/status` */
+  /** True when the repo's LFS/Xet files are still being copied in the background; poll `.../duplicate/status` */
   filesCopyPending: boolean;
 }
 export const DuplicateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>

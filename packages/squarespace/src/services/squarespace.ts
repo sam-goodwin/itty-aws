@@ -902,7 +902,7 @@ export const AutoTrigger = AnyOrderCriteria;
 /** Trigger for a discount that is unlocked by a shopper-entered promo code. */
 export interface PromoCodeTrigger {
   type: string;
-  /** Shopper-entered promo code. Required, non-empty, 1–50 characters; allowed characters: letters, digits, underscore, hyphen. */
+  /** Shopper-entered promo code. Required, non-empty, 1-50 characters; allowed characters: letters, digits, underscore, hyphen. */
   promoCode: string;
 }
 export const PromoCodeTrigger = /*@__PURE__*/ S.suspend(() =>
@@ -3949,7 +3949,7 @@ export interface ListDiscountsRequest {
   limitedUseOnly?: boolean;
   /** Zero-based offset into the result set. Must be non-negative. Default 0. */
   offset?: number;
-  /** Page size (1–1000; default 50). */
+  /** Page size (1-1000; default 50). */
   limit?: number;
 }
 export const ListDiscountsRequest = /*@__PURE__*/ S.suspend(() =>

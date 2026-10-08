@@ -49,7 +49,7 @@ export const GetUserHomeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PinnedSceneTab {
   /** Stable identifier for the tab. Generated client-side; safe to omit on create. */
   id?: string;
-  /** URL pathname the tab points at — for example `/project/123/dashboard/45` or `/project/123/insights`. Combined with `search` and `hash` to reconstruct the destination. */
+  /** URL pathname the tab points at -- for example `/project/123/dashboard/45` or `/project/123/insights`. Combined with `search` and `hash` to reconstruct the destination. */
   pathname?: string;
   /** Query string portion of the URL, including the leading `?`. Empty string when there is no query. */
   search?: string;
@@ -59,15 +59,15 @@ export interface PinnedSceneTab {
   title?: string;
   /** Optional user-provided title that overrides `title` in the navigation UI. */
   customTitle?: string | null;
-  /** Icon key shown next to the tab in the sidebar — for example `dashboard`, `insight`, `blank`. */
+  /** Icon key shown next to the tab in the sidebar -- for example `dashboard`, `insight`, `blank`. */
   iconType?: string;
-  /** Scene identifier resolved from the pathname when known — used by the frontend for icon/title hints. */
+  /** Scene identifier resolved from the pathname when known -- used by the frontend for icon/title hints. */
   sceneId?: string | null;
   /** Scene key (logic key) for the destination, paired with `sceneParams` for deeper routing context. */
   sceneKey?: string | null;
   /** Free-form scene parameters captured at pin time, used by the frontend to rehydrate the destination. */
   sceneParams?: unknown;
-  /** Whether this entry is pinned. Always coerced to true on save — pass true or omit. */
+  /** Whether this entry is pinned. Always coerced to true on save -- pass true or omit. */
   pinned?: boolean;
 }
 export const PinnedSceneTab = /*@__PURE__*/ S.suspend(() =>
@@ -95,7 +95,7 @@ export const PinnedSceneTabsTabsList = /*@__PURE__*/ S.Array(
 export interface PinnedSceneTabs {
   /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
   tabs?: PinnedSceneTabsTabsList;
-  /** Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
+  /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
 export const PinnedSceneTabs = /*@__PURE__*/ S.suspend(() =>
@@ -115,7 +115,7 @@ export interface UpdateUserHomeSettingsPartialRequest {
   uuid: string;
   /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
   tabs?: UpdateUserHomeSettingsPartialRequestTabsList;
-  /** Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
+  /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
 export const UpdateUserHomeSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -144,7 +144,7 @@ export const getUserHomeSettings: API.OperationMethod<
 }));
 
 export type UpdateUserHomeSettingsPartialError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage. */
+/** Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL -- dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage. */
 export const updateUserHomeSettingsPartial: API.OperationMethod<
   UpdateUserHomeSettingsPartialRequest,
   PinnedSceneTabs,

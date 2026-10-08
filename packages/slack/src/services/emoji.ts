@@ -66,7 +66,7 @@ export const ListEmojiResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEmojiResponse" }) as any as S.Schema<ListEmojiResponse>;
 
 export type ListEmojiError = SlackOpError;
-/** Lists custom emoji for a team. Required scopes — bot: `emoji:read`; user: `emoji:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_arguments` — Invalid API arguments provided - `unable_to_fetch_custom_emojis` — Unable to fetch custom emojis for team. See https://docs.slack.dev/reference/methods/emoji.list */
+/** Lists custom emoji for a team. Required scopes -- bot: `emoji:read`; user: `emoji:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `invalid_arguments` -- Invalid API arguments provided - `unable_to_fetch_custom_emojis` -- Unable to fetch custom emojis for team. See https://docs.slack.dev/reference/methods/emoji.list */
 export const listEmoji: API.OperationMethod<
   ListEmojiRequest,
   ListEmojiResponse,

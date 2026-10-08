@@ -3682,7 +3682,7 @@ export const UserEventPayloadCase46 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserEventPayloadCase46" }) as any as S.Schema<UserEventPayloadCase46>;
 
-/** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+/** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
 export type UserEventPayloadCase47DeploymentAllowListedReadyStateReasonInternal =
   | "EARLY_IGNORE_STEP"
   | "IGNORE_STEP"
@@ -3698,7 +3698,7 @@ export const UserEventPayloadCase47DeploymentMetaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UserEventPayloadCase47DeploymentMetaMap>;
 
 export interface UserEventPayloadCase47Deployment {
-  /** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+  /** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
   allowListedReadyStateReasonInternal?: UserEventPayloadCase47DeploymentAllowListedReadyStateReasonInternal;
   id: string;
   meta: UserEventPayloadCase47DeploymentMetaMap;
@@ -3753,7 +3753,7 @@ export const UserEventPayloadCase47 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserEventPayloadCase47" }) as any as S.Schema<UserEventPayloadCase47>;
 
-/** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+/** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
 export type UserEventPayloadCase48DeploymentAllowListedReadyStateReasonInternal =
   | "EARLY_IGNORE_STEP"
   | "IGNORE_STEP"
@@ -3769,7 +3769,7 @@ export const UserEventPayloadCase48DeploymentMetaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UserEventPayloadCase48DeploymentMetaMap>;
 
 export interface UserEventPayloadCase48Deployment {
-  /** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+  /** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
   allowListedReadyStateReasonInternal?: UserEventPayloadCase48DeploymentAllowListedReadyStateReasonInternal;
   id: string;
   meta: UserEventPayloadCase48DeploymentMetaMap;
@@ -5674,7 +5674,7 @@ export const UserEventPayloadCase113AliasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserEventPayloadCase113AliasList>;
 
-/** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+/** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
 export type UserEventPayloadCase113DeploymentAllowListedReadyStateReasonInternal =
   | "EARLY_IGNORE_STEP"
   | "IGNORE_STEP"
@@ -5690,7 +5690,7 @@ export const UserEventPayloadCase113DeploymentMetaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UserEventPayloadCase113DeploymentMetaMap>;
 
 export interface UserEventPayloadCase113Deployment {
-  /** A narrowed subset of the deployment's `readyStateReasonInternal` — only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
+  /** A narrowed subset of the deployment's `readyStateReasonInternal` -- only values in the public allowlist are permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity log. */
   allowListedReadyStateReasonInternal?: UserEventPayloadCase113DeploymentAllowListedReadyStateReasonInternal;
   id: string;
   meta: UserEventPayloadCase113DeploymentMetaMap;
@@ -7137,7 +7137,7 @@ export const UserEventPayloadCase114JobCase8GitHashtagVercelList = /*@__PURE__*/
 export interface UserEventPayloadCase114JobCase8HeadInfo {
   /** Owner (namespace) slug, e.g. `acme`. */
   owner: string;
-  /** Origin namespace id (`ns_…`). */
+  /** Origin namespace id (`ns_...`). */
   ownerId: string;
   ref: string;
   /** Repository name, e.g. `api`. */
@@ -7238,7 +7238,7 @@ export interface UserEventPayloadCase114JobCase8 {
   gitHashtagVercel?: UserEventPayloadCase114JobCase8GitHashtagVercelList;
   /** Cursor Origin */
   headInfo: UserEventPayloadCase114JobCase8HeadInfo;
-  /** Origin installation id (`i_…`) used to resolve the credential. */
+  /** Origin installation id (`i_...`) used to resolve the credential. */
   installationId: string;
   /** Since 28 Feb 2024 If set to true, identifies that the git job was created for a manual git deployment */
   isManualGitDeploy?: boolean;
@@ -7330,7 +7330,7 @@ export interface UserEventPayloadCase114JobCase9 {
   gitComments?: UserEventPayloadCase114JobCase0GitComments;
   /** Cursor Origin */
   headInfo: UserEventPayloadCase114JobCase8HeadInfo;
-  /** Origin installation id (`i_…`) used to resolve the credential. */
+  /** Origin installation id (`i_...`) used to resolve the credential. */
   installationId: string;
   linkedProjectId?: string;
   owner: string;
@@ -7477,7 +7477,7 @@ export const UserEventPayloadCase118RuleProvenance = S.String;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase118 {
-  /** The blocked deployment's id (e.g. `dpl_…`). When present, the message links it to the deployment details (inspector) page. Optional so events emitted before this field was added still render. */
+  /** The blocked deployment's id (e.g. `dpl_...`). When present, the message links it to the deployment details (inspector) page. Optional so events emitted before this field was added still render. */
   deploymentId?: string;
   projectId?: string;
   projectName: string;

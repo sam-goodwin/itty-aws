@@ -2330,7 +2330,7 @@ export type DeletePublicKeyError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the specified public key used to sign stage participant tokens. This invalidates future participant tokens generated using the key pair’s private key.
+ * Deletes the specified public key used to sign stage participant tokens. This invalidates future participant tokens generated using the key pair's private key.
  */
 export const deletePublicKey: API.OperationMethod<
   DeletePublicKeyRequest,
@@ -3242,7 +3242,7 @@ export type UpdateStageError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a stage’s configuration.
+ * Updates a stage's configuration.
  */
 export const updateStage: API.OperationMethod<
   UpdateStageRequest,

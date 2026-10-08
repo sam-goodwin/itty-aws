@@ -149,7 +149,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateInstanceRequestRegion = "eu01" | "eu02";
 export const CreateInstanceRequestRegion = S.String;
 
-/** The configuration for instance's volume and backup storage encryption. ⚠️ **Note:** This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
+/** The configuration for instance's volume and backup storage encryption. U+26A0 **Note:** This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
 export interface InstanceEncryption {
   /** The encryption-key key identifier */
   kekKeyId: string;
@@ -175,7 +175,7 @@ export const Labels = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
 
-/** The access scope of the instance. It defines if the instance is public or airgapped. ⚠️ **Note:** "SNA" value for the "network.accessScope" field is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
+/** The access scope of the instance. It defines if the instance is public or airgapped. U+26A0 **Note:** "SNA" value for the "network.accessScope" field is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
 export type InstanceNetworkAccessScope = "PUBLIC" | "SNA";
 export const InstanceNetworkAccessScope = S.String;
 

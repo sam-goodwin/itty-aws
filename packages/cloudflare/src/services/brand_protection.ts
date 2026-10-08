@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   bodyScan: "body_scan",
   bodyTag: "body_tag",
@@ -151,7 +151,7 @@ export const CreateQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateV2LogoRequest {
   accountId: string;
-  /** Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,…') or just the base64 string. */
+  /** Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string. */
   imageData: string;
   /** Minimum similarity score (0-1) required for visual matches */
   similarityThreshold: number;

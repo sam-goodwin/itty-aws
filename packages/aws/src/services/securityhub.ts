@@ -18110,7 +18110,7 @@ export type BatchUpdateFindingsError =
  *
  * - `Workflow`
  *
- * If you use this operation to update a finding, your updates don’t affect the value for the `UpdatedAt` field of the finding.
+ * If you use this operation to update a finding, your updates don't affect the value for the `UpdatedAt` field of the finding.
  * Also note that it can take several minutes for Security Hub CSPM to process your request and update each finding specified in the request.
  *
  * You can configure IAM policies to restrict access to fields and field values.
@@ -21348,7 +21348,7 @@ export type StartConfigurationPolicyDisassociationError =
   | CommonErrors;
 /**
  * Disassociates a target account, organizational unit, or the root from a specified configuration. When you
- * disassociate a configuration from its target, the target inherits the configuration of the closest parent. If there’s no
+ * disassociate a configuration from its target, the target inherits the configuration of the closest parent. If there's no
  * configuration to inherit, the target retains its settings but becomes a self-managed account. A target can be disassociated from
  * a configuration policy or self-managed behavior. Only the Security Hub CSPM delegated administrator can invoke this
  * operation from the home Region.

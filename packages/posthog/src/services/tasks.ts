@@ -1124,7 +1124,7 @@ export const ClaudeTaskRunCreateSchemaImportedMcpServersList = /*@__PURE__*/ S.A
   ImportedMcpServer,
 ) as any as S.Schema<ClaudeTaskRunCreateSchemaImportedMcpServersList>;
 
-/** One desktop-only MCP server relayed into the run — a name only, never configuration. */
+/** One desktop-only MCP server relayed into the run -- a name only, never configuration. */
 export interface RelayedMcpServer {
   name: string;
 }
@@ -1134,7 +1134,7 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelayedMcpServer" }) as any as S.Schema<RelayedMcpServer>;
 
-/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type ClaudeTaskRunCreateSchemaRelayedMcpServersList = Array<RelayedMcpServer>;
 export const ClaudeTaskRunCreateSchemaRelayedMcpServersList = /*@__PURE__*/ S.Array(
   RelayedMcpServer,
@@ -1183,7 +1183,7 @@ export const InitialPermissionModeEnum = S.String;
 export interface ClaudeTaskRunCreateSchema {
   /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
   imported_mcp_servers?: ClaudeTaskRunCreateSchemaImportedMcpServersList | null;
-  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: ClaudeTaskRunCreateSchemaRelayedMcpServersList | null;
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
@@ -1227,7 +1227,7 @@ export interface ClaudeTaskRunCreateSchema {
   context_window?: ContextWindowEnum | (string & {});
   /** Enable fast mode for models that support it. */
   fast_mode?: boolean | null;
-  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings -> Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
   /** Initial permission mode for Claude runtimes. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
   initial_permission_mode?: InitialPermissionModeEnum | (string & {});
@@ -1270,7 +1270,7 @@ export const CodexTaskRunCreateSchemaImportedMcpServersList = /*@__PURE__*/ S.Ar
   ImportedMcpServer,
 ) as any as S.Schema<CodexTaskRunCreateSchemaImportedMcpServersList>;
 
-/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+/** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CodexTaskRunCreateSchemaRelayedMcpServersList = Array<RelayedMcpServer>;
 export const CodexTaskRunCreateSchemaRelayedMcpServersList = /*@__PURE__*/ S.Array(
   RelayedMcpServer,
@@ -1298,7 +1298,7 @@ export const CodexTaskRunCreateSchemaInitialPermissionModeEnum = S.String;
 export interface CodexTaskRunCreateSchema {
   /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
   imported_mcp_servers?: CodexTaskRunCreateSchemaImportedMcpServersList | null;
-  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
+  /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
   relayed_mcp_servers?: CodexTaskRunCreateSchemaRelayedMcpServersList | null;
   /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
   rtk_enabled?: boolean | null;
@@ -1342,7 +1342,7 @@ export interface CodexTaskRunCreateSchema {
   context_window?: ContextWindowEnum | (string & {});
   /** Enable fast mode for models that support it. */
   fast_mode?: boolean | null;
-  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings -> Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
   /** Initial permission mode for Codex runtimes. * `plan` - plan * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: CodexTaskRunCreateSchemaInitialPermissionModeEnum | (string & {});
@@ -1400,7 +1400,7 @@ export interface TaskRunResumeRequestSchema {
   run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
   signal_report_id?: string;
-  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+  /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings -> Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
 }
 export const TaskRunResumeRequestSchema = /*@__PURE__*/ S.suspend(() =>
@@ -1459,7 +1459,7 @@ export const TaskRunResponseSlackThreadReferencesList = /*@__PURE__*/ S.Array(
   SlackThreadReferenceDTO,
 ) as any as S.Schema<TaskRunResponseSlackThreadReferencesList>;
 
-/** The task ``run`` action's response: the refreshed task detail plus the run this call made. ``run`` is the run the call created or activated — the payload a caller reads run-scoped ids from, instead of inferring them from ``latest_run`` (or, worse, the top-level task ``id``). */
+/** The task ``run`` action's response: the refreshed task detail plus the run this call made. ``run`` is the run the call created or activated -- the payload a caller reads run-scoped ids from, instead of inferring them from ``latest_run`` (or, worse, the top-level task ``id``). */
 export interface TaskRunResponse {
   id: string;
   task_number: number | null;
@@ -1492,7 +1492,7 @@ export interface TaskRunResponse {
   origin_key?: string | null;
   /** Error returned when the run could not start. */
   run_error?: string;
-  /** The run this call created or activated. Read run-scoped ids from here — `run.id` is the id the run's stream and command endpoints take, while the top-level `id` is the task's. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start. */
+  /** The run this call created or activated. Read run-scoped ids from here -- `run.id` is the id the run's stream and command endpoints take, while the top-level `id` is the task's. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start. */
   run?: TaskRunDetailDTO | null;
 }
 export const TaskRunResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1747,7 +1747,7 @@ export const TaskRunSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskRunSummary" }) as any as S.Schema<TaskRunSummary>;
 
-/** Summary response for a task — reads from a frozen ``TaskSummaryDTO``. */
+/** Summary response for a task -- reads from a frozen ``TaskSummaryDTO``. */
 export interface TaskSummaryDTO {
   id: string;
   title: string;
@@ -1882,9 +1882,9 @@ export interface CreateTasksWarmRequest {
   sandbox_environment_id?: string | null;
   /** Optional custom base image to provision before the task is submitted; takes precedence over the environment's image. */
   custom_image_id?: string | null;
-  /** Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app. * `user_created` - user_created * `posthog_ai` - posthog_ai * `signal_report` - signal_report */
+  /** Product the warm Run is for. Fixed when the sandbox boots -- it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship -- so a submit only reuses a warm born under the same origin. Defaults to the Code app. * `user_created` - user_created * `posthog_ai` - posthog_ai * `signal_report` - signal_report */
   origin_product?: WarmTaskRequestOriginProductEnum | (string & {});
-  /** Permission mode to boot the agent session on. Read at session construction, so it cannot be changed once the sandbox is warm — a submit selecting a different mode falls through to a cold Run. Omit to take the runtime's default. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
+  /** Permission mode to boot the agent session on. Read at session construction, so it cannot be changed once the sandbox is warm -- a submit selecting a different mode falls through to a cold Run. Omit to take the runtime's default. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?:
     | TaskRunBootstrapCreateRequestInitialPermissionModeEnum
     | (string & {})
@@ -1912,7 +1912,7 @@ export const CreateTasksWarmRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/warm/", code: 200 })),
 ).annotate({ identifier: "CreateTasksWarmRequest" }) as any as S.Schema<CreateTasksWarmRequest>;
 
-/** Response for a successful warm request — the draft Task + idling warm Run reused on submit. */
+/** Response for a successful warm request -- the draft Task + idling warm Run reused on submit. */
 export interface WarmTaskResponse {
   /** Id of the draft Task birthed for the warm Run. */
   task_id: string;
@@ -2562,7 +2562,7 @@ export const TaskReview = /*@__PURE__*/ S.suspend(() =>
 export interface GetTasksSlackThreadContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C…/p1779956938619299). Replies inside the thread are accepted too — the `thread_ts` query param (when present) takes precedence over the in-path message ts. */
+  /** Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C.../p1779956938619299). Replies inside the thread are accepted too -- the `thread_ts` query param (when present) takes precedence over the in-path message ts. */
   url: string;
 }
 export const GetTasksSlackThreadContextRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2580,7 +2580,7 @@ export const GetTasksSlackThreadContextRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTasksSlackThreadContextRequest",
 }) as any as S.Schema<GetTasksSlackThreadContextRequest>;
 
-/** Slack-side identifiers and the mapping metadata for a thread → task lookup. */
+/** Slack-side identifiers and the mapping metadata for a thread -> task lookup. */
 export interface SlackThreadContextThread {
   /** Echoed input URL. */
   url: string;
@@ -2588,7 +2588,7 @@ export interface SlackThreadContextThread {
   channel: string;
   /** Slack thread_ts (e.g. 1779956938.619299). */
   thread_ts: string;
-  /** Slack workspace id (e.g. T…). Null when no mapping exists yet. */
+  /** Slack workspace id (e.g. T...). Null when no mapping exists yet. */
   slack_workspace_id: string | null;
   /** The Slack user who triggered the task. Null when no mapping exists yet. */
   mentioning_slack_user_id: string | null;
@@ -2644,7 +2644,7 @@ export const SlackThreadContextTask = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SlackThreadContextTask" }) as any as S.Schema<SlackThreadContextTask>;
 
-/** The internal sandbox run the discovery agent used to pick this run's repo. Only present when the originating mention was ambiguous (multiple candidate repos, no explicit mention) — that's the only path that spins up a research sandbox. Null otherwise. */
+/** The internal sandbox run the discovery agent used to pick this run's repo. Only present when the originating mention was ambiguous (multiple candidate repos, no explicit mention) -- that's the only path that spins up a research sandbox. Null otherwise. */
 export interface SlackThreadContextRepoResearch {
   /** UUID of the internal repo-research Task. */
   task_id: string;
@@ -2682,7 +2682,7 @@ export const SlackThreadContextRepoResearch = /*@__PURE__*/ S.suspend(() =>
 export interface SlackThreadContextRun {
   /** UUID of the TaskRun row. */
   id: string;
-  /** Run status (queued/in_progress/completed/failed/…). */
+  /** Run status (queued/in_progress/completed/failed/...). */
   status: string;
   /** When the run was created. */
   created_at: string;
@@ -4337,7 +4337,7 @@ export const createTasksPin: API.OperationMethod<
 }));
 
 export type CreateTasksPresenceError = NotFound | PosthogOpError;
-/** Beacon presence for a device watching this task Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user's other registered devices for task notifications — the contract is 'if any device is demonstrably watching, suppress the others'. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller's UserPushToken row. */
+/** Beacon presence for a device watching this task Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user's other registered devices for task notifications -- the contract is 'if any device is demonstrably watching, suppress the others'. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller's UserPushToken row. */
 export const createTasksPresence: API.OperationMethod<
   CreateTasksPresenceRequest,
   CreateTasksPresenceResponse,
@@ -4367,7 +4367,7 @@ export const createTasksPullRequestTitle: API.OperationMethod<
 }));
 
 export type CreateTasksRepoRoutingRuleError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const createTasksRepoRoutingRule: API.OperationMethod<
   CreateTasksRepoRoutingRuleRequest,
   RepoRoutingRule,
@@ -4382,7 +4382,7 @@ export const createTasksRepoRoutingRule: API.OperationMethod<
 }));
 
 export type CreateTasksRunError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Run task Create a new task run and kick off the workflow. The response is the refreshed task with the created run under the top-level `run` key: read `run.id` for anything run-scoped, such as the run's stream and command endpoints. The top-level `id` is the task's, and `latest_run` mirrors `run` only as long as nothing newer starts — reading either of those as the created run is deprecated. */
+/** Run task Create a new task run and kick off the workflow. The response is the refreshed task with the created run under the top-level `run` key: read `run.id` for anything run-scoped, such as the run's stream and command endpoints. The top-level `id` is the task's, and `latest_run` mirrors `run` only as long as nothing newer starts -- reading either of those as the created run is deprecated. */
 export const createTasksRun: API.OperationMethod<
   CreateTasksRunRequest,
   TaskRunResponse,
@@ -4427,7 +4427,7 @@ export const createTasksSummary: API.OperationMethod<
 }));
 
 export type CreateTasksThreadMessageError = PosthogOpError;
-/** Post a thread message API for a task's thread — the human-only side conversation around a task. Messages reach the agent only via the explicit send_to_agent action, gated to the task author. */
+/** Post a thread message API for a task's thread -- the human-only side conversation around a task. Messages reach the agent only via the explicit send_to_agent action, gated to the task author. */
 export const createTasksThreadMessage: API.OperationMethod<
   CreateTasksThreadMessageRequest,
   TaskThreadMessageDTO,
@@ -4547,7 +4547,7 @@ export const getTasksComment: API.OperationMethod<
 }));
 
 export type GetTasksModelError = PosthogOpError;
-/** List available models Return the models a task run may use, with the reasoning efforts each one supports. Derived from the live LLM gateway catalogue, so a newly released model appears without a client change. An empty list means the gateway is unreachable — clients should fall back to their own default rather than treating it as 'no models exist'. */
+/** List available models Return the models a task run may use, with the reasoning efforts each one supports. Derived from the live LLM gateway catalogue, so a newly released model appears without a client change. An empty list means the gateway is unreachable -- clients should fall back to their own default rather than treating it as 'no models exist'. */
 export const getTasksModel: API.OperationMethod<
   GetTasksModelRequest,
   ModelCatalogueResponse,
@@ -4577,7 +4577,7 @@ export const getTasksPinned: API.OperationMethod<
 }));
 
 export type GetTasksRepoRoutingRuleError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const getTasksRepoRoutingRule: API.OperationMethod<
   GetTasksRepoRoutingRuleRequest,
   RepoRoutingRule,
@@ -4742,7 +4742,7 @@ export const listTasksMeConfig: API.OperationMethod<
 }));
 
 export type ListTasksRepoRoutingRulesError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const listTasksRepoRoutingRules: API.OperationMethod<
   ListTasksRepoRoutingRulesRequest,
   ListTasksRepoRoutingRulesResponse,
@@ -4802,7 +4802,7 @@ export const tasksDestroy: API.OperationMethod<
 }));
 
 export type TasksPresenceDestroyError = NotFound | PosthogOpError;
-/** Beacon presence for a device watching this task Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user's other registered devices for task notifications — the contract is 'if any device is demonstrably watching, suppress the others'. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller's UserPushToken row. */
+/** Beacon presence for a device watching this task Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user's other registered devices for task notifications -- the contract is 'if any device is demonstrably watching, suppress the others'. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller's UserPushToken row. */
 export const tasksPresenceDestroy: API.OperationMethod<
   TasksPresenceDestroyRequest,
   TasksPresenceDestroyResponse,
@@ -4817,7 +4817,7 @@ export const tasksPresenceDestroy: API.OperationMethod<
 }));
 
 export type TasksRepoRoutingRulesDestroyError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const tasksRepoRoutingRulesDestroy: API.OperationMethod<
   TasksRepoRoutingRulesDestroyRequest,
   TasksRepoRoutingRulesDestroyResponse,
@@ -4930,7 +4930,7 @@ export const tasksStagedArtifactsPrepareUploadCreate: API.OperationMethod<
 }));
 
 export type TasksThreadMessagesDestroyError = PosthogOpError;
-/** Delete own thread message API for a task's thread — the human-only side conversation around a task. Messages reach the agent only via the explicit send_to_agent action, gated to the task author. */
+/** Delete own thread message API for a task's thread -- the human-only side conversation around a task. Messages reach the agent only via the explicit send_to_agent action, gated to the task author. */
 export const tasksThreadMessagesDestroy: API.OperationMethod<
   TasksThreadMessagesDestroyRequest,
   TasksThreadMessagesDestroyResponse,
@@ -5005,7 +5005,7 @@ export const updateTasksPartial: API.OperationMethod<
 }));
 
 export type UpdateTasksRepoRoutingRuleError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const updateTasksRepoRoutingRule: API.OperationMethod<
   UpdateTasksRepoRoutingRuleRequest,
   RepoRoutingRule,
@@ -5020,7 +5020,7 @@ export const updateTasksRepoRoutingRule: API.OperationMethod<
 }));
 
 export type UpdateTasksRepoRoutingRulesPartialError = PosthogOpError;
-/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful — which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
+/** Team routing rules that steer agent repo selection (`RepoRoutingRule`). The same rows the Slack `/posthog rules` commands manage; the repo selection agent reads them ordered by priority when picking a repository for a task. Rules whose repository is not connected to the project are ignored at selection time, so a stale rule is inert rather than harmful -- which is why writes here don't check the connected-repository list (the UI constrains the picker to connected repos anyway). */
 export const updateTasksRepoRoutingRulesPartial: API.OperationMethod<
   UpdateTasksRepoRoutingRulesPartialRequest,
   RepoRoutingRule,

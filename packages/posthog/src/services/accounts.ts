@@ -89,7 +89,7 @@ export interface CreateAccountRequest {
   project_id: string;
   /** Human-readable name of the account. */
   name: string;
-  /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
+  /** Identifier linking this account to its source customer -- the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
   properties?: CreateAccountRequestProperties | null;
@@ -167,12 +167,12 @@ export const AccountNotebooksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountNotebooksList>;
 
-/** A Customer Analytics account — a logical grouping used to assign customer-success ownership. */
+/** A Customer Analytics account -- a logical grouping used to assign customer-success ownership. */
 export interface Account {
   id: string;
   /** Human-readable name of the account. */
   name: string;
-  /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
+  /** Identifier linking this account to its source customer -- the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
   properties?: AccountProperties | null;
@@ -810,7 +810,7 @@ export const ListAccountsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsSummariesRequest",
 }) as any as S.Schema<ListAccountsSummariesRequest>;
 
-/** Metadata for one message a channel summary covered — never the message text. */
+/** Metadata for one message a channel summary covered -- never the message text. */
 export interface ChannelSummaryMessage {
   /** Display name of the message author. */
   author: string;
@@ -827,7 +827,7 @@ export const ChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelSummaryMessage" }) as any as S.Schema<ChannelSummaryMessage>;
 
-/** The messages the summary covered, in transcript order — metadata only, no message text. */
+/** The messages the summary covered, in transcript order -- metadata only, no message text. */
 export type AccountChannelSummaryMessagesList = Array<ChannelSummaryMessage>;
 export const AccountChannelSummaryMessagesList = /*@__PURE__*/ S.Array(
   ChannelSummaryMessage,
@@ -837,7 +837,7 @@ export const AccountChannelSummaryMessagesList = /*@__PURE__*/ S.Array(
 export interface AccountChannelSummary {
   /** UUID of the summary. */
   id: string;
-  /** Slack channel the summary covered — kept even if the account is later rebound. */
+  /** Slack channel the summary covered -- kept even if the account is later rebound. */
   slack_channel_id: string;
   /** Cadence the summarized period belongs to (daily, weekly, or monthly). * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
   cadence: SlackSummaryCadenceEnum;
@@ -849,7 +849,7 @@ export interface AccountChannelSummary {
   content: string;
   /** Number of channel messages the summary covered. */
   message_count: number;
-  /** The messages the summary covered, in transcript order — metadata only, no message text. */
+  /** The messages the summary covered, in transcript order -- metadata only, no message text. */
   messages: AccountChannelSummaryMessagesList;
   /** When the summary was generated. */
   generated_at: string;
@@ -1100,7 +1100,7 @@ export interface UpdateAccountRequest {
   id: string;
   /** Human-readable name of the account. */
   name: string;
-  /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
+  /** Identifier linking this account to its source customer -- the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
   properties?: UpdateAccountRequestProperties | null;
@@ -1184,7 +1184,7 @@ export interface UpdateAccountsPartialRequest {
   id: string;
   /** Human-readable name of the account. */
   name?: string;
-  /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
+  /** Identifier linking this account to its source customer -- the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
   properties?: UpdateAccountsPartialRequestProperties | null;

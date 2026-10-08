@@ -6389,7 +6389,7 @@ export type CreateServiceError =
  *
  * - ECS
  *
- * When you create a service which uses the `ECS` deployment controller, you can choose between the following deployment strategies (which you can set in the “`strategy`” field in “`deploymentConfiguration`”): :
+ * When you create a service which uses the `ECS` deployment controller, you can choose between the following deployment strategies (which you can set in the "`strategy`" field in "`deploymentConfiguration`"): :
  *
  * - `ROLLING`: When you create a service which uses the *rolling update* (`ROLLING`) deployment strategy, the Amazon ECS service scheduler replaces the currently running tasks with new tasks. The number of tasks that Amazon ECS adds or removes from the service during a rolling update is controlled by the service deployment configuration. For more information, see Deploy Amazon ECS services by replacing tasks in the *Amazon Elastic Container Service Developer Guide*.
  *

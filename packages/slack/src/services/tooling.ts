@@ -55,7 +55,7 @@ export const RotateTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RotateTokenResponse" }) as any as S.Schema<RotateTokenResponse>;
 
 export type RotateTokenError = SlackOpError;
-/** Exchanges a refresh token for a new app configuration token. Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` — Internal error - `invalid_refresh_token` — The given refresh token is invalid. - `unknown_error` — Temporary error for dev only restriction See https://docs.slack.dev/reference/methods/tooling.tokens.rotate */
+/** Exchanges a refresh token for a new app configuration token. Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error - `invalid_refresh_token` -- The given refresh token is invalid. - `unknown_error` -- Temporary error for dev only restriction See https://docs.slack.dev/reference/methods/tooling.tokens.rotate */
 export const rotateToken: API.OperationMethod<
   RotateTokenRequest,
   RotateTokenResponse,

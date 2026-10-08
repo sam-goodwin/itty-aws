@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 
 export type { IcebergOpError, IcebergOpContext };
 
-/** TS member name → Iceberg wire name, for opaque union payloads. */
+/** TS member name -> Iceberg wire name, for opaque union payloads. */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   added_rows: "added-rows",
   avg_value_size_in_bytes: "avg-value-size-in-bytes",

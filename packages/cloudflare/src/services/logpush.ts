@@ -14,7 +14,7 @@ import * as T from "../traits.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+/** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   batchPrefix: "batch_prefix",
   batchSuffix: "batch_suffix",
@@ -3018,7 +3018,7 @@ export const originValidateForZone: API.OperationMethod<
 }));
 
 export type PreviewTransformerError = CloudflareOpError;
-/** Executes a SQL transformer against a single input record and returns the transformed output. This is a stateless endpoint — nothing is persisted. */
+/** Executes a SQL transformer against a single input record and returns the transformed output. This is a stateless endpoint -- nothing is persisted. */
 export const previewTransformer: API.OperationMethod<
   PreviewTransformerRequest,
   PreviewTransformerResponse,

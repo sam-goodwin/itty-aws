@@ -71,7 +71,7 @@ export const CreateVerificationRequestBodyCase0Address = /*@__PURE__*/ S.suspend
   identifier: "CreateVerificationRequestBodyCase0Address",
 }) as any as S.Schema<CreateVerificationRequestBodyCase0Address>;
 
-/** Identity document being sent, when verifying with `documents`. Decides exactly which file slots to send: `ID_CARD` → `id_card_front` + `id_card_back` + `selfie`; `DRIVERS` → `drivers_front` + `drivers_back` + `selfie`; `RESIDENCE_PERMIT` → `residence_permit_front` + `residence_permit_back` + `selfie`; `PASSPORT` → `passport_front` + `selfie`. See [Identity documents](/developer/verification/identity-documents). */
+/** Identity document being sent, when verifying with `documents`. Decides exactly which file slots to send: `ID_CARD` -> `id_card_front` + `id_card_back` + `selfie`; `DRIVERS` -> `drivers_front` + `drivers_back` + `selfie`; `RESIDENCE_PERMIT` -> `residence_permit_front` + `residence_permit_back` + `selfie`; `PASSPORT` -> `passport_front` + `selfie`. See [Identity documents](/developer/verification/identity-documents). */
 export type CreateVerificationRequestBodyCase0DocumentType =
   | "ID_CARD"
   | "DRIVERS"
@@ -79,7 +79,7 @@ export type CreateVerificationRequestBodyCase0DocumentType =
   | "PASSPORT";
 export const CreateVerificationRequestBodyCase0DocumentType = S.String;
 
-/** Identity document files, each value the file's raw bytes base64-encoded (JPEG, PNG, or PDF, up to 5MB per file before encoding). Sending this object verifies the person from the files in this request instead of a hosted session — individual verifications only, and the request must also carry `document_type`, `first_name`, `last_name`, `date_of_birth`, `country`, `phone`, `tax_identification_number`, and an `address` with `line1`, `city`, `state`, and `postal_code`. Send every slot for your `document_type` — a missing or rejected file fails the whole request and nothing is submitted; review starts automatically once every document is accepted. See [Identity documents](/developer/verification/identity-documents) for a full walkthrough. */
+/** Identity document files, each value the file's raw bytes base64-encoded (JPEG, PNG, or PDF, up to 5MB per file before encoding). Sending this object verifies the person from the files in this request instead of a hosted session -- individual verifications only, and the request must also carry `document_type`, `first_name`, `last_name`, `date_of_birth`, `country`, `phone`, `tax_identification_number`, and an `address` with `line1`, `city`, `state`, and `postal_code`. Send every slot for your `document_type` -- a missing or rejected file fails the whole request and nothing is submitted; review starts automatically once every document is accepted. See [Identity documents](/developer/verification/identity-documents) for a full walkthrough. */
 export interface CreateVerificationRequestBodyCase0Documents {
   /** Back of the driver's license, base64-encoded. Required when `document_type` is `DRIVERS`. */
   drivers_back?: string;
@@ -117,13 +117,13 @@ export const CreateVerificationRequestBodyCase0Documents = /*@__PURE__*/ S.suspe
 export type CreateVerificationRequestBodyCase0Kind = "individual";
 export const CreateVerificationRequestBodyCase0Kind = S.String;
 
-/** Request body for an individual (KYC) verification. Omit `kind` or set it to `individual`. KYC is required to pay out funds and is a prerequisite for Whop Card access. Accepting payments does not require verification until a business reaches $5000 in payments. Add `business_name` and `business_structure` if the individual operates under a business entity — this enables payouts to be received by a business bank account. `country` is always the individual's own country, and the supported `business_structure` values vary by it — see [Business structures](/developer/verification/business-structures). */
+/** Request body for an individual (KYC) verification. Omit `kind` or set it to `individual`. KYC is required to pay out funds and is a prerequisite for Whop Card access. Accepting payments does not require verification until a business reaches $5000 in payments. Add `business_name` and `business_structure` if the individual operates under a business entity -- this enables payouts to be received by a business bank account. `country` is always the individual's own country, and the supported `business_structure` values vary by it -- see [Business structures](/developer/verification/business-structures). */
 export interface CreateVerificationRequestBodyCase0 {
   /** Every value accepts `null`, so a form seeded from a previous response can round-trip unset fields unchanged. */
   address?: CreateVerificationRequestBodyCase0Address;
   /** Legal business name for a sole proprietor or single-member LLC. */
   business_name?: string;
-  /** Entity type for sole proprietors, such as `single_member_llc`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Entity type for sole proprietors, such as `single_member_llc`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string;
   /** The business ID number of the company, as appropriate for the company's country. Examples are an Employer Identification Number (EIN) in the US, a Business Number in Canada, or a Company Number in the UK. */
   business_tax_identification_number?: string;
@@ -133,9 +133,9 @@ export interface CreateVerificationRequestBodyCase0 {
   country?: string;
   /** Formatted as `YYYY-MM-DD`. */
   date_of_birth?: string;
-  /** Identity document being sent, when verifying with `documents`. Decides exactly which file slots to send: `ID_CARD` → `id_card_front` + `id_card_back` + `selfie`; `DRIVERS` → `drivers_front` + `drivers_back` + `selfie`; `RESIDENCE_PERMIT` → `residence_permit_front` + `residence_permit_back` + `selfie`; `PASSPORT` → `passport_front` + `selfie`. See [Identity documents](/developer/verification/identity-documents). */
+  /** Identity document being sent, when verifying with `documents`. Decides exactly which file slots to send: `ID_CARD` -> `id_card_front` + `id_card_back` + `selfie`; `DRIVERS` -> `drivers_front` + `drivers_back` + `selfie`; `RESIDENCE_PERMIT` -> `residence_permit_front` + `residence_permit_back` + `selfie`; `PASSPORT` -> `passport_front` + `selfie`. See [Identity documents](/developer/verification/identity-documents). */
   document_type?: CreateVerificationRequestBodyCase0DocumentType | (string & {});
-  /** Identity document files, each value the file's raw bytes base64-encoded (JPEG, PNG, or PDF, up to 5MB per file before encoding). Sending this object verifies the person from the files in this request instead of a hosted session — individual verifications only, and the request must also carry `document_type`, `first_name`, `last_name`, `date_of_birth`, `country`, `phone`, `tax_identification_number`, and an `address` with `line1`, `city`, `state`, and `postal_code`. Send every slot for your `document_type` — a missing or rejected file fails the whole request and nothing is submitted; review starts automatically once every document is accepted. See [Identity documents](/developer/verification/identity-documents) for a full walkthrough. */
+  /** Identity document files, each value the file's raw bytes base64-encoded (JPEG, PNG, or PDF, up to 5MB per file before encoding). Sending this object verifies the person from the files in this request instead of a hosted session -- individual verifications only, and the request must also carry `document_type`, `first_name`, `last_name`, `date_of_birth`, `country`, `phone`, `tax_identification_number`, and an `address` with `line1`, `city`, `state`, and `postal_code`. Send every slot for your `document_type` -- a missing or rejected file fails the whole request and nothing is submitted; review starts automatically once every document is accepted. See [Identity documents](/developer/verification/identity-documents) for a full walkthrough. */
   documents?: CreateVerificationRequestBodyCase0Documents;
   first_name?: string;
   /** Verification type. Defaults to `individual`. */
@@ -144,9 +144,9 @@ export interface CreateVerificationRequestBodyCase0 {
   phone?: string;
   /** Sumsub share token for a person a partner has already verified, generated by their Sumsub account for Whop's client ID. Reuses that verification instead of collecting anything: Whop imports the shared identity, rechecks it against its own requirements, and returns `approved` when it satisfies them, or `pending` with a `session_url` covering only what is still missing. Requires a Reusable KYC agreement between the partner's Sumsub account and Whop's. Each token works once, and cannot be combined with `documents` or `document_type`. */
   share_token?: string;
-  /** The government-issued ID number of the person being verified — the individual for a KYC verification, or the business representative for a KYB verification — as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
+  /** The government-issued ID number of the person being verified -- the individual for a KYC verification, or the business representative for a KYB verification -- as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
   tax_identification_number?: string;
-  /** ID of an `approved` verification to reuse on this account instead of verifying the person again, for example `idpf_XXXXXXXX`. The verification becomes this account's current one for its kind — replacing whichever verification of that kind the account already has, and carrying its payout account across — and the response is that same verification, unchanged. Only the signed-in Whop user who started the original verification can reuse it: API keys, OAuth tokens, and onboarding links are refused. `kind` is the only other field it accepts, and must match the reused verification. An account whose verification was denied or is still under review cannot reuse one. */
+  /** ID of an `approved` verification to reuse on this account instead of verifying the person again, for example `idpf_XXXXXXXX`. The verification becomes this account's current one for its kind -- replacing whichever verification of that kind the account already has, and carrying its payout account across -- and the response is that same verification, unchanged. Only the signed-in Whop user who started the original verification can reuse it: API keys, OAuth tokens, and onboarding links are refused. `kind` is the only other field it accepts, and must match the reused verification. An account whose verification was denied or is still under review cannot reuse one. */
   verification_id?: string;
 }
 export const CreateVerificationRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -186,7 +186,7 @@ export interface CreateVerificationRequestBodyCase1 {
   address?: CreateVerificationRequestBodyCase0Address;
   /** Legal business name. */
   business_name?: string;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string;
   /** The business ID number of the company, as appropriate for the company's country. Examples are an Employer Identification Number (EIN) in the US, a Business Number in Canada, or a Company Number in the UK. */
   business_tax_identification_number?: string;
@@ -206,9 +206,9 @@ export interface CreateVerificationRequestBodyCase1 {
   place_of_incorporation?: string;
   /** Sumsub share token for a person a partner has already verified, generated by their Sumsub account for Whop's client ID. Reuses that verification instead of collecting anything: Whop imports the shared identity, rechecks it against its own requirements, and returns `approved` when it satisfies them, or `pending` with a `session_url` covering only what is still missing. Requires a Reusable KYC agreement between the partner's Sumsub account and Whop's. Each token works once, and cannot be combined with `documents` or `document_type`. */
   share_token?: string;
-  /** The government-issued ID number of the person being verified — the individual for a KYC verification, or the business representative for a KYB verification — as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
+  /** The government-issued ID number of the person being verified -- the individual for a KYC verification, or the business representative for a KYB verification -- as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
   tax_identification_number?: string;
-  /** ID of an `approved` verification to reuse on this account instead of verifying the person again, for example `idpf_XXXXXXXX`. The verification becomes this account's current one for its kind — replacing whichever verification of that kind the account already has, and carrying its payout account across — and the response is that same verification, unchanged. Only the signed-in Whop user who started the original verification can reuse it: API keys, OAuth tokens, and onboarding links are refused. `kind` is the only other field it accepts, and must match the reused verification. An account whose verification was denied or is still under review cannot reuse one. */
+  /** ID of an `approved` verification to reuse on this account instead of verifying the person again, for example `idpf_XXXXXXXX`. The verification becomes this account's current one for its kind -- replacing whichever verification of that kind the account already has, and carrying its payout account across -- and the response is that same verification, unchanged. Only the signed-in Whop user who started the original verification can reuse it: API keys, OAuth tokens, and onboarding links are refused. `kind` is the only other field it accepts, and must match the reused verification. An account whose verification was denied or is still under review cannot reuse one. */
   verification_id?: string;
 }
 export const CreateVerificationRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -493,7 +493,7 @@ export const CreateVerificationResponseRequestedInformationItem = /*@__PURE__*/ 
   identifier: "CreateVerificationResponseRequestedInformationItem",
 }) as any as S.Schema<CreateVerificationResponseRequestedInformationItem>;
 
-/** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+/** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type CreateVerificationResponseRequestedInformationList =
   Array<CreateVerificationResponseRequestedInformationItem>;
 export const CreateVerificationResponseRequestedInformationList = /*@__PURE__*/ S.Array(
@@ -522,14 +522,14 @@ export const CreateVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ S.s
   identifier: "CreateVerificationResponseRequiredDocumentsItem",
 }) as any as S.Schema<CreateVerificationResponseRequiredDocumentsItem>;
 
-/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type CreateVerificationResponseRequiredDocumentsList =
   Array<CreateVerificationResponseRequiredDocumentsItem>;
 export const CreateVerificationResponseRequiredDocumentsList = /*@__PURE__*/ S.Array(
   CreateVerificationResponseRequiredDocumentsItem,
 ) as any as S.Schema<CreateVerificationResponseRequiredDocumentsList>;
 
-/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type CreateVerificationResponseStatus =
   | "not_started"
   | "pending"
@@ -545,7 +545,7 @@ export interface CreateVerificationResponse {
   address?: CreateVerificationResponseAddress | null;
   /** Legal business name. */
   business_name?: string | null;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string | null;
   /** Two-letter ISO 3166-1 country code, for example `US`, `DE`, or `GB`. */
   country?: string | null;
@@ -562,13 +562,13 @@ export interface CreateVerificationResponse {
   last_name?: string | null;
   /** Phone number on the verification profile. */
   phone?: string | null;
-  /** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+  /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
   requested_information?: CreateVerificationResponseRequestedInformationList;
-  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
   required_documents?: CreateVerificationResponseRequiredDocumentsList;
   /** Hosted verification session URL for the user to complete identity checks. Expires 7 days after creation. */
   session_url?: string | null;
-  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
   status?: CreateVerificationResponseStatus;
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
@@ -734,7 +734,7 @@ export const GetVerificationResponseRequestedInformationItem = /*@__PURE__*/ S.s
   identifier: "GetVerificationResponseRequestedInformationItem",
 }) as any as S.Schema<GetVerificationResponseRequestedInformationItem>;
 
-/** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+/** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type GetVerificationResponseRequestedInformationList =
   Array<GetVerificationResponseRequestedInformationItem>;
 export const GetVerificationResponseRequestedInformationList = /*@__PURE__*/ S.Array(
@@ -763,14 +763,14 @@ export const GetVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ S.susp
   identifier: "GetVerificationResponseRequiredDocumentsItem",
 }) as any as S.Schema<GetVerificationResponseRequiredDocumentsItem>;
 
-/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type GetVerificationResponseRequiredDocumentsList =
   Array<GetVerificationResponseRequiredDocumentsItem>;
 export const GetVerificationResponseRequiredDocumentsList = /*@__PURE__*/ S.Array(
   GetVerificationResponseRequiredDocumentsItem,
 ) as any as S.Schema<GetVerificationResponseRequiredDocumentsList>;
 
-/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type GetVerificationResponseStatus =
   | "not_started"
   | "pending"
@@ -786,7 +786,7 @@ export interface GetVerificationResponse {
   address?: CreateVerificationResponseAddress | null;
   /** Legal business name. */
   business_name?: string | null;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string | null;
   /** Two-letter ISO 3166-1 country code, for example `US`, `DE`, or `GB`. */
   country?: string | null;
@@ -803,13 +803,13 @@ export interface GetVerificationResponse {
   last_name?: string | null;
   /** Phone number on the verification profile. */
   phone?: string | null;
-  /** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+  /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
   requested_information?: GetVerificationResponseRequestedInformationList;
-  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
   required_documents?: GetVerificationResponseRequiredDocumentsList;
   /** Hosted verification session URL for the user to complete identity checks. Expires 7 days after creation. */
   session_url?: string | null;
-  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
   status?: GetVerificationResponseStatus;
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
@@ -999,7 +999,7 @@ export const ListVerificationsResponseDataItemRequestedInformationItem = /*@__PU
   identifier: "ListVerificationsResponseDataItemRequestedInformationItem",
 }) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItem>;
 
-/** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+/** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type ListVerificationsResponseDataItemRequestedInformationList =
   Array<ListVerificationsResponseDataItemRequestedInformationItem>;
 export const ListVerificationsResponseDataItemRequestedInformationList = /*@__PURE__*/ S.Array(
@@ -1030,14 +1030,14 @@ export const ListVerificationsResponseDataItemRequiredDocumentsItem = /*@__PURE_
   identifier: "ListVerificationsResponseDataItemRequiredDocumentsItem",
 }) as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsItem>;
 
-/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type ListVerificationsResponseDataItemRequiredDocumentsList =
   Array<ListVerificationsResponseDataItemRequiredDocumentsItem>;
 export const ListVerificationsResponseDataItemRequiredDocumentsList = /*@__PURE__*/ S.Array(
   ListVerificationsResponseDataItemRequiredDocumentsItem,
 ) as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsList>;
 
-/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type ListVerificationsResponseDataItemStatus =
   | "not_started"
   | "pending"
@@ -1053,7 +1053,7 @@ export interface ListVerificationsResponseDataItem {
   address?: CreateVerificationResponseAddress | null;
   /** Legal business name. */
   business_name?: string | null;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string | null;
   /** Two-letter ISO 3166-1 country code, for example `US`, `DE`, or `GB`. */
   country?: string | null;
@@ -1070,13 +1070,13 @@ export interface ListVerificationsResponseDataItem {
   last_name?: string | null;
   /** Phone number on the verification profile. */
   phone?: string | null;
-  /** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+  /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
   requested_information?: ListVerificationsResponseDataItemRequestedInformationList;
-  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
   required_documents?: ListVerificationsResponseDataItemRequiredDocumentsList;
   /** Hosted verification session URL for the user to complete identity checks. Expires 7 days after creation. */
   session_url?: string | null;
-  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
   status?: ListVerificationsResponseDataItemStatus;
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
@@ -1133,7 +1133,7 @@ export type UpdateVerificationRequestBodyCase0RequestedInformationItemAddress =
 export const UpdateVerificationRequestBodyCase0RequestedInformationItemAddress =
   CreateVerificationRequestBodyCase0Address;
 
-/** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading — `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+/** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading -- `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export interface UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments {
   /** Back of the driver's license. */
   drivers_back?: string;
@@ -1165,7 +1165,7 @@ export const UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments
     identifier: "UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments",
   }) as any as S.Schema<UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments>;
 
-/** Answer for a `files` item, or optional supporting documents for `text_with_files` — a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+/** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export type UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList = Array<string>;
 export const UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList =
   /*@__PURE__*/ S.Array(
@@ -1190,9 +1190,9 @@ export interface UpdateVerificationRequestBodyCase0RequestedInformationItem {
   address?: CreateVerificationRequestBodyCase0Address;
   /** Identity number for an `id_document` answer. */
   document_number?: string;
-  /** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading — `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+  /** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading -- `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
   documents?: UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments;
-  /** Answer for a `files` item, or optional supporting documents for `text_with_files` — a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+  /** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
   files?: UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList;
   /** Item ID from `requested_information`. */
   id: string;
@@ -1233,7 +1233,7 @@ export const UpdateVerificationRequestBodyCase0RequestedInformationList = /*@__P
 export interface UpdateVerificationRequestBodyCase0 {
   /** Legal business name for a sole proprietor or single-member LLC. */
   business_name?: string;
-  /** Entity type for sole proprietors, such as `single_member_llc`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Entity type for sole proprietors, such as `single_member_llc`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string;
   /** The business ID number of the company, as appropriate for the company's country. Examples are an Employer Identification Number (EIN) in the US, a Business Number in Canada, or a Company Number in the UK. */
   business_tax_identification_number?: string;
@@ -1247,7 +1247,7 @@ export interface UpdateVerificationRequestBodyCase0 {
   personal_address?: CreateVerificationRequestBodyCase0Address;
   /** Answers to items in `requested_information`. Each entry pairs the item `id` with one answer payload matching its `type`. */
   requested_information?: UpdateVerificationRequestBodyCase0RequestedInformationList;
-  /** The government-issued ID number of the person being verified — the individual for a KYC verification, or the business representative for a KYB verification — as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
+  /** The government-issued ID number of the person being verified -- the individual for a KYC verification, or the business representative for a KYB verification -- as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
   tax_identification_number?: string;
 }
 export const UpdateVerificationRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
@@ -1279,13 +1279,13 @@ export type UpdateVerificationRequestBodyCase1RequestedInformationItemAddress =
 export const UpdateVerificationRequestBodyCase1RequestedInformationItemAddress =
   CreateVerificationRequestBodyCase0Address;
 
-/** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading — `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+/** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading -- `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export type UpdateVerificationRequestBodyCase1RequestedInformationItemDocuments =
   UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments;
 export const UpdateVerificationRequestBodyCase1RequestedInformationItemDocuments =
   UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments;
 
-/** Answer for a `files` item, or optional supporting documents for `text_with_files` — a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+/** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export type UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList = Array<string>;
 export const UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList =
   /*@__PURE__*/ S.Array(
@@ -1310,9 +1310,9 @@ export interface UpdateVerificationRequestBodyCase1RequestedInformationItem {
   address?: CreateVerificationRequestBodyCase0Address;
   /** Identity number for an `id_document` answer. */
   document_number?: string;
-  /** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading — `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+  /** Answer for an `id_document` item: the same slot keys Create Verification takes, so the key names both the document and the side. Send every slot for the ID you are uploading -- `PASSPORT` is `passport_front`; `ID_CARD`, `DRIVERS` and `RESIDENCE_PERMIT` take a front and a back. Each value is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
   documents?: UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments;
-  /** Answer for a `files` item, or optional supporting documents for `text_with_files` — a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
+  /** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
   files?: UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList;
   /** Item ID from `requested_information`. */
   id: string;
@@ -1355,7 +1355,7 @@ export interface UpdateVerificationRequestBodyCase1 {
   business_address?: CreateVerificationRequestBodyCase0Address;
   /** Legal business name. */
   business_name?: string;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string;
   /** The business ID number of the company, as appropriate for the company's country. Examples are an Employer Identification Number (EIN) in the US, a Business Number in Canada, or a Company Number in the UK. */
   business_tax_identification_number?: string;
@@ -1369,7 +1369,7 @@ export interface UpdateVerificationRequestBodyCase1 {
   last_name?: string;
   /** Answers to items in `requested_information`. Each entry pairs the item `id` with one answer payload matching its `type`. */
   requested_information?: UpdateVerificationRequestBodyCase1RequestedInformationList;
-  /** The government-issued ID number of the person being verified — the individual for a KYC verification, or the business representative for a KYB verification — as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
+  /** The government-issued ID number of the person being verified -- the individual for a KYC verification, or the business representative for a KYB verification -- as appropriate for their country. Examples are a Social Security Number (SSN) in the US, or a Social Insurance Number in Canada. */
   tax_identification_number?: string;
 }
 export const UpdateVerificationRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
@@ -1536,7 +1536,7 @@ export const UpdateVerificationResponseRequestedInformationItem = /*@__PURE__*/ 
   identifier: "UpdateVerificationResponseRequestedInformationItem",
 }) as any as S.Schema<UpdateVerificationResponseRequestedInformationItem>;
 
-/** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+/** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
 export type UpdateVerificationResponseRequestedInformationList =
   Array<UpdateVerificationResponseRequestedInformationItem>;
 export const UpdateVerificationResponseRequestedInformationList = /*@__PURE__*/ S.Array(
@@ -1565,14 +1565,14 @@ export const UpdateVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ S.s
   identifier: "UpdateVerificationResponseRequiredDocumentsItem",
 }) as any as S.Schema<UpdateVerificationResponseRequiredDocumentsItem>;
 
-/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+/** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type UpdateVerificationResponseRequiredDocumentsList =
   Array<UpdateVerificationResponseRequiredDocumentsItem>;
 export const UpdateVerificationResponseRequiredDocumentsList = /*@__PURE__*/ S.Array(
   UpdateVerificationResponseRequiredDocumentsItem,
 ) as any as S.Schema<UpdateVerificationResponseRequiredDocumentsList>;
 
-/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+/** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type UpdateVerificationResponseStatus =
   | "not_started"
   | "pending"
@@ -1588,7 +1588,7 @@ export interface UpdateVerificationResponse {
   address?: CreateVerificationResponseAddress | null;
   /** Legal business name. */
   business_name?: string | null;
-  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation — see [Business structures](/developer/verification/business-structures). */
+  /** Legal entity structure of the business, such as `private_corporation` or `sole_proprietorship`. Supported values vary by country of incorporation -- see [Business structures](/developer/verification/business-structures). */
   business_structure?: string | null;
   /** Two-letter ISO 3166-1 country code, for example `US`, `DE`, or `GB`. */
   country?: string | null;
@@ -1605,13 +1605,13 @@ export interface UpdateVerificationResponse {
   last_name?: string | null;
   /** Phone number on the verification profile. */
   phone?: string | null;
-  /** What Whop still needs before review can continue — one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
+  /** What Whop still needs before review can continue -- one requirement per entry. Answer with Update Verification; nothing from the response is echoed back. Keys that don't apply are omitted. */
   requested_information?: UpdateVerificationResponseRequestedInformationList;
-  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet — send the full set again with another Create Verification call. */
+  /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
   required_documents?: UpdateVerificationResponseRequiredDocumentsList;
   /** Hosted verification session URL for the user to complete identity checks. Expires 7 days after creation. */
   session_url?: string | null;
-  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review — an audit answer, or a document the payout provider holds — nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
+  /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
   status?: UpdateVerificationResponseStatus;
   /** When the verification profile was last updated, as an ISO 8601 timestamp. */
   updated_at?: string;
@@ -1641,7 +1641,7 @@ export const UpdateVerificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateVerificationResponse>;
 
 export type CreateVerificationError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
-/** Create Verification Starts a hosted verification session for an account or user, or returns the active session when one already exists. Any fields you include in the request body are used to prefill the session. Send `documents` (with `document_type`) to instead verify the person from identity documents included in this request — no hosted session involved. Send `share_token` to reuse a verification another Sumsub account has already completed for this person, instead of verifying them again. Send `verification_id` to reuse a verification the signed-in user already completed on Whop. Every mode except `verification_id` is rejected once the account has an `approved` verification — unlink it first to start a new one — while `verification_id` replaces whichever verification of that kind the account currently has. */
+/** Create Verification Starts a hosted verification session for an account or user, or returns the active session when one already exists. Any fields you include in the request body are used to prefill the session. Send `documents` (with `document_type`) to instead verify the person from identity documents included in this request -- no hosted session involved. Send `share_token` to reuse a verification another Sumsub account has already completed for this person, instead of verifying them again. Send `verification_id` to reuse a verification the signed-in user already completed on Whop. Every mode except `verification_id` is rejected once the account has an `approved` verification -- unlink it first to start a new one -- while `verification_id` replaces whichever verification of that kind the account currently has. */
 export const createVerification: API.OperationMethod<
   CreateVerificationRequest,
   CreateVerificationResponse,

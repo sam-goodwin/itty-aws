@@ -326,13 +326,13 @@ export interface ReviewDetail {
   perspective_issue_count: number | null;
   /** Raw issues the blind-spot sweep added in the latest turn, before dedupe; null if unknown. */
   blind_spot_issue_count: number | null;
-  /** The PR head commit the latest turn reviewed — anchors GitHub links to the exact code. */
+  /** The PR head commit the latest turn reviewed -- anchors GitHub links to the exact code. */
   head_sha: string | null;
   /** The selector's per-chunk perspective plan for the latest turn; null when the turn ran without a selection (selector unavailable, failed, or the run predates it). */
   perspective_selection: ReviewPerspectiveSelection | null;
   /** The rendered review body published to GitHub, as markdown. */
   report_markdown: string;
-  /** The urgency threshold the completed turn's publishing gated on (stamped at finalize from the run's own resolve snapshot); null for turns that predate its recording — readers fall back to the viewer's current setting as an approximation. * `must_fix` - must_fix * `should_fix` - should_fix * `consider` - consider */
+  /** The urgency threshold the completed turn's publishing gated on (stamped at finalize from the run's own resolve snapshot); null for turns that predate its recording -- readers fall back to the viewer's current setting as an approximation. * `must_fix` - must_fix * `should_fix` - should_fix * `consider` - consider */
   run_urgency_threshold: ReviewIssuePriorityEnum | null;
   /** The latest turn's validated findings, most urgent first. */
   findings: ReviewDetailFindingsList;
@@ -585,7 +585,7 @@ export const ListReviewHogReviewsRequestScope = S.String;
 export interface ListReviewHogReviewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Maximum rows to return. The list grows this instead of paging by offset — in-progress rows reorder the list between refreshes, so offset pages would shift under the reader. */
+  /** Maximum rows to return. The list grows this instead of paging by offset -- in-progress rows reorder the list between refreshes, so offset pages would shift under the reader. */
   limit?: number;
   /** Whose reviews to list: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project. * `mine` - mine * `everyone` - everyone */
   scope?: ListReviewHogReviewsRequestScope | (string & {});
@@ -696,7 +696,7 @@ export const ReviewRecentReviewsPageResultsList = /*@__PURE__*/ S.Array(
 export interface ReviewRecentReviewsPage {
   /** The scoped reviews: in-progress runs first, then completed newest first. */
   results: ReviewRecentReviewsPageResultsList;
-  /** Whether reviews exist beyond this page — drives the list's "Show more" button. */
+  /** Whether reviews exist beyond this page -- drives the list's "Show more" button. */
   has_more: boolean;
 }
 export const ReviewRecentReviewsPage = /*@__PURE__*/ S.suspend(() =>
@@ -796,7 +796,7 @@ export interface UpdateReviewHogBlindSpotsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   skill_name: string;
-  /** Set true to make this the single blind-spots skill that runs on the user's PR reviews. Only true is accepted — the blind-spot check is single-active, so you switch by selecting a different skill, not by deactivating the current one. */
+  /** Set true to make this the single blind-spots skill that runs on the user's PR reviews. Only true is accepted -- the blind-spot check is single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
 export const UpdateReviewHogBlindSpotsPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -842,7 +842,7 @@ export interface UpdateReviewHogResolutionPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   skill_name: string;
-  /** Set true to make these the single resolution criteria applied on the user's PRs. Only true is accepted — resolution criteria are single-active, so you switch by selecting a different skill, not by deactivating the current one. */
+  /** Set true to make these the single resolution criteria applied on the user's PRs. Only true is accepted -- resolution criteria are single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
 export const UpdateReviewHogResolutionPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -865,7 +865,7 @@ export interface UpdateReviewHogValidatorsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   skill_name: string;
-  /** Set true to make this the single validator that runs on the user's PR reviews. Only true is accepted — validators are single-active, so you switch by selecting a different one, not by deactivating the current one. */
+  /** Set true to make this the single validator that runs on the user's PR reviews. Only true is accepted -- validators are single-active, so you switch by selecting a different one, not by deactivating the current one. */
   active?: boolean;
 }
 export const UpdateReviewHogValidatorsPartialRequest = /*@__PURE__*/ S.suspend(() =>
@@ -900,7 +900,7 @@ export const getReviewHogReview: API.OperationMethod<
 }));
 
 export type GetReviewHogReviewsPerspectiveStatError = PosthogOpError;
-/** Perspective effectiveness stats How many findings each review skill (perspective or blind-spot sweep) raised across the recent completed reviews in scope — the requesting user's by default, every review on this project with `scope=everyone` — and how many of those the validator kept vs dismissed. */
+/** Perspective effectiveness stats How many findings each review skill (perspective or blind-spot sweep) raised across the recent completed reviews in scope -- the requesting user's by default, every review on this project with `scope=everyone` -- and how many of those the validator kept vs dismissed. */
 export const getReviewHogReviewsPerspectiveStat: API.OperationMethod<
   GetReviewHogReviewsPerspectiveStatRequest,
   ReviewPerspectiveStats,
@@ -915,7 +915,7 @@ export const getReviewHogReviewsPerspectiveStat: API.OperationMethod<
 }));
 
 export type ListReviewHogBlindSpotsError = PosthogOpError;
-/** List blind-spots skills and which one is active List the `review-hog-blind-spots-*` skills visible to the requesting user — the canonical skill plus the customs they authored — flagging the one active for them. The canonical skill is auto-seeded active on the first read; a custom skill the user has not selected shows as inactive. */
+/** List blind-spots skills and which one is active List the `review-hog-blind-spots-*` skills visible to the requesting user -- the canonical skill plus the customs they authored -- flagging the one active for them. The canonical skill is auto-seeded active on the first read; a custom skill the user has not selected shows as inactive. */
 export const listReviewHogBlindSpots: API.OperationMethod<
   ListReviewHogBlindSpotsRequest,
   ListReviewHogBlindSpotsResponse,
@@ -930,7 +930,7 @@ export const listReviewHogBlindSpots: API.OperationMethod<
 }));
 
 export type ListReviewHogPerspectivesError = PosthogOpError;
-/** List review perspectives and their enablement List the `review-hog-perspective-*` skills visible to the requesting user — the canonical perspectives plus the customs they authored — joined with their enable state. The 3 canonical perspectives are auto-seeded enabled on the first read; a custom perspective the user has not switched on shows as disabled. */
+/** List review perspectives and their enablement List the `review-hog-perspective-*` skills visible to the requesting user -- the canonical perspectives plus the customs they authored -- joined with their enable state. The 3 canonical perspectives are auto-seeded enabled on the first read; a custom perspective the user has not switched on shows as disabled. */
 export const listReviewHogPerspectives: API.OperationMethod<
   ListReviewHogPerspectivesRequest,
   ListReviewHogPerspectivesResponse,
@@ -945,7 +945,7 @@ export const listReviewHogPerspectives: API.OperationMethod<
 }));
 
 export type ListReviewHogResolutionError = PosthogOpError;
-/** List resolution criteria and which one is active List the `review-hog-resolution-*` skills visible to the requesting user — the canonical criteria plus the customs they authored — flagging the one active for them. The canonical skill is auto-seeded active on the first read; a custom skill the user has not selected shows as inactive. */
+/** List resolution criteria and which one is active List the `review-hog-resolution-*` skills visible to the requesting user -- the canonical criteria plus the customs they authored -- flagging the one active for them. The canonical skill is auto-seeded active on the first read; a custom skill the user has not selected shows as inactive. */
 export const listReviewHogResolution: API.OperationMethod<
   ListReviewHogResolutionRequest,
   ListReviewHogResolutionResponse,
@@ -960,7 +960,7 @@ export const listReviewHogResolution: API.OperationMethod<
 }));
 
 export type ListReviewHogReviewsError = PosthogOpError;
-/** List recent reviews Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn's stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user's reviews; `scope=everyone` lists every review on the project. */
+/** List recent reviews Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn's stage), then the most recent completed ones -- at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user's reviews; `scope=everyone` lists every review on the project. */
 export const listReviewHogReviews: API.OperationMethod<
   ListReviewHogReviewsRequest,
   ReviewRecentReviewsPage,
@@ -975,7 +975,7 @@ export const listReviewHogReviews: API.OperationMethod<
 }));
 
 export type ListReviewHogValidatorsError = PosthogOpError;
-/** List review validators and which one is active List the `review-hog-validation-*` skills visible to the requesting user — the canonical validator plus the customs they authored — flagging the one active for them. The canonical validator is auto-seeded active on the first read; a custom validator the user has not selected shows as inactive. */
+/** List review validators and which one is active List the `review-hog-validation-*` skills visible to the requesting user -- the canonical validator plus the customs they authored -- flagging the one active for them. The canonical validator is auto-seeded active on the first read; a custom validator the user has not selected shows as inactive. */
 export const listReviewHogValidators: API.OperationMethod<
   ListReviewHogValidatorsRequest,
   ListReviewHogValidatorsResponse,
@@ -990,7 +990,7 @@ export const listReviewHogValidators: API.OperationMethod<
 }));
 
 export type ReviewHogReviewsTriggerCreateError = BadRequest | Forbidden | Conflict | PosthogOpError;
-/** Start a review of a pull request Start a ReviewHog review of any pull request the project's GitHub App installation can access, and publish it back to the PR. The requesting user is the review's acting user: their enabled perspectives, blind-spot check, validator, urgency threshold, and resolution criteria drive the run, and it appears under their recent reviews. `run_mode` picks the variant: a review (which chains the resolution stage per the user's resolve_comments setting), a review without resolving, resolution only, or a lower-cost Flash review that never resolves comments. Nonexistent, closed, and fork PRs are rejected synchronously; a PR whose current commit already has a published review returns 'already_reviewed' without starting a run (resolve_only skips that check — settling threads on a reviewed head is its whole point), and triggering a PR whose run is currently in flight joins that run. Otherwise non-blocking: returns the Temporal workflow id immediately while the run executes in the worker. */
+/** Start a review of a pull request Start a ReviewHog review of any pull request the project's GitHub App installation can access, and publish it back to the PR. The requesting user is the review's acting user: their enabled perspectives, blind-spot check, validator, urgency threshold, and resolution criteria drive the run, and it appears under their recent reviews. `run_mode` picks the variant: a review (which chains the resolution stage per the user's resolve_comments setting), a review without resolving, resolution only, or a lower-cost Flash review that never resolves comments. Nonexistent, closed, and fork PRs are rejected synchronously; a PR whose current commit already has a published review returns 'already_reviewed' without starting a run (resolve_only skips that check -- settling threads on a reviewed head is its whole point), and triggering a PR whose run is currently in flight joins that run. Otherwise non-blocking: returns the Temporal workflow id immediately while the run executes in the worker. */
 export const reviewHogReviewsTriggerCreate: API.OperationMethod<
   ReviewHogReviewsTriggerCreateRequest,
   ReviewTriggerResponse,
@@ -1005,7 +1005,7 @@ export const reviewHogReviewsTriggerCreate: API.OperationMethod<
 }));
 
 export type UpdateReviewHogBlindSpotsPartialError = BadRequest | NotFound | PosthogOpError;
-/** Select the active blind-spots skill Make a `review-hog-blind-spots-*` skill the single sweep that runs on the requesting user's PR reviews, switching the user's other blind-spots skills off in the same call. Only skills visible to the user — the canonical plus the customs they authored — can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom skill works in one call. */
+/** Select the active blind-spots skill Make a `review-hog-blind-spots-*` skill the single sweep that runs on the requesting user's PR reviews, switching the user's other blind-spots skills off in the same call. Only skills visible to the user -- the canonical plus the customs they authored -- can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom skill works in one call. */
 export const updateReviewHogBlindSpotsPartial: API.OperationMethod<
   UpdateReviewHogBlindSpotsPartialRequest,
   ReviewBlindSpotsConfig,
@@ -1020,7 +1020,7 @@ export const updateReviewHogBlindSpotsPartial: API.OperationMethod<
 }));
 
 export type UpdateReviewHogPerspectivesPartialError = BadRequest | NotFound | PosthogOpError;
-/** Enable or disable a review perspective Toggle whether a `review-hog-perspective-*` skill runs on the requesting user's PR reviews. Only skills visible to the user — the canonicals plus the customs they authored — can be toggled; anything else 404s. Upserts the per-user config row, so enabling a freshly authored custom perspective works in one call. Rejected if it would leave the user with no enabled perspective. */
+/** Enable or disable a review perspective Toggle whether a `review-hog-perspective-*` skill runs on the requesting user's PR reviews. Only skills visible to the user -- the canonicals plus the customs they authored -- can be toggled; anything else 404s. Upserts the per-user config row, so enabling a freshly authored custom perspective works in one call. Rejected if it would leave the user with no enabled perspective. */
 export const updateReviewHogPerspectivesPartial: API.OperationMethod<
   UpdateReviewHogPerspectivesPartialRequest,
   ReviewPerspectiveConfig,
@@ -1035,7 +1035,7 @@ export const updateReviewHogPerspectivesPartial: API.OperationMethod<
 }));
 
 export type UpdateReviewHogResolutionPartialError = BadRequest | NotFound | PosthogOpError;
-/** Select the active resolution criteria Make a `review-hog-resolution-*` skill the single criteria the resolution stage applies on the requesting user's PRs, switching the user's other resolution skills off in the same call. Only skills visible to the user — the canonical plus the customs they authored — can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom skill works in one call. */
+/** Select the active resolution criteria Make a `review-hog-resolution-*` skill the single criteria the resolution stage applies on the requesting user's PRs, switching the user's other resolution skills off in the same call. Only skills visible to the user -- the canonical plus the customs they authored -- can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom skill works in one call. */
 export const updateReviewHogResolutionPartial: API.OperationMethod<
   UpdateReviewHogResolutionPartialRequest,
   ReviewResolutionConfig,
@@ -1050,7 +1050,7 @@ export const updateReviewHogResolutionPartial: API.OperationMethod<
 }));
 
 export type UpdateReviewHogValidatorsPartialError = BadRequest | NotFound | PosthogOpError;
-/** Select the active review validator Make a `review-hog-validation-*` skill the single validator that runs on the requesting user's PR reviews, switching the user's other validators off in the same call. Only skills visible to the user — the canonical plus the customs they authored — can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom validator works in one call. */
+/** Select the active review validator Make a `review-hog-validation-*` skill the single validator that runs on the requesting user's PR reviews, switching the user's other validators off in the same call. Only skills visible to the user -- the canonical plus the customs they authored -- can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom validator works in one call. */
 export const updateReviewHogValidatorsPartial: API.OperationMethod<
   UpdateReviewHogValidatorsPartialRequest,
   ReviewValidatorConfig,

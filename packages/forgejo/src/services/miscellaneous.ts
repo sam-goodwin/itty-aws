@@ -430,11 +430,11 @@ export interface ActionRun {
   index_in_repo?: number;
   /** If this is triggered by a PR from a forked repository or an untrusted user, we need to check if it is approved and limit permissions when running the workflow. */
   is_fork_pull_request?: boolean;
-  /** has the commit/tag/… the action run ran on been deleted */
+  /** has the commit/tag/... the action run ran on been deleted */
   is_ref_deleted?: boolean;
   /** may need approval if it's a fork pull request */
   need_approval?: boolean;
-  /** the commit/tag/… the action run ran on */
+  /** the commit/tag/... the action run ran on */
   prettyref?: string;
   repository?: Repository;
   /** when the action run was started */

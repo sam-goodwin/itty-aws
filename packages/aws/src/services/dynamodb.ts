@@ -6555,14 +6555,14 @@ export type TransactWriteItemsError =
  * The actions are completed atomically so that either all of them succeed, or all of
  * them fail. They are defined by the following objects:
  *
- * - `Put`  —   Initiates a `PutItem`
+ * - `Put`  --   Initiates a `PutItem`
  * operation to write a new item. This structure specifies the primary key of the
  * item to be written, the name of the table to write it in, an optional condition
  * expression that must be satisfied for the write to succeed, a list of the item's
  * attributes, and a field indicating whether to retrieve the item's attributes if
  * the condition is not met.
  *
- * - `Update`  —   Initiates an `UpdateItem`
+ * - `Update`  --   Initiates an `UpdateItem`
  * operation to update an existing item. This structure specifies the primary key
  * of the item to be updated, the name of the table where it resides, an optional
  * condition expression that must be satisfied for the update to succeed, an
@@ -6570,14 +6570,14 @@ export type TransactWriteItemsError =
  * indicating whether to retrieve the item's attributes if the condition is not
  * met.
  *
- * - `Delete`  —   Initiates a `DeleteItem`
+ * - `Delete`  --   Initiates a `DeleteItem`
  * operation to delete an existing item. This structure specifies the primary key
  * of the item to be deleted, the name of the table where it resides, an optional
  * condition expression that must be satisfied for the deletion to succeed, and a
  * field indicating whether to retrieve the item's attributes if the condition is
  * not met.
  *
- * - `ConditionCheck`  —   Applies a condition to an item
+ * - `ConditionCheck`  --   Applies a condition to an item
  * that is not being modified by the transaction. This structure specifies the
  * primary key of the item to be checked, the name of the table where it resides, a
  * condition expression that must be satisfied for the transaction to succeed, and
@@ -6722,7 +6722,7 @@ export type UpdateContributorInsightsError =
  * Contributor Insights for DynamoDB graphs display the partition key and (if applicable)
  * sort key of frequently accessed items and frequently throttled items in plaintext. If
  * you require the use of Amazon Web Services Key Management Service (KMS) to encrypt this
- * table’s partition key and sort key data with an Amazon Web Services managed key or
+ * table's partition key and sort key data with an Amazon Web Services managed key or
  * customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB
  * for this table.
  */

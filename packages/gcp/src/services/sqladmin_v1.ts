@@ -3048,7 +3048,7 @@ export interface Backup {
   kmsKeyVersion?: string;
   /** Output only. This is always `sql#backup`. */
   kind?: string;
-  /** Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND" or “FINAL”. */
+  /** Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND" or "FINAL". */
   type?: BackupTypeEnum | (string & {});
   /** Output only. This output contains the following values: start_time: All database writes up to this time are available. end_time: Any database writes after this time aren't available. */
   backupInterval?: Interval;

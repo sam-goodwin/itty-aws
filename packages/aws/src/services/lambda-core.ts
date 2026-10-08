@@ -486,7 +486,7 @@ export type CreateNetworkConnectorError =
  *
  * This operation is asynchronous. The network connector starts in `PENDING` state while ENIs are provisioned in your VPC (provisioning typically takes up to 10 minutes). Use `GetNetworkConnector` to poll the connector state until it reaches `ACTIVE`. Once active, you can attach the connector to Lambda MicroVMs at run time using the `egressNetworkConnectors` parameter on `RunMicroVm`.
  *
- * This operation is idempotent when you provide a `ClientToken` — if you retry a request that completed successfully using the same client token, the operation returns the existing connector without creating a duplicate.
+ * This operation is idempotent when you provide a `ClientToken` -- if you retry a request that completed successfully using the same client token, the operation returns the existing connector without creating a duplicate.
  */
 export const createNetworkConnector: API.OperationMethod<
   CreateNetworkConnectorRequest,
@@ -518,7 +518,7 @@ export type DeleteNetworkConnectorError =
 /**
  * Initiates deletion of a network connector. The connector transitions to `DELETING` state while elastic network interfaces are cleaned up asynchronously. After deletion completes, subsequent calls to `GetNetworkConnector` return `ResourceNotFoundException`.
  *
- * This operation is idempotent — calling delete on a connector that is already deleting or has been deleted succeeds without error. You can delete connectors in `ACTIVE` or `FAILED` states. Before deleting a connector, ensure that no Lambda MicroVMs are using it, as they will lose VPC egress connectivity immediately.
+ * This operation is idempotent -- calling delete on a connector that is already deleting or has been deleted succeeds without error. You can delete connectors in `ACTIVE` or `FAILED` states. Before deleting a connector, ensure that no Lambda MicroVMs are using it, as they will lose VPC egress connectivity immediately.
  */
 export const deleteNetworkConnector: API.OperationMethod<
   DeleteNetworkConnectorRequest,
@@ -549,7 +549,7 @@ export type GetNetworkConnectorError =
 /**
  * Retrieves the current configuration, state, and metadata of a network connector. The `Identifier` parameter accepts the connector ID, name, or full ARN. Use this operation to poll connector state after creation or update, or to inspect the current VPC configuration and any failure reasons.
  *
- * The response includes the full connector configuration, current state, and — if the connector has been updated — the `LastUpdateStatus` and `LastUpdateStatusReasonCode` fields that indicate whether the most recent update succeeded or failed.
+ * The response includes the full connector configuration, current state, and -- if the connector has been updated -- the `LastUpdateStatus` and `LastUpdateStatusReasonCode` fields that indicate whether the most recent update succeeded or failed.
  */
 export const getNetworkConnector: API.OperationMethod<
   GetNetworkConnectorRequest,
@@ -611,7 +611,7 @@ export type UpdateNetworkConnectorError =
 /**
  * Updates the VPC configuration or operator role of an existing network connector. You can modify the subnet IDs, security group IDs, network protocol, or operator role. The connector must be in `ACTIVE` state to accept updates.
  *
- * This operation is asynchronous. The connector remains in `ACTIVE` state during the update — existing workloads that reference this connector are not disrupted. Use `GetNetworkConnector` to monitor the `LastUpdateStatus` field, which transitions through `InProgress` to `Successful` or `Failed`. If the update fails, the `LastUpdateStatusReasonCode` field provides a specific error code for troubleshooting. This operation is idempotent when you provide a `ClientToken`.
+ * This operation is asynchronous. The connector remains in `ACTIVE` state during the update -- existing workloads that reference this connector are not disrupted. Use `GetNetworkConnector` to monitor the `LastUpdateStatus` field, which transitions through `InProgress` to `Successful` or `Failed`. If the update fails, the `LastUpdateStatusReasonCode` field provides a specific error code for troubleshooting. This operation is idempotent when you provide a `ClientToken`.
  */
 export const updateNetworkConnector: API.OperationMethod<
   UpdateNetworkConnectorRequest,

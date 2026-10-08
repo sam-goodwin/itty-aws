@@ -1016,7 +1016,7 @@ export interface PolicyControllerHubConfig {
   installSpec?: PolicyControllerHubConfigInstallSpecEnum | (string & {});
   /** Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. */
   auditIntervalSeconds?: string;
-  /** Map of deployment configs to deployments (“admission”, “audit”, “mutation”). */
+  /** Map of deployment configs to deployments ("admission", "audit", "mutation"). */
   deploymentConfigs?: PolicyControllerPolicyControllerDeploymentConfigMap;
   /** Logs all denies and dry run failures. */
   logDeniesEnabled?: boolean;

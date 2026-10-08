@@ -46,7 +46,7 @@ export type SubscriptionAIWindowModeEnum = "since_last_sent" | "last_n_days" | "
 export const SubscriptionAIWindowModeEnum = S.String;
 
 export interface AIWindowConfig {
-  /** What the report analyzes each run: * `since_last_sent` (default) — everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` — a fixed trailing window of start_days_ago days * `days_ago_range` — the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
+  /** What the report analyzes each run: * `since_last_sent` (default) -- everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` -- a fixed trailing window of start_days_ago days * `days_ago_range` -- the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
   mode?: SubscriptionAIWindowModeEnum | (string & {});
   /** Lower bound of the analysis window, in days before the run. Required for 'last_n_days' (the N) and 'days_ago_range'; ignored for 'since_last_sent'. 1-365. */
   start_days_ago?: number | null;
@@ -365,7 +365,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 /** Standard Subscription serializer. */
 export interface SubscriptionOutput {
   id?: number;
-  /** What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt). * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
+  /** What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only -- derived from the populated target (insight -> insight, dashboard -> dashboard, prompt -> ai_prompt). * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
   resource_type?: SubscriptionResourceTypeEnum;
   /** Dashboard ID to subscribe to (mutually exclusive with insight on create). */
   dashboard?: number | null;
