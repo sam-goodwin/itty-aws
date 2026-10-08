@@ -14,6 +14,7 @@
  * {@link PaginationStrategy}; these shared utilities handle the streaming.
  * Ported from the distilled repo's `core/pagination`.
  */
+import type * as Arr from "effect/Array";
 import * as Effect from "effect/Effect";
 import * as Stream from "effect/Stream";
 
@@ -115,7 +116,8 @@ export const isTerminalToken = (token: unknown): boolean =>
  * surface — emits exactly one page.
  */
 export const paginateSingle: PaginationStrategy = (operation, input) =>
-  Stream.make(input).pipe(Stream.mapEffect((requestPayload) => operation(requestPayload)));
+  // `Stream.fromEffect` keeps `mapEffect`'s concurrency machinery out of bundles.
+  Stream.fromEffect(Effect.suspend(() => operation(input)));
 
 // ============================================================================
 // Page-based Pagination
@@ -373,6 +375,22 @@ export const extractItems = <Output, Item, E, R>(
   pages: Stream.Stream<Output, E, R>,
   itemsPath: string,
 ): Stream.Stream<Item, E, R> =>
-  pages.pipe(
-    Stream.flatMap((page) => Stream.fromIterable(getItems(page, itemsPath) as readonly Item[])),
-  );
+  // Flattens each pulled chunk of pages directly, skipping pages with no
+  // items. `Stream.flatMap` / `flattenIterable` would do the same but pull in
+  // Effect's concurrent-merge machinery (Queue, Semaphore, …): about 5 KB
+  // gzip in every bundle that uses a paginated operation.
+  Stream.transformPull(pages, (pull) => {
+    // Same error channel as `pull` (its `Done` included), so the stream ends where the pages end.
+    const next: Effect.Effect<Arr.NonEmptyReadonlyArray<Item>, unknown> = Effect.flatMap(
+      pull,
+      (chunk) => {
+        const items: Item[] = [];
+        for (const page of chunk)
+          for (const item of getItems(page, itemsPath)) items.push(item as Item);
+        return items.length > 0
+          ? Effect.succeed(items as unknown as Arr.NonEmptyReadonlyArray<Item>)
+          : next;
+      },
+    );
+    return Effect.succeed(next);
+  }) as unknown as Stream.Stream<Item, E, R>;
