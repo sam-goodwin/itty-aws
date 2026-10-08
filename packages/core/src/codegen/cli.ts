@@ -20,6 +20,7 @@ import { barrel } from "./emit.ts";
 import { formatGenerated } from "./format.ts";
 import { stampGeneratedAt } from "./generated-at.ts";
 import { generateService, type SdkSpec } from "./generator.ts";
+import { toLatin1 } from "./latin1.ts";
 import { annotateNestedCalls } from "./pure.ts";
 
 export interface GeneratorCliOptions {
@@ -189,7 +190,11 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           if (operations === 0) continue;
           // Every nested call in a top-level initializer gets a PURE marker,
           // so one unused schema cannot pin others in a consumer's bundle.
-          const code = annotateNestedCalls(generated.code, `${resource}.ts`);
+          // Latin-1-only source halves the heap V8 keeps for the module text.
+          const code = toLatin1(
+            annotateNestedCalls(generated.code, `${resource}.ts`),
+            `${resource}.ts`,
+          );
 
           yield* fs.writeFileString(path.join(outDir, `${resource}.ts`), code);
           written.push(resource);
