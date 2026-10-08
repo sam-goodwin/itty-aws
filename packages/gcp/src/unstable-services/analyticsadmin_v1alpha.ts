@@ -1149,9 +1149,9 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventFilter = /*@__PURE__*/ S.su
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpression {
   /** A filter on a single dimension or metric. This cannot be set on the top level AudienceFilterExpression. */
   dimensionOrMetricFilter?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter;
-  /** A list of expressions to be AND’ed together. It can only contain AudienceFilterExpressions with or_group. This must be set for the top level AudienceFilterExpression. */
+  /** A list of expressions to be AND'ed together. It can only contain AudienceFilterExpressions with or_group. This must be set for the top level AudienceFilterExpression. */
   andGroup?: GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList;
-  /** A list of expressions to OR’ed together. It cannot contain AudienceFilterExpressions with and_group or or_group. */
+  /** A list of expressions to OR'ed together. It cannot contain AudienceFilterExpressions with and_group or or_group. */
   orGroup?: GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList;
   /** A filter expression to be NOT'ed (For example, inverted, complemented). It can only include a dimension_or_metric_filter. This cannot be set on the top level AudienceFilterExpression. */
   notExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
@@ -1310,7 +1310,7 @@ export interface GoogleAnalyticsAdminV1alphaAudience {
   membershipDurationDays?: number;
   /** Output only. The resource name for this Audience resource. Format: properties/{propertyId}/audiences/{audienceId} */
   name?: string;
-  /** Required. Immutable. Unordered list. Filter clauses that define the Audience. All clauses will be AND’ed together. */
+  /** Required. Immutable. Unordered list. Filter clauses that define the Audience. All clauses will be AND'ed together. */
   filterClauses?: GoogleAnalyticsAdminV1alphaAudienceFilterClauseList;
   /** Output only. It is automatically set by GA to false if this is an NPA Audience and is excluded from ads personalization. */
   adsPersonalizationEnabled?: boolean;
@@ -1597,9 +1597,9 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression {
   notExpression?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression;
   /** A filter on a single dimension. This cannot be set on the top level ChannelGroupFilterExpression. */
   filter?: GoogleAnalyticsAdminV1alphaChannelGroupFilter;
-  /** A list of expressions to be AND’ed together. It can only contain ChannelGroupFilterExpressions with or_group. This must be set for the top level ChannelGroupFilterExpression. */
+  /** A list of expressions to be AND'ed together. It can only contain ChannelGroupFilterExpressions with or_group. This must be set for the top level ChannelGroupFilterExpression. */
   andGroup?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList;
-  /** A list of expressions to OR’ed together. It cannot contain ChannelGroupFilterExpressions with and_group or or_group. */
+  /** A list of expressions to OR'ed together. It cannot contain ChannelGroupFilterExpressions with and_group or or_group. */
   orGroup?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList;
 }
 export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression = /*@__PURE__*/ S.suspend(() =>
@@ -2492,7 +2492,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
   notExpression?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression;
   /** A filter on a single dimension. This cannot be set on the top level ExpandedDataSetFilterExpression. */
   filter?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilter;
-  /** A list of expressions to be AND’ed together. It must contain a ExpandedDataSetFilterExpression with either not_expression or dimension_filter. This must be set for the top level ExpandedDataSetFilterExpression. */
+  /** A list of expressions to be AND'ed together. It must contain a ExpandedDataSetFilterExpression with either not_expression or dimension_filter. This must be set for the top level ExpandedDataSetFilterExpression. */
   andGroup?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList;
 }
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression = /*@__PURE__*/ S.suspend(
@@ -3004,7 +3004,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression {
   notExpression?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression;
   /** Creates a filter that matches a specific event. This cannot be set on the top level SubpropertyEventFilterExpression. */
   filterCondition?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition;
-  /** A list of expressions to OR’ed together. Must only contain not_expression or filter_condition expressions. */
+  /** A list of expressions to OR'ed together. Must only contain not_expression or filter_condition expressions. */
   orGroup?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList;
 }
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression = /*@__PURE__*/ S.suspend(

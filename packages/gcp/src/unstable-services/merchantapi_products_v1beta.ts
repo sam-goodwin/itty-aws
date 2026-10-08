@@ -656,7 +656,7 @@ export interface Attributes {
   mpn?: string;
   /** The [tax category](https://support.google.com/merchants/answer/7569847) of the product. */
   taxCategory?: string;
-  /** The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
+  /** The date time when an offer becomes visible in search results across Google's YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
   disclosureDate?: string;
   /** Used to group items in an arbitrary way. Only for CPA, discouraged otherwise. For more information, see [Display ads attribute](https://support.google.com/merchants/answer/6069387). */
   adsGrouping?: string;

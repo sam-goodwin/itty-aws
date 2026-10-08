@@ -1066,7 +1066,7 @@ export const GoogleAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   GoogleAudienceTargetingSetting,
 ) as any as S.Schema<GoogleAudienceTargetingSettingList>;
 
-/** Details of Google audience group. All Google audience targeting settings are logically ‘OR’ of each other. */
+/** Details of Google audience group. All Google audience targeting settings are logically 'OR' of each other. */
 export interface GoogleAudienceGroup {
   /** Required. All Google audience targeting settings in Google audience group. Repeated settings with the same id will be ignored. */
   settings?: GoogleAudienceTargetingSettingList;
@@ -1095,7 +1095,7 @@ export const CombinedAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   CombinedAudienceTargetingSetting,
 ) as any as S.Schema<CombinedAudienceTargetingSettingList>;
 
-/** Details of combined audience group. All combined audience targeting settings are logically ‘OR’ of each other. */
+/** Details of combined audience group. All combined audience targeting settings are logically 'OR' of each other. */
 export interface CombinedAudienceGroup {
   /** Required. All combined audience targeting settings in combined audience group. Repeated settings with the same id will be ignored. The number of combined audience settings should be no more than five, error will be thrown otherwise. */
   settings?: CombinedAudienceTargetingSettingList;
@@ -1161,7 +1161,7 @@ export const FirstAndThirdPartyAudienceTargetingSettingList = /*@__PURE__*/ S.Ar
   FirstAndThirdPartyAudienceTargetingSetting,
 ) as any as S.Schema<FirstAndThirdPartyAudienceTargetingSettingList>;
 
-/** Details of first and third party audience group. All first and third party audience targeting settings are logically ‘OR’ of each other. */
+/** Details of first and third party audience group. All first and third party audience targeting settings are logically 'OR' of each other. */
 export interface FirstAndThirdPartyAudienceGroup {
   /** Required. All first and third party audience targeting settings in first and third party audience group. Repeated settings with the same id are not allowed. */
   settings?: FirstAndThirdPartyAudienceTargetingSettingList;
@@ -1197,7 +1197,7 @@ export const CustomListTargetingSettingList = /*@__PURE__*/ S.Array(
   CustomListTargetingSetting,
 ) as any as S.Schema<CustomListTargetingSettingList>;
 
-/** Details of custom list group. All custom list targeting settings are logically ‘OR’ of each other. */
+/** Details of custom list group. All custom list targeting settings are logically 'OR' of each other. */
 export interface CustomListGroup {
   /** Required. All custom list targeting settings in custom list group. Repeated settings with the same id will be ignored. */
   settings?: CustomListTargetingSettingList;
@@ -1210,7 +1210,7 @@ export const CustomListGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigned audience group targeting option details. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION, except for excluded_first_and_third_party_audience_group and excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION with other groups. */
 export interface AudienceGroupAssignedTargetingOptionDetails {
-  /** Optional. The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items are logically ‘OR’ of each other. */
+  /** Optional. The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items are logically 'OR' of each other. */
   excludedGoogleAudienceGroup?: GoogleAudienceGroup;
   /** Optional. The combined audience ids of the included combined audience group. Contains combined audience ids only. */
   includedCombinedAudienceGroup?: CombinedAudienceGroup;
@@ -1218,7 +1218,7 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   includedFirstAndThirdPartyAudienceGroups?: FirstAndThirdPartyAudienceGroupList;
   /** Optional. The Google audience ids of the included Google audience group. Contains Google audience ids only. */
   includedGoogleAudienceGroup?: GoogleAudienceGroup;
-  /** Optional. The first and third party audience ids and recencies of the excluded first and third party audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. All items are logically ‘OR’ of each other. */
+  /** Optional. The first and third party audience ids and recencies of the excluded first and third party audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. All items are logically 'OR' of each other. */
   excludedFirstAndThirdPartyAudienceGroup?: FirstAndThirdPartyAudienceGroup;
   /** Optional. The custom list ids of the included custom list group. Contains custom list ids only. */
   includedCustomListGroup?: CustomListGroup;
@@ -6692,7 +6692,7 @@ export interface ObaIcon {
   position?: ObaIconPositionEnum | (string & {});
   /** Required. The view tracking URL of the OBA icon. Only URLs of the following domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com` */
   viewTrackingUrl?: string;
-  /** Optional. The program of the OBA icon. For example: “AdChoices”. */
+  /** Optional. The program of the OBA icon. For example: "AdChoices". */
   program?: string;
   /** Optional. The MIME type of the OBA icon resource. */
   resourceMimeType?: string;
@@ -6997,7 +6997,7 @@ export interface Creative {
   name?: string;
   /** Output only. Indicates the third-party audio creative supports OGG. Output only and only valid for third-party audio creatives. Third-party audio creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_AUDIO` */
   oggAudio?: boolean;
-  /** Output only. Audio/Video transcodes. Display & Video 360 transcodes the main asset into a number of alternative versions that use different file formats or have different properties (resolution, audio bit rate, and video bit rate), each designed for specific video players or bandwidths. These transcodes give a publisher's system more options to choose from for each impression on your video and ensures that the appropriate file serves based on the viewer’s connection and screen size. This field is only supported in the following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO` */
+  /** Output only. Audio/Video transcodes. Display & Video 360 transcodes the main asset into a number of alternative versions that use different file formats or have different properties (resolution, audio bit rate, and video bit rate), each designed for specific video players or bandwidths. These transcodes give a publisher's system more options to choose from for each impression on your video and ensures that the appropriate file serves based on the viewer's connection and screen size. This field is only supported in the following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO` */
   transcodes?: TranscodeList;
   /** Output only. A list of attributes of the creative that is generated by the system. */
   creativeAttributes?: CreativeCreativeAttributesItemEnumList;

@@ -14590,7 +14590,7 @@ export type GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAge
 export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatusUpdateTypeEnum =
   S.String;
 
-/** Per-model Agent Search TPM subscription status. One entry per active `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`, `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) — siblings of the whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus, but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable- pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is per-(project, model_version), so each model has its own activation, termination, and deferred-update clock; surfacing that on the response gives customers the granularity they need to manage per-model commitments independently. QPM / IndexingCore differ — their storage is one row per (project, location), so their lifecycle is represented only by the whole- relationship scalars on ConfigurableBillingStatus. */
+/** Per-model Agent Search TPM subscription status. One entry per active `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`, `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) -- siblings of the whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus, but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable- pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is per-(project, model_version), so each model has its own activation, termination, and deferred-update clock; surfacing that on the response gives customers the granularity they need to manage per-model commitments independently. QPM / IndexingCore differ -- their storage is one row per (project, location), so their lifecycle is represented only by the whole- relationship scalars on ConfigurableBillingStatus. */
 export interface GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus {
   /** Output only. The earliest next update time for the TPM subscription threshold for this (project, model_version). Populated only after a successful update. */
   tpmThresholdNextUpdateTime?: string;
@@ -18753,7 +18753,7 @@ export const GoogleCloudDiscoveryengineV1alphaMcpError = /*@__PURE__*/ S.suspend
 export interface GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpResponse {
   /** Error details when the call fails. */
   error?: GoogleCloudDiscoveryengineV1alphaMcpError;
-  /** Successful result — arbitrary structured data. */
+  /** Successful result -- arbitrary structured data. */
   result?: unknown;
 }
 export const GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpResponse = /*@__PURE__*/ S.suspend(

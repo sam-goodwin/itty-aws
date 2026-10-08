@@ -3788,7 +3788,7 @@ export const RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOpti
 export interface RateLimitPolicyRateLimitRuleToDestinationMCP {
   /** Optional. A list of MCP methods and associated parameter names to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Rate Limit Policy. */
   methods?: RateLimitPolicyRateLimitRuleToDestinationMCPMethodList;
-  /** Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified. */
+  /** Optional. If specified, matches on the MCP protocol's non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified. */
   baseProtocolMethodsOption?:
     | RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum
     | (string & {});

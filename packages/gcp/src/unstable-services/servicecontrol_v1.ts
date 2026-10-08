@@ -496,7 +496,7 @@ export type TraceSpanSpanKindEnum =
   | "CONSUMER";
 export const TraceSpanSpanKindEnum = S.String;
 
-/** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there may be gaps or overlaps between spans in a trace. */
+/** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous--there may be gaps or overlaps between spans in a trace. */
 export interface TraceSpan {
   /** The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
   startTime?: string;

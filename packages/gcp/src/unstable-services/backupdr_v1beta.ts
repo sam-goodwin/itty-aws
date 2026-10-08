@@ -221,7 +221,7 @@ export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Str
 export interface KeyValuePair {
   /** Required. The key of the label to match. This must be in the format `{label_key}`. The key must match the regex Format:`\p{Ll}\p{Lo}{0,62}`. */
   key?: string;
-  /** Required. The values of the label to match. There will be explicit “OR” between values of array. Each value must be in the format `{label_value}`. The value must match the regex Format: `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`. */
+  /** Required. The values of the label to match. There will be explicit "OR" between values of array. Each value must be in the format `{label_value}`. The value must match the regex Format: `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`. */
   values?: StringList;
 }
 export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
@@ -720,7 +720,7 @@ export const StandardSchedule = /*@__PURE__*/ S.suspend(() =>
 export interface BackupRule {
   /** Optional. Defines a schedule that runs within the confines of a defined window of time. */
   standardSchedule?: StandardSchedule;
-  /** Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory trial. We recommend starting with a short duration of 3 days or less. */
+  /** Required. Configures the duration for which backup data will be kept. It is defined in "days". The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory trial. We recommend starting with a short duration of 3 days or less. */
   backupRetentionDays?: number;
   /** Required. Immutable. The unique id of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.The `rule_id` must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens. Pattern, /a-z{,62}/. */
   ruleId?: string;
@@ -784,7 +784,7 @@ export interface BackupPlan {
   updateTime?: string;
   /** Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine Persistent Disks. This includes settings like whether to perform a guest flush. */
   diskBackupPlanProperties?: DiskBackupPlanProperties;
-  /** Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is defined in “days”. This value should be greater than or equal to minimum enforced log retention duration of the backup vault. */
+  /** Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is defined in "days". This value should be greater than or equal to minimum enforced log retention duration of the backup vault. */
   logRetentionDays?: string;
   /** Optional. Optional field to configure the maximum number of days for which a backup can be retained. This field is only applicable for on-demand backups taken with custom retention value. */
   maxCustomOnDemandRetentionDays?: number;

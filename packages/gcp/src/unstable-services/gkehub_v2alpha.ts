@@ -2246,7 +2246,7 @@ export const PolicyControllerHubConfigInstallSpecEnum = S.String;
 export interface PolicyControllerHubConfig {
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
   referentialRulesEnabled?: boolean;
-  /** Map of deployment configs to deployments (“admission”, “audit”, “mutation”). */
+  /** Map of deployment configs to deployments ("admission", "audit", "mutation"). */
   deploymentConfigs?: PolicyControllerPolicyControllerDeploymentConfigMap;
   /** Specifies the desired policy content on the cluster */
   policyContent?: PolicyControllerPolicyContentSpec;

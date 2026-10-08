@@ -1210,7 +1210,7 @@ export const GoogleCloudAiplatformV1beta1AggregateAnalyzedSessionsResponseAgentA
 export interface GoogleCloudAiplatformV1beta1AggregateAnalyzedSessionsResponse {
   /** Overall summary across every MonitoredAgent included in the response. */
   summary?: GoogleCloudAiplatformV1beta1ListAnalyzedSessionsResponseViewSummary;
-  /** Aggregated statistics — exactly one entry per unique MonitoredAgent matched by the request. */
+  /** Aggregated statistics -- exactly one entry per unique MonitoredAgent matched by the request. */
   agentAggregates?: GoogleCloudAiplatformV1beta1AggregateAnalyzedSessionsResponseAgentAggregateList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
@@ -5797,7 +5797,7 @@ export interface GoogleCloudAiplatformV1beta1FeatureStatsAnomaly {
   statsUri?: string;
   /** Path of the anomaly file for current feature values in Cloud Storage bucket. Format: gs:////anomalies. Example: gs://monitoring_bucket/feature_name/anomalies. Stats are stored as binary format with Protobuf message Anoamlies are stored as binary format with Protobuf message [tensorflow.metadata.v0.AnomalyInfo] (https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/anomalies.proto). */
   anomalyUri?: string;
-  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
+  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. */
   distributionDeviation?: number;
   /** The end timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), end_time indicates the timestamp of the data used to generate stats (e.g. timestamp we take snapshots for feature values). */
   endTime?: string;
@@ -5834,7 +5834,7 @@ export interface GoogleCloudAiplatformV1beta1FeatureStatsAndAnomaly {
   featureMonitorJobId?: string;
   /** This is the threshold used when detecting drifts, which is set in FeatureMonitor.FeatureSelectionConfig.FeatureConfig.drift_threshold */
   driftDetectionThreshold?: number;
-  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
+  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. */
   distributionDeviation?: number;
   /** The ID of the FeatureMonitor that this FeatureStatsAndAnomaly generated according to. */
   featureMonitorId?: string;
@@ -5921,7 +5921,7 @@ export const GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeatu
 
 /** The config for Featurestore Monitoring threshold. */
 export interface GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig {
-  /** Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
+  /** Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
 export const GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig =
@@ -14946,7 +14946,7 @@ export const GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig = /*@__PURE_
 
 /** The config for feature monitoring threshold. */
 export interface GoogleCloudAiplatformV1beta1ThresholdConfig {
-  /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
+  /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
 export const GoogleCloudAiplatformV1beta1ThresholdConfig = /*@__PURE__*/ S.suspend(() =>
@@ -24012,9 +24012,9 @@ export const CreateProjectsLocationsOnlineEvaluatorsRequest = /*@__PURE__*/ S.su
 
 /** The min/max number of replicas allowed if enabling autoscaling */
 export interface GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
-  /** Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error. For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a resource_pool to be 0 to match the OSS Ray behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters). As for Persistent Resource, the min_replica_count must be > 0, we added a corresponding validation inside CreatePersistentResourceRequestValidator.java. */
+  /** Optional. min replicas in the node pool, must be <= replica_count and < max_replica_count or will throw error. For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a resource_pool to be 0 to match the OSS Ray behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters). As for Persistent Resource, the min_replica_count must be > 0, we added a corresponding validation inside CreatePersistentResourceRequestValidator.java. */
   minReplicaCount?: string;
-  /** Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error */
+  /** Optional. max replicas in the node pool, must be >= replica_count and > min_replica_count or will throw error */
   maxReplicaCount?: string;
 }
 export const GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec = /*@__PURE__*/ S.suspend(() =>
@@ -66101,7 +66101,7 @@ export const SearchModelMonitoringStatsProjectsLocationsModelMonitorsRequest =
 
 /** Summary statistics for a population of values. */
 export interface GoogleCloudAiplatformV1beta1ModelMonitoringStatsDataPointTypedValueDistributionDataValue {
-  /** Distribution distance deviation from the current dataset's statistics to baseline dataset's statistics. * For categorical feature, the distribution distance is calculated by L-inifinity norm or Jensen–Shannon divergence. * For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
+  /** Distribution distance deviation from the current dataset's statistics to baseline dataset's statistics. * For categorical feature, the distribution distance is calculated by L-inifinity norm or Jensen-Shannon divergence. * For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. */
   distributionDeviation?: number;
   /** Predictive monitoring drift distribution in `tensorflow.metadata.v0.DatasetFeatureStatistics` format. */
   distribution?: unknown;

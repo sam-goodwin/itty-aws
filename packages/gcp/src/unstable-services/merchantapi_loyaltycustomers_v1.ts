@@ -73,7 +73,7 @@ export type LoyaltyCustomerLoyaltyTierEnum =
   | "NON_MEMBER";
 export const LoyaltyCustomerLoyaltyTierEnum = S.String;
 
-/** Represents a customer’s physical address. */
+/** Represents a customer's physical address. */
 export interface AddressInfo {
   /** Optional. The Unicode country/region code (CLDR) of the customer, such as "US" or "CH". This field is case-insensitive. For more information, see https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html. */
   regionCode?: string;
@@ -101,9 +101,9 @@ export const AddressInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The user identifiers associated with the customer. At least one of the fields within this message must be provided. */
 export interface UserIdentifier {
-  /** Optional. The customer’s physical address. */
+  /** Optional. The customer's physical address. */
   address?: AddressInfo;
-  /** Optional. The customer’s email address. */
+  /** Optional. The customer's email address. */
   emailAddress?: string;
   /** Optional. The customer's phone number, in [E.164 format](https://support.google.com/google-ads/answer/16355235) (e.g., "+16502530000"). */
   phoneNumber?: string;
@@ -116,7 +116,7 @@ export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
-/** Represents a customer’s loyalty information. Represents loyalty customer data in `ManageLoyaltyCustomerMatch` API, but is not a resource that can be retrieved or listed by other methods. */
+/** Represents a customer's loyalty information. Represents loyalty customer data in `ManageLoyaltyCustomerMatch` API, but is not a resource that can be retrieved or listed by other methods. */
 export interface LoyaltyCustomer {
   /** Required. The tier label of the loyalty tier the customer belongs to. */
   loyaltyTier?: LoyaltyCustomerLoyaltyTierEnum | (string & {});

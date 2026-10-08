@@ -2124,7 +2124,7 @@ export interface ChromeOsDevice {
   ethernetMacAddress?: string;
   /** A list of recent device users, in descending order, by last login time. */
   recentUsers?: ChromeOsDeviceRecentUsersItemList;
-  /** (Read-only) MAC address used by the Chromebook’s internal ethernet port, and for onboard network (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for some devices. */
+  /** (Read-only) MAC address used by the Chromebook's internal ethernet port, and for onboard network (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for some devices. */
   ethernetMacAddress0?: string;
   /** Output only. Chrome OS type of the device. */
   chromeOsType?: ChromeOsDeviceChromeOsTypeEnum | (string & {});
@@ -3183,7 +3183,7 @@ export interface RoleAssignment {
   roleAssignmentId?: string;
   /** Optional. Details regarding the expiration of this role assignment. */
   expirationDetails?: ExpirationDetails;
-  /** The unique ID of the entity this role is assigned to—either the `user_id` of a user, the `group_id` of a group, or the `uniqueId` of a service account as defined in [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts). */
+  /** The unique ID of the entity this role is assigned to--either the `user_id` of a user, the `group_id` of a group, or the `uniqueId` of a service account as defined in [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts). */
   assignedTo?: string;
   /** If the role is restricted to an organization unit, this contains the ID for the organization unit the exercise of this role is restricted to. */
   orgUnitId?: string;

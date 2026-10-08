@@ -60,7 +60,7 @@ export interface Domain {
   createTime?: string;
   /** The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
   name?: string;
-  /** User’s permission for this domain. Assigned by the server. */
+  /** User's permission for this domain. Assigned by the server. */
   permission?: DomainPermissionEnum;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>

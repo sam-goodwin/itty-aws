@@ -2294,7 +2294,7 @@ export interface PolicyControllerHubConfig {
   logDeniesEnabled?: boolean;
   /** The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used. */
   constraintViolationLimit?: string;
-  /** Map of deployment configs to deployments (“admission”, “audit”, “mutation”). */
+  /** Map of deployment configs to deployments ("admission", "audit", "mutation"). */
   deploymentConfigs?: PolicyControllerPolicyControllerDeploymentConfigMap;
   /** Monitoring specifies the configuration of monitoring. */
   monitoring?: PolicyControllerMonitoringConfig;

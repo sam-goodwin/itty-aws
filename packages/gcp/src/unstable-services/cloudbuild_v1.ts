@@ -632,7 +632,7 @@ export const NpmPackageList = /*@__PURE__*/ S.Array(NpmPackage) as any as S.Sche
 export interface GoModule {
   /** Optional. Project ID of the Artifact Registry repository. Defaults to the build project. */
   repositoryProjectId?: string;
-  /** Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build’s location. */
+  /** Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build's location. */
   repositoryLocation?: string;
   /** Optional. Source path of the go.mod file in the build's workspace. If not specified, this will default to the current directory. e.g. ~/code/go/mypackage */
   sourcePath?: string;

@@ -563,7 +563,7 @@ export const ExternalRefList = /*@__PURE__*/ S.Array(
 export interface PackageInfoNote {
   /** List the licenses that have been declared by the authors of the package */
   licenseDeclared?: License;
-  /** Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found */
+  /** Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field - it is simply a listing of all licenses found */
   filesLicenseInfo?: StringList;
   /** Identify the copyright holders of the package, as well as any dates present */
   copyright?: string;
@@ -1896,7 +1896,7 @@ export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMet
 
 /** Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance. */
 export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder {
-  /** URI indicating the builder’s identity. */
+  /** URI indicating the builder's identity. */
   id?: string;
 }
 export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder =
@@ -3226,7 +3226,7 @@ export interface DocumentOccurrence {
   creatorComment?: string;
   /** A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created */
   licenseListVersion?: string;
-  /** Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter */
+  /** Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the '#' delimiter */
   namespace?: string;
   /** A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document */
   documentComment?: string;
@@ -3996,7 +3996,7 @@ export interface ScanConfig {
   updateTime?: string;
   /** Output only. A human-readable description of what the `ScanConfig` does. */
   description?: string;
-  /** Output only. The name of the ScanConfig in the form “projects/{project_id}/scanConfigs/{scan_config_id}". */
+  /** Output only. The name of the ScanConfig in the form "projects/{project_id}/scanConfigs/{scan_config_id}". */
   name?: string;
   /** Indicates whether the Scan is enabled. */
   enabled?: boolean;

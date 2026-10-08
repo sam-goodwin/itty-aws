@@ -1505,7 +1505,7 @@ export interface EventAnnotation {
   filter?: string;
   /** Solely for UI display. Should not be used programmatically. */
   displayName?: string;
-  /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: “projects/another-project-id” */
+  /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: "projects/another-project-id" */
   resourceNames?: StringList;
   /** The type of event to display. */
   eventType?: EventAnnotationEventTypeEnum | (string & {});
@@ -1527,7 +1527,7 @@ export const EventAnnotationList = /*@__PURE__*/ S.Array(
 
 /** Dashboard-level configuration for annotations */
 export interface DashboardAnnotations {
-  /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: “projects/some-project-id” */
+  /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: "projects/some-project-id" */
   defaultResourceNames?: StringList;
   /** List of annotation configurations for this dashboard. Each entry specifies one event type. */
   eventAnnotations?: EventAnnotationList;

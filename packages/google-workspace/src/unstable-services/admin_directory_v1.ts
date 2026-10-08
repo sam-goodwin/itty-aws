@@ -2080,7 +2080,7 @@ export interface ChromeOsDevice {
   deviceLicenseType?: ChromeOsDeviceDeviceLicenseTypeEnum | (string & {});
   /** Information regarding CPU specs in the device. */
   cpuInfo?: ChromeOsDeviceCpuInfoItemList;
-  /** (Read-only) MAC address used by the Chromebook’s internal ethernet port, and for onboard network (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for some devices. */
+  /** (Read-only) MAC address used by the Chromebook's internal ethernet port, and for onboard network (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for some devices. */
   ethernetMacAddress0?: string;
   /** Total RAM on the device [in bytes] (Read-only) */
   systemRamTotal?: string;
@@ -3167,7 +3167,7 @@ export interface RoleAssignment {
   condition?: string;
   /** The type of the API resource. This is always `admin#directory#roleAssignment`. */
   kind?: string;
-  /** The unique ID of the entity this role is assigned to—either the `user_id` of a user, the `group_id` of a group, or the `uniqueId` of a service account as defined in [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts). */
+  /** The unique ID of the entity this role is assigned to--either the `user_id` of a user, the `group_id` of a group, or the `uniqueId` of a service account as defined in [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts). */
   assignedTo?: string;
   /** ETag of the resource. */
   etag?: string;

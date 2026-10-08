@@ -2988,7 +2988,7 @@ export const BackupDatabaseVersionEnum = S.String;
 
 /** A backup resource. */
 export interface Backup {
-  /** Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND", or “FINAL”. */
+  /** Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND", or "FINAL". */
   type?: BackupTypeEnum | (string & {});
   /** Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}. */
   name?: string;

@@ -503,7 +503,7 @@ export const GoogleCloudIntegrationsV1alphaParameterMap = /*@__PURE__*/ S.suspen
   identifier: "GoogleCloudIntegrationsV1alphaParameterMap",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaParameterMap>;
 
-/** The access token represents the authorization of a specific application to access specific parts of a user’s data. */
+/** The access token represents the authorization of a specific application to access specific parts of a user's data. */
 export interface GoogleCloudIntegrationsV1alphaAccessToken {
   /** Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0. */
   tokenType?: string;
@@ -1596,7 +1596,7 @@ export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   parameters?: EnterpriseCrmEventbusProtoEventParameters;
   /** Required. Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly. */
   condition?: string;
-  /** Optional. Implementation class name. The class should implement the “TypedTask” interface. */
+  /** Optional. Implementation class name. The class should implement the "TypedTask" interface. */
   triggerCriteriaTaskImplementationClassName?: string;
 }
 export const EnterpriseCrmEventbusProtoTriggerCriteria = /*@__PURE__*/ S.suspend(() =>

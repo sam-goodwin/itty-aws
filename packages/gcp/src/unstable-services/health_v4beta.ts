@@ -1254,11 +1254,11 @@ export const SedentaryPeriod = /*@__PURE__*/ S.suspend(() =>
 
 /** Provides derived sleep temperature values, calculated from skin or internal device temperature readings during sleep. */
 export interface DailySleepTemperatureDerivations {
-  /** Optional. The standard deviation of the user’s relative nightly skin temperature (temperature - baseline) over the past 30 days. */
+  /** Optional. The standard deviation of the user's relative nightly skin temperature (temperature - baseline) over the past 30 days. */
   relativeNightlyStddev30dCelsius?: number;
   /** Required. Date for which the sleep temperature derivations are calculated. */
   date?: Health_Date;
-  /** Required. The user's nightly skin temperature. It is the mean of skin temperature samples taken from the user’s sleep. */
+  /** Required. The user's nightly skin temperature. It is the mean of skin temperature samples taken from the user's sleep. */
   nightlyTemperatureCelsius?: number;
   /** Optional. The user's baseline skin temperature. It is the median of the user's nightly skin temperature over the past 30 days. */
   baselineTemperatureCelsius?: number;
@@ -2470,7 +2470,7 @@ export interface Sleep {
   metadata?: SleepMetadata;
   /** Output only. List of short awake segments (under a set threshold) that are part of the sleep session. These can overlap with sleep stages. */
   shortAwakenings?: SleepStageList;
-  /** Optional. “Out of bed” segments that can overlap with sleep stages. */
+  /** Optional. "Out of bed" segments that can overlap with sleep stages. */
   outOfBedSegments?: OutOfBedSegmentList;
   /** Required. Observed sleep interval. */
   interval?: SessionTimeInterval;
@@ -2592,7 +2592,7 @@ export const HeartRateMetadataSensorLocationEnum = S.String;
 
 /** Heart rate metadata. */
 export interface HeartRateMetadata {
-  /** Optional. Indicates the user’s level of activity when the heart rate sample was measured */
+  /** Optional. Indicates the user's level of activity when the heart rate sample was measured */
   motionContext?: HeartRateMetadataMotionContextEnum | (string & {});
   /** Optional. Indicates the location of the sensor that measured the heart rate. */
   sensorLocation?: HeartRateMetadataSensorLocationEnum | (string & {});

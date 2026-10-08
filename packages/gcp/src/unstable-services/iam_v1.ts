@@ -61,7 +61,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** IAM rate quota for creating service accounts in a project is exhausted (quota metric 'Service accounts created per minute per project', typically HTTP 429 RESOURCE_EXHAUSTED). Transient — retry. */
+/** IAM rate quota for creating service accounts in a project is exhausted (quota metric 'Service accounts created per minute per project', typically HTTP 429 RESOURCE_EXHAUSTED). Transient -- retry. */
 export class ServiceAccountQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ServiceAccountQuotaExceeded>()("ServiceAccountQuotaExceeded", {
@@ -5433,7 +5433,7 @@ export type EnableProjectsServiceAccountsError =
   | BadRequest
   | Conflict
   | GcpOpError;
-/** Enables a ServiceAccount that was disabled by DisableServiceAccount. If the service account is already enabled, then this method has no effect. If the service account was disabled by other means—for example, if Google disabled the service account because it was compromised—you cannot use this method to enable the service account. */
+/** Enables a ServiceAccount that was disabled by DisableServiceAccount. If the service account is already enabled, then this method has no effect. If the service account was disabled by other means--for example, if Google disabled the service account because it was compromised--you cannot use this method to enable the service account. */
 export const enableProjectsServiceAccounts: API.OperationMethod<
   EnableProjectsServiceAccountsRequest,
   Empty,

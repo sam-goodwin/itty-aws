@@ -60,7 +60,7 @@ export interface Domain {
   name?: string;
   /** Timestamp when the user registered this domain. Assigned by the server. */
   createTime?: string;
-  /** User’s permission for this domain. Assigned by the server. */
+  /** User's permission for this domain. Assigned by the server. */
   permission?: DomainPermissionEnum;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>

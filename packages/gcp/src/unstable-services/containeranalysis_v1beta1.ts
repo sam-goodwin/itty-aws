@@ -121,7 +121,7 @@ export interface PackageInfoNote {
   copyright?: string;
   /** This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created */
   downloadLocation?: string;
-  /** Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found */
+  /** Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field - it is simply a listing of all licenses found */
   filesLicenseInfo?: StringList;
   /** Identify the version of the package */
   version?: string;
@@ -2475,7 +2475,7 @@ export interface DocumentOccurrence {
   createTime?: string;
   /** Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally */
   id?: string;
-  /** Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter */
+  /** Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the '#' delimiter */
   namespace?: string;
   /** Identify name of this document as designated by creator */
   title?: string;

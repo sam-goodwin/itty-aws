@@ -160,17 +160,17 @@ export interface CompetitiveVisibilityCompetitorView {
   adsOrganicRatio?: number;
   /** Position of the domain in the similar businesses ranking for the selected keys (`date`, `report_category_id`, `report_country_code`, `traffic_source`) based on impressions. 1 is the highest. Cannot be filtered on in the 'WHERE' clause. */
   rank?: string;
-  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor’s offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor's offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
   /** Google product category ID to calculate the report for, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). Required in the `SELECT` clause. A condition on `report_category_id` is required in the `WHERE` clause. */
   reportCategoryId?: string;
-  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers’ offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers' offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
   pageOverlapRate?: number;
   /** Domain of your competitor or your domain, if `is_your_domain` is true. Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE' clause. */
   domain?: string;
   /** Country where impressions appeared. Required in the `SELECT` clause. A condition on `report_country_code` is required in the `WHERE` clause. */
   reportCountryCode?: string;
-  /** [Relative visibility] (https://support.google.com/merchants/answer/11366442#zippy=%2Crelative-visibility) shows how often your competitors’ offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Relative visibility] (https://support.google.com/merchants/answer/11366442#zippy=%2Crelative-visibility) shows how often your competitors' offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Cannot be filtered on in the 'WHERE' clause. */
   relativeVisibility?: number;
 }
 export const CompetitiveVisibilityCompetitorView = /*@__PURE__*/ S.suspend(() =>
@@ -467,11 +467,11 @@ export const CompetitiveVisibilityTopMerchantViewTrafficSourceEnum = S.String;
 export interface CompetitiveVisibilityTopMerchantView {
   /** Google product category ID to calculate the report for, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). Required in the `SELECT` clause. A condition on `report_category_id` is required in the `WHERE` clause. */
   reportCategoryId?: string;
-  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers’ offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers' offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
   pageOverlapRate?: number;
   /** Domain of your competitor or your domain, if `is_your_domain` is true. Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE' clause. */
   domain?: string;
-  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor’s offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor's offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
   /** [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#zippy=%2Cads-free-ratio) shows how often the domain receives impressions from Shopping ads compared to organic traffic. The number is rounded and bucketed. Cannot be filtered on in the 'WHERE' clause. */
   adsOrganicRatio?: number;

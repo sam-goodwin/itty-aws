@@ -127,7 +127,7 @@ export const Merchantapi_Date = /*@__PURE__*/ S.suspend(() =>
 export interface CompetitiveVisibilityCompetitorView {
   /** Country where impressions appeared. Required in the `SELECT` clause. A condition on `report_country_code` is required in the `WHERE` clause. */
   reportCountryCode?: string;
-  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor’s offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor's offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
   /** Google product category ID to calculate the report for, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). Required in the `SELECT` clause. A condition on `report_category_id` is required in the `WHERE` clause. */
   reportCategoryId?: string;
@@ -135,13 +135,13 @@ export interface CompetitiveVisibilityCompetitorView {
   domain?: string;
   /** [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#zippy=%2Cads-free-ratio) shows how often the domain receives impressions from Shopping ads compared to organic traffic. The number is rounded and bucketed. Cannot be filtered on in the 'WHERE' clause. */
   adsOrganicRatio?: number;
-  /** [Relative visibility] (https://support.google.com/merchants/answer/11366442#zippy=%2Crelative-visibility) shows how often your competitors’ offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Relative visibility] (https://support.google.com/merchants/answer/11366442#zippy=%2Crelative-visibility) shows how often your competitors' offers are shown compared to your offers. In other words, this is the number of displayed impressions of a competitor retailer divided by the number of your displayed impressions during a selected time range for a selected product category and country. Cannot be filtered on in the 'WHERE' clause. */
   relativeVisibility?: number;
   /** Position of the domain in the similar businesses ranking for the selected keys (`date`, `report_category_id`, `report_country_code`, `traffic_source`) based on impressions. 1 is the highest. Cannot be filtered on in the 'WHERE' clause. */
   rank?: string;
   /** True if this row contains data for your domain. Cannot be filtered on in the 'WHERE' clause. */
   isYourDomain?: boolean;
-  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers’ offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers' offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
   pageOverlapRate?: number;
   /** Traffic source of impressions. Required in the `SELECT` clause. */
   trafficSource?: CompetitiveVisibilityCompetitorViewTrafficSourceEnum;
@@ -224,11 +224,11 @@ export interface CompetitiveVisibilityTopMerchantView {
   date?: Merchantapi_Date;
   /** Country where impressions appeared. Required in the `SELECT` clause. A condition on `report_country_code` is required in the `WHERE` clause. */
   reportCountryCode?: string;
-  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers’ offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Page overlap rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Cpage-overlap-rate) shows how frequently competing retailers' offers are shown together with your offers on the same page. Cannot be filtered on in the 'WHERE' clause. */
   pageOverlapRate?: number;
   /** Traffic source of impressions. Required in the `SELECT` clause. */
   trafficSource?: CompetitiveVisibilityTopMerchantViewTrafficSourceEnum;
-  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor’s offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
+  /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor's offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
 }
 export const CompetitiveVisibilityTopMerchantView = /*@__PURE__*/ S.suspend(() =>

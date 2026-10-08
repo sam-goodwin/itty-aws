@@ -267,7 +267,7 @@ export interface AccountService {
   campaignsManagement?: ApproveAccountServiceRequest;
   /** Service type for account management. Enables the provider to perform administrative actions on the business's account, such as configuring account settings, managing users, or updating business information. */
   accountManagement?: ApproveAccountServiceRequest;
-  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions — the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. */
+  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions -- the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. */
   externalAccountId?: string;
   /** Service type for managing products. This allows the provider to handle product data on behalf of the business, including reading and writing product listings. It's commonly used when the provider offers inventory management or catalog synchronization services to keep the business's product information up-to-date across platforms. */
   productsManagement?: ApproveAccountServiceRequest;
@@ -1297,7 +1297,7 @@ export interface AddAccountService {
   accountManagement?: ApproveAccountServiceRequest;
   /** Required. The provider of the service. Either the reference to an account such as `providers/123` or a well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`). */
   provider?: string;
-  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions — the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. The external account ID must be specified for the campaigns management service type. The external account ID must not be specified for the account aggregation service type. The external account ID is optional / may be specified for all other service types. */
+  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions -- the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. The external account ID must be specified for the campaigns management service type. The external account ID must not be specified for the account aggregation service type. The external account ID is optional / may be specified for all other service types. */
   externalAccountId?: string;
   /** The provider is a CSS (Comparison Shopping Service) of this account. Payload for service type Comparison Shopping. */
   comparisonShopping?: ApproveAccountServiceRequest;
@@ -1978,7 +1978,7 @@ export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@_
 
 /** Settings for the Automatic Item Updates. */
 export interface ItemUpdatesAccountLevelSettings {
-  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_strict_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer’s page. */
+  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_strict_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer's page. */
   allowAvailabilityUpdates?: boolean;
   /** If `allow_availability_updates` is enabled, items are automatically updated in all your Shopping target countries. By default, availability updates will only be applied to items that are 'out of stock' on your website but 'in stock' on Shopping. Set this to true to also update items that are 'in stock' on your website, but 'out of stock' on Google Shopping. In order for this field to have an effect, you must also set `allow_availability_updates`. */
   allowStrictAvailabilityUpdates?: boolean;

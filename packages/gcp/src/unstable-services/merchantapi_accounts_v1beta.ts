@@ -257,7 +257,7 @@ export const AccountManagement = ApproveAccountServiceRequest;
 
 /** The `AccountService` message represents a specific service that a provider account offers to a Merchant Center account. `AccountService` defines the permissions and capabilities granted to the provider, allowing for operations such as product management or campaign management. The lifecycle of an `AccountService` involves a proposal phase, where one party suggests the service, and an approval phase, where the other party accepts or rejects it. This handshake mechanism ensures mutual consent before any access is granted. This mechanism safeguards both parties by ensuring that access rights are granted appropriately and that both the business and provider are aware of the services enabled. In scenarios where a user is an admin of both accounts, the approval can happen automatically. The mutability of a service is also managed through `AccountService`. Some services might be immutable, for example, if they were established through other systems or APIs, and you cannot alter them through this API. */
 export interface AccountService {
-  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions — the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. */
+  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions -- the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. */
   externalAccountId?: string;
   /** Output only. The human-readable display name of the provider account. */
   providerDisplayName?: string;
@@ -1150,7 +1150,7 @@ export interface AddAccountService {
   accountManagement?: ApproveAccountServiceRequest;
   /** The provider is an [aggregator](https://support.google.com/merchants/answer/188487) for the account. Payload for service type Account Aggregation. */
   accountAggregation?: ApproveAccountServiceRequest;
-  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions — the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. The external account ID must be specified for the campaigns management service type. The external account ID must not be specified for the account aggregation service type. The external account ID is optional / may be specified for all other service types. */
+  /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions -- the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. The external account ID must be specified for the campaigns management service type. The external account ID must not be specified for the account aggregation service type. The external account ID is optional / may be specified for all other service types. */
   externalAccountId?: string;
   /** The provider manages campaigns for this account. Payload for service type campaigns management. */
   campaignsManagement?: ApproveAccountServiceRequest;
@@ -1815,7 +1815,7 @@ export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@_
 
 /** Settings for the Automatic Item Updates. */
 export interface ItemUpdatesAccountLevelSettings {
-  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_strict_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer’s page. */
+  /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_strict_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer's page. */
   allowAvailabilityUpdates?: boolean;
   /** If price updates are enabled, Google always updates the active price with the crawled information. */
   allowPriceUpdates?: boolean;

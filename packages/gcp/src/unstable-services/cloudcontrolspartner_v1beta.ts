@@ -113,7 +113,7 @@ export const CustomerOnboardingState = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains metadata around a Cloud Controls Partner Customer */
 export interface Customer {
-  /** Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. "google.com" */
+  /** Output only. The customer organization domain, extracted from CRM Organization's display_name field. e.g. "google.com" */
   organizationDomain?: string;
   /** Required. Display name for the customer */
   displayName?: string;

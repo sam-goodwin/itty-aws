@@ -410,7 +410,7 @@ export const BackupStateEnum = S.String;
 
 /** Represents a Managed Microsoft Identities backup. */
 export interface Backup {
-  /** Output only. Indicates whether it’s an on-demand backup or scheduled. */
+  /** Output only. Indicates whether it's an on-demand backup or scheduled. */
   type?: BackupTypeEnum | (string & {});
   /** Output only. Additional information about the current status of this backup, if available. */
   statusMessage?: string;

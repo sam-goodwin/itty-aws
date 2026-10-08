@@ -1669,7 +1669,7 @@ export interface ProductAttributes {
   customLabel4?: string;
   /** The [Model](https://support.google.com/google-ads/answer/14154511) of the vehicle, such as `LX`, `EX`, and others. */
   model?: string;
-  /** The all-in advertised price for a vehicle, which includes costs for the following – any accessories attached to the vehicle, environmental levies, extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer fees for handling licensing, provincial regulatory fees, miscellaneous dealer charges for security etching and nitrogen tire fill, and factory-to-customer or dealer-to-customer discounts or incentives. See the [Vehicle all-in price](https://support.google.com/google-ads/answer/14156981) for more information. */
+  /** The all-in advertised price for a vehicle, which includes costs for the following - any accessories attached to the vehicle, environmental levies, extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer fees for handling licensing, provincial regulatory fees, miscellaneous dealer charges for security etching and nitrogen tire fill, and factory-to-customer or dealer-to-customer discounts or incentives. See the [Vehicle all-in price](https://support.google.com/google-ads/answer/14156981) for more information. */
   vehicleAllInPrice?: Price;
   /** [Color](https://support.google.com/merchants/answer/6324487) of the item. For example, "red". */
   color?: string;
@@ -1769,7 +1769,7 @@ export interface ProductAttributes {
   bodyStyle?: ProductAttributesBodyStyleEnum | (string & {});
   /** Additional URLs of images of the item. */
   additionalImageLinks?: StringList;
-  /** The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
+  /** The date time when an offer becomes visible in search results across Google's YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
   disclosureDate?: string;
   /** Price of the item. */
   price?: Price;
