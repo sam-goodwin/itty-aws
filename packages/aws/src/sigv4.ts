@@ -103,7 +103,61 @@ const toBytes = (data: SignableBody): Uint8Array<ArrayBuffer> =>
         new Uint8Array(data.buffer, data.byteOffset, data.byteLength).slice()
       : new Uint8Array(data);
 
+/**
+ * Synchronous HMAC / SHA-256 from `node:crypto` where the runtime has it
+ * (Node, Bun, Deno), found without a static import so the module still
+ * loads in browsers and workers. WebCrypto is async-only: every digest is a
+ * promise and a microtask hop, and HMAC also re-imports its key each time.
+ * Signing one request made six such round trips; with `node:crypto` it makes
+ * none.
+ */
+interface NodeCrypto {
+  createHmac(
+    alg: string,
+    key: Uint8Array | string,
+  ): { update(d: Uint8Array | string): any; digest(): Uint8Array };
+  createHash(alg: string): { update(d: Uint8Array | string): any; digest(enc: "hex"): string };
+}
+const nodeCrypto: NodeCrypto | undefined = (() => {
+  try {
+    const p = (globalThis as { process?: { getBuiltinModule?: (id: string) => unknown } }).process;
+    return p?.getBuiltinModule?.("node:crypto") as NodeCrypto | undefined;
+  } catch {
+    return undefined;
+  }
+})();
+
+const asBytes = (key: string | ArrayBuffer): Uint8Array | string =>
+  typeof key === "string" ? key : new Uint8Array(key);
+
 const hmac = (key: string | ArrayBuffer, data: string): Effect.Effect<ArrayBuffer, CryptoError> =>
+  nodeCrypto
+    ? Effect.try({
+        try: () => {
+          const out = nodeCrypto.createHmac("sha256", asBytes(key)).update(data).digest();
+          return out.buffer.slice(out.byteOffset, out.byteOffset + out.byteLength) as ArrayBuffer;
+        },
+        catch: (cause) => new CryptoError({ operation: "hmac", cause }),
+      })
+    : hmacWeb(key, data);
+
+/** Hex SHA-256 of `content`. */
+const sha256Hex = (content: SignableBody): Effect.Effect<string, CryptoError> =>
+  nodeCrypto
+    ? Effect.try({
+        try: () =>
+          nodeCrypto
+            .createHash("sha256")
+            .update(typeof content === "string" ? content : toBytes(content))
+            .digest("hex"),
+        catch: (cause) => new CryptoError({ operation: "sha256", cause }),
+      })
+    : Effect.map(sha256(content), hex);
+
+const hmacWeb = (
+  key: string | ArrayBuffer,
+  data: string,
+): Effect.Effect<ArrayBuffer, CryptoError> =>
   Effect.tryPromise({
     try: async () =>
       crypto.subtle.sign(
@@ -262,7 +316,7 @@ export const sign: (options: SignOptions) => Effect.Effect<SignedRequest, Signin
 
     const payloadHash =
       headers.get("x-amz-content-sha256") ??
-      (service === "s3" && signQuery ? "UNSIGNED-PAYLOAD" : hex(yield* sha256(body || "")));
+      (service === "s3" && signQuery ? "UNSIGNED-PAYLOAD" : yield* sha256Hex(body || ""));
 
     const canonicalRequest = [
       method.toUpperCase(),
@@ -276,7 +330,7 @@ export const sign: (options: SignOptions) => Effect.Effect<SignedRequest, Signin
       "AWS4-HMAC-SHA256",
       datetime,
       credentialString,
-      hex(yield* sha256(canonicalRequest)),
+      yield* sha256Hex(canonicalRequest),
     ].join("\n");
     const signingKey = yield* Cache.get(yield* SigningKeyCache, {
       secretAccessKey: options.secretAccessKey,
