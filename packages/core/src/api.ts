@@ -205,6 +205,131 @@ const applyRetry = (
         }),
       );
 
+/**
+ * Per-operation state. Kept to one small object per exported operation:
+ * importing a service module creates every operation in it, so anything
+ * allocated here is paid hundreds of times per import (EC2 has 807
+ * operations) whether or not the operation is ever called.
+ */
+interface OperationState {
+  readonly configFn: () => OperationConfig<any, any, any, any, any>;
+  prepared?: Prepared;
+  /** Paginated operations only. */
+  readonly strategy?: Pagination.PaginationStrategy;
+}
+
+interface Prepared {
+  readonly cfg: OperationConfig<any, any, any, any, any>;
+  readonly inputAst: AST.AST;
+  readonly outputAst: AST.AST;
+}
+
+const stateKey = Symbol.for("@distilled.cloud/core/api/OperationState");
+
+// Lazily resolve the operation config + schema ASTs on first call, not at
+// module-load time. Generated SDKs wrap each request/response schema in
+// `Schema.suspend(() => ...)`; forcing them here (rather than when the
+// `export const` is evaluated) keeps importing a service module cheap and
+// only pays the schema-construction cost for operations that are actually
+// called. Memoized so subsequent calls are free.
+const prepare = (state: OperationState): Prepared => {
+  if (state.prepared) return state.prepared;
+  const cfg = state.configFn();
+  return (state.prepared = { cfg, inputAst: cfg.input!.ast, outputAst: cfg.output!.ast });
+};
+
+const stateOf = (op: unknown): OperationState => (op as Record<symbol, OperationState>)[stateKey]!;
+
+const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> =>
+  Effect.suspend(() => {
+    const { cfg, inputAst, outputAst } = prepare(state);
+    const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) =>
+      Effect.gen(function* () {
+        const protocol = yield* Protocol;
+        const client = yield* HttpClient.HttpClient;
+        const request = yield* protocol.encode({
+          input,
+          inputAst,
+          config: cfg,
+        });
+        const response = yield* client.execute(request);
+        return yield* protocol.decode({
+          response,
+          outputAst,
+          errors: cfg.errors ?? [],
+          config: cfg,
+        });
+      }).pipe(Effect.provideContext(protocolCtx)),
+    );
+    return applyRetry(call, cfg.retry);
+  });
+
+/**
+ * `const fn = yield* operation`: a requirement-free call function over the
+ * current context. The captured context is a FALLBACK, not a snapshot:
+ * entries present on the calling fiber at call time win, so per-call
+ * overrides — e.g. providing `Endpoint` with a discovered data-plane address
+ * around one invocation — take effect instead of being shadowed by the
+ * context captured at yield time.
+ */
+const bindContext = (op: (input: unknown) => Effect.Effect<any, any, any>) =>
+  Effect.map(
+    Effect.context(),
+    (context) => (input: unknown) =>
+      // `Context` is contravariant, so `Context<never>` is not assignable
+      // to the `Context<any>` updateContext expects — the widening cast is
+      // sound (the merge only ever adds entries).
+      Effect.updateContext(op(input), (current): Context.Context<any> =>
+        Context.merge(context, current),
+      ),
+  );
+
+/**
+ * Shared by every operation function (its prototype; it inherits from
+ * `Function.prototype`, so operations stay ordinary callables). Makes the
+ * operation yieldable — `yield* operation` returns a requirement-free call
+ * function, mirroring the distilled repo's OperationMethod — and carries the
+ * debug/introspection surface (`op.input` / `.output` / `.errors` /
+ * `.operationName` / `.pagination`) as lazy getters, so importing a service
+ * module doesn't force its suspended schemas.
+ */
+const OperationProto: object = Object.setPrototypeOf(
+  {
+    [Symbol.iterator](this: any) {
+      return new SingleShotGen(this.asEffect());
+    },
+    pipe(this: any) {
+      return pipeArguments(this.asEffect(), arguments);
+    },
+    asEffect(this: any) {
+      return bindContext(this);
+    },
+    get input() {
+      return prepare(stateOf(this)).cfg.input;
+    },
+    get output() {
+      return prepare(stateOf(this)).cfg.output;
+    },
+    get errors() {
+      return prepare(stateOf(this)).cfg.errors ?? [];
+    },
+    get operationName() {
+      return prepare(stateOf(this)).cfg.operationName;
+    },
+    get pagination() {
+      return (prepare(stateOf(this)).cfg as PaginatedOperationConfig<any, any, any, any>)
+        .pagination;
+    },
+  },
+  Function.prototype,
+);
+
+const makeOperation = (state: OperationState, proto: object): any => {
+  const fn = (input: unknown) => callOperation(state, input);
+  Object.defineProperty(fn, stateKey, { value: state });
+  return Object.setPrototypeOf(fn, proto);
+};
+
 export function make<
   I extends S.Top,
   O extends S.Top,
@@ -219,101 +344,7 @@ export function make<
   InstanceType<E[number]> | PE | HttpClientError.HttpClientError,
   PR | HttpClient.HttpClient
 > {
-  // Lazily resolve the operation config + schema ASTs on first call, not at
-  // module-load time. Generated SDKs wrap each request/response schema in
-  // `Schema.suspend(() => ...)`; forcing them here (rather than when the
-  // `export const` is evaluated) keeps importing a service module cheap and
-  // only pays the schema-construction cost for operations that are actually
-  // called. Memoized so subsequent calls are free.
-  interface Prepared {
-    readonly cfg: OperationConfig<I, O, PE, PR, E>;
-    readonly inputAst: AST.AST;
-    readonly outputAst: AST.AST;
-  }
-  let prepared: Prepared | undefined;
-  const prepare = (): Prepared => {
-    if (prepared) return prepared;
-    const cfg = configFn();
-    prepared = {
-      cfg,
-      inputAst: cfg.input!.ast,
-      outputAst: cfg.output!.ast,
-    };
-    return prepared;
-  };
-  const fn = (input: unknown) =>
-    Effect.suspend(() => {
-      const { cfg, inputAst, outputAst } = prepare();
-      const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) =>
-        Effect.gen(function* () {
-          const protocol = yield* Protocol;
-          const client = yield* HttpClient.HttpClient;
-          const request = yield* protocol.encode({
-            input,
-            inputAst,
-            config: cfg,
-          });
-          const response = yield* client.execute(request);
-          return yield* protocol.decode({
-            response,
-            outputAst,
-            errors: cfg.errors ?? [],
-            config: cfg,
-          });
-        }).pipe(Effect.provideContext(protocolCtx)),
-      );
-      return applyRetry(call, cfg.retry);
-    });
-
-  // Make the operation itself yieldable: `yield* operation` captures the
-  // current context and returns a requirement-free call function (mirrors
-  // the distilled repo's OperationMethod). The captured context is a
-  // FALLBACK, not a snapshot: entries present on the calling fiber at call
-  // time win, so per-call overrides — e.g. providing `Endpoint` with a
-  // discovered data-plane address around one invocation — take effect
-  // instead of being shadowed by the context captured at yield time.
-  const Proto = {
-    [Symbol.iterator](this: any) {
-      return new SingleShotGen(this.asEffect());
-    },
-    pipe(this: any) {
-      return pipeArguments(this.asEffect(), arguments);
-    },
-    asEffect() {
-      return Effect.map(
-        Effect.context(),
-        (context) => (input: unknown) =>
-          // `Context` is contravariant, so `Context<never>` is not assignable
-          // to the `Context<any>` updateContext expects — the widening cast is
-          // sound (the merge only ever adds entries).
-          Effect.updateContext(fn(input), (current): Context.Context<any> =>
-            Context.merge(context, current),
-          ),
-      );
-    },
-  };
-  Object.assign(fn, Proto);
-
-  // Debug/introspection surface carried over from the distilled client:
-  // the operation's metadata is readable off the exported callable
-  // (e.g. `iam.listRoles.input` / `.output` / `.errors` / `.operationName`
-  // / `.pagination`). Lazy getters, so importing a service module doesn't
-  // force its suspended schemas.
-  Object.defineProperties(fn, {
-    input: { get: () => prepare().cfg.input, configurable: true },
-    output: { get: () => prepare().cfg.output, configurable: true },
-    errors: { get: () => prepare().cfg.errors ?? [], configurable: true },
-    operationName: {
-      get: () => prepare().cfg.operationName,
-      configurable: true,
-    },
-    pagination: {
-      get: () => (prepare().cfg as PaginatedOperationConfig<I, O, PE, PR, E>).pagination,
-      configurable: true,
-    },
-  });
-
-  return fn as any;
+  return makeOperation({ configFn }, OperationProto);
 }
 
 //#endregion
@@ -379,6 +410,49 @@ export interface PaginatedOperationConfig<
   pagination: Pagination.PaginatedTrait;
 }
 
+/** `.pages` / `.items` over any call function (the operation itself or a context-bound one). */
+const streamsOf = (state: OperationState, call: (input: any) => Effect.Effect<any, any, any>) => {
+  const pag = () => (prepare(state).cfg as PaginatedOperationConfig<any, any, any, any>).pagination;
+  const paginate = state.strategy ?? Pagination.paginateWithDefaults;
+  const pages = (input: Record<string, unknown>) => paginate(call, input, pag());
+  const items = (input: Record<string, unknown>) => {
+    const p = pag();
+    return p.items ? Pagination.extractItems(pages(input), p.items) : pages(input);
+  };
+  return { pages, items };
+};
+
+/**
+ * `.pages` / `.items` are getters that build the stream functions on first
+ * access and cache them on the operation, so they cost nothing until used
+ * and stay detachable (`const { items } = op` works).
+ */
+const streamGetter = (name: "pages" | "items") =>
+  function (this: any) {
+    const fns = streamsOf(stateOf(this), this);
+    Object.defineProperties(this, {
+      pages: { value: fns.pages, configurable: true },
+      items: { value: fns.items, configurable: true },
+    });
+    return fns[name];
+  };
+
+const PaginatedOperationProto: object = Object.create(OperationProto, {
+  pages: { get: streamGetter("pages"), configurable: true },
+  items: { get: streamGetter("items"), configurable: true },
+  // `yield* operation` returns a fresh context-bound function; give it
+  // `.pages` / `.items` too (distilled #145). Same fallback (not snapshot)
+  // semantics as the plain operation.
+  asEffect: {
+    value(this: any) {
+      const state = stateOf(this);
+      return Effect.map(bindContext(this), (call) => Object.assign(call, streamsOf(state, call)));
+    },
+    configurable: true,
+    writable: true,
+  },
+});
+
 /**
  * Like {@link make}, plus `.pages()` / `.items()` streaming built on the
  * operation's pagination trait. The SDK can pass a provider-specific
@@ -401,43 +475,7 @@ export function makePaginated<
   InstanceType<E[number]> | PE | HttpClientError.HttpClientError,
   PR | HttpClient.HttpClient
 > {
-  const fn: any = make(configFn);
-  // configFn is a cheap object literal over already-constructed consts —
-  // re-invoking it here just reads the pagination trait (memoized).
-  let pagination: Pagination.PaginatedTrait | undefined;
-  const pag = () => (pagination ??= configFn().pagination);
-  const paginate = strategy ?? Pagination.paginateWithDefaults;
-
-  // The streams are built over a CALL FUNCTION, so the same code serves both
-  // call styles: the operation itself (requirements intact), and the
-  // context-bound function `yield* operation` hands back — whose streams
-  // inherit that captured context and so need nothing after the yield.
-  const withStreams = (call: (input: any) => Effect.Effect<any, any, any>): any => {
-    const pages = (input: Record<string, unknown>) => paginate(call, input, pag());
-    const items = (input: Record<string, unknown>) => {
-      const p = pag();
-      return p.items ? Pagination.extractItems(pages(input), p.items) : pages(input);
-    };
-    return Object.assign(call, { pages, items });
-  };
-
-  // `yield* operation` runs through `make`'s Proto.asEffect, which builds a
-  // fresh arrow and would drop `.pages` / `.items` (distilled #145). Override
-  // it here — Proto's `[Symbol.iterator]`/`pipe` dispatch on `this`, so both
-  // pick this up. Only paginated operations pay for it. Same fallback (not
-  // snapshot) semantics as Proto.asEffect: call-time fiber entries win over
-  // the captured context.
-  fn.asEffect = () =>
-    Effect.map(Effect.context(), (context) =>
-      withStreams((input: unknown) =>
-        // Same contravariance widening as Proto.asEffect above.
-        Effect.updateContext(fn(input), (current): Context.Context<any> =>
-          Context.merge(context, current),
-        ),
-      ),
-    );
-
-  return withStreams(fn);
+  return makeOperation(strategy ? { configFn, strategy } : { configFn }, PaginatedOperationProto);
 }
 
 //#endregion
