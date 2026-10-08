@@ -112,9 +112,10 @@ const toBytes = (data: SignableBody): Uint8Array<ArrayBuffer> =>
  * none.
  */
 interface NodeCrypto {
+  createSecretKey(key: Uint8Array): object;
   createHmac(
     alg: string,
-    key: Uint8Array | string,
+    key: Uint8Array | string | object,
   ): { update(d: Uint8Array | string): any; digest(): Uint8Array };
   createHash(alg: string): { update(d: Uint8Array | string): any; digest(enc: "hex"): string };
 }
@@ -127,14 +128,21 @@ const nodeCrypto: NodeCrypto | undefined = (() => {
   }
 })();
 
-const asBytes = (key: string | ArrayBuffer): Uint8Array | string =>
-  typeof key === "string" ? key : new Uint8Array(key);
+// Preparing a raw HMAC key is most of an HMAC's cost in node:crypto (7 us
+// against 1.6 us with a KeyObject); derived signing keys are reused all day.
+const keyObjects = new WeakMap<ArrayBuffer, object>();
+const asKey = (key: string | ArrayBuffer): Uint8Array | string | object => {
+  if (typeof key === "string") return key;
+  let ko = keyObjects.get(key);
+  if (!ko) keyObjects.set(key, (ko = nodeCrypto!.createSecretKey(new Uint8Array(key))));
+  return ko;
+};
 
 const hmac = (key: string | ArrayBuffer, data: string): Effect.Effect<ArrayBuffer, CryptoError> =>
   nodeCrypto
     ? Effect.try({
         try: () => {
-          const out = nodeCrypto.createHmac("sha256", asBytes(key)).update(data).digest();
+          const out = nodeCrypto.createHmac("sha256", asKey(key)).update(data).digest();
           return out.buffer.slice(out.byteOffset, out.byteOffset + out.byteLength) as ArrayBuffer;
         },
         catch: (cause) => new CryptoError({ operation: "hmac", cause }),
